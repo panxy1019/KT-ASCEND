@@ -75,8 +75,14 @@ def _buffers():
         "input_host": require_pinned_host_tensor(torch.empty_like(hidden_cpu, pin_memory=True), "input_host"),
         "ids_host": require_pinned_host_tensor(torch.empty_like(ids_cpu, pin_memory=True), "ids_host"),
         "weights_host": require_pinned_host_tensor(torch.empty_like(weights_cpu, pin_memory=True), "weights_host"),
-        "output_host": require_pinned_host_tensor(torch.empty_like(hidden_cpu, pin_memory=True), "output_host"),
-        "output_npu": torch.empty_like(hidden_cpu, device="npu"),
+        # LLAMAFILE exposes a FP32 routed contribution.  This test must not
+        # provide BF16 storage to the CPU task, or the task writes twice the
+        # allocated byte count before the final model boundary cast.
+        "output_host": require_pinned_host_tensor(
+            torch.empty(hidden_cpu.shape, dtype=torch.float32, pin_memory=True),
+            "output_host",
+        ),
+        "output_npu": torch.empty(hidden_cpu.shape, dtype=torch.float32, device="npu"),
         "qlen": torch.tensor([1], dtype=torch.int32),
     }
 

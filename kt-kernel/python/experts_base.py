@@ -9,6 +9,8 @@ This module contains base classes and utilities shared across all backend implem
 
 from __future__ import annotations
 
+import hashlib
+import json
 import torch
 from typing import Dict, List, Optional, Tuple
 from abc import ABC, abstractmethod
@@ -16,6 +18,23 @@ import os
 import ctypes
 
 from kt_kernel import kt_kernel_ext
+
+
+def _cpu_tensor_sha256(tensor: torch.Tensor) -> str:
+    """Hash exact CPU tensor storage for default-off task diagnostics."""
+    value = tensor.detach().contiguous()
+    if value.device.type != "cpu":
+        raise ValueError("CPU task trace received a non-CPU tensor")
+    return hashlib.sha256(value.view(torch.uint8).numpy().tobytes()).hexdigest()
+
+
+def _write_cpu_task_trace(payload: dict) -> None:
+    """Append a compact JSONL event when explicitly armed by the operator."""
+    trace_path = os.environ.get("KT_DEBUG_CPU_TASK_TRACE_FILE")
+    if not trace_path:
+        return
+    with open(trace_path, "a", encoding="utf-8") as writer:
+        writer.write(json.dumps(payload, sort_keys=True, separators=(",", ":")) + "\n")
 
 
 def _allocate_cpu_expert_mask(num_experts: int, *, zero: bool) -> torch.Tensor:
@@ -173,6 +192,7 @@ class _MoEBase:
         cpuinfer_threads: int,
         threadpool_count: int,
         numa_nodes=None,
+        isolation_key=None,
     ):
         """
         Get or create the CPUInfer singleton instance.
@@ -181,6 +201,8 @@ class _MoEBase:
             cpuinfer_threads: Total number of CPU inference threads
             threadpool_count: Number of NUMA subpools (TP count)
             numa_nodes: Explicit list of NUMA node IDs. If None, defaults to sequential.
+            isolation_key: Optional debug-only cache discriminator.  When set,
+                callers receive a CPUInfer dedicated to that wrapper.
 
         Returns:
             CPUInfer singleton instance
@@ -199,6 +221,8 @@ class _MoEBase:
             for i in range(threadpool_count)
         ]
         config_key = (tuple(subpool_numa_map), tuple(subpool_thread_count))
+        if isolation_key is not None:
+            config_key = (*config_key, "debug-wrapper", isolation_key)
 
         if config_key not in cls._cpu_infer_instances:
             worker_config = kt_kernel_ext.WorkerPoolConfig()
@@ -269,6 +293,12 @@ class BaseMoEWrapper(_MoEBase, ABC):
     """
 
     _layer_has_pending_deferred: Dict[int, bool] = {}
+    _cpu_task_trace_sequence = 0
+
+    @classmethod
+    def _next_cpu_task_trace_sequence(cls) -> int:
+        cls._cpu_task_trace_sequence += 1
+        return cls._cpu_task_trace_sequence
 
     def __init__(
         self,
@@ -347,8 +377,20 @@ class BaseMoEWrapper(_MoEBase, ABC):
         # the clamp branch when limit==0). Origin: kt-sglang 耦合.
         self.swiglu_limit = float(swiglu_limit)
 
-        # Initialize CPU inference engine (singleton via shared base class)
-        self.cpu_infer = self._get_cpu_infer(cpuinfer_threads, threadpool_count, numa_nodes=numa_nodes)
+        # Default behavior is the historical shared worker pool.  This
+        # diagnostic-only switch isolates each wrapper's queue without
+        # changing arithmetic, placement, or normal production behavior.
+        isolation_key = (
+            self.layer_idx
+            if os.environ.get("KT_DEBUG_PER_WRAPPER_CPUINFER") == "1"
+            else None
+        )
+        self.cpu_infer = self._get_cpu_infer(
+            cpuinfer_threads,
+            threadpool_count,
+            numa_nodes=numa_nodes,
+            isolation_key=isolation_key,
+        )
 
         # Backend-specific initialization happens in subclasses
         self.moe = None
@@ -434,9 +476,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
         if hidden_states.device.type == "npu" and self.max_deferred_experts_per_token == 0:
             if getattr(self, "_npu_pending_forward", None) is not None:
                 raise RuntimeError("an Ascend CPU expert forward is already pending on this wrapper")
-            # A raw pointer consumer cannot participate in torch_npu's internal
-            # copy-stream dependency tracking.  Use CANN's synchronous memcpy
-            # and own the host tensors for the complete CPUInfer lifetime.
+            # Keep the host tensors alive for the complete CPUInfer lifetime.
+            # The transfers themselves must remain framework-managed: raw ACL
+            # pointer memcpy bypasses torch_npu stream dependencies and was the
+            # source of P2 same-path nondeterminism.
             import acl
 
             input_npu = flat_hidden_states.to(dtype=torch.bfloat16).contiguous()
@@ -453,16 +496,18 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 (ids_cpu, ids_npu),
                 (weights_cpu, weights_npu),
             ):
-                byte_count = destination.numel() * destination.element_size()
-                status = acl.rt.memcpy(
-                    destination.data_ptr(),
-                    byte_count,
-                    source.data_ptr(),
-                    byte_count,
-                    2,  # ACL_MEMCPY_DEVICE_TO_HOST
-                )
-                if status != 0:
-                    raise RuntimeError(f"acl.rt.memcpy D2H failed with status {status}")
+                destination.copy_(source, non_blocking=False)
+            if os.environ.get("KT_DEBUG_NPU_CPU_INPUT_CLONE") == "1":
+                # Diagnostic-only: ensure the CPU task consumes buffers that
+                # are distinct from raw ACL D2H destinations.
+                def _clone_pinned(value: torch.Tensor) -> torch.Tensor:
+                    clone = torch.empty_like(value, device="cpu", pin_memory=True)
+                    clone.copy_(value)
+                    return clone
+
+                input_cpu = _clone_pinned(input_cpu)
+                ids_cpu = _clone_pinned(ids_cpu)
+                weights_cpu = _clone_pinned(weights_cpu)
             output_cpu = torch.zeros(
                 input_cpu.shape,
                 dtype=getattr(self, "output_dtype", input_cpu.dtype),
@@ -471,6 +516,40 @@ class BaseMoEWrapper(_MoEBase, ABC):
             )
             batch_cpu = torch.tensor([batch_size], dtype=torch.int32, device="cpu")
             incremental = BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx - 1, False)
+            trace = None
+            if os.environ.get("KT_DEBUG_CPU_TASK_TRACE_FILE"):
+                trace = {
+                    "schema_version": 1,
+                    "sequence": self._next_cpu_task_trace_sequence(),
+                    "layer": int(self.layer_idx),
+                    "wrapper_id": id(self),
+                    "cpuinfer_id": id(self.cpu_infer),
+                    "batch_size": int(batch_size),
+                    "input": {
+                        "shape": list(input_cpu.shape),
+                        "dtype": str(input_cpu.dtype),
+                        "data_ptr": int(input_cpu.data_ptr()),
+                        "sha256": _cpu_tensor_sha256(input_cpu),
+                    },
+                    "topk_ids": {
+                        "shape": list(ids_cpu.shape),
+                        "data_ptr": int(ids_cpu.data_ptr()),
+                        "sha256": _cpu_tensor_sha256(ids_cpu),
+                    },
+                    "topk_weights": {
+                        "shape": list(weights_cpu.shape),
+                        "data_ptr": int(weights_cpu.data_ptr()),
+                        "sha256": _cpu_tensor_sha256(weights_cpu),
+                    },
+                    "output": {
+                        "shape": list(output_cpu.shape),
+                        "dtype": str(output_cpu.dtype),
+                        "data_ptr": int(output_cpu.data_ptr()),
+                        "pre_task_sha256": _cpu_tensor_sha256(output_cpu),
+                    },
+                    "incremental": bool(incremental),
+                }
+                _write_cpu_task_trace({"event": "submit", **trace})
             task = self.moe.forward_task(
                 batch_cpu.data_ptr(),
                 ids_cpu.size(-1),
@@ -486,6 +565,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 weights_cpu,
                 output_cpu,
                 batch_cpu,
+                trace,
             )
             self.cpu_infer.submit(task)
             BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
@@ -569,23 +649,37 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 raise RuntimeError("no Ascend CPU expert forward is pending on this wrapper")
             self.cpu_infer.sync()
             output_cpu = pending[3]
+            trace = pending[5]
+            if trace is not None:
+                _write_cpu_task_trace(
+                    {
+                        "event": "sync",
+                        **trace,
+                        "output": {
+                            **trace["output"],
+                            "post_task_sha256": _cpu_tensor_sha256(output_cpu),
+                            "finite": bool(torch.isfinite(output_cpu).all().item()),
+                        },
+                    }
+                )
+            output_for_h2d = output_cpu
+            if os.environ.get("KT_DEBUG_NPU_CPU_OUTPUT_CLONE") == "1":
+                # Diagnostic-only: decouple raw ACL H2D from the CPUInfer
+                # task's pinned output allocation.  Keep the clone alive until
+                # the next (already synchronized) forward on this wrapper.
+                output_for_h2d = torch.empty_like(
+                    output_cpu,
+                    device="cpu",
+                    pin_memory=True,
+                )
+                output_for_h2d.copy_(output_cpu)
+                self._npu_debug_h2d_source = output_for_h2d
             output_npu = torch.empty(
-                output_cpu.shape,
-                dtype=output_cpu.dtype,
+                output_for_h2d.shape,
+                dtype=output_for_h2d.dtype,
                 device=hidden_states.device,
             )
-            byte_count = output_cpu.numel() * output_cpu.element_size()
-            import acl
-
-            status = acl.rt.memcpy(
-                output_npu.data_ptr(),
-                byte_count,
-                output_cpu.data_ptr(),
-                byte_count,
-                1,  # ACL_MEMCPY_HOST_TO_DEVICE
-            )
-            if status != 0:
-                raise RuntimeError(f"acl.rt.memcpy H2D failed with status {status}")
+            output_npu.copy_(output_for_h2d, non_blocking=False)
             self._npu_pending_forward = None
             return output_npu.view_as(hidden_states)
 

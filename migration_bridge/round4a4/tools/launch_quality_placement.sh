@@ -12,7 +12,12 @@ case "${profile}" in
   p3) ratio=0.9807692307692307 ;;
   *) echo "unsupported frozen profile: ${profile}" >&2; exit 2 ;;
 esac
-placement=/workspace/kt-src/migration_bridge/round4a/placements/placement_${profile}.pt
+# Default to the frozen profile.  Root-cause experiments may override both
+# values together through the environment; this is diagnostic-only and keeps
+# every normal P1/P2/P3 invocation unchanged.
+placement=${KT_PLACEMENT_PATH:-/workspace/kt-src/migration_bridge/round4a/placements/placement_${profile}.pt}
+ratio=${KT_GPU_EXPERTS_RATIO:-${ratio}}
+cpuinfer_threads=${KT_CPUINFER_THREADS:-16}
 source /usr/local/Ascend/ascend-toolkit/set_env.sh
 source /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/bin/set_env.sh
 source /usr/local/Ascend/nnal/atb/set_env.sh
@@ -28,7 +33,7 @@ exec python -m sglang.launch_server \
   --mem-fraction-static 0.55 --max-running-requests 1 --random-seed 0 \
   --disable-cuda-graph --disable-custom-all-reduce --skip-server-warmup \
   --weight-loader-disable-mmap --attention-backend ascend --sampling-backend pytorch \
-  --kt-weight-path "${gguf}" --kt-method LLAMAFILE --kt-cpuinfer 16 \
+  --kt-weight-path "${gguf}" --kt-method LLAMAFILE --kt-cpuinfer "${cpuinfer_threads}" \
   --kt-threadpool-count 1 --kt-numa-nodes 0 \
   --kt-gpu-experts-ratio "${ratio}" --kt-max-deferred-experts-per-token 0 \
   --kt-expert-placement-strategy frequency --init-expert-location "${placement}" \

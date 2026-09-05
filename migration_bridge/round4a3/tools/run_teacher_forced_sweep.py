@@ -68,6 +68,15 @@ def select_route_dump(paths: list[Path], cpu_experts: set[int]) -> dict:
     }
 
 
+def history_output_ids(row: dict) -> list[int]:
+    """Read both the legacy replay history and the current determinism schema."""
+    if "repetitions" in row:
+        return [int(value) for value in row["repetitions"][0]["output_ids"]]
+    if "reference64" in row:
+        return [int(value) for value in row["reference64"]]
+    raise RuntimeError(f"history row for {row.get('prompt_id', '<unknown>')} has no output IDs")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default="http://127.0.0.1:31000")
@@ -82,7 +91,7 @@ def main() -> None:
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
     history = json.loads(args.baseline_history.read_text())
-    history_by_id = {row["prompt_id"]: row["repetitions"][0]["output_ids"] for row in history["rows"]}
+    history_by_id = {row["prompt_id"]: history_output_ids(row) for row in history["rows"]}
     cpu_experts = {int(value) for value in args.cpu_experts.split(",") if value}
     args.output_dir.mkdir(parents=True, exist_ok=True)
     lock_file = (args.output_dir / ".sweep.lock").open("w")

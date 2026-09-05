@@ -10,8 +10,10 @@
 #include <cassert>
 #include <cmath>
 #include <cstdint>
+#include <cstdlib>
 #include <cstdio>
 #include <functional>
+#include <new>
 #include <vector>
 
 #include "../../cpu_backend/shared_mem_buffer.h"
@@ -86,11 +88,32 @@ class LLAMA_MOE_TP {
   std::vector<float*> m_local_intermediate_fp32_ptr_;  // [expert_num]
   std::vector<uint8_t*> m_local_down_input_ptr_;       // [expert_num]
   std::vector<float*> m_local_down_output_ptr_;        // [expert_num]
+  bool use_private_scratch_ = false;
+  std::vector<void*> private_scratch_buffers_;
+
+  void allocate_scratch(MemoryRequest& requests) {
+    if (!use_private_scratch_) {
+      shared_mem_buffer_numa.alloc(tp_part_idx, this, requests);
+      return;
+    }
+    void* buffer = nullptr;
+    const size_t bytes = requests.total_size();
+    const int rc = posix_memalign(&buffer, 64, bytes);
+    if (rc != 0 || buffer == nullptr) {
+      throw std::bad_alloc();
+    }
+    requests.update_base_ptr(buffer);
+    private_scratch_buffers_.push_back(buffer);
+  }
  public:
   using input_t = ggml_bf16_t;
   using output_t = float;
 
   LLAMA_MOE_TP(GeneralMOEConfig config, int tp_part_idx) : config_(config), tp_part_idx(tp_part_idx) {
+    // Default production behavior retains the shared scratch allocator.  This
+    // debug switch gives each wrapper and each scratch request group private
+    // storage, isolating ownership without changing arithmetic or routing.
+    use_private_scratch_ = std::getenv("KT_DEBUG_LLAMA_PRIVATE_SCRATCH") != nullptr;
     MemoryRequest mem_requests;
     mem_requests.append_pointer(&s_input_fp32_, sizeof(float) * config_.hidden_size);
     mem_requests.append_pointer(
@@ -118,7 +141,7 @@ class LLAMA_MOE_TP {
       mem_requests.append_pointer(&s_down_output_[i], sizeof(float) * config_.hidden_size);
     }
     mem_requests.append_pointer(&s_output_fp32_, sizeof(float) * config_.hidden_size);
-    shared_mem_buffer_numa.alloc(tp_part_idx, this, mem_requests);
+    allocate_scratch(mem_requests);
     // shared_mem_buffer.alloc(this, mem_requests);
 
     m_input_fp32_.resize(config_.group_max_len);
@@ -162,7 +185,7 @@ class LLAMA_MOE_TP {
     for (int i = 0; i < config_.group_max_len; i++) {
       mem_requests.append_pointer(&m_output_fp32_[i], sizeof(float) * config_.hidden_size);
     }
-    shared_mem_buffer_numa.alloc(tp_part_idx, this, mem_requests);
+    allocate_scratch(mem_requests);
     // shared_mem_buffer.alloc(this, m_mem_requests);
 
     m_local_pos_.resize(config_.group_max_len);
@@ -189,7 +212,15 @@ class LLAMA_MOE_TP {
         new uint8_t[size * ggml_type_size((ggml_type)config.down_type) / ggml_blck_size((ggml_type)config.down_type)];
   }
 
-  ~LLAMA_MOE_TP() { shared_mem_buffer_numa.dealloc(tp_part_idx, this); }
+  ~LLAMA_MOE_TP() {
+    if (use_private_scratch_) {
+      for (void* buffer : private_scratch_buffers_) {
+        free(buffer);
+      }
+    } else {
+      shared_mem_buffer_numa.dealloc(tp_part_idx, this);
+    }
+  }
 
   void load_weights(int complete_intermediate_size, int offset, const int32_t* physical_to_logical_map) {
     auto& config = config_;

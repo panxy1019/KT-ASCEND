@@ -1,0 +1,572 @@
+{
+  "all_exact": false,
+  "dump_dir": "/workspace/results/p2-tf-v_en_01-token1-no-radix-pass4/dumps",
+  "first_difference": {
+    "layer": 26,
+    "stage": "cpu_output"
+  },
+  "first_pass": 0,
+  "layers": [
+    1,
+    9,
+    17,
+    26
+  ],
+  "rows": [
+    {
+      "first_path": "layer01-pass00000-pid9169.pt",
+      "layer": 1,
+      "second_path": "layer01-pass00002-pid9169.pt",
+      "stages": {
+        "cpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "d15321cf77a73c1356e709c5492adace053d2a323199c07d1b20152e2cfa8d53",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "d15321cf77a73c1356e709c5492adace053d2a323199c07d1b20152e2cfa8d53",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "d2527ceef98d387e3190cfcdc3b8a4ff7a17271891bb577fe26b6906f6699097",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "d2527ceef98d387e3190cfcdc3b8a4ff7a17271891bb577fe26b6906f6699097",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_routes": {
+          "exact": true,
+          "first": null,
+          "second": null
+        },
+        "hidden_states": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "60b0240d5ad8d3cc523a45dda19592ca8f3c997d125c8f885e56dcf3d10a89c3",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "60b0240d5ad8d3cc523a45dda19592ca8f3c997d125c8f885e56dcf3d10a89c3",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "merged_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "5e734692717e7c97b1351f9ff7bd99d5c96d81fadb09b80af08a78e4f94b6fea",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "5e734692717e7c97b1351f9ff7bd99d5c96d81fadb09b80af08a78e4f94b6fea",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "topk_ids": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "13c72012f9edbde394f786bb47d28be69c3433f12c3a3338ff8e1d9115c30497",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "13c72012f9edbde394f786bb47d28be69c3433f12c3a3338ff8e1d9115c30497",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        },
+        "topk_weights": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "47efa6a9ea8e71608b4922d0145d126de4ee06efc0a317355c5d8c9511db2bf7",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "47efa6a9ea8e71608b4922d0145d126de4ee06efc0a317355c5d8c9511db2bf7",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    },
+    {
+      "first_path": "layer09-pass00000-pid9169.pt",
+      "layer": 9,
+      "second_path": "layer09-pass00002-pid9169.pt",
+      "stages": {
+        "cpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "443d45a2c5efc4154a3e62ebea32ce3ca19ee7d8849d589aed6b295f798014a6",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "443d45a2c5efc4154a3e62ebea32ce3ca19ee7d8849d589aed6b295f798014a6",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "72caef1b1e747f9486825cc1678a7831b6c11449587cc9c56c9b1c0b3b8149fb",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "72caef1b1e747f9486825cc1678a7831b6c11449587cc9c56c9b1c0b3b8149fb",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_routes": {
+          "exact": true,
+          "first": null,
+          "second": null
+        },
+        "hidden_states": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "ac830b68030963358338e88f64e0a914ee9fbb4dcdecd1598db66ce4a1c45be8",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "ac830b68030963358338e88f64e0a914ee9fbb4dcdecd1598db66ce4a1c45be8",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "merged_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "e82e32ec84cf26f108359e97370db5d801c6d5bd9aba321818e22b12032c75bb",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "e82e32ec84cf26f108359e97370db5d801c6d5bd9aba321818e22b12032c75bb",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "topk_ids": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "201665aa8dc8318379533dc3ed4c528b3a0687443e6d97a57076ac40545d613a",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "201665aa8dc8318379533dc3ed4c528b3a0687443e6d97a57076ac40545d613a",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        },
+        "topk_weights": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "a6338e3cd1236cab8a1af5a0bf6000a34930083d644f7463572658543ef781e2",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "a6338e3cd1236cab8a1af5a0bf6000a34930083d644f7463572658543ef781e2",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    },
+    {
+      "first_path": "layer17-pass00000-pid9169.pt",
+      "layer": 17,
+      "second_path": "layer17-pass00002-pid9169.pt",
+      "stages": {
+        "cpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "26b0b946d37910c6c61dc5e1eeed0fbcedf116f44e340745347c4d6f54ed9ab8",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "26b0b946d37910c6c61dc5e1eeed0fbcedf116f44e340745347c4d6f54ed9ab8",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "f7f1a86dce5474d029ca33bc0d1f07d6281b0ff471a750eb57c0215e5dad4010",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "f7f1a86dce5474d029ca33bc0d1f07d6281b0ff471a750eb57c0215e5dad4010",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_routes": {
+          "exact": true,
+          "first": null,
+          "second": null
+        },
+        "hidden_states": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "9783f0ae48c026d498e32a4a877e05663109e32d2bfffcf5e0e6f6292c519b1b",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "9783f0ae48c026d498e32a4a877e05663109e32d2bfffcf5e0e6f6292c519b1b",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "merged_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "d265787e732ee0940fae0ffaa99c047a3e8436c5cc2783150dd3233b9e9dc043",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "d265787e732ee0940fae0ffaa99c047a3e8436c5cc2783150dd3233b9e9dc043",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "topk_ids": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "17cf7fa70e35d250b36520feb9d171aa9fb4abab3036daea08ca583fcd709cca",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "17cf7fa70e35d250b36520feb9d171aa9fb4abab3036daea08ca583fcd709cca",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        },
+        "topk_weights": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "ac2a85ef737ac73dec7d2f0726351e658bd748411981f6c3e68f6e890eafdc05",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "ac2a85ef737ac73dec7d2f0726351e658bd748411981f6c3e68f6e890eafdc05",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    },
+    {
+      "first_path": "layer26-pass00000-pid9169.pt",
+      "layer": 26,
+      "second_path": "layer26-pass00002-pid9169.pt",
+      "stages": {
+        "cpu_output": {
+          "exact": false,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "8ade97d7b6a68311924fb8381a49723a1304423055edfe7d98110ba994588c21",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_output": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "dfc8c9e96d537fcb720ffc90ea533a22f192807f7ff67bc8edf3e72a6f55f105",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "dfc8c9e96d537fcb720ffc90ea533a22f192807f7ff67bc8edf3e72a6f55f105",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "gpu_routes": {
+          "exact": true,
+          "first": null,
+          "second": null
+        },
+        "hidden_states": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "10fb9f2a9dcddb9bf6326f185336a127af44a372c55a3d923105eb73a416aa18",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "10fb9f2a9dcddb9bf6326f185336a127af44a372c55a3d923105eb73a416aa18",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "merged_output": {
+          "exact": false,
+          "first": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "36d307a2b6ca77a39662366dbbd16d11ed7ce318d719e6f85a9439726abadb08",
+            "shape": [
+              8,
+              2048
+            ]
+          },
+          "second": {
+            "dtype": "torch.bfloat16",
+            "finite": true,
+            "sha256": "c3fecf71ebf45ee79f67c124cd61216ff29f0280b47dfbc028a9adfafa101930",
+            "shape": [
+              8,
+              2048
+            ]
+          }
+        },
+        "topk_ids": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "adce71dc3d42cf1effe95fd891861585dc2af22fe8ee23c9a284c9794b9b2ccb",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.int32",
+            "finite": true,
+            "sha256": "adce71dc3d42cf1effe95fd891861585dc2af22fe8ee23c9a284c9794b9b2ccb",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        },
+        "topk_weights": {
+          "exact": true,
+          "first": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "2a2a35bb0ab373cdc8e0f87e280701d2f92a85615906077794fac3e35a5db8c8",
+            "shape": [
+              8,
+              6
+            ]
+          },
+          "second": {
+            "dtype": "torch.float32",
+            "finite": true,
+            "sha256": "2a2a35bb0ab373cdc8e0f87e280701d2f92a85615906077794fac3e35a5db8c8",
+            "shape": [
+              8,
+              6
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "schema_version": 1,
+  "second_pass": 2,
+  "sha256": "a8078ce71d401fa77fe762abc2716fda779129c37e17f7792d6d78f21b8311c4"
+}
