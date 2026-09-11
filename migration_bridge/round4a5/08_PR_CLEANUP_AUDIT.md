@@ -1,6 +1,6 @@
 # Round 4A.5 PR Cleanup Audit
 
-Status: `CLEANUP_DECISIONS_FROZEN`
+Status: `CLEANUP_APPLIED_LOCAL_VERIFIED`
 
 Evidence state: `CODE_INSPECTED`
 
@@ -102,4 +102,32 @@ REMOVE_BEFORE_MERGE          = six production diagnostic facilities
 PRODUCTION_FIX_AUDIT         = PASS_CODE_INSPECTED
 ```
 
-The next commit records this takeover baseline before any cleanup is applied.
+## Cleanup execution
+
+The takeover baseline was committed before cleanup as:
+
+```text
+b24b72800cd0c8e2b8d25acd6df032dadb1533ea
+chore(round4a5): record takeover baseline before cleanup
+```
+
+The six production diagnostic facilities classified
+`REMOVE_BEFORE_MERGE` were then removed in the isolated commit:
+
+```text
+8a9c0d0ae8e6320e234a7097b7e6874b081cf292
+refactor(round4a5): remove obsolete diagnostic production hooks
+```
+
+Local verification at `8a9c0d0a...` established:
+
+- all six removed diagnostic symbols are absent from `kt-kernel`;
+- `moe.hpp` and `moe-tp.hpp` are byte-equivalent to the frozen Round 4A.4
+  base, so rejected C++ isolation branches were removed completely;
+- the remaining `experts_base.py` delta against Round 4A.4 is the production
+  framework-managed transfer fix and its explanatory comments;
+- Python byte-compilation and `git diff --check` pass;
+- the SGLang child remains unchanged and clean at `cbaa79c2...`.
+
+This is `LOCAL_VERIFIED`, not an A3 qualification result. Final P2 behavioral
+tests must run at a descendant of this cleanup commit.
