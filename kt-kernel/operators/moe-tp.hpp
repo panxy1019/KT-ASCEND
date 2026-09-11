@@ -4,12 +4,10 @@
 // #define CHECK
 
 #include <cstdint>
-#include <cstdlib>
 #include <cstdio>
 #include <exception>
 #include <functional>
 #include <memory>
-#include <new>
 #include <stdexcept>
 #include <string>
 #include <type_traits>
@@ -43,8 +41,6 @@ class TP_MOE_Common : public MoE_Interface {
 
   std::vector<typename T::output_t*> local_output_numa;
   typename T::output_t* local_output = nullptr;
-  bool use_private_output_ = false;
-  void* private_output_buffer_ = nullptr;
 
   bool weights_loaded = false;
 
@@ -68,9 +64,6 @@ class TP_MOE_Common : public MoE_Interface {
     }
 
     this->config = config;
-    // Default production behavior retains the historical shared buffer.
-    // This diagnostic switch isolates one wrapper's TP merge storage.
-    use_private_output_ = std::getenv("KT_DEBUG_MOE_PRIVATE_OUTPUT") != nullptr;
     tp_count = config.pool->config.subpool_count;
     if (config.intermediate_size % tp_count != 0) {
       printf("intermediate_size %d, tp count %d\n", config.intermediate_size, tp_count);
@@ -176,24 +169,10 @@ class TP_MOE_Common : public MoE_Interface {
         (void**)&local_output,
         sizeof(typename T::output_t) * tp_configs[0].max_possible_qlen() * tp_configs[0].hidden_size);
     // printf("local output tp, %d,\n", tp_configs[0].max_possible_qlen());
-    if (use_private_output_) {
-      const int rc = posix_memalign(&private_output_buffer_, 64, mem_requests.total_size());
-      if (rc != 0 || private_output_buffer_ == nullptr) {
-        throw std::bad_alloc();
-      }
-      mem_requests.update_base_ptr(private_output_buffer_);
-    } else {
-      shared_mem_buffer.alloc(this, mem_requests);
-    }
+    shared_mem_buffer.alloc(this, mem_requests);
   }
 
-  ~TP_MOE_Common() {
-    if (use_private_output_) {
-      free(private_output_buffer_);
-    } else {
-      shared_mem_buffer.dealloc(this);
-    }
-  }
+  ~TP_MOE_Common() { shared_mem_buffer.dealloc(this); }
 
   void warm_up() {
     int qlen = config.max_possible_qlen();
