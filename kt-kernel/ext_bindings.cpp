@@ -192,7 +192,7 @@ class MOEBindings {
       TP_MOE<T>* moe;
     };
     static void inner(void* args) {
-      Args* args_ = (Args*)args;
+      std::unique_ptr<Args> args_(static_cast<Args*>(args));
       args_->cpuinfer->enqueue(&TP_MOE<T>::warm_up, args_->moe);
     }
     static std::pair<intptr_t, intptr_t> cpuinfer_interface(std::shared_ptr<TP_MOE<T>> moe) {
@@ -207,7 +207,7 @@ class MOEBindings {
       TP_MOE<T>* moe;
     };
     static void inner(void* args) {
-      Args* args_ = (Args*)args;
+      std::unique_ptr<Args> args_(static_cast<Args*>(args));
       args_->cpuinfer->enqueue(&TP_MOE<T>::load_weights, args_->moe);
     }
     static std::pair<intptr_t, intptr_t> cpuinfer_interface(std::shared_ptr<TP_MOE<T>> moe,
@@ -239,7 +239,7 @@ class MOEBindings {
       bool incremental;
     };
     static void inner(void* args) {
-      Args* args_ = (Args*)args;
+      std::unique_ptr<Args> args_(static_cast<Args*>(args));
       args_->cpuinfer->enqueue(&TP_MOE<T>::forward_binding, args_->moe, args_->qlen, args_->k, args_->expert_ids,
                                args_->weights, args_->input, args_->output, args_->incremental);
     }
@@ -651,6 +651,7 @@ PYBIND11_MODULE(kt_kernel_ext, m) {
       .def(py::init<WorkerPoolConfig>())
       .def("submit", &CPUInfer::submit)
       .def("sync", &CPUInfer::sync, py::arg("allow_n_pending") = 0)
+      .def("rethrow_device_callback_error", &CPUInfer::rethrow_device_callback_error)
       .def_readwrite("backend_", &CPUInfer::backend_)
 #ifndef KTRANSFORMERS_CPU_ONLY
       .def("sync_with_cuda_stream", &CPUInfer::sync_with_cuda_stream, py::arg("user_cuda_stream"),

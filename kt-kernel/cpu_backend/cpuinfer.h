@@ -12,9 +12,13 @@
 
 #include <atomic>
 #include <condition_variable>
+#include <exception>
 #include <functional>
+#include <memory>
 #include <mutex>
 #include <queue>
+#include <stdexcept>
+#include <string>
 #include <thread>
 #include <vector>
 #if defined(KTRANSFORMERS_USE_CUDA) || defined(KTRANSFORMERS_USE_CUDA_HOST_CALLBACKS)
@@ -86,6 +90,21 @@ class CPUInfer {
     func(args);
   }
 #ifndef KTRANSFORMERS_CPU_ONLY
+  struct SubmitArgs {
+    CPUInfer* cpuinfer;
+    void (*func)(void*);
+    void* args;
+  };
+
+  static void submit_callback_(void* submit_args) noexcept {
+    std::unique_ptr<SubmitArgs> state(static_cast<SubmitArgs*>(submit_args));
+    try {
+      state->func(state->args);
+    } catch (...) {
+      state->cpuinfer->record_device_callback_error_(std::current_exception());
+    }
+  }
+
   void submit_with_cuda_stream(intptr_t user_cuda_stream, std::pair<intptr_t, intptr_t> params) {
 #if defined(KTRANSFORMERS_USE_CUDA) || defined(KTRANSFORMERS_USE_CUDA_HOST_CALLBACKS) || \
     defined(KTRANSFORMERS_USE_MUSA) || defined(KTRANSFORMERS_USE_ROCM) || defined(KTRANSFORMERS_USE_MACA) || \
@@ -93,7 +112,13 @@ class CPUInfer {
     void (*func)(void*) = (void (*)(void*))params.first;
     void* args = (void*)params.second;
     *((CPUInfer**)args) = this;
-    cudaLaunchHostFunc((cudaStream_t)user_cuda_stream, (cudaHostFn_t)func, args);
+    auto state = std::make_unique<SubmitArgs>(SubmitArgs{this, func, args});
+    const auto status = cudaLaunchHostFunc(
+        (cudaStream_t)user_cuda_stream, (cudaHostFn_t)&submit_callback_, state.get());
+    if (status != cudaSuccess) {
+      throw std::runtime_error(std::string("device host callback launch failed: ") + cudaGetErrorString(status));
+    }
+    state.release();
 #endif
   }
 #endif
@@ -104,27 +129,72 @@ class CPUInfer {
   };
 
   static void sync_(void* sync_args) {
-    SyncArgs* args = (SyncArgs*)sync_args;
+    SyncArgs* args = static_cast<SyncArgs*>(sync_args);
     args->cpuinfer->task_queue_->sync(args->allow_n_pending);
   }
 
   void sync(size_t allow_n_pending = 0) {
-    SyncArgs* args = new SyncArgs{this, allow_n_pending};
-    sync_(args);
+    rethrow_device_callback_error();
+    SyncArgs args{this, allow_n_pending};
+    sync_(&args);
+    rethrow_device_callback_error();
   }
 #ifndef KTRANSFORMERS_CPU_ONLY
+  static void sync_callback_(void* sync_args) noexcept {
+    std::unique_ptr<SyncArgs> args(static_cast<SyncArgs*>(sync_args));
+    try {
+      sync_(args.get());
+    } catch (...) {
+      args->cpuinfer->record_device_callback_error_(std::current_exception());
+    }
+  }
+
   void sync_with_cuda_stream(intptr_t user_cuda_stream, size_t allow_n_pending = 0) {
 #if defined(KTRANSFORMERS_USE_CUDA) || defined(KTRANSFORMERS_USE_CUDA_HOST_CALLBACKS) || \
     defined(KTRANSFORMERS_USE_MUSA) || defined(KTRANSFORMERS_USE_ROCM) || defined(KTRANSFORMERS_USE_MACA) || \
     defined(KTRANSFORMERS_USE_ASCEND_NPU)
-    SyncArgs* args = new SyncArgs{this, allow_n_pending};
-    cudaLaunchHostFunc((cudaStream_t)user_cuda_stream, (cudaHostFn_t)&sync_, (void*)args);
+    rethrow_device_callback_error();
+    auto args = std::make_unique<SyncArgs>(SyncArgs{this, allow_n_pending});
+    const auto status = cudaLaunchHostFunc(
+        (cudaStream_t)user_cuda_stream, (cudaHostFn_t)&sync_callback_, args.get());
+    if (status != cudaSuccess) {
+      throw std::runtime_error(std::string("device sync callback launch failed: ") + cudaGetErrorString(status));
+    }
+    args.release();
 #endif
   }
 #endif
+
+  void rethrow_device_callback_error() {
+    std::exception_ptr error;
+    {
+      std::lock_guard<std::mutex> lock(device_callback_error_mutex_);
+      error = device_callback_error_;
+      device_callback_error_ = nullptr;
+    }
+    if (error) {
+      std::rethrow_exception(error);
+    }
+  }
+
  public:
   WorkerPool* backend_;
   TaskQueue* task_queue_;
+
+ private:
+  void record_device_callback_error_(std::exception_ptr error) noexcept {
+    try {
+      std::lock_guard<std::mutex> lock(device_callback_error_mutex_);
+      if (!device_callback_error_) {
+        device_callback_error_ = error;
+      }
+    } catch (...) {
+      // Exceptions must never cross a C runtime callback ABI boundary.
+    }
+  }
+
+  std::mutex device_callback_error_mutex_;
+  std::exception_ptr device_callback_error_;
 };
 
 #endif
