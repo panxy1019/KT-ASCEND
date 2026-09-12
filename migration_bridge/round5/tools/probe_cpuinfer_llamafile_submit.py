@@ -36,7 +36,11 @@ def main() -> int:
         torch.manual_seed(20260912)
         expert_num, top_k = 4, 2
         hidden_size = intermediate_size = 256
-        cpu_infer = kt_kernel_ext.CPUInfer(args.threads)
+        worker_config = kt_kernel_ext.WorkerPoolConfig()
+        worker_config.subpool_count = 1
+        worker_config.subpool_numa_map = [0]
+        worker_config.subpool_thread_count = [args.threads]
+        cpu_infer = kt_kernel_ext.CPUInfer(worker_config)
 
         gate = (torch.randn(expert_num, intermediate_size, hidden_size) / 100).contiguous()
         up = (torch.randn(expert_num, intermediate_size, hidden_size) / 100).contiguous()
