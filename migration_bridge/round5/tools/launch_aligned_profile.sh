@@ -31,9 +31,14 @@ model=${KT_R5_MODEL_PATH:-/workspace/models/DeepSeek-V2-Lite-604d5664}
 gguf=${KT_R5_GGUF_PATH:-/workspace/round4a5-reference/deepseek-v2-lite-p3-f32.gguf}
 mkdir -p "${run_root}" "${run_root}/tensors" "${run_root}/routes"
 
+# Vendor setup scripts probe optional shell variables (for example
+# ``ZSH_VERSION``) without guarding them.  Temporarily relax nounset while
+# sourcing, then restore this launcher's strict mode.
+set +u
 source /usr/local/Ascend/ascend-toolkit/set_env.sh
 source /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/bin/set_env.sh
 source /usr/local/Ascend/nnal/atb/set_env.sh
+set -u
 export ASCEND_RT_VISIBLE_DEVICES=0
 export SGLANG_APPLY_CONFIG_BACKUP=none
 export PYTHONPATH="/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:/Megatron-Bridge/src:${PYTHONPATH:-}"
