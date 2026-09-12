@@ -918,6 +918,8 @@ PYBIND11_MODULE(kt_kernel_ext, m) {
       .def_readwrite("up_type", &GeneralMOEConfig::up_type)
       .def_readwrite("down_type", &GeneralMOEConfig::down_type)
       .def_readwrite("hidden_type", &GeneralMOEConfig::hidden_type)
+      .def_readwrite("output_type", &GeneralMOEConfig::output_type)
+      .def_readwrite("bf16_numerical_compat", &GeneralMOEConfig::bf16_numerical_compat)
       .def_readwrite("max_cache_depth", &GeneralMOEConfig::max_cache_depth)
       // V4-Flash 2604B SwiGLU clamp limit (0.0 = disabled). See common.hpp.
       .def_readwrite("swiglu_limit", &GeneralMOEConfig::swiglu_limit)

@@ -222,20 +222,28 @@ class KExpertsCPUBuffer:
 
     capture_bs: List = list()
     capture_buffers: Dict = dict()
-    temp_bs: int = 0
+    temp_key: tuple = tuple()
     temp_buffer: tuple = tuple()
     buffer_depth: int = 2
 
     @classmethod
-    def get_buffer(cls, hidden_states: torch.Tensor, num_experts_per_tok):
+    def get_buffer(
+        cls,
+        hidden_states: torch.Tensor,
+        num_experts_per_tok,
+        output_dtype: Optional[torch.dtype] = None,
+    ):
         hidden_size = hidden_states.shape[-1]
         batch_size = hidden_states.shape[0]
+        cpu_output_dtype = torch.bfloat16 if output_dtype is None else output_dtype
+        device_output_dtype = hidden_states.dtype if output_dtype is None else output_dtype
+        buffer_key = (batch_size, cpu_output_dtype, device_output_dtype)
 
         pin_memory = True
 
-        if batch_size in cls.capture_buffers:
-            return cls.capture_buffers[batch_size]
-        if batch_size == cls.temp_bs:
+        if buffer_key in cls.capture_buffers:
+            return cls.capture_buffers[buffer_key]
+        if buffer_key == cls.temp_key:
             return cls.temp_buffer
 
         input_tensor_cpu = [
@@ -255,7 +263,7 @@ class KExpertsCPUBuffer:
             for _ in range(cls.buffer_depth)
         ]
         output_cpu = [
-            torch.zeros((batch_size, hidden_size), device="cpu", pin_memory=pin_memory, dtype=torch.bfloat16)
+            torch.zeros((batch_size, hidden_size), device="cpu", pin_memory=pin_memory, dtype=cpu_output_dtype)
             for _ in range(cls.buffer_depth)
         ]
         bsz_tensor_cpu = [
@@ -263,7 +271,7 @@ class KExpertsCPUBuffer:
             for _ in range(cls.buffer_depth)
         ]
         output_gpu = [
-            torch.zeros((batch_size, hidden_size), device=hidden_states.device, dtype=hidden_states.dtype)
+            torch.zeros((batch_size, hidden_size), device=hidden_states.device, dtype=device_output_dtype)
             for _ in range(cls.buffer_depth)
         ]
 
@@ -277,8 +285,8 @@ class KExpertsCPUBuffer:
             output_gpu,
         )
         if batch_size in cls.capture_bs:
-            cls.capture_buffers[batch_size] = cur_buffer
-        cls.temp_bs = batch_size
+            cls.capture_buffers[buffer_key] = cur_buffer
+        cls.temp_key = buffer_key
         cls.temp_buffer = cur_buffer
         return cur_buffer
 
@@ -423,6 +431,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
         self.num_experts_per_tok = num_experts_per_tok
         self.hidden_size = hidden_size
         self.moe_intermediate_size = moe_intermediate_size
+        self.output_dtype: Optional[torch.dtype] = None
 
         # Process gpu_experts_mask: convert to bool tensor on CPU, pinned memory for async copy
         # This mask is shared between C and Python (C uses uint8_t*), both can read/write it
@@ -557,7 +566,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             output_cpu,
             bsz_tensor_cpu,
             _output_gpu,
-        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok)
+        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok, self.output_dtype)
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         next_slot = (current_slot + 1) % KExpertsCPUBuffer.buffer_depth
@@ -613,7 +622,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             output_cpu,
             bsz_tensor_cpu,
             _output_gpu,
-        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok)
+        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok, self.output_dtype)
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         next_slot = (current_slot + 1) % KExpertsCPUBuffer.buffer_depth
@@ -691,7 +700,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             output_cpu,
             bsz_tensor_cpu,
             _output_gpu,
-        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok)
+        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok, self.output_dtype)
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         next_slot = (current_slot + 1) % KExpertsCPUBuffer.buffer_depth
@@ -827,7 +836,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
-        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok)
+        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok, self.output_dtype)
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         output_gpu[current_slot].copy_(output_cpu[current_slot], non_blocking=True)
         return output_gpu[current_slot]
@@ -852,7 +861,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
-        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok)
+        ) = KExpertsCPUBuffer.get_buffer(flat_hidden_states, self.num_experts_per_tok, self.output_dtype)
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         allow_pending = 1 if BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False) else 0
@@ -935,6 +944,5 @@ class BaseMoEWrapper(_MoEBase, ABC):
         to reset the buffer state or free memory.
         """
         KExpertsCPUBuffer.capture_buffers.clear()
-        KExpertsCPUBuffer.temp_bs = 0
+        KExpertsCPUBuffer.temp_key = tuple()
         KExpertsCPUBuffer.temp_buffer = tuple()
-

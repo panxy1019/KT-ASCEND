@@ -305,6 +305,13 @@ struct GeneralMOEConfig {
   int up_type;
   int down_type;
   int hidden_type;
+  int output_type = -1;  // -1 uses hidden_type
+
+  // Match an accelerator BF16 expert pipeline while retaining F32 GGUF
+  // storage and F32 llamafile SGEMM accumulation. The llamafile path rounds
+  // gate/up outputs, fused SwiGLU output, down output, and routing weights at
+  // the same externally visible BF16 boundaries.
+  bool bf16_numerical_compat = false;
 
   int max_cache_depth = 1;
 
