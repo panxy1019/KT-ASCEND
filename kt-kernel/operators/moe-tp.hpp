@@ -81,39 +81,44 @@ class TP_MOE_Common : public MoE_Interface {
     if (is_llamafile) {
       // For Llamafile backend: use QK_K-aligned TP splitting
       if (config.intermediate_size % QK_K != 0) {
-        printf("intermediate_size %d must be divisible by QK_K %d for Llamafile backend\n", config.intermediate_size,
-               QK_K);
-        throw std::runtime_error("intermediate_size must be divisible by QK_K (256) for Llamafile backend");
-      }
-
-      int num_blocks = config.intermediate_size / QK_K;
-      int base_blocks = num_blocks / tp_count;
-      int extra_blocks = num_blocks % tp_count;
-
-      if (base_blocks == 0) {
-        printf("intermediate_size %d is too small for tp_count %d (num_blocks=%d)\n", config.intermediate_size,
-               tp_count, num_blocks);
-        throw std::runtime_error("intermediate_size too small: cannot distribute blocks to all TP instances");
-      }
-
-      printf("Llamafile TP splitting: intermediate_size=%d, tp_count=%d, QK_K=%d\n", config.intermediate_size, tp_count,
-             QK_K);
-      printf("  num_blocks=%d, base_blocks=%d, extra_blocks=%d\n", num_blocks, base_blocks, extra_blocks);
-
-      int current_offset = 0;
-      for (auto i = 0; i < tp_count; i++) {
+        if (tp_count != 1 || config.intermediate_size % 32 != 0) {
+          printf("unaligned Llamafile intermediate_size %d requires tp_count=1 and m_block=32 alignment\n",
+                 config.intermediate_size);
+          throw std::runtime_error("unsupported unaligned Llamafile intermediate_size");
+        }
+        printf("Llamafile tail-safe single-TP path: intermediate_size=%d\n", config.intermediate_size);
         tps.push_back(nullptr);
-        GeneralMOEConfig tp_config = config;
+        tp_configs.push_back(config);
+      } else {
+        int num_blocks = config.intermediate_size / QK_K;
+        int base_blocks = num_blocks / tp_count;
+        int extra_blocks = num_blocks % tp_count;
 
-        // First extra_blocks TPs get one more block
-        int num_blocks_for_this_tp = base_blocks + (i < extra_blocks ? 1 : 0);
-        tp_config.intermediate_size = num_blocks_for_this_tp * QK_K;
+        if (base_blocks == 0) {
+          printf("intermediate_size %d is too small for tp_count %d (num_blocks=%d)\n", config.intermediate_size,
+                 tp_count, num_blocks);
+          throw std::runtime_error("intermediate_size too small: cannot distribute blocks to all TP instances");
+        }
 
-        printf("  TP %d: intermediate_size=%d, offset=%d, blocks=%d\n", i, tp_config.intermediate_size, current_offset,
-               num_blocks_for_this_tp);
+        printf("Llamafile TP splitting: intermediate_size=%d, tp_count=%d, QK_K=%d\n", config.intermediate_size,
+               tp_count, QK_K);
+        printf("  num_blocks=%d, base_blocks=%d, extra_blocks=%d\n", num_blocks, base_blocks, extra_blocks);
 
-        tp_configs.push_back(tp_config);
-        current_offset += tp_config.intermediate_size;
+        int current_offset = 0;
+        for (auto i = 0; i < tp_count; i++) {
+          tps.push_back(nullptr);
+          GeneralMOEConfig tp_config = config;
+
+          // First extra_blocks TPs get one more block
+          int num_blocks_for_this_tp = base_blocks + (i < extra_blocks ? 1 : 0);
+          tp_config.intermediate_size = num_blocks_for_this_tp * QK_K;
+
+          printf("  TP %d: intermediate_size=%d, offset=%d, blocks=%d\n", i, tp_config.intermediate_size,
+                 current_offset, num_blocks_for_this_tp);
+
+          tp_configs.push_back(tp_config);
+          current_offset += tp_config.intermediate_size;
+        }
       }
     } else {
       // For non-Llamafile backends: use simple equal division

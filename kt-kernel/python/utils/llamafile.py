@@ -20,6 +20,8 @@ except (ImportError, AttributeError):
 
 from kt_kernel_ext.kvcache import ggml_type
 
+_LLAMAFILE_QK_K = 256
+
 
 class LlamafileMoEWrapper(BaseMoEWrapper):
     """
@@ -88,45 +90,50 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
         self.gguf_loader = LlamafileMoEWrapper._gguf_loaders_by_path[cache_key]
 
         # Validate TP configuration with QK_K alignment
-        QK_K = 256
+        QK_K = _LLAMAFILE_QK_K
 
-        # Check if intermediate_size is divisible by QK_K
-        if moe_intermediate_size % QK_K != 0:
-            raise ValueError(
-                f"intermediate_size ({moe_intermediate_size}) must be divisible by QK_K ({QK_K}) "
-                f"for Llamafile backend"
-            )
+        qk_aligned_intermediate = moe_intermediate_size % QK_K == 0
+        if not qk_aligned_intermediate:
+            if threadpool_count != 1:
+                raise ValueError(
+                    f"intermediate_size ({moe_intermediate_size}) is not divisible by QK_K ({QK_K}); "
+                    "the LLAMAFILE tail-safe path requires threadpool_count=1"
+                )
+            if moe_intermediate_size % 32 != 0:
+                raise ValueError(
+                    f"intermediate_size ({moe_intermediate_size}) must be divisible by the "
+                    "LLAMAFILE forward_one m_block (32)"
+                )
 
-        # Calculate TP splits with QK_K alignment
-        num_blocks = moe_intermediate_size // QK_K
-        base_blocks = num_blocks // threadpool_count
-        extra_blocks = num_blocks % threadpool_count
-
-        # Validate that we have enough blocks
-        if base_blocks == 0:
-            valid_tp_counts = list(range(1, num_blocks + 1))
-            raise ValueError(
-                f"intermediate_size ({moe_intermediate_size}) is too small for threadpool_count ({threadpool_count}).\n"
-                f"Total blocks: {num_blocks} (intermediate_size / QK_K)\n"
-                f"Cannot distribute to {threadpool_count} TPs (each TP needs at least 1 block).\n"
-                f"Valid threadpool_count values: {valid_tp_counts}"
-            )
-
-        # Log TP split information
         print(f"[LlamafileMoEWrapper] Layer {layer_idx} TP configuration:")
         print(f"  intermediate_size: {moe_intermediate_size}")
         print(f"  threadpool_count: {threadpool_count}")
         print(f"  QK_K: {QK_K}")
-        print(f"  Total blocks: {num_blocks}")
-        print(f"  Base blocks per TP: {base_blocks}")
-        print(f"  Extra blocks (distributed to first TPs): {extra_blocks}")
-
-        current_offset = 0
-        for tp_id in range(threadpool_count):
-            tp_blocks = base_blocks + (1 if tp_id < extra_blocks else 0)
-            tp_size = tp_blocks * QK_K
-            print(f"  TP {tp_id}: size={tp_size}, offset={current_offset}, blocks={tp_blocks}")
-            current_offset += tp_size
+        if not qk_aligned_intermediate:
+            print("  Tail-safe single-TP path: enabled")
+            print(f"  TP 0: size={moe_intermediate_size}, offset=0")
+        else:
+            # Calculate TP splits with QK_K alignment
+            num_blocks = moe_intermediate_size // QK_K
+            base_blocks = num_blocks // threadpool_count
+            extra_blocks = num_blocks % threadpool_count
+            if base_blocks == 0:
+                valid_tp_counts = list(range(1, num_blocks + 1))
+                raise ValueError(
+                    f"intermediate_size ({moe_intermediate_size}) is too small for threadpool_count ({threadpool_count}).\n"
+                    f"Total blocks: {num_blocks} (intermediate_size / QK_K)\n"
+                    f"Cannot distribute to {threadpool_count} TPs (each TP needs at least 1 block).\n"
+                    f"Valid threadpool_count values: {valid_tp_counts}"
+                )
+            print(f"  Total blocks: {num_blocks}")
+            print(f"  Base blocks per TP: {base_blocks}")
+            print(f"  Extra blocks (distributed to first TPs): {extra_blocks}")
+            current_offset = 0
+            for tp_id in range(threadpool_count):
+                tp_blocks = base_blocks + (1 if tp_id < extra_blocks else 0)
+                tp_size = tp_blocks * QK_K
+                print(f"  TP {tp_id}: size={tp_size}, offset={current_offset}, blocks={tp_blocks}")
+                current_offset += tp_size
 
         self._swiglu_alpha = float(swiglu_alpha)
 
@@ -213,7 +220,6 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
 
         # Llamafile-specific configuration
         moe_config.m_block = 32  # Parallel block size
-        moe_config.group_min_len = 10  # Use forward_one when qlen < 10
         # Defensive fallback: chunked_prefill_size <= 0 (e.g. -1 meaning "disabled" in sglang
         # baseline) would otherwise let C++ compute max_possible_qlen() = max(max_len=-1,
         # group_max_len=max(1,-1)=1) = 1, sizing per-NUMA fp32 output buffer
@@ -230,6 +236,14 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
                 f"<= 0 is unsafe for KT MoE C++ buffer sizing; falling back to "
                 f"{_effective_chunk}."
             )
+        # forward_many tiles the intermediate dimension in QK_K=256 chunks
+        # and has no tail. DeepSeek-V2-Lite uses 1408, so retain the
+        # correctness-first forward_one path for every supported chunk.
+        moe_config.group_min_len = (
+            10
+            if self.moe_intermediate_size % _LLAMAFILE_QK_K == 0
+            else _effective_chunk + 1
+        )
         moe_config.max_len = _effective_chunk
         moe_config.group_max_len = _effective_chunk
         moe_config.swiglu_limit = self.swiglu_limit
