@@ -4710,6 +4710,9 @@ def create_kt_config_from_server_args(
 
     # Get mask for this specific layer
     gpu_experts_mask = masks[layer_idx]
+    if not layer_needs_kt_wrapper(gpu_experts_mask):
+        logger.info("Skipping KT wrapper for all-accelerator layer %d", layer_idx)
+        return None
 
     return KTConfig(
         layer_idx=layer_idx,
@@ -4727,6 +4730,15 @@ def create_kt_config_from_server_args(
         expert_lora_path=getattr(server_args, "kt_expert_lora_path", None),
         is_glm5_next=getattr(server_args, "_glm5_next_session_ab_active", False),
     )
+
+
+def layer_needs_kt_wrapper(gpu_experts_mask: torch.Tensor) -> bool:
+    """Return whether a layer has at least one CPU-owned routed expert."""
+    if gpu_experts_mask.device.type != "cpu":
+        raise ValueError("gpu_experts_mask must be a CPU tensor")
+    if gpu_experts_mask.dtype != torch.bool or gpu_experts_mask.ndim != 1:
+        raise ValueError("gpu_experts_mask must be a rank-1 bool tensor")
+    return not bool(gpu_experts_mask.all().item())
 
 
 @torch.compile(dynamic=True, backend=get_compiler_backend())
@@ -5294,12 +5306,13 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
             ):
                 physical_to_logical_map_cpu = (
                     metadata.physical_to_logical_map_cpu[self.kt_config.layer_idx]
+                    .to(device="cpu", dtype=torch.int32)
                     .contiguous()
                 )
             else:
                 # Fallback for setups without EPLB metadata: identity mapping.
                 physical_to_logical_map_cpu = torch.arange(
-                    layer.num_experts, dtype=torch.int64, device="cpu"
+                    layer.num_experts, dtype=torch.int32, device="cpu"
                 )
             sft_method = (
                 _map_kt_method_to_sft_method(self.kt_config.method)
