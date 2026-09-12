@@ -1,11 +1,11 @@
 """
 CPU feature detection and optimal kernel loader for kt-kernel.
 
-This module automatically detects CPU capabilities and loads the best available
-kernel variant (AMX, AVX512, or AVX2) at runtime.
+This module automatically detects CPU capabilities and loads the matching ARM
+or x86 kernel variant at runtime.
 
 Environment Variables:
-    KT_KERNEL_CPU_VARIANT: Override automatic detection ('amx', 'avx512', 'avx2')
+    KT_KERNEL_CPU_VARIANT: Override automatic detection ('arm', 'amx', 'avx512', 'avx2')
     KT_KERNEL_DEBUG: Enable debug output ('1' to enable)
 
 Example:
@@ -19,6 +19,7 @@ Example:
 """
 
 import os
+import platform
 
 _VARIANT_LEVEL = {
     "avx2": 0,
@@ -31,6 +32,15 @@ _VARIANT_LEVEL = {
 
 
 def _validate_loaded_variant(detected_variant: str, loaded_variant: str) -> None:
+    if detected_variant == "arm" or loaded_variant == "arm":
+        if detected_variant != loaded_variant:
+            raise RuntimeError(
+                "The installed kt-kernel extension targets a different CPU architecture: "
+                f"detected={detected_variant}, loaded={loaded_variant}. "
+                "Install a wheel built for this architecture or rebuild for this machine."
+            )
+        return
+
     detected_level = _VARIANT_LEVEL.get(detected_variant)
     loaded_level = _VARIANT_LEVEL.get(loaded_variant)
     if detected_level is None or loaded_level is None:
@@ -63,11 +73,25 @@ def detect_cpu_features():
     """
     # Check environment override
     variant = os.environ.get("KT_KERNEL_CPU_VARIANT", "").lower()
-    valid_variants = ["amx", "avx512_bf16", "avx512_vbmi", "avx512_vnni", "avx512_base", "avx2"]
+    valid_variants = [
+        "arm",
+        "amx",
+        "avx512_bf16",
+        "avx512_vbmi",
+        "avx512_vnni",
+        "avx512_base",
+        "avx2",
+    ]
     if variant in valid_variants:
         if os.environ.get("KT_KERNEL_DEBUG") == "1":
             print(f"[kt-kernel] Using environment override: {variant}")
         return variant
+
+    arch = platform.machine().lower()
+    if arch in ("aarch64", "arm64"):
+        if os.environ.get("KT_KERNEL_DEBUG") == "1":
+            print(f"[kt-kernel] Detected native ARM build via platform.machine(): {arch}")
+        return "arm"
 
     # Try to read /proc/cpuinfo on Linux
     try:
@@ -266,6 +290,7 @@ def load_extension(variant):
             "avx512_vnni": "avx512_base",
             "avx512_base": "avx2",
             "avx2": None,  # No fallback - terminal variant
+            "arm": None,  # ARM wheels use the native single-variant extension
         }
 
         # Get next fallback variant
@@ -277,7 +302,7 @@ def load_extension(variant):
                 print(f"[kt-kernel] Falling back from {variant} to {next_variant}")
             return load_extension(next_variant)
         else:
-            # AVX2 is the last fallback - if this fails, we can't continue
+            # No compatible extension remains.
             raise ImportError(
                 f"Failed to load kt_kernel extension (variant: {variant}). "
                 f"Original error: {e}\n"
@@ -294,7 +319,7 @@ def initialize():
     Returns:
         tuple: (extension_module, variant_name)
     - extension_module: The loaded C++ extension module
-            - variant_name: String indicating which variant was loaded ('amx', 'avx512', 'avx2')
+            - variant_name: String indicating which variant was loaded ('arm', 'amx', 'avx512', 'avx2')
 
     Example:
         >>> ext, variant = initialize()

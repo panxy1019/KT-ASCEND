@@ -542,7 +542,10 @@ void bind_moe_module(py::module_& moe_module, const char* name) {
 }
 
 PYBIND11_MODULE(kt_kernel_ext, m) {
-#if defined(HAVE_AMX)
+#if defined(__aarch64__) || defined(_M_ARM64)
+  m.attr("__cpu_variant__") = "arm";
+  m.attr("__int8_kernel__") = "unsupported";
+#elif defined(HAVE_AMX)
   m.attr("__cpu_variant__") = "amx";
   m.attr("__int8_kernel__") = "amx-int8";
 #elif defined(__AVX512BF16__) && defined(__AVX512VNNI__)
