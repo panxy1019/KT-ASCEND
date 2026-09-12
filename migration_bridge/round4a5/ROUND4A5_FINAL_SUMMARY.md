@@ -32,7 +32,7 @@ P3_ALLOWED                     = YES
 | local closure branch | `feature/kt-round4a5-p2-closure` |
 | A3-verified runtime/test candidate | `d36dd8f3e01c9a86d87309e972b11e75b537b68e` |
 | final P2 tag | `round4a5-p2-a3-verified` |
-| final P2 tag target | `TO_BE_RECORDED_AFTER_IMMUTABLE_TAG_CREATION` |
+| final P2 tag target | `d4830525c6806d5d587b3096634614aad7fef181` |
 | SGLang child | `cbaa79c2f5b004ab4ca470c9fa56161666ccafb2` |
 
 No upstream KTransformers rebase, merge, or source substitution occurred.
