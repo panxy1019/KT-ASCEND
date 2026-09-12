@@ -31,9 +31,13 @@ def test_callback_worker_subscribes_active_framework_stream() -> None:
     handle = get_current_device_stream_handle("npu")
 
     assert handle != 0
-    kt_kernel_ext.init_ascend_callback_worker()
-    kt_kernel_ext.subscribe_ascend_stream(handle)
-    assert kt_kernel_ext.is_ascend_callback_worker_running()
+    try:
+        kt_kernel_ext.init_ascend_callback_worker()
+        kt_kernel_ext.subscribe_ascend_stream(handle)
+        assert kt_kernel_ext.is_ascend_callback_worker_running()
+    finally:
+        kt_kernel_ext.shutdown_ascend_callback_worker()
+    assert not kt_kernel_ext.is_ascend_callback_worker_running()
 
 
 @pytest.mark.parametrize("dtype", (torch.bfloat16, torch.float32, torch.int64))
