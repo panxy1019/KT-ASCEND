@@ -290,7 +290,9 @@ def main() -> None:
     cpu_ids[cpu_ids != args.cpu_expert] = -1
     cpu_weights = route_weights_cpu.clone()
     cpu_weights[cpu_ids < 0] = 0
-    cpu_contribution = cpu_wrapper.forward(hidden_cpu, cpu_ids, cpu_weights).to("npu")
+    cpu_contribution = cpu_wrapper.forward(
+        hidden_cpu, cpu_ids, cpu_weights, main_stream_handle
+    ).to("npu")
     npu_contribution = _npu_reference(
         hidden_npu,
         ids_npu,
