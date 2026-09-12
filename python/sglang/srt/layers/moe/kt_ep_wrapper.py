@@ -5292,7 +5292,8 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
 
         # 2. Load CPU weights using KT wrapper
         if self.tp_rank == 0 and self.wrapper is not None:
-            torch.cuda.synchronize()
+            target_device = next(layer.parameters()).device
+            torch.get_device_module(target_device).synchronize()
 
             # Get expert location metadata for CPU expert mapping
             from sglang.srt.eplb.expert_location_dispatch import (
