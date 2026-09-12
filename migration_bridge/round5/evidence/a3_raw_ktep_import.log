@@ -1,0 +1,32 @@
+can not use command: npu-smi info
+sglang /workspace/kt-src/third_party/sglang/python/sglang/__init__.py
+INFO 09-12 12:14:45 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-12 12:14:45 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-12 12:14:45 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-12 12:14:45 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/kt_ep_wrapper.py", line 59, in <module>
+    from sglang.srt.layers.quantization.base_config import FusedMoEMethodBase
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/__init__.py", line 24, in <module>
+    from sglang.srt.layers.quantization.compressed_tensors.compressed_tensors import (
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/compressed_tensors/compressed_tensors.py", line 63, in <module>
+    from sglang.srt.layers.quantization.fp8 import Fp8LinearMethod
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/fp8.py", line 100, in <module>
+    _mxfp8_to_block_fp8_required = mxfp8_block_convert_required()
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/utils/common.py", line 3614, in mxfp8_block_convert_required
+    cap = torch.cuda.get_device_capability()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/cuda/__init__.py", line 598, in get_device_capability
+    prop = get_device_properties(device)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/cuda/__init__.py", line 614, in get_device_properties
+    _lazy_init()  # will define _get_device_properties
+    ^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/cuda/__init__.py", line 403, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+[ERROR] 2026-09-12-12:14:46 (PID:3539, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
