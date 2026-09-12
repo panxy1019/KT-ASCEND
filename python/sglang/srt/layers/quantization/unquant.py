@@ -610,12 +610,21 @@ class UnquantizedFusedMoEMethod(FusedMoEMethodBase, MultiPlatformOp):
             output_dtype=original_dtype,
         )[0]
 
+        return_fp32_contribution = getattr(
+            self, "_kt_return_fp32_contribution", False
+        )
+        finalize_hidden_states = (
+            hidden_states.float() if return_fp32_contribution else hidden_states
+        )
+        finalize_weights = (
+            topk_weights.float() if return_fp32_contribution else topk_weights
+        )
         final_hidden_states = torch.ops.npu.npu_moe_finalize_routing(
-            hidden_states,
+            finalize_hidden_states,
             skip1=None,
             skip2=None,
             bias=None,
-            scales=topk_weights,
+            scales=finalize_weights,
             expanded_src_to_dst_row=expanded_row_idx,
             export_for_source_row=topk_ids,
             drop_pad_mode=2,

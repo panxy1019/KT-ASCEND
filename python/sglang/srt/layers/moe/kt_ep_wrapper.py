@@ -5399,6 +5399,13 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
                 gpu_runner_config, num_local_experts=self.num_gpu_experts
             )
 
+        # LLAMAFILE keeps CPU and NPU partial route sums in FP32 so the hybrid
+        # merge has one final BF16 cast instead of independently rounding both
+        # partials before addition.
+        self.gpu_method._kt_return_fp32_contribution = (
+            (self.kt_config.method or "").upper() == "LLAMAFILE"
+        )
+
         # Delegate to GPU method to create its runner
         self.gpu_method.create_moe_runner(layer, gpu_runner_config)
 
@@ -5887,6 +5894,8 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
             if not _no_cpu_stream:
                 torch.cuda.current_stream(x.device).wait_event(self._sync_done_event)
             output = output + cpu_output
+            if getattr(self.gpu_method, "_kt_return_fp32_contribution", False):
+                output = output.to(x.dtype)
         if _kt_timing:
             _kt_t_after_merge = time.perf_counter()
             # Optional: synchronize GPU at end of apply() to capture true GPU
