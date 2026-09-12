@@ -74,6 +74,11 @@ def _should_bypass_stream_callback(device: torch.device) -> bool:
     """Return True iff we must use the synchronous submit/sync path."""
     if os.environ.get("KT_FORCE_SYNC_SUBMIT", "") == "1":
         return True
+    # Standalone CPU expert execution has no accelerator stream handle.  It
+    # must use CPUInfer's host submit/sync path rather than passing ``None`` to
+    # the native stream-callback binding.
+    if device.type == "cpu":
+        return True
     if device.type == "npu" and not _uses_external_npu_report_subscriber():
         # Without a dispatcher thread, aclrtLaunchCallback tasks never fire and
         # submit_with_cuda_stream would hang forever. Degrade to sync instead.
@@ -892,7 +897,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
         hidden_states: torch.Tensor,
         topk_ids: torch.Tensor,
         topk_weights: torch.Tensor,
-        cuda_stream,
+        cuda_stream=None,
     ) -> torch.Tensor:
         """
         Execute forward inference synchronously (submit + sync).
