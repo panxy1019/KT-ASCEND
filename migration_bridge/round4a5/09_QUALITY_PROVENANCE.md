@@ -2,7 +2,7 @@
 
 Status: `ROUND4A4_FROZEN_QUALITY_INPUT_RECOVERED`
 
-Evidence state: `CODE_INSPECTED` and `LOCAL_VERIFIED`
+Evidence state: `CODE_INSPECTED`, `LOCAL_VERIFIED`, and `A3_VERIFIED`
 
 Date: 2026-09-11 UTC
 
@@ -123,10 +123,12 @@ results remain evidence from their original A3 run:
 | GSM8K MC | 45/128 | 47/128 |
 
 These scores are not promoted into new post-cleanup evidence merely because the
-input was recovered. Final P2 closure will run the exact frozen manifest on the
-cleaned commit and preserve its raw results. Reproducing All-NPU in the same
-closure environment is preferred and will be attempted before relying on the
-historical baseline.
+input was recovered.  The final P2 closure reproduced All-NPU and P2 in the
+same Transformers `5.3.0.dev0` environment.  Their absolute scores were 27/128
+for C-Eval and 31/128 for GSM8K in both modes.  The historical run used
+Transformers `5.6.0`; its 57/45 scores therefore remain an explicitly separate
+environment lineage.  See `11_P2_FINAL_QUALITY.md` for the paired result and
+why cross-environment absolute scores were not mixed.
 
 ## Provenance gate
 
@@ -139,5 +141,7 @@ QUALITY_V2_REQUIRED                   = NO
 QUALITY_INPUT_PROVENANCE              = CLOSED
 ```
 
-The downstream-quality execution gate itself remains open until the recovered
-input is run on A3 at the final cleaned P2 commit.
+The recovered input was run on A3 for current-environment All-NPU and P2.  Both
+benchmarks had zero discordant correctness pairs, zero invalid outputs, and a
+paired bootstrap 95% interval `[0,0]`; the downstream-quality execution gate is
+closed.

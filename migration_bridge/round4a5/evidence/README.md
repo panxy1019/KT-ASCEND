@@ -88,11 +88,15 @@ and request envelope.  Together with the failed D2H destination-clone control,
 they attribute the blocker to raw ACL transfer integration; see
 `../05_RAW_ACL_TRANSFER_ROOT_CAUSE.md`.
 
-## Post-fix requalification
+## Post-fix final requalification
 
-Large post-fix artifacts remain on A3 under `/workspace/results` (host-persisted
-at `/home/admin/kt-artifacts/round4a5`).  Their review hashes, commands, and
-gate status are recorded in `../06_P2_FIX_REQUALIFICATION.md`.  Q2 and H2
-passed the unchanged numerical contract; coverage reached 4/4 layers and
-16/16 selected experts.  The final quality A/B is intentionally not claimed:
-the frozen 128+128 quality input is unavailable.
+Compact final artifacts are retained in `final-p2/`; multi-gigabyte tensor and
+route dumps remain on A3 at
+`/home/admin/kt-artifacts/round4a5-closure`.  Q2 and H2 passed the unchanged
+pairwise contract, route coverage reached 4/4 layers and 16/16 selected
+experts, and the recovered frozen 128+128 quality corpus produced pairwise
+identical correctness outcomes for current-environment All-NPU and P2.
+
+The authoritative interpretation, commands, content hashes, environment
+boundary, and gate table are in `../10_P2_FINAL_REGRESSION.md`,
+`../11_P2_FINAL_QUALITY.md`, and `../ROUND4A5_FINAL_SUMMARY.md`.

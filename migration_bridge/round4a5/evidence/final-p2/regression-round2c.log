@@ -1,0 +1,973 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.3.2, pluggy-1.6.0
+rootdir: /workspace/kt-src/kt-kernel
+configfile: pytest.ini
+plugins: hydra-core-1.3.5, anyio-4.14.2, mock-3.15.1, xdist-3.6.1
+collected 44 items
+
+test/per_commit/test_hybrid_placement.py ...............
+test/per_commit/test_ascend_hybrid_npu_expert.py ....
+test/per_commit/test_ascend_hybrid_sequential.py set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.0001436471939086914, "mean_abs_error": 3.440688306000084e-05, "relative_l2_error": 0.004425382791995421}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.000244140625, "mean_abs_error": 4.907220136374235e-05, "relative_l2_error": 0.004865486419162609}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00019022822380065918, "mean_abs_error": 5.4781408834969625e-05, "relative_l2_error": 0.004698856601530272}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00017833709716796875, "mean_abs_error": 5.06530559505336e-05, "relative_l2_error": 0.005605477057098693}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00023382902145385742, "mean_abs_error": 1.9141394659527577e-05, "relative_l2_error": 0.004153307878477277}
+{"max_abs_error": 0.000244140625, "mean_abs_error": 2.6364345103502274e-05, "relative_l2_error": 0.004851838643188204}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.000244140625, "mean_abs_error": 4.2153627873631194e-05, "relative_l2_error": 0.004732542330530329}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.000270843505859375, "mean_abs_error": 4.578678635880351e-05, "relative_l2_error": 0.004800982709514158}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.0002830028533935547, "mean_abs_error": 4.9639067583484575e-05, "relative_l2_error": 0.005515041467611226}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00018405914306640625, "mean_abs_error": 4.084850661456585e-05, "relative_l2_error": 0.004568830495361959}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00019884109497070312, "mean_abs_error": 4.433617141330615e-05, "relative_l2_error": 0.004359982894758041}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.0002384185791015625, "mean_abs_error": 4.311725206207484e-05, "relative_l2_error": 0.004847816746954611}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.0002727508544921875, "mean_abs_error": 4.3220868974458426e-05, "relative_l2_error": 0.004843432619438541}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.000152587890625, "mean_abs_error": 3.419630229473114e-05, "relative_l2_error": 0.00293504460906723}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.000244140625, "mean_abs_error": 6.327219307422638e-05, "relative_l2_error": 0.0052514400987664625}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.00018310546875, "mean_abs_error": 3.9767008274793625e-05, "relative_l2_error": 0.003968509600254243}
+.
+[GGUFLoader] Loading single GGUF file : hybrid.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"max_abs_error": 0.0002493858337402344, "mean_abs_error": 5.157916166353971e-05, "relative_l2_error": 0.003643773866830756}
+.
+test/per_commit/test_ascend_hybrid_overlap.py CPUInfer[0xaaab24f34030]: Hello
+WorkerPool[0xaaab24c2beb0] 1 subpools, [numa:threads][0:4] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 4 threads
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{"cpu_interval_ms": 3.911365, "npu_interval_ms": 1.6737799644470215, "overlap_lower_bound_ms": 1.1034529644470217, "wall_ms": 4.481692}
+.
+test/per_commit/test_ascend_hybrid_lifecycle.py 
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+{'cycles': 1000, 'rss_before': 1999683584, 'rss_after': 1999683584, 'rss_delta': 0}
+. splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: inte
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+[GGUFLoader] Loading single GGUF file : hybrid-overlap.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+.
+
+=============================== warnings summary ===============================
+test/per_commit/test_ascend_hybrid_overlap.py::test_overlapped_hybrid_matches_sequential[1]
+  /workspace/kt-src/kt-kernel/test/per_commit/test_ascend_hybrid_overlap.py:71: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+    expert_ids = route_matrix[torch.arange(qlen, device="npu").remainder(4)]
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 44 passed, 1 warning in 16.40s ========================
+rmediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab24c2beb0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaab24f34030]: Goodbye
