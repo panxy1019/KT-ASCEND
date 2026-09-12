@@ -98,7 +98,10 @@ def test_gguf_loader_to_llamafile_wrapper_e2e(tmp_path):
     )
 
     assert actual.shape == hidden_states.shape
-    assert actual.dtype == torch.bfloat16
+    # The CPU expert wrapper returns an FP32 routed partial.  Hybrid merges
+    # CPU and NPU partials in FP32 and performs the single BF16 cast at the
+    # model-visible boundary (Round 4A.1 Fix B).
+    assert actual.dtype == torch.float32
     assert torch.isfinite(actual).all()
     assert max_abs <= 1e-3
     assert mean_abs <= 1e-4
