@@ -266,7 +266,7 @@ class LLAMA_MOE_TP {
 
   ~LLAMA_MOE_TP() { shared_mem_buffer_numa.dealloc(tp_part_idx, this); }
 
-  void load_weights(int complete_intermediate_size, int offset) {
+  void load_weights(int complete_intermediate_size, int offset, const int32_t* physical_to_logical_map) {
     auto& config = config_;
     // printf("gate load weights:");
     // debug_quant(config.gate_proj, (ggml_type)config.gate_type);
@@ -295,6 +295,19 @@ class LLAMA_MOE_TP {
     uint8_t* down_proj = (uint8_t*)config.down_proj + offset * ggml_type_size((ggml_type)config.down_type) /
                                                           ggml_blck_size((ggml_type)config.down_type);
 
+    bool identity_mapping = true;
+    if (physical_to_logical_map != nullptr) {
+      std::vector<bool> seen(config.expert_num, false);
+      for (int physical_id = 0; physical_id < config.expert_num; ++physical_id) {
+        const int logical_id = physical_to_logical_map[physical_id];
+        if (logical_id < 0 || logical_id >= config.expert_num || seen[logical_id]) {
+          throw std::runtime_error("physical_to_logical_map must be a permutation of logical expert IDs");
+        }
+        seen[logical_id] = true;
+        identity_mapping = identity_mapping && logical_id == physical_id;
+      }
+    }
+
     // Single-NUMA fast path (tp_count==1 => offset==0 && intermediate==complete): the per-expert
     // reshuffle below degenerates to an IDENTITY copy (dst layout == src layout). Instead of
     // duplicating the whole expert set into anonymous RAM, ALIAS the source (GGUF mmap) directly:
@@ -302,7 +315,7 @@ class LLAMA_MOE_TP {
     //   * the mmap becomes the SINGLE shared copy (CPU MoE compute + streaming-prefill dedup share
     //     one page cache) => streaming-prefill stops re-reading cold GGUF from disk.
     // Multi-NUMA (tp_count>1) has strided per-node slices and cannot alias -> falls through to copy.
-    if (offset == 0 && complete_intermediate_size == config.intermediate_size) {
+    if (identity_mapping && offset == 0 && complete_intermediate_size == config.intermediate_size) {
       delete[] m_local_gate_proj_;
       delete[] m_local_up_proj_;
       delete[] m_local_down_proj_;
@@ -365,11 +378,16 @@ class LLAMA_MOE_TP {
     // Copy one expert's gate/up/down into the (disjoint) local buffers. Experts
     // write non-overlapping destination regions and read disjoint source spans,
     // so this is embarrassingly parallel across i.
-    auto copy_expert = [&](int i) {
-      memcpy(local_gate_base + (size_t)i * gate_dst_stride, gate_proj + (size_t)i * gate_src_stride, gate_dst_stride);
-      memcpy(local_up_base + (size_t)i * up_dst_stride, up_proj + (size_t)i * up_src_stride, up_dst_stride);
-      uint8_t* ld = local_down_base + (size_t)i * down_dst_stride;
-      uint8_t* sd = down_proj + (size_t)i * down_src_stride;
+    auto copy_expert = [&](int physical_id) {
+      const int logical_id =
+          physical_to_logical_map == nullptr ? physical_id : physical_to_logical_map[physical_id];
+      if (config.should_skip_expert(logical_id)) return;
+      memcpy(local_gate_base + (size_t)logical_id * gate_dst_stride,
+             gate_proj + (size_t)physical_id * gate_src_stride, gate_dst_stride);
+      memcpy(local_up_base + (size_t)logical_id * up_dst_stride,
+             up_proj + (size_t)physical_id * up_src_stride, up_dst_stride);
+      uint8_t* ld = local_down_base + (size_t)logical_id * down_dst_stride;
+      uint8_t* sd = down_proj + (size_t)physical_id * down_src_stride;
       for (int j = 0; j < config.hidden_size; ++j) {
         memcpy(ld, sd, down_dst_row);
         ld += down_dst_row;
@@ -977,7 +995,8 @@ class TP_MOE<LLAMA_MOE_TP> : public TP_MOE_Common<LLAMA_MOE_TP> {
     }
 
     pool->dispense_backend()->do_numa_job([this, pool, tp_offsets](int tp_id) {
-      this->tps[tp_id]->load_weights(this->config.intermediate_size, tp_offsets[tp_id]);
+      this->tps[tp_id]->load_weights(this->config.intermediate_size, tp_offsets[tp_id],
+                                     static_cast<const int32_t*>(this->config.physical_to_logical_map));
     });
     this->weights_loaded = true;
   }

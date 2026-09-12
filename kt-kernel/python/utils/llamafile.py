@@ -193,6 +193,23 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
         if physical_to_logical_map_cpu is None:
             physical_to_logical_map_cpu = torch.arange(self.num_experts, dtype=torch.int32, device="cpu")
             print(f"  Using default identity mapping for {self.num_experts} experts")
+        else:
+            if physical_to_logical_map_cpu.device.type != "cpu":
+                raise ValueError("physical_to_logical_map_cpu must be a CPU tensor")
+            if physical_to_logical_map_cpu.dtype != torch.int32:
+                raise ValueError("physical_to_logical_map_cpu must use torch.int32")
+            physical_to_logical_map_cpu = physical_to_logical_map_cpu.contiguous().view(-1)
+            if physical_to_logical_map_cpu.numel() != self.num_experts:
+                raise ValueError(
+                    "physical_to_logical_map_cpu must contain exactly "
+                    f"{self.num_experts} entries, got {physical_to_logical_map_cpu.numel()}"
+                )
+            if torch.sort(physical_to_logical_map_cpu).values.tolist() != list(
+                range(self.num_experts)
+            ):
+                raise ValueError(
+                    "physical_to_logical_map_cpu must be a permutation of all logical expert IDs"
+                )
 
         base_key = f"blk.{self.layer_idx}"
 
