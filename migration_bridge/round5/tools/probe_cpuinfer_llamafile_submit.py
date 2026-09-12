@@ -17,7 +17,10 @@ from kt_kernel_ext.kvcache import ggml_type
 
 
 def _hash(tensor: torch.Tensor) -> str:
-    return hashlib.sha256(tensor.contiguous().numpy().tobytes()).hexdigest()
+    value = tensor.contiguous()
+    if value.dtype == torch.bfloat16:
+        value = value.view(torch.uint16)
+    return hashlib.sha256(value.numpy().tobytes()).hexdigest()
 
 
 def main() -> int:
