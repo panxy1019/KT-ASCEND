@@ -1,21 +1,23 @@
 # KTransformers × Kunpeng × Ascend 当前问题与下一步排查计划
 
 > 文档状态：当前 blocker、风险和执行建议
-> 更新时间：2026-08-31
-> 当前首要 blocker：`P2 SAME_PATH_NONDETERMINISM`
+> 更新时间：2026-09-11
+> 当前首要任务：`P3 ENTRY AND SCALE-OUT QUALIFICATION`
 > 适用配置：DeepSeek-V2-Lite revision 604d5664、TP1、BF16、LLAMAFILE /
 > CPUInfer、Ascend NPU0、Graph/Deferred/Dynamic/MTP/Speculative OFF
 
 ## 1. 当前问题总览
 
-当前存在一个阻止项目继续进入 P3 的硬 blocker，以及两个需要保留的回归
-问题：
+本文件第 2–11 节保留了 P2 blocker 的原始复现与排查逻辑，作为 root-cause
+审计记录。Round 4A.5 已经关闭这些问题；当前没有已知 P2 blocker，下一风险面
+是 P3 八层 scale-out。
 
 | 优先级 | 问题 | 当前状态 | 是否阻止 P3 |
 |---|---|---|---:|
-| P0 | P2 同路径 greedy 输出非确定 | `CONFIRMED_BLOCKER` | 是 |
-| P1 | retained Round 2B runtime pipeline 出现异常大输出 | `UNRESOLVED_REGRESSION` | 当前整体已被 P0 阻止；可能与 P0 相关 |
-| P2 | retained Round 2A 的 4 个旧 dtype 断言失败 | `STALE_TEST_CONTRACT` | 否，但需修正测试合同 |
+| P0 | P3 八层/32 expert scale-out 尚未执行 | `NOT_RUN` | 最终 multi-placement 尚不能 READY |
+| Closed | P2 同路径 greedy 输出非确定 | `FIXED_AND_A3_REQUALIFIED` | 否 |
+| Closed | retained Round 2B runtime pipeline 异常大输出 | `FP32_BUFFER_TEST_FIXED; 23+1 PASS` | 否 |
+| Closed | retained Round 2A 的 4 个旧 dtype 断言 | `TEST_CONTRACT_FIXED; 21/21 PASS` | 否 |
 
 此外还有 ISA portability、NUMA enforcement、性能和未来 TP/Graph/量化等已知
 风险，但它们不是当前 P2 failure 的已证实原因。
@@ -493,10 +495,19 @@ migration_bridge/round4a4/evidence/regression-round2c.log
 ```text
 PAIRWISE_NUMERICAL_ACCEPTANCE = HELDOUT_VERIFIED
 P1_REQUALIFIED                = A3_VERIFIED_READY
-MULTI_LAYER_P2                = BLOCKED
+MULTI_LAYER_P2                = A3_VERIFIED_READY
 MULTI_LAYER_P3                = NOT_RUN
-FINAL_MULTI_PLACEMENT         = BLOCKED
+P3_ALLOWED                    = YES
+FINAL_MULTI_PLACEMENT         = IN_PROGRESS_P3_REQUIRED
 ```
 
-下一步唯一合理的主线是：在不改变 placement、不修改合同、不降低 coverage 的
-前提下，定位并修复 P2 same-path nondeterminism，然后完整重跑 P2 硬门禁。
+下一步唯一合理的主线是：从不可移动的
+`round4a5-p2-a3-verified` 标签创建 P3 分支，冻结 layers
+`{1,5,8,12,17,19,22,26}` / 32 CPU experts，并在不改变 placement、不修改
+`B_pair=2.1875`、不降低 coverage 的前提下依次执行 P3 determinism、pairwise、
+coverage、free-generation、2,304-token stability 和 downstream quality。
+
+任何 stable flip、pairwise overflow、same-path nondeterminism、coverage collapse、
+质量回归或 memory/lifetime failure 都必须停止 P3，不得通过更换 expert、减少
+CPU hit 或扩大阈值规避。P2 的完整关闭证据见
+`round4a5/ROUND4A5_FINAL_SUMMARY.md`。

@@ -1,10 +1,10 @@
 # KTransformers × Kunpeng × Ascend 当前整体进展
 
 > 文档状态：当前工程总览
-> 更新时间：2026-08-31
+> 更新时间：2026-09-11
 > 项目：KTransformers × Kunpeng × Ascend Migration
-> 当前主开发分支：`feature/kt-round4a4-pairwise-margin-qualification`
-> 本文事实基线：父仓库 `a2ef30a350645c7f10601e64902c5799a7a636c8`，
+> 当前主开发分支：`feature/kt-round4a5-p2-closure`
+> 本文事实基线：P2 A3 runtime/test candidate `d36dd8f3e01c9a86d87309e972b11e75b537b68e`，
 > SGLang 子仓库 `cbaa79c2f5b004ab4ca470c9fa56161666ccafb2`
 
 ## 1. 执行摘要
@@ -22,15 +22,16 @@ HYBRID_MOE_SYNTHETIC_SINGLE_LAYER        = A3_VERIFIED_READY
 DEEPSEEK_V2_LITE_TP1_SINGLE_CPU_EXPERT   = A3_VERIFIED_READY
 PAIRWISE_NUMERICAL_ACCEPTANCE            = HELDOUT_VERIFIED
 P1_MULTI_EXPERT_SINGLE_LAYER             = A3_VERIFIED_READY
-P2_MULTI_LAYER                           = BLOCKED
+P2_MULTI_LAYER                           = A3_VERIFIED_READY
 P3_MULTI_LAYER                           = NOT_RUN
-DEEPSEEK_V2_LITE_TP1_MULTI_PLACEMENT     = BLOCKED
+DEEPSEEK_V2_LITE_TP1_MULTI_PLACEMENT     = IN_PROGRESS_P3_REQUIRED
 ```
 
 因此，项目并不是“整体未跑通”：CPU 平面、Ascend runtime、Synthetic
 Hybrid、真实模型单 CPU Expert、真实模型单层四 CPU Expert、数值合同和 P1
-质量验证都已经完成。当前未闭环的是从单层 P1 扩展到四层 P2 时出现的
-same-path nondeterminism。
+质量验证都已经完成。Round 4A.5 已定位并修复四层 P2 的 same-path
+nondeterminism，完整关闭 P2；当前未闭环的是八层 P3 的 scale-out、stability
+和最终质量资格验证。
 
 ## 2. 当前冻结目标与运行边界
 
@@ -219,7 +220,7 @@ DEEPSEEK_V2_LITE_TP1 = A3_VERIFIED_READY
 | Placement | CPU-enabled layers | CPU experts | 状态 |
 |---|---|---:|---|
 | P1 | `{17}` | 4 | 后续已在 4A.4 恢复资格 |
-| P2 | `{1,9,17,26}` | 16 | 当前 BLOCKED |
+| P2 | `{1,9,17,26}` | 16 | Round 4A.5 A3 VERIFIED READY |
 | P3 | `{1,5,8,12,17,19,22,26}` | 32 | NOT RUN |
 
 P1 的 Layer 17 CPU experts 固定为 `{6,8,25,36}`。Controlled C0-C4、mapping、
@@ -332,25 +333,37 @@ P1_REQUALIFIED = A3_VERIFIED_READY
 MULTI_EXPERT_SINGLE_LAYER = A3_VERIFIED_READY
 ```
 
-### P2：数值和覆盖通过，但 exact determinism 失败
+### P2：Round 4A.5 已完整关闭
 
-P2 已经实际构建并运行，不是静态设计状态：
+旧 blocker 已归因为 raw `acl.rt.memcpy` 指针传输绕过 torch/torch_npu 的
+stream 和 tensor-lifetime 语义。生产路径改为 framework-managed blocking
+Tensor `copy_` 后，在清理无必要诊断 hook 的候选提交上重新资格验证：
 
-- 4/4 CPU-enabled layers exercised；
-- 16/16 selected CPU experts exercised；
-- total CPU hits 74,784；
-- Q2 subset stable 137/137、membership 119/119；
-- H2 subset stable 155/155、membership 101/101；
-- pairwise overflow 0；
-- all finite。
+- 9 prompts × 10 repeats × 64 tokens，同进程 exact；
+- 8/16/32 prefix 全部 exact；
+- clean restart 9/9 exact；
+- Q2 `137/137` stable exact、`119/119` ambiguity membership、0 overflow；
+- H2 `155/155` stable exact、`101/101` ambiguity membership、0 overflow；
+- 4/4 layers、16/16 experts、74,807 CPU route hits；
+- CPU-not-hit 32/32 exact；
+- 同环境 frozen quality：C-Eval 27/128 vs 27/128，GSM8K 31/128 vs 31/128；
+- retained regression：Round2A 21/21、Round2B 23+1 skip、Round2C 44/44、
+  SGLang 4/4、Round3/P1 compact PASS。
 
-但相同进程、相同配置、相同 greedy request 的输出不唯一；sequential control
-也不能恢复确定性，因此 P2 被 exact N1 gate 阻塞。
+因此：
+
+```text
+MULTI_LAYER_P2 = A3_VERIFIED_READY
+P3_ALLOWED     = YES
+```
 
 ### P3：严格未运行
 
-由于 P2 未通过，P3 GGUF 未构建，P3 pairwise、coverage、2,304-token stability
-和最终质量均未运行。没有为 P2/P3 扩大 `B_pair` 或重新拟合合同。
+P3 仍未运行。已验证冻结 placement 为 layers
+`{1,5,8,12,17,19,22,26}`、32 CPU experts，canonical SHA
+`77f7d96e0b180242264f1d6eec3e4d9d16d158e9e0f9a51eac51af88e829391d`。
+P3 pairwise、coverage、2,304-token stability 和最终质量仍待执行；不得扩大
+`B_pair` 或重新拟合合同。
 
 ## 6. 当前生产代码状态
 
@@ -372,11 +385,12 @@ instrumentation，只有显式设置 numerical-dump 环境时启用。
 
 ## 7. Git 与交付状态
 
-当前已推送：
+当前 P2 closure 分支已经推送；最终证据提交与不可移动 tag 在 Round 4A.5
+freeze 步骤完成后继续推送：
 
 | 仓库 | 分支 | 已推送事实基线 |
 |---|---|---|
-| KTransformers parent | `feature/kt-round4a4-pairwise-margin-qualification` | `a2ef30a350645c7f10601e64902c5799a7a636c8` |
+| KTransformers parent | `feature/kt-round4a5-p2-closure` | A3 runtime/test candidate `d36dd8f3e01c9a86d87309e972b11e75b537b68e` |
 | SGLang child | `feature/kt-ep-round4a4-pairwise-margin-qualification` | `cbaa79c2f5b004ab4ca470c9fa56161666ccafb2` |
 
 Round 4A.4 机器可读合同：
@@ -399,7 +413,6 @@ Round 4A.4 容器 `kt-r4a4-pairwise` 当前已经停止，NPU0 已释放。模�
 
 以下内容仍然不能对外宣称完成：
 
-- P2 四层多 Expert same-path deterministic serving；
 - P3 八层/32 CPU Expert qualification；
 - P3 2,304-token stability 和 RSS/HBM campaign；
 - DeepSeek-V2-Lite TP1 multi-placement 最终 READY；
@@ -413,10 +426,11 @@ Round 4A.4 容器 `kt-r4a4-pairwise` 当前已经停止，NPU0 已释放。模�
 
 ## 10. 当前交接结论
 
-项目下一阶段不应该重新讨论是否采用 KML，也不应该重新放宽数值合同。当前
-第一优先级是定位并修复 P2 same-path nondeterminism。只有 P2 在完全相同的
-frozen pairwise contract 下恢复 exact determinism，才允许继续 P2 quality
-smoke、P3 和最终 multi-placement qualification。
+项目下一阶段不应该重新讨论是否采用 KML，也不应该重新放宽数值合同。P2
+已经在完全相同的 frozen pairwise contract 下恢复 exact determinism 并通过
+quality。当前唯一主线是从不可移动的 P2 final tag 创建 P3 分支，对八层/32
+CPU expert placement 执行 system、pairwise、coverage、free generation、质量与
+stability 门禁。上游 Ascend alignment 必须留到独立 Round 5。
 
 详细问题、证据边界和下一步排查顺序见：
 

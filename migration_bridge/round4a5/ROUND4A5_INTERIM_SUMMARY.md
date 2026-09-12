@@ -4,8 +4,8 @@ Status: `ROOT_CAUSE_ATTRIBUTED; FIX_QUALIFICATION_PENDING`
 
 This document records diagnostic evidence only.  It does not change the frozen
 P2 placement, numerical contract, `B_pair`, coverage target, or production
-execution semantics.  P3 remains `NOT_RUN` pending full P2 qualification of a
-production fix.
+execution semantics.  This is a historical interim snapshot; the production
+fix and final P2 qualification are closed in `ROUND4A5_FINAL_SUMMARY.md`.
 
 ## Reproduced blocker
 
@@ -85,10 +85,13 @@ CPU scratch buffer.  It does not attribute a defect to CANN itself.
 The framework-managed transfers are now the normal Ascend CPU-expert path; the
 diagnostic environment gate has been removed.  Requalification passed the P2
 same-process/restart exact gates, Q2/H2 frozen numerical contract, 4/4-layer
-and 16/16-expert coverage, and the CPU-not-hit control.  The frozen downstream
-quality input is absent from both the repository and persisted A3 artifacts,
-so the quality A/B cannot be validly rerun yet.  P2 is consequently not marked
-fully qualified and P3 remains blocked.  See `06_P2_FIX_REQUALIFICATION.md`.
+and 16/16-expert coverage, and the CPU-not-hit control.  At this interim point
+the frozen downstream-quality input had not yet been located.  The takeover
+audit subsequently recovered the exact bytes from repository history and
+reproduced canonical SHA
+`c7bcb09c72f4a7213d0ecdb080f8e88e983ab1a491d4304f448bce28d8f7e1ce`.
+The obsolete blocker is closed in `09_QUALITY_PROVENANCE.md` and
+`11_P2_FINAL_QUALITY.md`; this paragraph preserves the investigation chronology.
 
 ## Retained Round 2B correction
 
