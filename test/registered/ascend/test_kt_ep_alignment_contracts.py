@@ -78,3 +78,33 @@ def test_ascend_routes_disable_cpu_owned_experts():
         rtol=0,
         atol=0,
     )
+
+
+def test_cpuinfer_submission_uses_platform_stream_handle(monkeypatch):
+    calls = []
+
+    class _Wrapper:
+        def submit_forward(self, hidden_states, topk_ids, topk_weights, stream):
+            calls.append(("submit", stream))
+
+        def sync_forward(self, ref_tensor, stream):
+            calls.append(("sync", stream))
+            return ref_tensor
+
+    monkeypatch.setattr(
+        "sglang.srt.layers.moe.kt_ep_wrapper.get_current_device_stream_handle",
+        lambda device_type: 0xA5 if device_type == "cpu" else 0,
+    )
+
+    method = KTEPWrapperMethod.__new__(KTEPWrapperMethod)
+    method.wrapper = _Wrapper()
+    method.kt_expert_lora_enabled = False
+    hidden_states = torch.zeros((1, 4))
+    topk_ids = torch.zeros((1, 1), dtype=torch.int64)
+    topk_weights = torch.ones((1, 1))
+
+    method._submit_cpu_forward(hidden_states, topk_ids, topk_weights)
+    output = method._sync_cpu_forward(hidden_states)
+
+    assert output is hidden_states
+    assert calls == [("submit", 0xA5), ("sync", 0xA5)]
