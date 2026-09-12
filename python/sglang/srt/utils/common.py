@@ -3611,6 +3611,10 @@ def mxfp8_block_convert_required():
     """
     import torch
     if not torch.version.hip:
+        # MXFP8 block conversion is a CUDA capability decision. Importing the
+        # quantization registry on an NPU/CPU build must not initialize CUDA.
+        if not torch.cuda.is_available():
+            return False
         cap = torch.cuda.get_device_capability()
         if cap[0] < 10:
             return True
