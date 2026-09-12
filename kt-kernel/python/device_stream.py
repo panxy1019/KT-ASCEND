@@ -33,3 +33,19 @@ def get_current_device_stream_handle(device_type: str) -> int:
             f"current {normalized} stream has no non-zero public {attribute} handle"
         )
     return handle
+
+
+def require_pinned_host_tensor(
+    tensor: torch.Tensor, name: str = "host_buffer"
+) -> torch.Tensor:
+    """Validate the host-side contract for an asynchronous device transfer."""
+
+    if tensor.device.type != "cpu":
+        raise ValueError(f"{name} must be a CPU tensor, got {tensor.device}")
+    if not tensor.is_pinned():
+        raise ValueError(
+            f"{name} must use pinned host memory for asynchronous device transfer"
+        )
+    if not tensor.is_contiguous():
+        raise ValueError(f"{name} must be contiguous")
+    return tensor
