@@ -52,10 +52,15 @@ if [[ ${KT_R5_ENABLE_TENSOR_DUMP:-0} == 1 ]]; then
 fi
 
 if [[ ${KT_R5_ENABLE_ROUTE_DUMP:-0} == 1 ]]; then
-  export SGLANG_KT_NUMERICAL_DUMP_DIR="${run_root}/routes"
-  export SGLANG_KT_NUMERICAL_DUMP_LAYERS="${dump_layers}"
-  export SGLANG_KT_NUMERICAL_DUMP_MAX_PASSES="${SGLANG_KT_NUMERICAL_DUMP_MAX_PASSES:-4096}"
-  export SGLANG_KT_NUMERICAL_DUMP_ARM_FILE="${run_root}/dump.arm"
+  # Upstream uses the framework expert-distribution recorder rather than the
+  # local Round 4A numerical-dump environment hooks.  Recording is explicitly
+  # started/stopped through the HTTP control endpoints by the qualification
+  # harness, so normal production launches remain unaffected.
+  extra+=(
+    --expert-distribution-recorder-mode stat
+    --expert-distribution-recorder-buffer-size -1
+    --record-kt-gpu-expert-distribution
+  )
 fi
 
 exec python -m sglang.launch_server \
