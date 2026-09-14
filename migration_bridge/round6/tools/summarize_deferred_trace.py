@@ -25,6 +25,11 @@ def main() -> None:
         default=[],
         help="Expected adjacent producer:consumer pair, for example 7:8.",
     )
+    parser.add_argument(
+        "--require-final-drained",
+        action="store_true",
+        help="Require the final pending-state record to contain no active layer.",
+    )
     args = parser.parse_args()
 
     records = [json.loads(line) for line in args.trace.read_text().splitlines()]
@@ -33,6 +38,7 @@ def main() -> None:
 
     submits: dict[int, list[dict]] = defaultdict(list)
     syncs: dict[int, list[dict]] = defaultdict(list)
+    pending_states = []
     for record in records:
         event = record.get("event")
         layer_idx = int(record["layer_idx"])
@@ -40,6 +46,8 @@ def main() -> None:
             submits[layer_idx].append(record)
         elif event == "sync":
             syncs[layer_idx].append(record)
+        elif event == "pending_state":
+            pending_states.append(record)
         else:
             raise RuntimeError(f"unknown trace event: {event!r}")
 
@@ -113,6 +121,19 @@ def main() -> None:
         if not exact:
             failures.append(f"pair {value}: producer/consumer mismatch")
 
+    final_pending_layers = (
+        [int(value) for value in pending_states[-1]["pending_layers"]]
+        if pending_states
+        else None
+    )
+    if args.require_final_drained:
+        if final_pending_layers is None:
+            failures.append("no pending-state records were captured")
+        elif final_pending_layers:
+            failures.append(
+                f"final pending state is not drained: {final_pending_layers}"
+            )
+
     payload = {
         "schema_version": 1,
         "trace_sha256": hashlib.sha256(args.trace.read_bytes()).hexdigest(),
@@ -122,6 +143,9 @@ def main() -> None:
         "failures": failures,
         "pass": not failures,
     }
+    if pending_states or args.require_final_drained:
+        payload["pending_state_event_count"] = len(pending_states)
+        payload["final_pending_layers"] = final_pending_layers
     payload["sha256"] = canonical_sha256(payload)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")

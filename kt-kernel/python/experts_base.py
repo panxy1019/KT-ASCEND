@@ -742,6 +742,15 @@ class BaseMoEWrapper(_MoEBase, ABC):
             else:
                 self.cpu_infer.submit_with_cuda_stream(cuda_stream, deferred_task)
             BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = True
+        _trace_deferred_event(
+            "pending_state",
+            layer_idx=self.layer_idx,
+            pending_layers=sorted(
+                int(layer_idx)
+                for layer_idx, pending in BaseMoEWrapper._layer_has_pending_deferred.items()
+                if pending
+            ),
+        )
 
     def run_pinned_forward_sync(
         self,
@@ -927,6 +936,16 @@ class BaseMoEWrapper(_MoEBase, ABC):
             else:
                 self.cpu_infer.submit_with_cuda_stream(cuda_stream, deferred_task)
             BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = True
+
+        _trace_deferred_event(
+            "pending_state",
+            layer_idx=self.layer_idx,
+            pending_layers=sorted(
+                int(layer_idx)
+                for layer_idx, pending in BaseMoEWrapper._layer_has_pending_deferred.items()
+                if pending
+            ),
+        )
 
     def copy_forward_output_to_device(self, hidden_states: torch.Tensor) -> torch.Tensor:
         """Copy pinned CPU output to the device tensor (CPU work already finished)."""
