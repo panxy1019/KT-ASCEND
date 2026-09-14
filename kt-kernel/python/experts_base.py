@@ -13,12 +13,55 @@ import torch
 from typing import Dict, List, Optional, Tuple
 from abc import ABC, abstractmethod
 import ctypes
+import json
 import logging
 import os
+import threading
 
 from kt_kernel import kt_kernel_ext
 
 logger = logging.getLogger(__name__)
+
+_deferred_trace_lock = threading.Lock()
+_deferred_trace_count = 0
+
+
+def _trace_deferred_event(event: str, **payload) -> None:
+    """Append one opt-in JSONL record for Deferred Expert qualification.
+
+    The trace is disabled unless ``KT_DEBUG_DEFERRED_TRACE_FILE`` is set.  It
+    intentionally records only routing/scheduling metadata; tensor contents
+    and the execution path are unchanged.  A finite default limit prevents a
+    long serving run from growing the diagnostic artifact without bound.
+    """
+    path = os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE")
+    if not path:
+        return
+
+    global _deferred_trace_count
+    limit = int(os.environ.get("KT_DEBUG_DEFERRED_TRACE_LIMIT", "20000"))
+    with _deferred_trace_lock:
+        if _deferred_trace_count >= limit:
+            return
+        record = {"event": event, **payload}
+        with open(path, "a", encoding="utf-8") as trace_file:
+            trace_file.write(json.dumps(record, sort_keys=True) + "\n")
+        _deferred_trace_count += 1
+
+
+def _summarize_cpu_routes(
+    route_ids_cpu: Optional[torch.Tensor],
+    gpu_experts_mask: torch.Tensor,
+) -> Tuple[int, int, List[int]]:
+    """Return valid-route count, CPU-route count, and CPU expert IDs."""
+    if route_ids_cpu is None:
+        return 0, 0, []
+    valid_ids = route_ids_cpu[route_ids_cpu >= 0].to(torch.long)
+    if valid_ids.numel() == 0:
+        return 0, 0, []
+    cpu_ids = valid_ids[~gpu_experts_mask[valid_ids]]
+    unique_cpu_ids = sorted(int(expert_id) for expert_id in cpu_ids.unique().tolist())
+    return int(valid_ids.numel()), int(cpu_ids.numel()), unique_cpu_ids
 
 # -----------------------------------------------------------------------------
 # NPU stream-callback bypass.
@@ -787,6 +830,30 @@ class BaseMoEWrapper(_MoEBase, ABC):
             _wait_device(hidden_states.device)
 
         incremental = BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx - 1, False)
+        if os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE"):
+            immediate_valid, immediate_cpu, immediate_cpu_ids = _summarize_cpu_routes(
+                immediate_experts_ids_cpu[current_slot], self.gpu_experts_mask
+            )
+            deferred_valid, deferred_cpu, deferred_cpu_ids = _summarize_cpu_routes(
+                deferred_experts_ids_cpu[current_slot] if deferred_ids is not None else None,
+                self.gpu_experts_mask,
+            )
+            _trace_deferred_event(
+                "submit",
+                layer_idx=self.layer_idx,
+                rows=int(hidden_states.numel() // hidden_states.shape[-1]),
+                current_slot=current_slot,
+                next_slot=next_slot,
+                max_deferred_experts_per_token=self.max_deferred_experts_per_token,
+                incremental_from_previous=bool(incremental),
+                immediate_valid_routes=immediate_valid,
+                immediate_cpu_routes=immediate_cpu,
+                immediate_cpu_experts=immediate_cpu_ids,
+                deferred_valid_routes=deferred_valid,
+                deferred_cpu_routes=deferred_cpu,
+                deferred_cpu_experts=deferred_cpu_ids,
+                outgoing_pending=deferred_ids is not None,
+            )
         immediate_task = self.moe.forward_task(
             bsz_slot_tensor.data_ptr(),
             immediate_experts_ids_cpu[current_slot].size(-1),
@@ -870,6 +937,12 @@ class BaseMoEWrapper(_MoEBase, ABC):
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         allow_pending = 1 if BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False) else 0
+        _trace_deferred_event(
+            "sync",
+            layer_idx=self.layer_idx,
+            current_slot=current_slot,
+            allow_pending=allow_pending,
+        )
         bypass = _should_bypass_stream_callback(hidden_states.device)
         if bypass:
             self.cpu_infer.sync(allow_pending)

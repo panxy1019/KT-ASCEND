@@ -6,11 +6,13 @@ tests add the queue, transfer and incremental-merge lifecycle around it.
 
 from __future__ import annotations
 
+import json
 from types import SimpleNamespace
 
 import torch
 
-from kt_kernel.experts_base import BaseMoEWrapper
+from kt_kernel import experts_base
+from kt_kernel.experts_base import BaseMoEWrapper, _summarize_cpu_routes
 
 
 def _select(expert_ids, expert_scores, protected_k):
@@ -85,3 +87,22 @@ def test_equal_score_selection_is_repeat_deterministic_on_active_backend():
         candidate = _select(expert_ids, scores, protected_k=5)
         assert torch.equal(candidate[0], reference[0])
         assert torch.equal(candidate[1], reference[1])
+
+
+def test_deferred_trace_reports_only_cpu_owned_routes(monkeypatch, tmp_path):
+    route_ids = torch.tensor([[6, -1, 8, 25, 36, 11]], dtype=torch.int64)
+    gpu_mask = torch.ones(64, dtype=torch.bool)
+    gpu_mask[[6, 8, 25, 36]] = False
+
+    valid, cpu, cpu_ids = _summarize_cpu_routes(route_ids, gpu_mask)
+    assert (valid, cpu, cpu_ids) == (5, 4, [6, 8, 25, 36])
+
+    trace_path = tmp_path / "deferred.jsonl"
+    monkeypatch.setenv("KT_DEBUG_DEFERRED_TRACE_FILE", str(trace_path))
+    monkeypatch.setenv("KT_DEBUG_DEFERRED_TRACE_LIMIT", "1")
+    monkeypatch.setattr(experts_base, "_deferred_trace_count", 0)
+    experts_base._trace_deferred_event("submit", layer_idx=7, cpu_routes=cpu)
+    experts_base._trace_deferred_event("sync", layer_idx=7)
+
+    records = [json.loads(line) for line in trace_path.read_text().splitlines()]
+    assert records == [{"cpu_routes": 4, "event": "submit", "layer_idx": 7}]
