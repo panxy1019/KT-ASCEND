@@ -1,0 +1,28 @@
+can not use command: npu-smi info
+/workspace/results/probe_upstream_runtime_primitives.py:83: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  device_return = torch.empty_like(source)
+{
+  "callback_running_after_init": true,
+  "callback_running_after_shutdown": false,
+  "callback_running_after_subscribe": true,
+  "callback_running_before": false,
+  "d2h_deterministic": true,
+  "d2h_unique_hashes": [
+    "c7c0a32d5f43b1b6ec256a55fc5c1bf2d789a5a28d188cd3b69f50866dc16482"
+  ],
+  "device": "npu:0",
+  "device_count": 1,
+  "elements": 4096,
+  "expected_hash": "c7c0a32d5f43b1b6ec256a55fc5c1bf2d789a5a28d188cd3b69f50866dc16482",
+  "h2d_deterministic": true,
+  "h2d_unique_hashes": [
+    "c7c0a32d5f43b1b6ec256a55fc5c1bf2d789a5a28d188cd3b69f50866dc16482"
+  ],
+  "kt_kernel_ext": "/workspace/results/venv-raw/lib/python3.11/site-packages/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+  "repeats": 1000,
+  "schema": "round5-upstream-runtime-primitives-v1",
+  "status": "PASS",
+  "stream_handle_nonzero": true,
+  "torch": "2.9.0+cpu",
+  "torch_npu": "2.9.0.post2"
+}

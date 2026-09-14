@@ -1,0 +1,108 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.3.2, pluggy-1.6.0
+rootdir: /workspace/kt-src/kt-kernel
+configfile: pytest.ini
+plugins: hydra-core-1.3.5, anyio-4.14.2, mock-3.15.1, xdist-3.6.1
+collected 24 items
+
+per_commit/test_ascend_vendor_adapter.py ..                              [  8%]
+per_commit/test_ascend_stream_handle.py ...s                             [ 25%]
+per_commit/test_ascend_host_callback.py ....                             [ 41%]
+per_commit/test_ascend_cpuinfer_callback.py ...                          [ 54%]
+per_commit/test_ascend_transfers.py .....                                [ 75%]
+per_commit/test_ascend_lifecycle.py ....                                 [ 91%]
+per_commit/test_ascend_runtime_pipeline.py F.                            [100%]
+
+=================================== FAILURES ===================================
+______________________ test_d2h_cpuinfer_moe_h2d_pipeline ______________________
+per_commit/test_ascend_runtime_pipeline.py:129: in test_d2h_cpuinfer_moe_h2d_pipeline
+    _assert_numerical(verified_npu.cpu().to(torch.bfloat16), expected)
+per_commit/test_ascend_runtime_pipeline.py:116: in _assert_numerical
+    assert metrics["max_abs_error"] <= 1e-3
+E   assert 1.7014118346046923e+38 <= 0.001
+----------------------------- Captured stdout call -----------------------------
+
+[GGUFLoader] Loading single GGUF file : pipeline.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{"max_abs_error": 1.7014118346046923e+38, "mean_abs_error": 1.2676405382515901e+36, "relative_l2_error": Infinity}
+----------------------------- Captured stderr call -----------------------------
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+=========================== short test summary info ============================
+FAILED per_commit/test_ascend_runtime_pipeline.py::test_d2h_cpuinfer_moe_h2d_pipeline
+=================== 1 failed, 22 passed, 1 skipped in 27.51s ===================
+0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab190e8010] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab189a13d0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab193d7090] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab195443d0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab190e8010] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab195443d0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab190e8010] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab19b173d0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab15e64870]: Goodbye
+CPUInfer[0xaaab15e64870]: Hello
+WorkerPool[0xaaab17f6fd40] 1 subpools, [numa:threads][0:4] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 4 threads
+TP MOE layer 0, pool: 0xaaab17f6fd40, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab17f6fd40, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaab15e64870]: Goodbye

@@ -1,0 +1,83 @@
+From 4002e16ffb5cd2b76f634819d8ef57f1863ccf3e Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 23:12:44 +0000
+Subject: [PATCH 6/8] fix(kt-ep): normalize CPU expert mapping dtype
+
+---
+ python/sglang/srt/layers/moe/kt_ep_wrapper.py |  3 +-
+ test/registered/moe/test_kt_ep_ascend_e2e.py  | 43 +++++++++++++++++++
+ 2 files changed, 45 insertions(+), 1 deletion(-)
+
+diff --git a/python/sglang/srt/layers/moe/kt_ep_wrapper.py b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+index 4a4bbb3fc..c6403ba43 100644
+--- a/python/sglang/srt/layers/moe/kt_ep_wrapper.py
++++ b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+@@ -3780,12 +3780,13 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+             ):
+                 physical_to_logical_map_cpu = (
+                     metadata.physical_to_logical_map_cpu[self.kt_config.layer_idx]
++                    .to(device="cpu", dtype=torch.int32)
+                     .contiguous()
+                 )
+             else:
+                 # Fallback for setups without EPLB metadata: identity mapping.
+                 physical_to_logical_map_cpu = torch.arange(
+-                    layer.num_experts, dtype=torch.int64, device="cpu"
++                    layer.num_experts, dtype=torch.int32, device="cpu"
+                 )
+             self.wrapper.load_weights(physical_to_logical_map_cpu)
+             if self.kt_expert_lora_enabled:
+diff --git a/test/registered/moe/test_kt_ep_ascend_e2e.py b/test/registered/moe/test_kt_ep_ascend_e2e.py
+index 4e5f7815e..d9c848b6e 100644
+--- a/test/registered/moe/test_kt_ep_ascend_e2e.py
++++ b/test/registered/moe/test_kt_ep_ascend_e2e.py
+@@ -56,6 +56,49 @@ def test_kt_wrapper_is_skipped_for_all_accelerator_layers():
+     assert layer_needs_kt_wrapper(one_cpu_expert)
+ 
+ 
++def test_llamafile_expert_mapping_is_int32_at_load_boundary(monkeypatch):
++    loaded_mappings = []
++
++    class _Wrapper:
++        def load_weights(self, mapping):
++            loaded_mappings.append(mapping)
++
++    class _GpuMethod:
++        def process_weights_after_loading(self, _layer):
++            pass
++
++    metadata = SimpleNamespace(
++        physical_to_logical_map_cpu=torch.arange(8, dtype=torch.int64).view(2, 4)
++    )
++    monkeypatch.setattr(
++        "sglang.srt.eplb.expert_location_dispatch.get_global_expert_location_metadata",
++        lambda: metadata,
++    )
++    monkeypatch.setattr(
++        torch,
++        "get_device_module",
++        lambda _device: SimpleNamespace(synchronize=lambda: None),
++    )
++
++    method = KTEPWrapperMethod.__new__(KTEPWrapperMethod)
++    method.gpu_method = _GpuMethod()
++    method.tp_rank = 0
++    method.wrapper = _Wrapper()
++    method.kt_config = SimpleNamespace(layer_idx=1)
++    method.kt_expert_lora_enabled = False
++    layer = SimpleNamespace(
++        parameters=lambda: iter([torch.empty(0)]), num_experts=4
++    )
++
++    method.process_weights_after_loading(layer)
++
++    assert len(loaded_mappings) == 1
++    assert loaded_mappings[0].device.type == "cpu"
++    assert loaded_mappings[0].dtype == torch.int32
++    assert loaded_mappings[0].is_contiguous()
++    assert loaded_mappings[0].tolist() == [4, 5, 6, 7]
++
++
+ class _TorchNPUExpertMethod:
+     """Small real-NPU provider for the two accelerator-owned fixture experts."""
+ 

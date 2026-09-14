@@ -15,6 +15,19 @@
 
 KTransformers 是一个专注于通过 CPU-GPU 异构计算实现大语言模型高效推理和微调的研究项目。目前两个面向用户的能力都来自 kt-kernel 源码目录：[推理](./kt-kernel/README.md) 和 [SFT](./doc/en/SFT/KTransformers-Fine-Tuning_Quick-Start.md)。
 
+### KT-ASCEND 已验证基线
+
+本 fork 的 `main` 分支发布 Round 5 upstream-aligned
+DeepSeek-V2-Lite TP1 不可变基线。该基线已在 Kunpeng + 单张 Ascend
+NPU 上完成静态 P1/P2/P3 CPU expert placement、LLAMAFILE/CPUInfer 和
+production-overlap 路径验证。精确受测 runtime 已标记为
+[`round5-upstream-aligned-tp1-a3-verified`](../../tree/round5-upstream-aligned-tp1-a3-verified)。
+
+完整开发历史、A3 门禁、数值合同、质量对比、稳定性证据和能力边界见
+[`migration_bridge/round5/ROUND5_FINAL_SUMMARY.md`](./migration_bridge/round5/ROUND5_FINAL_SUMMARY.md)。
+本基线不代表 TP2/HCCL、多 NPU、Graph、Deferred Experts、Dynamic
+Placement、MTP、Speculative Decoding、W8A8 或 MXFP4 已完成资格验证。
+
 ## 🔥 更新
 
 * **2026 年 8 月 25 日**：上传了全新的易用版 [KTransformers × LlamaFactory MoE 微调 Cookbook](./doc/zh/KTransformers-Fine-Tuning_Cookbook_zh.md)，覆盖硬件检查、环境安装、BF16/FP8/INT8 配置、LoRA 与全量微调、资源规划及故障排查。

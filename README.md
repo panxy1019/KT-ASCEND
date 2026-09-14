@@ -15,6 +15,20 @@
 
 KTransformers is a research project focused on efficient inference and fine-tuning of large language models through CPU-GPU heterogeneous computing. The project now exposes two user-facing capabilities from the kt-kernel source tree: [Inference](./kt-kernel/README.md) and [SFT](./doc/en/SFT/KTransformers-Fine-Tuning_Cookbook.md).
 
+### KT-ASCEND verified baseline
+
+This fork's `main` branch publishes the immutable Round 5 upstream-aligned
+DeepSeek-V2-Lite TP1 baseline. It was qualified on Kunpeng with one Ascend NPU
+for static P1/P2/P3 CPU-expert placement, using the LLAMAFILE/CPUInfer backend
+and production-overlap execution. The exact runtime source is tagged
+[`round5-upstream-aligned-tp1-a3-verified`](../../tree/round5-upstream-aligned-tp1-a3-verified).
+
+The complete development history, A3 gate matrix, numerical contract, quality
+results, stability evidence, and scope limitations are in
+[`migration_bridge/round5/ROUND5_FINAL_SUMMARY.md`](./migration_bridge/round5/ROUND5_FINAL_SUMMARY.md).
+TP2/HCCL, multi-NPU, Graph, Deferred Experts, Dynamic Placement, MTP,
+Speculative Decoding, W8A8, and MXFP4 are not qualified by this baseline.
+
 ## 🔥 Updates
 * **Aug 26, 2026**: Added native support for **GLM-5.3-flash**, bringing 1M-token context and multimodal input to consumer GPUs. ([Tutorial](./doc/en/kt-kernel/GLM-5.3-Flash-Tutorial.md))
 * **Aug 25, 2026**: Uploaded a new easy-to-use [KTransformers × LlamaFactory MoE Fine-Tuning Cookbook](./doc/en/SFT/KTransformers-Fine-Tuning_Cookbook.md), covering hardware checks, installation, BF16/FP8/INT8 recipes, LoRA and full fine-tuning, resource planning, and troubleshooting.

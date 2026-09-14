@@ -1,0 +1,9 @@
+{
+  "name": "LLAMAFILE SGEMM",
+  "source": "frozen ktransformers kt-kernel",
+  "revision": "ba508e4f920e99cd8cf1c0127d9aa6e5e0ac2559",
+  "architecture": "aarch64",
+  "supported_dtypes": ["F32", "existing llama.cpp quantized contracts"],
+  "round4a2_operand_dtype": "F32 materialized BF16-valued operands",
+  "decision": "CURRENT_BACKEND_P1_BLOCKED_42_OF_45"
+}

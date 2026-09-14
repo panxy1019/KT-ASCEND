@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "evidence_state": "A3_VERIFIED_READY",
+  "environment_id": "a3-r4a5-p3-0825d8eb90af",
+  "p2_immutable_target": "d4830525c6806d5d587b3096634614aad7fef181",
+  "sglang_child_sha": "cbaa79c2f5b004ab4ca470c9fa56161666ccafb2",
+  "placement_sha256": "77f7d96e0b180242264f1d6eec3e4d9d16d158e9e0f9a51eac51af88e829391d",
+  "gguf_sha256": "992d32e0de59e135464f77fc4869e810f3d71b3ec01f6ed0996cbeaa58e49df4",
+  "pairwise_contract_sha256": "223e738436659d389d913656952a368b6d32ccaceeef195abc2e6589c651d717",
+  "quality_manifest_sha256": "c7bcb09c72f4a7213d0ecdb080f8e88e983ab1a491d4304f448bce28d8f7e1ce",
+  "gates": {
+    "same_process_determinism": "PASS",
+    "clean_restart": "PASS",
+    "pairwise_numerical": "PASS",
+    "cpu_coverage": "PASS",
+    "cpu_not_hit": "PASS",
+    "free_generation": "PASS",
+    "downstream_quality": "PASS",
+    "stability": "PASS",
+    "retained_regression": "PASS"
+  },
+  "same_process": {
+    "prompts": 9,
+    "repeats": 10,
+    "max_new_tokens": 64,
+    "requests": 117,
+    "repeat_exact": true,
+    "prefix_exact": true
+  },
+  "pairwise": {
+    "B_pair": 2.1875,
+    "candidate_topk": 32,
+    "q2": {"positions": 256, "stable": 137, "stable_exact": 137, "ambiguous": 119, "membership": 119, "overflow": 0, "max": 1.9375},
+    "h2": {"positions": 256, "stable": 155, "stable_exact": 155, "ambiguous": 101, "membership": 101, "overflow": 0, "max": 0.5625}
+  },
+  "coverage": {"layers_hit": 8, "layers_selected": 8, "experts_hit": 32, "experts_selected": 32, "cpu_route_hits": 161925},
+  "cpu_not_hit": {"eligible": 1150, "verified": 32, "cpu_partial_zero_exact": true, "merge_exact": true},
+  "free_generation": {"requests": 22, "divergences": 9, "stable_divergences": 0, "ambiguous_divergences": 9, "membership": 9},
+  "quality": {
+    "ceval": {"count": 128, "all_npu_correct": 27, "p2_correct": 27, "p3_correct": 27, "paired_bootstrap_95ci": [0.0, 0.0]},
+    "gsm8k_mc": {"count": 128, "all_npu_correct": 31, "p2_correct": 31, "p3_correct": 31, "paired_bootstrap_95ci": [0.0, 0.0]},
+    "invalid_outputs": 0
+  },
+  "stability": {"campaigns": 2, "prompts": 6, "cycles_per_campaign": 3, "tokens_per_request": 64, "generated_tokens": 2304, "deterministic": true, "unbounded_memory_growth": false},
+  "final": {
+    "multi_layer_p3": "A3_VERIFIED_READY",
+    "deepseek_v2_lite_tp1_multi_placement": "A3_VERIFIED_READY"
+  }
+}

@@ -1,0 +1,42 @@
+.....                                                                    [100%]
+=============================== warnings summary ===============================
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/_pytest/config/__init__.py:1437
+  /usr/local/python3.11.15/lib/python3.11/site-packages/_pytest/config/__init__.py:1437: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+    setattr(self, word, getattr(machar, word).flat[0])
+
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+    return self._float_to_str(self.smallest_subnormal)
+
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+    setattr(self, word, getattr(machar, word).flat[0])
+
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+    return self._float_to_str(self.smallest_subnormal)
+
+python/sglang/srt/layers/quantization/awq.py:80
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+python/sglang/srt/layers/quantization/gguf.py:47
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+    warnings.warn(f"Only CUDA support GGUF quantization currently.")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+5 passed, 7 warnings in 17.18s
+CPUInfer[0xaaab127a0fb0]: Hello
+WorkerPool[0xaaab1223f470] 1 subpools, [numa:threads][0:4] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 4 threads
+TP MOE layer 0, pool: 0xaaab1223f470, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaab127a0fb0]: Goodbye

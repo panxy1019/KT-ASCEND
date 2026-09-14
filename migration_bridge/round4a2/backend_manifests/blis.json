@@ -1,0 +1,11 @@
+{
+  "name": "BLIS OpenMP",
+  "source": "Ubuntu 22.04 package",
+  "revision": "0.8.1-2",
+  "architecture": "aarch64",
+  "library_path": "/usr/lib/aarch64-linux-gnu/blis-openmp/libblis.so.3",
+  "library_sha256": "05034f0e1a93a7ca8342f03f59d367fcdd8b7715c858125107a6c997c47c3f54",
+  "runtime_env": {"tested_threads": [1, 16]},
+  "supported_dtypes": ["F32"],
+  "decision": "REJECTED_NUMERICAL_GATE_AND_16T_EXIT139"
+}

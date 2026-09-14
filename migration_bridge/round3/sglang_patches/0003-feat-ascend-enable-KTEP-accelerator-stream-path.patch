@@ -1,0 +1,425 @@
+From 8826a5cee7fafff7f6ad5780964d2c686368a597 Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 11:58:44 +0000
+Subject: [PATCH 3/8] feat(ascend): enable KTEP accelerator stream path
+
+---
+ python/sglang/srt/layers/moe/kt_ep_wrapper.py |  88 +++++---
+ test/registered/moe/test_kt_ep_ascend_e2e.py  | 191 ++++++++++++++++++
+ 2 files changed, 252 insertions(+), 27 deletions(-)
+ create mode 100644 test/registered/moe/test_kt_ep_ascend_e2e.py
+
+diff --git a/python/sglang/srt/layers/moe/kt_ep_wrapper.py b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+index 41202758a..99eff9d0f 100644
+--- a/python/sglang/srt/layers/moe/kt_ep_wrapper.py
++++ b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+@@ -65,7 +65,11 @@ if TYPE_CHECKING:
+     from sglang.srt.server_args import ServerArgs
+ 
+ try:
+-    from kt_kernel import KTMoEWrapper, generate_gpu_experts_masks
++    from kt_kernel import (
++        KTMoEWrapper,
++        generate_gpu_experts_masks,
++        get_current_device_stream_handle,
++    )
+ 
+     KTRANSFORMERS_AVAILABLE = True
+ except ImportError:
+@@ -3570,7 +3574,7 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+         )
+         self.gpu_index_to_logical = gpu_expert_indices.to(torch.int32)
+ 
+-        # CUDA tensors for inference (will be set in create_weights)
++        # Accelerator tensors for inference (will be set in create_weights)
+         self.gpu_experts_mask_cuda = None
+         self.logical_to_gpu_index_cuda = None
+ 
+@@ -3579,9 +3583,9 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+         self.wrapper: Optional[KTMoEWrapper] = None
+ 
+         # Dual-stream parallelism: cpu_stream for CPU expert operations,
+-        # main stream for GPU computation (initialized in create_weights)
+-        self._cpu_stream: Optional[torch.cuda.Stream] = None
+-        self._sync_done_event: Optional[torch.cuda.Event] = None  # CPU computation done
++        # main stream for accelerator computation (initialized in create_weights)
++        self._cpu_stream = None
++        self._sync_done_event = None  # CPU computation done
+ 
+         # Shared staging buffer reference (initialized in create_weights, shared across all layers)
+         self._shared_staging_buffer: Optional[SharedStagingBuffer] = None
+@@ -3649,8 +3653,9 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+ 
+         # Initialize dual-stream for CPU-GPU parallelism (rank 0 only)
+         if self.tp_rank == 0:
+-            self._cpu_stream = torch.cuda.Stream(device=target_device)
+-            self._sync_done_event = torch.cuda.Event()
++            device_module = torch.get_device_module(target_device)
++            self._cpu_stream = device_module.Stream(device=target_device)
++            self._sync_done_event = device_module.Event()
+ 
+             # Get or create shared staging buffer (shared across all MoE layers to save GPU memory)
+             self._shared_staging_buffer = get_or_create_shared_staging_buffer(
+@@ -3745,7 +3750,8 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+ 
+         # 2. Load CPU weights using KT wrapper
+         if self.tp_rank == 0 and self.wrapper is not None:
+-            torch.cuda.synchronize()
++            target_device = next(layer.parameters()).device
++            torch.get_device_module(target_device).synchronize()
+ 
+             # Get expert location metadata for CPU expert mapping
+             from sglang.srt.eplb.expert_location_dispatch import (
+@@ -3847,29 +3853,31 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+         topk_ids: torch.Tensor,
+         topk_weights: torch.Tensor,
+     ) -> None:
++        stream_handle = get_current_device_stream_handle(hidden_states.device.type)
+         if self.kt_expert_lora_enabled:
+             self.wrapper.submit_forward_inference(
+                 hidden_states,
+                 topk_ids,
+                 topk_weights,
+-                torch.cuda.current_stream(hidden_states.device).cuda_stream,
++                stream_handle,
+             )
+         else:
+             self.wrapper.submit_forward(
+                 hidden_states,
+                 topk_ids,
+                 topk_weights,
+-                torch.cuda.current_stream(hidden_states.device).cuda_stream,
++                stream_handle,
+             )
+ 
+     def _sync_cpu_forward(self, ref_tensor: torch.Tensor) -> torch.Tensor:
++        stream_handle = get_current_device_stream_handle(ref_tensor.device.type)
+         if self.kt_expert_lora_enabled:
+             return self.wrapper.sync_forward_inference(
+-                torch.cuda.current_stream(ref_tensor.device).cuda_stream,
++                stream_handle,
+             )
+         return self.wrapper.sync_forward(
+             ref_tensor,
+-            torch.cuda.current_stream(ref_tensor.device).cuda_stream,
++            stream_handle,
+         )
+ 
+     def submit(
+@@ -3988,6 +3996,7 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+             )
+ 
+         x = dispatch_output.hidden_states
++        device_module = torch.get_device_module(x.device)
+         topk_output = dispatch_output.topk_output
+         num_tokens = int(x.shape[0]) if x.dim() > 0 else 0
+         _kt_timing = (
+@@ -4151,20 +4160,30 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+         # Staging buffer allows GPU computation to proceed without waiting for D2H copy
+         staging_buffer = None
+         if self.tp_rank == 0 and self._cpu_stream is not None:
+-            # Use shared staging buffer (shared across all MoE layers to save GPU memory)
+-            assert self._shared_staging_buffer is not None, "Shared staging buffer not initialized"
+-            staging_buffer = self._shared_staging_buffer.get_slice(x.shape[0])
++            if x.device.type == "npu":
++                staging_buffer = x
++            else:
++                # Use shared staging buffer (shared across all MoE layers to save GPU memory)
++                assert self._shared_staging_buffer is not None, "Shared staging buffer not initialized"
++                staging_buffer = self._shared_staging_buffer.get_slice(x.shape[0])
+ 
+-            # Copy to staging buffer on main stream
+-            staging_buffer.copy_(x, non_blocking=True)
++                # Copy to staging buffer on main stream
++                staging_buffer.copy_(x, non_blocking=True)
+ 
+             # SGLANG_KT_HYBRID_NO_CPU_STREAM=1 collapses cpu_stream onto main stream.
+-            _no_cpu_stream = os.environ.get("SGLANG_KT_HYBRID_NO_CPU_STREAM") == "1"
++            _no_cpu_stream = (
++                os.environ.get("SGLANG_KT_HYBRID_NO_CPU_STREAM") == "1"
++                or x.device.type == "npu"
++            )
+             if not _no_cpu_stream:
+                 # Fork to cpu_stream (waits for staging copy to complete)
+-                self._cpu_stream.wait_stream(torch.cuda.current_stream(x.device))
++                self._cpu_stream.wait_stream(device_module.current_stream(x.device))
+             from contextlib import nullcontext as _ctx_null
+-            _stream_ctx = _ctx_null() if _no_cpu_stream else torch.cuda.stream(self._cpu_stream)
++            _stream_ctx = (
++                _ctx_null()
++                if _no_cpu_stream
++                else device_module.stream(self._cpu_stream)
++            )
+             with _stream_ctx:
+                 # Submit uses staging_buffer, so GPU can modify original x freely
+                 self._submit_with_staged_input(
+@@ -4172,7 +4191,7 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+                 )
+         if _kt_timing:
+             if os.environ.get("SGLANG_KT_HYBRID_TIMING_DEEP") == "1":
+-                torch.cuda.synchronize(x.device)
++                device_module.synchronize(x.device)
+             _kt_t_after_submit = time.perf_counter()
+ 
+         # Step 2: Prepare GPU computation by masking and remapping expert IDs
+@@ -4189,7 +4208,7 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+         )
+         if _kt_timing:
+             if os.environ.get("SGLANG_KT_HYBRID_TIMING_DEEP") == "1":
+-                torch.cuda.synchronize(x.device)
++                device_module.synchronize(x.device)
+             _kt_t_after_mask = time.perf_counter()
+ 
+         # Step 3: Execute GPU expert computation on main stream
+@@ -4242,18 +4261,31 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+             output = gpu_combine_input.hidden_states
+         if _kt_timing:
+             if os.environ.get("SGLANG_KT_HYBRID_TIMING_DEEP") == "1":
+-                torch.cuda.synchronize(x.device)
++                device_module.synchronize(x.device)
+             _kt_t_after_gpu = time.perf_counter()
+ 
+         # Step 4: Sync CPU results on cpu_stream, then synchronize streams
+         if self.tp_rank == 0 and self._cpu_stream is not None:
+-            _no_cpu_stream = os.environ.get("SGLANG_KT_HYBRID_NO_CPU_STREAM") == "1"
++            _no_cpu_stream = (
++                os.environ.get("SGLANG_KT_HYBRID_NO_CPU_STREAM") == "1"
++                or x.device.type == "npu"
++            )
+             from contextlib import nullcontext as _ctx_null
+-            _stream_ctx = _ctx_null() if _no_cpu_stream else torch.cuda.stream(self._cpu_stream)
++            _stream_ctx = (
++                _ctx_null()
++                if _no_cpu_stream
++                else device_module.stream(self._cpu_stream)
++            )
+             with _stream_ctx:
+                 # Use staging_buffer for sync to get correct buffer reference
+                 _kt_t_sync_pre = time.perf_counter() if _kt_t_apply_start is not None else None
+                 cpu_output = self._sync_with_staged_input(staging_buffer)
++                if x.device.type == "npu":
++                    # CPUInfer's H2D may use an internal copy stream.  Match the
++                    # verified kt-kernel HybridMoECoordinator contract and make
++                    # that transfer complete before consuming its shared buffer.
++                    device_module.synchronize(x.device)
++                    cpu_output = cpu_output.clone()
+                 if _kt_t_sync_pre is not None:
+                     _kt_t_cpu_wait_ms = (time.perf_counter() - _kt_t_sync_pre) * 1000.0
+                 if not _no_cpu_stream:
+@@ -4263,7 +4295,9 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+ 
+             # Main stream waits for cpu_stream to complete before merging results
+             if not _no_cpu_stream:
+-                torch.cuda.current_stream(x.device).wait_event(self._sync_done_event)
++                device_module.current_stream(x.device).wait_event(
++                    self._sync_done_event
++                )
+             output = output + cpu_output
+         if _kt_timing:
+             _kt_t_after_merge = time.perf_counter()
+@@ -4273,7 +4307,7 @@ class KTEPWrapperMethod(FusedMoEMethodBase):
+             # serialises streams so per-stage numbers reflect GPU work, not
+             # async launch return.
+             if os.environ.get("SGLANG_KT_HYBRID_TIMING_DEEP") == "1":
+-                torch.cuda.synchronize(x.device)
++                device_module.synchronize(x.device)
+                 _kt_t_after_merge = time.perf_counter()
+ 
+         if _kt_t_apply_start is not None:
+diff --git a/test/registered/moe/test_kt_ep_ascend_e2e.py b/test/registered/moe/test_kt_ep_ascend_e2e.py
+new file mode 100644
+index 000000000..4d0aa8088
+--- /dev/null
++++ b/test/registered/moe/test_kt_ep_ascend_e2e.py
+@@ -0,0 +1,191 @@
++from __future__ import annotations
++
++import importlib.util
++from pathlib import Path
++from types import SimpleNamespace
++
++import pytest
++import torch
++
++
++torch_npu = pytest.importorskip("torch_npu")
++kt_kernel = pytest.importorskip("kt_kernel")
++
++from kt_kernel import FixedExpertPlacement, KTMoEWrapper, TorchNPUExpertProvider
++from kt_kernel.utils.llamafile import LlamafileMoEWrapper
++from sglang.srt.eplb.expert_distribution import (
++    get_global_expert_distribution_recorder,
++    set_global_expert_distribution_recorder,
++)
++from sglang.srt.layers.moe.kt_ep_wrapper import (
++    KTEPWrapperMethod,
++    SharedStagingBuffer,
++)
++from sglang.srt.layers.moe.token_dispatcher.standard import (
++    StandardCombineInput,
++    StandardDispatchOutput,
++)
++from sglang.srt.layers.moe.topk import StandardTopKOutput
++
++
++PARENT_ROOT = Path(__file__).resolve().parents[5]
++FIXTURE_SCRIPT = (
++    PARENT_ROOT
++    / "kt-kernel"
++    / "test"
++    / "fixtures"
++    / "tiny_moe"
++    / "create_tiny_moe_gguf_fixture.py"
++)
++SPEC = importlib.util.spec_from_file_location("round3_kt_ep_fixture", FIXTURE_SCRIPT)
++assert SPEC is not None and SPEC.loader is not None
++tiny_fixture = importlib.util.module_from_spec(SPEC)
++SPEC.loader.exec_module(tiny_fixture)
++
++
++class _Recorder:
++    def on_gpu_expert_mask(self, _layer_idx, _mask):
++        pass
++
++
++class _TorchNPUExpertMethod:
++    """Small real-NPU provider for the two accelerator-owned fixture experts."""
++
++    def __init__(self, weights, physical_expert_ids):
++        local_weights = {
++            name: tensor[physical_expert_ids].contiguous()
++            for name, tensor in weights.items()
++        }
++        placement = FixedExpertPlacement(
++            len(physical_expert_ids),
++            torch.ones(len(physical_expert_ids), dtype=torch.bool),
++        )
++        self.provider = TorchNPUExpertProvider(placement, local_weights)
++
++    def apply(self, _layer, dispatch_output):
++        hidden_states = dispatch_output.hidden_states
++        topk_weights, local_expert_ids, _ = dispatch_output.topk_output
++        valid_routes = local_expert_ids >= 0
++        output = self.provider.forward(
++            hidden_states,
++            local_expert_ids.clamp_min(0),
++            topk_weights * valid_routes.to(topk_weights.dtype),
++        )
++        return StandardCombineInput(hidden_states=output)
++
++
++def _reference(hidden_states, expert_ids, routing_weights, weights):
++    rows = []
++    for token_index, bf16_input in enumerate(hidden_states.cpu()):
++        result = torch.zeros_like(bf16_input.float())
++        for route_index in range(expert_ids.shape[1]):
++            expert = int(expert_ids[token_index, route_index])
++            gate = weights["gate"][expert] @ bf16_input.float()
++            up = weights["up"][expert] @ bf16_input.float()
++            activated = torch.nn.functional.silu(gate) * up
++            result += (
++                float(routing_weights[token_index, route_index])
++                * (weights["down"][expert] @ activated)
++            )
++        rows.append(result.to(torch.bfloat16))
++    return torch.stack(rows)
++
++
++def test_kt_ep_wrapper_cpu_npu_routing_cases_run_on_ascend(tmp_path):
++    fixture, _ = tiny_fixture.create_fixture(
++        tmp_path / "round3-kt-ep.gguf", num_experts=4
++    )
++    expected_weights = tiny_fixture.generate_weights(num_layers=2, num_experts=4)[0]
++    LlamafileMoEWrapper._gguf_loader_instance = None
++    accelerator_mask = torch.tensor([False, True, False, True], dtype=torch.bool)
++    cpu_wrapper = KTMoEWrapper(
++        layer_idx=0,
++        num_experts=4,
++        num_experts_per_tok=2,
++        hidden_size=tiny_fixture.DEFAULT_HIDDEN_SIZE,
++        moe_intermediate_size=tiny_fixture.DEFAULT_INTERMEDIATE_SIZE,
++        gpu_experts_mask=accelerator_mask,
++        cpuinfer_threads=4,
++        threadpool_count=1,
++        weight_path=str(fixture),
++        chunked_prefill_size=8,
++        max_deferred_experts_per_token=0,
++        method="LLAMAFILE",
++        numa_nodes=[0],
++    )
++    cpu_wrapper.load_weights(torch.arange(4, dtype=torch.int32))
++
++    method = KTEPWrapperMethod.__new__(KTEPWrapperMethod)
++    method.tp_rank = 0
++    method.wrapper = cpu_wrapper
++    method.kt_expert_lora_enabled = False
++    method.num_gpu_experts = 2
++    method.gpu_prefill_token_threshold = 0
++    method.gpu_experts_mask = accelerator_mask
++    method.gpu_experts_mask_cuda = method.gpu_experts_mask.to("npu")
++    method.logical_to_gpu_index_cuda = torch.tensor(
++        [-1, 0, -1, 1], dtype=torch.int32, device="npu"
++    )
++    method.gpu_method = _TorchNPUExpertMethod(expected_weights, [1, 3])
++    method.kt_config = SimpleNamespace(layer_idx=0)
++    method.moe_runner_config = SimpleNamespace(activation="silu")
++    device_module = torch.get_device_module(torch.device("npu"))
++    method._cpu_stream = device_module.Stream(device=torch.device("npu"))
++    method._sync_done_event = device_module.Event()
++    method._shared_staging_buffer = SharedStagingBuffer(
++        max_tokens=8,
++        hidden_size=tiny_fixture.DEFAULT_HIDDEN_SIZE,
++        dtype=torch.bfloat16,
++        device=torch.device("npu"),
++    )
++
++    torch.manual_seed(tiny_fixture.SEED + 900)
++    hidden_states = torch.randn(
++        4,
++        tiny_fixture.DEFAULT_HIDDEN_SIZE,
++        dtype=torch.bfloat16,
++        device="npu",
++    )
++    # CPU-only, NPU-only, mixed, and reversed-mixed rows respectively.
++    expert_ids = torch.tensor(
++        [[0, 2], [1, 3], [0, 1], [3, 2]], dtype=torch.int64, device="npu"
++    )
++    routing_weights = torch.tensor(
++        [[0.4, 0.6]], dtype=torch.float32, device="npu"
++    ).repeat(4, 1)
++    dispatch_output = StandardDispatchOutput(
++        hidden_states=hidden_states,
++        hidden_states_scale=None,
++        topk_output=StandardTopKOutput(
++            topk_weights=routing_weights,
++            topk_ids=expert_ids,
++            router_logits=torch.empty(4, 4, dtype=torch.float32, device="npu"),
++        ),
++    )
++
++    previous_recorder = get_global_expert_distribution_recorder()
++    set_global_expert_distribution_recorder(_Recorder())
++    try:
++        method.apply(SimpleNamespace(), dispatch_output)
++        device_module.current_stream().synchronize()
++        actual = method.apply(SimpleNamespace(), dispatch_output).hidden_states
++        device_module.current_stream().synchronize()
++    finally:
++        set_global_expert_distribution_recorder(previous_recorder)
++
++    expected = _reference(
++        hidden_states, expert_ids.cpu(), routing_weights.cpu(), expected_weights
++    )
++    row_errors = (actual.cpu().float() - expected.float()).abs()
++    print(
++        "row_max_abs=",
++        [float(value) for value in row_errors.amax(dim=1)],
++        "actual_norms=",
++        [float(value) for value in actual.cpu().float().norm(dim=1)],
++        "expected_norms=",
++        [float(value) for value in expected.float().norm(dim=1)],
++    )
++    torch.testing.assert_close(
++        actual.cpu().to(torch.bfloat16), expected, rtol=1e-2, atol=1e-3
++    )
++    assert torch.isfinite(actual).all()

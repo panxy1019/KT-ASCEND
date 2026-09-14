@@ -1,0 +1,146 @@
+{
+  "category_counts": {
+    "chinese_factual": 1,
+    "code_reasoning": 2,
+    "english_factual": 1,
+    "math_numeric": 1,
+    "structured_json": 1
+  },
+  "corpus": "F",
+  "count": 6,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "f_en_01",
+      "input_ids": [
+        6568,
+        1217,
+        254,
+        20992,
+        1296,
+        19163,
+        754,
+        16316,
+        473,
+        11687,
+        30
+      ],
+      "text": "Why does the Moon show phases when viewed from Earth?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "f_zh_01",
+      "input_ids": [
+        4575,
+        5449,
+        892,
+        13327,
+        1223,
+        4783,
+        77427,
+        24291,
+        7435,
+        398
+      ],
+      "text": "请简要说明都江堰的主要作用。"
+    },
+    {
+      "category": "math_numeric",
+      "id": "f_math_01",
+      "input_ids": [
+        32,
+        16207,
+        317,
+        1853,
+        23562,
+        2201,
+        430,
+        207,
+        16,
+        23,
+        15,
+        11769,
+        408,
+        13,
+        2461,
+        317,
+        895,
+        8424,
+        30
+      ],
+      "text": "A tank is three quarters full at 180 liters. What is its capacity?"
+    },
+    {
+      "category": "structured_json",
+      "id": "f_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        16689,
+        9340,
+        285,
+        10985,
+        366,
+        19551,
+        207,
+        16,
+        285,
+        207,
+        17,
+        13
+      ],
+      "text": "Return only JSON listing Monday and Tuesday with indices 1 and 2."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "f_code_01",
+      "input_ids": [
+        9081,
+        245,
+        1157,
+        344,
+        25072,
+        52124,
+        1477,
+        30973,
+        1525,
+        1835,
+        13
+      ],
+      "text": "Write a function that removes duplicates while preserving list order."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "f_code_02",
+      "input_ids": [
+        99297,
+        254,
+        4334,
+        1439,
+        245,
+        16539,
+        285,
+        245,
+        10200,
+        366,
+        634,
+        2203,
+        13
+      ],
+      "text": "Explain the difference between a queue and a stack with one example."
+    }
+  ],
+  "protocol": {
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "free_generation",
+  "schema_version": 1,
+  "sha256": "627d1feaebefeae6c116e5112dcf9e4177265e2a8567c6245dea790aa0b031c3",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Arm Compute Library NEGEMM",
+  "source": "Ubuntu 22.04 package plus committed probe shim",
+  "revision": "20.08+dfsg-5",
+  "architecture": "aarch64",
+  "compiler": "g++ 11.4.0 -std=c++17 -O2 -fPIC -shared",
+  "library_path": "/usr/lib/aarch64-linux-gnu/libarm_compute.so.20.0.0",
+  "library_sha256": "b6fb6fe3f8232199d73c44b9c9e3bf7ff9e9eef23a0be86f1bef74abb75d3665",
+  "shim_sha256": "04cd6448f95e2d4dc00f6fb0e1509b2c63927e0e17b99b2e310daed689392c71",
+  "runtime_env": {"NEScheduler_threads": 1},
+  "supported_dtypes": ["F32"],
+  "decision": "REJECTED_NUMERICAL_GATE"
+}

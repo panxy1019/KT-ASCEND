@@ -1,0 +1,22 @@
+can not use command: npu-smi info
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-p3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+{
+  "error": "intermediate_size (1408) must be divisible by QK_K (256) for Llamafile backend",
+  "error_type": "ValueError",
+  "gguf": "/workspace/round4a5-reference/deepseek-v2-lite-p3-f32.gguf",
+  "hidden_size": 2048,
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "moe_intermediate_size": 1408,
+  "num_experts": 64,
+  "parent": "440df948027128318bc30a11a545433eb0c7d383",
+  "schema": "round5-raw-dsv2-llamafile-capability-v1",
+  "sglang": "3424f35d0e60f03b9e75d9b90941f8f4cb944524",
+  "status": "FAIL",
+  "top_k": 6,
+  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 6, in <module>\n  File \"/workspace/results/venv-raw/lib/python3.11/site-packages/kt_kernel/utils/llamafile.py\", line 95, in __init__\n    raise ValueError(\nValueError: intermediate_size (1408) must be divisible by QK_K (256) for Llamafile backend\n"
+}

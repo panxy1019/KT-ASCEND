@@ -1,0 +1,13 @@
+{
+  "name": "OpenBLAS pthread",
+  "source": "Ubuntu 22.04 package",
+  "revision": "0.3.20+ds-1",
+  "architecture": "aarch64",
+  "compiler": "Ubuntu GCC 11.4.0 package build",
+  "library_path": "/usr/lib/aarch64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so",
+  "library_sha256": "3ea6a3c232c7b17de61da3405b2a9a64b3a76fb515bbbf2dfeb99b384c8cdde6",
+  "runtime_env": {"inner_threads": 1},
+  "supported_shapes": ["X[1,2048]xW[1408,2048]^T", "X[1,1408]xW[2048,1408]^T"],
+  "supported_dtypes": ["F32 materialized BF16-valued operands"],
+  "decision": "REJECTED_FULL_P1_42_OF_45"
+}

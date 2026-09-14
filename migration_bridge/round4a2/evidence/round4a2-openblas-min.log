@@ -1,0 +1,112 @@
+can not use command: npu-smi info
+loaded_weights=[6, 8, 25, 36]
+collected_samples=4
+loaded_backends=['openblas-1t']
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-layer17-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 11
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+llamafile_wrapper_ready
+sample=0 E6 stage=llamafile-start
+sample=0 E6 stage=llamafile-done
+sample=0 E6 stage=openblas-1t-start
+sample=0 E6 stage=openblas-1t-done
+sample=0 E6 openblas-1t=1.64378e-08 llamafile=5.26074e-07
+sample=1 E8 stage=llamafile-start
+sample=1 E8 stage=llamafile-done
+sample=1 E8 stage=openblas-1t-start
+sample=1 E8 stage=openblas-1t-done
+sample=1 E8 openblas-1t=0 llamafile=0.000187512
+sample=2 E25 stage=llamafile-start
+sample=2 E25 stage=llamafile-done
+sample=2 E25 stage=openblas-1t-start
+sample=2 E25 stage=openblas-1t-done
+sample=2 E25 openblas-1t=0 llamafile=0
+sample=3 E36 stage=llamafile-start
+sample=3 E36 stage=llamafile-done
+sample=3 E36 stage=openblas-1t-start
+sample=3 E36 stage=openblas-1t-done
+sample=3 E36 openblas-1t=0 llamafile=0
+{
+  "schema_version": 1,
+  "layer": 17,
+  "experts": [
+    6,
+    8,
+    25,
+    36
+  ],
+  "samples_per_expert": 1,
+  "repeats": 10,
+  "capture_pairs": [
+    {
+      "label": "en01",
+      "hybrid_dir": "/workspace/round4a1-dumps",
+      "npu_dir": "/workspace/round4a1-npu-dumps"
+    },
+    {
+      "label": "struct03",
+      "hybrid_dir": "/workspace/round4a1-struct03-hybrid-output-dumps",
+      "npu_dir": "/workspace/round4a1-struct03-allnpu-dumps"
+    }
+  ],
+  "llamafile_summary": {
+    "sample_count": 4,
+    "median_down_relative_l2": 2.630371281725392e-07,
+    "max_down_relative_l2": 0.0001875117709873328,
+    "all_repeats_deterministic": true,
+    "median_expert_seconds": 0.00800245045684278
+  },
+  "backend_summaries": {
+    "openblas-1t": {
+      "library": "/usr/lib/aarch64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so",
+      "library_sha256": "3ea6a3c232c7b17de61da3405b2a9a64b3a76fb515bbbf2dfeb99b384c8cdde6",
+      "threads": 1,
+      "sample_count": 4,
+      "median_down_relative_l2": 0.0,
+      "max_down_relative_l2": 1.6437813941699018e-08,
+      "all_repeats_deterministic": true,
+      "median_expert_seconds": 0.005564541555941105
+    }
+  }
+}
+CPUInfer[0xaaaaf02b3530]: Hello
+WorkerPool[0xaaaaf2f331b0] 1 subpools, [numa:threads][0:16]
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaaaf2f331b0, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaaaf02b3530]: Goodbye

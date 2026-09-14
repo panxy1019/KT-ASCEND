@@ -1,0 +1,159 @@
+can not use command: npu-smi info
+loaded_weights=[6, 8, 25, 36]
+collected_samples=12
+loaded_backends=['openblas-isolated']
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-layer17-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 11
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+llamafile_wrapper_ready
+sample=0 E6 stage=llamafile-start
+sample=0 E6 stage=llamafile-done
+sample=0 E6 stage=openblas-isolated-start
+sample=0 E6 stage=openblas-isolated-done
+sample=0 E6 openblas-isolated=1.64378e-08 llamafile=1.64378e-08
+sample=1 E6 stage=llamafile-start
+sample=1 E6 stage=llamafile-done
+sample=1 E6 stage=openblas-isolated-start
+sample=1 E6 stage=openblas-isolated-done
+sample=1 E6 openblas-isolated=0 llamafile=0
+sample=2 E6 stage=llamafile-start
+sample=2 E6 stage=llamafile-done
+sample=2 E6 stage=openblas-isolated-start
+sample=2 E6 stage=openblas-isolated-done
+sample=2 E6 openblas-isolated=7.5441e-06 llamafile=7.5441e-06
+sample=3 E8 stage=llamafile-start
+sample=3 E8 stage=llamafile-done
+sample=3 E8 stage=openblas-isolated-start
+sample=3 E8 stage=openblas-isolated-done
+sample=3 E8 openblas-isolated=0 llamafile=0
+sample=4 E8 stage=llamafile-start
+sample=4 E8 stage=llamafile-done
+sample=4 E8 stage=openblas-isolated-start
+sample=4 E8 stage=openblas-isolated-done
+sample=4 E8 openblas-isolated=5.66978e-07 llamafile=5.66978e-07
+sample=5 E8 stage=llamafile-start
+sample=5 E8 stage=llamafile-done
+sample=5 E8 stage=openblas-isolated-start
+sample=5 E8 stage=openblas-isolated-done
+sample=5 E8 openblas-isolated=0 llamafile=0
+sample=6 E25 stage=llamafile-start
+sample=6 E25 stage=llamafile-done
+sample=6 E25 stage=openblas-isolated-start
+sample=6 E25 stage=openblas-isolated-done
+sample=6 E25 openblas-isolated=0 llamafile=0
+sample=7 E25 stage=llamafile-start
+sample=7 E25 stage=llamafile-done
+sample=7 E25 stage=openblas-isolated-start
+sample=7 E25 stage=openblas-isolated-done
+sample=7 E25 openblas-isolated=0 llamafile=0
+sample=8 E25 stage=llamafile-start
+sample=8 E25 stage=llamafile-done
+sample=8 E25 stage=openblas-isolated-start
+sample=8 E25 stage=openblas-isolated-done
+sample=8 E25 openblas-isolated=0 llamafile=0
+sample=9 E36 stage=llamafile-start
+sample=9 E36 stage=llamafile-done
+sample=9 E36 stage=openblas-isolated-start
+sample=9 E36 stage=openblas-isolated-done
+sample=9 E36 openblas-isolated=0 llamafile=0
+sample=10 E36 stage=llamafile-start
+sample=10 E36 stage=llamafile-done
+sample=10 E36 stage=openblas-isolated-start
+sample=10 E36 stage=openblas-isolated-done
+sample=10 E36 openblas-isolated=0 llamafile=0
+sample=11 E36 stage=llamafile-start
+sample=11 E36 stage=llamafile-done
+sample=11 E36 stage=openblas-isolated-start
+sample=11 E36 stage=openblas-isolated-done
+sample=11 E36 openblas-isolated=0 llamafile=0
+{
+  "schema_version": 1,
+  "layer": 17,
+  "experts": [
+    6,
+    8,
+    25,
+    36
+  ],
+  "max_samples_per_expert": 3,
+  "min_samples_per_expert": 3,
+  "sample_counts": {
+    "6": 3,
+    "8": 3,
+    "25": 3,
+    "36": 3
+  },
+  "repeats": 10,
+  "capture_pairs": [
+    {
+      "label": "en01",
+      "hybrid_dir": "/workspace/round4a1-dumps",
+      "npu_dir": "/workspace/round4a1-npu-dumps"
+    },
+    {
+      "label": "struct03",
+      "hybrid_dir": "/workspace/round4a1-struct03-hybrid-output-dumps",
+      "npu_dir": "/workspace/round4a1-struct03-allnpu-dumps"
+    }
+  ],
+  "llamafile_summary": {
+    "sample_count": 12,
+    "median_down_relative_l2": 0.0,
+    "max_down_relative_l2": 7.544103706337898e-06,
+    "all_repeats_deterministic": true,
+    "median_expert_seconds": 0.008020377485081553
+  },
+  "backend_summaries": {
+    "openblas-isolated": {
+      "library": "/usr/lib/aarch64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so",
+      "library_sha256": "3ea6a3c232c7b17de61da3405b2a9a64b3a76fb515bbbf2dfeb99b384c8cdde6",
+      "threads": 1,
+      "sample_count": 12,
+      "median_down_relative_l2": 0.0,
+      "max_down_relative_l2": 7.544103706337898e-06,
+      "all_repeats_deterministic": true,
+      "median_expert_seconds": 0.006934209261089563
+    }
+  }
+}
+CPUInfer[0xaaaae0347200]: Hello
+WorkerPool[0xaaaae2f750d0] 1 subpools, [numa:threads][0:16]
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaaae2f750d0, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaaae0347200]: Goodbye

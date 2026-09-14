@@ -1,0 +1,335 @@
+{
+  "category_counts": {
+    "chinese_factual": 4,
+    "code_reasoning": 3,
+    "english_factual": 4,
+    "math_numeric": 3,
+    "structured_json": 2
+  },
+  "corpus": "H2",
+  "count": 16,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "h2_en_01",
+      "input_ids": [
+        2640,
+        5817,
+        3190,
+        581,
+        1094,
+        280,
+        11687,
+        6,
+        82,
+        13510,
+        30
+      ],
+      "text": "What gas makes up most of Earth's atmosphere?"
+    },
+    {
+      "category": "english_factual",
+      "id": "h2_en_02",
+      "input_ids": [
+        15526,
+        3085,
+        5410,
+        254,
+        10641,
+        3787,
+        280,
+        84625,
+        30
+      ],
+      "text": "Which country contains the ancient city of Petra?"
+    },
+    {
+      "category": "english_factual",
+      "id": "h2_en_03",
+      "input_ids": [
+        11604,
+        16786,
+        429,
+        9800,
+        674,
+        14083,
+        30
+      ],
+      "text": "Who painted The Starry Night?"
+    },
+    {
+      "category": "english_factual",
+      "id": "h2_en_04",
+      "input_ids": [
+        2640,
+        11295,
+        9443,
+        35451,
+        7001,
+        30
+      ],
+      "text": "What instrument measures atmospheric pressure?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h2_zh_01",
+      "input_ids": [
+        47618,
+        10555,
+        58138,
+        29973,
+        2776,
+        2224
+      ],
+      "text": "黄河最终流入哪个海？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h2_zh_02",
+      "input_ids": [
+        2493,
+        9546,
+        82282,
+        85993,
+        5387,
+        22172,
+        85993,
+        17391,
+        2224
+      ],
+      "text": "中国传统二十四节气中的第一个节气是什么？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h2_zh_03",
+      "input_ids": [
+        89730,
+        16882,
+        6674,
+        992,
+        1102,
+        50471,
+        29973,
+        8702,
+        2404,
+        2224
+      ],
+      "text": "秦始皇统一六国后建立了哪个朝代？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h2_zh_04",
+      "input_ids": [
+        19826,
+        2370,
+        764,
+        63872,
+        14183,
+        78615,
+        504,
+        6676,
+        40119,
+        2224
+      ],
+      "text": "太阳系中体积最大的行星是哪一颗？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "h2_math_01",
+      "input_ids": [
+        1847,
+        207,
+        20,
+        81176,
+        2295,
+        207,
+        19,
+        17,
+        13,
+        20,
+        11182,
+        11,
+        856,
+        317,
+        254,
+        2295,
+        280,
+        207,
+        23,
+        81176,
+        30
+      ],
+      "text": "If 5 notebooks cost 42.5 dollars, what is the cost of 8 notebooks?"
+    },
+    {
+      "category": "math_numeric",
+      "id": "h2_math_02",
+      "input_ids": [
+        19972,
+        313,
+        207,
+        18,
+        7,
+        87,
+        919,
+        207,
+        19,
+        8,
+        403,
+        207,
+        17,
+        22,
+        285,
+        2508,
+        1376,
+        13
+      ],
+      "text": "Solve 3(x + 4) = 27 and report x."
+    },
+    {
+      "category": "math_numeric",
+      "id": "h2_math_03",
+      "input_ids": [
+        32,
+        1329,
+        22320,
+        643,
+        12882,
+        207,
+        24,
+        285,
+        207,
+        16,
+        17,
+        13,
+        2461,
+        317,
+        895,
+        8420,
+        93154,
+        2355,
+        30
+      ],
+      "text": "A right triangle has legs 9 and 12. What is its hypotenuse?"
+    },
+    {
+      "category": "structured_json",
+      "id": "h2_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        327,
+        245,
+        2135,
+        29241,
+        414,
+        3122,
+        366,
+        1012,
+        207,
+        16,
+        24,
+        21,
+        20,
+        285,
+        2324,
+        1927,
+        13
+      ],
+      "text": "Return only JSON for a book titled Dune with year 1965 and available true."
+    },
+    {
+      "category": "structured_json",
+      "id": "h2_json_02",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        2159,
+        14237,
+        3074,
+        11,
+        5575,
+        11,
+        285,
+        5501,
+        276,
+        704,
+        31419,
+        98436,
+        13
+      ],
+      "text": "Return only a JSON object mapping red, green, and blue to their RGB primaries."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "h2_code_01",
+      "input_ids": [
+        9081,
+        245,
+        12974,
+        1157,
+        344,
+        94137,
+        984,
+        2571,
+        24350,
+        11971,
+        13
+      ],
+      "text": "Write a Python function that merges two already sorted lists."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "h2_code_02",
+      "input_ids": [
+        99297,
+        254,
+        766,
+        13913,
+        280,
+        39621,
+        881,
+        245,
+        11777,
+        2376,
+        13
+      ],
+      "text": "Explain the time complexity of inserting into a hash table."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "h2_code_03",
+      "input_ids": [
+        27559,
+        24315,
+        64645,
+        276,
+        1275,
+        254,
+        6059,
+        8760,
+        280,
+        245,
+        10038,
+        5330,
+        13
+      ],
+      "text": "Give pseudocode to find the maximum depth of a binary tree."
+    }
+  ],
+  "protocol": {
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "independent_heldout",
+  "schema_version": 1,
+  "sha256": "b1874527eca8c01ab3df16215679eb7365a938b2c89dcb910334ad70bba7b787",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

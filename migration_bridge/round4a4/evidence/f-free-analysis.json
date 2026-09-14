@@ -1,0 +1,82 @@
+{
+  "ambiguous_divergences": 2,
+  "baseline_free_sha256": "3fb993a229ae038ea1bda9b9d2c8df450a52d5f4232f039353c01648c3cc38a2",
+  "contract_sha256": "accbbc15baf49d869b062dc2b71b4fe6f71a7fa8bd74f27120757d1c1f0e6627",
+  "corpus": "F",
+  "divergences": 2,
+  "hybrid_free_sha256": "5d3f5c65fa03af58fea16df5a7bd07a636fcd13e30cbfb4df30bfc17f683f475",
+  "membership_pass": true,
+  "metrics_sha256": "be3fe99005b3a2558335a4c7cf679b522c59f6c70a166812b0379a7a6cb0111b",
+  "requests": 6,
+  "rows": [
+    {
+      "B_pair": 2.1875,
+      "ambiguity_ids": [
+        6,
+        82913,
+        317,
+        487,
+        839,
+        31512,
+        1217,
+        29638,
+        84446,
+        643,
+        1958
+      ],
+      "ambiguity_size": 11,
+      "baseline_pairwise_margin_to_hybrid": null,
+      "baseline_token": 82913,
+      "class": "PAIRWISE_AMBIGUOUS",
+      "first_divergence": 32,
+      "hybrid_token": 6,
+      "hybrid_token_in_ambiguity_set": true,
+      "pass": true,
+      "prompt_id": "f_en_01"
+    },
+    {
+      "class": "EXACT",
+      "first_divergence": null,
+      "pass": true,
+      "prompt_id": "f_zh_01"
+    },
+    {
+      "class": "EXACT",
+      "first_divergence": null,
+      "pass": true,
+      "prompt_id": "f_math_01"
+    },
+    {
+      "class": "EXACT",
+      "first_divergence": null,
+      "pass": true,
+      "prompt_id": "f_json_01"
+    },
+    {
+      "class": "EXACT",
+      "first_divergence": null,
+      "pass": true,
+      "prompt_id": "f_code_01"
+    },
+    {
+      "B_pair": 2.1875,
+      "ambiguity_ids": [
+        254,
+        245
+      ],
+      "ambiguity_size": 2,
+      "baseline_pairwise_margin_to_hybrid": 0.125,
+      "baseline_token": 254,
+      "class": "PAIRWISE_AMBIGUOUS",
+      "first_divergence": 10,
+      "hybrid_token": 245,
+      "hybrid_token_in_ambiguity_set": true,
+      "pass": true,
+      "prompt_id": "f_code_02"
+    }
+  ],
+  "schema_version": 1,
+  "sha256": "5fd2580c3d5aaafb91f36cf2ed7ac2cb064ce151e37d55c32ae6ded3a0f53588",
+  "stable_divergences": 0,
+  "status": "A3_VERIFIED_READY"
+}

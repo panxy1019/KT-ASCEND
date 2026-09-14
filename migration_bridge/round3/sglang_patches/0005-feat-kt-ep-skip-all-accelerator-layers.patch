@@ -1,0 +1,69 @@
+From 691ba5a6f26e39711cdd86ab4b246d63d1911473 Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 23:04:15 +0000
+Subject: [PATCH 5/8] feat(kt-ep): skip all-accelerator layers
+
+---
+ python/sglang/srt/layers/moe/kt_ep_wrapper.py | 15 +++++++++++++++
+ test/registered/moe/test_kt_ep_ascend_e2e.py  |  8 ++++++++
+ 2 files changed, 23 insertions(+)
+
+diff --git a/python/sglang/srt/layers/moe/kt_ep_wrapper.py b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+index f1b2bb9fb..4a4bbb3fc 100644
+--- a/python/sglang/srt/layers/moe/kt_ep_wrapper.py
++++ b/python/sglang/srt/layers/moe/kt_ep_wrapper.py
+@@ -3189,6 +3189,12 @@ def create_kt_config_from_server_args(
+ 
+     # Get mask for this specific layer
+     gpu_experts_mask = masks[layer_idx]
++    if not layer_needs_kt_wrapper(gpu_experts_mask):
++        logger.info(
++            "Skipping KT wrapper for all-accelerator layer %d",
++            layer_idx,
++        )
++        return None
+ 
+     return KTConfig(
+         layer_idx=layer_idx,
+@@ -3207,6 +3213,15 @@ def create_kt_config_from_server_args(
+     )
+ 
+ 
++def layer_needs_kt_wrapper(gpu_experts_mask: torch.Tensor) -> bool:
++    """Return whether a layer has at least one CPU-owned routed expert."""
++    if gpu_experts_mask.device.type != "cpu":
++        raise ValueError("gpu_experts_mask must be a CPU tensor")
++    if gpu_experts_mask.dtype != torch.bool or gpu_experts_mask.ndim != 1:
++        raise ValueError("gpu_experts_mask must be a rank-1 bool tensor")
++    return not bool(gpu_experts_mask.all().item())
++
++
+ @torch.compile(dynamic=True, backend=get_compiler_backend())
+ def mask_and_remap_expert_ids(
+     topk_ids: torch.Tensor,
+diff --git a/test/registered/moe/test_kt_ep_ascend_e2e.py b/test/registered/moe/test_kt_ep_ascend_e2e.py
+index 4d0aa8088..4e5f7815e 100644
+--- a/test/registered/moe/test_kt_ep_ascend_e2e.py
++++ b/test/registered/moe/test_kt_ep_ascend_e2e.py
+@@ -20,6 +20,7 @@ from sglang.srt.eplb.expert_distribution import (
+ from sglang.srt.layers.moe.kt_ep_wrapper import (
+     KTEPWrapperMethod,
+     SharedStagingBuffer,
++    layer_needs_kt_wrapper,
+ )
+ from sglang.srt.layers.moe.token_dispatcher.standard import (
+     StandardCombineInput,
+@@ -48,6 +49,13 @@ class _Recorder:
+         pass
+ 
+ 
++def test_kt_wrapper_is_skipped_for_all_accelerator_layers():
++    assert not layer_needs_kt_wrapper(torch.ones(64, dtype=torch.bool))
++    one_cpu_expert = torch.ones(64, dtype=torch.bool)
++    one_cpu_expert[6] = False
++    assert layer_needs_kt_wrapper(one_cpu_expert)
++
++
+ class _TorchNPUExpertMethod:
+     """Small real-NPU provider for the two accelerator-owned fixture experts."""
+ 

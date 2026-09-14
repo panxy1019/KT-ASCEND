@@ -1,0 +1,57 @@
+{
+  "all_npu_layers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "anchor": {
+    "expert": 8,
+    "layer": 17
+  },
+  "format": "sglang_kt_frequency_logical_count",
+  "frequency_source_sha256": "cd405edb882b85c8a9651b428a7ec35ba5c3f04cd2bfdb1b6af67948fa1c9a22",
+  "gpu_experts_ratio": 0.9993990384615384,
+  "layer_placements": [
+    {
+      "cpu_experts": [
+        8
+      ],
+      "layer": 17,
+      "npu_expert_count": 63
+    }
+  ],
+  "mask_dtype": "torch.bool",
+  "mask_shape": [
+    27,
+    64
+  ],
+  "placement_sha256": "f3e14a883aa7910c264d77cc927c4a27d9127c91ab8f786563ebe1ffcaf2d122",
+  "profile": "p0",
+  "pt_sha256": "74b3ac6e2a62e6430d0bf186aea87bc899c8c71c35b3ae57e4d3a639394f15cd",
+  "selected_cpu_expert_count": 1,
+  "selected_layer_count": 1,
+  "total_moe_experts": 1664,
+  "total_npu_experts": 1663
+}

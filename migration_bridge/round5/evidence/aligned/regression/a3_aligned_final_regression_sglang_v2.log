@@ -1,0 +1,17 @@
+....                                                                     [100%]
+=============================== warnings summary ===============================
+../../../../usr/local/python3.11.15/lib/python3.11/site-packages/_pytest/config/__init__.py:1437
+  /usr/local/python3.11.15/lib/python3.11/site-packages/_pytest/config/__init__.py:1437: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+python/sglang/srt/layers/quantization/awq.py:80
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+python/sglang/srt/layers/quantization/gguf.py:47
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+    warnings.warn(f"Only CUDA support GGUF quantization currently.")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+4 passed, 3 warnings in 10.83s

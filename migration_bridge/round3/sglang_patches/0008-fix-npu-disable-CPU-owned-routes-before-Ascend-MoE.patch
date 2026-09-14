@@ -1,0 +1,85 @@
+From 06b319dc3a62b77c880e36b042d273bfc3957d12 Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Fri, 28 Aug 2026 01:33:02 +0000
+Subject: [PATCH 8/8] fix(npu): disable CPU-owned routes before Ascend MoE
+
+---
+ .../sglang/srt/layers/quantization/unquant.py | 18 +++++++++++++++-
+ test/registered/moe/test_kt_ep_ascend_e2e.py  | 21 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
+
+diff --git a/python/sglang/srt/layers/quantization/unquant.py b/python/sglang/srt/layers/quantization/unquant.py
+index b2923028f..4d987ca02 100644
+--- a/python/sglang/srt/layers/quantization/unquant.py
++++ b/python/sglang/srt/layers/quantization/unquant.py
+@@ -152,6 +152,15 @@ class UnquantizedLinearMethod(LinearMethodBase):
+         return F.linear(x, layer.weight, bias)
+ 
+ 
++def _sanitize_ascend_moe_routes(topk_ids, topk_weights):
++    """Disable KT CPU routes while keeping Ascend route IDs in range."""
++    valid_routes = topk_ids >= 0
++    return (
++        topk_ids.clamp_min(0).to(torch.int32),
++        topk_weights * valid_routes.to(topk_weights.dtype),
++    )
++
++
+ class UnquantizedFusedMoEMethod(FusedMoEMethodBase, MultiPlatformOp):
+     """MoE method without quantization."""
+ 
+@@ -554,7 +563,14 @@ class UnquantizedFusedMoEMethod(FusedMoEMethodBase, MultiPlatformOp):
+         original_dtype = x.dtype
+         num_tokens = x.shape[0]
+         topk_weights = topk_weights.to(x.dtype)
+-        topk_ids = topk_ids.to(torch.int32)
++        # KT marks CPU-owned routes with expert ID -1.  Ascend's routing ops
++        # require every active ID to be in the physical accelerator expert
++        # range; feeding -1 produces undefined routing/finalization results.
++        # Keep the route mathematically disabled by zeroing its scale and use
++        # physical expert 0 only as a valid placeholder for the NPU kernels.
++        topk_ids, topk_weights = _sanitize_ascend_moe_routes(
++            topk_ids, topk_weights
++        )
+         # The routed IDs passed by KT are physical accelerator-local IDs.  A
+         # hybrid layer can therefore own fewer accelerator weights than its
+         # logical expert count (for example, 63 of 64 experts).  Ascend's
+diff --git a/test/registered/moe/test_kt_ep_ascend_e2e.py b/test/registered/moe/test_kt_ep_ascend_e2e.py
+index d9c848b6e..aa61aa062 100644
+--- a/test/registered/moe/test_kt_ep_ascend_e2e.py
++++ b/test/registered/moe/test_kt_ep_ascend_e2e.py
+@@ -27,6 +27,7 @@ from sglang.srt.layers.moe.token_dispatcher.standard import (
+     StandardDispatchOutput,
+ )
+ from sglang.srt.layers.moe.topk import StandardTopKOutput
++from sglang.srt.layers.quantization.unquant import _sanitize_ascend_moe_routes
+ 
+ 
+ PARENT_ROOT = Path(__file__).resolve().parents[5]
+@@ -99,6 +100,26 @@ def test_llamafile_expert_mapping_is_int32_at_load_boundary(monkeypatch):
+     assert loaded_mappings[0].tolist() == [4, 5, 6, 7]
+ 
+ 
++def test_ascend_routes_disable_cpu_owned_experts():
++    route_ids = torch.tensor([[4, -1], [-1, 2]], dtype=torch.int64, device="npu")
++    route_weights = torch.tensor(
++        [[0.25, 0.75], [0.6, 0.4]], dtype=torch.float32, device="npu"
++    )
++
++    sanitized_ids, sanitized_weights = _sanitize_ascend_moe_routes(
++        route_ids, route_weights
++    )
++
++    assert sanitized_ids.dtype == torch.int32
++    assert sanitized_ids.cpu().tolist() == [[4, 0], [0, 2]]
++    torch.testing.assert_close(
++        sanitized_weights.cpu(),
++        torch.tensor([[0.25, 0.0], [0.0, 0.4]], dtype=torch.float32),
++        rtol=0,
++        atol=0,
++    )
++
++
+ class _TorchNPUExpertMethod:
+     """Small real-NPU provider for the two accelerator-owned fixture experts."""
+ 

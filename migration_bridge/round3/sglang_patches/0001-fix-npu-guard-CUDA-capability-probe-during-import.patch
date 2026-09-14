@@ -1,0 +1,51 @@
+From a3ef6a76cf7740830abc5acff2512b6fab6c0529 Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 08:51:52 +0000
+Subject: [PATCH 1/8] fix(npu): guard CUDA capability probe during import
+
+---
+ python/sglang/srt/utils/common.py             |  4 ++++
+ .../utils/test_platform_capability_guards.py  | 19 +++++++++++++++++++
+ 2 files changed, 23 insertions(+)
+ create mode 100644 test/registered/utils/test_platform_capability_guards.py
+
+diff --git a/python/sglang/srt/utils/common.py b/python/sglang/srt/utils/common.py
+index 86318eb5e..394235daf 100644
+--- a/python/sglang/srt/utils/common.py
++++ b/python/sglang/srt/utils/common.py
+@@ -3611,6 +3611,10 @@ def mxfp8_block_convert_required():
+     """
+     import torch
+     if not torch.version.hip:
++        # MXFP8 block conversion is a CUDA capability decision.  Importing the
++        # quantization registry on an NPU/CPU build must not initialize CUDA.
++        if not torch.cuda.is_available():
++            return False
+         cap = torch.cuda.get_device_capability()
+         if cap[0] < 10:
+             return True
+diff --git a/test/registered/utils/test_platform_capability_guards.py b/test/registered/utils/test_platform_capability_guards.py
+new file mode 100644
+index 000000000..990128d4d
+--- /dev/null
++++ b/test/registered/utils/test_platform_capability_guards.py
+@@ -0,0 +1,19 @@
++# SPDX-License-Identifier: Apache-2.0
++
++from unittest.mock import patch
++
++from sglang.srt.utils.common import mxfp8_block_convert_required
++
++
++def test_mxfp8_capability_probe_does_not_initialize_unavailable_cuda():
++    mxfp8_block_convert_required.cache_clear()
++    with (
++        patch("torch.version.hip", None),
++        patch("torch.cuda.is_available", return_value=False),
++        patch(
++            "torch.cuda.get_device_capability",
++            side_effect=AssertionError("CUDA must not be initialized"),
++        ),
++    ):
++        assert mxfp8_block_convert_required() is False
++    mxfp8_block_convert_required.cache_clear()

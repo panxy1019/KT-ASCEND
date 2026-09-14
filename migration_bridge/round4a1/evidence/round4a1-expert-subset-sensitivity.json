@@ -1,0 +1,271 @@
+{
+  "baseline_output_ids": [
+    185,
+    185,
+    62031,
+    484,
+    64645,
+    25,
+    185,
+    185,
+    12,
+    8828,
+    185,
+    12,
+    6470,
+    274,
+    10858,
+    185
+  ],
+  "limitations": [
+    "API exposes selected-token/top-k logprobs, not the full logits tensor.",
+    "Routed-output comparisons stop when Layer 17 inputs cease to be bitwise same-history."
+  ],
+  "max_new_tokens": 16,
+  "prompt_id": "v_struct_03",
+  "schema_version": 1,
+  "subsets": [
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6
+      ],
+      "cpu_hit_count": 13,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.06961750984191895,
+      "name": "e6",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 8,
+      "routed_output_max_abs_same_history": 0.00048828125,
+      "routed_output_relative_l2_same_history": 1.319120721680478e-05
+    },
+    {
+      "baseline_token": null,
+      "cpu_experts": [
+        8
+      ],
+      "cpu_hit_count": 2,
+      "first_divergent_token": null,
+      "hybrid_token": null,
+      "max_abs_selected_token_logprob_delta_same_history": 0.0,
+      "name": "e8",
+      "routed_output_compared_passes": 11,
+      "routed_output_exact_passes": 11,
+      "routed_output_max_abs_same_history": 0.0,
+      "routed_output_relative_l2_same_history": 0.0
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        25
+      ],
+      "cpu_hit_count": 8,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08269095420837402,
+      "name": "e25",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 8,
+      "routed_output_max_abs_same_history": 0.000732421875,
+      "routed_output_relative_l2_same_history": 1.72240903421632e-05
+    },
+    {
+      "baseline_token": null,
+      "cpu_experts": [
+        36
+      ],
+      "cpu_hit_count": 5,
+      "first_divergent_token": null,
+      "hybrid_token": null,
+      "max_abs_selected_token_logprob_delta_same_history": 0.059049010276794434,
+      "name": "e36",
+      "routed_output_compared_passes": 11,
+      "routed_output_exact_passes": 10,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 2.552109632634688e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        8
+      ],
+      "cpu_hit_count": 15,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.06961750984191895,
+      "name": "e6_8",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 8,
+      "routed_output_max_abs_same_history": 0.00048828125,
+      "routed_output_relative_l2_same_history": 1.319120721680478e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        25
+      ],
+      "cpu_hit_count": 21,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08432769775390625,
+      "name": "e6_25",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 6,
+      "routed_output_max_abs_same_history": 0.000732421875,
+      "routed_output_relative_l2_same_history": 2.1695097048680888e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        36
+      ],
+      "cpu_hit_count": 18,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08333134651184082,
+      "name": "e6_36",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 7,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 2.9235373636206925e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        8,
+        25
+      ],
+      "cpu_hit_count": 10,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08269095420837402,
+      "name": "e8_25",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 8,
+      "routed_output_max_abs_same_history": 0.000732421875,
+      "routed_output_relative_l2_same_history": 1.72240903421632e-05
+    },
+    {
+      "baseline_token": null,
+      "cpu_experts": [
+        8,
+        36
+      ],
+      "cpu_hit_count": 7,
+      "first_divergent_token": null,
+      "hybrid_token": null,
+      "max_abs_selected_token_logprob_delta_same_history": 0.059049010276794434,
+      "name": "e8_36",
+      "routed_output_compared_passes": 11,
+      "routed_output_exact_passes": 10,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 2.552109632634688e-05
+    },
+    {
+      "baseline_token": null,
+      "cpu_experts": [
+        25,
+        36
+      ],
+      "cpu_hit_count": 13,
+      "first_divergent_token": null,
+      "hybrid_token": null,
+      "max_abs_selected_token_logprob_delta_same_history": 0.03290140628814697,
+      "name": "e25_36",
+      "routed_output_compared_passes": 11,
+      "routed_output_exact_passes": 9,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 3.058094349433491e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        8,
+        25
+      ],
+      "cpu_hit_count": 23,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08432769775390625,
+      "name": "e6_8_25",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 6,
+      "routed_output_max_abs_same_history": 0.000732421875,
+      "routed_output_relative_l2_same_history": 2.1695097048680888e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        8,
+        36
+      ],
+      "cpu_hit_count": 20,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.08333134651184082,
+      "name": "e6_8_36",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 7,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 2.9235373636206925e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        25,
+        36
+      ],
+      "cpu_hit_count": 26,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.03413248062133789,
+      "name": "e6_25_36",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 6,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 3.393193716491328e-05
+    },
+    {
+      "baseline_token": null,
+      "cpu_experts": [
+        8,
+        25,
+        36
+      ],
+      "cpu_hit_count": 15,
+      "first_divergent_token": null,
+      "hybrid_token": null,
+      "max_abs_selected_token_logprob_delta_same_history": 0.03290140628814697,
+      "name": "e8_25_36",
+      "routed_output_compared_passes": 11,
+      "routed_output_exact_passes": 9,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 3.058094349433491e-05
+    },
+    {
+      "baseline_token": 8828,
+      "cpu_experts": [
+        6,
+        8,
+        25,
+        36
+      ],
+      "cpu_hit_count": 28,
+      "first_divergent_token": 9,
+      "hybrid_token": 1273,
+      "max_abs_selected_token_logprob_delta_same_history": 0.03413248062133789,
+      "name": "e6_8_25_36",
+      "routed_output_compared_passes": 10,
+      "routed_output_exact_passes": 6,
+      "routed_output_max_abs_same_history": 0.0009765625,
+      "routed_output_relative_l2_same_history": 3.393193716491328e-05
+    }
+  ]
+}

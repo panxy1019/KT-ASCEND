@@ -1,0 +1,194 @@
+{
+  "cases": {
+    "c0_npu_only": {
+      "cpu_owned_routes": 0,
+      "hybrid_vs_all_npu": {
+        "cosine": 1.0000004768371582,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      },
+      "ktep_vs_explicit": {
+        "cosine": 1.0000004768371582,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    "c1_one_cpu": {
+      "cpu_owned_routes": 1,
+      "hybrid_vs_all_npu": {
+        "cosine": 0.9999963045120239,
+        "max_abs": 0.015533447265625,
+        "mean_abs": 0.0018546361243352294,
+        "relative_l2": 0.0028112817728856506
+      },
+      "ktep_vs_explicit": {
+        "cosine": 1.0,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    "c2_two_cpu": {
+      "cpu_owned_routes": 2,
+      "hybrid_vs_all_npu": {
+        "cosine": 0.9999949932098389,
+        "max_abs": 0.014497756958007812,
+        "mean_abs": 0.0019284095615148544,
+        "relative_l2": 0.0033400298459495795
+      },
+      "ktep_vs_explicit": {
+        "cosine": 1.0,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    "c3_cpu_positions": {
+      "cpu_owned_routes": 2,
+      "hybrid_vs_all_npu": {
+        "cosine": 0.9999964833259583,
+        "max_abs": 0.009185791015625,
+        "mean_abs": 0.0013230801559984684,
+        "relative_l2": 0.002719694507910135
+      },
+      "ktep_vs_explicit": {
+        "cosine": 0.9999998807907104,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    },
+    "c4_multi_token": {
+      "cpu_owned_routes": 4,
+      "hybrid_vs_all_npu": {
+        "cosine": 0.9999940991401672,
+        "max_abs": 0.008852005004882812,
+        "mean_abs": 0.001504799467511475,
+        "relative_l2": 0.003539830520600558
+      },
+      "ktep_vs_explicit": {
+        "cosine": 1.0,
+        "max_abs": 0.0,
+        "mean_abs": 0.0,
+        "relative_l2": 0.0
+      }
+    }
+  },
+  "cpu_experts": [
+    6,
+    8,
+    25,
+    36
+  ],
+  "execution_mode": "overlap",
+  "layer": 17,
+  "lifecycle_forwards": 1000,
+  "lifecycle_unique_output_hashes": [
+    "878e638f32c3311f816f3dc01f6e83dcd822c4f332083a591675d3ccaaafaba2"
+  ],
+  "logical_to_local": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    -1,
+    6,
+    -1,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    -1,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    -1,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+  ],
+  "logical_to_local_dtype": "torch.int32",
+  "metrics": {
+    "cpu_not_hit_vs_all_npu": {
+      "cosine": 1.0000004768371582,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "final_shared_and_scaling_once": {
+      "cosine": 1.0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "ktep_vs_explicit": {
+      "cosine": 1.0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    }
+  },
+  "npu_experts_exercised": [
+    0,
+    12,
+    30,
+    51,
+    55,
+    63
+  ],
+  "output_sha256": {
+    "final": "2f25017046177a407220bae1cf240e8451e57bda34a4461347b4615329b4db17",
+    "routed": "878e638f32c3311f816f3dc01f6e83dcd822c4f332083a591675d3ccaaafaba2"
+  },
+  "physical_npu_expert_count": 60,
+  "routed_scaling_owner": "outer DeepSeek MoE exactly once",
+  "routing_weight_owner": "CPU and NPU providers exactly once before additive merge",
+  "shared_expert_owner": "outer DeepSeek MoE exactly once"
+}

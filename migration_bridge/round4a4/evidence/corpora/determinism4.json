@@ -1,0 +1,113 @@
+{
+  "category_counts": {
+    "chinese_factual": 1,
+    "english_factual": 1,
+    "math_numeric": 1,
+    "structured_json": 1
+  },
+  "corpus": "WP0_DETERMINISM4",
+  "count": 4,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "q2_en_04",
+      "input_ids": [
+        15526,
+        12438,
+        643,
+        254,
+        35721,
+        1012,
+        279,
+        769,
+        10735,
+        1317,
+        30
+      ],
+      "text": "Which planet has the shortest year in our solar system?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "q2_zh_04",
+      "input_ids": [
+        2493,
+        14183,
+        11619,
+        1850,
+        6099,
+        18867,
+        2209,
+        50246,
+        93954,
+        2224
+      ],
+      "text": "中国最大的淡水湖通常被认为是哪一个？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "q2_math_02",
+      "input_ids": [
+        32,
+        5554,
+        28043,
+        207,
+        17,
+        19,
+        15,
+        11182,
+        457,
+        207,
+        16,
+        20,
+        5040,
+        13,
+        2461,
+        317,
+        254,
+        2328,
+        4113,
+        30
+      ],
+      "text": "A shop discounts 240 dollars by 15 percent. What is the final price?"
+    },
+    {
+      "category": "structured_json",
+      "id": "q2_json_02",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        366,
+        8726,
+        5606,
+        11,
+        1437,
+        11,
+        285,
+        4640,
+        327,
+        77537,
+        11,
+        207,
+        17,
+        18,
+        11,
+        1927,
+        13
+      ],
+      "text": "Return only JSON with keys unit, value, and valid for Celsius, 23, true."
+    }
+  ],
+  "protocol": {
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "same_path_determinism",
+  "schema_version": 1,
+  "sha256": "a82ac6bf345d70aec0db7d499258e142dee12f14820163e1ddf48ae62432cf90",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

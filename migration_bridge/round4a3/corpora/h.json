@@ -1,0 +1,268 @@
+{
+  "corpus": "H",
+  "count": 12,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "h_en_fact_01",
+      "input_ids": [
+        2640,
+        317,
+        254,
+        6077,
+        3787,
+        280,
+        8900,
+        30
+      ],
+      "text": "What is the capital city of Canada?"
+    },
+    {
+      "category": "english_factual",
+      "id": "h_en_fact_02",
+      "input_ids": [
+        15526,
+        38200,
+        34078,
+        254,
+        1853,
+        8254,
+        280,
+        7745,
+        30
+      ],
+      "text": "Which scientist formulated the three laws of motion?"
+    },
+    {
+      "category": "english_factual",
+      "id": "h_en_fact_03",
+      "input_ids": [
+        15526,
+        2604,
+        37990,
+        5931,
+        1184,
+        254,
+        3807,
+        3123,
+        30
+      ],
+      "text": "Which organ pumps blood through the human body?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h_zh_fact_01",
+      "input_ids": [
+        14207,
+        38972,
+        12633,
+        25830,
+        10116,
+        15235,
+        6676,
+        8010,
+        31215,
+        70640,
+        2224
+      ],
+      "text": "珠穆朗玛峰位于哪两个国家的边界？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h_zh_fact_02",
+      "input_ids": [
+        2469,
+        92921,
+        8311,
+        21854,
+        10432,
+        18867,
+        2209,
+        6340,
+        44956,
+        2224
+      ],
+      "text": "《红楼梦》的作者通常被认为是谁？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "h_zh_fact_03",
+      "input_ids": [
+        28092,
+        14691,
+        19826,
+        1429,
+        3611,
+        35985,
+        28815,
+        4012,
+        1059,
+        25148,
+        2224
+      ],
+      "text": "地球绕太阳公转一周大约需要多长时间？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "h_math_01",
+      "input_ids": [
+        19972,
+        313,
+        207,
+        22,
+        87,
+        570,
+        207,
+        20,
+        403,
+        207,
+        19,
+        19,
+        285,
+        2102,
+        254,
+        1437,
+        280,
+        1376,
+        13
+      ],
+      "text": "Solve 7x - 5 = 44 and give the value of x."
+    },
+    {
+      "category": "math_numeric",
+      "id": "h_math_02",
+      "input_ids": [
+        32,
+        28099,
+        317,
+        207,
+        16,
+        18,
+        11480,
+        1234,
+        285,
+        207,
+        23,
+        11480,
+        5505,
+        13,
+        2461,
+        317,
+        895,
+        3046,
+        30
+      ],
+      "text": "A rectangle is 13 cm long and 8 cm wide. What is its area?"
+    },
+    {
+      "category": "structured_json",
+      "id": "h_json_01",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        2159,
+        366,
+        8726,
+        1210,
+        11,
+        4500,
+        11,
+        285,
+        5467,
+        327,
+        4233,
+        72,
+        11,
+        207,
+        17,
+        23,
+        11,
+        1927,
+        13
+      ],
+      "text": "Return only a JSON object with keys name, age, and active for Mei, 28, true."
+    },
+    {
+      "category": "structured_json",
+      "id": "h_json_02",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        3869,
+        8891,
+        254,
+        26532,
+        280,
+        207,
+        17,
+        11,
+        207,
+        18,
+        11,
+        285,
+        207,
+        19,
+        13
+      ],
+      "text": "Return only a JSON array containing the squares of 2, 3, and 4."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "h_code_01",
+      "input_ids": [
+        9081,
+        245,
+        12974,
+        1157,
+        344,
+        14180,
+        3203,
+        245,
+        2662,
+        317,
+        245,
+        5609,
+        515,
+        7288,
+        13
+      ],
+      "text": "Write a Python function that checks whether a string is a palindrome."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "h_code_02",
+      "input_ids": [
+        99297,
+        274,
+        6712,
+        276,
+        5127,
+        245,
+        9170,
+        279,
+        245,
+        91366,
+        12115,
+        1525,
+        13
+      ],
+      "text": "Explain an algorithm to detect a cycle in a singly linked list."
+    }
+  ],
+  "protocol": {
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0,
+    "top_k": 16
+  },
+  "purpose": "independent_heldout",
+  "schema_version": 1,
+  "sha256": "dc137b4c9531029f58eb2daa4746760840a301e6930ee6b98da12f5edc06c2cc",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

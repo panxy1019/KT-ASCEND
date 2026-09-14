@@ -1,0 +1,300 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.3.2, pluggy-1.6.0 -- /usr/local/python3.11.15/bin/python3.11
+cachedir: .pytest_cache
+rootdir: /workspace/kt-src/kt-kernel
+configfile: pytest.ini
+plugins: hydra-core-1.3.5, anyio-4.14.2, mock-3.15.1, xdist-3.6.1
+collecting ... collected 24 items
+
+test/per_commit/test_ascend_vendor_adapter.py::test_cpu_only_vendor_header_has_no_acl_dependency PASSED
+test/per_commit/test_ascend_vendor_adapter.py::test_ascend_adapter_checks_null_and_runtime_errors PASSED
+test/per_commit/test_ascend_stream_handle.py::test_npu_stream_handle_uses_public_borrowed_integer PASSED
+test/per_commit/test_ascend_stream_handle.py::test_stream_handle_rejects_unsupported_device PASSED
+test/per_commit/test_ascend_stream_handle.py::test_stream_handle_rejects_null_public_handle PASSED
+test/per_commit/test_ascend_stream_handle.py::test_real_ascend_stream_handle_is_stable_and_non_owning SKIPPED
+test/per_commit/test_ascend_host_callback.py::test_cann_host_callback_ordering[single] single counter=1 errors=0 output=1
+
+PASSED
+test/per_commit/test_ascend_host_callback.py::test_cann_host_callback_ordering[stress] stress launches=10000 counter=10000 errors=0
+
+PASSED
+test/per_commit/test_ascend_host_callback.py::test_cann_host_callback_ordering[multi] multi_stream count_a=1000 count_b=1000 errors_a=0 errors_b=0
+
+PASSED
+test/per_commit/test_ascend_host_callback.py::test_production_callback_contains_no_device_work PASSED
+test/per_commit/test_ascend_cpuinfer_callback.py::test_cpuinfer_submit_and_sync_callbacks set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_cpuinfer_callback.py::test_cpuinfer_callback_1000_cycles set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_cpuinfer_callback.py::test_cpu_and_npu_work_intervals_overlap set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+{"cpu_ms": 150.056351, "matmul_repeats": 64, "npu_ms": 27.205759048461914, "overlap_lower_bound_ms": 26.981069048461933, "wall_ms": 150.281041}
+PASSED
+test/per_commit/test_ascend_transfers.py::test_pytorch_ascend_pinned_allocator_contract PASSED
+test/per_commit/test_ascend_transfers.py::test_async_d2h_patterns_are_visible_before_host_callback[dtype0-<lambda>] set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_transfers.py::test_async_d2h_patterns_are_visible_before_host_callback[dtype1-<lambda>] set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_transfers.py::test_async_d2h_patterns_are_visible_before_host_callback[dtype2-<lambda>] set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_transfers.py::test_async_h2d_precedes_subsequent_npu_verification PASSED
+test/per_commit/test_ascend_lifecycle.py::test_stream_callback_create_destroy_100_cycles set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_lifecycle.py::test_cpuinfer_callback_create_destroy_20_cycles set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+CPUInfer[0xaaab0563cfe0]: Hello
+WorkerPool[0xaaab05619120] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab0563cfe0]: Goodbye
+CPUInfer[0xaaab0599ee40]: Hello
+WorkerPool[0xaaab16751740] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab0599ee40]: Goodbye
+CPUInfer[0xaaab17f09eb0]: Hello
+WorkerPool[0xaaab17982e50] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab17f09eb0]: Goodbye
+CPUInfer[0xaaab01ea53f0]: Hello
+WorkerPool[0xaaab01eacc00] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab01ea53f0]: Goodbye
+CPUInfer[0xaaab1807a5d0]: Hello
+WorkerPool[0xaaab01eac870] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab1807a5d0]: Goodbye
+CPUInfer[0xaaab1808a630]: Hello
+WorkerPool[0xaaab17f09cf0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab1808a630]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab18353320] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab184d1480] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b176680] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1a2edf8set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_lifecycle.py::test_null_stream_launch_error_is_surfaced_without_leaking_sync_state set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_lifecycle.py::test_callback_exception_is_rethrown_on_host_thread set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+PASSED
+test/per_commit/test_ascend_runtime_pipeline.py::test_d2h_cpuinfer_moe_h2d_pipeline set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : pipeline.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{"max_abs_error": 0.000244140625, "mean_abs_error": 4.513934254646301e-05, "relative_l2_error": 0.004940330512084555}
+PASSED
+test/per_commit/test_ascend_runtime_pipeline.py::test_runtime_pipeline_1000_cycles_and_rss 
+[GGUFLoader] Loading single GGUF file : pipeline-1000.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{"cycles": 1000, "rss_before": 1936691200, "rss_after": 1936691200, "rss_delta": 0}
+PASSED
+
+======================== 23 passed, 1 skipped in 26.67s ========================
+0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b5d4390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b176680] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b5d4390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b8c1b40] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b5d4390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b8c1b40] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1be93e50] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1b8c1b40] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab18350b10]: Goodbye
+CPUInfer[0xaaab18350b10]: Hello
+WorkerPool[0xaaab1c177760] 1 subpools, [numa:threads][0:4] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 4 threads
+TP MOE layer 0, pool: 0xaaab1c177760, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab1c177760, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaab18350b10]: Goodbye

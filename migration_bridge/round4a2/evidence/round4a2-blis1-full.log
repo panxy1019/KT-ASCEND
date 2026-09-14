@@ -1,0 +1,152 @@
+can not use command: npu-smi info
+loaded_weights=[6, 8, 25, 36]
+collected_samples=12
+loaded_backends=['blis-1t']
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-layer17-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 11
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+llamafile_wrapper_ready
+sample=0 E6 stage=llamafile-start
+sample=0 E6 stage=llamafile-done
+sample=0 E6 stage=blis-1t-start
+sample=0 E6 stage=blis-1t-done
+sample=0 E6 blis-1t=8.21891e-09 llamafile=5.26074e-07
+sample=1 E6 stage=llamafile-start
+sample=1 E6 stage=llamafile-done
+sample=1 E6 stage=blis-1t-start
+sample=1 E6 stage=blis-1t-done
+sample=1 E6 blis-1t=2.64015e-08 llamafile=2.64015e-08
+sample=2 E6 stage=llamafile-start
+sample=2 E6 stage=llamafile-done
+sample=2 E6 stage=blis-1t-start
+sample=2 E6 stage=blis-1t-done
+sample=2 E6 blis-1t=0.000407103 llamafile=7.47156e-06
+sample=3 E8 stage=llamafile-start
+sample=3 E8 stage=llamafile-done
+sample=3 E8 stage=blis-1t-start
+sample=3 E8 stage=blis-1t-done
+sample=3 E8 blis-1t=0.000187512 llamafile=0.000187512
+sample=4 E8 stage=llamafile-start
+sample=4 E8 stage=llamafile-done
+sample=4 E8 stage=blis-1t-start
+sample=4 E8 stage=blis-1t-done
+sample=4 E8 blis-1t=7.23528e-05 llamafile=5.66978e-07
+sample=5 E8 stage=llamafile-start
+sample=5 E8 stage=llamafile-done
+sample=5 E8 stage=blis-1t-start
+sample=5 E8 stage=blis-1t-done
+sample=5 E8 blis-1t=0.000192148 llamafile=0
+sample=6 E25 stage=llamafile-start
+sample=6 E25 stage=llamafile-done
+sample=6 E25 stage=blis-1t-start
+sample=6 E25 stage=blis-1t-done
+sample=6 E25 blis-1t=7.31174e-08 llamafile=0
+sample=7 E25 stage=llamafile-start
+sample=7 E25 stage=llamafile-done
+sample=7 E25 stage=blis-1t-start
+sample=7 E25 stage=blis-1t-done
+sample=7 E25 blis-1t=0 llamafile=0
+sample=8 E25 stage=llamafile-start
+sample=8 E25 stage=llamafile-done
+sample=8 E25 stage=blis-1t-start
+sample=8 E25 stage=blis-1t-done
+sample=8 E25 blis-1t=0 llamafile=0
+sample=9 E36 stage=llamafile-start
+sample=9 E36 stage=llamafile-done
+sample=9 E36 stage=blis-1t-start
+sample=9 E36 stage=blis-1t-done
+sample=9 E36 blis-1t=0 llamafile=0
+sample=10 E36 stage=llamafile-start
+sample=10 E36 stage=llamafile-done
+sample=10 E36 stage=blis-1t-start
+sample=10 E36 stage=blis-1t-done
+sample=10 E36 blis-1t=1.47849e-08 llamafile=0
+sample=11 E36 stage=llamafile-start
+sample=11 E36 stage=llamafile-done
+sample=11 E36 stage=blis-1t-start
+sample=11 E36 stage=blis-1t-done
+sample=11 E36 blis-1t=0 llamafile=0
+{
+  "schema_version": 1,
+  "layer": 17,
+  "experts": [
+    6,
+    8,
+    25,
+    36
+  ],
+  "samples_per_expert": 3,
+  "repeats": 10,
+  "capture_pairs": [
+    {
+      "label": "en01",
+      "hybrid_dir": "/workspace/round4a1-dumps",
+      "npu_dir": "/workspace/round4a1-npu-dumps"
+    },
+    {
+      "label": "struct03",
+      "hybrid_dir": "/workspace/round4a1-struct03-hybrid-output-dumps",
+      "npu_dir": "/workspace/round4a1-struct03-allnpu-dumps"
+    }
+  ],
+  "llamafile_summary": {
+    "sample_count": 12,
+    "median_down_relative_l2": 0.0,
+    "max_down_relative_l2": 0.0001875117709873328,
+    "all_repeats_deterministic": true,
+    "median_expert_seconds": 0.015991761814802885
+  },
+  "backend_summaries": {
+    "blis-1t": {
+      "library": "/usr/lib/aarch64-linux-gnu/blis-openmp/libblis.so.3",
+      "library_sha256": "05034f0e1a93a7ca8342f03f59d367fcdd8b7715c858125107a6c997c47c3f54",
+      "threads": 1,
+      "sample_count": 12,
+      "median_down_relative_l2": 2.0593198748333927e-08,
+      "max_down_relative_l2": 0.0004071027735870817,
+      "all_repeats_deterministic": true,
+      "median_expert_seconds": 0.0075604713056236506
+    }
+  }
+}
+CPUInfer[0xaaaafc781fe0]: Hello
+WorkerPool[0xaaaaff58df70] 1 subpools, [numa:threads][0:16]
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaaaff58df70, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaaafc781fe0]: Goodbye

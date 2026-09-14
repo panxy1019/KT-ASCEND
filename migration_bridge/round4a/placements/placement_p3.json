@@ -1,0 +1,123 @@
+{
+  "all_npu_layers": [
+    2,
+    3,
+    4,
+    6,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    16,
+    18,
+    20,
+    21,
+    23,
+    24,
+    25
+  ],
+  "anchor": {
+    "expert": 8,
+    "layer": 17
+  },
+  "format": "sglang_kt_frequency_logical_count",
+  "frequency_source_sha256": "cd405edb882b85c8a9651b428a7ec35ba5c3f04cd2bfdb1b6af67948fa1c9a22",
+  "gpu_experts_ratio": 0.9807692307692307,
+  "layer_placements": [
+    {
+      "cpu_experts": [
+        31,
+        43,
+        50,
+        57
+      ],
+      "layer": 1,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        14,
+        38,
+        39,
+        41
+      ],
+      "layer": 5,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        1,
+        17,
+        33,
+        45
+      ],
+      "layer": 8,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        35,
+        41,
+        46,
+        58
+      ],
+      "layer": 12,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        6,
+        8,
+        25,
+        36
+      ],
+      "layer": 17,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        14,
+        32,
+        47,
+        62
+      ],
+      "layer": 19,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        21,
+        60,
+        61,
+        62
+      ],
+      "layer": 22,
+      "npu_expert_count": 60
+    },
+    {
+      "cpu_experts": [
+        10,
+        26,
+        30,
+        56
+      ],
+      "layer": 26,
+      "npu_expert_count": 60
+    }
+  ],
+  "mask_dtype": "torch.bool",
+  "mask_shape": [
+    27,
+    64
+  ],
+  "placement_sha256": "77f7d96e0b180242264f1d6eec3e4d9d16d158e9e0f9a51eac51af88e829391d",
+  "profile": "p3",
+  "pt_sha256": "e5544faa22f210e28b02648316a139ca737aca81d9c034d757b7fd59b2e0a55b",
+  "selected_cpu_expert_count": 32,
+  "selected_layer_count": 8,
+  "total_moe_experts": 1664,
+  "total_npu_experts": 1632
+}

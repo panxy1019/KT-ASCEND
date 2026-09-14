@@ -1,0 +1,172 @@
+{
+  "corpus": "Q",
+  "count": 9,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english",
+      "id": "v_en_01",
+      "input_ids": [
+        6568,
+        536,
+        8242,
+        4308,
+        3976,
+        5575,
+        30
+      ],
+      "text": "Why do leaves usually appear green?"
+    },
+    {
+      "category": "english",
+      "id": "v_en_02",
+      "input_ids": [
+        11604,
+        7048,
+        51846,
+        285,
+        7603,
+        10018,
+        578,
+        30
+      ],
+      "text": "Who wrote Pride and Prejudice?"
+    },
+    {
+      "category": "english",
+      "id": "v_en_03",
+      "input_ids": [
+        12102,
+        3969,
+        945,
+        254,
+        5487,
+        280,
+        245,
+        4902,
+        3762,
+        279,
+        634,
+        4976,
+        13
+      ],
+      "text": "Summarize the purpose of a database index in one sentence."
+    },
+    {
+      "category": "chinese",
+      "id": "v_zh_01",
+      "input_ids": [
+        4575,
+        5449,
+        892,
+        17882,
+        43882,
+        3388,
+        1633,
+        7435,
+        398
+      ],
+      "text": "请简要解释什么是光合作用。"
+    },
+    {
+      "category": "chinese",
+      "id": "v_zh_02",
+      "input_ids": [
+        7196,
+        15235,
+        18467,
+        29973,
+        11351,
+        2224
+      ],
+      "text": "北京位于中国的哪个方向？"
+    },
+    {
+      "category": "chinese",
+      "id": "v_zh_03",
+      "input_ids": [
+        4575,
+        5662,
+        1029,
+        87014,
+        67614,
+        23102,
+        29136,
+        398
+      ],
+      "text": "请列出春夏秋冬四个季节。"
+    },
+    {
+      "category": "structured_math_code",
+      "id": "v_struct_01",
+      "input_ids": [
+        23169,
+        25,
+        207,
+        18,
+        11,
+        207,
+        21,
+        11,
+        207,
+        16,
+        17,
+        11,
+        207,
+        17,
+        19,
+        11,
+        2112,
+        25
+      ],
+      "text": "Sequence: 3, 6, 12, 24, next:"
+    },
+    {
+      "category": "structured_math_code",
+      "id": "v_struct_02",
+      "input_ids": [
+        8925,
+        245,
+        11573,
+        3869,
+        8891,
+        254,
+        1022,
+        4047,
+        9966,
+        5750,
+        13
+      ],
+      "text": "Return a JSON array containing the first five prime numbers."
+    },
+    {
+      "category": "structured_math_code",
+      "id": "v_struct_03",
+      "input_ids": [
+        9081,
+        24315,
+        64645,
+        276,
+        1727,
+        3203,
+        274,
+        10858,
+        317,
+        1236,
+        13
+      ],
+      "text": "Write pseudocode to test whether an integer is even."
+    }
+  ],
+  "protocol": {
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0,
+    "top_k": 16
+  },
+  "purpose": "envelope_derivation",
+  "schema_version": 1,
+  "sha256": "7617682ccd1d004f6221d35b9e484465ebb6c2a40359481f047f3fbb298b439a",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

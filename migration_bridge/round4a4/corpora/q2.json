@@ -1,0 +1,371 @@
+{
+  "category_counts": {
+    "chinese_factual": 4,
+    "code_reasoning": 4,
+    "english_factual": 4,
+    "math_numeric": 3,
+    "structured_json": 3
+  },
+  "corpus": "Q2",
+  "count": 18,
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "v_en_01",
+      "input_ids": [
+        6568,
+        536,
+        8242,
+        4308,
+        3976,
+        5575,
+        30
+      ],
+      "text": "Why do leaves usually appear green?"
+    },
+    {
+      "category": "english_factual",
+      "id": "v_en_02",
+      "input_ids": [
+        11604,
+        7048,
+        51846,
+        285,
+        7603,
+        10018,
+        578,
+        30
+      ],
+      "text": "Who wrote Pride and Prejudice?"
+    },
+    {
+      "category": "english_factual",
+      "id": "v_en_03",
+      "input_ids": [
+        12102,
+        3969,
+        945,
+        254,
+        5487,
+        280,
+        245,
+        4902,
+        3762,
+        279,
+        634,
+        4976,
+        13
+      ],
+      "text": "Summarize the purpose of a database index in one sentence."
+    },
+    {
+      "category": "chinese_factual",
+      "id": "v_zh_01",
+      "input_ids": [
+        4575,
+        5449,
+        892,
+        17882,
+        43882,
+        3388,
+        1633,
+        7435,
+        398
+      ],
+      "text": "请简要解释什么是光合作用。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "v_zh_02",
+      "input_ids": [
+        7196,
+        15235,
+        18467,
+        29973,
+        11351,
+        2224
+      ],
+      "text": "北京位于中国的哪个方向？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "v_zh_03",
+      "input_ids": [
+        4575,
+        5662,
+        1029,
+        87014,
+        67614,
+        23102,
+        29136,
+        398
+      ],
+      "text": "请列出春夏秋冬四个季节。"
+    },
+    {
+      "category": "math_numeric",
+      "id": "v_struct_01",
+      "input_ids": [
+        23169,
+        25,
+        207,
+        18,
+        11,
+        207,
+        21,
+        11,
+        207,
+        16,
+        17,
+        11,
+        207,
+        17,
+        19,
+        11,
+        2112,
+        25
+      ],
+      "text": "Sequence: 3, 6, 12, 24, next:"
+    },
+    {
+      "category": "structured_json",
+      "id": "v_struct_02",
+      "input_ids": [
+        8925,
+        245,
+        11573,
+        3869,
+        8891,
+        254,
+        1022,
+        4047,
+        9966,
+        5750,
+        13
+      ],
+      "text": "Return a JSON array containing the first five prime numbers."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "v_struct_03",
+      "input_ids": [
+        9081,
+        24315,
+        64645,
+        276,
+        1727,
+        3203,
+        274,
+        10858,
+        317,
+        1236,
+        13
+      ],
+      "text": "Write pseudocode to test whether an integer is even."
+    },
+    {
+      "category": "english_factual",
+      "id": "q2_en_04",
+      "input_ids": [
+        15526,
+        12438,
+        643,
+        254,
+        35721,
+        1012,
+        279,
+        769,
+        10735,
+        1317,
+        30
+      ],
+      "text": "Which planet has the shortest year in our solar system?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "q2_zh_04",
+      "input_ids": [
+        2493,
+        14183,
+        11619,
+        1850,
+        6099,
+        18867,
+        2209,
+        50246,
+        93954,
+        2224
+      ],
+      "text": "中国最大的淡水湖通常被认为是哪一个？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "q2_math_02",
+      "input_ids": [
+        32,
+        5554,
+        28043,
+        207,
+        17,
+        19,
+        15,
+        11182,
+        457,
+        207,
+        16,
+        20,
+        5040,
+        13,
+        2461,
+        317,
+        254,
+        2328,
+        4113,
+        30
+      ],
+      "text": "A shop discounts 240 dollars by 15 percent. What is the final price?"
+    },
+    {
+      "category": "math_numeric",
+      "id": "q2_math_03",
+      "input_ids": [
+        12971,
+        254,
+        9846,
+        3064,
+        40875,
+        280,
+        207,
+        23,
+        19,
+        285,
+        207,
+        16,
+        17,
+        21,
+        13
+      ],
+      "text": "Find the greatest common divisor of 84 and 126."
+    },
+    {
+      "category": "structured_json",
+      "id": "q2_json_02",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        366,
+        8726,
+        5606,
+        11,
+        1437,
+        11,
+        285,
+        4640,
+        327,
+        77537,
+        11,
+        207,
+        17,
+        18,
+        11,
+        1927,
+        13
+      ],
+      "text": "Return only JSON with keys unit, value, and valid for Celsius, 23, true."
+    },
+    {
+      "category": "structured_json",
+      "id": "q2_json_03",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        3869,
+        280,
+        6632,
+        14237,
+        245,
+        276,
+        207,
+        16,
+        285,
+        270,
+        276,
+        207,
+        17,
+        13
+      ],
+      "text": "Return only a JSON array of objects mapping a to 1 and b to 2."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "q2_code_02",
+      "input_ids": [
+        9081,
+        12974,
+        2985,
+        344,
+        18548,
+        254,
+        6398,
+        280,
+        1319,
+        1734,
+        279,
+        245,
+        1525,
+        13
+      ],
+      "text": "Write Python code that counts the frequency of each word in a list."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "q2_code_03",
+      "input_ids": [
+        99297,
+        2643,
+        10038,
+        3365,
+        6235,
+        245,
+        24350,
+        6905,
+        13
+      ],
+      "text": "Explain why binary search requires a sorted sequence."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "q2_code_04",
+      "input_ids": [
+        27559,
+        24315,
+        64645,
+        327,
+        40646,
+        12,
+        6102,
+        94773,
+        280,
+        245,
+        4150,
+        13
+      ],
+      "text": "Give pseudocode for breadth-first traversal of a graph."
+    }
+  ],
+  "protocol": {
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "pairwise_bound_derivation",
+  "schema_version": 1,
+  "sha256": "551fc4fdf75053eda18d511ab2b479907576bd31989460281ef2424689dd3e07",
+  "tokenizer_class": "TokenizersBackend",
+  "tokenizer_revision": "DeepSeek-V2-Lite-604d5664 frozen local artifact"
+}

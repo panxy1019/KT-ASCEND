@@ -1,0 +1,282 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.3.2, pluggy-1.6.0
+rootdir: /workspace/kt-src/kt-kernel
+configfile: pytest.ini
+plugins: hydra-core-1.3.5, anyio-4.14.2, mock-3.15.1, xdist-3.6.1
+collected 24 items
+
+test/per_commit/test_ascend_vendor_adapter.py ..
+test/per_commit/test_ascend_stream_handle.py ...s
+test/per_commit/test_ascend_host_callback.py single counter=1 errors=0 output=1
+
+.stress launches=10000 counter=10000 errors=0
+
+.multi_stream count_a=1000 count_b=1000 errors_a=0 errors_b=0
+
+..
+test/per_commit/test_ascend_cpuinfer_callback.py set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+{"cpu_ms": 150.058046, "matmul_repeats": 64, "npu_ms": 27.463640213012695, "overlap_lower_bound_ms": 27.21586721301267, "wall_ms": 150.305819}
+.
+test/per_commit/test_ascend_transfers.py .set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+..
+test/per_commit/test_ascend_lifecycle.py set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+CPUInfer[0xaaab1b595bc0]: Hello
+WorkerPool[0xaaab1b529b20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab1b595bc0]: Goodbye
+CPUInfer[0xaaab1b8c0e40]: Hello
+WorkerPool[0xaaab2c679780] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab1b8c0e40]: Goodbye
+CPUInfer[0xaaab2de30de0]: Hello
+WorkerPool[0xaaab2de30d00] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2de30de0]: Goodbye
+CPUInfer[0xaaab17dc6dd0]: Hello
+WorkerPool[0xaaab17dc61f0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab17dc6dd0]: Goodbye
+CPUInfer[0xaaab2dfa2890]: Hello
+WorkerPool[0xaaab17dc6500] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2dfa2890]: Goodbye
+CPUInfer[0xaaab2dfb28f0]: Hello
+WorkerPool[0xaaab17dc61f0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2dfb28f0]: Goodbye
+CPUInfer[0xaaab2e279610]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e279610]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab300a1700] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30383940] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab304fdd10] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30675190] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30675190] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30ad1b10] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30ad1b10] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab30ad1b10] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab3121930set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+.
+test/per_commit/test_ascend_runtime_pipeline.py set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : pipeline.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{"max_abs_error": 0.000244140625, "mean_abs_error": 4.513934254646301e-05, "relative_l2_error": 0.004940330512084555}
+.
+[GGUFLoader] Loading single GGUF file : pipeline-1000.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{"cycles": 1000, "rss_before": 1930510336, "rss_after": 1935753216, "rss_delta": 5242880}
+.
+
+======================== 23 passed, 1 skipped in 27.53s ========================
+0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab31219300] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab2e27be20] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab3195a390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab317eb4c0] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab3195a390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab31c47b80] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab3195a390] 1 subpools, [numa:threads][0:1] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 1 threads
+CPUInfer[0xaaab2e3fa480]: Goodbye
+CPUInfer[0xaaab2e3fa480]: Hello
+WorkerPool[0xaaab182c82d0] 1 subpools, [numa:threads][0:4] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 4 threads
+TP MOE layer 0, pool: 0xaaab182c82d0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaab182c82d0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaab2e3fa480]: Goodbye

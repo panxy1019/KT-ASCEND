@@ -1,0 +1,210 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-8.3.2, pluggy-1.6.0
+rootdir: /workspace/kt-src/kt-kernel
+configfile: pytest.ini
+plugins: hydra-core-1.3.5, anyio-4.14.2, mock-3.15.1, xdist-3.6.1
+collected 21 items
+
+per_commit/test_cpu_detect_metadata.py ......                            [ 28%]
+per_commit/test_llamafile_gguf_e2e.py .F                                 [ 38%]
+per_commit/test_llamafile_routed_correctness.py ........                 [ 76%]
+per_commit/test_llamafile_cpuinfer_lifecycle.py ..FFF                    [100%]
+
+=================================== FAILURES ===================================
+__________________ test_gguf_loader_to_llamafile_wrapper_e2e ___________________
+per_commit/test_llamafile_gguf_e2e.py:101: in test_gguf_loader_to_llamafile_wrapper_e2e
+    assert actual.dtype == torch.bfloat16
+E   assert torch.float32 == torch.bfloat16
+E    +  where torch.float32 = tensor([[-2.4765e-02,  1.3043e-02, -2.3623e-02,  2.9497e-03,  2.8364e-02,\n          3.2052e-02, -2.1196e-03, -1.1480e-...107e-03,  1.7348e-02,\n         -1.9154e-02,  1.3805e-02,  1.9888e-02, -2.4833e-02,  1.4066e-02,\n          1.4877e-02]]).dtype
+E    +  and   torch.bfloat16 = torch.bfloat16
+----------------------------- Captured stdout call -----------------------------
+
+[GGUFLoader] Loading single GGUF file : tiny-moe.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+{'max_abs_error': 0.0001857280731201172, 'mean_abs_error': 5.00940514029935e-05, 'relative_l2_error': 0.0038937139177032043}
+----------------------------- Captured stderr call -----------------------------
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+____________________ test_two_layers_use_distinct_gguf_keys ____________________
+per_commit/test_llamafile_cpuinfer_lifecycle.py:159: in test_two_layers_use_distinct_gguf_keys
+    torch.testing.assert_close(actual, expected, rtol=1e-2, atol=1e-3)
+E   AssertionError: The values for attribute 'dtype' do not match: torch.float32 != torch.bfloat16.
+----------------------------- Captured stdout call -----------------------------
+
+[GGUFLoader] Loading single GGUF file : two-layers.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+______ test_threadpool_and_numa_mapping_are_observable[1-numa_nodes0-256] ______
+per_commit/test_llamafile_cpuinfer_lifecycle.py:197: in test_threadpool_and_numa_mapping_are_observable
+    torch.testing.assert_close(actual, expected, rtol=1e-2, atol=1e-3)
+E   AssertionError: The values for attribute 'dtype' do not match: torch.float32 != torch.bfloat16.
+----------------------------- Captured stdout call -----------------------------
+
+[GGUFLoader] Loading single GGUF file : tp-1.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 256
+  threadpool_count: 1
+  QK_K: 256
+  Total blocks: 1
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  Using default identity mapping for 4 experts
+______ test_threadpool_and_numa_mapping_are_observable[2-numa_nodes1-512] ______
+per_commit/test_llamafile_cpuinfer_lifecycle.py:197: in test_threadpool_and_numa_mapping_are_observable
+    torch.testing.assert_close(actual, expected, rtol=1e-2, atol=1e-3)
+E   AssertionError: The values for attribute 'dtype' do not match: torch.float32 != torch.bfloat16.
+----------------------------- Captured stdout call -----------------------------
+
+[GGUFLoader] Loading single GGUF file : tp-2.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 6
+  Metadata keys: 9
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  Total blocks: 2
+  Base blocks per TP: 1
+  Extra blocks (distributed to first TPs): 0
+  TP 0: size=256, offset=0, blocks=1
+  TP 1: size=256, offset=256, blocks=1
+  Using default identity mapping for 4 experts
+ splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 8, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+TP MOE layer 0, pool: 0xaaaaf08a46f0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP splitting: intermediate_size=256, tp_count=1, QK_K=256
+  num_blocks=1, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+CPUInfer[0xaaaadf66a420]: Hello
+WorkerPool[0xaaaad7def3e0] 2 subpools, [numa:threads][0:2] [1:2] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 2 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 2 threads
+TP MOE layer 0, pool: 0xaaaad7def3e0, expert num: 4, num_experts_per_tok: 2
+Llamafile TP split
+----------------------------- Captured stderr call -----------------------------
+set_mempolicy: Operation not permitted
+numa_sched_setaffinity_v2_int() failed: Invalid argument
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+=========================== short test summary info ============================
+FAILED per_commit/test_llamafile_gguf_e2e.py::test_gguf_loader_to_llamafile_wrapper_e2e
+FAILED per_commit/test_llamafile_cpuinfer_lifecycle.py::test_two_layers_use_distinct_gguf_keys
+FAILED per_commit/test_llamafile_cpuinfer_lifecycle.py::test_threadpool_and_numa_mapping_are_observable[1-numa_nodes0-256]
+FAILED per_commit/test_llamafile_cpuinfer_lifecycle.py::test_threadpool_and_numa_mapping_are_observable[2-numa_nodes1-512]
+======================== 4 failed, 17 passed in 10.52s =========================
+ting: intermediate_size=512, tp_count=2, QK_K=256
+  num_blocks=2, base_blocks=1, extra_blocks=0
+  TP 0: intermediate_size=256, offset=0, blocks=1
+  TP 1: intermediate_size=256, offset=256, blocks=1
+alloc 1 from other numa for fffdf00096f0
+alloc 1 from other numa for fffdf00096f0
+CPUInfer[0xaaaaf0892be0]: Goodbye
+CPUInfer[0xaaaadf66a420]: Goodbye

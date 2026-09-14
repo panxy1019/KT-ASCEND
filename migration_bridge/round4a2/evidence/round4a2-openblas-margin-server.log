@@ -1,0 +1,233 @@
+can not use command: npu-smi info
+INFO 08-29 02:42:37 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-29 02:42:37 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-29 02:42:37 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-29 02:42:37 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Transformers version 5.6.0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+KTransformers EP is enabled. --disable-shared-experts-fusion is automatically set to prevent shared experts from being offloaded to CPU.
+[transformers] `BaseImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `BaseImageProcessor` instead.
+[2026-08-29 02:42:39] server_args=ServerArgs(model_path='/workspace/models/DeepSeek-V2-Lite-604d5664', tokenizer_path='/workspace/models/DeepSeek-V2-Lite-604d5664', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=512, is_embedding=False, enable_multimodal=None, revision=None, model_impl='auto', host='127.0.0.1', port=31000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=False, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.55, max_running_requests=1, max_queued_requests=None, max_total_tokens=512, chunked_prefill_size=512, enable_dynamic_chunking=False, max_prefill_tokens=512, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=119257972, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/workspace/models/DeepSeek-V2-Lite-604d5664', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm='static', init_expert_location='/workspace/kt-src/migration_bridge/round4a/placements/placement_p1.pt', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/workspace/kt-src/artifacts/round3/deepseek-v2-lite-layer17-f32.gguf', kt_method='LLAMAFILE', kt_cpuinfer=16, kt_threadpool_count=1, kt_numa_nodes=[0], kt_num_gpu_experts=None, kt_gpu_experts_ratio=0.9975961538461539, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=None, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=False, kt_expert_placement_strategy='frequency', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=False, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=2048, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=True, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-08-29 02:42:39] Transformers version 5.6.0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-08-29 02:42:39] Using default HuggingFace chat template with detected content format: string
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 08-29 02:42:48 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-29 02:42:48 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 08-29 02:42:48 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-29 02:42:48 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 08-29 02:42:48 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-29 02:42:48 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 08-29 02:42:48 [__init__.py:239] Platform plugin ascend is activated
+INFO 08-29 02:42:48 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[transformers] `BaseImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `BaseImageProcessor` instead.
+[2026-08-29 02:42:49] get env SGLANG_APPLY_CONFIG_BACKUP = none
+[transformers] `BaseImageProcessorFast` is deprecated. The `Fast` suffix for image processors has been removed; use `BaseImageProcessor` instead.
+[2026-08-29 02:42:49] Transformers version 5.6.0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-08-29 02:42:49] Mamba selective_state_update backend initialized: triton
+[2026-08-29 02:42:49] Transformers version 5.6.0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-08-29 02:42:50] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-08-29 02:42:50] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-08-29 02:42:50] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning:
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-08-29 02:42:59] Init torch distributed begin.
+[rank0]:[W829 02:43:00.539334799 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-08-29 02:43:01] Init torch distributed ends. elapsed=1.25 s, mem usage=0.01 GB
+[2026-08-29 02:43:01] Detected KT mode: kt_weight_path=/workspace/kt-src/artifacts/round3/deepseek-v2-lite-layer17-f32.gguf. Using trivial mapping for CPU expert weight loading.
+[2026-08-29 02:43:01] init_expert_location: Using trivial mapping for KT frequency strategy. logical_count will be read directly by KT layers. CPU weight loading will use trivial mapping (physical_id == logical_id).
+[2026-08-29 02:43:01] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-08-29 02:43:01] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-08-29 02:43:01] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-08-29 02:43:01] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-08-29 02:43:01] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-08-29 02:43:02] Load weight begin. avail mem=60.82 GB
+[2026-08-29 02:43:02] Using kt_gpu_experts_ratio=0.9975961538461539, total GPU experts: 1660 (= 1664 total experts × 0.9975961538461539)
+[2026-08-29 02:43:02] Loading activation frequency from /workspace/kt-src/migration_bridge/round4a/placements/placement_p1.pt
+[2026-08-29 02:43:02] Using frequency-based strategy with activation frequency data
+[2026-08-29 02:43:02] KT GPU experts: layer 1 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 2 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 3 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 4 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 5 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 6 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 7 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 8 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 9 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 10 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 11 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 12 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 13 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 14 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 15 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 16 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 17 (MoE) has 60 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 18 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 19 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 20 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 21 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 22 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 23 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 24 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 25 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] KT GPU experts: layer 26 (MoE) has 64 GPU experts
+[2026-08-29 02:43:02] Generated KT GPU experts masks using 'frequency' strategy: 26 MoE layers (out of 27 total layers) x 64 experts, total GPU experts in MoE layers = 1660
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 1
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 2
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 3
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 4
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 5
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 6
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 7
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 8
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 9
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 10
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 11
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 12
+[2026-08-29 02:43:02] Skipping KT wrapper for all-accelerator layer 13
+[2026-08-29 02:43:03] Skipping KT wrapper for all-accelerator layer 14
+[2026-08-29 02:43:03] Skipping KT wrapper for all-accelerator layer 15
+[2026-08-29 02:43:03] Skipping KT wrapper for all-accelerator layer 16
+[2026-08-29 02:43:03] [KT] Created shared staging buffer: 2.0 MiB (shape=torch.Size([512, 2048]), dtype=torch.bfloat16)
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+[2026-08-29 02:43:03] Skipping KT wrapper for all-accelerator layer 18
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 19
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 20
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 21
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 22
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 23
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 24
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 25
+[2026-08-29 02:43:04] Skipping KT wrapper for all-accelerator layer 26
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-layer17-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 11
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:03<00:10,  3.54s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:07<00:07,  3.61s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:08<00:02,  2.35s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.18s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:09<00:00,  2.49s/it]
+
+[2026-08-29 02:43:15] get env LD_LIBRARY_PATH = /usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/cann-9.0.0/lib64:/usr/local/Ascend/cann-9.0.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.0.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.11.15/lib:
+[2026-08-29 02:43:15] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+can not use command: npu-smi info
+[2026-08-29 02:43:24] get env HOME = /root
+[2026-08-29 02:43:24] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-08-29 02:43:26] get env PYTHONPATH = /workspace/kt-src/build/r3-python:/workspace/kt-src/third_party/sglang/python:/workspace/kt-src/third_party/llama.cpp/gguf-py:/usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/Megatron-Bridge/src:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:
+[2026-08-29 02:43:27] Load weight end. elapsed=25.43 s, type=DeepseekV2ForCausalLM, dtype=torch.bfloat16, avail mem=31.33 GB, mem usage=29.48 GB.
+[2026-08-29 02:43:27] Using KV cache dtype: torch.bfloat16
+[2026-08-29 02:43:27] KV Cache is allocated. #tokens: 512, KV size: 0.02 GB
+[2026-08-29 02:43:27] Memory pool end. avail mem=31.33 GB
+/workspace/kt-src/third_party/sglang/python/sglang/srt/utils/common.py:1293: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  tensor_data = torch.ByteTensor(
+[2026-08-29 02:43:28] max_total_num_tokens=512, chunked_prefill_size=512, max_prefill_tokens=512, max_running_requests=1, context_len=512, available_gpu_mem=31.33 GB
+[2026-08-29 02:43:28] INFO:     Started server process [11868]
+[2026-08-29 02:43:28] INFO:     Waiting for application startup.
+[2026-08-29 02:43:28] Using default chat sampling params from model generation config: {'temperature': 0.3, 'top_p': 0.95}
+[2026-08-29 02:43:29] INFO:     Application startup complete.
+[2026-08-29 02:43:29] INFO:     Uvicorn running on http://127.0.0.1:31000 (Press CTRL+C to quit)
+[2026-08-29 02:43:30] INFO:     127.0.0.1:54282 - "GET /model_info HTTP/1.1" 200 OK
+[2026-08-29 02:43:30] get env HOSTNAME = a3-server-00
+[2026-08-29 02:43:30] get env SGLANG_KT_NUMERICAL_DUMP_DIR = /workspace/round4a2-openblas-margin-dumps
+[2026-08-29 02:43:30] get env SGLANG_KT_NUMERICAL_DUMP_ARM_FILE = /workspace/round4a2-openblas-margin.arm
+[2026-08-29 02:43:31] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.25, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-08-29 02:43:32] INFO:     127.0.0.1:54292 - "POST /generate HTTP/1.1" 200 OK
+[2026-08-29 02:43:32] The server is fired up and ready to roll!
+[2026-08-29 02:43:38] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.59, npu graph: False
+[2026-08-29 02:43:39] INFO:     127.0.0.1:34222 - "GET /health HTTP/1.1" 200 OK
+[2026-08-29 02:44:04] get env SGLANG_KT_NUMERICAL_DUMP_LAYERS = 17
+[2026-08-29 02:44:04] get env SGLANG_KT_NUMERICAL_DUMP_MAX_PASSES = 20
+[2026-08-29 02:44:04] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00000-pid12046.pt
+CPUInfer[0xaaaadc779580]: Hello
+WorkerPool[0xaaaadc76cbd0] 1 subpools, [numa:threads][0:16]
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaaadc76cbd0, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+.[2026-08-29 02:44:04] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00001-pid12046.pt
+[2026-08-29 02:44:04] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, token usage: 0.25, #running-req: 0, #queue-req: 0, input throughput (token/s): 4.84, npu graph: False
+[2026-08-29 02:44:04] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00002-pid12046.pt
+[2026-08-29 02:44:04] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00003-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00004-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00005-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00006-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00007-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00008-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00009-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00010-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00011-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00012-pid12046.pt
+[2026-08-29 02:44:05] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00013-pid12046.pt
+[2026-08-29 02:44:06] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00014-pid12046.pt
+[2026-08-29 02:44:06] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00015-pid12046.pt
+[2026-08-29 02:44:06] KT numerical input dump written to /workspace/round4a2-openblas-margin-dumps/layer17-pass00016-pid12046.pt
+[2026-08-29 02:44:06] INFO:     127.0.0.1:44520 - "POST /generate HTTP/1.1" 200 OK
+[2026-08-29 02:45:01] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+[2026-08-29 02:45:05] Gracefully exiting... Remaining number of requests 0. Remaining requests remaining_rids=[].

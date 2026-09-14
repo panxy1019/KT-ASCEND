@@ -1,0 +1,51 @@
+From cb862d6081ff0442527e47687bb87b5dba9e0d72 Mon Sep 17 00:00:00 2001
+From: panxy1019 <panxy1019@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 11:44:19 +0000
+Subject: [PATCH 2/8] fix(npu): avoid CUDA JIT for router linear
+
+---
+ python/sglang/jit_kernel/deepseek_v4.py       |  3 +++
+ .../test_deepseek_bf16_fp32_platform.py       | 20 +++++++++++++++++++
+ 2 files changed, 23 insertions(+)
+ create mode 100644 test/registered/jit_kernel/test_deepseek_bf16_fp32_platform.py
+
+diff --git a/python/sglang/jit_kernel/deepseek_v4.py b/python/sglang/jit_kernel/deepseek_v4.py
+index 533efd0a7..bd4b9cbd3 100644
+--- a/python/sglang/jit_kernel/deepseek_v4.py
++++ b/python/sglang/jit_kernel/deepseek_v4.py
+@@ -946,6 +946,9 @@ def linear_bf16_fp32(x: torch.Tensor, y: torch.Tensor) -> torch.Tensor:
+ def _dispatch_bf16_fp32_backend(
+     x: torch.Tensor, y: torch.Tensor, *, algo: str
+ ) -> torch.Tensor:
++    if x.device.type != "cuda":
++        return torch.nn.functional.linear(x.float(), y.float())
++
+     if algo == "cublas":
+         module = _jit_torch_cublas_bf16_fp32()
+         return module.linear_bf16_fp32(x, y)
+diff --git a/test/registered/jit_kernel/test_deepseek_bf16_fp32_platform.py b/test/registered/jit_kernel/test_deepseek_bf16_fp32_platform.py
+new file mode 100644
+index 000000000..cdbc5a409
+--- /dev/null
++++ b/test/registered/jit_kernel/test_deepseek_bf16_fp32_platform.py
+@@ -0,0 +1,20 @@
++from unittest.mock import patch
++
++import torch
++
++from sglang.jit_kernel.deepseek_v4 import _dispatch_bf16_fp32_backend
++
++
++def test_non_cuda_bf16_fp32_linear_skips_cublas_jit():
++    x = torch.randn(2, 8, dtype=torch.bfloat16)
++    weight = torch.randn(4, 8, dtype=torch.bfloat16)
++
++    with patch(
++        "sglang.jit_kernel.deepseek_v4._jit_torch_cublas_bf16_fp32",
++        side_effect=AssertionError("CUDA JIT must not run for a non-CUDA tensor"),
++    ):
++        actual = _dispatch_bf16_fp32_backend(x, weight, algo="cublas")
++
++    expected = torch.nn.functional.linear(x.float(), weight.float())
++    torch.testing.assert_close(actual, expected)
++    assert actual.dtype == torch.float32

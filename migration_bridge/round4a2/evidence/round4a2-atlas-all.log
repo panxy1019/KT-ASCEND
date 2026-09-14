@@ -1,0 +1,264 @@
+can not use command: npu-smi info
+loaded_weights=[6, 8, 25, 36]
+collected_samples=33
+loaded_backends=['atlas']
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-layer17-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 11
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+llamafile_wrapper_ready
+sample=0 E6 stage=llamafile-start
+sample=0 E6 stage=llamafile-done
+sample=0 E6 stage=atlas-start
+sample=0 E6 stage=atlas-done
+sample=0 E6 atlas=5.26074e-07 llamafile=5.26074e-07
+sample=1 E6 stage=llamafile-start
+sample=1 E6 stage=llamafile-done
+sample=1 E6 stage=atlas-start
+sample=1 E6 stage=atlas-done
+sample=1 E6 atlas=2.64015e-08 llamafile=2.64015e-08
+sample=2 E6 stage=llamafile-start
+sample=2 E6 stage=llamafile-done
+sample=2 E6 stage=atlas-start
+sample=2 E6 stage=atlas-done
+sample=2 E6 atlas=0.000239091 llamafile=7.47156e-06
+sample=3 E6 stage=llamafile-start
+sample=3 E6 stage=llamafile-done
+sample=3 E6 stage=atlas-start
+sample=3 E6 stage=atlas-done
+sample=3 E6 atlas=5.82126e-08 llamafile=0
+sample=4 E6 stage=llamafile-start
+sample=4 E6 stage=llamafile-done
+sample=4 E6 stage=atlas-start
+sample=4 E6 stage=atlas-done
+sample=4 E6 atlas=0.000191035 llamafile=3.63266e-06
+sample=5 E6 stage=llamafile-start
+sample=5 E6 stage=llamafile-done
+sample=5 E6 stage=atlas-start
+sample=5 E6 stage=atlas-done
+sample=5 E6 atlas=0 llamafile=0
+sample=6 E6 stage=llamafile-start
+sample=6 E6 stage=llamafile-done
+sample=6 E6 stage=atlas-start
+sample=6 E6 stage=atlas-done
+sample=6 E6 atlas=3.30055e-05 llamafile=3.30055e-05
+sample=7 E6 stage=llamafile-start
+sample=7 E6 stage=llamafile-done
+sample=7 E6 stage=atlas-start
+sample=7 E6 stage=atlas-done
+sample=7 E6 atlas=0 llamafile=0
+sample=8 E6 stage=llamafile-start
+sample=8 E6 stage=llamafile-done
+sample=8 E6 stage=atlas-start
+sample=8 E6 stage=atlas-done
+sample=8 E6 atlas=0 llamafile=0
+sample=9 E6 stage=llamafile-start
+sample=9 E6 stage=llamafile-done
+sample=9 E6 stage=atlas-start
+sample=9 E6 stage=atlas-done
+sample=9 E6 atlas=4.66528e-07 llamafile=5.78656e-08
+sample=10 E6 stage=llamafile-start
+sample=10 E6 stage=llamafile-done
+sample=10 E6 stage=atlas-start
+sample=10 E6 stage=atlas-done
+sample=10 E6 atlas=0 llamafile=0.000123056
+sample=11 E6 stage=llamafile-start
+sample=11 E6 stage=llamafile-done
+sample=11 E6 stage=atlas-start
+sample=11 E6 stage=atlas-done
+sample=11 E6 atlas=3.70602e-05 llamafile=1.15588e-06
+sample=12 E6 stage=llamafile-start
+sample=12 E6 stage=llamafile-done
+sample=12 E6 stage=atlas-start
+sample=12 E6 stage=atlas-done
+sample=12 E6 atlas=0.000208639 llamafile=0.00020864
+sample=13 E6 stage=llamafile-start
+sample=13 E6 stage=llamafile-done
+sample=13 E6 stage=atlas-start
+sample=13 E6 stage=atlas-done
+sample=13 E6 atlas=2.7316e-08 llamafile=1.74844e-06
+sample=14 E6 stage=llamafile-start
+sample=14 E6 stage=llamafile-done
+sample=14 E6 stage=atlas-start
+sample=14 E6 stage=atlas-done
+sample=14 E6 atlas=3.60848e-08 llamafile=0
+sample=15 E8 stage=llamafile-start
+sample=15 E8 stage=llamafile-done
+sample=15 E8 stage=atlas-start
+sample=15 E8 stage=atlas-done
+sample=15 E8 atlas=0 llamafile=0.000187512
+sample=16 E8 stage=llamafile-start
+sample=16 E8 stage=llamafile-done
+sample=16 E8 stage=atlas-start
+sample=16 E8 stage=atlas-done
+sample=16 E8 atlas=7.23527e-05 llamafile=5.66978e-07
+sample=17 E8 stage=llamafile-start
+sample=17 E8 stage=llamafile-done
+sample=17 E8 stage=atlas-start
+sample=17 E8 stage=atlas-done
+sample=17 E8 atlas=0.000192148 llamafile=0
+sample=18 E8 stage=llamafile-start
+sample=18 E8 stage=llamafile-done
+sample=18 E8 stage=atlas-start
+sample=18 E8 stage=atlas-done
+sample=18 E8 atlas=0 llamafile=0
+sample=19 E25 stage=llamafile-start
+sample=19 E25 stage=llamafile-done
+sample=19 E25 stage=atlas-start
+sample=19 E25 stage=atlas-done
+sample=19 E25 atlas=7.31174e-08 llamafile=0
+sample=20 E25 stage=llamafile-start
+sample=20 E25 stage=llamafile-done
+sample=20 E25 stage=atlas-start
+sample=20 E25 stage=atlas-done
+sample=20 E25 atlas=0 llamafile=0
+sample=21 E25 stage=llamafile-start
+sample=21 E25 stage=llamafile-done
+sample=21 E25 stage=atlas-start
+sample=21 E25 stage=atlas-done
+sample=21 E25 atlas=0.000377889 llamafile=0
+sample=22 E25 stage=llamafile-start
+sample=22 E25 stage=llamafile-done
+sample=22 E25 stage=atlas-start
+sample=22 E25 stage=atlas-done
+sample=22 E25 atlas=5.22821e-05 llamafile=0
+sample=23 E25 stage=llamafile-start
+sample=23 E25 stage=llamafile-done
+sample=23 E25 stage=atlas-start
+sample=23 E25 stage=atlas-done
+sample=23 E25 atlas=0 llamafile=1.3403e-06
+sample=24 E25 stage=llamafile-start
+sample=24 E25 stage=llamafile-done
+sample=24 E25 stage=atlas-start
+sample=24 E25 stage=atlas-done
+sample=24 E25 atlas=4.92872e-06 llamafile=7.90134e-05
+sample=25 E25 stage=llamafile-start
+sample=25 E25 stage=llamafile-done
+sample=25 E25 stage=atlas-start
+sample=25 E25 stage=atlas-done
+sample=25 E25 atlas=0.00138184 llamafile=0
+sample=26 E25 stage=llamafile-start
+sample=26 E25 stage=llamafile-done
+sample=26 E25 stage=atlas-start
+sample=26 E25 stage=atlas-done
+sample=26 E25 atlas=9.61637e-05 llamafile=0.000151887
+sample=27 E25 stage=llamafile-start
+sample=27 E25 stage=llamafile-done
+sample=27 E25 stage=atlas-start
+sample=27 E25 stage=atlas-done
+sample=27 E25 atlas=0.000358447 llamafile=0
+sample=28 E36 stage=llamafile-start
+sample=28 E36 stage=llamafile-done
+sample=28 E36 stage=atlas-start
+sample=28 E36 stage=atlas-done
+sample=28 E36 atlas=0 llamafile=0
+sample=29 E36 stage=llamafile-start
+sample=29 E36 stage=llamafile-done
+sample=29 E36 stage=atlas-start
+sample=29 E36 stage=atlas-done
+sample=29 E36 atlas=0 llamafile=0
+sample=30 E36 stage=llamafile-start
+sample=30 E36 stage=llamafile-done
+sample=30 E36 stage=atlas-start
+sample=30 E36 stage=atlas-done
+sample=30 E36 atlas=0 llamafile=0
+sample=31 E36 stage=llamafile-start
+sample=31 E36 stage=llamafile-done
+sample=31 E36 stage=atlas-start
+sample=31 E36 stage=atlas-done
+sample=31 E36 atlas=0 llamafile=0
+sample=32 E36 stage=llamafile-start
+sample=32 E36 stage=llamafile-done
+sample=32 E36 stage=atlas-start
+sample=32 E36 stage=atlas-done
+sample=32 E36 atlas=0.000504841 llamafile=0.000504841
+{
+  "schema_version": 1,
+  "layer": 17,
+  "experts": [
+    6,
+    8,
+    25,
+    36
+  ],
+  "max_samples_per_expert": 100,
+  "min_samples_per_expert": 3,
+  "sample_counts": {
+    "6": 15,
+    "8": 4,
+    "25": 9,
+    "36": 5
+  },
+  "repeats": 10,
+  "capture_pairs": [
+    {
+      "label": "en01",
+      "hybrid_dir": "/workspace/round4a1-dumps",
+      "npu_dir": "/workspace/round4a1-npu-dumps"
+    },
+    {
+      "label": "struct03",
+      "hybrid_dir": "/workspace/round4a1-struct03-hybrid-output-dumps",
+      "npu_dir": "/workspace/round4a1-struct03-allnpu-dumps"
+    }
+  ],
+  "llamafile_summary": {
+    "sample_count": 33,
+    "median_down_relative_l2": 0.0,
+    "max_down_relative_l2": 0.0005048413929088082,
+    "all_repeats_deterministic": true,
+    "median_expert_seconds": 0.01582922227680683
+  },
+  "backend_summaries": {
+    "atlas": {
+      "library": "/usr/lib/aarch64-linux-gnu/libcblas.so.3.10.3",
+      "library_sha256": "469a315b2d5b0b7e32e4d5d7e6496cd5c5698ba277f674c106019c88587a59af",
+      "threads": 1,
+      "sample_count": 33,
+      "median_down_relative_l2": 7.311741662713452e-08,
+      "max_down_relative_l2": 0.0013818360009855766,
+      "all_repeats_deterministic": true,
+      "median_expert_seconds": 0.014586603734642267
+    }
+  }
+}
+CPUInfer[0xaaaad7527350]: Hello
+WorkerPool[0xaaaada247e10] 1 subpools, [numa:threads][0:16]
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaaada247e10, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaaad7527350]: Goodbye
