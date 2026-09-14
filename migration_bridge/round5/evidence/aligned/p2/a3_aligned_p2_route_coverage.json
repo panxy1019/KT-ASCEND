@@ -1,0 +1,92 @@
+{
+  "count_values_nonnegative": true,
+  "cpu_experts_exercised": 16,
+  "expert_coverage_ratio": 1.0,
+  "frozen_layers": [
+    1,
+    9,
+    17,
+    26
+  ],
+  "layers_exercised": 4,
+  "ownership_mask_invariant": true,
+  "per_layer": {
+    "1": {
+      "cpu_expert_hits": {
+        "31": 4035,
+        "43": 5113,
+        "50": 3752,
+        "57": 4982
+      },
+      "cpu_experts": [
+        31,
+        43,
+        50,
+        57
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 17882
+    },
+    "17": {
+      "cpu_expert_hits": {
+        "25": 9414,
+        "36": 3586,
+        "6": 7008,
+        "8": 964
+      },
+      "cpu_experts": [
+        6,
+        8,
+        25,
+        36
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 20972
+    },
+    "26": {
+      "cpu_expert_hits": {
+        "10": 2802,
+        "26": 3804,
+        "30": 4328,
+        "56": 4925
+      },
+      "cpu_experts": [
+        10,
+        26,
+        30,
+        56
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 15859
+    },
+    "9": {
+      "cpu_expert_hits": {
+        "38": 4420,
+        "41": 5804,
+        "45": 4011,
+        "46": 5841
+      },
+      "cpu_experts": [
+        38,
+        41,
+        45,
+        46
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 20076
+    }
+  },
+  "recorded_forward_passes": 1024,
+  "routing_weights_finite_evidence": "all 512 matched-history outputs and 117-request determinism outputs finite; direct per-layer CPU-not-hit replay follows",
+  "schema_version": 2,
+  "selected_cpu_expert_count": 16,
+  "selected_layer_count": 4,
+  "sha256": "da7e0d2409a0582995712dec35c8d276057542215321e593e0a3a43516b32059",
+  "source_counts": "upstream ExpertDistributionRecorder logical_count",
+  "source_ownership": "upstream KT gpu_expert_masks",
+  "total_cpu_hits": 74789
+}

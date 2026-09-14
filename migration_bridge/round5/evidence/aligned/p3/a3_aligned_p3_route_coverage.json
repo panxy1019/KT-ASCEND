@@ -1,0 +1,163 @@
+{
+  "count_values_nonnegative": true,
+  "cpu_experts_exercised": 32,
+  "expert_coverage_ratio": 1.0,
+  "frozen_layers": [
+    1,
+    5,
+    8,
+    12,
+    17,
+    19,
+    22,
+    26
+  ],
+  "layers_exercised": 8,
+  "ownership_mask_invariant": true,
+  "per_layer": {
+    "1": {
+      "cpu_expert_hits": {
+        "31": 4033,
+        "43": 5114,
+        "50": 3751,
+        "57": 4981
+      },
+      "cpu_experts": [
+        31,
+        43,
+        50,
+        57
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 17879
+    },
+    "12": {
+      "cpu_expert_hits": {
+        "35": 5731,
+        "41": 6295,
+        "46": 5446,
+        "58": 4636
+      },
+      "cpu_experts": [
+        35,
+        41,
+        46,
+        58
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 22108
+    },
+    "17": {
+      "cpu_expert_hits": {
+        "25": 9416,
+        "36": 3588,
+        "6": 6992,
+        "8": 1001
+      },
+      "cpu_experts": [
+        6,
+        8,
+        25,
+        36
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 20997
+    },
+    "19": {
+      "cpu_expert_hits": {
+        "14": 4267,
+        "32": 5100,
+        "47": 4646,
+        "62": 5838
+      },
+      "cpu_experts": [
+        14,
+        32,
+        47,
+        62
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 19851
+    },
+    "22": {
+      "cpu_expert_hits": {
+        "21": 5600,
+        "60": 5178,
+        "61": 4565,
+        "62": 8758
+      },
+      "cpu_experts": [
+        21,
+        60,
+        61,
+        62
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 24101
+    },
+    "26": {
+      "cpu_expert_hits": {
+        "10": 2801,
+        "26": 3807,
+        "30": 4350,
+        "56": 4960
+      },
+      "cpu_experts": [
+        10,
+        26,
+        30,
+        56
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 15918
+    },
+    "5": {
+      "cpu_expert_hits": {
+        "14": 5009,
+        "38": 4612,
+        "39": 4106,
+        "41": 4643
+      },
+      "cpu_experts": [
+        14,
+        38,
+        39,
+        41
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 18370
+    },
+    "8": {
+      "cpu_expert_hits": {
+        "1": 6370,
+        "17": 5514,
+        "33": 5754,
+        "45": 5051
+      },
+      "cpu_experts": [
+        1,
+        17,
+        33,
+        45
+      ],
+      "exercised": 4,
+      "selected": 4,
+      "total_cpu_hits": 22689
+    }
+  },
+  "recorded_forward_passes": 1024,
+  "schema_version": 2,
+  "selected_cpu_expert_count": 32,
+  "selected_layer_count": 8,
+  "sha256": "b8b39a05cc36fce6844599ef894cc754efbc994bcb9bba9015c1efd9c55cda28",
+  "source_counts": "upstream ExpertDistributionRecorder logical_count",
+  "source_ownership": "upstream KT gpu_expert_masks",
+  "total_cpu_hits": 161913
+}
