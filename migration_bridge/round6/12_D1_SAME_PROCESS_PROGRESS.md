@@ -35,17 +35,32 @@ Raw A3 artifacts remain at
 Portable copies of `result.json`, `compare_pre_final.json` and the A3 hash
 manifest are in `evidence/d1-final/determinism-b681/`.
 
-## Current exact-code rerun
+## Exact-code rerun
 
 Parent `e3084d309d6f39b8a9f7185d36ac27e4b77526d7` adds only opt-in
 target-row numerical telemetry and evidence tools. Its installed wheel passed
 7/7 parent selection and 7/7 SGLang child alignment tests. Nevertheless,
-the full same-process matrix is being repeated on that exact build rather
-than promoting the earlier wheel's result across commits.
+the full same-process matrix was repeated on that exact build rather than
+promoting the earlier wheel's result across commits. It again passed all
+12/12 prompts, with 10/10 unique trajectories per prompt and exact 8/16/32
+prefixes of each 64-token reference. The 12 reference trajectories were also
+all exact against the b681 build.
 
 ```text
-D1_SAME_PROCESS_E308 = IN_PROGRESS
-D1_CLEAN_RESTART_E308 = NOT_RUN
+e308 result JSON SHA256:
+171b717bfec144fec3eaa37acd7baf090ab19d5d83271fc1bcde7b23c9639edc
+e308 canonical payload SHA256:
+5daceab68b6378091105cea755d97b535b16c938f93da57b44b40a3e6f1b1290
+comparison b681 vs e308: all_exact=true
+```
+
+A portable copy of the e308 result JSON, comparison and hash manifest is in
+`evidence/d1-final/determinism-e308/`. The full server log remains in A3
+`/home/admin/kt-artifacts/round6-deferred/d1-determinism-e308-a/`.
+
+```text
+D1_SAME_PROCESS_E308 = A3_VERIFIED
+D1_CLEAN_RESTART_E308 = IN_PROGRESS
 D1_FULL_MODEL_NUMERICAL = NOT_RUN
 D1_DOWNSTREAM_QUALITY = NOT_RUN
 ```
