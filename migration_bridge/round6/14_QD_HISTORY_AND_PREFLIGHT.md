@@ -22,5 +22,21 @@ request, the final pending set was empty, and route telemetry state was
 `POSITION_ALIGNED` (12 trace records). CPU hit count happened to be zero for
 this one position; this is an instrumentation check, not a CPU coverage claim.
 
-Full QD defer=0 capture is running as 16 × 64 matched-history positions. The
-HD corpus remains reserved and has not been used for fitting or validation.
+The full QD defer=0 capture then completed 16 × 64 = **1024** matched-history
+positions. All 16 prompt IDs and 64 positions per prompt were present, with
+the exact QD corpus SHA and baseline-history SHA. Every request's route trace
+was position-aligned and ended with an empty pending set. There were 430
+positions with a CPU-owned route. This is a baseline capture, **not** a
+defer=1 numerical PASS.
+
+| Full baseline artifact | SHA256 (file bytes) |
+| --- | --- |
+| `evidence/qd/defer0_manifest.json` | `3f1754ac2a738eb63cba3a8eddfa290ff725eec6053255bb4692a0841060b075` |
+| `evidence/qd/defer0_logit_sha256.txt` | `1787a9e04ab705077b8c3c435644f8be7e19e3c197f6d1a471dfb80d2c801a5c` |
+
+The 16 full-logit `.pt` tensors and raw debug traces remain under
+`/workspace/results/qd-nodefer-full/` and
+`/workspace/results/qd-nodefer-sweep/` in the A3 disposable container.
+The hash list identifies the tensor files without committing large raw
+arrays to Git. The HD corpus remains reserved and has not been used for
+fitting or validation.
