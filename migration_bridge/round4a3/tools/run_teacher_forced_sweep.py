@@ -45,12 +45,16 @@ def summarize_deferred_request(records: list[dict]) -> dict:
     pending_states = [record for record in records if record["event"] == "pending_state"]
     if not submits or not pending_states or pending_states[-1]["pending_layers"]:
         raise RuntimeError("Deferred request has no submits or did not drain pending state")
+    last_by_layer = {int(row["layer_idx"]): row for row in submits}
+    if not all("last_row_immediate_cpu_experts" in row for row in last_by_layer.values()):
+        raise RuntimeError("Deferred trace lacks target-row route fields")
     return {
-        "cpu_hit_count": sum(int(row["immediate_cpu_routes"]) + int(row["deferred_cpu_routes"]) for row in submits),
-        "cpu_hit_layers": sorted({int(row["layer_idx"]) for row in submits if int(row["immediate_cpu_routes"]) + int(row["deferred_cpu_routes"]) > 0}),
-        "cpu_hit_experts": sorted({int(expert) for row in submits for expert in row["immediate_cpu_experts"] + row["deferred_cpu_experts"]}),
-        "actual_deferred_route_count": sum(int(row["deferred_cpu_routes"]) for row in submits),
-        "deferred_producer_layers": sorted({int(row["layer_idx"]) for row in submits if int(row["deferred_cpu_routes"]) > 0}),
+        "cpu_hit_count": sum(len(row["last_row_immediate_cpu_experts"]) + len(row["last_row_deferred_cpu_experts"]) for row in last_by_layer.values()),
+        "cpu_hit_layers": sorted(layer for layer, row in last_by_layer.items() if row["last_row_immediate_cpu_experts"] or row["last_row_deferred_cpu_experts"]),
+        "cpu_hit_experts": sorted({int(expert) for row in last_by_layer.values() for expert in row["last_row_immediate_cpu_experts"] + row["last_row_deferred_cpu_experts"]}),
+        "actual_deferred_route_count": sum(len(row["last_row_deferred_cpu_experts"]) for row in last_by_layer.values()),
+        "deferred_producer_layers": sorted(layer for layer, row in last_by_layer.items() if row["last_row_deferred_cpu_experts"]),
+        "cpu_route_weights": [float(value) for row in last_by_layer.values() for value in row["last_row_immediate_cpu_weights"] + row["last_row_deferred_cpu_weights"]],
         "deferred_trace_record_count": len(records),
         "deferred_pending_final": [],
         "route_telemetry_state": "POSITION_ALIGNED",

@@ -103,6 +103,7 @@ def main() -> None:
                 "cpu_hit_experts": deferred_row["cpu_hit_experts"],
                 "actual_deferred_route_count": int(deferred_row["actual_deferred_route_count"]),
                 "deferred_producer_layers": deferred_row["deferred_producer_layers"],
+                "cpu_route_weights": deferred_row["cpu_route_weights"],
                 "route_telemetry_state": "POSITION_ALIGNED",
             }
             rows.append(row)
@@ -116,6 +117,10 @@ def main() -> None:
             strata["cpu_hit:0" if cpu_hit_count == 0 else "cpu_hit:1" if cpu_hit_count == 1 else "cpu_hit:2+"].extend(pair_distortions)
             for layer_idx in row["deferred_producer_layers"]:
                 strata[f"deferred_layer:{layer_idx}"].extend(pair_distortions)
+            for route_weight in row["cpu_route_weights"]:
+                magnitude = abs(route_weight)
+                bucket = "0-0.1" if magnitude < 0.1 else "0.1-0.5" if magnitude < 0.5 else "0.5+"
+                strata[f"route_weight:{bucket}"].extend(pair_distortions)
 
     payload = {
         "schema_version": 1, "mechanism": "defer0_vs_defer1_matched_history_pairwise_order",

@@ -16,6 +16,7 @@ from kt_kernel.experts_base import (
     BaseMoEWrapper,
     _has_cpu_routes,
     _summarize_cpu_routes,
+    _trace_last_row_cpu_routes,
 )
 
 
@@ -125,3 +126,15 @@ def test_incremental_consumer_clears_previous_layer_pending():
     BaseMoEWrapper._layer_has_pending_deferred[7] = True
     BaseMoEWrapper._clear_consumed_previous_pending(wrapper, incremental=False)
     assert BaseMoEWrapper._layer_has_pending_deferred[7]
+
+
+def test_trace_target_row_excludes_prefill_cpu_routes():
+    gpu_mask = torch.ones(64, dtype=torch.bool)
+    gpu_mask[[6, 8, 25, 36]] = False
+    ids = torch.tensor([[6, 8, -1], [11, 25, 36]], dtype=torch.long)
+    weights = torch.tensor([[0.5, 0.4, 0.0], [0.6, 0.3, 0.1]])
+
+    cpu_ids, cpu_weights = _trace_last_row_cpu_routes(ids, weights, gpu_mask)
+
+    assert cpu_ids == [25, 36]
+    assert cpu_weights == [float(weights[1, 1]), float(weights[1, 2])]

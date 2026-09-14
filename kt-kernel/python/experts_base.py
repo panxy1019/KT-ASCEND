@@ -64,6 +64,21 @@ def _summarize_cpu_routes(
     return int(valid_ids.numel()), int(cpu_ids.numel()), unique_cpu_ids
 
 
+def _trace_last_row_cpu_routes(
+    route_ids_cpu: torch.Tensor,
+    route_weights_cpu: torch.Tensor,
+    gpu_experts_mask: torch.Tensor,
+) -> Tuple[List[int], List[float]]:
+    """Read target-row CPU IDs and weights only for opt-in numerical traces."""
+    ids = route_ids_cpu[-1].flatten().to(torch.long)
+    weights = route_weights_cpu[-1].flatten()
+    selected = (ids >= 0) & ~gpu_experts_mask[ids.clamp_min(0)]
+    return (
+        [int(value) for value in ids[selected].tolist()],
+        [float(value) for value in weights[selected].tolist()],
+    )
+
+
 def _has_cpu_routes(
     route_ids_cpu: torch.Tensor,
     gpu_experts_mask: torch.Tensor,
@@ -876,6 +891,16 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 deferred_experts_ids_cpu[current_slot] if deferred_ids is not None else None,
                 self.gpu_experts_mask,
             )
+            last_immediate_ids, last_immediate_weights = _trace_last_row_cpu_routes(
+                immediate_experts_ids_cpu[current_slot],
+                weights_cpu[current_slot],
+                self.gpu_experts_mask,
+            )
+            last_deferred_ids, last_deferred_weights = _trace_last_row_cpu_routes(
+                deferred_experts_ids_cpu[current_slot],
+                weights_cpu[current_slot],
+                self.gpu_experts_mask,
+            )
             _trace_deferred_event(
                 "submit",
                 layer_idx=self.layer_idx,
@@ -890,6 +915,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 deferred_valid_routes=deferred_valid,
                 deferred_cpu_routes=deferred_cpu,
                 deferred_cpu_experts=deferred_cpu_ids,
+                last_row_immediate_cpu_experts=last_immediate_ids,
+                last_row_immediate_cpu_weights=last_immediate_weights,
+                last_row_deferred_cpu_experts=last_deferred_ids,
+                last_row_deferred_cpu_weights=last_deferred_weights,
                 outgoing_pending=has_deferred,
             )
         immediate_task = self.moe.forward_task(
