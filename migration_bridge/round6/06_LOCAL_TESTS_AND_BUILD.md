@@ -52,7 +52,7 @@ git diff --check
 - CPUInfer queue ordering, two-slot generation and incremental exactly-once.
 - Model build, serving and every numerical/quality/performance gate.
 
-## A3 instrumentation build
+## A3 instrumentation build and final-state rebuild
 
 The opt-in Deferred scheduling trace and empty-task suppression were rebuilt
 inside the disposable Round 6 A3 container with the frozen CPUInfer/Ascend
@@ -61,6 +61,29 @@ flags.  The final wheel build reported SHA256
 The parent Deferred-selection suite passed `5/5` with the installed wheel.
 The detailed mechanism result is recorded in
 `07_D1_DEFERRED_MECHANISM.md`.
+
+After the one-shot pending-state consumption fix, A3 was fast-forwarded to
+parent `b6815196d8bfd531f810ba34372999dc77911b9c` (SGLang child
+`eaa58ccea4ee372b8b207dd16f398eafe3da37ff`). The disposable container
+rebuilt and installed `kt-kernel` with the same CPUInfer/Ascend flags. The
+final-state wheel build reported SHA256
+`508e519d0d727269712e2c1596621a94ca96113719dd6525f7d5c8f73207fba8`;
+the installed extension SHA256 was
+`3fbb95c00c5906b905e8fd689346f4e78f86714fddb6372fa0e481e0da7ce43f`.
+The final build log SHA256 is
+`d3436e7825415fdd0bbe8dd2a94f3678d386b9ec588e5dda9fe564187243f05a`.
+
+On that installed final-state wheel:
+
+```text
+ROUND6_DEFERRED_SOURCE_CONTRACT = PASS
+parent Deferred selection tests = 6/6 PASS
+SGLang Ascend alignment contract tests = 7/7 PASS
+```
+
+These results are `A3_VERIFIED` targeted tests, not full D1 qualification.
+Raw logs are retained under `/home/admin/kt-artifacts/round6-deferred/a3-final-tests/`
+on A3.
 
 ## Gate
 
