@@ -85,6 +85,18 @@ These results are `A3_VERIFIED` targeted tests, not full D1 qualification.
 Raw logs are retained under `/home/admin/kt-artifacts/round6-deferred/a3-final-tests/`
 on A3.
 
+The target-row trace instrumentation was then added in parent
+`e3084d309d6f39b8a9f7185d36ac27e4b77526d7` and the wheel rebuilt again
+in the same disposable container. This final numerical-tooling wheel reported
+SHA256 `0d74ba541612bf55b502425b9d55a8ef086c19962963c6e07b131ae016721aae`;
+its native extension remained byte-identical at
+`3fbb95c00c5906b905e8fd689346f4e78f86714fddb6372fa0e481e0da7ce43f`.
+The installed Python `experts_base.py` and source file both hashed to
+`1b6960ed0cddd17db488ca06b6b9d70b26c371b1536966fe316976192a1a3591`.
+The parent test suite passed `7/7`; the SGLang child suite passed `7/7`.
+The build log SHA256 is
+`be77eb0d5259ae1f817bc52ef7e56a23f263edbccdf65cf51b7ef3908052d419`.
+
 ## Gate
 
 ```text
