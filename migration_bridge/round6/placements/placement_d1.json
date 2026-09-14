@@ -1,0 +1,46 @@
+{
+  "block_terminal_layer": 8,
+  "deferred_layers": [
+    7
+  ],
+  "gpu_experts_ratio": 0.9951923076923077,
+  "layer_placements": [
+    {
+      "cpu_experts": [
+        16,
+        38,
+        41,
+        50
+      ],
+      "layer": 7,
+      "lowest_rank_hits": 104,
+      "route_hits": 1212
+    },
+    {
+      "cpu_experts": [
+        8,
+        25,
+        33,
+        55
+      ],
+      "layer": 8,
+      "lowest_rank_hits": 96,
+      "route_hits": 1026
+    }
+  ],
+  "layers": [
+    7,
+    8
+  ],
+  "placement_file": "placement_d1.pt",
+  "placement_sha256": "23edad71e52c05b1dc3a227ea6e27cacad0b4db6a18c4419647efae00530d39c",
+  "requested_max_deferred": 1,
+  "score": [
+    2238,
+    200,
+    1026
+  ],
+  "selected_cpu_expert_count": 8,
+  "selected_layer_count": 2,
+  "terminal_layer_max_deferred": 0
+}

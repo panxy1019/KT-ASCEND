@@ -1,0 +1,124 @@
+{
+  "block_terminal_layer": 12,
+  "deferred_layers": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "gpu_experts_ratio": 0.9807692307692307,
+  "layer_placements": [
+    {
+      "cpu_experts": [
+        25,
+        38,
+        40,
+        50
+      ],
+      "layer": 5,
+      "lowest_rank_hits": 127,
+      "route_hits": 1094
+    },
+    {
+      "cpu_experts": [
+        11,
+        37,
+        46,
+        56
+      ],
+      "layer": 6,
+      "lowest_rank_hits": 105,
+      "route_hits": 1014
+    },
+    {
+      "cpu_experts": [
+        16,
+        38,
+        41,
+        50
+      ],
+      "layer": 7,
+      "lowest_rank_hits": 104,
+      "route_hits": 1212
+    },
+    {
+      "cpu_experts": [
+        8,
+        25,
+        33,
+        55
+      ],
+      "layer": 8,
+      "lowest_rank_hits": 96,
+      "route_hits": 1026
+    },
+    {
+      "cpu_experts": [
+        19,
+        41,
+        45,
+        46
+      ],
+      "layer": 9,
+      "lowest_rank_hits": 73,
+      "route_hits": 1134
+    },
+    {
+      "cpu_experts": [
+        17,
+        44,
+        55,
+        59
+      ],
+      "layer": 10,
+      "lowest_rank_hits": 109,
+      "route_hits": 956
+    },
+    {
+      "cpu_experts": [
+        16,
+        28,
+        43,
+        47
+      ],
+      "layer": 11,
+      "lowest_rank_hits": 105,
+      "route_hits": 1135
+    },
+    {
+      "cpu_experts": [
+        28,
+        29,
+        38,
+        41
+      ],
+      "layer": 12,
+      "lowest_rank_hits": 90,
+      "route_hits": 1077
+    }
+  ],
+  "layers": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "placement_file": "placement_d3.pt",
+  "placement_sha256": "769ee8bcb2bbfe0777f184bc38407d055427a0a9cff17b51811caa8c371850de",
+  "requested_max_deferred": 1,
+  "score": [
+    8648,
+    809,
+    956
+  ],
+  "selected_cpu_expert_count": 32,
+  "selected_layer_count": 8,
+  "terminal_layer_max_deferred": 0
+}
