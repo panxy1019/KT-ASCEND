@@ -118,6 +118,7 @@ def main() -> None:
     parser.add_argument("--kt-dump-dir", type=Path)
     parser.add_argument("--mode", required=True)
     parser.add_argument("--positions", type=int, default=64)
+    parser.add_argument("--prompt-id", action="append", default=[], help="Optional prompt filter for a preflight; omit for the full frozen corpus.")
     parser.add_argument("--cpu-experts", default="6,8,25,36")
     parser.add_argument(
         "--deferred-trace-file", type=Path,
@@ -126,6 +127,10 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
+    selected_prompt_ids = set(args.prompt_id)
+    prompts = [prompt for prompt in corpus["prompts"] if not selected_prompt_ids or prompt["id"] in selected_prompt_ids]
+    if selected_prompt_ids - {prompt["id"] for prompt in prompts}:
+        raise SystemExit("unknown prompt ID in --prompt-id")
     history = json.loads(args.baseline_history.read_text())
     history_by_id = {row["prompt_id"]: history_output_ids(row) for row in history["rows"]}
     cpu_experts = {int(value) for value in args.cpu_experts.split(",") if value}
@@ -137,7 +142,7 @@ def main() -> None:
         raise RuntimeError(f"another sweep owns {lock_file.name} in {args.output_dir}") from error
     (args.output_dir / "logits").mkdir(exist_ok=True)
     rows = []
-    for prompt in corpus["prompts"]:
+    for prompt in prompts:
         generated = history_by_id[prompt["id"]]
         if len(generated) < args.positions:
             raise RuntimeError(f"insufficient baseline history for {prompt['id']}")
@@ -207,6 +212,7 @@ def main() -> None:
         "baseline_history_sha256": history["sha256"],
         "positions_per_prompt": args.positions,
         "row_count": len(rows),
+        "prompt_ids": [prompt["id"] for prompt in prompts],
         "logit_dtype": "torch.float32",
         "route_telemetry_state": "POSITION_ALIGNED" if args.deferred_trace_file else "LEGACY_OR_UNAVAILABLE",
         "vocab_size": int(stacked.shape[-1]),
