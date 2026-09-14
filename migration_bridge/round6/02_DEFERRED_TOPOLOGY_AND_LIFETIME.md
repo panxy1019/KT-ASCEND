@@ -84,14 +84,18 @@ otherwise
   -> layer-local defer = 0
 ```
 
-The potential empty CPU-deferred-work issue remains deliberately unmodified
-until the A3 lifecycle trace proves whether the backend already treats it as a
-required pipeline no-op or an incorrect pending task.  This avoids adding a
-device-to-host scalar check to the submit hot path without evidence.
+The A3 D1 lifecycle trace proved that this was an incorrect pending task.  In
+the pre-fix four-prompt run, layer 7 marked all 134 submissions pending even
+though only 13 contained a CPU-owned deferred route; layer 8 consequently ran
+incremental on all 134 submissions.  Commit `0fbbc572b1b43894a3205c39f24a92132ebf302b`
+now suppresses empty CPU-deferred work after the Ascend path's existing D2H
+visibility wait.  The same workload produced exactly 13 pending events and
+exactly 13 adjacent layer-8 incremental consumers, with zero false or missed
+pending events.  CUDA retains its previous asynchronous behavior.
 
 ## Gate
 
 ```text
 R6_G1_TOPOLOGY = GUARDED_IN_SGLANG_CHILD
-R6_G1_EMPTY_PENDING = NEEDS_A3_BEHAVIORAL_PROBE
+R6_G1_EMPTY_PENDING = A3_VERIFIED
 ```

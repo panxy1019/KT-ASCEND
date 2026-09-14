@@ -52,6 +52,16 @@ git diff --check
 - CPUInfer queue ordering, two-slot generation and incremental exactly-once.
 - Model build, serving and every numerical/quality/performance gate.
 
+## A3 instrumentation build
+
+The opt-in Deferred scheduling trace and empty-task suppression were rebuilt
+inside the disposable Round 6 A3 container with the frozen CPUInfer/Ascend
+flags.  The final wheel build reported SHA256
+`5a6e7abb87c8a47f962a498d146cdbdd91f151bf456b52315fbbf117b699ff24`.
+The parent Deferred-selection suite passed `5/5` with the installed wheel.
+The detailed mechanism result is recorded in
+`07_D1_DEFERRED_MECHANISM.md`.
+
 ## Gate
 
 ```text

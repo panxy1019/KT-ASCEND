@@ -5,7 +5,7 @@ Evidence state: `CODE_INSPECTED`
 | ID | Risk | Severity | First gate | Required evidence |
 |---|---|---:|---|---|
 | R6-R01 | Sparse block terminal silently defers with no consumer | Critical | unit/topology | per-layer defer rule + fail-fast test |
-| R6-R02 | Empty/non-CPU deferred set creates false pending | High | unit/mechanism | zero-work trace and pending=0 |
+| R6-R02 | Empty/non-CPU deferred set creates false pending | High | unit/mechanism | `A3_VERIFIED`: zero false/missed pending after `0fbbc572b` |
 | R6-R03 | Deferred contribution dropped or merged twice | Critical | D1 mechanism | explicit partial-sum reference |
 | R6-R04 | Shared two-slot buffer reused before consume | Critical | D1 1000-forward | slot generation trace, one hash |
 | R6-R05 | Class-global pending leaks across requests/models | Critical | sequential requests | terminal zero + clean reset/drain |
