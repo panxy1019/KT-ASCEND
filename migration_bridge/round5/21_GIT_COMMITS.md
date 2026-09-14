@@ -64,3 +64,7 @@ The tag points at the clean upstream-based runtime source.  Round 5 reports,
 tools and compact evidence remain on the separate
 `feature/kt-round5-alignment-audit` branch so documentation does not alter the
 qualified runtime target.
+
+The audit-side qualification freeze is commit
+`38b9ab1b5` (`docs(round5): freeze upstream-aligned TP1 qualification`), with
+compact evidence archived immediately before it at `5b3eaf2b4`.

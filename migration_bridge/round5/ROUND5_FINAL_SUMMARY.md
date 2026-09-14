@@ -37,6 +37,8 @@ ported after the raw probes.
 | aligned SGLang | `412219b4b05a888808f0b88d2963a8b6164a0fda` |
 | final tag | `round5-upstream-aligned-tp1-a3-verified` |
 | tag object | `94baf6272dd86eae7e465a04f4ead630032400d4` |
+| audit qualification commit | `38b9ab1b5` |
+| compact evidence commit | `5b3eaf2b4` |
 
 ## Model and frozen contracts
 
