@@ -585,6 +585,11 @@ class BaseMoEWrapper(_MoEBase, ABC):
 
         return immediate_ids, deferred_ids
 
+    def _clear_consumed_previous_pending(self, incremental: bool) -> None:
+        """Clear the producer flag after its incremental consumer is queued."""
+        if incremental:
+            BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx - 1] = False
+
     def _check_qlen_fits_cpp_buffers(self, hidden_states: torch.Tensor) -> None:
         """Fail loudly when qlen would overrun the C++ MoE output buffer.
 
@@ -716,6 +721,8 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 kt_kernel_ext.subscribe_ascend_stream(int(cuda_stream))
             self.cpu_infer.submit(immediate_task)
 
+        self._clear_consumed_previous_pending(incremental)
+
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
         has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
             deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
@@ -774,6 +781,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             incremental,
         )
         self.cpu_infer.submit(immediate_task)
+        self._clear_consumed_previous_pending(incremental)
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
         has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
             deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
@@ -898,6 +906,8 @@ class BaseMoEWrapper(_MoEBase, ABC):
             self.cpu_infer.submit(immediate_task)
         else:
             self.cpu_infer.submit_with_cuda_stream(cuda_stream, immediate_task)
+
+        self._clear_consumed_previous_pending(incremental)
 
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
         if has_deferred:

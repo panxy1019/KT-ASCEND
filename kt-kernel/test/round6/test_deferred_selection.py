@@ -113,3 +113,15 @@ def test_deferred_trace_reports_only_cpu_owned_routes(monkeypatch, tmp_path):
 
     records = [json.loads(line) for line in trace_path.read_text().splitlines()]
     assert records == [{"cpu_routes": 4, "event": "submit", "layer_idx": 7}]
+
+
+def test_incremental_consumer_clears_previous_layer_pending():
+    wrapper = SimpleNamespace(layer_idx=8)
+    BaseMoEWrapper._layer_has_pending_deferred = {7: True, 8: False}
+
+    BaseMoEWrapper._clear_consumed_previous_pending(wrapper, incremental=True)
+    assert BaseMoEWrapper._layer_has_pending_deferred == {7: False, 8: False}
+
+    BaseMoEWrapper._layer_has_pending_deferred[7] = True
+    BaseMoEWrapper._clear_consumed_previous_pending(wrapper, incremental=False)
+    assert BaseMoEWrapper._layer_has_pending_deferred[7]
