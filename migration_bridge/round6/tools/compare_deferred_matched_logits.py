@@ -53,7 +53,17 @@ def main() -> None:
         raise SystemExit("Deferred sweep lacks position-aligned route telemetry")
     baseline_rows = {(row["prompt_id"], row["token_index"]): row for row in baseline_manifest["rows"]}
     deferred_rows = {(row["prompt_id"], row["token_index"]): row for row in deferred_manifest["rows"]}
-    if baseline_rows.keys() != deferred_rows.keys() or len(baseline_rows) != baseline_manifest["row_count"]:
+    expected_keys = {
+        (prompt["id"], token_index)
+        for prompt in corpus["prompts"]
+        for token_index in range(baseline_manifest["positions_per_prompt"])
+    }
+    if (
+        baseline_rows.keys() != deferred_rows.keys()
+        or baseline_rows.keys() != expected_keys
+        or len(baseline_rows) != baseline_manifest["row_count"]
+        or len(deferred_rows) != deferred_manifest["row_count"]
+    ):
         raise SystemExit("position identity mismatch")
 
     rows: list[dict] = []
