@@ -61,6 +61,7 @@ if [[ ${KT_R6_ENABLE_ROUTE_RECORDER:-0} == 1 ]]; then
     --expert-distribution-recorder-mode stat
     --expert-distribution-recorder-buffer-size -1
     --enable-return-routed-experts
+    --disable-radix-cache
   )
 fi
 
