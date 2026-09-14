@@ -1,6 +1,6 @@
 # ADR — Round 5 Upstream Alignment Strategy
 
-Status: `ACCEPTED_FOR_IMPLEMENTATION`
+Status: `ACCEPTED_AND_A3_QUALIFIED`
 
 Evidence: static semantic audit plus raw upstream A3 build/runtime/capability
 probes.
@@ -88,5 +88,5 @@ current upstream changes, destroying attribution.
 
 ```text
 R5_G4_ALIGNMENT_ADR = APPROVED_UPSTREAM_FIRST
+ROUND5_UPSTREAM_ALIGNMENT = A3_VERIFIED_READY
 ```
-

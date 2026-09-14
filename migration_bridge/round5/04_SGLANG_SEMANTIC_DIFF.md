@@ -77,11 +77,10 @@ probe.
 
 | Feature | Source presence | Round 5 qualification |
 |---|---:|---:|
-| static KTEP | yes | pending A3 |
-| DSV2 BF16/unquantized | code path candidate | pending A3 |
-| F32 GGUF LLAMAFILE | code path candidate | pending A3 |
+| static KTEP | yes | P1/P2/P3 A3 verified |
+| DSV2 BF16/unquantized | code path candidate | P1/P2/P3 A3 verified |
+| F32 GGUF LLAMAFILE | code path candidate | P1/P2/P3 A3 verified |
 | Graph | yes | off / not qualified |
 | Deferred experts | yes | off / not qualified |
 | Dynamic placement | yes | off / not qualified |
 | W8A8/MXFP4 | yes | out of scope |
-

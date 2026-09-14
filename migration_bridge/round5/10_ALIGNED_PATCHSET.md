@@ -1,6 +1,6 @@
 # Round 5 — Minimal Upstream-Aligned Patch Set
 
-Status: `IMPLEMENTED; A3 REQUALIFICATION IN PROGRESS`
+Status: `IMPLEMENTED; P1/P2/P3 A3 REQUALIFICATION COMPLETE`
 
 The aligned candidate starts at pinned upstream parent
 `440df948027128318bc30a11a545433eb0c7d383` and child
@@ -56,4 +56,3 @@ previously qualified invariant.
 
 The production delta is therefore a semantic compatibility layer on the
 pinned upstream architecture, not a replay of the historical patch stack.
-
