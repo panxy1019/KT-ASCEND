@@ -1,14 +1,32 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-profile=${1:?usage: launch_round6_profile.sh ALLNPU|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
-run_root=${2:?usage: launch_round6_profile.sh ALLNPU|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
+profile=${1:?usage: launch_round6_profile.sh ALLNPU|P1_B0|P2_B0|P3_B0|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
+run_root=${2:?usage: launch_round6_profile.sh ALLNPU|P1_B0|P2_B0|P3_B0|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
 port=${3:-31000}
 
 case "${profile}" in
   ALLNPU)
     placement=
     gpu_ratio=
+    max_deferred=0
+    ;;
+  P1_B0)
+    placement=${KT_R6_P1_B0_PLACEMENT:-/workspace/round5-reference/placement_p1.pt}
+    profile_gguf=/workspace/round5-reference/deepseek-v2-lite-p2-f32.gguf
+    gpu_ratio=0.9975961538461539
+    max_deferred=0
+    ;;
+  P2_B0)
+    placement=${KT_R6_P2_B0_PLACEMENT:-/workspace/round5-reference/placement_p2.pt}
+    profile_gguf=/workspace/round5-reference/deepseek-v2-lite-p2-f32.gguf
+    gpu_ratio=0.9903846153846154
+    max_deferred=0
+    ;;
+  P3_B0)
+    placement=${KT_R6_P3_B0_PLACEMENT:-/workspace/round5-reference/placement_p3.pt}
+    profile_gguf=/workspace/round4a5-reference/deepseek-v2-lite-p3-f32.gguf
+    gpu_ratio=0.9807692307692307
     max_deferred=0
     ;;
   D1)
@@ -49,7 +67,7 @@ esac
 
 python_bin=${KT_R6_PYTHON:-/workspace/results/venv-r6/bin/python}
 model=${KT_R6_MODEL_PATH:-/workspace/models/DeepSeek-V2-Lite-604d5664}
-gguf=${KT_R6_GGUF_PATH:-/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf}
+gguf=${KT_R6_GGUF_PATH:-${profile_gguf:-/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf}}
 mkdir -p "${run_root}"
 
 set +u
