@@ -14,7 +14,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from transformers import AutoTokenizer
+from tokenizers import Tokenizer
 
 
 MODEL_REVISION = "604d5664dddd88a0433dbae533b7fe9472482de0"
@@ -128,7 +128,7 @@ def freeze_corpus(name: str, specs, model_dir: Path, tokenizer) -> dict:
             "id": prompt_id,
             "category": category,
             "text": text,
-            "input_ids": tokenizer.encode(text, add_special_tokens=False),
+            "input_ids": tokenizer.encode(text, add_special_tokens=False).ids,
         }
         for prompt_id, category, text in specs
     ]
@@ -189,11 +189,19 @@ def main() -> None:
         all_ids.update(ids)
         all_texts.update(texts)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model_dir, trust_remote_code=True)
+    tokenizer = Tokenizer.from_file(str(args.model_dir / "tokenizer.json"))
     corpora = {
         name: freeze_corpus(name, specs, args.model_dir, tokenizer)
         for name, specs in SPECS.items()
     }
+    empty = [
+        row["id"]
+        for payload in corpora.values()
+        for row in payload["prompts"]
+        if not row["input_ids"]
+    ]
+    if empty:
+        raise RuntimeError(f"tokenizer produced empty input IDs: {empty}")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for name, payload in corpora.items():
         output = args.output_dir / f"{name.lower()}.json"
