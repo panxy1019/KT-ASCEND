@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-profile=${1:?usage: launch_round6_profile.sh ALLNPU|D1|D2|D3 RUN_ROOT [PORT]}
-run_root=${2:?usage: launch_round6_profile.sh ALLNPU|D1|D2|D3 RUN_ROOT [PORT]}
+profile=${1:?usage: launch_round6_profile.sh ALLNPU|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
+run_root=${2:?usage: launch_round6_profile.sh ALLNPU|D1|D1_NODEFER|D2|D2_NODEFER|D3|D3_NODEFER RUN_ROOT [PORT]}
 port=${3:-31000}
 
 case "${profile}" in
@@ -16,18 +16,33 @@ case "${profile}" in
     gpu_ratio=0.9951923076923077
     max_deferred=1
     ;;
+  D1_NODEFER)
+    placement=${KT_R6_D1_PLACEMENT:-/workspace/results/placements/placement_d1.pt}
+    gpu_ratio=0.9951923076923077
+    max_deferred=0
+    ;;
   D2)
     placement=${KT_R6_D2_PLACEMENT:-/workspace/results/placements/placement_d2.pt}
     gpu_ratio=0.9903846153846154
     max_deferred=1
+    ;;
+  D2_NODEFER)
+    placement=${KT_R6_D2_PLACEMENT:-/workspace/results/placements/placement_d2.pt}
+    gpu_ratio=0.9903846153846154
+    max_deferred=0
     ;;
   D3)
     placement=${KT_R6_D3_PLACEMENT:-/workspace/results/placements/placement_d3.pt}
     gpu_ratio=0.9807692307692307
     max_deferred=1
     ;;
+  D3_NODEFER)
+    placement=${KT_R6_D3_PLACEMENT:-/workspace/results/placements/placement_d3.pt}
+    gpu_ratio=0.9807692307692307
+    max_deferred=0
+    ;;
   *)
-    echo "profile must be ALLNPU, D1, D2, or D3; got ${profile}" >&2
+    echo "unsupported Round 6 profile: ${profile}" >&2
     exit 2
     ;;
 esac
