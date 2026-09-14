@@ -35,6 +35,7 @@ ported after the raw probes.
 | strategy | `UPSTREAM_FIRST` |
 | aligned parent | `be5b48621db32fb894402e3e886060dea263cdc9` |
 | aligned SGLang | `412219b4b05a888808f0b88d2963a8b6164a0fda` |
+| published child ref | `panxy1019/KT-ASCEND:feature/kt-ep-round5-upstream-aligned-dsv2lite` |
 | final tag | `round5-upstream-aligned-tp1-a3-verified` |
 | tag object | `94baf6272dd86eae7e465a04f4ead630032400d4` |
 | audit qualification commit | `38b9ab1b5` |

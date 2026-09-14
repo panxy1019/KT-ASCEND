@@ -52,6 +52,15 @@ Final SGLang child:
 412219b4b05a888808f0b88d2963a8b6164a0fda
 ```
 
+The child object is published in `panxy1019/KT-ASCEND` as branch
+`feature/kt-ep-round5-upstream-aligned-dsv2lite`.  A separate
+`panxy1019/sglang` repository did not exist at publication time.  Because the
+parent `.gitmodules` intentionally retains the canonical
+`kvcache-ai/sglang` URL, a fresh checkout must fetch that child branch from
+the KT-ASCEND remote before checking out the gitlink, or later publish the
+same object to a dedicated SGLang fork.  No child SHA was rewritten to work
+around this repository-layout fact.
+
 ## Final tag
 
 ```text
