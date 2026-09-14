@@ -1,0 +1,310 @@
+{
+  "category_counts": {
+    "chinese_factual": 4,
+    "code_reasoning": 3,
+    "english_factual": 4,
+    "math_numeric": 3,
+    "structured_json": 2
+  },
+  "corpus": "QD",
+  "count": 16,
+  "model": "deepseek-ai/DeepSeek-V2-Lite",
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "qd_en_01",
+      "input_ids": [
+        3236,
+        4527,
+        21902,
+        540,
+        266,
+        50394,
+        29149,
+        6279,
+        76,
+        4328,
+        31655,
+        292,
+        7724,
+        246,
+        1569,
+        50394,
+        30
+      ],
+      "text": "Why do coastal regions often have milder temperatures than inland regions?"
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_02",
+      "input_ids": [
+        2640,
+        24425,
+        6958,
+        20981,
+        23109,
+        444,
+        14191,
+        6747,
+        3403,
+        30
+      ],
+      "text": "What physical process creates a rainbow after rain?"
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_03",
+      "input_ids": [
+        99297,
+        672,
+        16355,
+        994,
+        34049,
+        9389,
+        572,
+        247,
+        20488,
+        2909,
+        13
+      ],
+      "text": "Explain the role of platelets in the human body."
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_04",
+      "input_ids": [
+        15526,
+        15257,
+        5983,
+        43593,
+        306,
+        3186,
+        3163,
+        261,
+        2165,
+        1419,
+        30
+      ],
+      "text": "Which properties distinguish a comet from an asteroid?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_01",
+      "input_ids": [],
+      "text": "请说明季风形成的主要原因。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_02",
+      "input_ids": [],
+      "text": "简述京杭大运河在历史上的作用。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_03",
+      "input_ids": [],
+      "text": "中国的暖温带与亚热带通常以哪条地理界线划分？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_04",
+      "input_ids": [],
+      "text": "为什么金属通常具有良好的导电性？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_01",
+      "input_ids": [
+        3567,
+        5404,
+        59176,
+        82,
+        18,
+        16,
+        20,
+        69892,
+        52990,
+        246,
+        19,
+        13,
+        20,
+        31123,
+        13,
+        2640,
+        262,
+        1046,
+        11933,
+        1298,
+        76139,
+        30
+      ],
+      "text": "A train travels 315 kilometers in 4.5 hours. What is its average speed?"
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_02",
+      "input_ids": [
+        12971,
+        672,
+        31046,
+        7730,
+        34732,
+        994,
+        18,
+        21,
+        11,
+        19,
+        23,
+        11,
+        384,
+        21,
+        15,
+        13
+      ],
+      "text": "Find the least common multiple of 36, 48, and 60."
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_03",
+      "input_ids": [
+        32,
+        15635,
+        5650,
+        13711,
+        22,
+        13,
+        33816,
+        1046,
+        557,
+        48128,
+        1804,
+        13
+      ],
+      "text": "A circle has radius 7. Express its area using pi."
+    },
+    {
+      "category": "structured_json",
+      "id": "qd_json_01",
+      "input_ids": [
+        8925,
+        5956,
+        14552,
+        2896,
+        86,
+        378,
+        69276,
+        2296,
+        5686,
+        11,
+        37374,
+        11,
+        384,
+        15465,
+        11452,
+        371,
+        985,
+        13
+      ],
+      "text": "Return only JSON for two sensors with names, units, and boolean active states."
+    },
+    {
+      "category": "structured_json",
+      "id": "qd_json_02",
+      "input_ids": [
+        8925,
+        5956,
+        64,
+        14552,
+        2492,
+        45273,
+        672,
+        44792,
+        572,
+        247,
+        6102,
+        37069,
+        13
+      ],
+      "text": "Return only a JSON array containing the months in the first quarter."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_01",
+      "input_ids": [
+        9081,
+        28457,
+        16157,
+        290,
+        495,
+        1486,
+        10422,
+        1956,
+        8102,
+        6102,
+        14373,
+        6460,
+        61568,
+        2862,
+        13
+      ],
+      "text": "Write Python code to group words by their first letter while preserving order."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_02",
+      "input_ids": [
+        99297,
+        672,
+        26924,
+        78825,
+        1956,
+        12050,
+        562,
+        439,
+        13
+      ],
+      "text": "Explain the invariant maintained by insertion sort."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_03",
+      "input_ids": [
+        27559,
+        88133,
+        406,
+        355,
+        862,
+        253,
+        6386,
+        292,
+        247,
+        6102,
+        4350,
+        12,
+        248,
+        65274,
+        16766,
+        246,
+        540,
+        1088,
+        13
+      ],
+      "text": "Give pseudocode that finds the first non-repeating character in a string."
+    }
+  ],
+  "protocol": {
+    "baseline_history": "captured_after_prompt_freeze_and_bound_by_manifest",
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "deferred_numerical_contract_derivation",
+  "round": "round6",
+  "schema_version": 1,
+  "sha256": "1cbd5d9642c5a4e9ac3781d56b79d3a92196b30da2ac7ba0ebb36b7d7cef1a25",
+  "tokenizer_class": "LlamaTokenizer",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+}

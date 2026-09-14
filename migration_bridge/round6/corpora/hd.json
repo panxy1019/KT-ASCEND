@@ -1,0 +1,333 @@
+{
+  "category_counts": {
+    "chinese_factual": 4,
+    "code_reasoning": 3,
+    "english_factual": 4,
+    "math_numeric": 3,
+    "structured_json": 2
+  },
+  "corpus": "HD",
+  "count": 16,
+  "model": "deepseek-ai/DeepSeek-V2-Lite",
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "hd_en_01",
+      "input_ids": [
+        2819,
+        19176,
+        36937,
+        17377,
+        11418,
+        1253,
+        4604,
+        11946,
+        12,
+        7678,
+        30964,
+        21965,
+        30
+      ],
+      "text": "How does a barometer help forecast short-term weather changes?"
+    },
+    {
+      "category": "english_factual",
+      "id": "hd_en_02",
+      "input_ids": [
+        6568,
+        557,
+        275,
+        373,
+        20974,
+        37857,
+        572,
+        247,
+        46875,
+        9782,
+        863,
+        266,
+        8429,
+        30
+      ],
+      "text": "Why are leap years needed in the Gregorian calendar?"
+    },
+    {
+      "category": "english_factual",
+      "id": "hd_en_03",
+      "input_ids": [
+        7000,
+        847,
+        290,
+        874,
+        37273,
+        14843,
+        30964,
+        272,
+        8325,
+        43085,
+        13
+      ],
+      "text": "Describe the difference between weathering and erosion."
+    },
+    {
+      "category": "english_factual",
+      "id": "hd_en_04",
+      "input_ids": [
+        2640,
+        66,
+        827,
+        371,
+        247,
+        44129,
+        2546,
+        294,
+        5215,
+        92371,
+        994,
+        11713,
+        1550,
+        30
+      ],
+      "text": "What causes the apparent retrograde motion of planets?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "hd_zh_01",
+      "input_ids": [],
+      "text": "请解释喀斯特地貌形成的基本过程。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "hd_zh_02",
+      "input_ids": [],
+      "text": "郑和下西洋发生在哪个朝代，主要目的是什么？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "hd_zh_03",
+      "input_ids": [],
+      "text": "为什么冬季室内玻璃上有时会出现水珠？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "hd_zh_04",
+      "input_ids": [],
+      "text": "简要说明黑土适合农业生产的原因。"
+    },
+    {
+      "category": "math_numeric",
+      "id": "hd_math_01",
+      "input_ids": [
+        7649,
+        72,
+        10161,
+        6103,
+        2004,
+        988,
+        3788,
+        88,
+        3518,
+        1695,
+        22,
+        580,
+        18,
+        30100,
+        13,
+        2819,
+        17031,
+        6258,
+        3518,
+        55694,
+        17,
+        20,
+        15,
+        1315,
+        30
+      ],
+      "text": "A mixture contains water and syrup in a 7 to 3 ratio. How much syrup is in 250 ml?"
+    },
+    {
+      "category": "math_numeric",
+      "id": "hd_math_02",
+      "input_ids": [
+        19972,
+        313,
+        20,
+        1256,
+        25060,
+        16,
+        22,
+        13433,
+        18,
+        88,
+        13225,
+        24,
+        13
+      ],
+      "text": "Solve 5y minus 17 equals 3y plus 9."
+    },
+    {
+      "category": "math_numeric",
+      "id": "hd_math_03",
+      "input_ids": [
+        549,
+        22792,
+        994,
+        59196,
+        2405,
+        557,
+        246,
+        30100,
+        17,
+        25,
+        18,
+        25,
+        19,
+        13,
+        12971,
+        436,
+        14521,
+        22792,
+        13
+      ],
+      "text": "The angles of a triangle are in ratio 2:3:4. Find all three angles."
+    },
+    {
+      "category": "structured_json",
+      "id": "hd_json_01",
+      "input_ids": [
+        8925,
+        5956,
+        14552,
+        26534,
+        32411,
+        11,
+        31755,
+        11,
+        34941,
+        11,
+        384,
+        12211,
+        25896,
+        613,
+        758,
+        35076,
+        791,
+        13
+      ],
+      "text": "Return only JSON mapping north, east, south, and west to degree bearings."
+    },
+    {
+      "category": "structured_json",
+      "id": "hd_json_02",
+      "input_ids": [
+        8925,
+        5956,
+        64,
+        14552,
+        4545,
+        1467,
+        266,
+        554,
+        3431,
+        3234,
+        2296,
+        52270,
+        9425,
+        384,
+        99799,
+        13063,
+        13
+      ],
+      "text": "Return only a JSON object for a library book with nested author and loan fields."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "hd_code_01",
+      "input_ids": [
+        9081,
+        64,
+        3361,
+        2573,
+        7864,
+        985,
+        266,
+        382,
+        1035,
+        1956,
+        74,
+        24078,
+        12212,
+        9220,
+        272,
+        22208,
+        13
+      ],
+      "text": "Write a function that rotates a list right by k positions without losing elements."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "hd_code_02",
+      "input_ids": [
+        99297,
+        22165,
+        356,
+        1189,
+        393,
+        12,
+        6102,
+        2919,
+        6386,
+        20884,
+        439,
+        371,
+        3274,
+        8772,
+        261,
+        310,
+        41898,
+        8171,
+        13
+      ],
+      "text": "Explain why a breadth-first search finds shortest paths in an unweighted graph."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "hd_code_03",
+      "input_ids": [
+        27559,
+        88133,
+        406,
+        355,
+        290,
+        22571,
+        305,
+        387,
+        36353,
+        4895,
+        47868,
+        994,
+        14521,
+        38831,
+        13077,
+        13
+      ],
+      "text": "Give pseudocode to validate balanced parentheses of three bracket types."
+    }
+  ],
+  "protocol": {
+    "baseline_history": "captured_after_prompt_freeze_and_bound_by_manifest",
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "independent_deferred_numerical_heldout",
+  "round": "round6",
+  "schema_version": 1,
+  "sha256": "666d5b0ab526023785bdc05f585f6b08a84900659c1d7bda09465feb2b601c19",
+  "tokenizer_class": "LlamaTokenizer",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+}
