@@ -14,17 +14,17 @@ and Round 4A.4 Q2/H2/F prompt texts.
 | Model | `deepseek-ai/DeepSeek-V2-Lite` |
 | Revision | `604d5664dddd88a0433dbae533b7fe9472482de0` |
 | `tokenizer.json` SHA256 | `41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669` |
-| Tokenizer class | `LlamaTokenizer` |
+| Tokenizer class | native `tokenizers.Tokenizer` loaded directly from the frozen JSON |
 | Special tokens added | `NO` |
 
 ## Prompt corpora
 
 | Corpus | Prompts | Positions target | Purpose | Canonical payload SHA256 |
 |---|---:|---:|---|---|
-| S6 | 12 | 768 | defer=0 route stress and one-time placement selection | `a7635497ab7424e7b0772c65c668751407b84d25719ff39b6469758bdab02cee` |
-| QD | 16 | 1024 | Deferred numerical contract derivation | `1cbd5d9642c5a4e9ac3781d56b79d3a92196b30da2ac7ba0ebb36b7d7cef1a25` |
-| HD | 16 | 1024 | independent Deferred held-out validation | `666d5b0ab526023785bdc05f585f6b08a84900659c1d7bda09465feb2b601c19` |
-| FD | 8 | 512 | independent free-generation qualification | `25a65097d06c4fa17d853e6aa73acecd98f83b4ec56490ac2dca50cff9c5fd58` |
+| S6 | 12 | 768 | defer=0 route stress and one-time placement selection | `e51af126389507e03b58ae37e5b39c912ece14d54c1daa0ba4baea634ff8f9c5` |
+| QD | 16 | 1024 | Deferred numerical contract derivation | `fe28d7fe4b4421b53901950b41a7d98b58650de359bd5141e9d05ef71e6bf6f1` |
+| HD | 16 | 1024 | independent Deferred held-out validation | `0ee3b50c9d02515f1492463ea1af5d507ad72267d43d5e0962e6bf9c6619adba` |
+| FD | 8 | 512 | independent free-generation qualification | `197f8a9a4bca0349a2984d603e71c1722cea1828fdbff30be00fe7441a4aa1a6` |
 
 Each category family is represented in every corpus: English factual, Chinese
 factual, math/numeric, structured JSON, and code/reasoning.  QD and HD each
@@ -55,8 +55,13 @@ It is not used for placement or numerical-bound fitting.
 ## Reproduction
 
 `tools/freeze_round6_corpora.py` validates the tokenizer hash, cross-corpus
-uniqueness and prior-corpus exclusion before writing canonical JSON.  Repeating
-the tool in the A3 disposable container produced identical embedded hashes.
+uniqueness, prior-corpus exclusion and non-empty tokenization before writing
+canonical JSON.  A rejected first attempt used the Transformers 5.3 slow
+`LlamaTokenizer`, which produced empty IDs for pure Chinese prompts.  No
+placement had been selected and no Deferred output had been observed.  The
+corrected implementation loads the immutable `tokenizer.json` natively; it was
+verified against the already-frozen Round 4A English and Chinese token-ID
+vectors before these final hashes were produced.
 
 ## Gate
 
