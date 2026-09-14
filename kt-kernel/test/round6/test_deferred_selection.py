@@ -12,7 +12,11 @@ from types import SimpleNamespace
 import torch
 
 from kt_kernel import experts_base
-from kt_kernel.experts_base import BaseMoEWrapper, _summarize_cpu_routes
+from kt_kernel.experts_base import (
+    BaseMoEWrapper,
+    _has_cpu_routes,
+    _summarize_cpu_routes,
+)
 
 
 def _select(expert_ids, expert_scores, protected_k):
@@ -96,6 +100,9 @@ def test_deferred_trace_reports_only_cpu_owned_routes(monkeypatch, tmp_path):
 
     valid, cpu, cpu_ids = _summarize_cpu_routes(route_ids, gpu_mask)
     assert (valid, cpu, cpu_ids) == (5, 4, [6, 8, 25, 36])
+    assert _has_cpu_routes(route_ids, gpu_mask)
+    assert not _has_cpu_routes(torch.tensor([[11, -1]]), gpu_mask)
+    assert not _has_cpu_routes(torch.full((1, 6), -1), gpu_mask)
 
     trace_path = tmp_path / "deferred.jsonl"
     monkeypatch.setenv("KT_DEBUG_DEFERRED_TRACE_FILE", str(trace_path))

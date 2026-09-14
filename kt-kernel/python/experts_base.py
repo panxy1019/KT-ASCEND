@@ -63,6 +63,15 @@ def _summarize_cpu_routes(
     unique_cpu_ids = sorted(int(expert_id) for expert_id in cpu_ids.unique().tolist())
     return int(valid_ids.numel()), int(cpu_ids.numel()), unique_cpu_ids
 
+
+def _has_cpu_routes(
+    route_ids_cpu: torch.Tensor,
+    gpu_experts_mask: torch.Tensor,
+) -> bool:
+    """Return whether the route set contains executable CPU-owned work."""
+    valid_ids = route_ids_cpu[route_ids_cpu >= 0].to(torch.long)
+    return bool(valid_ids.numel() and (~gpu_experts_mask[valid_ids]).any().item())
+
 # -----------------------------------------------------------------------------
 # NPU stream-callback bypass.
 #
@@ -708,8 +717,8 @@ class BaseMoEWrapper(_MoEBase, ABC):
             self.cpu_infer.submit(immediate_task)
 
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        has_deferred = (
-            self.max_deferred_experts_per_token > 0 and (deferred_experts_ids_cpu[current_slot] >= 0).any().item()
+        has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
+            deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
         )
         if has_deferred:
             deferred_task = self.moe.forward_task(
@@ -766,8 +775,8 @@ class BaseMoEWrapper(_MoEBase, ABC):
         )
         self.cpu_infer.submit(immediate_task)
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        has_deferred = (
-            self.max_deferred_experts_per_token > 0 and (deferred_experts_ids_cpu[current_slot] >= 0).any().item()
+        has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
+            deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
         )
         if has_deferred:
             deferred_task = self.moe.forward_task(
@@ -830,6 +839,18 @@ class BaseMoEWrapper(_MoEBase, ABC):
             _wait_device(hidden_states.device)
 
         incremental = BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx - 1, False)
+        # NPU and standalone CPU paths have already made the pinned D2H buffers
+        # host-visible above.  Suppress a deferred task when the selected route
+        # belongs only to accelerator-owned experts; otherwise the no-op task
+        # falsely marks the next layer incremental.  CUDA retains its existing
+        # asynchronous behavior because inspecting the pinned buffer here would
+        # race its outstanding D2H copy.
+        has_deferred = deferred_ids is not None and (
+            not sync_submit
+            or _has_cpu_routes(
+                deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
+            )
+        )
         if os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE"):
             immediate_valid, immediate_cpu, immediate_cpu_ids = _summarize_cpu_routes(
                 immediate_experts_ids_cpu[current_slot], self.gpu_experts_mask
@@ -852,7 +873,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 deferred_valid_routes=deferred_valid,
                 deferred_cpu_routes=deferred_cpu,
                 deferred_cpu_experts=deferred_cpu_ids,
-                outgoing_pending=deferred_ids is not None,
+                outgoing_pending=has_deferred,
             )
         immediate_task = self.moe.forward_task(
             bsz_slot_tensor.data_ptr(),
@@ -879,7 +900,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             self.cpu_infer.submit_with_cuda_stream(cuda_stream, immediate_task)
 
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        if deferred_ids is not None:
+        if has_deferred:
             if sync_submit:
                 _wait_device(hidden_states.device)
             deferred_task = self.moe.forward_task(
