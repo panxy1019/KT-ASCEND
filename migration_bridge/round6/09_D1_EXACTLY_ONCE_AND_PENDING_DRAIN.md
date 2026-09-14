@@ -55,6 +55,11 @@ Raw A3 artifacts and SHA256 manifests:
 /home/admin/kt-artifacts/round6-deferred/d1-trace-final/
 ```
 
+Portable copies of the result JSON, final trace JSONL, analyzer summary and
+their A3 SHA256 manifests are committed under
+`evidence/d1-final/incremental/` and `evidence/d1-final/trace/`. The copied
+payload hashes were rechecked locally against the A3 manifest.
+
 ## Gate
 
 ```text
