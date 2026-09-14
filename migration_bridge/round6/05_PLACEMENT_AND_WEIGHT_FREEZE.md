@@ -1,7 +1,7 @@
 # Round 6 Placement and Weight Freeze
 
-Evidence state: `A3_VERIFIED` for S6 route capture and placement selection;
-`IN_PROGRESS` for the D3 GGUF export.
+Evidence state: `A3_VERIFIED` for S6 route capture, placement selection and D3
+GGUF export/provenance.
 
 ## Selection evidence
 
@@ -56,18 +56,31 @@ The canonical placement-manifest contract SHA is:
 5ca3db30aa401b7a5e442fd7cd4b0a617808d420d90a713e570667c101a7c5b1
 ```
 
-## Weight artifact
+## Frozen weight artifact
 
-A single F32 GGUF containing all 64 experts for layers 5 through 12 is being
-exported from the frozen BF16 checkpoint.  D1 and D2 will consume strict layer
-subsets from the same artifact.  The final size, GGUF SHA, exporter SHA, source
-shard hashes and per-source-tensor hashes will be added only after export and
-manifest verification complete.
+A single F32 GGUF contains all 64 experts for layers 5 through 12.  D1 and D2
+consume strict layer subsets from this same artifact.
+
+| Item | Value |
+|---|---|
+| Filename | `deepseek-v2-lite-round6-d3-f32.gguf` |
+| Layers | `{5,6,7,8,9,10,11,12}` |
+| Size | `17716742368` bytes |
+| GGUF SHA256 | `4b42799ec7f143569692133aadd37f089ff0c18508411e5fd37911b62c8e323f` |
+| Manifest-file SHA256 | `568c16be226c1de0ca819639e8727ee047febb1fc39f533479ff0bb22bd7c878` |
+| Exporter SHA256 | `5a265bfc9a7d149ae57e5eada797e536e618ecc1939258582be884ae5ec4d09e` |
+| Source config SHA256 | `f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d` |
+| Source index SHA256 | `d2cdb2f325f6682cf3ad1ad2526a9f979d857390b579380c0331d975136e0acf` |
+| Dtype | F32 materialization of frozen checkpoint tensors |
+
+The manifest records all source shard hashes, every source tensor key/hash and
+every exported tensor shape.  The GGUF was hashed again after the writer closed
+and matched the manifest value.
 
 ## Gate
 
 ```text
 R6_G4_PLACEMENTS = FROZEN
-R6_G4_GGUF = IN_PROGRESS
+R6_G4_GGUF = FROZEN
 PLACEMENT_RESELECTION = PROHIBITED
 ```

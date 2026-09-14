@@ -34,7 +34,7 @@ esac
 
 python_bin=${KT_R6_PYTHON:-/workspace/results/venv-r6/bin/python}
 model=${KT_R6_MODEL_PATH:-/workspace/models/DeepSeek-V2-Lite-604d5664}
-gguf=${KT_R6_GGUF_PATH:-/workspace/round5-reference/deepseek-v2-lite-p3-f32.gguf}
+gguf=${KT_R6_GGUF_PATH:-/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf}
 mkdir -p "${run_root}"
 
 set +u
