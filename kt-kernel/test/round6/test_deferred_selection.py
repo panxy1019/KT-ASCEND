@@ -6,15 +6,17 @@ tests add the queue, transfer and incremental-merge lifecycle around it.
 
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import torch
 
 from kt_kernel.experts_base import BaseMoEWrapper
 
 
 def _select(expert_ids, expert_scores, protected_k):
-    wrapper = BaseMoEWrapper.__new__(BaseMoEWrapper)
-    wrapper.num_experts = int(expert_ids.max().item()) + 1
-    return wrapper.select_deferred_experts(
+    wrapper = SimpleNamespace(num_experts=int(expert_ids.max().item()) + 1)
+    return BaseMoEWrapper.select_deferred_experts(
+        wrapper,
         expert_ids=expert_ids,
         expert_scores=expert_scores,
         protected_k=protected_k,
