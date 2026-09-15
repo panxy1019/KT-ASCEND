@@ -24,15 +24,18 @@ failed, and no downstream qualification skips a prerequisite.
 
 ## Running / next
 
-20-request x64-target full-observer defer0 baseline is running under
-`/workspace/results/r63-long-baseline-control`.
-Session/controller: `/workspace/results/r63-long-baseline-session`.
-Model root: `/workspace/results/r63-long-baseline-server`.
-The controller owns this server, shuts it down after capture, and performs final
-index/physical audit. Do not restart a healthy run.
+Long full baseline and compact forced defer0 both PASS: 20x64 targets,
+1300 final audited forwards each, 34045 retained tensor comparisons byte exact.
+Raw capture shrank from1380241180 to592963662 bytes. See04 report.
 
-After PASS: freeze its forcing table, run compact defer0 self-history parity,
-then full/compact defer1 matched-history observer parity. All are engineering
+Now running `/workspace/results/r63-long-force1-full-control`, with model root
+`/workspace/results/r63-long-force1-full-server`, session
+`/workspace/results/r63-long-force1-full-session`. The controller owns this
+server, shuts it down after capture, and performs final index/physical audit.
+Do not restart a healthy run.
+
+After PASS run compact defer1 against the same long-force.json history and
+compare observers. All are engineering
 20-request prequalification, not QD3. Only then run independent pilot and use
 the preregistered size rule; freeze new QD3/HD3/FD3 before formal results.
 
