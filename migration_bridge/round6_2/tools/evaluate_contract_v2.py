@@ -108,6 +108,10 @@ def main():
         (args.output / "exposure_gate.json").write_text(json.dumps(report, indent=2) + "\n")
         print(json.dumps(report))
         raise SystemExit(1)
+    for root in (args.baseline, args.deferred):
+        audit = json.loads((root / "transition_audit.json").read_text())
+        if audit.get("status") != "PASS" or audit.get("count") != 8192 or audit.get("failures") != []:
+            raise ValueError("DEFERRED_TRANSITION_AUDIT_NOT_PASSED")
     rows = []
     for prompt in corpus["prompts"]:
         logits = [torch.load(root / "logits" / f'{prompt["id"]}.pt', map_location="cpu", weights_only=True)
