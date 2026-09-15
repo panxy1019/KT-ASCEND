@@ -51,6 +51,11 @@ Then reference0/full0, natural full1/reference1/OFF1 must be compared without
 forcing history. Existing forced defer1 captures cannot substitute natural
 defer1 free-generation parity after trajectory divergence.
 
+Defer0 true OFF retry PASS:20/20 natural64-token trajectories exact against
+full baseline; HTTP logprobs finite; physical captures0. Evidence archived at
+`evidence/natural-off0/`. Minimal-reference0 is now running in correction
+pipeline. Do not conflate this token check with full-logit byte parity.
+
 After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
 statistical preregistration, then formal capture. New evaluator/causal export
 code is being prepared; evaluator is NOT_RUN and requires further tests before
