@@ -66,3 +66,10 @@ are not used as a substitute for one pair per request. Also retain the
 
 Downstream tooling is prepared, not yet qualified; see POST_GATE_TOOLING.md.
 The latest A3 CPU-only tool tests passed22/22. No HD2 model output exists.
+
+SUPERSEDING NEXT ACTION (capture incident): full CPU-only inventory is running
+under `r62-qd2-defer1-full-incident-audit`, expected `inventory.json`. Monitor
+that supervisor, not the now-stopped defer1 inference service. Account for all
+16386 forwards and both extras before deciding a documented infrastructure
+retry. Original run stays INVALID. See QD2_CAPTURE_INCIDENT.md. No threshold
+derivation, candidate freeze, HD2 or quality while this gate is unresolved.

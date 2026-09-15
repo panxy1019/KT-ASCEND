@@ -30,3 +30,35 @@ inspect startup health-check/capture session boundaries and the frozen protocol.
 Any instrumentation correction requires explicit recorded provenance and tests;
 do not relabel this failed run PASS or silently reconstruct its missing final
 manifest. Candidate freeze, D1 runtime, HD2 and quality remain NOT_RUN.
+
+## Full inventory in progress and boundary correction
+
+CPU-only supervisor `r62-qd2-defer1-full-incident-audit` now runs
+`tools/audit_incident_forward_inventory.py` (deadline3600s, OMP_NUM_THREADS=1).
+It retains a file SHA inventory for every capture, checks all recorded tensor
+hashes/provenance/finite logits, and independently checks request target/lookahead
+inputs, ownership and terminal transitions. Every non-qualification forward is
+reported, not removed. Output `inventory.json` is FORENSICS ONLY and cannot
+replace the original failed qualification manifest. Await its complete result.
+
+CODE_INSPECTED: child `http_server.py:481–540` aliases `/health` and
+`/health_generate`; `environ.py:468` defaults health generation to true.
+An idle health request creates `HEALTH_CHECK_<timestamp>`, input `[0]`, one
+generated token. Server log records GET /health at09:25:33, preceding formal
+client start09:25:54. `/model_info` at line572 returns metadata without invoking
+generation; future startup readiness must use ready log plus this endpoint,
+not either generating health endpoint.
+
+The frozen CONTRACT_V2_SPEC explicitly invalidates capture failures and allows
+only documented infrastructure retry with unchanged inputs/rules. Accordingly
+the old run remains INVALID; no deleting startup files, reconstructing a PASS
+manifest, selecting prompts or numerical fitting is authorized by this audit.
+
+Minimal local tool correction: require the capture directory to exist and contain
+no completed or incomplete forwards BEFORE the first sweep request. Final
+full-session audit remains strict, so later contamination still fails closed.
+Tests: local63 tests,56 passed,7 torch-dependent skips; new boundary tests4/4.
+No production code changed. This new tool is NOT yet deployed to A3 or used for
+a fresh model run. A future infrastructure retry must freeze new tool/provenance
+hashes and new output directories first, keep all8192 positions/history, and
+validate smoke/boundary behavior before the full replay.

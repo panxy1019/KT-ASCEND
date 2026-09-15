@@ -12,6 +12,7 @@ import time
 import urllib.request
 import torch
 from assemble_capture import assemble, canonical_sha, byte_sha
+from capture_session_boundary import require_empty_capture_session
 
 
 def frozen(path):
@@ -69,6 +70,10 @@ def main():
         raise ValueError("CORPUS_PROTOCOL_DRIFT")
     if args.root.exists():
         raise ValueError("output directory already exists; no implicit resume")
+    if args.action == 'sweep':
+        if args.captures is None:
+            raise ValueError('CAPTURE_DIRECTORY_REQUIRED')
+        require_empty_capture_session(args.captures)
     if args.action == "history" and args.mode != "defer0":
         raise ValueError("HISTORY_MUST_BE_BASELINE")
     provenance = json.loads(args.provenance.read_text())
