@@ -29,10 +29,13 @@ v2 accidental duplicate metadata startup cancelled before tests, not evidence.
 
 **Healthy current run: do not restart**
 
-`/workspace/results/r64-compact-v1`
-driver `/workspace/results/run_r64_compact_controls.py`
-driver log `/workspace/results/r64-compact-v1-driver.log`
-Sequential P1_B0/P2_B0/P3_B0/D1_NODEFER/D1, 20 requests per profile.
+`/workspace/results/r64-compact-v2`
+driver `/workspace/results/run_r64_compact_controls_v2.py`
+driver log `/workspace/results/r64-compact-v2-driver.log`
+Sequential remaining P2_B0/P3_B0/D1_NODEFER/D1, 20 requests per profile.
+v1 P1_B0 20/20 PASS archived locally; v1 stopped before P2 at EADDRINUSE port probe.
+Tool-only fix `3e10a183d` uses SO_REUSEADDR+bind/listen, no REUSEPORT; 5 local tests PASS.
+Do not repeat P1 or relabel original v1 INCOMPLETE. No production changes.
 Each profile root has guard/result.json, report.json, requests.jsonl, readiness.json.
 Driver stops on first failure, guard cleans only owned server.
 Top-level progress.json currently written on driver completion/failure, not per request;
@@ -70,4 +73,5 @@ Actual compact model_runner SHA (read on A3):
 `71b1daaf2a78afde91794963eb5c6a0779bb6ed931841e0a56f8b8bf34ce88d9`.
 Deployed compact driver SHA:
 `0af222c0b46b6cb44e1faafee3175e4df68d67cea91e254389c5f4acf29f2e9d`.
-Last progress: P1_B0 first three prompts complete, structured prompt running, no failure.
+Previous deployed SHA above is v1, not v2; hash the versioned v2 driver on collection.
+Latest status: P1_B0 complete; v2 remaining profiles launched, check before any new work.

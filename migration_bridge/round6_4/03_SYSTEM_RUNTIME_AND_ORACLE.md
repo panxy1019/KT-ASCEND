@@ -38,7 +38,22 @@ observer OFF，route recorder ON/cache OFF，与旧 compact 控制配置一致�
 P1/P2/P3 同时对比已有相同 profile 的 32-token reference；D1 仅检查自身重复。
 这不是性能测试，也不是全部 D1 runtime。
 
-状态：RUNNING；以各 profile `report.json` 和最终 `progress.json` 为准，未提前填 PASS。
+P1_B0：20/20 请求通过，repeat/prefix/旧 reference 全部 exact。
+原始文件已归档 `evidence/r64-compact-v1/P1_B0/`。
+
+v1 在 P1 正常清理后、P2 启动前，工具 bind(31000) 报 EADDRINUSE。
+检查时容器仅 sleep infinity，无模型残留；延迟检查 /proc/net/tcp 已无该端口。
+首发时未保存 socket state，因此 TIME_WAIT 是与现象一致且已本地重现的解释，
+不声称拿到了当时状态的直接证明。
+
+工具改用 SO_REUSEADDR + bind/listen：允许 TIME_WAIT 的正常重用，仍拒绝活动 listener；
+没有设置 SO_REUSEPORT，没有杀占用端口的其他进程。新增两项本地 socket regression，
+工具五项测试通过。参考 [Python socket 官方文档](https://docs.python.org/3/library/socket.html#socket.SO_REUSEADDR)。
+修复 commit `3e10a183d`；不是生产 Deferred 修复。
+
+接续 root `/workspace/results/r64-compact-v2`，仅 P2_B0/P3_B0/D1_NODEFER/D1。
+v1 失败和已通过 P1 原样保留，不重复 P1，不将 v1 顶层 INCOMPLETE 改成 PASS。
+剩余四配置状态 RUNNING；最终以各 report.json 为准。
 
 ## Oracle 复用边界
 

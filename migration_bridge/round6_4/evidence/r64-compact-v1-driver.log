@@ -1,0 +1,32 @@
+{"status": "PASS", "endpoint": "/model_info", "generating_probe": false, "capture_session_empty": true, "model_info": {"model_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "tokenizer_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "is_generation": true, "preferred_sampling_params": null, "weight_version": "default", "has_image_understanding": false, "has_audio_understanding": false, "model_type": "deepseek_v2", "architectures": ["DeepseekV2ForCausalLM"]}, "time_unix": 1789514918.2943442}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_en_01-0", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_en_01-1", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_en_01-2", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_en_01-3", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_en_01-4", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_zh_01-0", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_zh_01-1", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_zh_01-2", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_zh_01-3", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_zh_01-4", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_math_01-0", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_math_01-1", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_math_01-2", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_math_01-3", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_math_01-4", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_json_01-0", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_json_01-1", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_json_01-2", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_json_01-3", "exact": true}
+{"profile": "P1_B0", "rid": "r64-compact-P1_B0-s6_json_01-4", "exact": true}
+Traceback (most recent call last):
+  File "/workspace/results/run_r64_compact_controls.py", line 152, in <module>
+    main()
+  File "/workspace/results/run_r64_compact_controls.py", line 144, in main
+    results.append(one_profile(profile, args.output / profile, selected, env))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/results/run_r64_compact_controls.py", line 49, in one_profile
+    ensure_free_port()
+  File "/workspace/results/run_r64_compact_controls.py", line 32, in ensure_free_port
+    sock.bind(('127.0.0.1', 31000))
+OSError: [Errno 98] Address already in use
