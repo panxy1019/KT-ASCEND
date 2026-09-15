@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | CAPTURE_INTEGRITY_PASS_PENDING_NUMERICS | defer0 and fresh defer1-retry1 each8192 positions/16384 forwards; built-in, independent matrix and transaction audits PASS. Original contaminated run remains INVALID |
+| 6 QD2 | STOP_INSUFFICIENT_EXPOSURE | fresh capture and all audits PASS; actual Deferred exposure343<500; evaluator stopped before numerical metrics |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -90,3 +90,9 @@ blocker CLOSED FOR FRESH RETRY ONLY. Server guardian287493 verified and stopped
 only own child group287498; planned shutdown. Evidence archived under
 `evidence/qd2-defer1-retry1/`. Next exposure-first QD2 derive against successful
 defer0. Candidate must be committed only on numerical PASS, before runtime/HD2.
+
+FINAL STOP: exposure-first evaluator returned INSUFFICIENT_EXPOSURE343<500,
+no numerical metrics read. Independent route-only recount agrees. No candidate,
+runtime, HD2, quality or FD may follow under this frozen attempt. See
+ADR_QD2_INSUFFICIENT_EXPOSURE.md and ROUND6_2_FINAL_SUMMARY.md. All project
+model services were stopped after successful capture; only CPU audits followed.
