@@ -2,6 +2,7 @@ import io
 import json
 from pathlib import Path
 import tempfile
+import socket
 import unittest
 from unittest.mock import patch
 
@@ -9,6 +10,26 @@ import run_compact_controls as compact
 
 
 class CompactTests(unittest.TestCase):
+    def test_active_listener_is_not_reused(self):
+        with socket.socket() as listener:
+            listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            listener.bind(('127.0.0.1', 0))
+            listener.listen(1)
+            with self.assertRaises(OSError):
+                compact.ensure_free_port(listener.getsockname()[1])
+
+    def test_time_wait_does_not_block_restart(self):
+        with socket.socket() as listener, socket.socket() as client:
+            listener.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            listener.bind(('127.0.0.1', 0))
+            address = listener.getsockname()
+            listener.listen(1)
+            client.connect(address)
+            connection, _ = listener.accept()
+            connection.close()  # server side active close creates TIME_WAIT
+            self.assertEqual(client.recv(1), b'')
+        compact.ensure_free_port(address[1])
+
     def exercise(self, wrong_token=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / 'D1'

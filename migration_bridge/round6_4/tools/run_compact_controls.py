@@ -27,9 +27,13 @@ PROMPTS = ('s6_en_01', 's6_zh_01', 's6_math_01', 's6_json_01')
 PROFILES = ('P1_B0', 'P2_B0', 'P3_B0', 'D1_NODEFER', 'D1')
 
 
-def ensure_free_port():
+def ensure_free_port(port=31000):
     with socket.socket() as sock:
-        sock.bind(('127.0.0.1', 31000))
+        # Match POSIX server restart semantics: TIME_WAIT is not a live service.
+        # Do NOT use SO_REUSEPORT, which could share an active listener.
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.bind(('127.0.0.1', port))
+        sock.listen(1)
 
 
 def check_corpus(path):
@@ -123,10 +127,13 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output', type=Path, required=True)
     p.add_argument('--corpus', type=Path, required=True)
+    p.add_argument('--profiles', nargs='+', choices=PROFILES, default=list(PROFILES))
     args = p.parse_args()
     if args.output.parent != Path('/workspace/results') or not args.output.name.startswith('r64-'):
         raise ValueError('DEDICATED_RESULT_ROOT_REQUIRED')
     selected = check_corpus(args.corpus)
+    if len(set(args.profiles)) != len(args.profiles):
+        raise ValueError('DUPLICATE_PROFILE')
     args.output.mkdir(exist_ok=False)
     def cancelled(signum, frame):
         raise InterruptedError(f'COMPACT_CANCELLED:{signum}')
@@ -140,12 +147,12 @@ def main():
         KT_R6_ENABLE_ROUTE_RECORDER='1')  # matches historical cache-disabled controls
     results = []
     try:
-        for profile in PROFILES:
+        for profile in args.profiles:
             results.append(one_profile(profile, args.output / profile, selected, env))
     finally:
         (args.output / 'progress.json').write_text(json.dumps(dict(
-            completed=[r['profile'] for r in results], expected=list(PROFILES),
-            status='COMPACT_PASS' if len(results) == len(PROFILES) else 'INCOMPLETE'), indent=2)+'\n')
+            completed=[r['profile'] for r in results], expected=args.profiles,
+            status='COMPACT_PASS' if len(results) == len(args.profiles) else 'INCOMPLETE'), indent=2)+'\n')
 
 
 if __name__ == '__main__':
