@@ -61,6 +61,13 @@ No quality/acceleration claim until actual evidence. Default Deferred OFF.
 
 ## Scheduling
 
-Reuse existing heartbeat id `round6-3` with Round6.4 prompt, no duplicate monitor.
+Existing heartbeat id `round6-3` updated to Round6.4 prompt and ACTIVE, every 10 minutes;
+display name `Round6.4 近似加速执行接续`. No duplicate monitor.
 Quiet on unchanged health; notify on milestones/failure/completion. Continue useful local
 preparation while A3 runs. Pause after scope completion or terminal unresolvable blocker.
+
+Actual compact model_runner SHA (read on A3):
+`71b1daaf2a78afde91794963eb5c6a0779bb6ed931841e0a56f8b8bf34ce88d9`.
+Deployed compact driver SHA:
+`0af222c0b46b6cb44e1faafee3175e4df68d67cea91e254389c5f4acf29f2e9d`.
+Last progress: P1_B0 first three prompts complete, structured prompt running, no failure.
