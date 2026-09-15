@@ -53,8 +53,10 @@ defer1 free-generation parity after trajectory divergence.
 
 Defer0 true OFF retry PASS:20/20 natural64-token trajectories exact against
 full baseline; HTTP logprobs finite; physical captures0. Evidence archived at
-`evidence/natural-off0/`. Minimal-reference0 is now running in correction
-pipeline. Do not conflate this token check with full-logit byte parity.
+`evidence/natural-off0/`. Minimal-reference0 also PASS:20/20 trajectories and
+1300/1300 final-logit byte comparisons exact; archived at
+`evidence/natural-reference0/`. Correction pipeline is now running natural
+full defer1, followed by natural OFF1/reference1 checks.
 
 After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
 statistical preregistration, then formal capture. New evaluator/causal export
