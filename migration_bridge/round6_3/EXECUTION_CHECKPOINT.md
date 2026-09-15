@@ -33,8 +33,11 @@ Preregistration canonical SHA:
 `19685bff9c72337873c466067ba76c579e4e562b25170d84d46e3d5185f83eb0`.
 
 Active A3 pipeline: `/workspace/results/r63-qd3-v1-pipeline`.
-Current first mode: `r63-qd3-v1-natural-server/session`, last observed51/128
-requests. Do not restart a healthy run. It will freeze qd3-force.json, run
+Natural mode `r63-qd3-v1-natural-server/session` completed128/128 requests:
+8320 physical/indexed,8192 targets,128 lookahead,unknown0,incomplete0.
+Natural session ended Unix1789490639.611315. Frozen qd3-force.json canonical
+SHA is `35d45fdd9fa8cc453f1b61ee464e3f2261710ea0ebecf2ce7fbca7ed4e79beae`.
+Pipeline is advancing to force0. Do not restart a healthy run. It will run
 force0 with self-history byte parity, then force1; audit all files, export
 causal positions, apply500 exposure gate, and only then derive numerical risks.
 The pipeline stops after candidate derivation and NEVER starts HD3/quality.
@@ -134,3 +137,9 @@ Long engineering smoke input SHA:
 QD3 = RUNNING; candidate / runtime / HD3 / quality / batch2/4 = NOT_RUN.
 Round6.3 = IN_PROGRESS, not qualified. Round6.2 remains blocked.
 No new READY tag, push or main merge in this execution segment.
+
+Current-thread heartbeat `round6-3` is ACTIVE (10-minute interval), created
+after the natural QD3 phase completed. It resumes gated work from this file,
+stays quiet on unchanged healthy state, and never duplicates an active run.
+Pause it when the approved scope completes or a terminal in-scope blocker is
+established. This is continuation scheduling, not evidence of gate completion.
