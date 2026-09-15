@@ -1,6 +1,6 @@
 # Observer qualification protocol correction
 
-State: IN_PROGRESS; discovered during execution review, before any numerical
+State: A3_VERIFIED, CORRECTED; discovered during execution review, before any numerical
 reserve derivation. Round6.2 historical state unchanged.
 
 ## Omission and evidence boundary
@@ -62,3 +62,22 @@ Fresh retry root: `r63-natural-off0-retry1-server/control` (separate directories
 with these suffixes), followed by `r63-observer-correction-retry1-pipeline`.
 Original failed directories remain untouched. Local37 tests:31 PASS,6 skipped
 because local torch is unavailable; these are not A3 verification claims.
+
+## Closure
+
+Correction pipeline completed at Unix1789487915.5951705, OBSERVER_CORRECTION_PASS.
+
+| Mode | True OFF/full natural trajectories | Reference/full logits bytes |
+| --- | --- | --- |
+| defer0 |20/20 exact|1300/1300 exact|
+| defer1 |20/20 exact|1300/1300 exact|
+
+OFF controls have zero capture files and all reported output logprobs finite.
+Reference controls include all1280 targets and20 lookahead forwards, finite
+full-vocabulary logits, sequence/RID joins and final physical count checks.
+Full controls have separate whole-index/physical audits with unknown0/incomplete0.
+This supplements, not replaces, prior full/compact retained-byte parity.
+All are engineering controls, not formal QD3/HD3 numerical qualification.
+
+Fresh pilot gate receipt records all prerequisite artifact hashes before its
+first inference. Old premature pilot remains superseded NOT_FOR_CALIBRATION.

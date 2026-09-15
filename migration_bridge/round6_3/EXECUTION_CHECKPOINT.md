@@ -65,6 +65,15 @@ pipeline PASS (up to2400seconds), checks all six parity files, then uses fresh
 `r63-pilot-retry1-*` outputs. It never reuses premature pilot results and stops
 after exposure-only sample-size planning. QD3/HD3 are not automatically launched.
 
+UPDATE: observer correction is now PASS (Unix1789487915.5951705).
+Defer1 OFF20/20 trajectories exact; reference1/full1 1300/1300 logits byte exact.
+All natural OFF/reference and full/compact prerequisites closed.
+Fresh pilot pipeline has frozen gate hashes and started baseline under
+`r63-pilot-retry1-baseline-server/session`; then `r63-pilot-retry1-defer1-*`.
+Resource sampler writes `r63-pilot-retry1-resource-samples.jsonl` on the host
+artifact mount, project-container process RSS/CPU and NPU0 aggregate only.
+Never reuse premature `r63-pilot-baseline-*` / `r63-pilot-defer1-*` outputs.
+
 After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
 statistical preregistration, then formal capture. New evaluator/causal export
 code is being prepared; evaluator is NOT_RUN and requires further tests before
