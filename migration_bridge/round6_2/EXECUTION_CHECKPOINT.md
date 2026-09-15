@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | DEFER0_SWEEP_RUNNING | baseline history 128x64 completed and committed bd4948fd0; dual sweep not complete; no candidate reserve yet |
+| 6 QD2 | DEFER0_COMPLETE_DEFER1_STARTING | defer0 8192 positions + 16384 complete forwards pass both built-in and independent audits; defer1 server starting; no cross-mode numerical decision yet |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -33,16 +33,23 @@ Baseline history finished with client EXIT_ZERO and 128/128 rows. Raw manifest
 is retained on A3 and exactly backed up as `evidence/qd2-history/manifest.json.gz`.
 The history server has been stopped through its own supervisor.
 
-Current server supervisor: `r62-guard-qd2-defer0`, run root
+Completed defer0 server supervisor: `r62-guard-qd2-defer0`, run root
 `r62-qd2-defer0-server`; client supervisor: `r62-client-qd2-defer0`;
-sweep output: `r62-qd2-defer0`. All are under `/workspace/results`.
+sweep output: `r62-qd2-defer0`. Client EXIT_ZERO, 8192 rows, 16384 complete
+forwards. Independent matrix and transition audits PASS. The service was
+stopped deliberately through guardian281573 / child group281578 after success.
+
+Next server supervisor: `r62-guard-qd2-defer1`; run root
+`r62-qd2-defer1-server`; intended client `r62-client-qd2-defer1`;
+sweep output `r62-qd2-defer1`. All are under `/workspace/results`.
 Both supervisors have a predeclared 21600-second timeout. HTTP deadline is
 600 seconds; no automatic retry/filtering. Healthy ongoing runs must not be
 restarted. On error, stop only these explicitly owned groups.
-Metadata: `round6_2-prequalification/qd2-defer0-provenance-v2.json`.
+Metadata: defer0 `round6_2-prequalification/qd2-defer0-provenance-v2.json`;
+defer1 `round6_2-prequalification/qd2-defer1-provenance.json`.
 The older metadata file without `-v2` was not used for model capture.
 
-Next: finish full-transaction defer0, then defer1 replay with identical frozen
+Next: finish defer1 replay with identical frozen
 histories and nonempty matching run provenance. Enforce the route-only exposure
 gate BEFORE reading numerical comparisons. Then derive reserves and enforce all QD2 hard gates and exposure
 minimum before committing any candidate. D1 runtime requalification and HD2
