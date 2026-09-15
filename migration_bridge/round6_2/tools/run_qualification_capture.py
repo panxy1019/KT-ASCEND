@@ -11,7 +11,7 @@ from pathlib import Path
 import time
 import urllib.request
 import torch
-from assemble_capture import assemble, canonical_sha
+from assemble_capture import assemble, canonical_sha, byte_sha
 
 
 def frozen(path):
@@ -80,6 +80,7 @@ def main():
           http_timeout_seconds=600, capture_timeout_seconds=30,
           tool_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()))
     rows = []
+    request_inputs = {}
     history = frozen(args.history) if args.action == "sweep" else None
     if history is not None and history["corpus_sha256"] != corpus["sha256"]:
         raise ValueError("HISTORY_CORPUS_MISMATCH")
@@ -122,6 +123,7 @@ def main():
                               input_ids=ids, history_ids=generated[:index],
                               baseline_history_sha256=history["sha256"], token_index=index,
                               output_token=int(answer["output_ids"][0]))
+                request_inputs[rid] = (ids, record["output_token"])
                 row, logits = assemble(matches[0], record, args.mode)
                 if row["capture_provenance"] != provenance:
                     raise ValueError("CAPTURE_PROVENANCE_MISMATCH")
@@ -134,8 +136,50 @@ def main():
             torch.save(torch.stack(vectors), args.root / "logits" / f'{prompt["id"]}.pt')
         print(json.dumps(dict(action=args.action, mode=args.mode, prompt_id=prompt["id"],
                               completed_rows=len(rows))), flush=True)
+    audit = []
+    if args.action == "sweep":
+        # Request completion can precede the final serving scheduling
+        # lookahead's dump. Wait for this frozen runtime's two forwards/request.
+        deadline = time.monotonic() + 30
+        while len(list(args.captures.rglob("Pass*.pt"))) < 2 * len(rows):
+            if time.monotonic() > deadline:
+                raise TimeoutError("final lookahead capture timeout")
+            time.sleep(.1)
+        seen, targets = [], set()
+        for path in sorted(args.captures.rglob("Pass*.pt")):
+            data = torch.load(path, map_location="cpu", weights_only=False)
+            tx = data["capture.transaction"]
+            rids = tx["batch"]["request_ids"]
+            if len(rids) != 1 or rids[0] not in request_inputs or tx["provenance"] != provenance:
+                raise ValueError("UNEXPECTED_COMPLETE_FORWARD")
+            ids, token = request_inputs[rids[0]]
+            got = data["capture.forward_batch_info.input_ids"].reshape(-1).tolist()
+            positions = data["capture.forward_batch_info.positions"].reshape(-1).tolist()
+            if got == ids and positions == list(range(len(ids))):
+                kind = "TARGET"
+                if rids[0] in targets:
+                    raise ValueError("DUPLICATE_TARGET_FORWARD")
+                targets.add(rids[0])
+            elif got == [token] and positions == [len(ids)]:
+                kind = "SERVING_LOOKAHEAD"
+            else:
+                raise ValueError("FORWARD_HISTORY_MIXING")
+            for name, expected in tx["tensor_byte_sha256"].items():
+                if byte_sha(data[name]) != expected:
+                    raise ValueError("COMPLETE_FORWARD_BYTE_HASH_MISMATCH")
+            seen.append((tx["pid"], tx["forward_sequence_id"]))
+            audit.append(dict(request_id=rids[0], pid=tx["pid"], sequence=tx["forward_sequence_id"],
+                              kind=kind, capture_file=str(path), tensor_hashes=tx["tensor_byte_sha256"]))
+        if (len(audit) != 2 * len(rows) or targets != set(request_inputs)
+                or len({pid for pid, _ in seen}) != 1
+                or [i for _, i in seen] != list(range(len(seen)))):
+            raise ValueError("COMPLETE_FORWARD_MATRIX_MISMATCH")
+        if list(args.captures.rglob("*.incomplete")):
+            raise ValueError("UNCOMMITTED_COMPLETE_FORWARD")
+        write(args.root / "forward_audit.json", dict(status="PASS", rows=audit))
     result = dict(action=args.action, mode=args.mode, corpus_sha256=corpus["sha256"],
                   positions_per_prompt=64, row_count=len(rows), rows=rows,
+                  complete_forward_count=len(audit), forward_audit_sha256=canonical_sha(audit),
                   baseline_history_sha256=history["sha256"] if history else None)
     result["sha256"] = canonical_sha(result)
     write(args.root / "manifest.json", result)

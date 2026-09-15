@@ -37,8 +37,11 @@ def main():
     paths = [Path(experts.__file__),
              child / "python/sglang/srt/debug_utils/tensor_dump_forward_hook.py",
              child / "python/sglang/srt/debug_utils/round6_1_deferred.py",
+             child / "python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+             child / "python/sglang/srt/models/deepseek_v2.py",
              args.root / "migration_bridge/round6/tools/launch_round6_profile.sh",
              *args.artifact]
+    paths.extend(sorted(Path(experts.__file__).parent.rglob("*.so")))
     metadata = dict(
         mode=args.mode, provenance_type="actual_checkout_plus_explicit_source_overlay",
         parent_checkout_sha=git(args.root, "rev-parse", "HEAD"),
@@ -48,6 +51,9 @@ def main():
         file_sha256={str(path): sha(path) for path in paths},
         python=sys.version, torch=torch.__version__, torch_npu=torch_npu.__version__,
         platform=platform.platform(), cpu_affinity=sorted(os.sched_getaffinity(0)),
+        cann_version_files={str(path): path.read_text(errors="replace") for path in
+                            (Path("/usr/local/Ascend/ascend-toolkit/latest/version.cfg"),
+                             Path("/usr/local/Ascend/cann-9.0.0/version.cfg")) if path.is_file()},
         environment={name: os.environ.get(name) for name in (
             "ASCEND_RT_VISIBLE_DEVICES", "SGLANG_APPLY_CONFIG_BACKUP",
             "KT_R62_COMPLETE_FORWARD_DUMP", "KT_R62_REFERENCE_LOGITS_ONLY",

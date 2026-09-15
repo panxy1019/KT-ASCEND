@@ -2,6 +2,8 @@
 import sys
 from pathlib import Path
 import unittest
+from unittest.mock import patch
+import tempfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 try:
@@ -59,6 +61,24 @@ class DecisionTests(unittest.TestCase):
         self.assertEqual(len(row["candidate_ids"]), 33)
         row["deferred_exposure"] = "CURRENT_EXPOSURE"
         self.assertIn("OUTSIDE_CANDIDATE_UNIVERSE", self.classify(row, 5)["failures"])
+
+    def test_exposure_gate_precedes_all_logit_reads(self):
+        from evaluate_contract_v2 import main
+        prompts = [{"id": f"p{i}"} for i in range(128)]
+        rows = [dict(prompt_id=p["id"], token_index=t, deferred_event_count_current_row=0,
+                     deferred_event_count_prefix=0) for p in prompts for t in range(64)]
+        corpus = dict(corpus="QD2", sha256="frozen", prompts=prompts)
+        manifests = [dict(mode=mode, corpus_sha256="frozen", row_count=8192,
+                          complete_forward_count=16384,
+                          baseline_history_sha256="same", rows=rows) for mode in ("defer0", "defer1")]
+        with tempfile.TemporaryDirectory() as directory:
+            argv = ["evaluate", "derive", "--baseline", directory, "--deferred", directory,
+                    "--corpus", "unused", "--output", str(Path(directory) / "result")]
+            with patch.object(sys, "argv", argv), patch("evaluate_contract_v2.read_frozen", side_effect=[corpus, *manifests]), patch("torch.load") as loader:
+                with self.assertRaises(SystemExit) as caught:
+                    main()
+                self.assertEqual(caught.exception.code, 1)
+                loader.assert_not_called()
 
 
 if __name__ == "__main__":

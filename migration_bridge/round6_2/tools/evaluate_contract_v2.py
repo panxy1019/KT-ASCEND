@@ -28,9 +28,12 @@ def metrics(base, deferred, baseline_token, deferred_token):
     difference = d - b
     return dict(contraction=float(contraction.max()),
                 beneficial_expansion=float((md - m0).clamp_min(0).max()),
+                signed_distortions=(md - m0).tolist(),
                 full_logit_max_abs=float(difference.abs().max()),
                 full_logit_rel_l2=float(difference.norm() / b.norm().clamp_min(1e-12)),
                 full_logit_mean_abs=float(difference.abs().mean()),
+                full_logit_cosine=float(torch.dot(b, d) / (b.norm() * d.norm())) if b.norm() > 0 and d.norm() > 0 else None,
+                cosine_status="FINITE" if b.norm() > 0 and d.norm() > 0 else "ZERO_NORM_UNDEFINED",
                 baseline_token=a, deferred_token=deferred_token,
                 candidate_ids=universe, baseline_margins=m0.tolist(), deferred_margins=md.tolist(),
                 baseline_candidate_logits=b[universe].tolist(),
@@ -89,10 +92,22 @@ def main():
         raise ValueError("CORPUS_COVERAGE_MISMATCH")
     if manifests[0]["baseline_history_sha256"] != manifests[1]["baseline_history_sha256"]:
         raise ValueError("HISTORY_MISMATCH")
+    if any(m.get("complete_forward_count") != 16384 for m in manifests):
+        raise ValueError("COMPLETE_FORWARD_COUNT_MISMATCH")
     indexed = [{(r["prompt_id"], r["token_index"]): r for r in m["rows"]} for m in manifests]
     expected = {(p["id"], t) for p in corpus["prompts"] for t in range(64)}
     if any(set(index) != expected or len(index) != 8192 for index in indexed):
         raise ValueError("POSITION_COVERAGE_MISMATCH")
+    # Route-only gate MUST precede reading any logit tensor or numerical metric.
+    exposure = sum(r["deferred_event_count_current_row"] + r["deferred_event_count_prefix"] > 0
+                   for r in manifests[1]["rows"])
+    if exposure < 500:
+        args.output.mkdir(parents=True)
+        report = dict(status="INSUFFICIENT_EXPOSURE", exposure_positions=exposure,
+                      numerical_metrics_read=False, required_minimum=500)
+        (args.output / "exposure_gate.json").write_text(json.dumps(report, indent=2) + "\n")
+        print(json.dumps(report))
+        raise SystemExit(1)
     rows = []
     for prompt in corpus["prompts"]:
         logits = [torch.load(root / "logits" / f'{prompt["id"]}.pt', map_location="cpu", weights_only=True)
