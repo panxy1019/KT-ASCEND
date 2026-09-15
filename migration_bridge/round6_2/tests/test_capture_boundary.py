@@ -2,6 +2,7 @@
 import ast
 import copy
 import logging
+import hashlib
 import os
 from pathlib import Path
 import tempfile
@@ -23,6 +24,18 @@ class Tensor:
     def clone(self):
         return Tensor(self.value)
 
+    def contiguous(self):
+        return self
+
+    def view(self, dtype):
+        return self
+
+    def numpy(self):
+        return self
+
+    def tobytes(self):
+        return str(self.value).encode()
+
 
 class Batch:
     def __init__(self, value):
@@ -41,11 +54,14 @@ class CaptureBoundaryTests(unittest.TestCase):
         self.saved = []
         tree = ast.parse(SOURCE.read_text())
         definition = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == "TensorDumper")
-        namespace = dict(os=os, Path=Path, Optional=__import__('typing').Optional,
+        def save(value, path):
+            self.saved.append(copy.deepcopy(value))
+            Path(path).touch()
+        namespace = dict(os=os, hashlib=hashlib, Path=Path, Optional=__import__('typing').Optional,
                          List=list, logger=logging.getLogger(__name__),
                          ForwardBatch=Batch, LogitsProcessorOutput=Logits,
                          PPProxyTensors=type("Proxy", (), {}),
-                         torch=SimpleNamespace(Tensor=Tensor, save=lambda value, path: self.saved.append(copy.deepcopy(value))))
+                         torch=SimpleNamespace(Tensor=Tensor, uint8=object(), save=save))
         exec(compile(ast.Module(body=[definition], type_ignores=[]), str(SOURCE), "exec"), namespace)
         self.cls = namespace["TensorDumper"]
         self.tmp = tempfile.TemporaryDirectory()
@@ -85,8 +101,22 @@ class CaptureBoundaryTests(unittest.TestCase):
             d.begin_complete_forward(None, (Batch(7),), {})
 
     def test_wrong_outer_output_fails(self):
+        d = self.dumper(True)
+        d.begin_complete_forward(None, (Batch(7),), {})
         with self.assertRaisesRegex(RuntimeError, "LogitsProcessorOutput"):
-            self.dumper(True).end_complete_forward(None, (), {}, Tensor(1))
+            d.end_complete_forward(None, (), {}, Tensor(1))
+
+    def test_duplicate_sequence_fails(self):
+        d = self.dumper(True)
+        d.begin_complete_forward(None, (Batch(7),), {})
+        d.end_complete_forward(None, (), {}, Logits(7))
+        d._forward_pass_id = 0
+        with self.assertRaisesRegex(RuntimeError, "duplicate forward"):
+            d.begin_complete_forward(None, (Batch(8),), {})
+
+    def test_output_without_entry_fails(self):
+        with self.assertRaisesRegex(RuntimeError, "without matching entry"):
+            self.dumper(True).end_complete_forward(None, (), {}, Logits(1))
 
 
 if __name__ == "__main__":

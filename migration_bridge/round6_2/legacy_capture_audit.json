@@ -1,0 +1,85 @@
+{
+  "version": "round6.2-legacy-audit-v1",
+  "v1_status": "HISTORICAL_HELDOUT_REJECTED",
+  "phase1_gate": "PASS",
+  "new_model_inference": false,
+  "artifacts": [
+    {
+      "name": "round6_qd",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "run_teacher_forced_sweep",
+      "association": "per-request files; len(prefix) offset; full predecessor proof not rechecked",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_hd",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "run_teacher_forced_sweep",
+      "association": "same",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_first_overflow",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "qualify_deferred_pairwise_contract",
+      "association": "derived HD",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_matched_metrics",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "compare_deferred_matched_logits",
+      "association": "derived QD/HD",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_historical_reproduction",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "run_teacher_forced_sweep",
+      "association": "same-extractor repetition",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_stagewise",
+      "classification": "SAFE",
+      "producer": "direct capture_tensor and _round6_1_capture_tensor",
+      "association": "independent per-stage/call files",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_replay_stages",
+      "classification": "SAFE",
+      "producer": "audit_legacy_replay",
+      "association": "436/436 exact with hashes",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_replay_logits",
+      "classification": "OFFSET_COMPENSATED",
+      "producer": "compare_stagewise_captures.find_logits + audit_legacy_replay",
+      "association": "predecessor full input hash plus API margins",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_runtime",
+      "classification": "NOT_APPLICABLE",
+      "producer": "analyze_runtime_controls",
+      "association": "direct buffers and JSONL sequence",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_numerical_risk",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "analyze_deferred_signed_risk",
+      "association": "derived historical matrices",
+      "v2_calibration_allowed": false
+    },
+    {
+      "name": "round6_1_nohit_logits",
+      "classification": "UNSAFE_FOR_NUMERICAL_REUSE",
+      "producer": "compare_cpu_not_hit_controls",
+      "association": "input matching to response token; predecessor proof absent",
+      "v2_calibration_allowed": false
+    }
+  ]
+}
