@@ -24,7 +24,21 @@ failed, and no downstream qualification skips a prerequisite.
 
 ## Running / next
 
-### CURRENT AUTHORITATIVE UPDATE — QD3 IS ACTIVE
+### CURRENT AUTHORITATIVE UPDATE — QD3 REJECTED, INVESTIGATE
+
+QD3 pipeline STOPPED normally on evaluator rejection at1789493384.4708831.
+No candidate emitted. Two rows failed STABLE_CANDIDATE_PAIR_FLIP:
+qd3-math-11:43 and qd3-math-19:56 (three non-anchor pairs total).
+Stable top1 exact4647/4647; exposure7390; statistical tails passed, but do not
+override the hard pair-order gate. See09_QD3_REJECTION_INVESTIGATION.md and
+evidence/qd3-v1-rejected-pairs.json for exact margins, source report hashes,
+official-source inspection and next minimal experiments. Do NOT rerun QD3,
+refit reserves, launch runtime/HD3/quality/batch2/4, or poll the finished pipeline.
+Next continuation: original-tensor margin verification, prefix transaction
+audit and local/official consumer-merge comparison. Only evidence-backed
+implementation repairs may proceed; contract relaxation is not authorized.
+
+Historical completed-run chronology follows (not an active model run):
 
 Observer correction PASS; fresh pilot complete with1814/2048 exposed positions,
 32/32 prompts exposed. Registered planning selected N128. Formal QD3/HD3/FD3
