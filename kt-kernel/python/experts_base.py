@@ -1090,10 +1090,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
         """
         flat_hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
         (
-            _input_tensor_cpu,
-            _immediate_experts_ids_cpu,
-            _deferred_experts_ids_cpu,
-            _weights_cpu,
+            input_tensor_cpu,
+            immediate_experts_ids_cpu,
+            deferred_experts_ids_cpu,
+            weights_cpu,
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
