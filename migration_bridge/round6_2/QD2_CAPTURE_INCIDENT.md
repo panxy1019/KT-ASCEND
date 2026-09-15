@@ -62,3 +62,35 @@ No production code changed. This new tool is NOT yet deployed to A3 or used for
 a fresh model run. A future infrastructure retry must freeze new tool/provenance
 hashes and new output directories first, keep all8192 positions/history, and
 validate smoke/boundary behavior before the full replay.
+
+## Completed full inventory / infrastructure retry decision
+
+A3 CPU-only inventory exited0, started1789471041.226895,
+ended1789471376.3252609. All16386 captures accounted for;16384 qualification
+forwards checked, failures=[], pair_failures=[], incomplete_files=[], contiguous
+single-process sequence true. Two outside forwards: sequence0 input[0], position[0],
+and sequence1 input[185], position[1], both request
+HEALTH_CHECK_1789464331.9784992. They are the startup health generation and its
+lookahead, not qualification requests. No numerical cross-mode comparison.
+Exact raw inventory SHA256:
+`ad713b711402d06fdd2df614afbb628a9fefa2c6c26009c8025aeb8fc0d6d195`.
+Portable evidence: `evidence/qd2-capture-incident/inventory.json.gz`,
+`audit-result.json`, `client-failure.json`.
+
+Decision: INFRASTRUCTURE_ONLY_RETRY, permitted by preregistered protocol.
+Original run permanently INVALID. Preserve complete original captures, baseline
+history and successful defer0. Retry the ENTIRE defer1 corpus in a new process
+and directory, never resume/select/merge positions. Same128 prompts ×64 positions,
+same history/placement/GGUF/model/source, numerical rules and21600s deadlines.
+The only code change is early rejection by the client test tool; model capture
+and production sources remain unchanged. Non-generating readiness does not
+change model arithmetic. `prepare_capture_retry_metadata.py` rehashes all old
+artifacts and rejects changes except the explicitly updated collector test tool;
+records additional helper hashes and incident provenance. Old metadata untouched.
+
+Planned fresh smoke root `r62-boundary-smoke-defer1`; planned full retry roots
+`r62-qd2-defer1-retry1`, `r62-qd2-defer1-retry1-server`, supervisors
+`r62-client-qd2-defer1-retry1`, `r62-guard-qd2-defer1-retry1`.
+A3 boundary unit tests4/4 passed. No fresh model inference at this decision.
+First complete20-request smoke and40-forward audit using non-generating readiness;
+then stop smoke server and start a new, empty full-replay capture session.
