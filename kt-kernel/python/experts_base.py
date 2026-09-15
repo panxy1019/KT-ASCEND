@@ -17,6 +17,7 @@ import json
 import logging
 import os
 import threading
+import time
 from pathlib import Path
 
 from kt_kernel import kt_kernel_ext
@@ -81,7 +82,12 @@ def _trace_deferred_event(event: str, **payload) -> None:
     with _deferred_trace_lock:
         if _deferred_trace_count >= limit:
             return
-        record = {"event": event, **payload}
+        record = {
+            "event": event,
+            "trace_sequence": _deferred_trace_count + 1,
+            "monotonic_ns": time.monotonic_ns(),
+            **payload,
+        }
         with open(path, "a", encoding="utf-8") as trace_file:
             trace_file.write(json.dumps(record, sort_keys=True) + "\n")
         _deferred_trace_count += 1
@@ -644,6 +650,11 @@ class BaseMoEWrapper(_MoEBase, ABC):
         """Clear the producer flag after its incremental consumer is queued."""
         if incremental:
             BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx - 1] = False
+            _trace_deferred_event(
+                "previous_pending_consumed",
+                producer_layer=self.layer_idx - 1,
+                consumer_layer=self.layer_idx,
+            )
 
     def _check_qlen_fits_cpp_buffers(self, hidden_states: torch.Tensor) -> None:
         """Fail loudly when qlen would overrun the C++ MoE output buffer.
@@ -1054,10 +1065,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
         """Copy pinned CPU output to the device tensor (CPU work already finished)."""
         flat_hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
         (
-            _input_tensor_cpu,
-            _immediate_experts_ids_cpu,
-            _deferred_experts_ids_cpu,
-            _weights_cpu,
+            input_tensor_cpu,
+            immediate_experts_ids_cpu,
+            deferred_experts_ids_cpu,
+            weights_cpu,
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
@@ -1118,6 +1129,29 @@ class BaseMoEWrapper(_MoEBase, ABC):
             else:
                 self.cpu_infer.sync_with_cuda_stream(cuda_stream, allow_pending)
 
+        _trace_deferred_event(
+            "sync_complete",
+            layer_idx=self.layer_idx,
+            current_slot=current_slot,
+            allow_pending=allow_pending,
+        )
+        _round6_1_capture_tensor(
+            "input_hidden_after_sync", self.layer_idx, input_tensor_cpu[current_slot]
+        )
+        _round6_1_capture_tensor(
+            "immediate_ids_after_sync",
+            self.layer_idx,
+            immediate_experts_ids_cpu[current_slot],
+        )
+        _round6_1_capture_tensor(
+            "deferred_ids_after_sync",
+            self.layer_idx,
+            deferred_experts_ids_cpu[current_slot],
+        )
+        _round6_1_capture_tensor(
+            "routing_weights_after_sync", self.layer_idx, weights_cpu[current_slot]
+        )
+
         explicit_previous = BaseMoEWrapper._round6_1_explicit_pending.pop(
             self.layer_idx - 1, None
         )
@@ -1138,7 +1172,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
         _round6_1_capture_tensor(
             "cpu_output_after_sync", self.layer_idx, output_cpu[current_slot]
         )
-        if BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False):
+        if (
+            BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False)
+            and os.environ.get("KT_R61_CAPTURE_DRAIN_DEFERRED") == "1"
+        ):
             next_slot = (current_slot + 1) % KExpertsCPUBuffer.buffer_depth
             _round6_1_capture_tensor(
                 "deferred_output_after_completion", self.layer_idx, output_cpu[next_slot]
@@ -1147,6 +1184,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
             _round6_1_capture_tensor(
                 "explicit_deferred_output", self.layer_idx, self._round6_1_explicit_output
             )
+            self._round6_1_explicit_output = None
 
         return self.copy_forward_output_to_device(hidden_states)
 

@@ -75,10 +75,12 @@ def select_stage(root: Path, prefix: str, row_count: int) -> torch.Tensor:
         tensor = load_payload(path)
         if tensor.ndim > 0 and int(tensor.shape[0]) == row_count:
             matches.append(tensor)
+    if len(matches) > 1 and all(torch.equal(matches[0], value) for value in matches[1:]):
+        return matches[0]
     if len(matches) != 1:
         raise RuntimeError(
             f"expected one {row_count}-row stage matching {prefix} below {root}, "
-            f"got {len(matches)}"
+            f"got {len(matches)} distinct or zero candidates"
         )
     return matches[0]
 
