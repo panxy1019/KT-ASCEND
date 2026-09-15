@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | DEFER0_COMPLETE_DEFER1_STARTING | defer0 8192 positions + 16384 complete forwards pass both built-in and independent audits; defer1 server starting; no cross-mode numerical decision yet |
+| 6 QD2 | DEFER0_COMPLETE_DEFER1_RUNNING | defer0 8192 positions + 16384 complete forwards pass both built-in and independent audits; defer1 collecting successfully; no cross-mode numerical decision yet |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -39,8 +39,8 @@ sweep output: `r62-qd2-defer0`. Client EXIT_ZERO, 8192 rows, 16384 complete
 forwards. Independent matrix and transition audits PASS. The service was
 stopped deliberately through guardian281573 / child group281578 after success.
 
-Next server supervisor: `r62-guard-qd2-defer1`; run root
-`r62-qd2-defer1-server`; intended client `r62-client-qd2-defer1`;
+Active server supervisor: `r62-guard-qd2-defer1`; run root
+`r62-qd2-defer1-server`; active client `r62-client-qd2-defer1`;
 sweep output `r62-qd2-defer1`. All are under `/workspace/results`.
 Both supervisors have a predeclared 21600-second timeout. HTTP deadline is
 600 seconds; no automatic retry/filtering. Healthy ongoing runs must not be
@@ -56,3 +56,13 @@ minimum before committing any candidate. D1 runtime requalification and HD2
 remain downstream. Synthetic decision tests: 7/7 CPU-only on A3; local suite
 29 passed plus those seven skipped because local torch is absent. Additional
 A3 real CPU tensor tests reject all four injected capture integrity failures.
+
+Additional whole-matrix gate before numerical evaluation:
+`tools/audit_complete_matrix.py --root <sweep-root> --output <sweep-root>/complete_matrix_audit.json`.
+It rechecks both target and lookahead independently (including finite logits,
+sequence lengths and terminal transitions); original aggregate totals alone
+are not used as a substitute for one pair per request. Also retain the
+`audit_deferred_transitions.py` report required by the numerical evaluator.
+
+Downstream tooling is prepared, not yet qualified; see POST_GATE_TOOLING.md.
+The latest A3 CPU-only tool tests passed22/22. No HD2 model output exists.
