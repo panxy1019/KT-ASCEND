@@ -25,6 +25,8 @@ logger = logging.getLogger(__name__)
 
 _deferred_trace_lock = threading.Lock()
 _deferred_trace_count = 0
+_round6_1_capture_lock = threading.Lock()
+_round6_1_capture_counts: Dict[Tuple[int, str], int] = {}
 
 
 def _round6_1_capture_tensor(stage: str, layer_idx: int, tensor: torch.Tensor) -> None:
@@ -48,7 +50,14 @@ def _round6_1_capture_tensor(stage: str, layer_idx: int, tensor: torch.Tensor) -
         "source_dtype": str(tensor.dtype),
         "tensor": tensor.detach().to(device="cpu").contiguous(),
     }
-    torch.save(payload, target / f"cpu_layer{layer_idx:02d}_{stage}.pt")
+    key = (int(layer_idx), stage)
+    with _round6_1_capture_lock:
+        call_index = _round6_1_capture_counts.get(key, 0) + 1
+        _round6_1_capture_counts[key] = call_index
+    torch.save(
+        payload,
+        target / f"cpu_layer{layer_idx:02d}_{stage}_call{call_index:04d}.pt",
+    )
 
 
 def _round6_1_explicit_replay_enabled() -> bool:
