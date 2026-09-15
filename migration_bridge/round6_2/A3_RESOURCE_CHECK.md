@@ -30,6 +30,7 @@ No process was killed, paused or modified. No model server was launched.
 
 ## Execution restriction
 
+Historical restriction at the time of this check:
 `A3_EXECUTION = WAITING_FOR_NPU0_RESOURCE_WINDOW`.
 
 Do not move to NPU1+, silently co-run with another workload, or stop that
@@ -37,3 +38,38 @@ workload. Recheck resources and environment before model execution. Local
 preregistration/tooling may continue independently; neither corpus freeze nor
 V2 preregistration is yet complete, so resource availability alone is not
 sufficient to start qualification.
+
+## Subsequent explicit user authorization
+
+The user subsequently authorized the original full execution plan on shared
+NPU0, not limited to short smoke. Contention with the existing workload is
+accepted. The prior resource-window restriction is therefore superseded:
+
+`A3_SHARED_EXECUTION = AUTHORIZED_WITH_OWN_PROCESS_ONLY_ABORT`.
+
+Never stop, pause, reprioritize or reconfigure the other workload. On inadequate
+memory, OOM, timeout or device error, abort only this round's newly launched
+tests. No migration to NPU1+ and no change to placement, contract or corpus.
+
+A fresh read-only check found the same external PIDs using 6125 MiB each;
+HBM use remained 14%/13%, with utilization 60%/55% in that sample. These are
+transient observations, not a guarantee of memory available at launch.
+
+`tools/run_owned_process.py` is an inside-container foreground-command guard.
+It creates a new session, records its PID/PGID and log, and terminates only
+that group on recognized error messages or a preset deadline. It retains the
+leader PID through group cleanup to avoid signaling a recycled identifier.
+Commands which detach workers into new sessions are unsupported and must not
+be launched with this guard. The guard itself must not wrap SSH/docker exec
+and assume remote process ownership follows the local process group.
+
+Memory admission checks and request-level watchdogs remain required; log
+matching is supplementary and does not cover all device failure modes.
+No arbitrary total-duration value is adopted for the official matrix: the
+deadline must be written into the execution manifest before that run.
+
+Local test result: 18/18 including own-process OOM cleanup while an independent
+sentinel process remains alive, timeout, normal/nonzero exit and refusal to
+overwrite evidence. No A3 model test was started during this authorization
+update. Shared-environment performance measurements must be labelled as such;
+they are not an isolated hardware speedup claim.
