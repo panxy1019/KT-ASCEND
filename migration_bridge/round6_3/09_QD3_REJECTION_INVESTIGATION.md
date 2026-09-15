@@ -68,3 +68,30 @@ No production root cause is established from final logits alone.
 
 No test process is currently needed for the completed QD3 pipeline. Automatic
 continuation must do bounded investigation, not poll/restart rejected QD3.
+
+## Original tensor and prefix verification (A3,17:54UTC)
+
+`verify_rejected_captures.py` reloaded202 original captures (88 for math11,
+114 for math19 across both modes), checked recorded tensor hashes, finite
+logits, same actual inputs/positions and history hashes, terminal no-defer,
+and producer/consumer/pending transition order through each failing target.
+Candidate logits and the three margins reproduced exactly from raw tensors.
+math11 has3 earlier CPU deferred routes (E38 twice,E16 once); math19 has8
+(E16 four,E38 once,E41 twice,E50 once). Neither failure is a current-step
+deferred event. Evidence: `evidence/qd3-v1-rejected-original-verification.json`.
+
+The first draft forensic script incorrectly counted all nonnegative partition
+IDs as CPU routes and raised PRODUCER_PENDING_ROUTE_MISMATCH before producing
+a report. Partition IDs can also be NPU-owned; the corrected tool counts only
+selected CPU-owned IDs matching their TopK position, as the frozen exporter
+already does. This was a new diagnostic-tool error, not a production failure;
+the frozen exporter/evaluator/production code were not modified.
+
+This verifies recorded transactions, not independent arithmetic correctness.
+The next bounded test is replaying these TWO fixed baseline histories with
+the existing explicit-replay oracle versus the production deferred path in
+fresh diagnostic directories, retaining the same selected experts and budget.
+That can test whether the observed prefix differences follow intended
+next-layer injection semantics. It must not be called qualification or change
+the rejected candidate decision. Historical Round6.1 replay is supporting
+context only; it does not substitute these new history-specific results.

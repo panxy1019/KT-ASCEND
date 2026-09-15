@@ -34,8 +34,14 @@ override the hard pair-order gate. See09_QD3_REJECTION_INVESTIGATION.md and
 evidence/qd3-v1-rejected-pairs.json for exact margins, source report hashes,
 official-source inspection and next minimal experiments. Do NOT rerun QD3,
 refit reserves, launch runtime/HD3/quality/batch2/4, or poll the finished pipeline.
-Next continuation: original-tensor margin verification, prefix transaction
-audit and local/official consumer-merge comparison. Only evidence-backed
+Original-tensor margin verification and prefix transaction audit now PASS
+for202 captures through both failing targets; three pairs reproduce exactly.
+See evidence/qd3-v1-rejected-original-verification.json. Next continuation:
+prepare TWO fixed-history explicit-replay diagnostics versus production defer1
+using existing KT_R61_EXPLICIT_REPLAY and natural baseline qd3-force history,
+fresh diagnostic directories only; audit this oracle is compatible with the
+stateful helper before launching. Inspect local/official consumer merge. No
+new corpus, candidate or threshold fitting. Only evidence-backed
 implementation repairs may proceed; contract relaxation is not authorized.
 
 Historical completed-run chronology follows (not an active model run):
