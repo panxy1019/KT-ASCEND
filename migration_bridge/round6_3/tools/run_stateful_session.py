@@ -10,6 +10,11 @@ import time
 
 
 def main():
+    # Convert cancellation to an exception so the owned server's finally
+    # cleanup executes. Parent guardians must allow this cleanup grace.
+    def cancelled(signum, frame):
+        raise InterruptedError(f"OWNED_SESSION_CANCELLED:{signum}")
+    signal.signal(signal.SIGTERM, cancelled)
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--profile", choices=["D1", "D1_NODEFER"], required=True)
     p.add_argument("--server-root", type=Path, required=True)
@@ -17,6 +22,8 @@ def main():
     p.add_argument("--requests", type=Path, required=True)
     p.add_argument("--forced", action="store_true")
     args = p.parse_args()
+    if os.environ.get("KT_R63_OBSERVER_PROFILE", "full") != "full":
+        raise ValueError("Use the dedicated natural observer control for OFF/reference")
     args.output.mkdir(parents=True, exist_ok=False)
     here = Path(__file__).resolve().parent
     old = Path("/workspace/results/round6_2-prequalification/tools")

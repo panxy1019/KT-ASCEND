@@ -33,15 +33,19 @@ tensor comparisons byte exact; full1380686660 bytes vs compact593335350 bytes.
 Full/compact final integrity audits PASS. Engineering exposure1120/1280,
 150 current route events; repeated4-family smoke is NOT a formal exposure gate.
 
-Finite gated pipeline is active under
-`/workspace/results/r63-prequalification-pipeline-control`.
-It has advanced to independent pilot baseline:
-`/workspace/results/r63-pilot-baseline-server` and `r63-pilot-baseline-session`.
-Next it freezes pilot-force.json, runs `r63-pilot-defer1-server/session`, exports
-causal routes, then writes `r63-pilot-size-plan.json`. It does not derive reserves
-or start QD3/HD3. Do not launch a duplicate pipeline or interrupt healthy runs.
-Each session controller owns only its own server and performs final shutdown
-and integrity auditing.
+Protocol omission discovered: full/compact comparisons are NOT true observer
+OFF/ON comparisons. Historical pipeline CANCELLED and disabled pending the
+missing natural OFF/minimal-logits-reference gate. Pilot baseline had completed;
+defer1 had206 indexed forwards when stopped. Preserve both as superseded,
+NOT_FOR_CALIBRATION. No size plan or numerical reserves were produced.
+See06_OBSERVER_OFF_GATE_CORRECTION.md. Repeat pilot in fresh directories only
+after OFF/reference qualification. Frozen pilot inputs/planning rules unchanged.
+
+Natural defer0 OFF control is being launched under
+`/workspace/results/r63-natural-off0-control`, server `r63-natural-off0-server`.
+Then reference0/full0, natural full1/reference1/OFF1 must be compared without
+forcing history. Existing forced defer1 captures cannot substitute natural
+defer1 free-generation parity after trajectory divergence.
 
 After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
 statistical preregistration, then formal capture. New evaluator/causal export

@@ -31,6 +31,10 @@ def checked(path, status):
 
 
 def main():
+    # This historical pipeline is intentionally disabled: its original order
+    # omitted true observer-OFF qualification. Preserve its outputs; a fresh
+    # corrected pipeline must explicitly bind an OFF/reference PASS artifact.
+    raise RuntimeError("SUPERSEDED_MISSING_TRUE_OBSERVER_OFF_GATE")
     checked(ROOT / "r63-long-observer0-parity.json", "PASS")
     pilot = FROZEN / "pilot-input.json"
     if hashlib.sha256(pilot.read_bytes()).hexdigest() != "0e309656587683068e515cd34024a360c6c8ca36924e3ee8a6a64d5f5b42e6ef":

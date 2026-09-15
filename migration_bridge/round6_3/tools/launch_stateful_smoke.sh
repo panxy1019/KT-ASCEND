@@ -24,6 +24,20 @@ export KT_R63_CAPTURE_INDEX="$run_root/index.jsonl"
 export KT_R62_RUN_METADATA="$run_root/provenance.json"
 export PYTHONPATH=/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:/workspace/results/round6_2-prequalification/tools
 unset KT_R62_REFERENCE_LOGITS_ONLY KT_R63_FORCE_MANIFEST KT_R63_FORCE_ARM_FILE KT_R63_FORCE_TRACE KT_R63_FORCE_MANIFEST_SHA256
+case "${KT_R63_OBSERVER_PROFILE:-full}" in
+  full) ;;
+  reference)
+    export KT_R62_COMPLETE_FORWARD_DUMP=0 KT_R62_REFERENCE_LOGITS_ONLY=1
+    export KT_R63_COMPACT_CAPTURE=0
+    unset KT_R63_CAPTURE_INDEX
+    ;;
+  off)
+    [[ -z "$force_manifest" ]] || { echo 'OFF cannot force history'; exit 4; }
+    export KT_R6_ENABLE_TENSOR_DUMP=0 KT_R62_COMPLETE_FORWARD_DUMP=0
+    unset KT_R63_CAPTURE_INDEX KT_R63_COMPACT_CAPTURE
+    ;;
+  *) echo 'Invalid observer profile'; exit 4 ;;
+esac
 if [[ -n "$force_manifest" ]]; then
   export KT_R63_FORCE_MANIFEST="$force_manifest"
   KT_R63_FORCE_MANIFEST_SHA256=$(sha256sum "$force_manifest")
