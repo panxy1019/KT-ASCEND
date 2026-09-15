@@ -28,16 +28,25 @@ Long full baseline and compact forced defer0 both PASS: 20x64 targets,
 1300 final audited forwards each, 34045 retained tensor comparisons byte exact.
 Raw capture shrank from1380241180 to592963662 bytes. See04 report.
 
-Now running `/workspace/results/r63-long-force1-full-control`, with model root
-`/workspace/results/r63-long-force1-full-server`, session
-`/workspace/results/r63-long-force1-full-session`. The controller owns this
-server, shuts it down after capture, and performs final index/physical audit.
-Do not restart a healthy run.
+Long defer1 full/compact checks also PASS:1300 forwards per mode,35345 retained
+tensor comparisons byte exact; full1380686660 bytes vs compact593335350 bytes.
+Full/compact final integrity audits PASS. Engineering exposure1120/1280,
+150 current route events; repeated4-family smoke is NOT a formal exposure gate.
 
-After PASS run compact defer1 against the same long-force.json history and
-compare observers. All are engineering
-20-request prequalification, not QD3. Only then run independent pilot and use
-the preregistered size rule; freeze new QD3/HD3/FD3 before formal results.
+Finite gated pipeline is active under
+`/workspace/results/r63-prequalification-pipeline-control`.
+It has advanced to independent pilot baseline:
+`/workspace/results/r63-pilot-baseline-server` and `r63-pilot-baseline-session`.
+Next it freezes pilot-force.json, runs `r63-pilot-defer1-server/session`, exports
+causal routes, then writes `r63-pilot-size-plan.json`. It does not derive reserves
+or start QD3/HD3. Do not launch a duplicate pipeline or interrupt healthy runs.
+Each session controller owns only its own server and performs final shutdown
+and integrity auditing.
+
+After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
+statistical preregistration, then formal capture. New evaluator/causal export
+code is being prepared; evaluator is NOT_RUN and requires further tests before
+formal use. Neither old QD2 nor old HD2 are substituted for new formal corpora.
 
 ## Artifact roots and identities
 
