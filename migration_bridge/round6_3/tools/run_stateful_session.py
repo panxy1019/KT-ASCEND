@@ -21,7 +21,10 @@ def main():
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--requests", type=Path, required=True)
     p.add_argument("--forced", action="store_true")
+    p.add_argument("--client-timeout-seconds", type=int, default=1200)
     args = p.parse_args()
+    if not 120 <= args.client_timeout_seconds <= 3000:
+        raise ValueError("CLIENT_BUDGET_EXCEEDS_OWNED_SERVER_LIMIT")
     if os.environ.get("KT_R63_OBSERVER_PROFILE", "full") != "full":
         raise ValueError("Use the dedicated natural observer control for OFF/reference")
     args.output.mkdir(parents=True, exist_ok=False)
@@ -29,9 +32,10 @@ def main():
     old = Path("/workspace/results/round6_2-prequalification/tools")
     env = dict(os.environ, PYTHONPATH=str(old))
     results = dict(started_unix=time.time(), profile=args.profile, forced=args.forced,
-                   server_root=str(args.server_root), requests=str(args.requests), status="STARTING")
+                   server_root=str(args.server_root), requests=str(args.requests), status="STARTING",
+                   client_timeout_seconds=args.client_timeout_seconds)
     def call(command):
-        subprocess.run([sys.executable, *map(str, command)], env=env, check=True, timeout=1200)
+        subprocess.run([sys.executable, *map(str, command)], env=env, check=True, timeout=args.client_timeout_seconds)
     launch = ["bash", str(here / "launch_stateful_smoke.sh"), args.profile, str(args.server_root)]
     if args.forced:
         launch.append(str(args.requests))

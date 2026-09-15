@@ -1,0 +1,32 @@
+{
+  "status": "INPUT_ONLY_SEMANTIC_REVIEW_COMPLETE",
+  "source_hashes": {
+    "qd3": "209cc9e4348a6192b21ce1bb6b3ca6dd03954b6e09fd3b6da65dd9db48204adc",
+    "hd3": "a82b96b6660f55755f190d98cafc3d8456a62e3cfc2b993b37a5cd6df28fe071",
+    "fd3": "bd1e8f5b1a9db224076f1a20f44b821e58241288e0c56a333cd4fd265892ee83"
+  },
+  "audit": "formal_draft_overlap_audit_v4.json",
+  "historical_unique_strings": 1625,
+  "normalized_exact_duplicates": 0,
+  "draft_tasks": 264,
+  "remaining_lexical_flags_reviewed": 46,
+  "changed_before_any_formal_inference": true,
+  "formal_outputs_inspected": false,
+  "selection_based_on_route_hits": false,
+  "selection_based_on_model_accuracy": false,
+  "replacement_reason": "Remove semantic restatements of old inputs or number-only task variants; preserve category counts.",
+  "retained_flags_reason": "Remaining lexical flags predominantly share instruction boilerplate, not task identity. Related mathematical concepts remain, but supplied information and requested reasoning differ; no number-only Q-to-H copying.",
+  "examples": [
+    "List append/extend versus queue/stack shares Explain the difference phrasing, but asks a distinct API effect.",
+    "Dictionary value addition versus sorted-list merge has different operands, state and outputs.",
+    "Runner multi-leg mean speed versus constant-speed unit conversion is a different calculation protocol.",
+    "Rectangle area-to-dimensions versus perimeter-to-width uses different constraints; geometry topic overlap is disclosed.",
+    "Silhouette, timer context manager, ballast, hardness/toughness, linked-list cycle, grouped SQL orders and repeating decimal restatements were removed."
+  ],
+  "limitations": [
+    "Lexical deduplication and manual task review do not prove semantic independence or IID sampling.",
+    "Corpora are authored broad-workload blocks; statistical statements remain conditional on the registered exchangeability assumption.",
+    "Code tasks intentionally include different language families across Q and H; H is not tuned after outputs.",
+    "Historical exact token-ID audit remains mandatory after pinned tokenization."
+  ]
+}

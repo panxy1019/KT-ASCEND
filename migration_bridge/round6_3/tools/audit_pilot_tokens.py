@@ -22,6 +22,7 @@ def main():
     p.add_argument("--pilot", type=Path, required=True)
     p.add_argument("--historical-root", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument("--exclude-inputs", type=Path, action="append", default=[])
     args = p.parse_args()
     historical, sources = set(), {}
     for path in sorted(args.historical_root.rglob("*.json")):
@@ -34,6 +35,10 @@ def main():
             sources[str(path)] = hashlib.sha256(raw).hexdigest()
     if not historical:
         raise ValueError("NO_HISTORICAL_TOKEN_INPUTS")
+    for path in args.exclude_inputs:
+        raw = path.read_bytes()
+        historical.update(inputs(json.loads(raw)))
+        sources[str(path)] = hashlib.sha256(raw).hexdigest()
     raw = args.pilot.read_bytes()
     pilot = json.loads(raw)
     duplicates = [r["rid"] for r in pilot["requests"] if tuple(r["input_ids"]) in historical]

@@ -1,0 +1,50 @@
+{
+  "version": "round6.3-v2-preregistration-v1",
+  "prompts_per_corpus": 128,
+  "token_budget": 64,
+  "candidate_topk": 32,
+  "exposure_minimum": 500,
+  "coverage": 0.95,
+  "alpha_per_family": 0.016666666666666666,
+  "prompt_tail_risk_budget": 0.05,
+  "tolerance_rank_1based": 127,
+  "corpus_sha256": {
+    "QD3": "bec960772ccad4fbbe945ad76211852b86ff0cc9c553cdf962742ef45fc710e2",
+    "HD3": "bc1aac578b88806693e9ee3327d69cba24c02e3f144fc0e53150eec135dcc6fa",
+    "FD3": "59d35f221350969f5f17b92d2158212b5988da0d7eae7c30983ee9d7dade013c"
+  },
+  "source_review_sha256": "bf57665f5b98edeeb841a9f38195f73ca76a023a48dafc277c4599f93976bba8",
+  "pilot_size_plan_sha256": "fcee214f9d63e283bc5ee254158f0cc8007375c276eb38493b98038282b34fd2",
+  "metrics_module_sha256": "ecb5c8f758b62fec1bd25d738dc0a654462188f88c3b8d3a49183fe5c659a3d8",
+  "statistics_module_sha256": "1d5381a8528fed80a34bd5f63e886502bcab32f6dbacc6eb61353585a9a18c68",
+  "stateful_evaluator_sha256": "55150d603a788d9df69cc58bc6a8d2f4d68424eb71bdefde68244ddca1e57545",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+  "placement_sha256": "23edad71e52c05b1dc3a227ea6e27cacad0b4db6a18c4419647efae00530d39c",
+  "gguf_sha256": "4b42799ec7f143569692133aadd37f089ff0c18508411e5fd37911b62c8e323f",
+  "quality_manifest_sha256": "c7bcb09c72f4a7213d0ecdb080f8e88e983ab1a491d4304f448bce28d8f7e1ce",
+  "runtime": {
+    "tp": 1,
+    "batch": 1,
+    "npu": 0,
+    "cpu_affinity": "0-15",
+    "graph": false,
+    "production_overlap": true,
+    "cpu_threads": 16,
+    "deferred_budget": 1
+  },
+  "formal_history": "natural defer0 -> immutable history -> forced defer0 and forced defer1; exactly64 targets plus1 excluded lookahead per request",
+  "statistical_unit": "complete prompt block, conditional on independent exchangeable blocks",
+  "hard_gates": [
+    "stable_top1_exact",
+    "ambiguity_membership",
+    "outside_U_zero",
+    "stable_candidate_pair_order",
+    "no_exposure_byte_exact",
+    "all_finite"
+  ],
+  "insufficient_exposure": "STOP; no appending/filtering/reweighting",
+  "hd3_entry": "candidate committed and candidate-bound D1 runtime PASS; no refit",
+  "observer_gate_sha256": "6edab58b39bc139e06159d3b9aa31a32265b7a3d792bb8e7ddd431d2e23e74e5",
+  "sha256": "19685bff9c72337873c466067ba76c579e4e562b25170d84d46e3d5185f83eb0"
+}
