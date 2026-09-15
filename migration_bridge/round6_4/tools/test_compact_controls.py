@@ -30,7 +30,7 @@ class CompactTests(unittest.TestCase):
             self.assertEqual(client.recv(1), b'')
         compact.ensure_free_port(address[1])
 
-    def exercise(self, wrong_token=False):
+    def exercise(self, wrong_token=False, runtime=False):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory) / 'D1'
             class Server:
@@ -61,14 +61,14 @@ class CompactTests(unittest.TestCase):
                     patch.object(compact.urllib.request, 'urlopen', side_effect=response):
                 if wrong_token:
                     with self.assertRaisesRegex(ValueError, 'SAME_PATH_NONDETERMINISM'):
-                        compact.one_profile('D1', root, selected, {})
+                        compact.one_profile('D1', root, selected, {}, runtime=runtime)
                 else:
-                    result = compact.one_profile('D1', root, selected, {})
-                    self.assertEqual(result['request_count'], 20)
-                    self.assertEqual(result['status'], 'COMPACT_PASS')
+                    result = compact.one_profile('D1', root, selected, {}, runtime=runtime)
+                    self.assertEqual(result['request_count'], 52 if runtime else 20)
+                    self.assertEqual(result['status'], 'RUNTIME_PASS' if runtime else 'COMPACT_PASS')
             self.assertEqual(server.returncode, 1)
             report = json.loads((root / 'report.json').read_text())
-            self.assertEqual(report['status'], 'FAIL' if wrong_token else 'COMPACT_PASS')
+            self.assertEqual(report['status'], 'FAIL' if wrong_token else ('RUNTIME_PASS' if runtime else 'COMPACT_PASS'))
             self.assertEqual(len((root/'requests.jsonl').read_text().splitlines()), count)
 
     def test_complete_and_owned_cleanup(self):
@@ -76,6 +76,12 @@ class CompactTests(unittest.TestCase):
 
     def test_first_mismatch_retained_and_owned_cleanup(self):
         self.exercise(wrong_token=True)
+
+    def test_runtime_ten_repeats_and_three_prefixes(self):
+        self.exercise(runtime=True)
+
+    def test_runtime_first_mismatch(self):
+        self.exercise(runtime=True, wrong_token=True)
 
     def test_frozen_s6(self):
         path = Path(__file__).resolve().parents[2] / 'round6/corpora/s6.json'

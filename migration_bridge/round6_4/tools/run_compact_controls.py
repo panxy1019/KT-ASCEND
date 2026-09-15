@@ -46,17 +46,38 @@ def check_corpus(path):
     return selected
 
 
-def one_profile(profile, root, selected, env):
+def restart_references(restart, profile, binding, selected):
+    if (restart['status'] != 'RUNTIME_PASS' or restart['profile'] != profile or
+            restart['binding'] != binding or restart['corpus_sha256'] != S6_SHA or
+            restart['kind'] != 'same_process' or restart['request_count'] != len(selected)*13):
+        raise ValueError('RESTART_REFERENCE_DRIFT')
+    rows = restart['rows']
+    references = {r['prompt_id']:r['reference64'] for r in rows}
+    if (len(rows) != len(selected) or set(references) != set(selected) or
+            any(len(tokens) != 64 for tokens in references.values())):
+        raise ValueError('RESTART_REFERENCE_INCOMPLETE')
+    return references
+
+
+def one_profile(profile, root, selected, env, *, runtime=False, restart=None, binding=None):
+    restart_refs = None
+    if restart is not None:
+        if not runtime:
+            raise ValueError('RESTART_REQUIRES_RUNTIME')
+        restart_refs = restart_references(restart, profile, binding, selected)
     root.mkdir()
     (root / 'tensors').mkdir()  # empty readiness control, no observer
     py = sys.executable
     ensure_free_port()
     command = [py, str(OLD / 'run_owned_process.py'), '--output', str(root / 'guard'),
-               '--timeout-seconds', '1800', '--', 'taskset', '-c', '0-15', 'bash',
+               '--timeout-seconds', '7200' if runtime else '1800', '--', 'taskset', '-c', '0-15', 'bash',
                '/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh',
                profile, str(root), '31000']
     report = dict(profile=profile, status='STARTING', started_unix=time.time(),
                   observer='OFF', corpus_sha256=S6_SHA, command=command)
+    success_status = 'RUNTIME_PASS' if runtime else 'COMPACT_PASS'
+    report.update(suite='runtime' if runtime else 'compact', binding=binding,
+                  kind='clean_restart' if restart is not None else 'same_process')
     with (root / 'launcher.log').open('x') as log:
         server = subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)
         report['owned_guard_pid'] = server.pid
@@ -65,7 +86,9 @@ def one_profile(profile, root, selected, env):
                 '--captures', str(root / 'tensors'), '--output', str(root / 'readiness.json')],
                 env=env, check=True, timeout=920)
             references = None
-            if profile.endswith('_B0'):
+            if restart is not None:
+                references = restart_refs
+            elif profile.endswith('_B0'):
                 historical = Path('/workspace/results') / f'b0-{profile[:2].lower()}-final/result.json'
                 prior = json.loads(historical.read_text())
                 if prior['corpus_sha256'] != S6_SHA:
@@ -74,12 +97,14 @@ def one_profile(profile, root, selected, env):
                 references = {r['prompt_id']: r['reference'] for r in prior['rows']}
             rows = []
             with (root / 'requests.jsonl').open('x') as raw:
-                for prompt_id in PROMPTS:
+                prompt_ids = tuple(selected) if runtime else PROMPTS
+                budgets = ([64] if restart is not None else [64]*10+[8,16,32]) if runtime else (32,32,8,16,32)
+                for prompt_id in prompt_ids:
                     baseline = None
-                    for index, budget in enumerate((32, 32, 8, 16, 32)):
+                    for index, budget in enumerate(budgets):
                         if server.poll() is not None:
                             raise RuntimeError('OWNED_SERVER_EXITED')
-                        rid = f'r64-compact-{profile}-{prompt_id}-{index}'
+                        rid = f'r64-{report["suite"]}-{report["kind"]}-{profile}-{prompt_id}-{index}'
                         payload = dict(rid=rid, input_ids=selected[prompt_id]['input_ids'],
                             sampling_params=dict(temperature=0, max_new_tokens=budget, ignore_eos=True),
                             return_logprob=True, logprob_start_len=-1, top_logprobs_num=0)
@@ -97,12 +122,15 @@ def one_profile(profile, root, selected, env):
                         if tokens != baseline[:budget]:
                             raise ValueError(f'SAME_PATH_NONDETERMINISM:{rid}')
                         if references is not None and tokens != references[prompt_id][:budget]:
-                            raise ValueError(f'NONDEFER_REFERENCE_MISMATCH:{rid}')
+                            reason = 'CLEAN_RESTART_MISMATCH' if restart is not None else 'NONDEFER_REFERENCE_MISMATCH'
+                            raise ValueError(f'{reason}:{rid}')
                         print(json.dumps(dict(profile=profile, rid=rid, exact=True)), flush=True)
-                    rows.append(dict(prompt_id=prompt_id, reference32=baseline))
+                    row = dict(prompt_id=prompt_id)
+                    row['reference64' if runtime else 'reference32'] = baseline
+                    rows.append(row)
             if list((root / 'tensors').iterdir()):
                 raise ValueError('OBSERVER_OFF_CONTAMINATION')
-            report.update(status='COMPACT_PASS', rows=rows, request_count=20,
+            report.update(status=success_status, rows=rows, request_count=len(prompt_ids)*len(budgets),
                 not_proven='Full runtime, no-hit, expert numerical, quality and speedup are separate gates.')
         except BaseException as exc:
             report.update(status='FAIL', exception=repr(exc))
@@ -115,10 +143,10 @@ def one_profile(profile, root, selected, env):
             guard = root / 'guard/result.json'
             if guard.exists():
                 report['guard'] = json.loads(guard.read_text())
-            if report['status'] == 'COMPACT_PASS' and report.get('guard', {}).get('reason') != 'CANCELLED':
+            if report['status'] == success_status and report.get('guard', {}).get('reason') != 'CANCELLED':
                 report.update(status='FAIL', exception='UNEXPECTED_SERVER_TERMINATION')
             (root / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
-    if report['status'] != 'COMPACT_PASS':
+    if report['status'] != success_status:
         raise RuntimeError(report)
     return report
 
