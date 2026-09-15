@@ -3,6 +3,8 @@ import ast
 import copy
 import logging
 import hashlib
+import json
+from contextvars import ContextVar
 import os
 from pathlib import Path
 import tempfile
@@ -17,6 +19,8 @@ SOURCE = ROOT / "third_party/sglang/python/sglang/srt/debug_utils/tensor_dump_fo
 class Tensor:
     def __init__(self, value):
         self.value = value
+        self.shape = (1,)
+        self.dtype = "mock"
 
     def cpu(self):
         return self
@@ -57,7 +61,9 @@ class CaptureBoundaryTests(unittest.TestCase):
         def save(value, path):
             self.saved.append(copy.deepcopy(value))
             Path(path).touch()
-        namespace = dict(os=os, hashlib=hashlib, Path=Path, Optional=__import__('typing').Optional,
+        namespace = dict(os=os, hashlib=hashlib, json=json,
+                         _active_capture=ContextVar("test_capture", default=None),
+                         Path=Path, Optional=__import__('typing').Optional,
                          List=list, logger=logging.getLogger(__name__),
                          ForwardBatch=Batch, LogitsProcessorOutput=Logits,
                          PPProxyTensors=type("Proxy", (), {}),

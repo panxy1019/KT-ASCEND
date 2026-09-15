@@ -32,6 +32,9 @@ _round6_1_capture_counts: Dict[Tuple[int, str], int] = {}
 
 def _round6_1_capture_tensor(stage: str, layer_idx: int, tensor: torch.Tensor) -> None:
     """Persist an opt-in diagnostic tensor without changing production flow."""
+    if os.getenv("KT_R62_COMPLETE_FORWARD_DUMP") == "1":
+        from sglang.srt.debug_utils.tensor_dump_forward_hook import record_round62_stage
+        record_round62_stage("cpu", layer_idx, stage, tensor)
     root = os.environ.get("KT_R61_STAGEWISE_DIR")
     if not root:
         return
@@ -73,6 +76,9 @@ def _trace_deferred_event(event: str, **payload) -> None:
     and the execution path are unchanged.  A finite default limit prevents a
     long serving run from growing the diagnostic artifact without bound.
     """
+    if os.getenv("KT_R62_COMPLETE_FORWARD_DUMP") == "1":
+        from sglang.srt.debug_utils.tensor_dump_forward_hook import record_round62_event
+        record_round62_event(event, payload)
     path = os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE")
     if not path:
         return
