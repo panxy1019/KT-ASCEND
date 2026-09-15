@@ -113,7 +113,12 @@ def test_deferred_trace_reports_only_cpu_owned_routes(monkeypatch, tmp_path):
     experts_base._trace_deferred_event("sync", layer_idx=7)
 
     records = [json.loads(line) for line in trace_path.read_text().splitlines()]
-    assert records == [{"cpu_routes": 4, "event": "submit", "layer_idx": 7}]
+    assert len(records) == 1
+    assert records[0]["cpu_routes"] == 4
+    assert records[0]["event"] == "submit"
+    assert records[0]["layer_idx"] == 7
+    assert records[0]["trace_sequence"] == 1
+    assert isinstance(records[0]["monotonic_ns"], int)
 
 
 def test_incremental_consumer_clears_previous_layer_pending():
