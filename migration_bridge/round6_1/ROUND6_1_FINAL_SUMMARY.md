@@ -47,6 +47,11 @@ L8. Later layers amplify it to full-logit max abs 0.8125 and pairwise distortion
 Runtime/lifetime checks and the whole-request CPU-not-hit control passed. No
 implementation invariant failure was found.
 
+The final A3 diagnostic regression completed with `7 passed` in
+`kt-kernel/test/round6/test_deferred_selection.py`. The test now validates the
+new monotonic timestamp and trace-sequence metadata without depending on an
+exact dictionary shape.
+
 ## Gate matrix
 
 | Gate | State | Evidence |
