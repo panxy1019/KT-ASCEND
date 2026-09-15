@@ -94,3 +94,14 @@ Planned fresh smoke root `r62-boundary-smoke-defer1`; planned full retry roots
 A3 boundary unit tests4/4 passed. No fresh model inference at this decision.
 First complete20-request smoke and40-forward audit using non-generating readiness;
 then stop smoke server and start a new, empty full-replay capture session.
+
+Boundary smoke completed:20 requests EXIT_ZERO, complete transaction audit40/40,
+independent target/lookahead input/ownership/transition parser40/40. No extra
+forward. `/model_info` readiness+empty directory PASS. Portable reports are in
+`evidence/qd2-capture-incident/boundary-smoke-*.json`.
+Verified guardian286289 was signalled to stop only child group286294; planned
+shutdown end1789472303.391125. No model production source changes.
+Retry metadata SHA `f5f64dd4f1a4d11e707b229318981b31692096d734567d04e5eade8fb0dacad3`.
+Collector SHA `8f0a501a587750db692c674f0e56a96c7e6830ba70cba378078402d35390909c`.
+The startup-boundary correction is smoke-verified; full QD2 integrity remains
+BLOCKED until fresh8192 replay and all complete audits PASS.
