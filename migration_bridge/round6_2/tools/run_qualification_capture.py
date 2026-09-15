@@ -132,6 +132,9 @@ def main():
                 rows.append(row)
                 vectors.append(logits)
                 write(args.root / "positions" / f'{prompt["id"]}-{index:02d}.json', row)
+                if (index + 1) % 16 == 0:
+                    print(json.dumps(dict(action="sweep", mode=args.mode, prompt_id=prompt["id"],
+                                          prompt_positions=index + 1, completed_rows=len(rows))), flush=True)
             (args.root / "logits").mkdir(exist_ok=True)
             torch.save(torch.stack(vectors), args.root / "logits" / f'{prompt["id"]}.pt')
         print(json.dumps(dict(action=args.action, mode=args.mode, prompt_id=prompt["id"],
