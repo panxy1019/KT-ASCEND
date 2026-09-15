@@ -35,6 +35,9 @@ case "${KT_R63_OBSERVER_PROFILE:-full}" in
     [[ -z "$force_manifest" ]] || { echo 'OFF cannot force history'; exit 4; }
     export KT_R6_ENABLE_TENSOR_DUMP=0 KT_R62_COMPLETE_FORWARD_DUMP=0
     unset KT_R63_CAPTURE_INDEX KT_R63_COMPACT_CAPTURE
+    # The non-generating readiness gate audits this empty directory. OFF must
+    # never populate it, but absence is rejected by the shared boundary helper.
+    mkdir "$run_root/tensors"
     ;;
   *) echo 'Invalid observer profile'; exit 4 ;;
 esac

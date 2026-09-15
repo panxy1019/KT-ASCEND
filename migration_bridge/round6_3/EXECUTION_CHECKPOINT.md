@@ -42,7 +42,11 @@ See06_OBSERVER_OFF_GATE_CORRECTION.md. Repeat pilot in fresh directories only
 after OFF/reference qualification. Frozen pilot inputs/planning rules unchanged.
 
 Natural defer0 OFF control is being launched under
-`/workspace/results/r63-natural-off0-control`, server `r63-natural-off0-server`.
+`/workspace/results/r63-natural-off0-retry1-control`, server
+`r63-natural-off0-retry1-server`. Initial OFF startup was rejected before any
+generation by the legacy missing-capture-directory check; fixed in tooling.
+Finite follow-up `r63-observer-correction-retry1-pipeline` only checks natural
+OFF/reference/full parity and stops on first failure; it does not start pilot.
 Then reference0/full0, natural full1/reference1/OFF1 must be compared without
 forcing history. Existing forced defer1 captures cannot substitute natural
 defer1 free-generation parity after trajectory divergence.

@@ -60,6 +60,9 @@ def main():
                     baseline_output_ids=answer['output_ids'], seconds=time.monotonic()-begin))
                 print(json.dumps(dict(rid=request['rid'], observer=args.observer, status='HTTP_PASS')), flush=True)
             result['status'] = 'REQUESTS_COMPLETE'
+        except BaseException as exc:
+            result.update(status='FAILED', exception=repr(exc))
+            raise
         finally:
             if server.poll() is None:
                 server.send_signal(signal.SIGTERM)

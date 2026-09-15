@@ -49,3 +49,16 @@ is in the remote `manual-owned-cleanup.json`; external tasks were not targeted.
 
 No production selector, placement, deferred budget, thread topology, numerical
 contract, or quality corpus change is authorized by this correction.
+
+## First OFF launch: startup-tool failure, not model failure
+
+`r63-natural-off0-server` reached readiness but no generation was submitted.
+The shared empty-session checker requires the capture directory to exist;
+OFF intentionally does not instantiate a dumper. The controller therefore
+cancelled its owned server. Its result remained STARTING due inadequate exception
+reporting; no requests or parity evidence were produced. The correction creates
+an empty audit directory in OFF mode and records exceptions explicitly.
+Fresh retry root: `r63-natural-off0-retry1-server/control` (separate directories
+with these suffixes), followed by `r63-observer-correction-retry1-pipeline`.
+Original failed directories remain untouched. Local37 tests:31 PASS,6 skipped
+because local torch is unavailable; these are not A3 verification claims.

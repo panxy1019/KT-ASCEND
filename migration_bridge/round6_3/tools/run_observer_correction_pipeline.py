@@ -12,7 +12,7 @@ INPUT = ROOT / 'round6_3-prequalification/long-smoke-input.json'
 
 
 def main():
-    output = ROOT / 'r63-observer-correction-pipeline'
+    output = ROOT / 'r63-observer-correction-retry1-pipeline'
     output.mkdir(exist_ok=False)
     result = dict(status='STARTED', started_unix=time.time())
     def call(name, *args):
@@ -24,7 +24,7 @@ def main():
                          PYTHONPATH=str(ROOT / 'round6_2-prequalification/tools')),
                 check=True, stdout=log, stderr=subprocess.STDOUT)
     try:
-        ready = ROOT / 'r63-natural-off0-control/result.json'
+        ready = ROOT / 'r63-natural-off0-retry1-control/result.json'
         deadline = time.monotonic() + 1200
         while True:
             if ready.exists():
@@ -43,7 +43,8 @@ def main():
                 call('run_stateful_session.py', '--profile', profile, '--server-root',
                      ROOT / 'r63-natural-full1-server', '--output', full, '--requests', INPUT)
             for observer in ('off', 'reference'):
-                prefix = ROOT / f'r63-natural-{observer}{mode}'
+                prefix = ROOT / ('r63-natural-off0-retry1' if mode == 0 and observer == 'off'
+                                 else f'r63-natural-{observer}{mode}')
                 server = Path(str(prefix) + '-server')
                 control = Path(str(prefix) + '-control')
                 if not (mode == 0 and observer == 'off'):
