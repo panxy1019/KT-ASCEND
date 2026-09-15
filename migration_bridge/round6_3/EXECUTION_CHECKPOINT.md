@@ -42,9 +42,12 @@ unknown0,incomplete0; ended Unix1789491896.6131275. Self-history parity PASS:
 8320 forwards and216565 retained tensor byte comparisons exact. Evidence:
 `evidence/qd3-v1-self-history-parity.json`. Both captures use compact mode;
 the comparator's historical full/compact field names do not imply a full dump.
-Pipeline is advancing to force1. Do not restart a healthy run. It will
-audit all files, export
-causal positions, apply500 exposure gate, and only then derive numerical risks.
+Force1 completed128/128:8320 physical/indexed,8192 targets,128 lookahead,
+unknown0,incomplete0; ended Unix1789493214.1971238. Final integrity archived
+at `evidence/qd3-v1-force1-final-integrity.json`. Causal exporters both PASS:
+defer0 exposed0/8192; defer1 exposed7390/8192. The500 exposure gate is met.
+Pipeline is now evaluating the frozen numerical method; no derived result yet
+at17:28UTC. Do not restart healthy analysis or treat capture PASS as a candidate.
 The pipeline stops after candidate derivation and NEVER starts HD3/quality.
 Expected total~79minutes from start, three8320-forward model runs.
 
