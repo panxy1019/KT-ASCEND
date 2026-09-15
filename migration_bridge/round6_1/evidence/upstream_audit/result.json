@@ -1,0 +1,17 @@
+{
+  "deferred_merge_boundary": "next_cpu_enabled_layer_cpu_partial",
+  "same_layer_delayed_merge": false,
+  "buffer_depth": 2,
+  "slot_rule": "layer_idx_mod_2",
+  "upstream_race_fix": {
+    "commit": "e7d1c1de09b375178eaf94db8749e36f8de3da2c",
+    "scope": "remove per-forward host writes to pinned bsz/deferred-id buffers",
+    "changes_merge_boundary": false
+  },
+  "local_required_system_guards": [
+    "terminal_cpu_block_defer_disable",
+    "consumed_previous_pending_clear",
+    "no_cpu_route_deferred_suppression"
+  ],
+  "root_cause_state": "OPEN_PENDING_A3_REPRODUCTION_AND_REPLAY"
+}

@@ -1,0 +1,20 @@
+Static audit completed.
+
+Observed upstream dataflow:
+- select_deferred_experts splits immediate and deferred route IDs.
+- layer L immediate work targets current_slot = L % 2.
+- layer L deferred work targets next_slot = (L + 1) % 2.
+- layer L+1 reads pending[L], sets incremental=True, and the C++ merge reads the
+  existing next-slot output before adding layer L+1 CPU output.
+- SGLang adds that CPU output to layer L+1's NPU routed partial.
+
+Upstream #1646 code delta:
+- initialize bsz pinned tensors with batch_size at allocation;
+- remove per-forward bsz fill_;
+- remove per-forward deferred ID fill_.
+
+Local deltas relevant to Round6.1:
+- contiguous CPU-block terminal guard in SGLang child eaa58ccea4;
+- consumed previous-pending flag clearing;
+- deferred no-op suppression;
+- FP32 LLAMAFILE output plus Round4A.1 BF16-visible boundaries.
