@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | DEFER0_COMPLETE_DEFER1_RUNNING | defer0 8192 positions + 16384 complete forwards pass both built-in and independent audits; defer1 collecting successfully; no cross-mode numerical decision yet |
+| 6 QD2 | BLOCKED_CAPTURE_AUDIT | defer0 passed; defer1 collected8192 but final audit rejected an unexpected startup HEALTH_CHECK forward;16386 capture files; see QD2_CAPTURE_INCIDENT.md. No numerical derivation permitted yet |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -39,7 +39,7 @@ sweep output: `r62-qd2-defer0`. Client EXIT_ZERO, 8192 rows, 16384 complete
 forwards. Independent matrix and transition audits PASS. The service was
 stopped deliberately through guardian281573 / child group281578 after success.
 
-Active server supervisor: `r62-guard-qd2-defer1`; run root
+Stopped after capture-audit failure: server supervisor `r62-guard-qd2-defer1`; run root
 `r62-qd2-defer1-server`; active client `r62-client-qd2-defer1`;
 sweep output `r62-qd2-defer1`. All are under `/workspace/results`.
 Both supervisors have a predeclared 21600-second timeout. HTTP deadline is
