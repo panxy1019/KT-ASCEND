@@ -37,10 +37,18 @@ refit reserves, launch runtime/HD3/quality/batch2/4, or poll the finished pipeli
 Original-tensor margin verification and prefix transaction audit now PASS
 for202 captures through both failing targets; three pairs reproduce exactly.
 See evidence/qd3-v1-rejected-original-verification.json. Next continuation:
-prepare TWO fixed-history explicit-replay diagnostics versus production defer1
-using existing KT_R61_EXPLICIT_REPLAY and natural baseline qd3-force history,
-fresh diagnostic directories only; audit this oracle is compatible with the
-stateful helper before launching. Inspect local/official consumer merge. No
+TWO fixed-history replay diagnostics LAUNCHED under
+`/workspace/results/r63-rejected-replay-v1`, production then explicit,2x64 each.
+Servers `r63-rejected-replay-v1-production-server` and `...-explicit-server`.
+Do not duplicate/restart healthy runs. Tool commit b5d169f6e; production sources
+unchanged. Oracle uses KT_R61_EXPLICIT_REPLAY, full captures (compact0) and
+same qd3-force baseline histories. Adapter explicitly validates EMPTY normal
+pending state and private producer/consumer output identity, not the production
+pending contract. Completed captures are diagnostic-only, NOT qualification.
+At launch NPU0 HBM4%,AICore0%; container had only sleep infinity.
+Next: check result/final-integrity/oracle-audit; compare both128-target logits
+and corresponding stage tensors, plus production subset vs original QD3
+same RID/step (sequence IDs differ). Inspect local/official consumer merge. No
 new corpus, candidate or threshold fitting. Only evidence-backed
 implementation repairs may proceed; contract relaxation is not authorized.
 
