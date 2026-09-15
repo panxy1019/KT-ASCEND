@@ -50,6 +50,12 @@ decode step. No threshold refitting occurs.
 Local suite: 56 tests, 49 passed and 7 torch-dependent tests skipped because
 local torch is absent. This is not an A3 model qualification result.
 
+A3 CPU-only run: 22/22 decision/quality/runtime/FD-parser unit tests passed,
+supervisor EXIT_ZERO, no model calls. See `evidence/post-gate-cpu-tests.log`
+and `post-gate-cpu-tests-result.json`. The zero-exposure rejection printed by
+this unit suite is a synthetic fixture proving exposure-first control flow,
+NOT an observed QD2 exposure count or qualification verdict.
+
 The actual-forward parser was CPU-replayed on already saved A3 smoke captures:
 40/40 forwards per mode PASS; no new model requests. Evidence:
 `evidence/smoke/fd-parser-defer0.json` and `fd-parser-defer1.json`.
