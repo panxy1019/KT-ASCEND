@@ -4,6 +4,7 @@ import copy
 import logging
 import hashlib
 import json
+from functools import wraps
 from contextvars import ContextVar
 import os
 from pathlib import Path
@@ -70,6 +71,10 @@ class CaptureBoundaryTests(unittest.TestCase):
                          torch=SimpleNamespace(Tensor=Tensor, uint8=object(), save=save))
         exec(compile(ast.Module(body=[definition], type_ignores=[]), str(SOURCE), "exec"), namespace)
         self.cls = namespace["TensorDumper"]
+        bind = next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == "_bind_round62_forward")
+        namespace["wraps"] = wraps
+        exec(compile(ast.Module(body=[bind], type_ignores=[]), str(SOURCE), "exec"), namespace)
+        self.bind = namespace["_bind_round62_forward"]
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
 
@@ -105,6 +110,25 @@ class CaptureBoundaryTests(unittest.TestCase):
         d.add_tensor("stale", Tensor(1))
         with self.assertRaisesRegex(RuntimeError, "unflushed"):
             d.begin_complete_forward(None, (Batch(7),), {})
+
+    def test_direct_forward_bypassing_module_call_is_captured(self):
+        d = self.dumper(True)
+        model = SimpleNamespace(forward=lambda batch: Logits(batch.input_ids.value * 11))
+        self.bind(model, d)
+        for token in (7, 11):
+            self.assertEqual(model.forward(Batch(token)).next_token_logits.value, token * 11)
+        self.assertEqual(len(self.saved), 2)
+        self.assertEqual(self.saved[1]["capture.forward_batch_info.input_ids"].value, 11)
+
+    def test_direct_reference_forward_is_captured_once(self):
+        d = self.dumper(False)
+        model = SimpleNamespace(forward=lambda batch: Logits(77))
+        self.bind(model, d, reference=True)
+        batch = Batch(7)
+        batch.rids = ["reference"]
+        model.forward(batch)
+        self.assertEqual(len(self.saved), 1)
+        self.assertEqual(self.saved[0]["capture.transaction"]["batch"]["request_ids"], ["reference"])
 
     def test_wrong_outer_output_fails(self):
         d = self.dumper(True)
