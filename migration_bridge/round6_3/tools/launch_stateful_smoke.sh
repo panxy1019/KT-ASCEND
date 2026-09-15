@@ -32,7 +32,7 @@ if [[ -n "$force_manifest" ]]; then
   export KT_R63_FORCE_TRACE="$run_root/forcing.jsonl"
 fi
 py=/workspace/results/venv-r6/bin/python
-"$py" /workspace/results/round6_2-prequalification/tools/prepare_run_metadata.py \
+taskset -c 0-15 "$py" /workspace/results/round6_2-prequalification/tools/prepare_run_metadata.py \
   --mode "$mode" --output "$KT_R62_RUN_METADATA" \
   --artifact /workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py \
   --artifact /workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/round63_teacher_force.py \
