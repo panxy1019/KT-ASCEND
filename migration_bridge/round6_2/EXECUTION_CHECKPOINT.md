@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | BASELINE_HISTORY_RUNNING | frozen 128x64 defer0 history, then same-history dual sweeps; no candidate reserve yet |
+| 6 QD2 | DEFER0_SWEEP_RUNNING | baseline history 128x64 completed and committed bd4948fd0; dual sweep not complete; no candidate reserve yet |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -29,16 +29,23 @@ workloads. Own services were stopped through their individually recorded
 process-group supervisors. No other workload was terminated. No A3-ready tag,
 candidate approval, main merge or promotion was created.
 
-Current baseline history server: `r62-guard-qd2-history`, run root
-`r62-qd2-history-server`; client supervisor: `r62-client-qd2-history`;
-history output: `r62-qd2-history`. All are under `/workspace/results`.
-Both supervisors have a predeclared 14400-second timeout. HTTP deadline is
+Baseline history finished with client EXIT_ZERO and 128/128 rows. Raw manifest
+is retained on A3 and exactly backed up as `evidence/qd2-history/manifest.json.gz`.
+The history server has been stopped through its own supervisor.
+
+Current server supervisor: `r62-guard-qd2-defer0`, run root
+`r62-qd2-defer0-server`; client supervisor: `r62-client-qd2-defer0`;
+sweep output: `r62-qd2-defer0`. All are under `/workspace/results`.
+Both supervisors have a predeclared 21600-second timeout. HTTP deadline is
 600 seconds; no automatic retry/filtering. Healthy ongoing runs must not be
 restarted. On error, stop only these explicitly owned groups.
+Metadata: `round6_2-prequalification/qd2-defer0-provenance-v2.json`.
+The older metadata file without `-v2` was not used for model capture.
 
-Next: finish and hash QD2 baseline history; start full-transaction defer0 and
-defer1 replay with identical frozen histories and nonempty matching run
-provenance. Then derive reserves, enforce all QD2 hard gates and exposure
+Next: finish full-transaction defer0, then defer1 replay with identical frozen
+histories and nonempty matching run provenance. Enforce the route-only exposure
+gate BEFORE reading numerical comparisons. Then derive reserves and enforce all QD2 hard gates and exposure
 minimum before committing any candidate. D1 runtime requalification and HD2
-remain downstream. Synthetic decision tests: 6/6 CPU-only on A3; local suite
-29 passed plus those six skipped because local torch is absent.
+remain downstream. Synthetic decision tests: 7/7 CPU-only on A3; local suite
+29 passed plus those seven skipped because local torch is absent. Additional
+A3 real CPU tensor tests reject all four injected capture integrity failures.
