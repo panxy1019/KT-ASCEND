@@ -105,3 +105,10 @@ Retry metadata SHA `f5f64dd4f1a4d11e707b229318981b31692096d734567d04e5eade8fb0da
 Collector SHA `8f0a501a587750db692c674f0e56a96c7e6830ba70cba378078402d35390909c`.
 The startup-boundary correction is smoke-verified; full QD2 integrity remains
 BLOCKED until fresh8192 replay and all complete audits PASS.
+
+Client launch typo: `r62-client-qd2-defer1-retry1` used nonexistent
+`frozen-corppora/qd2.json`, failed at input-file open before output directory
+creation or requests. Explicit check showed0 captures. No model run was resumed
+or merged. Corrected path exists; new supervisor is
+`r62-client-qd2-defer1-retry1-launch2`, with the same fresh output root and
+already-ready uncontaminated server. Original launch-error evidence retained.

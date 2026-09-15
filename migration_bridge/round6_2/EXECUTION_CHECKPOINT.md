@@ -73,3 +73,13 @@ that supervisor, not the now-stopped defer1 inference service. Account for all
 16386 forwards and both extras before deciding a documented infrastructure
 retry. Original run stays INVALID. See QD2_CAPTURE_INCIDENT.md. No threshold
 derivation, candidate freeze, HD2 or quality while this gate is unresolved.
+
+LATEST: full inventory completed with only startup health target/lookahead
+extras. Original INVALID. Boundary correction passed fresh20-request/40-forward
+smoke and independent audit. Fresh full replay server
+`r62-guard-qd2-defer1-retry1`, capture root
+`r62-qd2-defer1-retry1-server/tensors`; output `r62-qd2-defer1-retry1`.
+Active client supervisor `r62-client-qd2-defer1-retry1-launch2` (initial launch
+had input-path typo before any request; evidence retained). Use these NEW roots.
+Metadata `round6_2-prequalification/qd2-defer1-retry1-provenance.json`.
+Do not restart healthy run; do not numerically evaluate until all audits PASS.
