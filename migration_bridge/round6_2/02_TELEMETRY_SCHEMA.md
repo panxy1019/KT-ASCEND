@@ -1,8 +1,8 @@
 # Round6.2 telemetry identity contract
 
 The required executable field contract is `tools/validate_position.py`.
-Status: schema implemented and locally tested; capture adapter NOT_COMPLETE.
-No claim of A3 completeness is made. Hash the executable with the eventual
+Status: adapter implemented; A3 smoke correlation/parity verified within the
+scope of `05_CAPTURE_INTEGRITY.md`. Hash the executable with the eventual
 candidate and capture manifests; changes before capture must be versioned.
 
 One row represents a full-vocabulary logits vector (102400 values) for a known
@@ -23,7 +23,7 @@ artifacts, but must be fully resolved before validation. Missing metadata never
 defaults to zero exposure. Trace truncation and undrained pending work fail.
 
 The validator checks counts, identities and frozen D1 ownership, not correctness
-of the collector itself. The collector still must prove absolute position
-alignment, normalization semantics, trace count and lifecycle through A3 smoke.
+of the collector itself. The smoke separately checks absolute position
+alignment, normalization semantics, trace count and pending drain.
 The two modes' request_input_hash and baseline_history_sha256 must match in the
 comparison adapter. This check is not replaced by identical response tokens.

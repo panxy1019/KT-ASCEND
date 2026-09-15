@@ -1,6 +1,40 @@
 # Round 6.2 capture integrity — preliminary finding
 
-Status: `LOCAL_VERIFIED`; A3 dry-run `NOT_RUN`. QD2/HD2 outputs `NOT_RUN`.
+Status: `A3_VERIFIED` for the smoke scope below. QD2/HD2 outputs are not
+established by this document.
+
+## 2026-09-15 smoke results
+
+| Mode | ON requests | Complete forwards audited | OFF/reference parity |
+| --- | ---: | ---: | --- |
+| defer0 | 20 | 40 | 20/20 token and full-logit byte exact |
+| defer1 | 20 | 40 | 20/20 token and full-logit byte exact |
+
+Each request produced one target prefill and one serving lookahead. Every
+lookahead was tied to that request's returned token and next absolute
+position. Only the target prefill supplied the evaluated logit vector.
+Sequences are contiguous, no duplicate/uncommitted capture exists, and target
+requests have exactly one matching full-input record. The defer1 smoke has
+four actual Deferred routes; defer0 has zero. Five separately frozen prompts
+were repeated four times; these are not QD2/HD2 qualification data.
+
+Evidence: `evidence/smoke/defer{0,1}-parity.json` and
+`evidence/smoke/defer{0,1}-forward-audit.json`, plus full ON request records.
+Reference mode disables full transaction/route capture but retains one final
+raw-logit observer. This necessary common measurement is not a claim that
+there is literally no observer in OFF mode. Uninstrumented production
+determinism remains a separate retained runtime gate.
+
+The first A3 attempt exposed direct `model.forward` calls bypassing module
+hooks. Its failed directory is preserved; see `TELEMETRY_SMOKE_INCIDENTS.md`.
+The corrected opt-in wrapper instruments the actual instance forward.
+Local suite: 29 tests passed, including direct-forward and reference paths.
+
+Defer1 preliminary smoke transaction provenance is empty, with explicit run
+directories and source-overlay deployment recorded separately. Do not reuse
+those records as formal qualification provenance. Defer0 smoke includes
+actual checkout/source-overlay metadata. Qualification requires matching
+nonempty run metadata in every captured target record.
 
 ## Failure mechanism
 
