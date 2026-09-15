@@ -12,7 +12,7 @@ The complete plan was read before executing its new Phase1 audit.
 | 3 statistical method preregistration | COMMITTED_BEFORE_OUTPUT | CONTRACT_V2_SPEC, prompt128, rank127, three alpha=.05/3 families |
 | 4 QD2/HD2 input freeze | COMMITTED_BEFORE_OUTPUT | 128 each; actual tokenizer IDs; joint canonical hashes; separate five-prompt smoke |
 | 5 A3 capture smoke | PASS_IN_RECORDED_SCOPE | defer0/defer1 each 20 requests, 40 audited forwards; 20/20 full-logit byte-exact reference/ON comparisons |
-| 6 QD2 | BLOCKED_CAPTURE_AUDIT | defer0 passed; defer1 collected8192 but final audit rejected an unexpected startup HEALTH_CHECK forward;16386 capture files; see QD2_CAPTURE_INCIDENT.md. No numerical derivation permitted yet |
+| 6 QD2 | CAPTURE_INTEGRITY_PASS_PENDING_NUMERICS | defer0 and fresh defer1-retry1 each8192 positions/16384 forwards; built-in, independent matrix and transaction audits PASS. Original contaminated run remains INVALID |
 | 7 candidate threshold freeze | NOT_RUN | no fitted reserve |
 | 8 retained runtime | NOT_RUN | old evidence is not new requalification |
 | 9 HD2 | NOT_RUN | held-out outputs remain absent |
@@ -83,3 +83,10 @@ Active client supervisor `r62-client-qd2-defer1-retry1-launch2` (initial launch
 had input-path typo before any request; evidence retained). Use these NEW roots.
 Metadata `round6_2-prequalification/qd2-defer1-retry1-provenance.json`.
 Do not restart healthy run; do not numerically evaluate until all audits PASS.
+
+LATEST COMPLETED: defer1-retry1 client EXIT_ZERO; full matrix16384/16384 PASS,
+transition8192/8192 PASS, no numerical metrics read by either audit. Integrity
+blocker CLOSED FOR FRESH RETRY ONLY. Server guardian287493 verified and stopped
+only own child group287498; planned shutdown. Evidence archived under
+`evidence/qd2-defer1-retry1/`. Next exposure-first QD2 derive against successful
+defer0. Candidate must be committed only on numerical PASS, before runtime/HD2.

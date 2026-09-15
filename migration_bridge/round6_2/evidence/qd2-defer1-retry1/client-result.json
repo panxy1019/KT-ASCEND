@@ -1,0 +1,32 @@
+{
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/round6_2-prequalification/tools/run_qualification_capture.py",
+    "sweep",
+    "--corpus",
+    "/workspace/results/round6_2-prequalification/frozen-corpora/qd2.json",
+    "--root",
+    "/workspace/results/r62-qd2-defer1-retry1",
+    "--mode",
+    "defer1",
+    "--history",
+    "/workspace/results/r62-qd2-history/manifest.json",
+    "--captures",
+    "/workspace/results/r62-qd2-defer1-retry1-server/tensors",
+    "--provenance",
+    "/workspace/results/round6_2-prequalification/qd2-defer1-retry1-provenance.json"
+  ],
+  "started_unix": 1789472500.7146466,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 288244,
+  "pgid": 288244,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789478709.5607133,
+  "success": true
+}
