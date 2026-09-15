@@ -28,6 +28,8 @@ def integrity_and_exposure(corpus, prereg, baseline, deferred):
     n = prereg["prompts_per_corpus"]
     if n not in (128, 256, 512) or len(corpus["requests"]) != n or corpus["token_budget"] != 64:
         raise ValueError("UNREGISTERED_SAMPLE_SIZE")
+    if len({tuple(r["input_ids"]) for r in corpus["requests"]}) != n:
+        raise ValueError("DUPLICATE_FORMAL_PROMPT_INPUT")
     expected = {(r["rid"], t) for r in corpus["requests"] for t in range(64)}
     if len(expected) != n*64:
         raise ValueError("CORPUS_DUPLICATE_RID")
