@@ -1,0 +1,64 @@
+{
+  "status": "DIAGNOSTIC_COMPARISON_COMPLETE",
+  "qualification": false,
+  "comparisons": [
+    {
+      "comparison": "original_vs_production_replay",
+      "common_tensor_checks": 3510,
+      "byte_exact": 3510,
+      "full_logit_forwards": 130,
+      "full_logit_exact": 130,
+      "mismatches": [],
+      "unpaired_diagnostic_keys": [
+        "logits_processor",
+        "model",
+        "model.embed_tokens",
+        "r62.cpu.layer7.input_hidden",
+        "r62.cpu.layer7.input_hidden_after_sync",
+        "r62.cpu.layer8.input_hidden",
+        "r62.cpu.layer8.input_hidden_after_sync",
+        "r62.ktep.layer7.cpu_partial",
+        "r62.ktep.layer7.moe_input",
+        "r62.ktep.layer7.npu_owned_partial",
+        "r62.ktep.layer7.routed_merge",
+        "r62.ktep.layer8.cpu_partial",
+        "r62.ktep.layer8.moe_input",
+        "r62.ktep.layer8.npu_owned_partial",
+        "r62.ktep.layer8.routed_merge",
+        "r62.model.layer7.attention_output",
+        "r62.model.layer7.decoder_input_hidden",
+        "r62.model.layer7.decoder_input_residual",
+        "r62.model.layer7.decoder_output_hidden",
+        "r62.model.layer7.decoder_output_residual",
+        "r62.model.layer7.mlp_input",
+        "r62.model.layer7.mlp_output",
+        "r62.model.layer7.mlp_residual",
+        "r62.model.layer7.moe_visible_output",
+        "r62.model.layer8.attention_output",
+        "r62.model.layer8.decoder_input_hidden",
+        "r62.model.layer8.decoder_input_residual",
+        "r62.model.layer8.decoder_output_hidden",
+        "r62.model.layer8.decoder_output_residual",
+        "r62.model.layer8.mlp_input",
+        "r62.model.layer8.mlp_output",
+        "r62.model.layer8.mlp_residual",
+        "r62.model.layer8.moe_visible_output"
+      ]
+    },
+    {
+      "comparison": "production_vs_explicit",
+      "common_tensor_checks": 7800,
+      "byte_exact": 7800,
+      "full_logit_forwards": 130,
+      "full_logit_exact": 130,
+      "mismatches": [],
+      "unpaired_diagnostic_keys": [
+        "r62.cpu.layer7.explicit_deferred_output",
+        "r62.cpu.layer8.explicit_incremental_output",
+        "r62.cpu.layer8.explicit_pending_input"
+      ]
+    }
+  ],
+  "original_qd3_status": "REJECTED",
+  "tool_sha256": "9915904dbdf46d725322f1113492852306d20231d9e2c7b611528142408a15e3"
+}

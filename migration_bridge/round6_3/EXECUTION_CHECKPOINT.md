@@ -24,7 +24,16 @@ failed, and no downstream qualification skips a prerequisite.
 
 ## Running / next
 
-### CURRENT AUTHORITATIVE UPDATE — QD3 REJECTED, INVESTIGATE
+### CURRENT AUTHORITATIVE UPDATE — BLOCKED, HEARTBEAT PAUSED
+
+Bounded investigation completed: original vs fresh production3510/3510 common
+tensors and130/130 logits exact; production vs explicit oracle7800/7800
+common tensors and130/130 logits exact. Both diagnostic130-forward audits
+PASS;11 private pending forwards verified. No production defect demonstrated
+for these failures. See ROUND6_3_BLOCKED_SUMMARY.md. Frozen all-pair gate still
+REJECTS; contract change would require separate authority/protocol, not an
+implementation patch. Heartbeat round6-3 PAUSED. No active model run expected.
+Do not follow the historical LAUNCHED/next instructions below as current work.
 
 QD3 pipeline STOPPED normally on evaluator rejection at1789493384.4708831.
 No candidate emitted. Two rows failed STABLE_CANDIDATE_PAIR_FLIP:
