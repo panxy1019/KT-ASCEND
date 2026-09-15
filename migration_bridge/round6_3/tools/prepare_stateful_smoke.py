@@ -11,6 +11,9 @@ def main():
     p.add_argument("--tokenizer", type=Path)
     p.add_argument("--baseline-result", type=Path)
     p.add_argument("--arm", action="store_true")
+    p.add_argument("--synthetic-control", action="store_true")
+    p.add_argument("--repeats", type=int, default=1)
+    p.add_argument("--token-budget", type=int, default=8)
     args = p.parse_args()
     if args.arm:
         raw = args.baseline_result.read_bytes()
@@ -26,6 +29,11 @@ def main():
             baseline_result_sha256=hashlib.sha256(raw).hexdigest(),
             requests=[{k: row[k] for k in ("rid", "input_ids", "baseline_output_ids")}
                       for row in baseline["rows"]])
+        if args.synthetic_control:
+            result["requests"] += [dict(rid=row["rid"] + "-synthetic",
+                input_ids=row["input_ids"], baseline_output_ids=[101] * len(row["baseline_output_ids"]),
+                purpose="uniform synthetic forcing control; not model-generated baseline")
+                for row in baseline["rows"]]
     else:
         from tokenizers import Tokenizer
         raw = args.tokenizer.read_bytes()
@@ -38,7 +46,10 @@ def main():
             "A store has 17 blue notebooks and receives 26 more. How many blue notebooks does it have?",
             'Return JSON containing the keys "instrument", "material", and "strings" for a violin.',
         ]
-        result = dict(version="r63-engineering-smoke-v1", token_budget=8,
+        if not 1 <= args.repeats <= 5 or args.token_budget not in (8, 64):
+            raise ValueError("INVALID_SMOKE_SIZE")
+        texts = texts * args.repeats
+        result = dict(version="r63-engineering-smoke-v1", token_budget=args.token_budget,
             purpose="tool validation only; not pilot/QD3/HD3/FD3",
             tokenizer_sha256=hashlib.sha256(raw).hexdigest(),
             requests=[dict(rid=f"r63-smoke-{i:02d}", text=text,
