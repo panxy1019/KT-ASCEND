@@ -4,17 +4,22 @@ Writes only a new project evidence file. Device counters are shared-device
 aggregate, not exclusive project consumption. Never signals any process.
 """
 import json
+import argparse
 from pathlib import Path
 import subprocess
 import time
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--profile', choices=['pilot', 'qd3'], default='pilot')
+    args = parser.parse_args()
     root = Path('/home/admin/kt-artifacts/round6-deferred')
-    output = root / 'r63-pilot-retry1-resource-samples.jsonl'
-    final = root / 'r63-pilot-retry1-pipeline/result.json'
+    prefix = 'r63-pilot-retry1' if args.profile == 'pilot' else 'r63-qd3-v1'
+    output = root / (prefix + '-resource-samples.jsonl')
+    final = root / (prefix + '-pipeline/result.json')
     observer = root / 'r63-observer-correction-retry1-pipeline/result.json'
-    deadline = time.monotonic() + 3600
+    deadline = time.monotonic() + (3600 if args.profile == 'pilot' else 14400)
     def read(command):
         result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                 universal_newlines=True, timeout=20)
