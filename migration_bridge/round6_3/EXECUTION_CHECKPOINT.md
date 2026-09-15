@@ -24,6 +24,41 @@ failed, and no downstream qualification skips a prerequisite.
 
 ## Running / next
 
+### CURRENT AUTHORITATIVE UPDATE — QD3 IS ACTIVE
+
+Observer correction PASS; fresh pilot complete with1814/2048 exposed positions,
+32/32 prompts exposed. Registered planning selected N128. Formal QD3/HD3/FD3
+inputs and statistical method frozen in commit8191a8edc before model execution.
+Preregistration canonical SHA:
+`19685bff9c72337873c466067ba76c579e4e562b25170d84d46e3d5185f83eb0`.
+
+Active A3 pipeline: `/workspace/results/r63-qd3-v1-pipeline`.
+Current first mode: `r63-qd3-v1-natural-server/session`, last observed51/128
+requests. Do not restart a healthy run. It will freeze qd3-force.json, run
+force0 with self-history byte parity, then force1; audit all files, export
+causal positions, apply500 exposure gate, and only then derive numerical risks.
+The pipeline stops after candidate derivation and NEVER starts HD3/quality.
+Expected total~79minutes from start, three8320-forward model runs.
+
+Input/protocol root: `/workspace/results/round6_3-formal-inputs`.
+Expected subsequent roots: `r63-qd3-v1-force0-*`, `r63-qd3-v1-force1-*`,
+`r63-qd3-v1-defer0-positions.json`, `r63-qd3-v1-defer1-positions.json`,
+`r63-qd3-v1-derivation`. Those are not yet completed evidence.
+Host read-only telemetry: `r63-qd3-v1-resource-samples.jsonl`.
+
+A3 synthetic/tool tests27/27 PASS; identity-fixture zero reserves are NOT model
+qualification. Natural observer controls all PASS. New runtime adapter is
+local-only, NOT_RUN, accepts only R6.3 candidate and frozen S6 SHA.
+See07 budget and08 runtime notes before proceeding. Candidate must be committed
+and all runtime subgates must close before HD3. No production changes after
+formal freeze; new runtime tooling is preparation only.
+
+If cancellation becomes necessary, signal the verified owned session controller
+and let its model guard clean up before terminating orchestration. Do not kill
+an outer short-grace guardian and orphan its nested model process.
+
+### Historical progress (preserved below; superseded by update above)
+
 Long full baseline and compact forced defer0 both PASS: 20x64 targets,
 1300 final audited forwards each, 34045 retained tensor comparisons byte exact.
 Raw capture shrank from1380241180 to592963662 bytes. See04 report.
@@ -96,6 +131,6 @@ New pilot token input SHA:
 Long engineering smoke input SHA:
 `bdeb64ec7cc853503cde7a274308e3c1a0c8be39353bab46a5162efc32461fa1`.
 
-QD3 / candidate / runtime / HD3 / quality / batch2/4 = NOT_RUN.
+QD3 = RUNNING; candidate / runtime / HD3 / quality / batch2/4 = NOT_RUN.
 Round6.3 = IN_PROGRESS, not qualified. Round6.2 remains blocked.
 No new READY tag, push or main merge in this execution segment.
