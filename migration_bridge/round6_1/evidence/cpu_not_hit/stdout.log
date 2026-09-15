@@ -1,0 +1,35 @@
+INFO 09-15 03:45:06 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:45:06 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:45:06 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:45:06 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-15 03:45:16 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:45:16 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:45:16 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:45:16 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-15 03:45:25 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:45:25 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:45:25 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:45:25 [__init__.py:239] Platform plugin ascend is activated
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-round6-d3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[2026-09-15 03:45:55] INFO:     127.0.0.1:38222 - "GET /health HTTP/1.1" 200 OK
+[2026-09-15 03:46:12] INFO:     127.0.0.1:49752 - "POST /generate HTTP/1.1" 200 OK

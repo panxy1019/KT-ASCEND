@@ -1,0 +1,908 @@
+{
+  "all_pairs": {
+    "absolute_distortion": {
+      "max": 0.75,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.125
+    },
+    "adverse_contraction": {
+      "max": 0.625,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.125
+    },
+    "beneficial_expansion": {
+      "max": 0.75,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.125
+    },
+    "pairs": 31810,
+    "signed_distortion": {
+      "max": 0.75,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p95": 0.0,
+      "p99": 0.125
+    }
+  },
+  "correlations": {
+    "abs_distortion_vs_baseline_margin": -0.051556658368977444,
+    "abs_distortion_vs_target_row_cpu_weight_mass_proxy": -0.021696257287371682,
+    "adverse_contraction_vs_baseline_margin": -0.05142374182424883,
+    "adverse_contraction_vs_target_row_cpu_weight_mass_proxy": -0.024767642078551887
+  },
+  "historical_bound_used_only_for_diagnostic_ambiguity_membership": 0.46875,
+  "historical_hd_en_02_43_candidate_16520": {
+    "absolute_distortion": 0.75,
+    "adverse_contraction": 0.0,
+    "baseline_margin_bucket": "8_plus",
+    "beneficial_expansion": 0.75,
+    "candidate_id": 16520,
+    "category": "english_factual",
+    "deferred_route_count": 0,
+    "m0": 10.75,
+    "m1": 11.5,
+    "prompt_id": "hd_en_02",
+    "signed_distortion": 0.75,
+    "target_row_cpu_route_weight_max_proxy": 0.0,
+    "target_row_cpu_route_weight_sum_proxy": 0,
+    "target_row_deferred_hit": false,
+    "token_index": 43,
+    "top1_changed": false
+  },
+  "pair_count": 31810,
+  "position_count": 1024,
+  "positions": {
+    "adverse_contraction_max": 0.625,
+    "beneficial_expansion_max": 0.75,
+    "historical_ambiguity_membership_failures": 0,
+    "top1_changed": 3
+  },
+  "purpose": "descriptive_mechanism_research_not_qualification",
+  "schema_version": "round6.1-signed-risk-v1",
+  "strata": {
+    "baseline_margin:0.5_to_2": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0625,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 1387,
+      "signed_distortion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "baseline_margin:2_to_8": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0625,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 16831,
+      "signed_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "baseline_margin:8_plus": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "pairs": 13411,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      }
+    },
+    "baseline_margin:lt_0.5": {
+      "absolute_distortion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0625,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.07499999999999929
+      },
+      "pairs": 181,
+      "signed_distortion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.07499999999999929
+      }
+    },
+    "cpu_weight_max_proxy:0": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.03125,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 17193,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "cpu_weight_max_proxy:0.1_to_0.25": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.21875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.09375
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "pairs": 6455,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      }
+    },
+    "cpu_weight_max_proxy:0.25_plus": {
+      "absolute_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.03125,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.03125
+      },
+      "beneficial_expansion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 992,
+      "signed_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "cpu_weight_max_proxy:0_to_0.1": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 7170,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "cpu_weight_sum_proxy:0": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.03125,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 17193,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "cpu_weight_sum_proxy:0.1_to_0.25": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "adverse_contraction": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "beneficial_expansion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "pairs": 3257,
+      "signed_distortion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      }
+    },
+    "cpu_weight_sum_proxy:0.25_plus": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.21875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.09375
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "pairs": 7137,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      }
+    },
+    "cpu_weight_sum_proxy:0_to_0.1": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 4223,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "deferred_hit:0": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 28645,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "deferred_hit:1": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.056249999999991473,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 3165,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "deferred_routes:0": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 28645,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "deferred_routes:1": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.056249999999991473,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 3165,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "family:chinese_factual": {
+      "absolute_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.03125,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "pairs": 7954,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      }
+    },
+    "family:code_reasoning": {
+      "absolute_distortion": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "beneficial_expansion": {
+        "max": 0.0625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "pairs": 5953,
+      "signed_distortion": {
+        "max": 0.0625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      }
+    },
+    "family:english_factual": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0625,
+        "p95": 0.125,
+        "p99": 0.25
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.125,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 7982,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "family:math_numeric": {
+      "absolute_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "adverse_contraction": {
+        "max": 0.0,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "beneficial_expansion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "pairs": 5952,
+      "signed_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      }
+    },
+    "family:structured_json": {
+      "absolute_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "beneficial_expansion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "pairs": 3969,
+      "signed_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      }
+    },
+    "position:0-15": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0625,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 7963,
+      "signed_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "position:16-31": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0625,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 7955,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "position:32-47": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      },
+      "pairs": 7950,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0625
+      }
+    },
+    "position:48-63": {
+      "absolute_distortion": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.375,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "pairs": 7942,
+      "signed_distortion": {
+        "max": 0.25,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      }
+    },
+    "top1_changed:0": {
+      "absolute_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "adverse_contraction": {
+        "max": 0.625,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      },
+      "pairs": 31716,
+      "signed_distortion": {
+        "max": 0.75,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.125
+      }
+    },
+    "top1_changed:1": {
+      "absolute_distortion": {
+        "max": 0.1875,
+        "p50": 0.0625,
+        "p90": 0.125,
+        "p95": 0.125,
+        "p99": 0.12937499999999957
+      },
+      "adverse_contraction": {
+        "max": 0.125,
+        "p50": 0.0,
+        "p90": 0.125,
+        "p95": 0.125,
+        "p99": 0.125
+      },
+      "beneficial_expansion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0625,
+        "p95": 0.0625,
+        "p99": 0.12937499999999957
+      },
+      "pairs": 94,
+      "signed_distortion": {
+        "max": 0.1875,
+        "p50": 0.0,
+        "p90": 0.0625,
+        "p95": 0.0625,
+        "p99": 0.12937499999999957
+      }
+    }
+  },
+  "weight_telemetry_limitation": "Frozen QD/HD rows retain target-row CPU-route weights but do not retain the Deferred-only weight subset. Weight correlations therefore use the target-row total CPU-route weight mass as a labeled proxy."
+}

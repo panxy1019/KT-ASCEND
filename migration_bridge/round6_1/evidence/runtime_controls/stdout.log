@@ -1,0 +1,44 @@
+INFO 09-15 03:37:37 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:37:37 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:37:37 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:37:37 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-15 03:37:48 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:37:48 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:37:48 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:37:48 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-15 03:37:56 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-15 03:37:56 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-15 03:37:56 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-15 03:37:56 [__init__.py:239] Platform plugin ascend is activated
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-round6-d3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[2026-09-15 03:38:26] INFO:     127.0.0.1:33316 - "GET /health HTTP/1.1" 200 OK
+CPUInfer[0xaaab2ca3d670]: Hello
+WorkerPool[0xaaab09837390] 1 subpools, [numa:threads][0:16] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 7, pool: 0xaaab09837390, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+TP MOE layer 8, pool: 0xaaab09837390, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+.[2026-09-15 03:39:20] INFO:     127.0.0.1:43818 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-15 03:43:46] INFO:     127.0.0.1:56854 - "POST /generate HTTP/1.1" 200 OK
