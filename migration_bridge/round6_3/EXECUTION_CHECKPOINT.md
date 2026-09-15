@@ -58,6 +58,13 @@ full baseline; HTTP logprobs finite; physical captures0. Evidence archived at
 `evidence/natural-reference0/`. Correction pipeline is now running natural
 full defer1, followed by natural OFF1/reference1 checks.
 
+Natural full defer1 has completed:1300 physical/indexed forwards,
+1280 targets+20 lookahead, unknown0/incomplete0, PASS. Natural OFF1 is active.
+A finite `run_corrected_pilot.py --wait-observer` process waits for correction
+pipeline PASS (up to2400seconds), checks all six parity files, then uses fresh
+`r63-pilot-retry1-*` outputs. It never reuses premature pilot results and stops
+after exposure-only sample-size planning. QD3/HD3 are not automatically launched.
+
 After pipeline PASS review exposure-only size plan, freeze new QD3/HD3/FD3 and
 statistical preregistration, then formal capture. New evaluator/causal export
 code is being prepared; evaluator is NOT_RUN and requires further tests before
