@@ -1,5 +1,6 @@
 """Fresh exposure-only pilot; all observer gates must already be closed."""
 import hashlib
+import argparse
 import json
 import os
 from pathlib import Path
@@ -13,6 +14,16 @@ TOOLS = FROZEN / 'tools'
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--wait-observer', action='store_true')
+    args = parser.parse_args()
+    if args.wait_observer:
+        deadline = time.monotonic() + 2400
+        observed = ROOT / 'r63-observer-correction-retry1-pipeline/result.json'
+        while not observed.exists():
+            if time.monotonic() > deadline:
+                raise TimeoutError('OBSERVER_GATE_NOT_FINISHED')
+            time.sleep(5)
     gates = [ROOT / 'r63-observer-correction-retry1-pipeline/result.json']
     gates += [ROOT / f'r63-natural-{observer}{mode}-parity.json'
               for mode in (0, 1) for observer in ('off', 'reference')]
