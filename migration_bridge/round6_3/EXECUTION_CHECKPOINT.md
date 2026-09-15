@@ -37,8 +37,13 @@ Natural mode `r63-qd3-v1-natural-server/session` completed128/128 requests:
 8320 physical/indexed,8192 targets,128 lookahead,unknown0,incomplete0.
 Natural session ended Unix1789490639.611315. Frozen qd3-force.json canonical
 SHA is `35d45fdd9fa8cc453f1b61ee464e3f2261710ea0ebecf2ce7fbca7ed4e79beae`.
-Pipeline is advancing to force0. Do not restart a healthy run. It will run
-force0 with self-history byte parity, then force1; audit all files, export
+Force0 completed128/128:8320 physical/indexed,8192 targets,128 lookahead,
+unknown0,incomplete0; ended Unix1789491896.6131275. Self-history parity PASS:
+8320 forwards and216565 retained tensor byte comparisons exact. Evidence:
+`evidence/qd3-v1-self-history-parity.json`. Both captures use compact mode;
+the comparator's historical full/compact field names do not imply a full dump.
+Pipeline is advancing to force1. Do not restart a healthy run. It will
+audit all files, export
 causal positions, apply500 exposure gate, and only then derive numerical risks.
 The pipeline stops after candidate derivation and NEVER starts HD3/quality.
 Expected total~79minutes from start, three8320-forward model runs.
