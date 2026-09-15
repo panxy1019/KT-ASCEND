@@ -1,0 +1,28 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "/workspace/kt-src/kt-kernel/test/round5/test_ascend_framework_transfer.py",
+    "/workspace/kt-src/kt-kernel/test/round6/test_deferred_selection.py",
+    "/workspace/kt-src/third_party/sglang/test/registered/ascend/test_kt_ep_alignment_contracts.py",
+    "--junitxml=/workspace/results/r64-preflight-v1/junit.xml"
+  ],
+  "started_unix": 1789514630.6512542,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 322173,
+  "pgid": 322173,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789514657.663366,
+  "success": true
+}
