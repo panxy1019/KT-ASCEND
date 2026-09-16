@@ -1,0 +1,72 @@
+{
+  "status": "RAW_PAIRED_AUDIT_PASS",
+  "sequence_status": "SCREEN_FAILED_NO_RESEED",
+  "benchmarks": [
+    {
+      "benchmark": "gsm8k",
+      "n": 32,
+      "correct_npu": 14,
+      "correct_hybrid": 13,
+      "gains": 2,
+      "losses": 3,
+      "invalid_npu": 1,
+      "invalid_hybrid": 2,
+      "truncated_npu": 2,
+      "truncated_hybrid": 1,
+      "bootstrap_percentile95": [
+        -0.15625,
+        0.09375
+      ],
+      "screen_pass": false,
+      "paired_marginal_interval": {
+        "delta": -0.03125,
+        "lower": -0.2685253028569509,
+        "upper": 0.2155245858464519,
+        "one_sided_confidence": 0.975,
+        "method": "paired_discordance_exact_marginals_bonferroni"
+      }
+    },
+    {
+      "benchmark": "cmmlu",
+      "n": 256,
+      "correct_npu": 174,
+      "correct_hybrid": 173,
+      "gains": 1,
+      "losses": 2,
+      "invalid_npu": 0,
+      "invalid_hybrid": 0,
+      "truncated_npu": 0,
+      "truncated_hybrid": 0,
+      "bootstrap_percentile95": [
+        -0.01953125,
+        0.0078125
+      ],
+      "screen_pass": false,
+      "paired_marginal_interval": {
+        "delta": -0.00390625,
+        "lower": -0.03130141280290027,
+        "upper": 0.02401131599100842,
+        "one_sided_confidence": 0.975,
+        "method": "paired_discordance_exact_marginals_bonferroni"
+      }
+    }
+  ],
+  "raw_sha256": {
+    "npu": {
+      "requests.jsonl": "7a2da1c79ff5c4c0b0b87e90034f7b24bc57617be80719dad53b621cd03a4a50",
+      "quality-report.json": "425fbd01793b2a578b2c70fb7120ebd3d7fa2335dccaae9da9cb1c00c1bf3df8",
+      "lifecycle.json": "6dd6a0710d80dba9c9bbfc7f4721a1f8ea871052613cde4ab4057ba58074813e",
+      "resolved-command.json": "03b99b84e2f3a17adbd26c4e5d3b9c700a14c368b9ad9d3d99fe79143112736c"
+    },
+    "hybrid": {
+      "requests.jsonl": "91b54ecf5790dc9cb31d82e62cad284e14657f9976d0b7ccdd51aa3068569dc6",
+      "quality-report.json": "74fe5b3876b9c6e05ec684a5ed3a04ca77bc3b3bec26a2b3272e9e0a7881c88a",
+      "lifecycle.json": "aa2588c36e5b0c28ef3686da84ac526c9c2a2eddb193b607c20557837bd737d6",
+      "resolved-command.json": "0477a5eeac4acbc2444b20873b47c541449c17eac5ce039b51eb0c422690b778"
+    }
+  },
+  "pairs": 288,
+  "population_noninferiority_claim": false,
+  "historical_v1": "BLOCKED_UNCHANGED",
+  "all_moe_qualification": false
+}

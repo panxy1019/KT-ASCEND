@@ -1,0 +1,46 @@
+{
+  "status": "SCREEN_FAILED_NO_RESEED",
+  "completed": [
+    "npu",
+    "hybrid"
+  ],
+  "input_sha256": "885ccf76386dcfed2867142417300ac69c4401754360f92e6b6e4f179adffd97",
+  "population_noninferiority_claim": false,
+  "old_v1_status": "BLOCKED_UNCHANGED",
+  "benchmarks": [
+    {
+      "benchmark": "gsm8k",
+      "n": 32,
+      "correct_npu": 14,
+      "correct_hybrid": 13,
+      "gains": 2,
+      "losses": 3,
+      "invalid_npu": 1,
+      "invalid_hybrid": 2,
+      "truncated_npu": 2,
+      "truncated_hybrid": 1,
+      "bootstrap_percentile95": [
+        -0.15625,
+        0.09375
+      ],
+      "screen_pass": false
+    },
+    {
+      "benchmark": "cmmlu",
+      "n": 256,
+      "correct_npu": 174,
+      "correct_hybrid": 173,
+      "gains": 1,
+      "losses": 2,
+      "invalid_npu": 0,
+      "invalid_hybrid": 0,
+      "truncated_npu": 0,
+      "truncated_hybrid": 0,
+      "bootstrap_percentile95": [
+        -0.01953125,
+        0.0078125
+      ],
+      "screen_pass": false
+    }
+  ]
+}

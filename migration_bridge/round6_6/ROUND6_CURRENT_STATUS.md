@@ -13,15 +13,20 @@
   32组真实 mixed partial、最终 merge 和10次重复均与生产采集 exact。
   没有找到支持修改 production 算术的新增实现缺陷。
 
-## 当前进行中
+## 已完成的独立后续研究
 
 Round6.6B：一次独立的 base-model 评测协议研究。
 新测试题、固定 train/dev few-shot 示例、明确候选字母 likelihood 评分，
-所有输入与规则在运行前冻结。新 All-NPU 基线为 GSM8K14/32、CMMLU174/256；
-Hybrid 配对采集尚在执行，不能提前判 PASS。
+所有输入与规则在运行前冻结。结果为 GSM8K14→13/32、CMMLU174→173/256；
+GSM8K invalid1→2。全部288对原始响应重算一致。新 screen 仍然失败。
+置信区间包含零，不能据此宣布总体质量显著下降；同样不能证明总体非劣。
 
 这不是 V1 重评分，不是调整 B_pair，不是换 expert，也不是反复换种子寻求通过。
-如果该次研究失败，将保留失败，不继续随机换题直到出现好结果。
+该次研究已保留失败，不继续随机换题直到出现好结果。
+
+当前准确结论：`IMPLEMENTATION_INVESTIGATION=COMPLETE`、
+`QUALITY_SCREEN=FAILED`、`POPULATION_QUALITY=INCONCLUSIVE`、
+`HEAVY_STATIC_PROMOTION=BLOCKED`。没有发现可据此实施的生产算术修复。
 
 ## 不得声称
 
