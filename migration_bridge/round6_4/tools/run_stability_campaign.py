@@ -43,7 +43,7 @@ def main():
     signal.signal(signal.SIGTERM, cancel)
     try:
         import psutil
-        with OwnedServer(args.output, "D1", capture=False, extra_env={
+        with OwnedServer(args.output, "D1", capture=False, tokenizer_compat=True, extra_env={
             "KT_DEBUG_DEFERRED_TRACE_FILE":str(args.output/"events.jsonl"), "KT_DEBUG_DEFERRED_TRACE_LIMIT":"200000"}) as server:
             def memory():
                 processes = [psutil.Process(server.server.pid)]

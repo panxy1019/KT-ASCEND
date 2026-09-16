@@ -30,7 +30,7 @@ def main():
         raise InterruptedError("OWNED_PERFORMANCE_CANCELLED")
     signal.signal(signal.SIGTERM,cancel)
     try:
-        with OwnedServer(args.output,args.profile,batch=1,performance=True):
+        with OwnedServer(args.output,args.profile,batch=1,performance=True,tokenizer_compat=True):
             resolved = json.loads((args.output/"resolved-command.json").read_text())
             assert resolved["performance_observer_off"] and resolved["cache_disabled"]
             assert not list((args.output/"tensors").iterdir())

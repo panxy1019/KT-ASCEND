@@ -40,7 +40,7 @@ def main():
         validate(result,rid,budget)
         return dict(payload=payload,response=result,time_unix=time.time())
     try:
-        with OwnedServer(args.output,"D1",extra_env={
+        with OwnedServer(args.output,"D1",tokenizer_compat=True,extra_env={
             "KT_DEBUG_DEFERRED_TRACE_FILE":str(args.output/"events.jsonl"),"KT_DEBUG_DEFERRED_TRACE_LIMIT":"100000"}) as server:
             with (args.output/"requests.jsonl").open("x") as raw:
                 raw.write(json.dumps(generate(PROMPTS[0],16))+"\n")

@@ -34,7 +34,7 @@ def main():
             for performance in (False,True):
                 mode = "performance" if performance else "quality"
                 root = args.output/f"{profile}-{mode}"
-                with OwnedServer(root,profile,performance=performance):
+                with OwnedServer(root,profile,performance=performance,tokenizer_compat=True):
                     with (root/"requests.jsonl").open("x") as raw:
                         for repeat in range(5 if performance else 1):
                             for pid in PROMPTS:
