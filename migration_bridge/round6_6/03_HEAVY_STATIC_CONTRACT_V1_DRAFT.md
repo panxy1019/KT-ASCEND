@@ -1,4 +1,4 @@
-# Heavy Static Contract V1 — draft, execution not yet authorized by B0
+# Heavy Static Contract V1 — drafting rationale and frozen execution binding
 
 This is an independent experiment identity, not an amendment of Round6.5's failed B_pair2.1875 contract. Draft written before new QD6/HD6 model outputs. The supplied scope refers to a prior V1 plan, but no such artifact was located in this checkout or the Downloads directory; this document makes the executable assumptions explicit rather than pretending a missing contract was already frozen.
 
@@ -27,4 +27,8 @@ Conservative screen criterion: no observed net accuracy loss on either endpoint;
 B0 complete → freeze executable contract/corpora → expanded system/local audit → QD6 → candidate freeze → one-shot HD6 → free generation and paired quality → ADR.
 Only four-R32 is initially qualified. All-MoE capacity, R16/R8, Static Frequency, Dynamic and Deferred are not inherited from it. Round6.5 historical status and old thresholds remain unchanged even if this new experiment succeeds.
 
-Status: DRAFT_ONLY; QD6=NOT_RUN; HD6=NOT_RUN; quality=NOT_RUN.
+Initial status was DRAFT_ONLY. B0 subsequently passed all608 cases on the target.
+Executable contract and both independent corpora were frozen before any QD6/HD6 model outputs:
+`corpora/frozen-v1/CONTRACT_V1.json`, SHA256 `4a374b76690ccbafc4fb26006463eb416e80b06a3b834992595e67365393c79b`.
+The machine-readable freeze manifest binds QD6/HD6, the disjoint quality set, historical-overlap index and B0 evidence.
+QD6 capture is now RUNNING; HD6 and quality remain NOT_RUN. This is not candidate approval or final qualification.
