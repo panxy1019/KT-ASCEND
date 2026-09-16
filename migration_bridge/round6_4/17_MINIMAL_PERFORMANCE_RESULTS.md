@@ -36,4 +36,6 @@ is a byte-preserving copy of A3 `/workspace/results/r64-minimal-performance-v1`.
 Source equality across all phases was enforced by the campaign runner.
 
 Do not publish an acceleration READY tag. Quality screen PASS remains valid;
-remaining descriptive integrity and final ADR must close separately.
+descriptive integrity and final ADR subsequently closed on2026-09-16 (docs19/20).
+This performance experiment remains source-host110.123.0.3/16workers only,
+not a formal measurement of destination910B/32workers.

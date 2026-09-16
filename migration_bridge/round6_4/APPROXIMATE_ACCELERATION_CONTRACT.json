@@ -1,6 +1,28 @@
 {
   "version": "round6.4-approx-v2-fast-screen",
-  "status": "QUALITY_SCREEN_PASS_NO_MEASURABLE_SPEEDUP_DESCRIPTIVE_AUDIT_PENDING",
+  "status": "COMPLETE_IMPLEMENTED_NO_SPEEDUP",
+  "final_decision_date": "2026-09-16",
+  "acceleration_release_ready": false,
+  "evidence_platforms": {
+    "source": {
+      "host": "110.123.0.3",
+      "cpu_workers": 16,
+      "quality": "QUALITY_SCREEN_PASS",
+      "performance": "NO_MEASURABLE_SPEEDUP",
+      "stability": "2304_TOKENS_PASS"
+    },
+    "destination": {
+      "host": "110.129.0.22",
+      "device": "Ascend910B3",
+      "cpu_workers": 32,
+      "compact_migration": "PASS",
+      "expert_safety_16_workers": "16_OF_16_PASS",
+      "descriptive": "THREE_MODES_COMPLETE_AND_AUDITED",
+      "full_quality_and_formal_performance": "NOT_QUALIFIED",
+      "full_resource_sampling": "NOT_AVAILABLE_USER_PAUSED_MONITOR"
+    }
+  },
+  "final_descriptive_audit_sha256": "329a0e289ceb688cee7f3b28ccdd519a0f4e903f06fd3436496eae9cab7bb338",
   "approval_date": "2026-09-15",
   "approval_text": "方案已阅，同意按此计划执行。质量容忍度 2pp 获批",
   "baseline_parent": "ba3494d9aedcc0e5623157832134e1e32a8ea44a",

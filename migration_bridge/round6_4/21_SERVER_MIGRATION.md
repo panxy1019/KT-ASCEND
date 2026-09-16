@@ -1,4 +1,11 @@
-# Round6.4 server migration — execution in progress
+# Round6.4 server migration — bridge and descriptive execution complete
+
+Final update2026-09-16:16/32worker compact bridges and16expert cases passed;
+all3descriptive modes completed136requests each, all integrity gatesPASS,
+offline analysis and final metadata audit complete. See19results and finalsummary.
+Historical in-progress notes below are retained as chronology, not live status.
+Target fullquality/formalperformance remain NOT_QUALIFIED; no crossplatform
+substitution of quality/speed evidence. NPU0 had no running process at final check.
 
 User authorizes continuation on110.129.0.22,2026-09-16. Credentials are not
 stored in repository or artifacts. Source110.123.0.3 remains test-paused.

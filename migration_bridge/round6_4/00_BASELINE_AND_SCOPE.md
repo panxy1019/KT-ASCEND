@@ -1,5 +1,9 @@
 # Round6.4 执行基线与批准记录
 
+最终更新2026-09-16：本轮执行已完成，结论`IMPLEMENTED_NO_SPEEDUP`，
+不是加速READY。详见`ROUND6_4_FINAL_SUMMARY.md`与`20_FINAL_ADR.md`。
+以下为历史开工记录，原始来源和审批边界保留不变。
+
 日期：2026-09-15。状态：EXECUTION_STARTED，非资格通过声明。
 
 历史开工记录：下文原大样本统计协议已被用户批准的
