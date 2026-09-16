@@ -10,15 +10,18 @@ from run_compact_controls import OLD, ensure_free_port
 
 
 class OwnedServer:
-    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None):
+    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True):
         self.root, self.profile, self.batch, self.capture = Path(root), profile, batch, capture
         if profile not in ("D1", "D1_NODEFER") or batch not in (1, 2, 4):
             raise ValueError("UNSUPPORTED_PROFILE")
         if not str(self.root).startswith("/workspace/results/r64-"):
             raise ValueError("DEDICATED_ROOT_REQUIRED")
         self.timeout, self.extra_env = timeout, extra_env or {}
+        self.capacity = capacity
+        if not capacity and batch != 1:
+            raise ValueError("ORIGINAL_CAPACITY_IS_BATCH1_ONLY")
         self.server = self.log = None
-        self.report = dict(profile=profile, batch_cap=batch, capture=capture, started_unix=time.time(), status="STARTING")
+        self.report = dict(profile=profile, batch_cap=batch, capture=capture, capacity_adapter=capacity, started_unix=time.time(), status="STARTING")
 
     def __enter__(self):
         ensure_free_port()
@@ -26,9 +29,10 @@ class OwnedServer:
         env = {k:v for k,v in os.environ.items() if not k.startswith(("KT_R6_", "KT_R61_", "KT_R62_", "KT_R63_", "KT_DEBUG_", "KT_R64_"))}
         adapter = Path(__file__).with_name("capacity_python_adapter.py")
         env.update(ASCEND_RT_VISIBLE_DEVICES="0", SGLANG_APPLY_CONFIG_BACKUP="none",
+                   HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
                    SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION="false",
                    KT_R6_ENABLE_ROUTE_RECORDER="1", KT_R6_ENABLE_TENSOR_DUMP=str(int(self.capture)),
-                   KT_R6_PYTHON=str(adapter), KT_R64_BATCH_CAP=str(self.batch),
+                   KT_R6_PYTHON=str(adapter) if self.capacity else sys.executable, KT_R64_BATCH_CAP=str(self.batch),
                    KT_R64_RESOLVED_COMMAND=str(self.root/"resolved-command.json"))
         if self.capture:
             env.update(KT_R62_COMPLETE_FORWARD_DUMP="1", KT_R63_COMPACT_CAPTURE="1",
