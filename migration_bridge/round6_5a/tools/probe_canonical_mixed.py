@@ -22,6 +22,7 @@ def main():
     p.add_argument('--model', required=True, type=Path)
     p.add_argument('--gguf', required=True, type=Path)
     p.add_argument('--output', required=True, type=Path)
+    p.add_argument('--call', type=int, default=55)
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(1)
@@ -29,9 +30,9 @@ def main():
     cfg = json.loads((a.model/'config.json').read_text())
     report = dict(status='RUNNING', scope='DIAGNOSTIC_NOT_QUALIFICATION', rows=[],
                   scaling_factor=cfg['routed_scaling_factor'], workers=32, threadpool_count=1,
-                  reduction='global logical ID ascending FP32; BF16 route weights; final BF16 cast')
+                  call=a.call, reduction='global logical ID ascending FP32; BF16 route weights; final BF16 cast')
     def load(layer, source, stage):
-        path = a.trace/f'hybrid/stagewise/{source}_layer{layer:02d}_{stage}_call0055.pt'
+        path = a.trace/f'hybrid/stagewise/{source}_layer{layer:02d}_{stage}_call{a.call:04d}.pt'
         return torch.load(path, map_location='cpu', weights_only=False)['tensor']
     fn = UnquantizedFusedMoEMethod.forward_npu
     method = NS(with_bias=False, moe_runner_config=NS(activation='silu'), _kt_return_fp32_contribution=True)
@@ -40,7 +41,7 @@ def main():
             x = load(layer, 'cpu', 'input_hidden_after_sync').contiguous()
             ids = load(layer, 'model', 'router_topk_ids').long()
             rw = load(layer, 'model', 'router_weights').float()
-            if x.shape != (1, 2048) or ids.shape != (1, 6):
+            if x.ndim!=2 or x.shape[1]!=2048 or ids.shape!=(len(x),6):
                 raise ValueError('FAILURE_OPERAND_SHAPE')
             mask = torch.tensor([e % 2 == 0 for e in range(64)], dtype=torch.bool)
             LlamafileMoEWrapper._gguf_loader_instance = None
@@ -52,6 +53,9 @@ def main():
                 method='LLAMAFILE', numa_nodes=[0])
             cpu.load_weights(torch.arange(64, dtype=torch.int32))
             original_cpu = cpu.forward(x, ids, rw).clone().float()
+            repeat_hashes=[digest(original_cpu)]
+            for _ in range(9):repeat_hashes.append(digest(cpu.forward(x,ids,rw).clone().float()))
+            if len(set(repeat_hashes))!=1:raise ValueError('CPU_BATCH_NONDETERMINISM')
             gateup, down = [], []
             for e in range(64):
                 projections = {}
@@ -71,24 +75,26 @@ def main():
             canonical_npu = torch.zeros_like(canonical)
             all_npu = torch.zeros_like(canonical)
             experts = []
-            for e, slot in sorted((int(e), i) for i,e in enumerate(ids[0])):
-                single = torch.full_like(ids, -1); single[:,0] = e
-                unit = torch.zeros_like(rw); unit[:,0] = 1
+            for e in sorted(set(ids.flatten().tolist())):
+                selected=(ids==e)
+                active=selected.any(dim=1)
+                single = torch.full_like(ids, -1); single[active,0] = e
+                unit = torch.zeros_like(rw); unit[active,0] = 1
                 n = fn(method, full, NS(hidden_states=xn,
                     topk_output=(unit.to('npu'), single.to('npu', dtype=torch.int32), None))).hidden_states.cpu().float()
                 value = cpu.forward(x, single, unit).clone().float() if e % 2 else n
-                weight = rw[:,slot:slot+1].to(torch.bfloat16).float()
+                weight = (rw.to(torch.bfloat16).float()*selected).sum(dim=1,keepdim=True)
                 weighted = value * weight
                 canonical += weighted
                 all_npu += n * weight
                 if e % 2: canonical_cpu += weighted
                 else: canonical_npu += weighted
-                experts.append(dict(expert=e, cpu_owned=bool(e % 2), route_weight=float(weight),
+                experts.append(dict(expert=e, cpu_owned=bool(e % 2), route_weight=weight.tolist(),
                     output_sha256=digest(value), npu_sha256=digest(n), **metrics(value,n)))
             production_cpu = load(layer,'ktep','cpu_partial').float()
             production_npu = load(layer,'ktep','npu_owned_partial').float()
             production = load(layer,'ktep','routed_merge')
-            row = dict(layer=layer, hidden_sha256=digest(x), ids=ids.tolist(),
+            row = dict(layer=layer, hidden_sha256=digest(x), ids=ids.tolist(), cpu_repeat_hashes=repeat_hashes,
                 routing_weights_sha256=digest(rw), expert_rows=experts,
                 cpu_replay_vs_capture=metrics(original_cpu,production_cpu),
                 canonical_cpu_vs_capture=metrics(canonical_cpu,production_cpu),
