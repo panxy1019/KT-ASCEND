@@ -1,0 +1,1121 @@
+{
+  "status": "RUNNING",
+  "scope": "DEPLOYED_GROUPED_MOE_LAYOUT_DIAGNOSTIC",
+  "source": "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/unquant.py",
+  "source_sha256": "56b46c170c8150afb437cb1bc0ea4453a456ca14f849170e7d0f27358cabcafb",
+  "method_sha256": "e2b99c2efd2ae1826785d6634b314b176b4a1b3979fd725393d7461b2b18ac6c",
+  "selection_seed": 6501,
+  "repeats": 10,
+  "layers": [
+    {
+      "layer": 1,
+      "hot": [
+        8,
+        50,
+        6,
+        0
+      ],
+      "nearest_resident_boundary": [
+        4,
+        48
+      ],
+      "actual_rank6_7": [
+        50,
+        4
+      ],
+      "controls": [
+        16,
+        18
+      ],
+      "selected": [
+        8,
+        50,
+        6,
+        0,
+        4,
+        48,
+        16,
+        18
+      ],
+      "hidden_sha256": "25a30a4ad0aebdb94d7d88c429531e1e7369c908b87e6ee616fe4322b39fa67b",
+      "hidden_shape": [
+        1,
+        2048
+      ],
+      "hidden_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 9,
+      "hot": [
+        46,
+        38,
+        12,
+        50
+      ],
+      "nearest_resident_boundary": [
+        48,
+        44
+      ],
+      "actual_rank6_7": [
+        23,
+        48
+      ],
+      "controls": [
+        28,
+        10
+      ],
+      "selected": [
+        46,
+        38,
+        12,
+        50,
+        48,
+        44,
+        28,
+        10
+      ],
+      "hidden_sha256": "5f93f4219f92b9519691fe059e3aecba66f6318d77c80f4fe250029a6a405ecf",
+      "hidden_shape": [
+        1,
+        2048
+      ],
+      "hidden_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 17,
+      "hot": [
+        0,
+        32,
+        54,
+        36
+      ],
+      "nearest_resident_boundary": [
+        62,
+        26
+      ],
+      "actual_rank6_7": [
+        29,
+        27
+      ],
+      "controls": [
+        14,
+        52
+      ],
+      "selected": [
+        0,
+        32,
+        54,
+        36,
+        62,
+        26,
+        14,
+        52
+      ],
+      "hidden_sha256": "c5e8cd0aa08bfa7afea5942e574d8f5d0b28bed9ad4f6c39b4810b0d1db0194d",
+      "hidden_shape": [
+        1,
+        2048
+      ],
+      "hidden_dtype": "torch.bfloat16"
+    },
+    {
+      "layer": 26,
+      "hot": [
+        6,
+        60,
+        22,
+        26
+      ],
+      "nearest_resident_boundary": [
+        34,
+        42
+      ],
+      "actual_rank6_7": [
+        59,
+        33
+      ],
+      "controls": [
+        44,
+        58
+      ],
+      "selected": [
+        6,
+        60,
+        22,
+        26,
+        34,
+        42,
+        44,
+        58
+      ],
+      "hidden_sha256": "ea9113047645d9d344bc3df6a78229e0535a20b77ad6b062a67f58ef574dea01",
+      "hidden_shape": [
+        1,
+        2048
+      ],
+      "hidden_dtype": "torch.bfloat16"
+    }
+  ],
+  "rows": [
+    {
+      "layer": 1,
+      "expert": 8,
+      "physical_slots": [
+        8,
+        4
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000004768371582,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48"
+        ],
+        [
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48",
+          "a48d65c8e34d70f1ab0b19ef34d86ccb520eb6cd3a0d3c58d83acde6005b0c48"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 50,
+      "physical_slots": [
+        50,
+        25
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb"
+        ],
+        [
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb",
+          "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 6,
+      "physical_slots": [
+        6,
+        3
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529"
+        ],
+        [
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529",
+          "e4efc4126e57781a7520991b1a7c72d9d01100209250347d3a75a79e4a09a529"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 0,
+      "physical_slots": [
+        0,
+        0
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.000001311302185,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4"
+        ],
+        [
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4",
+          "5b039b4ea04af29dbdd630a4942263c2024e3472c7ff33e333a92ef0d30f9bc4"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 4,
+      "physical_slots": [
+        4,
+        2
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000009536743164,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68"
+        ],
+        [
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68",
+          "e164dcd41459ce65bddf833305d438685d9018f664024c2c9cd29a4d2affac68"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 48,
+      "physical_slots": [
+        48,
+        24
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000004768371582,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd"
+        ],
+        [
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd",
+          "e2c18b0cdf895111d2846e1cc53fc4af643afe5c7179118a0925cc85c4f424fd"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 16,
+      "physical_slots": [
+        16,
+        8
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.000001072883606,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868"
+        ],
+        [
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868",
+          "0b7fb65260999fd6b4b099283d6bc86651e1b1aaeeb8a56baeaf0ab85aa38868"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 1,
+      "expert": 18,
+      "physical_slots": [
+        18,
+        9
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000005960464478,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343"
+        ],
+        [
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343",
+          "c6a1f463b7b0476ae17d471d774c8646eb3542097bd54e0a39d0555bf32a0343"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 46,
+      "physical_slots": [
+        46,
+        23
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000008344650269,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b"
+        ],
+        [
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b",
+          "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 38,
+      "physical_slots": [
+        38,
+        19
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.000001072883606,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7"
+        ],
+        [
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7",
+          "e1ce2122b408998abbc001ca61be4f6f20b54fd5d957dc9f7a135062f5e285c7"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 12,
+      "physical_slots": [
+        12,
+        6
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000009536743164,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52"
+        ],
+        [
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52",
+          "83bd7ffb6cd30074deb54d6d0a5ba8bd1d19da443509f0cd866dcc36af38ec52"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 50,
+      "physical_slots": [
+        50,
+        25
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.000001072883606,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab"
+        ],
+        [
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab",
+          "8d1c058a362db4686a019ce696b1565a7168bff0ce42a67a52289e8e7ce262ab"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 48,
+      "physical_slots": [
+        48,
+        24
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959"
+        ],
+        [
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959",
+          "9bd9d48ad874c4d47c232dd175dae4fbbb7a7277a231fd08518970a47063c959"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 44,
+      "physical_slots": [
+        44,
+        22
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.000001072883606,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103"
+        ],
+        [
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103",
+          "f6d6d4e1174db51fb3920179a4e64d2c88e89b13f1bd20f728a2102eafdc0103"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 28,
+      "physical_slots": [
+        28,
+        14
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df"
+        ],
+        [
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df",
+          "0ff6f9c55e96b119305f04dbc56baac9699e90b720257b30c29edd85a60180df"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 9,
+      "expert": 10,
+      "physical_slots": [
+        10,
+        5
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000005960464478,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807"
+        ],
+        [
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807",
+          "964d5ff3d5232a2ea1f108f74a1774dc4daaf1779bb84b54cde14f8cd4051807"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 0,
+      "physical_slots": [
+        0,
+        0
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000008344650269,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda"
+        ],
+        [
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda",
+          "beecc731eef37503171d8d16ce655f0ed2e2d45fdd7fa60d4f79847ea2783dda"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 32,
+      "physical_slots": [
+        32,
+        16
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000005960464478,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73"
+        ],
+        [
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73",
+          "6a3834a6f91853157abf1104eec1f1f57eef7dd2e29246311c36dc3dc6ea0d73"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 54,
+      "physical_slots": [
+        54,
+        27
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000004768371582,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460"
+        ],
+        [
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460",
+          "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 36,
+      "physical_slots": [
+        36,
+        18
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000004768371582,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18"
+        ],
+        [
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18",
+          "abad99779a39b6a688fdd68e1102df4d9effaa82c7cec889616db49476010c18"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 62,
+      "physical_slots": [
+        62,
+        31
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000009536743164,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c"
+        ],
+        [
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c",
+          "337ed3bc5a1641fb1555cfd9ea217292bc9d58a4044b537f35bb2ff22107541c"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 26,
+      "physical_slots": [
+        26,
+        13
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000005960464478,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536"
+        ],
+        [
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536",
+          "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 14,
+      "physical_slots": [
+        14,
+        7
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c"
+        ],
+        [
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c",
+          "ce11abdba2e13ce1d873aa6b8b68787688b1f24899b6c4a35b20fe48627f6d8c"
+        ]
+      ],
+      "deterministic": true
+    },
+    {
+      "layer": 17,
+      "expert": 52,
+      "physical_slots": [
+        52,
+        26
+      ],
+      "exact": true,
+      "max_abs": 0.0,
+      "relative_l2": 0.0,
+      "cosine": 1.0000007152557373,
+      "finite": true,
+      "repeat_hashes": [
+        [
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d"
+        ],
+        [
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d",
+          "a8d47e25b54ab654a3420cc4774e1641f79c430cb857ef38c8d9e80ea3f6987d"
+        ]
+      ],
+      "deterministic": true
+    }
+  ]
+}

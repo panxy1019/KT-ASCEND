@@ -1,0 +1,479 @@
+{
+  "time_unix": 1789568970.5477438,
+  "source_read_only": true,
+  "repositories": {
+    "parent": {
+      "head": "e3084d309d6f39b8a9f7185d36ac27e4b77526d7",
+      "status": " M kt-kernel/python/experts_base.py\n M kt-kernel/test/round6/test_deferred_selection.py\n m third_party/llama.cpp\n m third_party/sglang\n?? fusion_result.json\n?? kernel_meta/\n?? migration_bridge/round6_1/\n",
+      "diff_sha256": "bba031fa167077e7dfda6c5767571a4c1715ac26b21217345507138f4405e2c8"
+    },
+    "sglang": {
+      "head": "eaa58ccea4ee372b8b207dd16f398eafe3da37ff",
+      "status": " M python/sglang/srt/debug_utils/tensor_dump_forward_hook.py\n M python/sglang/srt/layers/moe/kt_ep_wrapper.py\n M python/sglang/srt/model_executor/model_runner.py\n M python/sglang/srt/models/deepseek_v2.py\n?? python/sglang/srt/debug_utils/round63_teacher_force.py\n?? python/sglang/srt/debug_utils/round6_1_deferred.py\n",
+      "diff_sha256": "d33424f18d155b3a8cfc8bf05515fccbfc095179520fd91ac3e162308705b74c"
+    },
+    "llama": {
+      "head": "a94e6ff8774b7c9f950d9545baf0ce35e8d1ed2f",
+      "status": " M ggml-common.h\n M ggml-quants.c\n M ggml-quants.h\n M ggml.c\n M ggml.h\n M gguf-py/gguf/constants.py\n M gguf-py/gguf/gguf_reader.py\n",
+      "diff_sha256": "72606b22474700e1dded1a1e640aabd17e7c70f0a56dbfe6c8a616e4ad4d325a"
+    }
+  },
+  "files": [
+    {
+      "path": "/workspace/kt-src/kt-kernel/python/experts_base.py",
+      "bytes": 51524,
+      "sha256": "a1b147613ed2199a9085214301663f9c548ecba98d242d7d00cb1eecb4d5d377"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/cuda_coredump.py",
+      "bytes": 3142,
+      "sha256": "c5627697539274463826f8309b358009ec062c6032dd0cfb83d5040ac15c3ffd"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/deepseek_v4_debug_utils.py",
+      "bytes": 137,
+      "sha256": "dd6aa1649a67f1996a5363ec15250593d6e05f7ac0b8b9c3a98a9a3e192f1d04"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/dump_loader.py",
+      "bytes": 4959,
+      "sha256": "db29bc11608d7e01d003a1d7578da689a87a67a0b57dcfee1bc67a72befe3269"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/dumper.py",
+      "bytes": 43092,
+      "sha256": "e41674fe8fddc4ed3ea164611e7b904ed6e1fe2dd8406e33452dac8ad75c4867"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/log_parser.py",
+      "bytes": 1524,
+      "sha256": "5dbfc6315d4d785bf3159749c6fced6008c75aea1aa8cf8a00b85c8817cbe409"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/model_truncator.py",
+      "bytes": 3718,
+      "sha256": "23b64417aa8f9aa8c5c18e24cb813816da16af1a079fa81e5513ac14b1516a0e"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/round63_teacher_force.py",
+      "bytes": 5727,
+      "sha256": "4269c8f4093fd51e991da0a75c422030e074fc64885322cbc311a28852348f7a"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/round6_1_deferred.py",
+      "bytes": 1930,
+      "sha256": "b5b5edb32cab6c0e529361fa7627074c259b352baae379ad6ad2b2373c7550ff"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/tensor_dump_forward_hook.py",
+      "bytes": 15203,
+      "sha256": "a4cb32e2f2f400010645ce2e534c1cd9bad31491e46ebea75ea160931c8ea5f9"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/text_comparator.py",
+      "bytes": 7370,
+      "sha256": "34b25d8d48a45bef9b5a719058878525eb32baf6765678b64b9ddf2040fe9bcb"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "bytes": 263907,
+      "sha256": "8eec41a88d728b4262d7f8407e00fd3b0239e36fc3b3600ea8a85d3db401a1f5"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/topk.py",
+      "bytes": 42473,
+      "sha256": "deb759eaed876141da95bb73ac556361535c87ad23568a5bd8fc1c9e2bea2cc7"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/hook_manager.py",
+      "bytes": 2721,
+      "sha256": "899bea28f874cb7a44b7d10fcff50814b6f99221e31fe4aabd073227f3c24073"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py",
+      "bytes": 113280,
+      "sha256": "71b1daaf2a78afde91794963eb5c6a0779bb6ed931841e0a56f8b8bf34ce88d9"
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py",
+      "bytes": 147804,
+      "sha256": "ebe16279c8ab4787c15086a1e2a4e1abfbea36fac91f1b98bb4e875515d6bda9"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/__init__.py",
+      "bytes": 3993,
+      "sha256": "5655f31960dbf833ac17a9e99c89b84c091d30890677373e954bad4770548c5e"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/_cpu_detect.py",
+      "bytes": 13157,
+      "sha256": "57e49a53290794a578ccd02d8605e4f18a5c38814fdecb4c0dc04f9caff9fe7e"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/__init__.py",
+      "bytes": 696,
+      "sha256": "9cf36f76a5a3afd89a55f3b403d1d1ecf80491e2e152e9059e10d088660988d2"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/__init__.py",
+      "bytes": 36,
+      "sha256": "f8a9580cb9fe57bee9f6ff0a431c962b483ad9edd99af3f4b875f22c2be7247f"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/bench.py",
+      "bytes": 7217,
+      "sha256": "e593035b5818c2eef03d18ab4b145bbb6ac585a64d263dd0f85f17fbe4de3a95"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/chat.py",
+      "bytes": 18049,
+      "sha256": "98c9cad8ad00def8d5cd0d10378ee1372d11c7412bfed86a1e51372c901aa71b"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/config.py",
+      "bytes": 5076,
+      "sha256": "2127fa56226f14f6fff97a9d4d71b7eaa05ce711225392d57051df31b913dc4a"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/doctor.py",
+      "bytes": 19343,
+      "sha256": "9d761469e9d78b5e9fe6b31c920cec6afcf113cc4c5753ca4428567e9b146062"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/model.py",
+      "bytes": 114814,
+      "sha256": "a8e8b2348423bf20aed33021e73e21cb39caac4ba515a1b965f3a97573b76c97"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/quant.py",
+      "bytes": 18855,
+      "sha256": "abfe1036861bc6370ae71e88552f26aaf58712e941ed733809404a389927093b"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/run.py",
+      "bytes": 31366,
+      "sha256": "dcb51859456a8e4fdcb7e4b585d4c7002ec28f575cd6415891f35b1d7cbc1238"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/sft.py",
+      "bytes": 1514,
+      "sha256": "9e5e99e53144392fa88d9fd5f17121cc84630bee73806f48b78d72912dd510b3"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/commands/version.py",
+      "bytes": 3643,
+      "sha256": "41598173bdb50d387d900ceb0d5962b5cdb7a695e15b41114ff52f9d36753e8a"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/completions/__init__.py",
+      "bytes": 43,
+      "sha256": "1a1f89ac8a58ba2882b358fab976c6e328a350a24862408c738bd8e792f9ba25"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/config/__init__.py",
+      "bytes": 151,
+      "sha256": "3263fca1609ca04cff61cd23d0725234fb7cdfbc514c31ddcee7f0e13fa61c83"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/config/settings.py",
+      "bytes": 9690,
+      "sha256": "797e22ad5199c04c7dd0b0b64fe80919e18ce3ae5f97e5e979b8a90ea0aabbdc"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/i18n.py",
+      "bytes": 78639,
+      "sha256": "ad41ab13b0b46e30f3532694d256451923f439b517ea376917fcd7418ffcc46e"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/main.py",
+      "bytes": 20150,
+      "sha256": "0c5adf4aada9e9502eede6c299696234a98afa759eef2445b60b4a9e6e7fbcc4"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/__init__.py",
+      "bytes": 36,
+      "sha256": "8f3c9644347471470b88301697454ce80f72d966f37be4ae30c3654274fb299e"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/analyze_moe_model.py",
+      "bytes": 12813,
+      "sha256": "aee9fcb7268602302b7f21a5f2da2b832e8d2fcef09d0f3ffbeef5ce2744a942"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/console.py",
+      "bytes": 7545,
+      "sha256": "048b0b463d71c9da6ccaacaf1bd7596fa43fe3267e6ba29ca53c986ce18443aa"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/debug_configs.py",
+      "bytes": 3807,
+      "sha256": "f98f50046270c89adec6c397b4da5b5e7b354408986066c888ce83ac9a886ac8"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/download_helper.py",
+      "bytes": 4447,
+      "sha256": "ce31135d582e3f705f0cbf64ee73333ad68ca689742f88f5baf1cd17b9b40aac"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/environment.py",
+      "bytes": 35991,
+      "sha256": "c755dade67f8b1641616b819ef1e95d2e955fe26cdca80f6e4d79349d51b6ac0"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/input_validators.py",
+      "bytes": 6843,
+      "sha256": "0fb5eec8e2d4370fbbc32f4eb3969cade6c5ff87c919902ea20bbe6a700e6faf"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/kv_cache_calculator.py",
+      "bytes": 6800,
+      "sha256": "589fe52991f78c9e5f4d8e144ba0c6b86440b8fb4dc0046222be842c4148d733"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/model_discovery.py",
+      "bytes": 8537,
+      "sha256": "5a048a9313e0d0fccf5bf9f204b239dbcb96f09afa7728b24b934e64f376f815"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/model_registry.py",
+      "bytes": 17804,
+      "sha256": "fb4e96df63faf5cc287952af3fb680c883f5f519e2b80aa256a2f7384793af97"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/model_scanner.py",
+      "bytes": 24607,
+      "sha256": "8dc31ee7b77374f89c3d2e6be00c54e5430ea146158bcdb20fb29c1737c11ee1"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/model_table_builder.py",
+      "bytes": 8691,
+      "sha256": "fe5d6a61d67f4ae27a855ef0d4a91edd17cabc11b50004ce4d5781efd6e80113"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/model_verifier.py",
+      "bytes": 35092,
+      "sha256": "efd1e7c303a064042988331c224a6080869ef9ea4a9710435f4949d14a80c3dc"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/port_checker.py",
+      "bytes": 1451,
+      "sha256": "99b1ca7bd05e040e8a0f20b94196261c9fd7960a7dc3b90a118bcd98f9f57b59"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/quant_interactive.py",
+      "bytes": 12919,
+      "sha256": "abaa53d655a2ed9888cc76be5448df6dfedc832a98c60ff0608db8ea394463e3"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/repo_detector.py",
+      "bytes": 10439,
+      "sha256": "b6a82745ca13aa6502185efb865a8fc6a81636b60b1176951b2ccacfd9335fb0"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/run_configs.py",
+      "bytes": 3352,
+      "sha256": "18bc5b5c0fa092c53a392e8c59d8f89b1dd5a6b93880631ad84ffd9e60eef5a2"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/run_interactive.py",
+      "bytes": 38856,
+      "sha256": "59664cbb29bae0ce6315a7f5050bd43abf181f88cedd6f62aeb1d471a425c3d9"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/sglang_checker.py",
+      "bytes": 13937,
+      "sha256": "47df2704db47ec1538e6a5ee7333a63ce02830e9066044cf2e73fc91579d8e22"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/tuna_engine.py",
+      "bytes": 13418,
+      "sha256": "5f238e8fa6bbf780391f12093100d394517511661368b6aed47ee109952bb61c"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/cli/utils/user_model_registry.py",
+      "bytes": 9237,
+      "sha256": "85fb0f1ae995b8d286f18eb43b8a75e9114fb6df734e6bfb63358e181eba1e71"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/device_stream.py",
+      "bytes": 1732,
+      "sha256": "829f5d864b3f6afd7d7e9f4ac4276ab93c4195f0ca8657166a7c6864601dd991"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts.py",
+      "bytes": 17302,
+      "sha256": "e75740b3ad53b85eeb4d9db97b918aebc4d2f3e86162d7e5dc153f472a23752b"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts_base.py",
+      "bytes": 51923,
+      "sha256": "d208f1d71afc1a8aed2554939a7c53358294b2ae49d4b1af5791de6ad93186c3"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+      "bytes": 1915720,
+      "sha256": "0f3aac9009931b18853c9b8fd6f6bba8b02d6ea396e79b2029bf9ce092049895"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/__init__.py",
+      "bytes": 6347,
+      "sha256": "c1ea55a6cd0a6e92557540a7268880d2718e7776f71901f3491cf1ae7fe21b94"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/amx.py",
+      "bytes": 40486,
+      "sha256": "c6af44b04ba6afdf6aa74bfc0e2e3723b07f219b6a363c38b1a49d4c9925f119"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/arch.py",
+      "bytes": 12377,
+      "sha256": "623d0741150db0bfe073dc41b83cd3e3a18bf977dfd6507eb7f6ff46c1a66858"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/artifacts.py",
+      "bytes": 89805,
+      "sha256": "c22391ec4db3cdeae16101a12a89ff6d26b0b5f665b9cee18f2b0ac1f228b649"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/autograd.py",
+      "bytes": 23750,
+      "sha256": "4f3efa1df362ed77338ead4be3a8666e62ef1dbba35ad4350685d5a0e0bfe9de"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/backend.py",
+      "bytes": 11463,
+      "sha256": "bf1fc048f97500e2a9bed792de1f3ec02a681551b082b9249f25f63d044f012c"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/base.py",
+      "bytes": 43484,
+      "sha256": "bd5224b8e15d2d78077be81bfaf9a16297ccd61e5d90b13b340da6240dc599ae"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/checkpoint.py",
+      "bytes": 17939,
+      "sha256": "e36262b37f9dc59125498c380ce304b524e69ec7b9994b6585d5f41fc2707b4e"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/config.py",
+      "bytes": 27976,
+      "sha256": "0a0c0436af68476bf26ae9dd7fd253832226a74041bb8d0cf69c16e4e6458cf7"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/conv3d_compat.py",
+      "bytes": 4626,
+      "sha256": "09f58b13d38f9bc95d96ebee2c2830803f2e5e748fe5ae73780d2cdac827f883"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/dist_utils.py",
+      "bytes": 11661,
+      "sha256": "56c944297e6f7690d7e4f9abbfd6bd5bae1c4d60417ec8438f9a5d1076c35041"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/ephemeral.py",
+      "bytes": 21629,
+      "sha256": "191b324c01a28d083ed824dc84541c2fca9e3db8ba4e0e2ba8cd3cb03947847b"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/layer.py",
+      "bytes": 45487,
+      "sha256": "58553c5e07146204b319c9deaecf15a1bb37c4a8761741525799f2616122766f"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/lora.py",
+      "bytes": 49581,
+      "sha256": "c0e7e01dbc079acc197645dc1b8e006768e3e2fb7176e3ad612e979c6672adf6"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/profiler.py",
+      "bytes": 5985,
+      "sha256": "a5da1d8854c775e1ddacdfc1a7641cb1c247d3e6fbcc010df0bec040ac4a77e5"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/weight_manifest.py",
+      "bytes": 17752,
+      "sha256": "9544bd4b9705f132c0a7a5e3300f238e5733e299738dca744bf64177d35c039f"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/weights.py",
+      "bytes": 40356,
+      "sha256": "dd5a559a3abe6f51c9e4465d2ebff000fe0765ee17aa739bebd6d0f78ac6e848"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/sft/wrapper.py",
+      "bytes": 62035,
+      "sha256": "9eaaaf59c54a9d6c545c281b5c700941665783914e0b2508c304121e047f3042"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/__init__.py",
+      "bytes": 420,
+      "sha256": "1882f9b8a49b200b33544d7ad93a6098023a92833c19b398a4f44a4e80054310"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/amx.py",
+      "bytes": 48973,
+      "sha256": "c3cadcad68c8244810f488ea9fa1285bb856d5f1957aa9c17c8b8c8ed28c182c"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/llamafile.py",
+      "bytes": 12701,
+      "sha256": "e480074dc2c724084c726022d28601cb9e14aec55e18b487d29958706b40a7d8"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py",
+      "bytes": 64139,
+      "sha256": "fb65e04d751c833b43deb7b05d26e60f412da06d22d3705aa9c0711c811cc483"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/moe_kernel.py",
+      "bytes": 11653,
+      "sha256": "824181b2fea11962ec6dc309352064e5cc783cb47e0c05aea2601b00989dbfd9"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/INSTALLER",
+      "bytes": 4,
+      "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/METADATA",
+      "bytes": 31666,
+      "sha256": "2ffbf213ddd2118bdf4e833741ba0f58c6e55675fe7501c102416353fc07846c"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/RECORD",
+      "bytes": 10970,
+      "sha256": "7537ad5ae5d23e881348e25cafc7af4258aeff1b2d16f4284e8778a020942915"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/REQUESTED",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/WHEEL",
+      "bytes": 105,
+      "sha256": "b45e3061e1b8ed560b2a5b1e5af6096710f529ed42e6088326a576a953eb364b"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/direct_url.json",
+      "bytes": 61,
+      "sha256": "49b114bd017747f6f97b5e18466fc0fe8438f75eedcd1360b3f88421a885ddc5"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/entry_points.txt",
+      "bytes": 47,
+      "sha256": "1258def05682196032587f75561d66bdc30d419056fe3c1368f1960e3f947167"
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel-0.7.0.post4.dist-info/top_level.txt",
+      "bytes": 10,
+      "sha256": "b55ce7dab4f1d100445072c834c310bc5865855d42b0cde8d5a746c7f5e93933"
+    }
+  ],
+  "scope": "INSTALLED_KT_PYTHON_CPU_EXTENSION_AND_SGLANG_INTEGRATION_OVERLAYS"
+}
