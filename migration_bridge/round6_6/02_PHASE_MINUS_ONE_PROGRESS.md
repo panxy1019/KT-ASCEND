@@ -21,3 +21,16 @@ After three passing decode observer-parity cases, qlen11 entered tail-safe seque
 Recovery v2: append rows within the harness's newly created exclusive per-forward directory; exact raw float count/shape is checked. Rebuild only test bindings, never replace the installed production extension. Retain v1 files and original failure; use separate v2 build/result directories.
 
 B0 remains IN_PROGRESS. QD6/HD6 remain NOT_RUN.
+
+## Native stages and layout controls
+
+Stage replay v2 using diagnostic build v3:512/512 production-output parity, all stages finite. Maximum production-vs-FP32 relL2 gate0.0017732126, up0.0017981203, mul0.0040710656, down0.0044835914. Maximum production-vs-GMM relL2 gate0.0004198827, up0.0002579507, mul0.0005302370, down0.0015245553.
+Oracle-layout comparison:512/512 one-slot vs64-slot NPU outputs exact. This closes the layout caveat for those frozen operands, not arbitrary untested shapes.
+
+Build v2 is not used as evidence: it was launched before corrected-header delivery completed. Build v3 was launched after explicit source SHA verification (`a3b2c34cf653c9194dfe3a7a10da12ad1181702648bb994add45c9f7fb084fe3`) and is the admissible diagnostic extension. Original production installation remains untouched.
+
+## Expanded real prefill
+
+Operator corpus SHA:`07d380b85dad0dfe6ac40b7501fc7836bae6116396e15976ceb6301db3aa96e7`.
+Real capture:3 requests,6 audited forwards; prompt lengths16/64/128. No QD6/HD6 output.
+Replay v1 failed safely at qlen64: harness capacity16 triggered `_check_qlen_fits_cpp_buffers`, before native output-buffer overflow. This is a harness capacity mistake, not production arithmetic failure. Recovery v2 allocates capacity from the maximum frozen qlen128; keeps the same selected experts, source operands, workers, and arithmetic. Retain v1 failure and rerun96 cases in fresh output roots.

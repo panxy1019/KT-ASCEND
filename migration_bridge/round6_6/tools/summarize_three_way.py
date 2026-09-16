@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import statistics
+import math
 
 
 def validate(d):
@@ -14,6 +15,9 @@ def validate(d):
     if not all(r['deterministic'] and r['finite'] and r['local_safety_pass'] for r in rows):
         raise ValueError('LOCAL_SAFETY')
     for r in rows:
+        for name in ['production_vs_npu','production_vs_canonical_fp32']:
+            value=r['comparisons'][name]['relative_l2']
+            if not math.isfinite(value) or value<0 or value>.01:raise ValueError('METRIC_SAFETY_NOT_JUST_FLAG')
         if len(r['production_hashes'])!=10 or len(set(r['production_hashes']))!=1:raise ValueError('REPEAT_PROOF')
         if len(r['npu_hashes'])!=10 or len(set(r['npu_hashes']))!=1:raise ValueError('REPEAT_PROOF')
     def summary(values):return dict(min=min(values),median=statistics.median(values),max=max(values))

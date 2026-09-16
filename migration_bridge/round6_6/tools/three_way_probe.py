@@ -76,13 +76,14 @@ def main():
     fn=UnquantizedFusedMoEMethod.forward_npu
     try:
         for layer in [1,9,17,26]:
+            capacity=max(16,max(len(load(layer,'cpu','input_hidden_after_sync',c)) for c in calls))
             mask=torch.tensor([e%2==0 for e in range(64)],dtype=torch.bool)
             LlamafileMoEWrapper._gguf_loader_instance=None
             LlamafileMoEWrapper._gguf_loader_path=None
             cpu=KTMoEWrapper(layer_idx=layer,num_experts=64,num_experts_per_tok=6,
                 hidden_size=2048,moe_intermediate_size=1408,gpu_experts_mask=mask,
                 cpuinfer_threads=32,threadpool_count=1,weight_path=str(a.gguf),
-                chunked_prefill_size=16,max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=[0])
+                chunked_prefill_size=capacity,max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=[0])
             cpu.load_weights(torch.arange(64,dtype=torch.int32))
             for expert in experts:
                 w={}
@@ -120,6 +121,7 @@ def main():
                     stages={}
                     if a.stage_capture:
                         prior=baseline[layer,expert,call]
+                        if digest(x)!=prior['input_sha256']:raise ValueError('STAGE_BASELINE_OPERAND_DRIFT')
                         if digest(prod)!=prior['production_hashes'][0] or digest(refn)!=prior['npu_hashes'][0]:
                             raise ValueError('DIAGNOSTIC_BUILD_OUTPUT_DIFFERS_FROM_PRODUCTION')
                         import numpy as np
@@ -162,7 +164,7 @@ def main():
                         'boundary_reference_vs_npu':metrics(bf['down'],refn),
                         'final_only_cast_vs_npu':metrics(pure['down'].bfloat16().float(),refn),
                         'natural_weighted_production_vs_npu':metrics(prod*natural,refn*natural)}
-                    row=dict(layer=layer,expert=expert,call=call,qlen=len(x),input_sha256=digest(x),
+                    row=dict(layer=layer,expert=expert,call=call,qlen=len(x),buffer_capacity=capacity,input_sha256=digest(x),
                         weight_hashes={k:dict(bf16=digest(v),fp32=digest(v.float()),shape=list(v.shape)) for k,v in w.items()},
                         naturally_routed_rows=(natural_ids==expert).any(1).tolist(),
                         natural_route_weight=natural.tolist(),comparisons=comparisons,
