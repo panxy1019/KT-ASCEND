@@ -50,17 +50,25 @@ def main():
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--stage-capture',action='store_true')
     p.add_argument('--baseline',type=Path)
+    p.add_argument('--calls',default='2,33,55,1')
+    p.add_argument('--prefill-only',action='store_true')
+    p.add_argument('--experts',default=','.join(map(str,range(1,64,2))))
     a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
+    calls=[int(c) for c in a.calls.split(',')]
+    experts=[int(e) for e in a.experts.split(',')]
+    if len(set(experts))!=len(experts) or not experts or any(e not in range(1,64,2) for e in experts):
+        raise ValueError('CPU_EXPERT_SELECTION')
+    if len(set(calls))!=len(calls) or not calls:raise ValueError('CALL_SELECTION')
     index=json.loads((a.model/'model.safetensors.index.json').read_text())['weight_map']
     baseline={}
     if a.baseline:
         baseline={(r['layer'],r['expert'],r['call']):r for r in json.loads(a.baseline.read_text())['rows']}
-    if a.stage_capture and len(baseline)!=512:raise ValueError('STAGE_CAPTURE_REQUIRES_FROZEN_512_ROW_BASELINE')
+    if a.stage_capture and len(baseline)!=4*len(experts)*len(calls):raise ValueError('STAGE_CAPTURE_REQUIRES_COMPLETE_BASELINE')
     report=dict(status='RUNNING',scope='PHASE_MINUS_ONE_DIAGNOSTIC',rows=[],
         production_intermediates='NATIVE_BUFFERS' if a.stage_capture else 'NOT_CAPTURED_NOT_EMULATED',
-        decode_calls=[2,33,55],prefill_calls=[1],model_qualification_allowed=False)
+        calls=calls,experts=experts,prefill_only=a.prefill_only,model_qualification_allowed=False)
     def load(layer,source,stage,call):
         path=a.trace/f'{source}_layer{layer:02d}_{stage}_call{call:04d}.pt'
         return torch.load(path,map_location='cpu',weights_only=False)['tensor'].contiguous()
@@ -76,7 +84,7 @@ def main():
                 cpuinfer_threads=32,threadpool_count=1,weight_path=str(a.gguf),
                 chunked_prefill_size=16,max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=[0])
             cpu.load_weights(torch.arange(64,dtype=torch.int32))
-            for expert in range(1,64,2):
+            for expert in experts:
                 w={}
                 for proj in ['gate','up','down']:
                     key=f'model.layers.{layer}.mlp.experts.{expert}.{proj}_proj.weight'
@@ -85,12 +93,14 @@ def main():
                     if w[proj].dtype!=torch.bfloat16:raise ValueError('WEIGHT_DTYPE')
                 npu=NS(w13_weight=npu_format_cast(torch.cat([w['gate'],w['up']])[None].to('npu').transpose(1,2)),
                     w2_weight=npu_format_cast(w['down'][None].to('npu').transpose(1,2)),top_k=6)
-                for call in [2,33,55,1]:
+                for call in calls:
                     x=load(layer,'cpu','input_hidden_after_sync',call)
                     natural_ids=load(layer,'model','router_topk_ids',call)
                     natural_weights=load(layer,'model','router_weights',call).float()
                     if x.dtype!=torch.bfloat16 or x.shape[1]!=2048:raise ValueError('INPUT_CONTRACT')
-                    if call!=1 and len(x)!=1:raise ValueError('DECODE_QLEN')
+                    if a.prefill_only:
+                        if len(x)<=1:raise ValueError('PREFILL_QLEN')
+                    elif call!=1 and len(x)!=1:raise ValueError('DECODE_QLEN')
                     ids=torch.full((len(x),6),-1,dtype=torch.int64);ids[:,0]=expert
                     unit=torch.zeros((len(x),6),dtype=torch.float32);unit[:,0]=1
                     physical=ids.clone();physical[:,0]=0

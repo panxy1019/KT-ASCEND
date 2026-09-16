@@ -25,6 +25,7 @@ Layers: 1,9,17,26. CPU logical IDs: every odd ID in [0,63].
 Decode calls: 2,33,55, individually executed with qlen=1 (not a qlen=3 batch).
 These are real captured layer operands. Every CPU expert receives these same three inputs for complete coverage, whether or not naturally routed. Natural route membership and weight are separately recorded; this is not 128-expert production-hit evidence.
 Prefill initial control: actual call1, all 11 original rows retained. Additional real prefill buckets remain required and cannot be claimed from this one bucket.
+Additional prefill protocol (before additional prefill outputs): new operator-only prompts with 16/64/128 input tokens, one generation token each, calls1/3/5 in capture. Sample eight fixed CPU experts per layer: {1,9,17,25,33,41,49,57}; four layers give32 instances ×3 buckets =96 cases. This uniform sample is chosen without observing these operands' numerical outputs. Keep all original rows per prefill, never assemble synthetic prefill from decode rows.
 Weight source: frozen model BF16 weights exact-expanded to FP32; installed production loads frozen F32 GGUF. Preserve prior full weight-identity proof and record fresh per-projection hashes.
 Repetitions: 10 per production expert/input; nonfinite or nondeterminism fails immediately.
 B0: any production-vs-pure-canonical CPU relative L2 >0.01, or unexplained projection anomaly, blocks model qualification pending investigation. Also retain production-vs-GMM 0.01 safety. Ratios are descriptive, not fitted thresholds.
