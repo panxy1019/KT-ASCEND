@@ -32,6 +32,8 @@ def main():
     def check_runtime():
         for item in json.loads(runtime.read_text())['files']:
             if sha(Path(item['path']))!=item['sha256']:raise ValueError('ACTUAL_RUNTIME_DRIFT:'+item['path'])
+        for path,digest in approval['asset_sha256'].items():
+            if sha(Path(path))!=digest:raise ValueError('MODEL_TOKENIZER_ASSET_DRIFT:'+path)
     check_runtime()
     sys.path.insert(0,str(a.parser_dir))
     from quality_answers_v2 import score

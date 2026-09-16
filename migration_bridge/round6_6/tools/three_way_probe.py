@@ -52,8 +52,10 @@ def main():
     p.add_argument('--baseline',type=Path)
     p.add_argument('--calls',default='2,33,55,1')
     p.add_argument('--prefill-only',action='store_true')
+    p.add_argument('--natural-only',action='store_true',help='Post-study diagnostic: only actually routed expert/input pairs')
     p.add_argument('--experts',default=','.join(map(str,range(1,64,2))))
     a=p.parse_args()
+    if a.natural_only and a.stage_capture:raise ValueError('NATURAL_ONLY_STAGE_CAPTURE_NOT_SUPPORTED')
     a.output.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
     calls=[int(c) for c in a.calls.split(',')]
@@ -66,9 +68,9 @@ def main():
     if a.baseline:
         baseline={(r['layer'],r['expert'],r['call']):r for r in json.loads(a.baseline.read_text())['rows']}
     if a.stage_capture and len(baseline)!=4*len(experts)*len(calls):raise ValueError('STAGE_CAPTURE_REQUIRES_COMPLETE_BASELINE')
-    report=dict(status='RUNNING',scope='PHASE_MINUS_ONE_DIAGNOSTIC',rows=[],
+    report=dict(status='RUNNING',scope='HELDOUT_OUTLIER_OPERATOR_REVIEW' if a.natural_only else 'PHASE_MINUS_ONE_DIAGNOSTIC',rows=[],
         production_intermediates='NATIVE_BUFFERS' if a.stage_capture else 'NOT_CAPTURED_NOT_EMULATED',
-        calls=calls,experts=experts,prefill_only=a.prefill_only,model_qualification_allowed=False)
+        calls=calls,experts=experts,prefill_only=a.prefill_only,natural_only=a.natural_only,model_qualification_allowed=False)
     def load(layer,source,stage,call):
         path=a.trace/f'{source}_layer{layer:02d}_{stage}_call{call:04d}.pt'
         return torch.load(path,map_location='cpu',weights_only=False)['tensor'].contiguous()
@@ -86,6 +88,8 @@ def main():
                 chunked_prefill_size=capacity,max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=[0])
             cpu.load_weights(torch.arange(64,dtype=torch.int32))
             for expert in experts:
+                if a.natural_only and not any(bool((load(layer,'model','router_topk_ids',c)==expert).any()) for c in calls):
+                    continue
                 w={}
                 for proj in ['gate','up','down']:
                     key=f'model.layers.{layer}.mlp.experts.{expert}.{proj}_proj.weight'
@@ -98,6 +102,7 @@ def main():
                     x=load(layer,'cpu','input_hidden_after_sync',call)
                     natural_ids=load(layer,'model','router_topk_ids',call)
                     natural_weights=load(layer,'model','router_weights',call).float()
+                    if a.natural_only and not bool((natural_ids==expert).any()):continue
                     if x.dtype!=torch.bfloat16 or x.shape[1]!=2048:raise ValueError('INPUT_CONTRACT')
                     if a.prefill_only:
                         if len(x)<=1:raise ValueError('PREFILL_QLEN')
@@ -196,7 +201,13 @@ def main():
                 del npu
             del cpu
             torch.npu.empty_cache()
-        report['status']='OUTPUT_SAFETY_SCREEN_PASS_STAGE_AND_BUCKET_COVERAGE_PENDING'
+        if a.natural_only:
+            expected=sum(bool((load(layer,'model','router_topk_ids',call)==expert).any())
+                         for layer in [1,9,17,26] for call in calls for expert in experts)
+            if len(report['rows'])!=expected or not expected:raise ValueError('NATURAL_OPERATOR_COVERAGE')
+            report['status']='NATURALLY_ROUTED_OUTLIER_OPERATOR_REVIEW_PASS'
+        else:
+            report['status']='OUTPUT_SAFETY_SCREEN_PASS_STAGE_AND_BUCKET_COVERAGE_PENDING'
     except BaseException as exc:
         report.update(status='BLOCKED',error=repr(exc));raise
     finally:
