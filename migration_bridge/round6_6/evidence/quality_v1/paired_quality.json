@@ -1,0 +1,59 @@
+{
+  "status": "PAIRED_SCREEN_FAILED",
+  "benchmarks": [
+    {
+      "benchmark": "gsm8k",
+      "n": 32,
+      "correct_npu": 3,
+      "correct_hybrid": 2,
+      "invalid_npu": 0,
+      "invalid_hybrid": 0,
+      "truncated_npu": 18,
+      "truncated_hybrid": 17,
+      "gains": 0,
+      "losses": 1,
+      "exact_marginal_interval": {
+        "delta": -0.03125,
+        "lower": -0.18343510046636374,
+        "upper": 0.1275829901453828,
+        "one_sided_confidence": 0.975,
+        "method": "paired_discordance_exact_marginals_bonferroni"
+      },
+      "bootstrap_percentile95": [
+        -0.09375,
+        0.0
+      ],
+      "bootstrap_seed": 6606,
+      "bootstrap_replicates": 20000,
+      "observed_screen_pass": false
+    },
+    {
+      "benchmark": "cmmlu",
+      "n": 256,
+      "correct_npu": 145,
+      "correct_hybrid": 142,
+      "invalid_npu": 8,
+      "invalid_hybrid": 7,
+      "truncated_npu": 0,
+      "truncated_hybrid": 0,
+      "gains": 2,
+      "losses": 5,
+      "exact_marginal_interval": {
+        "delta": -0.01171875,
+        "lower": -0.04845826110693162,
+        "upper": 0.026035462424837626,
+        "one_sided_confidence": 0.975,
+        "method": "paired_discordance_exact_marginals_bonferroni"
+      },
+      "bootstrap_percentile95": [
+        -0.03125,
+        0.0078125
+      ],
+      "bootstrap_seed": 6606,
+      "bootstrap_replicates": 20000,
+      "observed_screen_pass": false
+    }
+  ],
+  "population_noninferiority_claim": false,
+  "caveat": "Subset collapse, reference floor and truncation require explicit ADR review; bootstrap zero width is not zero population uncertainty"
+}
