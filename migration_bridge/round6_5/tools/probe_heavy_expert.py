@@ -34,6 +34,8 @@ def main() -> None:
     parser.add_argument("--cpu-repeats", default=1, type=int)
     parser.add_argument("--cpuinfer-threads", default=16, type=int)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--hidden-file", type=Path,
+                        help="Existing stagewise real hidden tensor; use first rows without selection")
     args = parser.parse_args()
     if args.num_tokens <= 0:
         raise ValueError("--num-tokens must be positive")
@@ -110,6 +112,16 @@ def main() -> None:
 
     torch.manual_seed(20260827 + args.layer * 100 + args.expert)
     hidden_cpu = torch.randn(args.num_tokens, hidden_size, dtype=torch.bfloat16)
+    captured=None
+    if args.hidden_file:
+        payload=torch.load(args.hidden_file,map_location='cpu',weights_only=False)
+        if payload['layer']!=args.layer or payload['stage']!='input_hidden_after_sync':
+            raise ValueError('CAPTURED_HIDDEN_IDENTITY')
+        captured=payload['tensor']
+        if captured.ndim!=2 or captured.shape[1]!=hidden_size or captured.dtype!=torch.bfloat16:
+            raise ValueError('CAPTURED_HIDDEN_SHAPE_DTYPE')
+        if len(captured)<max(args.num_tokens,32):raise ValueError('CAPTURED_HIDDEN_TOO_SHORT')
+        hidden_cpu=captured[:args.num_tokens].clone().contiguous()
     expert_ids = torch.full((args.num_tokens, top_k), -1, dtype=torch.int64)
     expert_ids[:, 0] = args.expert
     routing_weights = torch.zeros((args.num_tokens, top_k), dtype=torch.float32)
@@ -132,6 +144,11 @@ def main() -> None:
     nohit=wrapper.forward(hidden_cpu,nohit_ids,routing_weights).clone()
     if not torch.equal(nohit,torch.zeros_like(nohit)):
         raise ValueError('CPU_NOT_HIT_CONTAMINATION')
+    if captured is not None:
+        for hidden_row in captured[:32]:
+            zero=wrapper.forward(hidden_row[None].contiguous(),nohit_ids[:1],routing_weights[:1]).clone()
+            if not torch.equal(zero,torch.zeros_like(zero)):
+                raise ValueError('CAPTURED_CONTROL_CPU_NOT_HIT_CONTAMINATION')
 
     hidden_npu = hidden_cpu.to("npu")
     finish_stage("copy_hidden_to_npu")
@@ -187,7 +204,10 @@ def main() -> None:
         "cpu_owned_count": len(row['cpu_ids']),
         "npu_owned_count": len(row['npu_ids']),
         "cpu_not_hit_control_exact_zero": True,
-        "input_scope": "DETERMINISTIC_SYNTHETIC_HIDDEN_REAL_WEIGHTS",
+        "input_scope": "CAPTURED_REAL_HIDDEN_REAL_WEIGHTS" if captured is not None else "DETERMINISTIC_SYNTHETIC_HIDDEN_REAL_WEIGHTS",
+        "hidden_file_sha256": hashlib.sha256(args.hidden_file.read_bytes()).hexdigest() if args.hidden_file else None,
+        "controlled_real_nohit_rows": 32 if captured is not None else 0,
+        "hidden_tensor_sha256": hashlib.sha256(hidden_cpu.view(torch.uint8).numpy().tobytes()).hexdigest(),
         "layer": args.layer,
         "logical_expert_id": args.expert,
         "physical_expert_id": args.expert,
