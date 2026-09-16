@@ -16,6 +16,8 @@ def main():
     assert sha(a.approval)==a.approval_sha256
     approval=json.loads(a.approval.read_text())
     assert approval['heldout_system_review']=='PASS' and approval['quality_execution_allowed'] is True
+    for name,digest in approval['execution_tool_sha256'].items():
+        assert sha(tools/name)==digest,'EXECUTION_TOOL_DRIFT:'+name
     assert approval['candidate_sha256']==sha(base/'r65-r66-candidate-v1.json')
     hd=base/'r65-r66-heldout-sequence-v1'
     assert json.loads((hd/'progress.json').read_text())['status']=='HD6_ONE_SHOT_AUDITS_COMPLETE_AWAIT_REVIEW'
