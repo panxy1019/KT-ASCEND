@@ -4,12 +4,13 @@ import json
 from pathlib import Path
 
 
-def metrics(n,h,baseline_id):
+def metrics(n,h,baseline_id,hybrid_id=None):
     import torch
     if n.shape!=h.shape or n.ndim!=1 or not torch.isfinite(n).all() or not torch.isfinite(h).all():
         raise ValueError('LOGIT_SHAPE_OR_FINITE')
-    a=int(baseline_id);b=int(h.argmax())
+    a=int(baseline_id);b=int(h.argmax()) if hybrid_id is None else int(hybrid_id)
     if n[a]!=n.max():raise ValueError('BASELINE_NOT_MAX')
+    if not 0<=b<len(h) or h[b]!=h.max():raise ValueError('HYBRID_SERVING_TOKEN_NOT_MAX')
     # Include actual serving top1 in case tied top32 cutoff omits its ID.
     u=torch.unique(torch.cat((n.topk(32).indices,h.topk(32).indices,torch.tensor([a,b]))))
     relevant=u[u!=a]
@@ -38,6 +39,9 @@ def main():
     if n['status']!='CAPTURE_INTEGRITY_PASS' or h['status']!='CAPTURE_INTEGRITY_PASS':raise ValueError('CAPTURE_NOT_PASS')
     if n['inputs_sha256']!=h['inputs_sha256'] or n['forced'] or not h['forced']:raise ValueError('WRONG_COMPARISON')
     rows=[]
+    trace=[json.loads(x) for x in (a.hybrid/'forcing.jsonl').read_text().splitlines()]
+    natural={(r['rid'],r['step']):r['natural_token'] for r in trace}
+    if len(natural)!=len(trace) or len(trace)!=h['forward_count']:raise ValueError('NATURAL_TOKEN_TRACE_COVERAGE')
     if len(n['rows'])!=len(h['rows']):raise ValueError('REQUEST_COUNT')
     for nr,hr in zip(n['rows'],h['rows']):
         for k in ('rid','input_ids','baseline_output_ids'):
@@ -47,10 +51,11 @@ def main():
         hz=torch.load(a.hybrid/(rid+'.logits.pt'),weights_only=True).float()
         if nz.shape!=hz.shape or nz.shape!=(64,102400):raise ValueError('LOGIT_MATRIX')
         for i,token in enumerate(nr['baseline_output_ids']):
-            rows.append(dict(rid=rid,token_index=i,**metrics(nz[i],hz[i],token)))
+            rows.append(dict(rid=rid,token_index=i,**metrics(nz[i],hz[i],token,natural[(rid,i)])))
     bad=[r for r in rows if not r['pass_gate']]
     result=dict(status='STATIC_PAIRWISE_PASS' if not bad else 'STATIC_NUMERICAL_SCALE_BLOCKER',
-                B_pair=2.1875,K=32,positions=len(rows),rows=rows,first_failure=bad[0] if bad else None,
+                B_pair=2.1875,K=32,hybrid_top1_source='ACTUAL_SERVING_SAMPLER_BEFORE_FORCE',
+                positions=len(rows),rows=rows,first_failure=bad[0] if bad else None,
                 overflow_count=sum(r['overflow'] for r in rows),
                 max_pairwise=max(r['max_pairwise'] for r in rows),
                 stable=sum(r['stable'] for r in rows),stable_exact=sum(r['stable_exact'] is True for r in rows),

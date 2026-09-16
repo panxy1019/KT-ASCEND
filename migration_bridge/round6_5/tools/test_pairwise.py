@@ -37,5 +37,14 @@ class Pairwise(unittest.TestCase):
         n=self.vector();h=n.clone();h[80]=12
         self.assertGreater(metrics(n,h,0)['overflow'],0)
 
+    def test_actual_sampler_tie_choice(self):
+        n=self.vector();n[1]=9.5;h=n.clone();h[1]=h[0]
+        self.assertEqual(metrics(n,h,0,1)['hybrid_top1'],1)
+        self.assertTrue(metrics(n,h,0,1)['pass_gate'])
+
+    def test_sampler_must_match_exported_logits(self):
+        n=self.vector()
+        with self.assertRaisesRegex(ValueError,'SERVING_TOKEN_NOT_MAX'):metrics(n,n,0,2)
+
 
 if __name__=='__main__':unittest.main()
