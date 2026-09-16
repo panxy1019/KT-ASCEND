@@ -11,8 +11,11 @@ plateau, no zero-leak claim. See17/18documents. No complete accelerationREADYtag
 Tool-only PYTHONPATH fix deployed immutably r64-minimal-next-v3, A3 importPASS.
 ACTIVE /workspace/results/r64-descriptive-final-v2 (not oldv1), driver
 /workspace/results/r64-descriptive-final-v2-driver.log. First2requests65forwards
-each completed. DO NOT restart healthy run. Current launch runs capture ONLY;
-after all3modes integrityPASS run analyze_descriptive_holdout.py explicitly.
+each completed. DO NOT restart healthy run. A separate bounded CPU-only
+analyze_when_capture_complete.py now waits for all3modes integrityPASS then
+runs analyze_descriptive_holdout.py; output r64-descriptive-final-v2-analysis.log.
+Do not launch duplicate analysis. At06:06UTC OFF54/136requests complete.
+Local74unit testsPASS after status-independent quality-approval test correction.
 Originalqueuev2 STOPPED_FIRST_FAILURE remains true; not the live pointer.
 Remaining: descriptive completion+analysis, final ADR/contract/provenance/commit.
 RootSSH92973alive. Passive memorymonitors finished automatically. No heartbeat

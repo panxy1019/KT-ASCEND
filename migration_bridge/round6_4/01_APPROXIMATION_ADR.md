@@ -3,6 +3,10 @@
 日期：2026-09-15。
 Decision：APPROVED_EXECUTION_SCOPE；不是 QUALITY_APPROVED 或 RELEASE_READY。
 
+后续范围修订：用户批准的最小成本协议见14_MINIMUM_COST_QUALIFICATION.md，
+它替代下文历史的大样本统计门禁。实际小样本质量结果见15，性能结果见17。
+本ADR保留审批时原文，不应据其历史规模启动旧1319/2048矩阵。
+
 ## 决定及依据
 
 用户审批同目录完整 Round6.4 方案，并批准每个主 benchmark 2pp 绝对质量损失容忍。

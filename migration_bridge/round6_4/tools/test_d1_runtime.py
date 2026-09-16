@@ -13,8 +13,10 @@ class EntryTests(unittest.TestCase):
         self.corpus = checked(root.parent/'round6/corpora/s6.json')
 
     def test_runtime_does_not_require_quality_finished(self):
-        self.assertFalse(self.contract['quality']['primary_quality_execution_allowed'])
-        validate_entry(self.corpus, self.contract)
+        for allowed in (False, True):
+            with self.subTest(quality_execution_allowed=allowed):
+                self.contract['quality']['primary_quality_execution_allowed'] = allowed
+                validate_entry(self.corpus, self.contract)
 
     def test_old_candidate_not_relabelled(self):
         self.contract['version'] = 'round6.3-v2-candidate'
