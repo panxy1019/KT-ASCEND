@@ -2,6 +2,27 @@
 
 ## Current pointer — supersedes historical entries below
 
+RESUMED by user "检查结果，继续执行". QualityOFF/ON288each completed, both raw auditsPASS.
+GSM5/32vs5/32;CMMLU139/256vs139/256;QUALITY_SCREEN_PASS, see15_FAST_QUALITY_RESULTS.md.
+New queue /workspace/results/r64-minimal-completion-v2, tools /workspace/results/r64-minimal-next-v2;
+old v1 paused root untouched. Queue begins performance observer parity, then3ABBA,
+stabilityA/B, HD3/FD3. Do not rerun primary quality. All subsequent model roots previously absent.
+Read-only monitors resumed PID982475(performance),982476(stabilityA),982477(stabilityB),
+output *-memory-resumed.jsonl; use these full campaign samples, not earlier paused monitor files.
+Desktop heartbeat round6-3 remainsPAUSED; current user-driven execution is separate.
+
+USER PAUSE 2026-09-16 04:26 UTC: stop monitoring; let current quality finish;
+user will request continuation. OFF288/288 complete and raw execution auditPASS.
+ON lastchecked GSM18/32, CMMLU256still pending; leave healthy ON untouched.
+Quality shell still automatically writes summary after ON; DO NOT launch extra model.
+Queued run_minimal_remaining.py containerPID400586 was stopped while WAITING_QUALITY,
+before any downstream model work. Its old progress.json WAITING_QUALITY is stale;
+this pause note supersedes it. Host monitorPIDs801798/801799/801800/824177 stopped.
+No active monitoring/automatic downstream continuation expected after this pause.
+On resume: inspect existing ON/summary, audit/archive; manually resume remaining
+stages without recreating existing completion root or rerunning healthy/completed quality.
+Local OFF raw/audit and audit_fast_quality_execution.py currently uncommitted; preserve.
+
 2026-09-16 ACTIVE EXECUTION: r64-fast-quality-off-v1 -> r64-fast-quality-on-v1,
 each288requests. Frozen execution protocol SHA19df819323339c50ae495a5658e89f8cbef2dcb5d8881a00e9de9973ea148184.
 Deployment /workspace/results/r64-fast-v1 (DO NOT OVERWRITE). Driver logs beside roots.

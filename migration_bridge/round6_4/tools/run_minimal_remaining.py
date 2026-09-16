@@ -5,7 +5,7 @@ from pathlib import Path
 import subprocess
 import time
 
-ROOT=Path('/workspace/results/r64-minimal-completion-v1')
+ROOT=Path('/workspace/results/r64-minimal-completion-v2')
 TOOLS=Path(__file__).parent
 FIXTURES=TOOLS.parent/'fixtures'
 PY='/workspace/results/venv-r6/bin/python'
