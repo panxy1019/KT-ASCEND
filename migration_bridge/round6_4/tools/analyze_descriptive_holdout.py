@@ -10,7 +10,12 @@ def main():
     p.add_argument("--root", type=Path, required=True)
     args = p.parse_args()
     import torch
+    from tokenizers import Tokenizer
     torch.set_num_threads(4)
+    tokenizer_path=Path("/workspace/models/DeepSeek-V2-Lite-604d5664/tokenizer.json")
+    tokenizer_sha=hashlib.sha256(tokenizer_path.read_bytes()).hexdigest()
+    assert tokenizer_sha == "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+    tokenizer=Tokenizer.from_file(str(tokenizer_path))
     root = args.root
     progress = json.loads((root/"progress.json").read_text())
     assert progress["status"] == "DESCRIPTIVE_CAPTURE_COMPLETE_PENDING_ANALYSIS"
@@ -55,6 +60,22 @@ def main():
             item["first_free_divergence_pair"] = dict(off=off_row["baseline_output_ids"][first],
                 on=native_row["baseline_output_ids"][first], baseline_margin=float(baseline_margin[first]),
                 classification="APPROXIMATE_GRAPH_DIVERGENCE_DIAGNOSTIC")
+        if rid.startswith("fd3-"):
+            # The unchanged captured-ID protocol can use the old server loader.
+            # Render IDs with the frozen JSON, not corrupted legacy text output.
+            item["free_text"]={"off":tokenizer.decode(off_row["baseline_output_ids"]),
+                               "on":tokenizer.decode(native_row["baseline_output_ids"])}
+            item["text_decode_source"]="unchanged_tokenizer_json_not_legacy_server_text"
+            if rid == "fd3-structured-00":
+                item["whole_response_json_parse_diagnostic"]={}
+                for mode,text in item["free_text"].items():
+                    try:
+                        json.loads(text.strip())
+                        parsed=True
+                    except json.JSONDecodeError:
+                        parsed=False
+                    item["whole_response_json_parse_diagnostic"][mode]=parsed
+                item["json_parse_is_acceptance_gate"]=False
         rows.append(item)
         print(json.dumps(dict(rid=rid, first_free_divergence=first)), flush=True)
     # Independent reporting unit is prompt. Do not treat 64 correlated positions
@@ -68,6 +89,7 @@ def main():
                 torch.tensor([.5,.95,.99,1.],dtype=torch.float64)).tolist() for k in values})
     report = dict(status="DESCRIPTIVE_ANALYSIS_COMPLETE", numerical_acceptance_gate=False,
         quality_qualified=False, quantiles=[.5,.95,.99,1.], summaries=summaries, rows=rows,
+        text_decoder_sha256=tokenizer_sha,
         capture_progress_sha256=hashlib.sha256((root/"progress.json").read_bytes()).hexdigest())
     with (root/"descriptive-report.json").open("x") as out:
         json.dump(report,out,indent=2)
