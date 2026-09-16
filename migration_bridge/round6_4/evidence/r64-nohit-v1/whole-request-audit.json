@@ -1,0 +1,104 @@
+{
+  "status": "WHOLE_REQUEST_NOHIT_PASS",
+  "definition": "entire request including physical lookahead",
+  "forwards": [
+    {
+      "step": 0,
+      "target": true,
+      "layers": [
+        {
+          "profile": "OFF",
+          "layer": 7,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "OFF",
+          "layer": 8,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "ON",
+          "layer": 7,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "ON",
+          "layer": 8,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        }
+      ],
+      "files": [
+        {
+          "profile": "OFF",
+          "path": "/workspace/results/r63-r64-nohit-v1-D1_NODEFER-server/tensors/TP0_PP0_Rank0_pid329799/Pass00000.pt"
+        },
+        {
+          "profile": "ON",
+          "path": "/workspace/results/r63-r64-nohit-v1-D1-server/tensors/TP0_PP0_Rank0_pid331013/Pass00000.pt"
+        }
+      ],
+      "full_logits_byte_exact": true
+    },
+    {
+      "step": 1,
+      "target": false,
+      "layers": [
+        {
+          "profile": "OFF",
+          "layer": 7,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "OFF",
+          "layer": 8,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "ON",
+          "layer": 7,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        },
+        {
+          "profile": "ON",
+          "layer": 8,
+          "cpu_routes": 0,
+          "cpu_zero": true,
+          "merge_exact_after_visible_cast": true,
+          "finite": true
+        }
+      ],
+      "files": [
+        {
+          "profile": "OFF",
+          "path": "/workspace/results/r63-r64-nohit-v1-D1_NODEFER-server/tensors/TP0_PP0_Rank0_pid329799/Pass00001.pt"
+        },
+        {
+          "profile": "ON",
+          "path": "/workspace/results/r63-r64-nohit-v1-D1-server/tensors/TP0_PP0_Rank0_pid331013/Pass00001.pt"
+        }
+      ],
+      "full_logits_byte_exact": true
+    }
+  ]
+}

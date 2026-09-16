@@ -95,3 +95,32 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
   provenance with allfiles still matching, CANN env, NPU0. Prefer versioned deployment
   directory containing run_compact_controls.py and run_d1_runtime.py together.
 - No need to rerun successful100compact or19preflight or18CPU tests absent code changes.
+
+## Active continuation — 2026-09-16
+
+- Whole-request no-hit `r64-nohit-v1` PASS: immutable [1000], one target plus
+  lookahead, both L7/L8 no CPU route, partial zero, visible merge exact, full
+  logits byte-exact OFF/ON. Both capture/index final integrity PASS. Archived.
+- Real expert `r64-expert-safety-v1` PASS: all8 frozen experts × token shapes1/4,
+  10 repeats each, actual2048×1408 weights, maxrelativeL2=0.003913061993474726
+  <=.01, allfinite/exactrepeat. GuardEXIT_ZERO, no production change. Archived.
+- **ACTIVE D1 full runtime** `/workspace/results/r64-d1-runtime-v1`, driver log
+  `/workspace/results/r64-d1-runtime-v1-driver.log`. Deployed tools in
+  `/workspace/results/r64-runtime-tools-v1/`. 156 same-process requests then12
+  cleanrestart. ObserverOFF/productionoverlap, sameactualsource aspreflight.
+  Check healthy process/log before any new NPU work; do not duplicate/restart.
+- Quality source downloaded outside repo `/home/admin/Documents/ChatGPT/KT/r64-quality-sources`:
+  GSM8K740312add88f781978c0658806c59bc2815b9866, CMMLUefcc940752ea4a1ea94d2727f11f83858d64fc8e.
+  `haonan-li/cmmlu` redirects to `lmlmcat/cmmlu`, record rather than silentlyhide.
+  Draft `/home/admin/Documents/ChatGPT/KT/r64-quality-draft-v1`:1319GSM+2048CMMLU,
+  seed6404, inputmax223/334, requiredcontext735. StillNOTALLOWEDprimaryexecution:
+  pendingdev/parser/capacity/overlap audits. NoONtestoutputs observed.
+- Local analysis venv `/tmp/r64-quality-venv`: numpy2.5.3 scipy1.18.1
+  pyarrow25.0.1 tokenizers0.23.2. `hf` uses separateinstalledCLI1.28.0.
+- Paired interval implementation+5synthetictests prepared (allPASS), not final
+  protocolfreeze. Conservative exact marginal bounds on pairedgain/loss with
+  withinendpointBonferroni; bootstraponlysupplemental. Needs method assumptions,
+  prospectivepower, CMMLUstratification discussion documented beforeformalfreeze.
+- Still next: runtimecompletion, four engineeringoracle requests, actual1000
+  deferredforwards, batch2/4, HD3/FD3, quality/perf/stability/ADR. Do not call
+  Round6.4 complete at this checkpoint.
