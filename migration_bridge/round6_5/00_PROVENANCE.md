@@ -33,4 +33,27 @@ R64 compact determinism launcher is being validated while CPU-only export runs.
 Its timing and container memory therefore are NOT the controlled capacity or
 performance result. Official resource/performance sweep runs after export ends.
 
+## Environment failures and bounded repairs
+
+R64 v1 failed before weights because driver dmesg reported
+`uda_occupy_dev_by_ns: Conflict open udevid`. Old project container minimal torch
+probe saw1device, new container saw0. Confirmed old container had only sleep PID1
+(no model/queue), then stopped only that project container to release the device
+namespace. Data/image/files remain preserved; business containers untouched.
+New container then reported1device and NPU ones→CPU exactly[1,1,1,1].
+Reference: https://github.com/Ascend/RecSDK/blob/develop/docker/OVERVIEW.zh.md
+documents conflicting non-privileged NPU container mounts. This is not an
+authorization to enable shared-device driver mode or kill unrelated containers.
+
+R64 v2 loaded weights but failed CANN format conversion: `No module named tbe`.
+New launcher had replaced PYTHONPATH, discarding set_env.sh paths. Corrected
+launcher to prepend project paths and retain CANN PYTHONPATH, matching retained
+Round6 launcher semantics. R64 v3 uses repaired launcher. No production diff.
+
+All-layer GGUF size57579411648bytes; SHA
+20114dba7790a9b6be40a17ffb3881c516b81ea86b8f2fcfd3ea61d052e96fe2.
+4992/4992 projections verified exactly BF16-valued and recovered source BF16
+byte hashes. New-container tooling tests12/12PASS (local6pass/6torch-unavailable
+skips separately); these unit tests do not qualify any heavy runtime profile.
+
 Qualification: IN_PROGRESS. Round6.4 IMPLEMENTED_NO_SPEEDUP unchanged.
