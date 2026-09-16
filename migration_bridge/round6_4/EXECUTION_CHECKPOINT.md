@@ -2,6 +2,41 @@
 
 ## Current pointer — supersedes historical entries below
 
+2026-09-16 destination continuation on110.129.0.22 is authorized. Old host remains
+paused. Dedicated container kt-r64-910b-migration has CPU0–31/NPU0 only.
+Model9files/GGUF/placement identity verified. Missing910B operator package was
+installed inside container; device probe and new preflight19/19 PASS.
+First compact16 root r64-910b-compact16-v1 FAILED before any generation:
+CPUInfer constructor SIGILL. Copied build explicitly used
+armv8.2-a+fp16+dotprod+sve+bf16+i8mm; target lacks last3 features.
+Original binary/cache preserved at /workspace/results/migration-cpu-build-v1/original.
+New separate CMake build uses armv8.2-a+fp16+dotprod,16buildjobs,
+unsupportedfeaturesOFF; same production sources, no host installs.
+Build complete, CPUInfer constructorPASS, CPU regressionv2 18PASS/3historical
+deselections. v1collection missing legacy symlink preserved, restored fromsource.
+New binary0f3aac9009931b18853c9b8fd6f6bba8b02d6ea396e79b2029bf9ce092049895.
+QUALIFIED_BINARY.json explicitly binds old/new hashes and passing regression.
+ACTIVE compact16-v2 via r64-migration-tools-v5. Queue
+/workspace/results/r64-910b-continuation-v1 via tools-v6 waits for compact16PASS,
+then realexpert16cases -> compact32 -> full3mode descriptive32 -> analysis.
+Queue firstfailure stops; no downstream launch unless previous reportPASS.
+No duplicate models. Manifest env KT_R64_MIGRATION_BUILD_MANIFEST required;
+no rewriting historical reference hashes. Newhost fullqualification not yetPASS.
+32worker tooling exists but32worker runtime is NOT YET QUALIFIED.
+Remaining descriptive capture must be a complete new destination cohort.
+
+USER PAUSE 2026-09-16 06:33UTC: "先暂停测试吧，释放掉容器".
+Stop current project capture and analysis waiter, stop dedicated container;
+retain container/data, no automatic restart. Exact container ID
+b91b94ef502933c63247d03ae6150e3c72ce29061c4034d2c8b435b18b6d8a1f.
+OFF v2 complete:8840captures/8704targets/136lookahead, integrityPASS.
+ON forced lastchecked82/136complete; interrupted run NOT qualificationPASS.
+ON native NOT_RUN; descriptive analysis NOT_RUN. Any FAILED/CANCELLED at this
+time is user-requested interruption, not newly established model failure.
+ContainerPIDs427574(waiter),426167(capturedriver) explicitly SIGTERM.
+Do not resume partial captures by appending without a provenance-safe protocol.
+Completedquality/performance/stability remain valid; Round6.4 finalADR pending.
+
 2026-09-16 05:59 UTC resumed. Queuev2 stopped at descriptive importer before ANY
 generation (empty index): audit_deferred_transitions missing from legacy relocated
 helper path. Performance12/12 and stabilityA/B complete; archived under evidence/.

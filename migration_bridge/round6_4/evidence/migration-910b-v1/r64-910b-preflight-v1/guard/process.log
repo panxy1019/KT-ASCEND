@@ -1,0 +1,33 @@
+...................                                                      [100%]
+=============================== warnings summary ===============================
+usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+    setattr(self, word, getattr(machar, word).flat[0])
+
+usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+    return self._float_to_str(self.smallest_subnormal)
+
+usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+    setattr(self, word, getattr(machar, word).flat[0])
+
+usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89
+  /usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+    return self._float_to_str(self.smallest_subnormal)
+
+workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+    warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+
+workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47
+  /workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+    warnings.warn(f"Only CUDA support GGUF quantization currently.")
+
+kt-kernel/test/round5/test_ascend_framework_transfer.py::test_framework_d2h_h2d_roundtrip_is_exact[dtype0]
+  /workspace/kt-src/kt-kernel/test/round5/test_ascend_framework_transfer.py:57: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+    returned = torch.empty_like(device)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+---- generated xml file: /workspace/results/r64-910b-preflight-v1/junit.xml ----
+19 passed, 7 warnings in 19.69s

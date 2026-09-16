@@ -1,0 +1,207 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-16 07:33:07 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 07:33:07 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 07:33:07 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 07:33:07 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+KTransformers EP is enabled. --disable-shared-experts-fusion is automatically set to prevent shared experts from being offloaded to CPU.
+[2026-09-16 07:33:10] server_args=ServerArgs(model_path='/workspace/models/DeepSeek-V2-Lite-604d5664', tokenizer_path='/workspace/results/r64-tokenizer-compat-v1', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=1024, is_embedding=False, enable_multimodal=None, revision=None, model_impl='auto', host='127.0.0.1', port=31000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.55, max_running_requests=1, max_queued_requests=None, max_total_tokens=4096, chunked_prefill_size=1024, enable_dynamic_chunking=False, max_prefill_tokens=1024, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=0, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/workspace/models/DeepSeek-V2-Lite-604d5664', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm='static', init_expert_location='/workspace/results/placements/placement_d1.pt', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode='stat', expert_distribution_recorder_buffer_size=-1, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf', kt_method='LLAMAFILE', kt_cpuinfer=16, kt_threadpool_count=1, kt_numa_nodes=[0], kt_num_gpu_experts=None, kt_gpu_experts_ratio=0.9951923076923077, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=None, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=False, kt_expert_placement_strategy='frequency', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=2048, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=True, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=True, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-09-16 07:33:10] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 07:33:11] Using default HuggingFace chat template with detected content format: string
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-16 07:33:24 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 07:33:24 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 07:33:24 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 07:33:24 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-16 07:33:24 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 07:33:24 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 07:33:24 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 07:33:24 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[2026-09-16 07:33:26] get env SGLANG_APPLY_CONFIG_BACKUP = none
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 07:33:26] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 07:33:27] Mamba selective_state_update backend initialized: triton
+[2026-09-16 07:33:27] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-16 07:33:28] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-16 07:33:28] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-16 07:33:28] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-16 07:33:43] Init torch distributed begin.
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-16 07:33:45] Init torch distributed ends. elapsed=1.63 s, mem usage=0.01 GB
+[2026-09-16 07:33:45] Detected KT mode: kt_weight_path=/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf. Using trivial mapping for CPU expert weight loading.
+[2026-09-16 07:33:45] init_expert_location: Using trivial mapping for KT frequency strategy. logical_count will be read directly by KT layers. CPU weight loading will use trivial mapping (physical_id == logical_id).
+[2026-09-16 07:33:45] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-16 07:33:45] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-16 07:33:46] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-16 07:33:46] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-16 07:33:46] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-16 07:33:46] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-16 07:33:46] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-16 07:33:47] Load weight begin. avail mem=60.54 GB
+[2026-09-16 07:33:47] Using kt_gpu_experts_ratio=0.9951923076923077, total GPU experts: 1656 (= 1664 total experts × 0.9951923076923077)
+[2026-09-16 07:33:47] Loading activation frequency from /workspace/results/placements/placement_d1.pt
+[2026-09-16 07:33:47] Using frequency-based strategy with activation frequency data
+[2026-09-16 07:33:47] KT GPU experts: layer 1 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 2 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 3 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 4 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 5 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 6 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 7 (MoE) has 60 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 8 (MoE) has 60 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 9 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 10 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 11 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 12 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 13 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 14 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 15 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 16 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 17 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 18 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 19 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 20 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 21 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 22 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 23 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 24 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 25 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] KT GPU experts: layer 26 (MoE) has 64 GPU experts
+[2026-09-16 07:33:47] Generated KT GPU experts masks using 'frequency' strategy: 26 MoE layers (out of 27 total layers) x 64 experts, total GPU experts in MoE layers = 1656
+[2026-09-16 07:33:47] Skipping KT wrapper for all-accelerator layer 1
+[2026-09-16 07:33:47] Skipping KT wrapper for all-accelerator layer 2
+[2026-09-16 07:33:47] Skipping KT wrapper for all-accelerator layer 3
+[2026-09-16 07:33:47] Skipping KT wrapper for all-accelerator layer 4
+[2026-09-16 07:33:48] Skipping KT wrapper for all-accelerator layer 5
+[2026-09-16 07:33:48] Skipping KT wrapper for all-accelerator layer 6
+[2026-09-16 07:33:48] [KT] Created shared staging buffer: 4.0 MiB (shape=torch.Size([1024, 2048]), dtype=torch.bfloat16)
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+Fatal Python error: Illegal instruction
+
+Current thread 0x0000e6c008609060 (most recent call first):
+  File "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts_base.py", line 471 in _get_cpu_infer
+  File "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts_base.py", line 591 in __init__
+  File "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/llamafile.py", line 141 in __init__
+  File "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts.py", line 392 in _create_inference_wrapper
+  File "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts.py", line 218 in __new__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/kt_ep_wrapper.py", line 5330 in create_weights
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/fused_moe_triton/layer.py", line 300 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py", line 514 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py", line 2911 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py", line 3207 in <lambda>
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/utils/common.py", line 650 in <genexpr>
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/utils/offloader.py", line 36 in wrap_modules
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/utils/common.py", line 648 in make_layers
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py", line 3205 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py", line 3488 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_loader/loader.py", line 277 in _initialize_model
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_loader/loader.py", line 671 in load_model
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py", line 1059 in load_model
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py", line 506 in initialize
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py", line 423 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/tp_worker.py", line 330 in _init_model_runner
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/tp_worker.py", line 247 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/scheduler.py", line 521 in init_tp_model_worker
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/scheduler.py", line 563 in init_model_worker
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/scheduler.py", line 367 in __init__
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/managers/scheduler.py", line 3211 in run_scheduler_process
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/process.py", line 108 in run
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/process.py", line 314 in _bootstrap
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/spawn.py", line 135 in _main
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/spawn.py", line 122 in spawn_main
+  File "<string>", line 1 in <module>
+
+Extension modules: numpy.core._multiarray_umath, numpy.core._multiarray_tests, numpy.linalg._umath_linalg, numpy.fft._pocketfft_internal, numpy.random._common, numpy.random.bit_generator, numpy.random._bounded_integers, numpy.random._mt19937, numpy.random.mtrand, numpy.random._philox, numpy.random._pcg64, numpy.random._sfc64, numpy.random._generator, pybase64._pybase64, charset_normalizer.md, charset_normalizer.cd, requests.packages.charset_normalizer.md, requests.packages.chardet.md, requests.packages.charset_normalizer.cd, requests.packages.chardet.cd, multidict._multidict, yarl._quoting_c, propcache._helpers_c, aiohttp._http_writer, aiohttp._http_parser, aiohttp._websocket.mask, aiohttp._websocket.reader_c, frozenlist._frozenlist, torch._C, torch._C._dynamo.autograd_compiler, torch._C._dynamo.eval_frame, torch._C._dynamo.guards, torch._C._dynamo.utils, torch._C._fft, torch._C._linalg, torch._C._nested, torch._C._nn, torch._C._sparse, torch._C._special, torch_npu._C, markupsafe._speedups, yaml._yaml, regex._regex, PIL._imaging, psutil._psutil_linux, zmq.backend.cython._zmq, PIL._imagingft, av._core, av.logging, av.buffer, av.audio.format, av.error, av.dictionary, av.container.pyio, av.format, av.index, av.utils, av.stream, av.container.streams, av.sidedata.encparams, av.sidedata.motionvectors, av.sidedata.sidedata, av.opaque, av.rational, av.packet, av.container.input, av.bitstream, av.container.output, av.container.core, av.codec.context, av.video.format, av.video.reformatter, av.plane, av.video.plane, av.video.frame, av.video.stream, av.codec.hwaccel, av.codec.codec, av.frame, av.audio.layout, av.audio.plane, av.audio.frame, av.audio.stream, av.filter.link, av.filter.context, av.filter.graph, av.filter.filter, av.filter.loudnorm, av.audio.resampler, av.audio.codeccontext, av.audio.fifo, av.device, av.video.codeccontext, scipy._lib._ccallback_c, scipy.linalg._fblas, scipy.linalg._flapack, scipy.linalg.cython_lapack, scipy.linalg._cythonized_array_utils, scipy.linalg._solve_toeplitz, scipy.linalg._decomp_lu_cython, scipy.linalg._matfuncs_sqrtm_triu, scipy.linalg.cython_blas, scipy.linalg._matfuncs_expm, scipy.linalg._decomp_update, scipy.sparse._sparsetools, _csparsetools, scipy.sparse._csparsetools, scipy.sparse.linalg._dsolve._superlu, scipy.sparse.linalg._eigen.arpack._arpack, scipy.sparse.linalg._propack._spropack, scipy.sparse.linalg._propack._dpropack, scipy.sparse.linalg._propack._cpropack, scipy.sparse.linalg._propack._zpropack, scipy.sparse.csgraph._tools, scipy.sparse.csgraph._shortest_path, scipy.sparse.csgraph._traversal, scipy.sparse.csgraph._min_spanning_tree, scipy.sparse.csgraph._flow, scipy.sparse.csgraph._matching, scipy.sparse.csgraph._reordering, scipy.optimize._minpack2, scipy.optimize._group_columns, scipy._lib.messagestream, scipy.optimize._trlib._trlib, scipy.optimize._lbfgsb, _moduleTNC, scipy.optimize._moduleTNC, scipy.optimize._cobyla, scipy.optimize._slsqp, scipy.optimize._minpack, scipy.optimize._lsq.givens_elimination, scipy.optimize._zeros, scipy.optimize._highs.cython.src._highs_wrapper, scipy.optimize._highs._highs_wrapper, scipy.optimize._highs.cython.src._highs_constants, scipy.optimize._highs._highs_constants, scipy.linalg._interpolative, scipy.optimize._bglu_dense, scipy.optimize._lsap, scipy.spatial._ckdtree, scipy.spatial._qhull, scipy.spatial._voronoi, scipy.spatial._distance_wrap, scipy.spatial._hausdorff, scipy.special._ufuncs_cxx, scipy.special._cdflib, scipy.special._ufuncs, scipy.special._specfun, scipy.special._comb, scipy.special._ellip_harm_2, scipy.spatial.transform._rotation, scipy.optimize._direct, sklearn.__check_build._check_build, scipy.ndimage._nd_image, _ni_label, scipy.ndimage._ni_label, scipy.integrate._odepack, scipy.integrate._quadpack, scipy.integrate._vode, scipy.integrate._dop, scipy.integrate._lsoda, scipy.special.cython_special, scipy.stats._stats, scipy.stats.beta_ufunc, scipy.stats._boost.beta_ufunc, scipy.stats.binom_ufunc, scipy.stats._boost.binom_ufunc, scipy.stats.nbinom_ufunc, scipy.stats._boost.nbinom_ufunc, scipy.stats.hypergeom_ufunc, scipy.stats._boost.hypergeom_ufunc, scipy.stats.ncf_ufunc, scipy.stats._boost.ncf_ufunc, scipy.stats.ncx2_ufunc, scipy.stats._boost.ncx2_ufunc, scipy.stats.nct_ufunc, scipy.stats._boost.nct_ufunc, scipy.stats.skewnorm_ufunc, scipy.stats._boost.skewnorm_ufunc, scipy.stats.invgauss_ufunc, scipy.stats._boost.invgauss_ufunc, scipy.interpolate._fitpack, scipy.interpolate.dfitpack, scipy.interpolate._bspl, scipy.interpolate._ppoly, scipy.interpolate.interpnd, scipy.interpolate._rbfinterp_pythran, scipy.interpolate._rgi_cython, scipy.stats._biasedurn, scipy.stats._levy_stable.levyst, scipy.stats._stats_pythran, scipy._lib._uarray._uarray, scipy.stats._ansari_swilk_statistics, scipy.stats._sobol, scipy.stats._qmc_cy, scipy.stats._mvn, scipy.stats._rcont.rcont, scipy.stats._unuran.unuran_wrapper, pyarrow.lib, _cyutility, pandas._libs._cyutility, pandas._libs.tslibs.ccalendar, pandas._libs.tslibs.np_datetime, pandas._libs.tslibs.dtypes, pandas._libs.tslibs.base, pandas._libs.tslibs.nattype, pandas._libs.tslibs.timezones, pandas._libs.properties, pandas._libs.tslibs.fields, pandas._libs.tslibs.timedeltas, pandas._libs.tslibs.tzconversion, pandas._libs.tslibs.timestamps, pandas._libs.tslibs.offsets, pandas._libs.tslibs.strptime, pandas._libs.tslibs.parsing, pandas._libs.tslibs.conversion, pandas._libs.tslibs.period, pandas._libs.tslibs.vectorized, pandas._libs.ops_dispatch, pandas._libs.missing, pandas._libs.hashtable, pandas._libs.algos, pandas._libs.interval, pandas._libs.lib, pyarrow._compute, pandas._libs.ops, pandas._libs.hashing, pandas._libs.arrays, pandas._libs.tslib, pandas._libs.sparse, pandas._libs.internals, pandas._libs.indexing, pandas._libs.index, pandas._libs.writers, pandas._libs.join, pandas._libs.window.aggregations, pandas._libs.window.indexers, pandas._libs.reshape, pandas._libs.groupby, pandas._libs.json, pandas._libs.parsers, pandas._libs.testing, sklearn._cyutility, sklearn.utils._isfinite, sklearn.utils.sparsefuncs_fast, sklearn.utils.murmurhash, sklearn.utils._openmp_helpers, sklearn.metrics.cluster._expected_mutual_info_fast, sklearn.metrics._dist_metrics, sklearn.metrics._pairwise_distances_reduction._datasets_pair, sklearn.utils._cython_blas, sklearn.metrics._pairwise_distances_reduction._base, sklearn.metrics._pairwise_distances_reduction._middle_term_computer, sklearn.utils._heap, sklearn.utils._sorting, sklearn.metrics._pairwise_distances_reduction._argkmin, sklearn.metrics._pairwise_distances_reduction._argkmin_classmode, sklearn.utils._vector_sentinel, sklearn.metrics._pairwise_distances_reduction._radius_neighbors, sklearn.metrics._pairwise_distances_reduction._radius_neighbors_classmode, sklearn.metrics._pairwise_fast, sklearn.preprocessing._csr_polynomial_expansion, sklearn.preprocessing._target_encoder_fast, tvm_ffi.core, npu_utils, setproctitle._setproctitle, google._upb._message, msgspec._core, grpc._cython.cygrpc, cython.cimports.libc.math, Cython.Utils, Cython.Plex.Actions, Cython.Plex.Transitions, Cython.Plex.Machines, Cython.Plex.DFA, Cython.Plex.Scanners, Cython.Compiler.Scanning, Cython.StringIOTree, Cython.Compiler.Code, pyarrow._acero, pyarrow._fs, pyarrow._csv, pyarrow._json, pyarrow._substrait, pyarrow._dataset, pyarrow._dataset_orc, pyarrow._parquet, pyarrow._azurefs, pyarrow._hdfs, pyarrow._gcsfs, pyarrow._s3fs, pyarrow._parquet_encryption, pyarrow._dataset_parquet_encryption, pyarrow._dataset_parquet, xxhash._xxhash (total: 295)
+[2026-09-16 07:33:49] Rank 0 scheduler is dead. Please check if there are relevant logs.
+[2026-09-16 07:33:49] Exit code: -4
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/kt-src/third_party/sglang/python/sglang/launch_server.py", line 112, in <module>
+    run_server(server_args)
+  File "/workspace/kt-src/third_party/sglang/python/sglang/launch_server.py", line 105, in run_server
+    launch_server(server_args)
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/entrypoints/http_server.py", line 1960, in launch_server
+    _launch_subprocesses(
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/entrypoints/engine.py", line 1115, in _launch_subprocesses
+    scheduler_infos = _wait_for_scheduler_ready(scheduler_pipe_readers, scheduler_procs)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/kt-src/third_party/sglang/python/sglang/srt/entrypoints/engine.py", line 925, in _wait_for_scheduler_ready
+    data = scheduler_pipe_readers[i].recv()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError

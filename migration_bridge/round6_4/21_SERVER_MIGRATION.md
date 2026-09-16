@@ -36,7 +36,31 @@ Frozen thresholds, corpora, model/placement/GGUF and defaultDeferredOFF remain.
 Original sourceON cancellation is USER_REQUESTED_PAUSE, not a numerical FAIL.
 No modification to business containers, NPU1–7 or host libraries is authorized.
 
-Status: MIGRATION_PREPARATION, not destination-tested or complete.
+Status: DESTINATION_CPU_BINARY_COMPATIBILITY_REPAIR; not complete.
+
+## Transfer and first runtime probe
+
+Destination container `kt-r64-910b-migration`, ID
+`6d997f15ef460a16ac88354b405988a99bf9adcb5e6900a748c4f12c43ec216a`.
+Actual cpuset0–31 verified. Only device0 plus manager/control devices mounted.
+Source stopped-container snapshot imageID601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a;
+destination Docker imageID307349929be39103b07679ec3bdda2e19efa789322b542e7fa3446ffbf4e81be.
+All14 orderedRootFS layer hashes match. Configuration-ID serialization difference
+not yet fully attributed; do not call the two imageIDs identical.
+
+All9 model/tokenizer files match sourceSHA256; frozenGGUF andD1placement also match.
+Initial torch2.9.0+cpu/torch_npu2.9.0.post2 import/device detection succeeds,
+but ones() fails561103/ParseDynamicKernelConfig, including after set_env.
+Inspected910B kernel directory contains onlyops_oam; OnesLike config exists
+only forascend910_93. This is a missing target-chip operator package, not a
+Deferred-model failure. No model test was started before addressing it.
+
+Container-only installation completed from officialAscend Dockerfile URL:
+https://ascend-repo.obs.cn-east-2.myhuaweicloud.com/CANN/CANN%209.0.0/Ascend-cann-910b-ops_9.0.0_linux-aarch64.run
+PackageSHA25684621a13bfbd7d319412f4278d382dde804c24ffc3756c5a561da2f6da36944e.
+Command`bash <package> --quiet --install --install-for-all` inside dedicated container.
+Installer may update associated container runtime components; preserve resulting
+version/hash evidence. Hostdriver/firmware remain read-only and unchanged.
 
 ## User CPU expansion
 
@@ -46,3 +70,40 @@ bridge retains old16worker/taskset0–15 execution to isolate hardware/runtime
 differences. A subsequent32worker execution must be an explicit separate profile
 and pass same-path checks before using it for continued testing. Allocation
 alone does not imply CPUInfer uses32threads. No other workload affinity changes.
+
+## Target CPU binary repair
+
+New device probe and framework transfer preflight passed19/19 after910B ops
+installation. First full-model compact16 failed before requests with SIGILL in
+CPUInfer initialization; failure root r64-910b-compact16-v1 is preserved.
+Copied extension compile flags explicitly included unsupported+sve+bf16+i8mm.
+Target CPU reports none of these features. NUMA membind warnings alone are not
+evidence of the illegal-instruction cause.
+
+A separate build from the same sources uses armv8.2-a+fp16+dotprod, disables
+SVE/BF16/I8MM, CUDA/KML/AMX, retains Ascend backend. Build completed; isolated
+CPUInfer16 constructor/destructor now passes. No model numerical claim yet.
+Original extensionSHA3fbb95c00c5906b905e8fd689346f4e78f86714fddb6372fa0e481e0da7ce43f.
+Target extensionSHA0f3aac9009931b18853c9b8fd6f6bba8b02d6ea396e79b2029bf9ce092049895.
+Both retained under /workspace/results/migration-cpu-build-v1.
+
+CPU regressionv1 stopped during collection because the legacy python directory
+symlink was omitted from transfer. Restored the original symlink and launched
+new root r64-910b-cpu-regression-v2; no test expectation or exclusions changed.
+New binary acceptance is recorded by an explicit migration manifest only after
+CPU regression passes, never by rewriting the original preflight provenance.
+Local tooling76unit tests pass. Destination full-model requalification pending.
+
+CPU regressionv2 now **18passed/3historicaldeselected**, including1000forwards.
+RSS1565622272→1565896704 bytes (delta274432), ten sampled values plateau.
+Not a zero-leak or long-duration serving proof. GuardEXIT_ZERO.
+Evidence archived under `evidence/migration-910b-v1/`, including both failures,
+passing preflight/regression and build manifests/logs. Rebuilt extension is
+explicitly allowed only by its old/new SHA pair after regressionPASS; all other
+source hash checks remain exact.
+
+Compact16-v2 model readiness succeeded after this repair. The subsequent
+queue is `r64-910b-continuation-v1`: compact16PASS ->16realexpert cases ->
+compact32 -> independent full3mode descriptive32 -> analysis. It is a migration
+and descriptive evidence sequence, not a replacement for destination quality
+or performance qualification. Final ADR must retain this scope boundary.

@@ -2,6 +2,10 @@
 
 日期：2026-09-15。状态：EXECUTION_STARTED，非资格通过声明。
 
+历史开工记录：下文原大样本统计协议已被用户批准的
+`14_MINIMUM_COST_QUALIFICATION.md`替代；不要按此历史记录启动旧矩阵。
+已执行的小样本与正式性能结果分别见15、17；当前状态以执行检查点为准。
+
 用户批准原文：`方案已阅，同意按此计划执行。质量容忍度 2pp 获批`。
 获批方案为同目录 `ROUND6_4_OFFICIAL_DEFERRED_APPROXIMATE_ACCELERATION_PLAN.md`；
 保留原稿 PLAN_FOR_REVIEW 作为审批前版本，本记录明确其现已获批。

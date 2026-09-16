@@ -1,0 +1,20 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "/workspace/kt-src/kt-kernel/test/round5/test_ascend_framework_transfer.py",
+    "/workspace/kt-src/kt-kernel/test/round6/test_deferred_selection.py",
+    "/workspace/kt-src/third_party/sglang/test/registered/ascend/test_kt_ep_alignment_contracts.py",
+    "--junitxml=/workspace/results/r64-910b-preflight-v1/junit.xml"
+  ],
+  "started_unix": 1789543841.1312828,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [],
+  "pid": 126746,
+  "pgid": 126746
+}
