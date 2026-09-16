@@ -2,6 +2,16 @@
 
 ## Current pointer — supersedes historical entries below
 
+2026-09-16 user supersedes large quality campaign: GSM8K32 + CMMLU256,
+minimum-cost engineering screen. See14_MINIMUM_COST_QUALIFICATION.md.
+Inputs/rules frozen in fixtures/fast-quality-v1; no primary outputs yet.
+Dev32-v2 has produced dev-report.json; archive/review it before launch binding.
+DO NOT launch old1319/2048 primary runner or oldsixshape/fiveblock perf campaign.
+Next adapt execution/freezer/summarizer for versioned fast-screen, bind source/evaluator,
+then OFF/ON; performance single192/256 shape threeABBA blocks. CI diagnostic for
+quality, still required for verified speedup. Original system/determinism gates remain.
+Historical entries below are preserved and not current launch instructions.
+
 Active: `/workspace/results/r64-quality-dev32-v2`, OFF-only32train+32dev using
 the reviewed small-pilotv2 protocol, tools v4. Do not interrupt or duplicate.
 Read-only host memory monitor PID694146 targets only this run's guard descendants,

@@ -38,7 +38,8 @@ def main():
     assert a["binding"]["protocol_sha256"] == hashlib.sha256(args.protocol.read_bytes()).hexdigest()
     assert [r["id"] for r in a["rows"]] == [r["id"] for r in b["rows"]]
     endpoints = {}
-    for benchmark, count in (("gsm8k",1319), ("cmmlu",2048)):
+    fast = protocol.get("version") == "round6.4-fast-quality-v1"
+    for benchmark, count in ((("gsm8k",32), ("cmmlu",256)) if fast else (("gsm8k",1319), ("cmmlu",2048))):
         off = [r for r in a["rows"] if r["benchmark"] == benchmark]
         on = [r for r in b["rows"] if r["benchmark"] == benchmark]
         assert len(off) == len(on) == count
@@ -69,9 +70,15 @@ def main():
             result["stratified_bootstrap_supplemental_95"] = stratified_bootstrap(
                 [int(y["correct"])-int(x["correct"]) for x,y in zip(off,on)], [r["subject"] for r in off])
         endpoints[benchmark] = result
+        if fast:
+            from freeze_fast_quality import observed_pass
+            result["statistical_status_diagnostic_only"] = result["status"]
+            result["status"] = "QUALITY_SCREEN_PASS" if observed_pass(result["correct_off"],result["correct_on"],count) else "QUALITY_SCREEN_FAIL"
     states = [r["status"] for r in endpoints.values()]
     status = ("QUALITY_ACCEPTED_WITHIN_MARGIN" if all(s=="NONINFERIOR" for s in states) else
               "QUALITY_REGRESSION" if "REGRESSION_BEYOND_MARGIN" in states else "QUALITY_INCONCLUSIVE")
+    if fast:
+        status = "QUALITY_SCREEN_PASS" if all(s=="QUALITY_SCREEN_PASS" for s in states) else "QUALITY_SCREEN_FAIL"
     result = dict(status=status, endpoints=endpoints, primary_profile="batch1_only",
                   protocol_sha256=a["binding"]["protocol_sha256"],
                   generalization_scope=protocol["statistical_target_and_assumptions"],

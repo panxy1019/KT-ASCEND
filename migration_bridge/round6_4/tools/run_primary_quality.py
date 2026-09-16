@@ -34,7 +34,8 @@ def frozen_inputs(protocol_path, inputs_path):
     if len({r["id"] for r in rows}) != len(rows):
         raise ValueError("DUPLICATE_PRIMARY_ID")
     counts = {b:sum(r["benchmark"] == b for r in rows) for b in ("gsm8k", "cmmlu")}
-    if counts != {"gsm8k":1319, "cmmlu":2048} or len(rows) != 3367:
+    expected = ({"gsm8k":32,"cmmlu":256} if protocol.get("version") == "round6.4-fast-quality-v1" else {"gsm8k":1319,"cmmlu":2048})
+    if counts != expected or len(rows) != sum(expected.values()):
         raise ValueError("PRIMARY_SAMPLE_DRIFT")
     for r in rows:
         budget = 512 if r["benchmark"] == "gsm8k" else 32

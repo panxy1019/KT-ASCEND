@@ -7,7 +7,7 @@ import time
 
 EVALUATORS = ("run_primary_quality.py", "quality_answers_v2.py", "quality_answers.py",
               "paired_quality_interval.py", "summarize_primary_quality.py", "owned_server.py",
-              "capacity_python_adapter.py", "run_owned_process.py", "run_compact_controls.py")
+              "capacity_python_adapter.py", "run_owned_process.py", "run_compact_controls.py", "freeze_fast_quality.py")
 
 
 def sha(path):
@@ -41,9 +41,15 @@ def main():
     validate_dev(dev,review)
     assert review["dev_report_sha256"] == sha(args.dev_report)
     manifest=load(args.inputs/"MANIFEST.json")
-    assert manifest["version"] == "round6.4-quality-draft-v2" and manifest["primary_execution_allowed"] is False
+    fast = manifest["version"] == "round6.4-fast-quality-v1"
+    assert (fast or manifest["version"] == "round6.4-quality-draft-v2") and manifest["primary_execution_allowed"] is False
+    if fast:
+        original=load(Path(__file__).parent.parent/"fixtures/quality-draft-v2-manifest.json")
+        assert manifest["primary_input_sha256"] == sha(args.inputs/"primary.json")
+        manifest = dict(original, files={"primary.json":manifest["primary_input_sha256"],"dev.json":original["files"]["dev.json"]})
     for name,digest in manifest["files"].items():
-        assert sha(args.inputs/name) == digest
+        if name != "dev.json" or not fast:
+            assert sha(args.inputs/name) == digest
     assert dev["dev_sha256"] == manifest["files"]["dev.json"]
     assert load(args.overlap)["quality_sha256"] == manifest["files"]["primary.json"]
     assert load(args.runtime_report)["status"] == "RUNTIME_PASS"
@@ -73,6 +79,10 @@ def main():
         no_samples_removed=True, invalid_and_truncated_are_wrong=True,
         same_path_and_system_gates_remain_exact=True, cross_path_logits_are_not_acceptance_gate=True,
         adr_safety_review_required=True, quality_is_not_speedup_qualification=True)
+    if fast:
+        protocol.update(version="round6.4-fast-quality-v1",endpoint_counts={"gsm8k":32,"cmmlu":256},
+            quality_claim="FROZEN_SUBSET_ENGINEERING_SCREEN_ONLY",confidence_interval_is_gate=False,
+            population_noninferiority_claim=False,pass_rule="observed_delta_ge_minus_0.02_each_endpoint")
     with args.output.open("x") as f:
         json.dump(protocol,f,ensure_ascii=False,indent=2)
         f.write("\n")

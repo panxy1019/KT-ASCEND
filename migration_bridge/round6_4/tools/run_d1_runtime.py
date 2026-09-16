@@ -17,7 +17,7 @@ def validate_entry(corpus, contract):
     if (corpus['corpus'] != 'S6' or corpus['sha256'] != S6_SHA or
             len(corpus['prompts']) != 12 or len({p['id'] for p in corpus['prompts']}) != 12):
         raise ValueError('S6_IDENTITY_MISMATCH')
-    if (contract['version'] != 'round6.4-approx-v1' or
+    if (contract['version'] not in ('round6.4-approx-v1', 'round6.4-approx-v2-fast-screen') or
             contract['same_path_determinism_required'] is not True or
             contract['quality']['approved'] is not True or
             contract['quality']['absolute_noninferiority_margin'] != 0.02):

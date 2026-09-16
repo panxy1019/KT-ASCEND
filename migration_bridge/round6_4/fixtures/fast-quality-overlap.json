@@ -1,0 +1,1791 @@
+{
+  "status": "AUDIT_COMPLETE_NO_SAMPLES_REMOVED",
+  "method": "NFKC/casefold/whitespace question equality or substring of historical prompt",
+  "limitation": "Literal overlap audit, not proof of semantic novelty or absence from model pretraining; historical authoring drafts conservatively included",
+  "quality_sha256": "de64f796d530b649b7e1dc7854aebef441be65cdf60762a571305450ad7fbc7c",
+  "source_sha256": {
+    "round4a3/corpora/d_manifest.json": "e16e348bb9177b4f59161852a99add8222272247309d6cf05899fe44766939a0",
+    "round4a3/corpora/h.json": "d927bbb0dea57d4643a7d39352e893b5d7e7ef401c711693e765fff9c1a3ae48",
+    "round4a3/corpora/q.json": "403147ef8a0d33b11e9c02ce6cc2fe7a8afa495e89fdff629672286b9db7ee92",
+    "round4a4/corpora/d_manifest.json": "4cc516078e899e890958e23e3a8a006469e84ef02e163bd56fe83cbc0b6b7564",
+    "round4a4/corpora/f.json": "18c10f1091bb2b5de44c860588a360589096ea319a5386521c1e292e87886890",
+    "round4a4/corpora/h2.json": "082c7d8ba8e1cf64d629749ddfe6f9222ad7ddac80f1bf9ccada5a7e68185c5c",
+    "round4a4/corpora/p2_h2_subset.json": "701ccd624e9118ce1df73611d98180bac9db17f1eeb34a3381f54b6e9c6ba4ec",
+    "round4a4/corpora/p2_q2_subset.json": "5ebbd02d022d76a55099e9f6d288a61691d8bcff518f2b42f2d67c250ad327eb",
+    "round4a4/corpora/p2_seq_control.json": "a6d85e9f5e8df0b6eb844e9a7af989884c025ae7447d1d2d4abfdeff84903f78",
+    "round4a4/corpora/q2.json": "30cae40744a5f66b3b31c9165b2d3444d6d2f338d228744032c9211ec9e5dce0",
+    "round6/corpora/fd.json": "e97af20a70caaa9195f9452ee519cf81648d3b675d51ab409d5b0c7adbb9c8a8",
+    "round6/corpora/hd.json": "ef96ea915fe478a74bd9a01919b87a0a8c0ff85d43749369e7ca7a08230e5fe9",
+    "round6/corpora/qd.json": "b430496ab08dea95be4361bb2621eb14f704c844d729731ee9b58df1749071c6",
+    "round6/corpora/s6.json": "b14bfe8e863d48bfc28fdc6cd610c6c02d9b8aca4a02a48c714c2131aa08c3ca",
+    "round6_2/corpora/frozen-corpora/hd2.json": "b22cd79c82769bb25bf1da30e39046f311071f8b5e1a537fef66f99ae462ba3a",
+    "round6_2/corpora/frozen-corpora/pair_freeze.json": "95a76b4c0363b7879ad80a70569dbb60d32dc6c4802450716927a133ccc41b30",
+    "round6_2/corpora/frozen-corpora/qd2.json": "57a807a8ea24f84137434c929e4f6546eeffd01278997e9272d3afd2844194e1",
+    "round6_2/corpora/hd2_source.json": "8ed8522ef91551dd813a8cf474d078f161fd53954ca5896d960a5b2e190f848d",
+    "round6_2/corpora/qd2_source.json": "f75086c0fb0f7694ed3f4310b1cdb908e35d98013c2e9c7f35855e3d114f3586",
+    "round6_2/corpora/smoke_source.json": "3892d97013fdf2571abbb1f4c622ed6eec6e8cf1204d3f6cca1a14ebda66bb16",
+    "round6_3/corpora/fd3_authoring_draft.json": "bd1e8f5b1a9db224076f1a20f44b821e58241288e0c56a333cd4fd265892ee83",
+    "round6_3/corpora/fd3_token_audit.json": "d0242ae29ec2206b1bfe9f4e62c97a36b691b7bb20dca905e2416bc8b91247d4",
+    "round6_3/corpora/formal_draft_overlap_audit.json": "0f3ea4d71218939b3ea0415e9fdcb5411166c739bddec4cee32a005c750971f3",
+    "round6_3/corpora/formal_draft_overlap_audit_v2.json": "4b95163e2d25761545b5d5b4ed1f1ff0def36bc4d399b8fa838360b1b6d7a848",
+    "round6_3/corpora/formal_draft_overlap_audit_v3.json": "9a3d7196a9aa5249cce967a3be8d392f66ebb0419707fc25a7ef1b85b8402717",
+    "round6_3/corpora/formal_draft_overlap_audit_v4.json": "e83f743a3dc497d86c50d21f619002009dcf926368e60f415af9e73076d1d2f2",
+    "round6_3/corpora/formal_source_review.json": "bf57665f5b98edeeb841a9f38195f73ca76a023a48dafc277c4599f93976bba8",
+    "round6_3/corpora/frozen/fd3.json": "9b8703afbdfd3bd925096725168f9d68914bd116e726336a972f5376443f7fe9",
+    "round6_3/corpora/frozen/hd3.json": "4e54ac5c0e6ab9f25991ca29d54e32d1632d4e687f72d344430d4b5691b8590e",
+    "round6_3/corpora/frozen/qd3.json": "f506ce949f22d028c7c29c633a5a9200a74b5dd2c47fbc4883a89cb5cb19eeec",
+    "round6_3/corpora/hd3_authoring_draft.json": "a82b96b6660f55755f190d98cafc3d8456a62e3cfc2b993b37a5cd6df28fe071",
+    "round6_3/corpora/hd3_token_audit.json": "58c3bccb8e043b8785921e7720ad4927a27452c5941918304e867cb5c591a8e6",
+    "round6_3/corpora/long-force.json": "7ddb66b4d82d7aa684e882db0eeaf206848e296712e8202135e797a1b9cbf98b",
+    "round6_3/corpora/pilot-input.json": "0e309656587683068e515cd34024a360c6c8ca36924e3ee8a6a64d5f5b42e6ef",
+    "round6_3/corpora/pilot-token-audit.json": "b03c579069771e45239b76c3760f628ecb204f5d7e615578a2f73ac4fc9c3887",
+    "round6_3/corpora/pilot_dedupe.json": "2d1e1f7047c9da644b6958d85b042dc1ef306ae8ec90ae6393cbf14ee78366db",
+    "round6_3/corpora/pilot_source.json": "0bdb4b24f1076cbb89338928ee9c87e655946d48c4af08c5950a6fec322a60c9",
+    "round6_3/corpora/qd3_authoring_draft.json": "209cc9e4348a6192b21ce1bb6b3ca6dd03954b6e09fd3b6da65dd9db48204adc",
+    "round6_3/corpora/qd3_token_audit.json": "8c5b5e3fcb2bff8239e2ff3ae7dcc2836f7e7900184b1bc8b1978e003b211fc5"
+  },
+  "counts": {
+    "gsm8k": {
+      "total": 32,
+      "historical_overlap": 1,
+      "dev_overlap": 0
+    },
+    "cmmlu": {
+      "total": 256,
+      "historical_overlap": 0,
+      "dev_overlap": 0
+    }
+  },
+  "rows": [
+    {
+      "id": "gsm8k-test-main-00750",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00803",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00579",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00545",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00042",
+      "benchmark": "gsm8k",
+      "historical_sources": [
+        "round4a4/corpora/d_manifest.json"
+      ],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00247",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01069",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01105",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00188",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00612",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00223",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01117",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00412",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00170",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01223",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00277",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00384",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00885",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01237",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00440",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00692",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00304",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01146",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00489",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00445",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00761",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00316",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00869",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-01034",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00421",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00835",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "gsm8k-test-main-00300",
+      "benchmark": "gsm8k",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-agronomy-00040",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-agronomy-00025",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-agronomy-00117",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-agronomy-00049",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-anatomy-00126",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-anatomy-00038",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-anatomy-00015",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ancient_chinese-00000",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ancient_chinese-00017",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ancient_chinese-00004",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ancient_chinese-00111",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-arts-00008",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-arts-00132",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-arts-00099",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-arts-00053",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-astronomy-00114",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-astronomy-00117",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-astronomy-00053",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-astronomy-00140",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-business_ethics-00134",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-business_ethics-00000",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-business_ethics-00015",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-business_ethics-00003",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_civil_service_exam-00028",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_civil_service_exam-00109",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_civil_service_exam-00105",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_civil_service_exam-00040",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_driving_rule-00125",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_driving_rule-00120",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_driving_rule-00105",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_food_culture-00071",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_food_culture-00128",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_food_culture-00132",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_foreign_policy-00103",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_foreign_policy-00014",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_foreign_policy-00053",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00025",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00233",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00237",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00185",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00236",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_history-00198",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_literature-00072",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_literature-00154",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_literature-00163",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_literature-00132",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_teacher_qualification-00102",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_teacher_qualification-00092",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_teacher_qualification-00019",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-chinese_teacher_qualification-00009",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-clinical_knowledge-00103",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-clinical_knowledge-00216",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-clinical_knowledge-00049",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-clinical_knowledge-00079",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-clinical_knowledge-00074",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_actuarial_science-00001",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_actuarial_science-00034",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_actuarial_science-00033",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_education-00071",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_education-00060",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_education-00029",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_engineering_hydrology-00072",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_engineering_hydrology-00082",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_engineering_hydrology-00034",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_law-00075",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_law-00086",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_law-00051",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_mathematics-00059",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_mathematics-00088",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_mathematics-00101",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medical_statistics-00080",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medical_statistics-00087",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medical_statistics-00088",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medicine-00200",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medicine-00212",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medicine-00137",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medicine-00126",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-college_medicine-00073",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_science-00052",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_science-00124",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_science-00085",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_science-00089",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_security-00166",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_security-00028",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_security-00059",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-computer_security-00119",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-conceptual_physics-00142",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-conceptual_physics-00092",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-conceptual_physics-00045",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-construction_project_management-00078",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-construction_project_management-00014",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-construction_project_management-00135",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-economics-00045",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-economics-00083",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-economics-00141",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-economics-00065",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-education-00053",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-education-00090",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-education-00005",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-education-00141",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-electrical_engineering-00015",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-electrical_engineering-00168",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-electrical_engineering-00157",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-electrical_engineering-00012",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_chinese-00164",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_chinese-00150",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_chinese-00069",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_chinese-00062",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_chinese-00107",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_commonsense-00007",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_commonsense-00043",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_commonsense-00188",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_commonsense-00051",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_information_and_technology-00061",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_information_and_technology-00098",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_information_and_technology-00141",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_information_and_technology-00134",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_information_and_technology-00095",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_mathematics-00092",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_mathematics-00164",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_mathematics-00093",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_mathematics-00144",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-elementary_mathematics-00100",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ethnology-00071",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ethnology-00132",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-ethnology-00082",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-food_science-00054",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-food_science-00019",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-food_science-00125",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-genetics-00074",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-genetics-00133",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-genetics-00136",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-genetics-00126",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-global_facts-00048",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-global_facts-00092",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-global_facts-00050",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_biology-00050",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_biology-00102",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_biology-00002",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_biology-00108",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_chemistry-00014",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_chemistry-00010",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_chemistry-00089",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_geography-00099",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_geography-00030",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_geography-00068",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_mathematics-00038",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_mathematics-00059",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_mathematics-00042",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_mathematics-00074",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_physics-00040",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_physics-00029",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_physics-00049",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_politics-00096",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_politics-00104",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-high_school_politics-00020",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-human_sexuality-00058",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-human_sexuality-00074",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-human_sexuality-00080",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-international_law-00098",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-international_law-00055",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-international_law-00007",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-international_law-00108",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-journalism-00062",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-journalism-00108",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-journalism-00017",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-journalism-00007",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00179",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00250",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00148",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00005",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00241",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00344",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00093",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-jurisprudence-00261",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-legal_and_moral_basis-00124",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-legal_and_moral_basis-00021",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-legal_and_moral_basis-00186",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-legal_and_moral_basis-00150",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-logical-00058",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-logical-00007",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-logical-00109",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-machine_learning-00001",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-machine_learning-00066",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-machine_learning-00004",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-management-00103",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-management-00191",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-management-00066",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-management-00093",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marketing-00168",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marketing-00161",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marketing-00135",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marketing-00028",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marxist_theory-00022",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marxist_theory-00058",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marxist_theory-00151",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-marxist_theory-00161",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-modern_chinese-00015",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-modern_chinese-00090",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-modern_chinese-00003",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-nutrition-00131",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-nutrition-00010",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-nutrition-00094",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-philosophy-00074",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-philosophy-00025",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-philosophy-00021",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_accounting-00124",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_accounting-00006",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_accounting-00145",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_accounting-00093",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_law-00201",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_law-00003",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_law-00013",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_law-00081",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00112",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00315",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00301",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00104",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00263",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00229",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_medicine-00241",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_psychology-00183",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_psychology-00216",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_psychology-00073",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_psychology-00143",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-professional_psychology-00226",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-public_relations-00115",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-public_relations-00036",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-public_relations-00091",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-public_relations-00013",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-security_study-00113",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-security_study-00056",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-security_study-00051",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sociology-00041",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sociology-00155",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sociology-00024",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sociology-00026",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sociology-00224",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sports_science-00138",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sports_science-00063",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sports_science-00071",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-sports_science-00011",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-traditional_chinese_medicine-00078",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-traditional_chinese_medicine-00014",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-traditional_chinese_medicine-00172",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-traditional_chinese_medicine-00155",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-virology-00037",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-virology-00149",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-virology-00029",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-virology-00014",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_history-00131",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_history-00055",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_history-00132",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_religions-00130",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_religions-00095",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    },
+    {
+      "id": "cmmlu-test-world_religions-00053",
+      "benchmark": "cmmlu",
+      "historical_sources": [],
+      "dev_text_overlap": false
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "round6.4-approx-v1",
+  "version": "round6.4-approx-v2-fast-screen",
   "status": "APPROVED_SCOPE_PROTOCOL_PREPARATION",
   "approval_date": "2026-09-15",
   "approval_text": "方案已阅，同意按此计划执行。质量容忍度 2pp 获批",
@@ -16,20 +16,27 @@
     "absolute_noninferiority_margin": 0.02,
     "effect": "accuracy_deferred_on_minus_off",
     "primary_batch": 1,
-    "benchmarks": ["GSM8K_test", "CMMLU_test_stratified_2048"],
+    "benchmarks": ["GSM8K_test_fixed_32", "CMMLU_test_stratified_256"],
     "per_endpoint_one_sided_confidence": 0.975,
-    "pass_rule": "both_lower_confidence_bounds_strictly_greater_than_minus_0.02",
+    "pass_rule": "both_frozen_subset_observed_accuracy_deltas_greater_than_or_equal_minus_0.02",
+    "confidence_interval_is_gate": false,
+    "population_noninferiority_claim": false,
+    "qualification_scope": "SMALL_SAMPLE_ENGINEERING_SCREEN_ONLY",
+    "input_manifest_sha256": "55b7bda2413b510203f6208444a36d1cf538987fe4cc1cc363930f60091c7566",
     "bootstrap_repeats_supplemental": 20000,
     "seed": 6404,
-    "implementation_and_dataset_freeze": "PENDING",
+    "implementation_and_dataset_freeze": "INPUTS_FROZEN_EXECUTION_BINDING_PENDING",
     "primary_quality_execution_allowed": false
   },
   "speedup": {
     "capture_enabled": false,
-    "minimum_paired_ABBA_blocks": 5,
+    "minimum_paired_ABBA_blocks": 3,
+    "primary_shape": {"input_tokens": 192, "output_tokens": 256, "batch": 1},
+    "additional_shape_matrix_required": false,
     "pass_rule": "primary_paired_speedup_confidence_interval_lower_bound_gt_1"
   },
   "default_deferred": "OFF",
-  "release_requires": ["IMPLEMENTATION_READY", "QUALITY_QUALIFIED", "SPEEDUP_VERIFIED"],
+  "release_requires": ["IMPLEMENTATION_READY", "QUALITY_SCREEN_PASS", "SPEEDUP_VERIFIED"],
+  "release_scope": "D1_BATCH1_APPROXIMATE_ACCELERATION_SMALL_SAMPLE_QUALIFIED",
   "historical_round6_3": "REJECTED_UNCHANGED"
 }
