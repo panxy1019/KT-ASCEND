@@ -31,4 +31,4 @@ Initial status was DRAFT_ONLY. B0 subsequently passed all608 cases on the target
 Executable contract and both independent corpora were frozen before any QD6/HD6 model outputs:
 `corpora/frozen-v1/CONTRACT_V1.json`, SHA256 `4a374b76690ccbafc4fb26006463eb416e80b06a3b834992595e67365393c79b`.
 The machine-readable freeze manifest binds QD6/HD6, the disjoint quality set, historical-overlap index and B0 evidence.
-QD6 capture is now RUNNING; HD6 and quality remain NOT_RUN. This is not candidate approval or final qualification.
+At that checkpoint QD6 was running and HD6/quality had not started. All V1 stages have since completed; the frozen quality screen failed. See12_QUALITY_ADR.md. The pre-result contract/corpus bytes remain unchanged.

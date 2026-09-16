@@ -42,4 +42,4 @@ length; it is not a controlled decode speedup comparison.
 Local regression:16/16 stdlib tool tests PASS. These are LOCAL_VERIFIED only,
 not a substitute for target execution.
 
-Quality results pending; do not infer PASS from the running sequence.
+At this checkpoint quality results were pending. The completed screen subsequently failed; see12_QUALITY_ADR.md and evidence/quality_v1. No PASS is inferred from successful collection.
