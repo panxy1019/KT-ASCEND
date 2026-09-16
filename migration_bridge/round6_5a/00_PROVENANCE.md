@@ -42,3 +42,11 @@ all-MoE sweep, quality run, threshold fitting or core expansion in this diagnost
 An exact current-token Layer1 MLP output alone does not prove exact full decoder
 state. Attention/KV history and the separately carried residual must also be
 compared. This is an investigation hypothesis, not a root-cause conclusion.
+
+## Closure verification
+
+All 91 source/package files and repository states match between entry and exit.
+The 57,579,411,648-byte GGUF was freshly SHA256-checked at closure:
+`20114dba7790a9b6be40a17ffb3881c516b81ea86b8f2fcfd3ea61d052e96fe2`,
+unchanged from the frozen conversion. No source overlay or native binary changed.
+See the final ADR for the corrected causal interpretation and its limits.

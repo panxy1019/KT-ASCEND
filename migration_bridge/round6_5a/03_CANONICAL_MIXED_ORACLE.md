@@ -22,5 +22,10 @@ must not be silently relabeled as GMM errors.
 
 This is the pre-outer-scaling routed sum. Shared expert/residual and outer
 scaling are separately audited; this test alone does not prove them correct.
-It does not exhaust prefill or every captured token/route combination.
+The supplemental `/workspace/results/r65-5a-prefill-v1/` run covers the actual
+prefill input (call1), preserving each expert's real row occupancy. All four
+final routed outputs and CPU replay partials are exact; ten complete CPU
+repeats per layer have one hash. Prefill per-expert maximum relative-L2 is
+0.0004346301138866693. Across decode and prefill the maximum is
+0.0005172126111574471. This does not exhaust every possible input/shape.
 No production implementation defect has been demonstrated by this test.
