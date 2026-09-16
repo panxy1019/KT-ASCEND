@@ -1,0 +1,166 @@
+[  1%] Generating build details from Git
+[  2%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/flags.cpp.o
+[  3%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm82.cpp.o
+[  5%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_amd_avx2.cpp.o
+[  6%] Building C object third_party/llama.cpp/CMakeFiles/ggml.dir/ggml.c.o
+-- Found Git: /usr/bin/git (found version "2.34.1")
+[  7%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_amd_zen4.cpp.o
+[  8%] Building C object third_party/llama.cpp/CMakeFiles/ggml.dir/ggml-alloc.c.o
+[ 11%] Building C object third_party/llama.cpp/CMakeFiles/ggml.dir/ggml-backend.c.o
+[ 11%] Building C object third_party/llama.cpp/CMakeFiles/ggml.dir/ggml-quants.c.o
+[ 15%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_fma.cpp.o
+[ 15%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx.cpp.o
+[ 15%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/sgemm.cpp.o
+[ 16%] Building CXX object third_party/llama.cpp/CMakeFiles/ggml.dir/sgemm.cpp.o
+[ 19%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx2.cpp.o
+[ 20%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx512f.cpp.o
+[ 20%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avxvnni.cpp.o
+[ 21%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_zen4.cpp.o
+[ 23%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_arm80.cpp.o
+[ 24%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_arm82.cpp.o
+[ 25%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx.cpp.o
+[ 29%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avxvnni.cpp.o
+[ 29%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx2.cpp.o
+[ 29%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx512f.cpp.o
+[ 30%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_fma.cpp.o
+[ 30%] Generating build details from Git
+[ 33%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_zen4.cpp.o
+[ 33%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_arm80.cpp.o
+-- Found Git: /usr/bin/git (found version "2.34.1")
+[ 34%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_arm82.cpp.o
+[ 35%] Building CXX object CMakeFiles/llamafile.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_unsupported.cpp.o
+[ 37%] Building CXX object third_party/llama.cpp/common/CMakeFiles/build_info.dir/build-info.cpp.o
+[ 37%] Built target build_info
+/workspace/kt-src/third_party/llama.cpp/ggml.c: In function ‘ggml_compute_forward_clamp’:
+/workspace/kt-src/third_party/llama.cpp/ggml.c:13997:5: warning: enumeration value ‘GGML_TYPE_MXFP4’ not handled in switch [-Wswitch]
+13997 |     switch (src0->type) {
+      |     ^~~~~~
+In file included from /workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm82.cpp:9:
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1652 | IQK_ALWAYS_INLINE void compute_8_blocks(const int8x16_t * qx, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1630 | IQK_ALWAYS_INLINE void compute_8_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1673 | IQK_ALWAYS_INLINE void compute_16_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:2147:29: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2147 | IQK_ALWAYS_INLINE int32x4_t prepare_scales_8(const uint32x4_t& v1) {
+      |                             ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:2132:31: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2132 | IQK_ALWAYS_INLINE int32x4x2_t prepare_scales_8(const uint32x4_t& v1, const uint32x4_t& v2) {
+      |                               ^~~~~~~~~~~~~~~~
+[ 37%] Built target ggml
+[ 38%] Building CXX object third_party/llama.cpp/CMakeFiles/llama.dir/llama.cpp.o
+[ 39%] Linking CXX static library libggml_static.a
+[ 42%] Building CXX object third_party/llama.cpp/CMakeFiles/llama.dir/unicode.cpp.o
+[ 42%] Building CXX object third_party/llama.cpp/CMakeFiles/llama.dir/unicode-data.cpp.o
+[ 42%] Built target ggml_static
+[ 43%] Linking CXX static library libllamafile.a
+[ 43%] Built target llamafile
+[ 44%] Linking CXX static library libllama.a
+[ 44%] Built target llama
+[ 46%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/common.cpp.o
+[ 47%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/sampling.cpp.o
+[ 48%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/grammar-parser.cpp.o
+[ 50%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/console.cpp.o
+[ 51%] Building CXX object CMakeFiles/kt_kernel_ext.dir/cpu_backend/ascend_callback_worker.cpp.o
+[ 52%] Building CXX object CMakeFiles/kt_kernel_ext.dir/ext_bindings.cpp.o
+[ 53%] Building CXX object CMakeFiles/kt_kernel_ext.dir/fp8_layerwise_transport.cpp.o
+[ 55%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/json-schema-to-grammar.cpp.o
+[ 56%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/train.cpp.o
+[ 57%] Building CXX object CMakeFiles/kt_kernel_ext.dir/cpu_backend/shared_mem_buffer.cpp.o
+[ 58%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/ngram-cache.cpp.o
+[ 61%] Building CXX object CMakeFiles/kt_kernel_ext.dir/cpu_backend/task_queue.cpp.o
+[ 61%] Building CXX object CMakeFiles/kt_kernel_ext.dir/cpu_backend/worker_pool.cpp.o
+[ 62%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/llamafile/linear.cpp.o
+[ 64%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/llamafile/mlp.cpp.o
+[ 65%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/flags.cpp.o
+[ 66%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_amd_avx2.cpp.o
+[ 67%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_amd_zen4.cpp.o
+[ 69%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm82.cpp.o
+[ 70%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/sgemm.cpp.o
+[ 71%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx.cpp.o
+[ 73%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx2.cpp.o
+[ 74%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx512f.cpp.o
+[ 75%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avxvnni.cpp.o
+[ 76%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_fma.cpp.o
+[ 78%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_zen4.cpp.o
+[ 79%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_arm80.cpp.o
+In file included from /workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm82.cpp:9:
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1652 | IQK_ALWAYS_INLINE void compute_8_blocks(const int8x16_t * qx, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1630 | IQK_ALWAYS_INLINE void compute_8_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1673 | IQK_ALWAYS_INLINE void compute_16_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:2147:29: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2147 | IQK_ALWAYS_INLINE int32x4_t prepare_scales_8(const uint32x4_t& v1) {
+      |                             ^~~~~~~~~~~~~~~~
+/workspace/kt-src/third_party/llamafile/iqk_mul_mat_arm.inc:2132:31: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2132 | IQK_ALWAYS_INLINE int32x4x2_t prepare_scales_8(const uint32x4_t& v1, const uint32x4_t& v2) {
+      |                               ^~~~~~~~~~~~~~~~
+[ 80%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_mixmul_arm82.cpp.o
+[ 82%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx.cpp.o
+[ 83%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx2.cpp.o
+[ 84%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx512f.cpp.o
+[ 85%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avxvnni.cpp.o
+[ 87%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_fma.cpp.o
+[ 88%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_zen4.cpp.o
+[ 89%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_arm80.cpp.o
+[ 91%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_sgemm_arm82.cpp.o
+[ 92%] Building CXX object CMakeFiles/kt_kernel_ext.dir/workspace/kt-src/third_party/llamafile/tinyblas_cpu_unsupported.cpp.o
+[ 93%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/kvcache/kvcache_attn.cpp.o
+[ 94%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/kvcache/kvcache_load_dump.cpp.o
+[ 96%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/kvcache/kvcache_read_write.cpp.o
+[ 97%] Building CXX object CMakeFiles/kt_kernel_ext.dir/operators/kvcache/kvcache_utils.cpp.o
+[ 98%] Linking CXX static library libcommon.a
+[ 98%] Built target common
+[100%] Linking CXX shared module /workspace/results/migration-cpu-build-v1/lib/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so
+[100%] Built target kt_kernel_ext
