@@ -1,6 +1,6 @@
 # Round6.6 — independent heavy-static numerical qualification
 
-Status: IN_PROGRESS; no candidate contract approved, no QD6/HD6 model output read.
+Status: IN_PROGRESS. B0 passed; independent input contract frozen. QD6 All-NPU capture passed, Hybrid capture running. Candidate not yet approved; HD6 and quality NOT_RUN.
 
 Base: `a0a233e3779089c1e767f689b981c2563ab10871`.
 Branch: `codex/round6-6-three-way-numerical-qualification`.
@@ -38,4 +38,4 @@ Runtime source/extension hashes must match the Round6.5A actual deployment; loca
 
 ## Exit evidence
 
-B0 is NOT_RUN until collected and audited. Missing production stage capture or missing real prefill buckets must remain explicit, not silently waived. Production changes require reproducible semantic defects and dedicated regression. Static quality criteria must be independently preregistered; Deferred's historical 2pp concession is not silently inherited.
+B0 was NOT_RUN at preregistration and is now target-verified; see04_B0_FINAL_AND_STUDY_FREEZE.md and evidence/b0_decision_v1.json. Missing production stage capture or missing real prefill buckets must remain explicit, not silently waived. Production changes require reproducible semantic defects and dedicated regression. Static quality criteria must be independently preregistered; Deferred's historical2pp concession is not silently inherited.

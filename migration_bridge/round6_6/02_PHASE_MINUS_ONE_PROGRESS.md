@@ -1,5 +1,7 @@
 # Phase -1 progress (not B0 closure)
 
+Historical chronological log. Final B0 closure is now recorded separately in04_B0_FINAL_AND_STUDY_FREEZE.md and evidence/b0_decision_v1.json; interim statuses below are retained as history.
+
 ## Output screen v1
 
 128/128 CPU-owned expert instances, 384 decode samples +128 real qlen11 prefill samples =512 cases. Each production/NPU comparison repeated10 times. All deterministic and finite; no local 0.01 safety overflow.
