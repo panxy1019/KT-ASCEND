@@ -49,7 +49,7 @@ def main():
             rows.append(dict(id=source['id'],benchmark=source['benchmark'],**result))
         audited[mode]=rows
         hashes[mode]={name:hashlib.sha256((a.root/mode/name).read_bytes()).hexdigest()
-                      for name in ('requests.jsonl','quality-report.json','lifecycle.json','resolved_command.json')
+                      for name in ('requests.jsonl','quality-report.json','lifecycle.json','resolved-command.json')
                       if (a.root/mode/name).exists()}
     reports=[]
     for r in sequence['benchmarks']:
