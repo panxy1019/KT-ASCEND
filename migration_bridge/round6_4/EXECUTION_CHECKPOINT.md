@@ -152,3 +152,15 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
   Thereare128historicalGSMoverlaps,2historicalCMMLUoverlaps,2CMMLUdev/test
   overlaps. Devselectionavoidsmatchingtestquestions; primaryrowsunchanged.
 - Keepworking: this is not Round6.4 completion. No newpush/READYtag.
+
+## Oracle closed; actual task lifecycle active
+
+- Oracle v2 ENGINEERING_ORACLE_PASS:15600common tensors byte-exact,
+  260full-logit comparisons exact,22private deferred forwards. Archived.
+- ACTIVE `/workspace/results/r64-d1-lifecycle-v1`, driver log same path plus
+  `-driver.log`. Originalcontext512,metadata trace,6fixedS6×64×6cycles.
+  Count actual routed immediate/deferred CPU tasks and worker completion, not
+  token proxy. Do not launch another model while this owned run is healthy.
+- Latest owned_server.py including explicit offline environment deployed.
+- Next: lifecycle audit; batch2 pilot OFF/ON and transaction audit; batch4;
+  repeat/restart; dev-only quality pilot; frozen heldout/quality/perf/stability.
