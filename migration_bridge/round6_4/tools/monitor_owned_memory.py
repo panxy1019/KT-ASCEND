@@ -34,9 +34,16 @@ def main():
     p.add_argument("--duration-seconds", type=int, required=True)
     p.add_argument("--interval-seconds", type=int, default=5)
     p.add_argument("--descendant-runs", action="store_true", help="Observe sequential child runs under this exact project artifact root")
+    p.add_argument("--until-report", help="Container-path JSON report under run root; stop monitoring after its terminal status")
     args = p.parse_args()
     if not args.run_root.startswith("/workspace/results/r64-") or not 1 <= args.interval_seconds <= 60 or not 1 <= args.duration_seconds <= 172800:
         raise ValueError("MONITOR_SCOPE")
+    terminal_report = None
+    if args.until_report:
+        report_path = Path(args.until_report)
+        if not report_path.is_relative_to(Path(args.run_root)) or ".." in report_path.parts:
+            raise ValueError("MONITOR_REPORT_SCOPE")
+        terminal_report = Path("/home/admin/kt-artifacts/round6-deferred")/report_path.relative_to("/workspace/results")
     def read(command):
         return subprocess.check_output(command, text=True, timeout=15)
     identity = read(["docker", "inspect", "--format", "{{.Id}}", "kt-r6-deferred-ascend"]).strip()
@@ -89,6 +96,14 @@ def main():
         except Exception as exc:
             item.update(status="MONITOR_ERROR", exception=repr(exc))
         print(json.dumps(item), flush=True)
+        if terminal_report and terminal_report.exists():
+            try:
+                status = json.loads(terminal_report.read_text()).get("status")
+                if status and status not in ("RUNNING", "STARTING", "READY"):
+                    print(json.dumps(dict(status="MONITOR_COMPLETE", report_status=status, time_unix=time.time())),flush=True)
+                    break
+            except json.JSONDecodeError:
+                pass  # The owned runner can be midway through its progress write.
         time.sleep(args.interval_seconds)
 
 
