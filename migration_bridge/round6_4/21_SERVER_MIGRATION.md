@@ -124,3 +124,15 @@ expert evidence, not whole-model quality equivalence.
 Build compiler:UbuntuGCC11.4.0. Target flags and compiler-version retained.
 Queue advanced to compact32 after these passes; destination32 qualification is
 still pending. No acceptance threshold or placement changes.
+
+## Completed destination32worker compact bridge
+
+`r64-910b-compact32-v1`:32/32requests PASS, same4prompt/3repeat/cleanrestart
+protocol. All finite; each mode internally exact. Resolved command and CPUInfer
+logs identify32threads. Crossworker diagnostic additionally finds32/32paired
+output trajectories identical to compact16-v2. Not a formal speedup experiment.
+
+At08:24UTC queue advanced to `r64-910b-descriptive32-v1`; complete new3mode
+cohort required. Read-only host monitor3391118 records exact guard descendants,
+CPU0–31 andNPU0; bounded5hours and ends on capture terminal progress. No signal
+operations in this telemetry tool. Final descriptive and resource audit pending.

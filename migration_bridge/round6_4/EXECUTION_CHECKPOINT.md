@@ -22,8 +22,15 @@ then realexpert16cases -> compact32 -> full3mode descriptive32 -> analysis.
 Queue firstfailure stops; no downstream launch unless previous reportPASS.
 No duplicate models. Manifest env KT_R64_MIGRATION_BUILD_MANIFEST required;
 no rewriting historical reference hashes. Newhost fullqualification not yetPASS.
-32worker tooling exists but32worker runtime is NOT YET QUALIFIED.
-Remaining descriptive capture must be a complete new destination cohort.
+2026-09-16 08:24UTC:compact16PASS32/32; realexpert16/16PASS maxrelL2
+0.003913063420715329; compact32PASS32/32. Both worker profiles same-path
+repeat/restart exact. ACTIVE r64-910b-descriptive32-v1, all3modes new destination.
+Queue r64-910b-continuation-v1 handles capture then analysis, no duplicate driver.
+Read-only host memorymonitor PID3391118, interval30s, bound to full containerID,
+output r64-910b-descriptive32-v1-memory.jsonl; terminates on captureprogress.
+32workers qualified only for compact migration bridge, not fullquality/performance.
+Descriptive completion -> archive all metadata/reports/resource evidence ->
+final ADR/summary/contract, retaining source-platform quality/performance scope.
 
 USER PAUSE 2026-09-16 06:33UTC: "先暂停测试吧，释放掉容器".
 Stop current project capture and analysis waiter, stop dedicated container;
