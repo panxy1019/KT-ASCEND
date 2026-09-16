@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 from types import SimpleNamespace as NS
 
@@ -47,12 +48,18 @@ def main():
     p.add_argument('--model',type=Path,required=True)
     p.add_argument('--gguf',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--stage-capture',action='store_true')
+    p.add_argument('--baseline',type=Path)
     a=p.parse_args()
     a.output.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
     index=json.loads((a.model/'model.safetensors.index.json').read_text())['weight_map']
+    baseline={}
+    if a.baseline:
+        baseline={(r['layer'],r['expert'],r['call']):r for r in json.loads(a.baseline.read_text())['rows']}
+    if a.stage_capture and len(baseline)!=512:raise ValueError('STAGE_CAPTURE_REQUIRES_FROZEN_512_ROW_BASELINE')
     report=dict(status='RUNNING',scope='PHASE_MINUS_ONE_DIAGNOSTIC',rows=[],
-        production_intermediates='NOT_CAPTURED_NOT_EMULATED',
+        production_intermediates='NATIVE_BUFFERS' if a.stage_capture else 'NOT_CAPTURED_NOT_EMULATED',
         decode_calls=[2,33,55],prefill_calls=[1],model_qualification_allowed=False)
     def load(layer,source,stage,call):
         path=a.trace/f'{source}_layer{layer:02d}_{stage}_call{call:04d}.pt'
@@ -87,7 +94,11 @@ def main():
                     ids=torch.full((len(x),6),-1,dtype=torch.int64);ids[:,0]=expert
                     unit=torch.zeros((len(x),6),dtype=torch.float32);unit[:,0]=1
                     physical=ids.clone();physical[:,0]=0
-                    prod=cpu.forward(x,ids,unit).clone().float()
+                    stage_dir=a.output/f'native-L{layer}-E{expert}-C{call}'
+                    if a.stage_capture:
+                        stage_dir.mkdir();os.environ['KT_R66_STAGE_DIR']=str(stage_dir)
+                    try:prod=cpu.forward(x,ids,unit).clone().float()
+                    finally:os.environ.pop('KT_R66_STAGE_DIR',None)
                     hashes=[digest(prod)]
                     for _ in range(9):hashes.append(digest(cpu.forward(x,ids,unit).clone()))
                     xn=x.to('npu');pn=physical.to('npu',dtype=torch.int32);un=unit.to('npu')
@@ -96,6 +107,42 @@ def main():
                     for _ in range(9):
                         n_hashes.append(digest(fn(method,npu,NS(hidden_states=xn,topk_output=(un,pn,None))).hidden_states))
                     pure=reference(x,w,False);bf=reference(x,w,True)
+                    stages={}
+                    if a.stage_capture:
+                        prior=baseline[layer,expert,call]
+                        if digest(prod)!=prior['production_hashes'][0] or digest(refn)!=prior['npu_hashes'][0]:
+                            raise ValueError('DIAGNOSTIC_BUILD_OUTPUT_DIFFERS_FROM_PRODUCTION')
+                        import numpy as np
+                        for name,width in [('gate_raw',1408),('up_raw',1408),('mul_visible',1408),('down_raw',2048)]:
+                            raw=torch.from_numpy(np.fromfile(stage_dir/f'E{expert}-{name}.f32',dtype=np.float32).copy()).reshape(len(x),width)
+                            stages[name]=raw
+                        captured={};original=torch.ops.npu.npu_grouped_matmul
+                        def capture_gmm(*args,**kwargs):
+                            out=original(*args,**kwargs)
+                            if 'expanded_input' not in captured:
+                                captured['expanded_input']=kwargs['x'][0].cpu().clone()
+                                captured['gate_up']=out[0].cpu().clone()
+                            else:
+                                captured['mul']=kwargs['x'][0].cpu().clone()
+                                captured['down']=out[0].cpu().clone()
+                            return out
+                        torch.ops.npu.npu_grouped_matmul=capture_gmm
+                        try:observed=fn(method,npu,NS(hidden_states=xn,topk_output=(un,pn,None))).hidden_states.cpu()
+                        finally:torch.ops.npu.npu_grouped_matmul=original
+                        if not torch.equal(observed,refn):raise ValueError('NPU_OBSERVER_PERTURBATION')
+                        selection=[]
+                        for original_row in x:
+                            matching=(captured['expanded_input']==original_row).all(1).nonzero().flatten()
+                            if not len(matching):raise ValueError('NPU_EXPANDED_OPERAND_MAPPING')
+                            for name in ['gate_up','mul','down']:
+                                values=captured[name][matching]
+                                if not torch.equal(values,values[:1].expand_as(values)):
+                                    raise ValueError('NPU_DUPLICATE_OPERAND_OUTPUT_MISMATCH')
+                            selection.append(int(matching[0]))
+                        stages['npu_gate']=captured['gate_up'][selection,:1408].float()
+                        stages['npu_up']=captured['gate_up'][selection,1408:].float()
+                        stages['npu_mul']=captured['mul'][selection].float()
+                        stages['npu_down']=captured['down'][selection].float()
                     natural=((natural_ids==expert)*natural_weights.bfloat16().float()).sum(1,keepdim=True)
                     comparisons={
                         'production_vs_canonical_fp32':metrics(prod,pure['down']),
@@ -111,12 +158,21 @@ def main():
                         natural_route_weight=natural.tolist(),comparisons=comparisons,
                         production_hashes=hashes,npu_hashes=n_hashes,
                         deterministic=len(set(hashes))==len(set(n_hashes))==1)
+                    if a.stage_capture:
+                        row['stage_comparisons']={}
+                        for name in ['gate','up','mul','down']:
+                            visible=stages['mul_visible'] if name=='mul' else stages[name+'_raw'].bfloat16().float()
+                            row['stage_comparisons'][name]=dict(
+                                production_vs_fp32=metrics(visible,pure[name]),
+                                production_vs_npu=metrics(visible,stages['npu_'+name]),
+                                npu_vs_fp32=metrics(stages['npu_'+name],pure[name]))
+                        row['production_observer_parity']=True
                     row['relative_error_ratio']=comparisons['production_vs_canonical_fp32']['relative_l2']/max(comparisons['npu_vs_canonical_fp32']['relative_l2'],1e-30)
                     row['local_safety_pass']=all(comparisons[k]['relative_l2']<=.01 for k in ['production_vs_canonical_fp32','production_vs_npu'])
                     row['finite']=all(v['finite'] for v in comparisons.values())
                     artifact=a.output/f'L{layer:02d}-E{expert:02d}-C{call:04d}.pt'
                     torch.save(dict(hidden=x,production=prod,npu=refn,canonical_fp32=pure,
-                        canonical_bf16_boundaries=bf,natural_route_weight=natural),artifact)
+                        canonical_bf16_boundaries=bf,natural_route_weight=natural,actual_stages=stages),artifact)
                     row['artifact_sha256']=hashlib.sha256(artifact.read_bytes()).hexdigest()
                     report['rows'].append(row)
                     with (a.output/'rows.jsonl').open('a') as out:out.write(json.dumps(row)+'\n')

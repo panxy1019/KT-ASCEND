@@ -17,6 +17,22 @@
 #include <functional>
 #include <vector>
 
+#ifdef KT_R66_STAGE_CAPTURE
+// Test-only build: read completed buffers; never substitute arithmetic or weights.
+#include <string>
+#include <stdexcept>
+inline void r66_dump_stage(const char* stage, int expert, const float* values, size_t count) {
+  const char* root = std::getenv("KT_R66_STAGE_DIR");
+  if (!root) return;
+  const std::string path = std::string(root) + "/E" + std::to_string(expert) + "-" + stage + ".f32";
+  FILE* file = std::fopen(path.c_str(), "wbx");
+  if (!file) throw std::runtime_error("R66_STAGE_CAPTURE_OPEN_FAILED");
+  const auto written = std::fwrite(values, sizeof(float), count, file);
+  const int closed = std::fclose(file);
+  if (written != count || closed != 0) throw std::runtime_error("R66_STAGE_CAPTURE_WRITE_FAILED");
+}
+#endif
+
 #include "../../cpu_backend/shared_mem_buffer.h"
 #include "../../cpu_backend/worker_pool.h"
 #include "../moe-tp.hpp"
@@ -633,6 +649,15 @@ class LLAMA_MOE_TP {
         },
         nullptr);
 
+#ifdef KT_R66_STAGE_CAPTURE
+    for (int i = 0; i < activated_expert; ++i) {
+      const int e = m_expert_id_map_[i];
+      r66_dump_stage("gate_raw", e, s_gate_output_[i], config_.intermediate_size);
+      r66_dump_stage("up_raw", e, s_up_output_[i], config_.intermediate_size);
+      r66_dump_stage("mul_visible", e, s_intermediate_fp32_[i], config_.intermediate_size);
+      r66_dump_stage("down_raw", e, s_down_output_[i], config_.hidden_size);
+    }
+#endif
 #ifdef FORWARD_TIME_PROFILE
     auto t3 = std::chrono::high_resolution_clock::now();
     fmt::print("numa_node: {}, down time: {}\n", tp_part_idx,
@@ -941,6 +966,16 @@ class LLAMA_MOE_TP {
           }
         },
         nullptr);
+#ifdef KT_R66_STAGE_CAPTURE
+    for (int i = 0; i < activated_expert; ++i) {
+      const int e = m_expert_id_map_[i];
+      const size_t rows = m_local_num_[e];
+      r66_dump_stage("gate_raw", e, m_local_gate_output_ptr_[e], rows * config_.intermediate_size);
+      r66_dump_stage("up_raw", e, m_local_up_output_ptr_[e], rows * config_.intermediate_size);
+      r66_dump_stage("mul_visible", e, m_local_intermediate_fp32_ptr_[e], rows * config_.intermediate_size);
+      r66_dump_stage("down_raw", e, m_local_down_output_ptr_[e], rows * config_.hidden_size);
+    }
+#endif
 #ifdef FORWARD_TIME_PROFILE
     {
       auto now_time = std::chrono::high_resolution_clock::now();
