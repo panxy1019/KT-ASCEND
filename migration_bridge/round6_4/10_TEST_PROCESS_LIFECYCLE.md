@@ -27,3 +27,9 @@ owned test run; this does not retroactively change prior guard evidence.
 No production source, worker topology, stream ordering, host library, or
 container PID1 configuration changed. Prior zombie entries remain an
 environment limitation; no zero-process-leak claim is made for historical runs.
+
+A3 follow-up: the fork/grandchild test passed. The bounded batch4 diagnostic
+also wrote `OWNED_DESCENDANTS_REAPED` for22 exited descendant processes under
+its guard. The original model's same failure was preserved, showing cleanup
+did not disguise the error. This evidence verifies new guard teardown, not
+retroactive cleanup of1774 historical entries.

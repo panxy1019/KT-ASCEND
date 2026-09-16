@@ -118,3 +118,32 @@ enable unrelated CUDA batch-invariant kernels or change the frozen runtime.
 Bounded diagnostic `r64-b4-off-diagnostic-v1` repeats the same4 cohorts twice,
 adds full snapshots at0,1,55,260,261,315, and otherwise preserves configuration.
 It is not a substitute for the failed ten-repeat gate and cannot qualify batch4.
+
+### Bounded diagnosis result
+
+The full-snapshot repetition reproduces exactly the same token55 flip and
+passes the same325-forward integrity audit. Full snapshots show no common
+tensor differences at prefill0 versus260. At decode1 versus261, Layer7
+decoder_input_hidden and decoder_input_residual already differ, before
+Layer7 attention/router/CPU expert execution. Layers before7 are NPU-owned
+in the frozen D1 placement. Thus the earliest observed decode difference is
+upstream of that step's first CPU expert. This narrows investigation to
+pre-Layer7 NPU/KV execution; it does not identify an exact operation or prove
+all prior KV contents identical. No unsafe CPU-transfer fix is justified by
+these results.
+
+`evidence/evidence-b4-diagnostic/` preserves the complete index, response,
+comparison, metadata and guard/reaping evidence. Full tensor snapshots remain
+at `/workspace/results/r64-b4-off-diagnostic-v1` on A3.
+
+Round6.4 batch4 disposition: **EXPERIMENTAL_NOT_QUALIFIED**,
+`SAME_PATH_NONDETERMINISM_PRE_L7_NPU_OR_KV`, no batch4 quality/speedup release.
+Next minimal separate investigation is an all-NPU batch4 control with captured
+per-layer inputs/KV metadata, followed by the first differing NPU operator;
+do not change workers, placement, or arithmetic without that evidence.
+
+The originally frozen sole primary endpoint is D1 batch1. Its full same-process,
+restart, oracle and system tests passed independently before batch expansion.
+Continue its approved quality/performance/stability work; this neither lowers
+batch4's exactness gate nor promotes its failed experiment. Batch2 also remains
+engineering-only until its own quality protocol is exercised.

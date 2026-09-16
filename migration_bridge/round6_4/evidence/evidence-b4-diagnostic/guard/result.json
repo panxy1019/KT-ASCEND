@@ -1,0 +1,25 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "bash",
+    "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+    "D1_NODEFER",
+    "/workspace/results/r64-b4-off-diagnostic-v1",
+    "31000"
+  ],
+  "started_unix": 1789524830.5442958,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 386174,
+  "pgid": 386174,
+  "reason": "CANCELLED",
+  "matched_error": null,
+  "returncode": -9,
+  "ended_unix": 1789524965.2465615,
+  "success": false
+}

@@ -1,0 +1,66 @@
+{
+  "status": "PARTIAL_FAILURE_INTEGRITY_AUDITED_NOT_QUALIFIED",
+  "physical_forwards": 325,
+  "known_requests": 20,
+  "cpu_owned_layer_forwards": 587,
+  "real_cpu_tasks_with_selected_routes": 587,
+  "deferred_forwards": 0,
+  "deferred_routes": 0,
+  "expert_route_hits": {
+    "L7:E16": 413,
+    "L7:E38": 403,
+    "L7:E41": 460,
+    "L7:E50": 574,
+    "L8:E8": 436,
+    "L8:E25": 339,
+    "L8:E33": 373,
+    "L8:E55": 325
+  },
+  "worker_sync_complete": 650,
+  "all_finite": true,
+  "failures": [],
+  "actual_batch_histogram": {
+    "4": 325
+  },
+  "forward_counts_per_rid": {
+    "r64-b4-D1_NODEFER-r0-c0-s6_en_01": 65,
+    "r64-b4-D1_NODEFER-r0-c0-s6_en_02": 65,
+    "r64-b4-D1_NODEFER-r0-c0-s6_en_03": 65,
+    "r64-b4-D1_NODEFER-r0-c0-s6_zh_01": 65,
+    "r64-b4-D1_NODEFER-r0-c1-s6_zh_02": 65,
+    "r64-b4-D1_NODEFER-r0-c1-s6_zh_03": 65,
+    "r64-b4-D1_NODEFER-r0-c1-s6_math_01": 65,
+    "r64-b4-D1_NODEFER-r0-c1-s6_math_02": 65,
+    "r64-b4-D1_NODEFER-r0-c2-s6_json_01": 65,
+    "r64-b4-D1_NODEFER-r0-c2-s6_json_02": 65,
+    "r64-b4-D1_NODEFER-r0-c2-s6_code_01": 65,
+    "r64-b4-D1_NODEFER-r0-c2-s6_code_02": 65,
+    "r64-b4-D1_NODEFER-r0-c3-retained-engineering-0": 65,
+    "r64-b4-D1_NODEFER-r0-c3-retained-engineering-1": 65,
+    "r64-b4-D1_NODEFER-r0-c3-retained-engineering-2": 65,
+    "r64-b4-D1_NODEFER-r0-c3-retained-engineering-3": 65,
+    "r64-b4-D1_NODEFER-r1-c0-s6_en_01": 65,
+    "r64-b4-D1_NODEFER-r1-c0-s6_en_02": 65,
+    "r64-b4-D1_NODEFER-r1-c0-s6_en_03": 65,
+    "r64-b4-D1_NODEFER-r1-c0-s6_zh_01": 65
+  },
+  "schedule_sha256_by_repeat": {
+    "0": "aa4b63312c236e4ddb388c8693dea32903822e15068cfa6e93645f503c643d35",
+    "1": "0e18be3d540d2fe551ae78e9e4333a342304a63ae1e3eb1dda665cbc195baab7"
+  },
+  "cohort_schedule_sha256": {
+    "r0-c0": "0e18be3d540d2fe551ae78e9e4333a342304a63ae1e3eb1dda665cbc195baab7",
+    "r0-c1": "6199ec7b4da1daff41ab28616b62e12ec582e20c087481bb772c10f3d1eed272",
+    "r0-c2": "2c4c324101b0e2504901b82bc219f418fc1ca931baafab412a6ea612dd3aeefc",
+    "r0-c3": "d3e68dc6d0818b674d3b454f118546a406f12432bd42ecb9287bb0d368384a6b",
+    "r1-c0": "0e18be3d540d2fe551ae78e9e4333a342304a63ae1e3eb1dda665cbc195baab7"
+  },
+  "first_token_divergences": [
+    {
+      "rid": "r64-b4-D1_NODEFER-r1-c0-s6_en_01",
+      "token_index": 55,
+      "reference_token": 7230,
+      "actual_token": 11765
+    }
+  ]
+}

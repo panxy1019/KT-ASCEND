@@ -1,0 +1,573 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-16 02:14:11 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 02:14:11 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 02:14:11 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 02:14:11 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+KTransformers EP is enabled. --disable-shared-experts-fusion is automatically set to prevent shared experts from being offloaded to CPU.
+Cuda graph and server warmup are disabled because of using tensor dump mode
+[2026-09-16 02:14:12] server_args=ServerArgs(model_path='/workspace/models/DeepSeek-V2-Lite-604d5664', tokenizer_path='/workspace/models/DeepSeek-V2-Lite-604d5664', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=1024, is_embedding=False, enable_multimodal=None, revision=None, model_impl='auto', host='127.0.0.1', port=31000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.55, max_running_requests=4, max_queued_requests=None, max_total_tokens=4096, chunked_prefill_size=1024, enable_dynamic_chunking=False, max_prefill_tokens=1024, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=0, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/workspace/models/DeepSeek-V2-Lite-604d5664', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm='static', init_expert_location='/workspace/results/placements/placement_d1.pt', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode='stat', expert_distribution_recorder_buffer_size=-1, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf', kt_method='LLAMAFILE', kt_cpuinfer=16, kt_threadpool_count=1, kt_numa_nodes=[0], kt_num_gpu_experts=None, kt_gpu_experts_ratio=0.9951923076923077, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=None, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=False, kt_expert_placement_strategy='frequency', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=2048, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 576, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=True, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder='/workspace/results/r64-b4-off-diagnostic-v1/tensors', debug_tensor_dump_layers=[999], debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=True, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-09-16 02:14:12] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 02:14:13] Using default HuggingFace chat template with detected content format: string
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-16 02:14:21 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 02:14:21 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 02:14:21 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 02:14:21 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 02:14:21 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 02:14:21 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 02:14:21 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-16 02:14:21 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[2026-09-16 02:14:22] get env SGLANG_APPLY_CONFIG_BACKUP = none
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 02:14:22] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 02:14:23] Mamba selective_state_update backend initialized: triton
+[2026-09-16 02:14:23] Transformers version 5.3.0.dev0 is used for model type deepseek_v2. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-16 02:14:23] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-16 02:14:23] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-16 02:14:23] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-16 02:14:31] Init torch distributed begin.
+[rank0]:[W916 02:14:32.144144181 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-16 02:14:32] Init torch distributed ends. elapsed=1.15 s, mem usage=0.01 GB
+[2026-09-16 02:14:32] Detected KT mode: kt_weight_path=/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf. Using trivial mapping for CPU expert weight loading.
+[2026-09-16 02:14:32] init_expert_location: Using trivial mapping for KT frequency strategy. logical_count will be read directly by KT layers. CPU weight loading will use trivial mapping (physical_id == logical_id).
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-16 02:14:32] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-16 02:14:33] Load weight begin. avail mem=60.82 GB
+[2026-09-16 02:14:33] Using kt_gpu_experts_ratio=0.9951923076923077, total GPU experts: 1656 (= 1664 total experts × 0.9951923076923077)
+[2026-09-16 02:14:33] Loading activation frequency from /workspace/results/placements/placement_d1.pt
+[2026-09-16 02:14:33] Using frequency-based strategy with activation frequency data
+[2026-09-16 02:14:33] KT GPU experts: layer 1 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 2 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 3 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 4 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 5 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 6 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 7 (MoE) has 60 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 8 (MoE) has 60 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 9 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 10 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 11 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 12 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 13 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 14 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 15 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 16 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 17 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 18 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 19 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 20 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 21 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 22 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 23 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 24 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 25 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] KT GPU experts: layer 26 (MoE) has 64 GPU experts
+[2026-09-16 02:14:33] Generated KT GPU experts masks using 'frequency' strategy: 26 MoE layers (out of 27 total layers) x 64 experts, total GPU experts in MoE layers = 1656
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 1
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 2
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 3
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 4
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 5
+[2026-09-16 02:14:33] Skipping KT wrapper for all-accelerator layer 6
+[2026-09-16 02:14:33] [KT] Created shared staging buffer: 4.0 MiB (shape=torch.Size([1024, 2048]), dtype=torch.bfloat16)
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 9
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 10
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 11
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 12
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 13
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 14
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 15
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 16
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 17
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 18
+[2026-09-16 02:14:34] Skipping KT wrapper for all-accelerator layer 19
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 20
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 21
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 22
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 23
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 24
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 25
+[2026-09-16 02:14:35] Skipping KT wrapper for all-accelerator layer 26
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-round6-d3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:02<00:06,  2.09s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:05<00:05,  2.70s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:05<00:01,  1.81s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  1.64s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:07<00:00,  1.84s/it]
+
+[2026-09-16 02:14:43] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+can not use command: npu-smi info
+[2026-09-16 02:14:52] get env HOME = /root
+[2026-09-16 02:14:52] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-16 02:14:54] get env PYTHONPATH = /workspace/kt-src/third_party/sglang/python:/workspace/kt-src:/usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/workspace/kt-src/third_party/sglang/python:/workspace/kt-src
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[2026-09-16 02:14:55] Load weight end. elapsed=21.99 s, type=DeepseekV2ForCausalLM, dtype=torch.bfloat16, avail mem=31.23 GB, mem usage=29.59 GB.
+[2026-09-16 02:14:55] get env KT_R62_COMPLETE_FORWARD_DUMP = 1
+[2026-09-16 02:14:55] get env KT_R63_COMPACT_CAPTURE = 1
+[2026-09-16 02:14:55] get env KT_R63_FULL_DIAGNOSTIC_SEQUENCES = 0,1,55,260,261,315
+[2026-09-16 02:14:55] get env KT_R62_RUN_METADATA = /workspace/results/r64-b4-off-diagnostic-v1/provenance.json
+[2026-09-16 02:14:55] get env KT_R63_CAPTURE_INDEX = /workspace/results/r64-b4-off-diagnostic-v1/index.jsonl
+[2026-09-16 02:14:55] Using KV cache dtype: torch.bfloat16
+[2026-09-16 02:14:55] KV Cache is allocated. #tokens: 4096, KV size: 0.12 GB
+[2026-09-16 02:14:55] Memory pool end. avail mem=31.10 GB
+[2026-09-16 02:14:55] Routing experts host buffer allocated. #tokens: 4224, size: 0.00 GB
+[2026-09-16 02:14:55] Routing experts device buffer allocated. #shape: (1024, 27, 6), size: 0.63 MB
+`rope_parameters`'s factor field must be a float >= 1, got 40
+`rope_parameters`'s beta_fast field must be a float, got 32
+`rope_parameters`'s beta_slow field must be a float, got 1
+[2026-09-16 02:14:55] max_total_num_tokens=4096, chunked_prefill_size=1024, max_prefill_tokens=1024, max_running_requests=4, context_len=1024, available_gpu_mem=31.08 GB
+[2026-09-16 02:14:55] INFO:     Started server process [386174]
+[2026-09-16 02:14:55] INFO:     Waiting for application startup.
+[2026-09-16 02:14:55] Using default chat sampling params from model generation config: {'temperature': 0.3, 'top_p': 0.95}
+[2026-09-16 02:14:56] The server is fired up and ready to roll!
+[2026-09-16 02:14:56] INFO:     Application startup complete.
+[2026-09-16 02:14:56] INFO:     Uvicorn running on http://127.0.0.1:31000 (Press CTRL+C to quit)
+[2026-09-16 02:14:58] INFO:     127.0.0.1:51464 - "GET /model_info HTTP/1.1" 200 OK
+[2026-09-16 02:14:59] get env HOSTNAME = a3-server-00
+[2026-09-16 02:15:01] Dump 00000th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00000.pt
+[2026-09-16 02:15:01] Dump 00001th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00001.pt
+[2026-09-16 02:15:01] Prefill batch, #new-seq: 4, #new-token: 512, #cached-token: 0, token usage: 0.12, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-09-16 02:15:01] Dump 00002th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00002.pt
+[2026-09-16 02:15:01] Dump 00003th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00003.pt
+[2026-09-16 02:15:01] Dump 00004th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00004.pt
+[2026-09-16 02:15:02] Dump 00005th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00005.pt
+[2026-09-16 02:15:02] Dump 00006th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00006.pt
+[2026-09-16 02:15:02] Dump 00007th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00007.pt
+[2026-09-16 02:15:02] Dump 00008th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00008.pt
+[2026-09-16 02:15:02] Dump 00009th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00009.pt
+[2026-09-16 02:15:02] Dump 00010th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00010.pt
+[2026-09-16 02:15:03] Dump 00011th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00011.pt
+[2026-09-16 02:15:03] Dump 00012th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00012.pt
+[2026-09-16 02:15:03] Dump 00013th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00013.pt
+[2026-09-16 02:15:03] Dump 00014th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00014.pt
+[2026-09-16 02:15:03] Dump 00015th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00015.pt
+[2026-09-16 02:15:03] Dump 00016th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00016.pt
+[2026-09-16 02:15:04] Dump 00017th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00017.pt
+[2026-09-16 02:15:04] Dump 00018th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00018.pt
+[2026-09-16 02:15:04] Dump 00019th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00019.pt
+[2026-09-16 02:15:04] Dump 00020th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00020.pt
+[2026-09-16 02:15:04] Dump 00021th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00021.pt
+[2026-09-16 02:15:04] Dump 00022th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00022.pt
+[2026-09-16 02:15:05] Dump 00023th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00023.pt
+[2026-09-16 02:15:05] Dump 00024th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00024.pt
+[2026-09-16 02:15:05] Dump 00025th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00025.pt
+[2026-09-16 02:15:05] Dump 00026th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00026.pt
+[2026-09-16 02:15:05] Dump 00027th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00027.pt
+[2026-09-16 02:15:05] Dump 00028th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00028.pt
+[2026-09-16 02:15:06] Dump 00029th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00029.pt
+[2026-09-16 02:15:06] Dump 00030th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00030.pt
+[2026-09-16 02:15:06] Dump 00031th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00031.pt
+[2026-09-16 02:15:06] Dump 00032th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00032.pt
+[2026-09-16 02:15:06] Dump 00033th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00033.pt
+[2026-09-16 02:15:07] Dump 00034th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00034.pt
+[2026-09-16 02:15:07] Dump 00035th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00035.pt
+[2026-09-16 02:15:07] Dump 00036th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00036.pt
+[2026-09-16 02:15:07] Dump 00037th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00037.pt
+[2026-09-16 02:15:07] Dump 00038th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00038.pt
+[2026-09-16 02:15:07] Dump 00039th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00039.pt
+[2026-09-16 02:15:08] Dump 00040th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00040.pt
+[2026-09-16 02:15:08] Dump 00041th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00041.pt
+[2026-09-16 02:15:08] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 3.51, #queue-req: 0
+[2026-09-16 02:15:08] Dump 00042th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00042.pt
+[2026-09-16 02:15:08] Dump 00043th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00043.pt
+[2026-09-16 02:15:08] Dump 00044th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00044.pt
+[2026-09-16 02:15:08] Dump 00045th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00045.pt
+[2026-09-16 02:15:09] Dump 00046th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00046.pt
+[2026-09-16 02:15:09] Dump 00047th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00047.pt
+[2026-09-16 02:15:09] Dump 00048th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00048.pt
+[2026-09-16 02:15:09] Dump 00049th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00049.pt
+[2026-09-16 02:15:09] Dump 00050th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00050.pt
+[2026-09-16 02:15:09] Dump 00051th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00051.pt
+[2026-09-16 02:15:10] Dump 00052th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00052.pt
+[2026-09-16 02:15:10] Dump 00053th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00053.pt
+[2026-09-16 02:15:10] Dump 00054th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00054.pt
+[2026-09-16 02:15:10] Dump 00055th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00055.pt
+[2026-09-16 02:15:10] Dump 00056th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00056.pt
+[2026-09-16 02:15:10] Dump 00057th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00057.pt
+[2026-09-16 02:15:11] Dump 00058th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00058.pt
+[2026-09-16 02:15:11] Dump 00059th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00059.pt
+[2026-09-16 02:15:11] Dump 00060th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00060.pt
+[2026-09-16 02:15:11] Dump 00061th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00061.pt
+[2026-09-16 02:15:11] Dump 00062th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00062.pt
+[2026-09-16 02:15:11] Dump 00063th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00063.pt
+[2026-09-16 02:15:12] Dump 00064th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00064.pt
+[2026-09-16 02:15:12] INFO:     127.0.0.1:51468 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-16 02:15:12] Dump 00065th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00065.pt
+[2026-09-16 02:15:12] Dump 00066th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00066.pt
+[2026-09-16 02:15:12] Prefill batch, #new-seq: 4, #new-token: 512, #cached-token: 0, token usage: 0.12, #running-req: 0, #queue-req: 0, input throughput (token/s): 46.63, npu graph: False
+[2026-09-16 02:15:12] Dump 00067th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00067.pt
+[2026-09-16 02:15:12] Dump 00068th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00068.pt
+[2026-09-16 02:15:12] Dump 00069th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00069.pt
+[2026-09-16 02:15:13] Dump 00070th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00070.pt
+[2026-09-16 02:15:13] Dump 00071th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00071.pt
+[2026-09-16 02:15:13] Dump 00072th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00072.pt
+[2026-09-16 02:15:13] Dump 00073th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00073.pt
+[2026-09-16 02:15:13] Dump 00074th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00074.pt
+[2026-09-16 02:15:13] Dump 00075th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00075.pt
+[2026-09-16 02:15:14] Dump 00076th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00076.pt
+[2026-09-16 02:15:14] Dump 00077th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00077.pt
+[2026-09-16 02:15:14] Dump 00078th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00078.pt
+[2026-09-16 02:15:14] Dump 00079th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00079.pt
+[2026-09-16 02:15:14] Dump 00080th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00080.pt
+[2026-09-16 02:15:14] Dump 00081th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00081.pt
+[2026-09-16 02:15:14] Dump 00082th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00082.pt
+[2026-09-16 02:15:14] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 23.94, #queue-req: 0
+[2026-09-16 02:15:15] Dump 00083th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00083.pt
+[2026-09-16 02:15:15] Dump 00084th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00084.pt
+[2026-09-16 02:15:15] Dump 00085th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00085.pt
+[2026-09-16 02:15:15] Dump 00086th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00086.pt
+[2026-09-16 02:15:15] Dump 00087th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00087.pt
+[2026-09-16 02:15:15] Dump 00088th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00088.pt
+[2026-09-16 02:15:16] Dump 00089th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00089.pt
+[2026-09-16 02:15:16] Dump 00090th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00090.pt
+[2026-09-16 02:15:16] Dump 00091th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00091.pt
+[2026-09-16 02:15:16] Dump 00092th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00092.pt
+[2026-09-16 02:15:16] Dump 00093th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00093.pt
+[2026-09-16 02:15:16] Dump 00094th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00094.pt
+[2026-09-16 02:15:17] Dump 00095th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00095.pt
+[2026-09-16 02:15:17] Dump 00096th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00096.pt
+[2026-09-16 02:15:17] Dump 00097th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00097.pt
+[2026-09-16 02:15:17] Dump 00098th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00098.pt
+[2026-09-16 02:15:17] Dump 00099th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00099.pt
+[2026-09-16 02:15:17] Dump 00100th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00100.pt
+[2026-09-16 02:15:18] Dump 00101th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00101.pt
+[2026-09-16 02:15:18] Dump 00102th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00102.pt
+[2026-09-16 02:15:18] Dump 00103th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00103.pt
+[2026-09-16 02:15:18] Dump 00104th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00104.pt
+[2026-09-16 02:15:18] Dump 00105th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00105.pt
+[2026-09-16 02:15:18] Dump 00106th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00106.pt
+[2026-09-16 02:15:19] Dump 00107th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00107.pt
+[2026-09-16 02:15:19] Dump 00108th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00108.pt
+[2026-09-16 02:15:19] Dump 00109th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00109.pt
+[2026-09-16 02:15:19] Dump 00110th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00110.pt
+[2026-09-16 02:15:19] Dump 00111th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00111.pt
+[2026-09-16 02:15:19] Dump 00112th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00112.pt
+[2026-09-16 02:15:20] Dump 00113th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00113.pt
+[2026-09-16 02:15:20] Dump 00114th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00114.pt
+[2026-09-16 02:15:20] Dump 00115th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00115.pt
+[2026-09-16 02:15:20] Dump 00116th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00116.pt
+[2026-09-16 02:15:20] Dump 00117th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00117.pt
+[2026-09-16 02:15:20] Dump 00118th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00118.pt
+[2026-09-16 02:15:21] Dump 00119th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00119.pt
+[2026-09-16 02:15:21] Dump 00120th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00120.pt
+[2026-09-16 02:15:21] Dump 00121th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00121.pt
+[2026-09-16 02:15:21] Dump 00122th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00122.pt
+[2026-09-16 02:15:21] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 24.45, #queue-req: 0
+[2026-09-16 02:15:21] Dump 00123th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00123.pt
+[2026-09-16 02:15:21] Dump 00124th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00124.pt
+[2026-09-16 02:15:22] Dump 00125th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00125.pt
+[2026-09-16 02:15:22] Dump 00126th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00126.pt
+[2026-09-16 02:15:22] Dump 00127th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00127.pt
+[2026-09-16 02:15:22] Dump 00128th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00128.pt
+[2026-09-16 02:15:22] Dump 00129th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00129.pt
+[2026-09-16 02:15:22] INFO:     127.0.0.1:54146 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-16 02:15:22] Dump 00130th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00130.pt
+[2026-09-16 02:15:23] Dump 00131th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00131.pt
+[2026-09-16 02:15:23] Prefill batch, #new-seq: 4, #new-token: 512, #cached-token: 0, token usage: 0.12, #running-req: 0, #queue-req: 0, input throughput (token/s): 48.28, npu graph: False
+[2026-09-16 02:15:23] Dump 00132th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00132.pt
+[2026-09-16 02:15:23] Dump 00133th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00133.pt
+[2026-09-16 02:15:23] Dump 00134th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00134.pt
+[2026-09-16 02:15:23] Dump 00135th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00135.pt
+[2026-09-16 02:15:24] Dump 00136th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00136.pt
+[2026-09-16 02:15:24] Dump 00137th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00137.pt
+[2026-09-16 02:15:24] Dump 00138th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00138.pt
+[2026-09-16 02:15:24] Dump 00139th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00139.pt
+[2026-09-16 02:15:24] Dump 00140th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00140.pt
+[2026-09-16 02:15:24] Dump 00141th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00141.pt
+[2026-09-16 02:15:25] Dump 00142th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00142.pt
+[2026-09-16 02:15:25] Dump 00143th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00143.pt
+[2026-09-16 02:15:25] Dump 00144th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00144.pt
+[2026-09-16 02:15:25] Dump 00145th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00145.pt
+[2026-09-16 02:15:25] Dump 00146th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00146.pt
+[2026-09-16 02:15:25] Dump 00147th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00147.pt
+[2026-09-16 02:15:26] Dump 00148th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00148.pt
+[2026-09-16 02:15:26] Dump 00149th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00149.pt
+[2026-09-16 02:15:26] Dump 00150th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00150.pt
+[2026-09-16 02:15:26] Dump 00151th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00151.pt
+[2026-09-16 02:15:26] Dump 00152th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00152.pt
+[2026-09-16 02:15:26] Dump 00153th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00153.pt
+[2026-09-16 02:15:27] Dump 00154th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00154.pt
+[2026-09-16 02:15:27] Dump 00155th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00155.pt
+[2026-09-16 02:15:27] Dump 00156th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00156.pt
+[2026-09-16 02:15:27] Dump 00157th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00157.pt
+[2026-09-16 02:15:27] Dump 00158th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00158.pt
+[2026-09-16 02:15:27] Dump 00159th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00159.pt
+[2026-09-16 02:15:28] Dump 00160th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00160.pt
+[2026-09-16 02:15:28] Dump 00161th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00161.pt
+[2026-09-16 02:15:28] Dump 00162th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00162.pt
+[2026-09-16 02:15:28] Dump 00163th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00163.pt
+[2026-09-16 02:15:28] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 22.68, #queue-req: 0
+[2026-09-16 02:15:28] Dump 00164th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00164.pt
+[2026-09-16 02:15:28] Dump 00165th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00165.pt
+[2026-09-16 02:15:29] Dump 00166th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00166.pt
+[2026-09-16 02:15:29] Dump 00167th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00167.pt
+[2026-09-16 02:15:29] Dump 00168th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00168.pt
+[2026-09-16 02:15:29] Dump 00169th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00169.pt
+[2026-09-16 02:15:29] Dump 00170th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00170.pt
+[2026-09-16 02:15:29] Dump 00171th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00171.pt
+[2026-09-16 02:15:30] Dump 00172th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00172.pt
+[2026-09-16 02:15:30] Dump 00173th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00173.pt
+[2026-09-16 02:15:30] Dump 00174th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00174.pt
+[2026-09-16 02:15:30] Dump 00175th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00175.pt
+[2026-09-16 02:15:30] Dump 00176th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00176.pt
+[2026-09-16 02:15:30] Dump 00177th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00177.pt
+[2026-09-16 02:15:31] Dump 00178th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00178.pt
+[2026-09-16 02:15:31] Dump 00179th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00179.pt
+[2026-09-16 02:15:31] Dump 00180th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00180.pt
+[2026-09-16 02:15:31] Dump 00181th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00181.pt
+[2026-09-16 02:15:31] Dump 00182th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00182.pt
+[2026-09-16 02:15:31] Dump 00183th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00183.pt
+[2026-09-16 02:15:31] Dump 00184th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00184.pt
+[2026-09-16 02:15:32] Dump 00185th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00185.pt
+[2026-09-16 02:15:32] Dump 00186th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00186.pt
+[2026-09-16 02:15:32] Dump 00187th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00187.pt
+[2026-09-16 02:15:32] Dump 00188th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00188.pt
+[2026-09-16 02:15:32] Dump 00189th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00189.pt
+[2026-09-16 02:15:33] Dump 00190th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00190.pt
+[2026-09-16 02:15:33] Dump 00191th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00191.pt
+[2026-09-16 02:15:33] Dump 00192th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00192.pt
+[2026-09-16 02:15:33] Dump 00193th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00193.pt
+[2026-09-16 02:15:33] Dump 00194th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00194.pt
+[2026-09-16 02:15:33] INFO:     127.0.0.1:57866 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-16 02:15:33] Dump 00195th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00195.pt
+[2026-09-16 02:15:34] Dump 00196th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00196.pt
+[2026-09-16 02:15:34] Prefill batch, #new-seq: 4, #new-token: 512, #cached-token: 0, token usage: 0.12, #running-req: 0, #queue-req: 0, input throughput (token/s): 46.53, npu graph: False
+[2026-09-16 02:15:34] Dump 00197th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00197.pt
+[2026-09-16 02:15:34] Dump 00198th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00198.pt
+[2026-09-16 02:15:34] Dump 00199th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00199.pt
+[2026-09-16 02:15:34] Dump 00200th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00200.pt
+[2026-09-16 02:15:34] Dump 00201th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00201.pt
+[2026-09-16 02:15:35] Dump 00202th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00202.pt
+[2026-09-16 02:15:35] Dump 00203th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00203.pt
+[2026-09-16 02:15:35] Dump 00204th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00204.pt
+[2026-09-16 02:15:35] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 23.66, #queue-req: 0
+[2026-09-16 02:15:35] Dump 00205th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00205.pt
+[2026-09-16 02:15:35] Dump 00206th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00206.pt
+[2026-09-16 02:15:35] Dump 00207th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00207.pt
+[2026-09-16 02:15:35] Dump 00208th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00208.pt
+[2026-09-16 02:15:36] Dump 00209th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00209.pt
+[2026-09-16 02:15:36] Dump 00210th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00210.pt
+[2026-09-16 02:15:36] Dump 00211th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00211.pt
+[2026-09-16 02:15:36] Dump 00212th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00212.pt
+[2026-09-16 02:15:36] Dump 00213th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00213.pt
+[2026-09-16 02:15:36] Dump 00214th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00214.pt
+[2026-09-16 02:15:37] Dump 00215th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00215.pt
+[2026-09-16 02:15:37] Dump 00216th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00216.pt
+[2026-09-16 02:15:37] Dump 00217th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00217.pt
+[2026-09-16 02:15:37] Dump 00218th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00218.pt
+[2026-09-16 02:15:37] Dump 00219th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00219.pt
+[2026-09-16 02:15:37] Dump 00220th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00220.pt
+[2026-09-16 02:15:38] Dump 00221th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00221.pt
+[2026-09-16 02:15:38] Dump 00222th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00222.pt
+[2026-09-16 02:15:38] Dump 00223th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00223.pt
+[2026-09-16 02:15:38] Dump 00224th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00224.pt
+[2026-09-16 02:15:38] Dump 00225th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00225.pt
+[2026-09-16 02:15:38] Dump 00226th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00226.pt
+[2026-09-16 02:15:39] Dump 00227th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00227.pt
+[2026-09-16 02:15:39] Dump 00228th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00228.pt
+[2026-09-16 02:15:39] Dump 00229th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00229.pt
+[2026-09-16 02:15:39] Dump 00230th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00230.pt
+[2026-09-16 02:15:39] Dump 00231th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00231.pt
+[2026-09-16 02:15:39] Dump 00232th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00232.pt
+[2026-09-16 02:15:40] Dump 00233th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00233.pt
+[2026-09-16 02:15:40] Dump 00234th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00234.pt
+[2026-09-16 02:15:40] Dump 00235th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00235.pt
+[2026-09-16 02:15:40] Dump 00236th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00236.pt
+[2026-09-16 02:15:40] Dump 00237th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00237.pt
+[2026-09-16 02:15:40] Dump 00238th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00238.pt
+[2026-09-16 02:15:40] Dump 00239th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00239.pt
+[2026-09-16 02:15:41] Dump 00240th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00240.pt
+[2026-09-16 02:15:41] Dump 00241th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00241.pt
+[2026-09-16 02:15:41] Dump 00242th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00242.pt
+[2026-09-16 02:15:41] Dump 00243th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00243.pt
+[2026-09-16 02:15:41] Dump 00244th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00244.pt
+[2026-09-16 02:15:41] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 25.22, #queue-req: 0
+[2026-09-16 02:15:41] Dump 00245th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00245.pt
+[2026-09-16 02:15:42] Dump 00246th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00246.pt
+[2026-09-16 02:15:42] Dump 00247th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00247.pt
+[2026-09-16 02:15:42] Dump 00248th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00248.pt
+[2026-09-16 02:15:42] Dump 00249th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00249.pt
+[2026-09-16 02:15:42] Dump 00250th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00250.pt
+[2026-09-16 02:15:42] Dump 00251th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00251.pt
+[2026-09-16 02:15:43] Dump 00252th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00252.pt
+[2026-09-16 02:15:43] Dump 00253th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00253.pt
+[2026-09-16 02:15:43] Dump 00254th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00254.pt
+[2026-09-16 02:15:43] Dump 00255th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00255.pt
+[2026-09-16 02:15:43] Dump 00256th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00256.pt
+[2026-09-16 02:15:43] Dump 00257th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00257.pt
+[2026-09-16 02:15:44] Dump 00258th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00258.pt
+[2026-09-16 02:15:44] Dump 00259th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00259.pt
+[2026-09-16 02:15:44] INFO:     127.0.0.1:48788 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-16 02:15:44] Dump 00260th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00260.pt
+[2026-09-16 02:15:44] Dump 00261th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00261.pt
+[2026-09-16 02:15:44] Prefill batch, #new-seq: 4, #new-token: 512, #cached-token: 0, token usage: 0.12, #running-req: 0, #queue-req: 0, input throughput (token/s): 48.06, npu graph: False
+[2026-09-16 02:15:44] Dump 00262th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00262.pt
+[2026-09-16 02:15:45] Dump 00263th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00263.pt
+[2026-09-16 02:15:45] Dump 00264th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00264.pt
+[2026-09-16 02:15:45] Dump 00265th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00265.pt
+[2026-09-16 02:15:45] Dump 00266th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00266.pt
+[2026-09-16 02:15:45] Dump 00267th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00267.pt
+[2026-09-16 02:15:45] Dump 00268th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00268.pt
+[2026-09-16 02:15:46] Dump 00269th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00269.pt
+[2026-09-16 02:15:46] Dump 00270th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00270.pt
+[2026-09-16 02:15:46] Dump 00271th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00271.pt
+[2026-09-16 02:15:46] Dump 00272th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00272.pt
+[2026-09-16 02:15:46] Dump 00273th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00273.pt
+[2026-09-16 02:15:46] Dump 00274th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00274.pt
+[2026-09-16 02:15:47] Dump 00275th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00275.pt
+[2026-09-16 02:15:47] Dump 00276th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00276.pt
+[2026-09-16 02:15:47] Dump 00277th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00277.pt
+[2026-09-16 02:15:47] Dump 00278th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00278.pt
+[2026-09-16 02:15:47] Dump 00279th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00279.pt
+[2026-09-16 02:15:47] Dump 00280th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00280.pt
+[2026-09-16 02:15:48] Dump 00281th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00281.pt
+[2026-09-16 02:15:48] Dump 00282th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00282.pt
+[2026-09-16 02:15:48] Dump 00283th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00283.pt
+[2026-09-16 02:15:48] Dump 00284th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00284.pt
+[2026-09-16 02:15:48] Dump 00285th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00285.pt
+[2026-09-16 02:15:48] Decode batch, #running-req: 4, #token: 512, token usage: 0.12, npu graph: False, gen throughput (token/s): 22.68, #queue-req: 0
+[2026-09-16 02:15:48] Dump 00286th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00286.pt
+[2026-09-16 02:15:49] Dump 00287th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00287.pt
+[2026-09-16 02:15:49] Dump 00288th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00288.pt
+[2026-09-16 02:15:49] Dump 00289th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00289.pt
+[2026-09-16 02:15:49] Dump 00290th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00290.pt
+[2026-09-16 02:15:49] Dump 00291th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00291.pt
+[2026-09-16 02:15:49] Dump 00292th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00292.pt
+[2026-09-16 02:15:50] Dump 00293th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00293.pt
+[2026-09-16 02:15:50] Dump 00294th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00294.pt
+[2026-09-16 02:15:50] Dump 00295th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00295.pt
+[2026-09-16 02:15:50] Dump 00296th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00296.pt
+[2026-09-16 02:15:50] Dump 00297th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00297.pt
+[2026-09-16 02:15:50] Dump 00298th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00298.pt
+[2026-09-16 02:15:51] Dump 00299th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00299.pt
+[2026-09-16 02:15:51] Dump 00300th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00300.pt
+[2026-09-16 02:15:51] Dump 00301th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00301.pt
+[2026-09-16 02:15:51] Dump 00302th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00302.pt
+[2026-09-16 02:15:51] Dump 00303th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00303.pt
+[2026-09-16 02:15:51] Dump 00304th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00304.pt
+[2026-09-16 02:15:51] Dump 00305th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00305.pt
+[2026-09-16 02:15:52] Dump 00306th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00306.pt
+[2026-09-16 02:15:52] Dump 00307th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00307.pt
+[2026-09-16 02:15:52] Dump 00308th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00308.pt
+[2026-09-16 02:15:52] Dump 00309th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00309.pt
+[2026-09-16 02:15:52] Dump 00310th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00310.pt
+[2026-09-16 02:15:52] Dump 00311th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00311.pt
+[2026-09-16 02:15:53] Dump 00312th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00312.pt
+[2026-09-16 02:15:53] Dump 00313th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00313.pt
+[2026-09-16 02:15:53] Dump 00314th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00314.pt
+[2026-09-16 02:15:53] Dump 00315th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00315.pt
+[2026-09-16 02:15:53] Dump 00316th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00316.pt
+[2026-09-16 02:15:53] Dump 00317th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00317.pt
+[2026-09-16 02:15:54] Dump 00318th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00318.pt
+[2026-09-16 02:15:54] Dump 00319th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00319.pt
+[2026-09-16 02:15:54] Dump 00320th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00320.pt
+[2026-09-16 02:15:54] Dump 00321th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00321.pt
+[2026-09-16 02:15:54] Dump 00322th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00322.pt
+[2026-09-16 02:15:54] Dump 00323th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00323.pt
+[2026-09-16 02:15:55] Dump 00324th pass to /workspace/results/r64-b4-off-diagnostic-v1/tensors/TP0_PP0_Rank0_pid386364/Pass00324.pt
+[2026-09-16 02:15:55] Decode batch, #running-req: 4, #token: 0, token usage: 0.00, npu graph: False, gen throughput (token/s): 25.14, #queue-req: 0
+[2026-09-16 02:15:55] INFO:     127.0.0.1:60620 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-16 02:15:55] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+[2026-09-16 02:15:59] Gracefully exiting... Remaining number of requests 0. Remaining requests remaining_rids=[].

@@ -2,14 +2,17 @@
 
 ## Current pointer — supersedes historical entries below
 
-Active: `/workspace/results/r64-b4-off-diagnostic-v1`, two-repeat same frozen
-cohorts with full snapshots0,1,55,260,261,315. Do not interrupt/duplicate.
+Active: `/workspace/results/r64-round3-regression-v1`, retained Layer17/Expert8
+micro regression under own guard. Do not interrupt/duplicate.
 Batch campaign v2 is FAILED at b4 OFF repeat1/cohort0/s6_en_01 token55.
 Both batch2 profiles completed10repeat+2restart PASS; all4 initialpilotsPASS.
 Read09_BATCH_QUALIFICATION.md before acting. Partialaudit325forwards/20requests
 PASS integrity; cohort0 actual schedules equal; earliest retainedrouter/logit
-difference atposition1. Fullhidden/attention attribution pending diagnostic.
-Batch4 remains blocked, not excused by approximate OFF/ON acceptance.
+difference atposition1. Full diagnostic reproducedsamefailure; Layer7 decoder
+inputhidden/residual already differ beforefirstCPU, prefillcommon tensors exact.
+Batch4 remains EXPERIMENTAL_NOT_QUALIFIED withpre-L7NPU/KV investigation boundary.
+See09_BATCH_QUALIFICATION.md; do not rerunbatch4long/qualityunprompted or refit.
+OriginalD1batch1soleprimary continues; not a postfailureprimary substitution.
 
 Future tools deployed separately to `/workspace/results/r64-next-tools-v2`;
 fixtures to `/workspace/results/r64-next-fixtures-v2`. Active campaign still
