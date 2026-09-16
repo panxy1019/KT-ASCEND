@@ -35,7 +35,13 @@ def main():
     p.add_argument("--interval-seconds", type=int, default=5)
     p.add_argument("--descendant-runs", action="store_true", help="Observe sequential child runs under this exact project artifact root")
     p.add_argument("--until-report", help="Container-path JSON report under run root; stop monitoring after its terminal status")
+    p.add_argument('--container-name', default='kt-r6-deferred-ascend')
+    p.add_argument('--expected-container-id', default=CONTAINER)
+    p.add_argument('--host-results', type=Path, default=Path('/home/admin/kt-artifacts/round6-deferred'))
+    p.add_argument('--cpu-count', type=int, choices=(16,32), default=16)
     args = p.parse_args()
+    if not re.fullmatch(r'[0-9a-f]{64}', args.expected_container_id) or not args.host_results.is_absolute():
+        raise ValueError('MONITOR_CONTAINER_BINDING')
     if not args.run_root.startswith("/workspace/results/r64-") or not 1 <= args.interval_seconds <= 60 or not 1 <= args.duration_seconds <= 172800:
         raise ValueError("MONITOR_SCOPE")
     terminal_report = None
@@ -43,16 +49,16 @@ def main():
         report_path = Path(args.until_report)
         if not report_path.is_relative_to(Path(args.run_root)) or ".." in report_path.parts:
             raise ValueError("MONITOR_REPORT_SCOPE")
-        terminal_report = Path("/home/admin/kt-artifacts/round6-deferred")/report_path.relative_to("/workspace/results")
+        terminal_report = args.host_results/report_path.relative_to("/workspace/results")
     def read(command):
         return subprocess.check_output(command, text=True, timeout=15)
-    identity = read(["docker", "inspect", "--format", "{{.Id}}", "kt-r6-deferred-ascend"]).strip()
-    assert identity == CONTAINER, "CONTAINER_ID_DRIFT"
+    identity = read(["docker", "inspect", "--format", "{{.Id}}", args.container_name]).strip()
+    assert identity == args.expected_container_id, "CONTAINER_ID_DRIFT"
     end = time.monotonic()+args.duration_seconds
     while time.monotonic() < end:
         item = dict(time_unix=time.time(), run_root=args.run_root, npu=0)
         try:
-            output = read(["docker", "top", CONTAINER, "-eo", "pid,ppid,args"])
+            output = read(["docker", "top", identity, "-eo", "pid,ppid,args"])
             records = {}
             for line in output.splitlines()[1:]:
                 pid, parent, command = line.split(None, 2)
@@ -91,7 +97,7 @@ def main():
                         owned_cpu_ticks_by_pid=cpu_ticks, clock_ticks_per_second=os.sysconf("SC_CLK_TCK"),
                         host_load_average=list(os.getloadavg()),
                         affinity_cpu_counters={line.split()[0]:list(map(int,line.split()[1:])) for line in Path("/proc/stat").read_text().splitlines()
-                                               if line.split()[0] in {f"cpu{i}" for i in range(16)}},
+                                               if line.split()[0] in {f"cpu{i}" for i in range(args.cpu_count)}},
                         npu0_usages_text=read(["npu-smi","info","-t","usages","-i","0","-c","0"]))
         except Exception as exc:
             item.update(status="MONITOR_ERROR", exception=repr(exc))
