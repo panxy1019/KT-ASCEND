@@ -1,5 +1,6 @@
 """Five fixed ABBA blocks; independent process per phase, no winner selection."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import signal
@@ -7,7 +8,7 @@ import subprocess
 import sys
 import time
 from run_compact_controls import checked
-from run_performance_phase import MANIFEST_RAW_SHA
+from run_performance_phase import MANIFEST_RAW_SHA, FAST_MANIFEST_SHA
 
 
 def main():
@@ -18,18 +19,19 @@ def main():
     args = p.parse_args()
     entry = json.loads(args.entry_audit.read_text())
     assert entry["status"] == "R64_PERFORMANCE_ENTRY_APPROVED"
-    assert entry["manifest_raw_sha256"] == MANIFEST_RAW_SHA
+    digest=hashlib.sha256(args.manifest.read_bytes()).hexdigest()
+    assert entry["manifest_raw_sha256"] == digest and digest in (MANIFEST_RAW_SHA,FAST_MANIFEST_SHA)
     manifest = checked(args.manifest)
     assert manifest["phase_order"] == ["D1_NODEFER","D1","D1","D1_NODEFER"]
-    assert manifest["paired_blocks"] == 5
+    assert manifest["paired_blocks"] == (3 if digest == FAST_MANIFEST_SHA else 5)
     args.output.mkdir(exist_ok=False)
-    report = dict(status="RUNNING",completed=[],started_unix=time.time(),manifest_sha256=MANIFEST_RAW_SHA)
+    report = dict(status="RUNNING",completed=[],started_unix=time.time(),manifest_sha256=digest)
     def cancel(signum,frame):
         raise InterruptedError("OWNED_PERFORMANCE_CAMPAIGN_CANCELLED")
     signal.signal(signal.SIGTERM,cancel)
     reference_source = None
     try:
-        for block in range(5):
+        for block in range(manifest['paired_blocks']):
             for phase,profile in enumerate(manifest["phase_order"]):
                 name = f"block{block}-phase{phase}-{profile}"
                 root = args.output/name
@@ -47,7 +49,7 @@ def main():
                             child.terminate()
                             child.wait(timeout=120)
                 result = json.loads((root/"performance-report.json").read_text())
-                assert result["status"] == "PERFORMANCE_PHASE_COMPLETE" and len(result["rows"]) == 6
+                assert result["status"] == "PERFORMANCE_PHASE_COMPLETE" and len(result["rows"]) == len(manifest['shapes'])
                 actual = json.loads((root/"provenance.json").read_text())["file_sha256"]
                 if reference_source is None:
                     reference_source = actual

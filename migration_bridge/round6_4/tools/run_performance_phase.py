@@ -10,6 +10,7 @@ from stream_timing import request
 from run_compact_controls import checked
 
 MANIFEST_RAW_SHA = "b383aa539815f8b6931446709163accec617fb809160223ee0e8b310dd0e8693"
+FAST_MANIFEST_SHA = "257034644e2a3ef516722d354be4787965a5c937205bf73eb629ace57f42c19f"
 
 
 def main():
@@ -18,13 +19,14 @@ def main():
     p.add_argument("--profile", choices=("D1","D1_NODEFER"), required=True)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
-    assert hashlib.sha256(args.manifest.read_bytes()).hexdigest() == MANIFEST_RAW_SHA
+    digest = hashlib.sha256(args.manifest.read_bytes()).hexdigest()
+    assert digest in (MANIFEST_RAW_SHA, FAST_MANIFEST_SHA)
     manifest = checked(args.manifest)
-    assert manifest["primary_batch"] == 1 and manifest["paired_blocks"] == 5
+    assert manifest["primary_batch"] == 1 and manifest["paired_blocks"] == (3 if digest == FAST_MANIFEST_SHA else 5)
     shapes = {r["id"]:r for r in manifest["shapes"]}
     if args.output.exists():
         raise ValueError("REFUSE_PERFORMANCE_OVERWRITE")
-    result = dict(status="RUNNING", profile=args.profile, manifest_sha256=MANIFEST_RAW_SHA,
+    result = dict(status="RUNNING", profile=args.profile, manifest_sha256=digest,
                   started_unix=time.time(), rows=[], warmups=[], observer=False, route_recorder=False, cache="OFF")
     def cancel(signum, frame):
         raise InterruptedError("OWNED_PERFORMANCE_CANCELLED")

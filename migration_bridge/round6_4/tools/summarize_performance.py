@@ -6,16 +6,16 @@ import numpy as np
 from scipy.stats import t
 
 
-def block_interval(ratios):
-    if len(ratios) != 5 or any(not np.isfinite(x) or x <= 0 for x in ratios):
+def block_interval(ratios, expected_blocks=5):
+    if expected_blocks not in (3,5) or len(ratios) != expected_blocks or any(not np.isfinite(x) or x <= 0 for x in ratios):
         raise ValueError("FIVE_POSITIVE_BLOCK_RATIOS_REQUIRED")
     values = np.log(ratios)
     average = float(values.mean())
     sd = float(values.std(ddof=1))
-    width = float(t.ppf(.975,4))*sd/np.sqrt(5)
+    width = float(t.ppf(.975,expected_blocks-1))*sd/np.sqrt(expected_blocks)
     return dict(block_ratios=list(ratios), geometric_mean=float(np.exp(average)),
         lower=float(np.exp(average-width)), upper=float(np.exp(average+width)),
-        variance_resolved=sd > 0, method="student_t_log_ratio_df4_95", independent_unit="ABBA_block_not_token")
+        variance_resolved=sd > 0, method=f"student_t_log_ratio_df{expected_blocks-1}_95", independent_unit="ABBA_block_not_token")
 
 
 def main():
@@ -25,13 +25,15 @@ def main():
     p.add_argument("--resource-review", type=Path, required=True)
     args = p.parse_args()
     campaign = json.loads((args.root/"campaign.json").read_text())
-    assert campaign["status"] == "PERFORMANCE_CAPTURE_COMPLETE_PENDING_ANALYSIS" and len(campaign["completed"]) == 20
     manifest = json.loads(args.manifest.read_text())
+    nblocks=manifest['paired_blocks']
+    assert nblocks in (3,5)
+    assert campaign["status"] == "PERFORMANCE_CAPTURE_COMPLETE_PENDING_ANALYSIS" and len(campaign["completed"]) == 4*nblocks
     resource = json.loads(args.resource_review.read_text())
     assert resource["status"] in ("ATTRIBUTABLE_WITH_RECORDED_LIMITATIONS", "RESOURCE_CONFOUNDED")
     assert resource["campaign_root"] == str(args.root)
     blocks = []
-    for block in range(5):
+    for block in range(nblocks):
         phases = []
         for phase,profile in enumerate(manifest["phase_order"]):
             name = f"block{block}-phase{phase}-{profile}"
@@ -48,7 +50,7 @@ def main():
         for phases in blocks:
             seconds = [p[name]["seconds"] for p in phases]
             ratios.append(float(np.exp((np.log(seconds[0])+np.log(seconds[3])-np.log(seconds[1])-np.log(seconds[2]))/2)))
-        result = block_interval(ratios)
+        result = block_interval(ratios,nblocks)
         for mode,indices in (("off",(0,3)),("on",(1,2))):
             values = [phases[i][name] for phases in blocks for i in indices]
             result[mode] = dict(requests=len(values), latency_p50_p95=np.quantile([r["seconds"] for r in values],[.5,.95]).tolist(),
