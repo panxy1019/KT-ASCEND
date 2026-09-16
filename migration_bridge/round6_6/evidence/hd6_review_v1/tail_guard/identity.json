@@ -1,0 +1,23 @@
+{
+  "command": [
+    "bash",
+    "/workspace/r66-tools/launch_python.sh",
+    "/workspace/r66-v6/tools/three_way_outlier_v1.py",
+    "--trace",
+    "/workspace/results/r65-r66-hd6-v1/hybrid/stagewise",
+    "--model",
+    "/workspace/models/DeepSeek-V2-Lite-604d5664",
+    "--gguf",
+    "/workspace/results/r65-assets-v1/all-moe-f32.gguf",
+    "--calls",
+    "233,306,497,527",
+    "--natural-only",
+    "--output",
+    "/workspace/results/r65-r66-hd6-outlier-operators-v1"
+  ],
+  "started_unix": 1789579682.5364282,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [],
+  "pid": 14152,
+  "pgid": 14152
+}

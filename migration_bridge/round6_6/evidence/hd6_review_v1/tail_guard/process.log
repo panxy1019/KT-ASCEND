@@ -1,0 +1,149 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+INFO 09-16 17:28:37 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 17:28:37 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 17:28:37 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 17:28:37 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+CPUInfer[0xc7cbcf31b1e0]: Hello
+WorkerPool[0xc7cbcf34fb50] 1 subpools, [numa:threads][0:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 32 threads
+TP MOE layer 1, pool: 0xc7cbcf34fb50, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+[W916 17:28:40.555952013 TensorFactories.cpp:340] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+
+[GGUFLoader] Loading single GGUF file : all-moe-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 78
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 1 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 1, "expert": 3, "call": 233, "pass_": true, "prod_cpu": 0.0031718060850768072, "prod_npu": 2.6605911213576504e-08}
+{"layer": 1, "expert": 3, "call": 306, "pass_": true, "prod_cpu": 0.002941114651395637, "prod_npu": 0.00038648697038840555}
+{"layer": 1, "expert": 7, "call": 527, "pass_": true, "prod_cpu": 0.003321039356868734, "prod_npu": 0.0}
+{"layer": 1, "expert": 13, "call": 497, "pass_": true, "prod_cpu": 0.0028678289161455863, "prod_npu": 0.0}
+{"layer": 1, "expert": 25, "call": 497, "pass_": true, "prod_cpu": 0.002809699800787712, "prod_npu": 0.0}
+{"layer": 1, "expert": 29, "call": 306, "pass_": true, "prod_cpu": 0.0034727752278926735, "prod_npu": 0.0}
+{"layer": 1, "expert": 31, "call": 233, "pass_": true, "prod_cpu": 0.00276900923441673, "prod_npu": 1.8103765217225873e-08}
+{"layer": 1, "expert": 39, "call": 306, "pass_": true, "prod_cpu": 0.0028555809420483438, "prod_npu": 7.529897003056674e-07}
+{"layer": 1, "expert": 39, "call": 527, "pass_": true, "prod_cpu": 0.004549721297493019, "prod_npu": 2.472078619585994e-06}
+{"layer": 1, "expert": 55, "call": 497, "pass_": true, "prod_cpu": 0.00436102447495606, "prod_npu": 0.0}
+{"layer": 1, "expert": 57, "call": 233, "pass_": true, "prod_cpu": 0.0028332533002026652, "prod_npu": 0.0}
+{"layer": 1, "expert": 61, "call": 233, "pass_": true, "prod_cpu": 0.0033085532193390505, "prod_npu": 0.0}
+{"layer": 1, "expert": 63, "call": 497, "pass_": true, "prod_cpu": 0.0028356398651154125, "prod_npu": 5.020285326633783e-06}
+[LlamafileMoEWrapper] Layer 9 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 9, "expert": 1, "call": 233, "pass_": true, "prod_cpu": 0.0034150710967825308, "prod_npu": 6.940557454429783e-06}
+{"layer": 9, "expert": 1, "call": 497, "pass_": true, "prod_cpu": 0.0036326485784518073, "prod_npu": 2.639662143326318e-06}
+{"layer": 9, "expert": 9, "call": 306, "pass_": true, "prod_cpu": 0.0031859104066274935, "prod_npu": 0.0}
+{"layer": 9, "expert": 9, "call": 527, "pass_": true, "prod_cpu": 0.0034427779356322142, "prod_npu": 0.0}
+{"layer": 9, "expert": 11, "call": 306, "pass_": true, "prod_cpu": 0.00312643724957098, "prod_npu": 0.0}
+{"layer": 9, "expert": 15, "call": 497, "pass_": true, "prod_cpu": 0.0032906696305770146, "prod_npu": 0.0}
+{"layer": 9, "expert": 23, "call": 306, "pass_": true, "prod_cpu": 0.002806720062112381, "prod_npu": 0.0}
+{"layer": 9, "expert": 31, "call": 306, "pass_": true, "prod_cpu": 0.003722580592170754, "prod_npu": 3.2480974806247736e-07}
+{"layer": 9, "expert": 31, "call": 527, "pass_": true, "prod_cpu": 0.0033294956893852833, "prod_npu": 0.00014826480150224817}
+{"layer": 9, "expert": 35, "call": 233, "pass_": true, "prod_cpu": 0.003473603413869576, "prod_npu": 8.03776614859339e-07}
+{"layer": 9, "expert": 35, "call": 497, "pass_": true, "prod_cpu": 0.0033890455846610035, "prod_npu": 1.3583041804349579e-05}
+{"layer": 9, "expert": 39, "call": 527, "pass_": true, "prod_cpu": 0.0034540855326135145, "prod_npu": 0.0}
+{"layer": 9, "expert": 41, "call": 233, "pass_": true, "prod_cpu": 0.003324017975210248, "prod_npu": 0.0}
+{"layer": 9, "expert": 41, "call": 497, "pass_": true, "prod_cpu": 0.0032380769470816695, "prod_npu": 0.0}
+{"layer": 9, "expert": 45, "call": 233, "pass_": true, "prod_cpu": 0.0032880444553535426, "prod_npu": 3.583083116364407e-05}
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 17, "expert": 1, "call": 233, "pass_": true, "prod_cpu": 0.003782488828145982, "prod_npu": 1.9495281902091208e-08}
+{"layer": 17, "expert": 3, "call": 233, "pass_": true, "prod_cpu": 0.0032603752362561156, "prod_npu": 5.144265508124967e-05}
+{"layer": 17, "expert": 25, "call": 233, "pass_": true, "prod_cpu": 0.003645749015779646, "prod_npu": 0.0}
+{"layer": 17, "expert": 27, "call": 306, "pass_": true, "prod_cpu": 0.0033189388016237813, "prod_npu": 0.0}
+{"layer": 17, "expert": 27, "call": 497, "pass_": true, "prod_cpu": 0.004131493112392645, "prod_npu": 2.0892842114598438e-07}
+{"layer": 17, "expert": 27, "call": 527, "pass_": true, "prod_cpu": 0.0037607745114016933, "prod_npu": 0.0}
+{"layer": 17, "expert": 35, "call": 306, "pass_": true, "prod_cpu": 0.0033319393671779975, "prod_npu": 0.0}
+{"layer": 17, "expert": 47, "call": 306, "pass_": true, "prod_cpu": 0.003516559965584295, "prod_npu": 0.0}
+{"layer": 17, "expert": 49, "call": 497, "pass_": true, "prod_cpu": 0.0030534851085028463, "prod_npu": 1.960745799762452e-06}
+{"layer": 17, "expert": 51, "call": 306, "pass_": true, "prod_cpu": 0.0034602695342938706, "prod_npu": 1.7653247039303401e-06}
+{"layer": 17, "expert": 51, "call": 527, "pass_": true, "prod_cpu": 0.0033204678190543657, "prod_npu": 0.0}
+{"layer": 17, "expert": 53, "call": 233, "pass_": true, "prod_cpu": 0.0031627056642034835, "prod_npu": 0.0}
+{"layer": 17, "expert": 53, "call": 497, "pass_": true, "prod_cpu": 0.0032742218838714685, "prod_npu": 7.754938008520352e-06}
+{"layer": 17, "expert": 61, "call": 527, "pass_": true, "prod_cpu": 0.003374792644715318, "prod_npu": 1.7482079598598827e-05}
+[LlamafileMoEWrapper] Layer 26 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 26, "expert": 7, "call": 306, "pass_": true, "prod_cpu": 0.003549749360539711, "prod_npu": 0.00023125255798334856}
+{"layer": 26, "expert": 19, "call": 233, "pass_": true, "prod_cpu": 0.0037273178774006152, "prod_npu": 9.950531284479747e-08}
+{"layer": 26, "expert": 25, "call": 306, "pass_": true, "prod_cpu": 0.0030478684605716355, "prod_npu": 1.4174923875380823e-07}
+{"layer": 26, "expert": 29, "call": 497, "pass_": true, "prod_cpu": 0.0030185690023773314, "prod_npu": 0.0}
+{"layer": 26, "expert": 33, "call": 527, "pass_": true, "prod_cpu": 0.0031170590716567857, "prod_npu": 3.5678867687218704e-09}
+{"layer": 26, "expert": 37, "call": 306, "pass_": true, "prod_cpu": 0.003654092125411837, "prod_npu": 0.0}
+{"layer": 26, "expert": 55, "call": 527, "pass_": true, "prod_cpu": 0.003127759691868849, "prod_npu": 0.0}
+{"layer": 26, "expert": 59, "call": 497, "pass_": true, "prod_cpu": 0.002920513098196231, "prod_npu": 0.0}
+{"layer": 26, "expert": 63, "call": 233, "pass_": true, "prod_cpu": 0.0034551529852057065, "prod_npu": 0.0}
+{"layer": 26, "expert": 63, "call": 497, "pass_": true, "prod_cpu": 0.0027019782781738085, "prod_npu": 0.0}
+TP MOE layer 9, pool: 0xc7cbcf34fb50, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+TP MOE layer 17, pool: 0xc7cbcf34fb50, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+TP MOE layer 26, pool: 0xc7cbcf34fb50, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xc7cbcf31b1e0]: Goodbye
