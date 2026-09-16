@@ -67,9 +67,15 @@ def main():
     for call,hits in full_hits.items():
         phase='prefill' if (call-1)%9==0 else ('lookahead' if call%9==0 else 'decode')
         whole[phase]['token_rows']+=len(hits);whole[phase]['touches_cpu']+=int(hits.sum())
+    command=json.loads((a.capture/'resolved-command.json').read_text())
+    structure=[]
+    if '--forward-hooks' in command['argv']:
+        structure=[json.loads(x) for x in (a.capture/'physical-structure.jsonl').read_text().splitlines()]
+        if len(structure)!=26 or {r['layer'] for r in structure}!=set(range(1,27)):
+            raise ValueError('PHYSICAL_STRUCTURE_COVERAGE')
     result=dict(status='ROUTE_SEMANTIC_CONTROL_PASS',layers=results,whole_model=whole,cpu_not_hit=controls,
                 sample_scope='FOUR_FROZEN_S6_PROMPTS_8_TARGETS_PLUS_ONE_LOOKAHEAD',
-                physical_weight_shape_verified=False)
+                physical_weight_shape_verified=bool(structure),physical_structure=structure)
     with a.output.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
     print(json.dumps({k:v for k,v in result.items() if k!='layers'}))
 

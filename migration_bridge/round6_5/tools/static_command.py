@@ -46,6 +46,10 @@ def main():
         os.environ.update(KT_R61_STAGEWISE_DIR=str(root/'stagewise'),
                           KT_R61_STAGEWISE_LAYERS=layers,
                           KT_R61_STAGEWISE_MODEL_LAYERS=layers)
+        os.environ['PYTHONPATH']=str(Path(__file__).parent)+':'+os.environ.get('PYTHONPATH','')
+        args += ['--forward-hooks',json.dumps([dict(name='r65-physical-ownership',
+            target_modules=['model.layers.*.mlp'],hook_factory='r65_structure_hook:make_hook',
+            config=dict(profile=str(profile),output=str(root/'physical-structure.jsonl')))])]
     if data['total_npu_experts']!=26*64:
         gguf=Path('/workspace/results/r65-assets-v1/all-moe-f32.gguf')
         manifest=json.loads(gguf.with_suffix('.gguf.manifest.json').read_text())
