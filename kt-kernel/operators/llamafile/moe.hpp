@@ -25,7 +25,10 @@ inline void r66_dump_stage(const char* stage, int expert, const float* values, s
   const char* root = std::getenv("KT_R66_STAGE_DIR");
   if (!root) return;
   const std::string path = std::string(root) + "/E" + std::to_string(expert) + "-" + stage + ".f32";
-  FILE* file = std::fopen(path.c_str(), "wbx");
+  // The Python harness creates an exclusive directory for one forward. The
+  // 1408 tail-safe prefill path invokes forward_one once per row: append those
+  // completed rows in execution order. Harness verifies the exact row count.
+  FILE* file = std::fopen(path.c_str(), "ab");
   if (!file) throw std::runtime_error("R66_STAGE_CAPTURE_OPEN_FAILED");
   const auto written = std::fwrite(values, sizeof(float), count, file);
   const int closed = std::fclose(file);

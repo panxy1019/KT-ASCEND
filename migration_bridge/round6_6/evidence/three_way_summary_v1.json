@@ -1,0 +1,58 @@
+{
+  "status": "OUTPUT_SCREEN_VERIFIED_NOT_MODEL_QUALIFICATION",
+  "expert_instances": 128,
+  "decode_cases": 384,
+  "prefill_cases": 128,
+  "prefill_qlens": [
+    11
+  ],
+  "metrics": {
+    "production_vs_canonical_fp32": {
+      "min": 0.0019816102442659586,
+      "median": 0.0033454691501853162,
+      "max": 0.004483591392794621
+    },
+    "npu_vs_canonical_fp32": {
+      "min": 0.0019816102442659586,
+      "median": 0.003345015027797474,
+      "max": 0.004482310916015284
+    },
+    "production_vs_npu": {
+      "min": 0.0,
+      "median": 8.678345546625814e-06,
+      "max": 0.0015245552599669338
+    },
+    "production_vs_canonical_bf16_boundaries": {
+      "min": 0.0,
+      "median": 2.3998445161716174e-05,
+      "max": 0.0018443704150615185
+    },
+    "boundary_reference_vs_npu": {
+      "min": 0.0,
+      "median": 1.732029417440279e-05,
+      "max": 0.0018010139994541422
+    },
+    "final_only_cast_vs_npu": {
+      "min": 0.001729428112541035,
+      "median": 0.003650530163140063,
+      "max": 0.004730796355482935
+    },
+    "natural_weighted_production_vs_npu": {
+      "min": 0.0,
+      "median": 0.0,
+      "max": 0.0005172122555452673
+    }
+  },
+  "relative_error_ratio": {
+    "min": 0.9907693612393256,
+    "median": 1.0,
+    "max": 1.0094429545035501
+  },
+  "stage_cases": 0,
+  "production_observer_parity_cases": 0,
+  "B0": "IN_PROGRESS",
+  "QD6": "NOT_RUN",
+  "HD6": "NOT_RUN",
+  "promotion_allowed": false,
+  "input_sha256": "296af0581e418179881f1e5a6850649319608f25a640ce4abdb4523000d23856"
+}
