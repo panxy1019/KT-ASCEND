@@ -3,7 +3,7 @@ set -euo pipefail
 entry=${1:?tool filename}
 shift
 case "$entry" in
-  run_batch_capture.py|run_quality_dev.py|run_d1_lifecycle.py|run_batch_campaign.py|run_primary_quality.py|run_descriptive_holdout.py|run_stability_campaign.py|run_performance_phase.py|run_performance_campaign.py|run_performance_observer_parity.py) ;;
+  run_batch_capture.py|run_quality_dev.py|run_d1_lifecycle.py|run_batch_campaign.py|run_primary_quality.py|run_descriptive_holdout.py|run_stability_campaign.py|run_performance_phase.py|run_performance_campaign.py|run_performance_observer_parity.py|run_historical_quality_smoke.py) ;;
   *) echo 'Unsupported capacity test'; exit 2 ;;
 esac
 set +u
