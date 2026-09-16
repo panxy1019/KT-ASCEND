@@ -1,0 +1,88 @@
+{
+  "cpu_gguf_dtype": "float32",
+  "cpu_not_hit_control_exact_zero": true,
+  "cpu_owned_count": 32,
+  "cpu_repeat_max_abs": 0.0,
+  "cpu_repeat_unique_hashes": [
+    "b63792c410bcbf9faa6b71b0cf82615e7bf989f8a183287d802b11e5677971cf"
+  ],
+  "cpu_repeats": 10,
+  "cpuinfer_threads": 32,
+  "down_shape": [
+    2048,
+    1408
+  ],
+  "finite_cpu": true,
+  "finite_npu": true,
+  "gate_shape": [
+    1408,
+    2048
+  ],
+  "input_scope": "DETERMINISTIC_SYNTHETIC_HIDDEN_REAL_WEIGHTS",
+  "layer": 17,
+  "logical_expert_id": 1,
+  "metrics": {
+    "cosine": 0.9999955892562866,
+    "max_abs": 0.03125,
+    "mean_abs": 0.0032283805776387453,
+    "relative_l2": 0.0037275400279940534
+  },
+  "npu_compute_dtype": "torch.bfloat16",
+  "npu_owned_count": 32,
+  "num_tokens": 4,
+  "physical_expert_id": 1,
+  "profile_sha256": "63a959abc2019900d58507b0f3e5c7332d4561dee39ee7cdc6ad0e93e32e938d",
+  "reference_metrics": {
+    "cpu_vs_bf16_rounded_fp32": {
+      "cosine": 0.999995231628418,
+      "max_abs": 0.03125,
+      "mean_abs": 0.00331109669059515,
+      "relative_l2": 0.0037727301881480724
+    },
+    "cpu_vs_fp32": {
+      "cosine": 0.9999953508377075,
+      "max_abs": 0.022092819213867188,
+      "mean_abs": 0.0037193039897829294,
+      "relative_l2": 0.0034522120867666556
+    },
+    "npu_vs_bf16_rounded_fp32": {
+      "cosine": 0.9999938011169434,
+      "max_abs": 0.03125,
+      "mean_abs": 0.003732920391485095,
+      "relative_l2": 0.004123461156808951
+    },
+    "npu_vs_fp32": {
+      "cosine": 0.9999940991401672,
+      "max_abs": 0.02847003936767578,
+      "mean_abs": 0.004098827950656414,
+      "relative_l2": 0.0038173897606904907
+    }
+  },
+  "source_dtype": "torch.bfloat16",
+  "source_keys": {
+    "down": "model.layers.17.mlp.experts.1.down_proj.weight",
+    "gate": "model.layers.17.mlp.experts.1.gate_proj.weight",
+    "up": "model.layers.17.mlp.experts.1.up_proj.weight"
+  },
+  "source_shard": "model-00003-of-000004.safetensors",
+  "timings_seconds": {
+    "construct_cpu_wrapper": 2.29890594992321,
+    "copy_down_to_npu": 0.0005960270063951612,
+    "copy_gate_to_npu": 0.0007879000622779131,
+    "copy_hidden_to_npu": 0.03425847599282861,
+    "copy_up_to_npu": 0.0006157069001346827,
+    "cpu_expert_forward": 0.18183142598718405,
+    "cpu_fp32_reference": 0.032549747033044696,
+    "load_cpu_expert_weights": 0.0022287360625341535,
+    "load_selected_safetensors": 0.03265000903047621,
+    "npu_down_linear_submit": 0.005119578912854195,
+    "npu_gate_linear_submit": 0.3920359570765868,
+    "npu_synchronize_and_copy_output": 0.0029191840440034866,
+    "npu_up_linear_submit": 0.0002798530040308833
+  },
+  "total_seconds": 2.9870675769634545,
+  "up_shape": [
+    1408,
+    2048
+  ]
+}

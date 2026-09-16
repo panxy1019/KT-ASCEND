@@ -1,0 +1,20 @@
+{
+  "command": [
+    "bash",
+    "-lc",
+    "set -e; source /usr/local/Ascend/ascend-toolkit/set_env.sh; source /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/bin/set_env.sh; source /usr/local/Ascend/nnal/atb/set_env.sh; export ASCEND_RT_VISIBLE_DEVICES=0 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1; export PYTHONPATH=\"/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:${PYTHONPATH:-}\"; exec taskset -c 0-31 /workspace/results/venv-r6/bin/python /workspace/r65-tools/migration_bridge/round6_5/tools/probe_heavy_expert.py --model-dir /workspace/models/DeepSeek-V2-Lite-604d5664 --gguf /workspace/results/r65-assets-v1/all-moe-f32.gguf --layer 17 --expert 1 --profile /workspace/results/r65-profiles-v1/single-R32.json --num-tokens 4 --cpu-repeats 10 --cpuinfer-threads 32 --output /workspace/results/r65-scale-matrix-v2/single-R32-L17-T4/result.json --hidden-file /workspace/results/r65-single-R32-route-v1/capture/stagewise/cpu_layer17_input_hidden_after_sync_call0001.pt"
+  ],
+  "started_unix": 1789561057.5299966,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 9579,
+  "pgid": 9579,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789561123.571059,
+  "success": true
+}

@@ -1,0 +1,140 @@
+{
+  "started_unix": 1789561818.4287286,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-scale-matrix-v2/single-R16/routes/capture/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-scale-matrix-v2/single-R16/routes/capture",
+    "/workspace/results/r65-profiles-v1/single-R16.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        13977,
+        15
+      ],
+      [
+        13978,
+        15
+      ],
+      [
+        13979,
+        15
+      ],
+      [
+        13980,
+        15
+      ],
+      [
+        13981,
+        15
+      ],
+      [
+        13982,
+        15
+      ],
+      [
+        13983,
+        15
+      ],
+      [
+        13984,
+        15
+      ],
+      [
+        13985,
+        15
+      ],
+      [
+        13986,
+        256
+      ],
+      [
+        13987,
+        256
+      ],
+      [
+        13988,
+        256
+      ],
+      [
+        13989,
+        256
+      ],
+      [
+        13990,
+        256
+      ],
+      [
+        13991,
+        256
+      ],
+      [
+        13992,
+        256
+      ],
+      [
+        13993,
+        256
+      ],
+      [
+        13900,
+        15
+      ],
+      [
+        13976,
+        15
+      ],
+      [
+        13731,
+        9
+      ],
+      [
+        13732,
+        15
+      ],
+      [
+        13733,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-scale-matrix-v2/single-R16/routes/capture",
+      "/workspace/results/r65-profiles-v1/single-R16.json",
+      "32"
+    ],
+    "started_unix": 1789561818.5072837,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 13551,
+    "pgid": 13551,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789561978.6250017,
+    "success": false
+  },
+  "ended_unix": 1789561978.6806054
+}

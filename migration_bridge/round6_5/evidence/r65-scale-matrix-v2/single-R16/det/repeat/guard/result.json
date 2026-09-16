@@ -1,0 +1,25 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-scale-matrix-v2/single-R16/det/repeat",
+    "/workspace/results/r65-profiles-v1/single-R16.json",
+    "32"
+  ],
+  "started_unix": 1789561123.7705872,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 9958,
+  "pgid": 9958,
+  "reason": "CANCELLED",
+  "matched_error": null,
+  "returncode": -9,
+  "ended_unix": 1789561397.0369563,
+  "success": false
+}
