@@ -56,6 +56,11 @@ def session(root,profile,*,capture=False,force=None,workers=32):
                 reap=root/'guard/reaping.json'
                 result['reaping']=json.loads(reap.read_text()) if reap.exists() else {'complete':False}
                 if not result['reaping']['complete']:result['status']='REAPING_FAILED'
+                guard=root/'guard/result.json'
+                result['guard']=json.loads(guard.read_text()) if guard.exists() else {}
+                if result['guard'].get('reason') not in ('CANCELLED','EXIT_ZERO'):
+                    result['status']='GUARD_FAILED'
             result['ended_unix']=time.time()
             (root/'lifecycle.json').write_text(json.dumps(result,indent=2)+'\n')
             if result['status']=='REAPING_FAILED':raise RuntimeError('OWNED_PROCESS_REAPING_FAILED')
+            if result['status']=='GUARD_FAILED':raise RuntimeError('OWNED_GUARD_FAILURE')

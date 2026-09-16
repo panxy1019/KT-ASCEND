@@ -28,6 +28,9 @@ def main():
     p.add_argument('--workers',type=int,choices=(16,32),default=32)
     a=p.parse_args()
     corpus=json.loads(a.corpus.read_text())
+    actual_sha=hashlib.sha256(json.dumps({k:v for k,v in corpus.items() if k!='sha256'},
+        ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+    if actual_sha!=corpus['sha256']:raise ValueError('CORPUS_BYTES_DRIFT')
     if corpus['sha256']!='e51af126389507e03b58ae37e5b39c912ece14d54c1daa0ba4baea634ff8f9c5':
         raise ValueError('CORPUS_DRIFT')
     prompts={r['id']:r for r in corpus['prompts']}
@@ -82,9 +85,10 @@ def main():
                 finally:
                     if child.poll() is None: child.send_signal(signal.SIGTERM)
                     child.wait(timeout=60)
-                    if (root/'guard/reaping.json').exists():
-                        if not json.loads((root/'guard/reaping.json').read_text())['complete']:
-                            raise RuntimeError('REAPING_FAILED')
+                    if not json.loads((root/'guard/reaping.json').read_text())['complete']:
+                        raise RuntimeError('REAPING_FAILED')
+                    if json.loads((root/'guard/result.json').read_text()).get('reason') not in ('CANCELLED','EXIT_ZERO'):
+                        raise RuntimeError('OWNED_GUARD_FAILURE')
         report.update(status='STATIC_COMPACT_DETERMINISM_PASS',request_count=len(report['rows']))
     except BaseException as exc:
         report.update(status='FAILED',exception=repr(exc))
