@@ -10,6 +10,13 @@ def main():
     base=Path('/workspace/results');checked={}
     def read(name):
         path=base/name;raw=path.read_bytes();checked[name]=hashlib.sha256(raw).hexdigest();return json.loads(raw)
+    for guard in ['r65-r66-threeway-guard-v1','r65-r66-stages-guard-v2',
+                  'r65-r66-layout-guard-v1','r65-r66-prefill-production-guard-v2',
+                  'r65-r66-prefill-stage-guard-v2','r65-r66-layout-prefill-guard-v1',
+                  'r65-r66-prefill-sequence-guard-v2','r65-r66-followups-guard-v1',
+                  'r65-r66-gguf-b0-guard-v1','r65-r66-stage-build-guard-v3']:
+        assert read(guard+'/result.json')['reason']=='EXIT_ZERO'
+        assert read(guard+'/reaping.json')['complete']
     groups=[('r65-r66-threeway-v1','r65-r66-stages-v2',512),
             ('r65-r66-prefill-output-v2','r65-r66-prefill-stages-v2',96)]
     maxima={};observed=[]
