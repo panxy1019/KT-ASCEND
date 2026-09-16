@@ -68,10 +68,12 @@ freeze and paired statistical protocol freeze still precede any primary ON run.
 
 Frozen input-ID runtime gates are not silently retokenized. A separate serving
 probe requires old/new loader token trajectories to match within each mode and
-checks new text ingestion against frozen-JSON IDs. Text-based historical MC
-scores used the old loader and cannot be equated to scores from the corrected
-loader without labeling the changed evaluation interface. Preserve historical
-smoke as compatibility evidence and report the limitation explicitly.
+checks new text ingestion against frozen-JSON IDs. A historical MC smoke run
+using the current A3 environment's old loader cannot be equated to a run using
+the corrected loader without labeling the changed interface. This does **not**
+establish that all previous rounds used the same broken tokenizer version;
+their original environment records must be consulted before making that claim.
+Preserve historical scores and report the new environment limitation explicitly.
 
 ## Serving result
 

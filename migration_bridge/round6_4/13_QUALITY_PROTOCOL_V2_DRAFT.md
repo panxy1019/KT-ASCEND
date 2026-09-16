@@ -65,3 +65,17 @@ INCONCLUSIVE, not a reason to add easier examples or adjust the margin.
 4. Run complete paired3367 OFF/ON, preserve every row including errors.
 
 No quality pass is asserted here. The v1 interface failure remains archived.
+
+## v2 small development pilot completed
+
+`r64-quality-dev-v2` completed OFF-only8+8, no request/system failure.
+GSM8K:1/8correct,1invalid,4length-truncated;354.878s total generation latency.
+CMMLU:5/8correct,0invalid,0truncated; all eight responses stopped after two
+generated tokens (option plus newline);4.442s total latency.
+
+This is enough to exercise the functioning evaluation interface, not evidence
+of model or Deferred quality. In particular GSM8K's weak zero-shot performance
+and repetitive continuation are now visible as baseline limitations. Do not
+rescue truncated answers, alter the parser after test results, or hide this
+limitation behind a paired delta. The unchanged32+32development validation is
+running as `r64-quality-dev32-v2` before the final freeze decision.

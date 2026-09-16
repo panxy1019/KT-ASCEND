@@ -2,16 +2,22 @@
 
 ## Current pointer — supersedes historical entries below
 
-Active: `/workspace/results/r64-tokenizer-serving-v1`, old/new loader parity in
-OFF and ON independently, four frozen S6 inputs each; tools v3. Do not duplicate.
+Active: `/workspace/results/r64-quality-dev32-v2`, OFF-only32train+32dev using
+the reviewed small-pilotv2 protocol, tools v4. Do not interrupt or duplicate.
+Read-only host memory monitor PID694146 targets only this run's guard descendants,
+finishes on dev-report; output r64-quality-dev32-v2-memory.jsonl. HBM sampling
+verified (owned~30.9GB, no other NPU0 process at initial sample; not general idle claim).
+Tokenizer serving old/new parity completed OFF/ON independently: four S6 each,
+allfixedIDtrajectoriesexact, decodedtextcorrect. See12_QUALITY_TOKENIZER_COMPATIBILITY.md.
 Dev v1 completed16requests but all truncated/strict-parser invalid. Frozen JSON
 decodes valid text whereas Transformers5.3 LlamaTokenizer destroys ByteLevel;
 see12_QUALITY_TOKENIZER_COMPATIBILITY.md. No primary output has been produced.
 Generic loader overlay tokenizer-only PASS, unchanged tokenizer.json; serving
-parity pending. Dev-only draftv2 adds configured BOS, zero-shot CoT and task stops;
+parity PASS. Dev-only draftv2 adds configured BOS, zero-shot CoT and task stops;
 same3367primaryIDs/golds/budgets. Prepared/deployed tools v4, not active.
-After parity PASS: run_quality_dev.py --protocol-v2 --count-per-benchmark 8
-against r64-quality-draft-v2, then32+32 check. No primary freeze until review.
+Smallv2pilot complete8+8: GSM1/8correct/1invalid/4truncated;CMMLU5/8correct/0invalid/0truncated.
+Reviewafter32+32 includes compare_quality_dev_restart.py againstsmallpilot;
+thenfreeze_quality_protocol.py withwrittenreview andactualsourcehashes. No primary freeze until review.
 Round3anchorv2passed after
 retainingCANNPYTHONPATH; v1failurearchived. See11_RETAINED_REGRESSION.md.
 Batch campaign v2 is FAILED at b4 OFF repeat1/cohort0/s6_en_01 token55.
@@ -28,7 +34,7 @@ Future tools deployed separately to `/workspace/results/r64-next-tools-v2`;
 fixtures to `/workspace/results/r64-next-fixtures-v2`. Active campaign still
 uses capacity-tools-v1; no overwrite. Future wrapper now resolves its own directory.
 Staging `/home/admin/r64-next-tools-0tGiCF`; root PTY92973.
-57 local tool tests PASS in /tmp/r64-quality-venv (system Python lacks numpy;
+60 local tool tests PASS plus3newdevrestarttests in /tmp/r64-quality-venv (system Python lacks numpy;
 3 import failures there are environment-only); own-subtree orphan reaping also1A3behavioraltestPASS.
 Future v2 OwnedServer now uses new run_owned_process.py wrapper(subreaper),
 not the active batch campaign's oldguard. No extra process signals, no productiondiff.
