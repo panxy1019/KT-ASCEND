@@ -39,3 +39,23 @@ and two independent restarts per profile, each followed by full transaction
 audit. Never reuse the v1 failed result as a PASS. Actual model batch, RID/KV
 association, protected-expert union, route partition, terminal drain, and
 repeat schedule must all be verified before reporting engineering success.
+
+### Short-test results (A3_VERIFIED)
+
+| Profile | Requests | Physical forwards | Actual model batch | Deferred routes | Transaction audit |
+|---|---:|---:|---:|---:|---|
+| batch2 OFF | 16 | 520 | all2 | 0 | PASS |
+| batch2 ON | 16 | 520 | all2 | 85 | PASS |
+| batch4 OFF | 16 | 260 | all4 | 0 | PASS |
+| batch4 ON | 16 | 260 | all4 | 44 | PASS |
+
+All physical forwards reconcile to known RID histories/KV positions; route
+partition, global protected union, terminal drain, tensor hashes and finiteness
+pass. Batch2 ON has83 exposed forwards; batch4 ON has43. These counts include
+the entire captured session and are not a per-token exposure percentage.
+The batch2 OFF/ON schedule hashes agree, as do batch4 OFF/ON schedule hashes.
+Cross-mode token equality is not required and is not claimed.
+
+The ten-repeat/restart campaign is still running. Short-test PASS alone does
+not promote batch2/4 to deterministic, quality-qualified, or speedup-verified.
+Archived JSON evidence: `evidence/r64-batch-campaign-v2/*-pilot/`.

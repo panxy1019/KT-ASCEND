@@ -1,0 +1,52 @@
+{
+  "profile": "D1",
+  "batch_cap": 4,
+  "capture": true,
+  "capacity_adapter": true,
+  "started_unix": 1789521422.2525995,
+  "status": "PLANNED_STOP",
+  "owned_guard_pid": 377256,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/round6_2-prequalification/tools/run_owned_process.py",
+    "--output",
+    "/workspace/results/r64-batch-campaign-v2/b4-D1-pilot/guard",
+    "--timeout-seconds",
+    "7200",
+    "--",
+    "taskset",
+    "-c",
+    "0-15",
+    "bash",
+    "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+    "D1",
+    "/workspace/results/r64-batch-campaign-v2/b4-D1-pilot",
+    "31000"
+  ],
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-15",
+      "bash",
+      "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+      "D1",
+      "/workspace/results/r64-batch-campaign-v2/b4-D1-pilot",
+      "31000"
+    ],
+    "started_unix": 1789521440.9781559,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 377258,
+    "pgid": 377258,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789521562.6448064,
+    "success": false
+  },
+  "ended_unix": 1789521562.6806674
+}

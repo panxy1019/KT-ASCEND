@@ -186,3 +186,19 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
   v1 archived. Onlyownedfailedserveranditsreadinesshelperwere stopped.
 - ACTIVE `/workspace/results/r64-batch-campaign-v2`, driverlog suffix-driver.log;
   samefrozenbatchmanifest andsequence. Do notlaunchanotherNPUmodel.
+
+## Four batch pilots passed; long repeats active
+
+- All4shortpilotsPASSgeneration+transactionaudit. b2all520physicalactualbatch2;
+  b4all260physicalactualbatch4. ONdeferredroutes85/44 respectively. JSONarchived.
+- ACTIVE v2 `b2-D1_NODEFER-repeat`, latest52/160requests, allownreferenceexact.
+  Driverautomaticallyauditsandstarts2cleanrestarts, thenotherprofiles.
+- LocalpreparedNOTDEPLOYEDafterv2launch:descriptiveholdouttools,
+  primaryqualityrunner+summary,stabilitycampaign,performancephase+SSEtiming.
+  PerformanceinputsrawSHA b383aa539815f8b6931446709163accec617fb809160223ee0e8b310dd0e8693.
+- IMPORTANT localowned_server/capacityadapter nowalsohaveperformanceOFF-observer
+  option; these latestchanges are NOTin activeA3capacity-tools-v1. Do not overwrite
+  runningcampaign's deployedtools. Deployfuturetoolsetversionedaftercampaign.
+- ReadonlyhostRSS/HBMmonitorprepared;initial10secondsamplingverifiedscope;
+  latestCPU-util additionsNOTDEPLOYED. Neverstopsprocesses/installsanything.
+- Formalqualityfreeze stillPENDINGdevpilot+protocolreview. No primaryoutputs.
