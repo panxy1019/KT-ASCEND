@@ -33,6 +33,49 @@ Next bounded investigations,with all production semantics unchanged:
 Do not prelabel reduction order,buffer corruption or CPU shortage as cause.
 No threshold fitting,expert reselection,worker-count change or corpus removal.
 
+## Independent replay and layer localization
+
+`r65-four-R32-failure-replay-v1`:all512matched-history logits exactly reproduce
+the first run,including byte hashes. Same first overflow9.59375. This is forced
+history evidence,not an additional free-generation repeat matrix.
+
+`r65-four-R32-localization-v1`:one64-token failing prompt replayed with existing
+debug-only model/CPU capture,all26layers. Both NPU and Hybrid logits exactly
+match their respective original64positions. No observer-induced output change.
+
+At token54 the first router expert-set change occurs at Layer17:
+All-NPU `[40,41,25,26,54,62]`,Hybrid `[40,41,25,26,54,29]`.
+The smallest baseline router6/7margin is not sufficient attribution:Layer12's
+small margin did not flip;the observed first set change is Layer17.
+
+| Layer | MLP input relative-L2 | MLP output relative-L2 |
+|---|---:|---:|
+|1|0|0|
+|9|0.0176189|0.0199085|
+|16|0.0385850|0.0525219|
+|17|0.0414522|0.2177792|
+|23|0.0855135|0.5808219|
+|24|0.3619912|0.9168881|
+|26|0.6387869|0.9173166|
+
+These are cross-backend layer states with different accumulated hidden inputs,
+**not** same-operand individual-expert safety measurements. They must not be
+compared directly against the0.01same-operand expert gate.
+
+Four CPU layers×65forwards=260exact transfer/merge checks:
+hidden D2H,global IDs D2H,routing weights D2H,CPU output H2D,and FP32 merge all
+PASS;Deferred IDs remain-1. Actual physical shapes/masks for26layers validated,
+including32resident experts at1,9,17,26. Shared expert fusion disabled by model
+configuration,consistent with the split-expert path.
+
+Current classification is **reproducible numerical amplification with observed
+router-set changes**,not proof that a particular CPU reduction tree alone is
+the root cause. Same-operand checks of implicated CPU experts are being run.
+
+Resource diagnostic window has72samples/no sampler errors:sampled cgroup peak
+90,998,427,648bytes,swap0,NPU-owned process peak28,948MiB. This is not a controlled
+performance result or proof of DRAM bandwidth saturation.
+
 ## Official reference boundary
 
 Re-read the fixed [Ascend tutorial](https://github.com/kvcache-ai/ktransformers/blob/0dce4c9b097710951d1b3e232f50b973ff0a5505/doc/en/DeepSeek-V4-Flash_tutorial_for_Ascend_NPU.md).
