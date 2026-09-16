@@ -136,3 +136,9 @@ At08:24UTC queue advanced to `r64-910b-descriptive32-v1`; complete new3mode
 cohort required. Read-only host monitor3391118 records exact guard descendants,
 CPU0–31 andNPU0; bounded5hours and ends on capture terminal progress. No signal
 operations in this telemetry tool. Final descriptive and resource audit pending.
+
+User subsequently requests background automatic3mode execution and stopping
+monitoring. Host monitor3391118 stopped explicitly; existing partial samples
+retained, not a full memory campaign. Test queue remains active, latestOFF20/136.
+After all3integrity gates it automatically performs offline analysis. Final ADR
+and evidence review remain separate from background execution completion.

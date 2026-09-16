@@ -2,6 +2,17 @@
 
 ## Current pointer — supersedes historical entries below
 
+USER REQUEST 2026-09-16: automate3modes sequentially, stop monitoring.
+Background queue r64-910b-continuation-v1 remains RUNNING descriptive32;
+latest off_native20/136completed. Queue performs off_native -> on_forced ->
+on_native, per-mode integrity audit, then offline descriptive analysis. It stops
+first failure; no automatic refit/retry or duplicate models. No model stopped.
+Read-only host monitor3391118 identity confirmed then SIGTERM; sampling is
+USER_PAUSED and incomplete, not full-campaign memory evidence. Interactive
+polling stopped; no heartbeat was enabled. On next user resume inspect queue
+terminal status/results, archive and finish finalADR/contract/summary. Analysis
+completion does not itself mean Round6.4 release qualification.
+
 2026-09-16 destination continuation on110.129.0.22 is authorized. Old host remains
 paused. Dedicated container kt-r64-910b-migration has CPU0–31/NPU0 only.
 Model9files/GGUF/placement identity verified. Missing910B operator package was
