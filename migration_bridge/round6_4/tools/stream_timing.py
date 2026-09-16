@@ -42,7 +42,8 @@ def consume(lines, rid, budget, started, clock=time.monotonic):
         raise ValueError("FIXED_BUDGET_NOT_COMPLETED")
     return dict(response=final, seconds=ended-started, ttft_seconds=first-started,
                 e2e_tokens_per_second=budget/(ended-started),
-                decode_tokens_per_second=(budget-1)/(last-first) if budget>1 and last>first else None,
+                decode_tokens_per_second=(budget-cumulative_counts[0])/(last-first) if last>first else None,
+                first_observed_chunk_tokens=cumulative_counts[0],
                 timing_scope="client_observed_streaming", events=events,
                 cumulative_token_counts=cumulative_counts)
 

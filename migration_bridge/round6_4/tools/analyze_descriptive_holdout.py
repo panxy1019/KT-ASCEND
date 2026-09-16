@@ -39,7 +39,7 @@ def main():
         baseline_margin = a.topk(2,dim=-1).values.diff(dim=-1).neg().flatten()
         values = dict(max_abs=diff.abs().amax(-1), mean_abs=diff.abs().mean(-1),
             relative_l2=diff.norm(dim=-1)/a.norm(dim=-1).clamp_min(1e-12),
-            kl_npu_to_deferred=kl, jsd=jsd, baseline_margin=baseline_margin)
+            kl_off_to_on=kl, jsd=jsd, baseline_margin=baseline_margin)
         assert all(torch.isfinite(v).all() for v in values.values())
         first = next((i for i,(x,y) in enumerate(zip(off_row["baseline_output_ids"], native_row["baseline_output_ids"])) if x != y), None)
         item = dict(rid=rid, corpus="HD3" if rid.startswith("hd3-") else "FD3", positions=64,
