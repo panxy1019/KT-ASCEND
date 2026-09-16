@@ -73,3 +73,48 @@ The corresponding five JSON evidence files per stage are archived locally.
 
 Deferred ON and batch4 long-repeat qualification remain in progress. No
 cross-profile or quality conclusion is inferred from this completed OFF gate.
+
+## Batch2 closed; batch4 first failure
+
+Batch2 ON ten-repeat and both restarts PASS. Ten-repeat:5200 forwards,
+7900 actual CPU tasks,850 deferred routes,10400 worker completions; each
+restart reproduces16 trajectories and the same normalized cohort schedule.
+Batch2 engineering determinism is verified; quality and speedup remain separate.
+
+Batch4 OFF failed on repeat1/cohort0/s6_en_01 at token55: reference7230,
+actual11765. Controller stopped this profile before its later stages and
+batch4 ON long repeats. It did not continue a failed qualification.
+
+Read-only partial-run audit reconstructs every received response from raw
+requests, including the three rows received with the failing row but not yet
+added to the early-exit summary. All20 received requests and325 forwards
+reconcile. Actual batch is4 throughout, no unknown/incomplete forward,
+route partition and terminal checks PASS, no deferred routes, all finite.
+The two cohort0 schedule hashes are identical:
+`0e18be3d540d2fe551ae78e9e4333a342304a63ae1e3eb1dda665cbc195baab7`.
+
+Earliest difference in retained tensors: router logits/weights and final
+logits at decode position1; CPU output first differs at position2. At token55,
+the candidate logits change from[27.125,27.0] to[27.0,27.125]. Compact capture
+does NOT retain all hidden/attention inputs, so this is not proof of a specific
+GEMM/reduction or CPU-transfer root cause. OFF failure cannot be excused as
+approved cross-mode Deferred approximation.
+
+Full failure capture(547MiB on A3) is preserved; tensor bytes copied locally
+and excluded from Git, with index/hashes and JSON/log evidence retained.
+Comparison SHA: `db5f1f03bdc4d3676af6d402cd9880533a31c680872d8fc3ed20e98e7a67f7f2`.
+Status: `BATCH4_SAME_PATH_BLOCKED_PENDING_ATTRIBUTION`.
+Batch1 remains the originally preregistered primary profile, not a replacement
+chosen after this failure. No batch4 release claim is allowed.
+
+The pinned SGLang deterministic-inference document lists FlashInfer/FA3/Triton,
+not Ascend. Local document SHA
+`5251f06ae93450f60a714982d40fc781da61dbfed64c5c7659365b6e28338c06`;
+child `f02f304a25364d1e8fe9c52515a22f20f5089a52`. The general upstream
+[deterministic-inference roadmap](https://github.com/sgl-project/sglang/issues/10278)
+is background, not evidence of an applicable drop-in Ascend fix. Do not
+enable unrelated CUDA batch-invariant kernels or change the frozen runtime.
+
+Bounded diagnostic `r64-b4-off-diagnostic-v1` repeats the same4 cohorts twice,
+adds full snapshots at0,1,55,260,261,315, and otherwise preserves configuration.
+It is not a substitute for the failed ten-repeat gate and cannot qualify batch4.
