@@ -5,6 +5,7 @@ KT_R6_PYTHON points here. Change only token capacity and explicitly qualified
 batch cap, write resolved argv, then exec the real interpreter. No code patches.
 """
 import json
+import hashlib
 import os
 from pathlib import Path
 import sys
@@ -40,13 +41,25 @@ def main():
     batch = int(os.environ["KT_R64_BATCH_CAP"])
     performance = os.environ.get("KT_R64_PERFORMANCE", "0") == "1"
     argv = adapt(sys.argv[1:], batch, performance=performance)
+    compat = os.environ.get("KT_R64_TOKENIZER_COMPAT", "0") == "1"
+    if compat:
+        directory = Path("/workspace/results/r64-tokenizer-compat-v1")
+        expected = {"tokenizer.json": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+                    "tokenizer_config.json": "d5f57d20f87e97e94dac06c5f91871bc819fe3fff41b2b0c96c04c2622dc95bb"}
+        for name, digest in expected.items():
+            if hashlib.sha256((directory/name).read_bytes()).hexdigest() != digest:
+                raise ValueError("TOKENIZER_COMPAT_ARTIFACT_DRIFT:"+name)
+        if "--tokenizer-path" in argv:
+            raise ValueError("UNEXPECTED_EXISTING_TOKENIZER_OVERRIDE")
+        argv += ["--tokenizer-path", str(directory)]
     record = Path(os.environ["KT_R64_RESOLVED_COMMAND"])
     if not str(record).startswith("/workspace/results/r64-"):
         raise ValueError("DEDICATED_COMMAND_RECORD_REQUIRED")
     with record.open("x") as stream:
         json.dump(dict(profile="round6.4-capacity-v1", batch_cap=batch,
                        original=sys.argv[1:], resolved=argv,
-                       capacity_only=not performance, performance_observer_off=performance,
+                       capacity_only=not performance and not compat, performance_observer_off=performance,
+                       tokenizer_compatibility_overlay=compat,
                        cache_disabled="--disable-radix-cache" in argv, production_code_changed=False), stream, indent=2)
     # CPython uses argv[0] to locate pyvenv.cfg. A bare "python" can select
     # system prefixes even when execv's executable is the virtualenv symlink.

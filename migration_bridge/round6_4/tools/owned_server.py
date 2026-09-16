@@ -21,7 +21,7 @@ def validate_stream_environment(env):
 
 
 class OwnedServer:
-    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False):
+    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False, tokenizer_compat=False):
         self.root, self.profile, self.batch, self.capture = Path(root), profile, batch, capture
         if profile not in ("D1", "D1_NODEFER") or batch not in (1, 2, 4):
             raise ValueError("UNSUPPORTED_PROFILE")
@@ -30,6 +30,9 @@ class OwnedServer:
         self.timeout, self.extra_env = timeout, extra_env or {}
         self.capacity = capacity
         self.performance = performance
+        self.tokenizer_compat = tokenizer_compat
+        if tokenizer_compat and not capacity:
+            raise ValueError("TOKENIZER_COMPAT_REQUIRES_EXPLICIT_ADAPTER")
         if performance and (capture or not capacity):
             raise ValueError("PERFORMANCE_REQUIRES_CAPACITY_AND_OBSERVER_OFF")
         if performance and self.extra_env:
@@ -38,7 +41,8 @@ class OwnedServer:
             raise ValueError("ORIGINAL_CAPACITY_IS_BATCH1_ONLY")
         self.server = self.log = None
         self.report = dict(profile=profile, batch_cap=batch, capture=capture, capacity_adapter=capacity,
-                           performance_observer_off=performance, started_unix=time.time(), status="STARTING")
+                           performance_observer_off=performance, tokenizer_compatibility_overlay=tokenizer_compat,
+                           started_unix=time.time(), status="STARTING")
 
     def __enter__(self):
         ensure_free_port()
@@ -50,6 +54,7 @@ class OwnedServer:
                    SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION="false",
                    KT_R6_ENABLE_ROUTE_RECORDER="0" if self.performance else "1", KT_R6_ENABLE_TENSOR_DUMP=str(int(self.capture)),
                    KT_R64_PERFORMANCE=str(int(self.performance)),
+                   KT_R64_TOKENIZER_COMPAT=str(int(self.tokenizer_compat)),
                    KT_R6_PYTHON=str(adapter) if self.capacity else sys.executable, KT_R64_BATCH_CAP=str(self.batch),
                    KT_R64_RESOLVED_COMMAND=str(self.root/"resolved-command.json"))
         if self.capture:
