@@ -2,8 +2,17 @@
 
 ## Current pointer — supersedes historical entries below
 
-Active: `/workspace/results/r64-quality-dev-v1`, OFF-only8train+8dev, capacity1024,
-normalEOS, sourcev2. Do not interrupt/duplicate. Round3anchorv2passed after
+Active: `/workspace/results/r64-tokenizer-serving-v1`, old/new loader parity in
+OFF and ON independently, four frozen S6 inputs each; tools v3. Do not duplicate.
+Dev v1 completed16requests but all truncated/strict-parser invalid. Frozen JSON
+decodes valid text whereas Transformers5.3 LlamaTokenizer destroys ByteLevel;
+see12_QUALITY_TOKENIZER_COMPATIBILITY.md. No primary output has been produced.
+Generic loader overlay tokenizer-only PASS, unchanged tokenizer.json; serving
+parity pending. Dev-only draftv2 adds configured BOS, zero-shot CoT and task stops;
+same3367primaryIDs/golds/budgets. Prepared/deployed tools v4, not active.
+After parity PASS: run_quality_dev.py --protocol-v2 --count-per-benchmark 8
+against r64-quality-draft-v2, then32+32 check. No primary freeze until review.
+Round3anchorv2passed after
 retainingCANNPYTHONPATH; v1failurearchived. See11_RETAINED_REGRESSION.md.
 Batch campaign v2 is FAILED at b4 OFF repeat1/cohort0/s6_en_01 token55.
 Both batch2 profiles completed10repeat+2restart PASS; all4 initialpilotsPASS.
@@ -19,7 +28,8 @@ Future tools deployed separately to `/workspace/results/r64-next-tools-v2`;
 fixtures to `/workspace/results/r64-next-fixtures-v2`. Active campaign still
 uses capacity-tools-v1; no overwrite. Future wrapper now resolves its own directory.
 Staging `/home/admin/r64-next-tools-0tGiCF`; root PTY92973.
-53 local tool tests PASS; own-subtree orphan reaping also1A3behavioraltestPASS.
+57 local tool tests PASS in /tmp/r64-quality-venv (system Python lacks numpy;
+3 import failures there are environment-only); own-subtree orphan reaping also1A3behavioraltestPASS.
 Future v2 OwnedServer now uses new run_owned_process.py wrapper(subreaper),
 not the active batch campaign's oldguard. No extra process signals, no productiondiff.
 
