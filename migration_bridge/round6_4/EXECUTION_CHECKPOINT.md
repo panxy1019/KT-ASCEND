@@ -164,3 +164,15 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
 - Latest owned_server.py including explicit offline environment deployed.
 - Next: lifecycle audit; batch2 pilot OFF/ON and transaction audit; batch4;
   repeat/restart; dev-only quality pilot; frozen heldout/quality/perf/stability.
+
+## Lifecycle closed; batch campaign active
+
+- `r64-d1-lifecycle-v1` PASS:2340physical,3042actualroutedCPUtasks,
+  258deferredtasks,4680synccomplete,8/8experts,pendingdrained. All36requests
+  exactpriorreference. RSS plateaus afterrequest10; notzero-leak claim.
+- ACTIVE `/workspace/results/r64-batch-campaign-v1`, initialb2OFFpilot.
+  `campaign.json` recordsactive/completed. Driverlog adds`-driver.log`.
+  Sequence4pilots(2OFF/ON,4OFF/ON),thenperprofile10repeat+2cleanrestarts,
+  allcaptureandtransactionaudit. Failclosed,noothermodelparallel.
+- Prepared primary quality runner NOTDEPLOYED/NOTRUN;3freeze-rejection testsPASS.
+  Formalprotocolstillpreparation, no primary outputs permitted yet.
