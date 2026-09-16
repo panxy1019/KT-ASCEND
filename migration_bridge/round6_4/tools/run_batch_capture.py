@@ -31,10 +31,15 @@ def main():
     p.add_argument("--runtime", type=Path, required=True)
     p.add_argument("--batch", type=int, choices=(2,4), required=True)
     p.add_argument("--profile", choices=("D1", "D1_NODEFER"), required=True)
-    p.add_argument("--repeats", type=int, choices=(1,10), required=True)
+    p.add_argument("--repeats", type=int, choices=(1,2,10), required=True)
+    p.add_argument("--diagnostic-full-sequences", help="Comma-separated extra full snapshots; diagnostic only, never performance")
     p.add_argument("--restart-reference", type=Path)
     p.add_argument("--output", type=Path, required=True)
     args = p.parse_args()
+    if args.repeats == 2 and not args.diagnostic_full_sequences:
+        raise ValueError("TWO_REPEATS_ARE_DIAGNOSTIC_ONLY")
+    if args.diagnostic_full_sequences:
+        assert all(s.isdigit() for s in args.diagnostic_full_sequences.split(","))
     if args.output.exists():
         raise ValueError("REFUSE_BATCH_EVIDENCE_OVERWRITE")
     assert json.loads((args.runtime/"progress.json").read_text())["status"] == "RUNTIME_PASS"
@@ -50,12 +55,14 @@ def main():
         assert args.repeats == 1
         references = previous["references"]
     report = dict(status="RUNNING", batch=args.batch, profile=args.profile, repeats=args.repeats,
-                  manifest_sha256=MANIFEST_SHA, references=references, rows=[], started_unix=time.time())
+                  manifest_sha256=MANIFEST_SHA, references=references, rows=[], started_unix=time.time(),
+                  diagnostic_full_sequences=args.diagnostic_full_sequences)
     def cancel(signum, frame):
         raise InterruptedError("OWNED_BATCH_CANCELLED")
     signal.signal(signal.SIGTERM, cancel)
     try:
-        with OwnedServer(args.output, args.profile, batch=args.batch, capture=True) as server:
+        extra = {"KT_R63_FULL_DIAGNOSTIC_SEQUENCES":args.diagnostic_full_sequences} if args.diagnostic_full_sequences else None
+        with OwnedServer(args.output, args.profile, batch=args.batch, capture=True, extra_env=extra) as server:
             with (args.output/"requests.jsonl").open("x") as log:
                 for repeat in range(args.repeats):
                     for ci, cohort in enumerate(cohorts):
