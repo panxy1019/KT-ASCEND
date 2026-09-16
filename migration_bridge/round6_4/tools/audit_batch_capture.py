@@ -4,6 +4,7 @@ import collections
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 
 
@@ -18,6 +19,7 @@ def expected_row(request, step):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--root", type=Path, required=True)
+    p.add_argument("--partial-failure", action="store_true", help="Audit all received cohorts of a failed run without qualifying it")
     args = p.parse_args()
     import torch
     torch.set_num_threads(1)
@@ -25,9 +27,25 @@ def main():
     from audit_deferred_transitions import validate_transition
     root = args.root
     run = json.loads((root/"batch-report.json").read_text())
-    assert json.loads((root/"lifecycle.json").read_text())["status"] == "PLANNED_STOP"
-    requests = {r["rid"]:r for r in run["rows"]}
-    assert len(requests) == len(run["rows"]) == 16*run["repeats"]
+    lifecycle = json.loads((root/"lifecycle.json").read_text())
+    if args.partial_failure:
+        assert run["status"] == "FAILED" and lifecycle["guard"]["reason"] == "CANCELLED"
+        from run_batch_capture import response_map
+        requests = {}
+        for line in (root/"requests.jsonl").read_text().splitlines():
+            value = json.loads(line)
+            payload = value["payload"]
+            tokens = response_map(value["response"],payload["rid"],64)
+            for rid, ids in zip(payload["rid"],payload["input_ids"]):
+                match = re.search(r"-r(\d+)-c(\d+)-(.+)$",rid)
+                assert match and rid not in requests
+                repeat, cohort, pid = match.groups()
+                requests[rid] = dict(rid=rid,prompt_id=pid,repeat=int(repeat),cohort=int(cohort),
+                                     input_ids=ids,output_ids=tokens[rid])
+    else:
+        assert lifecycle["status"] == "PLANNED_STOP"
+        requests = {r["rid"]:r for r in run["rows"]}
+        assert len(requests) == len(run["rows"]) == 16*run["repeats"]
     entries = [json.loads(s) for s in (root/"index.jsonl").read_text().splitlines()]
     files = set((root/"tensors").rglob("Pass*.pt"))
     assert len({e["pid"] for e in entries}) == 1
@@ -36,6 +54,7 @@ def main():
     count = collections.Counter()
     actual_batch = collections.Counter()
     signatures = collections.defaultdict(list)
+    cohort_signatures = collections.defaultdict(list)
     report = dict(status="RUNNING", physical_forwards=len(entries), known_requests=len(requests),
                   cpu_owned_layer_forwards=0, real_cpu_tasks_with_selected_routes=0,
                   deferred_forwards=0, deferred_routes=0, expert_route_hits={},
@@ -70,8 +89,13 @@ def main():
             actual_batch[len(rids)] += 1
             repeats = {requests[rid]["repeat"] for rid in rids}
             assert len(repeats) == 1, "CROSS_REPEAT_SCHEDULE_OVERLAP"
-            signatures[next(iter(repeats))].append(dict(prompts=[requests[rid]["prompt_id"] for rid in rids],
-                steps=steps, lengths=lengths, forward_mode=tx["batch"]["forward_mode"]))
+            signature = dict(prompts=[requests[rid]["prompt_id"] for rid in rids],
+                            steps=steps, lengths=lengths, forward_mode=tx["batch"]["forward_mode"])
+            repeat = next(iter(repeats))
+            signatures[repeat].append(signature)
+            cohorts = {requests[rid]["cohort"] for rid in rids}
+            assert len(cohorts) == 1, "CROSS_COHORT_SCHEDULE"
+            cohort_signatures[(repeat,next(iter(cohorts)))].append(signature)
             total_deferred = 0
             for layer, owned in ((7, (16,38,41,50)), (8, (8,25,33,55))):
                 ids = data[f"r62.ktep.layer{layer}.topk_ids"]
@@ -111,14 +135,27 @@ def main():
         report["actual_batch_histogram"] = dict(actual_batch)
         report["forward_counts_per_rid"] = dict(count)
         report["schedule_sha256_by_repeat"] = {str(r):hashlib.sha256(json.dumps(s,sort_keys=True).encode()).hexdigest() for r,s in signatures.items()}
-        assert len(set(report["schedule_sha256_by_repeat"].values())) == 1, "ACTUAL_SCHEDULE_VARIABILITY"
-        assert run["status"] == "BATCH_CAPTURE_GENERATION_PASS"
-        report["status"] = "BATCH_TRANSACTION_AUDIT_PASS"
+        if args.partial_failure:
+            report["cohort_schedule_sha256"] = {f"r{r}-c{c}":hashlib.sha256(json.dumps(s,sort_keys=True).encode()).hexdigest()
+                                                for (r,c),s in cohort_signatures.items()}
+            report["first_token_divergences"] = []
+            for request in requests.values():
+                reference = run["references"][request["prompt_id"]]
+                actual = request["output_ids"]
+                if actual != reference:
+                    first = next(i for i,(a,b) in enumerate(zip(reference,actual)) if a != b)
+                    report["first_token_divergences"].append(dict(rid=request["rid"],token_index=first,
+                        reference_token=reference[first],actual_token=actual[first]))
+            report["status"] = "PARTIAL_FAILURE_INTEGRITY_AUDITED_NOT_QUALIFIED"
+        else:
+            assert len(set(report["schedule_sha256_by_repeat"].values())) == 1, "ACTUAL_SCHEDULE_VARIABILITY"
+            assert run["status"] == "BATCH_CAPTURE_GENERATION_PASS"
+            report["status"] = "BATCH_TRANSACTION_AUDIT_PASS"
     except BaseException as exc:
         report.update(status="FAILED", exception=repr(exc))
         raise
     finally:
-        with (root/"batch-audit.json").open("x") as out:
+        with (root/("batch-partial-audit.json" if args.partial_failure else "batch-audit.json")).open("x") as out:
             json.dump(report, out, indent=2)
         print(json.dumps({k:v for k,v in report.items() if k != "forward_counts_per_rid"}), flush=True)
 
