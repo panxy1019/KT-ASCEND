@@ -20,7 +20,11 @@ def main():
     save()
     while True:
         path = root/'progress.json'
-        state = json.loads(path.read_text())['status'] if path.exists() else 'STARTING'
+        try:
+            state = json.loads(path.read_text())['status'] if path.exists() else 'STARTING'
+        except (json.JSONDecodeError, FileNotFoundError):
+            # Producer writes a small progress file; never interpret a partial write.
+            state = 'PROGRESS_WRITE_IN_FLIGHT'
         guard = base/'r65-r66-final-screen-guard-v1/reaping.json'
         if state in ('BLOCKED','FINAL_SCREEN_COMPLETE_AWAIT_QUALITY_LIMITATIONS_AND_ADR_REVIEW') and guard.exists():
             break
