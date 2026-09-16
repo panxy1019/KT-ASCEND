@@ -1,6 +1,6 @@
 # Round6.6 — independent heavy-static numerical qualification
 
-Status: IN_PROGRESS. B0 and QD6 audits passed; fresh52-request ten-repeat/prefix and4-request clean restart passed. Candidate frozen atSHA25643a0bd582a4b126feb7ed851b85e1e94c1de98131700547eead4615d3e21967a. HD6 one-shot capture RUNNING; quality NOT_RUN. No final promotion.
+Status: IN_PROGRESS. B0 and QD6 audits passed; fresh52-request ten-repeat/prefix and4-request clean restart passed. Candidate frozen atSHA25643a0bd582a4b126feb7ed851b85e1e94c1de98131700547eead4615d3e21967a. HD6 one-shot capture/audits complete;52/52 post-heldout tail operator checks passed. Old B_pair has3 HD overflows and is NOT passed. Under the independently pre-frozen diagnostic-only model contract, reviewed quality entry is authorized; observer-OFF free generation and serial All-NPU/Hybrid screen are running. No final promotion; see08_HD6_REVIEW_AND_QUALITY_ENTRY.md.
 
 Base: `a0a233e3779089c1e767f689b981c2563ab10871`.
 Branch: `codex/round6-6-three-way-numerical-qualification`.
