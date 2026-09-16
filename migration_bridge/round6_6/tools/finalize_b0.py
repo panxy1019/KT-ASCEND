@@ -39,9 +39,9 @@ def main():
         assert len(layout['rows'])==count and all(r['comparison']['exact'] for r in layout['rows'])
     before=read('r65-r66-runtime-source-v1.json');after=read('r65-r66-runtime-source-final-b0.json')
     assert before['files']==after['files'] and before['repositories']==after['repositories']
-    gguf=base/'r65-r66-gguf-b0.sha256'
+    gguf=base/'r65-r66-gguf-b0-guard-v1/process.log'
     assert gguf.read_text().split()[0]=='20114dba7790a9b6be40a17ffb3881c516b81ea86b8f2fcfd3ea61d052e96fe2'
-    checked[gguf.name]=hashlib.sha256(gguf.read_bytes()).hexdigest()
+    checked[str(gguf.relative_to(base))]=hashlib.sha256(gguf.read_bytes()).hexdigest()
     result=dict(status='BACKEND_DECOMPOSITION_GATE_PASS',expert_instances=128,operator_cases=608,
         decode_cases=384,prefill_cases=224,real_prefill_qlens=sorted({r['qlen'] for r in observed if r['qlen']>1}),
         maxima=maxima,evidence_sha256=checked,production_default_change=False,
