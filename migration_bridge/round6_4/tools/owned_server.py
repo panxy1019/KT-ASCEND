@@ -8,6 +8,17 @@ import sys
 import time
 from run_compact_controls import OLD, ensure_free_port
 
+STREAM_OVERRIDES = ("SGLANG_KT_HYBRID_NO_CPU_STREAM", "SGLANG_KT_HYBRID_TIMING",
+                    "SGLANG_KT_HYBRID_TIMING_DEEP", "SGLANG_KT_BYPASS_GPU_MOE",
+                    "KT_FORCE_SYNC_SUBMIT", "KT_EXTERNAL_NPU_REPORT_SUBSCRIBER")
+
+
+def validate_stream_environment(env):
+    values = {key:env.get(key) for key in STREAM_OVERRIDES}
+    if any(value not in (None,"","0") for value in values.values()):
+        raise ValueError("UNFROZEN_STREAM_OR_TIMING_OVERRIDE")
+    return values
+
 
 class OwnedServer:
     def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False):
@@ -49,6 +60,7 @@ class OwnedServer:
             (self.root/"tensors").mkdir()
         env.update(self.extra_env)
         self.env = env
+        self.report["stream_overrides"] = validate_stream_environment(env)
         self.log = (self.root/"launcher.log").open("x")
         try:
             subprocess.run([sys.executable, str(OLD/"prepare_run_metadata.py"), "--mode", "defer1" if self.profile == "D1" else "defer0",
