@@ -1,0 +1,25 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-5a-bisection-v2/C3",
+    "/workspace/results/r65-5a-bisection-v2/C3.json",
+    "32"
+  ],
+  "started_unix": 1789569745.3403559,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 3945,
+  "pgid": 3945,
+  "reason": "CANCELLED",
+  "matched_error": null,
+  "returncode": -9,
+  "ended_unix": 1789569923.483831,
+  "success": false
+}

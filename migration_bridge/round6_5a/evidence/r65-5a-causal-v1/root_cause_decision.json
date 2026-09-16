@@ -1,0 +1,83 @@
+{
+  "classification": "INHERENT_CROSS_BACKEND_NUMERICAL_AMPLIFICATION",
+  "evidence_state": "A3_VERIFIED",
+  "scope": "FROZEN_H2_EN_01_FAILURE_TRAJECTORY_AND_BOUNDED_OPERATOR_PROBES",
+  "production_fix": "NONE_NO_SEMANTIC_INVARIANT_DEFECT_DEMONSTRATED",
+  "checks": {
+    "npu_subset_exact": true,
+    "canonical_final_exact": true,
+    "cpu_capture_replay_exact": true,
+    "local_expert_safety": true,
+    "router_replay_exact": true,
+    "route_counterfactual_reduces_l17_jump": true,
+    "route_counterfactual_reduces_full_logit_l2": true,
+    "npu_for_cpu_full_logits_exact": true,
+    "original_r32_ownership_retained": true,
+    "intervention_coverage_exact": true,
+    "lifecycles_reaped": true
+  },
+  "local_expert_rel_l2_max": 0.0005172126111574471,
+  "aggregate_cpu_partial_vs_gmm_max_rel_l2": 0.00109679508022964,
+  "layer_prefix_minimum": "C1_LAYER1_ONLY",
+  "guards": [
+    {
+      "path": "/workspace/results/r65-5a-subset-v1/guard",
+      "reason": "EXIT_ZERO",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-canonical-v1/guard",
+      "reason": "EXIT_ZERO",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-prefill-v1/guard",
+      "reason": "EXIT_ZERO",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-bisection-v1/C1/guard",
+      "reason": "CANCELLED",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-bisection-v2/C2/guard",
+      "reason": "CANCELLED",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-bisection-v2/C3/guard",
+      "reason": "CANCELLED",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-causal-v1/router-guard",
+      "reason": "EXIT_ZERO",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-causal-v1/baseline_routes/guard",
+      "reason": "CANCELLED",
+      "reaped": true
+    },
+    {
+      "path": "/workspace/results/r65-5a-causal-v1/npu_for_cpu/guard",
+      "reason": "CANCELLED",
+      "reaped": true
+    }
+  ],
+  "counterfactual_caveat": "Fixed baseline routes reduce L17/full-logit L2, but worsen maximum pairwise distortion to 16.65625; not a fix.",
+  "method_reduction_tree_proven": false,
+  "kv_cache_bytes_directly_compared": false,
+  "exclusions": "No claim that every input/kernel shape is defect-free; no universal numerical tolerance derived.",
+  "ROUND6_5_HEAVY_OFFLOAD_ALIGNMENT": "BLOCKED_HEAVY_OFFLOAD_RUNTIME",
+  "BLOCKER_SUBCLASS": "STATIC_NUMERICAL_SCALE_BLOCKER",
+  "ROUND7": "NOT_STARTED",
+  "DEFAULT_DEFERRED": "OFF",
+  "promotion_allowed": false,
+  "next_study": "Independent heavy-static numerical qualification with new QD/HD; no old threshold refit",
+  "recovered_tooling_failures": [
+    "forced baseline rejected by qualification evaluator; diagnostic exact-history join used instead",
+    "offline layer summary imported serving dependency; CPU-only metrics separated and v2 summary completed"
+  ]
+}

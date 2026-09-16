@@ -1,0 +1,32 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-31",
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65a-tools/migration_bridge/round6_5a/tools/probe_canonical_mixed.py",
+    "--trace",
+    "/workspace/results/r65-four-R32-localization-v1",
+    "--model",
+    "/workspace/models/DeepSeek-V2-Lite-604d5664",
+    "--gguf",
+    "/workspace/results/r65-assets-v1/all-moe-f32.gguf",
+    "--output",
+    "/workspace/results/r65-5a-prefill-v1/probe",
+    "--call",
+    "1"
+  ],
+  "started_unix": 1789570441.3766923,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 8148,
+  "pgid": 8148,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789570497.9540758,
+  "success": true
+}

@@ -1,0 +1,152 @@
+{
+  "started_unix": 1789569552.01911,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-5a-bisection-v2/C2/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-5a-bisection-v2/C2",
+    "/workspace/results/r65-5a-bisection-v2/C2.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        3122,
+        15
+      ],
+      [
+        3123,
+        15
+      ],
+      [
+        3124,
+        15
+      ],
+      [
+        3125,
+        15
+      ],
+      [
+        3126,
+        15
+      ],
+      [
+        3127,
+        15
+      ],
+      [
+        3128,
+        15
+      ],
+      [
+        3129,
+        15
+      ],
+      [
+        3130,
+        15
+      ],
+      [
+        3131,
+        256
+      ],
+      [
+        3132,
+        256
+      ],
+      [
+        3133,
+        256
+      ],
+      [
+        3134,
+        256
+      ],
+      [
+        3135,
+        256
+      ],
+      [
+        3136,
+        256
+      ],
+      [
+        3137,
+        256
+      ],
+      [
+        3138,
+        256
+      ],
+      [
+        3860,
+        9
+      ],
+      [
+        3045,
+        9
+      ],
+      [
+        3121,
+        15
+      ],
+      [
+        3865,
+        9
+      ],
+      [
+        3859,
+        9
+      ],
+      [
+        2838,
+        9
+      ],
+      [
+        2839,
+        9
+      ],
+      [
+        2840,
+        9
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-5a-bisection-v2/C2",
+      "/workspace/results/r65-5a-bisection-v2/C2.json",
+      "32"
+    ],
+    "started_unix": 1789569552.0973678,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 2654,
+    "pgid": 2654,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789569727.7308352,
+    "success": false
+  },
+  "ended_unix": 1789569727.7602959
+}
