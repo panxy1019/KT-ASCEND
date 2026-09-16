@@ -21,6 +21,14 @@ def validate_stream_environment(env):
     return values
 
 
+def migration_binary_matches(name, original_sha, target_sha, migration):
+    return (name == migration['binary_path']
+            and name.endswith('/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')
+            and original_sha == migration['original_sha256']
+            and target_sha == migration['target_sha256']
+            and migration['cpu_regression_status'] == 'PASS')
+
+
 class OwnedServer:
     def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False, tokenizer_compat=False, cpu_workers=16):
         if cpu_workers not in (16, 32):
@@ -92,11 +100,7 @@ class OwnedServer:
                     if manifest_path:
                         manifest_bytes = Path(manifest_path).read_bytes()
                         migration = json.loads(manifest_bytes)
-                        if (name == migration['binary_path']
-                                and name.endswith('/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')
-                                and reference['file_sha256'][name] == migration['original_sha256']
-                                and sha == migration['target_sha256']
-                                and migration['cpu_regression_status'] == 'PASS'):
+                        if migration_binary_matches(name, reference['file_sha256'][name], sha, migration):
                             self.report['migration_binary'] = dict(
                                 manifest_path=manifest_path,
                                 manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
