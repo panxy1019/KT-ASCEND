@@ -11,6 +11,16 @@ from pathlib import Path
 import sys
 
 
+def adapt_workers(argv, workers):
+    if workers not in (16, 32):
+        raise ValueError('UNQUALIFIED_CPU_WORKERS')
+    result = list(argv)
+    if result.count('--kt-cpuinfer') != 1 or result[result.index('--kt-cpuinfer')+1] != '16':
+        raise ValueError('CPU_WORKER_LAUNCHER_DRIFT')
+    result[result.index('--kt-cpuinfer')+1] = str(workers)
+    return result
+
+
 def adapt(argv, batch, performance=False):
     if batch not in (1, 2, 4) or argv[:2] != ["-m", "sglang.launch_server"]:
         raise ValueError("UNSUPPORTED_INVOCATION")
@@ -41,6 +51,9 @@ def main():
     batch = int(os.environ["KT_R64_BATCH_CAP"])
     performance = os.environ.get("KT_R64_PERFORMANCE", "0") == "1"
     argv = adapt(sys.argv[1:], batch, performance=performance)
+    workers = int(os.environ.get('KT_R64_CPU_WORKERS', '16'))
+    if workers != 16:
+        argv = adapt_workers(argv, workers)
     compat = os.environ.get("KT_R64_TOKENIZER_COMPAT", "0") == "1"
     if compat:
         directory = Path("/workspace/results/r64-tokenizer-compat-v1")
@@ -56,7 +69,7 @@ def main():
     if not str(record).startswith("/workspace/results/r64-"):
         raise ValueError("DEDICATED_COMMAND_RECORD_REQUIRED")
     with record.open("x") as stream:
-        json.dump(dict(profile="round6.4-capacity-v1", batch_cap=batch,
+        json.dump(dict(profile="round6.4-capacity-v1", batch_cap=batch, cpu_workers=workers,
                        original=sys.argv[1:], resolved=argv,
                        capacity_only=not performance and not compat, performance_observer_off=performance,
                        tokenizer_compatibility_overlay=compat,

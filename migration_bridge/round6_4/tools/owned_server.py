@@ -1,5 +1,6 @@
 """Small lifecycle adapter around the existing project-only process-group guard."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import signal
@@ -21,7 +22,10 @@ def validate_stream_environment(env):
 
 
 class OwnedServer:
-    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False, tokenizer_compat=False):
+    def __init__(self, root, profile, batch=1, capture=False, timeout=7200, extra_env=None, capacity=True, performance=False, tokenizer_compat=False, cpu_workers=16):
+        if cpu_workers not in (16, 32):
+            raise ValueError('UNQUALIFIED_CPU_WORKERS')
+        self.cpu_workers = cpu_workers
         self.root, self.profile, self.batch, self.capture = Path(root), profile, batch, capture
         if profile not in ("D1", "D1_NODEFER") or batch not in (1, 2, 4):
             raise ValueError("UNSUPPORTED_PROFILE")
@@ -40,7 +44,7 @@ class OwnedServer:
         if not capacity and batch != 1:
             raise ValueError("ORIGINAL_CAPACITY_IS_BATCH1_ONLY")
         self.server = self.log = None
-        self.report = dict(profile=profile, batch_cap=batch, capture=capture, capacity_adapter=capacity,
+        self.report = dict(profile=profile, batch_cap=batch, cpu_workers=cpu_workers, capture=capture, capacity_adapter=capacity,
                            performance_observer_off=performance, tokenizer_compatibility_overlay=tokenizer_compat,
                            started_unix=time.time(), status="STARTING")
 
@@ -49,13 +53,15 @@ class OwnedServer:
         self.root.mkdir(parents=True, exist_ok=False)
         env = {k:v for k,v in os.environ.items() if not k.startswith(("KT_R6_", "KT_R61_", "KT_R62_", "KT_R63_", "KT_DEBUG_", "KT_R64_"))}
         adapter = Path(__file__).with_name("capacity_python_adapter.py")
+        worker_adapter = Path(__file__).with_name('cpu_worker_python_adapter.py')
         env.update(ASCEND_RT_VISIBLE_DEVICES="0", SGLANG_APPLY_CONFIG_BACKUP="none",
                    HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
                    SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION="false",
                    KT_R6_ENABLE_ROUTE_RECORDER="0" if self.performance else "1", KT_R6_ENABLE_TENSOR_DUMP=str(int(self.capture)),
                    KT_R64_PERFORMANCE=str(int(self.performance)),
                    KT_R64_TOKENIZER_COMPAT=str(int(self.tokenizer_compat)),
-                   KT_R6_PYTHON=str(adapter) if self.capacity else sys.executable, KT_R64_BATCH_CAP=str(self.batch),
+                   KT_R6_PYTHON=str(adapter) if self.capacity else str(worker_adapter) if self.cpu_workers == 32 else sys.executable, KT_R64_BATCH_CAP=str(self.batch),
+                   KT_R64_CPU_WORKERS=str(self.cpu_workers),
                    KT_R64_RESOLVED_COMMAND=str(self.root/"resolved-command.json"))
         if self.capture:
             env.update(KT_R62_COMPLETE_FORWARD_DUMP="1", KT_R63_COMPACT_CAPTURE="1",
@@ -71,6 +77,7 @@ class OwnedServer:
             subprocess.run([sys.executable, str(OLD/"prepare_run_metadata.py"), "--mode", "defer1" if self.profile == "D1" else "defer0",
                 "--output", str(self.root/"provenance.json"), "--artifact", str(adapter), "--artifact", str(Path(__file__)),
                 "--artifact", str(Path(__file__).with_name("run_owned_process.py")),
+                "--artifact", str(worker_adapter),
                 "--artifact", "/workspace/results/placements/placement_d1.pt",
                 "--artifact", "/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf",
                 "--artifact", "/workspace/models/DeepSeek-V2-Lite-604d5664/tokenizer.json",
@@ -81,9 +88,23 @@ class OwnedServer:
             reference["file_sha256"]["/workspace/kt-src/third_party/sglang/python/sglang/srt/model_executor/model_runner.py"] = "71b1daaf2a78afde91794963eb5c6a0779bb6ed931841e0a56f8b8bf34ce88d9"
             for name, sha in meta["file_sha256"].items():
                 if name in reference["file_sha256"] and sha != reference["file_sha256"][name]:
+                    manifest_path = os.environ.get('KT_R64_MIGRATION_BUILD_MANIFEST')
+                    if manifest_path:
+                        manifest_bytes = Path(manifest_path).read_bytes()
+                        migration = json.loads(manifest_bytes)
+                        if (name == migration['binary_path']
+                                and name.endswith('/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')
+                                and reference['file_sha256'][name] == migration['original_sha256']
+                                and sha == migration['target_sha256']
+                                and migration['cpu_regression_status'] == 'PASS'):
+                            self.report['migration_binary'] = dict(
+                                manifest_path=manifest_path,
+                                manifest_sha256=hashlib.sha256(manifest_bytes).hexdigest(),
+                                original_sha256=migration['original_sha256'], target_sha256=sha)
+                            continue
                     raise ValueError(f"ACTUAL_SOURCE_DRIFT:{name}")
             command = [sys.executable, str(Path(__file__).with_name("run_owned_process.py")), "--output", str(self.root/"guard"),
-                       "--timeout-seconds", str(self.timeout), "--", "taskset", "-c", "0-15", "bash",
+                       "--timeout-seconds", str(self.timeout), "--", "taskset", "-c", f"0-{self.cpu_workers-1}", "bash",
                        "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh", self.profile, str(self.root), "31000"]
             self.server = subprocess.Popen(command, env=env, stdout=self.log, stderr=subprocess.STDOUT)
             self.report.update(owned_guard_pid=self.server.pid, command=command)

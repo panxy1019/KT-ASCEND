@@ -15,6 +15,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--corpus', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--cpu-workers', type=int, choices=(16,32), default=16)
     args = parser.parse_args()
     corpus = checked(args.corpus)
     assert corpus['sha256'] == S6_SHA
@@ -27,7 +28,7 @@ def main():
             references = {}
             for process in ('repeat','restart'):
                 root = args.output/(profile+'-'+process)
-                with OwnedServer(root, profile, tokenizer_compat=True):
+                with OwnedServer(root, profile, tokenizer_compat=True, cpu_workers=args.cpu_workers):
                     with (root/'requests.jsonl').open('x') as raw:
                         for repeat in range(3 if process == 'repeat' else 1):
                             for pid in PROMPTS:

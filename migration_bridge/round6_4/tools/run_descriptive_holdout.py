@@ -46,6 +46,7 @@ def main():
     p.add_argument("--inputs", type=Path, required=True)
     p.add_argument("--entry-audit", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument('--cpu-workers', type=int, choices=(16,32), default=16)
     args = p.parse_args()
     entry = json.loads(args.entry_audit.read_text())
     if entry.get("status") != "R64_DESCRIPTIVE_ENTRY_APPROVED" or not entry.get("no_holdout_fitting"):
@@ -89,7 +90,7 @@ def main():
             report["active"] = mode
             (args.output/"progress.json").write_text(json.dumps(report, indent=2)+"\n")
             with (args.output/f"{mode}.log").open("x") as log:
-                with OwnedServer(root, profile, batch=1, capture=True, capacity=False, extra_env=env):
+                with OwnedServer(root, profile, batch=1, capture=True, capacity=False, extra_env=env, cpu_workers=args.cpu_workers):
                     manifest = force if mode == "on_forced" else native
                     if mode == "on_forced":
                         call([old/"prepare_stateful_smoke.py", "--arm", "--baseline-result", force, "--output", root/"armed.sha256"], log)
