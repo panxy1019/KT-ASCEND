@@ -11,6 +11,7 @@ import argparse
 import hashlib
 import json
 import math
+import statistics
 import time
 from pathlib import Path
 
@@ -142,10 +143,15 @@ def main() -> None:
     expert_ids[:, 0] = args.expert
     routing_weights = torch.zeros((args.num_tokens, top_k), dtype=torch.float32)
     routing_weights[:, 0] = 1.0
-    cpu_outputs = [
-        wrapper.forward(hidden_cpu, expert_ids, routing_weights).clone()
-        for _ in range(args.cpu_repeats)
-    ]
+    cpu_outputs=[]
+    cpu_forward_seconds=[]
+    rss_before_forward=Path('/proc/self/status').read_text()
+    for _ in range(args.cpu_repeats):
+        begin=time.perf_counter()
+        output=wrapper.forward(hidden_cpu,expert_ids,routing_weights).clone()
+        cpu_forward_seconds.append(time.perf_counter()-begin)
+        cpu_outputs.append(output)
+    rss_after_forward=Path('/proc/self/status').read_text()
     cpu_output = cpu_outputs[0].float()
     cpu_repeat_hashes = [
         hashlib.sha256(output.contiguous().view(torch.uint8).numpy()).hexdigest()
@@ -231,6 +237,11 @@ def main() -> None:
         "num_tokens": args.num_tokens,
         "cpu_repeats": args.cpu_repeats,
         "cpuinfer_threads": args.cpuinfer_threads,
+        "forward_timing_scope": "CPU_WRAPPER_FORWARD_AND_RESULT_CLONE_NOT_SERVING_LATENCY",
+        "cpu_forward_seconds": cpu_forward_seconds,
+        "cpu_forward_median_seconds": statistics.median(cpu_forward_seconds),
+        "proc_status_before_forward": rss_before_forward,
+        "proc_status_after_forward": rss_after_forward,
         "cpu_repeat_unique_hashes": sorted(set(cpu_repeat_hashes)),
         "cpu_repeat_max_abs": cpu_repeat_max_abs,
         "source_keys": keys,

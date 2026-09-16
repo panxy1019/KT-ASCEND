@@ -26,6 +26,7 @@ def main():
     p.add_argument('--profile',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--workers',type=int,choices=(16,32),default=32)
+    p.add_argument('--repeats',type=int,choices=(3,10),default=3)
     a=p.parse_args()
     corpus=json.loads(a.corpus.read_text())
     actual_sha=hashlib.sha256(json.dumps({k:v for k,v in corpus.items() if k!='sha256'},
@@ -36,7 +37,8 @@ def main():
     prompts={r['id']:r for r in corpus['prompts']}
     a.output.mkdir(parents=True,exist_ok=False)
     report=dict(status='RUNNING',started_unix=time.time(),rows=[],references={},
-                profile_sha256=hashlib.sha256(a.profile.read_bytes()).hexdigest())
+                profile_sha256=hashlib.sha256(a.profile.read_bytes()).hexdigest(),
+                repeats=a.repeats,workers=a.workers)
     tools=Path(__file__).parent
     def interrupted(signum, frame): raise InterruptedError('USER_OR_GUARD_CANCEL')
     signal.signal(signal.SIGTERM,interrupted)
@@ -64,7 +66,7 @@ def main():
                         time.sleep(2)
                     with (root/'requests.jsonl').open('x') as raw:
                         for pid in PROMPTS:
-                            for n,budget in enumerate(([64]*3+[8,16,32]) if phase=='repeat' else [64]):
+                            for n,budget in enumerate(([64]*a.repeats+[8,16,32]) if phase=='repeat' else [64]):
                                 rid=f'r65-{a.profile.stem}-{phase}-{pid}-{n}'
                                 payload=dict(rid=rid,input_ids=prompts[pid]['input_ids'],
                                     sampling_params=dict(temperature=0,max_new_tokens=budget,ignore_eos=True),

@@ -1,4 +1,5 @@
 """One preregistered static count-frequency policy; no runtime migration."""
+import math
 
 
 def resident_ids(counts,budget):
@@ -15,6 +16,7 @@ def project(position,masks):
         if len(ids)!=6 or len(weights)!=6 or len(set(ids))!=6:raise ValueError('TOPK_CONTRACT')
         for expert,w in zip(ids,weights):
             if not 0<=expert<64:raise ValueError('EXPERT_ID')
+            if not math.isfinite(w) or w<0:raise ValueError('ROUTE_WEIGHT')
             total+=w
             if expert not in masks[layer]:events+=1;weight+=w;touched=True
     return dict(cpu_events=events,cpu_weight_mass=weight,total_weight_mass=total,touches_cpu=touched)

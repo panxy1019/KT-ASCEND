@@ -50,6 +50,12 @@ def main():
         args += ['--forward-hooks',json.dumps([dict(name='r65-physical-ownership',
             target_modules=['model.layers.*.mlp'],hook_factory='r65_structure_hook:make_hook',
             config=dict(profile=str(profile),output=str(root/'physical-structure.jsonl')))])]
+    if os.environ.get('KT_R65_ROUTE_ONLY')=='1':
+        if os.environ.get('KT_R65_STAGEWISE')=='1':raise ValueError('DUPLICATE_HOOK_MODE')
+        os.environ['PYTHONPATH']=str(Path(__file__).parent)+':'+os.environ.get('PYTHONPATH','')
+        args += ['--forward-hooks',json.dumps([dict(name='r65-compact-routes',
+            target_modules=['model.layers.*.mlp.topk'],hook_factory='r65_route_hook:make_hook',
+            config=dict(output=str(root/'routing.jsonl')))])]
     if data['total_npu_experts']!=26*64:
         gguf=Path('/workspace/results/r65-assets-v1/all-moe-f32.gguf')
         manifest=json.loads(gguf.with_suffix('.gguf.manifest.json').read_text())
@@ -65,7 +71,7 @@ def main():
                  '--init-expert-location',str(pt)]
     (root/'resolved-command.json').write_text(json.dumps(dict(argv=args,profile=data,workers=workers,
                                                             environment={k:os.environ.get(k) for k in (
-                                                                'KT_R65_CAPTURE','KT_R65_STAGEWISE',
+                                                                'KT_R65_CAPTURE','KT_R65_STAGEWISE','KT_R65_ROUTE_ONLY',
                                                                 'KT_R61_STAGEWISE_DIR',
                                                                 'ASCEND_RT_VISIBLE_DEVICES','SGLANG_APPLY_CONFIG_BACKUP',
                                                                 'HF_HUB_OFFLINE','TRANSFORMERS_OFFLINE','PYTHONPATH',
