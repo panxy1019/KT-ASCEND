@@ -17,6 +17,8 @@ def main():
     n=json.loads(a.npu.read_text());h=json.loads(a.hybrid.read_text())
     assert n['status']==h['status']=='QUALITY_SCREEN_COLLECTION_COMPLETE'
     assert n['input_sha256']==h['input_sha256']=='9618d054cf765e1d6328d1581435ec97f9f4271715b794dc07e0a9889a483fcb'
+    assert n['approval_sha256']==h['approval_sha256']
+    assert n['profile_sha256']!=h['profile_sha256']
     assert [r['id'] for r in n['rows']]==[r['id'] for r in h['rows']]
     assert len(n['rows'])==len(h['rows'])==288
     reports=[]

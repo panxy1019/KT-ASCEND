@@ -27,6 +27,12 @@ def main():
     for name in ('quality_answers.py','quality_answers_v2.py'):
         if sha(a.parser_dir/name)!=approval['parser_sha256'][name]:raise ValueError('PARSER_DRIFT')
     if sha(a.profile) not in approval['allowed_profile_sha256']:raise ValueError('PROFILE_DRIFT')
+    runtime=Path('/workspace/results/r65-r66-runtime-source-final-b0.json')
+    if sha(runtime)!=approval['runtime_manifest_sha256']:raise ValueError('RUNTIME_MANIFEST_DRIFT')
+    def check_runtime():
+        for item in json.loads(runtime.read_text())['files']:
+            if sha(Path(item['path']))!=item['sha256']:raise ValueError('ACTUAL_RUNTIME_DRIFT:'+item['path'])
+    check_runtime()
     sys.path.insert(0,str(a.parser_dir))
     from quality_answers_v2 import score
     sys.path.insert(0,'/workspace/r65-tools/migration_bridge/round6_5/tools')
@@ -69,6 +75,7 @@ def main():
                     print(json.dumps(progress),flush=True)
         lifecycle=json.loads((a.output/'lifecycle.json').read_text())
         if lifecycle['status']!='COMPLETE':raise ValueError('LIFECYCLE_NOT_COMPLETE')
+        check_runtime()
         report['status']='QUALITY_SCREEN_COLLECTION_COMPLETE'
     except BaseException as exc:
         report.update(status='FAILED',error=repr(exc));raise
