@@ -21,6 +21,14 @@ quality choices through first divergence. Transfer/merge/ownership audits pass.
 These are margins between the original two chosen tokens,not a newly fitted
 acceptance bound. Small margins do not excuse incorrect task answers.
 
+First router-set divergence layers at those same boundaries were19,26,8,none,
+none,16,26,15 in table order. In particular,virology(loss) and public-relations
+(gain) changed the chosen answer without an observed expert-set switch at this
+boundary. Their full-logit max errors were0.25 and0.1875 respectively. Therefore
+the explanation must include final-logit near-tie sensitivity as well as possible
+router discontinuities; it is not correct to attribute every quality flip to a
+router-set change. Across all8 cases,full-logit max errors were0.1875–0.5.
+
 ## Complete mixed-partial replay
 
 For each case's first-divergence forward and all4 Hybrid layers,fresh installed
