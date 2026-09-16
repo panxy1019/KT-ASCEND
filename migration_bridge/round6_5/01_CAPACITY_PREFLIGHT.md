@@ -24,3 +24,16 @@ retained exporter under7200s owned-process guard, same fixed model revision.
 
 Full preflight raw JSON on target: /workspace/results/r65-preflight-v1/preflight.json.
 Export result and identity verification pending; no claim of completed WP1 yet.
+# Runtime locality caveat
+
+The container emits `set_mempolicy: Operation not permitted`. CPU affinity0–31
+is verified, but requested strict memory policy must not be labeled effective.
+Keep the existing container security configuration during the controlled sweep;
+use actual numa_maps/node page counts for placement evidence. Linux distinguishes
+CPU scheduling affinity and memory allocation policy. Container runtimes can gate
+NUMA syscalls through seccomp/capabilities; the warning alone does not identify
+every policy source or prove a bandwidth bottleneck.
+
+Primary references consulted:
+- https://cdn.kernel.org/doc/html/latest/admin-guide/mm/numa_memory_policy.html
+- https://github.com/containerd/containerd/issues/13610

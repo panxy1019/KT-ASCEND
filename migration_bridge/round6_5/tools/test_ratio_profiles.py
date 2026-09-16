@@ -33,5 +33,11 @@ class Profiles(unittest.TestCase):
     def test_repeat(self):
         self.assertEqual(build(self.c,[17],16),build(self.c,[17],16))
 
+    def test_runtime_ratio_integer_roundtrip(self):
+        for layers in ([17],[1,9,17,26],list(range(1,27))):
+            for resident in (8,16,32,64):
+                data=build(self.c,layers,resident)
+                self.assertEqual(int(26*64*data['gpu_experts_ratio']),data['total_npu_experts'])
+
 
 if __name__=='__main__': unittest.main()

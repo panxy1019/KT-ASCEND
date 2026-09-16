@@ -22,6 +22,27 @@ respectively namespace ownership and discarded CANN PYTHONPATH. See00provenance.
 
 Final qualification NOT_COMPLETE; Round7 NOT_STARTED; Deferred OFF.
 
+12:33 UTC update (supersedes active queue below):
+- singleR32 determinism28requests PASS; numeric512 positions259stable/253ambiguous
+  allPASS, max pairwise.625,overflow0. Real natural route capture parity/merge PASS.
+-32actual hidden rows were assembled chronologically after the first prompt's
+  length invalidated an initial harness assumption; r65-scale-matrix-v1 failure
+  preserved. r65-scale-matrix-v2 is the current running queue.
+- Captured E1T1/T4 controls PASS (10repeat plus32controlled real no-hit rows).
+- singleR16 DET+restart PASS;numeric max.6875,overflow0;route controls PASS;
+  captured expert probes running. Then singleR8 → fourR32/R16/R8 → allR32/R16/R8,
+  each fail-closed, no automatic frequency/performance/Deferred promotion.
+- Target core production source unchanged/read-only. Diagnostic-only existing
+  stagewise and SGLang forward-hooks enabled for actual sparse-weight evidence;
+  R32/R16 earlier diagnostics lack physical hook and do not claim it retroactively.
+- Resource monitor v1 ownedPID3475031 stopped after exact command validation;
+  v2 ownedPID3507912 starts before subsequent models, includesPSS/cgroup.
+  No inference process or other user's task stopped for monitor upgrade.
+- Tool freeze manifests in r65-scale-matrix-v2 record12:19 and12:31 diagnostic
+  revisions. Early captures remain raw evidence for independent reanalysis.
+- SCHED texts exact-overlap audit PASS and tokenizer IDs frozen offline, rawSHA
+  6aa4f561b7bc3c8bc31c78dbae151b38bd94ecdf14c8143026d0105bc099a187.
+
 12:04 UTC update: R64 numeric capture completed with512target positions and8
 lookahead forwards, integrity PASS. SingleR32 same-process24requests exact;
 independent restart running, followed by same-history numeric comparison.
