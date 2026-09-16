@@ -1,5 +1,24 @@
 # Round6.4 execution checkpoint
 
+## Current pointer — supersedes historical entries below
+
+Active: `/workspace/results/r64-batch-campaign-v2`, b2-D1-repeat (ON),
+latest120/160 requests exact. Four pilots and b2 OFF ten-repeat plus both
+independent restarts passed. Healthy run: do not interrupt or start another model.
+Check campaign.json for authoritative progression; driver audits before next stage.
+
+Future tools deployed separately to `/workspace/results/r64-next-tools-v2`;
+fixtures to `/workspace/results/r64-next-fixtures-v2`. Active campaign still
+uses capacity-tools-v1; no overwrite. Future wrapper now resolves its own directory.
+Staging `/home/admin/r64-next-tools-0tGiCF`; root PTY92973.
+52 local tool tests PASS (50 suite plus2 historical manifest tests).
+
+Next after batch: OFF-only quality dev8+8 then32+32; inspect format/capacity and
+freeze protocol before primary results. HD3/FD3 descriptive_entry.json committed;
+retained old quality evaluator and exact historical manifest deployed as smoke.
+No primary outputs, primary contract not frozen. Quality/performance/stability
+still NOT_RUN. Continue through final ADR; no early final at the batch milestone.
+
 ## Approved authority
 
 User approved complete Round6.4 plan and 2pp absolute per-benchmark quality margin.

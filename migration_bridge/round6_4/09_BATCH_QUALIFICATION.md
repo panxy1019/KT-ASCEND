@@ -59,3 +59,17 @@ Cross-mode token equality is not required and is not claimed.
 The ten-repeat/restart campaign is still running. Short-test PASS alone does
 not promote batch2/4 to deterministic, quality-qualified, or speedup-verified.
 Archived JSON evidence: `evidence/r64-batch-campaign-v2/*-pilot/`.
+
+### Batch2 OFF repeated/restart result (A3_VERIFIED)
+
+Ten repeats completed160 requests and5200 physical forwards. All5200 actual
+batches contain2 rows; all10 normalized schedule hashes equal
+`6ab8ba743160654ec4a22eea9263f496e08217211f3f4061d53df82e9a438d42`.
+7130 actual CPU tasks and10400 worker completions reconcile with the capture.
+Both independent restarts completed16 requests/520 forwards each and matched
+the prior process's per-request trajectories and normalized execution schedule.
+All three final transaction audits PASS, finite outputs, no unexplained forwards.
+The corresponding five JSON evidence files per stage are archived locally.
+
+Deferred ON and batch4 long-repeat qualification remain in progress. No
+cross-profile or quality conclusion is inferred from this completed OFF gate.
