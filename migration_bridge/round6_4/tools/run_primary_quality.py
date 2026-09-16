@@ -11,7 +11,7 @@ import signal
 import time
 import urllib.request
 from owned_server import OwnedServer
-from quality_answers import score
+from quality_answers_v2 import score
 from run_compact_controls import validate
 
 
@@ -40,6 +40,9 @@ def frozen_inputs(protocol_path, inputs_path):
         budget = 512 if r["benchmark"] == "gsm8k" else 32
         if r["max_new_tokens"] != budget or len(r["input_ids"])+budget > 1024:
             raise ValueError("PRIMARY_BUDGET_OR_CAPACITY_DRIFT")
+        expected_stop = ["\nQuestion:", "\n\nQuestion:", "\nQ:"] if r["benchmark"] == "gsm8k" else ["\n"]
+        if r.get("stop") != expected_stop or r["input_ids"][0] != 100000:
+            raise ValueError("PRIMARY_ANSWER_BOUNDARY_OR_BOS_DRIFT")
     return protocol, rows
 
 
@@ -70,7 +73,7 @@ def main():
         raise InterruptedError("OWNED_QUALITY_CANCELLED")
     signal.signal(signal.SIGTERM, cancel)
     try:
-        with OwnedServer(args.output, args.profile, batch=1, capture=False, timeout=172800):
+        with OwnedServer(args.output, args.profile, batch=1, capture=False, timeout=172800, tokenizer_compat=True):
             actual = json.loads((args.output/"provenance.json").read_text())
             for path, digest in protocol["actual_source_sha256"].items():
                 if actual["file_sha256"].get(path) != digest:
@@ -79,7 +82,7 @@ def main():
                 for row in rows:
                     rid = f"r64-quality-{args.profile}-{row['id']}"
                     payload = dict(rid=rid, input_ids=row["input_ids"], sampling_params=dict(
-                        temperature=0, max_new_tokens=row["max_new_tokens"], ignore_eos=False),
+                        temperature=0, max_new_tokens=row["max_new_tokens"], ignore_eos=False, stop=row["stop"]),
                         return_logprob=True, logprob_start_len=-1, top_logprobs_num=0)
                     req = urllib.request.Request("http://127.0.0.1:31000/generate", data=json.dumps(payload).encode(),
                                                  headers={"Content-Type":"application/json"})
