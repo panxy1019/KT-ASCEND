@@ -91,3 +91,15 @@ normally through the guard and reaped their own descendants.
 This validates the loader-interface repair only. It does not establish quality
 noninferiority, does not qualify batch4, and does not retroactively re-encode any
 historical input IDs. The BOS+prompt+stopping draft is validated separately.
+
+## Qualification launch boundary
+
+On this pinned Transformers5.3 environment, any eventual new quality/timing
+claim requires the explicit, reproducible tokenizer overlay. It does not
+certify the unmodified stock launcher's text-tokenization path. Primary quality
+supplies frozen input IDs with BOS applied explicitly; raw text/chat interfaces
+that omit that input policy are not covered by the primary benchmark claim.
+Do not hide the loader/BOS requirements when publishing a launch command or
+compare old-loader timings with new-loader timings. Model weights and original
+tokenizer artifact bytes stay immutable; the additional loader configuration
+and input policy are separately versioned evidence.
