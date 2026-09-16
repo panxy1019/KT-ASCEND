@@ -1,6 +1,6 @@
 # Round6.6 — independent heavy-static numerical qualification
 
-Status: IN_PROGRESS. B0 passed; independent input contract frozen. QD6 All-NPU capture passed, Hybrid capture running. Candidate not yet approved; HD6 and quality NOT_RUN.
+Status: IN_PROGRESS. B0 and QD6 audits passed; fresh52-request ten-repeat/prefix and4-request clean restart passed. Candidate frozen atSHA25643a0bd582a4b126feb7ed851b85e1e94c1de98131700547eead4615d3e21967a. HD6 one-shot capture RUNNING; quality NOT_RUN. No final promotion.
 
 Base: `a0a233e3779089c1e767f689b981c2563ab10871`.
 Branch: `codex/round6-6-three-way-numerical-qualification`.
