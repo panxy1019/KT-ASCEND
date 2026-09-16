@@ -1,0 +1,32 @@
+{
+  "version": "round6.6-new-corpora-draft-v1",
+  "token_budget": 64,
+  "qd6": [
+    ["english", "Explain why an isotope has the same chemical element name despite having a different mass number."],
+    ["english", "Describe the role of a thermostat in a household refrigerator in three sentences."],
+    ["chinese", "请用三句话说明为什么金属勺放入热水后，勺柄会逐渐变热。"],
+    ["chinese", "请比较图书馆的目录与一本书的目录，各自帮助读者解决什么问题。"],
+    ["numeric", "A workshop packs 7 screws in each small bag. It fills 13 bags and has 5 screws left. How many screws were available? Show the calculation."],
+    ["numeric", "Find the average of 14, 23, 31, and 40. Explain each arithmetic step."],
+    ["structured", "Return JSON describing two fictional inventory items. Each item must contain sku, quantity, and fragile. Use quantities 7 and 12."],
+    ["structured", "Write a CSV table with columns city, season, and example_activity, containing three fictional travel suggestions."],
+    ["code", "Write a Python function that returns the last nonempty string from a list, or None if there is none. Include one example."],
+    ["code", "Explain the difference between appending to a Python list and extending it with another list, using a tiny example."],
+    ["reasoning", "Three sealed boxes contain pencils, erasers, and rulers respectively. A label records contents, not owner. Explain why knowing a box's owner alone cannot identify its contents."],
+    ["reasoning", "A train timetable and a record of actual arrivals disagree. Explain what extra information is needed before concluding that a passenger was late."]
+  ],
+  "hd6": [
+    ["english", "Explain how a prism separates white light into different colors without creating those colors from nothing."],
+    ["english", "Describe why a lunar eclipse does not happen at every full moon."],
+    ["chinese", "请说明冰箱门打开时，为什么不能据此认为整个房间会持续变冷。"],
+    ["chinese", "请用生活中的例子区分地图上的距离与实际步行路线的长度。"],
+    ["numeric", "A gardener plants 9 rows with 8 bulbs in each row, then removes 11 damaged bulbs. How many bulbs remain? Show the arithmetic."],
+    ["numeric", "A rope of length 3.6 meters is cut into pieces of length 0.45 meters. How many complete pieces are obtained? Explain."],
+    ["structured", "Return a JSON object for a fictional experiment with keys trial_id, measurements, and completed. Include exactly three integer measurements."],
+    ["structured", "Create a Markdown table with columns instrument, measured_quantity, and example_unit, using four ordinary laboratory instruments."],
+    ["code", "Write a Python function that counts adjacent equal pairs in a sequence. Explain its result on [2, 2, 2, 5]."],
+    ["code", "Show how to reverse the order of words in a string while keeping the letters of each word unchanged, using Python."],
+    ["reasoning", "A shop sells more umbrellas on rainy days. Explain why this observation alone does not show that buying umbrellas causes rain."],
+    ["reasoning", "Two clocks display different times after a journey. List three distinct explanations that should be checked before deciding which clock is faulty."]
+  ]
+}
