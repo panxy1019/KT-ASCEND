@@ -1,0 +1,29 @@
+{
+  "evidence_state": "A3_VERIFIED",
+  "method": "read-only inspection; no host or business workload modification",
+  "container": "kt-r6-deferred-ascend",
+  "cann_toolkit": {
+    "package_name": "Ascend-cann-toolkit",
+    "version": "9.0.0",
+    "innerversion": "V100R001C10SPC001B250",
+    "arch": "aarch64",
+    "install_info_path": "/usr/local/Ascend/cann-9.0.0/aarch64-linux/ascend_toolkit_install.info",
+    "install_info_sha256": "541a5d3605a734c02c013e2c6967b1693318dc35ad00d60c3034e2941f6180b8",
+    "opp_version_path": "/usr/local/Ascend/cann-9.0.0/opp/version.info",
+    "opp_version_sha256": "3f6997bfb998c24cf107258e4cd4e76f6ffc520e0382770e75520083c20b162a"
+  },
+  "stream_environment_sample": {
+    "run": "r64-batch-campaign-v2/b2-D1_NODEFER-restart2",
+    "container_pid": 380499,
+    "SGLANG_KT_HYBRID_NO_CPU_STREAM": null,
+    "SGLANG_KT_HYBRID_TIMING": null,
+    "SGLANG_KT_HYBRID_TIMING_DEEP": null,
+    "SGLANG_KT_BYPASS_GPU_MOE": null,
+    "KT_FORCE_SYNC_SUBMIT": null,
+    "KT_EXTERNAL_NPU_REPORT_SUBSCRIBER": null,
+    "KT_R61_EXPLICIT_REPLAY": null,
+    "KT_R61_CAPTURE_DRAIN_DEFERRED": null,
+    "ASCEND_RT_VISIBLE_DEVICES": "0"
+  },
+  "limitation": "Supplemental observation, not retroactive alteration of earlier provenance files whose cann_version_files field is empty. Absence of stream overrides is not by itself a measured overlap timeline."
+}
