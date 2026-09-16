@@ -1,4 +1,14 @@
-# Single-layer ratio qualification — in progress
+# Single-layer compact ratio qualification — PASS
+
+Update2026-09-16~12:50UTC:R32/R16/R8 compact gates complete. R16/R8 each
+have28exact determinism/prefix/restart requests and512matched-history positions;
+259stable exact,253ambiguity membership,zero overflow,maxpairwise0.6875.
+R8 additionally exercised the new runtime physical-weight hook:26layers checked,
+Layer17resident8,other25layers resident64. Earlier R32/R16captures did not run
+that hook and must not be retroactively described as physical-hook verified.
+Actual-serving-token reanalysis of R32/R16 agrees with their earlier summaries.
+All profiles have captured-real-input expert repeats and controlled nohit tests.
+This is compact single-layer evidence,not final all-MoE qualification.
 
 Target910B3 NPU0,32workers/NUMA0,production overlap,Deferred0. No production patch.
 
