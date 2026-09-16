@@ -1,5 +1,22 @@
 # Round6.5 execution checkpoint
 
+## FINAL — supersedes all chronological running notes below
+
+Round6.5 blocked at fourR32 static numerical envelope:9.59375>2.1875 at
+h2_en_01/token54. Same-path28requests PASS;independent512position logits
+byte-exact repeat;observer parity exact;260transfer/merge checks PASS;
+5implicated expert probes PASS. No defensible production repair identified.
+SeeROUND6_5_FINAL_SUMMARY.md and10_FINAL_ADR.md. All later gates NOT_RUN.
+
+825archived evidence files verified locally bySHA256. ArchiveSHA:
+bb45bfc6fd514e962ca51a9f7d96f118ca2e2bd5f4fcbdd7e89b2f6315b0ef1f.
+Owned monitorPID3507912 stopped after full command/identity check. The dedicated
+container was idle(sleepPID1only),then stopped;NPU0 has no process. Container
+and all volumes/GGUF/raw captures preserved. Business workloads untouched.
+No automatic queue remains active;Round7NOT_STARTED,DeferredOFF.
+
+## Historical execution notes
+
 2026-09-16: User approved review-v1 and autonomous in-scope execution.
 
 - Branch codex/round6-5-official-style-offload-alignment, base c74931235c60d2e899e3acd9fc9277b06962920a.

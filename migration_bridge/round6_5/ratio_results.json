@@ -1,0 +1,20 @@
+{
+  "status": "BLOCKED_AT_FOUR_R32",
+  "B_pair": 2.1875,
+  "candidate_topk": 32,
+  "results": [
+    {"profile":"R64-reference","det_requests":28,"det":"PASS","numeric_positions":512,"role":"ORACLE_CAPTURE"},
+    {"profile":"single-R32","det_requests":28,"det":"PASS","numeric_positions":512,"max_pairwise":0.625,"overflow_pairs":0,"status":"COMPACT_PASS"},
+    {"profile":"single-R16","det_requests":28,"det":"PASS","numeric_positions":512,"max_pairwise":0.6875,"overflow_pairs":0,"status":"COMPACT_PASS"},
+    {"profile":"single-R8","det_requests":28,"det":"PASS","numeric_positions":512,"max_pairwise":0.6875,"overflow_pairs":0,"status":"COMPACT_PASS"},
+    {"profile":"four-R32","det_requests":28,"det":"PASS","numeric_positions":512,"max_pairwise":9.59375,"overflow_pairs":27,"failed_positions":1,"stable_exact":259,"stable_total":259,"membership":253,"ambiguous_total":253,"status":"STATIC_NUMERICAL_SCALE_BLOCKER"},
+    {"profile":"four-R16","status":"NOT_RUN_PREDECESSOR_FAILURE"},
+    {"profile":"four-R8","status":"NOT_RUN_PREDECESSOR_FAILURE"},
+    {"profile":"all-R32","status":"NOT_RUN_PREDECESSOR_FAILURE"},
+    {"profile":"all-R16","status":"NOT_RUN_PREDECESSOR_FAILURE"},
+    {"profile":"all-R8","status":"NOT_RUN_PREDECESSOR_FAILURE"}
+  ],
+  "full_model_capacity_timing": "NOT_RUN",
+  "first_failure": {"rid":"r65-h2-h2_en_01","token_index":54,"baseline_token":82,"hybrid_token":82},
+  "independent_repeat": "512_OF_512_LOGIT_VECTORS_BYTE_EXACT"
+}

@@ -1,4 +1,8 @@
-# Round6.5 provenance — execution in progress
+# Round6.5 provenance — blocked qualification frozen
+
+Final update2026-09-16:execution stopped at four-layerR32 numerical envelope.
+See10_FINAL_ADR.md andROUND6_5_FINAL_SUMMARY.md. No success tag or upstream merge.
+Earlier chronological notes below are preserved as execution history.
 
 User approved review-v1 on2026-09-16. Parent base c74931235c60d2e899e3acd9fc9277b06962920a;
 Round6.4 evidence c14053c5090a5d022cd8580ef7bbd0b08f557f43.
@@ -56,4 +60,4 @@ All-layer GGUF size57579411648bytes; SHA
 byte hashes. New-container tooling tests12/12PASS (local6pass/6torch-unavailable
 skips separately); these unit tests do not qualify any heavy runtime profile.
 
-Qualification: IN_PROGRESS. Round6.4 IMPLEMENTED_NO_SPEEDUP unchanged.
+Qualification: BLOCKED_STATIC_NUMERICAL_SCALE. Round6.4 IMPLEMENTED_NO_SPEEDUP unchanged.

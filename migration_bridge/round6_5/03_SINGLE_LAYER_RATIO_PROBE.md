@@ -39,4 +39,6 @@ hashes, applies the same controlled NPU-owned route, and never pads/duplicates.
 T1/T4 expert comparison still uses first rows of the unchanged first capture.
 Frozen masks/corpora/B_pair/production arithmetic are unchanged.
 
-R16/R8:NOT_RUN as of this checkpoint. R32 promotion awaits captured controls.
+The earlier pending R32captured-control state was closed in v2;R16/R8 then
+completed as described at the top. Later four-layer numerical failure does not
+retroactively invalidate these compact single-layer observations.

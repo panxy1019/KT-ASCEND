@@ -1,4 +1,9 @@
-# Four-layer ratio probe — IN PROGRESS
+# Four-layer ratio probe — BLOCKED_AT_R32_NUMERICAL
+
+Final update:28determinism/restart requests PASS,512positions captured with
+complete provenance. One position exceeds B_pair:9.59375>2.1875. Independent
+replay reproduces all logits exactly. See04A_FIRST_FAILURE_INVESTIGATION.md.
+R16/R8not launched. The chronological execution specification follows.
 
 Execution date:2026-09-16,target110.129.0.22/NPU0. CPU32workers/one
 pool,CPU affinity0–31,Deferred0,GraphOFF,DynamicOFF,production overlap.
@@ -24,4 +29,4 @@ Per profile the driver requires:
 First failure stops the queue and the downstream capacity queue. No threshold
 fitting,no concurrent model loading,no business process manipulation.
 
-Final gate state remains **PENDING** until complete artifacts are evaluated.
+Final gate state is **STATIC_NUMERICAL_SCALE_BLOCKER**. No four-layer promotion.

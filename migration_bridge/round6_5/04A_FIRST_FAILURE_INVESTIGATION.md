@@ -1,6 +1,7 @@
 # First failure — four-layer R32 numerical envelope
 
-Date2026-09-16. State:INVESTIGATION_IN_PROGRESS,not accepted/not repaired.
+Date2026-09-16. State:BOUNDED_INVESTIGATION_COMPLETE_PROTOCOL_STOP.
+Not accepted/not repaired;no production defect has been established.
 
 Qualification root:`/workspace/results/r65-scale-matrix-v2/four-R32`.
 Same-process/prefix/restart28requests PASS. Complete8request capture integrity
@@ -70,7 +71,8 @@ configuration,consistent with the split-expert path.
 
 Current classification is **reproducible numerical amplification with observed
 router-set changes**,not proof that a particular CPU reduction tree alone is
-the root cause. Same-operand checks of implicated CPU experts are being run.
+the root cause. Five implicated same-operand expert probes subsequently passed:
+relative-L2range0.00090679–0.00392756,10CPUrepeats each exact. See10_FINAL_ADR.md.
 
 Resource diagnostic window has72samples/no sampler errors:sampled cgroup peak
 90,998,427,648bytes,swap0,NPU-owned process peak28,948MiB. This is not a controlled
