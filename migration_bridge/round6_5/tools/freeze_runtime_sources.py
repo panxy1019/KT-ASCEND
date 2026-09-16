@@ -23,7 +23,7 @@ def main():
         report['repositories'][name]=dict(head=git('rev-parse','HEAD').strip(),status=git('status','--short'),
             diff_sha256=hashlib.sha256(git('diff','--binary').encode()).hexdigest())
     installed=Path('/workspace/results/venv-r6/lib/python3.11/site-packages')
-    paths=set((installed/'kt_kernel').rglob('*.py'))|set(installed.glob('**/*cpuinfer*.so'))
+    paths=set((installed/'kt_kernel').rglob('*.py'))|set((installed/'kt_kernel').rglob('*.so'))
     for relative in ['python/sglang/srt/layers/moe/kt_ep_wrapper.py',
         'python/sglang/srt/models/deepseek_v2.py','python/sglang/srt/model_executor/model_runner.py',
         'python/sglang/srt/model_executor/hook_manager.py','python/sglang/srt/layers/moe/topk.py']:
