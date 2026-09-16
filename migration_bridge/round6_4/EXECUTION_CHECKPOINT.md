@@ -27,7 +27,7 @@ Local SCP staging `/home/admin/r64-stage-4a6dFz` on A3.
 Preflight `/workspace/results/r64-preflight-v1`: 19 passed, EXIT_ZERO; archived locally.
 v2 accidental duplicate metadata startup cancelled before tests, not evidence.
 
-**Healthy current run: do not restart**
+**Current runs complete; no active model at last check**
 
 `/workspace/results/r64-compact-v2`
 driver `/workspace/results/run_r64_compact_controls_v2.py`
@@ -75,3 +75,23 @@ Deployed compact driver SHA:
 `0af222c0b46b6cb44e1faafee3175e4df68d67cea91e254389c5f4acf29f2e9d`.
 Previous deployed SHA above is v1, not v2; hash the versioned v2 driver on collection.
 Latest status: P1_B0 complete; v2 remaining profiles launched, check before any new work.
+
+## Latest completion update
+
+- v2 completed P2_B0/P3_B0/D1_NODEFER/D1, each20 PASS. Combined with v1 P1:100requests.
+- All v2 artifacts archived under round6_4/evidence/r64-compact-v2.
+- v2 driver SHA e0c93f787fb758e300cdca7ca5a54f96cfc1b709294d995167243ec059777e75.
+- r64-cpu-regression-v1 completed18passed/3historicalprivateAPI deselected; actual1000
+  CPU expert forwards exact/finite, RSS delta0, all10samples identical. Archived.
+- Tests from `/workspace/round5-reference/legacy-tests/kt-kernel/test/per_commit/`
+  test_cpu_detect_metadata.py + test_llamafile_{gguf_e2e,routed_correctness,cpuinfer_lifecycle}.py.
+- New local runtime runner `round6_4/tools/run_d1_runtime.py` and shared lifecycle
+  adapted in commit927779fcf;12localtests PASS. NOT_DEPLOYED/NOT_RUN.
+- Next: finish same-operands expert safety (true1408 path) and frozen whole-request
+  no-hit (round6_2/fixtures/runtime_controls.json input[1000], include causal/lookahead
+  boundary). Existing control utilities under round6/tools and r63 fullcapture tooling
+  can be reused with explicit schema adapter, not old numerical-candidate gate.
+- Then run new D1 runtime runner. Needs contract file+rawSHA, frozenS6, actual preflight
+  provenance with allfiles still matching, CANN env, NPU0. Prefer versioned deployment
+  directory containing run_compact_controls.py and run_d1_runtime.py together.
+- No need to rerun successful100compact or19preflight or18CPU tests absent code changes.

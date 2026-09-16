@@ -53,7 +53,32 @@ v1 在 P1 正常清理后、P2 启动前，工具 bind(31000) 报 EADDRINUSE。
 
 接续 root `/workspace/results/r64-compact-v2`，仅 P2_B0/P3_B0/D1_NODEFER/D1。
 v1 失败和已通过 P1 原样保留，不重复 P1，不将 v1 顶层 INCOMPLETE 改成 PASS。
-剩余四配置状态 RUNNING；最终以各 report.json 为准。
+剩余四配置全部 COMPACT_PASS，各 20 请求。
+v1 P1 + v2 P2/P3/D1_OFF/D1_ON 合计 100 请求通过。
+v2 原始结果已归档 `evidence/r64-compact-v2/`。
+v2 deployed driver SHA：`e0c93f787fb758e300cdca7ca5a54f96cfc1b709294d995167243ec059777e75`。
+P1/P2/P3 对旧相同 profile reference exact；D1 OFF 与 ON 分别自身 exact，
+没有要求两种模式互相 token exact。
+
+## 新执行 CPU expert 留存回归
+
+`evidence/r64-cpu-regression-v1/`：18 passed、3 deselected、1 warning，7.55 秒。
+排除项与 Round5 一致：已删除的 `_gguf_loader_path` 私有属性与两项
+`cpu_runtime_diagnostics` 私有 API 参数化测试，不是本轮新增阈值放宽。
+测试文件直接来自 read-only Round5 legacy-tests mount，SHA 记录于 provenance。
+
+CPU expert 真实 forward 1000 次，输出 exact，finite；
+RSS before=after=1,784,057,856 bytes，10 个采样点相同，delta=0。
+这是 tiny expert CPU lifecycle，不冒充 D1 多层 serving 生命周期或 1408 全形状安全验证。
+
+## 下一项完整 runtime 工具
+
+`tools/run_d1_runtime.py` 绑定当前批准文件原始 SHA、A3 实际加载文件 SHA、
+S6 canonical SHA、driver SHA，并在新进程检查相同 binding 的 prior report。
+156 请求同进程 +12 请求 clean restart，observer OFF，固定 D1。
+本地相关测试共 12 项 PASS；工具尚未在 A3 运行。
+同 operands expert 安全及 whole-request no-hit 控制待完成；不因 compact
+通过而提前宣布 WP1 或完整 D1 READY。
 
 ## Oracle 复用边界
 
