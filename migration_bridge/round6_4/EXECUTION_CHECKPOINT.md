@@ -2,6 +2,22 @@
 
 ## Current pointer — supersedes historical entries below
 
+2026-09-16 05:59 UTC resumed. Queuev2 stopped at descriptive importer before ANY
+generation (empty index): audit_deferred_transitions missing from legacy relocated
+helper path. Performance12/12 and stabilityA/B complete; archived under evidence/.
+Performance NO_MEASURABLE_SPEEDUP: geometric0.989243x CI[0.912743,1.072153].
+Quality remains QUALITY_SCREEN_PASS. Stability2304tokens exact; observed memory
+plateau, no zero-leak claim. See17/18documents. No complete accelerationREADYtag.
+Tool-only PYTHONPATH fix deployed immutably r64-minimal-next-v3, A3 importPASS.
+ACTIVE /workspace/results/r64-descriptive-final-v2 (not oldv1), driver
+/workspace/results/r64-descriptive-final-v2-driver.log. First2requests65forwards
+each completed. DO NOT restart healthy run. Current launch runs capture ONLY;
+after all3modes integrityPASS run analyze_descriptive_holdout.py explicitly.
+Originalqueuev2 STOPPED_FIRST_FAILURE remains true; not the live pointer.
+Remaining: descriptive completion+analysis, final ADR/contract/provenance/commit.
+RootSSH92973alive. Passive memorymonitors finished automatically. No heartbeat
+reactivated. No production changes. User llama.cpp modifications untouched.
+
 RESUMED by user "检查结果，继续执行". QualityOFF/ON288each completed, both raw auditsPASS.
 GSM5/32vs5/32;CMMLU139/256vs139/256;QUALITY_SCREEN_PASS, see15_FAST_QUALITY_RESULTS.md.
 New queue /workspace/results/r64-minimal-completion-v2, tools /workspace/results/r64-minimal-next-v2;
