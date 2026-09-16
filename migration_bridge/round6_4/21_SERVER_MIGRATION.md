@@ -22,7 +22,7 @@ This permits a compatibility probe, not an assertion of runtime qualification.
 
 1. Snapshot stopped project container, transfer only project code/runtime,
    frozen model/GGUF/corpora/tool dependencies; verify hashes.
-2. Create dedicated destination container, NPU0only, CPU0–15, TP1/batch1.
+2. Create dedicated destination container, NPU0only, CPU0–31, TP1/batch1.
    Host driver read-only mounted, no host library installs/upgrades.
 3. Test runtime import/device init/transfers, same-operands expert and compact
    OFF/ON determinism. Stop long campaign if these fail.
@@ -37,3 +37,12 @@ Original sourceON cancellation is USER_REQUESTED_PAUSE, not a numerical FAIL.
 No modification to business containers, NPU1–7 or host libraries is authorized.
 
 Status: MIGRATION_PREPARATION, not destination-tested or complete.
+
+## User CPU expansion
+
+User explicitly requests more CPU during migration. Destination container
+allocation becomes32physical cores0–31, all on NUMA0. Initial compatibility
+bridge retains old16worker/taskset0–15 execution to isolate hardware/runtime
+differences. A subsequent32worker execution must be an explicit separate profile
+and pass same-path checks before using it for continued testing. Allocation
+alone does not imply CPUInfer uses32threads. No other workload affinity changes.
