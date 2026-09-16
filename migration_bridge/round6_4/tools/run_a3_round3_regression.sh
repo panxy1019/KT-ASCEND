@@ -15,12 +15,13 @@ export KT_R6_ENABLE_ROUTE_RECORDER=0 KT_R6_ENABLE_TENSOR_DUMP=0
 unset KT_R61_EXPLICIT_REPLAY KT_R63_FORCE_MANIFEST KT_R63_FORCE_ARM_FILE KT_R63_FORCE_TRACE
 py=/workspace/results/venv-r6/bin/python
 old=/workspace/results/round6_2-prequalification/tools
+tool_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 test_file=/workspace/round5-reference/tools/round3/verify_real_single_layer_hybrid.py
 gguf=/workspace/round5-reference/deepseek-v2-lite-p2-f32.gguf
 taskset -c 0-15 "$py" "$old/prepare_run_metadata.py" --mode defer0 \
-  --output "$run_root/provenance.json" --artifact "$0" --artifact "$test_file" \
+  --output "$run_root/provenance.json" --artifact "$0" --artifact "$test_file" --artifact "$tool_dir/run_owned_process.py" \
   --artifact "$gguf" --artifact /workspace/models/DeepSeek-V2-Lite-604d5664/tokenizer.json
-exec "$py" "$old/run_owned_process.py" --output "$run_root/guard" --timeout-seconds 1800 -- \
+exec "$py" "$tool_dir/run_owned_process.py" --output "$run_root/guard" --timeout-seconds 1800 -- \
   taskset -c 0-15 "$py" "$test_file" \
   --model-dir /workspace/models/DeepSeek-V2-Lite-604d5664 \
   --gguf "$gguf" --layer 17 --cpu-expert 8 --output "$run_root/round3.json"

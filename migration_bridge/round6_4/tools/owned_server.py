@@ -65,6 +65,7 @@ class OwnedServer:
         try:
             subprocess.run([sys.executable, str(OLD/"prepare_run_metadata.py"), "--mode", "defer1" if self.profile == "D1" else "defer0",
                 "--output", str(self.root/"provenance.json"), "--artifact", str(adapter), "--artifact", str(Path(__file__)),
+                "--artifact", str(Path(__file__).with_name("run_owned_process.py")),
                 "--artifact", "/workspace/results/placements/placement_d1.pt",
                 "--artifact", "/workspace/results/gguf/deepseek-v2-lite-round6-d3-f32.gguf",
                 "--artifact", "/workspace/models/DeepSeek-V2-Lite-604d5664/tokenizer.json",
@@ -76,7 +77,7 @@ class OwnedServer:
             for name, sha in meta["file_sha256"].items():
                 if name in reference["file_sha256"] and sha != reference["file_sha256"][name]:
                     raise ValueError(f"ACTUAL_SOURCE_DRIFT:{name}")
-            command = [sys.executable, str(OLD/"run_owned_process.py"), "--output", str(self.root/"guard"),
+            command = [sys.executable, str(Path(__file__).with_name("run_owned_process.py")), "--output", str(self.root/"guard"),
                        "--timeout-seconds", str(self.timeout), "--", "taskset", "-c", "0-15", "bash",
                        "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh", self.profile, str(self.root), "31000"]
             self.server = subprocess.Popen(command, env=env, stdout=self.log, stderr=subprocess.STDOUT)
@@ -112,6 +113,11 @@ class OwnedServer:
             guard = self.root/"guard/result.json"
             if guard.exists():
                 self.report["guard"] = json.loads(guard.read_text())
+            reaping = self.root/"guard/reaping.json"
+            if reaping.exists():
+                self.report["reaping"] = json.loads(reaping.read_text())
+                if self.report["reaping"]["status"] != "OWNED_DESCENDANTS_REAPED":
+                    raise RuntimeError("OWNED_DESCENDANTS_NOT_REAPED")
             expected = self.report.get("guard", {}).get("reason") == "CANCELLED"
             self.report.update(status="FAILED" if failed or not expected else "PLANNED_STOP", ended_unix=time.time())
             if not failed and not expected:
