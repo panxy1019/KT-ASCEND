@@ -10,7 +10,7 @@ source /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/bin/set_env.sh
 source /usr/local/Ascend/nnal/atb/set_env.sh
 set -u
 export ASCEND_RT_VISIBLE_DEVICES=0 SGLANG_APPLY_CONFIG_BACKUP=none
-export PYTHONPATH=/workspace/kt-src/third_party/sglang/python:/workspace/kt-src
+export PYTHONPATH="/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:${PYTHONPATH:-}"
 export KT_R6_ENABLE_ROUTE_RECORDER=0 KT_R6_ENABLE_TENSOR_DUMP=0
 unset KT_R61_EXPLICIT_REPLAY KT_R63_FORCE_MANIFEST KT_R63_FORCE_ARM_FILE KT_R63_FORCE_TRACE
 py=/workspace/results/venv-r6/bin/python
