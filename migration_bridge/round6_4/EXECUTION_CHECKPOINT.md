@@ -2,6 +2,22 @@
 
 ## Current pointer — supersedes historical entries below
 
+2026-09-16 ACTIVE EXECUTION: r64-fast-quality-off-v1 -> r64-fast-quality-on-v1,
+each288requests. Frozen execution protocol SHA19df819323339c50ae495a5658e89f8cbef2dcb5d8881a00e9de9973ea148184.
+Deployment /workspace/results/r64-fast-v1 (DO NOT OVERWRITE). Driver logs beside roots.
+After both, summarize_primary_quality.py writes /workspace/results/r64-fast-quality-summary-v1.json.
+Separate queued runner /workspace/results/r64-minimal-next-v1/tools/run_minimal_remaining.py
+waits on QUALITY_SCREEN_PASS, then observer parity ->3ABBA performance ->stabilityA/B
+->HD3/FD3 descriptive capture/analysis. Progress /workspace/results/r64-minimal-completion-v1/progress.json.
+No parallel model launches. This queue stops first failure; no adaptive resampling/retry.
+Read-only host monitors PID794774(OFF),824177(ON),801798(performance),801799/801800(stabilityA/B).
+Each bounded and terminal-report stopped. root SSH PTY92973; artifactmount unchanged.
+Dev32complete2/32GSM19truncated1invalid;19/32CMMLU0truncated2invalid.16restartintersections exact.
+See fast-quality-dev-review.json; small-screen low-baseline limitation explicitly approved/disclosed.
+Local69testsPASS before perf addition; targeted3perf testsPASS. Source/implementation unchanged.
+Two local commits bba75d3e4 (qualityfreeze) and f2c8ecb74(minimalperf/queue); no push.
+Finish monitors/resource review, archive all evidence, final ADR/summary still required.
+
 2026-09-16 user supersedes large quality campaign: GSM8K32 + CMMLU256,
 minimum-cost engineering screen. See14_MINIMUM_COST_QUALIFICATION.md.
 Inputs/rules frozen in fixtures/fast-quality-v1; no primary outputs yet.
