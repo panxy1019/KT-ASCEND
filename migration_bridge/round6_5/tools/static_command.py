@@ -30,11 +30,23 @@ def main():
           '--disable-cuda-graph','--disable-custom-all-reduce','--skip-server-warmup',
           '--weight-loader-disable-mmap','--attention-backend','ascend','--sampling-backend','pytorch',
           '--disable-radix-cache']
+    if os.environ.get('KT_R65_CAPTURE')=='1':
+        args += ['--debug-tensor-dump-output-folder',str(root/'tensors'),'--debug-tensor-dump-layers','999']
+        os.environ.update(KT_R62_COMPLETE_FORWARD_DUMP='1',KT_R63_COMPACT_CAPTURE='1',
+                          KT_R63_FULL_DIAGNOSTIC_SEQUENCES='',KT_R63_CAPTURE_INDEX=str(root/'index.jsonl'))
+        force=os.environ.get('KT_R65_FORCE')
+        if force:
+            os.environ.update(KT_R63_FORCE_MANIFEST=force,
+                KT_R63_FORCE_MANIFEST_SHA256=hashlib.sha256(Path(force).read_bytes()).hexdigest(),
+                KT_R63_FORCE_ARM_FILE=str(root/'armed.sha256'),KT_R63_FORCE_TRACE=str(root/'forcing.jsonl'))
     if data['total_npu_experts']!=26*64:
         gguf=Path('/workspace/results/r65-assets-v1/all-moe-f32.gguf')
         manifest=json.loads(gguf.with_suffix('.gguf.manifest.json').read_text())
         if manifest['layers']!=list(range(1,27)) or gguf.stat().st_size!=manifest['gguf_size']:
             raise ValueError('GGUF_INCOMPLETE')
+        identity=json.loads(gguf.with_name('identity.json').read_text())
+        if identity['status']!='ALL_EXPERT_WEIGHT_IDENTITY_PASS' or identity['gguf_sha256']!=manifest['gguf_sha256']:
+            raise ValueError('GGUF_IDENTITY_NOT_VERIFIED')
         args += ['--kt-weight-path',str(gguf),'--kt-method','LLAMAFILE',
                  '--kt-cpuinfer',str(workers),'--kt-threadpool-count','1','--kt-numa-nodes','0',
                  '--kt-gpu-experts-ratio',str(data['gpu_experts_ratio']),

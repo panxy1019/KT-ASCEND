@@ -14,6 +14,6 @@ export ASCEND_RT_VISIBLE_DEVICES=0
 export SGLANG_APPLY_CONFIG_BACKUP=none
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 export SGLANG_ENABLE_HEALTH_ENDPOINT_GENERATION=false
-export PYTHONPATH=/workspace/kt-src/third_party/sglang/python:/workspace/kt-src
+export PYTHONPATH="/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:${PYTHONPATH:-}"
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 exec /workspace/results/venv-r6/bin/python /workspace/r65-tools/migration_bridge/round6_5/tools/static_command.py "$root" "$profile" "$workers"
