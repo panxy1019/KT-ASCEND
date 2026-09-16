@@ -6,6 +6,7 @@ candidate approval is imported. Finite and transaction integrity remain hard.
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import signal
 import subprocess
@@ -15,6 +16,14 @@ from owned_server import OwnedServer
 
 FROZEN = {"hd3.json":("4e54ac5c0e6ab9f25991ca29d54e32d1632d4e687f72d344430d4b5691b8590e",128),
           "fd3.json":("9b8703afbdfd3bd925096725168f9d68914bd116e726336a972f5376443f7fe9",8)}
+
+
+def capture_environment(inherited):
+    """Deployed legacy tools are not in their original repository layout."""
+    env = dict(inherited)
+    dependency = '/workspace/results/round6_2-prequalification/tools'
+    env['PYTHONPATH'] = dependency + os.pathsep + env.get('PYTHONPATH', '')
+    return env
 
 
 def read_inputs(folder):
@@ -48,6 +57,10 @@ def main():
     native = args.output/"native.json"
     native.write_text(json.dumps(payload, ensure_ascii=False, indent=2)+"\n")
     old = Path("/workspace/results/round6_3-prequalification/tools")
+    capture_env = capture_environment(os.environ)
+    # Fail before allocating a model if the deployed helper cannot be imported.
+    subprocess.run([sys.executable, '-c', 'from audit_deferred_transitions import validate_transition'],
+                   env=capture_env, check=True)
     report = dict(status="RUNNING", started_unix=time.time(), completed=[],
                   role="DESCRIPTIVE_NOT_QUALITY_GATE", entry_audit_sha256=hashlib.sha256(args.entry_audit.read_bytes()).hexdigest())
     def cancel(signum, frame):
@@ -56,7 +69,7 @@ def main():
     child = None
     def call(cmd, log):
         nonlocal child
-        child = subprocess.Popen([sys.executable, *map(str, cmd)], stdout=log, stderr=subprocess.STDOUT)
+        child = subprocess.Popen([sys.executable, *map(str, cmd)], stdout=log, stderr=subprocess.STDOUT, env=capture_env)
         try:
             code = child.wait()
             if code:
