@@ -1,0 +1,30 @@
+{
+  "command": [
+    "bash",
+    "/workspace/r66-tools/launch_python.sh",
+    "/workspace/r66a-v1/tools/replay_mixed_partials.py",
+    "--trace",
+    "/workspace/results/r65-r66a-quality-replay-v1/hybrid/stagewise",
+    "--inputs",
+    "/workspace/results/r65-r66a-quality-discordances-v1.json",
+    "--model",
+    "/workspace/models/DeepSeek-V2-Lite-604d5664",
+    "--gguf",
+    "/workspace/results/r65-assets-v1/all-moe-f32.gguf",
+    "--output",
+    "/workspace/results/r65-r66a-mixed-partials-v1"
+  ],
+  "started_unix": 1789586630.4348974,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 20635,
+  "pgid": 20635,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789586859.877279,
+  "success": true
+}

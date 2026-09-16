@@ -1,0 +1,1751 @@
+{
+  "status": "ORIGINAL_QUALITY_BOUNDARIES_DESCRIBED",
+  "rows": [
+    {
+      "quality_id": "gsm8k-test-main-01036",
+      "rid": "r66a-discordance-00",
+      "state": "loss",
+      "token_index": 11,
+      "npu_token": 634,
+      "hybrid_token": 984,
+      "npu_margin": 0.0,
+      "hybrid_margin": -0.125,
+      "pair_margin_distortion": -0.125,
+      "npu_top16_ids": [
+        634,
+        984,
+        254,
+        207,
+        3223,
+        1319,
+        521,
+        2685,
+        245,
+        1572,
+        4085,
+        22987,
+        32056,
+        8522,
+        17205,
+        56120
+      ],
+      "npu_top16_logits": [
+        28.875,
+        28.875,
+        28.5,
+        28.0,
+        27.5,
+        27.25,
+        26.625,
+        25.875,
+        25.75,
+        25.75,
+        25.0,
+        24.75,
+        24.25,
+        24.25,
+        24.0,
+        23.875
+      ],
+      "hybrid_top16_ids": [
+        984,
+        634,
+        254,
+        207,
+        3223,
+        1319,
+        521,
+        2685,
+        245,
+        1572,
+        4085,
+        22987,
+        32056,
+        8522,
+        17205,
+        1022
+      ],
+      "hybrid_top16_logits": [
+        29.0,
+        28.875,
+        28.5,
+        28.125,
+        27.625,
+        27.25,
+        26.625,
+        25.875,
+        25.75,
+        25.75,
+        25.0,
+        24.875,
+        24.25,
+        24.25,
+        24.0,
+        23.875
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-00",
+        "token_index": 11,
+        "baseline_top1": 634,
+        "hybrid_top1": 984,
+        "top1_equal": false,
+        "max_abs": 0.2890625,
+        "mean_abs": 0.0424911305308342,
+        "relative_l2": 0.007483046501874924,
+        "cosine": 0.9999524354934692,
+        "max_pairwise": 0.125,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-00",
+        "token_index": 11,
+        "first_router_set_divergence_layer": 19,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              53,
+              24,
+              56,
+              8,
+              52,
+              17
+            ],
+            "hybrid_ids": [
+              53,
+              24,
+              56,
+              8,
+              52,
+              17
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.1725141704082489
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              56,
+              61,
+              54,
+              21,
+              2,
+              47
+            ],
+            "hybrid_ids": [
+              56,
+              61,
+              54,
+              21,
+              2,
+              47
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.014694036915898323,
+            "cpu_route_events": 3,
+            "cpu_route_weight_mass": 0.15560808777809143
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              53,
+              25,
+              54,
+              39,
+              11,
+              38
+            ],
+            "hybrid_ids": [
+              53,
+              25,
+              54,
+              39,
+              11,
+              38
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.015376528725028038,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.16726794838905334
+          },
+          {
+            "layer": 19,
+            "npu_ids": [
+              21,
+              59,
+              34,
+              33,
+              46,
+              56
+            ],
+            "hybrid_ids": [
+              21,
+              59,
+              34,
+              33,
+              46,
+              41
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.01651165261864662,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              6,
+              60,
+              19,
+              32,
+              54,
+              41
+            ],
+            "hybrid_ids": [
+              6,
+              60,
+              19,
+              32,
+              54,
+              41
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01758572645485401,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.058666691184043884
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-marketing-00126",
+      "rid": "r66a-discordance-01",
+      "state": "loss",
+      "token_index": 0,
+      "npu_token": 35,
+      "hybrid_token": 34,
+      "npu_margin": 0.1875,
+      "hybrid_margin": 0.0,
+      "pair_margin_distortion": -0.1875,
+      "npu_top16_ids": [
+        35,
+        34,
+        33,
+        32,
+        185,
+        63550,
+        8129,
+        414,
+        7,
+        339,
+        207,
+        338,
+        380,
+        100001,
+        58,
+        25610
+      ],
+      "npu_top16_logits": [
+        13.6875,
+        13.5,
+        13.125,
+        12.8125,
+        12.1875,
+        11.9375,
+        10.8125,
+        10.75,
+        10.6875,
+        10.4375,
+        10.3125,
+        10.125,
+        10.125,
+        10.0,
+        9.9375,
+        9.4375
+      ],
+      "hybrid_top16_ids": [
+        34,
+        35,
+        33,
+        32,
+        185,
+        63550,
+        7,
+        8129,
+        414,
+        339,
+        207,
+        380,
+        338,
+        100001,
+        58,
+        25610
+      ],
+      "hybrid_top16_logits": [
+        13.5625,
+        13.5625,
+        13.0625,
+        12.8125,
+        12.25,
+        12.0,
+        10.75,
+        10.75,
+        10.6875,
+        10.5,
+        10.3125,
+        10.125,
+        10.0625,
+        10.0,
+        9.9375,
+        9.375
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-01",
+        "token_index": 0,
+        "baseline_top1": 35,
+        "hybrid_top1": 34,
+        "top1_equal": false,
+        "max_abs": 0.4423828125,
+        "mean_abs": 0.04267435148358345,
+        "relative_l2": 0.008843719959259033,
+        "cosine": 0.999955415725708,
+        "max_pairwise": 0.3125,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-01",
+        "token_index": 0,
+        "first_router_set_divergence_layer": 26,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.14066515862941742
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              59,
+              61,
+              41,
+              33
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              59,
+              61,
+              41,
+              33
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.024887731298804283,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.21487954258918762
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              15,
+              40,
+              55,
+              1
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              15,
+              40,
+              55,
+              1
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.02524174004793167,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.47516506910324097
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              26,
+              34,
+              36,
+              51
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              26,
+              34,
+              36,
+              42
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.022123437374830246,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-genetics-00101",
+      "rid": "r66a-discordance-02",
+      "state": "loss",
+      "token_index": 0,
+      "npu_token": 34,
+      "hybrid_token": 32,
+      "npu_margin": 0.0625,
+      "hybrid_margin": 0.0,
+      "pair_margin_distortion": -0.0625,
+      "npu_top16_ids": [
+        34,
+        32,
+        33,
+        35,
+        185,
+        63550,
+        7,
+        207,
+        4062,
+        338,
+        58,
+        100001,
+        339,
+        380,
+        7507,
+        4575
+      ],
+      "npu_top16_logits": [
+        12.625,
+        12.5625,
+        12.4375,
+        12.1875,
+        12.1875,
+        11.4375,
+        11.0625,
+        9.9375,
+        9.75,
+        9.6875,
+        9.625,
+        9.5,
+        9.5,
+        9.25,
+        9.1875,
+        9.125
+      ],
+      "hybrid_top16_ids": [
+        34,
+        32,
+        33,
+        185,
+        35,
+        63550,
+        7,
+        4062,
+        207,
+        338,
+        58,
+        100001,
+        339,
+        7507,
+        380,
+        4575
+      ],
+      "hybrid_top16_logits": [
+        12.625,
+        12.625,
+        12.4375,
+        12.25,
+        12.1875,
+        11.5625,
+        11.125,
+        10.0,
+        10.0,
+        9.6875,
+        9.6875,
+        9.5625,
+        9.5625,
+        9.4375,
+        9.25,
+        9.1875
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-02",
+        "token_index": 0,
+        "baseline_top1": 34,
+        "hybrid_top1": 32,
+        "top1_equal": false,
+        "max_abs": 0.3125,
+        "mean_abs": 0.04197632893919945,
+        "relative_l2": 0.008628222160041332,
+        "cosine": 0.9999452233314514,
+        "max_pairwise": 0.3125,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-02",
+        "token_index": 0,
+        "first_router_set_divergence_layer": 8,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.14081920683383942
+          },
+          {
+            "layer": 8,
+            "npu_ids": [
+              18,
+              8,
+              6,
+              46,
+              27,
+              49
+            ],
+            "hybrid_ids": [
+              18,
+              8,
+              6,
+              46,
+              27,
+              50
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.016767455264925957,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              61,
+              33,
+              41,
+              59
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              33,
+              61,
+              41,
+              59
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.08933638781309128,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.19954650104045868
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              31,
+              15,
+              55,
+              40
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              31,
+              15,
+              55,
+              40
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.033668991178274155,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.4953526556491852
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              26,
+              36,
+              34,
+              32
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              26,
+              36,
+              34,
+              32
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.024518070742487907,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-virology-00140",
+      "rid": "r66a-discordance-03",
+      "state": "loss",
+      "token_index": 0,
+      "npu_token": 34,
+      "hybrid_token": 32,
+      "npu_margin": 0.0625,
+      "hybrid_margin": 0.0,
+      "pair_margin_distortion": -0.0625,
+      "npu_top16_ids": [
+        34,
+        32,
+        33,
+        35,
+        185,
+        63550,
+        58,
+        338,
+        339,
+        16,
+        207,
+        100001,
+        7,
+        414,
+        380,
+        8129
+      ],
+      "npu_top16_logits": [
+        13.0625,
+        13.0,
+        12.6875,
+        12.625,
+        12.5,
+        11.5625,
+        10.9375,
+        10.8125,
+        10.6875,
+        10.625,
+        10.4375,
+        10.4375,
+        10.3125,
+        10.25,
+        10.1875,
+        10.0
+      ],
+      "hybrid_top16_ids": [
+        32,
+        34,
+        35,
+        33,
+        185,
+        63550,
+        58,
+        338,
+        339,
+        16,
+        207,
+        100001,
+        7,
+        414,
+        380,
+        8129
+      ],
+      "hybrid_top16_logits": [
+        13.0,
+        13.0,
+        12.6875,
+        12.6875,
+        12.5625,
+        11.625,
+        10.9375,
+        10.75,
+        10.625,
+        10.5625,
+        10.5,
+        10.4375,
+        10.375,
+        10.25,
+        10.125,
+        9.9375
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-03",
+        "token_index": 0,
+        "baseline_top1": 34,
+        "hybrid_top1": 32,
+        "top1_equal": false,
+        "max_abs": 0.25,
+        "mean_abs": 0.024099769070744514,
+        "relative_l2": 0.005494877230376005,
+        "cosine": 0.9999602437019348,
+        "max_pairwise": 0.1875,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-03",
+        "token_index": 0,
+        "first_router_set_divergence_layer": null,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.1456933468580246
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              38,
+              46,
+              19,
+              59,
+              61,
+              41
+            ],
+            "hybrid_ids": [
+              38,
+              46,
+              59,
+              19,
+              61,
+              41
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01563235931098461,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.21742300689220428
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              15,
+              31,
+              55,
+              40
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              15,
+              40,
+              31,
+              55
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01887996681034565,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.4921238124370575
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              33,
+              26,
+              34,
+              36
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              33,
+              26,
+              34,
+              36
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01622149720788002,
+            "cpu_route_events": 1,
+            "cpu_route_weight_mass": 0.06832305341959
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-public_relations-00126",
+      "rid": "r66a-discordance-04",
+      "state": "gain",
+      "token_index": 0,
+      "npu_token": 33,
+      "hybrid_token": 32,
+      "npu_margin": 0.0625,
+      "hybrid_margin": 0.0,
+      "pair_margin_distortion": -0.0625,
+      "npu_top16_ids": [
+        33,
+        32,
+        35,
+        185,
+        63550,
+        34,
+        4062,
+        100001,
+        7507,
+        7,
+        207,
+        338,
+        380,
+        3339,
+        58,
+        414
+      ],
+      "npu_top16_logits": [
+        13.0,
+        12.9375,
+        12.5625,
+        12.3125,
+        12.1875,
+        12.0,
+        11.25,
+        11.0,
+        10.8125,
+        10.75,
+        10.75,
+        10.6875,
+        10.4375,
+        10.375,
+        10.3125,
+        10.1875
+      ],
+      "hybrid_top16_ids": [
+        32,
+        33,
+        35,
+        185,
+        63550,
+        34,
+        4062,
+        100001,
+        7,
+        207,
+        7507,
+        338,
+        380,
+        3339,
+        58,
+        414
+      ],
+      "hybrid_top16_logits": [
+        12.9375,
+        12.9375,
+        12.5625,
+        12.375,
+        12.1875,
+        12.0,
+        11.25,
+        11.0625,
+        10.8125,
+        10.8125,
+        10.75,
+        10.6875,
+        10.4375,
+        10.3125,
+        10.3125,
+        10.25
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-04",
+        "token_index": 0,
+        "baseline_top1": 33,
+        "hybrid_top1": 32,
+        "top1_equal": false,
+        "max_abs": 0.1875,
+        "mean_abs": 0.030292272567749023,
+        "relative_l2": 0.006637622136622667,
+        "cosine": 0.9999643564224243,
+        "max_pairwise": 0.1875,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-04",
+        "token_index": 0,
+        "first_router_set_divergence_layer": null,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.1404615342617035
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              61,
+              41,
+              59,
+              33
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              61,
+              41,
+              59,
+              33
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01517340075224638,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.2044227421283722
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              15,
+              40,
+              55,
+              31
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              15,
+              40,
+              55,
+              31
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.016520941630005836,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.49702978134155273
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              26,
+              34,
+              36,
+              51
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              26,
+              34,
+              36,
+              51
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.016697505488991737,
+            "cpu_route_events": 1,
+            "cpu_route_weight_mass": 0.028408657759428024
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-high_school_chemistry-00108",
+      "rid": "r66a-discordance-05",
+      "state": "gain",
+      "token_index": 0,
+      "npu_token": 34,
+      "hybrid_token": 32,
+      "npu_margin": 0.0625,
+      "hybrid_margin": -0.125,
+      "pair_margin_distortion": -0.1875,
+      "npu_top16_ids": [
+        34,
+        32,
+        35,
+        33,
+        185,
+        63550,
+        338,
+        339,
+        414,
+        380,
+        207,
+        7,
+        2594,
+        16,
+        3017,
+        8129
+      ],
+      "npu_top16_logits": [
+        13.4375,
+        13.375,
+        13.0,
+        12.6875,
+        11.75,
+        11.0625,
+        10.5625,
+        10.3125,
+        10.0,
+        9.9375,
+        9.875,
+        9.8125,
+        9.75,
+        9.75,
+        9.6875,
+        9.625
+      ],
+      "hybrid_top16_ids": [
+        32,
+        34,
+        35,
+        33,
+        185,
+        63550,
+        338,
+        339,
+        414,
+        380,
+        207,
+        7,
+        2594,
+        8129,
+        3339,
+        25610
+      ],
+      "hybrid_top16_logits": [
+        13.4375,
+        13.3125,
+        13.0,
+        12.6875,
+        11.8125,
+        11.0625,
+        10.6875,
+        10.3125,
+        10.0625,
+        10.0,
+        10.0,
+        9.875,
+        9.8125,
+        9.6875,
+        9.6875,
+        9.6875
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-05",
+        "token_index": 0,
+        "baseline_top1": 34,
+        "hybrid_top1": 32,
+        "top1_equal": false,
+        "max_abs": 0.5,
+        "mean_abs": 0.08107342571020126,
+        "relative_l2": 0.015890002250671387,
+        "cosine": 0.9998894929885864,
+        "max_pairwise": 0.375,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-05",
+        "token_index": 0,
+        "first_router_set_divergence_layer": 16,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.13876213133335114
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              41,
+              61,
+              59,
+              19
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              41,
+              61,
+              59,
+              19
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.016520971432328224,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.2063412368297577
+          },
+          {
+            "layer": 16,
+            "npu_ids": [
+              32,
+              24,
+              14,
+              15,
+              41,
+              38
+            ],
+            "hybrid_ids": [
+              32,
+              24,
+              14,
+              15,
+              41,
+              10
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.02263171225786209,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              15,
+              1,
+              40,
+              31
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              15,
+              1,
+              40,
+              31
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.05890897661447525,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.5112890601158142
+          },
+          {
+            "layer": 18,
+            "npu_ids": [
+              63,
+              18,
+              46,
+              8,
+              50,
+              13
+            ],
+            "hybrid_ids": [
+              63,
+              18,
+              46,
+              8,
+              50,
+              21
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.056883297860622406,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 20,
+            "npu_ids": [
+              50,
+              32,
+              25,
+              55,
+              53,
+              38
+            ],
+            "hybrid_ids": [
+              50,
+              32,
+              25,
+              55,
+              10,
+              53
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.053449057042598724,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 25,
+            "npu_ids": [
+              10,
+              44,
+              1,
+              21,
+              18,
+              2
+            ],
+            "hybrid_ids": [
+              10,
+              44,
+              1,
+              21,
+              18,
+              12
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.0415397584438324,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              34,
+              26,
+              51,
+              36
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              34,
+              26,
+              51,
+              36
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.04264819622039795,
+            "cpu_route_events": 1,
+            "cpu_route_weight_mass": 0.030250485986471176
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-education-00086",
+      "rid": "r66a-discordance-06",
+      "state": "loss",
+      "token_index": 0,
+      "npu_token": 34,
+      "hybrid_token": 33,
+      "npu_margin": 0.25,
+      "hybrid_margin": -0.125,
+      "pair_margin_distortion": -0.375,
+      "npu_top16_ids": [
+        34,
+        35,
+        33,
+        32,
+        185,
+        63550,
+        7,
+        339,
+        380,
+        414,
+        8129,
+        207,
+        58,
+        338,
+        36,
+        54893
+      ],
+      "npu_top16_logits": [
+        13.125,
+        12.9375,
+        12.875,
+        12.0625,
+        11.3125,
+        11.0625,
+        10.0625,
+        10.0625,
+        10.0,
+        9.9375,
+        9.6875,
+        9.5,
+        9.4375,
+        9.3125,
+        9.3125,
+        9.0625
+      ],
+      "hybrid_top16_ids": [
+        35,
+        33,
+        34,
+        32,
+        185,
+        63550,
+        380,
+        7,
+        414,
+        339,
+        8129,
+        58,
+        207,
+        36,
+        338,
+        54893
+      ],
+      "hybrid_top16_logits": [
+        13.0,
+        13.0,
+        12.875,
+        12.125,
+        11.3125,
+        11.0625,
+        10.0625,
+        10.0,
+        9.9375,
+        9.8125,
+        9.6875,
+        9.5,
+        9.5,
+        9.375,
+        9.3125,
+        9.0
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-06",
+        "token_index": 0,
+        "baseline_top1": 34,
+        "hybrid_top1": 33,
+        "top1_equal": false,
+        "max_abs": 0.390625,
+        "mean_abs": 0.04594980180263519,
+        "relative_l2": 0.009749703109264374,
+        "cosine": 0.9999305009841919,
+        "max_pairwise": 0.375,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-06",
+        "token_index": 0,
+        "first_router_set_divergence_layer": 26,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              25
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.1465393304824829
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              41,
+              33,
+              59,
+              61
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              41,
+              33,
+              59,
+              61
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.016067638993263245,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.21948792040348053
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              15,
+              40,
+              1,
+              36
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              15,
+              40,
+              1,
+              36
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.035904135555028915,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.46674829721450806
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              30,
+              34,
+              26,
+              36,
+              27
+            ],
+            "hybrid_ids": [
+              56,
+              30,
+              34,
+              26,
+              36,
+              51
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.02980794757604599,
+            "cpu_route_events": 1,
+            "cpu_route_weight_mass": 0.02755964733660221
+          }
+        ]
+      }
+    },
+    {
+      "quality_id": "cmmlu-test-clinical_knowledge-00060",
+      "rid": "r66a-discordance-07",
+      "state": "loss",
+      "token_index": 0,
+      "npu_token": 34,
+      "hybrid_token": 33,
+      "npu_margin": 0.0625,
+      "hybrid_margin": 0.0,
+      "pair_margin_distortion": -0.0625,
+      "npu_top16_ids": [
+        34,
+        33,
+        35,
+        32,
+        185,
+        63550,
+        36,
+        339,
+        100001,
+        380,
+        414,
+        338,
+        207,
+        8129,
+        7,
+        58
+      ],
+      "npu_top16_logits": [
+        13.375,
+        13.3125,
+        13.25,
+        12.8125,
+        11.75,
+        11.125,
+        11.125,
+        10.375,
+        10.375,
+        10.25,
+        10.25,
+        10.0625,
+        9.8125,
+        9.75,
+        9.6875,
+        9.5
+      ],
+      "hybrid_top16_ids": [
+        34,
+        33,
+        35,
+        32,
+        185,
+        63550,
+        36,
+        339,
+        100001,
+        414,
+        380,
+        338,
+        207,
+        7,
+        8129,
+        58
+      ],
+      "hybrid_top16_logits": [
+        13.375,
+        13.375,
+        13.25,
+        12.8125,
+        11.75,
+        11.125,
+        11.0625,
+        10.4375,
+        10.4375,
+        10.3125,
+        10.3125,
+        10.125,
+        9.8125,
+        9.75,
+        9.75,
+        9.5625
+      ],
+      "full_logit_diagnostics": {
+        "rid": "r66a-discordance-07",
+        "token_index": 0,
+        "baseline_top1": 34,
+        "hybrid_top1": 33,
+        "top1_equal": false,
+        "max_abs": 0.28125,
+        "mean_abs": 0.044052839279174805,
+        "relative_l2": 0.009247716516256332,
+        "cosine": 0.9999492168426514,
+        "max_pairwise": 0.09375,
+        "historical_B_pair_overflow_pairs": 0,
+        "historical_stable": false,
+        "historical_stable_exact": true,
+        "historical_ambiguity_membership": true
+      },
+      "router_diagnostics": {
+        "rid": "r66a-discordance-07",
+        "token_index": 0,
+        "first_router_set_divergence_layer": 15,
+        "layers": [
+          {
+            "layer": 1,
+            "npu_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "hybrid_ids": [
+              55,
+              20,
+              60,
+              52,
+              56,
+              57
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.0,
+            "cpu_route_events": 2,
+            "cpu_route_weight_mass": 0.14219148457050323
+          },
+          {
+            "layer": 9,
+            "npu_ids": [
+              46,
+              38,
+              59,
+              61,
+              41,
+              19
+            ],
+            "hybrid_ids": [
+              46,
+              38,
+              59,
+              61,
+              41,
+              19
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.01298576220870018,
+            "cpu_route_events": 4,
+            "cpu_route_weight_mass": 0.21488282084465027
+          },
+          {
+            "layer": 15,
+            "npu_ids": [
+              19,
+              61,
+              0,
+              6,
+              35,
+              8
+            ],
+            "hybrid_ids": [
+              19,
+              61,
+              0,
+              6,
+              33,
+              35
+            ],
+            "jaccard": 0.7142857142857143,
+            "hidden_rel_l2": 0.01482653059065342,
+            "cpu_route_events": 0,
+            "cpu_route_weight_mass": 0.0
+          },
+          {
+            "layer": 17,
+            "npu_ids": [
+              25,
+              57,
+              49,
+              40,
+              15,
+              55
+            ],
+            "hybrid_ids": [
+              25,
+              57,
+              49,
+              40,
+              15,
+              55
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.038807909935712814,
+            "cpu_route_events": 5,
+            "cpu_route_weight_mass": 0.49078628420829773
+          },
+          {
+            "layer": 26,
+            "npu_ids": [
+              56,
+              33,
+              30,
+              26,
+              34,
+              36
+            ],
+            "hybrid_ids": [
+              56,
+              33,
+              30,
+              26,
+              34,
+              36
+            ],
+            "jaccard": 1.0,
+            "hidden_rel_l2": 0.02207547426223755,
+            "cpu_route_events": 1,
+            "cpu_route_weight_mass": 0.0736965462565422
+          }
+        ]
+      }
+    }
+  ],
+  "scope": "All correctness discordances, including gains; diagnostic not heldout or new threshold"
+}
