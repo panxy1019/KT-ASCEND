@@ -1,6 +1,6 @@
 # Quality tokenizer compatibility investigation
 
-State: `A3_VERIFIED` tokenizer-only; serving parity pending. Primary quality
+State: `A3_VERIFIED` tokenizer-only and serving parity. Primary quality
 outputs have **not** been produced. The approved 2pp margin is unchanged.
 
 ## First dev pilot (preserved, not a primary quality result)
@@ -72,3 +72,20 @@ checks new text ingestion against frozen-JSON IDs. Text-based historical MC
 scores used the old loader and cannot be equated to scores from the corrected
 loader without labeling the changed evaluation interface. Preserve historical
 smoke as compatibility evidence and report the limitation explicitly.
+
+## Serving result
+
+`r64-tokenizer-serving-v1/probe-report.json` is
+`TOKENIZER_COMPAT_SERVING_PASS`, SHA256
+`8870d3ee5b6a0dfdd1bcb89439701513ef2d92d8fa95e7acd075719c5a34beba`.
+Four frozen S6 prompts × old/new loader × OFF/ON = 16 captured 64-token
+responses. Within each execution mode all old/new trajectories are exact;
+new-loader response text equals raw frozen-JSON decoding. Four additional
+text-vs-ID pairs (English/Chinese, OFF/ON) passed executable assertions;
+their HTTP responses were not separately serialized, so raw-response evidence
+is restricted to the 16 main parity responses. All four owned servers stopped
+normally through the guard and reaped their own descendants.
+
+This validates the loader-interface repair only. It does not establish quality
+noninferiority, does not qualify batch4, and does not retroactively re-encode any
+historical input IDs. The BOS+prompt+stopping draft is validated separately.
