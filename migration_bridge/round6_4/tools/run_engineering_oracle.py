@@ -5,6 +5,7 @@ The old two rejected-QD3 histories remain supplemental historical diagnostics.
 """
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -13,6 +14,23 @@ import subprocess
 import sys
 import time
 from run_compact_controls import ensure_free_port, checked, S6_SHA, PROMPTS
+
+
+def make_manifest(prompts, references):
+    return dict(version="r63-forced-history-v1", token_budget=64,
+                session_id="r64-engineering-oracle-v1",
+                purpose="Round6.4 same-graph oracle; retained wire schema, not old numerical contract",
+                requests=[dict(rid=f"r64-oracle-{pid}", input_ids=prompts[pid]["input_ids"],
+                               baseline_output_ids=references[pid]) for pid in PROMPTS])
+
+
+def validate_reader(payload, reader_path):
+    spec = importlib.util.spec_from_file_location("r64_manifest_reader_check", reader_path)
+    reader = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(reader)
+    reader.HistoryLedger(payload)  # same pure validator the deployed model uses
+    if len(payload["requests"]) != 4 or any(len(r["baseline_output_ids"]) != 64 for r in payload["requests"]):
+        raise ValueError("ORACLE_HISTORY_COUNT")
 
 
 def main():
@@ -33,9 +51,9 @@ def main():
     ensure_free_port()
     args.output.mkdir(exist_ok=False)
     manifest = args.output/"force.json"
-    manifest.write_text(json.dumps(dict(token_budget=64, session_id="r64-engineering-oracle-v1",
-        requests=[dict(rid=f"r64-oracle-{pid}", input_ids=prompts[pid]["input_ids"],
-                       baseline_output_ids=references[pid]) for pid in PROMPTS]), indent=2)+"\n")
+    payload = make_manifest(prompts, references)
+    validate_reader(payload, Path("/workspace/kt-src/third_party/sglang/python/sglang/srt/debug_utils/round63_teacher_force.py"))
+    manifest.write_text(json.dumps(payload, indent=2)+"\n")
     old = Path("/workspace/results/round6_2-prequalification/tools")
     retained = Path("/workspace/results/round6_3-prequalification/tools")
     report = dict(status="RUNNING", started_unix=time.time(), selected_s6=list(PROMPTS),

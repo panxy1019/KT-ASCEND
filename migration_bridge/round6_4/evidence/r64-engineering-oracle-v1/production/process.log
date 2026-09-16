@@ -1,0 +1,39 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+{"path": "/workspace/results/r63-r64-engineering-oracle-v1-production-server/provenance.json", "sha256": "da5997a65333b0dbf0190840325dd0e8f9fc5eaddf41c6e521e565f1ed5a3f70"}
+{"status": "PASS", "endpoint": "/model_info", "generating_probe": false, "capture_session_empty": true, "model_info": {"model_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "tokenizer_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "is_generation": true, "preferred_sampling_params": null, "weight_version": "default", "has_image_understanding": false, "has_audio_understanding": false, "model_type": "deepseek_v2", "architectures": ["DeepseekV2ForCausalLM"]}, "time_unix": 1789519617.8668568}
+can not use command: npu-smi info
+Traceback (most recent call last):
+  File "/workspace/results/round6_3-prequalification/tools/run_stateful_probe.py", line 136, in <module>
+    main()
+  File "/workspace/results/round6_3-prequalification/tools/run_stateful_probe.py", line 44, in main
+    with urllib.request.urlopen(http, timeout=600) as response:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/urllib/request.py", line 1352, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/http/client.py", line 1415, in getresponse
+    response.begin()
+  File "/usr/local/python3.11.15/lib/python3.11/http/client.py", line 330, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/http/client.py", line 299, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+[ERROR] 2026-09-16-00:47:03 (PID:367334, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+{"command": ["taskset", "-c", "0-15", "bash", "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh", "D1", "/workspace/results/r63-r64-engineering-oracle-v1-production-server", "31000"], "started_unix": 1789519552.0597966, "scope": "new_child_process_group_only", "signals_sent": ["SIGTERM", "SIGKILL"], "pid": 366613, "pgid": 366613, "reason": "ERROR_LOG", "matched_error": "Traceback (most recent call last)", "returncode": -9, "ended_unix": 1789519633.6037745, "success": false}

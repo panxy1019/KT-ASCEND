@@ -124,3 +124,31 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
 - Still next: runtimecompletion, four engineeringoracle requests, actual1000
   deferredforwards, batch2/4, HD3/FD3, quality/perf/stability/ADR. Do not call
   Round6.4 complete at this checkpoint.
+
+## Newest active state
+
+- `r64-d1-runtime-v1` now **RUNTIME_PASS**:156sameprocess+12restart, allfinite/
+  exactprefix, observerOFF. Archived locally; source+contractbinding inprogress.
+- `r64-engineering-oracle-v1` failed TOOL_MANIFEST_SCHEMA:missing retained
+  r63-forced-history-v1 wireversion. Ownservercleaned, no productionchanges.
+  Failurearchived, unit3PASS, correctedtool deployedversionedfilename.
+- **ACTIVE** `r64-engineering-oracle-v2`:4preselectedS6 histories fromsuccessful
+  runtime; productionthenprivateexplicit. Driverlog `/workspace/results/r64-engineering-oracle-v2-driver.log`;
+  permodedetail`production/process.log` and`explicit/process.log`. Checkhealth,
+  don'tduplicatelaunch. Commandchainscompare_engineering_oracle.py oncapturePASS.
+- Tools: `/workspace/results/r64-oracle-tools-v1/run_engineering_oracle_v2.py`,
+  compare_engineering_oracle.py +run_compact_controls.py. Oldv1scriptpreserved.
+- PreparedNOTRUN: run_d1_lifecycle.py (6fixedS6×64×6cycles,metadata-onlytrace,
+  originalcontext512, actualroutedtaskcount>=1000 andterminaldrain, RSSsamples).
+  Deployedin`/workspace/results/r64-capacity-tools-v1` withowned_server.py.
+  Run afteroracle closes, via`run_capacity_test.sh run_d1_lifecycle.py`.
+- PreparedNOTRUN batch2/4 tools and fixed16engineeringmanifest SHA
+  `4fdb040ef1d2b100688761c931331705cb7a8c9d0223c96c09d4e704f4b7b24a`.
+  run_batch_capture.py usesatomiccohortAPI; audit_batch_capture.py joinsALL
+  physicalcapturestoRID/KV/history, protectsuniontop5,workerdrain,actualbatch.
+  Startrepeats1shortbefore10+restart; don'tclaimgenericbatchPASSuntilaudited.
+- Quality drafts nowalsoatA3`/workspace/results/r64-quality-draft-v1`.
+  `run_quality_dev.py` OFFonlydevpilot8+8 first; primaryexecutionstillfalse.
+  Thereare128historicalGSMoverlaps,2historicalCMMLUoverlaps,2CMMLUdev/test
+  overlaps. Devselectionavoidsmatchingtestquestions; primaryrowsunchanged.
+- Keepworking: this is not Round6.4 completion. No newpush/READYtag.
