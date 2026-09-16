@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/results/r64-capacity-tools-v1/run_batch_capture.py", line 94, in <module>
+    main()
+  File "/workspace/results/r64-capacity-tools-v1/run_batch_capture.py", line 58, in main
+    with OwnedServer(args.output, args.profile, batch=args.batch, capture=True) as server:
+  File "/workspace/results/r64-capacity-tools-v1/owned_server.py", line 65, in __enter__
+    subprocess.run([sys.executable, str(OLD/"wait_capture_ready.py"), "--log", str(self.root/"guard/process.log"),
+  File "/usr/local/python3.11.15/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/workspace/results/venv-r6/bin/python', '/workspace/results/round6_2-prequalification/tools/wait_capture_ready.py', '--log', '/workspace/results/r64-batch-campaign-v1/b2-D1_NODEFER-pilot/guard/process.log', '--captures', '/workspace/results/r64-batch-campaign-v1/b2-D1_NODEFER-pilot/tensors', '--output', '/workspace/results/r64-batch-campaign-v1/b2-D1_NODEFER-pilot/readiness.json']' died with <Signals.SIGTERM: 15>.

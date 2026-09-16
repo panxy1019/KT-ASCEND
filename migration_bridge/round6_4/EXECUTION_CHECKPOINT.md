@@ -176,3 +176,13 @@ Latest status: P1_B0 complete; v2 remaining profiles launched, check before any 
   allcaptureandtransactionaudit. Failclosed,noothermodelparallel.
 - Prepared primary quality runner NOTDEPLOYED/NOTRUN;3freeze-rejection testsPASS.
   Formalprotocolstillpreparation, no primary outputs permitted yet.
+
+## Batch v1 tooling failure; v2 active
+
+- v1 model-loadfailure beforeanyrequest:adapterexecv argv0barepython escaped
+  virtualenv. A3readonlyA/B confirmed systemprefix+kt_kernelNone versusfullpath
+  virtualenvprefix+installedmodule. No productionbug evidence/no productiondiff.
+- Fixedadapter fullargv0; readinesswrapper nowwatchesguardexit;6localtestsPASS.
+  v1 archived. Onlyownedfailedserveranditsreadinesshelperwere stopped.
+- ACTIVE `/workspace/results/r64-batch-campaign-v2`, driverlog suffix-driver.log;
+  samefrozenbatchmanifest andsequence. Do notlaunchanotherNPUmodel.

@@ -1,5 +1,6 @@
 import unittest
-from capacity_python_adapter import adapt
+from unittest.mock import patch, mock_open
+from capacity_python_adapter import adapt, main
 
 
 class CapacityTests(unittest.TestCase):
@@ -26,6 +27,16 @@ class CapacityTests(unittest.TestCase):
         self.argv[3] = "1024"
         with self.assertRaises(ValueError):
             adapt(self.argv, 1)
+
+    def test_exec_preserves_virtualenv_program_identity(self):
+        with patch("capacity_python_adapter.sys.argv", ["adapter", *self.argv]), \
+             patch.dict("os.environ", {"KT_R64_BATCH_CAP":"2", "KT_R64_RESOLVED_COMMAND":"/workspace/results/r64-test/command.json"}), \
+             patch("pathlib.Path.open", mock_open()), \
+             patch("capacity_python_adapter.os.execv") as execute:
+            main()
+        executable, argv = execute.call_args.args
+        self.assertEqual(executable, "/workspace/results/venv-r6/bin/python")
+        self.assertEqual(argv[0], executable)
 
 
 if __name__ == "__main__":

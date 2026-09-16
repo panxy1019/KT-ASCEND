@@ -62,9 +62,23 @@ class OwnedServer:
                        "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh", self.profile, str(self.root), "31000"]
             self.server = subprocess.Popen(command, env=env, stdout=self.log, stderr=subprocess.STDOUT)
             self.report.update(owned_guard_pid=self.server.pid, command=command)
-            subprocess.run([sys.executable, str(OLD/"wait_capture_ready.py"), "--log", str(self.root/"guard/process.log"),
+            ready = subprocess.Popen([sys.executable, str(OLD/"wait_capture_ready.py"), "--log", str(self.root/"guard/process.log"),
                             "--captures", str(self.root/"tensors"), "--output", str(self.root/"readiness.json")],
-                           env=env, check=True, timeout=920)
+                           env=env)
+            try:
+                deadline = time.monotonic()+920
+                while ready.poll() is None:
+                    if self.server.poll() is not None:
+                        raise RuntimeError("OWNED_SERVER_EXITED_BEFORE_READY")
+                    if time.monotonic() > deadline:
+                        raise TimeoutError("OWNED_SERVER_READINESS_TIMEOUT")
+                    time.sleep(1)
+                if ready.returncode:
+                    raise subprocess.CalledProcessError(ready.returncode, ready.args)
+            finally:
+                if ready.poll() is None:
+                    ready.terminate()
+                    ready.wait(timeout=10)
             self.report["status"] = "READY"
             return self
         except BaseException:

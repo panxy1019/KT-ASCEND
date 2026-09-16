@@ -39,7 +39,10 @@ def main():
         json.dump(dict(profile="round6.4-capacity-v1", batch_cap=batch,
                        original=sys.argv[1:], resolved=argv,
                        capacity_only=True, production_code_changed=False), stream, indent=2)
-    os.execv("/workspace/results/venv-r6/bin/python", ["python", *argv])
+    # CPython uses argv[0] to locate pyvenv.cfg. A bare "python" can select
+    # system prefixes even when execv's executable is the virtualenv symlink.
+    interpreter = "/workspace/results/venv-r6/bin/python"
+    os.execv(interpreter, [interpreter, *argv])
 
 
 if __name__ == "__main__":
