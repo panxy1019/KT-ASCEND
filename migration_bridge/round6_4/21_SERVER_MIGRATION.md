@@ -107,3 +107,20 @@ queue is `r64-910b-continuation-v1`: compact16PASS ->16realexpert cases ->
 compact32 -> independent full3mode descriptive32 -> analysis. It is a migration
 and descriptive evidence sequence, not a replacement for destination quality
 or performance qualification. Final ADR must retain this scope boundary.
+
+## Completed destination16worker bridge
+
+`r64-910b-compact16-v2`:32/32requests PASS, each mode4prompts ×3repeats,
+then4prompts after clean restart.64tokens/request; finite and same-path exact.
+This compact bridge is not a fresh full12prompt/10repeat qualification.
+
+`r64-910b-expert-safety-v1`:16/16cases PASS,8selected experts ×tokens1/4,
+10CPU repeats each, maxrelativeL2=0.003913063420715329<=0.01.
+Crosshost diagnostic:16/16CPU output-hash lists match archived source cases;
+0/16entire CPU/NPU metric dictionaries are identical. Do not claim full platform
+bitwise equivalence. Same input/model/helper preserved; this is representative
+expert evidence, not whole-model quality equivalence.
+
+Build compiler:UbuntuGCC11.4.0. Target flags and compiler-version retained.
+Queue advanced to compact32 after these passes; destination32 qualification is
+still pending. No acceptance threshold or placement changes.

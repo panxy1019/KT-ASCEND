@@ -1,0 +1,26 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/r64-wp1-tools/run_real_expert_safety.py",
+    "--probe",
+    "/workspace/results/r64-wp1-tools/verify_real_expert_identity.py",
+    "--output",
+    "/workspace/results/r64-910b-expert-safety-v1/cases"
+  ],
+  "started_unix": 1789545790.4935107,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 135353,
+  "pgid": 135353,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789546073.1783655,
+  "success": true
+}

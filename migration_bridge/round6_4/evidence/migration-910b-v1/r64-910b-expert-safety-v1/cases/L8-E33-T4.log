@@ -1,0 +1,135 @@
+can not use command: npu-smi info
+[identity] load_selected_safetensors: 0.028s
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-round6-d3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[identity] construct_cpu_wrapper: 1.872s
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[identity] load_cpu_expert_weights: 0.002s
+[identity] cpu_expert_forward: 0.225s
+[identity] copy_hidden_to_npu: 0.017s
+[identity] copy_gate_to_npu: 0.001s
+[identity] copy_up_to_npu: 0.001s
+[identity] copy_down_to_npu: 0.001s
+[identity] npu_gate_linear_submit: 0.384s
+[identity] npu_up_linear_submit: 0.000s
+[identity] npu_down_linear_submit: 0.005s
+[identity] npu_synchronize_and_copy_output: 0.003s
+[identity] cpu_fp32_reference: 0.055s
+{
+  "cpu_gguf_dtype": "float32",
+  "cpu_repeat_max_abs": 0.0,
+  "cpu_repeat_unique_hashes": [
+    "49b7c1ae805140aafc4b0cd3e9a2331eeaa0dc0ff89019e7cb55b175e42e623e"
+  ],
+  "cpu_repeats": 10,
+  "cpuinfer_threads": 16,
+  "down_shape": [
+    2048,
+    1408
+  ],
+  "finite_cpu": true,
+  "finite_npu": true,
+  "gate_shape": [
+    1408,
+    2048
+  ],
+  "layer": 8,
+  "logical_expert_id": 33,
+  "metrics": {
+    "cosine": 0.9999969005584717,
+    "max_abs": 0.03125,
+    "mean_abs": 0.0034061679616570473,
+    "relative_l2": 0.0036279320910029915
+  },
+  "npu_compute_dtype": "torch.bfloat16",
+  "num_tokens": 4,
+  "physical_expert_id": 33,
+  "reference_metrics": {
+    "cpu_vs_bf16_rounded_fp32": {
+      "cosine": 0.9999966025352478,
+      "max_abs": 0.03125,
+      "mean_abs": 0.0033778322394937277,
+      "relative_l2": 0.003563239596825991
+    },
+    "cpu_vs_fp32": {
+      "cosine": 0.999995768070221,
+      "max_abs": 0.02325272560119629,
+      "mean_abs": 0.003930059261620045,
+      "relative_l2": 0.0033193916412875718
+    },
+    "npu_vs_bf16_rounded_fp32": {
+      "cosine": 0.9999958872795105,
+      "max_abs": 0.03125,
+      "mean_abs": 0.003813214134424925,
+      "relative_l2": 0.003924846879961726
+    },
+    "npu_vs_fp32": {
+      "cosine": 0.9999953508377075,
+      "max_abs": 0.02476668357849121,
+      "mean_abs": 0.004277538508176804,
+      "relative_l2": 0.0035971469939195095
+    }
+  },
+  "source_dtype": "torch.bfloat16",
+  "source_keys": {
+    "down": "model.layers.8.mlp.experts.33.down_proj.weight",
+    "gate": "model.layers.8.mlp.experts.33.gate_proj.weight",
+    "up": "model.layers.8.mlp.experts.33.up_proj.weight"
+  },
+  "source_shard": "model-00002-of-000004.safetensors",
+  "timings_seconds": {
+    "construct_cpu_wrapper": 1.871760382084176,
+    "copy_down_to_npu": 0.0007729780627414584,
+    "copy_gate_to_npu": 0.0010990189621225,
+    "copy_hidden_to_npu": 0.016745816101320088,
+    "copy_up_to_npu": 0.0008113989606499672,
+    "cpu_expert_forward": 0.2246343418955803,
+    "cpu_fp32_reference": 0.05490859202109277,
+    "load_cpu_expert_weights": 0.0021407370222732425,
+    "load_selected_safetensors": 0.02836623997427523,
+    "npu_down_linear_submit": 0.004788193036802113,
+    "npu_gate_linear_submit": 0.38403083593584597,
+    "npu_synchronize_and_copy_output": 0.002825286006554961,
+    "npu_up_linear_submit": 0.0002750200219452381
+  },
+  "total_seconds": 2.5954644170124084,
+  "up_shape": [
+    1408,
+    2048
+  ]
+}
+CPUInfer[0xbbc2ec99b6e0]: Hello
+WorkerPool[0xbbc2ec9cb9f0] 1 subpools, [numa:threads][0:16] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 8, pool: 0xbbc2ec9cb9f0, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xbbc2ec99b6e0]: Goodbye

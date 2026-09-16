@@ -1,0 +1,83 @@
+{
+  "cpu_gguf_dtype": "float32",
+  "cpu_repeat_max_abs": 0.0,
+  "cpu_repeat_unique_hashes": [
+    "589dbbee65e75e9a5f3bb4778b2d1fb1c854885317e3baa3c4667461a7dc349d"
+  ],
+  "cpu_repeats": 10,
+  "cpuinfer_threads": 16,
+  "down_shape": [
+    2048,
+    1408
+  ],
+  "finite_cpu": true,
+  "finite_npu": true,
+  "gate_shape": [
+    1408,
+    2048
+  ],
+  "layer": 8,
+  "logical_expert_id": 55,
+  "metrics": {
+    "cosine": 0.9999967217445374,
+    "max_abs": 0.03125,
+    "mean_abs": 0.0028188535943627357,
+    "relative_l2": 0.0034750221037151063
+  },
+  "npu_compute_dtype": "torch.bfloat16",
+  "num_tokens": 4,
+  "physical_expert_id": 55,
+  "reference_metrics": {
+    "cpu_vs_bf16_rounded_fp32": {
+      "cosine": 0.9999957084655762,
+      "max_abs": 0.03125,
+      "mean_abs": 0.003128460142761469,
+      "relative_l2": 0.003739644524300681
+    },
+    "cpu_vs_fp32": {
+      "cosine": 0.999995231628418,
+      "max_abs": 0.023284912109375,
+      "mean_abs": 0.0035695270635187626,
+      "relative_l2": 0.003446046293691955
+    },
+    "npu_vs_bf16_rounded_fp32": {
+      "cosine": 0.9999945163726807,
+      "max_abs": 0.03125,
+      "mean_abs": 0.0036618956364691257,
+      "relative_l2": 0.004190505203549249
+    },
+    "npu_vs_fp32": {
+      "cosine": 0.9999940395355225,
+      "max_abs": 0.03078460693359375,
+      "mean_abs": 0.004025732167065144,
+      "relative_l2": 0.0038939602242850035
+    }
+  },
+  "source_dtype": "torch.bfloat16",
+  "source_keys": {
+    "down": "model.layers.8.mlp.experts.55.down_proj.weight",
+    "gate": "model.layers.8.mlp.experts.55.gate_proj.weight",
+    "up": "model.layers.8.mlp.experts.55.up_proj.weight"
+  },
+  "source_shard": "model-00002-of-000004.safetensors",
+  "timings_seconds": {
+    "construct_cpu_wrapper": 1.934864319046028,
+    "copy_down_to_npu": 0.0007857789751142263,
+    "copy_gate_to_npu": 0.0009615690214559436,
+    "copy_hidden_to_npu": 0.017775872955098748,
+    "copy_up_to_npu": 0.0007204490248113871,
+    "cpu_expert_forward": 0.2079760340275243,
+    "cpu_fp32_reference": 0.05796180397737771,
+    "load_cpu_expert_weights": 0.002113525988534093,
+    "load_selected_safetensors": 0.033168670954182744,
+    "npu_down_linear_submit": 0.004863752983510494,
+    "npu_gate_linear_submit": 0.3966318540042266,
+    "npu_synchronize_and_copy_output": 0.002919426071457565,
+    "npu_up_linear_submit": 0.00026334996800869703
+  },
+  "total_seconds": 2.6631679539568722,
+  "up_shape": [
+    1408,
+    2048
+  ]
+}
