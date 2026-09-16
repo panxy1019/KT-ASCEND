@@ -1,0 +1,24 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/round5-reference/tools/round3/verify_real_single_layer_hybrid.py",
+    "--model-dir",
+    "/workspace/models/DeepSeek-V2-Lite-604d5664",
+    "--gguf",
+    "/workspace/round5-reference/deepseek-v2-lite-p2-f32.gguf",
+    "--layer",
+    "17",
+    "--cpu-expert",
+    "8",
+    "--output",
+    "/workspace/results/r64-round3-regression-v1/round3.json"
+  ],
+  "started_unix": 1789525117.247694,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [],
+  "pid": 387383,
+  "pgid": 387383
+}

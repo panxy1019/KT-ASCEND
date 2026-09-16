@@ -1,0 +1,65 @@
+{
+  "cases": {
+    "cpu_not_hit_row": 0,
+    "mixed_row": 1,
+    "reversed_mixed_row": 2
+  },
+  "cpu_expert": 8,
+  "cpu_hit_routes": 2,
+  "execution": {
+    "cpu_stream_native_handle": 187652594367376,
+    "distinct_staging_buffer": true,
+    "distinct_streams": true,
+    "input_data_ptr": 20618009413120,
+    "main_stream_native_handle": 187652579577456,
+    "mode": "overlap",
+    "staging_data_ptr": 20618009379840
+  },
+  "finite_final_hybrid": true,
+  "finite_routed_hybrid": true,
+  "layer": 17,
+  "metrics": {
+    "cpu_not_hit_vs_all_npu": {
+      "cosine": 1.000000238418579,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "final_with_shared_once_vs_all_npu": {
+      "cosine": 0.9999959468841553,
+      "max_abs": 0.015625,
+      "mean_abs": 0.0015252720331773162,
+      "relative_l2": 0.003124126269339239
+    },
+    "ktep_vs_explicit_cpu_plus_npu": {
+      "cosine": 1.0000007152557373,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "mixed_vs_all_npu": {
+      "cosine": 0.999995231628418,
+      "max_abs": 0.01171875,
+      "mean_abs": 0.0016575856134295464,
+      "relative_l2": 0.003270712430139086
+    }
+  },
+  "npu_experts_exercised": [
+    25,
+    36,
+    0,
+    51,
+    12,
+    30
+  ],
+  "output_sha256": {
+    "final_hybrid": "ab0feacedfe5794a5e2a50b407e6ec098c0992924d4c38e14196c7361bbfab36",
+    "routed_hybrid": "d7af3a5e23c1502e9e9002295cdb306d9c633e58ae83dbbe36a8df183d019134"
+  },
+  "placement": "one CPU routed expert; all other logical experts NPU-owned",
+  "routed_scaling_factor": 1.0,
+  "routed_scaling_owner": "DeepseekV2MoE outer forward after KTEP routed output",
+  "routing_weight_owner": "CPU and NPU expert providers; applied exactly once before additive merge",
+  "shared_expert_count": 2,
+  "shared_expert_owner": "DeepseekV2MoE outer forward; not KTEPWrapperMethod"
+}

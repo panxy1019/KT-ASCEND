@@ -2,8 +2,9 @@
 
 ## Current pointer — supersedes historical entries below
 
-Active: `/workspace/results/r64-round3-regression-v1`, retained Layer17/Expert8
-micro regression under own guard. Do not interrupt/duplicate.
+Active: `/workspace/results/r64-quality-dev-v1`, OFF-only8train+8dev, capacity1024,
+normalEOS, sourcev2. Do not interrupt/duplicate. Round3anchorv2passed after
+retainingCANNPYTHONPATH; v1failurearchived. See11_RETAINED_REGRESSION.md.
 Batch campaign v2 is FAILED at b4 OFF repeat1/cohort0/s6_en_01 token55.
 Both batch2 profiles completed10repeat+2restart PASS; all4 initialpilotsPASS.
 Read09_BATCH_QUALIFICATION.md before acting. Partialaudit325forwards/20requests
@@ -22,8 +23,7 @@ Staging `/home/admin/r64-next-tools-0tGiCF`; root PTY92973.
 Future v2 OwnedServer now uses new run_owned_process.py wrapper(subreaper),
 not the active batch campaign's oldguard. No extra process signals, no productiondiff.
 
-Next after bounded diagnosis: retainedRound3anchor then OFF-only quality dev8+8
-and32+32; inspect format/capacity and
+Next: finishOFF-only quality dev8+8 then32+32; inspect format/capacity and
 freeze protocol before primary results. HD3/FD3 descriptive_entry.json committed;
 retained old quality evaluator and exact historical manifest deployed as smoke.
 No primary outputs, primary contract not frozen. Quality/performance/stability
