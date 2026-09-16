@@ -1,0 +1,140 @@
+{
+  "started_unix": 1789564609.0310776,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-four-R32-localization-v1/hybrid/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-four-R32-localization-v1/hybrid",
+    "/workspace/results/r65-profiles-v1/four-R32.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        27507,
+        15
+      ],
+      [
+        27508,
+        15
+      ],
+      [
+        27509,
+        15
+      ],
+      [
+        27510,
+        15
+      ],
+      [
+        27511,
+        15
+      ],
+      [
+        27512,
+        15
+      ],
+      [
+        27513,
+        15
+      ],
+      [
+        27514,
+        15
+      ],
+      [
+        27515,
+        15
+      ],
+      [
+        27516,
+        256
+      ],
+      [
+        27517,
+        256
+      ],
+      [
+        27518,
+        256
+      ],
+      [
+        27519,
+        256
+      ],
+      [
+        27520,
+        256
+      ],
+      [
+        27521,
+        256
+      ],
+      [
+        27522,
+        256
+      ],
+      [
+        27523,
+        256
+      ],
+      [
+        27422,
+        15
+      ],
+      [
+        27506,
+        15
+      ],
+      [
+        27272,
+        9
+      ],
+      [
+        27273,
+        15
+      ],
+      [
+        27274,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-four-R32-localization-v1/hybrid",
+      "/workspace/results/r65-profiles-v1/four-R32.json",
+      "32"
+    ],
+    "started_unix": 1789564609.1089208,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 27051,
+    "pgid": 27051,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789564790.245377,
+    "success": false
+  },
+  "ended_unix": 1789564790.2909377
+}

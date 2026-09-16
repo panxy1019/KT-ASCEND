@@ -1,0 +1,148 @@
+{
+  "started_unix": 1789563717.050091,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-scale-matrix-v2/four-R32/numeric/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-scale-matrix-v2/four-R32/numeric",
+    "/workspace/results/r65-profiles-v1/four-R32.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        24007,
+        15
+      ],
+      [
+        24008,
+        15
+      ],
+      [
+        24009,
+        15
+      ],
+      [
+        24010,
+        15
+      ],
+      [
+        24011,
+        15
+      ],
+      [
+        24012,
+        15
+      ],
+      [
+        24013,
+        15
+      ],
+      [
+        24014,
+        15
+      ],
+      [
+        24015,
+        15
+      ],
+      [
+        24016,
+        256
+      ],
+      [
+        24017,
+        256
+      ],
+      [
+        24018,
+        256
+      ],
+      [
+        24019,
+        256
+      ],
+      [
+        24020,
+        256
+      ],
+      [
+        24021,
+        256
+      ],
+      [
+        24022,
+        256
+      ],
+      [
+        24023,
+        256
+      ],
+      [
+        24863,
+        9
+      ],
+      [
+        24864,
+        9
+      ],
+      [
+        23717,
+        9
+      ],
+      [
+        23718,
+        9
+      ],
+      [
+        23719,
+        9
+      ],
+      [
+        23930,
+        9
+      ],
+      [
+        24006,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-scale-matrix-v2/four-R32/numeric",
+      "/workspace/results/r65-profiles-v1/four-R32.json",
+      "32"
+    ],
+    "started_unix": 1789563717.1279657,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 23546,
+    "pgid": 23546,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789563992.9917662,
+    "success": false
+  },
+  "ended_unix": 1789563993.033737
+}

@@ -1,0 +1,36 @@
+{
+  "status": "FAILED",
+  "completed": [
+    "single-R32-expert-L17-T1",
+    "single-R32-expert-L17-T4",
+    "single-R16-det",
+    "single-R16-numeric",
+    "single-R16-pairwise",
+    "single-R16-routes",
+    "single-R16-expert-L17-T4",
+    "single-R16-expert-L17-T1",
+    "single-R16-guard-audit",
+    "single-R8-det",
+    "single-R8-numeric",
+    "single-R8-pairwise",
+    "single-R8-routes",
+    "single-R8-expert-L17-T4",
+    "single-R8-expert-L17-T1",
+    "single-R8-guard-audit",
+    "four-R32-det",
+    "four-R32-numeric"
+  ],
+  "started_unix": 1789560991.3077512,
+  "active": "four-R32-pairwise",
+  "command": [
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/evaluate_static_pairwise.py",
+    "--baseline",
+    "/workspace/results/r65-numeric-r64-v1",
+    "--hybrid",
+    "/workspace/results/r65-scale-matrix-v2/four-R32/numeric",
+    "--output",
+    "/workspace/results/r65-scale-matrix-v2/four-R32/pairwise.json"
+  ],
+  "exception": "RuntimeError('four-R32-pairwise:exit=2')",
+  "ended_unix": 1789564004.446733
+}
