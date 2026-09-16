@@ -39,6 +39,13 @@ def main():
             os.environ.update(KT_R63_FORCE_MANIFEST=force,
                 KT_R63_FORCE_MANIFEST_SHA256=hashlib.sha256(Path(force).read_bytes()).hexdigest(),
                 KT_R63_FORCE_ARM_FILE=str(root/'armed.sha256'),KT_R63_FORCE_TRACE=str(root/'forcing.jsonl'))
+    if os.environ.get('KT_R65_STAGEWISE')=='1':
+        # Existing default-OFF diagnostic only. Does not change the production
+        # module, mask, numerical boundaries or task submission implementation.
+        layers=','.join(map(str,range(1,27)))
+        os.environ.update(KT_R61_STAGEWISE_DIR=str(root/'stagewise'),
+                          KT_R61_STAGEWISE_LAYERS=layers,
+                          KT_R61_STAGEWISE_MODEL_LAYERS=layers)
     if data['total_npu_experts']!=26*64:
         gguf=Path('/workspace/results/r65-assets-v1/all-moe-f32.gguf')
         manifest=json.loads(gguf.with_suffix('.gguf.manifest.json').read_text())
@@ -54,6 +61,8 @@ def main():
                  '--init-expert-location',str(pt)]
     (root/'resolved-command.json').write_text(json.dumps(dict(argv=args,profile=data,workers=workers,
                                                             environment={k:os.environ.get(k) for k in (
+                                                                'KT_R65_CAPTURE','KT_R65_STAGEWISE',
+                                                                'KT_R61_STAGEWISE_DIR',
                                                                 'ASCEND_RT_VISIBLE_DEVICES','SGLANG_APPLY_CONFIG_BACKUP',
                                                                 'HF_HUB_OFFLINE','TRANSFORMERS_OFFLINE','PYTHONPATH',
                                                                 'OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS')}),indent=2)+'\n')
