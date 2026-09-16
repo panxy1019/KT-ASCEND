@@ -38,6 +38,12 @@ class CapacityTests(unittest.TestCase):
         self.assertEqual(executable, "/workspace/results/venv-r6/bin/python")
         self.assertEqual(argv[0], executable)
 
+    def test_performance_keeps_cache_off_without_recorder(self):
+        result = adapt(self.argv, 1, performance=True)
+        self.assertEqual(result.count("--disable-radix-cache"), 1)
+        with self.assertRaisesRegex(ValueError, "OBSERVER_ENABLED"):
+            adapt(self.argv+["--expert-distribution-recorder-mode","stat"], 1, performance=True)
+
 
 if __name__ == "__main__":
     unittest.main()

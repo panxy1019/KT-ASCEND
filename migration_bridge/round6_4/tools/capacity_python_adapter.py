@@ -10,7 +10,7 @@ from pathlib import Path
 import sys
 
 
-def adapt(argv, batch):
+def adapt(argv, batch, performance=False):
     if batch not in (1, 2, 4) or argv[:2] != ["-m", "sglang.launch_server"]:
         raise ValueError("UNSUPPORTED_INVOCATION")
     expected = {"--context-length": "512", "--max-total-tokens": "512",
@@ -26,19 +26,28 @@ def adapt(argv, batch):
         result[result.index(flag)+1] = replacements[flag]
     if "--disable-cuda-graph" not in result or result[result.index("--tp-size")+1] != "1":
         raise ValueError("SCOPE_DRIFT")
+    if performance:
+        if any(flag in result for flag in ("--expert-distribution-recorder-mode", "--debug-tensor-dump-output-folder", "--enable-return-routed-experts")):
+            raise ValueError("PERFORMANCE_OBSERVER_ENABLED")
+        # The old launcher couples cache-OFF to route recording. Keep cache-OFF
+        # explicitly when recording is disabled so timing changes only observers.
+        if "--disable-radix-cache" not in result:
+            result.append("--disable-radix-cache")
     return result
 
 
 def main():
     batch = int(os.environ["KT_R64_BATCH_CAP"])
-    argv = adapt(sys.argv[1:], batch)
+    performance = os.environ.get("KT_R64_PERFORMANCE", "0") == "1"
+    argv = adapt(sys.argv[1:], batch, performance=performance)
     record = Path(os.environ["KT_R64_RESOLVED_COMMAND"])
     if not str(record).startswith("/workspace/results/r64-"):
         raise ValueError("DEDICATED_COMMAND_RECORD_REQUIRED")
     with record.open("x") as stream:
         json.dump(dict(profile="round6.4-capacity-v1", batch_cap=batch,
                        original=sys.argv[1:], resolved=argv,
-                       capacity_only=True, production_code_changed=False), stream, indent=2)
+                       capacity_only=not performance, performance_observer_off=performance,
+                       cache_disabled="--disable-radix-cache" in argv, production_code_changed=False), stream, indent=2)
     # CPython uses argv[0] to locate pyvenv.cfg. A bare "python" can select
     # system prefixes even when execv's executable is the virtualenv symlink.
     interpreter = "/workspace/results/venv-r6/bin/python"
