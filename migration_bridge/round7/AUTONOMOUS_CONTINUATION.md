@@ -37,6 +37,14 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 21:02: healthyv3 advanced operators100/100PASS(max .0017029279396063187)
+andUniformcompact32+restart4PASS, fourtrajectories exactvsruntime-v3. Sessions
+reaped; nowFrequencycompact RUNNING. Keephealthy. NewlosslessfullUniformsessions
++provenance/operator-summary checkpoint archive locallypreserved SCPexit0/hash+
+fulltarPASS SHA fdde863413ae342b69e77a3e0ecf455bbd72bb54f921da41694d09940f40f015.
+Newoperatorarrays remainA3; archive onlyoperator-summary/progress. No triggered
+Dynamicrequalification yet. SeePRIVATE_CONTEXT_PREDECESSOR_CHECKPOINT.md.
+
 2026-09-17 20:45 latest: correctedv2 directR64PASS174/256invalid0 and resolved
 CLIexact. Then firstDynamicthreshold256triggeredrequest failedbeforepublication:
 BF16fullcontext pinsCPU255 outsidecontainer128–191, OSError22. Allownedchildren
