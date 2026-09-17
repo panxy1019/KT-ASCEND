@@ -41,6 +41,7 @@ Device-visibility retry: `/workspace/results/r65-r67-r8-c32-v2/study-device0`.
 Host backing directory:
 `/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-dev-v1/r8-c32-v2`.
 Freeze SHA: `2f70c71744efed82dd8ce65f2b6daa5268fb9635a69e2e6217ba8cec9aceb6b2`.
+Retry freeze SHA: `f3640a12870cb2df515be9f5a2693863419f151fdfe75d2c686704a539146961`.
 
 Background flow: compact32 → restart → observer/mapping/routes → local expert
 screen52 experts/156 operands → CMMLU256 → paired product report. Predecessor
