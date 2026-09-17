@@ -404,7 +404,9 @@ class LLAMA_MOE_TP {
     auto copy_expert = [&](int physical_id) {
       const int logical_id =
           physical_to_logical_map == nullptr ? physical_id : physical_to_logical_map[physical_id];
-      if (config.should_skip_expert(logical_id)) return;
+      // Backing weights must cover initially accelerator-owned experts too:
+      // Dynamic can later evict them to CPU. The execution-time ownership mask
+      // still skips accelerator-owned routes; it must not suppress weight load.
       memcpy(local_gate_base + (size_t)logical_id * gate_dst_stride,
              gate_proj + (size_t)physical_id * gate_src_stride, gate_dst_stride);
       memcpy(local_up_base + (size_t)logical_id * up_dst_stride,
