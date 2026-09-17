@@ -37,6 +37,15 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 21:18: v3 closedFrequencycompact32+restart4PASS, fourtrajectories
+exactvsruntime-v3, directR64again174/256invalid0PASS. Nowthreshold256DEVprobe
+RUNNING; initialshort128tokenprefill/16decode no-trigger request finished.
+LosslessFrequency+R64raw/process/provenance/summaries locallypreserved,
+SCPexit0/hash+tarPASS SHA
+c04d08594040787dcb8bc831dea3818295f019bb2f8922bc76780f6a79ac79b5.
+No actualmigrationPASSyet; keephealthyprobe, inspect actualschedulererrorif
+itfails (especially LLAMAFILEmissing weightwriteinterface notedbelow).
+
 2026-09-17 21:02: healthyv3 advanced operators100/100PASS(max .0017029279396063187)
 andUniformcompact32+restart4PASS, fourtrajectories exactvsruntime-v3. Sessions
 reaped; nowFrequencycompact RUNNING. Keephealthy. NewlosslessfullUniformsessions

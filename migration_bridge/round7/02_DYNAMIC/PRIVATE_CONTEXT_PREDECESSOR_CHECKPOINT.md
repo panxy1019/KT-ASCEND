@@ -39,3 +39,18 @@ reported at this checkpoint; keep the healthy serving process intact. Subsequent
 gates remain direct R64 reproduction then DEV probes256/512/1024. The earlier
 R64/affinity failure archives remain immutable. No threshold selection, HD,
 Dynamic product quality/performance or Deferred gate is promoted here.
+
+## 21:18 UTC continuation
+
+Frequency compact independently closed32 requests plus four restart requests,
+all system/parity gates PASS. Its four reference trajectories exactly match
+runtime-v3 Frequency. Corrected direct R64 again reproduced174/256, zero invalid;
+the driver advanced to threshold256 DEV migration probe. Initial no-trigger
+request completed; real triggered qualification is still pending.
+
+`raw/runtime-v4-static-and-r64-checkpoint-v1.tar.gz` preserves full Frequency
+compact/restart and direct R64 process/raw/lifecycle records, summaries,
+resolved configs and runtime-v4 provenance. SHA256
+`c04d08594040787dcb8bc831dea3818295f019bb2f8922bc76780f6a79ac79b5`.
+SCPexit0, local/A3 hash equal, full tar validationexit0. No incomplete probe
+files are treated as qualification evidence in this checkpoint.
