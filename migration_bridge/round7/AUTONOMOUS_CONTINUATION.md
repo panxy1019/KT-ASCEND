@@ -170,6 +170,16 @@ After static serving reaps, invoke `cpu_backing_probe.py --layer 1
 frozen `with_c64_env.sh`. Preserve original binary failure before repairing;
 subsequent layers13/26 and post-fix runs need separate new output directories.
 Never use a probe result alone as full-model Dynamic qualification.
+Local future tools now also include `dynamic_holdout.py` and
+`dynamic_route_summary.py`: frozen-threshold 128-case HD routing, decode-only
+exposure excluding full-device prefill/unused tails, actual migration event
+correlation, and initial-mask-on-same-routes counterfactual diagnostics. The
+counterfactual does not replace the separate Static-vs-Dynamic comparison.
+Twenty-six local tests pass. Those additions are not in staged v7 or running
+v6; deploy a new release-v8 after review and current-stage reaping. See
+`02_DYNAMIC/HELDOUT_ROUTING_PROTOCOL.md`. Actual CMMLU trigger-rate telemetry,
+performance host-isolation evidence and later-stage orchestration still need
+integration before claiming complete metrics.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer

@@ -88,9 +88,14 @@ def make_routes(config):
         mask = METHODS[layer].gpu_experts_mask if layer in METHODS else torch.zeros(64,dtype=torch.bool)
         if layer not in METHODS: mask[masks[layer]] = True
         hit = mask[ids]
+        initial_mask=torch.zeros(64,dtype=torch.bool);initial_mask[masks[layer]]=True
+        initial_hit=initial_mask[ids]
         counts = torch.bincount(ids.flatten(),minlength=64).tolist()
         append(root,'routing.jsonl',dict(layer=layer,tokens=len(ids),assignments=ids.numel(),
             forward_context=dict(CURRENT_FORWARD),
+            generation=getattr(METHODS.get(layer),'_round7_generation',0),
+            initial_static_npu_hits=int(initial_hit.sum()),
+            initial_static_cpu_weight=float(weights[~initial_hit].sum()),
             npu_hits=int(hit.sum()),cpu_hits=int((~hit).sum()),
             total_weight=float(weights.sum()),cpu_weight=float(weights[~hit].sum()),
             fully_npu_tokens=int(hit.all(dim=1).sum()),fully_npu_row_flags=hit.all(dim=1).tolist(),counts=counts))
