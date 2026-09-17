@@ -37,6 +37,24 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 23:43 continuation: tools-v18 sameDEV256 againstunchangedruntime-v6
+FAILED/reaped. ActualresidentE0/E8/E56 checkpoint exactBEFOREprepare in both
+L1/L2, allfalseAFTERprepare rawcontext; CPUstagedE1/E63 remainexact. Thisisolates
+resident→raw boundary. Full diagnosticarchive SCPexit0/hash+fulltarPASS SHA
+b9cb551ce76301abc92915c58453526bd52164fba9fc959dfb01ff4a0d0fba21.
+Localrootdiskfull encounteredgitaddarchive. Onlynewuntracked175MiBarchive moved
+to /tmp/round7-dynamic-weight-source-diagnostic-v1.tar.gz; verifiedfullcopy remains
+canonicalA3hostrawdir. BinaryNOTcommittedGit; smallarchiveprovenancemanifest records
+thisexplicitly. No old/userdata deleted. Rootnow~175MiBfree; do notdownloadhuge
+newarchives toworktree untilcapacityresolved. KeepdurableA3archives+smallJSONGit.
+MinimalPhase1NPUonly fulltensorNDnormalization+explicitinfer→rawtranspose
+commit e7d51bf5309416ee5fcdc6c05f4d2e6750c60c1f prepared;103LOCAL+A3puretestsPASS,
+actualsourceguardsPASS. tools-v19 archiveeb0ab5276437c1fbe21494dcbaa964c8023128832853b902d18388eac8f7df85
+completeSCP/hashbeforeextract. runtime-v7 privatepreparation currentlystarting;
+repairednative461... unchanged. RepairA3validation PENDING: reducedactualPhase1
+ND/NZ raw/infer source matrix then allorderedpostfixgates/newdriver.
+No thresholdselection/HD/quality/perf/Deferred. Originalruntime-v6 immutablykept.
+
 2026-09-17 23:18: v5/runtime-v6 FAILED/reaped inDynamic256 afterclosedFreqcompact
 andfreshR64174/256invalid0. ActualLayer1generation1 passedauditor; Layer2failed
 FULL_CONTEXT_CHECKPOINT_EXPERT_IDENTITY, only1update record. No512/1024/HD/fit.
