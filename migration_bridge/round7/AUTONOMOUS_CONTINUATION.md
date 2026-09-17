@@ -37,6 +37,28 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 latest: pairedlayout/pinning fix standaloneA3PASS. Raw12cases/48writes,
+inference12/48, checkpoint+H2Dexact/repeats/other-slot/negativeLOSSYsafe. Actual
+runtime-v6 allocator CPU BF16buffers pinnedtrue/pointerscorrect.99puretestsA3PASS.
+Tools-v17 source d7fa260996e0442baff32bf992140b5915af61fe/archiveSHA
+33180a97bfd0fb76706f0d7847236b9510a5f2f381f536b9d7a2608020a02029,
+completeSCP/hash-beforeextract. PrivatewrapperSHA
+61354c6672446f604d11797347d6ece5b6bf83183765f4ccd8fba257b257faf4,
+helperSHA db411ab5e5245cb76180857dcb8f18e13074da7c97a0eaa4749a50ae76fdd68f;
+CPU461...unchanged. Losslessoriginal+fixedprimitive/staging/source/releasearchive
+SCPexit0/hash+tarPASS SHA35afe5820f03161655eb04560c673c710ba7ed21560d1eb7842310bde97033ff.
+NEWdriver /workspace/c64-dev/round7/backing-requalification-v5/progress.json
+confirmedRUNNINGphaseoperators, tools-v17/runtime-v6, noresume/noPASScopy. Then
+Uniform/Freqcompact→directR64→DEV256/512/1024. Keephealthy. No chosen threshold/
+HD/Dynamicquality/perf yet. After3probesPASS/reaped usev17 threshold_sweep
+--base runtime-v6 --probes backing-requalification-v5 --probe-prefix
+dynamic-dev-probe- --dev corpora-v2/SCHED_DEV.jsonl --profile uniform --output
+<newDEVscreen>; candidate localcommit+matchingack beforeHD/CM.
+FuturehostobserverV3 nowA3deployed/exclusive; source9e92b9... samples
+host-resource-monitor-v3. Identity-verified obsoleteownedV2PID287781 SIGTERM,
+alloldlogs preserved. Onlyfutureformalwindows useV3; oldStaticwholeformalpending
+unchanged. SeeBF16_RAW_LAYOUT_AND_PINNED_BUFFER_REPAIR/HOST_PERFORMANCE_OBSERVER.
+
 2026-09-17 22:39 continuation: v4 FAILED/reaped at firstDynamic256trigger,
 LLAMAFILE_BF16_STAGING_ASCEND_LAYOUT. Operators100/100, both32+restart4 compact
 lanes and directR64174/256invalid0 had closed. Full failure archive verifiedlocal

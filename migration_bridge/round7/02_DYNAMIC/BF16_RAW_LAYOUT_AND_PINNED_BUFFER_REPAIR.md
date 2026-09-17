@@ -48,6 +48,38 @@ and checkpoint, H2D identity, negative lossy-source rejection; reduced actual
 allocator pinning/pointers; ordered model predecessor and triggered migration
 probes. This document does not claim Dynamic qualified.
 
+## A3 standalone repair verification and new ordered replay
+
+Both layouts now PASS independently: raw12cases/48writes and inference12cases/
+48writes across L1/L13/L26 and E0/E1/E31/E63. Checkpoint and H2D identity are
+exact, repeated stages exact, the other initialized slot remains unchanged, and
+lossy F32 source rejection passes in both lanes. Actual runtime-v6 reduced
+SharedFullContext allocator reports both buffers CPU BF16, pinned=true and exact
+TP1 collected pointers. Original runtime-v5 unpinned result remains preserved.
+
+99 pure tests also PASS on A3 Python3.11. Tools-v17 source commit
+`d7fa260996e0442baff32bf992140b5915af61fe`; archive SHA256
+`33180a97bfd0fb76706f0d7847236b9510a5f2f381f536b9d7a2608020a02029`.
+Complete SCP, host/container hash verification preceded extraction.
+Runtime-v6 wrapper SHA256
+`61354c6672446f604d11797347d6ece5b6bf83183765f4ccd8fba257b257faf4`;
+helper SHA256 `db411ab5e5245cb76180857dcb8f18e13074da7c97a0eaa4749a50ae76fdd68f`.
+Repaired CPU native remains461821... unchanged.
+
+Lossless standalone archive `raw/bf16-raw-layout-pinned-regression-evidence-v1.tar.gz`,
+SHA256 `35afe5820f03161655eb04560c673c710ba7ed21560d1eb7842310bde97033ff`.
+It preserves original/fixed allocator reports/logs, both staging reports/logs,
+private runtime source/provenance and exact tools-v17 release. Complete SCPexit0,
+matching local/A3 hashes and full tar validationexit0. First archive command
+failed before creation because the remote raw directory was absent; after creating
+that exact owned directory, corrected archive completed before authenticated SCP.
+No partial archive is treated as evidence.
+
+New `backing-requalification-v5` is confirmed RUNNING phaseoperators at inspection.
+No resume or old PASS copies: operators→Uniformcompact→Frequencycompact→directR64
+→original DEV256/512/1024. Keep healthy run intact. Full-model triggered migration,
+threshold selection, HOLDOUT and Dynamic product quality remain pending.
+
 ## Official cross-check
 
 [Pinned KT SGLang BF16 full context](https://github.com/kvcache-ai/sglang/blob/3424f35d0e60f03b9e75d9b90941f8f4cb944524/python/sglang/srt/layers/moe/kt_ep_wrapper.py)

@@ -151,3 +151,17 @@ performance windows before use. Never replace a healthy live model release or
 reclassify old V2 samples using V3. Launch it only as an independently versioned
 host observer; stop only the identity-verified obsolete owned observer, not tests
 or business workloads. Current active samples remain host-resource-monitor-v2.
+
+## V3 independent A3 deployment — future windows only
+
+2026-09-17 after static campaign/model children reaped. Tools-v17 A3 pure suite
+99/99PASS includes the V3 snapshot-cgroup/start-ID regressions. Host source
+`/tmp/round7-host-resource-observer-v3.py` hash matches the frozen9e92b9... above.
+Actual new samples at `host-resource-monitor-v3` carry that hash,
+`V3_ACTUAL_SNAPSHOT_CGROUP_AND_PROCESS_START_ID`, the exact owned docker cgroup
+and outside per-process CPU deltas. The observer reachedEXCLUSIVE, blockers[].
+Only obsolete ownedV2 PID287781 was SIGTERM stopped after exact cmdline/output/
+sourcehash verification and freshV3 samples. Original V2 logs/samples remain.
+No model driver or business task was stopped. Use V3 for future formal windows;
+one exclusive sample is not a complete performance qualification and no old
+Static contaminated window is reclassified.
