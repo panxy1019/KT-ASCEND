@@ -107,6 +107,18 @@ forwards and rejects unassociated routes, just as DEV fitting does.
 New routing flags distinguish per-layer assignments from whole-model token CPU
 touch rate. These later tools remain undeployed until current collection finishes.
 
+`run_static_phase.py` can run the following serial gates in one detached driver
+after DEV completion and a candidate local commit freeze. It requires a JSON
+ack containing `local_candidate_commit` (full40 SHA), `frequency_profile_sha256`
+and `frequency_activation_sha256`. Create this only after verifying the actual
+local commit contains the matching frequency artifacts; no self-referential
+commit-SHA claim is needed inside that commit. Driver gates DEV reaping and
+hashes, then operator→Uniform/Frequency compact→HOLDOUT→Frequency CMMLU→isolated
+ABBA. A Frequency quality rejection skips its costly performance and preserves
+Uniform. Software failures return to the agent for repair; never erase failed
+run directories. Driver completion still requires agent selection/documentation
+before Round7B. The local suite has eighteen passing tests after freeze checks.
+
 ## Follow-up policy
 
 Continue useful preparation while a healthy long stage runs, without disturbing
