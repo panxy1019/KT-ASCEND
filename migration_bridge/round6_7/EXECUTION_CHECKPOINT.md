@@ -69,3 +69,19 @@ No other process is killed. A full fresh R64 screen is repeated under v5.
 
 LOCAL_VERIFIED: 15 contract tests, Python compilation, bash syntax, diff checks.
 Full target qualification remains pending until execution artifacts close gates.
+
+## Live checkpoint — 2026-09-17 00:39 UTC
+
+v5 R64 `system.json` reports `SYSTEM_SCREEN_PASS`: 32 compact requests,
+four independent-process restart trajectories, four observer parity requests,
+26 physical-layout layers and 26 route layers. CPU operator gate is
+`N/A_NO_CPU_OWNED_EXPERTS`. The controller has created the R64 quality session;
+no completed CMMLU score is available at this checkpoint. R32/R16/R8 remain
+pending. The coarse study progress file is updated between profiles, so its
+older RUNNING/system label is not a substitute for the per-phase artifacts.
+
+Observer shutdown emitted a CANN repository-manager background-thread
+EOFError after all four HTTP200 responses and the intentional SIGTERM.
+`observer/lifecycle.json` reports COMPLETE and owned descendants were reaped.
+Preserve `observer/guard/process.log` for shutdown review; do not describe this
+session as traceback-free. No production change or acceptance change was made.
