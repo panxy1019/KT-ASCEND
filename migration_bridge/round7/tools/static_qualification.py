@@ -21,6 +21,7 @@ def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 def config(base,name,observer):
     cfg=json.loads((base/'uniform-dev-config.json').read_text())
     cfg.update(recorder=False,observer=observer,
+        provenance=str(base/'provenance.json'),
         profile=str(base/'profiles'/f'{name}.json'),activation_path=str(base/'profiles'/f'{name}.pt'))
     path=base/f'{name}-observer-{int(observer)}.json';write(path,cfg)
     profile=json.loads(Path(cfg['profile']).read_text());validate_mask(profile['rows'])

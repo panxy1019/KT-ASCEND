@@ -48,6 +48,9 @@ def make_structure(config):
         if (root/'observer-off').exists(): return
         layer = getattr(module,'layer_id',None)
         if layer not in expected: return
+        if config.get('deferred_audit',False) and layer==26:
+            from kt_kernel.experts_base import BaseMoEWrapper
+            assert not any(BaseMoEWrapper._layer_has_pending_deferred.values()),'PENDING_DEFERRED_AT_TERMINAL_OUTPUT'
         expert, method = module.experts, module.experts.quant_method
         METHODS[layer] = method
         if not torch.isfinite(output).all().item(): raise ValueError('NONFINITE_MLP')
@@ -64,6 +67,7 @@ def make_structure(config):
             w = getattr(expert,name)
             assert w.dtype == torch.bfloat16 and w.shape[0] == len(ids), 'WEIGHT_LAYOUT_DRIFT'
         append(root,'structure.jsonl',dict(layer=layer,npu_ids=ids,cpu_ids=sorted(set(range(64))-set(ids)),
+            resolved_deferred_budget=method.wrapper.max_deferred_experts_per_token,
             slots=len(ids),mapping_dtype=str(reference.dtype),allocated=torch.npu.memory_allocated(),
             reserved=torch.npu.memory_reserved()))
         seen.add(layer)

@@ -85,7 +85,8 @@ passes. Observer ON/OFF parity passed. Finite/repeated pilot outputs passed.
 
 `migration_bridge/round7/tools/` contains collector, attribution validator,
 frequency freezer, static qualification and operator audit. Thirteen local tests
-passed after adding pure migration and SSE timing checks. `dynamic_audit.py`,
+passed after adding pure migration and SSE timing checks. With Deferred trace
+assertion tests, the current local suite now has sixteen passing tests. `dynamic_audit.py`,
 `dynamic_probe.py`, `performance_screen.py` and new hook wiring are not yet
 deployed at this checkpoint. Review actual trigger integration before deploying. Diagnostic
 weight readbacks/synchronization must remain absent from timed performance.
@@ -93,7 +94,12 @@ weight readbacks/synchronization must remain absent from timed performance.
 selection after all three threshold migration probes pass. It freezes the
 selected threshold before any held-out use. `runtime_quality.py` reuses the same
 immutable evaluator for Dynamic and Deferred. Migration component telemetry,
-Deferred system assertions and final orchestration still need integration.
+component timing and final orchestration still need integration.
+`deferred_probe.py` now tests actual D1 route execution, terminal0/draining,
+repeat/prefix/restart/observer parity on the selected Static or Dynamic base.
+Its trace seam stays OFF in timed performance and quality. New session configs
+verify retained imported-source/native/corpus hashes before launching; the large
+RO GGUF retains its initial full hash with a size check, not a claimed rehash.
 The prepared performance screen supports D1 on a selected
 Dynamic base via `--dynamic-base`; never silently evaluate D1 on the wrong base.
 HOLDOUT routing uses official recorder metadata to exclude proven unused final

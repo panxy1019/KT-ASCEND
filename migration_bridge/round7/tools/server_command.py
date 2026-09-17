@@ -1,5 +1,6 @@
 """Round7-only launch adapter; frozen old launchers remain untouched."""
 import json
+import hashlib
 import os
 from pathlib import Path
 import sys
@@ -11,6 +12,19 @@ def main():
     cfg = json.loads(config.read_text())
     assert cfg['workers'] == 64 and cfg['cpu_set'] == '128-191'
     assert cfg['deferred'] in (0,1)
+    if cfg.get('provenance'):
+        provenance=json.loads(Path(cfg['provenance']).read_text())
+        checked={}
+        for name,info in provenance['files'].items():
+            digest=hashlib.sha256(Path(name).read_bytes()).hexdigest()
+            assert digest==info['sha256'],f'IMPORTED_ARTIFACT_DRIFT:{name}'
+            checked[name]=digest
+        gguf=Path(provenance['gguf']['path'])
+        assert gguf.stat().st_size==provenance['gguf']['size'],'GGUF_SIZE_DRIFT'
+        (root/'artifact-preflight.json').write_text(json.dumps(dict(checked_sha256=checked,
+            frozen_provenance_sha256=hashlib.sha256(Path(cfg['provenance']).read_bytes()).hexdigest(),
+            gguf_size=gguf.stat().st_size,gguf_sha256=provenance['gguf']['sha256'],
+            gguf_hash_scope='Initial full hash retained; RO artifact is not rehashed on each server restart.'),indent=2)+'\n')
     for k in list(os.environ):
         if k.startswith(('KT_R6_', 'KT_R61_', 'KT_R62_', 'KT_R63_',
                          'KT_R64_', 'KT_R65_', 'KT_R66_', 'KT_DEBUG_', 'KT_C64_CAPTURE')):
@@ -27,6 +41,10 @@ def main():
         '--kt-numa-nodes','4','5','--kt-gpu-experts-ratio','0.125',
         '--kt-max-deferred-experts-per-token',str(cfg['deferred']),
         '--kt-expert-placement-strategy','frequency','--init-expert-location',cfg['activation_path']]
+    if cfg.get('deferred_trace',False):
+        assert cfg['observer'],'DEFERRED_TRACE_FORBIDDEN_IN_TIMED_PERFORMANCE'
+        os.environ['KT_DEBUG_DEFERRED_TRACE_FILE']=str(root/'deferred-trace.jsonl')
+        os.environ['KT_DEBUG_DEFERRED_TRACE_LIMIT']='1000000'
     if cfg['dynamic']:
         args += ['--kt-enable-dynamic-expert-update','--kt-gpu-prefill-token-threshold',str(cfg['threshold'])]
     if cfg['recorder']:
@@ -37,12 +55,13 @@ def main():
     if cfg['observer']:
         args += ['--forward-hooks',json.dumps([
             dict(name='round7-structure',target_modules=['model.layers.*.mlp'],
-                 hook_factory='round7_hooks:make_structure',config=dict(output=str(root),profile=cfg['profile'],dynamic_audit=cfg['dynamic'])),
+                 hook_factory='round7_hooks:make_structure',config=dict(output=str(root),profile=cfg['profile'],dynamic_audit=cfg['dynamic'],deferred_audit=cfg['deferred']==1)),
             dict(name='round7-route-pressure',target_modules=['model.layers.*.mlp.topk'],
                  hook_factory='round7_hooks:make_routes',config=dict(output=str(root),profile=cfg['profile']))])]
     (root/'resolved-command.json').write_text(json.dumps(dict(argv=args,config=cfg,
         env={k:os.environ.get(k) for k in ('PYTHONPATH','ASCEND_RT_VISIBLE_DEVICES',
-            'SGLANG_EXPERT_DISTRIBUTION_RECORDER_DIR','HF_HUB_OFFLINE')}),indent=2)+'\n')
+            'SGLANG_EXPERT_DISTRIBUTION_RECORDER_DIR','HF_HUB_OFFLINE',
+            'KT_DEBUG_DEFERRED_TRACE_FILE','KT_DEBUG_DEFERRED_TRACE_LIMIT')}),indent=2)+'\n')
     os.execv('/workspace/results/venv-r6/bin/python',['/workspace/results/venv-r6/bin/python',*args])
 
 
