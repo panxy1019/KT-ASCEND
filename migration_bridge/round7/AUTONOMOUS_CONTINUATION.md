@@ -37,6 +37,20 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+Latest19:50: repaired operators100/100 PASS(maxrelativeL2 .0017029279396063187),
+Uniformcompact32+restart4 PASS and four trajectories exact vsoriginalruntime-v2.
+Newlossless completeoperator arrays/weights/partials/logs/results/provenance
+archive locallypreserved, SCPexit0/local-A3hash+fulltar verified SHA
+142e187455ef6723b031cab984c13610eba12d1321c7f593b76fe091dee6986a.
+Driverbacking-requalification-v1 nowhealthyRUNNING frequency-compact;
+stagesoperators/uniform-compact. Do notrestart. ThenfreshR64(required174)→
+DEVmigrationprobes256/512/1024. SeePOST_FIX_PREDECESSOR_CHECKPOINT.md.
+Servingraw stillA3 untilbothcompactclose; do notclaimlocallyarchivedyet.
+Futurethreshold_sweep currentlyexpects --probes root/threshold-{256,512,1024},
+whilecurrentdrivercreatesdynamic-dev-probe-{256,512,1024}. BeforeDEVscreen,
+addexplicit testedprefix adapter or immutable read-only aliases afterprobesclose;
+do notoverwritecurrenthealthy v12driver or silently change scientificinputs.
+
 Latest19:30: original CPU-backing defect has passed repaired A3 standalone
 L1/L13/L26 eviction regression,18cases/180forwards finite+10repeatexact;
 max canonical relativeL2 .0017457476763079638 <=.01. New nativeSHA
