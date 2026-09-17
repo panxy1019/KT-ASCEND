@@ -46,8 +46,11 @@ R64/reference or source/asset provenance failure stops the entire study.
 A quality failure excludes only that profile from performance/selection.
 
 HBM: host read-only sampler at10s, before load/after load/warmup/steady/peak;
-framework allocated/reserved/peak snapshots in diagnostic audit, server_info
-in observer-OFF sessions. Host telemetry: MemAvailable/cache/swap, cgroup
+framework allocated/reserved/peak snapshots in diagnostic audit. The deployed
+idle server_info RPC timed out before requests in v3 and is explicitly
+UNAVAILABLE in v4; no configured number is called a measured counter.
+Resolved launch argv proves TP1/batch1/Graph OFF/fixed KV configuration.
+Host telemetry: MemAvailable/cache/swap, cgroup
 anon/file/events, process RssAnon/RssFile/PSS/faults/NUMA. Shared cache is not
 called process-private RAM. Host bandwidth/CPU wait unavailable counters are
 null; do not claim measured saturation from CPU utilization alone.

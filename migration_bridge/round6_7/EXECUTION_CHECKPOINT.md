@@ -2,8 +2,8 @@
 
 ## Frozen and launched (not yet qualified)
 
-Current study: `/workspace/results/r65-r67-serial-v4` in the existing container.
-Study freeze SHA256 `42c12720d86305cdd63f3df9dd43c05a7f111a8adc6c38f155605d8cc0ee2d25`.
+Current study: `/workspace/results/r65-r67-serial-v5` in the existing container.
+Study freeze SHA256 `8d2be7b6e48db5a695f170a6b5573a34233ca66261d3101d0263c2ba247e2fcf`.
 CMMLU256 manifest SHA256 `bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04`.
 Compact manifest SHA256 `555f578af6d816b25ee5efe6590a472b654f27a74614c011bba599a8f8c24933`.
 
@@ -60,5 +60,12 @@ counters. No configured value is reported as a dynamic memory measurement.
 v4 adds automated post-collection JSON/Markdown Pareto reporting and preserves
 all three preceding startup-only failures. No quality/policy/mask fitting.
 
-LOCAL_VERIFIED: 14 contract tests, Python compilation, bash syntax, diff checks.
+v4 freeze `42c12720d86305cdd63f3df9dd43c05a7f111a8adc6c38f155605d8cc0ee2d25`
+completed32R64compact requests and reaped all server descendants. The next
+session's bare bind rejected TCP TIME_WAIT despite no listener. v5 restores
+SO_REUSEADDR in preflight, matching the retained launcher/server; a targeted
+test rejects a live listener and accepts a closed connection in TIME_WAIT.
+No other process is killed. A full fresh R64 screen is repeated under v5.
+
+LOCAL_VERIFIED: 15 contract tests, Python compilation, bash syntax, diff checks.
 Full target qualification remains pending until execution artifacts close gates.

@@ -97,6 +97,7 @@ def compact(study, profile, target, manifest):
                 report['requests'] += 1
                 write(target / 'compact-progress.json', report)
             report['references'][row['id']] = anchor
+            write(target / 'compact-progress.json', report)
     with session(target / 'restart', profile) as root:
         for row in manifest['prompts']:
             _, ids, _ = request(root, row, f'r67-restart-{row["id"]}', 16)

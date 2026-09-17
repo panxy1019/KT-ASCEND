@@ -4,15 +4,25 @@ import sys
 import unittest
 import tempfile
 import json
+import socket
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'round6_5/tools'))
 from build_ratio_profiles import build
 from common import product_gate, score_letters, validate_answer, validate_profile
 from monitor_serial_host import npu0_hbm
-from serial_session import validate_launch, info
+from serial_session import validate_launch, info, check_port_available
 
 
 class ContractTests(unittest.TestCase):
+    def test_port_reuse_accepts_timewait_rejects_live_listener(self):
+        server=socket.socket();server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+        server.bind(('127.0.0.1',0));port=server.getsockname()[1];server.listen()
+        with self.assertRaises(OSError):check_port_available(port)
+        client=socket.create_connection(('127.0.0.1',port))
+        peer,_=server.accept();peer.shutdown(socket.SHUT_WR);client.recv(1)
+        client.close();peer.close();server.close()
+        check_port_available(port)
+
     def test_optional_rpc_is_not_fabricated_memory(self):
         self.assertEqual(info()['status'],'UNAVAILABLE')
         self.assertNotIn('internal_states',info())

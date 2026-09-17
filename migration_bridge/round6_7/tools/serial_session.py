@@ -52,11 +52,19 @@ def validate_launch(root, observer):
                 evidence='RESOLVED_LAUNCH_ARGS_NOT_DYNAMIC_MEMORY', resolved_sha256=sha(root / 'resolved-command.json'))
 
 
+def check_port_available(port=31000):
+    # Match the retained launcher and HTTP server: TIME_WAIT is reusable, a
+    # live listening socket is not. Never terminate another port owner.
+    with socket.socket() as s:
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.bind(('127.0.0.1', port))
+
+
 @contextmanager
 def session(root, profile, observer=False):
     root = Path(root); root.mkdir(parents=True, exist_ok=False)
     admitted = admission()
-    with socket.socket() as s: s.bind(('127.0.0.1', 31000))
+    check_port_available()
     tools = Path(__file__).parent
     cmd = [sys.executable, '/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py',
            '--output', str(root / 'guard'), '--timeout-seconds', '43200', '--',
