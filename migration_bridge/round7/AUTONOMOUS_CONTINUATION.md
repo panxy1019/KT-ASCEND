@@ -51,8 +51,18 @@ actual DECODE mode string is "2", not "DECODE". Repaired locally using independe
 exact-history decode indices; future observer also records name/is_decode.
 65 local tests PASS. See `02_DYNAMIC/DECODE_MODE_TOOLING_REGRESSION.md`.
 No Dynamic A3 gate or production change has run. This repair is not present in
-v6/v9: stage separately as v10 after its local commit and verified complete SCP.
+v6/v9; v10 is now separately staged with verified complete SCP and archive hashes.
 Do not overwrite active tools or run extra NPU work while Static owns the device.
+
+Release-v10 staged (not a model driver) at
+`/workspace/c64-dev/round7/tools-v10/migration_bridge/round7/tools`.
+Source commit `110c091800aebe9e587ceb838a8c6651704e9669`;
+archive SHA256 `e5d95ccd3beb759298572edbf0763d0f0eeb59cbb97e1b8732f7c3c23c12de22`.
+SCP exit0, host and container SHA verified before extraction. All65 pure-Python
+unit tests passed both locally and under A3 Python3.11, without importing torch
+or launching any additional NPU work. This is tool verification, not Dynamic
+full-model/system migration qualification. Active v6/native unchanged. Use v10
+for future gates after Static completion/reaping; retain v9 window-audit adapter.
 
 DEV statistics collection attempt2 completed all256 prompts and its full
 integrity audit: raw4352/attributed4352, kept4096, proven unused tails256,

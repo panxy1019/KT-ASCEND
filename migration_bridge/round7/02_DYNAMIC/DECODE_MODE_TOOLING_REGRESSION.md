@@ -50,5 +50,11 @@ No new Dynamic model run has been claimed.
 
 The healthy Static driver continues on immutable release-v6. Native extension,
 actual deployed wrapper, frequency mask and acceptance policy are unchanged.
-Deploy this repair only into a new versioned tool release before future Dynamic
-probes; never replace active v6 or older staged v9 in place.
+Repair is committed at `110c091800aebe9e587ceb838a8c6651704e9669` and staged in
+`/workspace/c64-dev/round7/tools-v10/migration_bridge/round7/tools`.
+Archive SHA256: `e5d95ccd3beb759298572edbf0763d0f0eeb59cbb97e1b8732f7c3c23c12de22`.
+Complete SCP plus host/container hash checks preceded extraction. The same
+65 pure-Python unit tests passed under A3 Python3.11 in 0.411s, without torch
+imports or additional NPU work. This verifies tool behavior on that interpreter,
+not full-model Dynamic migration or qualification. Never replace active v6 or
+older staged v9 in place; future model gates must explicitly use versioned v10.
