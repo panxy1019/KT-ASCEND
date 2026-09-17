@@ -14,6 +14,10 @@ def main():
     assert cfg['deferred'] in (0,1)
     if cfg.get('provenance'):
         provenance=json.loads(Path(cfg['provenance']).read_text())
+        from runtime_selection import select_cpu_runtime
+        cpu_runtime=select_cpu_runtime(cfg,provenance)
+        if cpu_runtime:
+            os.environ['PYTHONPATH']=cpu_runtime+os.pathsep+os.environ.get('PYTHONPATH','')
         checked={}
         for name,info in provenance['files'].items():
             digest=hashlib.sha256(Path(name).read_bytes()).hexdigest()
@@ -25,6 +29,8 @@ def main():
             frozen_provenance_sha256=hashlib.sha256(Path(cfg['provenance']).read_bytes()).hexdigest(),
             gguf_size=gguf.stat().st_size,gguf_sha256=provenance['gguf']['sha256'],
             gguf_hash_scope='Initial full hash retained; RO artifact is not rehashed on each server restart.'),indent=2)+'\n')
+    elif cfg.get('cpu_runtime_root'):
+        raise ValueError('PRIVATE_RUNTIME_REQUIRES_PROVENANCE')
     for k in list(os.environ):
         if k.startswith(('KT_R6_', 'KT_R61_', 'KT_R62_', 'KT_R63_',
                          'KT_R64_', 'KT_R65_', 'KT_R66_', 'KT_DEBUG_', 'KT_C64_CAPTURE')):
@@ -38,7 +44,7 @@ def main():
         '--weight-loader-disable-mmap','--attention-backend','ascend','--sampling-backend','pytorch',
         '--disable-radix-cache','--kt-weight-path','/workspace/results/r65-assets-v1/all-moe-f32.gguf',
         '--kt-method','LLAMAFILE','--kt-cpuinfer','64','--kt-threadpool-count','2',
-        '--kt-numa-nodes','4','5','--kt-gpu-experts-ratio','0.125',
+        '--kt-numa-nodes','4','5','--kt-gpu-experts-ratio',('1.0' if cfg.get('reference_r64',False) else '0.125'),
         '--kt-max-deferred-experts-per-token',str(cfg['deferred']),
         '--kt-expert-placement-strategy','frequency','--init-expert-location',cfg['activation_path']]
     if cfg.get('deferred_trace',False):

@@ -1,19 +1,22 @@
 """Reuse frozen C32/C64 same-operand oracle, only early/mid/late reps."""
 import json
+import argparse
 from pathlib import Path
 import subprocess
 import sys
 
 
 def main():
-    base=Path(sys.argv[1]);out=base/'operator-representatives';out.mkdir(exist_ok=False)
+    p=argparse.ArgumentParser();p.add_argument('base',type=Path)
+    p.add_argument('--runtime-env',type=Path)
+    a=p.parse_args();base=a.base;out=base/'operator-representatives';out.mkdir(exist_ok=False)
     source=Path('/workspace/c64-dev/tools-v16/migration_bridge/round6_7_c64/tools')
     report=dict(status='RUNNING',runs=[],gate=.01)
     try:
         for layer in (1,13,26):
             for tp in (1,2):
                 target=out/f'tp{tp}-L{layer:02d}'
-                cmd=['bash',str(source/'with_c64_env.sh'),str(source/'operator_oracle.py'),
+                cmd=['bash',str(a.runtime_env or source/'with_c64_env.sh'),str(source/'operator_oracle.py'),
                      '--layer',str(layer),'--tp',str(tp),'--output',str(target)]
                 if layer in (1,26):cmd+=['--prefill']
                 with (out/f'tp{tp}-L{layer:02d}.log').open('x') as log:
