@@ -54,6 +54,20 @@ class ContextCompatTests(unittest.TestCase):
         self.assertIn('wait_stream',calls)
     def test_other_cuda_method_unchanged(self):
         self.assertIn('return torch.cuda.current_stream()',port_source(SOURCE))
+    def test_resident_phase_port_is_scoped_and_guarded(self):
+        phase='        # --- Phase 1: Copy GPU experts directly (fast GPU-to-GPU) ---\n'
+        copy='                    dst[e].copy_(src[gpu_idx], non_blocking=True)\n'
+        source=SOURCE.replace('        copy_stream = torch.cuda.Stream(device=device)\n',
+            '        gpu_expert_ids = []\n        weight_infos = []\n'+phase+
+            '        for e in gpu_expert_ids:\n            for name, _, dst in weight_infos:\n'
+            '                    src = getattr(original_layer, name)\n'+copy+
+            '        copy_stream = torch.cuda.Stream(device=device)\n')
+        output=port_source(source,resident_layout=True)
+        self.assertIn('resident_to_raw(getattr(original_layer, name), dst)',output)
+        self.assertIn('if device.type == "npu":\n                        src = resident_sources[name]',output)
+        self.assertIn('return torch.cuda.current_stream()',output)
+        with self.assertRaisesRegex(AssertionError,'RESIDENT_PHASE_SOURCE_DRIFT'):
+            port_source(SOURCE,resident_layout=True)
     def test_npu_bf16_allocator_owned_pinned_and_tp1(self):
         source='''class Context:
     def _create_cpu_buffers(self):

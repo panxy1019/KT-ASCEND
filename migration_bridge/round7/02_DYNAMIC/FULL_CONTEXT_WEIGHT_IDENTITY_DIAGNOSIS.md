@@ -50,3 +50,31 @@ resident weights, source logical/layer identity, raw/inference copy, context
 reuse, CPUstaging and postprocess boundaries are distinct hypotheses. If a real
 semantic defect is localized, minimallyrepair, regress it and rerun the original
 trigger gates. Weight-source identity cannot be relaxed by product quality.
+
+## Actual boundary replay, 23:27 UTC
+
+tools-v18 against unchanged runtime-v6 reproduced the same Layer2 hard failure.
+For both Layer1 and Layer2, initial resident E0/E8/E56 weights were checkpoint
+exact in inference orientation (`w13` 2048×2816; `w2` 1408×2048).
+Immediately after BF16 prepare, those controls were NOT checkpoint exact in raw
+orientation (2816×2048; 2048×1408). CPU-staged E1/E63 were exact in both layers.
+Layer2's reported E0 w13 maxabs was 0.5719451904296875. This directly isolates
+the bad boundary to resident-to-raw full-context preparation rather than source
+weight identity, wrapper layer identity, or all CPU staging. Original failed
+request and partial generation are not qualified. Owned guard reaped it.
+
+The candidate repair converts the entire NPU resident tensor to base ND format
+before slicing experts, explicitly reverses the inference transpose when target
+raw dimensions require it, and rejects unknown shapes/dtypes/non-base targets.
+It is limited to BF16 prepare Phase1 on NPU; CUDA, CPU staging, arithmetic and
+update selection are unchanged. A3 repair validation is pending, not PASS.
+
+Primary-source cross-check (2026-09-17): installed torch_npu revision
+`912882db09313e70f5312212669cd71e02e5c5d8` routes NPU-to-NPU copy to
+aclnnInplaceCopy without the later internal-format guard. Current master explicitly
+adds an A2/A3 internal-format fallback because that copy can corrupt storage.
+This supports testing ND normalization; it does not by itself prove that backend
+defect caused this model failure or authorize changing the installed wheel.
+
+- [Installed copy implementation](https://github.com/Ascend/pytorch/blob/912882db09313e70f5312212669cd71e02e5c5d8/torch_npu/csrc/aten/ops/op_api/CopyKernelOpApi.cpp)
+- [Current official implementation, comparison only](https://github.com/Ascend/pytorch/blob/master/torch_npu/csrc/aten/ops/op_api/CopyKernelOpApi.cpp)

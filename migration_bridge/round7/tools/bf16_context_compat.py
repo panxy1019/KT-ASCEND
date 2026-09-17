@@ -26,7 +26,7 @@ def port_cpu_buffers(source):
     return ''.join(lines[:method.lineno-1])+updated+''.join(lines[method.end_lineno:])
 
 
-def port_source(source, llamafile_staging=False):
+def port_source(source, llamafile_staging=False, resident_layout=False):
     tree=ast.parse(source)
     matches=[node for node in ast.walk(tree) if isinstance(node,ast.FunctionDef)
              and node.name=='_prepare_weight_bf16']
@@ -47,6 +47,21 @@ def port_source(source, llamafile_staging=False):
     updated=updated.replace(device,device+'        device_api = torch.get_device_module(device.type)\n')
     assert updated.count('torch.cuda.')==7,'BF16_STREAM_SOURCE_DRIFT'
     updated=updated.replace('torch.cuda.','device_api.')
+    if resident_layout:
+        phase = '        # --- Phase 1: Copy GPU experts directly (fast GPU-to-GPU) ---\n'
+        assert updated.count(phase) == 1, 'BF16_RESIDENT_PHASE_SOURCE_DRIFT'
+        updated = updated.replace(phase,
+            '        resident_sources = {}\n'
+            '        if gpu_expert_ids and device.type == "npu":\n'
+            '            from .bf16_resident_layout import resident_to_raw\n'
+            '            for name, _, dst in weight_infos:\n'
+            '                resident_sources[name] = resident_to_raw(getattr(original_layer, name), dst)\n'
+            + phase)
+        copy = '                    dst[e].copy_(src[gpu_idx], non_blocking=True)\n'
+        assert updated.count(copy) == 1, 'BF16_RESIDENT_COPY_SOURCE_DRIFT'
+        updated = updated.replace(copy,
+            '                    if device.type == "npu":\n'
+            '                        src = resident_sources[name]\n' + copy)
     if llamafile_staging:
         writer='        do_write = tp_rank == 0 and wrapper is not None\n'
         assert updated.count(writer)==1,'BF16_WRITER_SOURCE_DRIFT'
