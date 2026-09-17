@@ -59,3 +59,10 @@ reproduced failure justifies a focused load-time backing-pool fix; a repaired
 binary must rerun the same regression, local operators and necessary static
 compact tests before full-model Dynamic qualification. Do not overwrite the
 binary used by the healthy current static driver.
+
+If repair changes the common CPU weight loader, the user's common-loader-change
+rule requires a fresh R64 reference reproduction under the repaired runtime,
+in addition to the necessary Uniform/Frequency compact/operator regression.
+Preserve the original frozen174/256 evidence and manifest, do not silently
+substitute a new reference or change the -5pp criterion. Bind new native/tool
+hashes and any runtime-path adapter in a new provenance artifact before use.

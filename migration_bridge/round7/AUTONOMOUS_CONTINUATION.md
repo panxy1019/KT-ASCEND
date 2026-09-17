@@ -101,7 +101,10 @@ passes. Observer ON/OFF parity passed. Finite/repeated pilot outputs passed.
    CODE_INSPECTED defect candidate, not yet reproduced. Use predetermined
    initially resident experts and real operands, preserve pre-fix failure, then
    minimally repair and rerun original regression/operators/static compact if
-   needed. Do not run it concurrently with healthy current serving or overwrite
+   needed. A common CPU weight-loader repair also requires fresh R64 reference
+   reproduction per the user's common-loader-change rule; preserve the original
+   174/256 result and frozen criterion, bind any new native/runtime paths to new
+   provenance before launch. Do not run it concurrently with healthy current serving or overwrite
    the live native binary. See `02_DYNAMIC/PRE_MIGRATION_SOURCE_AND_BACKING_AUDIT.md`.
    Continue Dynamic deployed-code audit and DEV-only threshold256/512/1024 sweep; freeze
    threshold before HOLDOUT/CMMLU. Validate no-trigger, real triggered full-prefill,
