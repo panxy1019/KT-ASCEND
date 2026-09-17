@@ -119,6 +119,18 @@ Uniform. Software failures return to the agent for repair; never erase failed
 run directories. Driver completion still requires agent selection/documentation
 before Round7B. The local suite has eighteen passing tests after freeze checks.
 
+Tool release-v6 is staged, not executing, at
+`/workspace/c64-dev/round7/tools-v6/migration_bridge/round7/tools`.
+Its archive SHA256 is
+`af6eeeb22ff796525d15c389757e7296320561caed9d3088de5a26ddfd43750b`,
+built from local commit `5aa2d89af` (resolve full SHA before reporting).
+The active collector's release-v5 directory was not modified. Use this separately
+versioned tool path for subsequent stages after the current collector reaps.
+Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
+inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
+208 routed slots, not216 from counting dense layer0. Both loader and freezer
+must continue to agree on that budget.
+
 ## Follow-up policy
 
 Continue useful preparation while a healthy long stage runs, without disturbing
