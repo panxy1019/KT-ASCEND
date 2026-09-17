@@ -37,6 +37,20 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 22:02 latest: healthyv4 closedoperators100/100PASS(max .0017029279396063187)
+andUniformcompact32+restart4PASS, fourreference trajectoriesexactvsruntime-v4.
+NowFrequencycompact RUNNING, then directR64→DEVprobes256/512/1024. Keephealthy.
+NewlosslessUniformraw/provenance/operator-summary archive locallypreserved,
+SCPexit0/hash+tarPASS SHA162d4a2b91835cd3b91f1dbf21cdd4edc025365ef07d828b13ca690c59310dce.
+SeeLLAMAFILE_STAGING_PREDECESSOR_CHECKPOINT.md. No newmigrationqualification.
+FutureobserverV3 preparedLOCALonly, commit918b5256bfdc9a444d794f646d662663534d8a63,
+sourceSHA9e92b9cd8981a104277a851d7e45883ec5a1239935d7d0ad8a1498b70cd4c063,
+97localtestsPASS. Itattributesactualsnapshotcgroup/process-start-ID, retain
+outsideprocessdeltas. Do NOT reinterpretoldV2Staticcontaminatedwindows asPASS.
+Notdeployed yet; activehostV2/tools-v16 unchanged. Beforefutureformalperf,
+stageversionednewhostobserver/A3puretests/smoke+freshcompletewindows; stoponly
+identity-verifiedobsoleteownedobserver notmodel/businessjobs. Keepcriteriafixed.
+
 2026-09-17 21:43 latest: minimalstagingport standaloneA3PASS12experts/48writes,
 checkpoint+H2Dexact/other-slotsafe/lossyF32rejected.94testsLOCAL+A3PASS.
 Tools-v16sourcea1c822f75ddd8b853b46520f6323f67bc2365d32/archiveSHA
