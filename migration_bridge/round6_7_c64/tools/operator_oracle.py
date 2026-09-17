@@ -24,9 +24,10 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--layer',type=int,required=True)
     p.add_argument('--tp',type=int,choices=(1,2),required=True)
     p.add_argument('--output',type=Path,required=True);p.add_argument('--prefill',action='store_true')
+    p.add_argument('--operands',type=Path,default=Path('/workspace/results/r65-r67-serial-v5/R16/observer/operands'))
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(1)
-    operands=Path('/workspace/results/r65-r67-serial-v5/R16/observer/operands')
+    operands=a.operands
     real=[torch.load(operands/f'L{a.layer:02d}-C{c}.pt',weights_only=False)['tensor'] for c in (1,4,7)]
     cases=[(f'real{idx}',x) for idx,x in enumerate(real)]
     if a.prefill:

@@ -41,31 +41,30 @@ try:
     run('run_performance','--output',perf.parent,'--canary',canary,'--lease',lease)
     value=json.loads(perf.read_text())
     assert value['status']=='PASS','PERFORMANCE_FAILED'
+    state['phase']='MEMORY_COST_AUDIT';write(progress,state)
+    run('audit_memory','--performance',perf)
     if value['verdict']!='BENEFICIAL':
         state.update(status='COMPLETE',classification='C64_RUNTIME_QUALIFIED_NO_MEANINGFUL_SPEEDUP',
                      performance_verdict=value['verdict'],long_quality='NOT_RUN_PERFORMANCE_GATE')
     else:
+        state['phase']='R8_C64_SMOKE';write(progress,state)
+        r8=root/'r8-canary-v1/summary.json'
+        with (root/'r8-canary.log').open('x') as log:
+            subprocess.run(['bash',str(tools/'with_c64_env.sh'),str(tools/'run_canary.py'),
+                '--output',str(r8.parent),'--operator-summary',str(matrix),'--profile','R8',
+                '--performance-summary',str(perf)],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=43200)
+        run('r8_smoke_extension','--canary',r8)
+        smoke=r8.parent/'extended-smoke/summary.json'
         state['phase']='R16_C64_LONG_QUALITY';write(progress,state)
-        run('run_quality','--canary',canary,'--performance',perf,'--output',root/'r16-quality-v1')
+        run('run_quality','--canary',canary,'--performance',perf,'--r8-smoke',smoke,'--output',root/'r16-quality-v1')
         q=json.loads((root/'r16-quality-v1/summary.json').read_text())
-        if q['status']!='PASS':
-            state.update(status='COMPLETE',classification='C64_RUNTIME_QUALIFIED_AND_BENEFICIAL',
-                         product_quality='FAIL_5PP',r8='NOT_RUN_PREDECESSOR_FAILURE')
-        else:
-            # Log files are intentionally distinct; the same validated tool is reused.
-            state['phase']='R8_C64_SMOKE';write(progress,state)
-            r8=root/'r8-canary-v1/summary.json'
-            with (root/'r8-canary.log').open('x') as log:
-                subprocess.run(['bash',str(tools/'with_c64_env.sh'),str(tools/'run_canary.py'),
-                    '--output',str(r8.parent),'--operator-summary',str(matrix),'--profile','R8',
-                    '--performance-summary',str(perf)],stdout=log,stderr=subprocess.STDOUT,check=True,timeout=43200)
-            state['phase']='R8_C64_LONG_QUALITY';write(progress,state)
-            with (root/'r8-quality.log').open('x') as log:
-                subprocess.run(['bash',str(tools/'with_c64_env.sh'),str(tools/'run_quality.py'),
-                    '--canary',str(r8),'--performance',str(perf),'--output',str(root/'r8-quality-v1')],
-                    stdout=log,stderr=subprocess.STDOUT,check=True,timeout=43200)
-            state.update(status='COMPLETE',classification='C64_RUNTIME_QUALIFIED_AND_BENEFICIAL',
-                r16_quality=q['status'],r8_quality=json.loads((root/'r8-quality-v1/summary.json').read_text())['status'])
+        state['phase']='R8_C64_LONG_QUALITY';write(progress,state)
+        with (root/'r8-quality.log').open('x') as log:
+            subprocess.run(['bash',str(tools/'with_c64_env.sh'),str(tools/'run_quality.py'),
+                '--canary',str(r8),'--performance',str(perf),'--r8-smoke',str(smoke),'--output',str(root/'r8-quality-v1')],
+                stdout=log,stderr=subprocess.STDOUT,check=True,timeout=43200)
+        state.update(status='COMPLETE',classification='C64_RUNTIME_QUALIFIED_AND_BENEFICIAL',
+            r16_quality=q['status'],r8_quality=json.loads((root/'r8-quality-v1/summary.json').read_text())['status'])
 except BaseException as exc:
     state.update(status='BLOCKED',error=repr(exc),classification='C64_RUNTIME_NOT_QUALIFIED');raise
 finally:

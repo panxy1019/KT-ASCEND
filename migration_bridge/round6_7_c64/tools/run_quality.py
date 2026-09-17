@@ -12,9 +12,13 @@ from run_serial_sweep import quality,paired
 
 p=argparse.ArgumentParser();p.add_argument('--canary',type=Path,required=True)
 p.add_argument('--performance',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+p.add_argument('--r8-smoke',type=Path,required=True)
 a=p.parse_args()
 c=json.loads(a.canary.read_text());perf=json.loads(a.performance.read_text())
 assert c['status']=='PASS' and perf['status']=='PASS' and perf['verdict']=='BENEFICIAL','QUALITY_ENTRY_GATE'
+assert json.loads(a.r8_smoke.read_text())['status']=='PASS','R8_SMOKE_PREDECESSOR'
+mem=json.loads(a.performance.with_name('memory-audit.json').read_text())
+assert mem['status']=='PASS' and mem['performance_sha256']==sha(a.performance),'MEMORY_PREDECESSOR'
 assert sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')==c['native_sha256']
 assert sha('/workspace/c64-dev/runtime/kt_kernel/utils/llamafile.py')==c['wrapper_sha256']
 name=c['profile'];assert name in ('R16','R8')
@@ -28,6 +32,7 @@ assert sha(profile)==c['profile_sha256']
 os.environ.update(C64_TP='2',KT_R67_CPU_SET='128-191',KT_R67_NPU_ID='0')
 os.environ.pop('KT_C64_CAPTURE_DIR',None)
 freeze=dict(canary_sha256=sha(a.canary),performance_sha256=sha(a.performance),
+    r8_smoke_sha256=sha(a.r8_smoke),memory_audit_sha256=sha(a.performance.with_name('memory-audit.json')),
     manifest_sha256=sha(manifest),profile_sha256=sha(profile),product_floor_pp=-5,
     reference_sha256=sha(base/'R64/quality.json'),workers=64,numa=[4,5],batch=1,
     native_sha256=sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so'))

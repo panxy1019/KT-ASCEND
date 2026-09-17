@@ -19,6 +19,8 @@ if a.profile=='R8':
     assert a.performance_summary is not None,'R8_PERFORMANCE_PREDECESSOR'
     perf=json.loads(a.performance_summary.read_text())
     assert perf['status']=='PASS' and perf['verdict']=='BENEFICIAL','R8_NOT_YET_ALLOWED'
+    mem=json.loads(a.performance_summary.with_name('memory-audit.json').read_text())
+    assert mem['status']=='PASS' and mem['performance_sha256']==sha(a.performance_summary),'R8_MEMORY_PREDECESSOR'
 op=json.loads(a.operator_summary.read_text())
 assert op['status']=='PASS' and len(op['runs'])==52,'OPERATOR_PREDECESSOR'
 audit=json.loads(a.operator_summary.with_name('audit.json').read_text())
