@@ -57,6 +57,21 @@ Readv3progress/log; keephealthyintact. Usev15threshold_sweep --probe-prefix
 dynamic-dev-probe- afterallprobesclose; candidatecommit/ack beforeHD. Nochosen
 threshold, Dynamic/Deferred notqualified. SeeBF16_FULL_CONTEXT_COMPATIBILITY.md.
 
+Additional CODE_INSPECTED seam to check if next triggeredprobe fails:
+LlamafileMoEWrapper has no submit_write_weight_scale_to_buffer/sync method;
+only utils/amx.py implements that Python interface; llamafile/moe.hpp and
+moe-tp.hpp do not expose nativewrite API. Official BF16context currently calls
+that interface forCPUownedweights. Do not claim this as A3reproduced yet or
+stophealthyv3. If reproduced, preservefailedprobe, implement minimal F32GGUF
+→BF16 pinned fullcontext staging adapter with exact frozen weight identity and
+device-layout orientation, keeping official slot/event fences and KTEPcoordinator.
+Loader get_undequanted_tensor_and_ggml_type returns read-only byteTensor backed
+by mmap; requireGGML_F32 then view(torch.float32), correctlogical expert slice,
+gate/up concatenation and NPUtranspose matching auditedcheckpoint orientation.
+Do not reinterpret F32bytes asBF16, inject diagnostic checkpointweights or use
+raw pointertransfer. Existing loader all4992projection identity evidence stays
+frozen; newstage needs exactcheckpoint/source/target regression beforepromotion.
+
 2026-09-17 20:25 checkpoint: v1 stopped at fresh R64 adapter mismatch,
 175/256 invalid0. Both post-fix compact lanes PASS32+restart4. Historical
 R64 uses direct Ascend withoutKT; v12 mistakenly used KT64 and expandedlimits.
