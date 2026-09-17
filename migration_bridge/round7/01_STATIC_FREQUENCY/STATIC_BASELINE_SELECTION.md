@@ -64,6 +64,26 @@ request-prefill-specific adaptation mechanism.
 
 ## Next ordered gate
 
+## Lossless performance preservation
+
+`raw/static-performance-evidence-v1.tar.gz` contains all36 original request
+inputs/full SSE responses, configs, process/lifecycle artifacts, complete campaign
+summary/progress, the original-mtime window audit, performance-decision JSON,
+and bounded independent host-sample snapshot. SHA256:
+
+`5eadc608619bf19c9bd6d84a0155928040b2408161ff360ca3c2187e6262dfc1`
+
+Archive created on A3 after original-mtime audit; SCP exited0, local SHA matches
+A3, and full tar stream validation exited0. Its formal isolation failure is
+preserved, not screened out. Static controller was confirmed reaped with only
+the container's `/bin/sleep infinity` before launching the standalone backing
+regression. First attempt to execute the non-executable environment script
+directly failed with permission denied before Python/test startup; its log is
+retained. Corrected invocation is `taskset -c128-191 bash with_c64_env.sh probe.py`:
+the environment wrapper already execs the frozen Python interpreter.
+
+## Next ordered gate (continued)
+
 After the completed Static driver is reaped, execute the original-binary CPU
 backing eviction regression on layers1/13/26. Preserve any failure before a
 minimal loader repair. A common-loader repair requires new binary provenance,

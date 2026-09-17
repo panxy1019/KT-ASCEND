@@ -50,6 +50,18 @@ local preservation. Next: original-binary backing eviction regression1/13/26,
 then minimal repair if reproduced, fresh R64 if common loader changes. Use v11
 future tools and Uniform profile for Dynamic control.
 
+19:12 update: performance archive now fully preserved locally, SCPexit0,
+full tar validationexit0, local/A3 SHA both
+5eadc608619bf19c9bd6d84a0155928040b2408161ff360ca3c2187e6262dfc1.
+Static selection commit ee2b17f53 (resolve full before reporting). Owned container
+had only sleep infinity: completed Static processes fully reaped. Original-binary
+L1 eviction probe is now running with Uniform profile under v11:
+cpu-backing-original-v1/L01/result.json and cpu-backing-original-L01-v2.log.
+Do not launch a duplicate. Initial v1 launcher permission-denied before test is
+retained, corrected v2 uses taskset/b​​ash wrapper (wrapper already execs Python).
+If L1 fails, preserve it and original binary before fixing. If PASS, proceed
+separate processes L13/26. No full-model Dynamic run has started.
+
 2026-09-17 15:46 heartbeat: Static performance16/36 at inspection, healthyRUNNING;
 host V2 EXCLUSIVE blockers[]. No extra NPU test launched. Prepared post-DEV
 Dynamic consumers now enforce explicit threshold commit acknowledgment via
