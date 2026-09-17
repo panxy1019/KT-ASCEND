@@ -30,6 +30,15 @@ reserved but uninitialized CPU weight slice. This is a **defect candidate**, not
 yet a reproduced A3 root cause. Uniform/Frequency static operation never changes
 ownership and its current results must not be downgraded on this hypothesis.
 
+The actual compiled-source `moe.hpp` hash is
+`17a7e720166b18ee6fb57e4de8ffc683972df08ca98a56c7cd763f11c5a642eb`;
+it matches the retained `/workspace/c64-dev/c64-build.json` source record and
+the local file. That build record binds it to native SHA
+`a5497fa085d704d8f67484b3936eaf448080f5d445899d88e4e76bea4305f077`.
+The audited `common.hpp` SHA is
+`00b10f052035da3570fe81525f07ca17d5af14f29d7c58c443e4c0a248c0cd11`.
+This is source-to-build provenance, not a substitute for the behavioral test.
+
 The audited official pinned implementation has the same load-time skip at the
 LLAMAFILE seam; official Dynamic presence is not proof for this C64/F32 profile.
 Primary reference: [pinned official LLAMAFILE source](https://github.com/kvcache-ai/ktransformers/blob/0b954fe4ca2f9e79519da66156e6a3f92b686232/kt-kernel/operators/llamafile/moe.hpp).

@@ -158,6 +158,17 @@ future Dynamic tools add independent HF checkpoint source identity and the CPU
 backing eviction probe; twenty-one local tests pass. Those additions are not
 deployed or A3-verified. Use a separately versioned release-v7 for future gates;
 do not replace v6 during its healthy static run.
+Release-v7 is now staged (not executing) at
+`/workspace/c64-dev/round7/tools-v7/migration_bridge/round7/tools`.
+Archive SHA256:
+`0cc75662b081a5748d534c8c9323e89bbc96c614a9be6aca7b797fbcd08289dd`,
+from local commit `ba5b10d0be82da6c0673c0d1294741183b67de96`.
+After static serving reaps, invoke `cpu_backing_probe.py --layer 1
+--profile /workspace/c64-dev/round7/runtime-v2/profiles/frequency.json
+--output /workspace/c64-dev/round7/cpu-backing-original-v1/L01` through the
+frozen `with_c64_env.sh`. Preserve original binary failure before repairing;
+subsequent layers13/26 and post-fix runs need separate new output directories.
+Never use a probe result alone as full-model Dynamic qualification.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer
