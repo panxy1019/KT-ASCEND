@@ -26,7 +26,10 @@ def main():
     assert cfg['deferred'] in (0,1)
     if cfg.get('provenance'):
         provenance=json.loads(Path(cfg['provenance']).read_text())
-        from runtime_selection import select_cpu_runtime
+        from runtime_selection import select_cpu_runtime,select_sglang_runtime
+        sglang_runtime=select_sglang_runtime(cfg,provenance)
+        if sglang_runtime:
+            os.environ['PYTHONPATH']=sglang_runtime+os.pathsep+os.environ.get('PYTHONPATH','')
         cpu_runtime=select_cpu_runtime(cfg,provenance)
         if cpu_runtime:
             os.environ['PYTHONPATH']=cpu_runtime+os.pathsep+os.environ.get('PYTHONPATH','')
@@ -41,7 +44,7 @@ def main():
             frozen_provenance_sha256=hashlib.sha256(Path(cfg['provenance']).read_bytes()).hexdigest(),
             gguf_size=gguf.stat().st_size,gguf_sha256=provenance['gguf']['sha256'],
             gguf_hash_scope='Initial full hash retained; RO artifact is not rehashed on each server restart.'),indent=2)+'\n')
-    elif cfg.get('cpu_runtime_root'):
+    elif cfg.get('cpu_runtime_root') or cfg.get('sglang_runtime_root'):
         raise ValueError('PRIVATE_RUNTIME_REQUIRES_PROVENANCE')
     for k in list(os.environ):
         if k.startswith(('KT_R6_', 'KT_R61_', 'KT_R62_', 'KT_R63_',
