@@ -48,7 +48,11 @@ The frequency budget is208, per-layer counts4–12, no zero-resident layer in
 this candidate. Operator representatives and Uniform compact/restart/parity
 have passed on A3. Frequency compact/restart/parity also passed; its exact
 structure and separate lossless archive are preserved. Driver is now in
-Uniform HOLDOUT. Frequency quality/performance are not yet promoted.
+Frequency HOLDOUT. Uniform HOLDOUT passed all128 requests and complete forward
+attribution. Uniform NPU assignment hit rate0.12440549718339645, CPU assignment
+rate0.8755945028166036, CPU weight mass0.8705099846154037. These are observer-ON
+route diagnostics, not formal performance. Frequency quality/performance are
+not yet promoted.
 Preserved system evidence is in
 `01_STATIC_FREQUENCY/STATIC_SYSTEM_CHECKPOINT.md` and its lossless archive.
 The serial qualification driver has been launched in the owned container:
@@ -180,6 +184,14 @@ v6; deploy a new release-v8 after review and current-stage reaping. See
 `02_DYNAMIC/HELDOUT_ROUTING_PROTOCOL.md`. Actual CMMLU trigger-rate telemetry,
 performance host-isolation evidence and later-stage orchestration still need
 integration before claiming complete metrics.
+Further local edits add `dynamic_telemetry.py`, a default-off lightweight
+actual-update/component host-call recorder for untimed quality and parity.
+Dynamic probe OFF trajectory replay enables this seam and requires real events;
+runtime quality reports actual CMMLU trigger rate through exact request windows.
+No extra NPU work or weight readback is introduced by this seam; it is not a
+weight/generation certification and stays OFF in timed performance. Current
+suite29 tests pass; additions are not running on A3 and should be included in
+future release-v8. Current release-v6 remains untouched.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer
