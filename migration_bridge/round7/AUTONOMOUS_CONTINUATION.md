@@ -37,6 +37,19 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 19:05 checkpoint: Static driver completed36/36 and reached
+STATIC_EVIDENCE_COMPLETE_AWAITING_AGENT_SELECTION. Original-A3-mtime audit-v1
+accepts30/36 windows; six first post-completion samples report outside CPU busy,
+so whole campaign remains PENDING_HOST_ISOLATION, not formal-isolated PASS.
+Complete exploratory medians show small gains, but independent decode routing
+regresses under Frequency. Static selection retains UNIFORM_R8_C64; see
+01_STATIC_FREQUENCY/STATIC_BASELINE_SELECTION.md. Frequency system/CMMLU PASS
+and raw audit are preserved. No threshold refit or quality-based mask selection.
+Archive creation is in progress; verify its SHA and complete SCP before claiming
+local preservation. Next: original-binary backing eviction regression1/13/26,
+then minimal repair if reproduced, fresh R64 if common loader changes. Use v11
+future tools and Uniform profile for Dynamic control.
+
 2026-09-17 15:46 heartbeat: Static performance16/36 at inspection, healthyRUNNING;
 host V2 EXCLUSIVE blockers[]. No extra NPU test launched. Prepared post-DEV
 Dynamic consumers now enforce explicit threshold commit acknowledgment via
