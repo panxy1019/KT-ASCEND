@@ -37,6 +37,21 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 23:18: v5/runtime-v6 FAILED/reaped inDynamic256 afterclosedFreqcompact
+andfreshR64174/256invalid0. ActualLayer1generation1 passedauditor; Layer2failed
+FULL_CONTEXT_CHECKPOINT_EXPERT_IDENTITY, only1update record. No512/1024/HD/fit.
+Losslesswholefailedprobe+Freq/R64source/provenance archive localSCPexit0/hash+tarPASS
+SHA528cc3636b7fce044cb109794e19314707fee1f35611aab83fdb981fb77ac29d.
+Reducedactual_phase1 resident_inference→raw test raises aclnncopy161002(shape
+4x12 vs12x4); independentcompatibilitygap NOTYETprovenactualLayer2rootcause.
+Newtest-onlyauditor capturesfixed0/1/8/56/63 prepareentry/outputcheckpoint shapes/
+identity and failingprojection tensors/metadata withoutrelaxingassertion or
+productionchange;99existingLOCALtestsPASS. Nextdeployseparatetools-v18, same
+runtime-v6 andsameDEV256fixture,newdiagnosticoutput. No needrepeatunchanged
+productionpredecessors beforedebug replay, butafterrealfix rerunrequiredgates.
+SeeFULL_CONTEXT_WEIGHT_IDENTITY_DIAGNOSIS.md. No active modelrun atcheckpoint;
+reducedprobecompleted/reaped. Preserveoriginalv17/v6/v5results.
+
 2026-09-17 23:01 checkpoint: v5/runtime-v6 operators100/100PASS(max .0017029279396063187)
 andUniform32+restart4PASS. Allfourreference trajectoriesexactvsruntime-v5.
 FullUniformraw/restart/lifecycle/source/provenance/operator-summary archive now

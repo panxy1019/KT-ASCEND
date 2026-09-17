@@ -34,10 +34,41 @@ def checkpoint_projection(layer,logical,name):
 
 def install(root,initial):
     import torch
-    from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod, select_top_experts_from_batch
+    from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod, SharedFullContext, select_top_experts_from_batch
     if getattr(KTEPWrapperMethod,'_round7_generation_audit',False):return
     original=KTEPWrapperMethod._update_gpu_experts_from_batch
     original_apply=KTEPWrapperMethod.apply
+    original_prepare=SharedFullContext._prepare_weight_bf16
+    def prepare(context,wrapper,original_layer=None,gpu_experts_mask=None,logical_to_gpu_index=None):
+        # Diagnostic-only boundary snapshots; absent from OFF/performance paths.
+        layer_idx=int(wrapper.layer_idx)
+        record=dict(layer=layer_idx,time_unix=time.time(),buffers={name:list(buf.shape)
+            for name,buf in context.cpu_buffers.items()},before=[],after=[])
+        fixed=[0,1,8,56,63]
+        if original_layer is not None and gpu_experts_mask is not None:
+            for logical in fixed:
+                if not bool(gpu_experts_mask[logical]):continue
+                slot=int(logical_to_gpu_index[logical])
+                for name in ('w13_weight','w2_weight'):
+                    src=getattr(original_layer,name)[slot].detach().cpu()
+                    ref=checkpoint_projection(layer_idx,logical,name)
+                    if projection_orientation(src.shape,ref.shape):ref=ref.T
+                    record['before'].append(dict(logical=logical,name=name,slot=slot,
+                        shape=list(src.shape),checkpoint_exact=torch.equal(src,ref)))
+        value=original_prepare(context,wrapper,original_layer,gpu_experts_mask,logical_to_gpu_index)
+        torch.npu.synchronize()
+        for logical in fixed:
+            for name in ('w13_weight','w2_weight'):
+                src=getattr(context.gpu_layer,name)[logical].detach().cpu()
+                ref=checkpoint_projection(layer_idx,logical,name)
+                if projection_orientation(src.shape,ref.shape):ref=ref.T
+                exact=torch.equal(src,ref)
+                record['after'].append(dict(logical=logical,name=name,shape=list(src.shape),
+                    checkpoint_exact=exact,max_abs=float((src.float()-ref.float()).abs().max())))
+                if not exact:
+                    torch.save(dict(observed=src,expected=ref),Path(root)/f'prepare-L{layer_idx}-E{logical}-{name}-mismatch.pt')
+        with (Path(root)/'bf16-prepare-boundaries.jsonl').open('a') as f:f.write(json.dumps(record)+'\n')
+        return value
     def apply(self,*args,**kwargs):
         assert not getattr(self,'_round7_updating',False),'READ_DURING_MIGRATION'
         thread=threading.get_ident()
@@ -96,7 +127,15 @@ def install(root,initial):
                         source_cpu=source[logical].detach().cpu()
                         assert reference.dtype==source_cpu.dtype==torch.bfloat16,'CHECKPOINT_SOURCE_DTYPE'
                         if projection_orientation(source_cpu.shape,reference.shape):reference=reference.T
-                        assert torch.equal(source_cpu,reference),'FULL_CONTEXT_CHECKPOINT_EXPERT_IDENTITY'
+                        if not torch.equal(source_cpu,reference):
+                            failure=dict(layer=self.kt_config.layer_idx,wrapper_layer=int(self.wrapper.layer_idx),
+                                logical=logical,slot=slot,name=name,source_shape=list(source_cpu.shape),
+                                reference_shape=list(reference.shape),previous_resident=torch.where(old)[0].tolist(),
+                                max_abs=float((source_cpu.float()-reference.float()).abs().max()),
+                                finite=bool(torch.isfinite(source_cpu).all()))
+                            with (Path(root)/'checkpoint-identity-failures.jsonl').open('a') as f:f.write(json.dumps(failure)+'\n')
+                            torch.save(dict(observed=source_cpu,expected=reference),Path(root)/'checkpoint-identity-failure.pt')
+                            raise AssertionError('FULL_CONTEXT_CHECKPOINT_EXPERT_IDENTITY')
             next_generation=generation+1
             self._round7_generations=dict(weights=next_generation,mapping=next_generation,
                 mask=next_generation,wrapper_mask=next_generation)
@@ -118,4 +157,5 @@ def install(root,initial):
         finally:self._round7_updating=False
     KTEPWrapperMethod._update_gpu_experts_from_batch=update
     KTEPWrapperMethod.apply=apply
+    SharedFullContext._prepare_weight_bf16=prepare
     KTEPWrapperMethod._round7_generation_audit=True
