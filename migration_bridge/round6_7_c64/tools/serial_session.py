@@ -17,8 +17,17 @@ def admission():
     for line in Path('/proc/meminfo').read_text().splitlines():
         key, value = line.split(':', 1)
         if value.strip().endswith('kB'): fields[key] = int(value.split()[0]) * 1024
-    if fields['SwapTotal'] - fields['SwapFree'] != 0:
-        raise ValueError('SWAP_USED')
+    cgroup_swap=int(Path('/sys/fs/cgroup/memory.swap.current').read_text())
+    if cgroup_swap: raise ValueError('CONTAINER_SWAP_USED')
+    if fields['SwapTotal'] != fields['SwapFree']:
+        def swap_counters():
+            return {k:int(v) for k,v in (r.split() for r in Path('/proc/vmstat').read_text().splitlines())
+                    if k in ('pswpin','pswpout')}
+        before=swap_counters();time.sleep(2);after=swap_counters()
+        if before!=after: raise ValueError('ACTIVE_HOST_SWAPPING')
+        fields['host_swap_activity_check']={'before':before,'after':after,'seconds':2}
+    fields['cgroup_swap_bytes']=cgroup_swap
+    fields['admission_policy']='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2'
     if fields['MemAvailable'] < max(64 * 2**30, fields['MemTotal'] * .2):
         raise ValueError('HOST_MEMORY_RESERVE')
     return fields
