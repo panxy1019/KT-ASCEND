@@ -57,9 +57,12 @@ def check(study, freeze):
 def route_summary(path, profile):
     data = json.loads(profile.read_text()); ownership = {r['layer']:set(r['cpu_ids']) for r in data['rows']}
     layers, experts, events, mass, tokens, touched, by_layer = set(), set(), 0, 0., 0, 0, {}
+    row_keys, touched_keys = {}, set()
     for line in path.read_text().splitlines():
         r = json.loads(line); layer = r['layer']; counts = by_layer.setdefault(layer, dict(rows=0, cpu_events=0, cpu_mass=0., npu_events=0))
-        for ids, weights in zip(r['ids'], r['weights']):
+        for index, (ids, weights) in enumerate(zip(r['ids'], r['weights'])):
+            key = (r['sequence'], index)
+            row_keys.setdefault(layer, set()).add(key)
             if len(ids) != 6 or len(weights) != 6: raise ValueError('ROUTE_SHAPE')
             hit = False
             for e, w in zip(ids, weights):
@@ -68,12 +71,18 @@ def route_summary(path, profile):
                     counts['cpu_events'] += 1; counts['cpu_mass'] += w
                 else: counts['npu_events'] += 1
             counts['rows'] += 1; tokens += 1; touched += int(hit)
+            if hit: touched_keys.add(key)
     if set(by_layer) != set(range(1,27)): raise ValueError('ROUTE_LAYER_COVERAGE')
+    if any(row_keys[layer] != row_keys[1] for layer in row_keys): raise ValueError('CROSS_LAYER_ROUTE_CORRELATION')
     if data['resident'] < 64 and len(layers) != 26: raise ValueError('CPU_LAYER_COVERAGE')
     return dict(layers_hit=sorted(layers), experts_hit=sorted(map(list, experts)), cpu_events=events,
         cpu_route_weight_mass=mass, layer_token_rows=tokens, cpu_events_per_layer_token=events/max(tokens,1),
         cpu_touch_fraction_per_layer_token=touched/max(tokens,1), fully_npu_fraction_per_layer_token=1-touched/max(tokens,1),
-        scope='FOUR_SHORT_DIAGNOSTIC_REQUESTS_NOT_QUALITY_OR_PERFORMANCE', per_layer=by_layer)
+        scope='FOUR_SHORT_DIAGNOSTIC_REQUESTS_NOT_QUALITY_OR_PERFORMANCE', per_layer=by_layer,
+        model_token_rows=len(row_keys[1]), cpu_events_per_model_token=events/max(len(row_keys[1]),1),
+        cpu_weight_mass_per_model_token=mass/max(len(row_keys[1]),1),
+        token_touches_cpu_fraction=len(touched_keys)/max(len(row_keys[1]),1),
+        fully_npu_model_token_fraction=1-len(touched_keys)/max(len(row_keys[1]),1))
 
 
 def compact(study, profile, target, manifest):
@@ -226,6 +235,7 @@ def main():
                         state.update(performance='COMPLETE', performance_summary=perf['summary'])
                     except Exception as exc:
                         state.update(performance='FAILED', performance_error=repr(exc))
+                        state.update(system='FAIL_AFTER_PERFORMANCE_EXCEPTION', quality='NOT_QUALIFIED_LATE_SYSTEM_FAILURE')
                     check(study, freeze); write(study / 'progress.json', summary)
             candidates = [name for name,state in summary['profiles'].items() if name != 'R64' and
                           state['system'] == 'PASS' and state['quality'] == 'PASS' and state['performance'] == 'COMPLETE']

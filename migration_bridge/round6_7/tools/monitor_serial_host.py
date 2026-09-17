@@ -18,8 +18,8 @@ def fields(text):
 def npu0_hbm(text):
     lines = text.splitlines()
     for i,line in enumerate(lines):
-        if re.search(r'\|\s*0\s+Ascend', line):
-            match = re.search(r'\|\s*(\d+)\s*/\s*(65536)\s*\|',lines[i+1])
+        if re.search(r'\|\s*0\s+\S+\s+\|', line) and i+1 < len(lines):
+            match = re.search(r'(\d+)\s*/\s*(65536)\s*\|',lines[i+1])
             if match: return dict(used_mib=int(match[1]), capacity_mib=int(match[2]))
     return None
 
@@ -35,7 +35,7 @@ def main():
     if read(['docker','inspect','--format','{{.Id}}','kt-r65-static-offload']).strip()!=a.container_id:
         raise ValueError('CONTAINER_ID_DRIFT')
     started=time.monotonic()
-    with (a.study/'host-telemetry.jsonl').open('x') as output:
+    with (a.study/'host-telemetry-v2.jsonl').open('x') as output:
         while time.monotonic()-started<172800:
             result=dict(time_unix=time.time(),container_id=a.container_id,npu=0)
             try:

@@ -6,9 +6,14 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'round6_5/tools'))
 from build_ratio_profiles import build
 from common import product_gate, score_letters, validate_answer, validate_profile
+from monitor_serial_host import npu0_hbm
 
 
 class ContractTests(unittest.TestCase):
+    def test_910b3_hbm_format(self):
+        text='| 0     910B3               | OK |\n| 0 | 0000:C1:00.0 | 0  0 / 0   3471 / 65536         |'
+        self.assertEqual(npu0_hbm(text),dict(used_mib=3471,capacity_mib=65536))
+
     def test_5pp_integer_boundary(self):
         self.assertTrue(product_gate(162, 174)['pass_5pp'])
         self.assertFalse(product_gate(161, 174)['pass_5pp'])

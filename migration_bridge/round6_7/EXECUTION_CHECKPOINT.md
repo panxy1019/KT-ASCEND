@@ -2,8 +2,8 @@
 
 ## Frozen and launched (not yet qualified)
 
-Current study: `/workspace/results/r65-r67-serial-v2` in the existing container.
-Study freeze SHA256 `d1415f886eeb6a2d33fdce564a75db60707c7227c754dbb882dba837e9ab2cd3`.
+Current study: `/workspace/results/r65-r67-serial-v3` in the existing container.
+Study freeze SHA256 `11ada1752b5e5c0571920ab6536421d3193e73afa6cc2f630e076d469fef693c`.
 CMMLU256 manifest SHA256 `bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04`.
 Compact manifest SHA256 `555f578af6d816b25ee5efe6590a472b654f27a74614c011bba599a8f8c24933`.
 
@@ -37,5 +37,19 @@ correct CANN IR environment, no-login shell, and correct health-generation OFF
 flag. This is test-tool infrastructure correction, not production or threshold
 change. v1 and v2 corpus/profile bytes are identical.
 
-LOCAL_VERIFIED: 11 contract tests, Python compilation, bash syntax, diff checks.
+v2 freeze `d1415f886eeb6a2d33fdce564a75db60707c7227c754dbb882dba837e9ab2cd3`
+then failed before readiness after model load: the test launcher overwrote CANN
+PYTHONPATH, so TBE import failed during GE initialization. v3 appends project
+paths while preserving CANN paths, exactly as the retained launcher does.
+No inference-quality results existed in either failed attempt; no threshold,
+input, expert mask or production implementation changes were made. Guard logs,
+exception/lifecycle records and distinct frozen snapshots are retained.
+
+v3 also distinguishes per-layer-token vs whole-model-token routing denominators
+and refuses acceptance after any later performance-stage execution exception.
+Host HBM parser now handles npu-smi25.5.1 `910B3` name and shared table columns;
+host sampler SHA256 `0b7f4152d59f6a9f7b35461a53ce7b377dc9bd689a2c208a8098ace5c6d4d22a`.
+R64/Hybrid run infrastructure and generation protocol remain otherwise frozen.
+
+LOCAL_VERIFIED: 12 contract tests, Python compilation, bash syntax, diff checks.
 Full target qualification remains pending until execution artifacts close gates.

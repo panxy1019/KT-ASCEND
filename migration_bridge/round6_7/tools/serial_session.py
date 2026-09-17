@@ -76,6 +76,7 @@ def session(root, profile, observer=False):
                 report['reaping'] = json.loads((root / 'guard/reaping.json').read_text())
                 report['guard'] = json.loads((root / 'guard/result.json').read_text())
                 if not report['reaping']['complete'] or report['guard'].get('reason') not in ('CANCELLED', 'EXIT_ZERO'):
+                    report['preceding_status'] = report['status']
                     report['status'] = 'OWNED_LIFECYCLE_FAILURE'
             report.update(ended_unix=time.time(), memory_after_stop=memory())
             write(root / 'lifecycle.json', report)
