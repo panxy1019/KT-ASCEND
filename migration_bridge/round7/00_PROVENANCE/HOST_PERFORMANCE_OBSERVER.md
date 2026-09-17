@@ -75,3 +75,39 @@ No model/test process or unrelated task was stopped.
 Local suite34 tests pass, including acceptance of inactive unrelated historical
 swap and rejection of owned swap or new host swap I/O. A3 EXCLUSIVE status still
 requires fresh V2 samples and60-second quiet interval; do not fabricate it.
+# Unchanged release-v6 timing: conservative post-audit adapter
+
+Future `tools/audit_performance_windows.py` audits all36 completed ABBA cells
+without changing or restarting healthy v6. Run it on A3 against original files
+before archiving: v6 retained input wallclock timestamps but not result end
+wallclocks. The original measured output JSON file mtime conservatively bounds
+completion, including serialization after timing; it is not a latency denominator.
+Do not use copied/extracted file mtimes as original measurements.
+
+For each cell, the adapter verifies request/response IDs, raw summary equality,
+closed/reaped lifecycle, timestamp containment and wallclock/monotonic duration
+consistency. It rejects overlapping/reordered actual intervals and incomplete
+or reordered36-cell campaigns. It snapshots the existing observer samples for
+the bounded campaign, requires their frozen source SHA and independently audits
+every measured interval. Missing/stale/contended windows remain pending, never
+manufactured as formal isolated performance. No future sample or single latest
+EXCLUSIVE value substitutes for the actual measurement windows.
+
+Only a complete campaign may be analyzed. Suggested later A3 invocation through
+the separately deployed future tools release, not active v6:
+
+```
+audit_performance_windows.py \
+  --root /workspace/c64-dev/round7/static-phase-v1/uniform-vs-frequency-performance \
+  --host-samples /workspace/c64-dev/round7/host-resource-monitor-v2/samples.jsonl \
+  --observer-source-sha256 86066a50bc0bc02dba7eb0fa2bf8b0687fc62091333ac00c11ef954a99e815c1 \
+  --output /workspace/c64-dev/round7/static-performance-window-audit-v1
+```
+
+This tool is LOCAL_VERIFIED only. Original A3 first-cell timestamps were inspected:
+input1789654548.3274822, original output mtime1789654678.578983,
+monotonic request129.96785391692538s; serialization/clock slack~0.283647s.
+That timestamp audit is not a completed campaign or performance conclusion.
+54 local tests pass, including full synthetic36-cell independent-window audit,
+timestamp/identity/lifecycle/reordering failures. Actual isolated eligibility
+must await complete raw timing and sample audit.

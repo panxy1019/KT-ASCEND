@@ -234,6 +234,16 @@ must continue to agree on that budget.
 
 ## Follow-up policy
 
+14:30 heartbeat: current Static performance remains healthy,3/36 completed at
+first inspection, hostV2 freshEXCLUSIVE. Do not extrapolate partial performance
+or disrupt it. Prepared `audit_performance_windows.py` for unchanged v6: input
+wallclock through original measured-output file mtime, raw-summary correlation,
+closed/reaped lifecycle, nonoverlapping ordered36cells, frozen-source independent
+host samples. Run on original A3 files only after complete campaign, before tar
+changes mtimes. Missing/stale/contended evidence remains pending. Full local
+suite54PASS. New adapter is not in v8 or running on A3; deploy separately after
+review. See `00_PROVENANCE/HOST_PERFORMANCE_OBSERVER.md` for invocation.
+
 Latest complete gate: Frequency CMMLU256 PASS173/256, invalid0, paired IDs256
 verified (bothcorrect170/bothwrong79/regressed4/improved3). Archive SHA
 `22793c6a95c543a10664fc265769d77aaad4539f069512ee2c968ce0e3590038` fully verified.

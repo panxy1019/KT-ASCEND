@@ -35,6 +35,10 @@ class PerformanceDecision(unittest.TestCase):
         report,host=fixtures();report['measurements'][0]['side']='right'
         with self.assertRaisesRegex(ValueError,'ORDER'):evaluate(report,host)
 
+    def test_reordered_cells(self):
+        report,host=fixtures();report['measurements'].reverse()
+        with self.assertRaisesRegex(ValueError,'CELL_ORDER'):evaluate(report,host)
+
     def test_median_regression_disqualifies(self):
         report,host=fixtures()
         for r in report['measurements']:

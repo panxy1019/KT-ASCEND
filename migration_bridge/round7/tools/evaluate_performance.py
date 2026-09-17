@@ -27,6 +27,8 @@ def evaluate(report, isolation):
     keys = [(r['bucket'], r['block'], r['turn']) for r in rows]
     if len(keys) != 36 or len(set(keys)) != 36 or set(keys) != expected:
         raise ValueError('ABBA_CELL_COMPLETENESS')
+    if keys != [(b, block, turn) for b in BUCKETS for block in range(3) for turn in range(4)]:
+        raise ValueError('ABBA_CELL_ORDER')
     modes = {}
     for row in rows:
         if row['side'] != ORDER[row['turn']]:
