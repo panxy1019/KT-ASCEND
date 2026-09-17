@@ -37,6 +37,21 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 23:49: scopedresidentPhase1port prepared/runtime-v7 created, helper+wrapper
+hashesinRESIDENT_TO_RAW_LAYOUT_REPAIR.md. tools-v21 source72de5bcc9d5508ddce497d7057e444ede4286540,
+archive1cbf2d133903af90c1b5fcef4b9065cdf35ab27251ed1453c36e77e9f26fd734,
+completeSCP/hashbeforeextract;104LOCAL+A3puretestsPASS. Ownedprimitivegrid-v1
+healthy (lastfixedNDinferstarting). RequestedNZ downgradedtoND format2; doNOTclaim
+NZPASS fromv1. Newownedbackgroundchain resident-layout-recovery-chain-v1.log
+waitsforownedgridparent161137exit; checksfixed3NDresults; runsv21actualNZraw/infer
+withtest-onlyallow_internal_format=True andrequiresreportedformat29/exact;
+onlythenfreshbacking-requalification-v6 runtime-v7 tools-v21, alloperators/static/
+freshR64/DEV256-512-1024. Newchainlaunched, inspecthealth/PENDING stage. Never
+restarthealthygrid/chain/model oroverwritev6/v7/oldreleases. No thresholdfit/HD.
+After3probesPASS/reaped v21threshold_sweep --base runtime-v7 --devcorpora-v2DEV
+--profileuniform --probesbacking-requalification-v6 --probe-prefixdynamic-dev-probe-
+--output<newDEVscreen>. Candidate fullcommit+matchingack beforeHD/CM/perf.
+
 2026-09-17 23:43 continuation: tools-v18 sameDEV256 againstunchangedruntime-v6
 FAILED/reaped. ActualresidentE0/E8/E56 checkpoint exactBEFOREprepare in both
 L1/L2, allfalseAFTERprepare rawcontext; CPUstagedE1/E63 remainexact. Thisisolates
