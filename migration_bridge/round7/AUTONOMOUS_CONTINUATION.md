@@ -54,7 +54,7 @@ See R64_REFERENCE_ADAPTER_REPAIR.md. No production/native change in this repair.
 Future threshold_sweep explicit --probe-prefix dynamic-dev-probe- binds retained
 probe summary hashes; deploy a separate future release, never replace livev13.
 
-20:28: v2 progress RUNNING fresh-r64-quality, retained gate hashes recorded.
+20:25: v2 progress RUNNING fresh-r64-quality, retained gate hashes recorded.
 Actual corrected resolved argv equals the historical direct R64 argv exactly;
 noKT reference confirmed. Server startup/imports still in progress at inspection.
 Future releasev14 staged separately, source
