@@ -1,0 +1,924 @@
+{
+  "status": "ANALYTIC_DERIVED_FROM_CLOSED_A3_CAPTURES",
+  "holdout_sha256": "1e1c8287191007ec6ae3a91ed974d3648b7c1b33d46170a60638c54eedc1dbf5",
+  "profiles": {
+    "uniform": {
+      "prefill": {
+        "assignments": 19673472,
+        "npu_hits": 2448460,
+        "cpu_hits": 17225012,
+        "total_weight": 776144.6199455261,
+        "cpu_weight": 675396.3201961517,
+        "npu_hit_rate": 0.12445490048731611,
+        "cpu_route_rate": 0.8755450995126839,
+        "cpu_weight_mass": 0.8701939082481234,
+        "per_layer": {
+          "1": {
+            "assignments": 756672,
+            "npu_hits": 131336,
+            "cpu_hits": 625336
+          },
+          "2": {
+            "assignments": 756672,
+            "npu_hits": 108207,
+            "cpu_hits": 648465
+          },
+          "3": {
+            "assignments": 756672,
+            "npu_hits": 83788,
+            "cpu_hits": 672884
+          },
+          "4": {
+            "assignments": 756672,
+            "npu_hits": 97514,
+            "cpu_hits": 659158
+          },
+          "5": {
+            "assignments": 756672,
+            "npu_hits": 67762,
+            "cpu_hits": 688910
+          },
+          "6": {
+            "assignments": 756672,
+            "npu_hits": 79934,
+            "cpu_hits": 676738
+          },
+          "7": {
+            "assignments": 756672,
+            "npu_hits": 88653,
+            "cpu_hits": 668019
+          },
+          "8": {
+            "assignments": 756672,
+            "npu_hits": 76617,
+            "cpu_hits": 680055
+          },
+          "9": {
+            "assignments": 756672,
+            "npu_hits": 110008,
+            "cpu_hits": 646664
+          },
+          "10": {
+            "assignments": 756672,
+            "npu_hits": 96590,
+            "cpu_hits": 660082
+          },
+          "11": {
+            "assignments": 756672,
+            "npu_hits": 115659,
+            "cpu_hits": 641013
+          },
+          "12": {
+            "assignments": 756672,
+            "npu_hits": 84376,
+            "cpu_hits": 672296
+          },
+          "13": {
+            "assignments": 756672,
+            "npu_hits": 56937,
+            "cpu_hits": 699735
+          },
+          "14": {
+            "assignments": 756672,
+            "npu_hits": 93040,
+            "cpu_hits": 663632
+          },
+          "15": {
+            "assignments": 756672,
+            "npu_hits": 96137,
+            "cpu_hits": 660535
+          },
+          "16": {
+            "assignments": 756672,
+            "npu_hits": 98807,
+            "cpu_hits": 657865
+          },
+          "17": {
+            "assignments": 756672,
+            "npu_hits": 97764,
+            "cpu_hits": 658908
+          },
+          "18": {
+            "assignments": 756672,
+            "npu_hits": 77083,
+            "cpu_hits": 679589
+          },
+          "19": {
+            "assignments": 756672,
+            "npu_hits": 110879,
+            "cpu_hits": 645793
+          },
+          "20": {
+            "assignments": 756672,
+            "npu_hits": 80986,
+            "cpu_hits": 675686
+          },
+          "21": {
+            "assignments": 756672,
+            "npu_hits": 100299,
+            "cpu_hits": 656373
+          },
+          "22": {
+            "assignments": 756672,
+            "npu_hits": 129533,
+            "cpu_hits": 627139
+          },
+          "23": {
+            "assignments": 756672,
+            "npu_hits": 95021,
+            "cpu_hits": 661651
+          },
+          "24": {
+            "assignments": 756672,
+            "npu_hits": 76156,
+            "cpu_hits": 680516
+          },
+          "25": {
+            "assignments": 756672,
+            "npu_hits": 94656,
+            "cpu_hits": 662016
+          },
+          "26": {
+            "assignments": 756672,
+            "npu_hits": 100718,
+            "cpu_hits": 655954
+          }
+        },
+        "model_token_rows": 126112,
+        "fully_npu_model_token_rows": 0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "scope": "ATTRIBUTED_STATIC_HYBRID_PREFILL_ONLY_NOT_DYNAMIC_FULL_DEVICE_PREFILL"
+      },
+      "decode": {
+        "assignments": 299520,
+        "npu_hits": 36290,
+        "cpu_hits": 263230,
+        "total_weight": 19517.696929618716,
+        "cpu_weight": 17235.67102588713,
+        "npu_hit_rate": 0.1211605235042735,
+        "cpu_route_rate": 0.8788394764957265,
+        "cpu_weight_mass": 0.8830791403329694,
+        "model_token_rows": 1920,
+        "fully_npu_model_token_rows": 0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "per_layer": {
+          "1": {
+            "assignments": 11520,
+            "npu_hits": 1906,
+            "cpu_hits": 9614
+          },
+          "2": {
+            "assignments": 11520,
+            "npu_hits": 1191,
+            "cpu_hits": 10329
+          },
+          "3": {
+            "assignments": 11520,
+            "npu_hits": 1533,
+            "cpu_hits": 9987
+          },
+          "4": {
+            "assignments": 11520,
+            "npu_hits": 808,
+            "cpu_hits": 10712
+          },
+          "5": {
+            "assignments": 11520,
+            "npu_hits": 1079,
+            "cpu_hits": 10441
+          },
+          "6": {
+            "assignments": 11520,
+            "npu_hits": 1761,
+            "cpu_hits": 9759
+          },
+          "7": {
+            "assignments": 11520,
+            "npu_hits": 2334,
+            "cpu_hits": 9186
+          },
+          "8": {
+            "assignments": 11520,
+            "npu_hits": 2144,
+            "cpu_hits": 9376
+          },
+          "9": {
+            "assignments": 11520,
+            "npu_hits": 1246,
+            "cpu_hits": 10274
+          },
+          "10": {
+            "assignments": 11520,
+            "npu_hits": 395,
+            "cpu_hits": 11125
+          },
+          "11": {
+            "assignments": 11520,
+            "npu_hits": 1210,
+            "cpu_hits": 10310
+          },
+          "12": {
+            "assignments": 11520,
+            "npu_hits": 799,
+            "cpu_hits": 10721
+          },
+          "13": {
+            "assignments": 11520,
+            "npu_hits": 556,
+            "cpu_hits": 10964
+          },
+          "14": {
+            "assignments": 11520,
+            "npu_hits": 977,
+            "cpu_hits": 10543
+          },
+          "15": {
+            "assignments": 11520,
+            "npu_hits": 2336,
+            "cpu_hits": 9184
+          },
+          "16": {
+            "assignments": 11520,
+            "npu_hits": 1753,
+            "cpu_hits": 9767
+          },
+          "17": {
+            "assignments": 11520,
+            "npu_hits": 1971,
+            "cpu_hits": 9549
+          },
+          "18": {
+            "assignments": 11520,
+            "npu_hits": 1414,
+            "cpu_hits": 10106
+          },
+          "19": {
+            "assignments": 11520,
+            "npu_hits": 1820,
+            "cpu_hits": 9700
+          },
+          "20": {
+            "assignments": 11520,
+            "npu_hits": 1419,
+            "cpu_hits": 10101
+          },
+          "21": {
+            "assignments": 11520,
+            "npu_hits": 1665,
+            "cpu_hits": 9855
+          },
+          "22": {
+            "assignments": 11520,
+            "npu_hits": 1280,
+            "cpu_hits": 10240
+          },
+          "23": {
+            "assignments": 11520,
+            "npu_hits": 550,
+            "cpu_hits": 10970
+          },
+          "24": {
+            "assignments": 11520,
+            "npu_hits": 1843,
+            "cpu_hits": 9677
+          },
+          "25": {
+            "assignments": 11520,
+            "npu_hits": 509,
+            "cpu_hits": 11011
+          },
+          "26": {
+            "assignments": 11520,
+            "npu_hits": 1791,
+            "cpu_hits": 9729
+          }
+        },
+        "scope": "ATTRIBUTED_HYBRID_DECODE_ONLY_PREFILL_AND_UNUSED_TAIL_EXCLUDED"
+      },
+      "original_combined": {
+        "assignments": 19972992,
+        "npu_hits": 2484750,
+        "cpu_hits": 17488242,
+        "total_weight": 795662.3168751448,
+        "cpu_weight": 692631.9912220389,
+        "tokens": 3328832,
+        "fully_npu_tokens": 0,
+        "npu_hit_rate": 0.12440549718339645,
+        "cpu_route_rate": 0.8755945028166036,
+        "cpu_weight_mass": 0.8705099846154037,
+        "per_layer": {
+          "1": {
+            "assignments": 768192,
+            "npu_hits": 133242,
+            "cpu_hits": 634950
+          },
+          "2": {
+            "assignments": 768192,
+            "npu_hits": 109398,
+            "cpu_hits": 658794
+          },
+          "3": {
+            "assignments": 768192,
+            "npu_hits": 85321,
+            "cpu_hits": 682871
+          },
+          "4": {
+            "assignments": 768192,
+            "npu_hits": 98322,
+            "cpu_hits": 669870
+          },
+          "5": {
+            "assignments": 768192,
+            "npu_hits": 68841,
+            "cpu_hits": 699351
+          },
+          "6": {
+            "assignments": 768192,
+            "npu_hits": 81695,
+            "cpu_hits": 686497
+          },
+          "7": {
+            "assignments": 768192,
+            "npu_hits": 90987,
+            "cpu_hits": 677205
+          },
+          "8": {
+            "assignments": 768192,
+            "npu_hits": 78761,
+            "cpu_hits": 689431
+          },
+          "9": {
+            "assignments": 768192,
+            "npu_hits": 111254,
+            "cpu_hits": 656938
+          },
+          "10": {
+            "assignments": 768192,
+            "npu_hits": 96985,
+            "cpu_hits": 671207
+          },
+          "11": {
+            "assignments": 768192,
+            "npu_hits": 116869,
+            "cpu_hits": 651323
+          },
+          "12": {
+            "assignments": 768192,
+            "npu_hits": 85175,
+            "cpu_hits": 683017
+          },
+          "13": {
+            "assignments": 768192,
+            "npu_hits": 57493,
+            "cpu_hits": 710699
+          },
+          "14": {
+            "assignments": 768192,
+            "npu_hits": 94017,
+            "cpu_hits": 674175
+          },
+          "15": {
+            "assignments": 768192,
+            "npu_hits": 98473,
+            "cpu_hits": 669719
+          },
+          "16": {
+            "assignments": 768192,
+            "npu_hits": 100560,
+            "cpu_hits": 667632
+          },
+          "17": {
+            "assignments": 768192,
+            "npu_hits": 99735,
+            "cpu_hits": 668457
+          },
+          "18": {
+            "assignments": 768192,
+            "npu_hits": 78497,
+            "cpu_hits": 689695
+          },
+          "19": {
+            "assignments": 768192,
+            "npu_hits": 112699,
+            "cpu_hits": 655493
+          },
+          "20": {
+            "assignments": 768192,
+            "npu_hits": 82405,
+            "cpu_hits": 685787
+          },
+          "21": {
+            "assignments": 768192,
+            "npu_hits": 101964,
+            "cpu_hits": 666228
+          },
+          "22": {
+            "assignments": 768192,
+            "npu_hits": 130813,
+            "cpu_hits": 637379
+          },
+          "23": {
+            "assignments": 768192,
+            "npu_hits": 95571,
+            "cpu_hits": 672621
+          },
+          "24": {
+            "assignments": 768192,
+            "npu_hits": 77999,
+            "cpu_hits": 690193
+          },
+          "25": {
+            "assignments": 768192,
+            "npu_hits": 95165,
+            "cpu_hits": 673027
+          },
+          "26": {
+            "assignments": 768192,
+            "npu_hits": 102509,
+            "cpu_hits": 665683
+          }
+        },
+        "model_token_rows": 128032,
+        "fully_npu_model_token_rows": 0,
+        "fully_npu_model_token_rate": 0.0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "layer_row_scope": "The legacy tokens/fully_npu_tokens counters sum layer rows, not unique model tokens."
+      },
+      "attribution_counts": {
+        "prefill_indices": 128,
+        "decode_indices": 1920,
+        "unused_final_token_indices": 128
+      },
+      "unknown_passes": 0,
+      "archive_sha256": "835a2dcc59d8fc93b997cce49d6a62905f4e83fb67616c09819a24215deca78e",
+      "archive_root": "",
+      "classification_source": "EXACT_FROZEN_PROMPT_AND_RETURNED_TOKEN_HISTORY_NOT_NUMERIC_MODE_GUESS"
+    },
+    "frequency": {
+      "prefill": {
+        "assignments": 19673472,
+        "npu_hits": 5212963,
+        "cpu_hits": 14460509,
+        "total_weight": 776120.5281524658,
+        "cpu_weight": 574214.2574071884,
+        "npu_hit_rate": 0.26497422519014435,
+        "cpu_route_rate": 0.7350257748098556,
+        "cpu_weight_mass": 0.7398519129162711,
+        "per_layer": {
+          "1": {
+            "assignments": 756672,
+            "npu_hits": 273261,
+            "cpu_hits": 483411
+          },
+          "2": {
+            "assignments": 756672,
+            "npu_hits": 152177,
+            "cpu_hits": 604495
+          },
+          "3": {
+            "assignments": 756672,
+            "npu_hits": 260483,
+            "cpu_hits": 496189
+          },
+          "4": {
+            "assignments": 756672,
+            "npu_hits": 236680,
+            "cpu_hits": 519992
+          },
+          "5": {
+            "assignments": 756672,
+            "npu_hits": 218561,
+            "cpu_hits": 538111
+          },
+          "6": {
+            "assignments": 756672,
+            "npu_hits": 254907,
+            "cpu_hits": 501765
+          },
+          "7": {
+            "assignments": 756672,
+            "npu_hits": 210608,
+            "cpu_hits": 546064
+          },
+          "8": {
+            "assignments": 756672,
+            "npu_hits": 206092,
+            "cpu_hits": 550580
+          },
+          "9": {
+            "assignments": 756672,
+            "npu_hits": 221073,
+            "cpu_hits": 535599
+          },
+          "10": {
+            "assignments": 756672,
+            "npu_hits": 237598,
+            "cpu_hits": 519074
+          },
+          "11": {
+            "assignments": 756672,
+            "npu_hits": 325995,
+            "cpu_hits": 430677
+          },
+          "12": {
+            "assignments": 756672,
+            "npu_hits": 225976,
+            "cpu_hits": 530696
+          },
+          "13": {
+            "assignments": 756672,
+            "npu_hits": 240731,
+            "cpu_hits": 515941
+          },
+          "14": {
+            "assignments": 756672,
+            "npu_hits": 141279,
+            "cpu_hits": 615393
+          },
+          "15": {
+            "assignments": 756672,
+            "npu_hits": 117110,
+            "cpu_hits": 639562
+          },
+          "16": {
+            "assignments": 756672,
+            "npu_hits": 209674,
+            "cpu_hits": 546998
+          },
+          "17": {
+            "assignments": 756672,
+            "npu_hits": 116229,
+            "cpu_hits": 640443
+          },
+          "18": {
+            "assignments": 756672,
+            "npu_hits": 136366,
+            "cpu_hits": 620306
+          },
+          "19": {
+            "assignments": 756672,
+            "npu_hits": 199083,
+            "cpu_hits": 557589
+          },
+          "20": {
+            "assignments": 756672,
+            "npu_hits": 202003,
+            "cpu_hits": 554669
+          },
+          "21": {
+            "assignments": 756672,
+            "npu_hits": 145001,
+            "cpu_hits": 611671
+          },
+          "22": {
+            "assignments": 756672,
+            "npu_hits": 96545,
+            "cpu_hits": 660127
+          },
+          "23": {
+            "assignments": 756672,
+            "npu_hits": 154404,
+            "cpu_hits": 602268
+          },
+          "24": {
+            "assignments": 756672,
+            "npu_hits": 206896,
+            "cpu_hits": 549776
+          },
+          "25": {
+            "assignments": 756672,
+            "npu_hits": 225801,
+            "cpu_hits": 530871
+          },
+          "26": {
+            "assignments": 756672,
+            "npu_hits": 198430,
+            "cpu_hits": 558242
+          }
+        },
+        "model_token_rows": 126112,
+        "fully_npu_model_token_rows": 0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "scope": "ATTRIBUTED_STATIC_HYBRID_PREFILL_ONLY_NOT_DYNAMIC_FULL_DEVICE_PREFILL"
+      },
+      "decode": {
+        "assignments": 299520,
+        "npu_hits": 32978,
+        "cpu_hits": 266542,
+        "total_weight": 19564.98152065277,
+        "cpu_weight": 17665.566250348464,
+        "npu_hit_rate": 0.1101028311965812,
+        "cpu_route_rate": 0.8898971688034188,
+        "cpu_weight_mass": 0.9029176046857347,
+        "model_token_rows": 1920,
+        "fully_npu_model_token_rows": 0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "per_layer": {
+          "1": {
+            "assignments": 11520,
+            "npu_hits": 1804,
+            "cpu_hits": 9716
+          },
+          "2": {
+            "assignments": 11520,
+            "npu_hits": 1476,
+            "cpu_hits": 10044
+          },
+          "3": {
+            "assignments": 11520,
+            "npu_hits": 1447,
+            "cpu_hits": 10073
+          },
+          "4": {
+            "assignments": 11520,
+            "npu_hits": 2436,
+            "cpu_hits": 9084
+          },
+          "5": {
+            "assignments": 11520,
+            "npu_hits": 1525,
+            "cpu_hits": 9995
+          },
+          "6": {
+            "assignments": 11520,
+            "npu_hits": 1506,
+            "cpu_hits": 10014
+          },
+          "7": {
+            "assignments": 11520,
+            "npu_hits": 485,
+            "cpu_hits": 11035
+          },
+          "8": {
+            "assignments": 11520,
+            "npu_hits": 2145,
+            "cpu_hits": 9375
+          },
+          "9": {
+            "assignments": 11520,
+            "npu_hits": 694,
+            "cpu_hits": 10826
+          },
+          "10": {
+            "assignments": 11520,
+            "npu_hits": 993,
+            "cpu_hits": 10527
+          },
+          "11": {
+            "assignments": 11520,
+            "npu_hits": 1122,
+            "cpu_hits": 10398
+          },
+          "12": {
+            "assignments": 11520,
+            "npu_hits": 721,
+            "cpu_hits": 10799
+          },
+          "13": {
+            "assignments": 11520,
+            "npu_hits": 2022,
+            "cpu_hits": 9498
+          },
+          "14": {
+            "assignments": 11520,
+            "npu_hits": 1095,
+            "cpu_hits": 10425
+          },
+          "15": {
+            "assignments": 11520,
+            "npu_hits": 725,
+            "cpu_hits": 10795
+          },
+          "16": {
+            "assignments": 11520,
+            "npu_hits": 1434,
+            "cpu_hits": 10086
+          },
+          "17": {
+            "assignments": 11520,
+            "npu_hits": 740,
+            "cpu_hits": 10780
+          },
+          "18": {
+            "assignments": 11520,
+            "npu_hits": 554,
+            "cpu_hits": 10966
+          },
+          "19": {
+            "assignments": 11520,
+            "npu_hits": 1755,
+            "cpu_hits": 9765
+          },
+          "20": {
+            "assignments": 11520,
+            "npu_hits": 931,
+            "cpu_hits": 10589
+          },
+          "21": {
+            "assignments": 11520,
+            "npu_hits": 1187,
+            "cpu_hits": 10333
+          },
+          "22": {
+            "assignments": 11520,
+            "npu_hits": 632,
+            "cpu_hits": 10888
+          },
+          "23": {
+            "assignments": 11520,
+            "npu_hits": 1522,
+            "cpu_hits": 9998
+          },
+          "24": {
+            "assignments": 11520,
+            "npu_hits": 1680,
+            "cpu_hits": 9840
+          },
+          "25": {
+            "assignments": 11520,
+            "npu_hits": 1084,
+            "cpu_hits": 10436
+          },
+          "26": {
+            "assignments": 11520,
+            "npu_hits": 1263,
+            "cpu_hits": 10257
+          }
+        },
+        "scope": "ATTRIBUTED_HYBRID_DECODE_ONLY_PREFILL_AND_UNUSED_TAIL_EXCLUDED"
+      },
+      "original_combined": {
+        "assignments": 19972992,
+        "npu_hits": 5245941,
+        "cpu_hits": 14727051,
+        "total_weight": 795685.5096731186,
+        "cpu_weight": 591879.8236575369,
+        "tokens": 3328832,
+        "fully_npu_tokens": 4472,
+        "npu_hit_rate": 0.26265173490281274,
+        "cpu_route_rate": 0.7373482650971872,
+        "cpu_weight_mass": 0.7438615086765767,
+        "per_layer": {
+          "1": {
+            "assignments": 768192,
+            "npu_hits": 275065,
+            "cpu_hits": 493127
+          },
+          "2": {
+            "assignments": 768192,
+            "npu_hits": 153653,
+            "cpu_hits": 614539
+          },
+          "3": {
+            "assignments": 768192,
+            "npu_hits": 261930,
+            "cpu_hits": 506262
+          },
+          "4": {
+            "assignments": 768192,
+            "npu_hits": 239116,
+            "cpu_hits": 529076
+          },
+          "5": {
+            "assignments": 768192,
+            "npu_hits": 220086,
+            "cpu_hits": 548106
+          },
+          "6": {
+            "assignments": 768192,
+            "npu_hits": 256413,
+            "cpu_hits": 511779
+          },
+          "7": {
+            "assignments": 768192,
+            "npu_hits": 211093,
+            "cpu_hits": 557099
+          },
+          "8": {
+            "assignments": 768192,
+            "npu_hits": 208237,
+            "cpu_hits": 559955
+          },
+          "9": {
+            "assignments": 768192,
+            "npu_hits": 221767,
+            "cpu_hits": 546425
+          },
+          "10": {
+            "assignments": 768192,
+            "npu_hits": 238591,
+            "cpu_hits": 529601
+          },
+          "11": {
+            "assignments": 768192,
+            "npu_hits": 327117,
+            "cpu_hits": 441075
+          },
+          "12": {
+            "assignments": 768192,
+            "npu_hits": 226697,
+            "cpu_hits": 541495
+          },
+          "13": {
+            "assignments": 768192,
+            "npu_hits": 242753,
+            "cpu_hits": 525439
+          },
+          "14": {
+            "assignments": 768192,
+            "npu_hits": 142374,
+            "cpu_hits": 625818
+          },
+          "15": {
+            "assignments": 768192,
+            "npu_hits": 117835,
+            "cpu_hits": 650357
+          },
+          "16": {
+            "assignments": 768192,
+            "npu_hits": 211108,
+            "cpu_hits": 557084
+          },
+          "17": {
+            "assignments": 768192,
+            "npu_hits": 116969,
+            "cpu_hits": 651223
+          },
+          "18": {
+            "assignments": 768192,
+            "npu_hits": 136920,
+            "cpu_hits": 631272
+          },
+          "19": {
+            "assignments": 768192,
+            "npu_hits": 200838,
+            "cpu_hits": 567354
+          },
+          "20": {
+            "assignments": 768192,
+            "npu_hits": 202934,
+            "cpu_hits": 565258
+          },
+          "21": {
+            "assignments": 768192,
+            "npu_hits": 146188,
+            "cpu_hits": 622004
+          },
+          "22": {
+            "assignments": 768192,
+            "npu_hits": 97177,
+            "cpu_hits": 671015
+          },
+          "23": {
+            "assignments": 768192,
+            "npu_hits": 155926,
+            "cpu_hits": 612266
+          },
+          "24": {
+            "assignments": 768192,
+            "npu_hits": 208576,
+            "cpu_hits": 559616
+          },
+          "25": {
+            "assignments": 768192,
+            "npu_hits": 226885,
+            "cpu_hits": 541307
+          },
+          "26": {
+            "assignments": 768192,
+            "npu_hits": 199693,
+            "cpu_hits": 568499
+          }
+        },
+        "model_token_rows": 128032,
+        "fully_npu_model_token_rows": 0,
+        "fully_npu_model_token_rate": 0.0,
+        "model_token_touches_cpu_fraction": 1.0,
+        "layer_row_scope": "The legacy tokens/fully_npu_tokens counters sum layer rows, not unique model tokens."
+      },
+      "attribution_counts": {
+        "prefill_indices": 128,
+        "decode_indices": 1920,
+        "unused_final_token_indices": 128
+      },
+      "unknown_passes": 0,
+      "archive_sha256": "9e7dddc576c8cf409c41324015dc47d9b4a275dc5ca98c270cb11e7140b1a1ef",
+      "archive_root": "runtime-v2/",
+      "classification_source": "EXACT_FROZEN_PROMPT_AND_RETURNED_TOKEN_HISTORY_NOT_NUMERIC_MODE_GUESS"
+    }
+  },
+  "comparison": {
+    "prefill": {
+      "npu_hit_gain_pp": 14.051932470282825,
+      "cpu_assignment_relative_reduction_percent": 16.04935311510959,
+      "cpu_weight_mass_relative_reduction_percent": 14.978500090199109
+    },
+    "decode": {
+      "npu_hit_gain_pp": -1.105769230769231,
+      "cpu_assignment_relative_reduction_percent": -1.2582152490217657,
+      "cpu_weight_mass_relative_reduction_percent": -2.2465103575298073
+    }
+  },
+  "formal_performance": false,
+  "static_selection": "PENDING_COMPLETE_OBSERVER_OFF_PERFORMANCE"
+}

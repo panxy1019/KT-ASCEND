@@ -20,10 +20,12 @@ def install_forward_metadata(root):
         if self._recording and not (root/'observer-off').exists():
             CURRENT_FORWARD.clear()
             CURRENT_FORWARD.update(epoch=self._round7_epoch,
-                forward_id=self._current_forward_pass_id.value,mode=str(batch.forward_mode))
+                forward_id=self._current_forward_pass_id.value,mode=str(batch.forward_mode),
+                mode_name=batch.forward_mode.name,is_decode=batch.forward_mode.is_decode())
             append(root,'forward-metadata.jsonl',dict(epoch=self._round7_epoch,
                 forward_id=self._current_forward_pass_id.value,
                 mode=str(batch.forward_mode),
+                mode_name=batch.forward_mode.name,is_decode=batch.forward_mode.is_decode(),
                 input_ids=batch.input_ids.detach().cpu().tolist(),
                 positions=batch.positions.detach().cpu().tolist()))
         return start_pass(self,batch)

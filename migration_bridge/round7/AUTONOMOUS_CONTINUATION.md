@@ -37,6 +37,23 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 15:28 checkpoint: observer-OFF Static ABBA is healthy,14/36 completed;
+host V2 EXCLUSIVE, blockers[], owned cgroup swap0, no active host swap change.
+New offline separation of closed HOLDOUT captures shows Frequency benefit is
+prefill-dominated: prefill CPU assignments -16.0494%, but decode CPU assignments
++1.2582%, decode NPU-hit rate -1.1058pp. Do not select a Static baseline until
+the whole36-cell performance and independent window audit close. See
+`01_STATIC_FREQUENCY/PREFILL_DECODE_ROUTING_CHECKPOINT.md` and machine output
+`stage-routing-v2/static-stage-routing.json`.
+
+Prepared future Dynamic tools had a Python3.11 IntEnum classification defect:
+actual DECODE mode string is "2", not "DECODE". Repaired locally using independent
+exact-history decode indices; future observer also records name/is_decode.
+65 local tests PASS. See `02_DYNAMIC/DECODE_MODE_TOOLING_REGRESSION.md`.
+No Dynamic A3 gate or production change has run. This repair is not present in
+v6/v9: stage separately as v10 after its local commit and verified complete SCP.
+Do not overwrite active tools or run extra NPU work while Static owns the device.
+
 DEV statistics collection attempt2 completed all256 prompts and its full
 integrity audit: raw4352/attributed4352, kept4096, proven unused tails256,
 unknown0, each routed layer1498272 assignments. Lifecycle/reaping COMPLETE.

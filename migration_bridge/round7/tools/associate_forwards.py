@@ -11,6 +11,7 @@ def associate(metadata,requests):
     prefill=[False]*len(requests)
     decode=[set() for _ in requests]
     keep,unused=[],[]
+    prefill_indices,decode_indices=[],[]
     current=None
     for index,step in enumerate(metadata):
         tokens=step['input_ids'];positions=step['positions']
@@ -30,16 +31,17 @@ def associate(metadata,requests):
             if prefill[r]:raise ValueError('DUPLICATE_PREFILL')
             if r!=sum(prefill):raise ValueError('PREFILL_REQUEST_ORDER')
             current=r
-            prefill[r]=True;keep.append(index)
+            prefill[r]=True;keep.append(index);prefill_indices.append(index)
         else:
             if not prefill[r]:raise ValueError('DECODE_BEFORE_PREFILL')
             if j in decode[r]:raise ValueError('DUPLICATE_DECODE')
             decode[r].add(j)
             if j==len(requests[r]['output_ids'])-1:unused.append(index)
-            else:keep.append(index)
+            else:keep.append(index);decode_indices.append(index)
     for r,request in enumerate(requests):
         required=set(range(len(request['output_ids'])-1))
         if not prefill[r] or not required<=decode[r]:raise ValueError('MISSING_REQUEST_FORWARD')
     return dict(kept_indices=keep,unused_final_token_indices=unused,
+                prefill_indices=prefill_indices,decode_indices=decode_indices,
                 total_raw_passes=len(metadata),attributed_passes=len(keep)+len(unused),
                 requests=len(requests),unknown_passes=0)

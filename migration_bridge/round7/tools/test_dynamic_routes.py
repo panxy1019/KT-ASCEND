@@ -21,6 +21,34 @@ class Decode(unittest.TestCase):
     def test_missing_layer_rejected(self):
         with self.assertRaises(ValueError):summarize_decode(rows()[:-1],{(1,4)})
 
+    def test_actual_numeric_intenum_uses_history_not_string_guess(self):
+        r=summarize_decode(rows('2')+rows('1',3)+rows('2',5),{(1,3),(1,4)},decode_keys={(1,4)})
+        self.assertEqual(r['assignments'],156)
+
+    def test_numeric_mode_without_semantic_proof_fails(self):
+        with self.assertRaisesRegex(ValueError,'REQUIRES_HISTORY'):summarize_decode(rows('2'),{(1,4)})
+
+    def test_boolean_decode_annotation(self):
+        data=rows('2')
+        for r in data:r['forward_context']['is_decode']=True
+        self.assertEqual(summarize_decode(data,{(1,4)})['model_token_rows'],1)
+
+    def test_annotation_must_match_independent_history(self):
+        data=rows('2')
+        for r in data:r['forward_context']['is_decode']=False
+        with self.assertRaisesRegex(ValueError,'DISAGREES'):summarize_decode(data,{(1,4)},decode_keys={(1,4)})
+
+    def test_absent_attributed_decode_forward_fails(self):
+        with self.assertRaisesRegex(ValueError,'MISSING_ATTRIBUTED'):summarize_decode(rows('2'),{(1,4),(1,5)},decode_keys={(1,4),(1,5)})
+
+    def test_static_summary_never_claims_dynamic_counterfactual(self):
+        data=rows('2')
+        for r in data:
+            del r['initial_static_npu_hits'];del r['initial_static_cpu_weight']
+        result=summarize_decode(data,{(1,4)},decode_keys={(1,4)},include_counterfactual=False)
+        self.assertNotIn('counterfactual_scope',result)
+        self.assertEqual(result['per_layer']['1']['cpu_hits'],4)
+
     def test_duplicate_layer_rejected(self):
         with self.assertRaises(ValueError):summarize_decode(rows()+rows()[:1],{(1,4)})
 

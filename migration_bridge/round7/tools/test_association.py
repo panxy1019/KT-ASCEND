@@ -10,6 +10,8 @@ class Association(unittest.TestCase):
         result=associate(steps,requests)
         self.assertEqual(result['kept_indices'],[0,1])
         self.assertEqual(result['unused_final_token_indices'],[2])
+        self.assertEqual(result['prefill_indices'],[0])
+        self.assertEqual(result['decode_indices'],[1])
 
     def test_unknown_and_missing_rejected(self):
         request=[dict(input_ids=[11,12],output_ids=[7,8])]

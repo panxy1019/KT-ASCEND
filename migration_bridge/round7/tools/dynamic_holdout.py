@@ -45,11 +45,12 @@ def main():
     _,attribution=associated_counts(root,counts,1,[(r,f'dynamic-holdout-{i:03d}') for i,r in enumerate(rows)])
     metadata=[x for x in lines(root/'forward-metadata.jsonl') if x['epoch']==1]
     kept={(metadata[i]['epoch'],metadata[i]['forward_id']) for i in attribution['kept_indices']}
+    decode_keys={(metadata[i]['epoch'],metadata[i]['forward_id']) for i in attribution['decode_indices']}
     updates=lines(root/'generation-audit.jsonl')
     profile=json.loads((a.base/'profiles'/f'{a.profile}.json').read_text())
     verify_updates(updates,{r['layer']:len(r['npu_ids']) for r in profile['rows']})
     assert updates,'HOLDOUT_NEVER_TRIGGERED'
-    metrics=summarize_decode(lines(root/'routing.jsonl'),kept)
+    metrics=summarize_decode(lines(root/'routing.jsonl'),kept,decode_keys=decode_keys)
     migration=correlate_updates(updates,lines(root/'requests.jsonl'))
     write(a.output/'summary.json',dict(status='PASS',requests=128,threshold=selected['threshold'],
         decode_routing=metrics,forward_attribution=attribution,
