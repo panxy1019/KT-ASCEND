@@ -37,8 +37,15 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
-DEV statistics collection attempt2 is running, 17/256 at 11:01 UTC on
-2026-09-17. Progress will change; this is not a permanent status claim.
+DEV statistics collection attempt2 completed all256 prompts and its full
+integrity audit: raw4352/attributed4352, kept4096, proven unused tails256,
+unknown0, each routed layer1498272 assignments. Lifecycle/reaping COMPLETE.
+Candidate freeze commit `391b332ff0dfe648cec0bb4113b9daeabb8571e9` contains
+the exact original .pt bytes in the lossless DEV archive and readable mask JSON.
+Full artifact hashes are in
+`01_STATIC_FREQUENCY/FREQUENCY_CANDIDATE_COMMIT_ACK.json`.
+The frequency budget is208, per-layer counts4–12, no zero-resident layer in
+this candidate. It has not passed system/quality/performance yet.
 Use read-only checks of:
 
 ```
