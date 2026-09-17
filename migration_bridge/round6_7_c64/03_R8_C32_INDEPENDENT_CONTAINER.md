@@ -36,7 +36,8 @@ assets. Baseline corpus, model, GGUF, placement and evaluation rules are unchang
 
 ## Automation and status
 
-Study: `/workspace/results/r65-r67-r8-c32-v2/study`.
+Initial (failed) study: `/workspace/results/r65-r67-r8-c32-v2/study`.
+Device-visibility retry: `/workspace/results/r65-r67-r8-c32-v2/study-device0`.
 Host backing directory:
 `/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-dev-v1/r8-c32-v2`.
 Freeze SHA: `2f70c71744efed82dd8ce65f2b6daa5268fb9635a69e2e6217ba8cec9aceb6b2`.
@@ -46,7 +47,15 @@ screen52 experts/156 operands → CMMLU256 → paired product report. Predecesso
 failure prevents quality. Outer owned-process guard bounds runtime to24h; errors
 do not target the original R16 process or unrelated containers.
 
-At launch, status is SYSTEM RUNNING / QUALITY NOT_RUN. This document is not a
+Initial server import failed because ASCEND_RT_VISIBLE_DEVICES=6 is invalid
+inside the single-device container. The device enumerates as logical0. A tensor
+probe with logical0 succeeded; host npu-smi attributed PID4070358 to physical
+NPU6 (118MiB), while NPU0 retained only the original R16 PIDs4042136/4041663.
+The guard stopped only the new R8 process group. Failed study is preserved.
+The retry explicitly overrides both launcher NPU ID and runtime visibility to0;
+the container provenance records physical NPU6 separately.
+
+At retry launch, status is SYSTEM RUNNING / QUALITY NOT_RUN. This document is not a
 completed system or quality qualification. Results are written to progress.json
 and summary.json. No concurrent measurements count as formal performance.
 

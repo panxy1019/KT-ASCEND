@@ -25,7 +25,7 @@ cmd = ['docker','run','-d','--name',name,'--label','kt.owner=round6.7-r8-c32-v2'
 for device in ('davinci6','davinci_manager','devmm_svm','hisi_hdc'):
     cmd += ['--device','/dev/'+device]
 for key,value in dict(KT_R67_CPU_SET='64-95',KT_R67_NUMA_NODE='2',KT_R67_NPU_ID='6',
-                      ASCEND_RT_VISIBLE_DEVICES='6',PYTHONDONTWRITEBYTECODE='1',
+                      ASCEND_RT_VISIBLE_DEVICES='0',PYTHONDONTWRITEBYTECODE='1',
                       KT_R67_RUNTIME_MANIFEST=inside+'/runtime-manifest.json').items():
     cmd += ['-e',key+'='+value]
 for mount in source['Mounts']:
@@ -42,7 +42,7 @@ if existing.returncode == 0:
     assert info['Config']['Labels'].get('kt.owner')=='round6.7-r8-c32-v2'
     assert info['HostConfig']['CpusetCpus']=='64-95' and info['HostConfig']['CpusetMems']=='2'
     assert sorted(info['HostConfig']['Binds'])==sorted(cmd[i+1] for i,x in enumerate(cmd) if x=='-v')
-    assert not (root/'study').exists(), 'DO_NOT_RESTART_EXISTING_STUDY'
+    assert not (root/'study-device0').exists(), 'DO_NOT_RESTART_EXISTING_STUDY'
     cid=info['Id']
     if not info['State']['Running']: subprocess.run(['docker','start',name],check=True)
 else:
@@ -63,14 +63,15 @@ Path('{inside}/runtime-manifest.json').write_text(json.dumps(m,indent=2)+'\\n')
 '''
 subprocess.run(['docker','exec',name,'/workspace/results/venv-r6/bin/python','-c',bootstrap],check=True)
 tools = inside+'/migration_bridge/round6_7/tools'
-study = inside+'/study'
+study = inside+'/study-device0'
 shell = f'''set -e
 source /usr/local/Ascend/ascend-toolkit/set_env.sh
 source /usr/local/Ascend/cann-9.0.0/share/info/ascendnpu-ir/bin/set_env.sh
 source /usr/local/Ascend/nnal/atb/set_env.sh
 export PYTHONPATH="/workspace/kt-src/third_party/sglang/python:/workspace/kt-src:$PYTHONPATH"
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
-exec /workspace/results/venv-r6/bin/python /workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py --output {inside}/guard --timeout-seconds 86400 -- /workspace/results/venv-r6/bin/python {tools}/farm_worker.py --base /workspace/results/r65-r67-serial-v5 --study {study} --profile R8 >{inside}/controller.log 2>&1
+exec /workspace/results/venv-r6/bin/python /workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py --output {inside}/guard-device0 --timeout-seconds 86400 -- /workspace/results/venv-r6/bin/python {tools}/farm_worker.py --base /workspace/results/r65-r67-serial-v5 --study {study} --profile R8 >{inside}/controller-device0.log 2>&1
 '''
-subprocess.run(['docker','exec','-d',name,'bash','-c',shell],check=True)
+# The container exposes one physical device (host6), enumerated as logical0.
+subprocess.run(['docker','exec','-d','-e','KT_R67_NPU_ID=0','-e','ASCEND_RT_VISIBLE_DEVICES=0',name,'bash','-c',shell],check=True)
 print(json.dumps(dict(container=name,id=cid,study=study,status='LAUNCHED_SYSTEM_SCREEN_NOT_YET_PASS')))
