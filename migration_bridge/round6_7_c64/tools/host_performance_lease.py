@@ -12,6 +12,8 @@ import subprocess
 import time
 
 p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
+p.add_argument('--canary',type=Path,required=True)
+p.add_argument('--performance-result',type=Path,required=True)
 p.add_argument('--hours',type=float,default=24);a=p.parse_args()
 assert str(a.output).startswith('/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-development-v1/')
 name='kt-r67-c64-development-v1'
@@ -31,7 +33,12 @@ def write(value):
 deadline=time.monotonic()+a.hours*3600
 idle_since=None;previous=snapshot();previous_time=time.monotonic()
 while time.monotonic()<deadline:
+    if a.performance_result.exists():break
     time.sleep(5)
+    if not a.canary.exists() or json.loads(a.canary.read_text()).get('status')!='PASS':
+        write(dict(status='WAIT',container=name,time_unix=time.time(),
+                   blockers=[dict(reason='C64_CANARY_NOT_COMPLETE')],no_other_task_modified=True))
+        continue
     blockers=[]
     try:
         top=subprocess.check_output(['docker','top',name,'-eo','pid'],text=True,timeout=10)
@@ -41,7 +48,8 @@ while time.monotonic()<deadline:
         for pid,(ticks,command) in current.items():
             if pid in owned:continue
             used=max(0,ticks-previous.get(pid,(ticks,''))[0])/hz/elapsed
-            if heavy.search(command):blockers.append(dict(pid=pid,reason='OTHER_MODEL_OR_CONTROLLER',command=command))
+            if heavy.search(command):blockers.append(dict(pid=pid,reason='OTHER_MODEL_OR_CONTROLLER',
+                                                        executable=command.split()[0] if command.split() else ''))
             if used:outside.append((pid,used))
         if sum(v for _,v in outside)>2 or any(v>1 for _,v in outside):
             blockers.append(dict(reason='HOST_CPU_BUSY',cores=sum(v for _,v in outside)))
@@ -59,4 +67,4 @@ while time.monotonic()<deadline:
     write(dict(status='EXCLUSIVE' if exclusive else 'WAIT',container=name,time_unix=time.time(),
                blockers=blockers,criterion='NO_OTHER_MODEL_CONTROLLER_OR_NPU; OUTSIDE_CPU_TOTAL_LE2_MAX_LE1; 60S_IDLE',
                no_other_task_modified=True))
-write(dict(status='EXPIRED',container=name,time_unix=time.time()))
+write(dict(status='RELEASED' if a.performance_result.exists() else 'EXPIRED',container=name,time_unix=time.time()))

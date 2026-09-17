@@ -15,6 +15,8 @@ p.add_argument('--performance',type=Path,required=True);p.add_argument('--output
 a=p.parse_args()
 c=json.loads(a.canary.read_text());perf=json.loads(a.performance.read_text())
 assert c['status']=='PASS' and perf['status']=='PASS' and perf['verdict']=='BENEFICIAL','QUALITY_ENTRY_GATE'
+assert sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')==c['native_sha256']
+assert sha('/workspace/c64-dev/runtime/kt_kernel/utils/llamafile.py')==c['wrapper_sha256']
 name=c['profile'];assert name in ('R16','R8')
 base=Path('/workspace/results/r65-r67-serial-v5')
 a.output.mkdir(parents=True,exist_ok=False)

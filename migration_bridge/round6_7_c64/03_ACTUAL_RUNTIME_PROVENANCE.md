@@ -3,6 +3,9 @@
 Start: 2026-09-17. Local branch `codex/round6-7-c64-numa`, clean base
 `902de84cc31ca7d63a21bcb87641f80e87967373`. No push before operators and canary stabilize.
 
+User-approved development plan SHA256:
+`f36a59dbe888572748f196e0bb0e7501127a264819b9332c0ce3aa2f2a60c0ba`.
+
 Actual deployed parent: `e3084d309d6f39b8a9f7185d36ac27e4b77526d7`.
 Actual deployed SGLang: `eaa58ccea4ee372b8b207dd16f398eafe3da37ff` plus frozen overlays.
 Local gitlinks are not used as a substitute for these deployed revisions.
@@ -13,6 +16,11 @@ NPU2 physical / logical0; CPU128–191, memory nodes4,5;192GiB memory limit;
 swap forbidden; SYS_NICE; network none. Original assets and source read-only.
 Only `/workspace/c64-dev` is writable evidence/build storage.
 R16-C32 and R8-C32 continue untouched on CPU0–31 and64–95 respectively.
+
+The two older project-owned probe containers (`kt-r67-c64-runtime`,
+`kt-r67-c64-dev`) were inspected and contained only `sleep infinity`. They were
+stopped, not deleted, during NPU admission troubleshooting. Neither product
+container nor the business container was stopped.
 
 Original native SHA `0f3aac9009931b18853c9b8fd6f6bba8b02d6ea396e79b2029bf9ce092049895`.
 R8 sparse-NUMA C32 binary is separate and will not receive C64 updates.

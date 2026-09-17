@@ -25,7 +25,7 @@ def admission():
 
 
 def memory():
-    paths = ['/proc/meminfo', '/proc/vmstat', '/sys/fs/cgroup/memory.current',
+    paths = ['/proc/meminfo', '/proc/vmstat', '/sys/fs/cgroup/memory.current', '/sys/fs/cgroup/memory.peak',
              '/sys/fs/cgroup/memory.stat', '/sys/fs/cgroup/memory.events', '/sys/fs/cgroup/memory.pressure']
     processes=[]
     for proc in Path('/proc').glob('[0-9]*'):
@@ -63,12 +63,18 @@ def validate_launch(root, observer):
     resolved = json.loads((root / 'resolved-command.json').read_text())
     args = resolved['argv']
     required = {'--max-total-tokens':'4096', '--max-running-requests':'1',
-                '--tp-size':'1', '--dtype':'bfloat16', '--device':'npu'}
+                '--tp-size':'1', '--dtype':'bfloat16', '--device':'npu',
+                '--kt-cpuinfer':str(int(os.environ['C64_TP'])*32),
+                '--kt-threadpool-count':os.environ['C64_TP'],
+                '--kt-max-deferred-experts-per-token':'0'}
     for key,value in required.items():
         if key not in args or args[args.index(key)+1] != value:
             raise ValueError('LAUNCH_CONFIGURATION_DRIFT:' + key)
     if '--disable-cuda-graph' not in args or ('--forward-hooks' in args) != observer:
         raise ValueError('GRAPH_OR_OBSERVER_DRIFT')
+    expected=['4','5'] if os.environ['C64_TP']=='2' else ['4']
+    index=args.index('--kt-numa-nodes')+1
+    if args[index:index+len(expected)]!=expected:raise ValueError('NUMA_LAUNCH_DRIFT')
     return dict(configured_kv_token_capacity=4096, graph_off=True, batch_limit=1,
                 evidence='RESOLVED_LAUNCH_ARGS_NOT_DYNAMIC_MEMORY', resolved_sha256=sha(root / 'resolved-command.json'))
 

@@ -7,7 +7,7 @@ import shutil
 import sys
 import time
 from common import sha, write
-from serial_session import session
+from serial_session import session,memory,admission
 sys.path.append('/workspace/r67-tools-v5/migration_bridge/round6_7/tools')
 from run_serial_sweep import request, route_summary
 
@@ -34,11 +34,17 @@ assert len(manifest['prompts'])==8 and len(manifest['budgets'])==4
 os.environ.update(C64_TP='2',KT_R67_CPU_SET='128-191',KT_R67_NPU_ID='0')
 os.environ.pop('KT_C64_CAPTURE_DIR',None)
 report=dict(status='RUNNING',phase='COMPACT',profile=a.profile,started=time.time(),references={},requests=0,
+    native_sha256=op['native_sha256'],wrapper_sha256=op['wrapper_sha256'],
     profile_sha256=sha(profile),compact_sha256=sha(a.output/'compact.json'),
     operator_summary_sha256=sha(a.operator_summary),workers=64,numa=[4,5],performance='CONTENDED_NOT_FORMAL')
 write(a.output/'progress.json',report)
 try:
     with session(a.output/'compact',profile) as root:
+        ready=json.loads((root/'ready.json').read_text())
+        pinned=[p for p in ready['memory_after_load']['processes'] if
+                all(p['thread_affinity_counts'].get(str(cpu),0)>=1 for cpu in range(128,192))]
+        assert pinned,'C64_MODEL_WORKER_AFFINITY'
+        report['worker_affinity_pids']=[p['pid'] for p in pinned]
         for row in manifest['prompts']:
             anchor=None
             for i,budget in enumerate(manifest['budgets']):
@@ -47,6 +53,8 @@ try:
                 assert ids==anchor[:budget],'SAME_PATH_OR_PREFIX'
                 report['requests']+=1;write(a.output/'progress.json',report)
             report['references'][row['id']]=anchor
+            admission()
+            write(root/f'memory-{row["id"]}.json',memory())
             write(a.output/'progress.json',report)
     report['phase']='RESTART';write(a.output/'progress.json',report)
     with session(a.output/'restart',profile) as root:

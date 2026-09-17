@@ -15,7 +15,9 @@ from run_serial_sweep import request
 p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
 p.add_argument('--canary',type=Path,required=True);p.add_argument('--lease',type=Path,required=True)
 a=p.parse_args()
-assert json.loads(a.canary.read_text())['status']=='PASS','CANARY_PREDECESSOR'
+c=json.loads(a.canary.read_text());assert c['status']=='PASS','CANARY_PREDECESSOR'
+assert sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')==c['native_sha256']
+assert sha('/workspace/c64-dev/runtime/kt_kernel/utils/llamafile.py')==c['wrapper_sha256']
 manifest=Path('/workspace/c64-dev/performance-freeze-v1/perf_prompt_set.json')
 f=json.loads(manifest.read_text())
 assert f['blocks']==3 and f['order']==['C32','C64','C64','C32']

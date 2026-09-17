@@ -11,6 +11,7 @@ Seed 67064, 10 repetitions per shape, one caller thread.
 - K: 2048 and 704.
 - Required relative L2 ≤ 1e-4, finite, identical repeated output, successful kernel return.
 - **60/60 PASS**, including the 192-row remainder and the full 704-element down reduction.
+- Maximum observed relative L2: `9.696490224087029e-7`.
 
 Raw results: `evidence/development_smoke/sgemm_tail_microprobe.json`.
 This proves tile support, not full-model C64 qualification or speedup.
