@@ -120,3 +120,34 @@ partial smoke used original first4/36 closed cells: each interval EXCLUSIVE
 with15 independent samples, serialization slack0.2748..0.2837s. Observer source
 identity matched frozen V2. This validates adapter feasibility only; the complete
 campaign, its nonoverlapping36-cell audit and Static selection are still pending.
+# Future V3 ownership attribution — prepared, not active
+
+2026-09-17. Current active observer remains V2; current model driver/tools-v16
+are unchanged. V3 sourceSHA
+`9e92b9cd8981a104277a851d7e45883ec5a1239935d7d0ad8a1498b70cd4c063`.
+The former two-step `docker top` then `/proc` snapshot can disagree when owned
+children appear/disappear between observations. That is a CODE_INSPECTED
+attribution risk, not proven attribution of the old six blocked Static windows:
+V2 did not retain outside per-process records sufficient to settle their cause.
+All old whole-campaign formal claims remain PENDING_HOST_ISOLATION.
+
+For future observations only, classify each process by its actual unified
+cgroup membership in the snapshot, scoped to the exact owned container cgroup
+or descendants. CPU deltas also bind `/proc/stat` process start identity to avoid
+PID-reuse misattribution. Retain outside process executable/PID/cgroup/CPU deltas
+without serializing complete possibly-sensitive command lines. No process is
+migrated, stopped or resource-tuned by the observer. Scope/CPU limits/60S quiet/
+memory reserve/zero-container-swap/no-active-host-swap rules remain unchanged.
+The [kernel cgroup-v2 documentation](https://docs.kernel.org/admin-guide/cgroup-v2.html)
+defines unified membership and fork inheritance; the [proc documentation](https://docs.kernel.org/filesystems/proc.html)
+defines CPU/lifetime fields. Root cgroup is accepted for outside host processes,
+but forbidden as the owned container scope. Unreadable ownership is not silently
+promoted to exclusive. This remains a read-only contention proxy, not exhaustive
+accounting of short-lived tasks or direct DRAM bandwidth measurement.
+
+Three targeted ownership regressions pass; full suite97/97 LOCAL_VERIFIED. V3
+still needs independent deployment/hash verification/A3 smoke and fresh complete
+performance windows before use. Never replace a healthy live model release or
+reclassify old V2 samples using V3. Launch it only as an independently versioned
+host observer; stop only the identity-verified obsolete owned observer, not tests
+or business workloads. Current active samples remain host-resource-monitor-v2.

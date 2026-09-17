@@ -1,8 +1,32 @@
 import unittest
-from host_resource_observer import assess_window,process_ids,memory_blockers
+from host_resource_observer import assess_window,process_ids,memory_blockers,unified_group,in_owned_group,outside_usage
 
 
 class HostQuiet(unittest.TestCase):
+    def test_exact_cgroup_scope_not_prefix_collision(self):
+        group='/system.slice/docker-owned.scope'
+        self.assertTrue(in_owned_group(group,group))
+        self.assertTrue(in_owned_group(group+'/child',group))
+        self.assertFalse(in_owned_group(group+'-other',group))
+        with self.assertRaises(ValueError):unified_group('0::/\n')
+        self.assertEqual(unified_group('0::/\n',allow_root=True),'/')
+        self.assertEqual(unified_group('0::'+group+'\n'),group)
+
+    def test_new_owned_worker_not_misclassified_by_stale_top(self):
+        group='/docker/owned'
+        previous={1:dict(ticks=100,start_ticks=10,cgroup=group,command='python')}
+        current={1:dict(ticks=5100,start_ticks=10,cgroup=group,command='python'),
+                 2:dict(ticks=200,start_ticks=20,cgroup=group,command='sglang')}
+        self.assertEqual(outside_usage(current,previous,group,999,100,5),[])
+
+    def test_real_outside_usage_and_reused_pid(self):
+        old=dict(ticks=100,start_ticks=10,cgroup='/business',command='/bin/worker')
+        new=dict(old,ticks=1100)
+        usage=outside_usage({1:new},{1:old},'/docker/owned',999,100,5)
+        self.assertEqual(usage[0]['cores'],2)
+        self.assertEqual(usage[0]['executable'],'worker')
+        self.assertEqual(outside_usage({1:dict(new,start_ticks=11)},{1:old},'/docker/owned',999,100,5),[])
+
     def test_actual_npu_pid_format(self):
         self.assertEqual(process_ids('Process id:274359 Process memory(MB):7880\nProcess id:273820'),[274359,273820])
 

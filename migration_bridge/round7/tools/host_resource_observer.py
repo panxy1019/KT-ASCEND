@@ -22,6 +22,32 @@ def memory_blockers(mem,cgroup_swap,current_vm,initial_vm):
     return blockers
 
 
+def unified_group(text,allow_root=False):
+    matches=[line[3:] for line in text.splitlines() if line.startswith('0::')]
+    if len(matches)!=1 or (matches[0]=='/' and not allow_root):raise ValueError('OWNERSHIP_CGROUP_UNAVAILABLE')
+    return matches[0]
+
+
+def in_owned_group(candidate,owned_group):
+    return candidate==owned_group or candidate.startswith(owned_group+'/')
+
+
+def outside_usage(current,previous,owned_group,observer_pid,hz,elapsed):
+    """Attribute each snapshot by actual cgroup, not an earlier docker-top list."""
+    if elapsed<=0:raise ValueError('NONPOSITIVE_OBSERVER_INTERVAL')
+    result=[]
+    for pid,row in current.items():
+        if pid==observer_pid or in_owned_group(row['cgroup'],owned_group):continue
+        prior=previous.get(pid)
+        # A reusedPID is not the previous process's CPU counter/lifetime.
+        ticks=prior['ticks'] if prior and prior['start_ticks']==row['start_ticks'] else row['ticks']
+        used=max(0,row['ticks']-ticks)/hz/elapsed
+        if used:result.append(dict(pid=pid,cores=used,cgroup=row['cgroup'],
+            start_ticks=row['start_ticks'],executable=Path(row['command'].split()[0]).name
+            if row['command'].split() else ''))
+    return sorted(result,key=lambda x:x['cores'],reverse=True)
+
+
 def assess_window(samples,start,end,max_gap=20):
     relevant=sorted((s for s in samples if start-max_gap<=s['time_unix']<=end+max_gap),
                     key=lambda x:x['time_unix'])
@@ -52,7 +78,7 @@ def main():
     init_pid=int(subprocess.check_output(['docker','inspect','--format','{{.State.Pid}}',
         'kt-r67-c64-development-v1'],text=True,timeout=5).strip())
     assert init_pid>0,'OWNED_CONTAINER_NOT_RUNNING'
-    group=next(line[3:] for line in Path(f'/proc/{init_pid}/cgroup').read_text().splitlines() if line.startswith('0::'))
+    group=unified_group(Path(f'/proc/{init_pid}/cgroup').read_text())
     swap_file=Path('/sys/fs/cgroup')/group.lstrip('/')/'memory.swap.current'
     def snapshot():
         data={}
@@ -60,8 +86,10 @@ def main():
             try:
                 raw=(path/'stat').read_text();tail=raw[raw.rfind(')')+2:].split()
                 command=(path/'cmdline').read_bytes().replace(b'\0',b' ').decode(errors='replace')
-                data[int(path.name)]=(int(tail[11])+int(tail[12]),command)
-            except (FileNotFoundError,ProcessLookupError,PermissionError):pass
+                process_group=unified_group((path/'cgroup').read_text(),allow_root=True)
+                data[int(path.name)]=dict(ticks=int(tail[11])+int(tail[12]),command=command,
+                    start_ticks=int(tail[19]),cgroup=process_group)
+            except (FileNotFoundError,ProcessLookupError):pass
         return data
     def write(state):
         with (a.output/'samples.jsonl').open('a') as f:f.write(json.dumps(state)+'\n')
@@ -71,15 +99,16 @@ def main():
     deadline=time.monotonic()+a.hours*3600
     heavy=re.compile(r'sglang|launch_server|run_serial_sweep|farm_worker|operator_oracle|run_operator_matrix')
     while time.monotonic()<deadline:
-        time.sleep(5);blockers=[];outside=[];memory_observation={}
+        time.sleep(5);blockers=[];outside=[];details=[];memory_observation={}
         try:
-            top=subprocess.check_output(['docker','top','kt-r67-c64-development-v1','-eo','pid'],text=True,timeout=5)
-            owned={int(x) for x in top.splitlines()[1:]};owned.add(os.getpid())
             current=snapshot();now=time.monotonic();elapsed=now-previous_time
-            for pid,(ticks,command) in current.items():
+            owned={pid for pid,row in current.items() if in_owned_group(row['cgroup'],group)}
+            owned.add(os.getpid())
+            details=outside_usage(current,previous,group,os.getpid(),hz,elapsed)
+            outside=[row['cores'] for row in details]
+            for pid,row in current.items():
                 if pid in owned:continue
-                used=max(0,ticks-previous.get(pid,(ticks,''))[0])/hz/elapsed
-                if used:outside.append(used)
+                command=row['command']
                 if heavy.search(command):blockers.append(dict(reason='OTHER_MODEL_OR_CONTROLLER',pid=pid,
                     executable=Path(command.split()[0]).name if command.split() else ''))
             previous=current;previous_time=now
@@ -104,7 +133,9 @@ def main():
             outside_cpu_cores=sum(outside),no_other_task_modified=True,
             initial_swap_counters=initial_vm,memory=memory_observation,
             source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2'))
+            memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2',
+            ownership_method='V3_ACTUAL_SNAPSHOT_CGROUP_AND_PROCESS_START_ID',
+            owned_cgroup=group,outside_cpu_processes=details))
 
 
 if __name__=='__main__':main()
