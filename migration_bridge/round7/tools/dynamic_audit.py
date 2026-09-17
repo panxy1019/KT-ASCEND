@@ -11,6 +11,27 @@ import time
 import threading
 
 
+def projection_orientation(source_shape,checkpoint_shape):
+    if tuple(source_shape)==tuple(checkpoint_shape):return False
+    if tuple(source_shape)==tuple(reversed(checkpoint_shape)):return True
+    raise ValueError('FULL_CONTEXT_CHECKPOINT_SHAPE_MISMATCH')
+
+
+def checkpoint_projection(layer,logical,name):
+    """Independent BF16 source lane; no inference or checkpoint mutation."""
+    import torch
+    from safetensors import safe_open
+    model=Path('/workspace/models/DeepSeek-V2-Lite-604d5664')
+    index=json.loads((model/'model.safetensors.index.json').read_text())['weight_map']
+    def get(projection):
+        key=f'model.layers.{layer}.mlp.experts.{logical}.{projection}_proj.weight'
+        with safe_open(model/index[key],framework='pt',device='cpu') as f:
+            return f.get_tensor(key).clone()
+    if name=='w13_weight':return torch.cat([get('gate'),get('up')])
+    if name=='w2_weight':return get('down')
+    raise ValueError('UNKNOWN_BF16_PROJECTION')
+
+
 def install(root,initial):
     import torch
     from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod, select_top_experts_from_batch
@@ -61,6 +82,7 @@ def install(root,initial):
             assert torch.equal(self.gpu_experts_mask_cuda.cpu(),mask),'DEVICE_MASK'
             assert torch.equal(self.wrapper.gpu_experts_mask,mask),'WRAPPER_MASK'
             copied=0
+            checkpoint_sampled=sorted(set([0,len(selected)-1])) if selected else []
             # Audit every copied expert, not only slot0. BF16 copy must be exact.
             for name in ('w13_weight','w2_weight'):
                 source=getattr(ctx.gpu_layer,name)
@@ -69,6 +91,12 @@ def install(root,initial):
                 for slot,logical in enumerate(selected):
                     assert torch.equal(dest[slot],source[logical]),'MIGRATED_WEIGHT_IDENTITY'
                     copied+=dest[slot].numel()*dest.element_size()
+                    if slot in checkpoint_sampled:
+                        reference=checkpoint_projection(self.kt_config.layer_idx,logical,name)
+                        source_cpu=source[logical].detach().cpu()
+                        assert reference.dtype==source_cpu.dtype==torch.bfloat16,'CHECKPOINT_SOURCE_DTYPE'
+                        if projection_orientation(source_cpu.shape,reference.shape):reference=reference.T
+                        assert torch.equal(source_cpu,reference),'FULL_CONTEXT_CHECKPOINT_EXPERT_IDENTITY'
             next_generation=generation+1
             self._round7_generations=dict(weights=next_generation,mapping=next_generation,
                 mask=next_generation,wrapper_mask=next_generation)
@@ -82,6 +110,8 @@ def install(root,initial):
                 official_update_host_seconds=production_host_seconds,
                 timing_scope='DIAGNOSTIC_HOST_CALL_ELAPSED_NOT_DEVICE_EVENT_OR_TIMED_PERFORMANCE',
                 weight_identity_exact=True,mask_mapping_wrapper_exact=True,
+                checkpoint_source_identity_exact=True,
+                checkpoint_sampled_logical_ids=[selected[s] for s in checkpoint_sampled],
                 generation_boundary='SERIAL_TP1_BATCH1_ONLY_NOT_CONCURRENCY_QUALIFIED')
             with (Path(root)/'generation-audit.jsonl').open('a') as f:f.write(json.dumps(record)+'\n')
             return value

@@ -27,6 +27,7 @@ def verify_updates(records,slots):
         assert x['weights']==x['prior_generation']+1,'NONMONOTONIC_GENERATION'
         assert len(x['selected'])==slots[x['layer']],'LAYER_SLOT_COUNT_CHANGED'
         assert x['weight_identity_exact'] and x['mask_mapping_wrapper_exact'],'MIGRATION_IDENTITY'
+        assert x['checkpoint_source_identity_exact'],'MIGRATION_CHECKPOINT_SOURCE_IDENTITY'
 
 
 def main():

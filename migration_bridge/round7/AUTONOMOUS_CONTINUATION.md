@@ -45,7 +45,11 @@ the exact original .pt bytes in the lossless DEV archive and readable mask JSON.
 Full artifact hashes are in
 `01_STATIC_FREQUENCY/FREQUENCY_CANDIDATE_COMMIT_ACK.json`.
 The frequency budget is208, per-layer counts4–12, no zero-resident layer in
-this candidate. It has not passed system/quality/performance yet.
+this candidate. Operator representatives and Uniform compact/restart/parity
+have passed on A3. Frequency compact completed its first process normally and
+is executing the independent OFF/restart process. Frequency system/quality/
+performance are not yet promoted. Preserved earlier system evidence is in
+`01_STATIC_FREQUENCY/STATIC_SYSTEM_CHECKPOINT.md` and its lossless archive.
 The serial qualification driver has been launched in the owned container:
 `/workspace/c64-dev/round7/static-phase-v1/progress.json`, log
 `/workspace/c64-dev/round7/static-phase-v1.log`. It uses release-v6, base
@@ -59,14 +63,14 @@ CMMLU→isolated performance if quality passes. Agent static selection follows.
 Use read-only checks of:
 
 ```
-docker exec kt-r67-c64-development-v1 sh -c 'cat /workspace/c64-dev/round7/runtime-v2/progress.json; tail -5 /workspace/c64-dev/round7/runtime-v2/uniform-dev-v1/guard/process.log'
+docker exec kt-r67-c64-development-v1 sh -c 'grep -n "phase\|status\|error" /workspace/c64-dev/round7/static-phase-v1/progress.json; tail -5 /workspace/c64-dev/round7/static-phase-v1.log'
 ```
 
 Collector log: `collect-dev-v2.log`; run directory `runtime-v2`.
 Actual server stdout is `guard/process.log`, not empty `launcher.log`.
 Driver is backgrounded through `flock` and an internal exclusive lock.
 Do not launch a duplicate or run additional NPU tests while this stage owns NPU.
-Do not replace active release-v5 tool files with later local edits: deploy future
+Do not replace active release-v6 tool files with later local edits: deploy future
 tools into a separately versioned directory after current stage reaping.
 Attempt1 is preserved in `runtime-v1` and rejected for an extra-forward integrity
 assumption. Attempt2 exact IDs/positions attribution proves an unused final-token
@@ -86,7 +90,15 @@ passes. Observer ON/OFF parity passed. Finite/repeated pilot outputs passed.
 4. Compare Uniform/Frequency HOLDOUT route metrics and separate observer-OFF
    isolated performance. Run Frequency CMMLU256. Choose static by routing/perf,
    not correctness scores. Frequency failure retains Uniform and continues.
-5. Dynamic deployed-code audit and DEV-only threshold256/512/1024 sweep; freeze
+5. First execute the standalone `cpu_backing_probe.py` on the original binary:
+   actual multi-subpool LLAMAFILE load skips initial NPU-owned expert slices;
+   Dynamic eviction could expose an uninitialized CPU backing pool. This is a
+   CODE_INSPECTED defect candidate, not yet reproduced. Use predetermined
+   initially resident experts and real operands, preserve pre-fix failure, then
+   minimally repair and rerun original regression/operators/static compact if
+   needed. Do not run it concurrently with healthy current serving or overwrite
+   the live native binary. See `02_DYNAMIC/PRE_MIGRATION_SOURCE_AND_BACKING_AUDIT.md`.
+   Continue Dynamic deployed-code audit and DEV-only threshold256/512/1024 sweep; freeze
    threshold before HOLDOUT/CMMLU. Validate no-trigger, real triggered full-prefill,
    exact copied BF16 weights, wrapper/device mappings/masks, same-generation
    publication, deterministic selection, A-to-B adaptation, restart to static.
@@ -136,13 +148,16 @@ Uniform. Software failures return to the agent for repair; never erase failed
 run directories. Driver completion still requires agent selection/documentation
 before Round7B. The local suite has eighteen passing tests after freeze checks.
 
-Tool release-v6 is staged, not executing, at
+Tool release-v6 is executing the static driver at
 `/workspace/c64-dev/round7/tools-v6/migration_bridge/round7/tools`.
 Its archive SHA256 is
 `af6eeeb22ff796525d15c389757e7296320561caed9d3088de5a26ddfd43750b`,
 built from local commit `5aa2d89af` (resolve full SHA before reporting).
-The active collector's release-v5 directory was not modified. Use this separately
-versioned tool path for subsequent stages after the current collector reaps.
+The completed collector's release-v5 directory was not modified. Current local
+future Dynamic tools add independent HF checkpoint source identity and the CPU
+backing eviction probe; twenty-one local tests pass. Those additions are not
+deployed or A3-verified. Use a separately versioned release-v7 for future gates;
+do not replace v6 during its healthy static run.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer
