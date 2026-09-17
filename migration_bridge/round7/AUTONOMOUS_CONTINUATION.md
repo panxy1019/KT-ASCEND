@@ -47,12 +47,14 @@ Full artifact hashes are in
 The frequency budget is208, per-layer counts4–12, no zero-resident layer in
 this candidate. Operator representatives and Uniform compact/restart/parity
 have passed on A3. Frequency compact/restart/parity also passed; its exact
-structure and separate lossless archive are preserved. Driver is now in
-Frequency HOLDOUT. Uniform HOLDOUT passed all128 requests and complete forward
+structure and separate lossless archive are preserved. Uniform and Frequency
+HOLDOUT have now both passed all128 requests and complete forward
 attribution. Uniform NPU assignment hit rate0.12440549718339645, CPU assignment
 rate0.8755945028166036, CPU weight mass0.8705099846154037. These are observer-ON
-route diagnostics, not formal performance. Frequency quality/performance are
-not yet promoted.
+route diagnostics, not formal performance. Frequency NPU-hit rate0.26265173490281274,
+CPU route rate0.7373482650971872, CPU weight mass0.7438615086765767. Frequency
+quality is running; quality/performance and final static selection are not yet
+promoted. See the Frequency HOLDOUT checkpoint for its lossless archive.
 Preserved system evidence is in
 `01_STATIC_FREQUENCY/STATIC_SYSTEM_CHECKPOINT.md` and its lossless archive.
 The serial qualification driver has been launched in the owned container:
@@ -228,6 +230,17 @@ inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 must continue to agree on that budget.
 
 ## Follow-up policy
+
+Release-v8 is now staged, not running:
+`/workspace/c64-dev/round7/tools-v8/migration_bridge/round7/tools`.
+Archive SHA256 `7f9bc2c6db659b523acebfa37c2536399bd61bb218b23921f975d146875a4b7c`,
+built from source commit `cce07f5374e9932443ae156e88d146e7593e062d`.
+SCP finished and both host/container archive hashes matched before extraction.
+Includes CPU backing MRE, independent source identity, decode-only Dynamic HD,
+actual quality migration telemetry, host isolation and full ABBA decision audit.
+Active static v6 and native binary were not modified. After Static finishes and
+reaps, use separately versioned v8 tools for original-binary backing MRE and
+later gates; no Dynamic/Deferred probe has been launched yet.
 
 Future Dynamic performance evaluation now has a pure-Python full36-cell ABBA
 audit (`tools/evaluate_performance.py`): nine tests for missing/malformed cells,
