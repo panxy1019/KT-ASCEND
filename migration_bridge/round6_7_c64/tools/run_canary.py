@@ -32,7 +32,9 @@ base=Path('/workspace/results/r65-r67-serial-v5')
 for name in (a.profile+'.json',a.profile+'.pt'):shutil.copy2(base/'profiles'/name,a.output/name)
 shutil.copy2(base/'compact.json',a.output/'compact.json')
 profile=a.output/(a.profile+'.json');manifest=json.loads((a.output/'compact.json').read_text())
-assert len(manifest['prompts'])==8 and len(manifest['budgets'])==4
+assert len(manifest['prompts'])==4 and manifest['budgets']==[16,8,8,8,8,8,4,2], 'FROZEN_COMPACT_PROTOCOL'
+assert manifest['restart_budget']==16 and manifest['observer_budget']==8, 'FROZEN_REPLAY_BUDGETS'
+assert len({row['id'] for row in manifest['prompts']})==4, 'DUPLICATE_PROMPT'
 os.environ.update(C64_TP='2',KT_R67_CPU_SET='128-191',KT_R67_NPU_ID='0')
 os.environ.pop('KT_C64_CAPTURE_DIR',None)
 report=dict(status='RUNNING',phase='COMPACT',profile=a.profile,started=time.time(),references={},requests=0,
@@ -61,13 +63,15 @@ try:
     report['phase']='RESTART';write(a.output/'progress.json',report)
     with session(a.output/'restart',profile) as root:
         for row in manifest['prompts']:
-            _,ids,_=request(root,row,f'c64-restart-{row["id"]}',16)
-            assert ids==report['references'][row['id']],'RESTART_MISMATCH'
+            budget=manifest['restart_budget']
+            _,ids,_=request(root,row,f'c64-restart-{row["id"]}',budget)
+            assert ids==report['references'][row['id']][:budget],'RESTART_MISMATCH'
     report['phase']='OBSERVER';write(a.output/'progress.json',report)
     with session(a.output/'observer',profile,observer=True) as root:
         for row in manifest['prompts']:
-            _,ids,_=request(root,row,f'c64-observer-{row["id"]}',8)
-            assert ids==report['references'][row['id']][:8],'OBSERVER_PARITY'
+            budget=manifest['observer_budget']
+            _,ids,_=request(root,row,f'c64-observer-{row["id"]}',budget)
+            assert ids==report['references'][row['id']][:budget],'OBSERVER_PARITY'
         report['routing']=route_summary(root/'routing.jsonl',profile)
         structure=[json.loads(x) for x in (root/'physical-structure.jsonl').read_text().splitlines()]
         assert {r['layer'] for r in structure}==set(range(1,27)),'PHYSICAL_LAYOUT'
