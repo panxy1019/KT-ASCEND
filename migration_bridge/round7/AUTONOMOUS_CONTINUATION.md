@@ -229,6 +229,19 @@ must continue to agree on that budget.
 
 ## Follow-up policy
 
+2026-09-17 checkpoint: Frequency HOLDOUT128 PASS and lossless archive verified;
+see `01_STATIC_FREQUENCY/FREQUENCY_HOLDOUT_CHECKPOINT.md`. NPU-hit rate26.2652%
+vs Uniform12.4405%, CPU assignments -15.7888% relative. Attribution raw2176,
+included2048, unused tails128, unknown0; completed owned-process reaping.
+Static driver is now Frequency CMMLU (last sampled163/256, correct112;
+partial counts are not a quality conclusion). Preserve the healthy driver,
+which proceeds automatically to observer-OFF ABBA if quality passes. No static
+baseline selection yet. Fresh host observer V2 was EXCLUSIVE at
+1789654100.9233055 with blockers[], outside CPU~0.719cores, owned swap0 and
+unchanged pswpin0/pswpout1. Later performance needs its actual window audit,
+not this single sample. This checkpoint does not change production semantics,
+mask, quality threshold, or historical numerical status.
+
 Continue useful preparation while a healthy long stage runs, without disturbing
 it. Notify only meaningful stage transitions, failures/fixes or final decisions;
 unchanged polling stays quiet. Stop only owned workers on resource/device errors,
