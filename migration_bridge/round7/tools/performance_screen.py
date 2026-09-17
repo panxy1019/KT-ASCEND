@@ -78,12 +78,23 @@ def main():
     p.add_argument('--left',choices=['uniform','frequency'],required=True)
     p.add_argument('--right',choices=['uniform','frequency','dynamic','deferred'],required=True)
     p.add_argument('--threshold',type=int)
+    p.add_argument('--threshold-freeze',type=Path)
+    p.add_argument('--threshold-ack',type=Path)
     p.add_argument('--dynamic-base',action='store_true',help='Evaluate D1 on a selected Dynamic scheduler')
     p.add_argument('--host-observer',type=Path,help='Host-issued samples.jsonl visible through the owned mount')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.corpus.parent/'CORPUS_FREEZE.json').read_text())
     assert sha(a.corpus)==freeze['corpora']['HOLDOUT']['sha256'],'HOLDOUT_HASH'
+    ack=None
+    if a.right=='dynamic' or a.dynamic_base:
+        from frozen_threshold import load_threshold
+        selected,ack=load_threshold(a.threshold_freeze,a.threshold_ack,a.base/'profiles'/f'{a.left}.json')
+        if a.threshold is not None and a.threshold!=selected['threshold']:
+            raise ValueError('CLI_THRESHOLD_DIFFERS_FROM_COMMITTED_CANDIDATE')
+        a.threshold=selected['threshold']
+    elif a.threshold is not None or a.threshold_freeze is not None or a.threshold_ack is not None:
+        raise ValueError('THRESHOLD_ARGUMENTS_WITHOUT_DYNAMIC_LANE')
     rows=[json.loads(x) for x in a.corpus.read_text().splitlines()]
     # Deterministic first member of each pre-registered bucket, never selected
     # for observed scores or latency. Record IDs before the first measurement.
@@ -91,6 +102,7 @@ def main():
              for bucket,budget in [('short',256),('medium',512),('long',1024)]]
     write(a.output/'protocol.json',dict(order=['left','right','right','left'],blocks=3,
         left=a.left,right=a.right,threshold=a.threshold,dynamic_base=a.dynamic_base,observer=False,
+        threshold_commit_ack=ack,
         targets=[dict(bucket=b,id=r['id'],input_tokens=len(r['input_ids']),decode=n) for b,r,n in targets],
         holdout_sha256=sha(a.corpus),host_observer=str(a.host_observer) if a.host_observer else None,
         internal_cpu_wait='NOT_INSTRUMENTED_IN_TIMED_PATH'))

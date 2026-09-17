@@ -15,20 +15,21 @@ def main():
     p.add_argument('--holdout',type=Path,required=True)
     p.add_argument('--profile',choices=['uniform','frequency'],required=True)
     p.add_argument('--threshold-freeze',type=Path,required=True)
+    p.add_argument('--threshold-ack',type=Path,required=True)
     p.add_argument('--probe-summary',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.holdout.parent/'CORPUS_FREEZE.json').read_text())
     assert sha(a.holdout)==freeze['corpora']['HOLDOUT']['sha256'],'HOLDOUT_IDENTITY'
-    selected=json.loads(a.threshold_freeze.read_text())
-    assert selected['status']=='FROZEN_NOT_HELDOUT_QUALIFIED'
-    assert selected['profile_sha256']==sha(a.base/'profiles'/f'{a.profile}.json'),'STATIC_PROFILE_DRIFT'
+    from frozen_threshold import load_threshold
+    selected,ack=load_threshold(a.threshold_freeze,a.threshold_ack,a.base/'profiles'/f'{a.profile}.json')
     assert json.loads(a.probe_summary.read_text())['status']=='PASS','MIGRATION_SYSTEM_PREDECESSOR'
     rows=lines(a.holdout);assert len(rows)==128
     cfg=json.loads(config(a.base,a.profile,True).read_text())
     cfg.update(dynamic=True,threshold=selected['threshold'],recorder=True)
     cfgpath=a.output/'config.json';write(cfgpath,cfg)
     write(a.output/'protocol.json',dict(holdout_sha256=sha(a.holdout),
+        threshold_commit_ack=ack,
         threshold_freeze_sha256=sha(a.threshold_freeze),threshold=selected['threshold'],
         budget=16,observer=True,formal_performance=False,
         scope='INDEPENDENT_ROUTING_NOT_THRESHOLD_FITTING'))

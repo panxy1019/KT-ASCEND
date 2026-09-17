@@ -37,6 +37,18 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 15:46 heartbeat: Static performance16/36 at inspection, healthyRUNNING;
+host V2 EXCLUSIVE blockers[]. No extra NPU test launched. Prepared post-DEV
+Dynamic consumers now enforce explicit threshold commit acknowledgment via
+`frozen_threshold.py`: matching selected JSON/profile/DEV hashes and full local
+candidate commit, no quality/HD fitting. Formal performance may no longer rely
+on a bare --threshold integer. See `02_DYNAMIC/THRESHOLD_COMMIT_FREEZE_PROTOCOL.md`.
+All71 local tests PASS; not yet deployed/model-qualified. Stage a new v11 after
+commit; never overwrite v6/v10. Future Dynamic HOLDOUT/quality/performance and
+Deferred-on-Dynamic require --threshold-ack along with --threshold-freeze.
+Actual Git candidate-content verification must precede creating the ack; runtime
+checks are a handoff binding, not cryptographic proof of local commit contents.
+
 2026-09-17 15:28 checkpoint: observer-OFF Static ABBA is healthy,14/36 completed;
 host V2 EXCLUSIVE, blockers[], owned cgroup swap0, no active host swap change.
 New offline separation of closed HOLDOUT captures shows Frequency benefit is

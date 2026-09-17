@@ -11,6 +11,7 @@ def main():
     p.add_argument('--mode',choices=['dynamic','deferred'],required=True)
     p.add_argument('--dynamic-base',action='store_true')
     p.add_argument('--threshold-freeze',type=Path)
+    p.add_argument('--threshold-ack',type=Path)
     p.add_argument('--system-summary',type=Path,required=True)
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
@@ -21,12 +22,11 @@ def main():
         reference_correct=174,count=256,minimum_correct=162,invalid_required=0,
         system_predecessor_sha256=sha(a.system_summary))
     if a.mode=='dynamic' or a.dynamic_base:
-        assert a.threshold_freeze is not None,'FROZEN_THRESHOLD_REQUIRED'
-        frozen=json.loads(a.threshold_freeze.read_text())
-        assert frozen['status']=='FROZEN_NOT_HELDOUT_QUALIFIED'
-        assert frozen['profile_sha256']==sha(a.base/'profiles'/f'{a.profile}.json')
+        from frozen_threshold import load_threshold
+        frozen,ack=load_threshold(a.threshold_freeze,a.threshold_ack,a.base/'profiles'/f'{a.profile}.json')
         cfg.update(dynamic=True,threshold=frozen['threshold'])
-        protocol.update(threshold=frozen['threshold'],threshold_freeze_sha256=sha(a.threshold_freeze))
+        protocol.update(threshold=frozen['threshold'],threshold_freeze_sha256=sha(a.threshold_freeze),
+            threshold_commit_ack=ack)
     if a.mode=='deferred':cfg['deferred']=1
     if cfg['dynamic']:cfg['dynamic_telemetry']=True
     cfgpath=a.output/'config.json';write(cfgpath,cfg);write(a.output/'protocol.json',protocol)

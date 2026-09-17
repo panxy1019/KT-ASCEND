@@ -32,6 +32,7 @@ def main():
     p.add_argument('--profile',choices=['uniform','frequency'],required=True)
     p.add_argument('--dynamic-base',action='store_true')
     p.add_argument('--threshold-freeze',type=Path)
+    p.add_argument('--threshold-ack',type=Path)
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.holdout.parent/'CORPUS_FREEZE.json').read_text())
@@ -41,12 +42,12 @@ def main():
     cfg=json.loads(config(a.base,a.profile,True).read_text())
     cfg.update(deferred=1,deferred_trace=True)
     if a.dynamic_base:
-        assert a.threshold_freeze is not None,'THRESHOLD_FREEZE_REQUIRED'
-        frozen=json.loads(a.threshold_freeze.read_text())
-        assert frozen['profile_sha256']==sha(a.base/'profiles'/f'{a.profile}.json')
+        from frozen_threshold import load_threshold
+        frozen,ack=load_threshold(a.threshold_freeze,a.threshold_ack,a.base/'profiles'/f'{a.profile}.json')
         cfg.update(dynamic=True,threshold=frozen['threshold'])
     cfgpath=a.output/'config.json';write(cfgpath,cfg)
     write(a.output/'protocol.json',dict(profile=a.profile,dynamic_base=a.dynamic_base,
+        threshold_commit_ack=ack if a.dynamic_base else None,
         ids=[x['id'] for x in chosen],requests=32,repeats=4,prefix=[4,8,12],budget=16,
         holdout_sha256=sha(a.holdout),diagnostic_only=True))
     refs={};root=a.output/'process-a'
