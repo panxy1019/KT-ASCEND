@@ -6,6 +6,18 @@ from pathlib import Path
 import sys
 
 
+def direct_reference_args(args,cfg):
+    """R64 oracle is the historical direct Ascend path, not KTEP with64 slots."""
+    if not cfg.get('reference_r64',False):return args
+    if cfg['dynamic'] or cfg['deferred']!=0 or cfg['observer'] or cfg['recorder']:
+        raise ValueError('DIRECT_REFERENCE_FORBIDS_HYBRID_FEATURES_OR_HOOKS')
+    result=list(args[:args.index('--kt-weight-path')])
+    for flag,value in (('--context-length','2048'),('--max-total-tokens','4096'),
+                       ('--chunked-prefill-size','2048'),('--max-prefill-tokens','2048')):
+        result[result.index(flag)+1]=value
+    return result
+
+
 def main():
     root, config = map(Path, sys.argv[1:3])
     assert str(root).startswith('/workspace/c64-dev/round7/')
@@ -47,6 +59,7 @@ def main():
         '--kt-numa-nodes','4','5','--kt-gpu-experts-ratio',('1.0' if cfg.get('reference_r64',False) else '0.125'),
         '--kt-max-deferred-experts-per-token',str(cfg['deferred']),
         '--kt-expert-placement-strategy','frequency','--init-expert-location',cfg['activation_path']]
+    args=direct_reference_args(args,cfg)
     if cfg.get('deferred_trace',False):
         assert cfg['observer'],'DEFERRED_TRACE_FORBIDDEN_IN_TIMED_PERFORMANCE'
         os.environ['KT_DEBUG_DEFERRED_TRACE_FILE']=str(root/'deferred-trace.jsonl')
