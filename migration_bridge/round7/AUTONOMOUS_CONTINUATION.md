@@ -234,6 +234,18 @@ must continue to agree on that budget.
 
 ## Follow-up policy
 
+Release-v9 staged (not a restarted driver) at
+`/workspace/c64-dev/round7/tools-v9/migration_bridge/round7/tools`, source commit
+`bb3c59eced61670fd23dcbd6a6e722030d548bdb`, archive SHA
+`724534ee6705dd7b271bf15a61e45896f34402cb31a818657d6992b60a214e9e`.
+SCP exit0 and host/container hashes verified before extraction. Active v6 and
+native remain unchanged. On A3, read-only partial-window adapter smoke inspected
+completed first4/36 cells, all four independent host intervals EXCLUSIVE,15samples
+each, original-output serialization slack0.2748..0.2837s. This is only tool/
+partial-window validation, not complete performance or scheduler selection.
+Use v9 for full post-audit only after all36 cells complete and before archiving
+original file mtimes; preserve raw samples and resulting audit artifacts.
+
 14:30 heartbeat: current Static performance remains healthy,3/36 completed at
 first inspection, hostV2 freshEXCLUSIVE. Do not extrapolate partial performance
 or disrupt it. Prepared `audit_performance_windows.py` for unchanged v6: input

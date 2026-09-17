@@ -75,7 +75,7 @@ No model/test process or unrelated task was stopped.
 Local suite34 tests pass, including acceptance of inactive unrelated historical
 swap and rejection of owned swap or new host swap I/O. A3 EXCLUSIVE status still
 requires fresh V2 samples and60-second quiet interval; do not fabricate it.
-# Unchanged release-v6 timing: conservative post-audit adapter
+## Unchanged release-v6 timing: conservative post-audit adapter
 
 Future `tools/audit_performance_windows.py` audits all36 completed ABBA cells
 without changing or restarting healthy v6. Run it on A3 against original files
@@ -111,3 +111,12 @@ That timestamp audit is not a completed campaign or performance conclusion.
 54 local tests pass, including full synthetic36-cell independent-window audit,
 timestamp/identity/lifecycle/reordering failures. Actual isolated eligibility
 must await complete raw timing and sample audit.
+
+Separately staged release-v9 source commit
+`bb3c59eced61670fd23dcbd6a6e722030d548bdb`, archive SHA
+`724534ee6705dd7b271bf15a61e45896f34402cb31a818657d6992b60a214e9e`.
+Host/container archive hashes verified after SCP completion. A3 read-only
+partial smoke used original first4/36 closed cells: each interval EXCLUSIVE
+with15 independent samples, serialization slack0.2748..0.2837s. Observer source
+identity matched frozen V2. This validates adapter feasibility only; the complete
+campaign, its nonoverlapping36-cell audit and Static selection are still pending.
