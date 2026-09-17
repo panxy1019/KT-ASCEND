@@ -12,6 +12,15 @@ def process_ids(text):
     return [int(x) for x in re.findall(r'Process id:\s*(\d+)',text)]
 
 
+def memory_blockers(mem,cgroup_swap,current_vm,initial_vm):
+    blockers=[]
+    if cgroup_swap:blockers.append(dict(reason='CONTAINER_SWAP_USED',bytes=cgroup_swap))
+    if current_vm!=initial_vm:blockers.append(dict(reason='ACTIVE_HOST_SWAPPING'))
+    if mem['MemAvailable']<max(64*2**30,.2*mem['MemTotal']):
+        blockers.append(dict(reason='HOST_MEMORY_RESERVE'))
+    return blockers
+
+
 def assess_window(samples,start,end,max_gap=20):
     relevant=sorted((s for s in samples if start-max_gap<=s['time_unix']<=end+max_gap),
                     key=lambda x:x['time_unix'])
@@ -24,7 +33,7 @@ def assess_window(samples,start,end,max_gap=20):
     clean=all(s['status']=='EXCLUSIVE' for s in bounded)
     return dict(status='EXCLUSIVE' if clean else 'CONTENDED_OR_NOT_YET_QUIET',
         formal_eligible=clean,samples=len(bounded),
-        criterion='NO_OTHER_MODEL_CONTROLLER_OR_NPU; OUTSIDE_CPU_TOTAL_LE2_MAX_LE1; 60S_QUIET',
+        criterion='NO_OTHER_MODEL_CONTROLLER_OR_NPU; OUTSIDE_CPU_TOTAL_LE2_MAX_LE1; 60S_QUIET; CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2',
         scope='READ_ONLY_HOST_CONTENTION_PROXY_NOT_DIRECT_DRAM_BANDWIDTH_MEASUREMENT')
 
 
@@ -35,6 +44,15 @@ def main():
     assert a.output.resolve().is_relative_to(Path(root).resolve()),'OWNED_OUTPUT_SCOPE'
     a.output.mkdir(parents=True,exist_ok=False)
     hz=os.sysconf('SC_CLK_TCK')
+    def swap_counters():
+        return {k:int(v) for k,v in (line.split() for line in Path('/proc/vmstat').read_text().splitlines())
+                if k in ('pswpin','pswpout')}
+    initial_vm=swap_counters()
+    init_pid=int(subprocess.check_output(['docker','inspect','--format','{{.State.Pid}}',
+        'kt-r67-c64-development-v1'],text=True,timeout=5).strip())
+    assert init_pid>0,'OWNED_CONTAINER_NOT_RUNNING'
+    group=next(line[3:] for line in Path(f'/proc/{init_pid}/cgroup').read_text().splitlines() if line.startswith('0::'))
+    swap_file=Path('/sys/fs/cgroup')/group.lstrip('/')/'memory.swap.current'
     def snapshot():
         data={}
         for path in Path('/proc').glob('[0-9]*'):
@@ -72,14 +90,15 @@ def main():
                 if others:blockers.append(dict(reason='OTHER_NPU_PROCESS',device=device,pids=others))
             mem={line.split(':')[0]:int(line.split()[1])*1024 for line in Path('/proc/meminfo').read_text().splitlines()
                  if line.endswith('kB')}
-            if mem['SwapTotal']!=mem['SwapFree'] or mem['MemAvailable']<max(64*2**30,.2*mem['MemTotal']):
-                blockers.append(dict(reason='HOST_MEMORY_ADMISSION'))
+            current_vm=swap_counters();cgroup_swap=int(swap_file.read_text())
+            blockers+=memory_blockers(mem,cgroup_swap,current_vm,initial_vm)
         except Exception as error:blockers.append(dict(reason='OBSERVATION_UNAVAILABLE',error=repr(error)))
         if blockers:quiet_since=None
         elif quiet_since is None:quiet_since=time.monotonic()
         exclusive=quiet_since is not None and time.monotonic()-quiet_since>=60
         write(dict(status='EXCLUSIVE' if exclusive else 'WAIT',time_unix=time.time(),blockers=blockers,
-            outside_cpu_cores=sum(outside),no_other_task_modified=True))
+            outside_cpu_cores=sum(outside),no_other_task_modified=True,
+            initial_swap_counters=initial_vm,memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2'))
 
 
 if __name__=='__main__':main()
