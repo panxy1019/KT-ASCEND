@@ -95,17 +95,23 @@ def main():
         assert [(x['layer'],x['selected']) for x in restart_updates]==[
             (x['layer'],x['selected']) for x in first_updates],'RESTART_SELECTION_MISMATCH'
     # Same official path without diagnostic hooks must retain output trajectory.
-    off=cfg.copy();off['observer']=False;offpath=a.output/'observer-off-config.json';write(offpath,off)
+    off=cfg.copy();off.update(observer=False,dynamic_telemetry=True)
+    offpath=a.output/'observer-off-config.json';write(offpath,off)
     with session(a.output/'observer-off',offpath) as r:
         request(r,short,'off-initial-short',16)
         assert request(r,first,'off-trigger-a',16)==first_ids,'DYNAMIC_OBSERVER_PERTURBATION'
         request(r,first,'off-repeat-a',16)
         assert request(r,second,'off-trigger-b',16)==second_ids,'DYNAMIC_OBSERVER_PERTURBATION'
+    from dynamic_route_summary import correlate_updates
+    light_events=lines(a.output/'observer-off/dynamic-telemetry.jsonl')
+    assert light_events,'LIGHT_TELEMETRY_NOT_EXECUTED'
+    light_migration=correlate_updates(light_events,lines(a.output/'observer-off/requests.jsonl'))
     write(a.output/'summary.json',dict(status='PASS' if changed else 'WORKLOAD_SHIFT_NOT_OBSERVED',
         threshold=a.threshold,no_trigger=True,trigger=True,weight_identity_exact=True,
         generation_consistency=True,deterministic_selection=True,restart=True,observer_parity=True,
         shift_changed_layers=changed,diagnostic_updates=len(updates),requests=requests,
         diagnostic_migration_bytes=sum(x['migration_bytes'] for x in updates),
+        light_telemetry_migration=light_migration,
         boundary='SERIAL_TP1_BATCH1_ONLY',
         limitation='Diagnostic update duration includes exact-weight readbacks; do not use as production migration latency.'))
 

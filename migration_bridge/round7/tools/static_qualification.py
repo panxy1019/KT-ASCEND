@@ -136,7 +136,8 @@ def quality(base,name,configuration=None,target=None,summary_path=None):
             record=dict(id=row['id'],subject=row['subject'],predicted=predicted,
                         correct=predicted==row['answer'],candidate_logprobs=logits,seconds=time.time()-started)
             results.append(record)
-            with (root/'raw.jsonl').open('a') as f:f.write(json.dumps(dict(payload=payload,response=answer,score=record))+'\n')
+            with (root/'raw.jsonl').open('a') as f:f.write(json.dumps(dict(payload=payload,response=answer,score=record,
+                started_unix=started,ended_unix=time.time()))+'\n')
             write(base/'static-progress.json',dict(phase='CMMLU',profile=name,completed=i+1,total=256,
                 correct=sum(x['correct'] for x in results)))
     correct=sum(x['correct'] for x in results)

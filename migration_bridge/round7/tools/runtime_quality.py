@@ -28,9 +28,20 @@ def main():
         cfg.update(dynamic=True,threshold=frozen['threshold'])
         protocol.update(threshold=frozen['threshold'],threshold_freeze_sha256=sha(a.threshold_freeze))
     if a.mode=='deferred':cfg['deferred']=1
+    if cfg['dynamic']:cfg['dynamic_telemetry']=True
     cfgpath=a.output/'config.json';write(cfgpath,cfg);write(a.output/'protocol.json',protocol)
     result=quality(a.base,a.profile,cfgpath,a.output/'process',a.output/'summary.json')
     result.update(mode=a.mode,dynamic=cfg['dynamic'],deferred=cfg['deferred'],protocol=protocol)
+    if cfg['dynamic']:
+        from dynamic_probe import lines
+        from dynamic_route_summary import correlate_updates
+        raw=lines(a.output/'process/raw.jsonl')
+        windows=[dict(id=x['response']['meta_info']['id'],started_unix=x['started_unix'],
+                      ended_unix=x['ended_unix']) for x in raw]
+        events=lines(a.output/'process/dynamic-telemetry.jsonl')
+        result['dynamic_migration']=correlate_updates(events,windows)
+        result['cmmlu_dynamic_trigger_rate']=result['dynamic_migration']['actual_trigger_rate']
+        result['telemetry_scope']='UNTIMED_QUALITY_NOT_PERFORMANCE_OR_FULL_WEIGHT_CERTIFICATION'
     write(a.output/'summary.json',result)
 
 

@@ -35,6 +35,20 @@ duplicate decode layers, prevent prefill/unused-tail contamination and verify
 actual migration event association. Tools remain undeployed pending the healthy
 static phase and the original-binary CPU backing eviction regression.
 
-Quality trigger-rate telemetry and production update component timing still
-need separate integration; do not substitute expected trigger counts for
-instrumented CMMLU trigger rate or diagnostic readback time for timed migration.
+Future local tools now include default-off lightweight update telemetry for
+untimed quality and observer parity. It records actual update calls and existing
+CPU resident IDs, without additional NPU operations, checkpoint reads or weight
+readbacks. Component timings are explicitly host-call elapsed, not device event
+timings. It is forbidden to combine that seam with the heavy observer audit;
+timed performance configs leave it disabled.
+
+The Dynamic probe's observer-OFF trajectory replay now enables this lightweight
+seam and requires real update events. Runtime quality uses the same seam and
+correlates events to all 256 exact request time windows to report actual CMMLU
+trigger rate, including a legitimate rate of zero. Quality scoring, inputs and
+decoding remain unchanged; only evidence fields are added. These paths still
+require A3 parity/validation before their telemetry can be called verified.
+
+The local suite now has 29 passing tests. Do not substitute expected trigger
+counts for instrumented CMMLU trigger rate or host diagnostic time for device
+timing/performance. Formal host-isolation evidence still needs integration.

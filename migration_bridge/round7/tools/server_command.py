@@ -52,12 +52,18 @@ def main():
         args += ['--record-kt-gpu-expert-distribution','--expert-distribution-recorder-mode','stat',
                  '--expert-distribution-recorder-buffer-size','-1']
         os.environ['SGLANG_EXPERT_DISTRIBUTION_RECORDER_DIR'] = str(root/'recorder')
+    hooks=[]
     if cfg['observer']:
-        args += ['--forward-hooks',json.dumps([
+        hooks += [
             dict(name='round7-structure',target_modules=['model.layers.*.mlp'],
                  hook_factory='round7_hooks:make_structure',config=dict(output=str(root),profile=cfg['profile'],dynamic_audit=cfg['dynamic'],deferred_audit=cfg['deferred']==1)),
             dict(name='round7-route-pressure',target_modules=['model.layers.*.mlp.topk'],
-                 hook_factory='round7_hooks:make_routes',config=dict(output=str(root),profile=cfg['profile']))])]
+                 hook_factory='round7_hooks:make_routes',config=dict(output=str(root),profile=cfg['profile']))]
+    if cfg.get('dynamic_telemetry',False):
+        assert cfg['dynamic'] and not cfg['observer'],'LIGHT_TELEMETRY_MUST_BE_SEPARATE_FROM_HEAVY_AUDIT'
+        hooks.append(dict(name='round7-dynamic-telemetry',target_modules=['model.layers.*.mlp'],
+            hook_factory='dynamic_telemetry:make_hook',config=dict(output=str(root))))
+    if hooks:args += ['--forward-hooks',json.dumps(hooks)]
     (root/'resolved-command.json').write_text(json.dumps(dict(argv=args,config=cfg,
         env={k:os.environ.get(k) for k in ('PYTHONPATH','ASCEND_RT_VISIBLE_DEVICES',
             'SGLANG_EXPERT_DISTRIBUTION_RECORDER_DIR','HF_HUB_OFFLINE',
