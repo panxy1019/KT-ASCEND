@@ -13,7 +13,8 @@ sys.path.append('/workspace/r67-tools-v5/migration_bridge/round6_7/tools')
 from run_serial_sweep import request
 
 p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
-p.add_argument('--canary',type=Path,required=True);p.add_argument('--lease',type=Path,required=True)
+p.add_argument('--canary',type=Path,required=True);p.add_argument('--lease',type=Path)
+p.add_argument('--contended-exploratory',action='store_true')
 a=p.parse_args()
 c=json.loads(a.canary.read_text());assert c['status']=='PASS','CANARY_PREDECESSOR'
 assert sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')==c['native_sha256']
@@ -22,6 +23,10 @@ manifest=Path('/workspace/c64-dev/performance-freeze-v1/perf_prompt_set.json')
 f=json.loads(manifest.read_text())
 assert f['blocks']==3 and f['order']==['C32','C64','C64','C32']
 def lease():
+    if a.contended_exploratory:
+        return dict(status='CONTENDED_EXPLORATORY',formal_performance=False,
+                    authorization='USER_2026_09_17_START_WITH_C32_RUNNING')
+    assert a.lease is not None, 'EXCLUSIVE_LEASE_REQUIRED'
     state=json.loads(a.lease.read_text())
     assert state['status']=='EXCLUSIVE' and time.time()-state['time_unix']<30,'HOST_BANDWIDTH_NOT_EXCLUSIVE'
     assert state['container']=='kt-r67-c64-development-v1'
@@ -29,7 +34,7 @@ def lease():
 lease()
 a.output.mkdir(parents=True,exist_ok=False)
 report=dict(status='RUNNING',rows=[],manifest_sha256=sha(manifest),canary_sha256=sha(a.canary),
-            started=time.time(),lease_initial=lease())
+            started=time.time(),lease_initial=lease(),formal_performance=not a.contended_exploratory)
 references={}
 try:
     for block in range(3):

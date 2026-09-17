@@ -14,11 +14,16 @@ from run_serial_sweep import request, route_summary
 p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
 p.add_argument('--operator-summary',type=Path,required=True)
 p.add_argument('--profile',choices=('R16','R8'),default='R16')
-p.add_argument('--performance-summary',type=Path);a=p.parse_args()
+p.add_argument('--performance-summary',type=Path)
+p.add_argument('--user-authorized-quality-screen',action='store_true');a=p.parse_args()
 if a.profile=='R8':
     assert a.performance_summary is not None,'R8_PERFORMANCE_PREDECESSOR'
     perf=json.loads(a.performance_summary.read_text())
-    assert perf['status']=='PASS' and perf['verdict']=='BENEFICIAL','R8_NOT_YET_ALLOWED'
+    assert perf['status']=='PASS','R8_PERFORMANCE_FAILED'
+    if a.user_authorized_quality_screen:
+        assert perf.get('formal_performance') is False,'EXPLICIT_EXPLORATORY_REPORT_REQUIRED'
+    else:
+        assert perf.get('formal_performance',True) and perf['verdict']=='BENEFICIAL','R8_NOT_YET_ALLOWED'
     mem=json.loads(a.performance_summary.with_name('memory-audit.json').read_text())
     assert mem['status']=='PASS' and mem['performance_sha256']==sha(a.performance_summary),'R8_MEMORY_PREDECESSOR'
 op=json.loads(a.operator_summary.read_text())
