@@ -41,3 +41,16 @@ Regression uses a fake NPU API and forbidden affinity mutation, verifies event
 waits, unchanged unrelated CUDA code, source-drift rejection and provenance
 binding. Local tests are not A3 system qualification. Next re-run predecessor
 compact/reference gates and the original triggered probe in a new directory.
+
+## Preserved evidence and new execution
+
+Lossless whole v2 corrected-R64/trigger failure/process/provenance/tool archive:
+`raw/direct-r64-and-dynamic-affinity-failure-v1.tar.gz`, SHA256
+`a8521b8ad6738add53625e5263127b8cc93036d03f887c0a68638add3437b244`.
+Complete SCPexit0; local/A3 hashes equal; full tar validationexit0.
+Private runtime-v4 wrapper SHA
+`ea7fe7a6c46edd6eb0f6225a90f0892e0375a7752a9e7720c36711cf099cfcc5`.
+Original source stays8eec41...; repaired CPU native stays461821... .
+Tools-v15 passed89 pure-Python tests locally and on A3. The new driver
+`backing-requalification-v3` reruns operators, both Static compact lanes and
+direct R64 before the original three DEV probes. Launch is not gate completion.

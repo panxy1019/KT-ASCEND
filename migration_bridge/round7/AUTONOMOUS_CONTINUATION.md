@@ -37,6 +37,26 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 20:45 latest: correctedv2 directR64PASS174/256invalid0 and resolved
+CLIexact. Then firstDynamicthreshold256triggeredrequest failedbeforepublication:
+BF16fullcontext pinsCPU255 outsidecontainer128–191, OSError22. Allownedchildren
+reaped; no512/1024/HD. Lossless entirev2/rawlogs/provenance/v13archive locally
+preserved, SCPexit0/A3-localhash+tarPASS SHA
+a8521b8ad6738add53625e5263127b8cc93036d03f887c0a68638add3437b244.
+Minimal BF16-only affinity/device-stream port commit
+0f732bce2c0d679d42855ceb282a05b923b2bc4a, no weight/mask/math change.
+Originalactualchildsourceimmutable. PrivateSGLangcopy runtime-v4 containsported
+wrapperSHA ea7fe7a6c46edd6eb0f6225a90f0892e0375a7752a9e7720c36711cf099cfcc5,
+explicitcfg/import/provenancebinding; repairedCPU461...unchanged. NoPASSresults
+copied into v4. Toolsv15sourceabove, archive
+aaa73d6b6b4401d3b1146f6568d0b131e9dc3af46a1272cf92bf2b2c79b69a81,
+fullSCP/hash-beforeextract;89tests LOCAL+A3PASS. Newordereddriver
+backing-requalification-v3 launched runtime-v4, no resume, allpredecessors rerun:
+operators→Uniformcompact→Freqcompact→directR64→DEVprobes256/512/1024.
+Readv3progress/log; keephealthyintact. Usev15threshold_sweep --probe-prefix
+dynamic-dev-probe- afterallprobesclose; candidatecommit/ack beforeHD. Nochosen
+threshold, Dynamic/Deferred notqualified. SeeBF16_FULL_CONTEXT_COMPATIBILITY.md.
+
 2026-09-17 20:25 checkpoint: v1 stopped at fresh R64 adapter mismatch,
 175/256 invalid0. Both post-fix compact lanes PASS32+restart4. Historical
 R64 uses direct Ascend withoutKT; v12 mistakenly used KT64 and expandedlimits.
