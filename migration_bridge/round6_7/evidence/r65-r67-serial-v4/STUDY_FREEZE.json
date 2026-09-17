@@ -1,0 +1,91 @@
+{
+  "version": "round6.7-serial-v1",
+  "profile_order": [
+    "R64",
+    "R32",
+    "R16",
+    "R8"
+  ],
+  "profiles": {
+    "R64": {
+      "profile_sha256": "5d1cbbbfcaaa88582e60ff2ffeeaa0341a525cf5e2a2dac7400688732846a158",
+      "canonical_sha256": "e94268b0eb13912fb9549fd477390dd82daf34445f8fa71cf8a8169907d29ee5",
+      "pt_sha256": "97e580c603675c920d87c85f842ef4f3091656245a11178302d27c30c50e5183"
+    },
+    "R32": {
+      "profile_sha256": "4fbcf329e50426a5fcfa9cfcf98277ad7ed69910793eef139ee27560b3b394b3",
+      "canonical_sha256": "09146471af34b9256a5fe455844239fb6e9b1d2718bd37d8d2008c6d1c2bfc03",
+      "pt_sha256": "f2e87783847d50daf70386d0238cdebaa0bcc3bdca323ba14d840aa217482e46"
+    },
+    "R16": {
+      "profile_sha256": "27433a83062c6eda0fe9b957c772ff96c01e5069fabe970ffa892d595efe3e0c",
+      "canonical_sha256": "04b2b22bbd5c5f70e67648bbbcac05099f91375daaaba183ce30c392cbb14a4c",
+      "pt_sha256": "582753a6ef68e39d06b17ca7e3d8749d60b0ccd40045b85e9ebc088ded03c35a"
+    },
+    "R8": {
+      "profile_sha256": "f2ae533c52318cb5015ba6396c2329865abdb157c2e774061eb01557c4d40c0d",
+      "canonical_sha256": "51e23c1022c7993702af0b68a97e0078932d3c2ceaf16d647896a9c81b3556f3",
+      "pt_sha256": "8188e19a00facd3b81758d59378e809fb5e4995fd15215eb0b2ab4e3b003d0b7"
+    }
+  },
+  "cmmlu_sha256": "bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04",
+  "compact_sha256": "555f578af6d816b25ee5efe6590a472b654f27a74614c011bba599a8f8c24933",
+  "runtime_manifest": "/workspace/results/r65-r66-runtime-source-final-b0.json",
+  "runtime_manifest_sha256": "68d1a5814a70e123eb55c840ec9a995fda1fe4802120374f61f32e2d1775570a",
+  "tool_hashes": {
+    "common.py": "5ac6e3d8349f02198c9820c55e6645c987064d9f54b837215fbb0cbb3e93b439",
+    "freeze_serial_study.py": "709f79233c111b7ed7c01c30787b28b9fcbf91cf5b63eb614d533e4f3ec4fbb2",
+    "local_operator_screen.py": "eb0a62139599f9bc55e2bafde359d1ee981e665f4ef0aa08978eeba40c52b004",
+    "monitor_serial_host.py": "0b7f4152d59f6a9f7b35461a53ce7b377dc9bd689a2c208a8098ace5c6d4d22a",
+    "r67_hooks.py": "22c194605d323cd5008f813c3f29f514221f11a626c1e98c79b7f3d25f1faea5",
+    "run_serial_sweep.py": "2f875e1e7e86fb4b96d19afac12c1a86a7beccbc4177e78981a0b01da2c40a42",
+    "serial_command.py": "547cf26a39fd2b63aa2e76d693081bc4c267bfda36409bbcdb1460e84a9e432e",
+    "serial_session.py": "7cc0ad190579cd8a598c521947b442064d35e8a0581c79358acd4e828a8931b4",
+    "summarize_serial_results.py": "a86b03a721188e59fe6c1a4a5abaa19b01ce6ef1432e52a3508742012ddc907f",
+    "test_serial_contract.py": "d2762d2120fb18cd3327deda701cd67120b72d6e66457639f1b6359b8088762a"
+  },
+  "shell_sha256": "6efd796099ab4dcf58e4bd40d0cfec87615f3ae6ac51647c3e820e657bf687f5",
+  "external_tool_hashes": {
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py": "87a9f2164c0f207ce1b995138dc40b5a500dfa17eec5dcf7c3a7b2aead781de5",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/r65_structure_hook.py": "7da5add20d65f04ab48662a7517f70a370cccab1276ce32148381e3b2e03fbb9",
+    "/workspace/results/round6_2-prequalification/tools/run_owned_process.py": "c7b4e23cf71a94e3a9d379a6a84ffa324fd3bf032389583c1501e06ee2a89dea",
+    "/workspace/results/r64-migration-tools-v6/tools/stream_timing.py": "5d3e7fa077db07f70d830954cd95d1ad915bfd182ab0e2b68dfefca3c85a367e",
+    "/workspace/results/r64-migration-tools-v6/tools/run_compact_controls.py": "0ccdd7c3132a8e6cac52c9ee8f1fb5f8d3126c0a264a75e1c108a5cc62ef849e"
+  },
+  "asset_sha256": {
+    "/workspace/models/DeepSeek-V2-Lite-604d5664/config.json": "f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d",
+    "/workspace/results/r64-tokenizer-compat-v1/config.json": "f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d",
+    "/workspace/results/r64-tokenizer-compat-v1/tokenizer.json": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+    "/workspace/results/r64-tokenizer-compat-v1/tokenizer_config.json": "d5f57d20f87e97e94dac06c5f91871bc819fe3fff41b2b0c96c04c2622dc95bb"
+  },
+  "gguf_stat": {
+    "size": 57579411648,
+    "mtime_ns": 1789558904838778286
+  },
+  "local_audit_base": "93844959b32f64a37b70346bd5c7e0df2394f5d4",
+  "container": "kt-r65-static-offload",
+  "npu": 0,
+  "cpu_set": "0-31",
+  "workers": 32,
+  "batch": 1,
+  "tp": 1,
+  "deferred": 0,
+  "dynamic": false,
+  "graph": false,
+  "quality_drop_pp": 5.0,
+  "population_noninferiority_claim": false,
+  "gguf": "/workspace/results/r65-assets-v1/all-moe-f32.gguf",
+  "gguf_sha256": "20114dba7790a9b6be40a17ffb3881c516b81ea86b8f2fcfd3ea61d052e96fe2",
+  "performance": {
+    "budgets": 32,
+    "warmups": 2,
+    "timed": 3,
+    "prompt_ids": [
+      "s6_en_01",
+      "s6_json_01"
+    ],
+    "streaming": true,
+    "hard_throughput_floor": null
+  },
+  "operator_rel_l2_max": 0.01
+}
