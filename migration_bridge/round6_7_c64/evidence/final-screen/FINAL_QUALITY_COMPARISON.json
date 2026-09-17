@@ -1,0 +1,67 @@
+{
+  "status": "COMPLETE_QUALITY_COMPARISON",
+  "artifacts": {
+    "R64": {
+      "path": "/workspace/results/r65-r67-serial-v5/R64/quality.json",
+      "sha256": "d8bb0db8c2450b9e5f29608a930a638399ea90218a939dc05088055aa50d882a"
+    },
+    "R16-C32": {
+      "path": "/workspace/results/r65-r67-serial-v5/R16/quality.json",
+      "sha256": "6c41ca92e0796e6e6b58aad7ea8700558b28ab465683e2fd602de5ca8a02571d"
+    },
+    "R16-C64": {
+      "path": "/workspace/c64-dev/r16-quality-authorized-v1/quality.json",
+      "sha256": "d07e64c8b8410a7b1f16c19635fbb316fe05cc5d21263ab0681d0520fd10e9e2"
+    },
+    "R8-C64": {
+      "path": "/workspace/c64-dev/r8-quality-authorized-v1/quality.json",
+      "sha256": "d996a428b4b02a05915e5a16aa724ff6b4d614b26765f969b054ee5db4416375"
+    }
+  },
+  "scores": {
+    "R64": {
+      "correct": 174,
+      "count": 256,
+      "invalid": 0
+    },
+    "R16-C32": {
+      "correct": 173,
+      "count": 256,
+      "invalid": 0
+    },
+    "R16-C64": {
+      "correct": 174,
+      "count": 256,
+      "invalid": 0
+    },
+    "R8-C64": {
+      "correct": 174,
+      "count": 256,
+      "invalid": 0
+    }
+  },
+  "pairs": {
+    "R16-C64 vs R16-C32": {
+      "delta_pp": 0.390625,
+      "regressed": 2,
+      "improved": 3
+    },
+    "R8-C64 vs R64": {
+      "delta_pp": 0.0,
+      "regressed": 2,
+      "improved": 2
+    },
+    "R8-C64 vs R16-C64": {
+      "delta_pp": 0.0,
+      "regressed": 1,
+      "improved": 1
+    }
+  },
+  "quality_accepted": {
+    "R16-C64": true,
+    "R8-C64": true
+  },
+  "quality_candidate": "R8-C64",
+  "final_baseline": "PENDING_PERFORMANCE_USABILITY_REVIEW",
+  "formal_performance": false
+}
