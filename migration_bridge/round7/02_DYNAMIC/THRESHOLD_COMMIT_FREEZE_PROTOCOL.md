@@ -62,5 +62,12 @@ invocation and artifacts.
 
 Six targeted unit tests cover matching bindings and the negative cases. Complete
 local suite: **71/71 PASS**; `git diff --check` PASS. No A3 model/runtime or
-threshold qualification is claimed. This change must be staged as a new future
-tool release, not edited into active v6 or staged v10 in place.
+threshold qualification is claimed. Source commit
+`49a2bf8cec85ce781a2c66ea2a2a7fdeac8306c5` is staged as future release-v11 at
+`/workspace/c64-dev/round7/tools-v11/migration_bridge/round7/tools`.
+Archive SHA256: `352a12ba1d790d2a90ec7dfa3b899f5429395b65fc4525f0f1208de37bced051`.
+SCP exit0 and host/container hash verification preceded extraction. The same
+71 pure-Python tests also passed under A3 Python3.11 in0.166s, without importing
+torch or launching NPU work. Active v6, prior v10 and native binary are unchanged.
+This verifies tooling only; it does not claim a threshold candidate exists or
+Dynamic has completed any full-model gate.

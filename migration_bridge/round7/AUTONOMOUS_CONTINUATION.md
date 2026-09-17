@@ -43,11 +43,21 @@ Dynamic consumers now enforce explicit threshold commit acknowledgment via
 `frozen_threshold.py`: matching selected JSON/profile/DEV hashes and full local
 candidate commit, no quality/HD fitting. Formal performance may no longer rely
 on a bare --threshold integer. See `02_DYNAMIC/THRESHOLD_COMMIT_FREEZE_PROTOCOL.md`.
-All71 local tests PASS; not yet deployed/model-qualified. Stage a new v11 after
-commit; never overwrite v6/v10. Future Dynamic HOLDOUT/quality/performance and
+All71 local tests PASS; new v11 is staged separately, not model-qualified.
+Never overwrite v6/v10. Future Dynamic HOLDOUT/quality/performance and
 Deferred-on-Dynamic require --threshold-ack along with --threshold-freeze.
 Actual Git candidate-content verification must precede creating the ack; runtime
 checks are a handoff binding, not cryptographic proof of local commit contents.
+
+Latest future tools release-v11:
+`/workspace/c64-dev/round7/tools-v11/migration_bridge/round7/tools`.
+Source commit `49a2bf8cec85ce781a2c66ea2a2a7fdeac8306c5`, archive SHA256
+`352a12ba1d790d2a90ec7dfa3b899f5429395b65fc4525f0f1208de37bced051`.
+Complete SCP exit0 and host/container hash verification preceded extraction.
+All71 pure-Python tests also pass on A3 Python3.11 (0.166s); no torch import,
+NPU probe or model qualification. Use v11 for later gates only after healthy
+Static stage completion/reaping. All original-binary backing and Dynamic
+predecessors still required. Active v6/native/masks/corpora are unchanged.
 
 2026-09-17 15:28 checkpoint: observer-OFF Static ABBA is healthy,14/36 completed;
 host V2 EXCLUSIVE, blockers[], owned cgroup swap0, no active host swap change.
