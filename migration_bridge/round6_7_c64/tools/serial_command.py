@@ -7,6 +7,8 @@ from common import sha, validate_profile, write
 
 
 def main():
+    if os.environ.get('C64_TP') not in ('1','2'):
+        raise ValueError('UNQUALIFIED_TP_CONFIGURATION')
     root, profile, observer = Path(sys.argv[1]), Path(sys.argv[2]), int(sys.argv[3])
     if not str(root).startswith('/workspace/c64-dev/') or observer not in (0, 1):
         raise ValueError('LAUNCH_SCOPE')

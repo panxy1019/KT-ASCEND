@@ -15,6 +15,8 @@ p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
 p.add_argument('--operator-summary',type=Path,required=True);a=p.parse_args()
 op=json.loads(a.operator_summary.read_text())
 assert op['status']=='PASS' and len(op['runs'])==52,'OPERATOR_PREDECESSOR'
+audit=json.loads(a.operator_summary.with_name('audit.json').read_text())
+assert audit['status']=='PASS' and audit['summary_sha256']==sha(a.operator_summary),'OPERATOR_AUDIT'
 assert sha('/workspace/c64-dev/runtime/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so')==op['native_sha256']
 assert sha('/workspace/c64-dev/runtime/kt_kernel/utils/llamafile.py')==op['wrapper_sha256']
 a.output.mkdir(parents=True,exist_ok=False)
