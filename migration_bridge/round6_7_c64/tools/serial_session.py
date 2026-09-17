@@ -87,7 +87,7 @@ def session(root, profile, observer=False):
     admitted = admission()
     check_port_available()
     tools = Path(__file__).parent
-    cmd = [sys.executable, '/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py',
+    cmd = [sys.executable, str(tools/'owned_guard.py'),
            '--output', str(root / 'guard'), '--timeout-seconds', '43200', '--',
            'taskset', '-c', os.environ.get('KT_R67_CPU_SET', '0-31'), 'bash', str(tools / 'launch_serial.sh'),
            str(root), str(profile), str(int(observer))]
