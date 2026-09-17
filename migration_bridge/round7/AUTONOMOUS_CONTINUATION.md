@@ -37,6 +37,26 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 21:43 latest: minimalstagingport standaloneA3PASS12experts/48writes,
+checkpoint+H2Dexact/other-slotsafe/lossyF32rejected.94testsLOCAL+A3PASS.
+Tools-v16sourcea1c822f75ddd8b853b46520f6323f67bc2365d32/archiveSHA
+6f87d6b0dfcc20ef4f5d77e6dd077273c7ddba3a17889f0c859110320e1155f6.
+CorrectedSCPexit0/host-containerhashbeforeextract (firstuploadroot-owneddir
+permissiondenied, notadeployment). Private runtime-v5 wrapperSHA
+5762b3386e5bf8e9ee0e36ee922fd38fe073a1b75bb1a7ab3330dc01b0e814cf/helperSHA
+b623670d0043a4d55359e4497fe06521aaed059d433fcb76105b98dd82948f44,
+bothprovenance/importbound. CPU461...unchanged. Standaloneregression lossless
+archive locallypreserved SCPexit0/hash+tarPASS SHA
+8e91dec9f052d1a0f39227b87fe62cb53b86cd4b2cc234a964ef82983b07aecb.
+NEWdriver /workspace/c64-dev/round7/backing-requalification-v4/progress.json
+RUNNINGphaseoperators;logbacking-requalification-v4.log. Noresume/noPASScopy,
+allorderedpredecessors→originalDEV256/512/1024. Keephealthy. Originalv3failure
+stillfrozen/reaped; noHD/qualityfit/noDynamicqualifiedyet. AfterallprobesPASS,
+usev16threshold_sweep --base runtime-v5 --probes backing-requalification-v4
+--probe-prefix dynamic-dev-probe- --dev corpora-v2/SCHED_DEV.jsonl --profile
+uniform --output <newDEVscreen>, thencandidate localcommit+matchingack beforeHD.
+No thresholdselected yet. SeeLLAMAFILE_BF16_STAGING_COMPATIBILITY.md.
+
 2026-09-17 21:38: v3 FAILED/reaped at firstthreshold256 trigger. Exacterror
 LlamafileMoEWrapper missing submit_write_weight_scale_to_buffer, nowA3_REPRODUCED
 notjuststaticcandidate. Allpreviousv4predecessorsPASS (bothcompact+restart and

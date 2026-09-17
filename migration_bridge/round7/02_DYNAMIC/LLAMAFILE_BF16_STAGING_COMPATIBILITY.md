@@ -53,3 +53,37 @@ deployed source/native and runtime-v4 results must not be overwritten. Current
 independent early/middle/late exact GGUF→buffer→NPU→checkpoint comparisons and
 repeat/slot-isolation/invalid-source controls, then ordered model predecessors
 and the original DEV probes in a new result directory.
+
+## A3 standalone verification — A3_VERIFIED
+
+Tools-v16 source commit `a1c822f75ddd8b853b46520f6323f67bc2365d32`, archiveSHA
+`6f87d6b0dfcc20ef4f5d77e6dd077273c7ddba3a17889f0c859110320e1155f6`.
+Initial upload into a root-owned artifact directory was permission-denied;
+corrected SCP to admin's explicit file completedexit0, host/container hashes
+verified before extraction. No failed transfer was treated as deployment.
+All94 pure-Python tests also passed on A3 Python3.11.
+
+New private runtime-v5 wrapperSHA
+`5762b3386e5bf8e9ee0e36ee922fd38fe073a1b75bb1a7ab3330dc01b0e814cf`;
+stager helperSHA
+`b623670d0043a4d55359e4497fe06521aaed059d433fcb76105b98dd82948f44`.
+The private CPU native remains461821...; original imported source/native untouched.
+
+Standalone real-weight staging regression PASS12 cases at layers1/13/26 and
+logical experts0/1/31/63, four repeats each: both projections exact against
+independent frozen checkpoint, H2D exact, all nine applicable other-slot
+checks exact, lossyF32 source rejected. Original mmap remains read-only;
+the negative control mutates a private test clone only. This certifies bounded
+same-source conversion/layout and transfer, not the model's full pipeline,
+hot-set selection, transactional publication or Dynamic performance.
+
+Lossless `raw/llamafile-staging-regression-evidence-v1.tar.gz`, SHA256
+`8e91dec9f052d1a0f39227b87fe62cb53b86cd4b2cc234a964ef82983b07aecb`,
+contains result/log, runtime-v5 provenance and exact private source/helper,
+tools-v16 release. SCPexit0, A3/local hash match, full tar validationexit0.
+
+At21:43UTC, new driver `backing-requalification-v4` is RUNNING phaseoperators,
+using tools-v16/runtime-v5 with no copied PASS summaries and no resume. Ordered
+operators→Uniformcompact→Frequencycompact→directR64→DEVprobes256/512/1024.
+Keep healthy driver intact. Nochosen threshold, noHD or Dynamic/Deferred product
+promotion. New full-model failure, if any, must remain preserved separately.
