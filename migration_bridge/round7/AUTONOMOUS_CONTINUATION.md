@@ -37,6 +37,19 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 21:38: v3 FAILED/reaped at firstthreshold256 trigger. Exacterror
+LlamafileMoEWrapper missing submit_write_weight_scale_to_buffer, nowA3_REPRODUCED
+notjuststaticcandidate. Allpreviousv4predecessorsPASS (bothcompact+restart and
+directR64174/256invalid0); no512/1024/HD. Containerdocker top onlysleep.
+Losslessfailedprobe+progress+v4source/provenance preserved locally, SCPexit0,
+hash+tarPASS SHA565a84a404e2dbffc24a678d1a80b429edce51d00ce68857418b5e38e588d9a0.
+MinimalTP1F32GGUF→BF16pinnedstaging seam prepared with sourceguards, preserves
+officialeventfences/nativewriterfallback/KTEPcoordinator.94localtestsPASS;
+notyetA3deployed orqualified. Nextnewtools-v16/runtime-v5, independentexact
+stagingregression then allorderedpredecessors/probes. Freezehelper+wrapperhash,
+do notoverwritev4/v15 orinjectcheckpointweights/disabletrigger. See
+LLAMAFILE_BF16_STAGING_COMPATIBILITY.md. NochosenDynamicthreshold.
+
 2026-09-17 21:18: v3 closedFrequencycompact32+restart4PASS, fourtrajectories
 exactvsruntime-v3, directR64again174/256invalid0PASS. Nowthreshold256DEVprobe
 RUNNING; initialshort128tokenprefill/16decode no-trigger request finished.

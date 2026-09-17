@@ -16,6 +16,11 @@ def select_sglang_runtime(cfg,provenance):
     if wrapper not in provenance['files']:raise ValueError('PRIVATE_SGLANG_WRAPPER_NOT_FROZEN')
     if provenance['files'][wrapper]['sha256']!=provenance['bf16_context_port']['ported_sha256']:
         raise ValueError('PRIVATE_SGLANG_HASH_BINDING')
+    helper_hash=provenance['bf16_context_port'].get('staging_helper_sha256')
+    if helper_hash:
+        helper=str(root/'sglang/srt/layers/moe/llamafile_bf16_staging.py')
+        if provenance['files'].get(helper,{}).get('sha256')!=helper_hash:
+            raise ValueError('PRIVATE_STAGING_HELPER_HASH_BINDING')
     return str(root)
 
 
