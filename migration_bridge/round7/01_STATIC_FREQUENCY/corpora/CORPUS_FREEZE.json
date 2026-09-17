@@ -1,0 +1,42 @@
+{
+  "seed": 0,
+  "protocol": "greedy batch1; collect prefill+16 decode; no quality labels",
+  "cmmlu_sha256": "bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04",
+  "corpora": {
+    "DEV": {
+      "count": 256,
+      "sha256": "b79c132b095a0efd35c822f1b1124e57b666b1c5ffdf65f4933e7bcad02c694f",
+      "bucket_counts": {
+        "short": 64,
+        "medium": 96,
+        "long": 64,
+        "structured": 32
+      },
+      "min_tokens": 71,
+      "max_tokens": 3991,
+      "total_tokens": 245872
+    },
+    "HOLDOUT": {
+      "count": 128,
+      "sha256": "1e1c8287191007ec6ae3a91ed974d3648b7c1b33d46170a60638c54eedc1dbf5",
+      "bucket_counts": {
+        "short": 32,
+        "medium": 48,
+        "long": 32,
+        "structured": 16
+      },
+      "min_tokens": 71,
+      "max_tokens": 4039,
+      "total_tokens": 126112
+    }
+  },
+  "tokenizer_files": {
+    "compatibility.json": "e8c75c114663bbf71fa201a0042f1ceacf15d22478c5d3478f7816369c4b2c67",
+    "config.json": "f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d",
+    "tokenizer.json": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+    "tokenizer_config.json": "d5f57d20f87e97e94dac06c5f91871bc819fe3fff41b2b0c96c04c2622dc95bb"
+  },
+  "dev_holdout_overlap": 0,
+  "cmmlu_exact_overlap": 0,
+  "limitation": "Synthetic representative scheduler corpus, not a task-quality benchmark."
+}

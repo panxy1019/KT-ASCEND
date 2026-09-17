@@ -1,0 +1,61 @@
+"""Test-only hooks via the existing SGLang extension, no second coordinator."""
+import json
+from pathlib import Path
+import time
+
+METHODS = {}
+
+
+def append(root, name, row):
+    with (root/name).open('a') as f:
+        f.write(json.dumps(dict(time_unix=time.time(),**row))+'\n')
+
+
+def make_structure(config):
+    import torch
+    root = Path(config['output'])
+    expected = {r['layer']:r['npu_ids'] for r in json.loads(Path(config['profile']).read_text())['rows']}
+    seen = set()
+    def hook(module, inputs, output):
+        layer = getattr(module,'layer_id',None)
+        if layer not in expected: return
+        expert, method = module.experts, module.experts.quant_method
+        METHODS[layer] = method
+        if not torch.isfinite(output).all().item(): raise ValueError('NONFINITE_MLP')
+        if layer in seen: return
+        ids = torch.where(method.gpu_experts_mask)[0].tolist()
+        assert ids == expected[layer], 'INITIAL_MASK_DRIFT'
+        reference = torch.full((64,),-1,dtype=torch.int32)
+        reference[ids] = torch.arange(len(ids),dtype=torch.int32)
+        assert method.logical_to_gpu_index.dtype == torch.int32
+        assert torch.equal(method.logical_to_gpu_index.cpu(),reference), 'MAPPING_DRIFT'
+        assert torch.equal(method.gpu_experts_mask_cuda.cpu(),method.gpu_experts_mask), 'DEVICE_MASK_DRIFT'
+        for name in ('w13_weight','w2_weight'):
+            w = getattr(expert,name)
+            assert w.dtype == torch.bfloat16 and w.shape[0] == len(ids), 'WEIGHT_LAYOUT_DRIFT'
+        append(root,'structure.jsonl',dict(layer=layer,npu_ids=ids,cpu_ids=sorted(set(range(64))-set(ids)),
+            slots=len(ids),mapping_dtype=str(reference.dtype),allocated=torch.npu.memory_allocated(),
+            reserved=torch.npu.memory_reserved()))
+        seen.add(layer)
+    return hook
+
+
+def make_routes(config):
+    import torch
+    root = Path(config['output'])
+    masks = {r['layer']:r['npu_ids'] for r in json.loads(Path(config['profile']).read_text())['rows']}
+    def hook(module, inputs, output):
+        layer = module.layer_id
+        ids = output.topk_ids.detach().cpu().long()
+        weights = output.topk_weights.detach().cpu().float()
+        assert ids.ndim == 2 and ids.shape[1] == 6 and ids.shape == weights.shape
+        assert ((ids>=0)&(ids<64)).all() and torch.isfinite(weights).all()
+        mask = METHODS[layer].gpu_experts_mask if layer in METHODS else torch.zeros(64,dtype=torch.bool)
+        if layer not in METHODS: mask[masks[layer]] = True
+        hit = mask[ids]
+        counts = torch.bincount(ids.flatten(),minlength=64).tolist()
+        append(root,'routing.jsonl',dict(layer=layer,tokens=len(ids),assignments=ids.numel(),
+            npu_hits=int(hit.sum()),cpu_hits=int((~hit).sum()),
+            total_weight=float(weights.sum()),cpu_weight=float(weights[~hit].sum()),
+            fully_npu_tokens=int(hit.all(dim=1).sum()),counts=counts))
+    return hook
