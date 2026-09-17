@@ -229,6 +229,12 @@ must continue to agree on that budget.
 
 ## Follow-up policy
 
+Future Dynamic performance evaluation now has a pure-Python full36-cell ABBA
+audit (`tools/evaluate_performance.py`): nine tests for missing/malformed cells,
+coalesced decode measurement, median regressions and host-window completeness.
+Full local suite43 tests pass. No A3 claim or deployment; active v6 unchanged.
+See `02_DYNAMIC/PERFORMANCE_DECISION_PROTOCOL.md` before later default selection.
+
 2026-09-17 checkpoint: Frequency HOLDOUT128 PASS and lossless archive verified;
 see `01_STATIC_FREQUENCY/FREQUENCY_HOLDOUT_CHECKPOINT.md`. NPU-hit rate26.2652%
 vs Uniform12.4405%, CPU assignments -15.7888% relative. Attribution raw2176,
