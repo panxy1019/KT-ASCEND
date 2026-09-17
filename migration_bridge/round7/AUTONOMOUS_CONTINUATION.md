@@ -195,6 +195,20 @@ No extra NPU work or weight readback is introduced by this seam; it is not a
 weight/generation certification and stays OFF in timed performance. Current
 suite29 tests pass; additions are not running on A3 and should be included in
 future release-v8. Current release-v6 remains untouched.
+The current local suite has33 passing tests after read-only host contention
+observer/window validation. A host-only observer is launched separately:
+`/tmp/round7-host-resource-observer-v1.py`, samples mapped to
+`/workspace/c64-dev/round7/host-resource-monitor-v1/samples.jsonl`, latest.json.
+It never stops workloads or mutates containers/libraries. First launch preceded
+SCP completion and exited before sampling; original stderr remains in
+`/tmp/round7-host-resource-observer-v1.log`, corrected start2 stderr in
+`/tmp/round7-host-resource-observer-v1-start2.log`. Verify fresh samples before use.
+Source SHA `92ab38ceafe86ff494b0e1d3c9af246f1db69b8377f58e70704d757e3e6b3e45`
+matches local committed code. See `00_PROVENANCE/HOST_PERFORMANCE_OBSERVER.md`.
+Future performance tools accept `--host-observer` and reject formal eligibility
+on incomplete/stale/contended measurement windows. Current v6 is not modified;
+its later performance can be analyzed against independent host samples. This
+is a host contention proxy, not direct DRAM bandwidth measurement.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer
