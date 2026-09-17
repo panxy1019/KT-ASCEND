@@ -37,7 +37,7 @@ def main():
     if cfg['observer']:
         args += ['--forward-hooks',json.dumps([
             dict(name='round7-structure',target_modules=['model.layers.*.mlp'],
-                 hook_factory='round7_hooks:make_structure',config=dict(output=str(root),profile=cfg['profile'])),
+                 hook_factory='round7_hooks:make_structure',config=dict(output=str(root),profile=cfg['profile'],dynamic_audit=cfg['dynamic'])),
             dict(name='round7-route-pressure',target_modules=['model.layers.*.mlp.topk'],
                  hook_factory='round7_hooks:make_routes',config=dict(output=str(root),profile=cfg['profile']))])]
     (root/'resolved-command.json').write_text(json.dumps(dict(argv=args,config=cfg,

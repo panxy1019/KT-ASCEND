@@ -4,6 +4,7 @@ from pathlib import Path
 import time
 
 METHODS = {}
+CURRENT_FORWARD = {}
 
 
 def install_forward_metadata(root):
@@ -17,6 +18,9 @@ def install_forward_metadata(root):
         return start_record(self)
     def capture(self,batch):
         if self._recording and not (root/'observer-off').exists():
+            CURRENT_FORWARD.clear()
+            CURRENT_FORWARD.update(epoch=self._round7_epoch,
+                forward_id=self._current_forward_pass_id.value,mode=str(batch.forward_mode))
             append(root,'forward-metadata.jsonl',dict(epoch=self._round7_epoch,
                 forward_id=self._current_forward_pass_id.value,
                 mode=str(batch.forward_mode),
@@ -36,6 +40,9 @@ def make_structure(config):
     root = Path(config['output'])
     install_forward_metadata(root)
     expected = {r['layer']:r['npu_ids'] for r in json.loads(Path(config['profile']).read_text())['rows']}
+    if config.get('dynamic_audit',False):
+        from dynamic_audit import install
+        install(root,expected)
     seen = set()
     def hook(module, inputs, output):
         if (root/'observer-off').exists(): return
@@ -46,7 +53,8 @@ def make_structure(config):
         if not torch.isfinite(output).all().item(): raise ValueError('NONFINITE_MLP')
         if layer in seen: return
         ids = torch.where(method.gpu_experts_mask)[0].tolist()
-        assert ids == expected[layer], 'INITIAL_MASK_DRIFT'
+        if getattr(method,'_round7_generation',0)==0:
+            assert ids == expected[layer], 'INITIAL_MASK_DRIFT'
         reference = torch.full((64,),-1,dtype=torch.int32)
         reference[ids] = torch.arange(len(ids),dtype=torch.int32)
         assert method.logical_to_gpu_index.dtype == torch.int32
@@ -78,6 +86,7 @@ def make_routes(config):
         hit = mask[ids]
         counts = torch.bincount(ids.flatten(),minlength=64).tolist()
         append(root,'routing.jsonl',dict(layer=layer,tokens=len(ids),assignments=ids.numel(),
+            forward_context=dict(CURRENT_FORWARD),
             npu_hits=int(hit.sum()),cpu_hits=int((~hit).sum()),
             total_weight=float(weights.sum()),cpu_weight=float(weights[~hit].sum()),
             fully_npu_tokens=int(hit.all(dim=1).sum()),counts=counts))

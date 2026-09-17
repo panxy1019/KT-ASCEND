@@ -6,7 +6,7 @@ from pathlib import Path
 import statistics
 import time
 import urllib.request
-from collect_dev import request
+from collect_dev import request,rpc
 from contracts import validate_mask,quality_gate
 from session import session
 
@@ -57,25 +57,44 @@ def compact(base,name,rows):
 
 def holdout(base,name,rows):
     target=base/f'{name}-holdout-v1'
-    with session(target,config(base,name,True)) as root:
+    cfg=json.loads(config(base,name,True).read_text());cfg['recorder']=True
+    cfgpath=base/f'{name}-holdout-config.json';write(cfgpath,cfg)
+    with session(target,cfgpath) as root:
+        rpc('start_expert_distribution_record')
         for i,row in enumerate(rows):
             request(root,row,f'{name}-holdout-{i:03d}',16)
             write(base/'static-progress.json',dict(phase='HOLDOUT',profile=name,completed=i+1,total=128))
+        rpc('stop_expert_distribution_record');rpc('dump_expert_distribution_record')
+    # Production overlap can evaluate an unused final token. Exactly associate
+    # every forward before computing routing rates, just as for DEV fitting.
+    import torch
+    from collect_dev import associated_counts
+    rawfiles=list((target/'recorder').glob('expert_distribution_recorder_*.pt'))
+    assert len(rawfiles)==1,'HOLDOUT_RECORDER_COUNT'
+    counts=torch.load(rawfiles[0],map_location='cpu',weights_only=False)['logical_count']
+    _,attribution=associated_counts(target,counts,1,[(r,f'{name}-holdout-{i:03d}') for i,r in enumerate(rows)])
+    metadata=[json.loads(x) for x in (target/'forward-metadata.jsonl').read_text().splitlines()]
+    metadata=[x for x in metadata if x['epoch']==1]
+    kept={(metadata[i]['epoch'],metadata[i]['forward_id']) for i in attribution['kept_indices']}
     metrics=dict(assignments=0,npu_hits=0,cpu_hits=0,total_weight=0.0,cpu_weight=0.0,tokens=0,fully_npu_tokens=0)
     layers={}
     for line in (target/'routing.jsonl').read_text().splitlines():
         r=json.loads(line)
+        context=r['forward_context']
+        assert context,'UNATTRIBUTED_ROUTING_FORWARD'
+        if (context['epoch'],context['forward_id']) not in kept:continue
         for k in metrics:metrics[k]+=r[k]
         l=layers.setdefault(str(r['layer']),dict(assignments=0,npu_hits=0,cpu_hits=0))
         for k in l:l[k]+=r[k]
     metrics.update(npu_hit_rate=metrics['npu_hits']/metrics['assignments'],
         cpu_route_rate=metrics['cpu_hits']/metrics['assignments'],
         cpu_weight_mass=metrics['cpu_weight']/metrics['total_weight'],per_layer=layers)
+    assert metrics['assignments']==sum(len(r['input_ids'])+15 for r in rows)*6*26,'HOLDOUT_ROUTE_COMPLETENESS'
     raw=[json.loads(x) for x in (target/'requests.jsonl').read_text().splitlines()]
     # Observer incurs synchronization. Do not call this isolated performance.
     result=dict(status='PASS',routing=metrics,observer_on=True,formal_performance=False,
         request_latency_median_seconds=statistics.median(x['seconds'] for x in raw),
-        requests=128,budget=16,raw_sha256=sha(target/'requests.jsonl'))
+        requests=128,budget=16,raw_sha256=sha(target/'requests.jsonl'),forward_attribution=attribution)
     write(base/f'{name}-holdout-summary.json',result)
     return result
 
