@@ -1,16 +1,21 @@
 """User-authorized contended timing followed by gated quality; no other jobs stopped."""
 import fcntl
+import argparse
 import json
 from pathlib import Path
 import subprocess
 import time
-from common import write
+from common import write,sha
+
+parser=argparse.ArgumentParser()
+parser.add_argument('--completed-first-abba',action='store_true')
+args=parser.parse_args()
 
 root=Path('/workspace/c64-dev'); tools=Path(__file__).parent
 lock=(root/'continuation.lock').open('a');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
 state=dict(status='RUNNING',started=time.time(),steps=[],formal_performance=False,
            authorization='USER_2026_09_17_START_WITH_C32_RUNNING')
-progress=root/'authorized-screen-progress.json'
+progress=root/('abbreviated-screen-progress.json' if args.completed_first_abba else 'authorized-screen-progress.json')
 def run(name,script,*args):
     state['phase']=name;write(progress,state)
     with (root/(name+'.log')).open('x') as log:
@@ -20,7 +25,26 @@ def run(name,script,*args):
 try:
     canary=root/'r16-canary-v3/summary.json'
     perf=root/'performance-contended-v1/summary.json'
-    run('authorized-performance','run_performance.py','--output',perf.parent,'--canary',canary,'--contended-exploratory')
+    if args.completed_first_abba:
+        source=root/'performance-contended-v1/progress.json'
+        data=json.loads(source.read_text())
+        rows=[r for r in data['rows'] if r['block']==0]
+        expected={(p,f'prefill-{n}') for p in range(4) for n in (256,384,512,640,768)}
+        assert len(rows)==20 and {(r['position'],r['shape']) for r in rows}==expected
+        assert all(r['mode']==['C32','C64','C64','C32'][r['position']] for r in rows)
+        import statistics
+        pairs=[]
+        for n in (256,384,512,640,768):
+            lat={m:statistics.median(r['seconds'] for r in rows if r['mode']==m and r['shape']==f'prefill-{n}') for m in ('C32','C64')}
+            pairs.append(dict(shape=n,**lat,ratio=lat['C64']/lat['C32']))
+        perf=root/'performance-first-abba-v1/summary.json';perf.parent.mkdir(exist_ok=False)
+        data.update(status='PASS',rows=rows,formal_performance=False,
+            protocol='USER_AUTHORIZED_ONE_COMPLETED_ABBA',original_matrix='STOPPED_BY_USER_SCOPE_REDUCTION',
+            source_sha256=sha(source),paired_shapes=pairs,verdict='EXPLORATORY_ONLY',
+            median_latency_ratio=statistics.median(p['ratio'] for p in pairs))
+        write(perf,data)
+    else:
+        run('authorized-performance','run_performance.py','--output',perf.parent,'--canary',canary,'--contended-exploratory')
     run('authorized-memory','audit_memory.py','--performance',perf)
     r8=root/'r8-canary-authorized-v1/summary.json'
     run('authorized-r8-canary','run_canary.py','--output',r8.parent,'--operator-summary',root/'operators-v5/summary.json',
