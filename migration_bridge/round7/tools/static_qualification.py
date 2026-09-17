@@ -1,0 +1,131 @@
+"""Round7A independent gates, full HOLDOUT and frozen CMMLU evaluator."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import statistics
+import time
+import urllib.request
+from collect_dev import request
+from contracts import validate_mask,quality_gate
+from session import session
+
+
+def write(path,data):
+    tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,indent=2)+'\n');tmp.replace(path)
+
+
+def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def config(base,name,observer):
+    cfg=json.loads((base/'uniform-dev-config.json').read_text())
+    cfg.update(recorder=False,observer=observer,
+        profile=str(base/'profiles'/f'{name}.json'),activation_path=str(base/'profiles'/f'{name}.pt'))
+    path=base/f'{name}-observer-{int(observer)}.json';write(path,cfg)
+    profile=json.loads(Path(cfg['profile']).read_text());validate_mask(profile['rows'])
+    assert sha(Path(cfg['activation_path']))==profile['activation_sha256']
+    return path
+
+
+def compact(base,name,rows):
+    target=base/f'{name}-compact-v1'
+    refs={}
+    short=rows[:4]
+    cfg=config(base,name,True)
+    with session(target,cfg) as root:
+        for row in short:
+            trajectory=request(root,row,f'{name}-{row["id"]}-ref',16)
+            refs[row['id']]=trajectory
+            for repeat in range(4):
+                assert request(root,row,f'{name}-{row["id"]}-r{repeat}',16)==trajectory,'SAME_PATH_NONDETERMINISM'
+            for length in (4,8,12):
+                assert request(root,row,f'{name}-{row["id"]}-p{length}',length)==trajectory[:length],'PREFIX_MISMATCH'
+    structure=[json.loads(x) for x in (target/'structure.jsonl').read_text().splitlines()]
+    assert len(structure)==26 and {x['layer'] for x in structure}==set(range(1,27))
+    # Independent process and observer parity use the exact captured inputs.
+    with session(base/f'{name}-restart-off-v1',config(base,name,False)) as root:
+        for row in short:
+            assert request(root,row,f'{name}-{row["id"]}-restart',16)==refs[row['id']],'RESTART_OR_OBSERVER_PARITY'
+    result=dict(status='PASS',requests=32,restart_requests=4,same_path=True,prefix=True,
+        restart=True,observer_on_off_parity=True,finite=True,mask_mapping_ownership=True,
+        weight_layout_audit_sha256=sha(target/'structure.jsonl'),trajectories=refs,
+        limitation='Operator representative safety is a separate gate; this report is not full scheduler qualification.')
+    write(base/f'{name}-system-summary.json',result)
+    return result
+
+
+def holdout(base,name,rows):
+    target=base/f'{name}-holdout-v1'
+    with session(target,config(base,name,True)) as root:
+        for i,row in enumerate(rows):
+            request(root,row,f'{name}-holdout-{i:03d}',16)
+            write(base/'static-progress.json',dict(phase='HOLDOUT',profile=name,completed=i+1,total=128))
+    metrics=dict(assignments=0,npu_hits=0,cpu_hits=0,total_weight=0.0,cpu_weight=0.0,tokens=0,fully_npu_tokens=0)
+    layers={}
+    for line in (target/'routing.jsonl').read_text().splitlines():
+        r=json.loads(line)
+        for k in metrics:metrics[k]+=r[k]
+        l=layers.setdefault(str(r['layer']),dict(assignments=0,npu_hits=0,cpu_hits=0))
+        for k in l:l[k]+=r[k]
+    metrics.update(npu_hit_rate=metrics['npu_hits']/metrics['assignments'],
+        cpu_route_rate=metrics['cpu_hits']/metrics['assignments'],
+        cpu_weight_mass=metrics['cpu_weight']/metrics['total_weight'],per_layer=layers)
+    raw=[json.loads(x) for x in (target/'requests.jsonl').read_text().splitlines()]
+    # Observer incurs synchronization. Do not call this isolated performance.
+    result=dict(status='PASS',routing=metrics,observer_on=True,formal_performance=False,
+        request_latency_median_seconds=statistics.median(x['seconds'] for x in raw),
+        requests=128,budget=16,raw_sha256=sha(target/'requests.jsonl'))
+    write(base/f'{name}-holdout-summary.json',result)
+    return result
+
+
+def quality(base,name):
+    from common import validate_answer,score_letters
+    manifest=Path('/workspace/results/r65-r67-serial-v5/cmmlu.json')
+    assert sha(manifest)=='bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04'
+    rows=json.loads(manifest.read_text())['rows'];results=[]
+    with session(base/f'{name}-cmmlu-v1',config(base,name,False)) as root:
+        for i,row in enumerate(rows):
+            rid=f'r7-{name}-cmmlu-{row["id"]}'
+            payload=dict(rid=rid,input_ids=row['input_ids'],sampling_params=dict(
+                temperature=0,max_new_tokens=1,ignore_eos=False,stop=row['stop']),return_logprob=True,
+                logprob_start_len=-1,top_logprobs_num=0,token_ids_logprob=row['candidate_ids'])
+            started=time.time()
+            req=urllib.request.Request('http://127.0.0.1:31000/generate',data=json.dumps(payload).encode(),
+                headers={'Content-Type':'application/json'})
+            with urllib.request.urlopen(req,timeout=3600) as response:answer=json.load(response)
+            validate_answer(answer,rid,row['input_ids'],1,True)
+            candidates=answer['meta_info']['output_token_ids_logprobs'];assert len(candidates)==1
+            predicted,logits=score_letters(candidates[0],row['candidate_ids'])
+            record=dict(id=row['id'],subject=row['subject'],predicted=predicted,
+                        correct=predicted==row['answer'],candidate_logprobs=logits,seconds=time.time()-started)
+            results.append(record)
+            with (root/'raw.jsonl').open('a') as f:f.write(json.dumps(dict(payload=payload,response=answer,score=record))+'\n')
+            write(base/'static-progress.json',dict(phase='CMMLU',profile=name,completed=i+1,total=256,
+                correct=sum(x['correct'] for x in results)))
+    correct=sum(x['correct'] for x in results)
+    result=dict(status='PASS' if quality_gate(correct,0) else 'QUALITY_FAIL',correct=correct,
+        count=256,invalid=0,delta_pp=100*(correct-174)/256,rows=results,manifest_sha256=sha(manifest))
+    write(base/f'{name}-quality-summary.json',result)
+    return result
+
+
+def main():
+    p=argparse.ArgumentParser();p.add_argument('--base',type=Path,required=True)
+    p.add_argument('--holdout',type=Path,required=True)
+    p.add_argument('--profile',choices=['uniform','frequency'],required=True)
+    p.add_argument('--stage',choices=['compact','holdout','quality'],required=True)
+    a=p.parse_args();rows=[json.loads(x) for x in a.holdout.read_text().splitlines()]
+    freeze=json.loads((a.holdout.parent/'CORPUS_FREEZE.json').read_text())
+    assert len(rows)==128 and sha(a.holdout)==freeze['corpora']['HOLDOUT']['sha256']
+    if a.stage=='compact':compact(a.base,a.profile,rows)
+    else:
+        assert json.loads((a.base/f'{a.profile}-system-summary.json').read_text())['status']=='PASS'
+        if a.stage=='holdout':holdout(a.base,a.profile,rows)
+        else:
+            assert json.loads((a.base/'operator-representatives/summary.json').read_text())['status']=='PASS', 'OPERATOR_PREDECESSOR'
+            quality(a.base,a.profile)
+
+
+if __name__=='__main__':main()

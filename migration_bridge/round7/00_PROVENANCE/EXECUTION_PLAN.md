@@ -5,6 +5,11 @@ A3_VERIFIED. A stage is not COMPLETE until its preserved results pass its gates.
 
 Base: `bc2e5d53e05d97db83b40c09a6f80cddff0549ab`.
 Branch: `codex/round7-static-frequency-dynamic-deferred`.
+Local parent gitlink: `f02f304a25364d1e8fe9c52515a22f20f5089a52` (submodule not
+materialized in the new audit worktree). This is distinct from the actually
+deployed eaa58c… child plus overlays below; it must not be reported as the child
+used for A3 execution. Round7 does not silently substitute local gitlink files
+for the frozen, already-qualified imported runtime.
 Official KT audit: `0b954fe4ca2f9e79519da66156e6a3f92b686232`.
 Its SGLang gitlink: `3424f35d0e60f03b9e75d9b90941f8f4cb944524`.
 Latest official SGLang audit: `541ddc37cbc92c60dc748db5ff1a2aad0b069a80`.

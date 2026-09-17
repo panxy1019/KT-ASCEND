@@ -6,6 +6,26 @@ import time
 METHODS = {}
 
 
+def install_forward_metadata(root):
+    from sglang.srt.eplb.expert_distribution import _ExpertDistributionRecorderReal
+    cls=_ExpertDistributionRecorderReal
+    if getattr(cls,'_round7_audited',False): return
+    start_record=cls.start_record
+    start_pass=cls._on_forward_pass_start
+    def begin(self):
+        self._round7_epoch=getattr(self,'_round7_epoch',0)+1
+        return start_record(self)
+    def capture(self,batch):
+        if self._recording and not (root/'observer-off').exists():
+            append(root,'forward-metadata.jsonl',dict(epoch=self._round7_epoch,
+                forward_id=self._current_forward_pass_id.value,
+                mode=str(batch.forward_mode),
+                input_ids=batch.input_ids.detach().cpu().tolist(),
+                positions=batch.positions.detach().cpu().tolist()))
+        return start_pass(self,batch)
+    cls.start_record=begin;cls._on_forward_pass_start=capture;cls._round7_audited=True
+
+
 def append(root, name, row):
     with (root/name).open('a') as f:
         f.write(json.dumps(dict(time_unix=time.time(),**row))+'\n')
@@ -14,9 +34,11 @@ def append(root, name, row):
 def make_structure(config):
     import torch
     root = Path(config['output'])
+    install_forward_metadata(root)
     expected = {r['layer']:r['npu_ids'] for r in json.loads(Path(config['profile']).read_text())['rows']}
     seen = set()
     def hook(module, inputs, output):
+        if (root/'observer-off').exists(): return
         layer = getattr(module,'layer_id',None)
         if layer not in expected: return
         expert, method = module.experts, module.experts.quant_method
@@ -45,6 +67,7 @@ def make_routes(config):
     root = Path(config['output'])
     masks = {r['layer']:r['npu_ids'] for r in json.loads(Path(config['profile']).read_text())['rows']}
     def hook(module, inputs, output):
+        if (root/'observer-off').exists(): return
         layer = module.layer_id
         ids = output.topk_ids.detach().cpu().long()
         weights = output.topk_weights.detach().cpu().float()
