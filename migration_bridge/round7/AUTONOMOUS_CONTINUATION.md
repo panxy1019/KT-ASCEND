@@ -37,6 +37,19 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 22:39 continuation: v4 FAILED/reaped at firstDynamic256trigger,
+LLAMAFILE_BF16_STAGING_ASCEND_LAYOUT. Operators100/100, both32+restart4 compact
+lanes and directR64174/256invalid0 had closed. Full failure archive verifiedlocal
+SHA979182fe2e5fa8700fb17e8080131245561e8e14fd04038683e37092acd94cc3.
+Actual reducedSharedFullContext allocator probe completed: CPU BF16 raw buffers
+are unpinned, pointerscorrect,CUDAfalse. Minimal pairedraw/inference staging+
+frameworkpinned BF16NPUTP1allocator port prepared;99LOCALtestsPASS and actualsource
+guardsPASS. A3fixedvalidation PENDING. No active model driver at checkpoint.
+Nextstage separate tools-v17/runtime-v6 (neveroverwritev16/v5), bothstaginglayouts
+independent exactness+actualallocationprobe, then allorderedpredecessors and
+Dynamic256/512/1024 in backing-requalification-v5. NoHD/thresholdselection yet.
+SeeBF16_RAW_LAYOUT_AND_PINNED_BUFFER_REPAIR.md. Keephealthynewruns intact.
+
 2026-09-17 22:02 latest: healthyv4 closedoperators100/100PASS(max .0017029279396063187)
 andUniformcompact32+restart4PASS, fourreference trajectoriesexactvsruntime-v4.
 NowFrequencycompact RUNNING, then directR64→DEVprobes256/512/1024. Keephealthy.

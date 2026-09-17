@@ -11,10 +11,15 @@ def validate_layout(num_experts, hidden, intermediate, shapes, tp_world_size):
         raise ValueError('LLAMAFILE_BF16_STAGING_TP1_ONLY')
     if min(num_experts, hidden, intermediate) <= 0:
         raise ValueError('LLAMAFILE_BF16_STAGING_DIMENSIONS')
-    expected = {'w13_weight': (2, hidden, 2 * intermediate),
-                'w2_weight': (2, intermediate, hidden)}
-    if shapes != expected:
-        raise ValueError('LLAMAFILE_BF16_STAGING_ASCEND_LAYOUT')
+    raw = {'w13_weight': (2, 2 * intermediate, hidden),
+           'w2_weight': (2, hidden, intermediate)}
+    inference = {'w13_weight': (2, hidden, 2 * intermediate),
+                 'w2_weight': (2, intermediate, hidden)}
+    if shapes == raw:
+        return 'raw'
+    if shapes == inference:
+        return 'ascend_inference'
+    raise ValueError('LLAMAFILE_BF16_STAGING_ASCEND_LAYOUT')
 
 
 class LlamafileBF16Stager:
@@ -28,7 +33,7 @@ class LlamafileBF16Stager:
         hidden = int(wrapper.hidden_size)
         intermediate = int(wrapper.moe_intermediate_size)
         self.intermediate = intermediate
-        validate_layout(self.num_experts, hidden, intermediate,
+        self.layout = validate_layout(self.num_experts, hidden, intermediate,
             {name: tuple(buffers[name].shape) for name in ('w13_weight', 'w2_weight')},
             tp_world_size)
         for name in ('w13_weight', 'w2_weight'):
@@ -66,9 +71,14 @@ class LlamafileBF16Stager:
                 raise ValueError('LLAMAFILE_BF16_STAGING_NONFINITE_WEIGHT')
             rounded[name] = value
         w13 = self.buffers['w13_weight'][slot]
-        w13[:, :self.intermediate].copy_(rounded['gate'].T)
-        w13[:, self.intermediate:].copy_(rounded['up'].T)
-        self.buffers['w2_weight'][slot].copy_(rounded['down'].T)
+        if self.layout == 'raw':
+            w13[:self.intermediate, :].copy_(rounded['gate'])
+            w13[self.intermediate:, :].copy_(rounded['up'])
+            self.buffers['w2_weight'][slot].copy_(rounded['down'])
+        else:
+            w13[:, :self.intermediate].copy_(rounded['gate'].T)
+            w13[:, self.intermediate:].copy_(rounded['up'].T)
+            self.buffers['w2_weight'][slot].copy_(rounded['down'].T)
 
     def sync(self):
         # CPU tensor staging above is synchronous. H2D remains asynchronous and

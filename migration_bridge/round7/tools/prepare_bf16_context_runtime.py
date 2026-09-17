@@ -31,7 +31,7 @@ def main():
         'qualification':'BF16_CONTEXT_COMPAT_REQUALIFICATION_PENDING',
         'bf16_context_port':dict(original_sha256=sha(original),ported_sha256=sha(target),
             original_path=str(original),ported_path=str(target),
-            scope=('BF16_CPUSET_DEVICE_API_AND_TP1_F32_GGUF_STAGING' if a.llamafile_staging
+            scope=('BF16_CPUSET_DEVICE_API_TP1_PINNED_BUFFERS_RAW_AND_INFERENCE_F32_GGUF_STAGING' if a.llamafile_staging
                    else 'BF16_METHOD_CPUSET_PRESERVATION_AND_DEVICE_STREAM_API_ONLY'))}
     provenance['files']={}
     for name,info in prior['files'].items():

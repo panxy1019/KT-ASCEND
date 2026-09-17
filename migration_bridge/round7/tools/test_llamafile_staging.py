@@ -18,17 +18,24 @@ PIPELINE=SOURCE+'''        tp_world_size = 1
                 if idx > 0:
                     event.synchronize()
                 submit_write_expert(1, idx % 2)
+    def _create_cpu_buffers(self):
+        for name in self.weight_names:
+                gpu_tensor = getattr(self.gpu_layer, name)
+                expert_shape = gpu_tensor.shape[1:]
+                buf_dtype = gpu_tensor.dtype
+                element_size = torch.empty((), dtype=buf_dtype).element_size()
 '''
 
 
 class StagingTests(unittest.TestCase):
     def test_tp1_layout_only(self):
         shapes={'w13_weight':(2,3,8),'w2_weight':(2,4,3)}
-        validate_layout(64,3,4,shapes,1)
+        self.assertEqual(validate_layout(64,3,4,shapes,1), 'ascend_inference')
+        self.assertEqual(validate_layout(64,3,4,{'w13_weight':(2,8,3),'w2_weight':(2,3,4)},1), 'raw')
         with self.assertRaisesRegex(ValueError,'TP1_ONLY'):
             validate_layout(64,3,4,shapes,2)
         with self.assertRaisesRegex(ValueError,'ASCEND_LAYOUT'):
-            validate_layout(64,3,4,{'w13_weight':(2,8,3),'w2_weight':(2,3,4)},1)
+            validate_layout(64,3,4,{'w13_weight':(2,8,3),'w2_weight':(2,4,3)},1)
     def test_index_rejected_before_any_write(self):
         instance=LlamafileBF16Stager.__new__(LlamafileBF16Stager)
         instance.num_experts=64

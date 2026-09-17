@@ -1,7 +1,7 @@
 import contextlib
 from types import SimpleNamespace
 import unittest
-from bf16_context_compat import port_source
+from bf16_context_compat import port_source, port_cpu_buffers
 from runtime_selection import select_sglang_runtime
 
 
@@ -54,6 +54,37 @@ class ContextCompatTests(unittest.TestCase):
         self.assertIn('wait_stream',calls)
     def test_other_cuda_method_unchanged(self):
         self.assertIn('return torch.cuda.current_stream()',port_source(SOURCE))
+    def test_npu_bf16_allocator_owned_pinned_and_tp1(self):
+        source='''class Context:
+    def _create_cpu_buffers(self):
+        for name in self.weight_names:
+                gpu_tensor = getattr(self.gpu_layer, name)
+                expert_shape = gpu_tensor.shape[1:]
+                buf_dtype = gpu_tensor.dtype
+                element_size = torch.empty((), dtype=buf_dtype).element_size()
+                self.cpu_buffers[name] = 'original_shared_memory_path'
+'''
+        calls=[]
+        tensor=SimpleNamespace(shape=(64,12,4),dtype='bf16',device=SimpleNamespace(type='npu'))
+        def empty(shape, **kwargs):
+            calls.append((shape,kwargs))
+            return SimpleNamespace(element_size=lambda:2)
+        namespace=dict(torch=SimpleNamespace(empty=empty), get_tensor_model_parallel_world_size=lambda:1)
+        exec(port_cpu_buffers(source), namespace)
+        context=namespace['Context']()
+        context.weight_names=['w13_weight'];context.gpu_layer=SimpleNamespace(w13_weight=tensor)
+        context._is_bf16_quant=True;context.cpu_buffers={}
+        context._create_cpu_buffers()
+        self.assertEqual(calls,[((2,12,4),dict(dtype='bf16',device='cpu',pin_memory=True))])
+        namespace['get_tensor_model_parallel_world_size']=lambda:2
+        with self.assertRaisesRegex(RuntimeError,'TP1_ONLY'):context._create_cpu_buffers()
+        namespace['get_tensor_model_parallel_world_size']=lambda:1
+        for bf16,device in ((False,'npu'),(True,'cuda')):
+            context._is_bf16_quant=bf16;tensor.device.type=device
+            context._create_cpu_buffers()
+            self.assertEqual(context.cpu_buffers['w13_weight'],'original_shared_memory_path')
+    def test_allocator_source_drift_rejected(self):
+        with self.assertRaisesRegex(AssertionError,'METHOD_AMBIGUOUS'):port_cpu_buffers(SOURCE)
     def test_source_drift_rejected(self):
         with self.assertRaisesRegex(AssertionError,'BF16_AFFINITY_SOURCE_DRIFT'):
             port_source(SOURCE.replace('num_cpus = os.cpu_count()','num_cpus = 1'))

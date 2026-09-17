@@ -2,6 +2,30 @@
 import ast
 
 
+def port_cpu_buffers(source):
+    """Keep CUDA/quantized shared-memory paths; BF16 NPU TP1 owns pinned tensors."""
+    tree = ast.parse(source)
+    methods = [node for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)
+               and node.name == '_create_cpu_buffers']
+    assert len(methods) == 1, 'BF16_CPU_BUFFER_METHOD_AMBIGUOUS'
+    method = methods[0]
+    lines = source.splitlines(keepends=True)
+    original = ''.join(lines[method.lineno-1:method.end_lineno])
+    anchor = '                element_size = torch.empty((), dtype=buf_dtype).element_size()\n'
+    assert original.count(anchor) == 1, 'BF16_CPU_BUFFER_SOURCE_DRIFT'
+    updated = original.replace(anchor,
+        '                # Framework-owned pinned buffers participate in NPU copy lifetime.\n'
+        '                if self._is_bf16_quant and gpu_tensor.device.type == "npu":\n'
+        '                    if get_tensor_model_parallel_world_size() != 1:\n'
+        '                        raise RuntimeError("BF16_NPU_PINNED_BUFFERS_TP1_ONLY")\n'
+        '                    self.cpu_buffers[name] = torch.empty(\n'
+        '                        (2,) + expert_shape, dtype=buf_dtype,\n'
+        '                        device="cpu", pin_memory=True,\n'
+        '                    )\n'
+        '                    continue\n' + anchor)
+    return ''.join(lines[:method.lineno-1])+updated+''.join(lines[method.end_lineno:])
+
+
 def port_source(source, llamafile_staging=False):
     tree=ast.parse(source)
     matches=[node for node in ast.walk(tree) if isinstance(node,ast.FunctionDef)
@@ -44,5 +68,7 @@ def port_source(source, llamafile_staging=False):
             '                    llamafile_writer.sync()\n'
             '                else:\n'+ '    '+sync)
     result=''.join(lines[:method.lineno-1])+updated+''.join(lines[method.end_lineno:])
+    if llamafile_staging:
+        result = port_cpu_buffers(result)
     compile(result,'kt_ep_wrapper.py','exec')
     return result
