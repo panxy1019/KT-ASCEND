@@ -1,5 +1,6 @@
 """Host-only read-only contention observer, never stops or changes workloads."""
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -70,7 +71,7 @@ def main():
     deadline=time.monotonic()+a.hours*3600
     heavy=re.compile(r'sglang|launch_server|run_serial_sweep|farm_worker|operator_oracle|run_operator_matrix')
     while time.monotonic()<deadline:
-        time.sleep(5);blockers=[];outside=[]
+        time.sleep(5);blockers=[];outside=[];memory_observation={}
         try:
             top=subprocess.check_output(['docker','top','kt-r67-c64-development-v1','-eo','pid'],text=True,timeout=5)
             owned={int(x) for x in top.splitlines()[1:]};owned.add(os.getpid())
@@ -91,6 +92,9 @@ def main():
             mem={line.split(':')[0]:int(line.split()[1])*1024 for line in Path('/proc/meminfo').read_text().splitlines()
                  if line.endswith('kB')}
             current_vm=swap_counters();cgroup_swap=int(swap_file.read_text())
+            memory_observation=dict(host_mem_available=mem['MemAvailable'],host_mem_total=mem['MemTotal'],
+                host_swap_used=mem['SwapTotal']-mem['SwapFree'],cgroup_swap_bytes=cgroup_swap,
+                current_swap_counters=current_vm)
             blockers+=memory_blockers(mem,cgroup_swap,current_vm,initial_vm)
         except Exception as error:blockers.append(dict(reason='OBSERVATION_UNAVAILABLE',error=repr(error)))
         if blockers:quiet_since=None
@@ -98,7 +102,9 @@ def main():
         exclusive=quiet_since is not None and time.monotonic()-quiet_since>=60
         write(dict(status='EXCLUSIVE' if exclusive else 'WAIT',time_unix=time.time(),blockers=blockers,
             outside_cpu_cores=sum(outside),no_other_task_modified=True,
-            initial_swap_counters=initial_vm,memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2'))
+            initial_swap_counters=initial_vm,memory=memory_observation,
+            source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+            memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2'))
 
 
 if __name__=='__main__':main()
