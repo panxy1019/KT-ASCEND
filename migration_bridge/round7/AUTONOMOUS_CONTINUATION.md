@@ -53,8 +53,11 @@ attribution. Uniform NPU assignment hit rate0.12440549718339645, CPU assignment
 rate0.8755945028166036, CPU weight mass0.8705099846154037. These are observer-ON
 route diagnostics, not formal performance. Frequency NPU-hit rate0.26265173490281274,
 CPU route rate0.7373482650971872, CPU weight mass0.7438615086765767. Frequency
-quality is running; quality/performance and final static selection are not yet
-promoted. See the Frequency HOLDOUT checkpoint for its lossless archive.
+quality now PASS173/256, invalid0, delta-0.390625pp vs frozen174. Lossless quality
+archive and paired-ID audit are committed in the quality checkpoint. Driver is
+now `uniform-vs-frequency-performance` (observer-OFF3ABBA36 measured requests).
+Performance and final static selection are not yet promoted. See Frequency
+HOLDOUT/quality checkpoint documents for their lossless archives.
 Preserved system evidence is in
 `01_STATIC_FREQUENCY/STATIC_SYSTEM_CHECKPOINT.md` and its lossless archive.
 The serial qualification driver has been launched in the owned container:
@@ -230,6 +233,15 @@ inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 must continue to agree on that budget.
 
 ## Follow-up policy
+
+Latest complete gate: Frequency CMMLU256 PASS173/256, invalid0, paired IDs256
+verified (bothcorrect170/bothwrong79/regressed4/improved3). Archive SHA
+`22793c6a95c543a10664fc265769d77aaad4539f069512ee2c968ce0e3590038` fully verified.
+Healthy Static driver has entered observer-OFF performance automatically.
+Preserve36-request3ABBA. Independent host V2 observation must cover actual
+measurement windows before formal-isolated claims; a transient WAIT following
+owned-process teardown is not itself a measured-window failure. No Dynamic,
+Deferred, backing-MRE or production repair launched yet.
 
 Release-v8 is now staged, not running:
 `/workspace/c64-dev/round7/tools-v8/migration_bridge/round7/tools`.
