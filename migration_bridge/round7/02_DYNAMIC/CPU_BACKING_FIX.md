@@ -28,7 +28,20 @@ Original compiled header SHA:
 `17a7e720166b18ee6fb57e4de8ffc683972df08ca98a56c7cd763f11c5a642eb`.
 Failure archive A3 SHA:
 `e9ba345f59f50e78edec94c2d1e77b1a3cea90aa0d1280b82b9f8df51db31a16`.
-Local archive preservation is pending complete transfer verification.
+Failure archive is now preserved locally under `raw/`: SCPexit0, local/A3 SHA
+match, and full tar validationexit0. Original failure and binary remain intact.
+
+Minimal fix commit `4bfe9c44f` (resolve full before external reporting), private
+build tool commit `b18b72b67bfd83883178e3aec538c9052f9915f1`. Repair patch archive
+SHA `be1489cd8efd7c57238fa90616206d4e082d98e00118cb6f8ec1877516d2430b`
+was transferred completely and verified on host/container before extraction.
+Repaired header SHA:
+`73a863bbc5637860f126d8c4e346c4e8cfe53f4f9a7cde8ede5c17583754b382`.
+New build runs detached at `/workspace/c64-dev/round7/backing-fix-build-v1`;
+`build.json` is BUILDING at inspection, log `backing-fix-build-v1.log`.
+No post-fix numerical result exists yet; do not claim the bug closed on build.
+All71 existing pure-Python local tool tests pass; these do not exercise native
+weight loading and do not substitute for the repaired A3 eviction regression.
 
 `build_full_cpu_backing.py` snapshots the original source/objects/runtime into a
 new owned Round7 directory, substitutes only the repaired header, recompiles

@@ -37,6 +37,25 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+Latest19:15 update: original L1 backing eviction FAIL reproduced, E0/capture1
+finite/10repeat exact but canonical relativeL2=1.0 (gate.01). Full failure/archive
+now committed; SHA e9ba345f59f50e78edec94c2d1e77b1a3cea90aa0d1280b82b9f8df51db31a16.
+Minimal load-only skip removal commit4bfe9c44f, builder commit
+b18b72b67bfd83883178e3aec538c9052f9915f1. New isolated backing-fix-build-v1 is
+currently BUILDING, logbacking-fix-build-v1.log, build.json in that directory.
+Do not restart duplicate/overwrite original native/source/runtime. Build patch
+SHA be1489cd8efd7c57238fa90616206d4e082d98e00118cb6f8ec1877516d2430b;
+host/container verified after complete SCP. Use its with_full_cpu_backing_env.sh
+for post-fix standalone eviction L1/13/26, newoutputcpu-backing-fixed-v1/Lxx.
+Wrapper script already execsPython; invoke `bash script probe.py`, not executable
+directly or with an extra Python argument. Need repaired binary provenance,
+operators/Static compact/freshR64 before full-model Dynamic. Current v11 model
+launcher still hardcodes original runtime: implement a minimal provenance-bound
+new-runtime adapter in a NEW tool release before launching repaired full model.
+Do not claim fix closed or Dynamic qualified until post-fix regressions pass.
+See02_DYNAMIC/CPU_BACKING_FIX.md. Static selection Uniform is frozen;
+performance archive entire36+originalwindowaudit is preserved and committed.
+
 2026-09-17 19:05 checkpoint: Static driver completed36/36 and reached
 STATIC_EVIDENCE_COMPLETE_AWAITING_AGENT_SELECTION. Original-A3-mtime audit-v1
 accepts30/36 windows; six first post-completion samples report outside CPU busy,
@@ -58,7 +77,7 @@ had only sleep infinity: completed Static processes fully reaped. Original-binar
 L1 eviction probe is now running with Uniform profile under v11:
 cpu-backing-original-v1/L01/result.json and cpu-backing-original-L01-v2.log.
 Do not launch a duplicate. Initial v1 launcher permission-denied before test is
-retained, corrected v2 uses taskset/b​​ash wrapper (wrapper already execs Python).
+retained, corrected v2 uses taskset/bash wrapper (wrapper already execs Python).
 If L1 fails, preserve it and original binary before fixing. If PASS, proceed
 separate processes L13/26. No full-model Dynamic run has started.
 
