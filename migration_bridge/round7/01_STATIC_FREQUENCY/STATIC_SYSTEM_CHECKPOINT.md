@@ -55,8 +55,16 @@ These synthetic scheduler prompts are not the CMMLU quality benchmark.
 
 ## Remaining gates
 
-Frequency compact/restart is running normally in release-v6. The healthy
-static driver will continue to independently frozen HOLDOUT routing, Frequency
-CMMLU and observer-OFF exploratory performance. No Dynamic or Deferred result
-is established by this checkpoint. Do not change the running release or restart
-the healthy model process.
+Frequency compact/restart also passed in release-v6: 32 compact and four
+independent restart requests, exact repetitions/prefixes/restart/observer parity,
+finite output and mask/mapping/ownership pass across all 26 MoE layers. Structure
+SHA256:
+`084b3942dbd6ffc2969b3e3ffba304e97842139ced0baaab572416f982fb39f1`.
+Its separate lossless evidence archive is
+`../raw/frequency-system-evidence-v1.tar.gz`, SHA256
+`a349ab5cd75eecb25f189413f0e183abf9827ce693cf43666460bde0bf96594b`.
+
+The healthy driver has entered Uniform HOLDOUT routing and will continue to
+Frequency HOLDOUT, Frequency CMMLU and observer-OFF exploratory performance.
+No Dynamic or Deferred result is established by this checkpoint. Do not change
+the running release or restart the healthy model process.

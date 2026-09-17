@@ -46,9 +46,10 @@ Full artifact hashes are in
 `01_STATIC_FREQUENCY/FREQUENCY_CANDIDATE_COMMIT_ACK.json`.
 The frequency budget is208, per-layer counts4–12, no zero-resident layer in
 this candidate. Operator representatives and Uniform compact/restart/parity
-have passed on A3. Frequency compact completed its first process normally and
-is executing the independent OFF/restart process. Frequency system/quality/
-performance are not yet promoted. Preserved earlier system evidence is in
+have passed on A3. Frequency compact/restart/parity also passed; its exact
+structure and separate lossless archive are preserved. Driver is now in
+Uniform HOLDOUT. Frequency quality/performance are not yet promoted.
+Preserved system evidence is in
 `01_STATIC_FREQUENCY/STATIC_SYSTEM_CHECKPOINT.md` and its lossless archive.
 The serial qualification driver has been launched in the owned container:
 `/workspace/c64-dev/round7/static-phase-v1/progress.json`, log
