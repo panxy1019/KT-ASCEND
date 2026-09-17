@@ -37,6 +37,15 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 23:01 checkpoint: v5/runtime-v6 operators100/100PASS(max .0017029279396063187)
+andUniform32+restart4PASS. Allfourreference trajectoriesexactvsruntime-v5.
+FullUniformraw/restart/lifecycle/source/provenance/operator-summary archive now
+locallypreserved SCPexit0/hash+tarPASS SHA
+6b0cb8281f978a6925d323bdb605b0d77b29490e124e708a254e551439619fe4.
+Restartserver intentionalSIGTERM/ownedguardreaped; no newrequestfailure. Parent
+driver nowhealthyRUNNINGFrequencycompact→directR64→DEV256/512/1024. Keephealthy.
+NochosenDynamicthreshold/HD/quality/perf yet. SeeRAW_LAYOUT_RUNTIME_PREDECESSOR_CHECKPOINT.md.
+
 2026-09-17 latest: pairedlayout/pinning fix standaloneA3PASS. Raw12cases/48writes,
 inference12/48, checkpoint+H2Dexact/repeats/other-slot/negativeLOSSYsafe. Actual
 runtime-v6 allocator CPU BF16buffers pinnedtrue/pointerscorrect.99puretestsA3PASS.
