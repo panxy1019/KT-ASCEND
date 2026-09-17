@@ -209,6 +209,19 @@ Future performance tools accept `--host-observer` and reject formal eligibility
 on incomplete/stale/contended measurement windows. Current v6 is not modified;
 its later performance can be analyzed against independent host samples. This
 is a host contention proxy, not direct DRAM bandwidth measurement.
+V1 correctly observed but stays WAIT on262144bytes historical host swap. Actual
+retained serving admission is already V2: cgroup zero swap and no active host
+swap I/O. Observer is now aligned to that policy, not the stale old strict-zero
+lease. Owned cgroup=0, sampled owned VmSwap=0, repeated pswpin0/pswpout1 unchanged;
+RAM available~912GiB. V2 rejects any swap counter change from its initial snapshot
+and records raw memory/swap values continuously. Source SHA
+`86066a50bc0bc02dba7eb0fa2bf8b0687fc62091333ac00c11ef954a99e815c1`.
+Actual observer is `/tmp/round7-host-resource-observer-v2.py`, future samples path
+`/workspace/c64-dev/round7/host-resource-monitor-v2/samples.jsonl`; use V2 for
+future performance windows, not V1. Obsolete owned V1 PID283141 was identity
+verified and SIGTERM stopped; all logs/samples preserved, no model/business task
+stopped. V2 launch hash verified; confirm latest.json fresh and60S quiet before
+claiming EXCLUSIVE. Current34 local tests pass.
 Before frequency fitting, actual deployed `_init_kt_gpu_experts_masks` was
 inspected: it counts 26 real MoE layers before computing ratio. Thus0.125 means
 208 routed slots, not216 from counting dense layer0. Both loader and freezer
