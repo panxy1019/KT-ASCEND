@@ -4,6 +4,7 @@ Run only when the operator and canary gates have passed. The lease goes WAIT
 while protected controllers are alive, even between their model processes.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -32,6 +33,7 @@ def write(value):
     tmp=a.output.with_suffix('.tmp');tmp.write_text(json.dumps(value,indent=2)+'\n');tmp.replace(a.output)
 deadline=time.monotonic()+a.hours*3600
 idle_since=None;previous=snapshot();previous_time=time.monotonic()
+dense_pass=False
 while time.monotonic()<deadline:
     if a.performance_result.exists():break
     time.sleep(5)
@@ -64,7 +66,39 @@ while time.monotonic()<deadline:
     if blockers:idle_since=None
     elif idle_since is None:idle_since=time.monotonic()
     exclusive=idle_since is not None and time.monotonic()-idle_since>=60
+    if exclusive and not dense_pass:
+        # Only after protected jobs naturally exit: two legacy dense-map CPU
+        # regressions, in a new CPU-only disposable container, no NPU devices.
+        dense_name='kt-r67-c64-dense-regression-v1'
+        binary=Path('/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-dev-v1/v4/worker-fixed')
+        command=['docker','run','--name',dense_name,'--label','kt.owner=c64-dense-regression',
+            '--network','none','--cap-add','SYS_NICE','--cpuset-cpus','0-63','--cpuset-mems','0,1',
+            '--memory','2g','--memory-swap','2g','-e','ASAN_OPTIONS=detect_leaks=0:abort_on_error=1',
+            '--entrypoint','/bin/sh','-v',str(binary)+':/worker:ro',
+            'kt-r67-frozen-runtime:20260917','-c','/worker 32 0 && /worker 32 0 1']
+        try:
+            result=subprocess.run(command,capture_output=True,text=True,timeout=120)
+            output=result.stdout+result.stderr
+            (a.output.parent/'dense-regression.log').write_text(output)
+            dense_pass=result.returncode==0 and all(f'RESULT observations={n} expected={n} failures=0' in output for n in (320,640))
+            (a.output.parent/'dense-regression.json').write_text(json.dumps(dict(status='PASS' if dense_pass else 'FAIL',
+                command=command,returncode=result.returncode,binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),
+                no_npu_access=True,leak_check=False),indent=2)+'\n')
+        except Exception as exc:
+            inspected=subprocess.run(['docker','inspect',dense_name],capture_output=True,text=True,timeout=10)
+            if inspected.returncode==0:
+                own=json.loads(inspected.stdout)[0]
+                if own['Config']['Labels'].get('kt.owner')=='c64-dense-regression' and own['State']['Running']:
+                    subprocess.run(['docker','stop',dense_name],check=True,timeout=30)
+            write(dict(status='BLOCKED_DENSE_REGRESSION',time_unix=time.time(),container=name,error=repr(exc)))
+            raise
+        if not dense_pass:
+            write(dict(status='BLOCKED_DENSE_REGRESSION',time_unix=time.time(),container=name))
+            raise RuntimeError('DENSE_REGRESSION_FAILED')
+        # Re-establish quiet interval after our own unit test.
+        idle_since=None;exclusive=False;previous=snapshot();previous_time=time.monotonic()
     write(dict(status='EXCLUSIVE' if exclusive else 'WAIT',container=name,time_unix=time.time(),
                blockers=blockers,criterion='NO_OTHER_MODEL_CONTROLLER_OR_NPU; OUTSIDE_CPU_TOTAL_LE2_MAX_LE1; 60S_IDLE',
+               dense_regression='PASS' if dense_pass else 'NOT_RUN',
                no_other_task_modified=True))
 write(dict(status='RELEASED' if a.performance_result.exists() else 'EXPIRED',container=name,time_unix=time.time()))

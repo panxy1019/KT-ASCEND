@@ -21,6 +21,8 @@ def wait_json(path,predicate,seconds=86400):
     while time.monotonic()<deadline:
         if path.exists():
             value=json.loads(path.read_text())
+            if str(value.get('status','')).startswith('BLOCKED_'):
+                raise RuntimeError('PREDECESSOR_BLOCKED:'+json.dumps(value))
             if predicate(value):return value
         time.sleep(10)
     raise TimeoutError('WAITING_FOR_'+str(path))
