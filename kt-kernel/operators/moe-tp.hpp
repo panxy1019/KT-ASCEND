@@ -15,6 +15,7 @@
 
 #include "../cpu_backend/shared_mem_buffer.h"
 #include "common.hpp"
+#include "llamafile/tp_slices.hpp"
 
 // Forward declaration for Llamafile backend type checking
 class LLAMA_MOE_TP;
@@ -79,6 +80,19 @@ class TP_MOE_Common : public MoE_Interface {
 #endif
 
     if (is_llamafile) {
+      const bool f32_tp = tp_count > 1 && config.gate_type == GGML_TYPE_F32 &&
+                          config.up_type == GGML_TYPE_F32 && config.down_type == GGML_TYPE_F32;
+      if (f32_tp) {
+        if (config.m_block != 32 || config.hidden_size % 32)
+          throw std::invalid_argument("F32 TP requires m_block=32 and aligned hidden size");
+        for (const auto& slice : make_llamafile_tp_slices(config.intermediate_size, tp_count, true)) {
+          auto part = config;
+          part.intermediate_size = slice.length;
+          tps.push_back(nullptr);
+          tp_configs.push_back(part);
+          printf("F32 tail-safe TP: offset=%d length=%d FP32 partial\n", slice.offset,slice.length);
+        }
+      } else {
       // For Llamafile backend: use QK_K-aligned TP splitting
       if (config.intermediate_size % QK_K != 0) {
         if (tp_count != 1 || config.intermediate_size % 32 != 0) {
@@ -119,6 +133,7 @@ class TP_MOE_Common : public MoE_Interface {
           tp_configs.push_back(tp_config);
           current_offset += tp_config.intermediate_size;
         }
+      }
       }
     } else {
       // For non-Llamafile backends: use simple equal division

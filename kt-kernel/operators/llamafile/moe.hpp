@@ -43,6 +43,7 @@ inline void r66_dump_stage(const char* stage, int expert, const float* values, s
 #include "llama.cpp/ggml-quants.h"
 #include "llama.cpp/ggml.h"
 #include "llamafile/sgemm.h"
+#include "c64_test_capture.hpp"
 #if defined(__aarch64__)
 #include <arm_neon.h>
 #endif
@@ -125,6 +126,7 @@ class LLAMA_MOE_TP {
  private:
   GeneralMOEConfig config_;
   int tp_part_idx;
+  bool fp32_tp_partial_ = false;
 
   uint8_t* m_local_gate_proj_;  // [expert_num * intermediate_size * hidden_size ( /32 if quantized)]
   uint8_t* m_local_up_proj_;    // [expert_num * intermediate_size * hidden_size ( /32 if quantized)]
@@ -185,6 +187,8 @@ class LLAMA_MOE_TP {
   using output_t = float;
 
   LLAMA_MOE_TP(GeneralMOEConfig config, int tp_part_idx) : config_(config), tp_part_idx(tp_part_idx) {
+    fp32_tp_partial_ = config.pool->config.subpool_count > 1 &&
+        config.gate_type == GGML_TYPE_F32 && config.up_type == GGML_TYPE_F32 && config.down_type == GGML_TYPE_F32;
     MemoryRequest mem_requests;
     mem_requests.append_pointer(&s_input_fp32_, sizeof(float) * config_.hidden_size);
     mem_requests.append_pointer(
@@ -420,6 +424,18 @@ class LLAMA_MOE_TP {
     // get_subpool(tp_part_idx)->do_work_stealing_job nesting inside do_numa_job.
     config_.pool->get_subpool(tp_part_idx)->do_work_stealing_job(config.expert_num,
                                                                  [&](int i) { copy_expert(i); });
+#ifdef KT_C64_TEST_CAPTURE
+    const char* selected = std::getenv("KT_C64_CAPTURE_WEIGHT_EXPERT");
+    if (selected) {
+      const int e=std::stoi(selected);
+      if (e<0 || e>=config.expert_num || config.should_skip_expert(e))
+        throw std::runtime_error("C64 invalid weight capture expert");
+      const std::string stem="tp"+std::to_string(tp_part_idx)+"_";
+      c64_test_dump(stem+"gate.f32",local_gate_base+e*gate_dst_stride,gate_dst_stride);
+      c64_test_dump(stem+"up.f32",local_up_base+e*up_dst_stride,up_dst_stride);
+      c64_test_dump(stem+"down.f32",local_down_base+e*down_dst_stride,down_dst_stride);
+    }
+#endif
   }
 
   void warm_up() {
@@ -643,7 +659,7 @@ class LLAMA_MOE_TP {
 
             for (int i = ith * config_.m_block; i < (ith + 1) * config_.m_block; i++) {
               float down = s_down_output_[expert_idx][i];
-              if (config_.bf16_numerical_compat) {
+              if (config_.bf16_numerical_compat && !fp32_tp_partial_) {
                 down = round_to_bf16_value(down);
               }
               output[i] += down * expert_weight;
@@ -826,7 +842,11 @@ class LLAMA_MOE_TP {
 #endif
 
     int m_block = QK_K;
-    int nth = config_.intermediate_size / m_block;
+    const bool f32_tail = config_.gate_type == GGML_TYPE_F32 &&
+                          config_.up_type == GGML_TYPE_F32 && config_.down_type == GGML_TYPE_F32;
+    if (!f32_tail && config_.intermediate_size % m_block)
+      throw std::runtime_error("blocked LLAMAFILE forward_many requires 256 alignment");
+    int nth = (config_.intermediate_size + m_block - 1) / m_block;
     // printf("nth: %d, m_block: %d, activated_expert: %d\n", nth, m_block, activated_expert);
     // printf("config_.hidden_size: %d, config_.intermediate_size: %d\n", config_.hidden_size,
     // config_.intermediate_size);
@@ -835,6 +855,7 @@ class LLAMA_MOE_TP {
         [&](int task_id) {
           int64_t expert_idx = m_expert_id_map_[task_id / nth];
           int ith = task_id % nth;
+          const int block_len = std::min(m_block, config_.intermediate_size - ith * m_block);
           void* gate_input_ptr = m_local_gate_input_ptr_[expert_idx];
 
           void* gate_proj_ptr =
@@ -848,13 +869,14 @@ class LLAMA_MOE_TP {
           //   printf("matrix size: m:%d, n:%d, k:%d\n", m_block, m_local_num_[expert_idx],
           //          config_.hidden_size / ggml_blck_size((ggml_type)config_.gate_type));
           // }
-          llamafile_sgemm(m_block, m_local_num_[expert_idx],
+          const bool gate_ok = llamafile_sgemm(block_len, m_local_num_[expert_idx],
                           config_.hidden_size / ggml_blck_size((ggml_type)config_.gate_type), gate_proj_ptr,
                           config_.hidden_size / ggml_blck_size((ggml_type)config_.gate_type), gate_input_ptr,
                           config_.hidden_size / ggml_blck_size((ggml_type)config_.gate_type), gate_output_ptr,
                           config_.intermediate_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.gate_type,
                           kt_effective_vec_dot_type((ggml_type)config_.gate_type), GGML_TYPE_F32,
                           GGML_PREC_DEFAULT);
+          if (f32_tail && !gate_ok) throw std::runtime_error("LLAMAFILE F32 gate tile unsupported");
           void* up_input_ptr = m_local_up_input_ptr_[expert_idx];
 
           void* up_proj_ptr = (uint8_t*)m_local_up_proj_ + (expert_idx * config_.intermediate_size + ith * m_block) *
@@ -863,14 +885,15 @@ class LLAMA_MOE_TP {
                                                                ggml_blck_size((ggml_type)config_.up_type);
 
           float* up_output_ptr = m_local_up_output_ptr_[expert_idx] + ith * m_block;
-          llamafile_sgemm(
-              m_block, m_local_num_[expert_idx], config_.hidden_size / ggml_blck_size((ggml_type)config_.up_type),
+          const bool up_ok = llamafile_sgemm(
+              block_len, m_local_num_[expert_idx], config_.hidden_size / ggml_blck_size((ggml_type)config_.up_type),
               up_proj_ptr, config_.hidden_size / ggml_blck_size((ggml_type)config_.up_type), up_input_ptr,
               config_.hidden_size / ggml_blck_size((ggml_type)config_.up_type), up_output_ptr,
               config_.intermediate_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.up_type,
               kt_effective_vec_dot_type((ggml_type)config_.up_type), GGML_TYPE_F32, GGML_PREC_DEFAULT);
+          if (f32_tail && !up_ok) throw std::runtime_error("LLAMAFILE F32 up tile unsupported");
           for (int i = 0; i < m_local_num_[expert_idx]; i++) {
-            for (int j = ith * m_block; j < (ith + 1) * m_block; j++) {
+            for (int j = ith * m_block; j < ith * m_block + block_len; j++) {
               const int offset = i * config_.intermediate_size + j;
               float gate = m_local_gate_output_ptr_[expert_idx][offset];
               float up = m_local_up_output_ptr_[expert_idx][offset];
@@ -892,7 +915,7 @@ class LLAMA_MOE_TP {
                 ith * m_block *
                     ggml_type_size(kt_effective_vec_dot_type((ggml_type)config_.down_type)) /
                     ggml_blck_size(kt_effective_vec_dot_type((ggml_type)config_.down_type));
-            from_float(intermediate_fp32_ptr, down_input_ptr, m_block,
+            from_float(intermediate_fp32_ptr, down_input_ptr, block_len,
                        kt_effective_vec_dot_type((ggml_type)config_.down_type));
           }
         },
@@ -907,13 +930,14 @@ class LLAMA_MOE_TP {
 #endif
 
     m_block = QK_K;
-    nth = config_.hidden_size / m_block;
+    nth = f32_tail ? (config_.hidden_size + m_block - 1) / m_block : config_.hidden_size / m_block;
     pool->do_work_stealing_job(
         nth * activated_expert, nullptr,
         [&](int task_id) {
           int64_t expert_idx = m_expert_id_map_[task_id / nth];
           int ith = task_id % nth;
           void* down_input_ptr = m_local_down_input_ptr_[expert_idx];
+          const int block_len = std::min(m_block, config_.hidden_size - ith * m_block);
 
           auto expert_offset = expert_idx * config_.hidden_size * config_.intermediate_size;
           auto m_block_offset = ith * m_block * config_.intermediate_size;
@@ -923,13 +947,14 @@ class LLAMA_MOE_TP {
                                                                    ggml_blck_size((ggml_type)config_.down_type);
 
           float* down_output_ptr = m_local_down_output_ptr_[expert_idx] + ith * m_block;
-          llamafile_sgemm(m_block, m_local_num_[expert_idx],
+          const bool down_ok = llamafile_sgemm(block_len, m_local_num_[expert_idx],
                           config_.intermediate_size / ggml_blck_size((ggml_type)config_.down_type), down_proj_ptr,
                           config_.intermediate_size / ggml_blck_size((ggml_type)config_.down_type), down_input_ptr,
                           config_.intermediate_size / ggml_blck_size((ggml_type)config_.down_type), down_output_ptr,
                           config_.hidden_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.down_type,
                           kt_effective_vec_dot_type((ggml_type)config_.down_type), GGML_TYPE_F32,
                           GGML_PREC_DEFAULT);
+          if (f32_tail && !down_ok) throw std::runtime_error("LLAMAFILE F32 down tile unsupported");
         },
         nullptr);
 
@@ -958,7 +983,7 @@ class LLAMA_MOE_TP {
             for (int e = 0; e < config_.hidden_size; e++) {
               float down = m_local_down_output_ptr_[expert_ids[i * k + j]]
                                                     [m_local_pos_[i][j] * config_.hidden_size + e];
-              if (config_.bf16_numerical_compat) {
+              if (config_.bf16_numerical_compat && !fp32_tp_partial_) {
                 down = round_to_bf16_value(down);
               }
               m_output_fp32_[i][e] += down * expert_weight;
@@ -1043,6 +1068,11 @@ class TP_MOE<LLAMA_MOE_TP> : public TP_MOE_Common<LLAMA_MOE_TP> {
 
   void merge_results(int qlen, void* output, bool incremental) {
     auto pool = this->config.pool;
+#ifdef KT_C64_TEST_CAPTURE
+    for (int slot=0;slot<this->tp_count;++slot)
+      c64_test_dump("partial"+std::to_string(slot)+".f32",local_output_numa[slot],
+                    (size_t)qlen*config.hidden_size*sizeof(float));
+#endif
     const bool kt_pt = kt_phase_timing_on();
     std::chrono::high_resolution_clock::time_point kt_m0;
     if (kt_pt) kt_m0 = std::chrono::high_resolution_clock::now();
@@ -1099,6 +1129,10 @@ class TP_MOE<LLAMA_MOE_TP> : public TP_MOE_Common<LLAMA_MOE_TP> {
                 (unsigned long long)acc.calls, acc.quant_ns / 1e3 / acc.calls, qlen);
       }
     }
+#ifdef KT_C64_TEST_CAPTURE
+    c64_test_dump("precast.f32",local_output_numa[0],(size_t)qlen*H*sizeof(float));
+    c64_test_dump("visible.bin",output,(size_t)qlen*H*output_size/output_block);
+#endif
   }
 };
 #endif
