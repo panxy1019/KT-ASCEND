@@ -10,6 +10,15 @@ from pathlib import Path
 import statistics
 
 
+def probe_summaries(root,prefix):
+    if prefix not in ('threshold-','dynamic-dev-probe-'):
+        raise ValueError('UNSUPPORTED_PROBE_PREFIX')
+    paths=[root/f'{prefix}{threshold}'/'summary.json' for threshold in (256,512,1024)]
+    for path in paths:
+        assert json.loads(path.read_text())['status']=='PASS','TRIGGER_GENERATION_PREDECESSOR'
+    return paths
+
+
 def main():
     from collect_dev import request
     from static_qualification import config,sha,write
@@ -18,6 +27,7 @@ def main():
     p.add_argument('--dev',type=Path,required=True)
     p.add_argument('--profile',choices=['uniform','frequency'],required=True)
     p.add_argument('--probes',type=Path,required=True,help='threshold-256/512/1024 subdirectories')
+    p.add_argument('--probe-prefix',choices=['threshold-','dynamic-dev-probe-'],default='threshold-')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.dev.parent/'CORPUS_FREEZE.json').read_text())
@@ -27,13 +37,13 @@ def main():
               for r in [x for x in rows if x['bucket']==bucket][:4]]
     assert len(selected)==12
     candidates=[256,512,1024]
-    for threshold in candidates:
-        assert json.loads((a.probes/f'threshold-{threshold}'/'summary.json').read_text())['status']=='PASS','TRIGGER_GENERATION_PREDECESSOR'
+    predecessors=probe_summaries(a.probes,a.probe_prefix)
     write(a.output/'protocol.json',dict(dev_sha256=sha(a.dev),profile=a.profile,
         profile_sha256=sha(a.base/'profiles'/f'{a.profile}.json'),candidates=candidates,
         ids=[r['id'] for r in selected],decode_budget=64,observer=False,
         selector='minimum median matched-case E2E ratio; tie prefers larger threshold',
-        qualification_scope='DEV_EXPLORATORY_NOT_FORMAL_ABBA'))
+        qualification_scope='DEV_EXPLORATORY_NOT_FORMAL_ABBA',
+        predecessor_sha256={str(path):sha(path) for path in predecessors}))
     groups={}
     for threshold in [0]+candidates:
         cfg=json.loads(config(a.base,a.profile,False).read_text())

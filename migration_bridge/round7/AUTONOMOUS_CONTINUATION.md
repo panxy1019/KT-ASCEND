@@ -37,6 +37,23 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-17 20:25 checkpoint: v1 stopped at fresh R64 adapter mismatch,
+175/256 invalid0. Both post-fix compact lanes PASS32+restart4. Historical
+R64 uses direct Ascend withoutKT; v12 mistakenly used KT64 and expandedlimits.
+Test-only repair commit5a673f1a70dc5e472be72f6b0cf30a7eafff4352,
+releasev13 SHA6971ddcd396fa0b1e279404f1af0970585e1f3b247996c58187c0fffe879eb8d,
+completeSCP host/container verified;82puretests LOCAL+A3 PASS.
+New driver backing-requalification-v2 is launched with --resume-from v1,
+retained three PASS summary hashes, private repaired native and new output.
+Read progress/log there; initial CANN environment imports take minutes.
+Do not restart healthy stage. Sequence exact historical directR64(required174,
+resolvedCLI exact) then DEVmigrationprobes256/512/1024. No threshold/HD yet.
+Bothcompact/full175failure archive nowlocallypreserved, SCPexit0/hash+tarPASS,
+SHA b0a4be94684d862ab553affde27506de745c978d733d53f5be2a046e2de616bb.
+See R64_REFERENCE_ADAPTER_REPAIR.md. No production/native change in this repair.
+Future threshold_sweep explicit --probe-prefix dynamic-dev-probe- binds retained
+probe summary hashes; deploy a separate future release, never replace livev13.
+
 Latest19:50: repaired operators100/100 PASS(maxrelativeL2 .0017029279396063187),
 Uniformcompact32+restart4 PASS and four trajectories exact vsoriginalruntime-v2.
 Newlossless completeoperator arrays/weights/partials/logs/results/provenance
