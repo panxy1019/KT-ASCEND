@@ -46,6 +46,16 @@ Full artifact hashes are in
 `01_STATIC_FREQUENCY/FREQUENCY_CANDIDATE_COMMIT_ACK.json`.
 The frequency budget is208, per-layer counts4–12, no zero-resident layer in
 this candidate. It has not passed system/quality/performance yet.
+The serial qualification driver has been launched in the owned container:
+`/workspace/c64-dev/round7/static-phase-v1/progress.json`, log
+`/workspace/c64-dev/round7/static-phase-v1.log`. It uses release-v6, base
+`runtime-v2`, HOLDOUT `corpora-v2/SCHED_HOLDOUT.jsonl` and
+`frequency-candidate-commit-ack.json`. Healthy driver must not be restarted.
+Read this new progress path rather than completed DEV progress for monitoring.
+On failure, preserve the first failed stage and logs, repair/reproduce before
+resuming; do not overwrite earlier raw directories. Stage order is operator
+representatives→Uniform/Frequency compact→Uniform/Frequency HOLDOUT→Frequency
+CMMLU→isolated performance if quality passes. Agent static selection follows.
 Use read-only checks of:
 
 ```
