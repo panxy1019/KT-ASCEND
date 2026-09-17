@@ -89,11 +89,17 @@ passed after adding pure migration and SSE timing checks. `dynamic_audit.py`,
 `dynamic_probe.py`, `performance_screen.py` and new hook wiring are not yet
 deployed at this checkpoint. Review actual trigger integration before deploying. Diagnostic
 weight readbacks/synchronization must remain absent from timed performance.
-Separate threshold selection/freeze, migration telemetry and final orchestration
-still need integration. The prepared performance screen supports D1 on a selected
+`threshold_sweep.py` now prepares DEV-only twelve-case/64-decode exploratory
+selection after all three threshold migration probes pass. It freezes the
+selected threshold before any held-out use. `runtime_quality.py` reuses the same
+immutable evaluator for Dynamic and Deferred. Migration component telemetry,
+Deferred system assertions and final orchestration still need integration.
+The prepared performance screen supports D1 on a selected
 Dynamic base via `--dynamic-base`; never silently evaluate D1 on the wrong base.
 HOLDOUT routing uses official recorder metadata to exclude proven unused final
 forwards and rejects unassociated routes, just as DEV fitting does.
+New routing flags distinguish per-layer assignments from whole-model token CPU
+touch rate. These later tools remain undeployed until current collection finishes.
 
 ## Follow-up policy
 

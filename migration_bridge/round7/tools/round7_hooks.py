@@ -89,5 +89,5 @@ def make_routes(config):
             forward_context=dict(CURRENT_FORWARD),
             npu_hits=int(hit.sum()),cpu_hits=int((~hit).sum()),
             total_weight=float(weights.sum()),cpu_weight=float(weights[~hit].sum()),
-            fully_npu_tokens=int(hit.all(dim=1).sum()),counts=counts))
+            fully_npu_tokens=int(hit.all(dim=1).sum()),fully_npu_row_flags=hit.all(dim=1).tolist(),counts=counts))
     return hook

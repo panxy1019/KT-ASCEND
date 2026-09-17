@@ -68,7 +68,10 @@ def main():
         first_updates=lines(root/'generation-audit.jsonl')
         assert first_updates,'DYNAMIC_DID_NOT_TRIGGER'
         verify_updates(first_updates,slots)
-        assert {x['layer'] for x in first_updates}=={l for l,n in slots.items() if n>0},'TRIGGER_LAYER_COVERAGE'
+        updated_layers={x['layer'] for x in first_updates}
+        # Zero-slot layers may still enter the official full-device prefill
+        # and publish an empty resident generation. This is not a budget error.
+        assert {l for l,n in slots.items() if n>0}<=updated_layers<=set(slots),'TRIGGER_LAYER_COVERAGE'
         repeated=request(root,first,'trigger-a-repeat',16)
         assert first_ids==repeated,'TRIGGERED_SAME_PATH_NONDETERMINISM'
         repeat_state=state_at_boundary(root)

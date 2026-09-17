@@ -43,7 +43,9 @@ def install(root,initial):
         route_counts=torch.bincount(routes.detach().cpu().long().flatten(),minlength=64).tolist()
         self._round7_updating=True
         try:
+            production_started=time.perf_counter()
             value=original(self,layer,ctx,dispatch_output)
+            production_host_seconds=time.perf_counter()-production_started
             # Diagnostic-only wait/readback; OFF timing runs retain production
             # stream ordering and do not include this identity audit overhead.
             torch.npu.synchronize()
@@ -77,6 +79,8 @@ def install(root,initial):
                 previous_resident=torch.where(old)[0].tolist(),
                 churn=int((old!=mask).sum())/max(1,len(selected)),migration_bytes=copied,
                 diagnostic_total_update_seconds=time.perf_counter()-started,
+                official_update_host_seconds=production_host_seconds,
+                timing_scope='DIAGNOSTIC_HOST_CALL_ELAPSED_NOT_DEVICE_EVENT_OR_TIMED_PERFORMANCE',
                 weight_identity_exact=True,mask_mapping_wrapper_exact=True,
                 generation_boundary='SERIAL_TP1_BATCH1_ONLY_NOT_CONCURRENCY_QUALIFIED')
             with (Path(root)/'generation-audit.jsonl').open('a') as f:f.write(json.dumps(record)+'\n')

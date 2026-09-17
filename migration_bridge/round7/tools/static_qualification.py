@@ -77,12 +77,16 @@ def holdout(base,name,rows):
     metadata=[x for x in metadata if x['epoch']==1]
     kept={(metadata[i]['epoch'],metadata[i]['forward_id']) for i in attribution['kept_indices']}
     metrics=dict(assignments=0,npu_hits=0,cpu_hits=0,total_weight=0.0,cpu_weight=0.0,tokens=0,fully_npu_tokens=0)
-    layers={}
+    layers={};forward_rows={}
     for line in (target/'routing.jsonl').read_text().splitlines():
         r=json.loads(line)
         context=r['forward_context']
         assert context,'UNATTRIBUTED_ROUTING_FORWARD'
         if (context['epoch'],context['forward_id']) not in kept:continue
+        key=(context['epoch'],context['forward_id'])
+        by_layer=forward_rows.setdefault(key,{})
+        assert r['layer'] not in by_layer,'DUPLICATE_LAYER_ROUTING'
+        by_layer[r['layer']]=r['fully_npu_row_flags']
         for k in metrics:metrics[k]+=r[k]
         l=layers.setdefault(str(r['layer']),dict(assignments=0,npu_hits=0,cpu_hits=0))
         for k in l:l[k]+=r[k]
@@ -90,6 +94,17 @@ def holdout(base,name,rows):
         cpu_route_rate=metrics['cpu_hits']/metrics['assignments'],
         cpu_weight_mass=metrics['cpu_weight']/metrics['total_weight'],per_layer=layers)
     assert metrics['assignments']==sum(len(r['input_ids'])+15 for r in rows)*6*26,'HOLDOUT_ROUTE_COMPLETENESS'
+    model_rows=0;fully_npu_model_rows=0
+    for by_layer in forward_rows.values():
+        assert set(by_layer)==set(range(1,27)),'FORWARD_LAYER_INCOMPLETENESS'
+        sizes={len(flags) for flags in by_layer.values()}
+        assert len(sizes)==1,'FORWARD_ROW_SHAPE_DRIFT'
+        model_rows+=next(iter(sizes))
+        fully_npu_model_rows+=sum(all(flags[i] for flags in by_layer.values()) for i in range(next(iter(sizes))))
+    metrics.update(model_token_rows=model_rows,fully_npu_model_token_rows=fully_npu_model_rows,
+        fully_npu_model_token_rate=fully_npu_model_rows/model_rows,
+        model_token_touches_cpu_fraction=1-fully_npu_model_rows/model_rows,
+        layer_row_scope='The legacy tokens/fully_npu_tokens counters sum layer rows, not unique model tokens.')
     raw=[json.loads(x) for x in (target/'requests.jsonl').read_text().splitlines()]
     # Observer incurs synchronization. Do not call this isolated performance.
     result=dict(status='PASS',routing=metrics,observer_on=True,formal_performance=False,
@@ -99,12 +114,12 @@ def holdout(base,name,rows):
     return result
 
 
-def quality(base,name):
+def quality(base,name,configuration=None,target=None,summary_path=None):
     from common import validate_answer,score_letters
     manifest=Path('/workspace/results/r65-r67-serial-v5/cmmlu.json')
     assert sha(manifest)=='bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04'
     rows=json.loads(manifest.read_text())['rows'];results=[]
-    with session(base/f'{name}-cmmlu-v1',config(base,name,False)) as root:
+    with session(target or base/f'{name}-cmmlu-v1',configuration or config(base,name,False)) as root:
         for i,row in enumerate(rows):
             rid=f'r7-{name}-cmmlu-{row["id"]}'
             payload=dict(rid=rid,input_ids=row['input_ids'],sampling_params=dict(
@@ -126,7 +141,7 @@ def quality(base,name):
     correct=sum(x['correct'] for x in results)
     result=dict(status='PASS' if quality_gate(correct,0) else 'QUALITY_FAIL',correct=correct,
         count=256,invalid=0,delta_pp=100*(correct-174)/256,rows=results,manifest_sha256=sha(manifest))
-    write(base/f'{name}-quality-summary.json',result)
+    write(summary_path or base/f'{name}-quality-summary.json',result)
     return result
 
 
