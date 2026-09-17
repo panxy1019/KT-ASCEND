@@ -12,6 +12,8 @@
 
 #include <hwloc.h>
 #include <numa.h>
+#include <numaif.h>
+#include <stdexcept>
 
 #include <atomic>
 #include <barrier>
@@ -26,10 +28,20 @@
 // #define PROFILE_BALANCE
 
 inline void set_to_numa(int this_numa) {
+  if (numa_run_on_node(this_numa) != 0) throw std::runtime_error("NUMA CPU binding failed");
   struct bitmask* mask = numa_bitmask_alloc(numa_num_configured_nodes());
   numa_bitmask_setbit(mask, this_numa);
-  numa_bind(mask);
+  const int rc = set_mempolicy(MPOL_BIND, mask->maskp, mask->size + 1);
   numa_bitmask_free(mask);
+  if (rc != 0) throw std::runtime_error("NUMA memory binding failed");
+}
+
+inline hwloc_obj_t physical_numa_object(hwloc_topology_t topology, int physical_id) {
+  hwloc_obj_t obj = nullptr;
+  while ((obj = hwloc_get_next_obj_by_type(topology, HWLOC_OBJ_NUMANODE, obj))) {
+    if (obj->os_index == static_cast<unsigned>(physical_id)) return obj;
+  }
+  return nullptr;
 }
 
 inline void set_memory_to_numa(int this_numa) {
@@ -38,11 +50,11 @@ inline void set_memory_to_numa(int this_numa) {
   hwloc_topology_init(&topology);
   hwloc_topology_load(topology);
 
-  hwloc_obj_t obj = hwloc_get_obj_by_type(topology, HWLOC_OBJ_NUMANODE, this_numa);
+  hwloc_obj_t obj = physical_numa_object(topology, this_numa);
   if (!obj) {
     fprintf(stderr, "NUMA node %d not found.\n", this_numa);
     hwloc_topology_destroy(topology);
-    return;
+    throw std::runtime_error("physical NUMA node unavailable");
   }
 
   auto ret = hwloc_set_membind(topology, obj->nodeset, HWLOC_MEMBIND_BIND,
@@ -52,6 +64,7 @@ inline void set_memory_to_numa(int this_numa) {
   }
 
   hwloc_topology_destroy(topology);
+  if (ret != 0) throw std::runtime_error("NUMA worker memory binding failed");
 }
 
 enum ThreadStatus {
