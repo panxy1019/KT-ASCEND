@@ -68,6 +68,8 @@ def install(root,initial):
                 if not exact:
                     torch.save(dict(observed=src,expected=ref),Path(root)/f'prepare-L{layer_idx}-E{logical}-{name}-mismatch.pt')
         with (Path(root)/'bf16-prepare-boundaries.jsonl').open('a') as f:f.write(json.dumps(record)+'\n')
+        assert all(row['checkpoint_exact'] for row in record['before']), 'INITIAL_RESIDENT_CHECKPOINT_IDENTITY'
+        assert all(row['checkpoint_exact'] for row in record['after']), 'PREPARED_FULL_CONTEXT_CHECKPOINT_IDENTITY'
         return value
     def apply(self,*args,**kwargs):
         assert not getattr(self,'_round7_updating',False),'READ_DURING_MIGRATION'

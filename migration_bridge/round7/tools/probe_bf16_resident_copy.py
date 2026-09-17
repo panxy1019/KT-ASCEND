@@ -19,6 +19,10 @@ def main():
     import torch_npu
     import sglang.srt.layers.moe.kt_ep_wrapper as module
     torch.npu.set_device(0)
+    if a.source_format=='nz':
+        # A3 torch_npu defaults to disabling internal format. Test actual NZ,
+        # never label a silently downgraded ND tensor as an NZ regression.
+        torch.npu.config.allow_internal_format=True
     module.get_tensor_model_parallel_rank=lambda:0
     module.get_tensor_model_parallel_world_size=lambda:1
     context=module.SharedFullContext.__new__(module.SharedFullContext)
@@ -33,6 +37,7 @@ def main():
         resident=raw.flip(0).to('npu')
         if a.source_layout=='inference':resident=resident.transpose(1,2).contiguous()
         if a.source_format=='nz':resident=torch_npu.npu_format_cast(resident,29)
+        if a.source_format=='nz':assert torch_npu.get_npu_format(resident)==29,'NZ_TEST_DOWNGRADED_TO_BASE_FORMAT'
         original.register_parameter(name,torch.nn.Parameter(resident,requires_grad=False))
         context.cpu_buffers[name]=torch.empty(shape,dtype=torch.bfloat16,pin_memory=True)
     context.gpu_layer=layer
