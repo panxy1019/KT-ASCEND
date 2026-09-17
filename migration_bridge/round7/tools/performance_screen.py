@@ -48,7 +48,7 @@ def measured_request(root,row,rid,budget):
     req=urllib.request.Request('http://127.0.0.1:31000/generate',
         data=json.dumps(payload).encode(),headers={'Content-Type':'application/json'})
     write(root/f'{rid}-input.json',dict(status='STARTING',payload=payload,started_unix=time.time()))
-    started=time.perf_counter();events=[]
+    started_unix=time.time();started=time.perf_counter();events=[]
     with urllib.request.urlopen(req,timeout=3600) as response:
         for raw in response:
             received=time.perf_counter()-started
@@ -63,7 +63,8 @@ def measured_request(root,row,rid,budget):
     result=summarize_events(events,budget)
     assert result['final_meta']['id']==rid,'REQUEST_CORRELATION'
     assert result['final_meta']['prompt_tokens']==len(row['input_ids']),'INPUT_IDENTITY'
-    result.update(request_seconds=total,input_tokens=len(row['input_ids']),prompt_id=row['id'])
+    result.update(request_seconds=total,input_tokens=len(row['input_ids']),prompt_id=row['id'],
+        started_unix=started_unix,ended_unix=time.time())
     write(root/f'{rid}.json',dict(payload=payload,events=events,summary=result))
     return result
 
@@ -78,6 +79,7 @@ def main():
     p.add_argument('--right',choices=['uniform','frequency','dynamic','deferred'],required=True)
     p.add_argument('--threshold',type=int)
     p.add_argument('--dynamic-base',action='store_true',help='Evaluate D1 on a selected Dynamic scheduler')
+    p.add_argument('--host-observer',type=Path,help='Host-issued samples.jsonl visible through the owned mount')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.corpus.parent/'CORPUS_FREEZE.json').read_text())
@@ -90,7 +92,8 @@ def main():
     write(a.output/'protocol.json',dict(order=['left','right','right','left'],blocks=3,
         left=a.left,right=a.right,threshold=a.threshold,dynamic_base=a.dynamic_base,observer=False,
         targets=[dict(bucket=b,id=r['id'],input_tokens=len(r['input_ids']),decode=n) for b,r,n in targets],
-        holdout_sha256=sha(a.corpus),internal_cpu_wait='NOT_INSTRUMENTED_IN_TIMED_PATH'))
+        holdout_sha256=sha(a.corpus),host_observer=str(a.host_observer) if a.host_observer else None,
+        internal_cpu_wait='NOT_INSTRUMENTED_IN_TIMED_PATH'))
     measurements=[]
     for bucket,row,budget in targets:
         for block in range(3):
@@ -127,6 +130,17 @@ def main():
     write(a.output/'summary.json',dict(status='COMPLETE',observer=False,serial=True,
         measurements=measurements,workloads=summary,
         limitation='Internal CPU wait and exact device prefill timing require separate untimed telemetry.'))
+    if a.host_observer:
+        from host_resource_observer import assess_window
+        # The observer samples once every5 seconds. This wait occurs after all
+        # timing and serving reaping, never inside a measured request.
+        time.sleep(10)
+        samples=[json.loads(x) for x in a.host_observer.read_text().splitlines()]
+        windows=[dict(bucket=x['bucket'],block=x['block'],turn=x['turn'],
+            **assess_window(samples,x['started_unix'],x['ended_unix'])) for x in measurements]
+        resource=dict(status='PASS' if all(x['formal_eligible'] for x in windows) else 'CONTAMINATED_OR_UNOBSERVED',windows=windows)
+    else:resource=dict(status='UNOBSERVED',formal_eligible=False)
+    write(a.output/'host-isolation.json',resource)
 
 
 if __name__=='__main__':main()
