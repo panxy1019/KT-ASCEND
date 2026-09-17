@@ -52,3 +52,33 @@ Next required verification: same eviction regression L1/L13/L26 under repaired
 binary, representative operators, Uniform/Frequency compact, fresh R64 under
 common-loader-change rule, updated imported/native provenance. Only then may
 full-model Dynamic qualification proceed. No Dynamic threshold is frozen yet.
+
+## Post-fix A3 eviction regression
+
+The repaired native built successfully with SHA
+`46182176279b072b4ab52d21bb8cc0ecf4d217399d486155c7fcd4f0690e21e2`.
+All three independent layer processes passed, two predetermined initially
+resident experts ×three real operands ×ten repeated CPU forwards per layer:
+18 operand cases,180 CPU forwards total. Every output finite and repeated exact.
+
+| Layer | Cases | Maximum relative-L2 vs canonical | Gate | Status |
+|---|---:|---:|---:|---|
+|1|6|0.001710139085038048|0.01|PASS|
+|13|6|0.0016550920486532207|0.01|PASS|
+|26|6|0.0017457476763079638|0.01|PASS|
+
+Evidence state: A3_VERIFIED for this standalone ownership-transition regression,
+not full-model Dynamic qualification. Original failure remains FAIL in its
+separate archive. Original runtime and binary were not overwritten.
+
+Lossless `raw/cpu-backing-fixed-evidence-v1.tar.gz` includes full18-case JSON,
+new native .so, repaired compiled header, build commands/hashes/log, and explicit
+runtime-v3 imported-file provenance/configuration. SHA256:
+`68ade2a57257a8f9a85c0cf22abcc4c2ecc133279fb269474ddc01ea9cb5d72c`.
+SCPexit0, local/A3 SHA match, full tar validationexit0.
+
+New post-fix predecessor driver is RUNNING, phase operators:
+`/workspace/c64-dev/round7/backing-requalification-v1/progress.json`.
+Its log is `backing-requalification-v1.log`. It will independently rerun
+operators/Static compact/fresh R64 before any DEV migration probe. These
+full-model prerequisites are not yet PASS.

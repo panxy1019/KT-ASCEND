@@ -37,6 +37,30 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+Latest19:30: original CPU-backing defect has passed repaired A3 standalone
+L1/L13/L26 eviction regression,18cases/180forwards finite+10repeatexact;
+max canonical relativeL2 .0017457476763079638 <=.01. New nativeSHA
+46182176279b072b4ab52d21bb8cc0ecf4d217399d486155c7fcd4f0690e21e2.
+Lossless newbinary/header/build/provenance/results archive preserved locally,
+SCPexit0/hash+tar verified SHA
+68ade2a57257a8f9a85c0cf22abcc4c2ecc133279fb269474ddc01ea9cb5d72c.
+Originalbinary/source/staticresults unchanged. Full-model Dynamic not qualified.
+
+Newtools-v12 sourcecommit43b6c67631adf8506744611bec091203729ff812,
+archiveSHA1eaac5e364c3994aa6852da575eb2e064a19b418ce2cadb3ca03b2c66a3600b4;
+fullSCP host/containerverified;78puretests LOCAL+A3 PASS. Newruntime-v3 created
+with private_CPU_runtime_root/hash-provenance binding, copied only profile/config
+inputs, NOT old PASS results. Its predecessor driver is now RUNNING phaseoperators:
+/workspace/c64-dev/round7/backing-requalification-v1/progress.json;
+logbacking-requalification-v1.log. Usesv12/runtime-v3/newbinary environment.
+Healthy driver must not restart; stageorderoperators→Uniformcompact→Frequency
+compact→freshR64 CMMLU(required174/256)→DEVmigrationprobes256/512/1024.
+Onsoftwarefailure preserve/diagnose/repair/newrelease/resume, no thresholdfit/HD
+before predecessors. On completionstatus
+PREDECESSORS_COMPLETE_AWAITING_DEV_THRESHOLD_SCREEN, proceed DEV-onlyscreen,
+commit selectedthreshold and matchingack beforeHD/CM. No Dynamic/Deferredmodel
+quality/performance gate has run yet. SeePOST_FIX_RUNTIME_PROTOCOL/CPU_BACKING_FIX.
+
 Latest19:15 update: original L1 backing eviction FAIL reproduced, E0/capture1
 finite/10repeat exact but canonical relativeL2=1.0 (gate.01). Full failure/archive
 now committed; SHA e9ba345f59f50e78edec94c2d1e77b1a3cea90aa0d1280b82b9f8df51db31a16.
