@@ -54,6 +54,17 @@ See R64_REFERENCE_ADAPTER_REPAIR.md. No production/native change in this repair.
 Future threshold_sweep explicit --probe-prefix dynamic-dev-probe- binds retained
 probe summary hashes; deploy a separate future release, never replace livev13.
 
+20:28: v2 progress RUNNING fresh-r64-quality, retained gate hashes recorded.
+Actual corrected resolved argv equals the historical direct R64 argv exactly;
+noKT reference confirmed. Server startup/imports still in progress at inspection.
+Future releasev14 staged separately, source
+adf0cd9e5c5f1633122babf6385c470b7532f6e9, archiveSHA
+93f6023266e35fd5df0f0461cc555b51fcedd07e342a2d5720d10ad35848009c.
+CompleteSCP/hash-before-extract;85puretests LOCAL+A3 PASS. Activev13 untouched.
+After allthree migrationprobes PASS and reaped, run v14 threshold_sweep with
+--probes backing-requalification-v2 --probe-prefix dynamic-dev-probe-;
+new DEVscreenoutput then localcandidatecommit/ack beforeHD. No threshold chosen.
+
 Latest19:50: repaired operators100/100 PASS(maxrelativeL2 .0017029279396063187),
 Uniformcompact32+restart4 PASS and four trajectories exact vsoriginalruntime-v2.
 Newlossless completeoperator arrays/weights/partials/logs/results/provenance
