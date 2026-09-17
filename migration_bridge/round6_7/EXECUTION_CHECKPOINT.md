@@ -2,8 +2,8 @@
 
 ## Frozen and launched (not yet qualified)
 
-Current study: `/workspace/results/r65-r67-serial-v3` in the existing container.
-Study freeze SHA256 `11ada1752b5e5c0571920ab6536421d3193e73afa6cc2f630e076d469fef693c`.
+Current study: `/workspace/results/r65-r67-serial-v4` in the existing container.
+Study freeze SHA256 `42c12720d86305cdd63f3df9dd43c05a7f111a8adc6c38f155605d8cc0ee2d25`.
 CMMLU256 manifest SHA256 `bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04`.
 Compact manifest SHA256 `555f578af6d816b25ee5efe6590a472b654f27a74614c011bba599a8f8c24933`.
 
@@ -51,5 +51,14 @@ Host HBM parser now handles npu-smi25.5.1 `910B3` name and shared table columns;
 host sampler SHA256 `0b7f4152d59f6a9f7b35461a53ce7b377dc9bd689a2c208a8098ace5c6d4d22a`.
 R64/Hybrid run infrastructure and generation protocol remain otherwise frozen.
 
-LOCAL_VERIFIED: 12 contract tests, Python compilation, bash syntax, diff checks.
+v3 freeze `11ada1752b5e5c0571920ab6536421d3193e73afa6cc2f630e076d469fef693c`
+loaded R64 and reached health200, then optional idle `/server_info` RPC did not
+return within30s. No compact/quality request had yet been sent. v4 retains this
+failure, marks RPC memory telemetry UNAVAILABLE, verifies resolved TP/batch/
+Graph/KV flags, and uses real host NPU sampling plus framework observer
+counters. No configured value is reported as a dynamic memory measurement.
+v4 adds automated post-collection JSON/Markdown Pareto reporting and preserves
+all three preceding startup-only failures. No quality/policy/mask fitting.
+
+LOCAL_VERIFIED: 14 contract tests, Python compilation, bash syntax, diff checks.
 Full target qualification remains pending until execution artifacts close gates.

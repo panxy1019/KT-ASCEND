@@ -236,6 +236,8 @@ def main():
                     except Exception as exc:
                         state.update(performance='FAILED', performance_error=repr(exc))
                         state.update(system='FAIL_AFTER_PERFORMANCE_EXCEPTION', quality='NOT_QUALIFIED_LATE_SYSTEM_FAILURE')
+                        if name == 'R64':
+                            raise RuntimeError('FRESH_REFERENCE_LATE_SYSTEM_FAILURE') from exc
                     check(study, freeze); write(study / 'progress.json', summary)
             candidates = [name for name,state in summary['profiles'].items() if name != 'R64' and
                           state['system'] == 'PASS' and state['quality'] == 'PASS' and state['performance'] == 'COMPLETE']
@@ -249,6 +251,11 @@ def main():
             artifacts = {str(p.relative_to(study)):sha(p) for p in sorted(study.rglob('*')) if p.is_file() and
                          p.suffix in ('.json','.jsonl','.pt') and p.name not in ('artifact_hashes.json','progress.json')}
             write(study / 'artifact_hashes.json', artifacts)
+            if summary['status'] == 'SERIAL_SWEEP_COMPLETE':
+                subprocess.run([sys.executable, str(Path(__file__).with_name('summarize_serial_results.py')),
+                                '--study', str(study)], check=True, timeout=180)
+                artifacts.update({name:sha(study / name) for name in ('pareto_summary.json','ROUND6_7_SERIAL_RESULTS.md')})
+                write(study / 'artifact_hashes.json', artifacts)
 
 
 if __name__ == '__main__': main()

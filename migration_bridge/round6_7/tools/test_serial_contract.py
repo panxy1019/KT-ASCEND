@@ -2,14 +2,31 @@
 import copy
 import sys
 import unittest
+import tempfile
+import json
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'round6_5/tools'))
 from build_ratio_profiles import build
 from common import product_gate, score_letters, validate_answer, validate_profile
 from monitor_serial_host import npu0_hbm
+from serial_session import validate_launch, info
 
 
 class ContractTests(unittest.TestCase):
+    def test_optional_rpc_is_not_fabricated_memory(self):
+        self.assertEqual(info()['status'],'UNAVAILABLE')
+        self.assertNotIn('internal_states',info())
+
+    def test_launch_kv_graph_batch_identity(self):
+        args=['--max-total-tokens','4096','--max-running-requests','1','--tp-size','1',
+              '--dtype','bfloat16','--device','npu','--disable-cuda-graph']
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'resolved-command.json'
+            path.write_text(json.dumps(dict(argv=args)))
+            self.assertEqual(validate_launch(Path(directory),False)['batch_limit'],1)
+            args[3]='2';path.write_text(json.dumps(dict(argv=args)))
+            with self.assertRaises(ValueError):validate_launch(Path(directory),False)
+
     def test_910b3_hbm_format(self):
         text='| 0     910B3               | OK |\n| 0 | 0000:C1:00.0 | 0  0 / 0   3471 / 65536         |'
         self.assertEqual(npu0_hbm(text),dict(used_mib=3471,capacity_mib=65536))
