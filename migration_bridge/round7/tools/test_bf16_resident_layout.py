@@ -4,6 +4,7 @@ from types import SimpleNamespace
 from unittest.mock import patch
 
 from bf16_resident_layout import resident_to_raw
+from runtime_selection import select_sglang_runtime
 
 
 class Tensor:
@@ -20,6 +21,16 @@ class Tensor:
 
 
 class ResidentLayoutTests(unittest.TestCase):
+    def test_private_resident_helper_explicit_hash_binding(self):
+        root='/workspace/c64-dev/round7/new/sglang-python'
+        wrapper=root+'/sglang/srt/layers/moe/kt_ep_wrapper.py'
+        helper=root+'/sglang/srt/layers/moe/bf16_resident_layout.py'
+        provenance=dict(sglang_runtime_root=root,files={wrapper:{'sha256':'wrapper'},helper:{'sha256':'helper'}},
+                        bf16_context_port={'ported_sha256':'wrapper','resident_layout_helper_sha256':'helper'})
+        self.assertEqual(select_sglang_runtime({'sglang_runtime_root':root},provenance),root)
+        provenance['files'][helper]['sha256']='other'
+        with self.assertRaisesRegex(ValueError,'RESIDENT_LAYOUT_HELPER_HASH_BINDING'):
+            select_sglang_runtime({'sglang_runtime_root':root},provenance)
     def call(self, source, dst):
         def cast(tensor, fmt):
             tensor.calls.append(('full_tensor_format_cast',fmt));tensor.fmt=fmt;return tensor

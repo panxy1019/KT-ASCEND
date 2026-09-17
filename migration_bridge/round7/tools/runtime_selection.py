@@ -21,6 +21,11 @@ def select_sglang_runtime(cfg,provenance):
         helper=str(root/'sglang/srt/layers/moe/llamafile_bf16_staging.py')
         if provenance['files'].get(helper,{}).get('sha256')!=helper_hash:
             raise ValueError('PRIVATE_STAGING_HELPER_HASH_BINDING')
+    resident_hash=provenance['bf16_context_port'].get('resident_layout_helper_sha256')
+    if resident_hash:
+        helper=str(root/'sglang/srt/layers/moe/bf16_resident_layout.py')
+        if provenance['files'].get(helper,{}).get('sha256')!=resident_hash:
+            raise ValueError('PRIVATE_RESIDENT_LAYOUT_HELPER_HASH_BINDING')
     return str(root)
 
 
