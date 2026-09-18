@@ -8,6 +8,10 @@ bounded three-attempt same-command resume loop, single worker, unchanged
 revision/cache/proxy/timeout. Log `sample-download-proxy-v4.log`. Do not start
 another downloader until its owned driver exits; neither incomplete cache size
 nor CLI completion substitutes for whole-shard SHA validation.
+v4 owned driver PID1593600. Verifier deployed to remote `tools/inspect_sample_shards.py`,
+local/remote SHA match `ebf7efe42b183971c09cfc768b1dcc319b6fada1535646179daec0e96d26a8ae`.
+Run after completion with `--directory /home/admin/kt-round8-qwen35/model-sample
+--manifest /home/admin/kt-round8-qwen35/01_MODEL/QWEN35_MODEL_MANIFEST.json`.
 
 19:14 checkpoint: v2 terminated with RemoteProtocolError (partial body after
 1,314,145,305 bytes of one shard), retained total2.5GiB incomplete cache.
