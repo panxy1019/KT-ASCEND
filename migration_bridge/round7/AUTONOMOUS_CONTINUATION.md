@@ -2,6 +2,18 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+12:36 A3 dynamic-probe-1024-v1/summary.json PASS: no-trigger/trigger,
+exact migrated weight identity, generation consistency, deterministic selection,
+restart and observer parity all passed. Local raw/a3-relocation-v3/dynamic-summary.json
+preserves summary. No need rerun successful compatibility gates.
+NEXT: fresh12cellABBA on A3 runtime-a3-v3 (blocks1, uniform vs dynamic, frozen1024
+candidate+ACK from cache-v2). First inspect host-observer-a3-v1/latest.json freshness.
+Currently WAIT with external processes3685997/8/... across dies and ~43CPUcores.
+Do NOT load performance server while known admission blocked; don't touch others.
+Heartbeat should check read-only and stay quiet if unchanged. Still no A3 timed
+performance evidence; do not reuse oldhost shortened results or claim COMPLETE.
+
+
 12:20 A3 representative operators ALL PASS: six runs L1/L13/L26 x TP1/2,
 100 rows total, maximum relative-L2 .00170292794 < .01. Summaries copied to
 local raw/a3-relocation-v3 (operator-summary.json and uniform-system-summary.json).

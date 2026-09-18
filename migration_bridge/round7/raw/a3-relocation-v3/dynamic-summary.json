@@ -1,0 +1,824 @@
+{
+  "status": "PASS",
+  "threshold": 1024,
+  "no_trigger": true,
+  "trigger": true,
+  "weight_identity_exact": true,
+  "generation_consistency": true,
+  "deterministic_selection": true,
+  "restart": true,
+  "observer_parity": true,
+  "shift_changed_layers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "diagnostic_updates": 78,
+  "requests": [
+    {
+      "id": "no-trigger-initial",
+      "prompt_id": "dev_000",
+      "started_unix": 1789734070.9216902,
+      "ended_unix": 1789734091.5526426,
+      "input_tokens": 71,
+      "response": {
+        "text": "\nThe report about river monitoring separates observations from assumptions. It records dates, units",
+        "output_ids": [
+          185,
+          549,
+          2508,
+          786,
+          8144,
+          15403,
+          48905,
+          10627,
+          473,
+          17325,
+          13,
+          809,
+          8727,
+          13533,
+          11,
+          8650
+        ],
+        "meta_info": {
+          "id": "no-trigger-initial",
+          "finish_reason": {
+            "type": "length",
+            "length": 16
+          },
+          "prompt_tokens": 71,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              13,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -1.3226248025894165,
+              185,
+              null
+            ],
+            [
+              -2.885223627090454,
+              549,
+              null
+            ],
+            [
+              -3.1063499450683594,
+              2508,
+              null
+            ],
+            [
+              -2.3883988857269287,
+              786,
+              null
+            ],
+            [
+              -0.2073565274477005,
+              8144,
+              null
+            ],
+            [
+              -0.012774893082678318,
+              15403,
+              null
+            ],
+            [
+              -1.226770281791687,
+              48905,
+              null
+            ],
+            [
+              -0.04805699735879898,
+              10627,
+              null
+            ],
+            [
+              -0.015568388625979424,
+              473,
+              null
+            ],
+            [
+              -0.01334390975534916,
+              17325,
+              null
+            ],
+            [
+              -0.03583605960011482,
+              13,
+              null
+            ],
+            [
+              -0.09171196073293686,
+              809,
+              null
+            ],
+            [
+              -0.025568770244717598,
+              8727,
+              null
+            ],
+            [
+              -0.015573318116366863,
+              13533,
+              null
+            ],
+            [
+              -0.20704364776611328,
+              11,
+              null
+            ],
+            [
+              -0.026601718738675117,
+              8650,
+              null
+            ]
+          ],
+          "completion_tokens": 16,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 20.627644788008183,
+          "response_sent_to_client_ts": 1789734091.5517702
+        }
+      },
+      "seconds": 20.630952835083008
+    },
+    {
+      "id": "trigger-a-first",
+      "prompt_id": "dev_162",
+      "started_unix": 1789734091.5550508,
+      "ended_unix": 1789734212.2669952,
+      "input_tokens": 3191,
+      "response": {
+        "text": "\n\n## 1.1.1.1.1.1.",
+        "output_ids": [
+          185,
+          185,
+          1679,
+          207,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13
+        ],
+        "meta_info": {
+          "id": "trigger-a-first",
+          "finish_reason": {
+            "type": "length",
+            "length": 16
+          },
+          "prompt_tokens": 3191,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              13,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -1.319867730140686,
+              185,
+              null
+            ],
+            [
+              -1.743830680847168,
+              185,
+              null
+            ],
+            [
+              -2.0768446922302246,
+              1679,
+              null
+            ],
+            [
+              -2.219656229019165,
+              207,
+              null
+            ],
+            [
+              -1.2989453077316284,
+              16,
+              null
+            ],
+            [
+              -1.5432981252670288,
+              13,
+              null
+            ],
+            [
+              -2.2130064964294434,
+              16,
+              null
+            ],
+            [
+              -1.590423345565796,
+              13,
+              null
+            ],
+            [
+              -1.8320683240890503,
+              16,
+              null
+            ],
+            [
+              -1.4027752876281738,
+              13,
+              null
+            ],
+            [
+              -2.0879929065704346,
+              16,
+              null
+            ],
+            [
+              -0.46137428283691406,
+              13,
+              null
+            ],
+            [
+              -1.781680941581726,
+              16,
+              null
+            ],
+            [
+              -0.20347458124160767,
+              13,
+              null
+            ],
+            [
+              -1.0542964935302734,
+              16,
+              null
+            ],
+            [
+              -0.09913890808820724,
+              13,
+              null
+            ]
+          ],
+          "completion_tokens": 16,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 120.70061150705442,
+          "response_sent_to_client_ts": 1789734212.2608607
+        }
+      },
+      "seconds": 120.71194505691528
+    },
+    {
+      "id": "trigger-a-repeat",
+      "prompt_id": "dev_162",
+      "started_unix": 1789734212.2758956,
+      "ended_unix": 1789734261.4711733,
+      "input_tokens": 3191,
+      "response": {
+        "text": "\n\n## 1.1.1.1.1.1.",
+        "output_ids": [
+          185,
+          185,
+          1679,
+          207,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13,
+          16,
+          13
+        ],
+        "meta_info": {
+          "id": "trigger-a-repeat",
+          "finish_reason": {
+            "type": "length",
+            "length": 16
+          },
+          "prompt_tokens": 3191,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              13,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -1.319867730140686,
+              185,
+              null
+            ],
+            [
+              -1.743830680847168,
+              185,
+              null
+            ],
+            [
+              -2.0768446922302246,
+              1679,
+              null
+            ],
+            [
+              -2.219656229019165,
+              207,
+              null
+            ],
+            [
+              -1.2989453077316284,
+              16,
+              null
+            ],
+            [
+              -1.5432981252670288,
+              13,
+              null
+            ],
+            [
+              -2.2130064964294434,
+              16,
+              null
+            ],
+            [
+              -1.590423345565796,
+              13,
+              null
+            ],
+            [
+              -1.8320683240890503,
+              16,
+              null
+            ],
+            [
+              -1.4027752876281738,
+              13,
+              null
+            ],
+            [
+              -2.0879929065704346,
+              16,
+              null
+            ],
+            [
+              -0.46137428283691406,
+              13,
+              null
+            ],
+            [
+              -1.781680941581726,
+              16,
+              null
+            ],
+            [
+              -0.20347458124160767,
+              13,
+              null
+            ],
+            [
+              -1.0542964935302734,
+              16,
+              null
+            ],
+            [
+              -0.09913890808820724,
+              13,
+              null
+            ]
+          ],
+          "completion_tokens": 16,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 49.1852771230042,
+          "response_sent_to_client_ts": 1789734261.4688115
+        }
+      },
+      "seconds": 49.19527840614319
+    },
+    {
+      "id": "trigger-b-workload-shift",
+      "prompt_id": "dev_161",
+      "started_unix": 1789734261.4818847,
+      "ended_unix": 1789734301.6945882,
+      "input_tokens": 3063,
+      "response": {
+        "text": "\n\n## 1. \u80cc\u666f\n\n### 1.1 ",
+        "output_ids": [
+          185,
+          185,
+          1679,
+          207,
+          16,
+          13,
+          207,
+          20665,
+          185,
+          185,
+          13483,
+          207,
+          16,
+          13,
+          16,
+          207
+        ],
+        "meta_info": {
+          "id": "trigger-b-workload-shift",
+          "finish_reason": {
+            "type": "length",
+            "length": 16
+          },
+          "prompt_tokens": 3063,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              398,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.8378122448921204,
+              185,
+              null
+            ],
+            [
+              -1.8156213760375977,
+              185,
+              null
+            ],
+            [
+              -2.1870017051696777,
+              1679,
+              null
+            ],
+            [
+              -0.4001288414001465,
+              207,
+              null
+            ],
+            [
+              -2.6494061946868896,
+              16,
+              null
+            ],
+            [
+              -0.9084978103637695,
+              13,
+              null
+            ],
+            [
+              -0.9577018022537231,
+              207,
+              null
+            ],
+            [
+              -2.922478675842285,
+              20665,
+              null
+            ],
+            [
+              -0.33458754420280457,
+              185,
+              null
+            ],
+            [
+              -0.30390140414237976,
+              185,
+              null
+            ],
+            [
+              -1.9915457963943481,
+              13483,
+              null
+            ],
+            [
+              -0.04693930223584175,
+              207,
+              null
+            ],
+            [
+              -0.09485960006713867,
+              16,
+              null
+            ],
+            [
+              -0.004543695133179426,
+              13,
+              null
+            ],
+            [
+              -0.02996458299458027,
+              16,
+              null
+            ],
+            [
+              -0.39216211438179016,
+              207,
+              null
+            ]
+          ],
+          "completion_tokens": 16,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 40.20217577100266,
+          "response_sent_to_client_ts": 1789734301.6889567
+        }
+      },
+      "seconds": 40.21270394325256
+    },
+    {
+      "id": "no-trigger-after-update",
+      "prompt_id": "dev_000",
+      "started_unix": 1789734301.7099755,
+      "ended_unix": 1789734321.5911715,
+      "input_tokens": 71,
+      "response": {
+        "text": "\nThe report about river monitoring separates observations from assumptions. It records dates, units",
+        "output_ids": [
+          185,
+          549,
+          2508,
+          786,
+          8144,
+          15403,
+          48905,
+          10627,
+          473,
+          17325,
+          13,
+          809,
+          8727,
+          13533,
+          11,
+          8650
+        ],
+        "meta_info": {
+          "id": "no-trigger-after-update",
+          "finish_reason": {
+            "type": "length",
+            "length": 16
+          },
+          "prompt_tokens": 71,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              13,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -1.3709968328475952,
+              185,
+              null
+            ],
+            [
+              -2.837282657623291,
+              549,
+              null
+            ],
+            [
+              -3.126255989074707,
+              2508,
+              null
+            ],
+            [
+              -2.3796279430389404,
+              786,
+              null
+            ],
+            [
+              -0.19479413330554962,
+              8144,
+              null
+            ],
+            [
+              -0.013306031934916973,
+              15403,
+              null
+            ],
+            [
+              -1.2622652053833008,
+              48905,
+              null
+            ],
+            [
+              -0.04885006323456764,
+              10627,
+              null
+            ],
+            [
+              -0.015588927082717419,
+              473,
+              null
+            ],
+            [
+              -0.012362989597022533,
+              17325,
+              null
+            ],
+            [
+              -0.033658452332019806,
+              13,
+              null
+            ],
+            [
+              -0.0909285619854927,
+              809,
+              null
+            ],
+            [
+              -0.022574353963136673,
+              8727,
+              null
+            ],
+            [
+              -0.01642187498509884,
+              13533,
+              null
+            ],
+            [
+              -0.21111132204532623,
+              11,
+              null
+            ],
+            [
+              -0.028879860416054726,
+              8650,
+              null
+            ]
+          ],
+          "completion_tokens": 16,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 19.87619118602015,
+          "response_sent_to_client_ts": 1789734321.587181
+        }
+      },
+      "seconds": 19.88119649887085
+    }
+  ],
+  "diagnostic_migration_bytes": 10796138496,
+  "light_telemetry_migration": {
+    "requests": 4,
+    "triggered_requests": 3,
+    "actual_trigger_rate": 0.75,
+    "update_calls": 78,
+    "copied_expert_slots": 624,
+    "changed_resident_experts": 319,
+    "migration_bytes": 10796138496,
+    "per_request": [
+      {
+        "id": "off-initial-short",
+        "updated_layers": []
+      },
+      {
+        "id": "off-trigger-a",
+        "updated_layers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "id": "off-repeat-a",
+        "updated_layers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "id": "off-trigger-b",
+        "updated_layers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      }
+    ],
+    "scope": "ACTUAL_UPDATE_EVENTS_ASSOCIATED_TO_NONOVERLAPPING_SERIAL_REQUEST_WINDOWS"
+  },
+  "boundary": "SERIAL_TP1_BATCH1_ONLY",
+  "limitation": "Diagnostic update duration includes exact-weight readbacks; do not use as production migration latency."
+}
