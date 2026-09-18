@@ -2,6 +2,19 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+11:14 A3kernelrepairSUCCESS: v1docker-cp failedescapingmetadata symlink;preserved.
+v2explicitascend910_93+configcopies fromstoppedkt-r6-deferred-ascend COMPLETE;
+versionexact9.0.0 timestamp20260428_134817545 matchesdest. Oldincompletekernel
+andconfig renamed*.incomplete-r7 INSIDEnewcontainer only, fullA3dirs copiedin.
+DeviceaddsmokePASS Ascend910_9382 True, logrecovery-a3-kernels-v2/smoke.log.
+Hostlibs/businesscontainers unchanged. Needhashrecoveredkernelmanifestbeforefreeze.
+Tools-a3-v1 deployed SHA3878253038359620f707e432ea655f2780df25ce9a9762f0451e06592acb70be,
+125A3puretestsPASS. ActualA3topology checkPASS64distinctcores/2NUMA.
+NextprepareNEW runtime/provenance configsforA3 (doNOTrewriteinheritedv8evidence),
+auditnativeCPUaffinity/subpool binding, operatorrepresentatives+compact/restart+
+frozen1024trigger before12cellperformance. Hostobserverrequiresnewhostroot/name/
+dieinventoryadapter. No modelqualificationyet. A3root59740.
+
 10:56 A3primitiveFAIL: torchNPU(x+1) aclnnAdds561103 ParseDynamicKernels.
 Transferredkernel treecontains910b4.1GiB but910_93 only5.4MiB andconfigonlyops_oam,
 so A3built-inpackageincomplete. No fullmodelstarted. OfficialAscendcase
