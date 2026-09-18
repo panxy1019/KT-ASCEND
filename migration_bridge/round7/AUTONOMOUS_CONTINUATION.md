@@ -2,6 +2,13 @@
 
 ## User override — return testing to 110.129.0.22 (2026-09-18)
 
+User requested reuse/migration of historicalD1 in current conversation. Audited
+deployed experts_base vs retainedsource: onlytwo opt-inR62capturehooks differ;
+historicalDeferredlogic retained, no new productioncopyneeded. See
+03_DEFERRED/D1_REUSE_AND_SYSTEM_ENTRY.md. Existinghealthy deferred-system-v1
+now executingprefill and emittedactualdeferredtrace; don'trestart. Local3D1
+auditorregressionsPASS. Full96requestsystemgate stillpending.
+
 LATEST USER SCOPE OVERRIDE: stop current Static/Dynamic performance and advance
 Deferred. Sent SIGINT to exact owned performance controller hostPID3714897;
 long-0-0 guard reaping complete=true, container onlysleep afterward.
