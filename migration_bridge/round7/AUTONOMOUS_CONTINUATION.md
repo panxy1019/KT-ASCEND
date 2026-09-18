@@ -2,6 +2,15 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+07:26+ DEPLOYED tools-v26 source5bf71fd25, archiveSHA
+81786f1f5f0e9b69b619faa0cb7d57586f49ddfde07c8874eb6d3d10e8def774.
+SCP/remoteSHA matched;120A3puretests PASS. Originalcontainer fullyidle after
+v1interrupt (docker top only sleepinfinity). New hostobserver-v5 PID2140873,
+output host-resource-monitor-v5; oldv4 untouched. Dispatched fresh
+cache-static-dynamic-abba-v2/log usingtoolsv26, originalNPU2/CPU128–191,
+threshold1024/frozenACK. Premeasurement admission waits up to30minutes;
+fullwindowaudit stillrequired. Keephealthy run; inspectlog/protocol/hostlatest.
+
 07:25 override: ABBA-v1 stopped owned performance PID204459 with SIGINT after
 6/36 cells. Actual host pswpin124→161→163 occurred inside short0turn3;
 do NOT promote attempt-v1 as isolated performance. All raw files retained.
