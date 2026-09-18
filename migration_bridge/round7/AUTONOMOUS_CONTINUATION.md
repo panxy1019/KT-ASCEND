@@ -2,6 +2,17 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+10:56 A3primitiveFAIL: torchNPU(x+1) aclnnAdds561103 ParseDynamicKernels.
+Transferredkernel treecontains910b4.1GiB but910_93 only5.4MiB andconfigonlyops_oam,
+so A3built-inpackageincomplete. No fullmodelstarted. OfficialAscendcase
+https://www.hiascend.com/dev/forum/thread-02114178791668570106-1-1.html
+supportscheckinghardware-specifickernelpackage/path. RecoveroriginalA3kernels
+READONLY fromstoppedownedkt-r6-deferred-ascend via docker cp (background)
+to/home/admin/kt-round7-return-a3/recovery-a3-kernels-v1/kernel; logcopy.log.
+Verifyversion/hash/packagecompletenessbeforeapplyingONLYnewcontainer;don'tstart
+oldcontainer orchangehostlibs. LocalA3topologyadapter d29e8be3f125testsPASS,
+notdeployed. NewCPUsetevens0..62+80..142,profilea3-smt-c64-v1 nodes0,1.
+
 10:39:74files+GGUFfullSHA PASS. ImageimportID1b78ffa58564181d7700ec665012be1a11ab0b934ac390ba831fb23bf1d2732f
 differssourceOCI IDb81e664..., butarchiveconfigSHA=1b78...,all16RootFSdiffIDs
 identical;ConfigcommonkeysCmd/Entrypoint/Env/Labels hashesidentical, destination
