@@ -2,6 +2,29 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+05:18+ UPDATE: DEVscreen-v2 COMPLETE48/48; allfourprocessesCOMPLETE/reaped.
+Independentaudit rebuilt exactratios and selected1024; candidate localcommit
+`0be78ade3835d7adadc2f984fc39e63dd817af12`, ACKcommitab836745e.
+Frozen selectedSHA bca98065f7e852961d5d4c3273861812865bb9597c6cf18162fe13d203b2e98a.
+Rawarchive e98674efbd666c9d2fc9345739ecaeec35798775a068c520f7d4d69b06badf27.
+Tools-v25 archive97b21b257d9ab4bfae99225cd9c76504984ce6c1739741cd32d0dfec75fe3cf6
+deployed original `/workspace/c64-dev/round7/tools-v25` (visibleROonworkers).
+118LOCAL+A3puretestsPASS. Explicitoperatorreusebinding A3PASS; nofakefreshoperatorrun.
+
+THREE BACKGROUND TASKS NOW DISPATCHED (preservehealthy):
+- A/NPU4: StaticHD128 via static_qualification, base `/workspace/parallel-worker/runtime-v8`;
+  log `/workspace/parallel-worker/static-holdout-v1.log`, summarybase uniform-holdout-summary.json.
+- B/NPU6: DynamicHD128 at frozen1024;
+  output `/workspace/parallel-worker/dynamic-holdout-v1`, matching .log in parent.
+- Original/NPU2: DynamicCMMLU256 at frozen1024;
+  output `/workspace/c64-dev/round7/cache-dynamic-quality-v1`, matching .log.
+  Systempredecessor completed1024, operator-source runtime-v7 explicitlybound.
+  Quality parallel withHD is independentguardrail, cannot overrideHDsystemfailure.
+Alluse toolsv25+samefrozenruntime-v8. NOformalperformance duringparallelphase.
+AfterHD/quality audit+archive, advance isolatedStatic-vs-DynamicABBA, thenDeferred.
+Candidate/ACK path under tools-v25/migration_bridge/round7/02_DYNAMIC/candidate-cache-v2.
+DEV medianratio1024=1.008675, long1.18727; notspeedupclaim orformalperformance.
+
 04:26 UPDATE: all256/512/1024 fullsystemPASS; A/B chain exit0, allreaped.
 Coordinator joined exactartifact/corpus/mask provenance and automatically started
 `dev-threshold-screen-v2` on originalNPU2. Current PID198035 threshold_sweep,
