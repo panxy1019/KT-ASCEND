@@ -9,7 +9,8 @@ import time
 import urllib.request
 
 sys.path.append('/workspace/c64-dev/tools-v16/migration_bridge/round6_7_c64/tools')
-from serial_session import admission, memory, check_port_available
+from serial_session import memory, check_port_available
+from cgroup_memory import admission
 
 
 @contextmanager
