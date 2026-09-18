@@ -37,6 +37,16 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-18 00:44: runtime-v7 predecessors freshlyPASS operators100/100,
+Uniform/Frequency32+restart4 each, freshdirectR64174/256invalid0. Closedarchive
+local/A3hash+fulltarverified SHA
+c1aee04bddc48c51969a45908b1c83462ba936b15ff02fd3e2a38c1f1c491845.
+OriginalDEV256 healthy: processA5requests/78updates, processB2restartrequests/
+26updates, all104weight/checkpoint/generation exact. Nowobserver-OFFparity
+firsttriggerprefill; noPASSsummaryyet. Keephealthy;512/1024followautomatically.
+Do notduplicateDEVscreenwatcher orfitbeforethreePASSprobes. See
+02_DYNAMIC/RESIDENT_LAYOUT_PREDECESSOR_CHECKPOINT.md. NoHD/CM/perf yet.
+
 2026-09-18 00:08: actualNZ29 raw/infer primitive regressionPASS exact/maxabs0;
 NDfixed3jobsPASS. Losslesscompleteprimitive/source/prov/releasearchive LOCAL+ A3
 hash/fulltarPASS afterSCPexit0 SHA
