@@ -2,6 +2,9 @@
 
 ## Latest acquisition recovery
 
+19:47: v4 COMPLETE, both shards full SHA/header PASS. Sample BF16→F32 storage
+roundtrip PASS; see `SAMPLE_STORAGE_RESULT.md`. Do not restart download.
+
 19:30 checkpoint: v3 also exited on remote partial-body closure; cache grew to
 7.6GiB, demonstrating useful resume rather than a full restart. Launched v4
 bounded three-attempt same-command resume loop, single worker, unchanged

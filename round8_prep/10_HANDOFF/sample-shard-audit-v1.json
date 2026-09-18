@@ -1,0 +1,38 @@
+{
+  "model.language_model.layers.0.mlp.experts.gate_up_proj": {
+    "shard": "model.safetensors-00006-of-00014.safetensors",
+    "sha256": "af5f17d292df6b200ee928d7dac30a66eab3e8f6d5d88a84fe1d27859d4a64fe",
+    "tensor": {
+      "dtype": "BF16",
+      "shape": [
+        256,
+        1024,
+        2048
+      ],
+      "data_offsets": [
+        0,
+        1073741824
+      ]
+    },
+    "data_start": 696,
+    "status": "IDENTITY_AND_HEADER_PASS_NOT_CONVERSION"
+  },
+  "model.language_model.layers.0.mlp.experts.down_proj": {
+    "shard": "model.safetensors-00012-of-00014.safetensors",
+    "sha256": "d0f0bd7a5f09e6e05aee9a6ef5ba97fe678b0e19b891a81969682b0bdc9bb5c7",
+    "tensor": {
+      "dtype": "BF16",
+      "shape": [
+        256,
+        2048,
+        512
+      ],
+      "data_offsets": [
+        0,
+        536870912
+      ]
+    },
+    "data_start": 1336,
+    "status": "IDENTITY_AND_HEADER_PASS_NOT_CONVERSION"
+  }
+}
