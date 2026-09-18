@@ -13,10 +13,10 @@ def process_ids(text):
     return [int(x) for x in re.findall(r'Process id:\s*(\d+)',text)]
 
 
-def memory_blockers(mem,cgroup_swap,current_vm,initial_vm):
+def memory_blockers(mem,cgroup_swap,current_vm,previous_vm):
     blockers=[]
     if cgroup_swap:blockers.append(dict(reason='CONTAINER_SWAP_USED',bytes=cgroup_swap))
-    if current_vm!=initial_vm:blockers.append(dict(reason='ACTIVE_HOST_SWAPPING'))
+    if current_vm!=previous_vm:blockers.append(dict(reason='ACTIVE_HOST_SWAPPING'))
     if mem['MemAvailable']<max(64*2**30,.2*mem['MemTotal']):
         blockers.append(dict(reason='HOST_MEMORY_RESERVE'))
     return blockers
@@ -64,6 +64,24 @@ def assess_window(samples,start,end,max_gap=20):
         scope='READ_ONLY_HOST_CONTENTION_PROXY_NOT_DIRECT_DRAM_BANDWIDTH_MEASUREMENT')
 
 
+def fresh_exclusive(state,now,max_age=20):
+    return (state.get('status')=='EXCLUSIVE' and not state.get('blockers')
+            and 0<=now-state.get('time_unix',0)<=max_age)
+
+
+def wait_for_exclusive(samples_path,timeout=1800):
+    """Wait outside timing; never substitute entrance admission for window audit."""
+    deadline=time.monotonic()+timeout
+    latest=Path(samples_path).with_name('latest.json')
+    while time.monotonic()<deadline:
+        try:
+            state=json.loads(latest.read_text())
+            if fresh_exclusive(state,time.time()):return state
+        except (OSError,ValueError):pass
+        time.sleep(5)
+    raise TimeoutError('HOST_NOT_FRESH_EXCLUSIVE_BEFORE_MEASUREMENT')
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
     p.add_argument('--hours',type=float,default=24);a=p.parse_args()
@@ -74,7 +92,7 @@ def main():
     def swap_counters():
         return {k:int(v) for k,v in (line.split() for line in Path('/proc/vmstat').read_text().splitlines())
                 if k in ('pswpin','pswpout')}
-    initial_vm=swap_counters()
+    initial_vm=swap_counters();previous_vm=initial_vm
     init_pid=int(subprocess.check_output(['docker','inspect','--format','{{.State.Pid}}',
         'kt-r67-c64-development-v1'],text=True,timeout=5).strip())
     assert init_pid>0,'OWNED_CONTAINER_NOT_RUNNING'
@@ -124,7 +142,12 @@ def main():
             memory_observation=dict(host_mem_available=mem['MemAvailable'],host_mem_total=mem['MemTotal'],
                 host_swap_used=mem['SwapTotal']-mem['SwapFree'],cgroup_swap_bytes=cgroup_swap,
                 current_swap_counters=current_vm)
-            blockers+=memory_blockers(mem,cgroup_swap,current_vm,initial_vm)
+            # VM counters are cumulative. Activity is the interval delta;
+            # one old swap-in must not latch WAIT forever. Any new activity
+            # still resets the full60s quiet period and invalidates its window.
+            memory_observation['previous_swap_counters']=previous_vm
+            blockers+=memory_blockers(mem,cgroup_swap,current_vm,previous_vm)
+            previous_vm=current_vm
         except Exception as error:blockers.append(dict(reason='OBSERVATION_UNAVAILABLE',error=repr(error)))
         if blockers:quiet_since=None
         elif quiet_since is None:quiet_since=time.monotonic()
@@ -133,7 +156,7 @@ def main():
             outside_cpu_cores=sum(outside),no_other_task_modified=True,
             initial_swap_counters=initial_vm,memory=memory_observation,
             source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            memory_policy='CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2',
+            memory_policy='CGROUP_ZERO_SWAP_INTERVAL_ACTIVITY_WITH_60S_QUIET_V3',
             ownership_method='V3_ACTUAL_SNAPSHOT_CGROUP_AND_PROCESS_START_ID',
             owned_cgroup=group,outside_cpu_processes=details))
 

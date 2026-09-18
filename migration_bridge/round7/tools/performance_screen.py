@@ -105,6 +105,7 @@ def main():
         threshold_commit_ack=ack,
         targets=[dict(bucket=b,id=r['id'],input_tokens=len(r['input_ids']),decode=n) for b,r,n in targets],
         holdout_sha256=sha(a.corpus),host_observer=str(a.host_observer) if a.host_observer else None,
+        resource_admission='FRESH_EXCLUSIVE_AFTER_WARMUP_BEFORE_EACH_MEASUREMENT; POST_WINDOW_AUDIT_UNCHANGED',
         internal_cpu_wait='NOT_INSTRUMENTED_IN_TIMED_PATH'))
     measurements=[]
     for bucket,row,budget in targets:
@@ -122,6 +123,10 @@ def main():
                 with session(root,cfgpath):
                     from collect_dev import request
                     request(root,row,f'warmup-{bucket}-{block}-{turn}',8)
+                    if a.host_observer:
+                        from host_resource_observer import wait_for_exclusive
+                        admission=wait_for_exclusive(a.host_observer)
+                        write(root/'host-admission.json',admission)
                     before=memory()
                     result=measured_request(root,row,f'measure-{bucket}-{block}-{turn}',budget)
                     result.update(memory_before=before,memory_after=memory())

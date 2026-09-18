@@ -1,8 +1,16 @@
 import unittest
-from host_resource_observer import assess_window,process_ids,memory_blockers,unified_group,in_owned_group,outside_usage
+from host_resource_observer import assess_window,process_ids,memory_blockers,unified_group,in_owned_group,outside_usage,fresh_exclusive
 
 
 class HostQuiet(unittest.TestCase):
+    def test_entrance_requires_fresh_clean_state(self):
+        state=dict(status='EXCLUSIVE',time_unix=100,blockers=[])
+        self.assertTrue(fresh_exclusive(state,110))
+        self.assertFalse(fresh_exclusive(state,121))
+        self.assertFalse(fresh_exclusive(state,99))
+        self.assertFalse(fresh_exclusive(dict(state,status='WAIT'),110))
+        self.assertFalse(fresh_exclusive(dict(state,blockers=['swap']),110))
+
     def test_exact_cgroup_scope_not_prefix_collision(self):
         group='/system.slice/docker-owned.scope'
         self.assertTrue(in_owned_group(group,group))
@@ -48,3 +56,10 @@ class HostQuiet(unittest.TestCase):
         self.assertEqual(memory_blockers(mem,0,counters,counters),[])
         self.assertTrue(memory_blockers(mem,1,counters,counters))
         self.assertTrue(memory_blockers(mem,0,dict(pswpin=1,pswpout=1),counters))
+
+    def test_activity_ceases_after_interval_not_lifetime(self):
+        mem=dict(MemTotal=2**40,MemAvailable=800*2**30)
+        before=dict(pswpin=124,pswpout=905)
+        active=dict(pswpin=161,pswpout=905)
+        self.assertTrue(memory_blockers(mem,0,active,before))
+        self.assertEqual(memory_blockers(mem,0,active,active),[])

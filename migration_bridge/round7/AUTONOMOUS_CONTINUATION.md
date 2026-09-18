@@ -2,6 +2,17 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+07:25 override: ABBA-v1 stopped owned performance PID204459 with SIGINT after
+6/36 cells. Actual host pswpin124→161→163 occurred inside short0turn3;
+do NOT promote attempt-v1 as isolated performance. All raw files retained.
+Old observer additionally latched WAIT by comparing cumulative counters to
+startup values. Interval comparison repair retains60squiet, cgroup zero swap,
+memory reserve and full measurement-window rejection. New pre-measurement
+admission waits for fresh EXCLUSIVE after warmup, outside timing. Local120tests
+PASS. Deploy separately as tools-v26/observer-v5; fresh ABBA-v2 with same frozen
+targets/36cells/candidate1024. No threshold, quality, model or timing denominator
+changes. No latency-based sample removal. A/B workers remain idle.
+
 06:31: freshV4hostEXCLUSIVE blockers[],age7.34s after60squiet; dispatched
 `cache-static-dynamic-abba-v1` on originalNPU2/CPU128–191, toolsv25,
 leftUniform/rightDynamic1024, frozenACK, observerOFF,36cells3ABBA×3workloads.
