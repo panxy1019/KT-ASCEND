@@ -1,5 +1,12 @@
 # GDN primitive entry — 2026-09-18
 
+20:59 update: primitive v1 completed PRIMITIVE_SMOKE_PASS. Decode output
+[1,1,32,128], prefill output[1,64,32,128], both finite and3-repeat exact.
+Raw JSON copied locally. Launched separate `gdn_state_probe.py` four consecutive
+decode steps with retained state versus explicit CPU recurrence. Result/log
+`gdn-state-v1.json`/`.log`; diagnosis only, no model promotion. Check active
+PTY10100 before issuing shell commands or restarting.
+
 Actual deployed `linear/kernels/gdn_triton.py` replaces generic kernels on NPU:
 `chunk_gated_delta_rule_npu` for prefill and
 `fused_sigmoid_gating_delta_rule_update_npu` for decode. The Triton class name
