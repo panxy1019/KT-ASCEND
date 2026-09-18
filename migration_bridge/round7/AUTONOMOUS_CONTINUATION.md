@@ -2,6 +2,11 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+09:29 resource change: hostobserver detects OTHER_NPU_PROCESS on ALL devices0–7
+(NPU2 PID2735257), plusACTIVE_HOST_SWAPPING. Ownedcontainer idle. Do not launch
+recovery onNPU2 until externaloccupancy clears andfreshEXCLUSIVE observed.
+Do notkill/reconfigure externaljobs. This is resourcewait, notmodelFAIL.
+
 09:12: abbreviated-v1 exitedHOST_NOT_FRESH_EXCLUSIVE_BEFORE_MEASUREMENT after
 30minwait,6/12completed; ownedreapingcomplete,containeronlysleep. HoststillWAIT
 outsideCPU~28cores. Prepared --buckets medium,long --blocks1 recovery support,
