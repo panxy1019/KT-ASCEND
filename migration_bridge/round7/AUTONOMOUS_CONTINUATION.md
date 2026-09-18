@@ -2,6 +2,21 @@
 
 ## User override — return testing to 110.129.0.22 (2026-09-18)
 
+LATEST USER SCOPE OVERRIDE: stop current Static/Dynamic performance and advance
+Deferred. Sent SIGINT to exact owned performance controller hostPID3714897;
+long-0-0 guard reaping complete=true, container onlysleep afterward.
+return22-static-dynamic-abbreviated-v1 STOPPED_BY_USER_SCOPE_CHANGE at8/12.
+Never resume remaining Static/Dynamic cells automatically. Long interrupted notscored.
+Saved remote scope-stop-and-window-audit.json: short4/4 clean; mediumturn0/2
+CONTENDED_OR_NOT_YET_QUIET, others clean. Dynamic benefit NOT_ESTABLISHED;
+not a complete no-benefit study. Selected STATIC_UNIFORM, DynamicOFF.
+Launched tools-v27 deferred_probe.py onruntime-v8,uniform, frozenHOLDOUT,
+output return22-deferred-system-v1 log return22-deferred-system-v1.log.
+Threeprocesses32requests each: repeat/prefix/restart/observerparity plus actual
+deferredroutes/terminalzero. Keephealthy. AfterPASS advance D0/D1 performance
+and frozenCMMLU per mandate; do not silently cancel Deferred evaluation.
+
+
 13:11 .22 resumed:75frozen files including57.58GB GGUF SHA PASS, saved remote
 round7/return22-file-verification-v1.json. Runtime torch2.9.0+cpu/npu2.9.0.post2,
 C64 cpuset128-191 memnodes4,5, original imageb81e664; frozen1024 ACK validated.
