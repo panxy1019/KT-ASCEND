@@ -1,0 +1,73 @@
+{
+  "scope": "REAL_WEIGHT_SYNTHETIC_OPERAND_REFERENCE_ONLY",
+  "seed": 8675309,
+  "cpu_threads": 32,
+  "production_c64_qualified": false,
+  "production_llamafile_qualified": false,
+  "grouped_npu_moe_qualified": false,
+  "rows": [
+    {
+      "qlen": 1,
+      "finite": true,
+      "npu_repeat_exact": true,
+      "gate": {
+        "maxabs": 2.350988701644575e-38,
+        "relative_l2": 0.0
+      },
+      "up": {
+        "maxabs": 4.70197740328915e-38,
+        "relative_l2": 0.0
+      },
+      "activation": {
+        "maxabs": 0.001953125,
+        "relative_l2": 0.002086484106257558
+      },
+      "output": {
+        "maxabs": 0.00048828125,
+        "relative_l2": 0.0029681241139769554
+      }
+    },
+    {
+      "qlen": 8,
+      "finite": true,
+      "npu_repeat_exact": true,
+      "gate": {
+        "maxabs": 4.70197740328915e-38,
+        "relative_l2": 0.0
+      },
+      "up": {
+        "maxabs": 0.00048828125,
+        "relative_l2": 2.862393739633262e-05
+      },
+      "activation": {
+        "maxabs": 0.00390625,
+        "relative_l2": 0.0027131112292408943
+      },
+      "output": {
+        "maxabs": 0.000244140625,
+        "relative_l2": 0.0034417996648699045
+      }
+    },
+    {
+      "qlen": 64,
+      "finite": true,
+      "npu_repeat_exact": true,
+      "gate": {
+        "maxabs": 0.0001220703125,
+        "relative_l2": 2.331964878976578e-06
+      },
+      "up": {
+        "maxabs": 0.00048828125,
+        "relative_l2": 1.0682889296731446e-05
+      },
+      "activation": {
+        "maxabs": 0.0078125,
+        "relative_l2": 0.002928636036813259
+      },
+      "output": {
+        "maxabs": 0.00048828125,
+        "relative_l2": 0.0036105166655033827
+      }
+    }
+  ]
+}
