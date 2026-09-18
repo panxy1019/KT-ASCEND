@@ -1,5 +1,21 @@
 # Qwen import and sample acquisition — 2026-09-18
 
+## Latest acquisition recovery
+
+Direct download PID1323468 exited1 with Network unreachable; v1 log preserved.
+Local workstation has only1.3GiB free, so do not stage10.7GB there. A loopback-only
+SSH reverse proxy through the existing A3 jump now routes .22:27892 to local
+127.0.0.1:7890. HTTPS status200 verified; no global proxy configuration changed.
+First attempted port17890 was occupied and NOT modified. Active tunnel tool
+session79305; preserve it during download, verify/reestablish if interrupted.
+Host HF download restarted PID1415742 using per-process HTTP_PROXY/HTTPS_PROXY
+http://127.0.0.1:27892 and HF_HUB_DISABLE_XET=1. Same files/revision/path.
+New log `sample-download-proxy-v2.log`. Last observed201MiB downloaded and
+process active; no checksum PASS yet. Do not duplicate healthy acquisition.
+Read-only verifier `tools/inspect_sample_shards.py` prepared locally; after both
+files complete, deploy separately and verify whole-shard SHA before inspecting
+Layer0 packed shape/dtype/offsets. This tool is not yet remote-executed.
+
 Actual read-only reference environment successfully imports
 `sglang.srt.models.qwen3_5` from
 `/workspace/kt-src/third_party/sglang/python/sglang/srt/models/qwen3_5.py`.
