@@ -2,6 +2,13 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+10:20 COMPLETEpayloadtransfer:157135940281bytes/~1.43Mfiles,28min22s,
+PAYLOAD_TRANSFER_COMPLETE observedoldhostlog. ImagebothendsSHAidentical
+0f8e9f8be5e3534925e61268eb109b2ce444162bfa2cef25abef7aa8047d9bf6.
+A3dockerload backgroundPID3660064 log/home/admin/kt-round7-return-a3/image-load.log.
+A3rootPTY59740 currentlyRUNNING readonly74frozenruntimefiles+57.58GBGGUF
+SHAverification via mappedmountpaths; waitoutputbeforecommands. No modelstarted.
+
 10:03 transfercheckpoint: payload113.6GB andrunning (~82MB/s), >1.2Msmallfiles;
 rsync99% is incrementaldiscovery NOTwholecompletion. ImageTRANSFER_COMPLETE.
 TargetA3 imagearchiveSHA0f8e9f8be5e3534925e61268eb109b2ce444162bfa2cef25abef7aa8047d9bf6.
