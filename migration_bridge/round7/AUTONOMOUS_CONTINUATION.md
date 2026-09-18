@@ -2,6 +2,13 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+05:40 UPDATE: DynamicCMMLU complete174/256,invalid0,delta0pp PASS; actualtriggers0/256,
+updates0: shortrequestguardrail NOTlongtriggerquality. Rawunique256/scoringsum/
+lifecycle/reaping audited; archive279c1126b682f77152f5f22bbcb1aec037289c6cf353e30848872c496c82bc45.
+StaticHD71/128 and DynamicHD70/128 healthy; keepbothrunning, noformalperf yet.
+ROOT SSH session now95982 (93900stalled; do NOTsendmorecommands there).
+See `02_DYNAMIC/CACHE_DYNAMIC_CMMLU_RESULT.md`; localarchive downloaded/verified.
+
 05:18+ UPDATE: DEVscreen-v2 COMPLETE48/48; allfourprocessesCOMPLETE/reaped.
 Independentaudit rebuilt exactratios and selected1024; candidate localcommit
 `0be78ade3835d7adadc2f984fc39e63dd817af12`, ACKcommitab836745e.
