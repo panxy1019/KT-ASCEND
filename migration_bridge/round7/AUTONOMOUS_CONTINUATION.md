@@ -2,6 +2,15 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+06:31: freshV4hostEXCLUSIVE blockers[],age7.34s after60squiet; dispatched
+`cache-static-dynamic-abba-v1` on originalNPU2/CPU128–191, toolsv25,
+leftUniform/rightDynamic1024, frozenACK, observerOFF,36cells3ABBA×3workloads.
+Log`/workspace/c64-dev/round7/cache-static-dynamic-abba-v1.log`; outputsamewithout.log.
+Hostsamples `host-resource-monitor-v4/samples.jsonl`. A/Bremainidle. Do NOTstart
+parallelwork now. Audit allactualwindows afterfinish; entranceEXCLUSIVEnotblanketPASS.
+Afterformalperformance complete: evaluate_performance+isolation, selectscheduler,
+thenDeferredD0/D1system/quality/performance. Preservehealthy longABBA.
+
 06:27 UPDATE: DynamicHD128PASS COMPLETE/reaped; independentlyreassociatedraw,
 verifiedmigration identities andmetrics. Trigger32/128,832updates,115158810624bytes.
 ActualStaticdecodeNPUhit12.11605235% vsDynamic11.87967415%; CPUhits+0.2689663%.
