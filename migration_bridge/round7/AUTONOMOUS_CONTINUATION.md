@@ -2,6 +2,21 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+USER MIGRATION OVERRIDE 09:33: futuredevelopment moves to110.129.0.20,
+viaJump110.123.0.3 admin then sudo-i. NewrootPTY5636; oldroot95982.
+Newhostgpu-server-00:256Kunpeng920,8NUMA,1TiB/918GiBavailable,596GiBdiskfree,
+driver25.5.1,8×910B3 allnoNPUprocess atinspection. NPU2PCI81:00.0NUMA4,
+CPU128–191 remainsC64two32subpools. Otherexistingcontainers MUSTnotchange.
+Oldhoststarted backgroundrsync3exactmountsources (models30G/results119G/source1.4G)
+to SAMEabsolutehostpaths onnewhost, no --delete. Logs oldhost
+/home/admin/kt-r64-migration/migrate20-payload.log and migrate20-image.log.
+Image docker save b81e664642ae→round7-frozen-runtime.tar thenrsync. SSHmaster
+/tmp/kt-r7-migrate20.sock expires4h; credentialsinteractiveonly. NOTYETverified.
+Aftertransfer: verifyGGUF/model/native/overlay hashes,imageID; recreateisolated
+container with same mounts/path/device2/C64/192GiB/noswap/networknone, audit
+drivercompatibility, compact+restart+triggerparity first. DO NOTmix oldshortperf
+withnewmedium/long; all12abbreviated cells onnewhost. No newNPUrunonoldhost.
+
 09:29 resource change: hostobserver detects OTHER_NPU_PROCESS on ALL devices0–7
 (NPU2 PID2735257), plusACTIVE_HOST_SWAPPING. Ownedcontainer idle. Do not launch
 recovery onNPU2 until externaloccupancy clears andfreshEXCLUSIVE observed.
