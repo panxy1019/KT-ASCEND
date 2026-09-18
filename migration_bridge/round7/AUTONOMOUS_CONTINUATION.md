@@ -2,6 +2,15 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+06:27 UPDATE: DynamicHD128PASS COMPLETE/reaped; independentlyreassociatedraw,
+verifiedmigration identities andmetrics. Trigger32/128,832updates,115158810624bytes.
+ActualStaticdecodeNPUhit12.11605235% vsDynamic11.87967415%; CPUhits+0.2689663%.
+No causalplacementgain shown, but frozen formalABBA stillrequired, no refit.
+Archive76b2ba7966a123c8de0f36edbfb7de5fa41932c0ee0e35f1857df96d161affb4 downloaded/audited.
+Fresh same-source hostobserverV4 PID1987362, source9e92b9cd8981a104277a851d7e45883ec5a1239935d7d0ad8a1498b70cd4c063;
+outputhost-resource-monitor-v4. V3historicalunchanged. WaitfreshEXCLUSIVE60s beforeABBA.
+All3ownedmodelserversreaped/idle. DefaultUniformStatic/D0unchangedpendingperformance.
+
 06:09 UPDATE: StaticHD128PASS complete/reaped, raw2176/retained2048/tails128/unknown0.
 Archive38cee92cfa74ec2af8d8a6893d56198cbf7a80943525803709d1abb89d565a74 downloaded/audited.
 DynamicHD106/128 healthy; continue. CMMLU174/256PASS alreadyarchived.
