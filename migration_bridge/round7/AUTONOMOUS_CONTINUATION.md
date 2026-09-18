@@ -37,6 +37,16 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-18 01:00: DEV256 fullprobe PASS: no-trigger/realtrigger/weight/checkpoint/
+generation/repeat/AtoB26layers/restart/observerOFFparity. All3processesCOMPLETE
+and reaped. Completearchive local/A3hash+tarPASS SHA
+ca6fbd3f16d8496b7706f6fcd3bde406ee28281a06ce933f0e81b9abd789497f.
+SummarySHA1f1031df24da8b206c42b8ba6f4f7d4bf36d208fd9ba030ae74994519cd42536.
+DriverhealthyRUNNINGdynamic-dev-probe-512;1024follows. Do notduplicate/restart.
+Watcheronlyfitsafterall3PASS;no chosen threshold/HD/CM/perf/Deferredyet. See
+02_DYNAMIC/DEV256_RUNTIME_V7_QUALIFICATION.md. FutureStaticHD mustusefreshv7
+cohort beforecausalDynamicHDcomparison;oldv2HDnotpostfixoracle.
+
 2026-09-18 00:44: runtime-v7 predecessors freshlyPASS operators100/100,
 Uniform/Frequency32+restart4 each, freshdirectR64174/256invalid0. Closedarchive
 local/A3hash+fulltarverified SHA
