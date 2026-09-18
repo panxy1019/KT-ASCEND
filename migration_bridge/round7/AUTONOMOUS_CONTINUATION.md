@@ -2,6 +2,15 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+10:03 transfercheckpoint: payload113.6GB andrunning (~82MB/s), >1.2Msmallfiles;
+rsync99% is incrementaldiscovery NOTwholecompletion. ImageTRANSFER_COMPLETE.
+TargetA3 imagearchiveSHA0f8e9f8be5e3534925e61268eb109b2ce444162bfa2cef25abef7aa8047d9bf6.
+Sourcehash currentlyrunning inoldrootPTY95982; WAITforresultbeforeloadingimage.
+A3sysfsPCI9d:00.0 numa_node=-1 (unknown, do notguesslocality).
+cpu0siblings0-1, eachNUMA40physical/80logical; devicesdavinci0–15.
+worker_topology.py currentlyonlyaccepts910BnonSMTcontiguous64CPUsets: requires
+explicittestedA3topologyadapter (64distinctcores/2×32), no silentbypass.
+
 SUPERSEDING USER TARGET 09:40: STOP host20migration; destination now originalA3
 110.123.0.3. OldhosttransferPIDs2764007/8/9/10 stopped, SSHmasterclosed.
 Newlycreated /home/admin/kt-r64-migration onhost20 (~4.7GiBpartial) deleted
