@@ -1,5 +1,33 @@
 # Round7 autonomous continuation
 
+## Latest override: parallel DEV system probes (2026-09-18)
+
+User explicitly authorized512/1024 on the two new workers; do not keep them idle.
+Runtime-v8 Uniform compact32 + restart4 PASS on original worker. Existing256
+child193606 continues. Original shell dispatcher191211 was SIGSTOP'ed ONLY to
+prevent duplicate512/1024 and automatic timing during concurrency. Do not resume
+that old dispatcher. The host join coordinator retires that exact parent after256
+PASS, leaving healthy child untouched.
+
+- `kt-r7-parallel-a-v1`: physicalNPU4, CPU0–63, NUMA0/1; compact/restart then512.
+- `kt-r7-parallel-b-v1`: physicalNPU6, CPU64–127, NUMA2/3; compact/restart then1024.
+- Both use tools-v23 (source08e468184), independently writable
+  `/workspace/parallel-worker/runtime-v8`; identical original runtime artifact
+  paths remain read-only mounted under `/workspace/c64-dev`.
+- Worker logs `/workspace/parallel-worker/qualification.log`; exitcode file and
+  threshold summaries only after completion. Host directories
+  `/home/admin/kt-r64-migration/round7-parallel/<container-name>`.
+- Host `parallel_probe_coordinator.py` joins three PASS + reaping + artifact and
+  corpus identities, then serially launches original-worker
+  `dev-threshold-screen-v2`. Concurrent probe durations NEVER select threshold.
+- After DEV completes: retrieve/audit candidate, LOCAL COMMIT and exact ACK;
+  only then parallel Static HOLDOUT / Dynamic HOLDOUT / quality as predecessor
+  gates allow. Do not rerun whole historical Frequency/R64 campaign.
+- Formal ABBA still isolated, no simultaneous inference on added workers.
+- Container relocation is not yet a new A3 PASS until its own gates finish.
+
+See `02_DYNAMIC/PARALLEL_WORKER_ADMISSION.md` and the join-coordinator log.
+
 This is an execution handoff, not completed qualification evidence. Follow the
 user's full Round7 mandate in this task. Ordinary software failures require
 preserved reproduction, official-source investigation, minimal repair, regression,
