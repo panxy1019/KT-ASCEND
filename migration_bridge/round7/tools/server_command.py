@@ -20,9 +20,10 @@ def direct_reference_args(args,cfg):
 
 def main():
     root, config = map(Path, sys.argv[1:3])
-    assert str(root).startswith('/workspace/c64-dev/round7/')
+    from worker_topology import topology, output_root
+    output_root(root)
     cfg = json.loads(config.read_text())
-    assert cfg['workers'] == 64 and cfg['cpu_set'] == '128-191'
+    _, numa_nodes = topology(cfg)
     assert cfg['deferred'] in (0,1)
     if cfg.get('provenance'):
         provenance=json.loads(Path(cfg['provenance']).read_text())
@@ -59,7 +60,7 @@ def main():
         '--weight-loader-disable-mmap','--attention-backend','ascend','--sampling-backend','pytorch',
         '--disable-radix-cache','--kt-weight-path','/workspace/results/r65-assets-v1/all-moe-f32.gguf',
         '--kt-method','LLAMAFILE','--kt-cpuinfer','64','--kt-threadpool-count','2',
-        '--kt-numa-nodes','4','5','--kt-gpu-experts-ratio',('1.0' if cfg.get('reference_r64',False) else '0.125'),
+        '--kt-numa-nodes',*map(str,numa_nodes),'--kt-gpu-experts-ratio',('1.0' if cfg.get('reference_r64',False) else '0.125'),
         '--kt-max-deferred-experts-per-token',str(cfg['deferred']),
         '--kt-expert-placement-strategy','frequency','--init-expert-location',cfg['activation_path']]
     args=direct_reference_args(args,cfg)

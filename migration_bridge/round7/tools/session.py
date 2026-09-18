@@ -15,12 +15,15 @@ from serial_session import admission, memory, check_port_available
 @contextmanager
 def session(root, config):
     root = Path(root); root.mkdir(parents=True,exist_ok=False)
+    from worker_topology import topology, output_root
+    output_root(root)
+    cpu_set, _ = topology(json.loads(Path(config).read_text()))
     check_port_available()
     report = dict(status='STARTING',started_unix=time.time(),admission=admission(),memory_before=memory())
     tools = Path(__file__).parent
     cmd = [sys.executable,'/workspace/c64-dev/tools-v16/migration_bridge/round6_7_c64/tools/owned_guard.py',
            '--output',str(root/'guard'),'--timeout-seconds','86400','--',
-           'taskset','-c','128-191','bash',str(tools/'launch_round7.sh'),str(root),str(config)]
+           'taskset','-c',cpu_set,'bash',str(tools/'launch_round7.sh'),str(root),str(config)]
     child = None
     with (root/'launcher.log').open('x') as log:
         try:
