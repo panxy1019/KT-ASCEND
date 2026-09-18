@@ -7,6 +7,13 @@ decode steps with retained state versus explicit CPU recurrence. Result/log
 `gdn-state-v1.json`/`.log`; diagnosis only, no model promotion. Check active
 PTY10100 before issuing shell commands or restarting.
 
+Continuous-state probe also completed: all4 outputs/state finite; output
+relative-L2 versus CPU recurrence was0.00164455/0.00166164/0.00165656/0.00167085.
+State norms31.8870/35.4269/37.3120/36.6112 prove nonzero state persisted/changed.
+This is descriptive numerical evidence, not a pre-registered model/cache gate.
+Next: causal convolution, actual SGLang state integration and isolated build
+provenance, plus256-expert/top8 integration; do not rerun completed probes.
+
 Actual deployed `linear/kernels/gdn_triton.py` replaces generic kernels on NPU:
 `chunk_gated_delta_rule_npu` for prefill and
 `fused_sigmoid_gating_delta_rule_update_npu` for decode. The Triton class name
