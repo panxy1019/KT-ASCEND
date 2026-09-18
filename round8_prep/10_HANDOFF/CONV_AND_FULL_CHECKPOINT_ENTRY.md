@@ -1,5 +1,12 @@
 # Convolution state and full checkpoint acquisition — 2026-09-18
 
+23:14 UTC transport recovery: v2 exhausted six attempts with repeated HTTP
+partial-body disconnects; cache reached approximately55GiB. No artifact was
+deleted or revision changed. Proxy27892 returned HTTP200. Resumed SAME command
+and cache in `full-checkpoint-download-v3.log`, bounded six attempts, driver
+PID2750384 / hf child2750385 (verify identity before acting). v1/v2 logs remain.
+Full fourteen-shard identity gate remains pending; do not launch Q64/Q32 yet.
+
 21:34 correction: v1 exited before fetching remaining shards. Host hf1.14 treats
 the second token after `--include` as a literal filename, causing `%2A.json`404.
 Preserved v1 log/cache. v2 uses `--include '*.safetensors' --include '*.json'`
