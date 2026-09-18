@@ -2,6 +2,13 @@
 
 ## Latest acquisition recovery
 
+19:30 checkpoint: v3 also exited on remote partial-body closure; cache grew to
+7.6GiB, demonstrating useful resume rather than a full restart. Launched v4
+bounded three-attempt same-command resume loop, single worker, unchanged
+revision/cache/proxy/timeout. Log `sample-download-proxy-v4.log`. Do not start
+another downloader until its owned driver exits; neither incomplete cache size
+nor CLI completion substitutes for whole-shard SHA validation.
+
 19:14 checkpoint: v2 terminated with RemoteProtocolError (partial body after
 1,314,145,305 bytes of one shard), retained total2.5GiB incomplete cache.
 Resumed SAME filenames/revision/directory with max-workers1 and
