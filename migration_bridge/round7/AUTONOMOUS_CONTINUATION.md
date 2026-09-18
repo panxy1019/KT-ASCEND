@@ -2,6 +2,14 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+06:09 UPDATE: StaticHD128PASS complete/reaped, raw2176/retained2048/tails128/unknown0.
+Archive38cee92cfa74ec2af8d8a6893d56198cbf7a80943525803709d1abb89d565a74 downloaded/audited.
+DynamicHD106/128 healthy; continue. CMMLU174/256PASS alreadyarchived.
+BeforeformalABBA startfresh hostobserver campaign (same source/criteria), preservev3:
+v3 latches swapcounter differences sinceinitialhoursago, not proof ofcurrentactivity.
+Requirefresh60squiet/noothermodels beforemeasuring; don'trewriteoldeligibility.
+See `02_DYNAMIC/CACHE_STATIC_HOLDOUT_RESULT.md`. Rootsession95982.
+
 05:40 UPDATE: DynamicCMMLU complete174/256,invalid0,delta0pp PASS; actualtriggers0/256,
 updates0: shortrequestguardrail NOTlongtriggerquality. Rawunique256/scoringsum/
 lifecycle/reaping audited; archive279c1126b682f77152f5f22bbcb1aec037289c6cf353e30848872c496c82bc45.
