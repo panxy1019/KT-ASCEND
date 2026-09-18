@@ -1,5 +1,12 @@
 # Round8 isolated environment decision
 
+21:51 completion: private-env LLAMAFILE result.json and GDN state JSON are each
+byte-exact to reference-env reports (`cmp` succeeded). Both processes returned.
+Thus sampled operator/environment replay passed; not a full-model qualification.
+Full checkpoint v2 remains active after automatic transport resume;19GiB cached.
+Do not interrupt it. `tools/verify_checkpoint.py` prepared for all14 shard plus
+frozen JSON identity checks after completion; not yet deployed/run remotely.
+
 Use the already isolated container image's pinned system torch/torch_npu/CANN
 stack, not a blind pip upgrade to the latest official dependencies. Actual Qwen
 imports, real expert and NPU GDN/convolution primitives have run on this stack.
