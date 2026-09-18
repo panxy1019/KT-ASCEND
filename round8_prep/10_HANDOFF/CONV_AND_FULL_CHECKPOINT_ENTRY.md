@@ -1,5 +1,12 @@
 # Convolution state and full checkpoint acquisition — 2026-09-18
 
+21:34 correction: v1 exited before fetching remaining shards. Host hf1.14 treats
+the second token after `--include` as a literal filename, causing `%2A.json`404.
+Preserved v1 log/cache. v2 uses `--include '*.safetensors' --include '*.json'`
+with all other frozen arguments unchanged, same bounded6-attempt loop.
+New log `full-checkpoint-download-v2.log`; inspect healthy driver before retries.
+This is orchestration correction, not a model/manifest change.
+
 Real deployed causal_conv1d NPU API exercised with frozen Qwen dimensions:
 8192 channels, width4, BF16 synthetic inputs/weights, seed123456. Prefill64
 then4 continuous decode steps. All finite; prefill and each decode retained
