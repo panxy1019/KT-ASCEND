@@ -1,5 +1,28 @@
 # Cache runtime-v8 parallel system checkpoint
 
+## Completed join — 2026-09-18 04:26 UTC
+
+All256/512/1024 full probes PASS. Both relocated worker chains exit0; each
+has Process A5, Process B2, observer-OFF4 requests, COMPLETE lifecycle and
+complete owned reaping. Host join checked imported artifacts, GGUF, frozenDEV,
+profile identity and distinct threshold identities before accepting results.
+
+Joined summary SHA256:
+
+- 256: `1c1c5f3b0c240607982bd656965d2f74e528a29fa3f3542c81c4c37c08acdb1d`
+- 512: `2ee2432c1ed72f6466ba74aa561d907063ee024c001930f5a8b6a343f111a48b`
+- 1024: `de2d0c6eed67832c6fdb18a92f2200914981cd7a8719b0447356a518747bb85d`
+
+Full512/1024 raw and joined manifest archive:
+`raw/round7-parallel-probes-complete-v1.tar.gz`, SHA256
+`58447f0122018efa17c052bbf21ca9139a6148e601e68fa65c213572b1b5a09b`.
+
+Original worker now runs serial `dev-threshold-screen-v2`; new workers idle.
+Concurrent probe durations are excluded from threshold selection/performance.
+No candidate frozen and no held-out/quality launched at this checkpoint.
+
+## Earlier checkpoint
+
 2026-09-18 04:07 UTC, A3 execution evidence. Not threshold selection, quality,
 or performance qualification.
 

@@ -2,6 +2,16 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+04:26 UPDATE: all256/512/1024 fullsystemPASS; A/B chain exit0, allreaped.
+Coordinator joined exactartifact/corpus/mask provenance and automatically started
+`dev-threshold-screen-v2` on originalNPU2. Current PID198035 threshold_sweep,
+Static0 initialcases; A/B nowidle. Do NOT startotherheavycompute duringDEVtiming.
+Old pauseddispatcher retired; do notresume. Sourcecollection
+`parallel-cache-v8-probes-collected-v1/COLLECTION_PROVENANCE.json` PASS.
+Archive `raw/round7-parallel-probes-complete-v1.tar.gz` contains full512/1024
+plus joinidentitymanifest; SHA58447f0122018efa17c052bbf21ca9139a6148e601e68fa65c213572b1b5a09b.
+AfterDEVfinish: localcommitcandidate+ack, then user-authorizedparallelHD/quality.
+
 04:07 checkpoint: runtime-v8 Dynamic256 fullyPASS (A5/B2/OFF4, allCOMPLETE/reaped).
 New A/B compact32+restart4 bothPASS;512/1024 bothProcessA2requests, healthy.
 See `02_DYNAMIC/PARALLEL_CACHE_SYSTEM_CHECKPOINT.md`. New local explicit
