@@ -2,6 +2,23 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+11:44 A3 compact-v2 failed before requests during npu_format_cast/GE init.
+Preserved runtime-a3-v2 and a3-compact-v2.log. Recovery-v3 copied complete
+A3 TBE config from stopped original kt-r6-deferred-ascend into NEW container
+only, preserving incomplete config. This alone did not fix initialization.
+Verbose minimal reproduction identified missing dsa_core/config/ascend910_93
+(format-debug.log line153873). Copied that missing configuration from the
+same original container. BF16 npu_format_cast smoke now FORMAT_CAST_PASS True;
+see /home/admin/kt-round7-return-a3/recovery-a3-kernels-v3/format-dsa-smoke.log.
+Warning allow_internal_format=False means this is a startup smoke, not complete
+ND/NZ layout certification. Need actual model/operator execution next.
+Fresh runtime-a3-v3 prepared (RELOCATION_PENDING_NOT_INHERITED); compact32+
+restart launched with tools-a3-v3. Log /workspace/c64-dev/round7/a3-compact-v3.log.
+Keep healthy run. Host/business containers unchanged. Performance NOT STARTED.
+Remaining: adapted representative operators, frozen1024 dynamic trigger,
+A3 host observer v1-cgroup/16die adaptation, then fresh 12-cell ABBA screen.
+
+
 11:34 compact-v1 PREMODELFAIL missing/sys/fs/cgroup/memory.swap.current onA3v1.
 Preservedruntime-a3-v1/log. Addedcgroup_memory.py v1total_swap/v2samegate, failclosed;
 126LOCALtestsPASS, sourceefda00af2. Tools-a3-v3 archivebc687980146070aac6c94c378efea64858f92ec55fcc03d8e70bf896fa0d035a
