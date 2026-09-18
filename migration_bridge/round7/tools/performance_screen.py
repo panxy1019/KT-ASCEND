@@ -83,6 +83,8 @@ def main():
     p.add_argument('--dynamic-base',action='store_true',help='Evaluate D1 on a selected Dynamic scheduler')
     p.add_argument('--host-observer',type=Path,help='Host-issued samples.jsonl visible through the owned mount')
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--blocks',type=int,choices=[1,3],default=3,
+                   help='One block is an abbreviated screen, not formal repeatability qualification')
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     freeze=json.loads((a.corpus.parent/'CORPUS_FREEZE.json').read_text())
     assert sha(a.corpus)==freeze['corpora']['HOLDOUT']['sha256'],'HOLDOUT_HASH'
@@ -100,7 +102,8 @@ def main():
     # for observed scores or latency. Record IDs before the first measurement.
     targets=[(bucket,next(x for x in rows if x['bucket']==bucket),budget)
              for bucket,budget in [('short',256),('medium',512),('long',1024)]]
-    write(a.output/'protocol.json',dict(order=['left','right','right','left'],blocks=3,
+    write(a.output/'protocol.json',dict(order=['left','right','right','left'],blocks=a.blocks,
+        evidence_scope='ABBREVIATED_SCREEN' if a.blocks==1 else 'FORMAL_3_BLOCK',
         left=a.left,right=a.right,threshold=a.threshold,dynamic_base=a.dynamic_base,observer=False,
         threshold_commit_ack=ack,
         targets=[dict(bucket=b,id=r['id'],input_tokens=len(r['input_ids']),decode=n) for b,r,n in targets],
@@ -109,7 +112,7 @@ def main():
         internal_cpu_wait='NOT_INSTRUMENTED_IN_TIMED_PATH'))
     measurements=[]
     for bucket,row,budget in targets:
-        for block in range(3):
+        for block in range(a.blocks):
             for turn,side in enumerate(('left','right','right','left')):
                 mode=a.left if side=='left' else a.right
                 underlying=mode if mode in ('uniform','frequency') else a.left
@@ -131,7 +134,7 @@ def main():
                     result=measured_request(root,row,f'measure-{bucket}-{block}-{turn}',budget)
                     result.update(memory_before=before,memory_after=memory())
                 measurements.append(dict(bucket=bucket,block=block,turn=turn,side=side,mode=mode,**result))
-                write(a.output/'progress.json',dict(completed=len(measurements),total=36,measurements=measurements))
+                write(a.output/'progress.json',dict(completed=len(measurements),total=12*a.blocks,measurements=measurements))
     summary={}
     for bucket,_,_ in targets:
         sides={side:[x for x in measurements if x['bucket']==bucket and x['side']==side]
@@ -145,6 +148,8 @@ def main():
             throughput_improvement_percent=(100*(rate_medians['right']/rate_medians['left']-1)
                 if all(v is not None for v in rate_medians.values()) else None))
     write(a.output/'summary.json',dict(status='COMPLETE',observer=False,serial=True,
+        blocks=a.blocks,evidence_scope='ABBREVIATED_SCREEN' if a.blocks==1 else 'FORMAL_3_BLOCK',
+        formal_repeatability_qualified=a.blocks==3,
         measurements=measurements,workloads=summary,
         limitation='Internal CPU wait and exact device prefill timing require separate untimed telemetry.'))
     if a.host_observer:

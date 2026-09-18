@@ -2,6 +2,13 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+USER SCOPE CHANGE: shorten ABBA. Use tools-v27 --blocks1 serial12cells, preserve
+threeworkloads/tokenbudgets/frozen1024 and isolation. v2 only2/36 complete at
+inspection; stopownedrunner preserveasSTOPPED_BY_USER_SCOPE_CHANGE, startfresh
+cache-static-dynamic-abbreviated-v1. No parallelformalperformance. Original3block
+gate NOT_COMPLETED_BY_USER_SCOPE_CHANGE. Do not let formal evaluator promote
+12cells or claimrepeatability/defaultON. SeeABBREVIATED_PERFORMANCE_SCOPE.md.
+
 07:26+ DEPLOYED tools-v26 source5bf71fd25, archiveSHA
 81786f1f5f0e9b69b619faa0cb7d57586f49ddfde07c8874eb6d3d10e8def774.
 SCP/remoteSHA matched;120A3puretests PASS. Originalcontainer fullyidle after
