@@ -37,6 +37,17 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+User now explicitly authorized acceleration. Originalall3DEVprobesPASS; original
+DEVscreen-v1 healthy (lastStatic0 completed5/12). Preserveitsresults, do notcommit
+anack/launchHD automatically: newcachefeasibilityexperiment queuedAFTERscreenexit.
+See02_DYNAMIC/STAGING_ACCELERATION_EXPERIMENT.md. Separatecache-tools-v1 source
+3c596d289dc328222fbda73acf59501bcf8461bc, archivec3a842148e34b93babeb2d19f1458a922fc22200d4a0bfb3c1192e8efcc723af,
+SCP/hashbeforeextract;106LOCAL+A3puretestsPASS. Ownedflockwatcher
+cache-feasibility-auto-v1.log waitsselectedJSON+originalscreenprocessgone, then
+isolatedL1/13/26 all56cachebenchmark outputcache-feasibility-v1. No production
+importchange. Auditcold/warmidentity/H2D/binding/memory beforeprivateport; newruntime
+needsaffectedDEVreplaybeforefreeze. Don'toverlapformalperf/newmodelwithqueuedprobe.
+
 2026-09-18 01:34: DEV512 fullprobe PASS, all3processesCOMPLETE/reaped,
 all26layersworkloadshift and restart/observerOFFparityPASS. Completearchive
 SCPexit0/local+A3SHA/fulltarPASS:
