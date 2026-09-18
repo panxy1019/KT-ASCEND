@@ -1,5 +1,10 @@
 # Round8 execution entry
 
+Latest update: device primitive recovered after releasing the completed Round7
+container's NPU2 namespace ownership. See `NPU_NAMESPACE_RECOVERY.md`; its
+container ID supersedes the initial ID below. The old Round7 container must
+remain stopped while Round8 owns NPU2. Full-model gates are still pending.
+
 Round7 reference: `30de6a234284bfa25d196037ed692d9584855ddf`.
 Round7 closed with user-approved scope reduction. Do not resume Medium/Long
 performance or claim full isolated performance qualification.
