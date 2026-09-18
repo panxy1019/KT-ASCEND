@@ -23,6 +23,7 @@ def error(x,y):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--layer',type=int,required=True)
     p.add_argument('--tp',type=int,choices=(1,2),required=True)
+    p.add_argument('--numa-nodes',type=int,nargs=2,default=[4,5])
     p.add_argument('--output',type=Path,required=True);p.add_argument('--prefill',action='store_true')
     p.add_argument('--operands',type=Path,default=Path('/workspace/results/r65-r67-serial-v5/R16/observer/operands'))
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
@@ -42,7 +43,7 @@ def main():
     cpu=KTMoEWrapper(layer_idx=a.layer,num_experts=64,num_experts_per_tok=6,hidden_size=2048,
         moe_intermediate_size=1408,gpu_experts_mask=mask,cpuinfer_threads=32*a.tp,threadpool_count=a.tp,
         weight_path='/workspace/results/r65-assets-v1/all-moe-f32.gguf',chunked_prefill_size=64,
-        max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=[4,5][:a.tp])
+        max_deferred_experts_per_token=0,method='LLAMAFILE',numa_nodes=a.numa_nodes[:a.tp])
     cpu.load_weights(torch.arange(64,dtype=torch.int32))
     os.environ.pop('KT_C64_CAPTURE_WEIGHT_EXPERT')
     model=Path('/workspace/models/DeepSeek-V2-Lite-604d5664')

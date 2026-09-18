@@ -1,8 +1,24 @@
 import unittest
+import tempfile
+from pathlib import Path
+from host_resource_observer import ownership_group,group_swap
 from host_resource_observer import assess_window,process_ids,memory_blockers,unified_group,in_owned_group,outside_usage,fresh_exclusive
 
 
 class HostQuiet(unittest.TestCase):
+    def test_v1_hybrid_ownership_not_unified_root(self):
+        self.assertEqual(ownership_group('7:memory:/docker/owned\n0::/\n'),('/docker/owned','v1'))
+        self.assertEqual(ownership_group('0::/docker/owned\n'),('/docker/owned','v2'))
+        with self.assertRaises(ValueError):ownership_group('7:memory:/\n0::/\n')
+
+    def test_host_v1_swap_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);path=root/'memory/docker/owned';path.mkdir(parents=True)
+            (path/'memory.stat').write_text('total_swap 17\n')
+            self.assertEqual(group_swap('/docker/owned','v1',root),17)
+            (path/'memory.stat').write_text('rss 17\n')
+            with self.assertRaises(KeyError):group_swap('/docker/owned','v1',root)
+
     def test_entrance_requires_fresh_clean_state(self):
         state=dict(status='EXCLUSIVE',time_unix=100,blockers=[])
         self.assertTrue(fresh_exclusive(state,110))

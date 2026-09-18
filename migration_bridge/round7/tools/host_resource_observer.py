@@ -28,6 +28,23 @@ def unified_group(text,allow_root=False):
     return matches[0]
 
 
+def ownership_group(text,allow_root=False):
+    # Hybrid v1 hosts can report 0::/ for every process. Use the actual
+    # memory-controller group consistently for both owner and candidates.
+    for line in text.splitlines():
+        _,controllers,path=line.split(':',2)
+        if 'memory' in controllers.split(','):
+            if path=='/' and not allow_root:raise ValueError('OWNERSHIP_CGROUP_UNAVAILABLE')
+            return path,'v1'
+    return unified_group(text,allow_root),'v2'
+
+
+def group_swap(group,version,root=Path('/sys/fs/cgroup')):
+    if version=='v2':return int((root/group.lstrip('/')/'memory.swap.current').read_text())
+    values=dict(line.split() for line in (root/'memory'/group.lstrip('/')/'memory.stat').read_text().splitlines())
+    return int(values['total_swap'])
+
+
 def in_owned_group(candidate,owned_group):
     return candidate==owned_group or candidate.startswith(owned_group+'/')
 
@@ -84,8 +101,11 @@ def wait_for_exclusive(samples_path,timeout=1800):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--container',default='kt-r67-c64-development-v1')
+    p.add_argument('--owned-root',type=Path,default=Path('/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-development-v1/round7/'))
+    p.add_argument('--dies-per-card',type=int,choices=[1,2],default=1)
     p.add_argument('--hours',type=float,default=24);a=p.parse_args()
-    root='/home/admin/kt-r64-migration/payload/kt-artifacts/round6-deferred/r65-r67-c64-development-v1/round7/'
+    root=a.owned_root
     assert a.output.resolve().is_relative_to(Path(root).resolve()),'OWNED_OUTPUT_SCOPE'
     a.output.mkdir(parents=True,exist_ok=False)
     hz=os.sysconf('SC_CLK_TCK')
@@ -94,17 +114,17 @@ def main():
                 if k in ('pswpin','pswpout')}
     initial_vm=swap_counters();previous_vm=initial_vm
     init_pid=int(subprocess.check_output(['docker','inspect','--format','{{.State.Pid}}',
-        'kt-r67-c64-development-v1'],text=True,timeout=5).strip())
+        a.container],text=True,timeout=5).strip())
     assert init_pid>0,'OWNED_CONTAINER_NOT_RUNNING'
-    group=unified_group(Path(f'/proc/{init_pid}/cgroup').read_text())
-    swap_file=Path('/sys/fs/cgroup')/group.lstrip('/')/'memory.swap.current'
+    group,cgroup_version=ownership_group(Path(f'/proc/{init_pid}/cgroup').read_text())
     def snapshot():
         data={}
         for path in Path('/proc').glob('[0-9]*'):
             try:
                 raw=(path/'stat').read_text();tail=raw[raw.rfind(')')+2:].split()
                 command=(path/'cmdline').read_bytes().replace(b'\0',b' ').decode(errors='replace')
-                process_group=unified_group((path/'cgroup').read_text(),allow_root=True)
+                process_group,version=ownership_group((path/'cgroup').read_text(),allow_root=True)
+                if version!=cgroup_version:raise ValueError('MIXED_CGROUP_OBSERVATION')
                 data[int(path.name)]=dict(ticks=int(tail[11])+int(tail[12]),command=command,
                     start_ticks=int(tail[19]),cgroup=process_group)
             except (FileNotFoundError,ProcessLookupError):pass
@@ -133,12 +153,15 @@ def main():
             if sum(outside)>2 or max(outside,default=0)>1:
                 blockers.append(dict(reason='OUTSIDE_CPU_BUSY',cores=sum(outside)))
             for device in range(8):
-                info=subprocess.check_output(['npu-smi','info','-t','proc-mem','-i',str(device)],text=True,timeout=5)
-                others=[pid for pid in process_ids(info) if pid not in owned]
-                if others:blockers.append(dict(reason='OTHER_NPU_PROCESS',device=device,pids=others))
+                for die in range(a.dies_per_card):
+                    cmd=['npu-smi','info','-t','proc-mem','-i',str(device)]
+                    if a.dies_per_card>1:cmd+=['-c',str(die)]
+                    info=subprocess.check_output(cmd,text=True,timeout=5)
+                    others=[pid for pid in process_ids(info) if pid not in owned]
+                    if others:blockers.append(dict(reason='OTHER_NPU_PROCESS',device=device,die=die,pids=others))
             mem={line.split(':')[0]:int(line.split()[1])*1024 for line in Path('/proc/meminfo').read_text().splitlines()
                  if line.endswith('kB')}
-            current_vm=swap_counters();cgroup_swap=int(swap_file.read_text())
+            current_vm=swap_counters();cgroup_swap=group_swap(group,cgroup_version)
             memory_observation=dict(host_mem_available=mem['MemAvailable'],host_mem_total=mem['MemTotal'],
                 host_swap_used=mem['SwapTotal']-mem['SwapFree'],cgroup_swap_bytes=cgroup_swap,
                 current_swap_counters=current_vm)

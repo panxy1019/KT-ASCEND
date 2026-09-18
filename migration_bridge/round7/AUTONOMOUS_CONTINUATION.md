@@ -2,6 +2,24 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+12:04 A3 uniform-system-summary.json PASS: 32 compact + 4 clean restart,
+same-path/prefix/observer parity/finite/mapping all PASS; weight layout audit
+baed1c4e8c44dd421716a13331011985ff521feb7f279ff718f86491d97de4b7.
+Shutdown TBE queue EOFError occurred after intentional SIGTERM, not request failure.
+Representative operators running in runtime-a3-v3/operator-representatives using
+operator-a3-tools-v1 (explicit NUMA0,1 adapter, otherwise unchanged oracle).
+L1 TP1/TP2 PASS22rows each, max .000940578/.001673674; preserve healthy run.
+Next after ALL6 operator runs PASS launch tools-a3-v3 dynamic_probe.py on
+runtime-a3-v3, DEV corpora-v2/SCHED_DEV.jsonl, uniform, frozen threshold1024,
+new output dynamic-probe-1024-v1. No threshold fitting.
+Host observer A3 adapter local128testsPASS; deployed host script
+/home/admin/kt-round7-return-a3/host_resource_observer_a3_v1.py, PID3890525,
+output round7/host-observer-a3-v1, cgroupv1 memory identity and8cards*2dies.
+Must audit observer latest/errors before timed use. External NPU0/die1 PID3685998
+python3.10 ~6124MiB exists; DO NOT TOUCH. Performance requires clean host window;
+do not classify contended data as isolated. Performance still NOT_STARTED.
+
+
 11:44 A3 compact-v2 failed before requests during npu_format_cast/GE init.
 Preserved runtime-a3-v2 and a3-compact-v2.log. Recovery-v3 copied complete
 A3 TBE config from stopped original kt-r6-deferred-ascend into NEW container
