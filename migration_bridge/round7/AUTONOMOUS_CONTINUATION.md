@@ -2,6 +2,16 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+11:31 tools-a3-v2 sourcefbf5dff51 archivec43eea1b5abac9b64ae2c1b24949f97ec0880eed5c7c31c06aae0778ab28e4e3
+deployedSHAverified. prepare_parallel_worker createdruntime-a3-v1, preserving
+oldruntime-v8/importedfiles; qualificationexplicitRELOCATION_PENDING_NOT_INHERITED,
+execution_host110.123.0.3,profilea3-smt-c64-v1,CPUevens/NUMA0,1/device0.
+Startedowned A3Uniform compact32+restart4 via static_qualification --stagecompact,
+log/workspace/c64-dev/round7/a3-compact-v1.log. Base/workspace/c64-dev/round7/runtime-a3-v1.
+Keephealthy; auditfirstnativeworkerbinding/sglNPUops/startupfailureifany. No old
+PASSsummarycopied. Operatorrepresentatives stillneedsnewA3execution, frozen1024
+dynamicprobeaftercompact, beforeperf. ModelqualificationNOTYETPASS.
+
 11:14 A3kernelrepairSUCCESS: v1docker-cp failedescapingmetadata symlink;preserved.
 v2explicitascend910_93+configcopies fromstoppedkt-r6-deferred-ascend COMPLETE;
 versionexact9.0.0 timestamp20260428_134817545 matchesdest. Oldincompletekernel
