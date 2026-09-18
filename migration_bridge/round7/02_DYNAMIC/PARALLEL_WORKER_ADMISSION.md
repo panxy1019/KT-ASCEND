@@ -29,13 +29,35 @@ processes. New containers have NOT yet passed device/runtime probes or run
 model tests. Existing Uniform runtime-v8 compact request file reached 32 rows;
 that count alone is not a completed compact/restart PASS.
 
-## Dispatch prerequisites
+## Dispatch update: user-authorized parallel system probes
 
-Keep new workers idle during current DEV timing selection. First adapt/test
-runner affinity, NUMA arguments and writable result/runtime paths: existing
-scripts hardcode 128–191, nodes4/5 and original output paths. Preserve C64 as
-two subpools of32, not a different worker topology. Validate device visibility,
-source hashes, outputs and topology before dispatch.
+User subsequently authorized immediate512/1024 system probes in these workers.
+They first run their own compact32/restart4 gates; no inherited worker PASS.
+Original256 continues. Its parent dispatcher191211 alone was SIGSTOP'ed to
+prevent duplicate sequential512/1024. No signal was sent to the active probe
+or model. Host coordinator joins verified results before serial DEV timing.
+
+Initial tools-v23 attempt was rejected before model launch by retained
+`owned_guard.py` (`GUARD_SCOPE`: new output directory not in old whitelist).
+Both failures are preserved under each worker's `failed-guard-scope-v1`.
+Tools-v24 adds a Round7 scoped guard retaining the exact generic process guard,
+subreaper and owned-descendant cleanup. No production model/kernel change.
+Source commit `2ce653c13`; archive SHA256
+`427c8e6afca5f0c91054f6b14848388e3bd14c495a45ee7621774a6136daf57e`.
+Local suite115 PASS; earlier v23 pure suite112 PASS on A3.
+
+Two detached worker chains were restarted with v24. Host coordinator PID1725839,
+log `/home/admin/kt-r64-migration/round7-parallel/coordinator-v1.log`, validates
+three thresholds' artifacts, corpus/mask hashes, lifecycle completion/reaping.
+Then it runs `dev-threshold-screen-v2` serially on original worker; it never
+creates a candidate commit/ack or bypasses held-out entry gates.
+
+## Subsequent dispatch prerequisites
+
+Keep new workers idle during later DEV timing selection. Runner affinity,
+NUMA and result paths now support these three explicitly whitelisted topologies.
+Preserve C64 as two subpools of32, not a different worker topology. Actual device
+execution still needs the new workers' completed gate evidence.
 
 After runtime system gates and candidate commit/ack, parallelize independent
 Static HOLDOUT and Dynamic HOLDOUT/quality where their predecessor gates allow.

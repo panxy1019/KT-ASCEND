@@ -11,7 +11,7 @@ PASS, leaving healthy child untouched.
 
 - `kt-r7-parallel-a-v1`: physicalNPU4, CPU0–63, NUMA0/1; compact/restart then512.
 - `kt-r7-parallel-b-v1`: physicalNPU6, CPU64–127, NUMA2/3; compact/restart then1024.
-- Both use tools-v23 (source08e468184), independently writable
+- Both now use tools-v24 (source2ce653c13), independently writable
   `/workspace/parallel-worker/runtime-v8`; identical original runtime artifact
   paths remain read-only mounted under `/workspace/c64-dev`.
 - Worker logs `/workspace/parallel-worker/qualification.log`; exitcode file and
@@ -26,6 +26,10 @@ PASS, leaving healthy child untouched.
 - Formal ABBA still isolated, no simultaneous inference on added workers.
 - Container relocation is not yet a new A3 PASS until its own gates finish.
 
+V23 hit pre-model GUARD_SCOPE; preserved in both workers' failed-guard-scope-v1.
+V24 scopes guard to owned new directory, retains generic guard/subreaper.
+Host join coordinator PID1725839/log
+`/home/admin/kt-r64-migration/round7-parallel/coordinator-v1.log`.
 See `02_DYNAMIC/PARALLEL_WORKER_ADMISSION.md` and the join-coordinator log.
 
 This is an execution handoff, not completed qualification evidence. Follow the
