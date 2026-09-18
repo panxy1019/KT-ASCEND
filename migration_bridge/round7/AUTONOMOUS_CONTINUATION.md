@@ -2,6 +2,14 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+04:07 checkpoint: runtime-v8 Dynamic256 fullyPASS (A5/B2/OFF4, allCOMPLETE/reaped).
+New A/B compact32+restart4 bothPASS;512/1024 bothProcessA2requests, healthy.
+See `02_DYNAMIC/PARALLEL_CACHE_SYSTEM_CHECKPOINT.md`. New local explicit
+quality operator-source binding not deployed: later use `--operator-evidence-base
+/workspace/c64-dev/round7/runtime-v7` with new tools after checking source hashes.
+Do not fake/copy a fresh operator summary into v8. Worker old `cpu_affinity`
+metadata is inherited; actual cfg/argv/topology are correct. Preserve activefiles.
+
 User explicitly authorized512/1024 on the two new workers; do not keep them idle.
 Runtime-v8 Uniform compact32 + restart4 PASS on original worker. Existing256
 child193606 continues. Original shell dispatcher191211 was SIGSTOP'ed ONLY to

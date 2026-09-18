@@ -13,14 +13,17 @@ def main():
     p.add_argument('--threshold-freeze',type=Path)
     p.add_argument('--threshold-ack',type=Path)
     p.add_argument('--system-summary',type=Path,required=True)
+    p.add_argument('--operator-evidence-base',type=Path,
+        help='Explicit unchanged-CPU evidence source; not a new operator execution')
     p.add_argument('--output',type=Path,required=True)
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
     assert json.loads(a.system_summary.read_text())['status']=='PASS','RUNTIME_SYSTEM_PREDECESSOR'
-    assert json.loads((a.base/'operator-representatives/summary.json').read_text())['status']=='PASS'
+    from operator_evidence import bind_operator_evidence
+    operator_evidence=bind_operator_evidence(a.base,a.operator_evidence_base)
     cfg=json.loads(config(a.base,a.profile,False).read_text())
     protocol=dict(mode=a.mode,profile=a.profile,manifest_sha256='bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04',
         reference_correct=174,count=256,minimum_correct=162,invalid_required=0,
-        system_predecessor_sha256=sha(a.system_summary))
+        system_predecessor_sha256=sha(a.system_summary),operator_evidence=operator_evidence)
     if a.mode=='dynamic' or a.dynamic_base:
         from frozen_threshold import load_threshold
         frozen,ack=load_threshold(a.threshold_freeze,a.threshold_ack,a.base/'profiles'/f'{a.profile}.json')

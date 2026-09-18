@@ -27,7 +27,7 @@ def main():
     prov['inherited_source_provenance']=dict(path=str(a.source/'provenance.json'),
         sha256=hashlib.sha256(raw).hexdigest(),scope='IMPORTED_ARTIFACT_IDENTITY_NOT_NEW_WORKER_EXECUTION')
     prov.update(container=a.container,physical_npu=a.physical_npu,logical_npu=0,
-                cpu_set=a.cpu_set,numa_nodes=a.numa_nodes)
+                cpu_set=a.cpu_set,numa_nodes=a.numa_nodes,cpu_affinity=a.cpu_set)
     cfg['provenance']=str(a.output/'provenance.json')
     for name,value in [('provenance.json',prov),('uniform-dev-config.json',cfg)]:
         (a.output/name).write_text(json.dumps(value,indent=2)+'\n')
