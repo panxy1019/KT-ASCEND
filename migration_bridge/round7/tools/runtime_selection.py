@@ -26,6 +26,11 @@ def select_sglang_runtime(cfg,provenance):
         helper=str(root/'sglang/srt/layers/moe/bf16_resident_layout.py')
         if provenance['files'].get(helper,{}).get('sha256')!=resident_hash:
             raise ValueError('PRIVATE_RESIDENT_LAYOUT_HELPER_HASH_BINDING')
+    cache_hash=provenance['bf16_context_port'].get('verified_cache_helper_sha256')
+    if cache_hash:
+        helper=str(root/'sglang/srt/layers/moe/verified_bf16_cache.py')
+        if provenance['files'].get(helper,{}).get('sha256')!=cache_hash:
+            raise ValueError('PRIVATE_VERIFIED_CACHE_HASH_BINDING')
     return str(root)
 
 

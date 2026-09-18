@@ -26,7 +26,9 @@ def port_cpu_buffers(source):
     return ''.join(lines[:method.lineno-1])+updated+''.join(lines[method.end_lineno:])
 
 
-def port_source(source, llamafile_staging=False, resident_layout=False):
+def port_source(source, llamafile_staging=False, resident_layout=False, verified_cache=False):
+    if verified_cache and not llamafile_staging:
+        raise ValueError('BF16_CACHE_REQUIRES_STAGING')
     tree=ast.parse(source)
     matches=[node for node in ast.walk(tree) if isinstance(node,ast.FunctionDef)
              and node.name=='_prepare_weight_bf16']
@@ -85,5 +87,11 @@ def port_source(source, llamafile_staging=False, resident_layout=False):
     result=''.join(lines[:method.lineno-1])+updated+''.join(lines[method.end_lineno:])
     if llamafile_staging:
         result = port_cpu_buffers(result)
+    if verified_cache:
+        anchor = '            from .llamafile_bf16_staging import LlamafileBF16Stager\n'
+        assert result.count(anchor) == 1, 'BF16_CACHE_SOURCE_DRIFT'
+        result = result.replace(anchor, anchor +
+            '            from .verified_bf16_cache import cached_stager_class\n'
+            '            LlamafileBF16Stager = cached_stager_class(LlamafileBF16Stager)\n')
     compile(result,'kt_ep_wrapper.py','exec')
     return result
