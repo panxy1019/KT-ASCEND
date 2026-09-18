@@ -2,6 +2,13 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+11:34 compact-v1 PREMODELFAIL missing/sys/fs/cgroup/memory.swap.current onA3v1.
+Preservedruntime-a3-v1/log. Addedcgroup_memory.py v1total_swap/v2samegate, failclosed;
+126LOCALtestsPASS, sourceefda00af2. Tools-a3-v3 archivebc687980146070aac6c94c378efea64858f92ec55fcc03d8e70bf896fa0d035a
+deployed/retestA3. Freshbase runtime-a3-v2 viaexplicitprepare, compactrestarted
+log/workspace/c64-dev/round7/a3-compact-v2.log; auditandpreservehealthy.
+No oldsummaryreuse. Stillneedsoperator/trigger/hostobserverA3adapters.
+
 11:31 tools-a3-v2 sourcefbf5dff51 archivec43eea1b5abac9b64ae2c1b24949f97ec0880eed5c7c31c06aae0778ab28e4e3
 deployedSHAverified. prepare_parallel_worker createdruntime-a3-v1, preserving
 oldruntime-v8/importedfiles; qualificationexplicitRELOCATION_PENDING_NOT_INHERITED,
