@@ -2,6 +2,13 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+08:26 checkpoint: abbreviated-v1 6/12 completed. Allshort4 + mediumturn0
+EXCLUSIVE; mediumturn1 window CONTENDED_OR_NOT_YET_QUIET. HostoutsideCPU
+now~95cores. Preserveallraw; do not promote isolated performance on this window.
+Runner nextcell admission mustwaitfreshEXCLUSIVE (30min timeout). No external
+workload modification. Inspect nextheartbeat for recovery/timeout; missingresource
+gate is not evidence of Dynamic no-benefit. No threshold/model changes.
+
 USER SCOPE CHANGE: shorten ABBA. Use tools-v27 --blocks1 serial12cells, preserve
 threeworkloads/tokenbudgets/frozen1024 and isolation. v2 only2/36 complete at
 inspection; stopownedrunner preserveasSTOPPED_BY_USER_SCOPE_CHANGE, startfresh
