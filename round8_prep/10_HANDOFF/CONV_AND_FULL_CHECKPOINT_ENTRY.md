@@ -1,5 +1,12 @@
 # Convolution state and full checkpoint acquisition — 2026-09-18
 
+23:45 UTC: v3 completed22/22 files, directory67GiB. Started independent
+streaming full SHA256 audit using frozen manifest and committed
+`tools/verify_checkpoint.py`; owned PID2884712, output
+`/home/admin/kt-round8-qwen35/checkpoint-identity-v1.json`, stderr same stem.err.
+Audit pending at this checkpoint. Preserve healthy audit; inspect result before
+full-model work. Download completion alone does not satisfy identity gate.
+
 23:14 UTC transport recovery: v2 exhausted six attempts with repeated HTTP
 partial-body disconnects; cache reached approximately55GiB. No artifact was
 deleted or revision changed. Proxy27892 returned HTTP200. Resumed SAME command
