@@ -2,6 +2,17 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+10:39:74files+GGUFfullSHA PASS. ImageimportID1b78ffa58564181d7700ec665012be1a11ab0b934ac390ba831fb23bf1d2732f
+differssourceOCI IDb81e664..., butarchiveconfigSHA=1b78...,all16RootFSdiffIDs
+identical;ConfigcommonkeysCmd/Entrypoint/Env/Labels hashesidentical, destination
+addsdefaultemptyDockerfields. Recordidentitytranslation, NOTwrongimage.
+CreatedA3container kt-r7-a3-return-v1 ID019f4bdd9a4a3021eb88fd8a5ec3145aefd70c2355628ffd131ad9d03a359271,
+device0only/manager/devmm/hisi,192GiBnoswap,16GiBshm,networknone,SYS_NICE.
+CPUeven0..62 + even80..142 verified64distinct(package,core) pairs;memnodes0,1.
+Samecontainerpaths,hostprefix/home/admin/kt-round7-return-a3/payload.
+Python/torch/torch_npu importcheckinprogressPTY59740, nofullmodelyet.
+Needtesttopologyadapter/operatorA3compatibility beforecompact/restart/trigger.
+
 10:20 COMPLETEpayloadtransfer:157135940281bytes/~1.43Mfiles,28min22s,
 PAYLOAD_TRANSFER_COMPLETE observedoldhostlog. ImagebothendsSHAidentical
 0f8e9f8be5e3534925e61268eb109b2ce444162bfa2cef25abef7aa8047d9bf6.
