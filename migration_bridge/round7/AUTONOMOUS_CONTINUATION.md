@@ -2,6 +2,15 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+09:12: abbreviated-v1 exitedHOST_NOT_FRESH_EXCLUSIVE_BEFORE_MEASUREMENT after
+30minwait,6/12completed; ownedreapingcomplete,containeronlysleep. HoststillWAIT
+outsideCPU~28cores. Prepared --buckets medium,long --blocks1 recovery support,
+not yetdeployed. Retainshortblock4clean fromv1; rejectENTIREmediumblock fromv1
+forresourcecontamination; replayall4medium+all4long innewdirectoryafterquiet.
+Join onlywith explicit sourcehash/protocol/runtimeidentity and fullwindowaudit,
+neverduplicate short or pickfastcells. Formal36stillNOT_COMPLETED_BY_USER_SCOPE_CHANGE.
+Do notstartNPUjobs while hostbusy. Local123testsPASS (verifycommit).
+
 08:26 checkpoint: abbreviated-v1 6/12 completed. Allshort4 + mediumturn0
 EXCLUSIVE; mediumturn1 window CONTENDED_OR_NOT_YET_QUIET. HostoutsideCPU
 now~95cores. Preserveallraw; do not promote isolated performance on this window.

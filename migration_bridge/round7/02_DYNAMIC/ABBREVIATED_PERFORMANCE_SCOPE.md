@@ -18,3 +18,15 @@ evidence; retain Static/D0 defaults absent qualified benefit. System/quality
 gates are unchanged. The existing formal evaluator must still reject12cells.
 Deferred subsequent performance may use the same explicitly abbreviated scope;
 its independent system/quality gates are not waived.
+
+## Resource-only whole-block recovery, frozen before retry
+
+09:12 UTC: abbreviated-v1 timed out waiting for host isolation after completing
+short4 and medium2. Allshort windows were EXCLUSIVE; mediumturn1 was contended.
+Preserve every original artifact. Retain the entire short block; replace the
+entire medium block (including its clean turn0), then run the unstarted long
+block in a new directory. Selection is based only on resource audit, not timings.
+Use `--blocks 1 --buckets medium,long`; never merge individual best cells.
+Final combined report must bind both source protocols, identical workload IDs,
+runtime/configuration and raw hashes, and audit all12 selected resource windows.
+Retry evidence cannot promote the original contaminated attempt or formal36gate.

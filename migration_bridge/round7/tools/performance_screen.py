@@ -18,6 +18,16 @@ def write(path,data):
     temporary.write_text(json.dumps(data,indent=2)+'\n');temporary.replace(path)
 
 
+def selected_buckets(value,blocks):
+    buckets=value.split(',')
+    canonical=['short','medium','long']
+    if not buckets or buckets!=[b for b in canonical if b in buckets]:
+        raise ValueError('WORKLOAD_SELECTION_MUST_BE_UNIQUE_CANONICAL_ORDER')
+    if blocks==3 and buckets!=canonical:
+        raise ValueError('FORMAL_CAMPAIGN_REQUIRES_ALL_WORKLOADS')
+    return buckets
+
+
 def summarize_events(events,budget):
     from math import isfinite
     outputs=[(t,x) for t,x in events if x.get('output_ids')]
@@ -85,7 +95,10 @@ def main():
     p.add_argument('--output',type=Path,required=True)
     p.add_argument('--blocks',type=int,choices=[1,3],default=3,
                    help='One block is an abbreviated screen, not formal repeatability qualification')
+    p.add_argument('--buckets',default='short,medium,long',
+                   help='Abbreviated recovery only: whole workload blocks in canonical order')
     a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
+    buckets=selected_buckets(a.buckets,a.blocks)
     freeze=json.loads((a.corpus.parent/'CORPUS_FREEZE.json').read_text())
     assert sha(a.corpus)==freeze['corpora']['HOLDOUT']['sha256'],'HOLDOUT_HASH'
     ack=None
@@ -101,7 +114,7 @@ def main():
     # Deterministic first member of each pre-registered bucket, never selected
     # for observed scores or latency. Record IDs before the first measurement.
     targets=[(bucket,next(x for x in rows if x['bucket']==bucket),budget)
-             for bucket,budget in [('short',256),('medium',512),('long',1024)]]
+             for bucket,budget in [('short',256),('medium',512),('long',1024)] if bucket in buckets]
     write(a.output/'protocol.json',dict(order=['left','right','right','left'],blocks=a.blocks,
         evidence_scope='ABBREVIATED_SCREEN' if a.blocks==1 else 'FORMAL_3_BLOCK',
         left=a.left,right=a.right,threshold=a.threshold,dynamic_base=a.dynamic_base,observer=False,
@@ -134,7 +147,7 @@ def main():
                     result=measured_request(root,row,f'measure-{bucket}-{block}-{turn}',budget)
                     result.update(memory_before=before,memory_after=memory())
                 measurements.append(dict(bucket=bucket,block=block,turn=turn,side=side,mode=mode,**result))
-                write(a.output/'progress.json',dict(completed=len(measurements),total=12*a.blocks,measurements=measurements))
+                write(a.output/'progress.json',dict(completed=len(measurements),total=4*len(targets)*a.blocks,measurements=measurements))
     summary={}
     for bucket,_,_ in targets:
         sides={side:[x for x in measurements if x['bucket']==bucket and x['side']==side]
