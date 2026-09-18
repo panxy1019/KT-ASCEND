@@ -2,6 +2,14 @@
 
 ## Latest acquisition recovery
 
+19:14 checkpoint: v2 terminated with RemoteProtocolError (partial body after
+1,314,145,305 bytes of one shard), retained total2.5GiB incomplete cache.
+Resumed SAME filenames/revision/directory with max-workers1 and
+HF_HUB_DOWNLOAD_TIMEOUT=120, PID1505716, log `sample-download-proxy-v3.log`.
+Tunnel79305/port27892 remains required. No force-download or cache deletion.
+Download/hash validation is still pending. Four local verifier rejection tests
+cover wrong file size, SHA, header length and dtype; these are not weight tests.
+
 Direct download PID1323468 exited1 with Network unreachable; v1 log preserved.
 Local workstation has only1.3GiB free, so do not stage10.7GB there. A loopback-only
 SSH reverse proxy through the existing A3 jump now routes .22:27892 to local
