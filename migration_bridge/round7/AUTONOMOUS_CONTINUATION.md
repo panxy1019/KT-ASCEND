@@ -37,6 +37,22 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-18 00:08: actualNZ29 raw/infer primitive regressionPASS exact/maxabs0;
+NDfixed3jobsPASS. Losslesscompleteprimitive/source/prov/releasearchive LOCAL+ A3
+hash/fulltarPASS afterSCPexit0 SHA
+c9685a6b740b9e0e1eba29726c03841407810733561fae7905e6ad08645c0285.
+NEWbacking-requalification-v6 healthyRUNNINGuniform-compact runtime-v7/tools-v21.
+operators100/100PASS max .0017029279396063187. FirstUniform32requestsfinished/
+gracefuldrain; restartseparateprocessloading, no Uniformgatepromotedyet. Keephealthy.
+NEWownedflockwatcher dev-threshold-screen-auto-v1.log waitsforEXACTdriverstatus
+PREDECESSORS_COMPLETE_AWAITING_DEV_THRESHOLD_SCREEN, thenrunsv21DEV-onlyscreen
+to dev-threshold-screen-v1 (samefrozenDEV, Uniform, all3PASSprobesrequired).
+Failure/timeoutpreventsfit; noHD/quality/perf/ackautostart. Don'tduplicatewatcher
+orstartscreenmanuallyifalreadyrunning. Screencompletedcandidate requiresactual
+localGitcommit/contentverification+ack BEFOREheldoutconsumers. No chosen threshold
+yet. SeeRESIDENT_TO_RAW_LAYOUT_REPAIR.md. Localdisk~170MiBfree; largearchives
+durablyA3+smallhashmanifestGit, notuncontrolleddownload/rootcleanup.
+
 2026-09-17 23:49: scopedresidentPhase1port prepared/runtime-v7 created, helper+wrapper
 hashesinRESIDENT_TO_RAW_LAYOUT_REPAIR.md. tools-v21 source72de5bcc9d5508ddce497d7057e444ede4286540,
 archive1cbf2d133903af90c1b5fcef4b9065cdf35ab27251ed1453c36e77e9f26fd734,

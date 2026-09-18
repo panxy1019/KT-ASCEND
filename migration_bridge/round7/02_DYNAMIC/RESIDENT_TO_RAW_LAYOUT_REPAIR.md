@@ -76,3 +76,29 @@ continue DEV threshold screen and commit the candidate before held-out use.
 
 At this document's checkpoint, actual-NZ and full-model recovery are **PENDING**.
 No threshold selected, no Dynamic HD/quality/performance, no Deferred evaluation.
+
+## 2026-09-18 00:06–00:08 A3 checkpoint
+
+Actual format29 raw and inference sources both PASS, w13/w2 raw identity exact,
+maxabs0. The fixed ND jobs also PASS; the old requested-NZ/actual-ND distinction
+remains visible in the raw reports rather than being rewritten.
+
+Lossless primitive matrix, private source/provenance and release archive:
+`raw/resident-layout-nd-nz-regression-v1.tar.gz`, SHA256
+`c9685a6b740b9e0e1eba29726c03841407810733561fae7905e6ad08645c0285`.
+Complete SCP exit0, matching A3/local SHA and full tar validation exit0. Size
+about2.3MiB. This is A3_VERIFIED for the isolated transport regression, not
+A3_VERIFIED_READY for Dynamic full-model migration.
+
+The background chain automatically entered fresh `backing-requalification-v6`.
+Operators100/100 PASS, maxrelativeL2 0.0017029279396063187. Uniform first-process
+32/32 compact requests finished and were gracefully drained; its separate clean
+restart is loading/running. Uniform gate is not yet promoted without that result.
+Healthy run retained. Frequency, directR64 and DEV trigger gates remain pending.
+
+A separate owned, flock-protected watcher
+`/workspace/c64-dev/round7/dev-threshold-screen-auto-v1.log` will run DEV-only
+threshold_sweep only if the driver's exact complete-predecessors status appears.
+Failure/timeout or any missing trigger PASS prevents fitting. It cannot create
+a commit acknowledgment or launch HD/quality/performance. The agent must audit,
+commit the eventual candidate and verify commit contents before those consumers.
