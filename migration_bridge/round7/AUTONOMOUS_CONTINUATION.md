@@ -2,6 +2,17 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+12:20 A3 representative operators ALL PASS: six runs L1/L13/L26 x TP1/2,
+100 rows total, maximum relative-L2 .00170292794 < .01. Summaries copied to
+local raw/a3-relocation-v3 (operator-summary.json and uniform-system-summary.json).
+Launched frozen threshold1024 dynamic_probe.py on runtime-a3-v3 using DEV only,
+output runtime-a3-v3/dynamic-probe-1024-v1; log round7/a3-dynamic-probe-v1.log.
+No healthy prior worker interrupted. Keep this run intact, audit summary after
+process-a/process-b/observer-off complete. Do not refit threshold or reuse old
+host PASS. Host memory ~1.9TiB available; other NPU workers remain untouched.
+Only after this gate and clean host admission may12-cell A3 performance start.
+
+
 12:04 A3 uniform-system-summary.json PASS: 32 compact + 4 clean restart,
 same-path/prefix/observer parity/finite/mapping all PASS; weight layout audit
 baed1c4e8c44dd421716a13331011985ff521feb7f279ff718f86491d97de4b7.
