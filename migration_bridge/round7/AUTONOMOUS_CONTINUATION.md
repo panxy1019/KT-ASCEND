@@ -1,5 +1,31 @@
 # Round7 autonomous continuation
 
+## User override — return testing to 110.129.0.22 (2026-09-18)
+
+13:11 .22 resumed:75frozen files including57.58GB GGUF SHA PASS, saved remote
+round7/return22-file-verification-v1.json. Runtime torch2.9.0+cpu/npu2.9.0.post2,
+C64 cpuset128-191 memnodes4,5, original imageb81e664; frozen1024 ACK validated.
+A3 ownedcontainer onlysleep; no double execution. .22 emptyownedcontainer had
+3887104bytes historical swap; restarted ONLY kt-r67-c64-development-v1, swapnow0.
+Started background admission waiter then tools-v27 performance_screen blocks1
+uniform vs dynamic using tools-v26 candidate-cache-v2 frozenJSON+ACK. Output
+return22-static-dynamic-abbreviated-v1 (fresh ALL12cells, no prior concatenation).
+Logs return22-performance-admission-v1.log then return22-static-dynamic-abbreviated-v1.log.
+Observer hostPID3695146, host-observer-return22-v1/samples.jsonl,24h duration.
+Check fresh60s quiet admission before claiming actual measurements started;
+waiter times out1800s if blocked. Preserve healthy run, audit completed windows.
+After12cells: abbreviated classification only, then orderedDeferred D0/D1.
+
+User explicitly authorized changing the heartbeat to resume testing on .22.
+This supersedes all older A3-only/no-.22-test instructions below. Keep .20
+migration cancelled. Before launching, verify .22 artifacts/environment/gates
+and check no healthy owned A3 run would be duplicated. Preserve A3 evidence;
+never combine cross-host timed results. Proceed with the authorized 12-cell
+abbreviated ABBA, Deferred D0/D1, and final report on .22 under resource admission.
+Do not start new A3 tests. No push/main merge/tag. The last .22 read-only check
+at13:02UTC showed eight idle910B3 devices and99–100% CPU idle; recheck, do not
+treat that snapshot as lasting exclusivity. Heartbeat remains15minutes ACTIVE.
+
 ## Latest override: parallel DEV system probes (2026-09-18)
 
 12:36 A3 dynamic-probe-1024-v1/summary.json PASS: no-trigger/trigger,
