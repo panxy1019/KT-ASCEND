@@ -2,6 +2,23 @@
 
 ## Latest override: parallel DEV system probes (2026-09-18)
 
+SUPERSEDING USER TARGET 09:40: STOP host20migration; destination now originalA3
+110.123.0.3. OldhosttransferPIDs2764007/8/9/10 stopped, SSHmasterclosed.
+Newlycreated /home/admin/kt-r64-migration onhost20 (~4.7GiBpartial) deleted
+peruserinstruction; absenceconfirmed. Oldhostsource+history untouched.
+A3rootPTY59740, directSSHadmin+sudo-i. Hosta3-server-00 openEuler,320physical/
+640logicalSMT2,8NUMA,2TiB/1.9TiBavailable,1.2TiBdiskfree,driver26.0.rc1,
+8cards×2dies, noNPUprocessatinspection. ExistingA3historyMUSTNOToverwrite.
+Destination /home/admin/kt-round7-return-a3 (newadminowned). Backgroundpayload
+rsync3mountsources tothatroot and separateimagesave/transferSTARTEDoldhost;
+logs /home/admin/kt-r64-migration/return-a3-payload.log and return-a3-image.log.
+Sourceimage b81e664642ae savedround7-return-a3-runtime.tar; readonlyhistorical
+910Boperatorpackages mayNOTworkA3: auditoriginalA3package, devicecompatibility
+beforelaunch. C64 needs64DISTINCTphysicalcores,2×32subpools; don'treuseoldCPU
+numbersblindly. No crosshostperfmerge; all12cellsfreshAFTERrelocationgates.
+Updatehostobserver16dieinventory/path/containerownershipadapterwithtests.
+Host20planbelowCANCELLED. No testcontainerscreatedonhost20.
+
 USER MIGRATION OVERRIDE 09:33: futuredevelopment moves to110.129.0.20,
 viaJump110.123.0.3 admin then sudo-i. NewrootPTY5636; oldroot95982.
 Newhostgpu-server-00:256Kunpeng920,8NUMA,1TiB/918GiBavailable,596GiBdiskfree,
