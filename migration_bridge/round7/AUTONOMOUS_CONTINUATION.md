@@ -37,6 +37,23 @@ and rerun; do not promote missing gates.
 
 ## Healthy current stage — do not restart
 
+2026-09-18 03:25: OriginalDEVscreen48/48COMPLETE selected1024 (longratio3.198),
+cachefeasibilityPASS all168experts exact/controlH2D/stalebinding; warmstaging
+31.7–32.0x faster, NOTmodelgain. Fulloriginalscreen+1024+cachearchiveSCP/hash/tar
+PASS7c556cef6d5543c2d399d021eb505b5edec7a80215ea282cd497b1e80de61749.
+NEWruntime-v8 privatecacheport/tools-v22; wrapper3e5d6a38c375ed6e8d538cd4e3eea3b8dad2d725313f8554fe5a1b3e2ff0fbb7,
+cachehelperfc67bac2d5e1f6b78a520e4fa6f0b3e711fb72970ffa9f27032d0b9aa02a689b,
+CPU461/stagerdb411/residentac2 unchanged.108LOCAL+A3puretestsPASS.
+Ownedchain cache-runtime-v8-qualification-v1.log nowlaunchedUniformcompact→
+cache-runtime-v8-probes/threshold-256/512/1024→dev-threshold-screen-v2.
+NooldPASSsummarycopy. Keephealthy. Checkactualsourcebinding(inference tensor
+versioncounter potential), memory growth and exactparity. OnlyafternewallPASS
+andDEVscreen complete audit/commitcandidate+ack; noHD/CM/perfautomatic.
+Needbindexistingoperatorgate forlaterquality via explicit provenance if newruntime
+doesnotcontainoperator-summary; do notfabricatefreshoperatorrun. OldR64/Frequency
+remainvalidprior evidence forcache-onlychange. SeeSTAGING_ACCELERATION_EXPERIMENT.
+CurrentrootSSHsession93900;old14125stalled,don'tuse. WorktreeHEAD9c8859187+docs.
+
 User now explicitly authorized acceleration. Originalall3DEVprobesPASS; original
 DEVscreen-v1 healthy (lastStatic0 completed5/12). Preserveitsresults, do notcommit
 anack/launchHD automatically: newcachefeasibilityexperiment queuedAFTERscreenexit.
