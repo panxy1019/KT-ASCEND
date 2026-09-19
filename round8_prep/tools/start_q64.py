@@ -11,7 +11,8 @@ from pathlib import Path
 def main():
     p=argparse.ArgumentParser();p.add_argument('--admission',type=Path,required=True)
     p.add_argument('--candidate',choices=['q64-launch-v6','q32-launch-v1','q32-launch-restart-v1',
-                                          'q64-perf-launch-v1','q32-perf-launch-v1'],default='q64-launch-v6')
+                                          'q64-perf-launch-v1','q32-perf-launch-v1',
+                                          'q64-perf-launch-v2','q32-perf-launch-v2'],default='q64-launch-v6')
     a=p.parse_args()
     admission=json.loads(a.admission.read_text())
     assert admission['admitted'] and 0<=time.time()-admission['timestamp']<=60

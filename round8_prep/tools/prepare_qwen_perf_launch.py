@@ -26,13 +26,16 @@ def main():
         assert hook_index == len(args) - 2
         del args[hook_index:]
         assert '--forward-hooks' not in args
-        output = ROOT / f'{profile}-perf-launch-v1'
+        output = ROOT / f'{profile}-perf-launch-v2'
         output.mkdir(exist_ok=False)
         config['argv'] = args
         config['purpose'] = 'ISOLATED_STATIC_PERFORMANCE_AND_STABILITY'
         config['quality_authorized'] = False
         config['source_command_sha256'] = sha(source)
         config['diagnostic_hooks_enabled'] = False
+        hook = str(ROOT / 'tools/qwen_bringup_hooks.py')
+        config['excluded_diagnostic_hook_hash'] = config['code_hashes'].pop(hook)
+        config['current_diagnostic_hook_hash'] = sha(Path(hook))
         (output / 'resolved-command.json').write_text(json.dumps(config, indent=2) + '\n')
         print(profile, sha(output / 'resolved-command.json'), flush=True)
 
