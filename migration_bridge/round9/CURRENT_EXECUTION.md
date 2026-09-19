@@ -1,5 +1,19 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Local proxy feasibility test — keep healthy download unchanged
+
+User requested investigating local proxy. TLS-verified curl range probes of
+frozen model-00029 (outputs discarded, no local model storage) succeeded206.
+Local HTTP proxy127.0.0.1:7890 ->official:16MiB/3.058s;64MiB/7.067s
+(9.50MB/s). Local proxy ->mirror:16MiB/3.657s. Temporary loopback-only SSH
+remote forwarding .22:17891 ->local7890 ->official:16MiB/3.099s;
+64MiB/8.669s (7.74MB/s). These bounded probes are not full-shard identity
+proof or isolated sustained-throughput benchmarks. No demonstrated speed gain
+over current downloader9.44MB/s; keep it running. Probe tunnel PID3277177
+terminated afterward; existing occupied17890 left untouched.
+Latest completed shards42/131,127607189904bytes; download RUNNING. Proxy
+remains a possible alternate transport if failure recurs, not selected default.
+
 ## Download throughput check and online quota increase
 
 User requested faster download and ETA. Online systemd runtime quotas changed
