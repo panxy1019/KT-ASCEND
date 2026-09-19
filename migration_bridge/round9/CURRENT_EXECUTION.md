@@ -1,5 +1,28 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Official-source proxy recovery v2 — current owned downloader
+
+Original mirror download failed TLS at43/131 completed shards130962633280bytes.
+Mirror-through-proxy v1 then failed HF FileMetadataError (missing Hub metadata),
+before payload progress. Both unit journals and original partials retained.
+Added allowlisted KT_DOWNLOAD_ENDPOINT selector, preserving proxy environment,
+revision/fileallowlist/cache and final SHA/census validation. Red test reproduced
+missing behavior; full Round9 tooling suite9/9PASS. Commit2e65f3e40.
+Deployed guardSHA ae38169ab632fb7364c67809bd7d7ce04d66f41c7c0fad7dba460d51a23a90e1.
+Previous script retained as download_guard.pre-official-proxy.py on .22.
+
+Current owned unit: kt-round9-official-proxy-download-v2 on .22, HTTPS_PROXY
+loopback17891, endpointhttps://huggingface.co; same8GiB/swap0,CPU400%,IO300MB/s.
+Local user unit kt-round9-proxy-tunnel-v1 provides reverse SSH17891 ->local7890
+through authorized jump. It depends on this desktop/proxy remaining online;
+no host-wide routes/exports/firewalls changed. Port17890 remains untouched.
+Do not restart old direct/mirror units concurrently. No automatic unbounded retry.
+New endpoint recovered RUNNING/payload growth; underlying TLS rootcause is not
+proven fixed. Final wholemodelSHA still required. Independent existing shard
+model-00001 size1040155944 verified against officialSHA
+3a092d3a9a542093a9c3524023f05f9e1289ccf23324735ce32ae70bf58700ec PASS;
+this is not wholemodel or new transport full-shard qualification.
+
 ## Candidate download/storage host110.120.0.3 inspected
 
 User asked about downloading there and mounting into .22. Read-only inspection:
