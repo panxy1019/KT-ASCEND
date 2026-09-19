@@ -50,11 +50,25 @@ def main():
     STAGE.mkdir(exist_ok=True)
     lock = (STAGE/'controller.lock').open('a')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    # Existing metadata must remain intact; never silently switch discovery source.
+    env = download_environment(os.environ)
+    # HF can fetch metadata after weights: fetch missing metadata from the same
+    # frozen allowlist, verify its Git blob/SHA identity, never overwrite existing.
     for row in rows:
         if not row['path'].endswith('.safetensors'):
+            if not (MODEL/row['path']).exists():
+                if row['size'] > CHUNK:
+                    raise ValueError('metadata requires explicit size review')
+                meta = STAGE/('metadata-'+str(time.time_ns()))
+                meta.mkdir()
+                url = f"https://huggingface.co/{manifest['repo']}/resolve/{REV}/{row['path']}"
+                guarded(['/usr/bin/curl', '--disable', '--http1.1', '--fail', '--location',
+                         '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
+                         '--header', 'Accept-Encoding: identity', '--max-time', '90',
+                         '--max-filesize', str(row['size']), '--output', str(meta/row['path']), url],
+                        'METADATA:'+row['path'], env)
+                receipt = publish(meta, MODEL, row)
+                (meta/'receipt.json').write_text(json.dumps(receipt)+'\n')
             verify_file(MODEL, row)
-    env = download_environment(os.environ)
     for row in rows:
         if not row['path'].endswith('.safetensors'):
             continue
