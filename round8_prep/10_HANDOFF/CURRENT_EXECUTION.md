@@ -1,5 +1,18 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 18:56 UTC — performance v2 watchdog failure, v3 retry preparation
+
+v2FAILED after static0-0. Dynamic medium request progressed through layer34
+but watchdog300 killed scheduler; client RemoteDisconnected. Owned prep stopped,
+OOMKilled=false; other tasks untouched. Failure archived locally/remotely.
+See11_DYNAMIC/PERFORMANCE_WATCHDOG_RETRY_V3.md. New bounded v3 adapter sets
+watchdog1800 for BOTHStatic/Dynamic, restartsALL12cells without mixing v2.
+No changed production, workload, timed boundary, mask, C64 or quality contract.
+New runner tools/run_qwen_dynamic_perf_retry.py; freeze files in
+qwen-dynamic-perf-retry-v3. Require local commit/retry-ack before launch.
+31localtestsPASS; actual frozen source transforms compile. Device replay pending.
+Round9 download remainsPAUSED; keep marker through retry campaign.
+
 ## UPDATE 18:31 UTC — both Dynamic gates audited; formal performance dispatched
 
 Heldout-v3128/128PASS,8320updates,40layers x208consistent generations;
