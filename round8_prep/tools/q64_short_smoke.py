@@ -14,7 +14,7 @@ def main():
     assert isinstance(ids,list) and len(ids)>2 and all(isinstance(i,int) for i in ids)
     payload=dict(input_ids=ids,sampling_params=dict(temperature=0,max_new_tokens=8),
                  return_logprob=True)
-    out=root/'q64-launch-v2'
+    out=root/'q64-launch-v3'
     (out/'smoke-request.json').write_text(json.dumps(dict(rendered=rendered,request=payload),ensure_ascii=False,indent=2)+'\n')
     response=requests.post('http://127.0.0.1:18400/generate',json=payload,timeout=900)
     (out/'smoke-response.txt').write_text(response.text)

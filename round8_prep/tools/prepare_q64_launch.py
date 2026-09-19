@@ -20,7 +20,7 @@ def sha(p):
 
 def main():
     root=Path('/workspace/round8')
-    out=root/'q64-launch-v2'
+    out=root/'q64-launch-v3'
     out.mkdir(exist_ok=False)
     profile=json.loads((root/'q64_profile.json').read_text())
     assert profile['resident']==64 and len(profile['layers'])==40
@@ -43,7 +43,7 @@ def main():
         '--disable-cuda-graph','--disable-custom-all-reduce','--skip-server-warmup',
         '--weight-loader-disable-mmap','--attention-backend','ascend',
         '--sampling-backend','pytorch','--disable-radix-cache',
-        '--disable-shared-experts-fusion','--language-only',
+        '--disable-shared-experts-fusion',
         '--kt-weight-path',str(root/'cpu-experts-f32-v1'),'--kt-method','LLAMAFILE',
         '--kt-cpuinfer','64','--kt-threadpool-count','2','--kt-numa-nodes','4','5',
         '--kt-num-gpu-experts','64','--kt-max-deferred-experts-per-token','0',
