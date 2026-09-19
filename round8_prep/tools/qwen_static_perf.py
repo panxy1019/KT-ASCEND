@@ -13,9 +13,8 @@ ROOT = Path('/workspace/round8')
 SEEDS = {
     'short': 'Explain in English why the sky is blue, using numbered sentences. ',
     'medium': 'Discuss how a cache works in a computer and give a concrete example. ',
-    'long': 'Describe the steps of testing a distributed program and how to record failures. ',
 }
-TARGETS = {'short': (128, 64), 'medium': (512, 128), 'long': (1024, 256)}
+TARGETS = {'short': (64, 32), 'medium': (256, 64)}
 
 
 def make_inputs():
@@ -37,17 +36,17 @@ def main():
     parser.add_argument('--profile', choices=('q64', 'q32'), required=True)
     parser.add_argument('--block', type=int, choices=range(3), required=True)
     parser.add_argument('--position', type=int, choices=range(4))
-    parser.add_argument('--campaign', default='qwen-static-perf-v2')
+    parser.add_argument('--campaign', default='qwen-static-perf-v5')
     args = parser.parse_args()
     suffix = '' if args.position is None else f'-position{args.position}'
     campaign = 'qwen-static-perf-v1' if args.position is None else args.campaign
     out = ROOT / campaign / f'{args.profile}-block{args.block}{suffix}'
     out.mkdir(parents=True, exist_ok=False)
     inputs = make_inputs()
-    protocol = dict(version=1, inputs=inputs, max_running_requests=1,
+    protocol = dict(version=2, inputs=inputs, max_running_requests=1,
                     temperature=0, ignore_eos=True, graph=False,
                     dynamic=False, deferred=False, diagnostic_hooks=False,
-                    order=['short', 'medium', 'long'])
+                    order=['short', 'medium'])
     blob = json.dumps(protocol, ensure_ascii=False, sort_keys=True, indent=2) + '\n'
     (out / 'protocol.json').write_text(blob)
     url = 'http://127.0.0.1:18400/generate'

@@ -7,8 +7,9 @@ removed for timed runs; no model arithmetic changes are made.
 
 ## Isolated static performance
 
-Three fixed batch-one workloads use 128/512/1024 input token IDs and
-64/128/256 output tokens. Qwen chat rendering has thinking disabled. Greedy
+Two fixed batch-one workloads use 64/256 input token IDs and
+32/64 output tokens. The previous long workload is removed by the user's
+2026-09-19 scope reduction. Qwen chat rendering has thinking disabled. Greedy
 generation uses `ignore_eos` to obtain the exact output budget. Each profile
 gets a warmup 8-token request before every measured block. The three-block
 profile order is Q64, Q32, Q32, Q64 for each block (ABBA). Record client E2E
@@ -18,6 +19,10 @@ host admission and no competing workload on the assigned NPU/CPU set. Compare
 paired log ratios per workload with descriptive uncertainty; no speedup is
 predeclared as a hard correctness gate. Times collected with forward hooks are
 not formal performance evidence.
+
+This reduced protocol therefore contains 12 clean-process ABBA cells and 24
+measured requests. Campaigns v1-v4 remain immutable historical evidence under
+the earlier, longer protocol and are not merged with the reduced v5 results.
 
 ## Long-run stability
 

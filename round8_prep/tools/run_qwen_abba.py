@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path('/home/admin/kt-round8-qwen35')
 CONTAINER = 'kt-round8-qwen35-prep'
-CAMPAIGN = 'qwen-static-perf-v4'
+CAMPAIGN = 'qwen-static-perf-v5'
 PYTHON = '/workspace/round8/venv/bin/python'
 TOOLS = '/workspace/round8/tools'
 
@@ -93,7 +93,7 @@ def main():
                         time.sleep(10)
                 assert worker.wait()==0, 'Performance client failed'
             summary=json.loads((out/name/'summary.json').read_text())
-            assert summary['status']=='BLOCK_COMPLETE' and len(summary['rows'])==3
+            assert summary['status']=='BLOCK_COMPLETE' and len(summary['rows'])==2
             state['completed'].append(name)
             save()
         state['status']='COLLECTION_COMPLETE_PENDING_RESOURCE_AUDIT'

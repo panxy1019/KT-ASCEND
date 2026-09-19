@@ -185,3 +185,18 @@ memory stability are NOT_QUALIFIED. Q64 is engineeringreference64/256resident,
 notAllNPU. Afterdistinctpromptscreen, audit remainingoperator/systemgates and
 freezeQwen prompt/thinking/scoring protocol before fresh CMMLU reference.
 No automatic reuse of DSV2 scores or quality claims.
+## UPDATE 2026-09-19 — formal performance scope reduced before v5
+
+Per the user's explicit scope decision, formal Static performance now keeps
+only short and medium batch-one requests. Short is reduced from 128 input / 64
+output tokens to 64 / 32; medium is reduced from 512 / 128 to 256 / 64; the
+1024 / 256 long request is removed. Three ABBA blocks remain, so the formal v5
+campaign is 12 clean-process cells and 24 measured requests. The active v4
+controller was interrupted before its first cell completed, its state/logs are
+preserved, and only the project-owned container is stopped. v1-v4 must not be
+merged with v5 because the workload contract changed.
+
+Q32 remains the frozen target for long-run stability. Qwen Dynamic system/DEV
+qualification may proceed independently on the isolated .16 host, but final
+Dynamic performance must compare against the audited reduced Static v5
+baseline under the same workload contract.
