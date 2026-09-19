@@ -36,3 +36,17 @@ to heldout-v2, which must REMAIN FAILED. Before performance release, add an
 explicit audited v3 attempt-path adapter; do not overwrite/symlink v2 evidence
 or change the old candidate. Audit and hash the v3 retry manifest/ack as well
 as all raw responses. Performance timeout is NOT changed by this retry.
+
+## 15:46 UTC follow-up
+
+The exact failed request holdout_032 now returnedHTTP200,880input tokens,
+16output tokens,80layer updates,482.895seconds. This verifies elimination of
+the300second timeout for the observed failure; fullheldout qualification pending.
+
+Explicit versioned audit/release adapter implemented in
+`tools/qwen_dynamic_retry_release.py`. It checks retry provenance, preserves
+FAILEDv2, reuses all original audit assertions and changes only attempt paths.
+Performance entrypoint re-runs audit and validates exact summary/retry hashes
+before invoking unchanged timing/isolation protocol. It does not write approval.
+New negative regression rejects wrong attempt, incomplete/failed gates and
+wrong retry digest. Local29testsPASS.

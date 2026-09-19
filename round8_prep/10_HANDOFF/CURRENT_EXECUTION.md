@@ -1,5 +1,29 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 15:46 UTC — original failing request replay PASS; release adapter ready
+
+Heldout-v3 holdout_032 completedHTTP200,880input/16output,80layer updates,
+elapsed482.895s. Original300s watchdog failure is eliminated on this request;
+the complete128 gate remains RUNNING. CMMLU-v2 healthy (>84/256). Preserve both.
+No offset warning, watchdog, traceback, OOM or cgroup swap in current samples.
+
+Use NEW explicit attempt adapter after both complete:
+`python3 tools/qwen_dynamic_retry_release.py` on .22 host. It verifies frozen
+candidate/retry/ack/config hashes, requires old v2 stillFAILED, and runs the
+original complete-input/score/generation/resource audit against heldout-v3 and
+cmmlu-v2. It only prints a release proposal, never auto-writes approval.
+Independently review it, archive complete raw evidence/hashes, then write
+`qwen-dynamic-candidate-v2/qualification-release.json` using that proposal
+(includes heldout_attempt and retry_sha256, both mandatory).
+
+For formal performance use
+`python3 tools/qwen_dynamic_retry_release.py --performance`.
+It re-audits both stages before validating release and invokes frozen performance
+with only the explicit heldout summary path changed. Timed configs/timeout/
+workloads/isolation unchanged. Old direct audit/performance entrypoints still
+point toFAILEDv2 and must NOT be used. Do not overwrite/symlink old evidence.
+No performance release or new timed jobs created. Local29testsPASS.
+
 ## UPDATE 15:27 UTC — heldout v2 watchdog failure; v3 RUNNING
 
 v2 heldout FAILED on holdout_032: scheduler watchdog300 expired during cold
