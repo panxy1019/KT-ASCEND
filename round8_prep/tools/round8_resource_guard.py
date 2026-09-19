@@ -22,7 +22,14 @@ def reject_reasons(x):
     if set(cpus) & set(x['round7_cpus']): reasons.append('CPU_COLLISION')
     reserve = max(64*2**30, x['host_total_bytes']*.2)
     if x['host_available_bytes']-x['predicted_private_bytes'] < reserve: reasons.append('RAM_RESERVE')
-    if x['swap_used_bytes'] != 0: reasons.append('SWAP_ACTIVE')
+    if x['swap_used_bytes'] != 0:
+        # Residual unrelated host swap is not evidence of current paging.
+        # Require measured idle counters AND no swap in the owned cgroup.
+        idle = (x.get('swap_observation_seconds', 0) >= 30
+                and x.get('host_swapin_delta') == 0
+                and x.get('host_swapout_delta') == 0
+                and x.get('cgroup_swap_current') == 0)
+        if not idle: reasons.append('SWAP_ACTIVE_OR_UNVERIFIED')
     if x['npu_free_bytes'] < x['predicted_npu_peak_bytes'] + 4*2**30: reasons.append('HBM_RESERVE')
     if x['disk_free_bytes'] < x['download_conversion_budget_bytes']: reasons.append('DISK_BUDGET')
     return reasons

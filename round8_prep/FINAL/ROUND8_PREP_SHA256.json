@@ -169,6 +169,14 @@
       "bytes": 1552,
       "sha256": "9f955d7bf0ac065e5ea7557f21921f524e9af6cefc3d64820268e505bba9fa39"
     },
+    "06_UNIT_TESTS/test_swap_admission.py": {
+      "bytes": 1432,
+      "sha256": "7f1a516773cbdf6ce74cc008f4a131c1d3086f743ad2bf4fac8ebf722f8a96f9"
+    },
+    "07_BUILD/FULL_MODEL_MEMORY_ADMISSION.md": {
+      "bytes": 1291,
+      "sha256": "afe10301b24215730db3309e7d969cab0fb14b9b2e4a3928901e05552ed7442a"
+    },
     "07_BUILD/ISOLATION_AND_BUILD.md": {
       "bytes": 1551,
       "sha256": "09ce6856feaf5632e476d85d0e7e66cdd74b5eecf71002ab49429fb8bac20462"
@@ -188,6 +196,10 @@
     "10_HANDOFF/CPU512_C64_SAMPLE_RESULT.md": {
       "bytes": 1835,
       "sha256": "479892048e13638bf9e64443a2b04d58d3c10870ccca8dd8cfdc150488ef28e0"
+    },
+    "10_HANDOFF/FULL_CONVERSION_AND_Q64_ENTRY.md": {
+      "bytes": 2839,
+      "sha256": "3d65ba26333a548bc51aa3b76c3b8285baa171ab68557d111503986b2ed31d6f"
     },
     "10_HANDOFF/GDN_PRIMITIVE_ENTRY.md": {
       "bytes": 2264,
@@ -245,6 +257,10 @@
       "bytes": 642,
       "sha256": "606f995d1d516f04bca040884ffe052c1b3af290f58382d9d81cac415fa85d7a"
     },
+    "10_HANDOFF/multi-expert-results-v1.tar.gz": {
+      "bytes": 1839,
+      "sha256": "4da62af2fc069521e98a1cc64b074bbf20b0fffdf8536eb50b847f5b188b914d"
+    },
     "10_HANDOFF/round8_entry_probe.json": {
       "bytes": 430,
       "sha256": "2570f23049ffb2d766211995a8f04bb324f65519b65e5e504db15fafb00a688e"
@@ -265,9 +281,17 @@
       "bytes": 1014,
       "sha256": "b9c727019ede6bbfee5471d5968598971618f1c42cb94a3c73f30000dac18daf"
     },
+    "tools/admit_q64_host.py": {
+      "bytes": 3228,
+      "sha256": "106482737b6640dff89e6b7fa3881fe9a3d2d77fbeb3d803e0ab91154fa83f09"
+    },
     "tools/conv_state_probe.py": {
       "bytes": 2394,
       "sha256": "d01efa97a564aa42a677765da70904510f5030f4e23ea2fb59e9e3a9f8483a9a"
+    },
+    "tools/convert_all_experts.py": {
+      "bytes": 4800,
+      "sha256": "e3669917e8f35f8f785ac5a5a6449044d2288e4ecbb2bf86cf423f358be44b60"
     },
     "tools/entry_probe.py": {
       "bytes": 1016,
@@ -309,17 +333,29 @@
       "bytes": 5177,
       "sha256": "e06bbfcf6e6bf4b643e75b8f667ae044ffe6f4022ba2bd7502729af4679dcdf1"
     },
+    "tools/prepare_q64_launch.py": {
+      "bytes": 4109,
+      "sha256": "96578c595a018de31c9b586667dba99ce63289052ab22c72a69cd12edf4a81b9"
+    },
     "tools/prepare_static.py": {
       "bytes": 3482,
       "sha256": "9f415e9dedf4cf29c872903eebbbe9d74820a739df6f8217ba3d11dc5d75a0a6"
     },
+    "tools/qwen_bringup_hooks.py": {
+      "bytes": 2306,
+      "sha256": "fd50de6a7531a706712955027eaf9868732a65c18b8c5bd301912737714106c9"
+    },
     "tools/round8_resource_guard.py": {
-      "bytes": 1995,
-      "sha256": "fce07698c6156695746e56f006a822fee87a4faebe07a2527df3c4fec9ac9205"
+      "bytes": 2397,
+      "sha256": "b355128c98fc103a92ab80c60c61b3fcb69876a84464af2da4436aa679de36d5"
     },
     "tools/sample_reference_probe.py": {
       "bytes": 2365,
       "sha256": "1efac382bf1c5dd2c9644c54d214ea0cf27b50f7cb1aef9f91e20721e1e9a1f8"
+    },
+    "tools/start_q64.py": {
+      "bytes": 1212,
+      "sha256": "744b8ddc9d592239ca11f6da6d0a78b31b55f6d3bcdacee7eaf070bd2eb4fd7c"
     },
     "tools/verify_checkpoint.py": {
       "bytes": 1292,
