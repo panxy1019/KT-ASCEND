@@ -1,5 +1,19 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 09:31 UTC — Q32 CMMLU audited and quality screen passed
+
+Q32 completed all 256 frozen Qwen CMMLU items: 225/256 correct, invalid=0,
+delta +1.171875pp versus the Q64 engineering reference 222/256. Independent
+raw audit passed for ordered item IDs, unique request IDs, exact input token IDs,
+candidate IDs, stop and sampling parameters, one finite score position and
+frozen scorer replay. Archive `qwen-cmmlu-q32-v1.tar.gz` SHA256 is
+`a4ddedc07dd962821124bb4da717da60d8cb9712c9fa4ac017fae2d4142a6e2b`.
+The Q32 quality screen therefore passes the frozen minimum 210/256 with zero
+invalid outputs. See `Q32_CMMLU_FINAL_AUDIT.md`.
+
+Round8 static Q32 system and product quality screens are now complete. Formal
+performance, long-run stability, Dynamic and Deferred remain unqualified.
+
 ## UPDATE 09:03 UTC — Q32 system frozen; quality running
 
 Q32 same-process 32 requests, clean-restart four 32-token trajectories and
