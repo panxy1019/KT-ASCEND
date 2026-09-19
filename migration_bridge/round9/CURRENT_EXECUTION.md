@@ -1,5 +1,22 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Candidate download/storage host110.120.0.3 inspected
+
+User asked about downloading there and mounting into .22. Read-only inspection:
+hostname server-00; /mnt/data ~1.5TiB free, root443GiB free; MemAvailable~713GiB.
+Only active physical interface eno3np2 negotiated1Gb/s. Existing NFS exports
+include /mnt/data/train_data to110.129.0.0/16 and kcc-training-workspace to
+110.129.0.0/24; no export/mount/container settings changed, no files deleted.
+.22 route to110.120.0.3 still uses its shared enp189s0f0/gateway110.129.0.1.
+New-host mirror64MiB probe8.753s=7.67MB/s, TLS verified206; no demonstrated
+speed advantage or complete-shard stability qualification. Prefer bounded full
+shard+SHA pilot before migration. Network-backed CPU expert paging is not an
+appropriate unqualified substitute for local runtime storage.
+
+.22 original downloader nowFAILED at epoch1789859816.7288632, same
+SSL DECRYPTION_FAILED_OR_BAD_RECORD_MAC. Journal preserved. Previous RUNNING
+records above/below are historical, not current. No blind restart this audit.
+
 ## Network diagnostic 23:12–23:14 UTC
 
 Default internet route on .22 uses enp189s0f0, negotiated1000Mb/s full-duplex;
