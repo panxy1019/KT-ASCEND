@@ -28,3 +28,17 @@ structure results, and three original failed launch logs. Do not overwrite.
 Status: **SHORT_Q64_BRINGUP_PASS_NOT_QUALIFICATION**. Four-prompt repeated/prefix
 matrix running; clean restart, shared composition, full32-prompt generation,
 quality and performance remain separate gates. No Q32 promotion yet.
+
+## Process A compact completed
+
+32/32 requests across four distinct prompts (Chinese, English, math, JSON),
+six16-token repeats, one32-token baseline and one8-token prefix per prompt:
+all exact and finite. This is NOT the later32-distinct-prompt screen.
+Protocol SHA65313739d00574db82563267c9a530279b6576d2be11a645492cc1114b8ac277.
+Full process-A archive SHA57b83a0ab823af335466559ae04593643112e71ecdd62c0491437d75088024f1.
+
+Clean restart initiated after successful matrix. Docker stop reported delayed
+exit event; subsequent inspect confirmed exited, OOMKilled=false, no processes.
+Exit137 here follows intentional container stop, not a model/runtime failure.
+Process B uses same production code and configuration plus first-forward shared
+composition diagnostic; token comparison also screens observer impact.
