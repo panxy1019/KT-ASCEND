@@ -1,5 +1,16 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 22:39 UTC — ONE shard alternate-client pilot running
+
+Read07_DOWNLOAD_TRANSPORT_PILOT.md. Newownedunit kt-round9-curl-pilot-v1
+started22:38:40; stateRUNNING,CURL_PILOT_RANGE_0. Preserve if healthy.
+Selected model-00029-of-00131.safetensors3200016032bytes, officialSHA
+40d2f2291ff4800373087cd00f1f95c3bd69331c32f39cfdd5d43516764b03ec.
+Own output curl-shard-pilot-v1; no model publication. ExistingHFunit remainsFAILED.
+Localcommit2cdee26d0precededdispatch;8toolingtestsPASS. Guard interlock remains
+active, sameCPU/memory/IOcaps, noNPU. Audit entireSHA before extending transport.
+Do not infer wholemodelverified from SINGLE_SHARD_PILOT_VERIFIED.
+
 ## 22:25 UTC — reservation released; bounded transport probe
 
 Round8diagnostic exited, prep container stopped; PAUSE_DOWNLOAD marker removed
