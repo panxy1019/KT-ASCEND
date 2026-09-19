@@ -1,5 +1,17 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 13:25 UTC — DEV256/512 done; stability B admission retry
+
+Both Dynamic DEV summaries report PASS,120 update rows each (40layers x3).
+Independent audit and storage_offset warning investigation remain pending;
+no held-out authorized. DEV1024 dispatched on lane-a using its frozen candidate.
+Check chunk512 vs threshold1024 trigger behavior explicitly before acceptance.
+StabilityA completed18 requests/1152tokens. B launch was correctly rejected by
+resource guard:894 swap-in pages/31.7s, zero swap-out, zero owned cgroup swap.
+v2 remains FAILED at admission, not a token/determinism failure. Resume tooling
+preserves A and starts only B under fresh v3-resume identity with the same
+resource guard and comparison to A reference tokens. No limit was relaxed.
+
 ## UPDATE 13:08 UTC — three lanes started; foreground monitoring may end
 
 User requested monitoring until all three tests had stable starts, while keeping

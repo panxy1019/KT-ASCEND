@@ -1,5 +1,6 @@
 """Host controller for two clean-process Q32 stability campaigns."""
 import json
+import argparse
 import subprocess
 import time
 from pathlib import Path
@@ -33,11 +34,22 @@ def sample():
 
 
 def main():
+    global OUT
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--resume-campaign-a',type=Path)
+    args=parser.parse_args()
+    prior=None
+    campaigns=('A','B')
+    if args.resume_campaign_a:
+        completed=json.loads((args.resume_campaign_a/'summary.json').read_text())
+        assert completed['status']=='CAMPAIGN_PASS' and completed['generated_tokens']==1152
+        prior=completed['reference_tokens'];campaigns=('B',)
+        OUT=ROOT/'qwen-q32-stability-22-v3-resume'
     OUT.mkdir(exist_ok=False)
     state=dict(status='RUNNING',campaigns=[],started=time.time())
+    if args.resume_campaign_a:state['prior_campaign_a']=str(args.resume_campaign_a)
     try:
-        prior=None
-        for campaign in ('A','B'):
+        for campaign in campaigns:
             stop_owned()
             command('docker','start',CONTAINER)
             subprocess.run(['python3',str(ROOT/'tools/admit_q64_host.py')],
