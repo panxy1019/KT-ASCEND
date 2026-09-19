@@ -20,6 +20,15 @@ def main():
     before=swap_counters();time.sleep(30);after=swap_counters()
     inspect=json.loads(command('docker','inspect',CONTAINER))[0]
     host=inspect['HostConfig'];reasons=[]
+    namespace_path=Path('/proc/uda/namespace_node')
+    namespaces=namespace_path.read_text() if namespace_path.exists() else ''
+    if not namespaces:
+        reasons.append('NPU_NAMESPACE_AUDIT_UNAVAILABLE')
+    for block in re.split(r'(?=ns_id )',namespaces):
+        header=re.match(r'ns_id\s+(\d+)',block)
+        if header and int(header.group(1))<128:
+            if any(re.fullmatch(r'\s*\d+\s+2\s*',line) for line in block.splitlines()):
+                reasons.append('NPU2_OWNED_BY_OTHER_NAMESPACE')
     if inspect['State']['Running']:reasons.append('OWNED_CONTAINER_ALREADY_RUNNING')
     if host['CpusetCpus']!='128-191' or host['CpusetMems']!='4,5':reasons.append('CPU_NUMA_IDENTITY')
     if host['Memory']!=384*2**30 or host['MemorySwap']!=384*2**30:reasons.append('CGROUP_MEMORY_IDENTITY')
@@ -34,7 +43,7 @@ def main():
     result=dict(timestamp=time.time(),admitted=not reasons,reasons=reasons,
         execution_host='110.129.0.16',container=CONTAINER,npu=2,cpus='128-191',mems='4,5',
         available_bytes=mem['MemAvailable'],swap_before=before,swap_after=after,
-        npu_proc_raw=proc)
+        npu_proc_raw=proc,namespace_raw=namespaces)
     (ROOT/'q32-stability-admission.json').write_text(json.dumps(result,indent=2)+'\n')
     print(json.dumps(result,indent=2));raise SystemExit(bool(reasons))
 
