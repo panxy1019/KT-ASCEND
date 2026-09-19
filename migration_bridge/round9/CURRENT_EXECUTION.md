@@ -1,5 +1,22 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Network diagnostic 23:12–23:14 UTC
+
+Default internet route on .22 uses enp189s0f0, negotiated1000Mb/s full-duplex;
+25Gb/s enp195s0f0np0 is not the default internet path. During20s sample
+1789859552..1789859572, RX5361553433378 ->5363430342111bytes
+(93.845MB/s,750.76Mbps). rx_errors37398879 ->37435506 (+36627).
+Later CRC/frame/fifo/missed counters were0, length135; generic error source
+unresolved, not proof of physical cable fault or TLS causality. Driverhns3.
+Read-only socket/process ownership audit found multiple concurrent curl
+download connections belonging to UID1007/session2574, NOT project's
+kt-round9-model-download cgroup. Do not stop or alter them.
+Bounded tests during ongoing shared traffic: mirror64MiB16.397s=4.09MB/s;
+Cloudflare32MiB12.303s=2.73MB/s. Not isolated bandwidth certification.
+Shared1Gbps ingress pressure is directly observed; proxy through same NIC
+cannot bypass it. Keep owned healthy downloader intact; infrastructure/network
+changes or other users' scheduling need coordination, not unilateral changes.
+
 ## Local proxy feasibility test — keep healthy download unchanged
 
 User requested investigating local proxy. TLS-verified curl range probes of
