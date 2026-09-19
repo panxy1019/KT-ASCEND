@@ -1,5 +1,6 @@
 """Freeze static Q64 command and actual imported artifact hashes; no server start."""
 import hashlib
+import argparse
 import json
 import os
 import sys
@@ -19,19 +20,22 @@ def sha(p):
 
 
 def main():
+    p=argparse.ArgumentParser();p.add_argument('--resident',type=int,choices=[32,64],default=64)
+    a=p.parse_args();resident=a.resident
     root=Path('/workspace/round8')
-    out=root/'q64-launch-v6'
+    out=root/('q64-launch-v6' if resident==64 else 'q32-launch-v1')
     out.mkdir(exist_ok=False)
-    profile=json.loads((root/'q64_profile.json').read_text())
-    assert profile['resident']==64 and len(profile['layers'])==40
+    profile_path=root/f'q{resident}_profile.json'
+    profile=json.loads(profile_path.read_text())
+    assert profile['resident']==resident and len(profile['layers'])==40
     mask=torch.zeros(40,256,dtype=torch.bool)
     for row in profile['layers']:
-        assert len(row['npu_ids'])==64
+        assert len(row['npu_ids'])==resident
         assert set(row['npu_ids']).isdisjoint(row['cpu_ids'])
         assert set(row['npu_ids'])|set(row['cpu_ids'])==set(range(256))
         mask[row['layer'],row['npu_ids']]=True
     counts=mask.to(torch.int64).unsqueeze(0)
-    assert torch.equal(generate_gpu_experts_masks(counts[0].float(),40*64),mask)
+    assert torch.equal(generate_gpu_experts_masks(counts[0].float(),40*resident),mask)
     torch.save({'logical_count':counts},out/'uniform-mask.pt')
     # Frequency loader is used only as an exact frozen-mask transport, no data fitting.
     args=[sys.executable,'-m','qwen_text_server',
@@ -46,15 +50,15 @@ def main():
         '--disable-shared-experts-fusion',
         '--kt-weight-path',str(root/'cpu-experts-f32-v1'),'--kt-method','LLAMAFILE',
         '--kt-cpuinfer','64','--kt-threadpool-count','2','--kt-numa-nodes','4','5',
-        '--kt-num-gpu-experts','64','--kt-max-deferred-experts-per-token','0',
+        '--kt-num-gpu-experts',str(resident),'--kt-max-deferred-experts-per-token','0',
         '--kt-expert-placement-strategy','frequency',
         '--init-expert-location',str(out/'uniform-mask.pt')]
     hooks=[dict(name='qwen-structure',target_modules=['model.layers.*.mlp'],
                 hook_factory='qwen_bringup_hooks:make_structure',
-                config=dict(output=str(out),profile=str(root/'q64_profile.json'),shared_oracle=True)),
+                config=dict(output=str(out),profile=str(profile_path),shared_oracle=True)),
            dict(name='qwen-routes',target_modules=['model.layers.*.mlp.topk'],
                 hook_factory='qwen_bringup_hooks:make_routes',
-                config=dict(output=str(out),profile=str(root/'q64_profile.json')))]
+                config=dict(output=str(out),profile=str(profile_path)))]
     for layer in range(40):
         for kind,suffix in [('shared','shared_expert'),('gate','shared_expert_gate'),('routed','experts')]:
             hooks.append(dict(name=f'shared-oracle-{layer}-{kind}',
@@ -75,7 +79,7 @@ def main():
             if p.is_file() and (p.suffix=='.py' or '.so' in p.name):hashes[str(p)]=sha(p)
     hashes[str(root/'tools/qwen_bringup_hooks.py')]=sha(root/'tools/qwen_bringup_hooks.py')
     hashes[str(root/'tools/qwen_text_server.py')]=sha(root/'tools/qwen_text_server.py')
-    result=dict(argv=args,env=env,profile_sha256=sha(root/'q64_profile.json'),
+    result=dict(argv=args,env=env,profile_sha256=sha(profile_path),resident=resident,
                 mask_sha256=sha(out/'uniform-mask.pt'),code_hashes=hashes,
                 torch=torch.__version__,torch_npu=torch_npu.__version__,
                 python=sys.version,kt_import=kt_kernel.__file__,
@@ -83,7 +87,7 @@ def main():
                 purpose='BRINGUP_NOT_QUALITY',quality_authorized=False,
                 programmatic_overrides={'enable_multimodal':False})
     (out/'resolved-command.json').write_text(json.dumps(result,indent=2)+'\n')
-    print('Q64_MASK_AND_COMMAND_FROZEN_NOT_STARTED')
+    print(f'Q{resident}_MASK_AND_COMMAND_FROZEN_NOT_STARTED')
 
 
 if __name__=='__main__':main()

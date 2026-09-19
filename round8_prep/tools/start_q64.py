@@ -10,6 +10,7 @@ from pathlib import Path
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--admission',type=Path,required=True)
+    p.add_argument('--candidate',choices=['q64-launch-v6','q32-launch-v1'],default='q64-launch-v6')
     a=p.parse_args()
     admission=json.loads(a.admission.read_text())
     assert admission['admitted'] and 0<=time.time()-admission['timestamp']<=60
@@ -18,7 +19,7 @@ def main():
     assert manifest['status']=='FULL_40_LAYER_CONVERSION_IDENTITY_PASS_NOT_MODEL_QUALIFICATION'
     assert manifest['exact_projection_instances']==30720
     assert {r['layer'] for r in manifest['layers']}==set(range(40))
-    config=json.loads((root/'q64-launch-v6/resolved-command.json').read_text())
+    config=json.loads((root/a.candidate/'resolved-command.json').read_text())
     for path,digest in config['code_hashes'].items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest, path
     env=os.environ.copy();env.update(config['env'])

@@ -15,8 +15,9 @@ PROMPTS={
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--phase',choices=['same','restart'],required=True)
+    p.add_argument('--profile',choices=['q64','q32'],default='q64')
     a=p.parse_args();root=Path('/workspace/round8')
-    out=root/'q64-compact-v1';out.mkdir(exist_ok=True)
+    out=root/f'{a.profile}-compact-v1';out.mkdir(exist_ok=True)
     t=AutoTokenizer.from_pretrained(root/'model-sample',local_files_only=True)
     requests_frozen={}
     for key,prompt in PROMPTS.items():

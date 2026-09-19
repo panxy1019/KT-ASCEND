@@ -47,9 +47,9 @@ def make_structure(config):
             assert torch.equal(output,expected_output), 'SHARED_EXACTLY_ONCE_ORACLE_MISMATCH'
         for name in ('w13_weight','w2_weight'):
             w=getattr(experts,name)
-            assert w.dtype==torch.bfloat16 and w.shape[0]==64, 'RESIDENT_LAYOUT_DRIFT'
+            assert w.dtype==torch.bfloat16 and w.shape[0]==len(row['npu_ids']), 'RESIDENT_LAYOUT_DRIFT'
         with (root/'structure.jsonl').open('a') as f:
-            f.write(json.dumps(dict(layer=layer,slots=64,npu_ids=ids,
+            f.write(json.dumps(dict(layer=layer,slots=len(row['npu_ids']),npu_ids=ids,
                 mapping_exact=True,finite=True,deferred=0,shared_present=True,
                 shared_exactly_once_oracle=config.get('shared_oracle',False)))+'\n')
         seen.add(layer)
