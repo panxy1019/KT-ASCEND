@@ -10,7 +10,9 @@ def make_shared_part(config):
     layer=config['layer'];kind=config['kind'];done=False
     def hook(module,inputs,output):
         nonlocal done
-        if done:return
+        if done:
+            assert layer not in _shared_parts, 'SHARED_PART_CALLED_TWICE_IN_FIRST_FORWARD'
+            return
         if isinstance(output,tuple):output=output[0]
         parts=_shared_parts.setdefault(layer,{})
         assert kind not in parts, 'SHARED_PART_DUPLICATE'

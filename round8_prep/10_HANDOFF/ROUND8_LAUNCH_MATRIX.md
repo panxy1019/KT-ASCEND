@@ -1,5 +1,12 @@
 # Runtime launch matrix — gated templates, not executed
 
+> Historical prep template, superseded2026-09-19 by
+> `tools/prepare_q64_launch.py` and `Q64_INITIAL_BRINGUP_RESULT.md`.
+> Do NOT execute the old `--language-only` command below: in this serving
+> revision it enables encoder disaggregation, not text-only inference.
+> Actual text-only entry uses programmatic `enable_multimodal=False`; actual
+> mask transport and CANN Python paths are frozen by the new launcher.
+
 | Order | Profile | Slots/layer | Purpose | Entry |
 |---|---|---:|---|---|
 | 0 | Config / dense / GDN / one expert | n/a | Construction and primitive tests | Compatible isolated image, sampled weights |
