@@ -1,5 +1,29 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 09:03 UTC — Q32 system frozen; quality running
+
+Q32 same-process 32 requests, clean-restart four 32-token trajectories and
+32 distinct prompts × 2 repeats all pass. Independent raw archive audit also
+confirmed finite output logprobs, nonempty output and 40/40 actual NPU slots=32
+with the shared-expert oracle. The immutable system archive is
+`q32-system-evidence-v1.tar.gz`, SHA256
+`6c7ae7a527bc94ab02411fb9db7aab5381ebdc7cac8f3a07711f1901ec53e21f`.
+Pre-quality local freeze commit is
+`7b214c9312b897c8258e2e680497f45c670ca7f6`.
+
+Q32 CMMLU 256 is now running in the existing owned `.22` container on NPU2.
+Raw output is `/home/admin/kt-round8-qwen35/qwen-cmmlu-q32-v1/raw.jsonl`,
+progress is alongside it, and the log is
+`/home/admin/kt-round8-qwen35/qwen-cmmlu-q32-v1.log`.
+Entry record asserts the frozen Qwen manifest SHA
+`365f557c0746db1e02ddee4ec66c7afb5e72eeb17e8dd8e0a47d1ed2b7af1b9d`,
+Q32 profile SHA and Q64 reference 222/256. The original observed −5pp rule
+requires at least 210/256 and zero invalid outputs. The first request completed
+successfully. Keep the healthy run intact. After 256 rows, independently audit
+ordered IDs, input IDs, stop/sampling/candidate fields, finite scores, scorer,
+request IDs and manifest hash before deciding the quality gate. Diagnostic hooks
+remain enabled, so these elapsed times are not formal performance measurements.
+
 ## UPDATE 02:33 UTC — Q64 reference frozen; Q32 entry active
 
 Q64 quality completed222/256,invalid0; independent raw auditPASS (256orderedIDs,
