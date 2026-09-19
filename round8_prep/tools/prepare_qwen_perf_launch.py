@@ -16,7 +16,8 @@ def main():
     for profile, source_name in SOURCES.items():
         source = ROOT / source_name / 'resolved-command.json'
         config = json.loads(source.read_text())
-        assert config['resident'] == int(profile[1:])
+        # Q64 was frozen before the launcher recorded this redundant field.
+        assert config.get('resident', 64) == int(profile[1:])
         assert config['graph'] is config['dynamic'] is config['deferred'] is False
         assert config['batch'] == config['tp'] == 1
         assert config['profile_sha256'] == sha(ROOT / f'{profile}_profile.json')
