@@ -24,3 +24,11 @@ class SwapAdmission(unittest.TestCase):
                           ('host_swapout_delta',1),('cgroup_swap_current',1)]:
             y=dict(x);y[key]=value
             self.assertIn('SWAP_ACTIVE_OR_UNVERIFIED',reject_reasons(y))
+    def test_bounded_historical_readback_not_new_pressure(self):
+        x=self.inventory();x.update(swap_observation_seconds=30,host_swapin_delta=16,
+            host_page_size_bytes=65536,host_swapout_delta=0,cgroup_swap_current=0)
+        self.assertEqual(reject_reasons(x),[])
+        for key,value in [('host_swapin_delta',17),('host_swapin_delta',-1),
+                          ('host_page_size_bytes',0),('host_swapout_delta',1),('cgroup_swap_current',1)]:
+            y=dict(x);y[key]=value
+            self.assertIn('SWAP_ACTIVE_OR_UNVERIFIED',reject_reasons(y))

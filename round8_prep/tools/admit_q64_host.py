@@ -1,5 +1,6 @@
 """Host-only measured Q64 admission. Never kills or changes any process."""
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -54,7 +55,8 @@ def main():
         same_host_inventory=True,physical_core_count=len({(r[1],r[2]) for r in owned}),
         swap_observation_seconds=time.monotonic()-t0,
         host_swapin_delta=after['pswpin']-before['pswpin'],
-        host_swapout_delta=after['pswpout']-before['pswpout'],cgroup_swap_current=swap)
+        host_swapout_delta=after['pswpout']-before['pswpout'],cgroup_swap_current=swap,
+        host_page_size_bytes=os.sysconf('SC_PAGE_SIZE'))
     reasons=reject_reasons(x)
     result=dict(timestamp=time.time(),admitted=not reasons,reasons=reasons,inventory=x,
                 npu_proc_raw=proc,npu_usage_raw=usages,physical_topology=owned)

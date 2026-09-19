@@ -24,9 +24,13 @@ def reject_reasons(x):
     if x['host_available_bytes']-x['predicted_private_bytes'] < reserve: reasons.append('RAM_RESERVE')
     if x['swap_used_bytes'] != 0:
         # Residual unrelated host swap is not evidence of current paging.
-        # Require measured idle counters AND no swap in the owned cgroup.
+        # Allow bounded readback of old unrelated pages, never new swap-out.
+        # Byte-based (not page-based) so 4KiB/64KiB hosts have the same cap.
+        readback=x.get('host_swapin_delta',-1)
+        page_size=x.get('host_page_size_bytes',0)
         idle = (x.get('swap_observation_seconds', 0) >= 30
-                and x.get('host_swapin_delta') == 0
+                and isinstance(readback,int) and readback >= 0
+                and (readback == 0 or (page_size > 0 and readback*page_size <= 2**20))
                 and x.get('host_swapout_delta') == 0
                 and x.get('cgroup_swap_current') == 0)
         if not idle: reasons.append('SWAP_ACTIVE_OR_UNVERIFIED')
