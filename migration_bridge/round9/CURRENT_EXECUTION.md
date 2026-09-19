@@ -1,5 +1,9 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+User also requested consideration of C128. Read `06_C128_EXPERIMENT_PLAN.md`.
+Include an independently admitted C64/C128 comparison AFTER precision probes;
+no immediate expansion, no alteration of existing C64, no inherited PASS.
+
 ## CPU precision replan requested by user
 
 Read `05_CPU_PRECISION_REVIEW_AND_REVISED_PLAN.md` before any full CPU-bank
