@@ -1,5 +1,25 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE — complete ABBA orchestration launched after first-block audit
+
+The original Q64-only block completed at 09:59 UTC: short/medium/long
+44.590/88.887/177.805 seconds. Preserve qwen-static-perf-v1; it lacks continuous
+resource-window evidence and is preliminary only. It did not automatically
+advance because the first launcher only scheduled one cell.
+
+New host controller `tools/run_qwen_abba.py` executes twelve distinct cells:
+three Q64/Q32/Q32/Q64 blocks. Output `qwen-static-perf-v2`, host PID1001975,
+log `qwen-abba-v2.log`. Each cell has a separate position, fresh serving process,
+launch admission, client/server logs and sampled host/NPU/container resources.
+Final collection status is pending resource audit, never automatic formal PASS.
+Preserve healthy controller. Failure stops advancement; do not overwrite its
+state or outputs. Current launch uses the frozen hook-free v2 launch candidates.
+
+After performance, Q32 remains the already system/quality-qualified stability
+target; performance can inform deployment selection but does not substitute for
+stability. Dynamic requires its own DEV selection, pre-heldout freeze and system,
+quality/performance gates. Neither stability nor Dynamic has started yet.
+
 ## UPDATE 09:31 UTC — Q32 CMMLU audited and quality screen passed
 
 Q32 completed all 256 frozen Qwen CMMLU items: 225/256 correct, invalid=0,

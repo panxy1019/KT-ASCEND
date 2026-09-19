@@ -36,8 +36,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--profile', choices=('q64', 'q32'), required=True)
     parser.add_argument('--block', type=int, choices=range(3), required=True)
+    parser.add_argument('--position', type=int, choices=range(4))
     args = parser.parse_args()
-    out = ROOT / 'qwen-static-perf-v1' / f'{args.profile}-block{args.block}'
+    suffix = '' if args.position is None else f'-position{args.position}'
+    campaign = 'qwen-static-perf-v1' if args.position is None else 'qwen-static-perf-v2'
+    out = ROOT / campaign / f'{args.profile}-block{args.block}{suffix}'
     out.mkdir(parents=True, exist_ok=False)
     inputs = make_inputs()
     protocol = dict(version=1, inputs=inputs, max_running_requests=1,
@@ -72,7 +75,7 @@ def main():
         (out / 'raw.jsonl').open('a').write(json.dumps(row) + '\n')
         print(name, elapsed, flush=True)
     (out / 'summary.json').write_text(json.dumps(dict(status='BLOCK_COMPLETE',
-        profile=args.profile, block=args.block,
+        profile=args.profile, block=args.block, position=args.position,
         protocol_sha256=hashlib.sha256(blob.encode()).hexdigest(), rows=rows), indent=2) + '\n')
 
 
