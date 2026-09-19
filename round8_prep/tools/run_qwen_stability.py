@@ -5,10 +5,10 @@ import time
 from pathlib import Path
 
 ROOT=Path('/home/admin/kt-round8-qwen35')
-CONTAINER='kt-round8-qwen35-stability'
+CONTAINER='kt-round8-qwen35-prep'
 PYTHON='/workspace/round8/venv/bin/python'
 TOOLS='/workspace/round8/tools'
-OUT=ROOT/'qwen-q32-stability-v1'
+OUT=ROOT/'qwen-q32-stability-22-v2'
 
 
 def command(*args,timeout=180):
@@ -17,7 +17,11 @@ def command(*args,timeout=180):
 
 def stop_owned():
     subprocess.run(['docker','stop','-t','60',CONTAINER],capture_output=True,text=True,timeout=120)
+    deadline=time.monotonic()+90
     state=json.loads(command('docker','inspect',CONTAINER))[0]['State']
+    while state['Running'] and time.monotonic()<deadline:
+        time.sleep(2)
+        state=json.loads(command('docker','inspect',CONTAINER))[0]['State']
     assert not state['Running'] and not state['OOMKilled'],state
 
 
@@ -34,13 +38,14 @@ def main():
     try:
         prior=None
         for campaign in ('A','B'):
-            subprocess.run(['python3',str(ROOT/'tools/admit_qwen_q32_stability.py')],
-                           check=True,stdout=(OUT/f'admission-{campaign}.log').open('w'),timeout=90)
+            stop_owned()
             command('docker','start',CONTAINER)
+            subprocess.run(['python3',str(ROOT/'tools/admit_q64_host.py')],
+                           check=True,stdout=(OUT/f'admission-{campaign}.log').open('w'),timeout=90)
             command('docker','exec','-d',CONTAINER,'bash','-c',
                 f'exec {PYTHON} {TOOLS}/start_q64.py --candidate q32-perf-launch-v2 '
-                f'--admission /workspace/round8/q32-stability-admission.json '
-                f'> /workspace/round8/qwen-q32-stability-v1/server-{campaign}.log 2>&1')
+                f'--admission /workspace/round8/q64-admission-v1.json '
+                f'> /workspace/round8/{OUT.name}/server-{campaign}.log 2>&1')
             deadline=time.monotonic()+1200
             while True:
                 ready=subprocess.run(['docker','exec',CONTAINER,PYTHON,'-c',
@@ -52,7 +57,7 @@ def main():
             with (OUT/f'client-{campaign}.log').open('w') as log:
                 client=subprocess.Popen(['docker','exec',CONTAINER,PYTHON,
                     f'{TOOLS}/qwen_stability_client.py','--campaign',campaign,
-                    '--output',f'/workspace/round8/qwen-q32-stability-v1/campaign-{campaign}'],
+                    '--output',f'/workspace/round8/{OUT.name}/campaign-{campaign}'],
                     stdout=log,stderr=subprocess.STDOUT)
                 with (OUT/f'resources-{campaign}.jsonl').open('x') as resources:
                     while client.poll() is None:

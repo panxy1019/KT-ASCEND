@@ -1,5 +1,20 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE — user-authorized three-container .22 execution
+
+Static v6 collection completed12/12; raw evidence retrieved locally, isolation
+audit pending. User authorized two additional .22 containers. Idle owned
+Round7 a/b containers (only sleep infinity) were stopped, preserving files.
+New dynamic-a uses NPU4/CPU0-63/NUMA0,1; dynamic-b uses NPU6/CPU64-127/NUMA2,3.
+Both passed real device enumeration and tensor copy/synchronize. Original prep
+container remains NPU2/CPU128-191/NUMA4,5 for Q32 stability-22-v2. All C64=2x32.
+The stability controller was dispatched. Dynamic256/512 DEV candidates use
+the two new lanes;1024 follows on lane-a. Scheduler DEV256/HOLDOUT128 frozen
+before DEV. No held-out use until candidate selection is committed. Concurrent
+results are untimed system/quality evidence; formal performance remains isolated.
+All lanes share original model/GGUF inodes. Observe host memory before loading
+the third model; stop only owned failing workers. .16 remains cancelled.
+
 ## USER OVERRIDE — .16 migration cancelled
 
 User requested removal of this project's .16 migration and all further testing
