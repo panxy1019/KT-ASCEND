@@ -1,5 +1,44 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 14:49 UTC — candidate committed; two evaluation lanes healthy
+
+This entry supersedes older launch instructions below. Candidate commit
+`9a183f309e1db794859646686431d9a1fbeb8819` precedes every held-out/CMMLU
+request. Candidate SHA256
+`69892f31dcbb450105a4adf153622c7bf6f5823292bfb8038ac9ae60160e55b9`;
+threshold256/chunk512. Exact commit acknowledgement is installed remotely.
+DEV1024 remains skipped by user; its original failed trigger evidence retained.
+
+Fresh hook-free restart is independently audited 5/5 token arrays exact,
+no offset warning. Do not rerun it. The transposed NZ migration fix, red/green
+operator regression and actual model evidence are already locally committed.
+
+On .22, healthy new controllers (verify live state, never duplicate):
+- heldout: PID1462515, lane-a/NPU4/CPU0–63/NUMA0,1,
+  `qwen-dynamic-heldout-v2`, log `dynamic-heldout-v2-controller.log`.
+- CMMLU: PID1463082, lane-b/NPU6/CPU64–127/NUMA2,3,
+  `qwen-dynamic-cmmlu-v2`, log `dynamic-cmmlu-v2-controller.log`.
+Paths relative to `/home/admin/kt-round8-qwen35`. Both use independently
+admitted384GiB containers and frozen candidate tool/config hashes.
+Both are RUNNING. At14:49UTC heldout25/128 (initial short no-trigger rows),
+CMMLU1/256 completed with40 real layer updates; second request actively updating.
+All completedHTTP responses200;12resource samples/lane, cgroup swap0, OOM0,
+tracebacks0, offset warnings0. HostMemAvailable630GiB; container usage131.2/
+224GiB versus384GiB limits. This is healthy startup, NOT completed qualification.
+Later heldout medium/long rows still must establish complete trigger coverage.
+
+When both finish, independently audit raw128/256 input IDs, manifest/payloads,
+generation/weight evidence, scores and resources via
+`tools/audit_qwen_dynamic_results.py /home/admin/kt-round8-qwen35`.
+Only actual PASS permits `qualification-release.json` in candidate directory
+with heldout/cmmlu PASS and exact respective summary SHA256 values.
+Then `tools/run_qwen_dynamic_perf.py` reruns fresh Static/Dynamic on prep NPU2,
+CPU128–191, three ABBA blocks, short64/32 and medium256/64; no hooks or long
+requests. No timed performance while either parallel lane is active.
+Do not interpret parallel quality latency as formal performance.
+
+Heartbeat `round7` remains ACTIVE every15minutes. No .16, push/main/tag.
+
 ## UPDATE — user authorizes repaired Dynamic evaluation; skip DEV1024
 
 Active .22 `q32-dynamic-restart-v2` on lane-a is the fresh hook-free DEV replay.
