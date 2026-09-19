@@ -1,5 +1,13 @@
 # Round8 Qwen3.5 前置工作报告
 
+> **2026-09-19 执行更新：**此前 prep 快照已被后续实际执行推进。
+> 全量 checkpoint 校验、40 层 CPU 转换/身份审计、Q64 全模型短生成、
+> 4-prompt 重复/prefix 与 clean restart、40 层 shared composition oracle
+> 均已通过；32 个独立 prompt 的双重复生成检查正在后台运行。
+> 最新事实以 [CURRENT_EXECUTION](../10_HANDOFF/CURRENT_EXECUTION.md) 和同目录
+> `ROUND8_QWEN35_PREP_STATE.json` 为准。以下正文保留历史 prep 状态，
+> 不应据此重复下载、重启健康任务或误称 quality 已通过。
+
 日期：2026-09-18。状态：**STATIC_PREP_COMPLETE / RUNTIME_DEPENDENCY_GATES_PENDING**。不是 Qwen A3_VERIFIED，也不是全模型 READY_FOR_RUNTIME。
 
 ## 已完成
