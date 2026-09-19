@@ -1,5 +1,15 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 22:00 UTC — serial download also failed; no blind restart
+
+Unit failed21:40:26 with the same TLS DECRYPTION_FAILED_OR_BAD_RECORD_MAC,
+even withONEworker. Thus concurrency reduction did not eliminate failure.
+38completedshards/115754320832bytes last observed; full identity NOT verified.
+Preserve partial cache and journal. No certificate bypass/force-redownload.
+PAUSE_DOWNLOAD recreated before Round8 single-cell resource diagnostic.
+Investigate transport independently; do not resume transfer until diagnostic
+ends and reservation is released. Existing revision/resource limits unchanged.
+
 ## 21:40 UTC — bounded serial transport diagnostic
 
 TLSReadError/badrecordMAC recurred21:28:52 after38completedshards,115754320832bytes.

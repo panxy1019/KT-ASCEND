@@ -1,5 +1,18 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 22:00 UTC — single-cell resource diagnostic dispatched
+
+Owned unit `kt-round8-resource-diagnostic-v1` is active on .22;
+`qwen-dynamic-resource-diagnostic-v1/state.json` reports RUNNING. Preserve it.
+Runner frozen in local commits097f3bf94 and ee4bc7e61 before dispatch;
+actual frozen controller compiles, cgroup parser tests2/2 pass.
+This is ONE cold Dynamic cell with original short/medium inputs, not a new
+ABBA campaign or qualified timing result. Adds owned cgroup, NUMA4/5 and
+process counters plus final sample; no C64/model/mask changes.
+Audit resulting resource time series before choosing any follow-up.
+Round9 PAUSE_DOWNLOAD is set; its downloader is FAILED (TLS error), not PAUSED.
+No Round8 COMPLETE claim or Round9 model launch authorized by this diagnostic.
+
 ## UPDATE 21:40 UTC — resource instrumentation gap localized
 
 Read11_DYNAMIC/RESOURCE_ATTRIBUTION_FOLLOWUP.md. Admission checks paging before
