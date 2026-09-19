@@ -18,10 +18,11 @@ def main():
     assert manifest['status']=='FULL_40_LAYER_CONVERSION_IDENTITY_PASS_NOT_MODEL_QUALIFICATION'
     assert manifest['exact_projection_instances']==30720
     assert {r['layer'] for r in manifest['layers']}==set(range(40))
-    config=json.loads((root/'q64-launch-v4/resolved-command.json').read_text())
+    config=json.loads((root/'q64-launch-v5/resolved-command.json').read_text())
     for path,digest in config['code_hashes'].items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest, path
     env=os.environ.copy();env.update(config['env'])
+    subprocess.run([config['argv'][0],'-c','import tbe; import torch_npu; print("CANN_TBE_IMPORT_PASS", flush=True)'],env=env,check=True)
     # Owned foreground server; outer docker exec/log identifies this process tree.
     os.execvpe(config['argv'][0],config['argv'],env)
 

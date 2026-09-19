@@ -9,6 +9,12 @@ from qwen_text_server import configure_text
 
 
 class LaunchScope(unittest.TestCase):
+    def test_cann_paths_and_preflight_retained(self):
+        root=Path(__file__).resolve().parents[1]/'tools'
+        source=(root/'prepare_q64_launch.py').read_text()
+        self.assertIn("cann/'python/site-packages'",source)
+        self.assertIn("cann/'opp/built-in/op_impl/ai_core/tbe'",source)
+        self.assertIn('import tbe;', (root/'start_q64.py').read_text())
     def test_programmatic_text_switch(self):
         args=SimpleNamespace(language_only=False,encoder_only=False,enable_multimodal=None,model_path='frozen')
         self.assertIs(configure_text(args),args)

@@ -20,7 +20,7 @@ def sha(p):
 
 def main():
     root=Path('/workspace/round8')
-    out=root/'q64-launch-v4'
+    out=root/'q64-launch-v5'
     out.mkdir(exist_ok=False)
     profile=json.loads((root/'q64_profile.json').read_text())
     assert profile['resident']==64 and len(profile['layers'])==40
@@ -56,7 +56,10 @@ def main():
                 hook_factory='qwen_bringup_hooks:make_routes',
                 config=dict(output=str(out),profile=str(root/'q64_profile.json')))]
     args+=['--forward-hooks',json.dumps(hooks)]
-    env={'PYTHONPATH':str(root/'sglang-python')+':'+str(root/'tools')+':/workspace/kt-src',
+    cann=Path('/usr/local/Ascend/ascend-toolkit/latest')
+    cann_paths=[cann/'python/site-packages',cann/'opp/built-in/op_impl/ai_core/tbe']
+    assert all(p.is_dir() for p in cann_paths), 'CANN_PYTHON_PATH_MISSING'
+    env={'PYTHONPATH':':'.join([str(root/'sglang-python'),str(root/'tools'),'/workspace/kt-src',*[str(p) for p in cann_paths]]),
          'HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1',
          'ASCEND_RT_VISIBLE_DEVICES':'0','TRITON_CACHE_DIR':str(root/'triton-cache'),
          'OMP_NUM_THREADS':'1','TOKENIZERS_PARALLELISM':'false',
