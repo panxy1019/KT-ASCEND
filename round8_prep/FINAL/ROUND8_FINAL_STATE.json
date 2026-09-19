@@ -1,0 +1,21 @@
+{
+  "round": "8",
+  "status": "COMPLETE_WITH_USER_SCOPE_CHANGE",
+  "model": "Qwen/Qwen3.5-35B-A3B",
+  "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+  "selected_profile": "Q32_C64_STATIC",
+  "reference": "Q64_C64_ENGINEERING_REFERENCE_NOT_ALL_NPU",
+  "weight_identity": "PASS_40_LAYERS_30720_PROJECTIONS",
+  "static_system": "PASS_COMPACT_SCOPE",
+  "static_quality": {"correct": 225, "count": 256, "invalid": 0, "reference_correct": 222, "gate": "PASS"},
+  "static_stability": {"status": "PASS_BOUNDED_WORKLOAD", "generated_tokens": 2304, "independent_campaigns": 2},
+  "dynamic": {"system": "PASS_TESTED_SCOPE", "heldout_requests": 128, "quality_correct": 224, "quality_count": 256, "quality_invalid": 0, "quality": "PASS", "performance": "NOT_QUALIFIED_RESOURCE_AUDIT", "default": false},
+  "deferred": {"qwen_qualified": false, "default": false},
+  "further_performance_tests": "SKIPPED_BY_USER_SCOPE_CHANGE",
+  "formal_performance_qualified": false,
+  "dynamic_memory_rootcause": "PARTIALLY_ATTRIBUTED_NOT_FIXED",
+  "round9": "HANDOFF_READY_SUBJECT_TO_INDEPENDENT_ENTRY_GATES",
+  "push": false,
+  "merge_main": false,
+  "tag": false
+}

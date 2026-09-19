@@ -1,5 +1,16 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## FINAL — user cancels further performance; Round8 closed in revised scope
+
+Read FINAL/ROUND8_FINAL_REPORT.md and ROUND8_FINAL_STATE.json.
+ROUND8=COMPLETE_WITH_USER_SCOPE_CHANGE. SelectedQ32-C64Static,DynamicOFF,
+DeferredOFF. Formalperformance remainsNOT_QUALIFIED_RESOURCE_AUDIT;
+furtherperformance=SKIPPED_BY_USER_SCOPE_CHANGE. Do NOT restart performance
+or cache optimization as Round8closure requirements. Historical failed evidence
+unchanged. Final evidence re-auditPASS; no new model tests. ProceedRound9 only
+through its independent gates. OlderPENDING/NOTCOMPLETE entries below are history.
+Localpipcache612files436.3MBremoved; source/environments/evidence preserved.
+
 ## UPDATE 22:20 UTC — resource diagnostic collected and audited
 
 See11_DYNAMIC/RESOURCE_DIAGNOSTIC_V1_AUDIT.md. Unit exited22:15:54; all owned

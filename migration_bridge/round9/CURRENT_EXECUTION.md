@@ -1,5 +1,17 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Round8 revised-scope closure — next authorized stage is Round9
+
+Latestuser cancelled Round8performance testing and requested finalaudit/closure.
+Read round8_prep/FINAL/ROUND8_FINAL_REPORT.md and ROUND8_FINAL_STATE.json.
+Round8COMPLETE_WITH_USER_SCOPE_CHANGE; formalperformanceNOTQUALIFIED remains
+historical, not a pendinggate to resurrect. StaticQ32-C64selected,DynamicOFF.
+Proceed independentRound9entry, no inheritedmodelqualification.
+Curlpilot failed22:43:43 at offset1409286144(exit56), no whole-shardSHA receipt.
+Preserve partials/headers/journal; no concurrent oldHFservice. Downloadtransport
+still needs repair. No Round9fullconversion/NPU until identities/admissionPASS.
+Localpipcachecleanup restored~427MiB; do not download model locally.
+
 ## 22:39 UTC — ONE shard alternate-client pilot running
 
 Read07_DOWNLOAD_TRANSPORT_PILOT.md. Newownedunit kt-round9-curl-pilot-v1
