@@ -1,5 +1,20 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 22:25 UTC — reservation released; bounded transport probe
+
+Round8diagnostic exited, prep container stopped; PAUSE_DOWNLOAD marker removed
+only after checking both. Download service remainsFAILED, not silently restarted.
+Official frozen config HEAD on .22 still fails connection(code000,4.21s).
+Mirror frozen config HEAD via systemcurl returns200 withTLSverification0.
+Systemcurl rangedGET of frozen model-00001-of-00131.safetensors returned206,
+exactly1048576bytes in1.431s, TLSverification0. Outputdiscarded; no cached model
+artifact replaced. This proves a bounded alternate-client range succeeds, NOT
+whole-shard integrity or a TLSrootcause fix. Next use a separately identified,
+bounded resume/identity experiment if replacing HF transport; preserve HF partials,
+officialmanifestSHA validation, same resourcecaps and pauseinterlock.
+Do not disable TLS, change source revision, or run uncontrolled full transfers.
+Desktop free disk~12MiB; keep large artifacts on persistent .22, manifests local.
+
 ## 22:00 UTC — serial download also failed; no blind restart
 
 Unit failed21:40:26 with the same TLS DECRYPTION_FAILED_OR_BAD_RECORD_MAC,

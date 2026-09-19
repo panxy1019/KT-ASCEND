@@ -1,5 +1,18 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 22:20 UTC — resource diagnostic collected and audited
+
+See11_DYNAMIC/RESOURCE_DIAGNOSTIC_V1_AUDIT.md. Unit exited22:15:54; all owned
+model lanes stopped. Forty samples bracket both requests. Owned swap0/OOM0,
+anonymous memory+99.685GB,file-71.244GB,95532majorfaults; NUMA4/5pressure is real.
+Hostswap is not owned swap. Deployed per-wrapper BF16 cache retains52.5GiB
+on first fullCPU-owned fill; remaining anonymous growth not yet attributed.
+Do not patch frozen candidate or rerun fullmatrix blindly. Next bounded-cache/
+allocator attribution must preserve exact staging and use a new experiment ID.
+Raw archive SHA1f9bb78f60e551d13838ff682798e14071840ef56dc5f4062ec5d1f36a2f5728
+verified locally/remotely. Local disk~12MiB, no more large copies. Final strict
+performance/closure remain pending; default Static. Round9TLSfault unresolved.
+
 ## UPDATE 22:00 UTC — single-cell resource diagnostic dispatched
 
 Owned unit `kt-round8-resource-diagnostic-v1` is active on .22;
