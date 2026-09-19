@@ -1,0 +1,2041 @@
+can not use command: npu-smi info
+INFO 09-19 14:04:51 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 14:04:51 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 14:04:51 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 14:04:51 [__init__.py:239] Platform plugin ascend is activated
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+ROUND8_TEXT_ENTRY enable_multimodal=False; model architecture unchanged
+[2026-09-19 14:04:54] server_args=ServerArgs(model_path='/workspace/round8/model-sample', tokenizer_path='/workspace/round8/model-sample', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=4096, is_embedding=False, enable_multimodal=False, revision=None, model_impl='auto', host='127.0.0.1', port=18400, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.7, max_running_requests=1, max_queued_requests=None, max_total_tokens=4096, chunked_prefill_size=512, enable_dynamic_chunking=False, max_prefill_tokens=512, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=0, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/workspace/round8/model-sample', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm='static', init_expert_location='/workspace/round8/q32-launch-restart-v1/uniform-mask.pt', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/workspace/round8/cpu-experts-f32-v1', kt_method='LLAMAFILE', kt_cpuinfer=64, kt_threadpool_count=2, kt_numa_nodes=[2, 3], kt_num_gpu_experts=32, kt_gpu_experts_ratio=None, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=256, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=True, kt_expert_placement_strategy='frequency', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=512, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=True, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=[{'name': 'qwen-dynamic-structure', 'target_modules': ['model.layers.*.mlp'], 'hook_factory': 'qwen_dynamic_warning:make_structure', 'config': {'output': '/workspace/round8/q32-dynamic-transfer-v2', 'profile': '/workspace/round8/q32_profile.json'}}])
+[2026-09-19 14:04:54] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 14:04:56] Using default HuggingFace chat template with detected content format: openai
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-19 14:05:08 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 14:05:08 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 14:05:08 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 14:05:08 [__init__.py:239] Platform plugin ascend is activated
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+INFO 09-19 14:05:09 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 14:05:09 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 14:05:09 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 14:05:09 [__init__.py:239] Platform plugin ascend is activated
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/round8/sglang-python-dynamic-v2/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[2026-09-19 14:05:10] get env SGLANG_APPLY_CONFIG_BACKUP = none
+[2026-09-19 14:05:11] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 14:05:13] Mamba selective_state_update backend initialized: triton
+[2026-09-19 14:05:13] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 14:05:14] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-19 14:05:14] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-19 14:05:14] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-19 14:05:28] Init torch distributed begin.
+[W919 14:05:30.023681586 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[rank0]:[W919 14:05:30.176742602 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-19 14:05:30] Init torch distributed ends. elapsed=1.68 s, mem usage=0.01 GB
+[2026-09-19 14:05:30] Detected KT mode: kt_weight_path=/workspace/round8/cpu-experts-f32-v1. Using trivial mapping for CPU expert weight loading.
+[2026-09-19 14:05:30] init_expert_location: Using trivial mapping for KT frequency strategy. logical_count will be read directly by KT layers. CPU weight loading will use trivial mapping (physical_id == logical_id).
+[2026-09-19 14:05:30] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-19 14:05:30] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-19 14:05:30] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-19 14:05:30] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-19 14:05:31] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-19 14:05:31] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-19 14:05:31] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-19 14:05:34] Load weight begin. avail mem=60.51 GB
+[2026-09-19 14:05:34] Multimodal attention backend not set. Use sdpa.
+[2026-09-19 14:05:34] Using sdpa as multimodal attention backend.
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-19 14:05:34] Using kt_num_gpu_experts=32 per layer, total GPU experts: 1280 (= 32 × 40 MoE layers)
+[2026-09-19 14:05:34] Loading activation frequency from /workspace/round8/q32-launch-restart-v1/uniform-mask.pt
+[2026-09-19 14:05:34] Using frequency-based strategy with activation frequency data
+[2026-09-19 14:05:34] KT GPU experts: layer 0 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 1 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 2 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 3 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 4 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 5 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 6 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 7 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 8 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 9 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 10 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 11 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 12 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 13 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 14 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 15 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 16 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 17 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 18 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 19 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 20 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 21 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 22 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 23 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 24 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 25 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 26 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 27 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 28 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 29 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 30 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 31 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 32 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 33 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 34 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 35 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 36 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 37 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 38 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] KT GPU experts: layer 39 (MoE) has 32 GPU experts
+[2026-09-19 14:05:34] Generated KT GPU experts masks using 'frequency' strategy: 40 MoE layers (out of 40 total layers) x 256 experts, total GPU experts in MoE layers = 1280
+[2026-09-19 14:05:34] [KT] Created shared staging buffer: 2.0 MiB (shape=torch.Size([512, 2048]), dtype=torch.bfloat16)
+/workspace/round8/venv/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[2026-09-19 14:05:37] using attn output gate!
+
+[GGUFLoader] Loading GGUF files from directory: /workspace/round8/cpu-experts-f32-v1
+  Loading: layer-00-f32.gguf
+  Loading: layer-01-f32.gguf
+  Loading: layer-02-f32.gguf
+  Loading: layer-03-f32.gguf
+  Loading: layer-04-f32.gguf
+  Loading: layer-05-f32.gguf
+  Loading: layer-06-f32.gguf
+  Loading: layer-07-f32.gguf
+  Loading: layer-08-f32.gguf
+  Loading: layer-09-f32.gguf
+  Loading: layer-10-f32.gguf
+  Loading: layer-11-f32.gguf
+  Loading: layer-12-f32.gguf
+  Loading: layer-13-f32.gguf
+  Loading: layer-14-f32.gguf
+  Loading: layer-15-f32.gguf
+  Loading: layer-16-f32.gguf
+  Loading: layer-17-f32.gguf
+  Loading: layer-18-f32.gguf
+  Loading: layer-19-f32.gguf
+  Loading: layer-20-f32.gguf
+  Loading: layer-21-f32.gguf
+  Loading: layer-22-f32.gguf
+  Loading: layer-23-f32.gguf
+  Loading: layer-24-f32.gguf
+  Loading: layer-25-f32.gguf
+  Loading: layer-26-f32.gguf
+  Loading: layer-27-f32.gguf
+  Loading: layer-28-f32.gguf
+  Loading: layer-29-f32.gguf
+  Loading: layer-30-f32.gguf
+  Loading: layer-31-f32.gguf
+  Loading: layer-32-f32.gguf
+  Loading: layer-33-f32.gguf
+  Loading: layer-34-f32.gguf
+  Loading: layer-35-f32.gguf
+  Loading: layer-36-f32.gguf
+  Loading: layer-37-f32.gguf
+  Loading: layer-38-f32.gguf
+  Loading: layer-39-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 40
+  Total tensors: 120
+  Metadata keys: 4
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 1 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 2 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 3 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 4 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 5 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 6 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 9 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 10 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 11 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 12 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 13 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 14 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 15 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 16 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 18 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 19 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 20 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 21 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 22 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 23 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 24 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 25 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 26 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 27 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 28 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 29 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 30 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 31 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 32 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 33 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 34 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 35 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 36 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 37 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 38 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 39 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+Loading safetensors checkpoint shards:   0% Completed | 0/14 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   7% Completed | 1/14 [00:08<01:53,  8.72s/it]
+Loading safetensors checkpoint shards:  14% Completed | 2/14 [00:19<01:57,  9.76s/it]
+Loading safetensors checkpoint shards:  21% Completed | 3/14 [00:29<01:49,  9.92s/it]
+Loading safetensors checkpoint shards:  29% Completed | 4/14 [00:39<01:39,  9.99s/it]
+Loading safetensors checkpoint shards:  36% Completed | 5/14 [00:49<01:31, 10.13s/it]
+Loading safetensors checkpoint shards:  43% Completed | 6/14 [00:59<01:20, 10.08s/it]
+Loading safetensors checkpoint shards:  50% Completed | 7/14 [01:10<01:11, 10.14s/it]
+Loading safetensors checkpoint shards:  57% Completed | 8/14 [01:20<01:01, 10.17s/it]
+Loading safetensors checkpoint shards:  64% Completed | 9/14 [01:30<00:50, 10.18s/it]
+Loading safetensors checkpoint shards:  71% Completed | 10/14 [01:40<00:40, 10.25s/it]
+Loading safetensors checkpoint shards:  79% Completed | 11/14 [01:50<00:29,  9.93s/it]
+Loading safetensors checkpoint shards:  86% Completed | 12/14 [01:54<00:16,  8.24s/it]
+Loading safetensors checkpoint shards:  93% Completed | 13/14 [02:04<00:08,  8.79s/it]
+Loading safetensors checkpoint shards: 100% Completed | 14/14 [02:14<00:00,  9.23s/it]
+Loading safetensors checkpoint shards: 100% Completed | 14/14 [02:14<00:00,  9.63s/it]
+
+[2026-09-19 14:07:54] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-19 14:07:55] get env HOME = /root
+[2026-09-19 14:07:56] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-19 14:07:57] get env PYTHONPATH = /workspace/round8/sglang-python-dynamic-v2:/workspace/round8/tools:/workspace/kt-src:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe
+CPUInfer[0xc426290e0a10]: Hello
+WorkerPool[0xc42628633c20] 2 subpools, [numa:threads][2:32] [3:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+TP MOE layer 0, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc0cc900
+alloc 1 from other numa for f613d0074570
+alloc 0 from other numa for f616bc0cc900
+alloc 1 from other numa for f613d0074570
+TP MOE layer 1, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for f613d0040700
+alloc 0 from other numa for f616bc00bde0
+alloc 1 from other numa for f613d0040700
+alloc 0 from other numa for f616bc00bde0
+TP MOE layer 2, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for f613d00aa8a0
+alloc 0 from other numa for f616bc0361f0
+alloc 1 from other numa for f613d00aa8a0
+alloc 0 from other numa for f616bc0361f0
+TP MOE layer 3, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc030950
+alloc 1 from other numa for f613d009b230
+alloc 0 from other numa for f616bc030950
+alloc 1 from other numa for f613d009b230
+TP MOE layer 4, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc084990
+alloc 1 from other numa for f613d0035590
+alloc 1 from other numa for f613d0035590
+alloc 0 from other numa for f616bc084990
+TP MOE layer 5, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc0783e0
+alloc 1 from other numa for f613d0056110
+alloc 0 from other numa for f616bc0783e0
+alloc 1 from other numa for f613d0056110
+TP MOE layer 6, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc052a60
+alloc 1 from other numa for f613d00c3090
+alloc 0 from other numa for f616bc052a60
+alloc 1 from other numa for f613d00c3090
+TP MOE layer 7, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc021eb0
+alloc 1 from other numa for f613d0067620
+alloc 0 from other numa for f616bc021eb0
+alloc 1 from other numa for f613d0067620
+TP MOE layer 8, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc0613e0
+alloc 1 from other numa for f613d011ca40
+alloc 0 from other numa for f616bc0613e0
+alloc 1 from other numa for f613d011ca40
+TP MOE layer 9, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc0bab50
+alloc 1 from other numa for f613d013a750
+alloc 0 from other numa for f616bc0bab50
+alloc 1 from other numa for f613d013a750
+TP MOE layer 10, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for f613d0093090
+alloc 1 from other numa for f613d0093090
+alloc 0 from other numa for f616bc1280f0
+alloc 0 from other numa for f616bc1280f0
+TP MOE layer 11, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc11e440
+alloc 1 from other numa for f613d0089170
+alloc 0 from other numa for f616bc11e440
+alloc 1 from other numa for f613d0089170
+TP MOE layer 12, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc0873a0
+alloc 1 from other numa for f613d015a410
+alloc 0 from other numa for f616bc0873a0
+alloc 1 from other numa for f613d015a410
+TP MOE layer 13, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc1ff8b0
+alloc 1 from other numa for f613d01dc940
+alloc 0 from other numa for f616bc1ff8b0
+alloc 1 from other numa for f613d01dc940
+TP MOE layer 14, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc21df60
+alloc 1 from other numa for f613d01fae40
+alloc 0 from other numa for f616bc21df60
+alloc 1 from other numa for f613d01fae40
+TP MOE layer 15, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc1e85d0
+alloc 1 from other numa for f613d01c5360
+alloc 0 from other numa for f616bc1e85d0
+alloc 1 from other numa for f613d01c5360
+TP MOE layer 16, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc1ca350
+alloc 1 from other numa for f613d01bb660
+alloc 0 from other numa for f616bc1ca350
+alloc 1 from other numa for f613d01bb660
+TP MOE layer 17, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc23c390
+alloc 1 from other numa for f613d022a0a0
+alloc 0 from other numa for f616bc23c390
+alloc 1 from other numa for f613d022a0a0
+TP MOE layer 18, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc2c00f0
+alloc 1 from other numa for f613d029cb20
+alloc 0 from other numa for f616bc2c00f0
+alloc 1 from other numa for f613d029cb20
+TP MOE layer 19, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc2de650
+alloc 1 from other numa for f613d02bb530
+alloc 0 from other numa for f616bc2de650
+alloc 1 from other numa for f613d02bb530
+TP MOE layer 20, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc2a8ae0
+alloc 1 from other numa for f613d0285840
+alloc 1 from other numa for f613d0285840
+alloc 0 from other numa for f616bc2a8ae0
+TP MOE layer 21, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc29e3b0
+alloc 1 from other numa for f613d027bd50
+alloc 0 from other numa for f616bc29e3b0
+alloc 1 from other numa for f613d027bd50
+TP MOE layer 22, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc38a800
+alloc 1 from other numa for f613d02e9d90
+alloc 0 from other numa for f616bc38a800
+alloc 1 from other numa for f613d02e9d90
+TP MOE layer 23, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc3ab570
+alloc 1 from other numa for f613d035d030
+alloc 0 from other numa for f616bc3ab570
+alloc 1 from other numa for f613d035d030
+TP MOE layer 24, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc3c3bc0
+alloc 1 from other numa for f613d037bc20
+alloc 0 from other numa for f616bc3c3bc0
+alloc 1 from other numa for f613d037bc20
+TP MOE layer 25, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc310370
+alloc 1 from other numa for f613d0345d20
+alloc 0 from other numa for f616bc310370
+alloc 1 from other numa for f613d0345d20
+TP MOE layer 26, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc3ebd90
+alloc 1 from other numa for f613d033c040
+alloc 0 from other numa for f616bc3ebd90
+alloc 1 from other numa for f613d033c040
+TP MOE layer 27, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc42e8b0
+alloc 1 from other numa for f613d039a0b0
+alloc 0 from other numa for f616bc42e8b0
+alloc 1 from other numa for f613d039a0b0
+TP MOE layer 28, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc4614f0
+alloc 1 from other numa for f613d041d4e0
+alloc 0 from other numa for f616bc4614f0
+alloc 1 from other numa for f613d041d4e0
+TP MOE layer 29, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for f613d043bb60
+alloc 0 from other numa for f616bc4ae3b0
+alloc 0 from other numa for f616bc4ae3b0
+alloc 1 from other numa for f613d043bb60
+TP MOE layer 30, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc48f4a0
+alloc 1 from other numa for f613d0406200
+alloc 0 from other numa for f616bc48f4a0
+alloc 1 from other numa for f613d0406200
+TP MOE layer 31, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc3551e0
+alloc 1 from other numa for f613d03e7f50
+alloc 1 from other numa for f613d03e7f50
+alloc 0 from other numa for f616bc3551e0
+TP MOE layer 32, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc428480
+alloc 1 from other numa for f613d0459f90
+alloc 0 from other numa for f616bc428480
+alloc 1 from other numa for f613d0459f90
+TP MOE layer 33, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc409ff0
+alloc 1 from other numa for f613d04ddcf0
+alloc 0 from other numa for f616bc409ff0
+alloc 1 from other numa for f613d04ddcf0
+TP MOE layer 34, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc4c9ed0
+alloc 1 from other num[2026-09-19 14:08:12] Load weight end. elapsed=157.86 s, type=Qwen3_5MoeForConditionalGeneration, dtype=torch.bfloat16, avail mem=47.16 GB, mem usage=13.35 GB.
+[2026-09-19 14:08:12] Using KV cache dtype: torch.bfloat16
+[2026-09-19 14:08:12] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.12GB 
+[2026-09-19 14:08:12] KV Cache is allocated. #tokens: 4096, K size: 0.16 GB, V size: 0.16 GB
+[2026-09-19 14:08:12] Memory pool end. avail mem=46.72 GB
+[2026-09-19 14:08:12] Linear attention kernel backend: decode=triton, prefill=triton
+[2026-09-19 14:08:12] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-19 14:08:12] GDN kernel dispatcher: decode=TritonGDNKernel, extend=TritonGDNKernel, verify=TritonGDNKernel
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.0.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.1.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.2.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.3.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.4.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.5.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.6.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.7.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.8.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.9.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.10.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.11.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.12.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.13.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.14.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.15.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.16.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.17.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.18.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.19.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.20.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.21.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.22.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.23.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.24.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.25.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.26.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.27.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.28.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.29.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.30.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.31.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.32.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.33.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.34.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.35.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.36.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.37.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.38.mlp
+[2026-09-19 14:08:12] Registered forward hook 'qwen-dynamic-structure' on model.layers.39.mlp
+[2026-09-19 14:08:14] max_total_num_tokens=4096, chunked_prefill_size=512, max_prefill_tokens=512, max_running_requests=1, context_len=4096, available_gpu_mem=46.72 GB
+[2026-09-19 14:08:15] INFO:     Started server process [13]
+[2026-09-19 14:08:15] INFO:     Waiting for application startup.
+[2026-09-19 14:08:15] Using default chat sampling params from model generation config: {'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}
+[2026-09-19 14:08:17] The server is fired up and ready to roll!
+[2026-09-19 14:08:17] INFO:     Application startup complete.
+[2026-09-19 14:08:17] INFO:     Uvicorn running on http://127.0.0.1:18400 (Press CTRL+C to quit)
+[2026-09-19 14:08:18] get env HOSTNAME = 0aff143eb264
+a for f613d04fc250
+alloc 0 from other numa for f616bc4c9ed0
+alloc 1 from other numa for f613d04fc250
+TP MOE layer 35, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc54dc30
+alloc 1 from other numa for f613d04c6710
+alloc 0 from other numa for f616bc54dc30
+alloc 1 from other numa for f613d04c6710
+TP MOE layer 36, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc56c190
+alloc 0 from other numa for f616bc56c190
+alloc 1 from other numa for f613d04bbfe0
+alloc 1 from other numa for f613d04bbfe0
+TP MOE layer 37, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc59deb0
+alloc 0 from other numa for f616bc59deb0
+alloc 1 from other numa for f613d05a8440
+alloc 1 from other numa for f613d05a8440
+TP MOE layer 38, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for f616bc5bd7a0
+alloc 1 from other numa for f613d05c91b0
+alloc 0 from other numa for f616bc5bd7a0
+alloc 1 from other numa for f613d05c91b0
+TP MOE layer 39, pool: 0xc42628633c20, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for f613d05852d0
+alloc 0 from other numa for f616bc5fc120
+alloc 1 from other numa for f613d05852d0
+alloc 0 from other numa for f616bc5fc120
+.[2026-09-19 14:08:23] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-09-19 14:08:28] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 26.33, npu graph: False
+[2026-09-19 14:08:36] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.77, npu graph: False
+[2026-09-19 14:08:37] INFO:     127.0.0.1:51164 - "GET /health HTTP/1.1" 200 OK
+.[2026-09-19 14:08:41] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.03, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 24.25, npu graph: False
+[2026-09-19 14:08:53] INFO:     127.0.0.1:51180 - "POST /generate HTTP/1.1" 200 OK
+./usr/local/python3.11.15/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  warnings.warn(  # warn only once
+[2026-09-19 14:09:04] KT layerwise prefill: layer 0 prepare weight = 9916.95 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+.[2026-09-19 14:09:06] KT layerwise prefill: layer 0 compute = 6.93 ms, expert update = 1961.11 ms
+[2026-09-19 14:09:16] KT layerwise prefill: layer 1 prepare weight = 9398.95 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:09:16] KT layerwise prefill: layer 1 compute = 1.01 ms, expert update = 412.89 ms
+[2026-09-19 14:09:25] KT layerwise prefill: layer 2 prepare weight = 8912.79 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:09:26] KT layerwise prefill: layer 2 compute = 1.01 ms, expert update = 401.12 ms
+[2026-09-19 14:09:35] KT layerwise prefill: layer 3 prepare weight = 9330.25 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:09:35] KT layerwise prefill: layer 3 compute = 0.96 ms, expert update = 403.08 ms
+[2026-09-19 14:09:44] KT layerwise prefill: layer 4 prepare weight = 8606.66 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:09:44] KT layerwise prefill: layer 4 compute = 1.06 ms, expert update = 407.27 ms
+[2026-09-19 14:09:54] KT layerwise prefill: layer 5 prepare weight = 9304.72 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:09:54] KT layerwise prefill: layer 5 compute = 0.90 ms, expert update = 404.95 ms
+[2026-09-19 14:10:04] KT layerwise prefill: layer 6 prepare weight = 10091.38 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:05] KT layerwise prefill: layer 6 compute = 0.96 ms, expert update = 405.38 ms
+[2026-09-19 14:10:13] KT layerwise prefill: layer 7 prepare weight = 8810.49 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:14] KT layerwise prefill: layer 7 compute = 1.03 ms, expert update = 406.76 ms
+[2026-09-19 14:10:24] KT layerwise prefill: layer 8 prepare weight = 9903.57 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:24] KT layerwise prefill: layer 8 compute = 1.02 ms, expert update = 473.73 ms
+[2026-09-19 14:10:35] KT layerwise prefill: layer 9 prepare weight = 10548.83 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:35] KT layerwise prefill: layer 9 compute = 1.26 ms, expert update = 403.57 ms
+[2026-09-19 14:10:46] KT layerwise prefill: layer 10 prepare weight = 10407.47 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:46] KT layerwise prefill: layer 10 compute = 1.29 ms, expert update = 408.45 ms
+[2026-09-19 14:10:55] KT layerwise prefill: layer 11 prepare weight = 8790.45 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:10:55] KT layerwise prefill: layer 11 compute = 1.13 ms, expert update = 407.36 ms
+[2026-09-19 14:11:03] KT layerwise prefill: layer 12 prepare weight = 8294.87 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:04] KT layerwise prefill: layer 12 compute = 1.23 ms, expert update = 409.59 ms
+[2026-09-19 14:11:12] KT layerwise prefill: layer 13 prepare weight = 8488.37 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:13] KT layerwise prefill: layer 13 compute = 1.01 ms, expert update = 464.63 ms
+[2026-09-19 14:11:23] KT layerwise prefill: layer 14 prepare weight = 9864.02 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:23] KT layerwise prefill: layer 14 compute = 2.15 ms, expert update = 400.60 ms
+[2026-09-19 14:11:34] KT layerwise prefill: layer 15 prepare weight = 10914.15 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:34] KT layerwise prefill: layer 15 compute = 1.29 ms, expert update = 406.59 ms
+[2026-09-19 14:11:44] KT layerwise prefill: layer 16 prepare weight = 9853.32 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:45] KT layerwise prefill: layer 16 compute = 1.09 ms, expert update = 408.68 ms
+[2026-09-19 14:11:53] KT layerwise prefill: layer 17 prepare weight = 8670.82 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:11:54] KT layerwise prefill: layer 17 compute = 0.94 ms, expert update = 398.47 ms
+[2026-09-19 14:12:04] KT layerwise prefill: layer 18 prepare weight = 10069.43 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:04] KT layerwise prefill: layer 18 compute = 1.28 ms, expert update = 404.14 ms
+[2026-09-19 14:12:14] KT layerwise prefill: layer 19 prepare weight = 9767.33 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:15] KT layerwise prefill: layer 19 compute = 0.88 ms, expert update = 460.34 ms
+[2026-09-19 14:12:24] KT layerwise prefill: layer 20 prepare weight = 8936.77 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:24] KT layerwise prefill: layer 20 compute = 1.36 ms, expert update = 503.72 ms
+[2026-09-19 14:12:33] KT layerwise prefill: layer 21 prepare weight = 9412.02 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:34] KT layerwise prefill: layer 21 compute = 1.09 ms, expert update = 403.01 ms
+[2026-09-19 14:12:43] KT layerwise prefill: layer 22 prepare weight = 9582.65 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:44] KT layerwise prefill: layer 22 compute = 1.01 ms, expert update = 594.14 ms
+[2026-09-19 14:12:53] KT layerwise prefill: layer 23 prepare weight = 9337.54 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:12:54] KT layerwise prefill: layer 23 compute = 1.53 ms, expert update = 398.49 ms
+[2026-09-19 14:13:03] KT layerwise prefill: layer 24 prepare weight = 9517.93 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:04] KT layerwise prefill: layer 24 compute = 1.05 ms, expert update = 407.63 ms
+[2026-09-19 14:13:14] KT layerwise prefill: layer 25 prepare weight = 10043.38 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:14] KT layerwise prefill: layer 25 compute = 1.02 ms, expert update = 399.23 ms
+[2026-09-19 14:13:23] KT layerwise prefill: layer 26 prepare weight = 8411.44 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:23] KT layerwise prefill: layer 26 compute = 1.13 ms, expert update = 408.12 ms
+[2026-09-19 14:13:31] KT layerwise prefill: layer 27 prepare weight = 8278.54 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:32] KT layerwise prefill: layer 27 compute = 0.91 ms, expert update = 486.34 ms
+[2026-09-19 14:13:40] KT layerwise prefill: layer 28 prepare weight = 8183.86 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:40] KT layerwise prefill: layer 28 compute = 0.87 ms, expert update = 399.26 ms
+[2026-09-19 14:13:48] KT layerwise prefill: layer 29 prepare weight = 7923.07 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:49] KT layerwise prefill: layer 29 compute = 1.14 ms, expert update = 398.90 ms
+[2026-09-19 14:13:57] KT layerwise prefill: layer 30 prepare weight = 8217.13 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:13:57] KT layerwise prefill: layer 30 compute = 1.07 ms, expert update = 406.75 ms
+[2026-09-19 14:14:06] KT layerwise prefill: layer 31 prepare weight = 8152.89 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:06] KT layerwise prefill: layer 31 compute = 0.88 ms, expert update = 516.62 ms
+[2026-09-19 14:14:14] KT layerwise prefill: layer 32 prepare weight = 8070.58 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:15] KT layerwise prefill: layer 32 compute = 1.02 ms, expert update = 401.44 ms
+[2026-09-19 14:14:22] KT layerwise prefill: layer 33 prepare weight = 7941.30 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:23] KT layerwise prefill: layer 33 compute = 0.93 ms, expert update = 407.54 ms
+[2026-09-19 14:14:31] KT layerwise prefill: layer 34 prepare weight = 8323.11 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:32] KT layerwise prefill: layer 34 compute = 1.00 ms, expert update = 405.51 ms
+[2026-09-19 14:14:40] KT layerwise prefill: layer 35 prepare weight = 8318.95 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:40] KT layerwise prefill: layer 35 compute = 1.14 ms, expert update = 436.94 ms
+[2026-09-19 14:14:49] KT layerwise prefill: layer 36 prepare weight = 8228.28 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:49] KT layerwise prefill: layer 36 compute = 1.11 ms, expert update = 408.17 ms
+[2026-09-19 14:14:57] KT layerwise prefill: layer 37 prepare weight = 8085.03 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:14:58] KT layerwise prefill: layer 37 compute = 0.90 ms, expert update = 405.72 ms
+[2026-09-19 14:15:06] KT layerwise prefill: layer 38 prepare weight = 7983.88 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:06] KT layerwise prefill: layer 38 compute = 0.97 ms, expert update = 397.24 ms
+[2026-09-19 14:15:14] KT layerwise prefill: layer 39 prepare weight = 8302.57 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:15] KT layerwise prefill: layer 39 compute = 0.94 ms, expert update = 494.40 ms
+.[2026-09-19 14:15:21] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.32, npu graph: False
+[2026-09-19 14:15:21] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 659.28, npu graph: False
+[2026-09-19 14:15:33] INFO:     127.0.0.1:54056 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-19 14:15:36] KT layerwise prefill: layer 0 prepare weight = 2276.66 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:36] KT layerwise prefill: layer 0 compute = 1.28 ms, expert update = 498.87 ms
+[2026-09-19 14:15:38] KT layerwise prefill: layer 1 prepare weight = 2072.24 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:39] KT layerwise prefill: layer 1 compute = 1.12 ms, expert update = 405.22 ms
+[2026-09-19 14:15:41] KT layerwise prefill: layer 2 prepare weight = 1900.26 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:41] KT layerwise prefill: layer 2 compute = 1.12 ms, expert update = 401.60 ms
+[2026-09-19 14:15:43] KT layerwise prefill: layer 3 prepare weight = 2077.63 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:44] KT layerwise prefill: layer 3 compute = 1.02 ms, expert update = 445.04 ms
+[2026-09-19 14:15:46] KT layerwise prefill: layer 4 prepare weight = 1858.05 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:46] KT layerwise prefill: layer 4 compute = 1.29 ms, expert update = 410.98 ms
+[2026-09-19 14:15:48] KT layerwise prefill: layer 5 prepare weight = 2062.02 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:48] KT layerwise prefill: layer 5 compute = 1.02 ms, expert update = 403.61 ms
+[2026-09-19 14:15:50] KT layerwise prefill: layer 6 prepare weight = 2032.43 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:51] KT layerwise prefill: layer 6 compute = 0.98 ms, expert update = 402.92 ms
+[2026-09-19 14:15:53] KT layerwise prefill: layer 7 prepare weight = 2024.12 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:53] KT layerwise prefill: layer 7 compute = 1.09 ms, expert update = 399.44 ms
+[2026-09-19 14:15:55] KT layerwise prefill: layer 8 prepare weight = 1909.81 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:56] KT layerwise prefill: layer 8 compute = 1.04 ms, expert update = 403.84 ms
+[2026-09-19 14:15:58] KT layerwise prefill: layer 9 prepare weight = 1891.33 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:15:58] KT layerwise prefill: layer 9 compute = 1.02 ms, expert update = 399.62 ms
+[2026-09-19 14:16:00] KT layerwise prefill: layer 10 prepare weight = 1781.38 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:00] KT layerwise prefill: layer 10 compute = 1.13 ms, expert update = 400.25 ms
+[2026-09-19 14:16:02] KT layerwise prefill: layer 11 prepare weight = 1812.50 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:02] KT layerwise prefill: layer 11 compute = 0.99 ms, expert update = 407.75 ms
+[2026-09-19 14:16:04] KT layerwise prefill: layer 12 prepare weight = 1869.45 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:05] KT layerwise prefill: layer 12 compute = 1.00 ms, expert update = 406.83 ms
+[2026-09-19 14:16:06] KT layerwise prefill: layer 13 prepare weight = 1654.58 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:07] KT layerwise prefill: layer 13 compute = 0.95 ms, expert update = 400.68 ms
+[2026-09-19 14:16:09] KT layerwise prefill: layer 14 prepare weight = 1858.52 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:09] KT layerwise prefill: layer 14 compute = 1.06 ms, expert update = 407.91 ms
+[2026-09-19 14:16:11] KT layerwise prefill: layer 15 prepare weight = 1822.73 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:11] KT layerwise prefill: layer 15 compute = 1.12 ms, expert update = 404.21 ms
+[2026-09-19 14:16:13] KT layerwise prefill: layer 16 prepare weight = 1928.85 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:14] KT layerwise prefill: layer 16 compute = 1.10 ms, expert update = 399.94 ms
+[2026-09-19 14:16:15] KT layerwise prefill: layer 17 prepare weight = 1828.60 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:16] KT layerwise prefill: layer 17 compute = 1.04 ms, expert update = 403.01 ms
+[2026-09-19 14:16:18] KT layerwise prefill: layer 18 prepare weight = 1884.17 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:18] KT layerwise prefill: layer 18 compute = 0.96 ms, expert update = 401.82 ms
+[2026-09-19 14:16:20] KT layerwise prefill: layer 19 prepare weight = 1935.73 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:20] KT layerwise prefill: layer 19 compute = 0.98 ms, expert update = 410.96 ms
+[2026-09-19 14:16:22] KT layerwise prefill: layer 20 prepare weight = 1763.42 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:23] KT layerwise prefill: layer 20 compute = 1.04 ms, expert update = 486.63 ms
+[2026-09-19 14:16:25] KT layerwise prefill: layer 21 prepare weight = 1825.03 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:25] KT layerwise prefill: layer 21 compute = 0.97 ms, expert update = 403.29 ms
+[2026-09-19 14:16:27] KT layerwise prefill: layer 22 prepare weight = 1808.22 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:27] KT layerwise prefill: layer 22 compute = 1.02 ms, expert update = 400.80 ms
+[2026-09-19 14:16:29] KT layerwise prefill: layer 23 prepare weight = 1796.67 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:29] KT layerwise prefill: layer 23 compute = 0.95 ms, expert update = 408.36 ms
+[2026-09-19 14:16:31] KT layerwise prefill: layer 24 prepare weight = 1738.17 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:32] KT layerwise prefill: layer 24 compute = 1.02 ms, expert update = 407.07 ms
+[2026-09-19 14:16:33] KT layerwise prefill: layer 25 prepare weight = 1878.48 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:34] KT layerwise prefill: layer 25 compute = 1.31 ms, expert update = 402.46 ms
+[2026-09-19 14:16:36] KT layerwise prefill: layer 26 prepare weight = 1819.38 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:36] KT layerwise prefill: layer 26 compute = 0.93 ms, expert update = 407.92 ms
+[2026-09-19 14:16:38] KT layerwise prefill: layer 27 prepare weight = 1875.82 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:38] KT layerwise prefill: layer 27 compute = 1.02 ms, expert update = 399.75 ms
+[2026-09-19 14:16:40] KT layerwise prefill: layer 28 prepare weight = 1803.61 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:41] KT layerwise prefill: layer 28 compute = 1.02 ms, expert update = 405.55 ms
+[2026-09-19 14:16:42] KT layerwise prefill: layer 29 prepare weight = 1716.24 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:43] KT layerwise prefill: layer 29 compute = 1.02 ms, expert update = 401.57 ms
+[2026-09-19 14:16:45] KT layerwise prefill: layer 30 prepare weight = 1801.51 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:45] KT layerwise prefill: layer 30 compute = 1.02 ms, expert update = 403.76 ms
+[2026-09-19 14:16:47] KT layerwise prefill: layer 31 prepare weight = 1833.12 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:47] KT layerwise prefill: layer 31 compute = 0.99 ms, expert update = 400.01 ms
+[2026-09-19 14:16:49] KT layerwise prefill: layer 32 prepare weight = 1764.13 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:49] KT layerwise prefill: layer 32 compute = 1.00 ms, expert update = 401.32 ms
+[2026-09-19 14:16:51] KT layerwise prefill: layer 33 prepare weight = 1816.27 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:52] KT layerwise prefill: layer 33 compute = 0.95 ms, expert update = 409.29 ms
+[2026-09-19 14:16:54] KT layerwise prefill: layer 34 prepare weight = 1917.46 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:54] KT layerwise prefill: layer 34 compute = 1.04 ms, expert update = 485.33 ms
+[2026-09-19 14:16:56] KT layerwise prefill: layer 35 prepare weight = 1914.16 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:56] KT layerwise prefill: layer 35 compute = 1.03 ms, expert update = 405.00 ms
+[2026-09-19 14:16:58] KT layerwise prefill: layer 36 prepare weight = 1810.18 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:16:59] KT layerwise prefill: layer 36 compute = 1.04 ms, expert update = 405.65 ms
+[2026-09-19 14:17:00] KT layerwise prefill: layer 37 prepare weight = 1742.24 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:01] KT layerwise prefill: layer 37 compute = 1.16 ms, expert update = 403.02 ms
+[2026-09-19 14:17:03] KT layerwise prefill: layer 38 prepare weight = 1774.72 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:03] KT layerwise prefill: layer 38 compute = 0.95 ms, expert update = 407.80 ms
+[2026-09-19 14:17:05] KT layerwise prefill: layer 39 prepare weight = 1874.79 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:05] KT layerwise prefill: layer 39 compute = 1.00 ms, expert update = 501.78 ms
+[2026-09-19 14:17:07] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.41, npu graph: False
+[2026-09-19 14:17:08] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 654.73, npu graph: False
+[2026-09-19 14:17:12] Decode batch, #running-req: 1, #full token: 768, full token usage: 0.19, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.06, #queue-req: 0
+[2026-09-19 14:17:20] INFO:     127.0.0.1:37322 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-19 14:17:21] KT layerwise prefill: layer 0 prepare weight = 911.57 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:22] KT layerwise prefill: layer 0 compute = 1.05 ms, expert update = 488.42 ms
+[2026-09-19 14:17:23] KT layerwise prefill: layer 1 prepare weight = 875.69 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:23] KT layerwise prefill: layer 1 compute = 1.04 ms, expert update = 408.41 ms
+[2026-09-19 14:17:24] KT layerwise prefill: layer 2 prepare weight = 620.91 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:24] KT layerwise prefill: layer 2 compute = 0.97 ms, expert update = 411.50 ms
+[2026-09-19 14:17:25] KT layerwise prefill: layer 3 prepare weight = 628.29 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:25] KT layerwise prefill: layer 3 compute = 1.03 ms, expert update = 400.64 ms
+[2026-09-19 14:17:26] KT layerwise prefill: layer 4 prepare weight = 617.28 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:26] KT layerwise prefill: layer 4 compute = 1.01 ms, expert update = 413.25 ms
+[2026-09-19 14:17:27] KT layerwise prefill: layer 5 prepare weight = 628.14 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:27] KT layerwise prefill: layer 5 compute = 3.36 ms, expert update = 405.32 ms
+[2026-09-19 14:17:28] KT layerwise prefill: layer 6 prepare weight = 627.46 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:28] KT layerwise prefill: layer 6 compute = 1.11 ms, expert update = 411.79 ms
+[2026-09-19 14:17:29] KT layerwise prefill: layer 7 prepare weight = 618.45 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:29] KT layerwise prefill: layer 7 compute = 1.03 ms, expert update = 444.42 ms
+[2026-09-19 14:17:30] KT layerwise prefill: layer 8 prepare weight = 623.17 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:30] KT layerwise prefill: layer 8 compute = 1.26 ms, expert update = 413.22 ms
+[2026-09-19 14:17:31] KT layerwise prefill: layer 9 prepare weight = 618.29 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:31] KT layerwise prefill: layer 9 compute = 0.91 ms, expert update = 403.32 ms
+[2026-09-19 14:17:32] KT layerwise prefill: layer 10 prepare weight = 614.97 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:32] KT layerwise prefill: layer 10 compute = 1.19 ms, expert update = 406.30 ms
+[2026-09-19 14:17:33] KT layerwise prefill: layer 11 prepare weight = 635.81 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:33] KT layerwise prefill: layer 11 compute = 1.10 ms, expert update = 420.58 ms
+[2026-09-19 14:17:34] KT layerwise prefill: layer 12 prepare weight = 658.15 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:35] KT layerwise prefill: layer 12 compute = 1.07 ms, expert update = 412.65 ms
+[2026-09-19 14:17:35] KT layerwise prefill: layer 13 prepare weight = 613.47 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:36] KT layerwise prefill: layer 13 compute = 1.27 ms, expert update = 411.40 ms
+[2026-09-19 14:17:36] KT layerwise prefill: layer 14 prepare weight = 637.12 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:37] KT layerwise prefill: layer 14 compute = 1.04 ms, expert update = 417.46 ms
+[2026-09-19 14:17:37] KT layerwise prefill: layer 15 prepare weight = 591.42 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:38] KT layerwise prefill: layer 15 compute = 1.27 ms, expert update = 413.48 ms
+[2026-09-19 14:17:38] KT layerwise prefill: layer 16 prepare weight = 595.41 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:39] KT layerwise prefill: layer 16 compute = 1.05 ms, expert update = 420.58 ms
+[2026-09-19 14:17:39] KT layerwise prefill: layer 17 prepare weight = 626.43 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:40] KT layerwise prefill: layer 17 compute = 0.97 ms, expert update = 404.55 ms
+[2026-09-19 14:17:40] KT layerwise prefill: layer 18 prepare weight = 596.78 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:41] KT layerwise prefill: layer 18 compute = 0.97 ms, expert update = 405.38 ms
+[2026-09-19 14:17:41] KT layerwise prefill: layer 19 prepare weight = 601.61 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:42] KT layerwise prefill: layer 19 compute = 1.18 ms, expert update = 413.39 ms
+[2026-09-19 14:17:42] KT layerwise prefill: layer 20 prepare weight = 629.71 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:43] KT layerwise prefill: layer 20 compute = 0.96 ms, expert update = 507.72 ms
+[2026-09-19 14:17:44] KT layerwise prefill: layer 21 prepare weight = 631.11 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:44] KT layerwise prefill: layer 21 compute = 1.02 ms, expert update = 410.13 ms
+[2026-09-19 14:17:45] KT layerwise prefill: layer 22 prepare weight = 617.32 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:45] KT layerwise prefill: layer 22 compute = 1.32 ms, expert update = 478.95 ms
+[2026-09-19 14:17:46] KT layerwise prefill: layer 23 prepare weight = 632.95 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:46] KT layerwise prefill: layer 23 compute = 1.18 ms, expert update = 412.65 ms
+[2026-09-19 14:17:47] KT layerwise prefill: layer 24 prepare weight = 639.97 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:47] KT layerwise prefill: layer 24 compute = 1.09 ms, expert update = 409.38 ms
+[2026-09-19 14:17:48] KT layerwise prefill: layer 25 prepare weight = 635.51 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:48] KT layerwise prefill: layer 25 compute = 0.95 ms, expert update = 416.32 ms
+[2026-09-19 14:17:49] KT layerwise prefill: layer 26 prepare weight = 637.67 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:49] KT layerwise prefill: layer 26 compute = 1.01 ms, expert update = 401.66 ms
+[2026-09-19 14:17:50] KT layerwise prefill: layer 27 prepare weight = 634.58 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:50] KT layerwise prefill: layer 27 compute = 0.96 ms, expert update = 412.17 ms
+[2026-09-19 14:17:51] KT layerwise prefill: layer 28 prepare weight = 600.74 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:51] KT layerwise prefill: layer 28 compute = 1.18 ms, expert update = 410.50 ms
+[2026-09-19 14:17:52] KT layerwise prefill: layer 29 prepare weight = 620.43 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:53] KT layerwise prefill: layer 29 compute = 0.95 ms, expert update = 413.24 ms
+[2026-09-19 14:17:53] KT layerwise prefill: layer 30 prepare weight = 618.53 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:54] KT layerwise prefill: layer 30 compute = 1.24 ms, expert update = 409.18 ms
+[2026-09-19 14:17:54] KT layerwise prefill: layer 31 prepare weight = 618.12 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:55] KT layerwise prefill: layer 31 compute = 1.14 ms, expert update = 412.96 ms
+[2026-09-19 14:17:55] KT layerwise prefill: layer 32 prepare weight = 600.37 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:56] KT layerwise prefill: layer 32 compute = 1.14 ms, expert update = 407.84 ms
+[2026-09-19 14:17:56] KT layerwise prefill: layer 33 prepare weight = 619.19 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:57] KT layerwise prefill: layer 33 compute = 1.03 ms, expert update = 406.87 ms
+[2026-09-19 14:17:57] KT layerwise prefill: layer 34 prepare weight = 625.36 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:58] KT layerwise prefill: layer 34 compute = 1.14 ms, expert update = 432.30 ms
+[2026-09-19 14:17:58] KT layerwise prefill: layer 35 prepare weight = 626.37 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:17:59] KT layerwise prefill: layer 35 compute = 0.97 ms, expert update = 418.42 ms
+[2026-09-19 14:17:59] KT layerwise prefill: layer 36 prepare weight = 638.34 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:18:00] KT layerwise prefill: layer 36 compute = 0.99 ms, expert update = 409.95 ms
+[2026-09-19 14:18:01] KT layerwise prefill: layer 37 prepare weight = 641.07 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:18:01] KT layerwise prefill: layer 37 compute = 1.00 ms, expert update = 412.89 ms
+[2026-09-19 14:18:02] KT layerwise prefill: layer 38 prepare weight = 633.27 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:18:02] KT layerwise prefill: layer 38 compute = 1.02 ms, expert update = 413.03 ms
+[2026-09-19 14:18:03] KT layerwise prefill: layer 39 prepare weight = 625.67 ms
+R8_WARNING_TRACE UPDATE_BEGIN
+R8_WARNING_TRACE COPY_BEGIN
+R8_WARNING_OPERAND w13_weight source (256, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w13_weight dest (32, 2048, 1024) (2097152, 1, 2048) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight source (256, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_OPERAND w2_weight dest (32, 512, 2048) (1048576, 1, 512) 0 FRACTAL_NZ
+R8_WARNING_TRACE COPY_END
+R8_WARNING_TRACE UPDATE_END_AUDIT_NEXT
+[2026-09-19 14:18:03] KT layerwise prefill: layer 39 compute = 1.06 ms, expert update = 495.00 ms
+[2026-09-19 14:18:05] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 4.48, npu graph: False
+[2026-09-19 14:18:06] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 640.80, npu graph: False
+[2026-09-19 14:18:18] INFO:     127.0.0.1:35984 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-19 14:18:21] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.03, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 8.66, npu graph: False
+[2026-09-19 14:18:31] Decode batch, #running-req: 1, #full token: 128, full token usage: 0.03, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.51, #queue-req: 0
+[2026-09-19 14:18:33] INFO:     127.0.0.1:32888 - "POST /generate HTTP/1.1" 200 OK

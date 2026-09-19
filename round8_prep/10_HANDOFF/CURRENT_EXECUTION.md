@@ -1,5 +1,33 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE — user authorizes repaired Dynamic evaluation; skip DEV1024
+
+Active .22 `q32-dynamic-restart-v2` on lane-a is the fresh hook-free DEV replay.
+Preserve it. Its controller waits for fixed `q32-dynamic-transfer-v2`, now
+PASS120updates/40layers/3generations, no offset warning. Pre/post-fix five token
+arrays exact. Root cause localized to copying transposed NZ expert slices;
+independent regression old FAIL warning / new PASS exact. Fix is separate
+`sglang-python-dynamic-v2`, local runtime source commit7096344e9; Static original
+untouched. Original actual-path trace `q32-dynamic-warning-v1` preserved.
+
+Do NOT repeat DEV1024. After replay independent audit, run
+`prepare_qwen_dynamic_candidate.py` on host. Retrieve candidate bytes, local
+commit before held-out, create freeze-ack with exact commit/candidate SHA.
+Then `run_qwen_dynamic_evaluation.py --mode heldout` (lane-a NPU4/CPU0-63)
+and `--mode cmmlu` (lane-b NPU6/CPU64-127) can run concurrently. Each enforces
+frozen inputs and admission. Do not deploy .16, push, merge or tag.
+
+After BOTH collected, use `audit_qwen_dynamic_results.py` and independently
+review outputs/resources. Write qualification-release.json only on PASS,
+then run `run_qwen_dynamic_perf.py` on prep NPU2/CPU128-191. It refuses active
+parallel lanes and requires both stage releases; three short/medium ABBA blocks,
+no long request, no hooks. No formal performance while quality lanes are active.
+
+Q32 stability A+B now2304tokens, within/cross-process exact; cgroup and HBM
+plateaus documented in11_DYNAMIC/STABILITY_AND_PERFORMANCE_AUDIT.md. Do not
+call cgroup usage process RSS or claim zero leak. Staticv6 archived but strict
+host-transfer isolation remains limited; Dynamic comparison reruns freshStatic.
+
 ## UPDATE 13:40 UTC — independent Dynamic entry audit
 
 See `11_DYNAMIC/DEV_ENTRY_AUDIT.md`. Raw256/512 independently checked:

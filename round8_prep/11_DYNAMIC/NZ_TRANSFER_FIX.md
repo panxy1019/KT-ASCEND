@@ -45,7 +45,9 @@ runtime and historical results are not rewritten.
 - A3/.22 operator regression: old warning reproduced; fixed 3-update CPU
   identity oracle and no-warning assertion PASS.
 - Actual model old-path attribution: warning bracketed within BF16 copy.
-- Fixed full-model DEV, clean restart and observer parity: running; see
-  CURRENT_EXECUTION for latest state. Operator PASS alone is not model PASS.
+- Fixed full-model DEV: 120 updates (40 layers x3), generation and weight
+  assertions PASS; zero offset warnings versus one in the unmodified actual
+  path. All five pre-fix/post-fix DEV token arrays are exact.
+- Clean restart and observer parity: running; see CURRENT_EXECUTION.
 - DEV1024 is skipped by the user's explicit instruction, preserving v1 failure.
 - No held-out or CMMLU fitting permitted. Candidate freeze precedes either.
