@@ -1,5 +1,16 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## Latest route — Round8 closure, then Round9 (2026-09-19)
+
+User authorized automatic continuation after truthful Round8 closure into
+Qwen/Qwen3.8-Flash-Next. Read `migration_bridge/round9/EXECUTION_PLAN.md` and
+`migration_bridge/round9/CURRENT_EXECUTION.md` before transition. No Qwen3.6.
+Only lightweight Round9 preparation before Round8 final audit/local commit;
+preserve current healthy jobs and finish authorized gates. Positive Dynamic
+or Deferred speedup is not a prerequisite. No heavy Round9 tasks started.
+Heartbeat should remain active after Round8 and proceed on the current
+authorized .22 environment subject to fresh resource admission.
+
 ## UPDATE 15:46 UTC — original failing request replay PASS; release adapter ready
 
 Heldout-v3 holdout_032 completedHTTP200,880input/16output,80layer updates,
