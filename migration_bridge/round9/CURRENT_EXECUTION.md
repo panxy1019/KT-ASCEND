@@ -1,5 +1,42 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Superseding authorization: download/check/deployment preparation now
+
+User explicitly authorized source-model download, verification and isolated
+deployment preparation while Round8 runs. This supersedes metadata-only limits
+below and in EXECUTION_PLAN.md, but does NOT start Round9 full-model qualification.
+
+Remote root: `/home/admin/kt-round9-qwen38` on .22. Download source manifest
+`manifests/download_source.json` freezes official Hub file sizes and LFS SHA256
+or Git blob IDs at de4b8e4d43b917e7706784d8bb445c9af86a3540. Mirror is transport
+only. Full131shards plus metadata:360023351514bytes. No precision substitution.
+
+Owned systemd unit `kt-round9-model-download.service` downloads then streams
+identity verification. Four network workers, CPUQuota100%, MemoryMax8GiB,
+swap0, Nice19, idle I/O, disk write30MB/s/read50MB/s cap. No NPU.
+`download-state.json` reports RUNNING/PAUSED/FAILED/DOWNLOAD_IDENTITY_PASS.
+Raw output is in this unit's journal; verification receipts are under evidence/.
+Service is independent of this desktop session; no auto-delete on failure.
+
+Before ANY formal Round8 performance:
+1. Create remote `PAUSE_DOWNLOAD` marker in Round9 root.
+2. Verify download-state status PAUSED and child process group stopped.
+3. Wait for outstanding disk activity to settle, then resource admission/timing.
+4. Remove marker only after the complete isolated performance campaign ends.
+The guard also pauses if Round8 prep container runs, MemAvailable<128GiB,
+diskfree<150GiB or Docker state is unknown. Only its own process group is signaled.
+Do not treat a contended timing interval as isolated if reservation was omitted.
+
+`kt-round9-qwen38-prep` is a separate preparation container, no devices/network,
+2CPU/8GiB/no swap, immutable existing image, read-only Round9 mount. Its package
+inventory probe exited0; stopped afterward. It is NOT a Qwen3.8 serving image:
+installed transformers5.3.0.dev0 vs source config5.8.0.dev0 requires compatibility
+work. No Round8 package/image/imported path was modified.
+
+Full conversion and NPU serving remain gated on Round8 closure plus independent
+Round9 resource and architecture admission. Current source-download admission
+does not imply the roughly545GiB F32+PLE runtime is admitted.
+
 State: PREPARED_WAITING_ROUND8. Read EXECUTION_PLAN.md and latest user input.
 
 1. Continue Round8 from

@@ -1,5 +1,17 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## Download preparation authorized concurrently — performance interlock
+
+Latest user authorizes Round9 source download/check/isolated preparation before
+Round8 ends. Owned .22 systemd unit `kt-round9-model-download` performs bounded
+download/verification, no NPU. Before formal performance create
+`/home/admin/kt-round9-qwen38/PAUSE_DOWNLOAD`, confirm `download-state.json`
+PAUSED and child group stopped, then allow disk activity to settle and recheck
+isolation. Keep marker for ENTIRE timed campaign; remove afterward. Do not
+stop current Round8 quality/held-out for downloads. Details and live paths in
+`migration_bridge/round9/CURRENT_EXECUTION.md`. Round9 NPU model runs and full
+F32 conversion remain gated; source download is not runtime admission.
+
 ## Latest route — Round8 closure, then Round9 (2026-09-19)
 
 User authorized automatic continuation after truthful Round8 closure into
