@@ -1,5 +1,30 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Formal Round9 entry — supersedes historical checkpoints below
+
+User explicitly requested formal Round9 entry. Phase: R9_A_IN_PROGRESS.
+Branch: codex/round9-heterogeneous-working-set, based on frozen Round8 commit
+9c1f1dae92303c1a13078319ab2aa2b5026fdb9e. Reuse the existing isolated linked
+worktree /home/admin/Documents/ChatGPT/KT/kt-round8-qwen35-prep to avoid another
+checkout on the small local disk; the Round8 branch remains at its final commit.
+Automation path remains valid. Do not alter the frozen Round8 artifact set.
+
+Remote inspection at 2026-09-19 22:57:51 UTC on authorized .22:
+- 38/131 shards size-complete: 115754320832/360000192888 weight bytes.
+  Size completion is NOT SHA verification or model qualification.
+- Both kt-round9-model-download and kt-round9-curl-pilot-v1 are failed.
+  Pilot stopped at 1409286144/3200016032 bytes with curl exit56 and TLS
+  decryption failed or bad record mac. Preserve all partials and raw journals.
+- No project model container running; unrelated mindspeed-mm and verl untouched.
+- Remote disk about2.6TiB free; MemAvailable1034805008KiB. These totals alone
+  do not grant runtime admission. Local disk cleanup leaves about4.7GiB free.
+
+Next: investigate common transport failure without disabling TLS or blindly
+restarting either failed service; validate complete files against frozen official
+identities. Continue lightweight source/shape/precision preparation independently.
+No full conversion, full-model NPU launch or C128 expansion until their gates pass.
+Read precision amendment05 and C128 plan06 before backend implementation.
+
 ## Round8 revised-scope closure — next authorized stage is Round9
 
 Latestuser cancelled Round8performance testing and requested finalaudit/closure.

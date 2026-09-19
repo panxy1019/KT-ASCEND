@@ -2,14 +2,25 @@
 
 Authorization: user mandate v1.0, 2026-09-19. This is an execution contract,
 not evidence of model or hardware qualification. Read latest user instructions
-first. Round8 remains the active heavy workload until its evidence is audited
-and final state locally committed. No Qwen3.6 or Round8.5 branch.
+first. Round8 is closed as COMPLETE_WITH_USER_SCOPE_CHANGE at
+9c1f1dae92303c1a13078319ab2aa2b5026fdb9e. Further Round8 performance testing
+was cancelled by the user; do not restart it. No Qwen3.6 or Round8.5 branch.
 
 ## Current checkpoint
 
-PREPARED_WAITING_ROUND8. Only small pinned model metadata was downloaded.
-No Round9 weights, conversion, container, production patch or device test was
-started. See `manifests/preparation.json` and `CURRENT_EXECUTION.md`.
+R9_A_IN_PROGRESS. Source download is partially complete, but transport has
+failed and whole-model identity is NOT verified. No full conversion or NPU
+model bring-up is authorized before the source, semantic and resource gates.
+See CURRENT_EXECUTION.md for live evidence rather than the historical
+metadata-only preparation manifest.
+
+Precision amendment: 05_CPU_PRECISION_REVIEW_AND_REVISED_PLAN.md supersedes
+the original mandatory full F32-bank deployment below. Retain bounded F32
+operator references; probe BF16 weight storage/F32 compute first, then MXFP4
+with Q8_0 fallback as independently qualified candidates. None is yet device
+qualified. Freeze the actual model reference precision before quality use.
+06_C128_EXPERIMENT_PLAN.md defines C128 as a separate candidate, not a change
+to the frozen C64 definition or an already admitted default.
 
 ## Ordered milestones and evidence
 
