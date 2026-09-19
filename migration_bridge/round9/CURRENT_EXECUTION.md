@@ -1,5 +1,21 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 23:39 UTC heartbeat — peer-close recovery
+
+Official proxy v2 had stopped at epoch1789860842 after46 complete shards,
+136350905480bytes. Failure was httpx.RemoteProtocolError: peer closed body
+after2870525122 of3355443376bytes, NOT the prior TLS badrecordMAC error.
+Local proxy tunnel still active, remote~2.5TiB disk and~986GiB available RAM.
+Preserve journal and2862612480byte incomplete cache. One same-config service
+restart at epoch1789861174 resumes the owned official proxy v2 only.
+No source/code/mask/quality changes, no concurrent old downloader. Wholemodel
+identity and tensor census remain pending. Do not interpret service restarts
+as evidence of a rootcause fix or automatically loop indefinitely.
+Recovery verified25s later: partial2862612480 ->3072327680bytes, RUNNING,
+controller2165205/child2165219. Latest completed shard00047 size1716681904
+passed complete SHA against official manifest:
+eb79852b4266e63fc7050e79349ece1eb3160eedb13bdb5f39b4c768e0741a4f.
+
 ## Official-source proxy recovery v2 — current owned downloader
 
 Original mirror download failed TLS at43/131 completed shards130962633280bytes.
