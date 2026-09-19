@@ -1,5 +1,17 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 12:09 UTC — secondary host ready; stability dispatched
+
+.22 Static v6 completed 6/12 cells and is running block1 position2. Preserve
+the healthy controller. .16 transfer completed; the frozen image, model
+revision, CPU manifest, Q32 profile and launch-command hashes were checked by
+`prepare_qwen_secondary_container.py`. The isolated container
+`kt-round8-qwen35-stability` uses NPU2, CPU128-191, NUMA4/5 and 384 GiB.
+The two-campaign Q32 stability controller was dispatched; inspect
+`/home/admin/kt-round8-qwen35/qwen-q32-stability-v1.log` and its output directory
+before any next launch. Container creation is not stability qualification.
+After trajectory completion, audit resources and raw outputs before Dynamic.
+
 ## UPDATE — independent .16 stability/Dynamic lane authorized
 
 User authorized 110.129.0.16 for the remaining Q32 stability and Dynamic
