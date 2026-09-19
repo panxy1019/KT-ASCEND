@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path('/home/admin/kt-round8-qwen35')
 CONTAINER = 'kt-round8-qwen35-prep'
-CAMPAIGN = 'qwen-static-perf-v5'
+CAMPAIGN = 'qwen-static-perf-v6'
 PYTHON = '/workspace/round8/venv/bin/python'
 TOOLS = '/workspace/round8/tools'
 
@@ -71,7 +71,7 @@ def main():
             command('docker', 'exec', '-d', CONTAINER, 'bash', '-c',
                 f'exec {PYTHON} {TOOLS}/start_q64.py --candidate {profile}-perf-launch-v2 '
                 f'--admission /workspace/round8/q64-admission-v1.json '
-                f'> /workspace/round8/qwen-static-perf-v2/{name}-server.log 2>&1')
+                f'> /workspace/round8/{CAMPAIGN}/{name}-server.log 2>&1')
             deadline = time.monotonic()+1200
             while True:
                 ready = subprocess.run(['docker','exec',CONTAINER,PYTHON,'-c',

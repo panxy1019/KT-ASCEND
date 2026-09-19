@@ -198,5 +198,11 @@ merged with v5 because the workload contract changed.
 
 Q32 remains the frozen target for long-run stability. Qwen Dynamic system/DEV
 qualification may proceed independently on the isolated .16 host, but final
-Dynamic performance must compare against the audited reduced Static v5
+Dynamic performance must compare against the audited reduced Static v6
 baseline under the same workload contract.
+
+The initial reduced v5 controller was then stopped before completing any cell:
+its server log path still referenced the historical v2 directory. That is an
+evidence-provenance orchestration defect, not a model/runtime failure. v5 is
+preserved as FAILED. The corrected fresh identity is v6; its server logs and
+measurement outputs are both written below `qwen-static-perf-v6`.
