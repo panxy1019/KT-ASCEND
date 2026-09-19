@@ -1,5 +1,19 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE — .16 audit: blocked by existing driver namespace ownership
+
+The dispatched stability server never reached readiness: torch_npu reported
+zero devices. No stability tokens were generated. Kernel logs report
+`uda_occupy_dev_by_ns: Conflict open udevid (udevid=2)`. The authoritative
+`/proc/uda/namespace_node` has ns_id=0, root_tgid=370374, devices0-7; Docker
+identifies that PID as the unrelated `mzy-mindspeed` container. Do not stop or
+alter that container. Empty npu-smi compute-process output was insufficient
+admission. Removing ASCEND_RT_VISIBLE_DEVICES and matching SYS_NICE capability
+did not restore visibility. Owned failed container v1 is retained under
+`kt-round8-qwen35-stability-failed-device-v1`; replacement is stopped after
+diagnosis. .16 stability/Dynamic must not launch until namespace allocation is
+available and an actual in-container tensor probe passes. .22 work continues.
+
 ## UPDATE 12:09 UTC — secondary host ready; stability dispatched
 
 .22 Static v6 completed 6/12 cells and is running block1 position2. Preserve

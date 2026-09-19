@@ -29,7 +29,7 @@ def main():
     if existing.returncode:
         command('docker','create','--name',NAME,'--cpuset-cpus','128-191',
             '--cpuset-mems','4,5','--memory','384g','--memory-swap','384g',
-            '--shm-size','16g','--network','none',
+            '--shm-size','16g','--network','none','--cap-add','SYS_NICE',
             '--device','/dev/davinci2','--device','/dev/davinci_manager',
             '--device','/dev/devmm_svm','--device','/dev/hisi_hdc',
             '-v',f'{ROOT}:/workspace/round8:rw','-v',f'{SOURCE}:/workspace/kt-src:ro',
