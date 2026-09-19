@@ -38,6 +38,10 @@ def audit(root,mode):
     assert 'Traceback (most recent call last)' not in log
     resources=rows(out/'resources.jsonl');assert resources
     assert all(r['swap']==0 and not r['state']['OOMKilled'] for r in resources)
+    assert all(not int(line.split()[1]) for r in resources for line in r['memory_events'].splitlines()
+               if line.split()[0] in ('oom','oom_kill'))
+    assert all(r['observed_layer_updates']>=0 and r['observed_layer_updates']%40==0 for r in actual)
+    assert sum(r['observed_layer_updates']>0 for r in actual)==summary['triggered_requests']
     report=dict(status='PASS',count=len(actual),summary_sha256=sha(out/'summary.json'),
         raw_sha256=sha(out/'raw.jsonl'),resources_sha256=sha(out/'resources.jsonl'))
     if mode=='cmmlu':

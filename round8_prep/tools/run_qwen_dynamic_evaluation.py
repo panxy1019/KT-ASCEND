@@ -73,6 +73,8 @@ def main():
             f'{PY} /workspace/round8/tools/run_qwen_dynamic_evaluation.py --mode {a.mode} --serve > /workspace/round8/{name}/server.log 2>&1')
         state['status']='LOADING';save();deadline=time.monotonic()+1200
         while True:
+            server_text=(out/'server.log').read_text() if (out/'server.log').exists() else ''
+            assert 'Traceback (most recent call last)' not in server_text,'SERVER_STARTUP_FAILURE'
             r=subprocess.run(['docker','exec',container,PY,'-c','import requests; assert requests.get("http://127.0.0.1:18400/health",timeout=3).status_code==200'],capture_output=True,timeout=15)
             if r.returncode==0:break
             assert time.monotonic()<deadline,'readiness timeout';time.sleep(5)
@@ -89,7 +91,9 @@ def main():
                 resources.write(json.dumps(row)+'\n');resources.flush()
                 assert not info['State']['OOMKilled'] and swap==0,'OWNED_RESOURCE_FAILURE'
                 assert not any(int(line.split()[1]) for line in events.splitlines() if line.split()[0] in ('oom','oom_kill'))
-                assert 'Check input storage_offset' not in (out/'server.log').read_text(),'TRANSFER_WARNING_REAPPEARED'
+                server_text=(out/'server.log').read_text()
+                assert 'Check input storage_offset' not in server_text,'TRANSFER_WARNING_REAPPEARED'
+                assert 'Traceback (most recent call last)' not in server_text,'SERVER_RUNTIME_FAILURE'
                 time.sleep(30)
             assert client.wait()==0,'evaluation client failed'
         state['status']='COLLECTED_PENDING_INDEPENDENT_AUDIT'

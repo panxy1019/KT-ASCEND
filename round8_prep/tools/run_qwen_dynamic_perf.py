@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import time
 from run_qwen_abba import snapshot, ensure_stopped
@@ -65,6 +66,8 @@ def main():
                         for line in row['containers'].splitlines():
                             stat=json.loads(line)
                             if stat['Name']!=CONTAINER:assert float(stat['CPUPerc'].strip('%'))<=10,'FOREIGN_CPU_CONTENTION'
+                        device_processes=re.findall(r'^\|\s+([0-7])\s+\d+\s+\|\s+(\d+)\s+\|',row['npu'],re.MULTILINE)
+                        assert all(device=='2' for device,pid in device_processes),'FOREIGN_NPU_CONTENTION'
                         assert 'Check input storage_offset' not in (out/f'{cell}-server.log').read_text()
                         time.sleep(10)
                     assert client.wait()==0,'performance client failed'

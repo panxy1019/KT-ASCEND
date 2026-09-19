@@ -48,6 +48,7 @@ runtime and historical results are not rewritten.
 - Fixed full-model DEV: 120 updates (40 layers x3), generation and weight
   assertions PASS; zero offset warnings versus one in the unmodified actual
   path. All five pre-fix/post-fix DEV token arrays are exact.
-- Clean restart and observer parity: running; see CURRENT_EXECUTION.
+- Clean restart and observer parity: independent hook-free process, five of
+  five DEV token arrays exact, no offset warning. Raw-response audit PASS.
 - DEV1024 is skipped by the user's explicit instruction, preserving v1 failure.
 - No held-out or CMMLU fitting permitted. Candidate freeze precedes either.

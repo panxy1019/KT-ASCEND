@@ -50,15 +50,20 @@ def main():
     else:rows=[json.loads(x) for x in manifest.read_text().splitlines()]
     assert len(rows)==(256 if a.mode=='cmmlu' else 128)
     assert len({r['id'] for r in rows})==len(rows)
-    correct=0;results=[]
+    correct=0;results=[];triggered_requests=0
     with (a.output/'raw.jsonl').open('x') as raw:
         for index,row in enumerate(rows):
             payload=quality_payload(row) if a.mode=='cmmlu' else heldout_payload(row)
+            server_log=a.output/'server.log'
+            before_updates=server_log.read_text().count('expert update =')
             started=time.time()
             response=requests.post('http://127.0.0.1:18400/generate',json=payload,timeout=7200)
             data=response.json()
+            updates=server_log.read_text().count('expert update =')-before_updates
+            assert updates>=0 and updates%40==0,'INCOMPLETE_LAYER_UPDATE_TELEMETRY'
+            triggered_requests+=int(updates>0)
             raw.write(json.dumps(dict(id=row['id'],payload=payload,http_status=response.status_code,
-                response=data,start_unix=started,end_unix=time.time()),ensure_ascii=False)+'\n');raw.flush()
+                response=data,start_unix=started,end_unix=time.time(),observed_layer_updates=updates),ensure_ascii=False)+'\n');raw.flush()
             response.raise_for_status();assert data['meta_info']['id']==payload['rid']
             if a.mode=='cmmlu':
                 positions=data['meta_info']['output_token_ids_logprobs'];assert len(positions)==1
@@ -69,7 +74,8 @@ def main():
                 correct=correct if a.mode=='cmmlu' else None,invalid=0,updated=time.time())))
             print(f'{a.mode} {index+1}/{len(rows)}',flush=True)
     summary=dict(status='COLLECTED_PENDING_INDEPENDENT_AUDIT',mode=a.mode,count=len(rows),
-        invalid=0,manifest_sha256=digest,entry=entry,formal_performance=False)
+        invalid=0,manifest_sha256=digest,entry=entry,formal_performance=False,
+        triggered_requests=triggered_requests,trigger_rate=triggered_requests/len(rows))
     if a.mode=='cmmlu':summary.update(correct=correct,reference_correct=222,
         observed_delta_pp=(correct-222)/256*100,quality_gate='PASS' if correct>=210 else 'FAIL',
         answer_distribution={c:results.count(c) for c in 'ABCD'})
