@@ -1,5 +1,13 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 18:30 UTC — download paused for formal Round8 performance
+
+Explicit PAUSE_DOWNLOAD marker is present; guard status PAUSED and owned HF
+process group stopped (T), verified before dispatching kt-round8-dynamic-perf-v2.
+Keep paused through all12cells, including between server restarts. Resume only
+after campaign ends and timed work is absent.33completeweightfiles totaling
+102,539,898,376bytes observed before pause; full identity NOT yet verified.
+
 User also requested consideration of C128. Read `06_C128_EXPERIMENT_PLAN.md`.
 Include an independently admitted C64/C128 comparison AFTER precision probes;
 no immediate expansion, no alteration of existing C64, no inherited PASS.

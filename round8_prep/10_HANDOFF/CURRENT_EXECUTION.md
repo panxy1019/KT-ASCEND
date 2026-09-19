@@ -1,5 +1,22 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 18:31 UTC — both Dynamic gates audited; formal performance dispatched
+
+Heldout-v3128/128PASS,8320updates,40layers x208consistent generations;
+96triggeredrequests. CMMLU-v2 re-audit224/256PASS. Release and raw hashes:
+11_DYNAMIC/HELDOUT_V3_RELEASE_AUDIT.md. Combined3.1MiBarchive copied locally
+under raw/qwen-dynamic-qualified-v2-v3.tar.gz, SHA verified equal to .22 copy.
+Candidate qualification-release.json published after independent review.
+
+Owned systemd unit kt-round8-dynamic-perf-v2 launched at18:30:26UTC using
+qwen_dynamic_retry_release.py --performance. Output qwen-dynamic-perf-v2;
+first Static cell passed admission and is loading. Verify live before action;
+do NOT duplicate. Three ABBAblocks12cells24requests,short64/32 medium256/64,
+no hooks or long workload,NPU2CPU128–191. Formal result pending final audit.
+Round9 PAUSE_DOWNLOAD is set and child group confirmed stopped. KEEP marker
+throughout ALL cells; remove only after campaign ends/no timed work remains.
+No Round8 completion or Dynamic speedup claim yet.
+
 ## UPDATE 17:41 UTC — Dynamic CMMLU complete and independently audited
 
 CMMLU-v2:224/256,invalid0,delta+0.78125pp vs Q64 reference222. Frozen scorer,
