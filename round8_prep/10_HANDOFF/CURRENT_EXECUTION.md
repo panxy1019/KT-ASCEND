@@ -1,5 +1,34 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 02:33 UTC — Q64 reference frozen; Q32 entry active
+
+Q64 quality completed222/256,invalid0; independent raw auditPASS (256orderedIDs,
+inputIDs,params,candidateIDs,requestIDs,finitecandidates,re-score). Actual1689
+source/nativehashes rechecked0mismatches beforechangingdiagnostictools.
+ArchiveSHA8942a99c199e69ac3c06731092081365f0c5f8566466490536bf3e2f053e6ec0.
+Reference freezecommitddab2f60d334c93040475d1aef92dd5b91eddfb3; see
+Q64_REFERENCE_AUDIT_AND_Q32_ENTRY.md. Q64 is engineeringreference,notAllNPU.
+
+**Q32 bring-up is current owned work.** Samecontainer/NPU2/CPU128–191/NUMA4/5,
+model/GGUF/tokenizer,C64 unchanged. OldQ64server stoppedaftercomplete evidence;
+Docker exitedwithOOMKilled=false. Newhostdriver3597607, log`q32-bringup-v1.log`.
+FrozenoriginalprofileSHA b358399e6405d60b81d8231529b1ec6024ff7138cddab2e0cbac3ccf0b25f486.
+Candidate`q32-launch-v1`, mask32/256eachof40layers. AdmissionPASS. Diagnostic
+hooks adaptedonlyto expectedresidentcount; no productionarithmetic change.
+
+Hostdriver3597608 waitsactualQ32health+40layer32slot/sharedoracle, thenruns
+`q64_compact.py --profile q32 --phase same`. Log`q32-compact-same-v1.log`, output
+`q32-compact-v1`. Do notduplicate/restarthealthy run. This chain STOPS after
+sameprocessmatrix: cleanrestart is next, NOTquality. Newseparate restartcandidate
+directory/log mustbe used to avoid mixingstructure/rawprocesses.
+
+Next: auditQ32same32requests→cleanrestartfour32tokenprompts→32distinctprompt
+screen→samefrozenCMMLUmanifest (Q64reference222;Q32minimum210/256 underold−5pp).
+Do NOT run oldQ64qualitytool unmodified forQ32: its predecessor/output paths
+are Q64-specific. Generalizewith explicitprofile and separate rawoutput, preserve
+exactmanifest/scorer. No samplechanges,thresholdrefit ormaskreselection.
+No Q32quality,formalperformance orRound8completion claimed.
+
 ## UPDATE 01:55 UTC — supersedes running32prompt screen below
 
 32distinctprompt/64response screen completedPASS; rawaudit complete. Additional
