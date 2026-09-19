@@ -1,5 +1,14 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 21:22 UTC — timing ended, download reservation released
+
+All12Round8performancecellscollected, controllerinactive,allownedlanesstopped.
+PAUSE_DOWNLOAD removed. HF resumed then failed TLSReadError/badrecordMAC;
+sameownedservice restarted withsamepinnedrevision/cache/caps. Preservejournal,
+noforce-download,nocertificatebypass. Verifylivehealth. Round8 strictresource
+auditNOTQUALIFIED duehostswap/pressure andsamplingbounds,finalclosurepending.
+NoRound9NPU/fullconversion yet. Earlierpauseinstructionsbelowarehistorical.
+
 ## 18:30 UTC — download paused for formal Round8 performance
 
 Latest: performance-v2 failed cold Dynamic watchdog300; preserved and replaced

@@ -1,5 +1,19 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 21:22 UTC — all12performance cells collected; resource audit LIMITED
+
+v3 controller finished; ownedprep/a/bstopped,OOMfalse.24requests protocolPASS.
+See11_DYNAMIC/PERFORMANCE_V3_RESOURCE_AUDIT.md. Static medians24.0788/47.2085s,
+Dynamic24.3355/472.0047s(short/medium),descriptiveONLY.284resource samples show
+hostswap activity(37460in/54017outpages),memorypressure and incompletefinal
+samplebounds; STRICT_ISOLATED_PERFORMANCE=NOT_QUALIFIED_RESOURCE_AUDIT.
+Do not claim formalPASS, speedup or completeRound8. KeepQ32Static,Dynamicoff.
+Archive copied locally and remote, SHA8ac9bb1b59d641a8e867414ce78e20466e9e77d4d5475fba3cf83e0781f6946e.
+No new fullmatrix until resourceprovenance/collectorboundaryreview; don't touch
+hostswap orothers. Next: finalgateaccounting and boundedresource diagnosis.
+Round9pausemarker removed afteralltimedworkended; downloadTLSReadError occurred
+onresume, sameownedservicerestarted usingcache, noidentity/resourcechanges.
+
 ## UPDATE 19:29 UTC — original performance failure replay completed
 
 v3 dynamic0-1 now collected: shortHTTP20064input/32output; mediumHTTP200256input/
