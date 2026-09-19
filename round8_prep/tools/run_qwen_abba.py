@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path('/home/admin/kt-round8-qwen35')
 CONTAINER = 'kt-round8-qwen35-prep'
+CAMPAIGN = 'qwen-static-perf-v3'
 PYTHON = '/workspace/round8/venv/bin/python'
 TOOLS = '/workspace/round8/tools'
 
@@ -29,8 +30,20 @@ def snapshot():
         pressure=Path('/proc/pressure/memory').read_text())
 
 
+def ensure_stopped():
+    stopped = subprocess.run(['docker', 'stop', '-t', '60', CONTAINER],
+                             text=True, capture_output=True, timeout=120)
+    inspect = json.loads(command('docker', 'inspect', CONTAINER))[0]
+    if inspect['State']['Running']:
+        raise RuntimeError(f'owned container still running after stop: {stopped.stderr}')
+    # Docker may report "did not receive an exit event" even though inspect
+    # already records a cleanly reaped, non-OOM stopped container.
+    return dict(returncode=stopped.returncode, stdout=stopped.stdout,
+                stderr=stopped.stderr, state=inspect['State'])
+
+
 def main():
-    out = ROOT / 'qwen-static-perf-v2'
+    out = ROOT / CAMPAIGN
     out.mkdir(exist_ok=True)
     lock = (out / 'controller.lock').open('w')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -45,7 +58,8 @@ def main():
             state['current'] = name
             save()
             # Every cell starts a clean serving process, preserving all mounted artifacts.
-            command('docker', 'stop', '-t', '60', CONTAINER)
+            stop = ensure_stopped()
+            (out/f'{name}-stop.json').write_text(json.dumps(stop, indent=2)+'\n')
             command('docker', 'start', CONTAINER)
             subprocess.run(['python3', str(ROOT/'tools/admit_q64_host.py')], check=True,
                            stdout=(out/f'{name}-admission.log').open('w'), timeout=180)
@@ -65,7 +79,8 @@ def main():
             with (out/f'{name}-client.log').open('w') as log:
                 worker = subprocess.Popen(['docker','exec',CONTAINER,PYTHON,
                     f'{TOOLS}/qwen_static_perf.py','--profile',profile,'--block',str(block),
-                    '--position',str(position)],stdout=log,stderr=subprocess.STDOUT)
+                    '--position',str(position),'--campaign',CAMPAIGN],
+                    stdout=log,stderr=subprocess.STDOUT)
                 with (out/f'{name}-resources.jsonl').open('w') as resource:
                     while worker.poll() is None:
                         resource.write(json.dumps(snapshot())+'\n')

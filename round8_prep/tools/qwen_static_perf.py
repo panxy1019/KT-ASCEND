@@ -37,9 +37,10 @@ def main():
     parser.add_argument('--profile', choices=('q64', 'q32'), required=True)
     parser.add_argument('--block', type=int, choices=range(3), required=True)
     parser.add_argument('--position', type=int, choices=range(4))
+    parser.add_argument('--campaign', default='qwen-static-perf-v2')
     args = parser.parse_args()
     suffix = '' if args.position is None else f'-position{args.position}'
-    campaign = 'qwen-static-perf-v1' if args.position is None else 'qwen-static-perf-v2'
+    campaign = 'qwen-static-perf-v1' if args.position is None else args.campaign
     out = ROOT / campaign / f'{args.profile}-block{args.block}{suffix}'
     out.mkdir(parents=True, exist_ok=False)
     inputs = make_inputs()
