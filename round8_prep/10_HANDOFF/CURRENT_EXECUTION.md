@@ -16,6 +16,10 @@ FrozenoriginalprofileSHA b358399e6405d60b81d8231529b1ec6024ff7138cddab2e0cbac3cc
 Candidate`q32-launch-v1`, mask32/256eachof40layers. AdmissionPASS. Diagnostic
 hooks adaptedonlyto expectedresidentcount; no productionarithmetic change.
 
+02:37UTC: serverready,40/40structure/sharedoracle rows confirmed; first32token
+Chinese request andfirst16tokenprefix/repeat PASS. Same-processmatrix healthy
+at2/32requests. No OOMevents orcgroupswap. Keepthisrun intact.
+
 Hostdriver3597608 waitsactualQ32health+40layer32slot/sharedoracle, thenruns
 `q64_compact.py --profile q32 --phase same`. Log`q32-compact-same-v1.log`, output
 `q32-compact-v1`. Do notduplicate/restarthealthy run. This chain STOPS after
