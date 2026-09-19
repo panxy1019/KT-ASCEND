@@ -1,5 +1,16 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 19:29 UTC — original performance failure replay completed
+
+v3 dynamic0-1 now collected: shortHTTP20064input/32output; mediumHTTP200256input/
+64output,470.721350s clientE2E including cold weight preparation. No watchdog,
+storage_offset warning or Traceback in this cell. This confirms elimination of
+the observed watchdog termination for this replay, NOT a performance benefit.
+SummarySHAa41014635d28f78adb1bfc72a5503249c707863531e714c1ed753fab9ecd5136;
+rawSHAfe8e6856886a32535a53216d18ae756876388ccfd8e1c1645e41e76b5bae8f02.
+2/12cells collected; dynamic0-2 healthy progressing through layer22. Preserve
+controller, keep Round9 PAUSED. Full performance/resource audit still pending.
+
 ## UPDATE 18:56 UTC — performance v2 watchdog failure, v3 retry preparation
 
 v2FAILED after static0-0. Dynamic medium request progressed through layer34
