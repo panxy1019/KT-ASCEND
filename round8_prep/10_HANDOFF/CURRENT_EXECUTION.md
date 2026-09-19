@@ -1,5 +1,21 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE — independent .16 stability/Dynamic lane authorized
+
+User authorized 110.129.0.16 for the remaining Q32 stability and Dynamic
+qualification. Read-only preflight at 10:56 UTC found the same Kunpeng-920
+256-core/8-NUMA and eight Ascend 910B3 topology, 975 GiB MemAvailable, zero
+NPU processes and no competing project container. Access is through the
+110.123.0.3 jump host. Existing business containers remain untouched.
+
+The frozen runtime image, `/home/admin/kt-round8-qwen35` artifacts and frozen
+KT source are transferring directly from .22 to .16 under host PID 1038129;
+completion requires artifact/hash audit before any model process starts. The
+.16 lane will use physical NPU2, CPU128-191, NUMA4/5, C64=2x32, 384 GiB, Q32,
+Dynamic/Deferred/Graph OFF for stability. It then uses a separate candidate for
+Dynamic DEV selection and qualification. No .16 evidence is merged into .22
+timing evidence. The heartbeat now tracks both machines.
+
 ## UPDATE — complete ABBA orchestration launched after first-block audit
 
 The original Q64-only block completed at 09:59 UTC: short/medium/long
