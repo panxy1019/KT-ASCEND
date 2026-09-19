@@ -1,5 +1,23 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 23:48–23:50 UTC ModelScope comparison and renewed interruption
+
+User authorized speed test only. ModelScope Qwen/Qwen3.8-Flash-Next master
+model-00029 HEAD X-Linked-Etag matches frozen officialSHA40d2f229...03ec.
+Master lookup is discovery, NOT a frozen alternate snapshot; no bytes published.
+Sequential bounded/discarded tests: MS64MiB10.179093s=6.59MB/s;
+HFofficial via proxy64MiB9.579291s=7.01MB/s; MS next64MiB failedcurl92
+HTTP2 INTERNAL_ERROR before body; HTTP1.1 retry17.023648s=3.94MB/s,206/TLS0.
+No demonstrated ModelScope speed advantage. Shared traffic and downloads
+make this exploratory, not an isolated bandwidth benchmark. No source switch.
+
+IMPORTANT current official-proxy-v2 downloader FAILED again at1789861747.6861756.
+RemoteProtocolError received2865353719 of3355443376bytes. Prior peer-close
+received2870525122, a similar transfer amount; investigate long connection/
+range-resume behavior rather than claim stable transport or blindly restart.
+Last count47 complete shards139706348856bytes. Preserve incomplete cache and
+journals. Wholemodel identityNOTPASS; no conversion/NPU launch.
+
 ## 23:39 UTC heartbeat — peer-close recovery
 
 Official proxy v2 had stopped at epoch1789860842 after46 complete shards,
