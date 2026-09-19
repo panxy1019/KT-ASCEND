@@ -1,5 +1,16 @@
 # Full conversion → Q64 bring-up, 2026-09-19
 
+## Conversion closed (supersedes running status below)
+
+All40 layers/120 GGUF tensors/30,720 per-expert projections passed exact source
+comparison; payload128,849,018,880 bytes (120GiB). Raw final manifest frozen as
+`full-conversion-manifest-v1.json`, SHA256
+`35ca0ac63a3646ba7b89675053bbead19724325fa9d73f99910ef3c156a84405`.
+Actual launch-v2 source/native1688 hashes and command captured in
+`q64-resolved-command-v2.json`, SHA256
+`b0b62f15266a8512dd05fd3e5698969ecf216a570c25d7db09b483538fc9abd8`.
+Freeze these before first full-model launch. No full-model PASS yet.
+
 User explicitly authorized continuous operator migration, middle/late probes,
 all40-layer conversion/full identity audit, then Q64-C64 static bring-up.
 Pause only for long quality/performance campaigns, not ordinary software fixes.
