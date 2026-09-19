@@ -1,5 +1,23 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 15:23 UTC — heldout v2 watchdog failure; v3 bounded retry
+
+v2 heldout FAILED on holdout_032: scheduler watchdog300 expired during cold
+audited layerwise prefill; migration continued until SIGQUIT. No OOM/offset
+warning/weight assertion. Raw failure archived with SHA in
+11_DYNAMIC/HELDOUT_WATCHDOG_RETRY_V3.md. CMMLU v2 healthy (>44/256), preserve it.
+
+New versioned controller `tools/run_qwen_dynamic_heldout_retry.py --mode heldout`
+uses qwen-dynamic-heldout-v3 and retry manifest qwen-dynamic-heldout-retry-v3.
+Only watchdog1800 and attempt paths differ; original candidate immutable.
+Commit retry metadata BEFORE upload retry-ack and launch. Full128 replay, no
+sample deletion or threshold refit. Lane-a remains NPU4/CPU0–63 only.
+
+Final audit/performance currently hardcode heldout-v2: MUST add explicit v3
+attempt-path adapters before release. Never replace old failed evidence with
+v3 or claim old candidate passed unchanged orchestration. Formal performance
+remains gated; CMMLU/tools/model implementation stay untouched.
+
 ## UPDATE 14:49 UTC — candidate committed; two evaluation lanes healthy
 
 This entry supersedes older launch instructions below. Candidate commit
