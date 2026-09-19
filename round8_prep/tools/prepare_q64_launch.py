@@ -20,7 +20,7 @@ def sha(p):
 
 def main():
     root=Path('/workspace/round8')
-    out=root/'q64-launch-v5'
+    out=root/'q64-launch-v6'
     out.mkdir(exist_ok=False)
     profile=json.loads((root/'q64_profile.json').read_text())
     assert profile['resident']==64 and len(profile['layers'])==40
@@ -51,10 +51,15 @@ def main():
         '--init-expert-location',str(out/'uniform-mask.pt')]
     hooks=[dict(name='qwen-structure',target_modules=['model.layers.*.mlp'],
                 hook_factory='qwen_bringup_hooks:make_structure',
-                config=dict(output=str(out),profile=str(root/'q64_profile.json'))),
+                config=dict(output=str(out),profile=str(root/'q64_profile.json'),shared_oracle=True)),
            dict(name='qwen-routes',target_modules=['model.layers.*.mlp.topk'],
                 hook_factory='qwen_bringup_hooks:make_routes',
                 config=dict(output=str(out),profile=str(root/'q64_profile.json')))]
+    for layer in range(40):
+        for kind,suffix in [('shared','shared_expert'),('gate','shared_expert_gate'),('routed','experts')]:
+            hooks.append(dict(name=f'shared-oracle-{layer}-{kind}',
+                target_modules=[f'model.layers.{layer}.mlp.{suffix}'],
+                hook_factory='qwen_bringup_hooks:make_shared_part',config=dict(layer=layer,kind=kind)))
     args+=['--forward-hooks',json.dumps(hooks)]
     cann=Path('/usr/local/Ascend/ascend-toolkit/latest')
     cann_paths=[cann/'python/site-packages',cann/'opp/built-in/op_impl/ai_core/tbe']

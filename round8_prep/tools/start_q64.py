@@ -18,7 +18,7 @@ def main():
     assert manifest['status']=='FULL_40_LAYER_CONVERSION_IDENTITY_PASS_NOT_MODEL_QUALIFICATION'
     assert manifest['exact_projection_instances']==30720
     assert {r['layer'] for r in manifest['layers']}==set(range(40))
-    config=json.loads((root/'q64-launch-v5/resolved-command.json').read_text())
+    config=json.loads((root/'q64-launch-v6/resolved-command.json').read_text())
     for path,digest in config['code_hashes'].items():
         assert hashlib.sha256(Path(path).read_bytes()).hexdigest()==digest, path
     env=os.environ.copy();env.update(config['env'])
