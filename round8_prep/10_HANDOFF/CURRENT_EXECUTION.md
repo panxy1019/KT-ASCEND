@@ -1,5 +1,16 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 17:41 UTC — Dynamic CMMLU complete and independently audited
+
+CMMLU-v2:224/256,invalid0,delta+0.78125pp vs Q64 reference222. Frozen scorer,
+ordered inputs/payloads, candidate and resource evidence independently PASS.
+217/256 requests triggered actual updates. See11_DYNAMIC/CMMLU_V2_INDEPENDENT_AUDIT.md
+for raw hashes and scope. Raw remains on persistent .22 host; second archive
+pending, local desktop only~70MiB free. Heldout-v3 remains healthy101/128;
+preserve it. No combined release/performance launch until full held-out audit.
+Round9 download remains healthy18complete shards/54,539,657,864bytes,OOM0.
+Do not interpret collected shard count as verified model identity.
+
 ## Download preparation authorized concurrently — performance interlock
 
 Latest user authorizes Round9 source download/check/isolated preparation before
