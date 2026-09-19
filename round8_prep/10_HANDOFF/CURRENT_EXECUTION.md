@@ -1,5 +1,18 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 13:08 UTC — three lanes started; foreground monitoring may end
+
+User requested monitoring until all three tests had stable starts, while keeping
+heartbeat active. Stability campaignA has3 completed64-token responses. Dynamic
+256 and512 each returned the no-trigger request and entered real layerwise
+prefill/update, with9 and8 migration audit rows respectively and continuing
+layer progress. Early health timeouts resolved after cold initialization.
+Available host memory558GiB. No test completion or Dynamic qualification yet.
+Dynamic256 logged an Ascend storage_offset warning during first full-resident
+compute. Preserve and investigate it before qualification: exact copied-weight
+audits do not prove grouped-kernel output correctness. Continue monitoring
+through heartbeat; do not restart healthy lanes merely for this note.
+
 ## UPDATE — user-authorized three-container .22 execution
 
 Static v6 collection completed12/12; raw evidence retrieved locally, isolation
