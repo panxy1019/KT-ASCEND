@@ -72,6 +72,11 @@ def guarded(command, phase, env):
                 child.wait()
 
 
+def download_command(manifest):
+    return [HF, 'download', manifest['repo'], *[x['path'] for x in manifest['files']],
+            '--revision', REV, '--local-dir', str(MODEL), '--max-workers', '1']
+
+
 def main():
     MODEL.mkdir(parents=True, exist_ok=True)
     env = dict(os.environ, HF_ENDPOINT='https://hf-mirror.com',
@@ -84,9 +89,7 @@ def main():
     if m['revision'] != REV or m['repo'] != 'Qwen/Qwen3.8-Flash-Next':
         raise ValueError('wrong frozen source')
     # Explicit filenames keep mirror repository additions outside this experiment.
-    guarded([HF, 'download', m['repo'], *[x['path'] for x in m['files']],
-             '--revision', REV, '--local-dir', str(MODEL), '--max-workers', '4'],
-            'DOWNLOAD', env)
+    guarded(download_command(m), 'DOWNLOAD', env)
     guarded([sys.executable, str(ROOT / 'verify_download.py'), str(manifest),
              str(MODEL), str(ROOT / 'evidence')], 'IDENTITY_VERIFY', env)
     write_state(status='DOWNLOAD_IDENTITY_PASS', model_execution='NOT_RUN')

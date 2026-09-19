@@ -1,5 +1,15 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 21:40 UTC — bounded serial transport diagnostic
+
+TLSReadError/badrecordMAC recurred21:28:52 after38completedshards,115754320832bytes.
+Retainjournal; performance ended,notpaused. Downloadguard now usesONEworker,
+samefileallowlist/cache/fullrevision,TLSverification andfinalSHAchecks. This is
+transportisolation,notaprovenTLSrootcausefix.6localtestsPASS, noforce-download.
+GuardSHA62209856e4f6340dbf25c31f41b56dd53df81273f79982c7d19080ec5a66ff21,
+matcheddeployed. Failedservice restartedafterexactstatuscheck. Verifyhealth;
+do not blindlyrepeat if sameerrorrecurs. Resourcecapsandpauseinterlockunchanged.
+
 ## 21:22 UTC — timing ended, download reservation released
 
 All12Round8performancecellscollected, controllerinactive,allownedlanesstopped.

@@ -1,5 +1,16 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 21:40 UTC — resource instrumentation gap localized
+
+Read11_DYNAMIC/RESOURCE_ATTRIBUTION_FOLLOWUP.md. Admission checks paging before
+load, performance loop does not gate paging during requests and lacks owned
+cgroup/NUMA/end-boundary samples. Historical evidence cannot repair this gap.
+SelectedNUMA4/5total~252GiB vs384GiBcgroup cap suggests localpressure risk,
+notrootcauseproof. NextboundedONEcoldDynamicmediumdiagnostic must add attribution
+without changingC64/model or claimingtimedqualification. Noautomatic12cellrerun.
+Round9TLSReadErrorrecurred after38shards; switchedonlydownloadworkers4→1 as
+controlledtransportdiagnostic, samecache/revision/TLS/hashchecks. Service restarted.
+
 ## UPDATE 21:22 UTC — all12performance cells collected; resource audit LIMITED
 
 v3 controller finished; ownedprep/a/bstopped,OOMfalse.24requests protocolPASS.
