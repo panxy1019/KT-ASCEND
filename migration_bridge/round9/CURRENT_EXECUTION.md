@@ -1,5 +1,21 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## User-authorized download resume and Round8 publication
+
+User explicitly authorized resuming download and pushing Round8 results.
+Original single-worker kt-round9-model-download service restarted; confirmed
+RUNNING with controller2124622/child2124635 and actual partial-file growth.
+This is a resumed attempt, NOT a demonstrated fix for the historical TLS fault.
+Keep original curl pilot failure/partials; do not run concurrent downloaders.
+Complete official identity verification remains required after download.
+
+Round8 branch codex/round8-qwen35-prep pushed to panxy1019/KT-ASCEND and remote
+ref verified as9c1f1dae92303c1a13078319ab2aa2b5026fdb9e. All255 archived artifact
+hashes matched before push. No main merge/tag; Round9 branch not pushed.
+Frozen Round8 ancestry includes pre-existing Round9 preparation commits.
+GitHub accepted with warnings for two historical Round7 archives over50MB;
+do not rewrite frozen history merely to remove these nonfatal warnings.
+
 ## Formal Round9 entry — supersedes historical checkpoints below
 
 User explicitly requested formal Round9 entry. Phase: R9_A_IN_PROGRESS.
