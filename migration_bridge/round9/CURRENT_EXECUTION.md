@@ -1,5 +1,17 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## CPU precision replan requested by user
+
+Read `05_CPU_PRECISION_REVIEW_AND_REVISED_PLAN.md` before any full CPU-bank
+conversion. User questioned full F32 deployment and requested a new official-
+source-backed precision plan. Proposed route: bounded F32 local reference;
+probe BF16 weight storage/F32 compute as first unquantized model reference;
+MXFP4 product candidate, Q8_0 fallback. No format is yet device-qualified.
+Do not blindly start450GiB F32 conversion from older instructions. Complete
+format/shape/C64 probes and freeze the new reference identity before model
+quality use. Do not relabel BF16 storage execution as F32 execution. Current
+source download and Round8 runtime stay unchanged.
+
 ## Superseding authorization: download/check/deployment preparation now
 
 User explicitly authorized source-model download, verification and isolated
