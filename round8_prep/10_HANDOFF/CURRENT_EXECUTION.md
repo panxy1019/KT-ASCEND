@@ -17,6 +17,11 @@ Round9 PAUSE_DOWNLOAD is set and child group confirmed stopped. KEEP marker
 throughout ALL cells; remove only after campaign ends/no timed work remains.
 No Round8 completion or Dynamic speedup claim yet.
 
+18:36UTC follow-up: firstStatic14/14shardsloaded, healthHTTP200,warmupPOST200,
+timed client active. Actual protocol input/output lengths confirmed64/32 and
+256/64; do not infer input length from padded server log rows. Healthy launch
+confirmed; retain controller and performance reservation until campaign exits.
+
 ## UPDATE 17:41 UTC — Dynamic CMMLU complete and independently audited
 
 CMMLU-v2:224/256,invalid0,delta+0.78125pp vs Q64 reference222. Frozen scorer,
