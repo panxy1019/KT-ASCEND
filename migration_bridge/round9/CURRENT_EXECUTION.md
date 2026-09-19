@@ -1,5 +1,18 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Download throughput check and online quota increase
+
+User requested faster download and ETA. Online systemd runtime quotas changed
+only for kt-round9-model-download: CPU100% ->400%, read50MB/s/write30MB/s
+->300MB/s both. Verified effective properties; healthy worker was NOT restarted.
+Keep memory8GiB/swap0, resource pause guards, TLS checks and official SHA audit.
+Serial worker remains because prior serial/parallel TLS failures are unresolved.
+Sample epoch1789859230..1789859260: model completed+partial bytes
+126535541520 ->126818657040, gain283115520/30s =9.437184MB/s.
+Completed shards40/131,122309780240bytes; partials not identity-qualified.
+Estimated remaining transport~233.18GB (~6.9h at this short-window rate),
+plus full identity audit. ETA conditional on sustained transfer/no TLS failure.
+
 ## User-authorized download resume and Round8 publication
 
 User explicitly authorized resuming download and pushing Round8 results.
