@@ -3,7 +3,7 @@ from pathlib import Path
 import json
 import sys
 from qwen_dynamic_retry_release import frozen_source, replace_once, audit
-from run_qwen_dynamic_perf_retry import adapted_controller
+from run_qwen_dynamic_perf_retry import adapted_controller, retry_config
 
 ROOT = Path('/home/admin/kt-round8-qwen35')
 NAME = 'qwen-dynamic-resource-diagnostic-v1'
@@ -74,7 +74,7 @@ def main():
         assert all(audit(ROOT)[mode]['status'] == 'PASS' for mode in ('heldout', 'cmmlu'))
         source = controller(frozen_source(ROOT, 'run_qwen_dynamic_perf.py'))
     exec(compile(source, 'frozen_controller[single-cell-resource-diagnostic]', 'exec'),
-         {'__name__': '__main__', 'snapshot': snapshot})
+         {'__name__': '__main__', 'snapshot': snapshot, 'retry_config': retry_config})
 
 
 if __name__ == '__main__': main()
