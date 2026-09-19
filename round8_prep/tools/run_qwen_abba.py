@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path('/home/admin/kt-round8-qwen35')
 CONTAINER = 'kt-round8-qwen35-prep'
-CAMPAIGN = 'qwen-static-perf-v3'
+CAMPAIGN = 'qwen-static-perf-v4'
 PYTHON = '/workspace/round8/venv/bin/python'
 TOOLS = '/workspace/round8/tools'
 
@@ -33,9 +33,14 @@ def snapshot():
 def ensure_stopped():
     stopped = subprocess.run(['docker', 'stop', '-t', '60', CONTAINER],
                              text=True, capture_output=True, timeout=120)
-    inspect = json.loads(command('docker', 'inspect', CONTAINER))[0]
-    if inspect['State']['Running']:
-        raise RuntimeError(f'owned container still running after stop: {stopped.stderr}')
+    deadline=time.monotonic()+90
+    while True:
+        inspect = json.loads(command('docker', 'inspect', CONTAINER))[0]
+        if not inspect['State']['Running']:
+            break
+        if time.monotonic()>=deadline:
+            raise RuntimeError(f'owned container still running after bounded reap: {stopped.stderr}')
+        time.sleep(2)
     # Docker may report "did not receive an exit event" even though inspect
     # already records a cleanly reaped, non-OOM stopped container.
     return dict(returncode=stopped.returncode, stdout=stopped.stdout,
