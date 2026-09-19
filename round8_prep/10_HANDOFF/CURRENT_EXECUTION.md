@@ -1,6 +1,6 @@
 # Current execution — 2026-09-19 01:28 UTC
 
-## UPDATE 15:24 UTC — heldout v2 watchdog failure; v3 admitted/loading
+## UPDATE 15:27 UTC — heldout v2 watchdog failure; v3 RUNNING
 
 v2 heldout FAILED on holdout_032: scheduler watchdog300 expired during cold
 audited layerwise prefill; migration continued until SIGQUIT. No OOM/offset
@@ -13,9 +13,11 @@ Only watchdog1800 and attempt paths differ; original candidate immutable.
 Retry metadata committed BEFORE acknowledgement/upload/launch:
 `a39977ffa083ed8988286346429c43c7f69398bd`. Retry SHA
 `9aba22dfd777053db321b148face7bda631fade57e526afc17be79b15178ad33`.
-v3 admitted and LOADING; controller log `dynamic-heldout-v3-controller.log`.
+v3 admitted and RUNNING,2/128 returnedHTTP200; controller log
+`dynamic-heldout-v3-controller.log`. Offset warning0; original failure at
+holdout_032 has NOT yet been replayed successfully. Do not call fix closed.
 Preserve this healthy new attempt. Full128 replay, no sample deletion or
-threshold refit. Lane-a remains NPU4/CPU0–63 only. CMMLU55/256 healthy.
+threshold refit. Lane-a remains NPU4/CPU0–63 only. CMMLU60/256 healthy.
 
 Final audit/performance currently hardcode heldout-v2: MUST add explicit v3
 attempt-path adapters before release. Never replace old failed evidence with
