@@ -1,5 +1,18 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## USER OVERRIDE — .16 migration cancelled
+
+User requested removal of this project's .16 migration and all further testing
+on .22. Do not reconnect/deploy .16 in future heartbeats. Failed stability raw
+logs were retrieved into `round8_prep/raw/secondary-host-failure` locally.
+Owned .16 containers, imported runtime image, project artifact/source copies
+and four uploaded temporary tools were removed under explicit user
+authorization; existing business containers and host driver remain untouched.
+Post-cleanup inspection confirmed both project directories absent, only the
+original four containers remain, and filesystem availability is 2.9TiB.
+After .22 Static v6 audit, adapt admission/container orchestration to .22 before
+long stability and Dynamic. Do not run the .16-specific admission unmodified.
+
 ## UPDATE — .16 audit: blocked by existing driver namespace ownership
 
 The dispatched stability server never reached readiness: torch_npu reported
