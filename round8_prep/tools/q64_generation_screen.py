@@ -1,5 +1,6 @@
 """32 distinct prompts, repeated short generations; no benchmark quality score."""
 import hashlib
+import argparse
 import json
 import math
 from pathlib import Path
@@ -29,10 +30,13 @@ PROMPTS=[
  '用一行 Python 代码计算列表 [1, 2, 3] 的和。']
 
 def main():
- root=Path('/workspace/round8');out=root/'q64-generation-screen-v1'
- assert json.loads((root/'q64-compact-v1/restart-summary.json').read_text())['status']=='PASS'
- structure=[json.loads(s) for s in (root/'q64-launch-v6/structure.jsonl').read_text().splitlines()]
+ p=argparse.ArgumentParser();p.add_argument('--profile',choices=['q64','q32'],default='q64');a=p.parse_args()
+ root=Path('/workspace/round8');out=root/f'{a.profile}-generation-screen-v1'
+ assert json.loads((root/f'{a.profile}-compact-v1/restart-summary.json').read_text())['status']=='PASS'
+ candidate='q64-launch-v6' if a.profile=='q64' else 'q32-launch-restart-v1'
+ structure=[json.loads(s) for s in (root/candidate/'structure.jsonl').read_text().splitlines()]
  assert {r['layer'] for r in structure if r.get('shared_exactly_once_oracle')}==set(range(40))
+ assert all(r['slots']==int(a.profile[1:]) for r in structure)
  out.mkdir(exist_ok=False)
  tokenizer=AutoTokenizer.from_pretrained(root/'model-sample',local_files_only=True)
  frozen=[]

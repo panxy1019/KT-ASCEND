@@ -21,9 +21,13 @@ def sha(p):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--resident',type=int,choices=[32,64],default=64)
+    p.add_argument('--restart',action='store_true')
     a=p.parse_args();resident=a.resident
     root=Path('/workspace/round8')
     out=root/('q64-launch-v6' if resident==64 else 'q32-launch-v1')
+    if a.restart:
+        assert resident==32
+        out=root/'q32-launch-restart-v1'
     out.mkdir(exist_ok=False)
     profile_path=root/f'q{resident}_profile.json'
     profile=json.loads(profile_path.read_text())
