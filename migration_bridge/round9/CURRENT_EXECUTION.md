@@ -1,5 +1,22 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## Bounded range recovery replaces failed HF snapshot downloads
+
+Read08_RANGE_RECOVERY.md. Current owned unit is kt-round9-range-recovery-v1
+on .22, script range_recovery.py, code commits9e0616d1a/3f2331e29.
+Official proxy tunnel remains needed. Old HF unitsFAILED: do not restart them
+concurrently. Preserve original HF incomplete and all earlier pilot failures.
+11toolingtestsPASS; exact tail range206 verified. New script validates32MiB
+ranges, max3attempts per range, SHA-before-publication, final wholemodel audit.
+Recovered missing metadata by frozen SHA/Gitblob. Real shard00048 progressed
+from2862612480 to3097493504bytes at1789862291; full-shard verdict pending.
+This repairs download recovery semantics, not a proven network hardware fix.
+VERIFIED: shard00048 recovered3355443376bytes, officialSHA
+dbbf3a6e2b81c8cf9eb152c03e07550741b6e143121fbe579e3b32cdf8836a33 PASS.
+Receipt range-recovery-v1/model-00048-of-00131.safetensors.verified.json.
+At1789862358 controller2184176 automatically advanced to missing00050;
+00049 was already present. Keep healthy range controller intact.
+
 ## 23:48–23:50 UTC ModelScope comparison and renewed interruption
 
 User authorized speed test only. ModelScope Qwen/Qwen3.8-Flash-Next master
