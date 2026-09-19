@@ -27,8 +27,11 @@ def metric(a,b):
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--layer',type=int,choices=[0,20,39],required=True)
- a=p.parse_args();root=Path('/workspace/round8');out=root/f'three-way-grouped-L{a.layer}-v1'
+ a=p.parse_args();root=Path('/workspace/round8');out=root/f'three-way-grouped-L{a.layer}-v2'
  out.mkdir(exist_ok=False);torch.set_num_threads(1);torch.manual_seed(8675309)
+ # Same NPU setup as production init_npu: retain actual FRACTAL_NZ format.
+ torch_npu.npu.config.allow_internal_format=True
+ torch_npu.npu.set_compile_mode(jit_compile=False)
  manifest=json.loads((root/'cpu-experts-f32-v1/manifest.json').read_text())
  assert manifest['status']=='FULL_40_LAYER_CONVERSION_IDENTITY_PASS_NOT_MODEL_QUALIFICATION'
  path=root/f'cpu-experts-f32-v1/layer-{a.layer:02}-f32.gguf'
@@ -44,16 +47,18 @@ def main():
  w2=weights['down'].bfloat16().npu()
  layer=SimpleNamespace(w13_weight=npu_format_cast(w13.transpose(1,2)),
                        w2_weight=npu_format_cast(w2.transpose(1,2)),top_k=8)
+ formats=[torch_npu.get_npu_format(w) for w in (layer.w13_weight,layer.w2_weight)]
+ assert formats==[29,29], 'PRODUCTION_NZ_LAYOUT_NOT_ESTABLISHED'
  method=SimpleNamespace(with_bias=False,moe_runner_config=SimpleNamespace(activation='silu'),
                         _kt_return_fp32_contribution=True)
  cpu=KTMoEWrapper(layer_idx=a.layer,num_experts=256,num_experts_per_tok=8,
   hidden_size=2048,moe_intermediate_size=512,gpu_experts_mask=torch.zeros(256,dtype=torch.bool),
   cpuinfer_threads=64,threadpool_count=2,numa_nodes=[4,5],weight_path=str(path),
-  chunked_prefill_size=64,max_deferred_experts_per_token=0,method='LLAMAFILE')
+  chunked_prefill_size=512,max_deferred_experts_per_token=0,method='LLAMAFILE')
  cpu.load_weights(torch.arange(256,dtype=torch.int32))
  report=dict(layer=a.layer,gguf_sha256=sha,logical_ids=IDS,seed=8675309,
-  scope='REAL_WEIGHT_SYNTHETIC_OPERAND_PRODUCTION_FORWARD_COMPACT_NPU_LAYOUT',rows=[])
- cases=[(n,None) for n in (1,8,64)]+[(1,j) for j in range(8)]
+  scope='REAL_WEIGHT_SYNTHETIC_OPERAND_PRODUCTION_FORWARD_COMPACT_NPU_LAYOUT',weight_formats=formats,rows=[])
+ cases=[(n,None) for n in (1,8,64,512)]+[(1,j) for j in range(8)]
  for qlen,only in cases:
   x=torch.randn(qlen,2048).bfloat16();ids=torch.tensor(IDS).expand(qlen,-1).contiguous()
   routes=torch.softmax(torch.randn(qlen,8),dim=-1)
