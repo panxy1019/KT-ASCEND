@@ -5,6 +5,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import download_guard as guard
 
 class DownloadCommandTest(unittest.TestCase):
+    def test_endpoint_override_preserves_proxy_and_rejects_unapproved_host(self):
+        self.assertTrue(hasattr(guard, 'download_environment'))
+        env = guard.download_environment({'KT_DOWNLOAD_ENDPOINT': 'https://huggingface.co',
+                                         'HTTPS_PROXY': 'http://127.0.0.1:17891'})
+        self.assertEqual(env['HF_ENDPOINT'], 'https://huggingface.co')
+        self.assertEqual(env['HTTPS_PROXY'], 'http://127.0.0.1:17891')
+        self.assertEqual(guard.download_environment({})['HF_ENDPOINT'], 'https://hf-mirror.com')
+        with self.assertRaises(ValueError):
+            guard.download_environment({'KT_DOWNLOAD_ENDPOINT': 'http://unapproved.invalid'})
+
     def test_serial_transport_keeps_revision_allowlist_and_cache(self):
         manifest = {'repo': 'Qwen/Qwen3.8-Flash-Next', 'files': [{'path': 'config.json'}]}
         command = guard.download_command(manifest)

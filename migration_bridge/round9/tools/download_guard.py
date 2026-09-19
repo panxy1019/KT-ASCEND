@@ -77,13 +77,20 @@ def download_command(manifest):
             '--revision', REV, '--local-dir', str(MODEL), '--max-workers', '1']
 
 
-def main():
-    MODEL.mkdir(parents=True, exist_ok=True)
-    env = dict(os.environ, HF_ENDPOINT='https://hf-mirror.com',
+def download_environment(source):
+    endpoint = source.get('KT_DOWNLOAD_ENDPOINT', 'https://hf-mirror.com')
+    if endpoint not in ('https://hf-mirror.com', 'https://huggingface.co'):
+        raise ValueError('unapproved download endpoint')
+    return dict(source, HF_ENDPOINT=endpoint,
                HF_HOME=str(ROOT / 'hf-home'), HF_HUB_DISABLE_XET='1',
                HF_HUB_DISABLE_TELEMETRY='1', HF_HUB_DISABLE_IMPLICIT_TOKEN='1',
                HF_HUB_DOWNLOAD_TIMEOUT='120', HF_HUB_ETAG_TIMEOUT='60',
                HF_HUB_DISABLE_PROGRESS_BARS='1')
+
+
+def main():
+    MODEL.mkdir(parents=True, exist_ok=True)
+    env = download_environment(os.environ)
     manifest = ROOT / 'download_source.json'
     m = json.loads(manifest.read_text())
     if m['revision'] != REV or m['repo'] != 'Qwen/Qwen3.8-Flash-Next':
