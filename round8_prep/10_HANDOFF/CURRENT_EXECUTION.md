@@ -1,5 +1,17 @@
 # Current execution — 2026-09-19 01:28 UTC
 
+## UPDATE 13:40 UTC — independent Dynamic entry audit
+
+See `11_DYNAMIC/DEV_ENTRY_AUDIT.md`. Raw256/512 independently checked:
+120 updates each,40 layers,3 generations; actual update rows512 for both.
+DEV1024 FAILED trigger coverage with frozen chunk512; preserve failedv1.
+NZ slice-copy/equality/host-oracle probe passed but did not reproduce/clear
+the model storage_offset warning. Next: trace actual update/compute operands,
+independent oracle, restart and observer parity, then commit DEV selection.
+Do not launch held-out/CMMLU yet. Formal performance additionally requires
+hook-free isolated window. Stability v3-resume B remains healthy; preserve it.
+No production patch, quality/identity change, push, merge or tag performed.
+
 ## UPDATE 13:25 UTC — DEV256/512 done; stability B admission retry
 
 Both Dynamic DEV summaries report PASS,120 update rows each (40layers x3).

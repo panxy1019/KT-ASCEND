@@ -1,0 +1,1098 @@
+can not use command: npu-smi info
+CANN_TBE_IMPORT_PASS
+can not use command: npu-smi info
+INFO 09-19 13:01:30 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 13:01:30 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 13:01:30 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 13:01:30 [__init__.py:239] Platform plugin ascend is activated
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+ROUND8_TEXT_ENTRY enable_multimodal=False; model architecture unchanged
+[2026-09-19 13:01:34] server_args=ServerArgs(model_path='/workspace/round8/model-sample', tokenizer_path='/workspace/round8/model-sample', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=4096, is_embedding=False, enable_multimodal=False, revision=None, model_impl='auto', host='127.0.0.1', port=18400, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.7, max_running_requests=1, max_queued_requests=None, max_total_tokens=4096, chunked_prefill_size=512, enable_dynamic_chunking=False, max_prefill_tokens=512, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=128, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=0, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/workspace/round8/model-sample', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm='static', init_expert_location='/workspace/round8/q32-launch-restart-v1/uniform-mask.pt', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/workspace/round8/cpu-experts-f32-v1', kt_method='LLAMAFILE', kt_cpuinfer=64, kt_threadpool_count=2, kt_numa_nodes=[2, 3], kt_num_gpu_experts=32, kt_gpu_experts_ratio=None, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=512, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=True, kt_expert_placement_strategy='frequency', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=512, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=True, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=[{'name': 'qwen-dynamic-structure', 'target_modules': ['model.layers.*.mlp'], 'hook_factory': 'qwen_dynamic_audit:make_structure', 'config': {'output': '/workspace/round8/q32-dynamic-512-v1', 'profile': '/workspace/round8/q32_profile.json'}}])
+[2026-09-19 13:01:34] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 13:01:36] Using default HuggingFace chat template with detected content format: openai
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-19 13:01:49 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 13:01:49 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 13:01:49 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 13:01:49 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-19 13:01:49 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-19 13:01:49 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-19 13:01:49 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-19 13:01:49 [__init__.py:239] Platform plugin ascend is activated
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/workspace/round8/sglang-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[2026-09-19 13:01:51] get env SGLANG_APPLY_CONFIG_BACKUP = none
+[2026-09-19 13:01:51] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 13:01:53] Mamba selective_state_update backend initialized: triton
+[2026-09-19 13:01:53] Transformers version 5.3.0.dev0 is used for model type qwen3_5_moe. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-19 13:01:54] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-19 13:01:54] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-19 13:01:54] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-19 13:02:09] Init torch distributed begin.
+[W919 13:02:10.621906566 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[rank0]:[W919 13:02:10.778047084 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-19 13:02:10] Init torch distributed ends. elapsed=1.66 s, mem usage=0.01 GB
+[2026-09-19 13:02:10] Detected KT mode: kt_weight_path=/workspace/round8/cpu-experts-f32-v1. Using trivial mapping for CPU expert weight loading.
+[2026-09-19 13:02:10] init_expert_location: Using trivial mapping for KT frequency strategy. logical_count will be read directly by KT layers. CPU weight loading will use trivial mapping (physical_id == logical_id).
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-19 13:02:11] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-19 13:02:14] Load weight begin. avail mem=60.51 GB
+[2026-09-19 13:02:15] Multimodal attention backend not set. Use sdpa.
+[2026-09-19 13:02:15] Using sdpa as multimodal attention backend.
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-19 13:02:15] Using kt_num_gpu_experts=32 per layer, total GPU experts: 1280 (= 32 × 40 MoE layers)
+[2026-09-19 13:02:15] Loading activation frequency from /workspace/round8/q32-launch-restart-v1/uniform-mask.pt
+[2026-09-19 13:02:15] Using frequency-based strategy with activation frequency data
+[2026-09-19 13:02:15] KT GPU experts: layer 0 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 1 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 2 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 3 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 4 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 5 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 6 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 7 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 8 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 9 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 10 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 11 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 12 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 13 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 14 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 15 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 16 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 17 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 18 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 19 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 20 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 21 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 22 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 23 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 24 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 25 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 26 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 27 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 28 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 29 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 30 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 31 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 32 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 33 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 34 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 35 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 36 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 37 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 38 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] KT GPU experts: layer 39 (MoE) has 32 GPU experts
+[2026-09-19 13:02:15] Generated KT GPU experts masks using 'frequency' strategy: 40 MoE layers (out of 40 total layers) x 256 experts, total GPU experts in MoE layers = 1280
+[2026-09-19 13:02:15] [KT] Created shared staging buffer: 2.0 MiB (shape=torch.Size([512, 2048]), dtype=torch.bfloat16)
+/workspace/round8/venv/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[2026-09-19 13:02:17] using attn output gate!
+
+[GGUFLoader] Loading GGUF files from directory: /workspace/round8/cpu-experts-f32-v1
+  Loading: layer-00-f32.gguf
+  Loading: layer-01-f32.gguf
+  Loading: layer-02-f32.gguf
+  Loading: layer-03-f32.gguf
+  Loading: layer-04-f32.gguf
+  Loading: layer-05-f32.gguf
+  Loading: layer-06-f32.gguf
+  Loading: layer-07-f32.gguf
+  Loading: layer-08-f32.gguf
+  Loading: layer-09-f32.gguf
+  Loading: layer-10-f32.gguf
+  Loading: layer-11-f32.gguf
+  Loading: layer-12-f32.gguf
+  Loading: layer-13-f32.gguf
+  Loading: layer-14-f32.gguf
+  Loading: layer-15-f32.gguf
+  Loading: layer-16-f32.gguf
+  Loading: layer-17-f32.gguf
+  Loading: layer-18-f32.gguf
+  Loading: layer-19-f32.gguf
+  Loading: layer-20-f32.gguf
+  Loading: layer-21-f32.gguf
+  Loading: layer-22-f32.gguf
+  Loading: layer-23-f32.gguf
+  Loading: layer-24-f32.gguf
+  Loading: layer-25-f32.gguf
+  Loading: layer-26-f32.gguf
+  Loading: layer-27-f32.gguf
+  Loading: layer-28-f32.gguf
+  Loading: layer-29-f32.gguf
+  Loading: layer-30-f32.gguf
+  Loading: layer-31-f32.gguf
+  Loading: layer-32-f32.gguf
+  Loading: layer-33-f32.gguf
+  Loading: layer-34-f32.gguf
+  Loading: layer-35-f32.gguf
+  Loading: layer-36-f32.gguf
+  Loading: layer-37-f32.gguf
+  Loading: layer-38-f32.gguf
+  Loading: layer-39-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 40
+  Total tensors: 120
+  Metadata keys: 4
+ ffn_up_exps, Dtype: F32
+ ffn_gate_exps, Dtype: F32
+ ffn_down_exps, Dtype: F32
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 1 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 2 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 3 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 4 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 5 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 6 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 9 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 10 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 11 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 12 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 13 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 14 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 15 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 16 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 18 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 19 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 20 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 21 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 22 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 23 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 24 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 25 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 26 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 27 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 28 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 29 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 30 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 31 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 32 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 33 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 34 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 35 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 36 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 37 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 38 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+[LlamafileMoEWrapper] Layer 39 TP configuration:
+  intermediate_size: 512
+  threadpool_count: 2
+  QK_K: 256
+  F32 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=256, offset=0
+  TP 1: size=256, offset=256
+Loading safetensors checkpoint shards:   0% Completed | 0/14 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   7% Completed | 1/14 [00:07<01:39,  7.62s/it]
+Loading safetensors checkpoint shards:  14% Completed | 2/14 [00:14<01:28,  7.39s/it]
+Loading safetensors checkpoint shards:  21% Completed | 3/14 [00:22<01:20,  7.36s/it]
+Loading safetensors checkpoint shards:  29% Completed | 4/14 [00:29<01:13,  7.37s/it]
+Loading safetensors checkpoint shards:  36% Completed | 5/14 [00:36<01:05,  7.24s/it]
+Loading safetensors checkpoint shards:  43% Completed | 6/14 [00:43<00:57,  7.17s/it]
+Loading safetensors checkpoint shards:  50% Completed | 7/14 [00:53<00:55,  7.92s/it]
+Loading safetensors checkpoint shards:  57% Completed | 8/14 [00:59<00:45,  7.56s/it]
+Loading safetensors checkpoint shards:  64% Completed | 9/14 [01:06<00:36,  7.40s/it]
+Loading safetensors checkpoint shards:  71% Completed | 10/14 [01:14<00:29,  7.45s/it]
+Loading safetensors checkpoint shards:  79% Completed | 11/14 [01:21<00:21,  7.28s/it]
+Loading safetensors checkpoint shards:  86% Completed | 12/14 [01:24<00:12,  6.01s/it]
+Loading safetensors checkpoint shards:  93% Completed | 13/14 [01:31<00:06,  6.23s/it]
+Loading safetensors checkpoint shards: 100% Completed | 14/14 [01:39<00:00,  6.73s/it]
+Loading safetensors checkpoint shards: 100% Completed | 14/14 [01:39<00:00,  7.08s/it]
+
+[2026-09-19 13:03:59] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-19 13:04:01] get env HOME = /root
+[2026-09-19 13:04:01] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-19 13:04:03] get env PYTHONPATH = /workspace/round8/sglang-python:/workspace/round8/tools:/workspace/kt-src:/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe
+CPUInfer[0xaddc8b3619f0]: Hello
+WorkerPool[0xaddc65fc4210] 2 subpools, [numa:threads][2:32] [3:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+TP MOE layer 0, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea3768074570
+alloc 1 from other numa for ea3768074570
+alloc 0 from other numa for ea3a540cc900
+alloc 0 from other numa for ea3a540cc900
+TP MOE layer 1, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea3768040700
+alloc 0 from other numa for ea3a5400bde0
+alloc 0 from other numa for ea3a5400bde0
+alloc 1 from other numa for ea3768040700
+TP MOE layer 2, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea37680aa8a0
+alloc 0 from other numa for ea3a540361f0
+alloc 1 from other numa for ea37680aa8a0
+alloc 0 from other numa for ea3a540361f0
+TP MOE layer 3, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54030950
+alloc 1 from other numa for ea376809b230
+alloc 0 from other numa for ea3a54030950
+alloc 1 from other numa for ea376809b230
+TP MOE layer 4, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54084990
+alloc 1 from other numa for ea3768035590
+alloc 0 from other numa for ea3a54084990
+alloc 1 from other numa for ea3768035590
+TP MOE layer 5, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a540783e0
+alloc 1 from other numa for ea3768056110
+alloc 0 from other numa for ea3a540783e0
+alloc 1 from other numa for ea3768056110
+TP MOE layer 6, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea37680c3090
+alloc 0 from other numa for ea3a54052a60
+alloc 1 from other numa for ea37680c3090
+alloc 0 from other numa for ea3a54052a60
+TP MOE layer 7, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54021eb0
+alloc 1 from other numa for ea3768067620
+alloc 0 from other numa for ea3a54021eb0
+alloc 1 from other numa for ea3768067620
+TP MOE layer 8, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a540613e0
+alloc 1 from other numa for ea376811ca40
+alloc 0 from other numa for ea3a540613e0
+alloc 1 from other numa for ea376811ca40
+TP MOE layer 9, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea376813a750
+alloc 0 from other numa for ea3a540bab50
+alloc 1 from other numa for ea376813a750
+alloc 0 from other numa for ea3a540bab50
+TP MOE layer 10, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a541280f0
+alloc 1 from other numa for ea3768093090
+alloc 0 from other numa for ea3a541280f0
+alloc 1 from other numa for ea3768093090
+TP MOE layer 11, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5411e440
+alloc 1 from other numa for ea3768089170
+alloc 0 from other numa for ea3a5411e440
+alloc 1 from other numa for ea3768089170
+TP MOE layer 12, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a540873a0
+alloc 1 from other numa for ea376815a410
+alloc 0 from other numa for ea3a540873a0
+alloc 1 from other numa for ea376815a410
+TP MOE layer 13, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a541ff8b0
+alloc 1 from other numa for ea37681dc940
+alloc 0 from other numa for ea3a541ff8b0
+alloc 1 from other numa for ea37681dc940
+TP MOE layer 14, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5421df60
+alloc 1 from other numa for ea37681fae40
+alloc 0 from other numa for ea3a5421df60
+alloc 1 from other numa for ea37681fae40
+TP MOE layer 15, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a541e85d0
+alloc 1 from other numa for ea37681c5360
+alloc 0 from other numa for ea3a541e85d0
+alloc 1 from other numa for ea37681c5360
+TP MOE layer 16, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a541ca350
+alloc 1 from other numa for ea37681bb660
+alloc 0 from other numa for ea3a541ca350
+alloc 1 from other numa for ea37681bb660
+TP MOE layer 17, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5423c390
+alloc 1 from other numa for ea376822a0a0
+alloc 0 from other numa for ea3a5423c390
+alloc 1 from other numa for ea376822a0a0
+TP MOE layer 18, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea376829cb20
+alloc 0 from other numa for ea3a542c00f0
+alloc 1 from other numa for ea376829cb20
+alloc 0 from other numa for ea3a542c00f0
+TP MOE layer 19, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea37682bb530
+alloc 1 from other numa for ea37682bb530
+alloc 0 from other numa for ea3a542de650
+alloc 0 from other numa for ea3a542de650
+TP MOE layer 20, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a542a8ae0
+alloc 1 from other numa for ea3768285840
+alloc 0 from other numa for ea3a542a8ae0
+alloc 1 from other numa for ea3768285840
+TP MOE layer 21, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea376827bd50
+alloc 0 from other numa for ea3a5429e3b0
+alloc 0 from other numa for ea3a5429e3b0
+alloc 1 from other numa for ea376827bd50
+TP MOE layer 22, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5438a800
+alloc 1 from other numa for ea37682e9d90
+alloc 0 from other numa for ea3a5438a800
+alloc 1 from other numa for ea37682e9d90
+TP MOE layer 23, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea376835d030
+alloc 0 from other numa for ea3a543ab570
+alloc 1 from other numa for ea376835d030
+alloc 0 from other numa for ea3a543ab570
+TP MOE layer 24, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a543c3bc0
+alloc 1 from other numa for ea376837bc20
+alloc 0 from other numa for ea3a543c3bc0
+alloc 1 from other numa for ea376837bc20
+TP MOE layer 25, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54310370
+alloc 1 from other numa for ea3768345d20
+alloc 0 from other numa for ea3a54310370
+alloc 1 from other numa for ea3768345d20
+TP MOE layer 26, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a543ebd90
+alloc 1 from other numa for ea376833c040
+alloc 0 from other numa for ea3a543ebd90
+alloc 1 from other numa for ea376833c040
+TP MOE layer 27, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea376839a0b0
+alloc 0 from other numa for ea3a5442e8b0
+alloc 0 from other numa for ea3a5442e8b0
+alloc 1 from other numa for ea376839a0b0
+TP MOE layer 28, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a544614f0
+alloc 1 from other numa for ea376841d4e0
+alloc 0 from other numa for ea3a544614f0
+alloc 1 from other numa for ea376841d4e0
+TP MOE layer 29, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a544ae3b0
+alloc 1 from other numa for ea376843bb60
+alloc 0 from other numa for ea3a544ae3b0
+alloc 1 from other numa for ea376843bb60
+TP MOE layer 30, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea3768406200
+alloc 0 from other numa for ea3a5448f4a0
+alloc 1 from other numa for ea3768406200
+alloc 0 from other numa for ea3a5448f4a0
+TP MOE layer 31, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a543551e0
+alloc 1 from other numa for ea37683e7f50
+alloc 1 from other numa for ea37683e7f50
+alloc 0 from other numa for ea3a543551e0
+TP MOE layer 32, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54428480
+alloc 1 from other numa for ea3768459f90
+alloc 0 from other numa for ea3a54428480
+alloc 1 from other numa for ea3768459f90
+TP MOE layer 33, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a54409ff0
+alloc 1 from other numa for ea37684ddcf0
+alloc 0 from other numa for ea3a54409ff0
+alloc 1 from other numa for ea37684ddcf0
+TP MOE layer 34, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a544c9ed0
+alloc 0 from other num[2026-09-19 13:04:16] Load weight end. elapsed=121.29 s, type=Qwen3_5MoeForConditionalGeneration, dtype=torch.bfloat16, avail mem=47.16 GB, mem usage=13.35 GB.
+[2026-09-19 13:04:16] Using KV cache dtype: torch.bfloat16
+[2026-09-19 13:04:16] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.12GB 
+[2026-09-19 13:04:16] KV Cache is allocated. #tokens: 4096, K size: 0.16 GB, V size: 0.16 GB
+[2026-09-19 13:04:16] Memory pool end. avail mem=46.72 GB
+[2026-09-19 13:04:16] Linear attention kernel backend: decode=triton, prefill=triton
+[2026-09-19 13:04:16] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-19 13:04:16] GDN kernel dispatcher: decode=TritonGDNKernel, extend=TritonGDNKernel, verify=TritonGDNKernel
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.0.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.1.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.2.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.3.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.4.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.5.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.6.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.7.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.8.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.9.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.10.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.11.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.12.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.13.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.14.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.15.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.16.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.17.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.18.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.19.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.20.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.21.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.22.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.23.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.24.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.25.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.26.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.27.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.28.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.29.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.30.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.31.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.32.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.33.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.34.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.35.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.36.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.37.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.38.mlp
+[2026-09-19 13:04:16] Registered forward hook 'qwen-dynamic-structure' on model.layers.39.mlp
+[2026-09-19 13:04:18] max_total_num_tokens=4096, chunked_prefill_size=512, max_prefill_tokens=512, max_running_requests=1, context_len=4096, available_gpu_mem=46.72 GB
+[2026-09-19 13:04:19] INFO:     Started server process [95]
+[2026-09-19 13:04:19] INFO:     Waiting for application startup.
+[2026-09-19 13:04:19] Using default chat sampling params from model generation config: {'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}
+[2026-09-19 13:04:21] The server is fired up and ready to roll!
+[2026-09-19 13:04:21] INFO:     Application startup complete.
+[2026-09-19 13:04:21] INFO:     Uvicorn running on http://127.0.0.1:18400 (Press CTRL+C to quit)
+[2026-09-19 13:04:25] get env HOSTNAME = 0aff143eb264
+[2026-09-19 13:04:45] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:04:25. last_heartbeat time: 13:01:36
+[2026-09-19 13:04:53] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:04:33. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:01] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:04:41. last_heartbeat time: 13:01:36
+a for ea3a544c9ed0
+alloc 1 from other numa for ea37684fc250
+alloc 1 from other numa for ea37684fc250
+TP MOE layer 35, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5454dc30
+alloc 0 from other numa for ea3a5454dc30
+alloc 1 from other numa for ea37684c6710
+alloc 1 from other numa for ea37684c6710
+TP MOE layer 36, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 1 from other numa for ea37684bbfe0
+alloc 0 from other numa for ea3a5456c190
+alloc 1 from other numa for ea37684bbfe0
+alloc 0 from other numa for ea3a5456c190
+TP MOE layer 37, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a5459deb0
+alloc 1 from other numa for ea37685a8440
+alloc 1 from other numa for ea37685a8440
+alloc 0 from other numa for ea3a5459deb0
+TP MOE layer 38, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a545bd7a0
+alloc 1 from other numa for ea37685c91b0
+alloc 0 from other numa for ea3a545bd7a0
+alloc 1 from other numa for ea37685c91b0
+TP MOE layer 39, pool: 0xaddc65fc4210, expert num: 256, num_experts_per_tok: 8
+F32 tail-safe TP: offset=0 length=256 FP32 partial
+F32 tail-safe TP: offset=256 length=256 FP32 partial
+alloc 0 from other numa for ea3a545fc120
+alloc 1 from other numa for ea37685852d0
+alloc 0 from other numa for ea3a545fc120
+alloc 1 from other numa for ea37685852d0
+.[2026-09-19 13:05:10] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:04:50. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:18] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:04:58. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:27] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:07. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:35] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:15. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:44] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:24. last_heartbeat time: 13:01:36
+[2026-09-19 13:05:52] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:32. last_heartbeat time: 13:01:36
+[2026-09-19 13:06:01] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:41. last_heartbeat time: 13:01:36
+[2026-09-19 13:06:09] Health check failed. Server couldn't get a response from detokenizer for last 20 seconds. tic start time: 13:05:49. last_heartbeat time: 13:01:36
+.[2026-09-19 13:06:22] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-09-19 13:06:22] Received output for rid='HEALTH_CHECK_1789823065.01631' but the state was deleted in TokenizerManager.
+[2026-09-19 13:06:25] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 36.56, npu graph: False
+[2026-09-19 13:06:25] INFO:     127.0.0.1:51546 - "GET /health HTTP/1.1" 200 OK
+[2026-09-19 13:06:25] Received output for rid='HEALTH_CHECK_1789823183.5720005' but the state was deleted in TokenizerManager.
+.[2026-09-19 13:06:47] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.03, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 5.71, npu graph: False
+[2026-09-19 13:07:01] INFO:     127.0.0.1:51552 - "POST /generate HTTP/1.1" 200 OK
+./usr/local/python3.11.15/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  warnings.warn(  # warn only once
+[2026-09-19 13:07:20] KT layerwise prefill: layer 0 prepare weight = 9230.64 ms
+[rank0]:[W919 13:07:20.368919614 OpCommand.cpp:87] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy12582912 (function operator())
+.[2026-09-19 13:07:22] KT layerwise prefill: layer 0 compute = 5.92 ms, expert update = 2345.13 ms
+[2026-09-19 13:07:31] KT layerwise prefill: layer 1 prepare weight = 8540.22 ms
+[2026-09-19 13:07:32] KT layerwise prefill: layer 1 compute = 1.20 ms, expert update = 870.76 ms
+[2026-09-19 13:07:40] KT layerwise prefill: layer 2 prepare weight = 8618.07 ms
+[2026-09-19 13:07:41] KT layerwise prefill: layer 2 compute = 1.09 ms, expert update = 840.87 ms
+[2026-09-19 13:07:50] KT layerwise prefill: layer 3 prepare weight = 9223.20 ms
+[2026-09-19 13:07:51] KT layerwise prefill: layer 3 compute = 0.85 ms, expert update = 834.27 ms
+[2026-09-19 13:08:00] KT layerwise prefill: layer 4 prepare weight = 9031.82 ms
+[2026-09-19 13:08:01] KT layerwise prefill: layer 4 compute = 1.08 ms, expert update = 825.93 ms
+[2026-09-19 13:08:10] KT layerwise prefill: layer 5 prepare weight = 8983.03 ms
+[2026-09-19 13:08:11] KT layerwise prefill: layer 5 compute = 1.01 ms, expert update = 781.68 ms
+[2026-09-19 13:08:20] KT layerwise prefill: layer 6 prepare weight = 9114.45 ms
+[2026-09-19 13:08:21] KT layerwise prefill: layer 6 compute = 1.08 ms, expert update = 774.01 ms
+[2026-09-19 13:08:29] KT layerwise prefill: layer 7 prepare weight = 8358.74 ms
+[2026-09-19 13:08:30] KT layerwise prefill: layer 7 compute = 1.16 ms, expert update = 798.98 ms
+[2026-09-19 13:08:37] KT layerwise prefill: layer 8 prepare weight = 7253.63 ms
+[2026-09-19 13:08:38] KT layerwise prefill: layer 8 compute = 1.19 ms, expert update = 807.16 ms
+[2026-09-19 13:08:45] KT layerwise prefill: layer 9 prepare weight = 7430.83 ms
+[2026-09-19 13:08:46] KT layerwise prefill: layer 9 compute = 1.04 ms, expert update = 787.08 ms
+[2026-09-19 13:08:54] KT layerwise prefill: layer 10 prepare weight = 7438.31 ms
+[2026-09-19 13:08:54] KT layerwise prefill: layer 10 compute = 1.19 ms, expert update = 785.18 ms
+[2026-09-19 13:09:02] KT layerwise prefill: layer 11 prepare weight = 7440.04 ms
+[2026-09-19 13:09:03] KT layerwise prefill: layer 11 compute = 1.20 ms, expert update = 815.14 ms
+[2026-09-19 13:09:10] KT layerwise prefill: layer 12 prepare weight = 7515.39 ms
+[2026-09-19 13:09:11] KT layerwise prefill: layer 12 compute = 1.07 ms, expert update = 796.99 ms
+[2026-09-19 13:09:19] KT layerwise prefill: layer 13 prepare weight = 7705.12 ms
+[2026-09-19 13:09:20] KT layerwise prefill: layer 13 compute = 1.08 ms, expert update = 773.61 ms
+[2026-09-19 13:09:27] KT layerwise prefill: layer 14 prepare weight = 7463.69 ms
+[2026-09-19 13:09:28] KT layerwise prefill: layer 14 compute = 1.07 ms, expert update = 785.42 ms
+[2026-09-19 13:09:35] KT layerwise prefill: layer 15 prepare weight = 7548.61 ms
+[2026-09-19 13:09:36] KT layerwise prefill: layer 15 compute = 0.90 ms, expert update = 782.00 ms
+[2026-09-19 13:09:44] KT layerwise prefill: layer 16 prepare weight = 7429.83 ms
+[2026-09-19 13:09:44] KT layerwise prefill: layer 16 compute = 1.26 ms, expert update = 776.55 ms
+[2026-09-19 13:09:52] KT layerwise prefill: layer 17 prepare weight = 7473.93 ms
+[2026-09-19 13:09:53] KT layerwise prefill: layer 17 compute = 0.94 ms, expert update = 782.02 ms
+[2026-09-19 13:10:00] KT layerwise prefill: layer 18 prepare weight = 7324.99 ms
+[2026-09-19 13:10:01] KT layerwise prefill: layer 18 compute = 1.12 ms, expert update = 781.55 ms
+[2026-09-19 13:10:08] KT layerwise prefill: layer 19 prepare weight = 7483.87 ms
+[2026-09-19 13:10:09] KT layerwise prefill: layer 19 compute = 1.31 ms, expert update = 775.75 ms
+[2026-09-19 13:10:17] KT layerwise prefill: layer 20 prepare weight = 7505.10 ms
+[2026-09-19 13:10:17] KT layerwise prefill: layer 20 compute = 0.91 ms, expert update = 852.07 ms
+[2026-09-19 13:10:25] KT layerwise prefill: layer 21 prepare weight = 7412.20 ms
+[2026-09-19 13:10:26] KT layerwise prefill: layer 21 compute = 0.92 ms, expert update = 770.71 ms
+[2026-09-19 13:10:33] KT layerwise prefill: layer 22 prepare weight = 7501.93 ms
+[2026-09-19 13:10:34] KT layerwise prefill: layer 22 compute = 1.22 ms, expert update = 777.55 ms
+[2026-09-19 13:10:42] KT layerwise prefill: layer 23 prepare weight = 8119.86 ms
+[2026-09-19 13:10:43] KT layerwise prefill: layer 23 compute = 1.02 ms, expert update = 765.89 ms
+[2026-09-19 13:10:51] KT layerwise prefill: layer 24 prepare weight = 8478.69 ms
+[2026-09-19 13:10:52] KT layerwise prefill: layer 24 compute = 0.96 ms, expert update = 781.06 ms
+[2026-09-19 13:11:00] KT layerwise prefill: layer 25 prepare weight = 8388.26 ms
+[2026-09-19 13:11:01] KT layerwise prefill: layer 25 compute = 0.92 ms, expert update = 787.84 ms
+[2026-09-19 13:11:10] KT layerwise prefill: layer 26 prepare weight = 8561.88 ms
+[2026-09-19 13:11:11] KT layerwise prefill: layer 26 compute = 1.39 ms, expert update = 784.20 ms
+[2026-09-19 13:11:19] KT layerwise prefill: layer 27 prepare weight = 8548.02 ms
+[2026-09-19 13:11:20] KT layerwise prefill: layer 27 compute = 0.98 ms, expert update = 775.03 ms
+[2026-09-19 13:11:28] KT layerwise prefill: layer 28 prepare weight = 8155.45 ms
+[2026-09-19 13:11:29] KT layerwise prefill: layer 28 compute = 0.91 ms, expert update = 789.20 ms
+[2026-09-19 13:11:37] KT layerwise prefill: layer 29 prepare weight = 8234.56 ms
+[2026-09-19 13:11:38] KT layerwise prefill: layer 29 compute = 1.00 ms, expert update = 801.93 ms
+[2026-09-19 13:11:47] KT layerwise prefill: layer 30 prepare weight = 8543.44 ms
+[2026-09-19 13:11:47] KT layerwise prefill: layer 30 compute = 1.40 ms, expert update = 796.17 ms
+[2026-09-19 13:11:56] KT layerwise prefill: layer 31 prepare weight = 8314.48 ms
+[2026-09-19 13:11:56] KT layerwise prefill: layer 31 compute = 0.97 ms, expert update = 785.16 ms
+[2026-09-19 13:12:05] KT layerwise prefill: layer 32 prepare weight = 8392.09 ms
+[2026-09-19 13:12:06] KT layerwise prefill: layer 32 compute = 0.99 ms, expert update = 811.09 ms
+[2026-09-19 13:12:14] KT layerwise prefill: layer 33 prepare weight = 8457.04 ms
+[2026-09-19 13:12:15] KT layerwise prefill: layer 33 compute = 0.88 ms, expert update = 786.42 ms
+[2026-09-19 13:12:24] KT layerwise prefill: layer 34 prepare weight = 8665.76 ms
+[2026-09-19 13:12:24] KT layerwise prefill: layer 34 compute = 0.99 ms, expert update = 786.96 ms
+[2026-09-19 13:12:33] KT layerwise prefill: layer 35 prepare weight = 8514.20 ms
+[2026-09-19 13:12:34] KT layerwise prefill: layer 35 compute = 1.37 ms, expert update = 760.46 ms
+[2026-09-19 13:12:42] KT layerwise prefill: layer 36 prepare weight = 8076.06 ms
+[2026-09-19 13:12:43] KT layerwise prefill: layer 36 compute = 0.95 ms, expert update = 772.75 ms
+[2026-09-19 13:12:51] KT layerwise prefill: layer 37 prepare weight = 8365.24 ms
+[2026-09-19 13:12:52] KT layerwise prefill: layer 37 compute = 0.98 ms, expert update = 770.52 ms
+[2026-09-19 13:12:59] KT layerwise prefill: layer 38 prepare weight = 7751.34 ms
+[2026-09-19 13:13:00] KT layerwise prefill: layer 38 compute = 0.93 ms, expert update = 753.21 ms
+[2026-09-19 13:13:09] KT layerwise prefill: layer 39 prepare weight = 8429.71 ms
+[2026-09-19 13:13:10] KT layerwise prefill: layer 39 compute = 0.96 ms, expert update = 916.64 ms
+.[2026-09-19 13:13:22] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.32, npu graph: False
+[2026-09-19 13:13:22] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 655.26, npu graph: False
+[2026-09-19 13:13:35] INFO:     127.0.0.1:41358 - "POST /generate HTTP/1.1" 200 OK
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  warnings.warn(  # warn only once
+[2026-09-19 13:13:37] KT layerwise prefill: layer 0 prepare weight = 2380.87 ms
+[2026-09-19 13:13:38] KT layerwise prefill: layer 0 compute = 1.24 ms, expert update = 927.97 ms
+[2026-09-19 13:13:40] KT layerwise prefill: layer 1 prepare weight = 2118.16 ms
+[2026-09-19 13:13:41] KT layerwise prefill: layer 1 compute = 0.89 ms, expert update = 821.91 ms
+[2026-09-19 13:13:43] KT layerwise prefill: layer 2 prepare weight = 2037.12 ms
+[2026-09-19 13:13:44] KT layerwise prefill: layer 2 compute = 1.04 ms, expert update = 794.59 ms
+[2026-09-19 13:13:46] KT layerwise prefill: layer 3 prepare weight = 2211.43 ms
+[2026-09-19 13:13:47] KT layerwise prefill: layer 3 compute = 1.28 ms, expert update = 829.97 ms
+[2026-09-19 13:13:49] KT layerwise prefill: layer 4 prepare weight = 1974.57 ms
+[2026-09-19 13:13:50] KT layerwise prefill: layer 4 compute = 1.01 ms, expert update = 807.70 ms
+[2026-09-19 13:13:52] KT layerwise prefill: layer 5 prepare weight = 2031.33 ms
+[2026-09-19 13:13:53] KT layerwise prefill: layer 5 compute = 1.10 ms, expert update = 801.15 ms
+[2026-09-19 13:13:55] KT layerwise prefill: layer 6 prepare weight = 2098.37 ms
+[2026-09-19 13:13:56] KT layerwise prefill: layer 6 compute = 1.08 ms, expert update = 783.56 ms
+[2026-09-19 13:13:58] KT layerwise prefill: layer 7 prepare weight = 2192.08 ms
+[2026-09-19 13:13:59] KT layerwise prefill: layer 7 compute = 1.05 ms, expert update = 787.37 ms
+[2026-09-19 13:14:01] KT layerwise prefill: layer 8 prepare weight = 1990.79 ms
+[2026-09-19 13:14:02] KT layerwise prefill: layer 8 compute = 0.97 ms, expert update = 832.23 ms
+[2026-09-19 13:14:04] KT layerwise prefill: layer 9 prepare weight = 1951.43 ms
+[2026-09-19 13:14:04] KT layerwise prefill: layer 9 compute = 0.99 ms, expert update = 806.94 ms
+[2026-09-19 13:14:06] KT layerwise prefill: layer 10 prepare weight = 1879.00 ms
+[2026-09-19 13:14:07] KT layerwise prefill: layer 10 compute = 0.89 ms, expert update = 777.41 ms
+[2026-09-19 13:14:09] KT layerwise prefill: layer 11 prepare weight = 1940.83 ms
+[2026-09-19 13:14:10] KT layerwise prefill: layer 11 compute = 0.95 ms, expert update = 812.96 ms
+[2026-09-19 13:14:12] KT layerwise prefill: layer 12 prepare weight = 2015.21 ms
+[2026-09-19 13:14:13] KT layerwise prefill: layer 12 compute = 1.05 ms, expert update = 781.74 ms
+[2026-09-19 13:14:15] KT layerwise prefill: layer 13 prepare weight = 2120.18 ms
+[2026-09-19 13:14:16] KT layerwise prefill: layer 13 compute = 0.94 ms, expert update = 791.60 ms
+[2026-09-19 13:14:18] KT layerwise prefill: layer 14 prepare weight = 2024.76 ms
+[2026-09-19 13:14:18] KT layerwise prefill: layer 14 compute = 1.00 ms, expert update = 803.67 ms
+[2026-09-19 13:14:20] KT layerwise prefill: layer 15 prepare weight = 1987.91 ms
+[2026-09-19 13:14:21] KT layerwise prefill: layer 15 compute = 0.99 ms, expert update = 775.72 ms
+[2026-09-19 13:14:23] KT layerwise prefill: layer 16 prepare weight = 2043.49 ms
+[2026-09-19 13:14:24] KT layerwise prefill: layer 16 compute = 1.03 ms, expert update = 773.29 ms
+[2026-09-19 13:14:26] KT layerwise prefill: layer 17 prepare weight = 1937.39 ms
+[2026-09-19 13:14:27] KT layerwise prefill: layer 17 compute = 0.90 ms, expert update = 771.10 ms
+[2026-09-19 13:14:29] KT layerwise prefill: layer 18 prepare weight = 1968.41 ms
+[2026-09-19 13:14:29] KT layerwise prefill: layer 18 compute = 1.10 ms, expert update = 768.36 ms
+[2026-09-19 13:14:32] KT layerwise prefill: layer 19 prepare weight = 2067.52 ms
+[2026-09-19 13:14:32] KT layerwise prefill: layer 19 compute = 1.21 ms, expert update = 781.14 ms
+[2026-09-19 13:14:34] KT layerwise prefill: layer 20 prepare weight = 2026.92 ms
+[2026-09-19 13:14:35] KT layerwise prefill: layer 20 compute = 1.00 ms, expert update = 935.39 ms
+[2026-09-19 13:14:37] KT layerwise prefill: layer 21 prepare weight = 1817.46 ms
+[2026-09-19 13:14:38] KT layerwise prefill: layer 21 compute = 0.93 ms, expert update = 763.63 ms
+[2026-09-19 13:14:40] KT layerwise prefill: layer 22 prepare weight = 1777.89 ms
+[2026-09-19 13:14:40] KT layerwise prefill: layer 22 compute = 0.95 ms, expert update = 786.44 ms
+[2026-09-19 13:14:42] KT layerwise prefill: layer 23 prepare weight = 1929.81 ms
+[2026-09-19 13:14:43] KT layerwise prefill: layer 23 compute = 0.94 ms, expert update = 803.60 ms
+[2026-09-19 13:14:45] KT layerwise prefill: layer 24 prepare weight = 1855.79 ms
+[2026-09-19 13:14:46] KT layerwise prefill: layer 24 compute = 0.93 ms, expert update = 800.69 ms
+[2026-09-19 13:14:48] KT layerwise prefill: layer 25 prepare weight = 1895.93 ms
+[2026-09-19 13:14:49] KT layerwise prefill: layer 25 compute = 0.92 ms, expert update = 787.76 ms
+[2026-09-19 13:14:50] KT layerwise prefill: layer 26 prepare weight = 1835.79 ms
+[2026-09-19 13:14:51] KT layerwise prefill: layer 26 compute = 0.93 ms, expert update = 767.39 ms
+[2026-09-19 13:14:53] KT layerwise prefill: layer 27 prepare weight = 1926.18 ms
+[2026-09-19 13:14:54] KT layerwise prefill: layer 27 compute = 0.90 ms, expert update = 801.61 ms
+[2026-09-19 13:14:56] KT layerwise prefill: layer 28 prepare weight = 1863.63 ms
+[2026-09-19 13:14:57] KT layerwise prefill: layer 28 compute = 0.92 ms, expert update = 762.58 ms
+[2026-09-19 13:14:58] KT layerwise prefill: layer 29 prepare weight = 1761.00 ms
+[2026-09-19 13:14:59] KT layerwise prefill: layer 29 compute = 0.99 ms, expert update = 757.12 ms
+[2026-09-19 13:15:01] KT layerwise prefill: layer 30 prepare weight = 1834.52 ms
+[2026-09-19 13:15:02] KT layerwise prefill: layer 30 compute = 0.96 ms, expert update = 758.01 ms
+[2026-09-19 13:15:04] KT layerwise prefill: layer 31 prepare weight = 1895.80 ms
+[2026-09-19 13:15:04] KT layerwise prefill: layer 31 compute = 0.93 ms, expert update = 779.48 ms
+[2026-09-19 13:15:06] KT layerwise prefill: layer 32 prepare weight = 1867.46 ms
+[2026-09-19 13:15:07] KT layerwise prefill: layer 32 compute = 0.91 ms, expert update = 785.65 ms
+[2026-09-19 13:15:09] KT layerwise prefill: layer 33 prepare weight = 1847.30 ms
+[2026-09-19 13:15:10] KT layerwise prefill: layer 33 compute = 0.96 ms, expert update = 765.97 ms
+[2026-09-19 13:15:12] KT layerwise prefill: layer 34 prepare weight = 2006.23 ms
+[2026-09-19 13:15:12] KT layerwise prefill: layer 34 compute = 0.91 ms, expert update = 758.24 ms
+[2026-09-19 13:15:14] KT layerwise prefill: layer 35 prepare weight = 1921.30 ms
+[2026-09-19 13:15:15] KT layerwise prefill: layer 35 compute = 0.90 ms, expert update = 759.27 ms
+[2026-09-19 13:15:17] KT layerwise prefill: layer 36 prepare weight = 1857.19 ms
+[2026-09-19 13:15:18] KT layerwise prefill: layer 36 compute = 1.09 ms, expert update = 763.00 ms
+[2026-09-19 13:15:20] KT layerwise prefill: layer 37 prepare weight = 1802.90 ms
+[2026-09-19 13:15:20] KT layerwise prefill: layer 37 compute = 0.89 ms, expert update = 761.33 ms
+[2026-09-19 13:15:22] KT layerwise prefill: layer 38 prepare weight = 1840.28 ms
+[2026-09-19 13:15:23] KT layerwise prefill: layer 38 compute = 0.98 ms, expert update = 773.81 ms
+[2026-09-19 13:15:25] KT layerwise prefill: layer 39 prepare weight = 1961.66 ms
+[2026-09-19 13:15:26] KT layerwise prefill: layer 39 compute = 0.89 ms, expert update = 879.04 ms
+[2026-09-19 13:15:30] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.01, npu graph: False
+[2026-09-19 13:15:31] Prefill batch, #new-seq: 1, #new-token: 256, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 650.28, npu graph: False
+[2026-09-19 13:15:36] Decode batch, #running-req: 1, #full token: 768, full token usage: 0.19, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.05, #queue-req: 0
+[2026-09-19 13:15:44] INFO:     127.0.0.1:51562 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-19 13:15:45] KT layerwise prefill: layer 0 prepare weight = 848.92 ms
+[2026-09-19 13:15:45] KT layerwise prefill: layer 0 compute = 0.97 ms, expert update = 883.95 ms
+[2026-09-19 13:15:46] KT layerwise prefill: layer 1 prepare weight = 737.53 ms
+[2026-09-19 13:15:47] KT layerwise prefill: layer 1 compute = 0.96 ms, expert update = 786.24 ms
+[2026-09-19 13:15:48] KT layerwise prefill: layer 2 prepare weight = 751.91 ms
+[2026-09-19 13:15:49] KT layerwise prefill: layer 2 compute = 0.92 ms, expert update = 810.14 ms
+[2026-09-19 13:15:49] KT layerwise prefill: layer 3 prepare weight = 769.83 ms
+[2026-09-19 13:15:50] KT layerwise prefill: layer 3 compute = 0.96 ms, expert update = 784.77 ms
+[2026-09-19 13:15:51] KT layerwise prefill: layer 4 prepare weight = 745.01 ms
+[2026-09-19 13:15:52] KT layerwise prefill: layer 4 compute = 0.97 ms, expert update = 824.13 ms
+[2026-09-19 13:15:53] KT layerwise prefill: layer 5 prepare weight = 742.83 ms
+[2026-09-19 13:15:53] KT layerwise prefill: layer 5 compute = 1.09 ms, expert update = 822.73 ms
+[2026-09-19 13:15:54] KT layerwise prefill: layer 6 prepare weight = 738.99 ms
+[2026-09-19 13:15:55] KT layerwise prefill: layer 6 compute = 1.06 ms, expert update = 779.24 ms
+[2026-09-19 13:15:56] KT layerwise prefill: layer 7 prepare weight = 757.33 ms
+[2026-09-19 13:15:56] KT layerwise prefill: layer 7 compute = 1.23 ms, expert update = 779.80 ms
+[2026-09-19 13:15:57] KT layerwise prefill: layer 8 prepare weight = 757.14 ms
+[2026-09-19 13:15:58] KT layerwise prefill: layer 8 compute = 0.97 ms, expert update = 802.63 ms
+[2026-09-19 13:15:59] KT layerwise prefill: layer 9 prepare weight = 752.14 ms
+[2026-09-19 13:16:00] KT layerwise prefill: layer 9 compute = 1.16 ms, expert update = 786.87 ms
+[2026-09-19 13:16:00] KT layerwise prefill: layer 10 prepare weight = 745.42 ms
+[2026-09-19 13:16:01] KT layerwise prefill: layer 10 compute = 1.04 ms, expert update = 800.75 ms
+[2026-09-19 13:16:02] KT layerwise prefill: layer 11 prepare weight = 758.09 ms
+[2026-09-19 13:16:03] KT layerwise prefill: layer 11 compute = 1.02 ms, expert update = 791.54 ms
+[2026-09-19 13:16:03] KT layerwise prefill: layer 12 prepare weight = 764.18 ms
+[2026-09-19 13:16:04] KT layerwise prefill: layer 12 compute = 1.04 ms, expert update = 798.98 ms
+[2026-09-19 13:16:05] KT layerwise prefill: layer 13 prepare weight = 735.88 ms
+[2026-09-19 13:16:06] KT layerwise prefill: layer 13 compute = 1.05 ms, expert update = 797.65 ms
+[2026-09-19 13:16:07] KT layerwise prefill: layer 14 prepare weight = 742.80 ms
+[2026-09-19 13:16:07] KT layerwise prefill: layer 14 compute = 0.94 ms, expert update = 781.87 ms
+[2026-09-19 13:16:08] KT layerwise prefill: layer 15 prepare weight = 763.62 ms
+[2026-09-19 13:16:09] KT layerwise prefill: layer 15 compute = 1.23 ms, expert update = 803.16 ms
+[2026-09-19 13:16:10] KT layerwise prefill: layer 16 prepare weight = 747.63 ms
+[2026-09-19 13:16:10] KT layerwise prefill: layer 16 compute = 1.02 ms, expert update = 766.27 ms
+[2026-09-19 13:16:11] KT layerwise prefill: layer 17 prepare weight = 764.41 ms
+[2026-09-19 13:16:12] KT layerwise prefill: layer 17 compute = 1.14 ms, expert update = 793.56 ms
+[2026-09-19 13:16:13] KT layerwise prefill: layer 18 prepare weight = 755.44 ms
+[2026-09-19 13:16:14] KT layerwise prefill: layer 18 compute = 1.22 ms, expert update = 780.08 ms
+[2026-09-19 13:16:14] KT layerwise prefill: layer 19 prepare weight = 748.22 ms
+[2026-09-19 13:16:15] KT layerwise prefill: layer 19 compute = 0.89 ms, expert update = 819.06 ms
+[2026-09-19 13:16:16] KT layerwise prefill: layer 20 prepare weight = 735.07 ms
+[2026-09-19 13:16:17] KT layerwise prefill: layer 20 compute = 1.04 ms, expert update = 855.25 ms
+[2026-09-19 13:16:18] KT layerwise prefill: layer 21 prepare weight = 744.12 ms
+[2026-09-19 13:16:18] KT layerwise prefill: layer 21 compute = 0.99 ms, expert update = 775.55 ms
+[2026-09-19 13:16:19] KT layerwise prefill: layer 22 prepare weight = 714.27 ms
+[2026-09-19 13:16:20] KT layerwise prefill: layer 22 compute = 1.04 ms, expert update = 766.63 ms
+[2026-09-19 13:16:20] KT layerwise prefill: layer 23 prepare weight = 669.50 ms
+[2026-09-19 13:16:21] KT layerwise prefill: layer 23 compute = 1.30 ms, expert update = 770.04 ms
+[2026-09-19 13:16:22] KT layerwise prefill: layer 24 prepare weight = 647.68 ms
+[2026-09-19 13:16:23] KT layerwise prefill: layer 24 compute = 3.70 ms, expert update = 757.71 ms
+[2026-09-19 13:16:23] KT layerwise prefill: layer 25 prepare weight = 642.65 ms
+[2026-09-19 13:16:24] KT layerwise prefill: layer 25 compute = 1.00 ms, expert update = 770.26 ms
+[2026-09-19 13:16:25] KT layerwise prefill: layer 26 prepare weight = 641.75 ms
+[2026-09-19 13:16:26] KT layerwise prefill: layer 26 compute = 1.24 ms, expert update = 772.69 ms
+[2026-09-19 13:16:26] KT layerwise prefill: layer 27 prepare weight = 632.36 ms
+[2026-09-19 13:16:27] KT layerwise prefill: layer 27 compute = 1.18 ms, expert update = 823.76 ms
+[2026-09-19 13:16:28] KT layerwise prefill: layer 28 prepare weight = 624.42 ms
+[2026-09-19 13:16:28] KT layerwise prefill: layer 28 compute = 1.05 ms, expert update = 759.68 ms
+[2026-09-19 13:16:29] KT layerwise prefill: layer 29 prepare weight = 632.25 ms
+[2026-09-19 13:16:30] KT layerwise prefill: layer 29 compute = 0.97 ms, expert update = 770.57 ms
+[2026-09-19 13:16:30] KT layerwise prefill: layer 30 prepare weight = 636.55 ms
+[2026-09-19 13:16:31] KT layerwise prefill: layer 30 compute = 0.91 ms, expert update = 782.69 ms
+[2026-09-19 13:16:32] KT layerwise prefill: layer 31 prepare weight = 639.99 ms
+[2026-09-19 13:16:33] KT layerwise prefill: layer 31 compute = 0.94 ms, expert update = 771.93 ms
+[2026-09-19 13:16:33] KT layerwise prefill: layer 32 prepare weight = 607.68 ms
+[2026-09-19 13:16:34] KT layerwise prefill: layer 32 compute = 0.91 ms, expert update = 771.48 ms
+[2026-09-19 13:16:35] KT layerwise prefill: layer 33 prepare weight = 640.12 ms
+[2026-09-19 13:16:36] KT layerwise prefill: layer 33 compute = 0.99 ms, expert update = 792.06 ms
+[2026-09-19 13:16:36] KT layerwise prefill: layer 34 prepare weight = 625.68 ms
+[2026-09-19 13:16:37] KT layerwise prefill: layer 34 compute = 1.08 ms, expert update = 771.71 ms
+[2026-09-19 13:16:38] KT layerwise prefill: layer 35 prepare weight = 628.08 ms
+[2026-09-19 13:16:38] KT layerwise prefill: layer 35 compute = 0.96 ms, expert update = 777.84 ms
+[2026-09-19 13:16:39] KT layerwise prefill: layer 36 prepare weight = 638.36 ms
+[2026-09-19 13:16:40] KT layerwise prefill: layer 36 compute = 0.93 ms, expert update = 773.06 ms
+[2026-09-19 13:16:40] KT layerwise prefill: layer 37 prepare weight = 622.19 ms
+[2026-09-19 13:16:41] KT layerwise prefill: layer 37 compute = 1.01 ms, expert update = 787.39 ms
+[2026-09-19 13:16:42] KT layerwise prefill: layer 38 prepare weight = 628.30 ms
+[2026-09-19 13:16:43] KT layerwise prefill: layer 38 compute = 0.90 ms, expert update = 760.33 ms
+[2026-09-19 13:16:43] KT layerwise prefill: layer 39 prepare weight = 630.54 ms
+[2026-09-19 13:16:44] KT layerwise prefill: layer 39 compute = 0.99 ms, expert update = 833.48 ms
+[2026-09-19 13:16:51] Prefill batch, #new-seq: 1, #new-token: 512, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 3.20, npu graph: False
+[2026-09-19 13:16:52] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 601.86, npu graph: False
+[2026-09-19 13:17:04] INFO:     127.0.0.1:57254 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-19 13:17:08] Prefill batch, #new-seq: 1, #new-token: 128, #cached-token: 0, full token usage: 0.03, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 7.87, npu graph: False
+[2026-09-19 13:17:20] Decode batch, #running-req: 1, #full token: 128, full token usage: 0.03, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.38, #queue-req: 0
+[2026-09-19 13:17:21] INFO:     127.0.0.1:45286 - "POST /generate HTTP/1.1" 200 OK
