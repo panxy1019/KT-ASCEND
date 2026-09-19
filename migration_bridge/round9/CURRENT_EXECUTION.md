@@ -2,6 +2,10 @@
 
 ## 18:30 UTC — download paused for formal Round8 performance
 
+Latest: performance-v2 failed cold Dynamic watchdog300; preserved and replaced
+by separately frozen performance-v3 with bounded watchdog1800. Reservation
+continues through the entire v3 retry; do not resume just because v2 isFAILED.
+
 Explicit PAUSE_DOWNLOAD marker is present; guard status PAUSED and owned HF
 process group stopped (T), verified before dispatching kt-round8-dynamic-perf-v2.
 Keep paused through all12cells, including between server restarts. Resume only

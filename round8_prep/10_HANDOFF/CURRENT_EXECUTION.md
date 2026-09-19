@@ -13,6 +13,12 @@ qwen-dynamic-perf-retry-v3. Require local commit/retry-ack before launch.
 31localtestsPASS; actual frozen source transforms compile. Device replay pending.
 Round9 download remainsPAUSED; keep marker through retry campaign.
 
+Retry freezecommit38898dd0926af7e5aa3156616eb6a06b7e1503f0 precedes launch;
+retrySHA6bfbe7d2753282aa27bdfbc6919ddf508e4b75aefce2e14e414e81695fcb3e56.
+Remote retry-ack installed. Owned unit kt-round8-dynamic-perf-v3 dispatched
+using tools/run_qwen_dynamic_perf_retry.py. Inspect qwen-dynamic-perf-v3/state.json
+and service journal; never restart v2 or duplicate v3. Actual retry outcome pending.
+
 ## UPDATE 18:31 UTC — both Dynamic gates audited; formal performance dispatched
 
 Heldout-v3128/128PASS,8320updates,40layers x208consistent generations;
