@@ -1,5 +1,12 @@
 # Convolution state and full checkpoint acquisition — 2026-09-18
 
+2026-09-19 00:01 UTC: independent full audit exited successfully, stderr empty.
+`checkpoint-identity-v1.json` records all frozen shard and JSON SHA256 matches,
+status `CHECKPOINT_IDENTITY_PASS_NOT_MODEL_QUALIFICATION`. Source remains
+Qwen/Qwen3.5-35B-A3B revision59d61f3ce65a6d9863b86d2e96597125219dc754.
+Download/identity gate is now closed; model/cache construction, multi-expert
+integration, full conversion and Q64→Q32 qualification remain outstanding.
+
 23:45 UTC: v3 completed22/22 files, directory67GiB. Started independent
 streaming full SHA256 audit using frozen manifest and committed
 `tools/verify_checkpoint.py`; owned PID2884712, output
