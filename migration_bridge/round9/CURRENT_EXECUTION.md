@@ -1,4 +1,26 @@
+# 2026-09-20 — RESUMED: physical15 shared development on 110.123.0.3
+
+User explicitly resumed Round9 and resolved host ambiguity: use 110.123.0.3,
+share physical15 with existing training. This supersedes the pause and .22 host
+selection below. Preserve .22 uncommitted work; do not overwrite or discard it.
+Any delegated agents must use gpt-5.6-sol with medium reasoning.
+
+Fresh isolated ACL mapping probe PASS: only /dev/davinci15 exposed, one device,
+user/logical0 maps to physical15, aclInit/aclFinalize return0. Host remains
+UNION_POLICY and device-share=False. Earlier npu-smi -9005 is not sufficient to
+reject ACL access. Bounded arithmetic and256MiB/1GiB/2GiB allocation/compute/free PASS.
+GR real-weight local48-config probe PASS; full-model remains NOT_RUN.
+Read `19_SHARED_PHYSICAL15_RESUME.md` for scope and remaining gates.
+Evidence: .3:/mnt/data1/kt-round9/evidence/20260920-shared-resume/.
+
 # Round9 continuation checkpoint — 2026-09-19
+
+## 2026-09-20 — PAUSED_BY_USER
+
+User explicitly requested pause. No Round9 jobs or agents may resume without
+an explicit user resume. Read `docs/handoffs/2026-09-20-04-PAUSED.md`.
+New uncommitted implementation and evidence exist ON .22; do not overwrite
+them from this local checkout. All owned jobs stopped/exited; model data kept.
 
 ## 2026-09-20 — active host changed back to 110.129.0.22
 

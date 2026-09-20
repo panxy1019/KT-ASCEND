@@ -1,4 +1,4 @@
-"""Fail-closed physical15 admission evaluator. Never launches or reconfigures devices.
+"""Fail-closed admission evaluator for explicitly approved host/device profiles. Never launches or reconfigures devices.
 
 Inputs are measured evidence, not resource reservations. PASS applies only to
 the recorded budget and timestamp; it cannot predict another job's growth.
@@ -10,17 +10,31 @@ import pathlib
 import time
 
 
-def evaluate(snapshot, now):
+PROFILES = {
+    'a3-physical15': ('110.123.0.3', 15, '0000:83:00.0'),
+    'return22-device7': ('110.129.0.22', 7, '0000:42:00.0'),
+}
+
+
+def evaluate(snapshot, now, profile_id='a3-physical15'):
     errors = []
-    required = {'physical_id', 'device_nodes', 'mapping_verified',
+    required = {'host', 'pci_bus_id', 'logical_device', 'physical_id', 'device_nodes', 'mapping_verified',
                 'access_verified', 'identity_status', 'prerequisite_statuses',
                 'sampled_at', 'hbm_total_mib', 'training_peak_mib',
                 'owned_peak_budget_mib', 'reserve_mib', 'cpu_physical_keys',
                 'cpu_set', 'observed_cpu_keys', 'telemetry_ok'}
     if not isinstance(snapshot, dict) or not required <= snapshot.keys():
         return {'status': 'BLOCKED', 'reasons': ['missing admission evidence']}
-    if snapshot['physical_id'] != 15 or snapshot['device_nodes'] != [15]:
-        errors.append('only physical15 may be exposed')
+    if not isinstance(profile_id, str) or profile_id not in PROFILES:
+        return {'status': 'BLOCKED', 'reasons': ['unknown approved profile']}
+    host, physical, pci = PROFILES[profile_id]
+    if (snapshot['host'] != host or snapshot['pci_bus_id'] != pci
+            or type(snapshot['physical_id']) is not int
+            or snapshot['physical_id'] != physical
+            or snapshot['device_nodes'] != [physical]
+            or type(snapshot['logical_device']) is not int
+            or snapshot['logical_device'] != 0):
+        errors.append('host/device mapping does not match approved profile')
     for name in ('mapping_verified', 'access_verified', 'telemetry_ok'):
         if snapshot[name] is not True:
             errors.append(name + ' is not verified')
@@ -63,8 +77,9 @@ def evaluate(snapshot, now):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('snapshot', type=pathlib.Path)
+    parser.add_argument('--profile', choices=sorted(PROFILES), required=True)
     args = parser.parse_args()
-    result = evaluate(json.loads(args.snapshot.read_text()), time.time())
+    result = evaluate(json.loads(args.snapshot.read_text()), time.time(), args.profile)
     print(json.dumps(result, indent=2))
     raise SystemExit(0 if result['status'] == 'PASS' else 2)
 

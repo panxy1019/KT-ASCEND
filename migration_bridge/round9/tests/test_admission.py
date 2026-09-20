@@ -8,15 +8,15 @@ TOOL = pathlib.Path(__file__).parents[1] / 'tools' / 'admission.py'
 
 
 class AdmissionTests(unittest.TestCase):
-    def evaluate(self, snapshot):
+    def evaluate(self, snapshot, profile_id="a3-physical15"):
         self.assertTrue(TOOL.exists(), 'admission evaluator is missing')
         spec = importlib.util.spec_from_file_location('admission', TOOL)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        return module.evaluate(snapshot, now=1000)
+        return module.evaluate(snapshot, now=1000, profile_id=profile_id)
 
     def valid(self):
-        return dict(physical_id=15, device_nodes=[15], mapping_verified=True,
+        return dict(host="110.123.0.3", pci_bus_id="0000:83:00.0", logical_device=0, physical_id=15, device_nodes=[15], mapping_verified=True,
                     access_verified=True, identity_status='PASS',
                     prerequisite_statuses={'runtime': 'PASS'},
                     sampled_at=995, hbm_total_mib=65536,
@@ -69,6 +69,19 @@ class AdmissionTests(unittest.TestCase):
                        {'prerequisite_statuses':{'runtime':'NOT_RUN'}}):
             x=self.valid(); x.update(change)
             self.assertEqual(self.evaluate(x)['status'],'BLOCKED')
+
+    def test_return22_explicit_profile(self):
+        x=self.valid(); x.update(host='110.129.0.22', pci_bus_id='0000:42:00.0',
+                                physical_id=7, device_nodes=[7])
+        self.assertEqual(self.evaluate(x, 'return22-device7')['status'], 'PASS')
+        self.assertEqual(self.evaluate(x)['status'], 'BLOCKED')
+        for change in ({'host':'110.123.0.3'}, {'physical_id':0},
+                       {'pci_bus_id':'0000:C1:00.0'}, {'device_nodes':[0,7]},
+                       {'logical_device':7}, {'logical_device':False}):
+            y=copy.deepcopy(x); y.update(change)
+            with self.subTest(change=change):
+                self.assertEqual(self.evaluate(y, 'return22-device7')['status'], 'BLOCKED')
+        self.assertEqual(self.evaluate(x, 'unknown')['status'], 'BLOCKED')
 
     def test_does_not_modify_input(self):
         x=self.valid(); before=copy.deepcopy(x); self.evaluate(x)
