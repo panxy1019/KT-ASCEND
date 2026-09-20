@@ -1,0 +1,97 @@
+-- 
+-- ========================================
+-- CPU Feature Detection (CMake)
+-- ========================================
+-- Detected configuration from install.sh/setup.py
+--   LLAMA_AVX512:      OFF
+--   LLAMA_AVX512_VNNI: OFF
+--   LLAMA_AVX512_BF16: OFF
+--   LLAMA_AVX512_VBMI: OFF
+-- 
+-- Skipping auto-detection (using install.sh settings)
+-- ========================================
+-- 
+-- No git worktree detected; skipping git hooks installation
+-- Found OpenMP_C: -fopenmp (found version "4.5")
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- CMAKE_CXX_FLAGS:  -O3 -ffast-math
+-- CMAKE_SYSTEM_PROCESSOR: aarch64
+-- ARM detected
+-- ARM target: -march=armv8.2-a+fp16+dotprod
+-- ARCH_FLAGS: -march=armv8.2-a+fp16+dotprod
+CMake Warning (deprecated) at /round9/src/KT-ASCEND/third_party/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- pybind11 v2.14.0 dev1
+CMake Warning (deprecated) at /round9/src/KT-ASCEND/third_party/pybind11/tools/FindPythonLibsNew.cmake:110 (cmake_policy):
+  The OLD behavior for policy CMP0148 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+Call Stack (most recent call first):
+  /round9/src/KT-ASCEND/third_party/pybind11/tools/pybind11Tools.cmake:50 (find_package)
+  /round9/src/KT-ASCEND/third_party/pybind11/tools/pybind11Common.cmake:202 (include)
+  /round9/src/KT-ASCEND/third_party/pybind11/CMakeLists.txt:248 (include)
+This warning is for project developers.  Use -Wno-author or -Wno-deprecated
+to suppress it.
+
+-- llama.cpp: patch already applied, skipping /round9/src/KT-ASCEND/kt-kernel/third_party_patches/llama.cpp/0001-ggml-mxfp4-type.patch
+-- llama.cpp: patch already applied, skipping /round9/src/KT-ASCEND/kt-kernel/third_party_patches/llama.cpp/0002-gguf-numpy2-byteorder.patch
+fatal: detected dubious ownership in repository at '/round9/src/KT-ASCEND/third_party/llama.cpp'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /round9/src/KT-ASCEND/third_party/llama.cpp
+fatal: detected dubious ownership in repository at '/round9/src/KT-ASCEND/third_party/llama.cpp'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /round9/src/KT-ASCEND/third_party/llama.cpp
+-- Found OpenMP_C: -fopenmp (found version "4.5")
+-- Found OpenMP_CXX: -fopenmp (found version "4.5")
+-- OpenMP found
+-- Warning: ccache not found - consider installing it for faster compilation or disable this warning with LLAMA_CCACHE=OFF
+-- CMAKE_SYSTEM_PROCESSOR: aarch64
+-- ARM detected
+-- No GPU support enabled, building for CPU only
+-- SOURCE_DIR7: 
+CMake Warning at CMakeLists.txt:732 (message):
+  ONLY for developer: clang-format not found.  Please install clang-format
+  (>=18) or pass -DCLANG_FORMAT_BIN=/full/path and reconfigure.
+
+
+-- LTO: disabled
+-- NUMA library found: /usr/lib/aarch64-linux-gnu/libnuma.so - enabling NUMA support
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /round9/build-cpu
+[  2%] Built target build_info
+[  8%] Built target ggml
+[ 38%] Built target llamafile
+[ 39%] Built target ggml_static
+[ 44%] Built target llama
+[ 55%] Built target common
+[ 56%] Building CXX object CMakeFiles/kt_kernel_ext.dir/ext_bindings.cpp.o
+In file included from /round9/src/KT-ASCEND/kt-kernel/ext_bindings.cpp:88:
+/round9/src/KT-ASCEND/kt-kernel/operators/llamafile/moe.hpp: In lambda function:
+/round9/src/KT-ASCEND/kt-kernel/operators/llamafile/moe.hpp:887:15: error: ‘f32_tail’ was not declared in this scope
+  887 |           if (f32_tail && !gate_ok) throw std::runtime_error("LLAMAFILE F32 gate tile unsupported");
+      |               ^~~~~~~~
+/round9/src/KT-ASCEND/kt-kernel/operators/llamafile/moe.hpp:902:15: error: ‘f32_tail’ was not declared in this scope
+  902 |           if (f32_tail && !up_ok) throw std::runtime_error("LLAMAFILE F32 up tile unsupported");
+      |               ^~~~~~~~
+/round9/src/KT-ASCEND/kt-kernel/operators/llamafile/moe.hpp: In lambda function:
+/round9/src/KT-ASCEND/kt-kernel/operators/llamafile/moe.hpp:965:15: error: ‘f32_tail’ was not declared in this scope
+  965 |           if (f32_tail && !down_ok) throw std::runtime_error("LLAMAFILE F32 down tile unsupported");
+      |               ^~~~~~~~
+gmake[2]: *** [CMakeFiles/kt_kernel_ext.dir/build.make:79: CMakeFiles/kt_kernel_ext.dir/ext_bindings.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/kt_kernel_ext.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2

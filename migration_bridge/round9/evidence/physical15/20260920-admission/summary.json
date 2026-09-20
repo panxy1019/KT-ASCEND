@@ -1,0 +1,19 @@
+{
+  "status": "BOUNDED_CPU_PROBES_PASS",
+  "model_execution": "NOT_RUN",
+  "npu_status": "BLOCKED_SHARED_ACCESS",
+  "source_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "source_receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+  "profiles": 15,
+  "shapes": 90,
+  "repeats_per_shape": 3,
+  "max_rel_l2": 0.00020935923718425525,
+  "full512_peak_rss_kib": 10163636,
+  "limitations": [
+    "synthetic activations, no end-to-end model",
+    "CPU-only ARM NEON/F32-input build;SVE compile disabled",
+    "complete512 backing loaded for one layer;numerical coverage selects10 real experts including0and511",
+    "shared host,16CPU quota;no formal performance evidence",
+    "NPU logical mapping and access remain unverified"
+  ]
+}

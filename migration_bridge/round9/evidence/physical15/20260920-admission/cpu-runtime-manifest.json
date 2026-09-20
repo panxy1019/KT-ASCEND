@@ -1,0 +1,37 @@
+{
+  "status": "CPU_PROBE_RUNTIME_ONLY",
+  "model_execution": "NOT_RUN",
+  "source_base_commit": "81e8f4585",
+  "image_id": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+  "python": "3.11.15",
+  "torch": "2.9.0",
+  "torch_npu_distribution": "2.9.0.post2 (not imported for CPU tests)",
+  "cann_image": "9.0.0 (not qualified on NPU)",
+  "llama_gitlink": "a94e6ff8774b7c9f950d9545baf0ce35e8d1ed2f",
+  "pybind11_gitlink": "bb05e0810b87e74709d9f4c4545f1f57a1b386f5",
+  "cmake_flags": [
+    "CMAKE_BUILD_TYPE:STRING=Release",
+    "CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++",
+    "CMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc",
+    "KTRANSFORMERS_USE_ASCEND_NPU:BOOL=OFF",
+    "KTRANSFORMERS_USE_CUDA:BOOL=OFF",
+    "KTRANSFORMERS_USE_MACA:BOOL=OFF",
+    "KTRANSFORMERS_USE_MUSA:BOOL=OFF",
+    "KTRANSFORMERS_USE_ROCM:BOOL=OFF",
+    "KTRANSFORMERS_USE_SYCL:BOOL=OFF",
+    "LLAMA_ARM_BF16:BOOL=OFF",
+    "LLAMA_ARM_DOTPROD:BOOL=ON",
+    "LLAMA_ARM_FP16:BOOL=ON",
+    "LLAMA_ARM_I8MM:BOOL=OFF",
+    "LLAMA_ARM_SVE:BOOL=OFF",
+    "LLAMA_NATIVE:BOOL=OFF"
+  ],
+  "patched_source_files": {
+    "kt-kernel/operators/moe-tp.hpp": "f7e13274097044df6a4c43ec1408d3bc72312d4e777dabe083dfd3289648bcdf",
+    "kt-kernel/operators/llamafile/moe.hpp": "da8a0db4f892a654a6a27be54685f42564ff75c50b1e3f74aba7921e283c1401",
+    "kt-kernel/operators/llamafile/tp_slices.hpp": "d0a89beaef55c892d880bf1d6bda394aa036989438c0899e8cfb002150717673"
+  },
+  "native_sha256": "f2695802dbd0196aeb644286ce4b02d641200e16b135fb248a008b0ecf1eafbe",
+  "probe_script_sha256": "6dfa2217f493ecde644c2ddacd5fe8eb0092a9e5d4fe96039b3b0e982b52cee6",
+  "matrix_script_sha256": "273b091ea2f4c6f7926a456c5f27b59a2c99d3ef693a6137b39877215192862a"
+}

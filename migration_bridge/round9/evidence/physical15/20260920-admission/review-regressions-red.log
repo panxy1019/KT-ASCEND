@@ -1,0 +1,26 @@
+..F............................F...
+======================================================================
+FAIL: test_identity_and_prerequisites (test_admission.AdmissionTests.test_identity_and_prerequisites)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round8-qwen35-prep/migration_bridge/round9/tests/test_admission.py", line 71, in test_identity_and_prerequisites
+    self.assertEqual(self.evaluate(x)['status'],'BLOCKED')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PASS' != 'BLOCKED'
+- PASS
++ BLOCKED
+
+
+======================================================================
+FAIL: test_noncanonical_alias_cannot_duplicate_logical_tensor (test_semantic_census.SemanticCensusTests.test_noncanonical_alias_cannot_duplicate_logical_tensor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round8-qwen35-prep/migration_bridge/round9/tests/test_semantic_census.py", line 74, in test_noncanonical_alias_cannot_duplicate_logical_tensor
+    with self.assertRaises(ValueError): self.run_census(c,t)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.237s
+
+FAILED (failures=2)

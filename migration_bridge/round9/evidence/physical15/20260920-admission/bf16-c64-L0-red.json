@@ -1,0 +1,31 @@
+{
+  "status": "FAIL",
+  "scope": "REAL_WEIGHTS_SYNTHETIC_INPUT_CPU_ONLY",
+  "layer": 0,
+  "format": "BF16",
+  "pools": 2,
+  "workers": 64,
+  "native_file": "/round9/build-cpu/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+  "native_sha256": "f481939ea4d4cb5d7d798f7fa4c90378a7e8585f9d14b6114399f25f174b045f",
+  "rel_l2_gate": 0.01,
+  "rows": [],
+  "source_experts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    507,
+    508,
+    509,
+    510,
+    511
+  ],
+  "source_weight_sha256": [
+    "8f8f3fe4f9e66b665e024438c9538641fdb55a7f785a9a40c4fa0e516e9dd8f3",
+    "8cf2ee0095a289f1c11de8981612fa39057dd62a2b10233e71d4f9acf03d5c1a",
+    "8057994cc60d5ed23d3aea32807f0d91f585cd5beb53c30f086d7e1664821206"
+  ],
+  "error": "RuntimeError('unsupported unaligned Llamafile intermediate_size')",
+  "finished_at": 1789891196.8631194
+}

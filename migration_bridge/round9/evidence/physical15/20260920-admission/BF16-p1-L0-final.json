@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "scope": "REAL_WEIGHTS_SYNTHETIC_INPUT_CPU_ONLY",
+  "layer": 0,
+  "format": "BF16",
+  "pools": 1,
+  "workers": 32,
+  "compat": false,
+  "native_file": "/round9/build-cpu/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+  "native_sha256": "f2695802dbd0196aeb644286ce4b02d641200e16b135fb248a008b0ecf1eafbe",
+  "rel_l2_gate": 0.01,
+  "rows": [
+    {
+      "qlen": 1,
+      "rel_l2": 7.296289664648475e-07,
+      "repeat_exact": true,
+      "input_sha256": "b5c3ef1687bb9370705dff7885ebe70ae9a3ec92f6cf54585be18c0da491189e",
+      "output_sha256": "a2e395b573eb633db97220456a374ef37abdc6b3193a432b967d1580f0d0f778",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    },
+    {
+      "qlen": 2,
+      "rel_l2": 8.794584706635838e-07,
+      "repeat_exact": true,
+      "input_sha256": "73887a3b6d940f6d1861be93bf2393e59c3192020b9c8533b569a9aa5586c36f",
+      "output_sha256": "7b9bf0cc3a31fcf5924ad9b170a6b635c4bb99c96542cb4a97d019b73a87c77f",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    },
+    {
+      "qlen": 9,
+      "rel_l2": 8.296839016860702e-07,
+      "repeat_exact": true,
+      "input_sha256": "e5ca68b55c4ba629baa2dec39000fbfbb4fd044fc8686efbfd78dc89b981e33a",
+      "output_sha256": "82ee150cf5b6f355cd775489e56d0176e49cfaa2636d393fdddd6cead5030adb",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    },
+    {
+      "qlen": 10,
+      "rel_l2": 8.395992548048093e-07,
+      "repeat_exact": true,
+      "input_sha256": "05f7653b9750409979b4d0bc7254f6f5d0399716d6456ccb6f95d7c1786718dc",
+      "output_sha256": "2297ffa80ab213d488bd5023a21bc5e4acb21799b6862c2a57c2b09267844743",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    },
+    {
+      "qlen": 11,
+      "rel_l2": 8.413330119748322e-07,
+      "repeat_exact": true,
+      "input_sha256": "b634de85c544c0438a111f40fdd8865013be47227053a18f782a22af8b64bf2e",
+      "output_sha256": "aa5af6e814e1c1261569dbed6ceb3e156ca67386dc0b558271a8d34b0e1663e3",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    },
+    {
+      "qlen": 32,
+      "rel_l2": 8.448063907297776e-07,
+      "repeat_exact": true,
+      "input_sha256": "ee8f023d6aabade83e44419dcec482d3a4ff2182946ed705ba593850dde669bc",
+      "output_sha256": "ebd77aa0328e6bdc71b2de52816575f35e52c3b09c4a23ca77a390f7bdc818f1",
+      "ownership_flip_exact": true,
+      "skip_zero_exact": true,
+      "incremental_nohit_exact": true
+    }
+  ],
+  "full_bank": false,
+  "source_experts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    507,
+    508,
+    509,
+    510,
+    511
+  ],
+  "selected_source_weight_sha256": [
+    "8f8f3fe4f9e66b665e024438c9538641fdb55a7f785a9a40c4fa0e516e9dd8f3",
+    "8cf2ee0095a289f1c11de8981612fa39057dd62a2b10233e71d4f9acf03d5c1a",
+    "8057994cc60d5ed23d3aea32807f0d91f585cd5beb53c30f086d7e1664821206"
+  ],
+  "finished_at": 1789891782.2718935,
+  "peak_rss_kib": 651860
+}

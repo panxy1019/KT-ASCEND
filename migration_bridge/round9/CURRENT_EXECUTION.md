@@ -1,5 +1,57 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — first approved execution batch: bounded CPU PASS, NPU blocked
+
+Read `18_PHYSICAL15_EXECUTION_PROGRESS.md` and
+`evidence/physical15/20260920-admission/summary.json` before continuing.
+User approval remains valid; do not ask again for routine development steps.
+ARM CPU-only BF16/C64 320+320 tail and FP32partial fix verified:15 final
+profiles/90shape cases,3 identical repeats each,maxrelativeL2=0.00020935924.
+One layer's512expert backing loaded;10selected real experts including0/511
+numerically tested. Synthetic activations only; no model/NPU qualification.
+35 local tooling tests PASS including review fixes. Native binarySHA
+f2695802dbd0196aeb644286ce4b02d641200e16b135fb248a008b0ecf1eafbe.
+
+Physical15 hostpolicyUNION_POLICY and device-shareFalse; isolated nonprivileged
+single-die npu-smi query returned-9005. Access/logical mapping NOT_VERIFIED;
+no NPU tensor/model execution or global mode changes. User has been asked to
+arrange a maintenance window or retain CPU-only development; no answer yet.
+All bounded CPU tests/observation jobs exited. No new persistent automation.
+
+Live checkpoint structural censusPASS; mainrouted225GiB,PLEtables~95.368GiB.
+SGLang gitlinkf02f304 unavailable from configured/officialremote and old.22tree.
+Official541ddc37 fetched to/tmp/kt-round9-deps/sglang for audit ONLY; do not
+silently replace gitlink or borrow old runtime qualification. Source/architecture
+port and NPU admission remain prerequisites for subsequent full-model work.
+
+## 2026-09-20 — user approved physical15 plan; execution started
+
+User explicitly approved the detailed plan and requested execution. This
+supersedes the review hold below. Stage0 started in the existing isolated
+Round9 worktree. Native inline execution; no automation resumed.
+Remote independent device query (no tensor/model run) returned-9005. Host
+reports multi-die-policy UNION_POLICY and device-shareFalse. Investigate these
+prerequisites without changing global modes or the active training container.
+CPU-only environment/source work continues; model execution remainsNOT_RUN.
+
+## 2026-09-20 — physical15 execution plan awaiting user review
+
+User selected110.123.0.3/Card7/chip1/physical15 and explicitly requested the
+detailed Round9 plan BEFORE execution. Read
+`docs/superpowers/plans/2026-09-20-round9-physical15.md` (repository-relative).
+Status: DRAFT_AWAITING_USER_REVIEW. Do not start development, conversion or
+test processes until the user reviews/approves this plan. This update records
+planning only; MODEL_EXECUTION remains NOT_RUN, destination identity remains
+PASS, and shared-device/full-model admission remains unqualified.
+
+Proposed order: shared access/resource/runtime admission → source semantics →
+bounded BF16/C64 and format probes → QSA/GDN/GR/PLE/KTEP modules → Q64 static
+unquantized-storage reference → MXFP4 with Q8_0 fallback → same-precision C128
+→ PLE async/joint budgets → Frequency/Dynamic and independent Q32 → context
+tiers → controlled Round9 performance and final per-profile audit.
+Keep round7 automation paused; no Round8 performance revival, push/main merge
+or tags. Do not alter the active training container or global device mode.
+
 ## 2026-09-20 07:20 UTC — destination identity PASS; card7 sharing assessed
 
 Read17_CARD7_SHARED_TEST_ASSESSMENT.md. A3replication-state is
