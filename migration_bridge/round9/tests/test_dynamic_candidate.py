@@ -12,6 +12,23 @@ class RecordingAdapter:
         if self.fail_at=='publish':raise OSError('partial mapping publish')
 
 class DynamicCandidateTests(unittest.TestCase):
+    def test_layer_batch_is_used_and_failure_prevents_publication(self):
+        class BatchAdapter(RecordingAdapter):
+            def copy_experts(self,layer,moves):
+                self.events.append(('batch',layer,moves))
+                if self.fail_at=='batch':raise OSError('partial layer copy')
+            def copy_expert(self,*args):raise AssertionError('must use layer batch')
+        for failure in (None,'batch'):
+            adapter=BatchAdapter(failure);c=self.controller(adapter)
+            self.observe(c,0,[3,2,3,2]);plans=c.plan()
+            if failure:
+                with self.assertRaises(OSError):c.commit(plans)
+                self.assertEqual(c.state,'BROKEN_RELOAD_REQUIRED')
+                self.assertFalse(any(e[0]=='publish' for e in adapter.events))
+            else:
+                c.commit(plans);self.assertEqual(c.generation,1)
+                self.assertIn(('batch',0,((0,2),(1,3))),adapter.events)
+
     def observe(self,c,layer,ids):
         generation=c.begin("sample")
         try:c.observe("sample",generation,layer,ids)

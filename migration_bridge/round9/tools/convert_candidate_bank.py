@@ -89,7 +89,7 @@ def convert_layer(source,layer,logical_ids,storage,output,*,source_identity,enco
         file=filename,bytes=final.stat().st_size,sha256=digest(final),source_identity=source_identity,
         source_index_sha256=source.index_sha256,projection_identities=identities,
         quantization_error=dict(relative_l2=math.sqrt(error2/source2) if source2 else 0,max_abs=max_abs),
-        native_status='UNSUPPORTED_NATIVE_KERNEL_160_320_GROUPED_PREFILL')
+        native_status='SEPARATE_NATIVE_AND_DEVICE_QUALIFICATION_REQUIRED')
     manifest=output/'manifest.json.partial'
     with manifest.open('x') as f:json.dump(report,f,indent=2);f.write('\n');f.flush();os.fsync(f.fileno())
     os.link(manifest,output/'manifest.json');manifest.unlink()

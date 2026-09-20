@@ -51,4 +51,25 @@ class ProfileBindingTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError,'all48'):config.require_dynamic_model_profile(path)
             with self.assertRaisesRegex(RuntimeError,'changed'):config.bind_model_profile(path,1,{'catalog_sha256':'test'})
 
+class DeviceGateTests(unittest.TestCase):
+    def test_nz_gate_binds_storage_workers_source_and_exact_migrations(self):
+        import tempfile,json,hashlib
+        from pathlib import Path
+        from migration_bridge.round9.runtime.candidate_config import require_dynamic_device_gate as check
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'gate.json'
+            g=dict(status='PASS_REAL_KTEP_LOCAL_MERGE',storage='BF16',cpu_workers=128,source_identity={'revision':'test'},npu_weight_formats={'w13_weight':29,'w2_weight':29},dynamic_migrations=[dict(all64_processed_experts_exact=True,pinned_mask_pointer_stable=True,formats_after={'w13_weight':29,'w2_weight':29})]*3)
+            g['bank_sha256']='bank-test'
+            g['batch_copy_probe']=dict(experts=64,reverse_and_restore_exact=True,max_device_staging_bytes=400*1024**2)
+            g['dynamic_migrations']=[dict(g['dynamic_migrations'][0],generation=i+1,moves=[[0,e]]) for i,e in enumerate((511,0,511))]
+            g['rows']=[dict(tokens=q,kind=k,errors=dict(cpu_partial=0.,npu_owned_partial=0.,routed_merge=0.),hashes=['same']*3) for q in (1,10,32) for k in ('mixed','resident_only','repeated_cpu')]
+            def run():
+                p.write_text(json.dumps(g));return check(p,hashlib.sha256(p.read_bytes()).hexdigest(),storage='BF16',workers=128,source_identity={'revision':'test'},layer0_sha256='bank-test')
+            self.assertEqual(run()['status'],g['status'])
+            for key,value in [('batch_copy_probe',{}),('bank_sha256','wrong'),('rows',[]),('storage','Q8_0'),('cpu_workers',64),('source_identity',{}),('npu_weight_formats',{'w13_weight':2,'w2_weight':2}),('dynamic_migrations',[])]:
+                old=g[key];g[key]=value
+                with self.assertRaises(RuntimeError):run()
+                g[key]=old
+            with self.assertRaises(RuntimeError):check(None,None,storage='BF16',workers=128,source_identity={},layer0_sha256='bank-test')
+
 if __name__=='__main__':unittest.main()

@@ -95,7 +95,10 @@ class PlacementController:
             try:
                 self.adapter.synchronize()
                 for plan in plans:
-                    for slot,logical in plan.moves:self.adapter.copy_expert(plan.layer,slot,logical)
+                    batch_copy=getattr(self.adapter,'copy_experts',None)
+                    if batch_copy is not None:batch_copy(plan.layer,plan.moves)
+                    else:
+                        for slot,logical in plan.moves:self.adapter.copy_expert(plan.layer,slot,logical)
                 self.adapter.synchronize()
                 for plan in plans:self.adapter.publish(plan.layer,plan.slots,next_generation)
                 self.adapter.synchronize()

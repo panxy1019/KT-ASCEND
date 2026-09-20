@@ -117,3 +117,34 @@ def require_dynamic_model_profile(path):
     if _MODEL_BINDING is None or _MODEL_LAYERS!=set(range(48)) or _MODEL_BINDING['profile_sha256']!=sha:
         raise RuntimeError('Dynamic profile is not bound to all48 loaded model layers')
     return _MODEL_BINDING
+
+
+def require_dynamic_device_gate(path,expected_sha,*,storage,workers,source_identity,layer0_sha256):
+    import hashlib,json
+    from pathlib import Path
+    if not path or not expected_sha:raise RuntimeError('Dynamic device gate receipt required')
+    raw=Path(path).read_bytes()
+    if hashlib.sha256(raw).hexdigest()!=expected_sha:raise RuntimeError('Dynamic device gate SHA mismatch')
+    gate=json.loads(raw)
+    if gate.get('batch_copy_probe')!=dict(experts=64,reverse_and_restore_exact=True,max_device_staging_bytes=400*1024**2):
+        raise RuntimeError('Dynamic requires bounded64-expert batch identity gate')
+    if (gate.get('status')!='PASS_REAL_KTEP_LOCAL_MERGE' or gate.get('storage')!=storage or
+        gate.get('cpu_workers')!=workers or gate.get('source_identity')!=source_identity or gate.get('bank_sha256')!=layer0_sha256 or
+        gate.get('npu_weight_formats')!={'w13_weight':29,'w2_weight':29} or
+        len(gate.get('dynamic_migrations',[]))!=3 or
+        not all(e.get('all64_processed_experts_exact') is True and e.get('pinned_mask_pointer_stable') is True and e.get('formats_after')=={'w13_weight':29,'w2_weight':29} for e in gate['dynamic_migrations'])):
+        raise RuntimeError('Dynamic requires matching real NZ29 migration/merge gate')
+    migrations=gate['dynamic_migrations']
+    if [e.get('generation') for e in migrations]!=[1,2,3] or [e.get('moves') for e in migrations]!=[[[0,511]],[[0,0]],[[0,511]]]:
+        raise RuntimeError('Dynamic promotion/demotion sequence incomplete')
+    rows=gate.get('rows',[])
+    expected={(q,k) for q in (1,10,32) for k in ('mixed','resident_only','repeated_cpu')}
+    if len(rows)!=9 or {(r.get('tokens'),r.get('kind')) for r in rows}!=expected:
+        raise RuntimeError('Dynamic KTEP numeric matrix incomplete')
+    for row in rows:
+        errors=row.get('errors',{});hashes=row.get('hashes',[])
+        if (set(errors)!={'cpu_partial','npu_owned_partial','routed_merge'} or
+            any(type(e) not in (int,float) or not math.isfinite(e) or not 0<=e<=.01 for e in errors.values()) or
+            len(hashes)!=3 or len(set(hashes))!=1):
+            raise RuntimeError('Dynamic KTEP repeat/numeric gate failed')
+    return gate

@@ -5,7 +5,7 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot')]
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot','owned_memory_cgroup','owned_container_finished')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
@@ -15,6 +15,22 @@ class MonitorOwnershipTests(unittest.TestCase):
             self.assertTrue(ns['owned_container_name'](name))
         for name in ('mzy-train','kt-r7-a3-return-v1','kt-round9-c128-expert-v1-other'):
             self.assertFalse(ns['owned_container_name'](name))
+
+class MemoryDomainTests(unittest.TestCase):
+    def test_hybrid_host_uses_explicit_v1_memory_controller(self):
+        self.assertEqual(ns['owned_memory_cgroup'](['12:memory:/docker/abc123','0::/'],'abc123'),('/sys/fs/cgroup/memory','/docker/abc123'))
+
+    def test_failed_exit_snapshot_cannot_disable_fail_closed_stop(self):
+        from unittest.mock import Mock
+        ns.update(command=Mock(side_effect=OSError('docker unavailable')),json=__import__('json'))
+        self.assertFalse(ns['owned_container_finished']('kt-round9-full-model-v10'))
+
+    def test_root_cgroup_during_exit_is_not_owned_memory(self):
+        with self.assertRaisesRegex(RuntimeError,'admitted container'):
+            ns['owned_memory_cgroup'](['5:memory:/'],'abc123')
+        with self.assertRaises(RuntimeError):ns['owned_memory_cgroup'](['0::/system.slice/docker-other.scope'],'abc123')
+        self.assertEqual(ns['owned_memory_cgroup'](['5:memory:/docker/abc123'],'abc123'),('/sys/fs/cgroup/memory','/docker/abc123'))
+        self.assertEqual(ns['owned_memory_cgroup'](['0::/system.slice/docker-abc123.scope'],'abc123'),('/sys/fs/cgroup','/system.slice/docker-abc123.scope'))
 
 class MonitorParserTests(unittest.TestCase):
     def test_physical15_only_and_correct_hbm_column(self):

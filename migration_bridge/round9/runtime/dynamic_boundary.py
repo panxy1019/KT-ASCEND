@@ -56,8 +56,11 @@ def scheduler_after(scheduler):
 def _bind_scheduler(scheduler):
     import json,os
     from pathlib import Path
-    from .candidate_config import require_dynamic_model_profile
+    from .candidate_config import require_dynamic_model_profile,load_candidate_profile,require_dynamic_device_gate
     binding=require_dynamic_model_profile(os.environ.get("ROUND9_CANDIDATE_PROFILE"))
+    candidate,_,_=load_candidate_profile(os.environ.get("ROUND9_CANDIDATE_PROFILE"))
+    gate=require_dynamic_device_gate(os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE'),os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE_SHA256'),
+        storage=candidate.storage,workers=candidate.workers,source_identity=binding['bank_identity']['source_identity'],layer0_sha256=binding['bank_identity']['layer0_sha256'])
     from .expert_source import OriginalExpertSource
     from .dynamic_adapter import TorchKTEPAdapter,bind_controller
     from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod
@@ -85,7 +88,7 @@ def _bind_scheduler(scheduler):
         raise RuntimeError('Dynamic original source differs from verified model binding')
     source=OriginalExpertSource(args.model_path)
     adapter=TorchKTEPAdapter(layers,methods,source,complete_cpu_backing_ids=range(512),
-        host_staging_limit=64*1024**2,allow_unqualified_npu_probe=True)
+        host_staging_limit=64*1024**2,allow_unqualified_npu_probe=True,qualified_npu_formats=(29,))
     def event(item):
         with log.open('a') as f:f.write(json.dumps(item)+'\n')
     boundary=RequestBoundary(bind_controller(adapter),event)

@@ -1,3 +1,59 @@
+## Latest —2026-09-20 23:20UTC: all batch device gates PASS, full matrix running
+
+Expert-v15 BF16 / v16 Q8_0 / v17 MXFP4 all exit0 and pass64expert reverse/restore,
+3migrations and9KTEP cases. BF16 observedowned peak2364MiB; explicit ND staging
+bound400MiB is not a workspace/allocator measurement. Independent review noP1;
+actual full-model resource guard remains decisive. ARM CPU host-v23:29PASS.
+
+One-shot matrix PID1381883 (not scheduled): full-v13 BF16Dynamic currently loading;
+then v14 MXstatic, v15 MXDynamic, v16 Q8static, v17 Q8Dynamic. Script:
+/mnt/data1/kt-round9/round9_candidate_matrix_v1.py; log candidate-matrix-v1.log;
+status evidence/20260920-candidate-matrix-v1/status.json. Stops on any failure.
+Each run uses fresh exclusive admission, candidate-sglang-v7, matching new device
+gate, five functional/resource drivers, controlled owned stop and final evidence.
+No quality256/performance/deployment claim; no timer restart/push/merge/tag.
+
+## Latest —2026-09-20 23:16 UTC: bounded layer migration validation
+
+Exclusive physical15 on110.123.0.3 remains authorized; no training sharing until user changes it.
+Fullmodel-v12 completed a real48-layer Dynamic transaction (424experts, generation1),
+then a second8-expert transaction. Per-expert NZ resident writes made the first
+boundary exceed4minutes. Controlled diagnostic stop; NOT a full-model PASS.
+Raw logs/stacks/events/failure.json are retained. No resource guard trip observed.
+
+Correction under test: stream original BF16 into one ND projection buffer per
+layer (maximum400MiB device staging, existing64MiB host budget), then one NZ
+index_copy_ per projection. All maps still publish only after all layer writes
+and synchronization; exceptions still poison the controller until reload.
+New device gate must reverse and restore all64 real resident experts exactly,
+then pass existing3 migration identities and9 KTEP cases. Expert-v15 BF16 running;
+new candidate-sglang-v7 isolated overlay installed. Q8/MX new gates and complete
+full-model combinations remain pending. Driver boundary polling now bounded120s
+instead of10s; no numeric acceptance threshold or result scope relaxed.
+
+## Actual NZ29 migration fixed; fullmodel retry —2026-09-20 23:07 UTC
+
+v11 fullmodel rejected layout before migration. Formal SGLang enables internal
+NZ29 while early probes were ND2. Actual NZ probe reproduced slice.copy_ failure;
+fixed by index_copy_ into original resident tensor. Expertv12BF16/v13Q8/v14MX all
+PASS exact3 migrations+format29 invariance+real KTEP9cases. Matching gate now
+mandatory in server/scheduler, including bank/source/native/adapter identity.
+All three formats now have full48-bank SHA/type/source verification completed.
+Fullmodelv12 BF16+C128+Dynamic is loading; v10 static remains functional/resource
+PASS. See38 for failures and fixes. Corrected cgroup monitor passed real probes.
+
+## Full-model C128/BF16 static trial passed —2026-09-20 22:58 UTC
+
+See38_CANDIDATE_FULL_MODEL_TRIALS.md. v10 passed first HTTP, system8 exact
+repeats, four canaries, actual4096tokens, active cancel+state reuse. Only own v10
+stopped after completion. Boardpeak42624MiB, owned39856MiB; actual128 distinct
+pinned scheduler workers. Exit cgroup telemetry defect documented and fixed for
+future launches; inference-time container peak309354479616bytes, failcnt0.
+v11 BF16+C128+Dynamic is now running under a fresh exclusive admission.
+Q8 all48 static/Dynamic verification complete; MXFP4 conversion atlayer40.
+Local implementation/evidence commit8a71454c5; no push/main merge/tag.
+Candidate quality256, restart and same-placement full-model oracle remain pending.
+
 ## Physical15 exclusive execution authorized — 2026-09-20 22:44 UTC
 
 Latest user reports training has vacated physical15 and explicitly authorizes

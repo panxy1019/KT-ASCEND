@@ -22,7 +22,7 @@ doc=json.loads(profile.read_text());candidate_sha=hashlib.sha256(json.dumps(doc,
 receipt=json.loads(a.bank_receipt.read_text());gate=json.loads(a.device_gate.read_text())
 if gate['status']!='PASS_REAL_KTEP_LOCAL_MERGE' or gate['storage']!=a.storage or gate['cpu_workers']!=128:
  raise RuntimeError('real C128 candidate gate required')
-if a.placement=='request_boundary' and len(gate.get('dynamic_migrations',[]))<3:raise RuntimeError('Dynamic device gate missing')
+if a.placement=='request_boundary' and (len(gate.get('dynamic_migrations',[]))!=3 or gate.get('npu_weight_formats')!={'w13_weight':29,'w2_weight':29}):raise RuntimeError('Dynamic actual NZ29 device gate missing')
 if receipt['status']!='VERIFIED48_BANK_BYTES_TYPES_SOURCE_NOT_MODEL_QUALIFIED' or receipt['profile_sha256']!=candidate_sha or receipt['source_identity']!=gate['source_identity']:
  raise RuntimeError('bank/source/candidate gate identity mismatch')
 if receipt['banks'][0]['sha256']!=gate['bank_sha256']:raise RuntimeError('gate is from a different layer0 bank')
@@ -40,6 +40,10 @@ values.update(kt_cpuinfer=128,kt_threadpool_count=4,kt_numa_nodes=[2,3,6,7],kt_w
 sglang=a.overlay_python.resolve(strict=True)
 overlay_path=sglang/'round9-candidate-overlay.json'
 overlay=json.loads(overlay_path.read_text())
+if a.placement=='request_boundary':
+ gate_source=json.loads((a.device_gate.parent/'source-sha256.json').read_text())
+ for module in ('dynamic_adapter.py','dynamic.py','expert_source.py'):
+  if digest(sglang/'sglang/srt/layers/round9'/module)!=gate_source['runtime/'+module]:raise RuntimeError('Dynamic math adapter differs from qualified device gate')
 if overlay['baseline_tree_sha256']!=tree_digest(tree_files(root/'src/sglang-round9-port/python')) or overlay['candidate_tree_sha256']!=tree_digest(tree_files(sglang)):
  raise RuntimeError('installed overlay differs from recorded baseline/candidate payload')
 (out/'payload-sha256.json').write_text(json.dumps(dict(source=tree(out/'source'),runtime=tree(runtime),sglang=tree(sglang),bank_receipt=digest(a.bank_receipt),device_gate=digest(a.device_gate)),indent=2)+'\n')
@@ -50,6 +54,7 @@ for mount in (f'{root}:/round9:ro','/home/admin/models/Qwen3.8-Flash-Next:/model
 for env in ('ASCEND_RT_VISIBLE_DEVICES=0','OMP_NUM_THREADS=2','OPENBLAS_NUM_THREADS=2','MKL_NUM_THREADS=2','ROUND9_MEMORY_OBSERVER=1',
  f'PYTHONPATH={container_path(sglang)}:{container_path(runtime)}',f'ROUND9_CANDIDATE_PROFILE={container_path(profile)}',
  f'ROUND9_BANK_RECEIPT={container_path(a.bank_receipt)}',f'ROUND9_BANK_RECEIPT_SHA256={digest(a.bank_receipt)}',
+ f'ROUND9_DYNAMIC_DEVICE_GATE={container_path(a.device_gate)}',f'ROUND9_DYNAMIC_DEVICE_GATE_SHA256={digest(a.device_gate)}',
  'ROUND9_DYNAMIC_EVENTS=/out/dynamic-events.jsonl',f'ROUND9_DYNAMIC_BOUNDARY_ENABLE={int(a.placement=="request_boundary")}'):args+=['-e',env]
 args+=['--entrypoint','bash','601e76d17e9f','-c',script];command(args)
 inspect=json.loads(command(['docker','inspect',name]))[0];hc=inspect['HostConfig']
@@ -64,7 +69,7 @@ try:
   if time.monotonic()>deadline:raise RuntimeError('guard readiness timeout')
   time.sleep(.2)
  admission=sample();admission.update(status='CANDIDATE_READY_FOR_MONITORED_FULL_MODEL_RUN',profile_sha256=digest(out/'server-profile.json'),candidate_profile_sha256=candidate_sha,payload_sha256=digest(out/'payload-sha256.json'),overlay_sha256=digest(overlay_path),
-  bank_identity=dict(receipt_sha256=digest(a.bank_receipt),catalog_sha256=receipt['catalog_sha256'],source_identity=receipt['source_identity']))
+  bank_identity=dict(receipt_sha256=digest(a.bank_receipt),catalog_sha256=receipt['catalog_sha256'],source_identity=receipt['source_identity'],layer0_sha256=receipt['banks'][0]['sha256']))
  (out/'admission.json').write_text(json.dumps(admission,indent=2)+'\n')
  if guard.poll() is not None:raise RuntimeError('guard died before start')
  if tree(out/'source')!=json.loads((out/'payload-sha256.json').read_text())['source']:raise RuntimeError('frozen candidate source changed')

@@ -1,0 +1,8 @@
+kt-round9-c128-expert-v10
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/monitor_owned_server.py", line 150, in <module>
+    mount,relative=owned_memory_cgroup(lines,state['Id'])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/monitor_owned_server.py", line 102, in owned_memory_cgroup
+    raise RuntimeError('process is not in its admitted container memory cgroup')
+RuntimeError: process is not in its admitted container memory cgroup

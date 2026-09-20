@@ -7,8 +7,11 @@ of its own. Never call outside PlacementController's drained request boundary.
 
 class TorchKTEPAdapter:
     def __init__(self,layers,methods,source,*,complete_cpu_backing_ids,host_staging_limit,
-                 allow_unqualified_npu_probe=False):
+                 allow_unqualified_npu_probe=False,qualified_npu_formats=(2,)):
         import torch
+        if not isinstance(qualified_npu_formats,tuple) or not qualified_npu_formats or any(type(f) is not int or f not in (2,29) for f in qualified_npu_formats):
+            raise ValueError('explicit ND2/NZ29 qualification is required')
+        self.qualified_npu_formats=qualified_npu_formats
         ids=tuple(complete_cpu_backing_ids)
         if any(type(i) is not int for i in ids) or ids!=tuple(range(source.experts)):raise ValueError('demotion requires complete original-logical CPU backing')
         self.expert_bytes=source.hidden*source.intermediate*3*2
@@ -31,8 +34,9 @@ class TorchKTEPAdapter:
                     raise RuntimeError('DEVICE_TEST_PENDING_NPU_PROMOTION_REQUIRES_SEPARATE_GUARDED_PROBE')
                 if tensor.device.type=='npu':
                     import torch_npu
-                    if int(torch_npu.get_npu_format(tensor))!=2:
-                        raise RuntimeError('DYNAMIC_NPU_LAYOUT_NOT_QUALIFIED_EXPECTED_ND2')
+                    actual_format=int(torch_npu.get_npu_format(tensor))
+                    if actual_format not in qualified_npu_formats:
+                        raise RuntimeError(f'DYNAMIC_NPU_LAYOUT_NOT_QUALIFIED actual={actual_format} admitted={qualified_npu_formats}')
                 self.devices.add(tensor.device)
             for owner,name in ((method,'gpu_experts_mask'),(method,'gpu_experts_mask_cuda'),(method.wrapper,'gpu_experts_mask')):
                 value=getattr(owner,name)
@@ -61,9 +65,69 @@ class TorchKTEPAdapter:
         gate=read('gate',(i,h));up=read('up',(i,h));down=read('down',(h,i))
         gu=torch.cat((gate,up),dim=0)
         with torch.no_grad():
-            target.w13_weight[slot].copy_(gu.T,non_blocking=False)
-            target.w2_weight[slot].copy_(down.T,non_blocking=False)
+            for destination,original in ((target.w13_weight,gu.T),(target.w2_weight,down.T)):
+                fmt=2
+                if destination.device.type=='npu':
+                    import torch_npu
+                    fmt=int(torch_npu.get_npu_format(destination))
+                    if fmt not in self.qualified_npu_formats:raise RuntimeError('resident layout changed before migration')
+                if fmt==29:
+                    # Selecting an NZ slot can materialize an ND copy. Mutate the
+                    # actual resident tensor rather than a detached slice result.
+                    index=torch.tensor([slot],dtype=torch.int64,device=destination.device)
+                    values=original.contiguous().unsqueeze(0).to(destination.device)
+                    destination.index_copy_(0,index,values)
+                    if int(torch_npu.get_npu_format(destination))!=29:raise RuntimeError('NZ publication changed resident layout')
+                else:
+                    destination[slot].copy_(original,non_blocking=False)
         self.copied_bytes+=self.expert_bytes
+
+    def copy_experts(self,layer,moves):
+        """Stage one projection of one layer; publish maps only after all copies.
+
+        NZ index_copy_ can convert a whole resident projection. Do it once per
+        layer/projection, while streaming original experts through the existing
+        bounded host staging. Maximum additional ND device staging is400MiB.
+        """
+        import torch
+        target=self.layers[layer];moves=tuple(moves)
+        if not moves:return
+        if (len({slot for slot,_ in moves})!=len(moves) or
+            any(type(slot) is not int or not 0<=slot<target.w13_weight.shape[0] or
+                type(logical) is not int or not 0<=logical<self.source.experts for slot,logical in moves)):
+            raise ValueError('invalid layer migration batch')
+        if target.w13_weight.device.type!='npu':
+            for slot,logical in moves:self.copy_expert(layer,slot,logical)
+            return
+        import torch_npu
+        formats=[int(torch_npu.get_npu_format(getattr(target,n))) for n in ('w13_weight','w2_weight')]
+        if any(f not in self.qualified_npu_formats for f in formats):raise RuntimeError('resident layout changed before migration')
+        if formats!=[29,29]:
+            for slot,logical in moves:self.copy_expert(layer,slot,logical)
+            return
+        h=self.source.hidden;i=self.source.intermediate
+        if len(moves)*h*2*i*2>400*1024**2:raise ValueError('layer device staging exceeds400MiB')
+        def read(logical,name,shape):
+            value=torch.frombuffer(bytearray(self.source.read(layer,logical,name)),dtype=torch.bfloat16).reshape(shape)
+            if not bool(torch.isfinite(value).all()):raise ValueError('nonfinite original expert')
+            return value
+        with torch.no_grad():
+            index=torch.tensor([slot for slot,_ in moves],dtype=torch.int64,device=target.w13_weight.device)
+            for name in ('w13_weight','w2_weight'):
+                destination=getattr(target,name)
+                staged=torch.empty((len(moves),*destination.shape[1:]),dtype=torch.bfloat16,device=destination.device)
+                if int(torch_npu.get_npu_format(staged))!=2:raise RuntimeError('expected ND staging tensor')
+                for position,(_,logical) in enumerate(moves):
+                    if name=='w13_weight':
+                        original=torch.cat((read(logical,'gate',(i,h)),read(logical,'up',(i,h))),dim=0).T
+                    else:original=read(logical,'down',(h,i)).T
+                    staged[position].copy_(original,non_blocking=False)
+                    del original
+                destination.index_copy_(0,index,staged)
+                self.synchronize()
+                if int(torch_npu.get_npu_format(destination))!=29:raise RuntimeError('NZ publication changed resident layout')
+                del staged
+        self.copied_bytes+=len(moves)*self.expert_bytes
 
     def publish(self,layer,slots,generation):
         import torch

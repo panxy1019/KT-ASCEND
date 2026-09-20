@@ -75,4 +75,4 @@ def bind_verified_banks(profile,bank_root,model):
         if source_identity(model,report['source_receipt'])!=report['source_identity']:
             raise RuntimeError('candidate original source identity mismatch')
         _CACHE[key]=True
-    return dict(receipt_sha256=sha,catalog_sha256=report['catalog_sha256'],source_identity=report['source_identity'])
+    return dict(receipt_sha256=sha,catalog_sha256=report['catalog_sha256'],source_identity=report['source_identity'],layer0_sha256=report['banks'][0]['sha256'])

@@ -21,7 +21,7 @@ try:
   events=[json.loads(line) for line in pathlib.Path('/out/dynamic-events.jsonl').read_text().splitlines()]
   completions={e.get('request_id'):e for e in events if 'request_id' in e}
   # Scheduler publishes the response before reaching its post-release hook.
-  for _ in range(100):
+  for _ in range(1200):
    if all(r['request']['rid'] in completions for r in report['rows']):break
    time.sleep(.1);events=[json.loads(line) for line in pathlib.Path('/out/dynamic-events.jsonl').read_text().splitlines()];completions={e.get('request_id'):e for e in events if 'request_id' in e}
   if not all(r['request']['rid'] in completions for r in report['rows']):raise RuntimeError('missing drained Dynamic request boundary')

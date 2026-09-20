@@ -46,7 +46,7 @@ def main():
     import os
     from sglang.srt.layers.round9.candidate_config import load_candidate_profile
     from sglang.srt.layers.round9.candidate_bank import bind_verified_banks
-    _,_,candidate_sha = load_candidate_profile(os.environ.get('ROUND9_CANDIDATE_PROFILE'))
+    candidate,_,candidate_sha = load_candidate_profile(os.environ.get('ROUND9_CANDIDATE_PROFILE'))
     identity = bind_verified_banks(os.environ['ROUND9_CANDIDATE_PROFILE'],args.kt_weight_path,args.model_path)
     if admission.get('candidate_profile_sha256')!=candidate_sha or admission.get('bank_identity')!=identity:
         raise RuntimeError('candidate identity differs from fresh admission')
@@ -54,6 +54,10 @@ def main():
     if hashlib.sha256(payload_path.read_bytes()).hexdigest()!=admission.get('payload_sha256'):
         raise RuntimeError('candidate payload receipt mismatch')
     payload=json.loads(payload_path.read_text())
+    if candidate.placement=='request_boundary':
+        from sglang.srt.layers.round9.candidate_config import require_dynamic_device_gate
+        require_dynamic_device_gate(os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE'),payload['device_gate'],
+            storage=candidate.storage,workers=candidate.workers,source_identity=identity['source_identity'],layer0_sha256=identity['layer0_sha256'])
     def tree(root):
         return {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in root.rglob('*') if p.is_file() and '__pycache__' not in p.parts}

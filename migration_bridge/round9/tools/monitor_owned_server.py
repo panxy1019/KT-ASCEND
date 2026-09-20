@@ -28,6 +28,7 @@ if a.resource_mode=='exclusive' and a.training_pids:raise ValueError('exclusive 
 started = time.monotonic()
 system_baseline_mib = None
 baseline_samples = []
+bound_cgroot = None
 
 
 def command(args):
@@ -85,6 +86,23 @@ def stable_system_baseline(samples):
     return max(recent)
 
 
+def owned_container_finished(name):
+    try:
+        fresh=json.loads(command(['docker','inspect',name]))[0]['State']
+    except Exception:
+        return False  # Telemetry failure must still stop a potentially live run.
+    return not fresh['Running'] and fresh['Status'] in ('exited','dead')
+
+
+def owned_memory_cgroup(lines,container_id):
+    unified=next((line.split(':',2)[2] for line in lines if line.startswith('0::')),None)
+    legacy=next((line.split(':',2)[2] for line in lines if 'memory' in line.split(':',2)[1].split(',')),None)
+    relative=legacy if legacy is not None else unified
+    if not relative or container_id not in relative:
+        raise RuntimeError('process is not in its admitted container memory cgroup')
+    return ('/sys/fs/cgroup/memory' if legacy is not None else '/sys/fs/cgroup'),relative
+
+
 while True:
     try:
         state = json.loads(command(['docker','inspect',a.container]))[0]
@@ -126,23 +144,21 @@ while True:
         item['host_swap_free_kib'] = int(meminfo['SwapFree'].split()[0])
         pressure = pathlib.Path('/proc/pressure/memory')
         item['memory_pressure'] = pressure.read_text() if pressure.exists() else 'UNAVAILABLE_KERNEL_PSI'
-        pid = state['State']['Pid']
-        cg = [] if waiting else pathlib.Path(f'/proc/{pid}/cgroup').read_text().splitlines()
-        unified = next((line.split(':',2)[2] for line in cg if line.startswith('0::')), None)
-        if unified and (pathlib.Path('/sys/fs/cgroup') / unified.lstrip('/') / 'memory.current').exists():
-            cgroot = pathlib.Path('/sys/fs/cgroup') / unified.lstrip('/')
-            item['owned_cgroup'] = {name:(cgroot/name).read_text().strip()
-                for name in ('memory.current','memory.peak','memory.swap.current','memory.events')
-                if (cgroot/name).exists()}
-        else:
-            legacy = next((line.split(':',2)[2] for line in cg
-                           if 'memory' in line.split(':',2)[1].split(',')), None)
-            if legacy:
-                cgroot = pathlib.Path('/sys/fs/cgroup/memory') / legacy.lstrip('/')
-                item['owned_cgroup'] = {name:(cgroot/name).read_text().strip()
-                    for name in ('memory.usage_in_bytes','memory.max_usage_in_bytes',
-                                 'memory.memsw.usage_in_bytes','memory.failcnt')
-                    if (cgroot/name).exists()}
+        if not waiting:
+            if bound_cgroot is None:
+                lines=pathlib.Path(f"/proc/{state['State']['Pid']}/cgroup").read_text().splitlines()
+                mount,relative=owned_memory_cgroup(lines,state['Id'])
+                bound_cgroot=pathlib.Path(mount)/relative.lstrip('/')
+                limit_name='memory.max' if mount=='/sys/fs/cgroup' else 'memory.limit_in_bytes'
+                if int((bound_cgroot/limit_name).read_text())!=state['HostConfig']['Memory']:
+                    raise RuntimeError('owned cgroup memory limit differs from container admission')
+            if not bound_cgroot.exists():raise FileNotFoundError(bound_cgroot)
+            item['owned_cgroup_path']=str(bound_cgroot)
+            item['owned_cgroup']={name:(bound_cgroot/name).read_text().strip()
+                for name in ('memory.current','memory.peak','memory.swap.current','memory.events',
+                             'memory.usage_in_bytes','memory.max_usage_in_bytes',
+                             'memory.memsw.usage_in_bytes','memory.failcnt')
+                if (bound_cgroot/name).exists()}
         with a.output.open('a') as f:
             f.write(json.dumps(item)+'\n')
         if item['host_mem_available_kib'] < 64*1024**2:
@@ -159,6 +175,9 @@ while True:
             stop_owned('bounded live-monitor window ended')
             break
     except Exception as exc:
+        if owned_container_finished(a.container):
+            with a.output.open('a') as f:f.write(json.dumps(dict(time=time.time(),action='OWNED_EXITED_DURING_SAMPLE',sampling_error=repr(exc)))+'\n')
+            break
         stop_owned(f'telemetry/guard failure: {exc!r}')
         raise
     time.sleep(1)

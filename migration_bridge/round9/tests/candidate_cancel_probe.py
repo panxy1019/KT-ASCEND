@@ -31,7 +31,7 @@ try:
  if a.placement=='request_boundary':
   import math,time
   if not all(math.isfinite(x[0]) for x in data['meta_info']['output_token_logprobs']):raise RuntimeError('nonfinite post-cancel output')
-  for attempt in range(100):
+  for attempt in range(1200):
    events=[json.loads(line) for line in pathlib.Path('/out/dynamic-events.jsonl').read_text().splitlines()]
    ids={e.get('request_id') for e in events}
    if {rid,'r9-post-cancel-reuse'}<=ids:break

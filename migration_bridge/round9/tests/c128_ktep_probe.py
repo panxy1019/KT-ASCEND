@@ -14,6 +14,7 @@ from kt_kernel.experts_base import BaseMoEWrapper,KExpertsCPUBuffer
 p=argparse.ArgumentParser(description=__doc__)
 for arg in ('model','identity-receipt','bank','output'):p.add_argument('--'+arg,type=pathlib.Path,required=True)
 p.add_argument('--dynamic',action='store_true')
+p.add_argument('--npu-format',type=int,choices=[2,29],default=2)
 p.add_argument('--storage',choices=['BF16','Q8_0','MXFP4'],default='BF16')
 p.add_argument('--bank-manifest',type=pathlib.Path)
 a=p.parse_args()
@@ -39,6 +40,7 @@ else:
  assert len(manifest['projection_identities'])==1536
  assert kt_kernel_ext.llamafile_block32_tail_supported()
 assert kt_kernel_ext.llamafile_bf16_f32_tail_supported()
+torch_npu.npu.config.allow_internal_format=(a.npu_format==29)
 torch.npu.set_device(0)
 torch.npu.set_per_process_memory_fraction(0.04,0)
 acl=ctypes.CDLL('/usr/local/Ascend/cann-9.0.0/aarch64-linux/lib64/libascendcl.so');phy=ctypes.c_int32(-1)
@@ -83,6 +85,7 @@ method.process_weights_after_loading(layer)
 method.create_moe_runner(layer,runner)
 weight_formats={name:int(torch_npu.get_npu_format(getattr(layer,name))) for name in ('w13_weight','w2_weight')}
 print('ACTUAL_NPU_WEIGHT_FORMATS',weight_formats,flush=True)
+if set(weight_formats.values())!={a.npu_format}:raise RuntimeError('probe did not produce requested actual NPU format')
 # Verify every original resident expert after native ND->NZ conversion and transpose.
 w13_nd=torch_npu.npu_format_cast(layer.w13_weight,2).cpu()
 w2_nd=torch_npu.npu_format_cast(layer.w2_weight,2).cpu()
@@ -92,7 +95,7 @@ for local,e in enumerate(torch.where(mask)[0].tolist()):
  assert torch.equal(w2_nd[local].T,down)
 del gu,down,w13_nd,w2_nd
 print('KTEP_REAL64_PROCESSED_WEIGHT_IDENTITY_PASS',flush=True)
-dynamic_evidence=[]
+dynamic_evidence=[];batch_copy_evidence=None
 if a.dynamic:
  sys.path.insert(0,str(pathlib.Path(__file__).parents[1]))
  from runtime.expert_source import OriginalExpertSource
@@ -100,7 +103,20 @@ if a.dynamic:
  source=OriginalExpertSource(a.model)
  adapter=TorchKTEPAdapter({0:layer},{0:method},source,
   complete_cpu_backing_ids=range(512),host_staging_limit=64*1024**2,
-  allow_unqualified_npu_probe=True)
+  allow_unqualified_npu_probe=True,qualified_npu_formats=(a.npu_format,))
+ initial_slots=method.gpu_index_to_logical.cpu().tolist()
+ # Exercise the maximum64-expert staging with genuinely different slot weights,
+ # then restore before binding generation0. No inference or map publication here.
+ for batch_slots in (list(reversed(initial_slots)),initial_slots):
+  adapter.copy_experts(0,tuple(enumerate(batch_slots)));adapter.synchronize()
+  nd13=torch_npu.npu_format_cast(layer.w13_weight,2).cpu()
+  nd2=torch_npu.npu_format_cast(layer.w2_weight,2).cpu()
+  for slot,e in enumerate(batch_slots):
+   gu,down=expert(e)
+   assert torch.equal(nd13[slot].T,gu) and torch.equal(nd2[slot].T,down),(slot,e)
+  del nd13,nd2,gu,down
+ assert all(int(torch_npu.get_npu_format(getattr(layer,n)))==a.npu_format for n in ('w13_weight','w2_weight'))
+ batch_copy_evidence=dict(experts=64,reverse_and_restore_exact=True,max_device_staging_bytes=400*1024**2)
  controller=bind_controller(adapter)
  pinned_pointer=method.wrapper.gpu_experts_mask.data_ptr()
  for step,incoming in enumerate((511,0,511)):
@@ -113,6 +129,8 @@ if a.dynamic:
   plans=controller.plan()
   assert len(plans)==1 and len(plans[0].moves)==1
   controller.commit(plans)
+  after_formats={name:int(torch_npu.get_npu_format(getattr(layer,name))) for name in ('w13_weight','w2_weight')}
+  assert set(after_formats.values())=={a.npu_format}
   assert method.wrapper.gpu_experts_mask.data_ptr()==pinned_pointer
   assert controller.generation==step+1
   slots=method.gpu_index_to_logical.cpu().tolist()
@@ -123,7 +141,7 @@ if a.dynamic:
    assert torch.equal(nd13[slot].T,gu) and torch.equal(nd2[slot].T,down),(step,slot,e)
   del nd13,nd2,gu,down
   dynamic_evidence.append(dict(generation=controller.generation,moves=plans[0].moves,
-   all64_processed_experts_exact=True,pinned_mask_pointer_stable=True,copied_bytes=adapter.copied_bytes))
+   all64_processed_experts_exact=True,formats_after=after_formats,pinned_mask_pointer_stable=True,copied_bytes=adapter.copied_bytes))
  mask=method.gpu_experts_mask.cpu().clone()
  assert bool(mask[511]) and not bool(mask[0])
  print('DYNAMIC_REAL_DEVICE_PROMOTE_DEMOTE_PROMOTE_PASS',flush=True)
@@ -162,7 +180,7 @@ class Recorder:
 previous=get_global_expert_distribution_recorder();set_global_expert_distribution_recorder(Recorder())
 report={'status':'RUNNING','scope':'REAL_KTEP_LOCAL_MERGE_NOT_FULL_MODEL','source_identity':identity,
  'npu_weight_formats':weight_formats,'storage':a.storage,'bank_sha256':h.hexdigest(),'resident_experts':64,'resident_projections_exact':128,
- 'cpu_workers':128,'numa_nodes':[2,3,6,7],'dynamic_migrations':dynamic_evidence,'rows':[],
+ 'cpu_workers':128,'numa_nodes':[2,3,6,7],'dynamic_migrations':dynamic_evidence,'batch_copy_probe':batch_copy_evidence,'rows':[],
  'native_sha256':hashlib.sha256(pathlib.Path(kt_kernel_ext.__file__).read_bytes()).hexdigest()}
 try:
  with patch.object(ep,'_r61_capture',side_effect=capture):

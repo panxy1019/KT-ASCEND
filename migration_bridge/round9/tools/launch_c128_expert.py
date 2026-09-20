@@ -8,6 +8,7 @@ p.add_argument('--version',type=int,required=True)
 p.add_argument('--probe',choices=['wrapper','ktep','dynamic'],default='wrapper')
 p.add_argument('--storage',choices=['BF16','Q8_0','MXFP4'],default='BF16')
 p.add_argument('--candidate-native',action='store_true')
+p.add_argument('--npu-format',type=int,choices=[2,29],default=2)
 p.add_argument('--resource-mode',choices=['shared','exclusive'],default='shared')
 a=p.parse_args()
 if a.probe=='wrapper' and a.storage!='BF16':raise ValueError('lowbit uses complete KTEP probe')
@@ -63,6 +64,7 @@ for subdir in ('tests','tools','runtime'):
  shutil.copytree(source/subdir,frozen/subdir,ignore=shutil.ignore_patterns('__pycache__'))
 (out/'source-sha256.json').write_text(json.dumps({str(path.relative_to(frozen)):hashlib.sha256(path.read_bytes()).hexdigest() for path in frozen.rglob('*') if path.is_file()},indent=2)+'\n')
 extra=' --dynamic' if a.probe=='dynamic' else ''
+if a.probe!='wrapper':extra+=f' --npu-format {a.npu_format}'
 bank='/round9/banks/layer0-v1/layer-00-bf16.gguf'
 runtime='/round9/candidate-runtime-python' if a.candidate_native else '/round9/runtime-python'
 if a.storage!='BF16':
