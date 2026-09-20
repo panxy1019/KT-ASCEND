@@ -1,5 +1,17 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — active host changed back to 110.129.0.22
+
+Latest user instruction supersedes the physical15/A3 host selection below.
+All subsequent development/testing belongs on `.22` through `110.120.0.3`.
+Preserve `.3` model, migration support and `/mnt/data1/kt-round9` in place.
+Read `docs/handoffs/2026-09-20-03-RETURN_TO_22.md` (repository-relative).
+Fresh inventory: 8 idle 910B3 devices, no NPU processes. Initial device7 maps to
+logical npu:0 in a single-device container. Bounded tensor/runtime probe PASS;
+no Round9 model qualification claimed. `.3` maintenance question is superseded.
+Source/architecture port, host-specific admission and CPU rebuild remain needed.
+Existing approval and gate ordering remain valid; no automation resumed.
+
 ## 2026-09-20 — first approved execution batch: bounded CPU PASS, NPU blocked
 
 Read `18_PHYSICAL15_EXECUTION_PROGRESS.md` and
