@@ -1,0 +1,26 @@
+can not use command: npu-smi info
+GDN_STAGE identity_verified
+GDN_STAGE torch_npu_imported
+GDN_STAGE threads_set
+GDN_STAGE device_selected
+GDN_STAGE load_layer 0
+GDN_STAGE transfer 0 torch.float32 in_proj_qkv.weight
+GDN_STAGE transfer 0 torch.float32 in_proj_z.weight
+GDN_STAGE transfer 0 torch.float32 in_proj_a.weight
+GDN_STAGE transfer 0 torch.float32 in_proj_b.weight
+GDN_STAGE transfer 0 torch.float32 conv1d.weight
+GDN_STAGE transfer 0 torch.float32 A_log
+GDN_STAGE transfer 0 torch.float32 dt_bias
+GDN_STAGE transfer 0 torch.float32 norm.weight
+GDN_STAGE transfer 0 torch.float32 out_proj.weight
+GDN_STAGE canonical_ready 0 torch.float32
+{"layer": 0, "dtype": "torch.float32", "tokens": 1, "relative_l2": 1.087496400804069e-06, "canonical_conv_state_relative_l2": 4.4775121237134636e-07, "canonical_recurrent_state_relative_l2": 6.461051200080543e-07, "decode_relative_l2": 0.0, "decode_conv_state_relative_l2": 0.0, "decode_recurrent_state_relative_l2": 0.0, "reset_relative_l2": 0.0, "reset_conv_state_relative_l2": 0.0, "reset_recurrent_state_relative_l2": 0.0, "repeat_hashes": ["aea17d53fdbc24d7ea36278541e9675f63f34d836fab12534a4b0ea2f26803cd", "aea17d53fdbc24d7ea36278541e9675f63f34d836fab12534a4b0ea2f26803cd", "aea17d53fdbc24d7ea36278541e9675f63f34d836fab12534a4b0ea2f26803cd"]}
+{"layer": 0, "dtype": "torch.float32", "tokens": 3, "relative_l2": 9.841529784260778e-07, "canonical_conv_state_relative_l2": 4.479853014386933e-07, "canonical_recurrent_state_relative_l2": 6.780448839786805e-07, "decode_relative_l2": 0.0, "decode_conv_state_relative_l2": 0.0, "decode_recurrent_state_relative_l2": 0.0, "reset_relative_l2": 0.0, "reset_conv_state_relative_l2": 0.0, "reset_recurrent_state_relative_l2": 0.0, "repeat_hashes": ["253f5a67f9f36fdad3a1c0b8ad1feb3482032a3c4e31f420ef8a75b04fba2c9c", "253f5a67f9f36fdad3a1c0b8ad1feb3482032a3c4e31f420ef8a75b04fba2c9c", "253f5a67f9f36fdad3a1c0b8ad1feb3482032a3c4e31f420ef8a75b04fba2c9c"]}
+{"layer": 0, "dtype": "torch.float32", "tokens": 17, "relative_l2": 1.0106851208881616e-06, "canonical_conv_state_relative_l2": 4.508230869068107e-07, "canonical_recurrent_state_relative_l2": 7.225395528852427e-07, "decode_relative_l2": 0.0, "decode_conv_state_relative_l2": 0.0, "decode_recurrent_state_relative_l2": 0.0, "reset_relative_l2": 0.0, "reset_conv_state_relative_l2": 0.0, "reset_recurrent_state_relative_l2": 0.0, "repeat_hashes": ["514e71059c439cf60c63f6047cc51068e4e8e48bd2f76ca5356cdfe6f1b3292d", "514e71059c439cf60c63f6047cc51068e4e8e48bd2f76ca5356cdfe6f1b3292d", "514e71059c439cf60c63f6047cc51068e4e8e48bd2f76ca5356cdfe6f1b3292d"]}
+GDN_STAGE transfer 0 torch.bfloat16 in_proj_qkv.weight
+Timeout (0:01:00)!
+Thread 0x0000ffffbb22bae0 (most recent call first):
+  File "/src/migration_bridge/round9/tests/gdn_device_probe.py", line 270 in <module>
+Timeout (0:01:00)!
+Thread 0x0000ffffbb22bae0 (most recent call first):
+  File "/src/migration_bridge/round9/tests/gdn_device_probe.py", line 270 in <module>
