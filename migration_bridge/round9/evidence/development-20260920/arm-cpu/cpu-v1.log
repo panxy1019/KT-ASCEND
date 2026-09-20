@@ -1,0 +1,19 @@
+test_dynamic_tensor_adapter (unittest.loader._FailedTest.test_dynamic_tensor_adapter) ... ERROR
+
+======================================================================
+ERROR: test_dynamic_tensor_adapter (unittest.loader._FailedTest.test_dynamic_tensor_adapter)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dynamic_tensor_adapter
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/unittest/loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_dynamic_tensor_adapter.py", line 9, in <module>
+    from migration_bridge.round9.runtime.dynamic_adapter import TorchKTEPAdapter
+ModuleNotFoundError: No module named 'migration_bridge.round9.runtime.dynamic_adapter'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

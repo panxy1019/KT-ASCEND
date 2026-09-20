@@ -1,3 +1,21 @@
+## Candidate host/framework development delivered — 2026-09-20 16:23 UTC
+
+User authorized sequential development after reviewing35. See36 for exact
+capabilities, commands, evidence and limitations. New independent modules/tools
+implement candidate/C128 contracts, BF16-to-MXFP4/Q8_0 GGUF conversion, bounded
+Dynamic state machine and concrete Torch KTEP adapter. Baseline files unchanged.
+Local23 tests and ARM CPU-only27 tests PASS; independent review issues repaired.
+All containers exited, no NPU devices mapped, no fullmodel/performance test run.
+Candidate source lives in /mnt/data1/kt-round9/candidate-dev-20260920, isolated
+from preserved v6 runtime. Both automations remain PAUSED.
+
+Important remaining gaps: low-bit320/160 ARM grouped-prefill is explicitly
+UNSUPPORTED; Dynamic production scheduler boundary installation is PENDING and
+its fullmodel config rejects. C128 native128-worker/device qualification PENDING.
+Do not call these candidate-model PASS. Framework host acceptance complete;
+resource admission and real device/native tests remain separate.
+Baseline CMMLU remains128/256,106 correct; second128 not launched.
+
 ## User redirected to development-first analysis — 2026-09-20 15:55 UTC
 
 User prioritizes C128/lowbit/Dynamic framework development, deferring tests to
