@@ -1,5 +1,29 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — reduced range overhead / dual connection screen
+
+Current owned service: `kt-round9-range-recovery-v2` on .22, workers=2.
+Old v1 deliberately stopped for the user-authorized bounded comparison; do not
+restart it or older HF units concurrently. Same stage `range-recovery-v1`, same
+frozen revision and proxy tunnel. No global network policy changes.
+Code: 63ceafadb (immediate child completion + bounded ABBA), 4bd8f3f90
+(tiny-tail redirect fix). 14 tooling tests pass. See 09_RANGE_THROUGHPUT.md.
+ABBA 128MiB per cell: single 5.272/5.245MB/s; dual 6.737/5.774MB/s.
+Paired geometric gain 18.60%, no retries, all four byte hashes equal.
+Selected workers=2 by predeclared rule, not a dedicated-network guarantee.
+The 176-byte shard50 tail exposed curl max-filesize rejecting an intermediate
+redirect; transport cap now remains 32MiB, final range/length remain exact.
+At epoch1789863353 tail recovered and shard50 entered full SHA verification.
+Shard50 subsequently SHA PASS (receipt evidence/range-recovery-shard50.json).
+Shard51 progressed335544320 ->738197504bytes between epochs1789863411.3593
+and1789863469.2425: effective committed throughput6.956MB/s. Published50shards,
+148352668760bytes. Controller2208417 healthy. User additionally asked about
+parallel different shards: not yet tested/enabled; current two connections
+operate on one shard. A future comparison must fix total connections to avoid
+confounding shard scheduling with concurrency and preserve current healthy run.
+Whole-model identity remains pending; no conversion/model launch authorized
+by these transport results. Preserve failure headers and receipts.
+
 ## Bounded range recovery replaces failed HF snapshot downloads
 
 Read08_RANGE_RECOVERY.md. Current owned unit is kt-round9-range-recovery-v1
