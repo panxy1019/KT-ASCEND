@@ -1,0 +1,36 @@
+can not use command: npu-smi info
+INFO 09-20 13:28:40 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 13:28:40 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 13:28:40 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 13:28:40 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+MODEL_CONFIG_PASS
+[W920 13:28:41.777859630 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W920 13:28:41.778693380 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+using attn output gate!
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/model_structure_probe.py", line 81, in <module>
+[rank0]:     loaded = model.load_weights(metadata_weights())
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/round9/src/sglang-round9-port/python/sglang/srt/models/qwen4_exp.py", line 950, in load_weights
+[rank0]:     expected_ple_rows = int(offset_buffers[0][-1]) + int(size_buffers[0][-1])
+[rank0]:                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/_meta_registrations.py", line 7341, in meta_local_scalar_dense
+[rank0]:     raise RuntimeError("Tensor.item() cannot be called on meta tensors")
+[rank0]: RuntimeError: Tensor.item() cannot be called on meta tensors
+[ERROR] 2026-09-20-13:28:46 (PID:72, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

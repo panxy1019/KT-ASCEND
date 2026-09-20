@@ -1,0 +1,21 @@
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/__init__.py:405: UserWarning: Can't get ascend_hal device count
+  warnings.warn("Can't get ascend_hal device count")
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/__init__.py:405: UserWarning: Can't get ascend_hal device count
+  warnings.warn("Can't get ascend_hal device count")
+/sglang/python/sglang/srt/layers/attention/fla/utils.py:212: UserWarning: Triton is not supported on current platform, roll back to CPU.
+  warnings.warn(
+DrvMngGetConsoleLogLevel failed. (ret=4)
+rtGetSocVersion failed, 0x7bc80Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/sglang/python/sglang/srt/layers/moe/__init__.py", line 1, in <module>
+    from sglang.srt.layers.moe.moe_runner import MoeRunner, MoeRunnerConfig
+  File "/sglang/python/sglang/srt/layers/moe/moe_runner/__init__.py", line 2, in <module>
+    from sglang.srt.layers.moe.moe_runner.runner import MoeRunner
+  File "/sglang/python/sglang/srt/layers/moe/moe_runner/runner.py", line 12, in <module>
+    from sglang.srt.layers.moe.moe_runner.deep_gemm import DeepGemmRunnerCore
+  File "/sglang/python/sglang/srt/layers/moe/moe_runner/deep_gemm.py", line 50, in <module>
+    from sgl_kernel import silu_and_mul as _legacy_silu_and_mul
+ModuleNotFoundError: No module named 'sgl_kernel'
+/sglang/python/sglang/__init__.py
+[ERROR] 2026-09-20-10:22:47 (PID:1, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

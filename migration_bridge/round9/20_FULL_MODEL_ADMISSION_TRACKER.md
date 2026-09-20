@@ -1,10 +1,9 @@
-# Progression endpoint: full-model resource admission
+# Live progression: admission, then full-model testing
 
-User authorized continued monitoring, repair and development until this gate.
-Target110.123.0.3 physical15. Thread heartbeat `round9` runs every30minutes;
-this is periodic follow-up, not a continuous device-monitoring daemon. Refresh
-telemetry before each run and monitor every owned NPU run separately. Original
-`round7` remains PAUSED. Delegation uses gpt-5.6-sol / medium.
+Latest user instruction pauses the Round9 heartbeat and requests live progression
+through full-model testing. Both round9 and round7 schedules remain PAUSED.
+Target110.123.0.3 physical15; delegated agents gpt-5.6-sol / medium.
+Admission remains mandatory before full-model loading.
 
 Do not leave unknown active workers between runs. Reuse exact source paths and
 read CURRENT_EXECUTION plus git status before changes. Preserve .22 uncommitted
@@ -16,15 +15,15 @@ work and its saved archive; no training/global-mode changes, push, main or tags.
 |---|---|---|
 | Source identity | Original full verification receipt + live144file sizes/config/index hashes PASS | Recheck on each run |
 | Source reconstruction | Exact SGLang f02 pin recovered in independent .3 checkout | Reproducible runtime installation/import manifest |
-| Source semantics | Tensor census and GR audited | QSA/GDN/PLE and KTEP integration |
+| Source semantics | Tensor census; GR/QSA/GDN/PLE equations and original-weight module gates PASS | Model boundary and runner integration |
 | Runtime access | Shared physical15 mapping and bounded runtime PASS | Fresh per-run mapping/telemetry; no standing reservation |
-| CPU C64 | Prior bounded BF16/F32 actual-weight probes PASS | Real activation and complete ownership/layout gates |
+| CPU C64 | Real BF16 bank/native wrapper C64, 9 cases ×3 PASS; all48 banks exact verified | Full-model activation and host budget |
 | GR | Isolated real-weight FP32/BF16 matrix PASS | Connect to model runner; final mixer coverage |
-| QSA | NOT_RUN | Exact selector/indexer/causal KV reference and NPU tests |
-| GDN | NOT_RUN | Chunk/decode/state reset/cancel/isolation tests |
-| Synchronous PLE | NOT_RUN | Exact hash/history/row gathering/norm/gate/dilated convolution |
-| KTEP ownership | Partial CPU skip/restore evidence only | CPU/NPU disjoint complete ownership and scaling exactly once |
-| Layout/scaling | NOT_QUALIFIED | Packed axes and ND/NZ real-weight roundtrip |
+| QSA | CPU6 PASS; original-weight NPU30 PASS; actual pool boundary/lifecycle tests PASS | Actual adapter/chunk/decode and runner integration |
+| GDN | CPU5 PASS; real-weight NPU18 local PASS | Lifecycle and runner integration |
+| Synchronous PLE | Original hash/256 boundary rows and NPU6 local PASS | Packed requests, cancellation/reuse and runner integration |
+| KTEP ownership | Actual KTEP Q64/C64 merge 9 cases ×3 PASS; disjoint zero ownership and FP32 partial sum verified | Shared expert and router/scaling at model boundary |
+| Layout/scaling | All48 BF16 banks 73728 projection identities; layer0 all64 resident ND/NZ roundtrips PASS | Full model packed loads and scaling |
 | Full-model budget | NOT_QUALIFIED | Complete load/steady HBM envelope, host/disk/NUMA, bounded concurrent workload |
 
 The frozen reference is Q64, BF16 storage/F32 CPU compute, C64=64workers+8aux,
@@ -49,19 +48,18 @@ regression exposed TypeError and was fixed to return BLOCKED. General suite42.
 
 ## Next execution batch
 
-1. Establish portable synchronous Qwen4 PLE hash/history and row-gather canonical
-   from upstream4ccff141, including layer_id+1 mapping and128shard ordering.
-2. Test against independent examples and actual checkpoint rows, then NPU
-   normalization/gating/dilated convolution within the bounded probe envelope.
-3. GDN and exact QSA independently, followed by runner integration and KTEP
-   boundary gates; preserve all failures and freeze tolerance before measurement.
-4. Only after all prerequisite receipts pass, construct a fresh real full-model
-   budget snapshot. If training peak remains unbounded, record BLOCKED_RESOURCE
-   and request the specific missing scheduling condition rather than guessing.
+1. Finish real SGLang adapter whole/chunk/token-decode and request reuse tests
+   for GDN, PLE and QSA indexer. Preserve every failed attempt and exact repair.
+2. Qualify shared expert/gate, routed scaling and final GR at model boundaries;
+   close real-weight loading and runner binding. Meta mapping is not real load.
+3. Build source/profile/runtime-bound prerequisite receipts and fresh resource
+   accounting. Do not treat idle physical15 as a guaranteed training envelope.
+4. Proceed to full-model tests only after actual admission. An unresolved training
+   envelope requires a concrete scheduling condition; never invent a reservation.
 
-The endpoint is admission to begin full-model loading, not completed inference,
-CMMLU, lowbit, C128, long-context or performance qualification. On reaching it,
-report evidence and stop automatic advancement beyond this requested endpoint.
+The latest endpoint is full-model testing after admission. CMMLU, lowbit, C128,
+long-context and performance remain separately gated; no earlier-model scores
+or device qualifications are inherited.
 
 ## Admission review corrections
 

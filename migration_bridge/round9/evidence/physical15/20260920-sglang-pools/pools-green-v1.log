@@ -1,0 +1,28 @@
+can not use command: npu-smi info
+[09/20/26 13:13:19] WARNING  logging the iso date for head failed _run_cmd.py:79
+                             CompletedProcess(args=['git',                      
+                             '--git-dir',                                       
+                             '/round9/src/sglang-round9-port/.git               
+                             ', '-c', 'log.showSignature=false',                
+                             'log', '-n', '1', 'HEAD',                          
+                             '--format=%cI'], returncode=128,                   
+                             stdout='', stderr='error: object                   
+                             directory                                          
+                             /mnt/data1/kt-round9/src/sglang-f02-               
+                             recovered/.git/objects does not                    
+                             exist; check                                       
+                             .git/objects/info/alternates\nfatal:               
+                             bad object HEAD')                                  
+INFO 09-20 13:13:24 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 13:13:24 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 13:13:24 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 13:13:24 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.224s
+
+OK

@@ -1,6 +1,6 @@
 # QSA canonical source audit
 
-Date: 2026-09-20  
+Date: 2026-09-20
 Scope: read-only audit of SGLang `4ccff141dbe992794f9da6c3aa23535b4f72000d`
 against the recovered Round6 SGLang pin
 `f02f304a25364d1e8fe9c52515a22f20f5089a52`. This defines an independent,

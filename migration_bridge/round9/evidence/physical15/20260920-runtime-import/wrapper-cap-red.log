@@ -1,0 +1,39 @@
+test_bf16_c64_320_partitions_admitted (__main__.WrapperConfigurationTests.test_bf16_c64_320_partitions_admitted) ... ok
+test_bf16_requires_compiled_native_capability (__main__.WrapperConfigurationTests.test_bf16_requires_compiled_native_capability) ... FAIL
+test_f32_existing_c64_stays_admitted (__main__.WrapperConfigurationTests.test_f32_existing_c64_stays_admitted) ... ok
+test_unaligned_or_mixed_storage_rejected (__main__.WrapperConfigurationTests.test_unaligned_or_mixed_storage_rejected) ... ok
+
+======================================================================
+FAIL: test_bf16_requires_compiled_native_capability (__main__.WrapperConfigurationTests.test_bf16_requires_compiled_native_capability)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/llamafile_wrapper_tests.py", line 25, in test_bf16_requires_compiled_native_capability
+    with self.assertRaises(ValueError):self.construct([30]*3)
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+FAILED (failures=1)
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+DrvMngGetConsoleLogLevel failed. (ret=4)

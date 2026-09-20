@@ -1,0 +1,306 @@
+[
+    {
+        "Id": "999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2",
+        "Created": "2026-09-20T12:48:43.676770707Z",
+        "Path": "/bin/bash",
+        "Args": [
+            "-c",
+            "source /usr/local/Ascend/ascend-toolkit/set_env.sh; timeout -k 10 180 python -m pytest -q /round9/src/KT-ASCEND/kt-kernel/test/round5/test_ascend_framework_transfer.py --disable-warnings -p no:cacheprovider"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-20T12:48:43.909575634Z",
+            "FinishedAt": "2026-09-20T12:48:54.270937282Z"
+        },
+        "Image": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+        "ResolvConfPath": "/mnt/data1/docker/containers/999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2/resolv.conf",
+        "HostnamePath": "/mnt/data1/docker/containers/999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2/hostname",
+        "HostsPath": "/mnt/data1/docker/containers/999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2/hosts",
+        "LogPath": "/mnt/data1/docker/containers/999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2/999d4b3f04543978a63e189ccad393d5787fc844b6c3938afe69c583e35ba3c2-json.log",
+        "Name": "/kt-round9-framework-transfer",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/usr/local/Ascend/driver:/usr/local/Ascend/driver:ro",
+                "/mnt/data1/kt-round9:/round9:ro",
+                "/mnt/data1/kt-round9/evidence/20260920-runtime-import:/out"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "none",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "HookSpec": "",
+            "CpuShares": 0,
+            "Memory": 4294967296,
+            "NanoCpus": 2000000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [
+                {
+                    "PathOnHost": "/dev/davinci15",
+                    "PathInContainer": "/dev/davinci15",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci_manager",
+                    "PathInContainer": "/dev/davinci_manager",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/devmm_svm",
+                    "PathInContainer": "/dev/devmm_svm",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/hisi_hdc",
+                    "PathInContainer": "/dev/hisi_hdc",
+                    "CgroupPermissions": "rwm"
+                }
+            ],
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 4294967296,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 512,
+            "FilesLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Hugetlbs": [],
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/config.gz",
+                "/proc/cpuirqstat",
+                "/proc/fdenable",
+                "/proc/fdstat",
+                "/proc/fdthreshold",
+                "/proc/files_panic_enable",
+                "/proc/iomem_ext",
+                "/proc/kbox",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/livepatch",
+                "/proc/lru_info",
+                "/proc/lru_info_file",
+                "/proc/memstat",
+                "/proc/net_namespace",
+                "/proc/oom_extend",
+                "/proc/pagealloc_statistics",
+                "/proc/pagealloc_bt",
+                "/proc/pagealloc_module",
+                "/proc/pin_memory",
+                "/proc/slaballoc_bt",
+                "/proc/slaballoc_module",
+                "/proc/slaballoc_statistics",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/sig_catch",
+                "/proc/signo",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/asound",
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/mnt/data1/docker/overlay2/5be6b32dec345e65c8b1ac3932c120434b1fa0be05e85959cc64b35928f7c496-init/diff:/mnt/data1/docker/overlay2/2d16244c3146a364afe05221a14dd6733080b4fc64a6ed9a9ce474a99c006228/diff:/mnt/data1/docker/overlay2/a25fa051178ca7914089aa50bf8a59dd5315d8cbfe39ea3549a148dcc5b67d2b/diff:/mnt/data1/docker/overlay2/25716ece332ceb4f73cc3868d34bae40aefc11becacfc4b15647d13e7ce59974/diff:/mnt/data1/docker/overlay2/e93edd120de7e24491087f32f092a982afd6ad6ba48a6191252e0c2d3923142c/diff:/mnt/data1/docker/overlay2/184def082a6964e01e65b15e3c477470bff5ae5cd6d9fb02fc7c15cb7b77d4e1/diff:/mnt/data1/docker/overlay2/86c787d3ecc64f11b2bb4f1ed608dae89f49fe9283a2a0443cc63ea439f1ee6b/diff:/mnt/data1/docker/overlay2/9e88e23bcb71855880ddca7f6e8cbde988db9fc4820edc5846f7683cdfa3a93b/diff:/mnt/data1/docker/overlay2/b6c41e2febfdd617b8342e085739752665c66c3d80af96ff08fbb35d4f9755c8/diff:/mnt/data1/docker/overlay2/9cbf29a67f5fa35f65b12eb51ffdcecfe385b595661e13dcc744cffcaea7a42c/diff:/mnt/data1/docker/overlay2/586b1d71cfeff94830a07bdb5728786b65a0574312cc50210fe5ec9610826fbd/diff:/mnt/data1/docker/overlay2/87afabe28779595be89c21225ba370a4e59c5be90b005d3f2a7d27b9e4787a0c/diff:/mnt/data1/docker/overlay2/dd5d451c925697589816579952f5fe76487961923db80a7903c922e36556ce85/diff:/mnt/data1/docker/overlay2/a22899502c4ec6d9fabe0b824b62f485ad907042fd07063cc650a9e72f7cb8bb/diff:/mnt/data1/docker/overlay2/3108f334be1a659581cc460bbcb15a1f5cc1727454e863cd90b212259dc147ea/diff",
+                "MergedDir": "/mnt/data1/docker/overlay2/5be6b32dec345e65c8b1ac3932c120434b1fa0be05e85959cc64b35928f7c496/merged",
+                "UpperDir": "/mnt/data1/docker/overlay2/5be6b32dec345e65c8b1ac3932c120434b1fa0be05e85959cc64b35928f7c496/diff",
+                "WorkDir": "/mnt/data1/docker/overlay2/5be6b32dec345e65c8b1ac3932c120434b1fa0be05e85959cc64b35928f7c496/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/usr/local/Ascend/driver",
+                "Destination": "/usr/local/Ascend/driver",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/data1/kt-round9",
+                "Destination": "/round9",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/data1/kt-round9/evidence/20260920-runtime-import",
+                "Destination": "/out",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "999d4b3f0454",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "MKL_NUM_THREADS=2",
+                "ASCEND_RT_VISIBLE_DEVICES=0",
+                "PYTHONPATH=/round9/runtime-python",
+                "OMP_NUM_THREADS=2",
+                "OPENBLAS_NUM_THREADS=2",
+                "PATH=/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/bin:/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.0.0/tools/show_kernel_debug_data:/usr/local/Ascend/cann-9.0.0/tools/msobjdump:/usr/local/Ascend/cann-9.0.0/bin:/usr/local/Ascend/cann-9.0.0/tools/ccec_compiler/bin:/usr/local/Ascend/cann-9.0.0/tools/profiler/bin:/usr/local/Ascend/cann-9.0.0/tools/ascend_system_advisor/asys:/usr/local/python3.11.15/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LD_LIBRARY_PATH=/usr/local/Ascend/cann-9.0.0/lib64:/usr/local/Ascend/cann-9.0.0/lib64/plugin/opskernel:/usr/local/Ascend/cann-9.0.0/lib64/plugin/nnengine:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/lib:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/examples:/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1/tests/atbopstest:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling:/usr/local/python3.11.15/lib:",
+                "ASCEND_TOOLKIT_HOME=/usr/local/Ascend/cann-9.0.0",
+                "ASCEND_TOOLKIT_LATEST_HOME=/usr/local/Ascend/ascend-toolkit/latest",
+                "ASCEND_AICPU_PATH=/usr/local/Ascend/cann-9.0.0",
+                "ASCEND_OPP_PATH=/usr/local/Ascend/cann-9.0.0/opp",
+                "TOOLCHAIN_HOME=/usr/local/Ascend/cann-9.0.0/toolkit",
+                "ASCEND_HOME_PATH=/usr/local/Ascend/cann-9.0.0",
+                "CMAKE_PREFIX_PATH=/usr/local/Ascend/cann-9.0.0/toolkit/tools/tikicpulib/lib/cmake:/usr/local/Ascend/cann-9.0.0/lib64/cmake",
+                "ATB_HOME_PATH=/usr/local/Ascend/nnal/atb/latest/atb/cxx_abi_1",
+                "ATB_STREAM_SYNC_EVERY_KERNEL_ENABLE=0",
+                "ATB_STREAM_SYNC_EVERY_RUNNER_ENABLE=0",
+                "ATB_STREAM_SYNC_EVERY_OPERATION_ENABLE=0",
+                "ATB_OPSRUNNER_KERNEL_CACHE_LOCAL_COUNT=1",
+                "ATB_OPSRUNNER_KERNEL_CACHE_GLOABL_COUNT=5",
+                "ATB_WORKSPACE_MEM_ALLOC_ALG_TYPE=1",
+                "ATB_COMPARE_TILING_EVERY_KERNEL=0",
+                "ATB_SHARE_MEMORY_NAME_SUFFIX=",
+                "ATB_MATMUL_SHUFFLE_K_ENABLE=1",
+                "LCCL_DETERMINISTIC=0",
+                "LCCL_PARALLEL=0"
+            ],
+            "Cmd": [
+                "-c",
+                "source /usr/local/Ascend/ascend-toolkit/set_env.sh; timeout -k 10 180 python -m pytest -q /round9/src/KT-ASCEND/kt-kernel/test/round5/test_ascend_framework_transfer.py --disable-warnings -p no:cacheprovider"
+            ],
+            "Image": "601e76d17e9f",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/bin/bash"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "org.opencontainers.image.version": "22.04"
+            },
+            "Annotations": {
+                "native.umask": "secure"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "5d2bf3a69f754284d4de7a7bda97d7155aba5e0ca63a0fb36b7f2eee1b7d9513",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/5d2bf3a69f75",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "none": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "dba9b344049cfc3130211e61ddd141d44b89f0fbf137ceaf15522e3f6d90e36f",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

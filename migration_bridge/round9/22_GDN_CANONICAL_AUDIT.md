@@ -1,6 +1,6 @@
 # GDN canonical source audit
 
-Date: 2026-09-20  
+Date: 2026-09-20
 Scope: read-only audit of the Qwen4-Exp Gated Delta Network contract inherited
 from Qwen3.5 in SGLang `4ccff141dbe992794f9da6c3aa23535b4f72000d`,
 compared with the recovered NPU-capable SGLang tree

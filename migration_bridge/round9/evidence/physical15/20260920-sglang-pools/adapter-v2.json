@@ -1,0 +1,66 @@
+{
+  "status": "FAIL",
+  "scope": "THREE_REAL_SGLANG_ADAPTERS_ORIGINAL_WEIGHTS_SYNTHETIC_INPUTS_ONLY",
+  "not_qualified": [
+    "decoder_layer_output",
+    "MoE",
+    "logits",
+    "full_model",
+    "scheduler_allocation",
+    "radix",
+    "speculation_or_MTP",
+    "graph",
+    "disaggregation"
+  ],
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "physical_device": 15,
+  "tokens": 17,
+  "paths": {
+    "whole": [
+      17
+    ],
+    "chunks_3_4_10": [
+      3,
+      4,
+      10
+    ],
+    "token_decode": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "repeats": 3,
+  "relative_l2_gate": 0.01,
+  "weights": {
+    "gdn_parameter_tensors": 9,
+    "ple_parameter_tensors": 6,
+    "ple_hash_buffers": 3,
+    "qsa_parameter_tensors": 3,
+    "a_log_dtype": "torch.float32"
+  },
+  "rows": [],
+  "repeat_hashes": {},
+  "error": "TypeError(\"ForwardBatch.__init__() missing 1 required positional argument: 'seq_lens_sum'\")"
+}

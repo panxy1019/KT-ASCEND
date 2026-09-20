@@ -1,3 +1,68 @@
+## Live continuation — 2026-09-20 13:47 UTC
+
+Pool boundary8 PASS; real GDN/PLE/QSA-indexer/full-attention adapter v4 36 runs
+PASS. Full attention FP64 oracle max relL2 0.00404127131, peak370674688 bytes.
+Failures v1 alias load and v2 missing ForwardBatch argument retained, fixed in
+fixture. See report29. All48 banks ready; KTEP Q64/C64 local gate PASS.
+Shared-expert/final-GR probe in progress. Full model NOT_RUN; concurrent training
+envelope unresolved. Round7/Round9 timers PAUSED.
+
+# 2026-09-20 13:36 UTC — banks and local integration gates
+
+48/48 original BF16 banks completed,73728 exact projection instances,225GiB
+plus GGUF headers. Catalog .3:/mnt/data1/kt-round9/banks/all48-v1/catalog.json;
+flat relative symlinks are usable through /round9 container mount. CPU jobexited0.
+Real KTEP+nativeNPU64resident+CPU C64 local gatePASS9casesx3,maxmerge0.0006974445,
+peakNPU1,048,747,520bytes; see28_KTEP_LOCAL_MERGE_GATE.md,commit7c92740f6.
+C64wrapper/native repeated-route repair committed32e46aa62.
+SGLang original48layer meta structure and actual loader mapping PASS:1658source
+keys,1094destinations,128PLEparts,36FP32A_log. Negative missingQ/shiftedPLEboundary
+rejected. Fixed logicalPLE rowcount vs config-aligned storage padding (90rows).
+No full checkpoint/model allocations were done by this metadata-only fixture.
+Real pool tests7PASS and model isolated contracts8PASS; pool last-slot boundary
+and memory-saver-OFF followup currently running. Source overlay WIP is not full
+model qualification. Agent prepares real adapter chunk/decode/reset fixture.
+Full model admission/tests remainNOT_RUN; shared-training envelope unresolved.
+Both schedules remainPAUSED. Inspect live owncontainers before resuming jobs.
+
+# 2026-09-20 13:20 UTC — live continuation
+
+Schedules round7/round9 rechecked PAUSED. Host .3 physical15 unchanged.
+Actual BF16 C64 wrapper plus NPU transfer PASS:9cases (T1/10/32),3 bit-identical
+repeats each,maxrelativeL2=0.0001138027073,after allocated/reserved=0.
+Fresh native route-position repair fixes repeated-expert single-token weights;
+previous FAIL16.1% preserved. See27_C64_WRAPPER_BANK_GATE.md. Not full KTEP merge.
+PLE real f02 request/state pools:alloc/free/reuse,fork/clear,abort paths3PASS.
+QSA real NPU page/ring/layer isolation + invalid page tests2PASS; runner integration
+and model-level chunk/decode still pending. Source overlay is unqualified WIP.
+CPU-only remaining layer banks job:kt-round9-bf16-bank-remaining-v2,CPU2/RAM12GiB,
+no devices; sequential layer1..47,per-layer exact1536projection verification.
+First bank-all attempt failed before output because Torch autoloaded NPU backend;
+v2 sets TORCH_DEVICE_BACKEND_AUTOLOAD=0 as in successful layer0 job.
+Inspect live job/evidence before launching anything duplicate. Full-model NOT_RUN.
+
+# 2026-09-20 — Live execution through full-model testing
+
+Latest user instruction: PAUSE round9 scheduled heartbeat and continue actively
+in the current session, monitoring resources and fixing issues through full-model
+testing. Prior stop-at-admission scope below is superseded. round7 stays PAUSED.
+Do not recreate/resume a schedule. Active host .3 physical15, other constraints
+unchanged. Full-model admission remains a prerequisite, not the new endpoint.
+Synchronous PLE local gate PASS: see23_PLE_LOCAL_GATE.md, local commitd6e4638c8.
+QSA strengthened device-v2 30cases PASS including real index numerics and signed
+head ranking. GDN device-v4 18cases PASS after bounded private CPU staging
+repair; prior transfer hangs preserved (see24_GDN_LOCAL_GATE.md). All are local
+module gates, not full model. NPU image uses per-container OMP/BLAS threads2,
+RAM8GiB, CPUquota2.
+New Ascend-native extension built successfully in .3:/mnt/data1/kt-round9/build-ascend;
+KT/KTEP imports and Qwen4 config PASS in runtime-v4; fresh Ascend callback/transfer 5tests PASS. Exact f02 retained in
+sglang-f02-recovered; owned sglang-round9-port receives minimal config patch
+and complete four-file KTEP overlay. Model port is in progress, not qualified. See25/26.
+No owned jobs active at the12:33UTC resume inventory. Follow-up bounded GDNv3/v4
+runs then started in current session; inspect live containers before new tests.
+User question about full-model training peak/window remains unanswered;
+current idle telemetry alone cannot qualify full-model loading.
+
 # 2026-09-20 — Continuous progression authorized through full-model admission
 
 User requests monitoring, continued development and fixes until full-model

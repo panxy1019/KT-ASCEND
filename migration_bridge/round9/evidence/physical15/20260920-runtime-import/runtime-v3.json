@@ -1,0 +1,31 @@
+{
+  "status": "FAIL",
+  "scope": "IMPORT_CONFIG_ONLY_NO_MODEL",
+  "imports": {
+    "torch": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/__init__.py",
+      "sha256": "3caf7f40140ede2465bde40b9003af10cbbc8f7bcf436fa1de026471daa1b288"
+    },
+    "torch_npu": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/__init__.py",
+      "sha256": "27f372506192fe194032728d1d4b296202937ecc71de2d65215d33a64640371d"
+    },
+    "kt_kernel": {
+      "path": "/round9/runtime-python/kt_kernel/__init__.py",
+      "sha256": "5655f31960dbf833ac17a9e99c89b84c091d30890677373e954bad4770548c5e"
+    },
+    "sglang.srt.layers.moe.kt_ep_wrapper": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b"
+    },
+    "sglang.srt.configs.qwen4_exp": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/configs/qwen4_exp.py",
+      "sha256": "55bb9ea279d2592a266a39728b99f009dc6277336cb05e08973621438763dc2f"
+    },
+    "sglang.srt.utils.hf_transformers_utils": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/utils/hf_transformers_utils.py",
+      "sha256": "d92fbf106d8fdcac6eddcdcd4b29cd91011c54b2f8004acaa9b892ba35cee0b8"
+    }
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"/round9/src/KT-ASCEND/migration_bridge/round9/tests/runtime_import_probe.py\", line 30, in <module>\n    cfg=AutoConfig.from_pretrained(a.model,local_files_only=True,trust_remote_code=False)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/models/auto/configuration_auto.py\", line 1469, in from_pretrained\n    return config_class.from_dict(config_dict, **unused_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 744, in from_dict\n    logger.info(f\"Model config {config}\")\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 827, in __repr__\n    return f\"{self.__class__.__name__} {self.to_json_string()}\"\n                                        ^^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 938, in to_json_string\n    config_dict = self.to_diff_dict()\n                  ^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 847, in to_diff_dict\n    class_config_dict = self.__class__().to_dict() if not self.has_no_defaults_at_init else {}\n                        ^^^^^^^^^^^^^^^^\n  File \"/round9/src/sglang-round9-port/python/sglang/srt/configs/qwen4_exp.py\", line 164, in __init__\n    self.text_config = self.sub_configs[\"text_config\"](**text_kwargs)\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/round9/src/sglang-round9-port/python/sglang/srt/configs/qwen4_exp.py\", line 58, in __init__\n    if self.rope_scaling is None:\n       ^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 164, in __getattribute__\n    return super().__getattribute__(key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 382, in rope_scaling\n    return self.rope_parameters\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/transformers/src/transformers/configuration_utils.py\", line 164, in __getattribute__\n    return super().__getattribute__(key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAttributeError: 'Qwen4ExpTextConfig' object has no attribute 'rope_parameters'\n"
+}
