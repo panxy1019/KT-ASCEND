@@ -1,5 +1,35 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 01:35 UTC — new-session takeover, R9-A still in progress
+
+Read11_TAKEOVER_SOURCE_PREFLIGHT.md and its two evidence JSON files.
+InitialHEAD2aab965f7c9e00051055375114a5f38abba25ccc; cleanRound9branch.
+User-specified interactive access through110.120.0.3 then sudo/root then
+admin@110.129.0.22/sudo was exercised. Existing proxy tunnel left unchanged.
+round7 automation remainsPAUSED; no new automation or scheduled continuation.
+
+.22v3 controller2233665 stillACTIVE,16GiB/swap0,OOM0. At01:34:16:
+61/131published size-complete shards176125078536bytes +8992587776 committed
+unpublished bytes=185117666312/360000192888 (51.42%). FullidentityPENDING,
+no final verification receipt. Actual remote manifest is ROOT/download_source.json.
+Three deployed scripts and manifest SHA256 match local;18toolingtestsPASS.
+
+New32MiB range timeouts appeared01:33–01:34 at90s, curl28; failures retained.
+Existing bounded retry advanced shards66/67/68 again by01:35. No restart,
+timeout/config change or claim of fixed underlying network. Preserve controller.
+
+Recovered clean upstream semantic source4ccff141dbe992794f9da6c3aa23535b4f72000d
+in /tmp/sglang-qwen4-audit-20260914;15files checked against committed blobs.
+PLE config[2]→layer1 is explained by explicit layer_id+1 source. Packed loader
+uses expert axis0, gate/up splitdim=-2; real headers/weights still pending.
+kvcache pin541ddc37 committed python/sglang has no Qwen4Exp/qwen4_exp names;
+native registration gap, external/Transformers fallback untested. Dirty alternate
+worktree untouched. OfficialKTgitlink stillunresolved, no runtime upgrade.
+
+No full conversion/NPU launch/C128 allocation. Next: finaldownloadidentity+census,
+independent resources and source semantics, then precision/shape/operator gates.
+Round8perf stayscancelled; no push/main/tag; no inherited modelqualification.
+
 ## 2026-09-20 01:16 UTC — user-authorized download memory limit increase
 
 Only owned kt-round9-range-recovery-v3 service MemoryMax increased live from
