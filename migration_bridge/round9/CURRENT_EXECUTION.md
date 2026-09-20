@@ -1,3 +1,45 @@
+## First full-model load result — 2026-09-20 14:33 UTC
+
+Trialv2 exited; no Round9 server remains. Original131shards loaded,48native
+CPU backends initialized, HTTPready. Loadelapsed146.25s, loaderreported37.92GB,
+observed ownedHBM peak39932MiB and board48851MiB. First HTTPforward FAILED:
+Ascend general pool branch bypassed Round9QSAKVPool, missingQSA APIs atlayer3.
+Fixing dispatch and adding actualinit_memory_pool regression before retry.
+Monitor conservatively stopped during scheduler failure cleanup: process rows
+vanished before boardHBM fell, so nonowned subtraction briefly read48851MiB.
+This is a teardown accounting mismatch, not observed training growth or OOM;
+Docker OOMKilled=false. Keep original raw log. Full forward/peak qualification
+still NOT_PASS. Timers remainPAUSED. Source runtime edits for retry in progress.
+
+## Live full-model trial — 2026-09-20 14:30 UTC
+
+User15GiB envelope recorded. Five real decoder layers0/3/23/24/47 PASS45runs.
+Production owned CPU staging and direct KTEP registration qualified. See31.
+CPU admission fixed to distinguish160logical visibility/80physical capacity from
+72quota and64workers+8aux. Static budget only, full peak NOT_MEASURED.
+First real SGLang trial **kt-round9-full-model-v2 is running** on .3 physical15;
+monitor armed before start, logs /mnt/data1/kt-round9/evidence/20260920-full-model-v2.
+Trialv1 never started: host lacks PSI file; fixed optional telemetry with explicit
+UNAVAILABLE status. No full-model loading/forward PASS yet. PyTorchcap39.5GiB,
+owned budget41GiB, early monitor40.5owned/55.5board, nonownedboard15GiB.
+Training4069720 untouched. Both timers PAUSED. Inspect current owned run before
+any retry. User endpoint remains full-model testing, not this static admission.
+
+## User resource answer — 2026-09-20 live continuation
+
+User supplied **15G** for the requested verified maximum shared-training HBM,
+including validation/save stages in this round. Conservatively interpret15GiB
+(15360MiB). Receipt: evidence/physical15/20260920-admission/user-training-envelope.json.
+This is user-provided input, not an assistant-measured peak or enforced reservation.
+With existing8GiB reserve, Round9 has at most41GiB owned peak on64GiB physical15.
+Resource envelope is no longer awaiting that numeric input; full admission still
+requires actual component/load/workspace accounting and remaining runtime gates.
+
+Layer0 real GR/GDN/router/TopK/KTEP/shared gate PASS9runs, crosspath output/state
+relL2=0, peak1210348544bytes, exit0. Extending to QSA/middle/late layers now.
+Formal owned CPU staging and direct KTEP registration fixes under verification.
+Both timers remain PAUSED. No full model executed yet.
+
 ## Live continuation — 2026-09-20 13:57 UTC
 
 Formal f02 model initialization now passes original model_path and binds owned

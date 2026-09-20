@@ -9,6 +9,7 @@ reference adapters fail closed until the pool APIs listed in
 from __future__ import annotations
 
 import copy
+import logging
 import re
 from dataclasses import dataclass, field
 from typing import Dict, Iterable, Optional, Protocol, Set, Tuple, Union
@@ -111,6 +112,39 @@ def _missing_pool(owner, names: Tuple[str, ...], component: str) -> None:
         raise RuntimeError(
             f"Round9 {component} requires pool APIs not installed in f02: {missing}"
         )
+
+
+def _owned_cpu_staging(tensor):
+    """Detach mmap storage before transfer; meta audits must stay storage-free."""
+    if tensor.device.type == "cpu":
+        return tensor.detach().contiguous().clone()
+    return tensor
+
+
+def _prepare_kt_runtime(layer_id):
+    args = get_global_server_args()
+    if args.kt_weight_path is None:
+        return
+    # Direct import must fail rather than falling back to 512 NPU experts.
+    from sglang.srt.layers.moe import kt_ep_wrapper
+    from sglang.srt.layers.moe.quant_method_registry import _QUANT_WRAPPERS
+    if not any(wrapper_id == "kt_ep" for _, wrapper_id, _, _ in _QUANT_WRAPPERS):
+        raise RuntimeError("Round9 KTEP plugin is not registered")
+    cfg = kt_ep_wrapper.create_kt_config_from_server_args(args, layer_id)
+    if (cfg is None or int(cfg.gpu_experts_mask.sum()) != 64
+            or cfg.cpuinfer_threads != 64 or cfg.threadpool_count != 2
+            or list(cfg.numa_nodes) != [6, 7] or cfg.method != "LLAMAFILE"
+            or (cfg.max_deferred_experts_per_token or 0) != 0
+            or cfg.kt_enable_dynamic_expert_update):
+        raise RuntimeError("Round9 requires the frozen Q64/BF16/C64 static profile")
+
+
+def _check_kt_layer(mlp):
+    if get_global_server_args().kt_weight_path is None:
+        return
+    from sglang.srt.layers.moe.quant_method_registry import is_wrapped_method
+    if not is_wrapped_method(mlp.experts.quant_method, "kt_ep"):
+        raise RuntimeError("Round9 sparse layer was not constructed with KTEP")
 
 
 def _compat_config(config: Qwen4ExpTextConfig) -> Qwen4ExpTextConfig:
@@ -524,8 +558,10 @@ class Qwen4ExpLinearDecoderLayer(
     Qwen4ExpLayerExtensionMixin, Qwen3_5LinearDecoderLayer
 ):
     def __init__(self, config, layer_id, quant_config=None, prefix="", alt_stream=None):
+        _prepare_kt_runtime(layer_id)
         compat = _compat_config(config)
         super().__init__(compat, layer_id, quant_config, prefix, alt_stream)
+        _check_kt_layer(self.mlp)
         self.config = config
         self.linear_attn = Qwen4ReferenceGatedDeltaNet.convert(self.linear_attn)
         self._init_qwen4_extensions(config, layer_id)
@@ -543,9 +579,11 @@ class Qwen4ExpAttentionDecoderLayer(
     Qwen4ExpLayerExtensionMixin, Qwen3_5AttentionDecoderLayer
 ):
     def __init__(self, config, layer_id, quant_config=None, prefix="", alt_stream=None):
+        _prepare_kt_runtime(layer_id)
         compat = _compat_config(config)
         compat.attn_output_gate = True
         super().__init__(compat, layer_id, quant_config, prefix, alt_stream)
+        _check_kt_layer(self.mlp)
         self.config = config
         self.indexer = Qwen4ReferenceIndexer(
             config,
@@ -784,6 +822,22 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
 
     def __init__(self, config: Qwen4ExpConfig, quant_config=None, prefix="", model_path=None):
         super().__init__()
+        self.round9_allocator_cap_bytes = None
+        if (get_global_server_args().kt_weight_path is not None
+                and torch.get_default_device().type == "npu"):
+            # Physical64GiB minus user-provided training15GiB and reserve8GiB.
+            # This limits this worker's PyTorch allocator only; resource
+            # admission and host telemetry still cover driver/nonallocator use.
+            _, visible_total = torch.npu.mem_get_info()
+            cap_bytes = 40448 * 1024**2  #39.5GiB; leaves1.5GiB for unmanaged use
+            if visible_total <= cap_bytes:
+                raise RuntimeError("NPU visible capacity cannot support Round9 cap")
+            torch.npu.set_per_process_memory_fraction(cap_bytes / visible_total)
+            self.round9_allocator_cap_bytes = cap_bytes
+            logging.getLogger(__name__).info(
+                "Round9 worker allocator cap set to %d MiB (visible total %d bytes)",
+                cap_bytes // 1024**2, visible_total,
+            )
         self.original_model_path = model_path
         self._owned_ple_table = None
         self.outer_config = config
@@ -885,7 +939,7 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
                     raise ValueError(
                         f"duplicate packed component {shard_id!r} for {candidate}"
                     )
-                loader(params[candidate], tensor, shard_id)
+                loader(params[candidate], _owned_cpu_staging(tensor), shard_id)
                 parts.add(shard_id)
                 audit.loaded.add(candidate)
                 mapped = True
@@ -906,8 +960,8 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
                 gate, up = tensor.chunk(2, dim=-2)
                 loader = params[candidate].weight_loader
                 for expert_id in range(self.config.num_experts):
-                    loader(params[candidate], gate[expert_id], candidate, "w1", expert_id)
-                    loader(params[candidate], up[expert_id], candidate, "w3", expert_id)
+                    loader(params[candidate], _owned_cpu_staging(gate[expert_id]), candidate, "w1", expert_id)
+                    loader(params[candidate], _owned_cpu_staging(up[expert_id]), candidate, "w3", expert_id)
                 audit.loaded.add(candidate)
                 continue
             if "mlp.experts.down_proj" in name:
@@ -920,7 +974,7 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
                     raise ValueError(f"invalid fused expert shape for {source_name}")
                 loader = params[candidate].weight_loader
                 for expert_id in range(self.config.num_experts):
-                    loader(params[candidate], tensor[expert_id], candidate, "w2", expert_id)
+                    loader(params[candidate], _owned_cpu_staging(tensor[expert_id]), candidate, "w2", expert_id)
                 audit.loaded.add(candidate)
                 continue
             if name in buffers and name.endswith(_PLE_BUFFER_SUFFIXES):
@@ -929,7 +983,7 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
                 if buffers[name].shape != tensor.shape:
                     raise ValueError(f"buffer shape mismatch for {name}")
                 buffers[name].copy_(
-                    tensor.to(device=buffers[name].device, dtype=buffers[name].dtype)
+                    _owned_cpu_staging(tensor).to(device=buffers[name].device, dtype=buffers[name].dtype)
                 )
                 audit.loaded.add(name)
                 continue
@@ -938,7 +992,7 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
             if name in audit.loaded:
                 raise ValueError(f"duplicate destination tensor: {name}")
             loader = getattr(params[name], "weight_loader", default_weight_loader)
-            loader(params[name], tensor)
+            loader(params[name], _owned_cpu_staging(tensor))
             audit.loaded.add(name)
 
         expected_shards = set(range(int(self.config.split_ngram_parts)))

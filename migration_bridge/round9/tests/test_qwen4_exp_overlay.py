@@ -22,6 +22,7 @@ MODEL = (
     / "sglang_overlay/python/sglang/srt/models/qwen4_exp.py"
 )
 FUNCTIONS = {
+    "_owned_cpu_staging",
     "_speculation_is_active",
     "_mean_in_storage_dtype",
     "_flatten_token_kv",
@@ -73,6 +74,18 @@ class _SpecAlgorithm:
 
 
 class Qwen4OverlayContractTests(unittest.TestCase):
+    def test_cpu_staging_owns_storage_preserves_bits_and_packs_views(self):
+        source = torch.tensor([[0., -0., 2.], [3., 4., 5.]], dtype=torch.bfloat16)
+        view = source.T
+        staged = C["_owned_cpu_staging"](view)
+        self.assertTrue(staged.is_contiguous())
+        self.assertNotEqual(staged.data_ptr(), source.data_ptr())
+        self.assertTrue(torch.equal(staged.view(torch.uint8), view.contiguous().view(torch.uint8)))
+        staged[0, 0] = 9
+        self.assertEqual(float(source[0, 0]), 0.)
+        meta = torch.empty(2, device="meta")
+        self.assertIs(C["_owned_cpu_staging"](meta), meta)
+
     def test_speculation_none_enum_is_allowed(self):
         active = C["_speculation_is_active"]
         self.assertFalse(active(None))

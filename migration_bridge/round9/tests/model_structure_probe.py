@@ -52,6 +52,12 @@ try:
     assert sum(hasattr(layer, "indexer") for layer in model.model.layers) == 12
     assert [i for i, layer in enumerate(model.model.layers) if layer.ple is not None] == [1]
     assert model.model.hyper_connection_mixer is not None
+    nonexpert_payload = sum(v.numel()*v.element_size() for k,v in parameters.items()
+                            if ".mlp.experts." not in k)
+    report["nonexpert_parameter_payload_bytes"] = nonexpert_payload
+    report["q64_routed_parameter_payload_bytes"] = 48*64*3*2560*640*2
+    cache = config.hf_config.text_config.mamba2_cache_params
+    report["mamba_per_request_bytes"] = cache.mamba_cache_per_req
     actual_bytes = sum(v.numel()*v.element_size() for v in parameters.values() if not v.is_meta)
     assert actual_bytes < 128*1024**2, actual_bytes
     report.update(status="PASS_META_STRUCTURE_ONLY", parameter_tensors=len(parameters),
