@@ -9,6 +9,9 @@ import time
 def owned_container_name(name):
     return re.fullmatch(r'kt-round9-(?:full-model|c128-expert)-v[0-9]+', name) is not None
 
+def validate_owned_limit(limit,resource_mode):
+    ceiling={'shared':41472,'exclusive':45056}[resource_mode]
+    if not 1<=limit<=ceiling:raise ValueError('owned limit exceeds admitted resource mode ceiling')
 
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--container', required=True)
@@ -19,7 +22,7 @@ p.add_argument('--resource-mode', choices=['shared','exclusive'], default='share
 p.add_argument('--seconds', type=int, default=3600)
 p.add_argument('--owned-limit-mib', type=int, default=41472)
 a = p.parse_args()
-if not 1 <= a.owned_limit_mib <= 41472: raise ValueError("owned limit may only tighten the baseline budget")
+validate_owned_limit(a.owned_limit_mib,a.resource_mode)
 if not owned_container_name(a.container):
     raise ValueError('guard may only control an explicitly allowed owned Round9 container')
 if a.output.exists() or a.ready_file.exists():
@@ -164,10 +167,10 @@ while True:
         if item['host_mem_available_kib'] < 64*1024**2:
             stop_owned('host available memory fell below64GiB reserve')
             break
-        #Physical-board domain; 15GiB nonowned envelope includes system baseline.
-        #Stop0.5GiB before41GiB owned/56GiB total budget, not at the boundary.
+        # Board ceiling remains55.5GiB; owned limit follows the admitted mode.
+        # The15GiB nonowned ceiling includes the system baseline, even when idle.
         if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0, a.owned_limit_mib):
-            stop_owned('shared HBM budget exceeded')
+            stop_owned(f'{a.resource_mode} HBM budget exceeded (owned limit {a.owned_limit_mib}MiB)')
             break
         if waiting and system_baseline_mib is not None and not a.ready_file.exists():
             a.ready_file.write_text(json.dumps({'time':time.time(),'status':'GUARD_ARMED'})+'\n')

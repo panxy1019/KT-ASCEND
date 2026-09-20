@@ -44,6 +44,11 @@ def main():
             or not 0 <= time.time()-admission.get('sampled_at',0) <= 30):
         raise RuntimeError('missing, stale or unrelated resource admission')
     import os
+    if (admission.get('resource_mode')!='exclusive' or admission.get('training_allowance_mib')!=0 or
+            admission.get('allocator_limit_mib')!=43008 or admission.get('owned_limit_mib')!=45056 or
+            admission.get('model_hbm_budget_mib')!=46080 or admission.get('reserve_hbm_mib')!=8192):
+        raise RuntimeError('candidate exclusive allocator/process budget mismatch')
+    os.environ['ROUND9_RESOURCE_MODE']='exclusive'
     from sglang.srt.layers.round9.candidate_config import load_candidate_profile
     from sglang.srt.layers.round9.candidate_bank import bind_verified_banks
     candidate,_,candidate_sha = load_candidate_profile(os.environ.get('ROUND9_CANDIDATE_PROFILE'))

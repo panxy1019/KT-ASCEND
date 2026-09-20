@@ -61,7 +61,7 @@ inspect=json.loads(command(['docker','inspect',name]))[0];hc=inspect['HostConfig
 if hc['Memory']!=640*1024**3 or hc['MemorySwap']!=hc['Memory'] or hc['NanoCpus']!=136*10**9:raise RuntimeError('container limits differ')
 (out/'container-created.json').write_text(json.dumps(inspect,indent=2)+'\n')
 with (out/'guard.log').open('w') as log:
- guard=subprocess.Popen(['python3',str(out/'source/tools/monitor_owned_server.py'),'--container',name,'--resource-mode','exclusive','--output',str(out/'monitor.jsonl'),'--ready-file',str(out/'guard-ready.json'),'--seconds','3600'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+ guard=subprocess.Popen(['python3',str(out/'source/tools/monitor_owned_server.py'),'--container',name,'--resource-mode','exclusive','--output',str(out/'monitor.jsonl'),'--ready-file',str(out/'guard-ready.json'),'--seconds','3600','--owned-limit-mib','45056'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
 try:
  deadline=time.monotonic()+40
  while not (out/'guard-ready.json').exists():

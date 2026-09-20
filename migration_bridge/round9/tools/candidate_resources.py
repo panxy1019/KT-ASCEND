@@ -27,8 +27,8 @@ def sample():
  npu=command(['npu-smi','info']);row=next(x for x in npu.splitlines() if '0000:83:00.0' in x)
  used,total=map(int,re.findall(r'(\d+)\s*/\s*(\d+)',row)[-1])
  if re.search(r'\|\s*7\s+1\s*\|\s*\d+\s*\|',npu):raise RuntimeError('physical15 not idle; exclusive admission denied')
- if total!=65536 or used+41984+8192>total:raise RuntimeError('insufficient HBM model+reserve')
+ if total!=65536 or used+46080+8192>total:raise RuntimeError('insufficient exclusive HBM model+reserve')
  return dict(sampled_at=time.time(),host='110.123.0.3',physical=15,resource_mode='exclusive',cpu_quota=136,
   cpus=cpus,numa_nodes=nodes,topology=topology,idle_fraction=idle,host_meminfo=mem,numa_meminfo=numa,
-  npu_smi=npu,baseline_hbm_mib=used,model_hbm_budget_mib=41984,reserve_hbm_mib=8192,
+  npu_smi=npu,baseline_hbm_mib=used,model_hbm_budget_mib=46080,allocator_limit_mib=43008,owned_limit_mib=45056,reserve_hbm_mib=8192,
   training_allowance_mib=0,host_limit_gib=640,scope='CANDIDATE_EXCLUSIVE_FULL_MODEL_PREFLIGHT')

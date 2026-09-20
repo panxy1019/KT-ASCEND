@@ -51,6 +51,8 @@ class CandidateTests(unittest.TestCase):
         model=Path(__file__).parents[1]/'sglang_overlay/python/sglang/srt/models/qwen4_exp.py'
         source=model.read_text(); result=candidate_model_source(source)
         self.assertTrue('validate_kt_config' in result)
+        self.assertIn('cap_bytes = 43008 * 1024**2',result)
+        self.assertIn('ROUND9_RESOURCE_MODE',result)
         self.assertTrue('Round9 requires the frozen Q64/BF16/C64 static profile' in result)
         compile(result,'candidate_model','exec')
         with self.assertRaises(ValueError):candidate_model_source(result)

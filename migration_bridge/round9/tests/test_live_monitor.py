@@ -5,7 +5,7 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot','owned_memory_cgroup','owned_container_finished')]
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('validate_owned_limit','parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot','owned_memory_cgroup','owned_container_finished')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
@@ -56,6 +56,13 @@ class MonitorBudgetTests(unittest.TestCase):
             self.assertTrue(ns['hbm_budget_exceeded'](*values))
 
 class CandidateBudgetTests(unittest.TestCase):
+    def test_exclusive_budget_cannot_relax_shared_guard(self):
+        ns['validate_owned_limit'](45056,'exclusive')
+        for limit,mode in ((45057,'exclusive'),(45056,'shared'),(0,'exclusive')):
+            with self.assertRaises(ValueError):ns['validate_owned_limit'](limit,mode)
+        self.assertFalse(ns['hbm_budget_exceeded'](47000,44000,0,2880,45056))
+        self.assertTrue(ns['hbm_budget_exceeded'](48000,45057,0,2880,45056))
+
     def test_expert_budget_is_tighter(self):
         self.assertTrue(ns['hbm_budget_exceeded'](8000,4097,0,2880,4096))
         self.assertFalse(ns['hbm_budget_exceeded'](7000,4000,0,2880,4096))

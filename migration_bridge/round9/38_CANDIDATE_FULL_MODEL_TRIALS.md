@@ -130,3 +130,25 @@ MXFP4/static, full-v15 MXFP4/Dynamic, full-v16 Q8_0/static, full-v17 Q8_0/Dynami
 Each starts under fresh admission, runs five drivers, stops only its owned
 container and finalizes immutable evidence before the next. Any failure stops
 sequence for diagnosis. Candidate-sglang-v7 contains the qualified batch adapter.
+
+## v13 allocator-cap failure and exclusive-only correction
+
+v13 completed firstHTTP and two real Dynamic commits, then index_copy_ failed
+requesting402MiB. PyTorch reported38.38GiB active,39.13GiB reserved,39.50GiB
+allowed and21.72GiB free device memory. DockerOOMKilled=false. This is an
+allocator resource gate failure, not a successful trial or hostOOM. Matrixv1
+stopped before any later profile. Single-layer observed deltas did not predict
+full-model allocator behavior, exactly why full-model gate is separate.
+
+Root cause: copied baseline model constructor retained40448MiB allocator cap
+from shared-card execution. The isolated installer now patches only candidate
+constructor to43008MiB(42GiB) and requires exclusive mode. Candidate server checks
+fresh receipt: training0, allocator43008MiB, process guard45056MiB(44GiB), model
+admission46080MiB(45GiB), reserve8192MiB plus live baseline. Monitor accepts the
+higher44GiB only for exclusive mode; shared upper bound remains41472MiB and
+absolute board guard56832MiB stays active. Baseline source is unmodified.
+
+22 relevant tests PASS including explicit rejection of the larger budget under
+shared mode. Same adapter/native device gates apply; candidate-sglang-v8 is a new
+isolated payload. Fresh matrixv2 uses full-v18 BF16Dynamic, v19 MXstatic,
+v20 MXDynamic, v21 Q8static and v22 Q8Dynamic. Full resource results pending.

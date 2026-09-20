@@ -1,3 +1,22 @@
+## Latest —2026-09-20 23:24UTC: exclusive allocator correction, v18 starting
+
+Full-v13 firstHTTP PASS and two real Dynamic commits, then FAILED allocator OOM:
+402MiB allocation rejected by inherited39.5GiB per-process PyTorch cap while
+21.72GiB device memory remained free. DockerOOMKilled=false. Matrixv1 stopped;
+no subsequent combination launched. Evidence retained, not full-model PASS.
+
+Candidate-only allocator is now42GiB, requires exclusive env+fresh validated
+admission. Owned process guard44GiB, admission model45GiB plus8GiB reserve and
+actual board baseline. Shared guard remains40.5GiB. Baseline runtime unchanged.
+22 relevant tests PASS after RED regressions. Same qualified math adapter/gates;
+new isolated candidate-sglang-v8 changes resource policy only.
+
+One-shot matrixv2 PID1399939: full-v18 BF16Dynamic now starting, followed by
+v19MXstatic/v20MXDynamic/v21Q8static/v22Q8Dynamic. Log:
+/mnt/data1/kt-round9/candidate-matrix-v2.log; evidence/20260920-candidate-matrix-v2.
+Stops at first failure; no scheduled tasks resumed. All qualification remains
+functional/resource only, pending actual complete results.
+
 ## Latest —2026-09-20 23:20UTC: all batch device gates PASS, full matrix running
 
 Expert-v15 BF16 / v16 Q8_0 / v17 MXFP4 all exit0 and pass64expert reverse/restore,
