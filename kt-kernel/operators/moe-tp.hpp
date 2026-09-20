@@ -85,7 +85,10 @@ class TP_MOE_Common : public MoE_Interface {
             config.down_type == GGML_TYPE_F32) ||
            (llamafile_bf16_f32_tail_supported() &&
             config.gate_type == GGML_TYPE_BF16 && config.up_type == GGML_TYPE_BF16 &&
-            config.down_type == GGML_TYPE_BF16));
+            config.down_type == GGML_TYPE_BF16) ||
+           (llamafile_block32_tail_supported() && config.gate_type == config.up_type &&
+            config.gate_type == config.down_type &&
+            (config.gate_type == GGML_TYPE_Q8_0 || config.gate_type == GGML_TYPE_MXFP4)));
       if (unblocked_tp) {
         if (config.m_block != 32 || config.hidden_size % 32)
           throw std::invalid_argument("unblocked TP requires m_block=32 and aligned hidden size");

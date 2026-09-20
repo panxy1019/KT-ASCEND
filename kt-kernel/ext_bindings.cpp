@@ -544,6 +544,7 @@ void bind_moe_module(py::module_& moe_module, const char* name) {
 
 PYBIND11_MODULE(kt_kernel_ext, m) {
   m.def("llamafile_bf16_f32_tail_supported", &llamafile_bf16_f32_tail_supported);
+  m.def("llamafile_block32_tail_supported", &llamafile_block32_tail_supported);
 #if defined(__aarch64__) || defined(_M_ARM64)
   m.attr("__cpu_variant__") = "arm";
   m.attr("__int8_kernel__") = "unsupported";

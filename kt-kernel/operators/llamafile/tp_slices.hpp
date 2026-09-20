@@ -14,8 +14,19 @@ inline constexpr bool llamafile_bf16_f32_tail_supported() {
 #endif
 }
 
-// Unblocked F32/BF16 permit 32-aligned equal partitions. Block-quantized weights
-// retain the 256-block distribution (including unequal block counts).
+// Capability covers standard Q8_0 activations, including the ARM IQK layout fix.
+// Callers must still validate all projection types, shapes and runtime numerics.
+inline constexpr bool llamafile_block32_tail_supported() {
+#if defined(__aarch64__) && defined(__ARM_FEATURE_DOTPROD) && !defined(__ARM_FEATURE_SVE)
+  return true;
+#else
+  return false;
+#endif
+}
+
+// The caller enables equal32 partitions only for a verified tail-capable
+// format (F32/BF16 or the capability-gated Q8_0/MXFP4 paths). Other quantized
+// formats retain256-block distribution, including unequal block counts.
 inline std::vector<LlamafileTPSlice> make_llamafile_tp_slices(int complete, int count, bool unblocked) {
   if (complete <= 0 || count <= 0) throw std::invalid_argument("invalid LLAMAFILE TP dimensions");
   std::vector<LlamafileTPSlice> slices;

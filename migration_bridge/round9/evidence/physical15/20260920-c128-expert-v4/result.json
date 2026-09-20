@@ -1,0 +1,154 @@
+{
+  "status": "PASS_REAL_KTEP_LOCAL_MERGE",
+  "scope": "REAL_KTEP_LOCAL_MERGE_NOT_FULL_MODEL",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "storage": "Q8_0",
+  "bank_sha256": "f41a0266cbbec2d0c7c4b8aed9ec3ef63c67a36c9ccd3257858eafdf27f9310f",
+  "resident_experts": 64,
+  "resident_projections_exact": 128,
+  "cpu_workers": 128,
+  "numa_nodes": [
+    2,
+    3,
+    6,
+    7
+  ],
+  "dynamic_migrations": [],
+  "rows": [
+    {
+      "tokens": 1,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.001634169020690024,
+        "npu_owned_partial": 3.055437787224946e-07,
+        "routed_merge": 0.0020243581384420395
+      },
+      "hashes": [
+        "8dc3e58228b518432a21164a061ea467645b29ecd752c3e2246c1255c168a19d",
+        "8dc3e58228b518432a21164a061ea467645b29ecd752c3e2246c1255c168a19d",
+        "8dc3e58228b518432a21164a061ea467645b29ecd752c3e2246c1255c168a19d"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 0.00043756733066402376,
+        "routed_merge": 0.000697444484103471
+      },
+      "hashes": [
+        "310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f",
+        "310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f",
+        "310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.001664962968789041,
+        "npu_owned_partial": 0.0,
+        "routed_merge": 0.002497929148375988
+      },
+      "hashes": [
+        "8332626b93e2779127cbc863e3ba122a91a8e430b671c80b52063c69b761c93e",
+        "8332626b93e2779127cbc863e3ba122a91a8e430b671c80b52063c69b761c93e",
+        "8332626b93e2779127cbc863e3ba122a91a8e430b671c80b52063c69b761c93e"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.0016258459072560072,
+        "npu_owned_partial": 0.00035932447644881904,
+        "routed_merge": 0.0018016579560935497
+      },
+      "hashes": [
+        "a75fc6fdf409e4a709e370dc0fff518426aae3256229aa8e74996049aecbc97e",
+        "a75fc6fdf409e4a709e370dc0fff518426aae3256229aa8e74996049aecbc97e",
+        "a75fc6fdf409e4a709e370dc0fff518426aae3256229aa8e74996049aecbc97e"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 0.0002621202147565782,
+        "routed_merge": 0.0003847409097943455
+      },
+      "hashes": [
+        "331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071",
+        "331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071",
+        "331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.0016768391942605376,
+        "npu_owned_partial": 0.0,
+        "routed_merge": 0.002680826000869274
+      },
+      "hashes": [
+        "eb07160ebb5cc3cb5a01e891d051d59afc0d854d660d053d173f115d0b413b95",
+        "eb07160ebb5cc3cb5a01e891d051d59afc0d854d660d053d173f115d0b413b95",
+        "eb07160ebb5cc3cb5a01e891d051d59afc0d854d660d053d173f115d0b413b95"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.001617211732082069,
+        "npu_owned_partial": 0.0001507799606770277,
+        "routed_merge": 0.001967310206964612
+      },
+      "hashes": [
+        "61bd3d52d673041424bbdbff464c81804d5a4b44146552dfce3f7fd68747dabc",
+        "61bd3d52d673041424bbdbff464c81804d5a4b44146552dfce3f7fd68747dabc",
+        "61bd3d52d673041424bbdbff464c81804d5a4b44146552dfce3f7fd68747dabc"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 0.0001522774837212637,
+        "routed_merge": 0.00031855941051617265
+      },
+      "hashes": [
+        "22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310",
+        "22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310",
+        "22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.001671105856075883,
+        "npu_owned_partial": 0.0,
+        "routed_merge": 0.00264855963177979
+      },
+      "hashes": [
+        "f5752e643b11215ce265cf7ee9c9485bc435a1e1997bbc24403b4ceaf47bf423",
+        "f5752e643b11215ce265cf7ee9c9485bc435a1e1997bbc24403b4ceaf47bf423",
+        "f5752e643b11215ce265cf7ee9c9485bc435a1e1997bbc24403b4ceaf47bf423"
+      ]
+    }
+  ],
+  "native_sha256": "07039126ea565b7a4f0629b974af1bbffe15c5d5ee542adeb2b687208e7be147",
+  "peak_allocated": 1048747520
+}

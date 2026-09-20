@@ -1,0 +1,32 @@
+can not use command: npu-smi info
+CPUInfer[0xaaaadb3532e0]: Hello
+WorkerPool[0xaaaadb32c0b0] 4 subpools, [numa:threads][2:32] [3:32] [6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0xaaaadb32c0b0, expert num: 10, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for fffef0030370
+alloc 0 from other numa for fffef0030370
+alloc 2 from other numa for fffb880096f0
+alloc 1 from other numa for fffb8c0096f0
+alloc 1 from other numa for fffb8c0096f0
+alloc 2 from other numa for fffb880096f0
+alloc 3 from other numa for fffb800096f0
+alloc 3 from other numa for fffb800096f0
+{"tokens": 1, "relative_l2": 4.142970908560528e-07, "cross_pool_relative_l2": 1.061268406488125e-07, "repeat_hashes": ["7039e1649185137ad25d4484f7bfa2ee2694068479dfa4f5993c20b2caa80659", "7039e1649185137ad25d4484f7bfa2ee2694068479dfa4f5993c20b2caa80659", "7039e1649185137ad25d4484f7bfa2ee2694068479dfa4f5993c20b2caa80659"], "ownership_flip_exact": true}
+{"tokens": 2, "relative_l2": 4.3829055584865273e-07, "cross_pool_relative_l2": 1.209497497711709e-07, "repeat_hashes": ["76bab61a34480414159abd4c91b22b9644843a70f7b5004389d06cfb8d1c71aa", "76bab61a34480414159abd4c91b22b9644843a70f7b5004389d06cfb8d1c71aa", "76bab61a34480414159abd4c91b22b9644843a70f7b5004389d06cfb8d1c71aa"], "ownership_flip_exact": true}
+{"tokens": 9, "relative_l2": 0.000117017567390576, "cross_pool_relative_l2": 1.2353436318335298e-07, "repeat_hashes": ["30ac6bf871b6a9dbf5d7d83e6c0898454b1dd007c7c099840a03514a558f2493", "30ac6bf871b6a9dbf5d7d83e6c0898454b1dd007c7c099840a03514a558f2493", "30ac6bf871b6a9dbf5d7d83e6c0898454b1dd007c7c099840a03514a558f2493"], "ownership_flip_exact": true}
+{"tokens": 10, "relative_l2": 1.817825614125468e-05, "cross_pool_relative_l2": 1.1614768880008342e-07, "repeat_hashes": ["8f99abb2dbd7a6172e5f8bd6132f009c9421bbe9fb6eafc72425ac38c0a3bfea", "8f99abb2dbd7a6172e5f8bd6132f009c9421bbe9fb6eafc72425ac38c0a3bfea", "8f99abb2dbd7a6172e5f8bd6132f009c9421bbe9fb6eafc72425ac38c0a3bfea"], "ownership_flip_exact": true}
+{"tokens": 11, "relative_l2": 5.8390858612256125e-05, "cross_pool_relative_l2": 1.2485575950904604e-07, "repeat_hashes": ["92167cf3e89c2295a0596262c6a995186314fa2b2686564e8b3a4baea59623ca", "92167cf3e89c2295a0596262c6a995186314fa2b2686564e8b3a4baea59623ca", "92167cf3e89c2295a0596262c6a995186314fa2b2686564e8b3a4baea59623ca"], "ownership_flip_exact": true}
+{"tokens": 32, "relative_l2": 0.0002569487551227212, "cross_pool_relative_l2": 1.195945742438198e-07, "repeat_hashes": ["427d52848515beb03ec4c12096d0ab4f7b180f638935fffdb8aa3ac23a7add33", "427d52848515beb03ec4c12096d0ab4f7b180f638935fffdb8aa3ac23a7add33", "427d52848515beb03ec4c12096d0ab4f7b180f638935fffdb8aa3ac23a7add33"], "ownership_flip_exact": true}
+PASS_REAL10_EXPERT_LOWBIT_CPU_MOE
+CPUInfer[0xaaaadb3532e0]: Goodbye

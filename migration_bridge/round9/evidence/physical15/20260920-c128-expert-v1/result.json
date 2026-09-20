@@ -1,0 +1,119 @@
+{
+  "status": "PASS_C128_WRAPPER_CPU_PARTIAL_ONLY",
+  "scope": "C128_CPU_WRAPPER_PARTIAL_NPU_TRANSFER_ONLY",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "bank_sha256": "731679cb66e83c7c9a2b4b2ae29af68581729e194d8d495530f2aec1342bd97b",
+  "cpu_workers": 128,
+  "numa_nodes": [
+    2,
+    3,
+    6,
+    7
+  ],
+  "resident_mask": "logical_id_mod8_eq0",
+  "bf16_numerical_compat": true,
+  "rel_l2_gate": 0.01,
+  "rows": [
+    {
+      "tokens": 1,
+      "kind": "mixed",
+      "relative_l2": 2.5335938858006557e-07,
+      "hashes": [
+        "f47f9ea42c25e0b9b96ddec9df5b392cadfce7bac2ec9a651d3b2eb2b40e86b1",
+        "f47f9ea42c25e0b9b96ddec9df5b392cadfce7bac2ec9a651d3b2eb2b40e86b1",
+        "f47f9ea42c25e0b9b96ddec9df5b392cadfce7bac2ec9a651d3b2eb2b40e86b1"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "resident_only",
+      "relative_l2": 0.0,
+      "hashes": [
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652",
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652",
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "repeated_cpu",
+      "relative_l2": 2.6319796120333194e-07,
+      "hashes": [
+        "89cee5337cc51df7b377921e27431edae7f99414e69a44a52970a293dc96e9d9",
+        "89cee5337cc51df7b377921e27431edae7f99414e69a44a52970a293dc96e9d9",
+        "89cee5337cc51df7b377921e27431edae7f99414e69a44a52970a293dc96e9d9"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "mixed",
+      "relative_l2": 3.300874959677458e-05,
+      "hashes": [
+        "fcd6f3cbf04d5e89ac2ddec7299fed66df891e5d3840314e0c10cf940804d4eb",
+        "fcd6f3cbf04d5e89ac2ddec7299fed66df891e5d3840314e0c10cf940804d4eb",
+        "fcd6f3cbf04d5e89ac2ddec7299fed66df891e5d3840314e0c10cf940804d4eb"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "resident_only",
+      "relative_l2": 0.0,
+      "hashes": [
+        "f627ca4c2c322f15db26152df306bd4f983f0146409b81a4341b9b340c365a16",
+        "f627ca4c2c322f15db26152df306bd4f983f0146409b81a4341b9b340c365a16",
+        "f627ca4c2c322f15db26152df306bd4f983f0146409b81a4341b9b340c365a16"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "repeated_cpu",
+      "relative_l2": 0.00011380300566088408,
+      "hashes": [
+        "cb11bc9c2403281ee9f8719663c67e4b6373aba6377c8a4a0ad998b740db3a44",
+        "cb11bc9c2403281ee9f8719663c67e4b6373aba6377c8a4a0ad998b740db3a44",
+        "cb11bc9c2403281ee9f8719663c67e4b6373aba6377c8a4a0ad998b740db3a44"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "mixed",
+      "relative_l2": 4.572088073473424e-05,
+      "hashes": [
+        "879e748e59e508ff8b6db4af8c0cb0aaf6dc05ce02dc8a825f14e8b54a1edef9",
+        "879e748e59e508ff8b6db4af8c0cb0aaf6dc05ce02dc8a825f14e8b54a1edef9",
+        "879e748e59e508ff8b6db4af8c0cb0aaf6dc05ce02dc8a825f14e8b54a1edef9"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "resident_only",
+      "relative_l2": 0.0,
+      "hashes": [
+        "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d",
+        "dae4d3dce1bb0a9414f61a65ee07622fa225ec01e6efe6df6e78f9ad5c58480d"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "repeated_cpu",
+      "relative_l2": 1.924906791828107e-05,
+      "hashes": [
+        "b8a511222f2252c017a9dc05621c1e25a5d0618e7bc9c7828a4220935e8a19f7",
+        "b8a511222f2252c017a9dc05621c1e25a5d0618e7bc9c7828a4220935e8a19f7",
+        "b8a511222f2252c017a9dc05621c1e25a5d0618e7bc9c7828a4220935e8a19f7"
+      ]
+    }
+  ],
+  "native_sha256": "23c80f65408ee0ec379c080b6781f1f685cfa5733fd0f38940db9f4f55e02c82",
+  "peak_allocated": 1031168,
+  "after_allocated": 0,
+  "after_reserved": 0
+}

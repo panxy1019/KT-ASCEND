@@ -1,0 +1,107 @@
+{
+  "status": "PASS_REAL10_EXPERT_LOWBIT_CPU_MOE",
+  "storage": "Q8_0",
+  "pools": 2,
+  "cpu_workers": 64,
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_experts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    507,
+    508,
+    509,
+    510,
+    511
+  ],
+  "source_projection_sha256": [
+    "8f8f3fe4f9e66b665e024438c9538641fdb55a7f785a9a40c4fa0e516e9dd8f3",
+    "8cf2ee0095a289f1c11de8981612fa39057dd62a2b10233e71d4f9acf03d5c1a",
+    "8057994cc60d5ed23d3aea32807f0d91f585cd5beb53c30f086d7e1664821206"
+  ],
+  "encoded_sha256": [
+    "0add31368b94b3cdefead0a5a8a33139ce2ba10d6f141574e123b464d6593e67",
+    "4c2808e9856bf0f9bde481f34839dd335c4cd78266728dabea72f391c1843ead",
+    "28ad38d2209c49e2f949a9e135ecc04b84df304be02e6b02222440ed50b3a617"
+  ],
+  "native_sha256": "07039126ea565b7a4f0629b974af1bbffe15c5d5ee542adeb2b687208e7be147",
+  "scope": "REAL10_EXPERT_CPU_ONLY_QUANTIZED_WEIGHT_AND_ACTIVATION_REFERENCE",
+  "rel_l2_gate": 0.01,
+  "rows": [
+    {
+      "tokens": 1,
+      "relative_l2": 0.0015638815239071846,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6",
+        "1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6",
+        "1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6"
+      ],
+      "ownership_flip_exact": true
+    },
+    {
+      "tokens": 2,
+      "relative_l2": 0.0015223112422972918,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe",
+        "8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe",
+        "8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe"
+      ],
+      "ownership_flip_exact": true
+    },
+    {
+      "tokens": 9,
+      "relative_l2": 0.0015388363972306252,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374",
+        "48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374",
+        "48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374"
+      ],
+      "ownership_flip_exact": true
+    },
+    {
+      "tokens": 10,
+      "relative_l2": 0.0015657116891816258,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032",
+        "fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032",
+        "fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032"
+      ],
+      "ownership_flip_exact": true
+    },
+    {
+      "tokens": 11,
+      "relative_l2": 0.001555448048748076,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82",
+        "eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82",
+        "eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82"
+      ],
+      "ownership_flip_exact": true
+    },
+    {
+      "tokens": 32,
+      "relative_l2": 0.0015676106559112668,
+      "cross_pool_relative_l2": null,
+      "repeat_hashes": [
+        "45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7",
+        "45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7",
+        "45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7"
+      ],
+      "ownership_flip_exact": true
+    }
+  ]
+}

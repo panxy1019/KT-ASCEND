@@ -5,9 +5,16 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline')]
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
+
+class MonitorOwnershipTests(unittest.TestCase):
+    def test_candidate_scope_is_narrow(self):
+        for name in ('kt-round9-full-model-v7','kt-round9-c128-expert-v1'):
+            self.assertTrue(ns['owned_container_name'](name))
+        for name in ('mzy-train','kt-r7-a3-return-v1','kt-round9-c128-expert-v1-other'):
+            self.assertFalse(ns['owned_container_name'](name))
 
 class MonitorParserTests(unittest.TestCase):
     def test_physical15_only_and_correct_hbm_column(self):
@@ -31,6 +38,28 @@ class MonitorBudgetTests(unittest.TestCase):
         for values in [(56833,40000,6124,2845),(48000,41473,6124,2845),
                        (30000,10000,12516,2845)]:
             self.assertTrue(ns['hbm_budget_exceeded'](*values))
+
+class CandidateBudgetTests(unittest.TestCase):
+    def test_expert_budget_is_tighter(self):
+        self.assertTrue(ns['hbm_budget_exceeded'](8000,4097,0,2880,4096))
+        self.assertFalse(ns['hbm_budget_exceeded'](7000,4000,0,2880,4096))
+
+class MonitorExitRaceTests(unittest.TestCase):
+    def test_exit_between_inspect_and_top_is_normal(self):
+        import subprocess,json
+        from unittest.mock import Mock
+        ns.update(subprocess=subprocess,json=json,
+            command=Mock(side_effect=[subprocess.CalledProcessError(1,['docker','top']),
+                json.dumps([{'State':{'Running':False,'Status':'exited'}}])]))
+        self.assertIsNone(ns['owned_process_snapshot']('kt-round9-c128-expert-v1',False))
+    def test_live_top_failure_still_fails_closed(self):
+        import subprocess,json
+        from unittest.mock import Mock
+        ns.update(subprocess=subprocess,json=json,
+            command=Mock(side_effect=[subprocess.CalledProcessError(1,['docker','top']),
+                json.dumps([{'State':{'Running':True,'Status':'running'}}])]))
+        with self.assertRaises(subprocess.CalledProcessError):
+            ns['owned_process_snapshot']('kt-round9-c128-expert-v1',False)
 
 class MonitorFailureTests(unittest.TestCase):
     def test_output_failure_still_stops_only_owned_container(self):

@@ -1,0 +1,18 @@
+E
+======================================================================
+ERROR: lowbit_numpy_tests (unittest.loader._FailedTest.lowbit_numpy_tests)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: lowbit_numpy_tests
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/unittest/loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/round9/candidate-dev-20260920/migration_bridge/round9/tests/lowbit_numpy_tests.py", line 5, in <module>
+    from migration_bridge.round9.runtime.lowbit_numpy import encode_blocks,decode_blocks
+ModuleNotFoundError: No module named 'migration_bridge.round9.runtime.lowbit_numpy'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

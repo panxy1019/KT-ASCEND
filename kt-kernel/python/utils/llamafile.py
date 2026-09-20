@@ -26,6 +26,10 @@ _BF16_F32_TAIL_SUPPORTED = bool(
     getattr(_native, "llamafile_bf16_f32_tail_supported", lambda: False)()
 )
 
+_BLOCK32_TAIL_SUPPORTED = bool(
+    getattr(_native, "llamafile_block32_tail_supported", lambda: False)()
+)
+
 
 class LlamafileMoEWrapper(BaseMoEWrapper):
     """
@@ -104,12 +108,13 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
             self._unblocked_tail_tp = len({int(t) for t in types}) == 1 and (
                 int(types[0]) == int(ggml_type.FP32)
                 or (int(types[0]) == int(ggml_type.BF16) and _BF16_F32_TAIL_SUPPORTED)
+                or (int(types[0]) in (8,39) and _BLOCK32_TAIL_SUPPORTED)
             )
             if self._unblocked_tail_tp and (
                 moe_intermediate_size % threadpool_count or
                 (moe_intermediate_size // threadpool_count) % 32
             ):
-                raise ValueError("F32/BF16 TP requires equal 32-aligned partitions")
+                raise ValueError("tail-safe TP requires equal 32-aligned partitions")
         if not qk_aligned_intermediate and not self._unblocked_tail_tp:
             if threadpool_count != 1:
                 raise ValueError(
@@ -127,7 +132,7 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
         print(f"  threadpool_count: {threadpool_count}")
         print(f"  QK_K: {QK_K}")
         if self._unblocked_tail_tp:
-            print("  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast")
+            print("  32-aligned tail-safe multi-TP path: FP32 partials, final merge cast")
             width = moe_intermediate_size // threadpool_count
             for slot in range(threadpool_count):
                 print(f"  TP {slot}: size={width}, offset={slot * width}")

@@ -34,8 +34,16 @@ class CandidateTests(unittest.TestCase):
 
     def test_lowbit_is_not_a_native_support_claim(self):
         c=dataclasses.replace(self.candidate(),storage='MXFP4')
-        self.assertEqual(c.native_status(), 'UNSUPPORTED_NATIVE_KERNEL_160_320_GROUPED_PREFILL')
-        with self.assertRaisesRegex(RuntimeError,'UNSUPPORTED_NATIVE'):runtime_arguments(c,require_native=True)
+        self.assertEqual(c.native_status(), 'LOWBIT_CAPABILITY_CHECK_REQUIRED_FULL_MODEL_PENDING')
+        with self.assertRaisesRegex(RuntimeError,'LOWBIT_CAPABILITY'):runtime_arguments(c,require_native=True)
+
+    def test_native_and_scheduler_capabilities_are_independent(self):
+        c=dataclasses.replace(self.candidate(),storage='Q8_0',placement='request_boundary')
+        with self.assertRaisesRegex(RuntimeError,'DYNAMIC_SCHEDULER'):
+            runtime_arguments(c,require_native=True,native_block32_tail=True)
+        args=runtime_arguments(c,require_native=True,native_block32_tail=True,dynamic_boundary_installed=True)
+        self.assertFalse(args['kt_enable_dynamic_expert_update'])
+        with self.assertRaises(RuntimeError):runtime_arguments(c,require_native=True,dynamic_boundary_installed=True)
 
     def test_model_has_explicit_candidate_seam(self):
         from pathlib import Path
@@ -58,6 +66,16 @@ class CandidateTests(unittest.TestCase):
             model.write_bytes(original.read_bytes())
             (base/'sglang/srt/layers/round9').mkdir(parents=True)
             (base/'scheduler.py').write_text('BASELINE_MARKER=1\n')
+            sched=base/'sglang/srt/managers/scheduler.py';sched.parent.mkdir(parents=True)
+            sched.write_text('''class Scheduler:
+    def event_loop_normal(self):
+        while True:
+            if batch:
+                result = self.run_batch(batch)
+            self.last_batch = batch
+    @DynamicGradMode()
+    def event_loop_overlap(self):pass
+''')
             report=install(base,root/'candidate')
             self.assertEqual(model.read_bytes(),original.read_bytes())
             self.assertIn('scheduler.py',report['baseline_files'])

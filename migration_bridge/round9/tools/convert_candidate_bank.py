@@ -31,7 +31,8 @@ def ggstr(value):
     raw=value.encode();return struct.pack('<Q',len(raw))+raw
 
 
-def convert_layer(source,layer,logical_ids,storage,output,*,source_identity):
+def convert_layer(source,layer,logical_ids,storage,output,*,source_identity,encoder="scalar"):
+    if encoder not in ("scalar","numpy"):raise ValueError("unsupported encoder")
     ids=list(logical_ids);output=Path(output)
     if (not ids or ids!=sorted(set(ids)) or any(type(i) is not int or not 0<=i<source.experts for i in ids)
         or type(layer) is not int or not 0<=layer<source.layers):raise ValueError('invalid ordered expert selection')
@@ -48,12 +49,22 @@ def convert_layer(source,layer,logical_ids,storage,output,*,source_identity):
             for expert in ids:
                 raw=source.read(layer,expert,projection)
                 identities.append(dict(expert=expert,projection=projection,source_bf16_sha256=hashlib.sha256(raw).hexdigest()))
-                for offset in range(0,len(raw),64):
-                    values=bf16_values(raw[offset:offset+64]);packed=encode_block(values,storage)
-                    decoded=decode_block(packed,storage)
-                    f.write(packed)
-                    for x,y in zip(values,decoded):
-                        error2+=(x-y)**2;source2+=x*x;max_abs=max(max_abs,abs(x-y))
+                if encoder=='numpy':
+                    import numpy as np
+                    from migration_bridge.round9.runtime.lowbit_numpy import encode_blocks,decode_blocks
+                    values=(np.frombuffer(raw,dtype='<u2').astype('<u4')<<16).view('<f4').reshape(-1,32)
+                    packed=encode_blocks(values,storage);decoded=decode_blocks(packed,storage)
+                    f.write(packed.tobytes())
+                    delta=values.astype(np.float64)-decoded.astype(np.float64)
+                    error2+=float(np.square(delta).sum());source2+=float(np.square(values.astype(np.float64)).sum())
+                    max_abs=max(max_abs,float(np.abs(delta).max()))
+                else:
+                    for offset in range(0,len(raw),64):
+                        values=bf16_values(raw[offset:offset+64]);packed=encode_block(values,storage)
+                        decoded=decode_block(packed,storage)
+                        f.write(packed)
+                        for x,y in zip(values,decoded):
+                            error2+=(x-y)**2;source2+=x*x;max_abs=max(max_abs,abs(x-y))
             f.flush();os.fsync(f.fileno())
     payload_bytes=len(ids)*source.hidden*source.intermediate//32*SIZES[storage]
     header=b'GGUF'+struct.pack('<IQQ',3,3,1)+ggstr('general.architecture')+struct.pack('<I',8)+ggstr('llama')
@@ -73,7 +84,7 @@ def convert_layer(source,layer,logical_ids,storage,output,*,source_identity):
         f.flush();os.fsync(f.fileno())
     os.link(partial,final);partial.unlink()
     report=dict(status='PASS_CONVERSION_ONLY_NOT_NATIVE_QUALIFIED',codec=CODEC_VERSION,
-        storage=storage,layer=layer,logical_ids=ids,scratch_required_bytes=scratch_required,complete_cpu_backing=ids==list(range(source.experts)),
+        encoder=encoder,storage=storage,layer=layer,logical_ids=ids,scratch_required_bytes=scratch_required,complete_cpu_backing=ids==list(range(source.experts)),
         geometry=dict(experts=source.experts,hidden=source.hidden,intermediate=source.intermediate),
         file=filename,bytes=final.stat().st_size,sha256=digest(final),source_identity=source_identity,
         source_index_sha256=source.index_sha256,projection_identities=identities,
@@ -103,6 +114,7 @@ def main():
     p.add_argument('--model',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True)
     p.add_argument('--layer',type=int,choices=range(48),required=True);p.add_argument('--experts',default='0,1,510,511')
     p.add_argument('--full-layer',action='store_true');p.add_argument('--storage',choices=SIZES,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--encoder',choices=['scalar','numpy'],default='scalar')
     a=p.parse_args();revision='de4b8e4d43b917e7706784d8bb445c9af86a3540'
     trusted=require_trusted_root(a.model,readonly=bool(os.statvfs(a.model).f_flag & os.ST_RDONLY))
     identity=verify_probe_identity(model=trusted,receipt=a.receipt,expected_model=trusted,
@@ -110,6 +122,6 @@ def main():
         manifest_sha256='62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e')
     ids=list(range(512)) if a.full_layer else [int(x) for x in a.experts.split(',')]
     if not a.full_layer and len(ids)>4:raise ValueError('small sample limit4; full-layer requires explicit flag')
-    print(json.dumps(convert_layer(OriginalExpertSource(a.model),a.layer,ids,a.storage,a.output,source_identity=identity),indent=2))
+    print(json.dumps(convert_layer(OriginalExpertSource(a.model),a.layer,ids,a.storage,a.output,source_identity=identity,encoder=a.encoder),indent=2))
 
 if __name__=='__main__':main()

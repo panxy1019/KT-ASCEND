@@ -1,0 +1,73 @@
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+INFO 09-20 22:14:26 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 22:14:26 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 22:14:26 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 22:14:26 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/runtime-python/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+CPUInfer[0xaaaaf30f5280]: Hello
+WorkerPool[0xaaaaf30e99d0] 4 subpools, [numa:threads][2:32] [3:32] [6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+[W920 22:14:33.865725953 TensorFactories.cpp:340] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+
+[GGUFLoader] Loading single GGUF file : layer-00-bf16.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 4
+ ffn_up_exps, Dtype: BF16
+ ffn_gate_exps, Dtype: BF16
+ ffn_down_exps, Dtype: BF16
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 4
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=160, offset=0
+  TP 1: size=160, offset=160
+  TP 2: size=160, offset=320
+  TP 3: size=160, offset=480
+KTEP_REAL64_NZ_IDENTITY_PASS
+{"tokens": 1, "kind": "mixed", "errors": {"cpu_partial": 2.5335938858006557e-07, "npu_owned_partial": 3.055437787224946e-07, "routed_merge": 0.0}, "hashes": ["3169e74e603bfb6545a195f9029fcca26d4fb29d8563679cc11a6d673550c5e8", "3169e74e603bfb6545a195f9029fcca26d4fb29d8563679cc11a6d673550c5e8", "3169e74e603bfb6545a195f9029fcca26d4fb29d8563679cc11a6d673550c5e8"]}
+{"tokens": 1, "kind": "resident_only", "errors": {"cpu_partial": 0.0, "npu_owned_partial": 0.00043756733066402376, "routed_merge": 0.000697444484103471}, "hashes": ["310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f", "310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f", "310a9542c43b8246717f86ad99ef3e0bcc6eadceeaca1097f4998f95c5dd7b3f"]}
+{"tokens": 1, "kind": "repeated_cpu", "errors": {"cpu_partial": 2.6319796120333194e-07, "npu_owned_partial": 0.0, "routed_merge": 0.0}, "hashes": ["c6786226ee32e5d62188972cfb6cea649fd8f9d418778c63912830119654ea03", "c6786226ee32e5d62188972cfb6cea649fd8f9d418778c63912830119654ea03", "c6786226ee32e5d62188972cfb6cea649fd8f9d418778c63912830119654ea03"]}
+{"tokens": 10, "kind": "mixed", "errors": {"cpu_partial": 3.300874959677458e-05, "npu_owned_partial": 0.00035932447644881904, "routed_merge": 0.00042391536408104}, "hashes": ["82d42900e949a294077940ba72513cea6f5f478eb639f7764a3af1e4432e5aa4", "82d42900e949a294077940ba72513cea6f5f478eb639f7764a3af1e4432e5aa4", "82d42900e949a294077940ba72513cea6f5f478eb639f7764a3af1e4432e5aa4"]}
+{"tokens": 10, "kind": "resident_only", "errors": {"cpu_partial": 0.0, "npu_owned_partial": 0.0002621202147565782, "routed_merge": 0.0003847409097943455}, "hashes": ["331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071", "331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071", "331211848054f7f862a3a2cff3c307af4176c4a48d3588a23ac16b6855eba071"]}
+{"tokens": 10, "kind": "repeated_cpu", "errors": {"cpu_partial": 0.00011380300566088408, "npu_owned_partial": 0.0, "routed_merge": 0.00039710482815280557}, "hashes": ["0576ec453af9568bba11e724a2b95c5230043d8a0bf79703bd6e20254bbc1da0", "0576ec453af9568bba11e724a2b95c5230043d8a0bf79703bd6e20254bbc1da0", "0576ec453af9568bba11e724a2b95c5230043d8a0bf79703bd6e20254bbc1da0"]}
+{"tokens": 32, "kind": "mixed", "errors": {"cpu_partial": 4.572088073473424e-05, "npu_owned_partial": 0.0001507799606770277, "routed_merge": 0.0002599446743261069}, "hashes": ["2586dec6cb328d59cb8174d74fb85d0c9a3e62c310363d04946d8b839b162393", "2586dec6cb328d59cb8174d74fb85d0c9a3e62c310363d04946d8b839b162393", "2586dec6cb328d59cb8174d74fb85d0c9a3e62c310363d04946d8b839b162393"]}
+{"tokens": 32, "kind": "resident_only", "errors": {"cpu_partial": 0.0, "npu_owned_partial": 0.0001522774837212637, "routed_merge": 0.00031855941051617265}, "hashes": ["22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310", "22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310", "22ea5780b352d24aac2a5dda9682e36247baef3365cf4d37315491d2c1ff9310"]}
+{"tokens": 32, "kind": "repeated_cpu", "errors": {"cpu_partial": 1.924906791828107e-05, "npu_owned_partial": 0.0, "routed_merge": 0.0001464980887249112}, "hashes": ["975cdce34d1afd8c2f00ee2b39704f1830774e558ade3f1a02190361eba43902", "975cdce34d1afd8c2f00ee2b39704f1830774e558ade3f1a02190361eba43902", "975cdce34d1afd8c2f00ee2b39704f1830774e558ade3f1a02190361eba43902"]}
+PASS_REAL_KTEP_LOCAL_MERGE
+TP MOE layer 0, pool: 0xaaaaf30e99d0, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fff9840096f0
+alloc 1 from other numa for fff98c0096f0
+alloc 2 from other numa for fff9840096f0
+alloc 1 from other numa for fff98c0096f0
+alloc 0 from other numa for fffa500c8aa0
+alloc 0 from other numa for fffa500c8aa0
+alloc 3 from other numa for fff9800096f0
+alloc 3 from other numa for fff9800096f0
+CPUInfer[0xaaaaf30f5280]: Goodbye

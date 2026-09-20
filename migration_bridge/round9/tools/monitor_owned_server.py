@@ -6,17 +6,25 @@ import re
 import subprocess
 import time
 
+def owned_container_name(name):
+    return re.fullmatch(r'kt-round9-(?:full-model|c128-expert)-v[0-9]+', name) is not None
+
+
 p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--container', required=True)
 p.add_argument('--output', type=pathlib.Path, required=True)
-p.add_argument('--training-pids', nargs='+', type=int, required=True)
+p.add_argument('--training-pids', nargs='*', type=int, default=[])
 p.add_argument('--ready-file', type=pathlib.Path, required=True)
+p.add_argument('--resource-mode', choices=['shared','exclusive'], default='shared')
 p.add_argument('--seconds', type=int, default=3600)
+p.add_argument('--owned-limit-mib', type=int, default=41472)
 a = p.parse_args()
-if not re.fullmatch(r'kt-round9-full-model-v[0-9]+', a.container):
-    raise ValueError('guard may only control an owned full-model container')
+if not 1 <= a.owned_limit_mib <= 41472: raise ValueError("owned limit may only tighten the baseline budget")
+if not owned_container_name(a.container):
+    raise ValueError('guard may only control an explicitly allowed owned Round9 container')
 if a.output.exists() or a.ready_file.exists():
     raise FileExistsError(a.output)
+if a.resource_mode=='exclusive' and a.training_pids:raise ValueError('exclusive mode cannot admit training PIDs')
 started = time.monotonic()
 system_baseline_mib = None
 baseline_samples = []
@@ -24,6 +32,19 @@ baseline_samples = []
 
 def command(args):
     return subprocess.check_output(args, text=True, timeout=20)
+
+
+def owned_process_snapshot(name, waiting):
+    if waiting:
+        return set()
+    try:
+        top = command(['docker','top',name,'-eo','pid'])
+    except subprocess.CalledProcessError:
+        fresh = json.loads(command(['docker','inspect',name]))[0]['State']
+        if not fresh['Running'] and fresh['Status'] in ('exited','dead'):
+            return None
+        raise
+    return {int(s.strip()) for s in top.splitlines()[1:] if s.strip().isdigit()}
 
 
 def stop_owned(reason):
@@ -50,11 +71,11 @@ def parse_physical15(raw):
     return used, processes
 
 
-def hbm_budget_exceeded(used, owned, training, system_baseline):
+def hbm_budget_exceeded(used, owned, training, system_baseline, owned_limit=41472):
     #npu-smi board and process counters are not atomic. Do not infer a training
     #spike by subtracting an asynchronously updated owned counter from board use.
     #Keep absolute board/owned bounds and the pre-start system+training bound.
-    return used > 56832 or owned > 41472 or training + system_baseline > 15360
+    return used > 56832 or owned > owned_limit or training + system_baseline > 15360
 
 
 def stable_system_baseline(samples):
@@ -76,8 +97,11 @@ while True:
             break
         raw = command(['npu-smi','info'])
         used, processes = parse_physical15(raw)
-        top = '' if waiting else command(['docker','top',a.container,'-eo','pid'])
-        owned_pids = {int(s.strip()) for s in top.splitlines()[1:] if s.strip().isdigit()}
+        owned_pids = owned_process_snapshot(a.container, waiting)
+        if owned_pids is None:
+            with a.output.open('a') as f:
+                f.write(json.dumps({'time':time.time(),'action':'OWNED_EXITED_DURING_SAMPLE'})+'\n')
+            break
         outsiders = set(processes)-owned_pids-set(a.training_pids)
         if outsiders:
             raise RuntimeError(f'unbound physical15 process identity: {sorted(outsiders)}')
@@ -91,7 +115,7 @@ while True:
                 raise RuntimeError('invalid pre-start system HBM baseline')
             baseline_samples.append(candidate)
             system_baseline_mib = stable_system_baseline(baseline_samples)
-        item = {'time':time.time(),'hbm_used_mib':used,'training_process_mib':training,
+        item = {'resource_mode':a.resource_mode,'time':time.time(),'hbm_used_mib':used,'training_process_mib':training,
                 'owned_process_mib':owned,'nonowned_board_mib':used-owned,
                 'system_baseline_mib':system_baseline_mib,
                 'baseline_samples_mib':baseline_samples,
@@ -126,7 +150,7 @@ while True:
             break
         #Physical-board domain; 15GiB nonowned envelope includes system baseline.
         #Stop0.5GiB before41GiB owned/56GiB total budget, not at the boundary.
-        if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0):
+        if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0, a.owned_limit_mib):
             stop_owned('shared HBM budget exceeded')
             break
         if waiting and system_baseline_mib is not None and not a.ready_file.exists():

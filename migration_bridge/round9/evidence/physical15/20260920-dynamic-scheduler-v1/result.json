@@ -1,0 +1,36 @@
+{
+  "status": "PASS_ACTUAL_F02_LOOP_HOOK_ORDER_ONLY",
+  "scheduler_sha256": "52b77fc6e12c6ab59dcc2684959093781b0d0c9b0b5b6429de5e3fe881819f8c",
+  "rows": [
+    {
+      "abort": false,
+      "calls": [
+        "run",
+        "run"
+      ],
+      "events": [
+        {
+          "request_id": "actual-loop",
+          "generation": 1,
+          "changed_layers": 1,
+          "copied_experts": 1
+        }
+      ]
+    },
+    {
+      "abort": true,
+      "calls": [
+        "run",
+        "idle"
+      ],
+      "events": [
+        {
+          "request_id": "actual-loop",
+          "generation": 1,
+          "changed_layers": 1,
+          "copied_experts": 1
+        }
+      ]
+    }
+  ]
+}

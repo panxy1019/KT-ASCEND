@@ -1,0 +1,41 @@
+{
+  "status": "FAIL",
+  "storage": "Q8_0",
+  "pools": 4,
+  "cpu_workers": 128,
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_experts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    507,
+    508,
+    509,
+    510,
+    511
+  ],
+  "source_projection_sha256": [
+    "8f8f3fe4f9e66b665e024438c9538641fdb55a7f785a9a40c4fa0e516e9dd8f3",
+    "8cf2ee0095a289f1c11de8981612fa39057dd62a2b10233e71d4f9acf03d5c1a",
+    "8057994cc60d5ed23d3aea32807f0d91f585cd5beb53c30f086d7e1664821206"
+  ],
+  "encoded_sha256": [
+    "0add31368b94b3cdefead0a5a8a33139ce2ba10d6f141574e123b464d6593e67",
+    "4c2808e9856bf0f9bde481f34839dd335c4cd78266728dabea72f391c1843ead",
+    "28ad38d2209c49e2f949a9e135ecc04b84df304be02e6b02222440ed50b3a617"
+  ],
+  "native_sha256": "07039126ea565b7a4f0629b974af1bbffe15c5d5ee542adeb2b687208e7be147",
+  "scope": "REAL10_EXPERT_CPU_ONLY_QUANTIZED_WEIGHT_AND_ACTIVATION_REFERENCE",
+  "rel_l2_gate": 0.01,
+  "rows": [],
+  "error": "AssertionError(('C64/C128', 1, 0.0021650732960551977))"
+}

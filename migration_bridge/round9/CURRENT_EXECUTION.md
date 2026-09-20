@@ -1,3 +1,35 @@
+## Physical15 exclusive execution authorized — 2026-09-20 22:44 UTC
+
+Latest user reports training has vacated physical15 and explicitly authorizes
+exclusive Round9 use until they request sharing again. Fresh npu-smi confirms
+no physical15 process; baseline HBM2880MiB. No training allowance is reserved
+for new exclusive admission. Unknown external process still stops our own run.
+Old shared-HBM15GiB clarification is superseded, not a current blocker.
+Q8_0 48-layer conversion complete; MXFP4 conversion continuing CPU-only.
+Native low-bit FP32 TP-partial correction rebuilt; old binary strict C64/C128
+comparison RED0.002165, corrected Q8/MX four-combination regression exit0.
+Q8 new-native C128 full-bank KTEP+Dynamic local gate v7 PASS, actual ND2.
+All candidate full-model claims remain pending fresh48-bank SHA/type/source
+binding, independent entry-point review, and actual model execution.
+Timers PAUSED; no performance/push/main merge/tag.
+
+## Candidate device execution resumed — 2026-09-20 22:16 UTC
+
+Latest user explicitly authorized fresh shared-resource candidate device gates.
+See37_CANDIDATE_DEVICE_EXECUTION.md. Host110.123.0.3 physical15, training budget
+15GiB retained even though no NPU training process observed at this admission.
+C128 four32-worker pools NUMA2/3/6/7: wrapper and real KTEP local merge PASS.
+Dynamic processed-tensor migration/local merge probes exited0; v6 measured ND2.
+NO NZ qualification. Scheduler hook ordering passed CPU doubles only.
+Low-bit24 native tile tests PASS. Earlier C64/C128 MoE tests are provisional:
+review found premature BF16 TP-partial rounding; fix and strict cross-pool retest pending.
+Both full512 layer0 low-bit banks converted. CPU-only48-layer conversions
+kt-round9-q8-all48-v1 and kt-round9-mxfp4-all48-v1 running; do not duplicate.
+Lowbit GGUF/KTEP local merge ran, but requires retest after native correction.
+Candidate fullmodel and actual model scheduler integration remain PENDING.
+Full-model shared-HBM admission awaits whether15GiB includes driver baseline.
+Timers remain PAUSED. No performance/push/main merge/tag.
+
 ## Candidate host/framework development delivered — 2026-09-20 16:23 UTC
 
 User authorized sequential development after reviewing35. See36 for exact

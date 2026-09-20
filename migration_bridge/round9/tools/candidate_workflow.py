@@ -18,7 +18,7 @@ ROOT=Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from migration_bridge.round9.runtime.candidate_config import Candidate,runtime_arguments,validate_topology
 
-HOST=['test_candidates','test_lowbit','test_candidate_bank','test_dynamic_candidate','test_candidate_workflow']
+HOST=['test_candidates','test_lowbit','test_candidate_bank','test_dynamic_candidate','test_candidate_workflow','test_candidate_bank_binding','test_dynamic_boundary','test_live_monitor']
 TENSOR=['test_dynamic_tensor_adapter','test_candidate_gguf']
 
 
@@ -44,7 +44,7 @@ def main():
         report=dict(status='HOST_PLAN_ONLY_DEVICE_ADMISSION_PENDING',launch_permitted=False,
             profile=asdict(candidate),profile_sha256=hashlib.sha256(a.profile.read_bytes()).hexdigest(),
             allocation=allocation,partitions=candidate.partitions(),server_args=runtime_arguments(candidate),
-            native_status=candidate.native_status(),dynamic_status='BOUNDARY_ADAPTER_HOST_TESTED_SCHEDULER_INSTALLATION_PENDING' if candidate.placement=='request_boundary' else 'OFF',
+            native_status=candidate.native_status(),dynamic_status='EXPLICIT_SCHEDULER_INSTALLATION_AND_DEVICE_GATE_REQUIRED' if candidate.placement=='request_boundary' else 'OFF',
             next_gate='fresh host/training/HBM/NUMA and exact source/native/device qualification')
         write_new(a.output,report);print(json.dumps(report,indent=2));return 0
     a.output.mkdir(parents=True,exist_ok=False)

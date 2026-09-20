@@ -1,0 +1,15 @@
+Error response from daemon: Container 6f154fa0f94499d115238f4f1df2045eae26dd5b355a8b63d1fa1b5714e674c3 is not running
+kt-round9-c128-expert-v3
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/monitor_owned_server.py", line 85, in <module>
+    top = '' if waiting else command(['docker','top',a.container,'-eo','pid'])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/monitor_owned_server.py", line 32, in command
+    return subprocess.check_output(args, text=True, timeout=20)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'top', 'kt-round9-c128-expert-v3', '-eo', 'pid']' returned non-zero exit status 1.

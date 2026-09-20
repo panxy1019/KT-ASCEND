@@ -193,7 +193,10 @@ class LLAMA_MOE_TP {
           config.down_type == GGML_TYPE_F32) ||
          (llamafile_bf16_f32_tail_supported() &&
           config.gate_type == GGML_TYPE_BF16 && config.up_type == GGML_TYPE_BF16 &&
-          config.down_type == GGML_TYPE_BF16));
+          config.down_type == GGML_TYPE_BF16) ||
+         (llamafile_block32_tail_supported() &&
+          (config.gate_type == GGML_TYPE_Q8_0 || config.gate_type == GGML_TYPE_MXFP4) &&
+          config.up_type == config.gate_type && config.down_type == config.gate_type));
     MemoryRequest mem_requests;
     mem_requests.append_pointer(&s_input_fp32_, sizeof(float) * config_.hidden_size);
     mem_requests.append_pointer(
@@ -852,7 +855,10 @@ class LLAMA_MOE_TP {
          config_.down_type == GGML_TYPE_F32) ||
         (llamafile_bf16_f32_tail_supported() &&
          config_.gate_type == GGML_TYPE_BF16 && config_.up_type == GGML_TYPE_BF16 &&
-         config_.down_type == GGML_TYPE_BF16);
+         config_.down_type == GGML_TYPE_BF16) ||
+        (llamafile_block32_tail_supported() && config_.gate_type == config_.up_type &&
+         config_.gate_type == config_.down_type &&
+         (config_.gate_type == GGML_TYPE_Q8_0 || config_.gate_type == GGML_TYPE_MXFP4));
     if (!unblocked_tail && config_.intermediate_size % m_block)
       throw std::runtime_error("blocked LLAMAFILE forward_many requires 256 alignment");
     int nth = (config_.intermediate_size + m_block - 1) / m_block;

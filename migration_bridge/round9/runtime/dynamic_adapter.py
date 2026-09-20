@@ -29,6 +29,10 @@ class TorchKTEPAdapter:
                 if tensor.device.type not in ('cpu','npu'):raise ValueError('unsupported device')
                 if tensor.device.type=='npu' and not allow_unqualified_npu_probe:
                     raise RuntimeError('DEVICE_TEST_PENDING_NPU_PROMOTION_REQUIRES_SEPARATE_GUARDED_PROBE')
+                if tensor.device.type=='npu':
+                    import torch_npu
+                    if int(torch_npu.get_npu_format(tensor))!=2:
+                        raise RuntimeError('DYNAMIC_NPU_LAYOUT_NOT_QUALIFIED_EXPECTED_ND2')
                 self.devices.add(tensor.device)
             for owner,name in ((method,'gpu_experts_mask'),(method,'gpu_experts_mask_cuda'),(method.wrapper,'gpu_experts_mask')):
                 value=getattr(owner,name)
