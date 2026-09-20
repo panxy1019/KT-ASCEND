@@ -18,7 +18,7 @@ ROOT=Path(__file__).resolve().parents[3]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from migration_bridge.round9.runtime.candidate_config import Candidate,runtime_arguments,validate_topology
 
-HOST=['test_candidates','test_lowbit','test_candidate_bank','test_dynamic_candidate','test_candidate_workflow','test_candidate_bank_binding','test_dynamic_boundary','test_live_monitor']
+HOST=['test_candidates','test_lowbit','test_candidate_bank','test_dynamic_candidate','test_candidate_workflow','test_candidate_bank_binding','test_dynamic_boundary','test_live_monitor','test_candidate_trial_result']
 TENSOR=['test_dynamic_tensor_adapter','test_candidate_gguf']
 
 

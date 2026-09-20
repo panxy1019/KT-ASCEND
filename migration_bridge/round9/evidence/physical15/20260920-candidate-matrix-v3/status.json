@@ -1,0 +1,20 @@
+{
+  "status": "STOPPED_ON_FAILURE",
+  "scope": "FUNCTIONAL_RESOURCE_ONLY",
+  "trials": [
+    {
+      "version": 19,
+      "storage": "MXFP4",
+      "placement": "static",
+      "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY"
+    },
+    {
+      "version": 20,
+      "storage": "MXFP4",
+      "placement": "request_boundary",
+      "status": "STARTING"
+    }
+  ],
+  "error": "CalledProcessError(1, ['python3', '/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/launch_candidate_model.py', '--version', '20', '--storage', 'MXFP4', '--placement', 'request_boundary', '--overlay-python', '/mnt/data1/kt-round9/candidate-sglang-v8/python', '--bank-receipt', '/mnt/data1/kt-round9/evidence/20260920-bank-verify-v4/MXFP4-request_boundary.json', '--device-gate', '/mnt/data1/kt-round9/evidence/20260920-c128-expert-v17/result.json'])",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round9_candidate_matrix_v3.py\", line 22, in <module>\n    run(['python3',str(tools/'launch_candidate_model.py'),'--version',str(version),'--storage',storage,'--placement',placement,'--overlay-python',str(root/'candidate-sglang-v8/python'),'--bank-receipt',str(root/f'evidence/20260920-bank-verify-v{receipt_version}/{storage}-{placement}.json'),'--device-gate',str(root/f'evidence/20260920-c128-expert-v{gate_version}/result.json')])\n  File \"/mnt/data1/kt-round9/round9_candidate_matrix_v3.py\", line 16, in run\n    def run(args,**kw):return subprocess.run(args,check=True,**kw)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib64/python3.11/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['python3', '/mnt/data1/kt-round9/candidate-dev-20260920/migration_bridge/round9/tools/launch_candidate_model.py', '--version', '20', '--storage', 'MXFP4', '--placement', 'request_boundary', '--overlay-python', '/mnt/data1/kt-round9/candidate-sglang-v8/python', '--bank-receipt', '/mnt/data1/kt-round9/evidence/20260920-bank-verify-v4/MXFP4-request_boundary.json', '--device-gate', '/mnt/data1/kt-round9/evidence/20260920-c128-expert-v17/result.json']' returned non-zero exit status 1.\n"
+}

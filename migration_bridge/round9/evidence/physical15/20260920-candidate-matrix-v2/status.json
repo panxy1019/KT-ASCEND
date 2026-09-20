@@ -1,0 +1,14 @@
+{
+  "status": "STOPPED_ON_FAILURE",
+  "scope": "FUNCTIONAL_RESOURCE_ONLY",
+  "trials": [
+    {
+      "version": 18,
+      "storage": "BF16",
+      "placement": "request_boundary",
+      "status": "RUNNING"
+    }
+  ],
+  "error": "RuntimeError('driver failed: {\\'first-http\\': \\'PASS_FIRST_REAL_HTTP_PREFILL_DECODE\\', \\'system8\\': \\'PASS_FULL_MODEL_SYSTEM8\\', \\'canaries\\': \"JSONDecodeError(\\'Expecting value: line 1 column 1 (char 0)\\')\"}')",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round9_candidate_matrix_v2.py\", line 24, in <module>\n    if any(not r['status'].startswith('PASS_') for r in reports.values()):raise RuntimeError('driver failed: '+str({n:r.get('error',r['status']) for n,r in reports.items()}))\n                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: driver failed: {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': \"JSONDecodeError('Expecting value: line 1 column 1 (char 0)')\"}\n"
+}

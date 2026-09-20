@@ -1,3 +1,43 @@
+## Latest —2026-09-20 23:55UTC: MXFP4 static full gates PASS, Dynamic next
+
+Full-v19 C128/MXFP4/static passed all5 drivers: firstHTTP,system8 exact repeats,
+strict4canaries,actual3840+256=4096,activeabort+identicalreuse. Normal controlled
+stop, resource and content axes PASS. Peak owned39854MiB, board42622MiB, host
+cgroup115188797440bytes(107.28GiB); actual128distinct pinned workers. Final hashes
+independently audited PASS. Quality256/restart/full Dynamic oracle remain pending.
+
+Nextv20 admission correctly rejected NUMA2free69.13GiB andNUMA7free77.20GiB.
+Most usage was FilePages; only96 owned candidate low-bit GGUF files received
+POSIX_FADV_DONTNEED (no data mutation/global cache flush). All4nodes then>80GiB.
+Fresh one-shot matrixv4 PID1501832 now startsv20MXDynamic, thenv21Q8static,
+v22Q8Dynamic,v23BF16Dynamic. Same dual-axis rules; each completed low-bit trial
+advises only its stopped bank cache before next fresh admission. Evidence for
+reclaim and interruptedmatrixv3 retained. No unrelated containers touched.
+Log /mnt/data1/kt-round9/candidate-matrix-v4.log. Do not restart finishedv19.
+
+## Latest —2026-09-20 23:45UTC: preserve content failure, separate resource axis
+
+Full-v18 firstHTTP+system8(8/8) PASS, actual128distinct pinned CPU threads.
+Known-answer multiply/capital/echo PASS; strictJSON canary parsing FAIL. Old driver
+parsed before retaining row, so actual fourth answer is missing; do NOT infer it
+from system8's separate fencedJSON responses. v18 stopped; context/cancel not run;
+no resource/full-candidate PASS. Its monitor peakowned about41056MiB, no guard stop.
+
+Raw-before-parse capture fixed without loosening strictJSON; numeric_finite now
+recorded before content parsing. Independent review confirms35 requires capacity,
+system and quality to remain separate. New finalizer reports resource_system_status
+and content_canary_status separately. Any content failure keeps overall
+FAIL_CANDIDATE_CONTENT_CANARY and nonzero exit; it can never become candidatePASS.
+Any resource/guard failure still stops sequence. Classification regressions RED/GREEN.
+
+One-shot matrixv3 PID1463485 starts fresh full-v19 MXstatic, thenv20MXDynamic,
+v21Q8static,v22Q8Dynamic,v23BF16Dynamic. Each has independent full drivers/admission.
+Only a captured, finite, nonempty content mismatch may continue to context/cancel;
+all technical/nonfinite failures stop. Final matrix nonzero if any candidate fails.
+V23 will reproduce BF16Dynamic with complete raw-canary evidence. No old result reused.
+Log /mnt/data1/kt-round9/candidate-matrix-v3.log; samev8 isolated payload and new
+frozen driver snapshots. No timers/performance/push/merge/tag.
+
 ## Latest —2026-09-20 23:24UTC: exclusive allocator correction, v18 starting
 
 Full-v13 firstHTTP PASS and two real Dynamic commits, then FAILED allocator OOM:

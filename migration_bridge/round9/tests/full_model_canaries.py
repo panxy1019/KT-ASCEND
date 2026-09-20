@@ -12,9 +12,15 @@ try:
   body={'rid':'r9-canary-'+name,'input_ids':ids,'sampling_params':{'temperature':0,'max_new_tokens':32},'return_logprob':True,'logprob_start_len':-1}
   req=urllib.request.Request('http://127.0.0.1:30091/generate',data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
   with urllib.request.urlopen(req,timeout=300) as response:data=json.load(response)
-  text=data['text'].strip();value=json.loads(text) if name=='json' else text
-  row=dict(name=name,expected=expected,request=body,response=data,passed=value==expected);report['rows'].append(row)
-  assert all(math.isfinite(v[0]) for v in data['meta_info']['output_token_logprobs'])
+  # Preserve the actual answer even when strict JSON parsing itself fails.
+  row=dict(name=name,expected=expected,request=body,response=data,passed=False);report['rows'].append(row)
+  row['numeric_finite']=all(math.isfinite(v[0]) for v in data['meta_info']['output_token_logprobs'])
+  assert row['numeric_finite']
+  text=data['text'].strip()
+  try:value=json.loads(text) if name=='json' else text
+  except json.JSONDecodeError as exc:
+   row['parse_error']=repr(exc);raise
+  row['passed']=value==expected
   assert row['passed'],f'{name}: {text!r} != {expected!r}'
  report['status']='PASS_FOUR_KNOWN_ANSWER_CANARIES'
 except BaseException as exc:

@@ -11,8 +11,8 @@ onlyphysical15 mapping, live own-process guard and verified48-bank/source identi
 |---|---|---|
 | v10 | C128/BF16/static | PASS functional/resource checks below; stopped normally |
 | v11 | C128/BF16/request-boundary Dynamic | FAIL CLOSED: actual full-model NPU layout was not qualified ND2; no migration admitted |
-| later | C128/Q8_0/static and Dynamic | Banks+local gates verified; full trials pending |
-| later | C128/MXFP4/static and Dynamic | All48 banks independently verified; full trials pending |
+| v21 / v22 | C128/Q8_0/static and Dynamic | Banks+local gates verified; full trials pending |
+| v19 / v20 | C128/MXFP4/static and Dynamic | Static v19 all gates PASS; Dynamic v20 running |
 
 ## v10 measured evidence
 
@@ -152,3 +152,47 @@ absolute board guard56832MiB stays active. Baseline source is unmodified.
 shared mode. Same adapter/native device gates apply; candidate-sglang-v8 is a new
 isolated payload. Fresh matrixv2 uses full-v18 BF16Dynamic, v19 MXstatic,
 v20 MXDynamic, v21 Q8static and v22 Q8Dynamic. Full resource results pending.
+
+## v18 content failure: strict result retained, qualification axes separated
+
+v18 firstHTTP and all8system requests/drained boundaries PASS. Actual scheduler
+had128single-pinned threads on128distinct CPUs. Owned peak about41056MiB and no
+resource guard trigger. The canary suite passed integer391, 北京, and ORANGE;
+strictJSON parsing failed on the fourth answer. Original driver lost that answer
+because it appended the row after parsing. v18 was stopped by matrixv2 before
+context/cancel, so its resource axis remains incomplete. No full PASS claimed.
+
+Fix captures full rawresponse before strict parsing and records numeric_finite.
+No fence stripping/prompt change/expected-answer change. System8's separately
+observed fencedJSON answers cannot prove the failed canary's actual output.
+
+35 requires resource/system/quality separation; independent review confirmed no
+upper-level prohibition on completing resource checks after a captured content
+failure. New matrixv3/finalizer contract explicitly supersedes v1/v2 fail-fast on
+all content failures. All technical, resource, nonfinite and guard failures still
+stop the sequence. Only a recorded finite/nonempty content mismatch may continue
+to context/cancel; its overall candidate status remains FAIL_CANDIDATE_CONTENT_CANARY
+and finalizer exits1, even if resource_system_status is PASS. The matrix continues
+other independently admitted combinations and exits1 if any candidate failed.
+Three classification regression tests were observed RED then GREEN.
+
+Fresh order: v19MXstatic, v20MXDynamic, v21Q8static, v22Q8Dynamic, v23BF16Dynamic.
+The latter repeats the complete sequence to collect the actual strictJSON result.
+Every combination earns its own resource/content evidence; no inheritedv18 PASS.
+
+## v19 MXFP4 static complete PASS, cache-aware fresh admission
+
+All five drivers PASS, including exact static repeats, strict4known-answer
+canaries, actual4096token request and activeabort followed by identical reuse.
+Actual128 distinct pinned workers; normal controlled stop and no guard trip.
+Peak board42622MiB, owned39854MiB, cgroup115188797440bytes(107.28GiB).
+post-trial-audit.json independently verifies all13bound evidence file hashes.
+This is candidate functional/resource PASS, not quality256 or deployment.
+
+The nextv20 preflight rejected genuinely free NUMA memory (<80GiB onnodes2,7).
+Read-only inventory showed the bulk was filecache. POSIX_FADV_DONTNEED targeted
+only96 generated candidate low-bit GGUF files after all candidate jobs exited;
+no files were changed and no global cache flush occurred. Allfour nodes regained
+>80GiB free. Exact before/after and file list are in cache-reclaim-v1 evidence.
+Matrixv4 resumes onlyremainingv20-v23, adding per-trial post-stop cache advice
+for that candidate's low-bit files; every launch still samples fresh admission.
