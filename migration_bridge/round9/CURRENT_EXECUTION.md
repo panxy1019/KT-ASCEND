@@ -1,5 +1,18 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 03:17 UTC — proposed development host110.123.0.3
+
+User prefers subsequent Round9 development on110.123.0.3. Read
+14_HOST_123_RESOURCE_PROPOSAL.md for read-only inventory and estimated budget.
+320physicalcores/640logical(SMT2),8NUMA,~2TiBRAM,~3.2TiBfree/mnt/data1.
+16x64GiB NPUdies are currently ALL occupied; exclusive NPU admission pending.
+Proposed default:64expert+8auxiliary physicalcores,640GiBRAMreservation,
+1.2TiBdisk,one64GiBdie; provisional limits await census/loading measurements.
+SVE/BF16 CPU flags and SMT/NUMA topology differ from.22: requalify native path.
+No migration/copy/reservation/launch performed; .22download and paused heartbeat
+unchanged by this planning pass. Earlier.22-only restriction is no longer the
+user's target preference; new-host actual resource/software gates still apply.
+
 ## 2026-09-20 02:26 UTC — download timeout repair and direct mirror selected
 
 Latest user authorized download repair/speed optimization and a bounded .3 speed
