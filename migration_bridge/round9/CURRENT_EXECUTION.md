@@ -1,5 +1,16 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — user-authorized four-shard/two-connections test complete
+
+See10_MULTISHARD_DOWNLOAD_SCREEN.md and evidence/multishard-abba-v1.json.
+Test code0e597f68e;16 tooling tests pass. Four-shard x2 =8 connections
+measured8.403/7.827MB/s vs two-connection baseline6.971/7.308MB/s.
+Geometric gain13.63%, zero retries, all per-file prefix hashes match.
+Benchmark ended; production kt-round9-range-recovery-v2 restarted unchanged
+with two connections. Eight-connection production not implemented/enabled by
+this bounded test. Preserve shared controller lock; never launch duplicate
+downloaders against same stage. No whole-model identity pass inferred.
+
 ## 2026-09-20 — reduced range overhead / dual connection screen
 
 Current owned service: `kt-round9-range-recovery-v2` on .22, workers=2.
