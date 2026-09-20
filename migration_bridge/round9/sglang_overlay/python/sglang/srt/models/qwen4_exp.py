@@ -14,6 +14,7 @@ import re
 from dataclasses import dataclass, field
 from typing import Dict, Iterable, Optional, Protocol, Set, Tuple, Union
 
+import os
 import torch
 from torch import nn
 
@@ -876,9 +877,18 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
             forward_batch,
             pp_proxy_tensors=pp_proxy_tensors,
         )
-        return self.logits_processor(
+        result = self.logits_processor(
             input_ids, hidden, self.lm_head, forward_batch
         )
+        if os.environ.get("ROUND9_MEMORY_OBSERVER") == "1":
+            import logging
+            logging.info(
+                "ROUND9_MEMORY tokens=%d mode=%s allocated=%d reserved=%d peak_allocated=%d peak_reserved=%d",
+                input_ids.numel(), forward_batch.forward_mode,
+                torch.npu.memory_allocated(), torch.npu.memory_reserved(),
+                torch.npu.max_memory_allocated(), torch.npu.max_memory_reserved(),
+            )
+        return result
 
     def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
         params = dict(self.named_parameters(remove_duplicate=False))

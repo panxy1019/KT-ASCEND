@@ -12,7 +12,7 @@ container_script='source /usr/local/Ascend/ascend-toolkit/set_env.sh; exec timeo
 args=['docker','create','--name',name,'--network','none','--cpuset-cpus','480-639','--cpus','72','--memory','640g','--memory-swap','640g','--pids-limit','4096','--shm-size','16g','--cap-add','SYS_NICE',
  '--device','/dev/davinci15','--device','/dev/davinci_manager','--device','/dev/devmm_svm','--device','/dev/hisi_hdc',
  '-v',f'{root}:/round9:ro','-v','/home/admin/models/Qwen3.8-Flash-Next:/models:ro','-v',f'{out}:/out','-v','/usr/local/Ascend/driver:/usr/local/Ascend/driver:ro',
- '-e','ASCEND_RT_VISIBLE_DEVICES=0','-e','OMP_NUM_THREADS=2','-e','OPENBLAS_NUM_THREADS=2','-e','MKL_NUM_THREADS=2',
+ '-e','ROUND9_MEMORY_OBSERVER=1','-e','ASCEND_RT_VISIBLE_DEVICES=0','-e','OMP_NUM_THREADS=2','-e','OPENBLAS_NUM_THREADS=2','-e','MKL_NUM_THREADS=2',
  '-e','PYTHONPATH=/round9/src/sglang-round9-port/python:/round9/runtime-python','--entrypoint','bash','601e76d17e9f','-c',container_script]
 subprocess.run(args,check=True)
 inspect=json.loads(subprocess.check_output(['docker','inspect',name]))[0];hc=inspect['HostConfig']

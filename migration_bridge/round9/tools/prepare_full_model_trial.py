@@ -41,12 +41,14 @@ for r in review['records']:
  file=root/'evidence'/r['path']
  assert digest(file)==r['sha256'],str(file)
  assert json.loads(file.read_text())['status']==r['status'] and r['status'].startswith('PASS')
-assert len(review['records'])==10
+assert len(review['records'])>=10
 trainingpath=root/'evidence/20260920-full-budget/user-training-envelope.json'
 training=json.loads(trainingpath.read_text());assert training['peak_mib']==15360
 runtime_files=sorted(set(
  list((root/'src/sglang-round9-port/python/sglang/srt').rglob('*.py'))+
  list((base/'runtime').rglob('*.py'))+
+ list((root/'tools').glob('*full*trial.py'))+
+ [root/'tools/monitor_owned_server.py']+
  list((root/'runtime-python/kt_kernel').rglob('*.py'))+
  list((root/'runtime-python/kt_kernel').glob('*.so'))+
  list((root/'src/KT-ASCEND/round8_prep/runtime').glob('*.py'))))

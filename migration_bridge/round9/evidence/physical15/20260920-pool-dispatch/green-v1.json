@@ -1,0 +1,41 @@
+{
+  "device": "0",
+  "limitations": [
+    "synthetic small state dimensions and 32-token pools; TP size supplied as1 without distributed group",
+    "dispatch/lifecycle boundary only; no model weights or attention numerics",
+    "not a full-model, scheduler, latency, throughput, or memory-peak qualification"
+  ],
+  "mixin_sha256": "6f66dd09a075031858ec858448cdd4c52bdf04b81a88700bd165ce38b03a43a5",
+  "mixin_source": "/round9/src/sglang-round9-port/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py",
+  "ordinary_ascend_negative_control": {
+    "layers": 48,
+    "max_total_tokens": 32,
+    "request_pool": "ReqToTokenPool",
+    "token_pool": "NPUMHATokenToKVPool"
+  },
+  "qsa_pool_sha256": "99ae4f5a3db4af3c1c3fe1e79295dd0c2159fa5427271678b605d7d09c567a7a",
+  "qsa_pool_source": "/round9/src/sglang-round9-port/python/sglang/srt/mem_cache/round9_qsa_pool.py",
+  "qwen4_ascend": {
+    "full_attention_layers": [
+      3,
+      7,
+      11,
+      15,
+      19,
+      23,
+      27,
+      31,
+      35,
+      39,
+      43,
+      47
+    ],
+    "mamba_slots": 1,
+    "max_total_tokens": 32,
+    "ordinary_kv_pool": "NPUMHATokenToKVPool",
+    "request_pool": "HybridReqToTokenPool",
+    "token_pool": "Round9QSAKVPool"
+  },
+  "scope": "REAL_INIT_MEMORY_POOL_DISPATCH_WITH_BOUNDED_SYNTHETIC_STATE_SHAPES",
+  "status": "PASS"
+}
