@@ -1,3 +1,18 @@
+## User redirected to development-first analysis — 2026-09-20 15:55 UTC
+
+User prioritizes C128/lowbit/Dynamic framework development, deferring tests to
+an idle window tomorrow and excluding performance tests. Concrete design and
+code-gap analysis:35_DEVELOPMENT_FIRST_C128_LOWBIT_DYNAMIC.md. Candidate
+implementation NOT_STARTED by this analysis; baseline preserved.
+
+V6 CMMLU first128 complete106 correct/0 invalid; second128 NOT_STARTED.
+Final256 reference remains INCOMPLETE, not a quality PASS. V6 stopped; docker
+Running=false/OOMKilled=false/ExitCode137 (bounded stop). Guard exited after
+teardown docker-top error; no owned Round9 worker active. Physical15 returned
+to8969MiB board HBM with training4069720/6124MiB. Timers both PAUSED.
+Do not launch v7 automatically. Retain exact v6 runtime+driver for remaining
+baseline slice before candidate quality comparisons. Local evidence v6 saved.
+
 ## Full-model resource gate PASS; observerOFF quality trial starting — 2026-09-20 15:10 UTC
 
 Trial v5 completed actual 3840 input + 256 output tokens, finite logprobs,

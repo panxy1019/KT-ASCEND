@@ -1,3 +1,24 @@
+# Current status — 2026-09-20 full-model testing
+
+The historical dependency table below is superseded by reports31–34 and
+CURRENT_EXECUTION. All prerequisite gates have now been bound to the actual
+runtime; monitored full-model loading, compact32, cancel/reuse, known-answer
+canaries, clean restart, observerOFF equality and actual3840+256 resource request
+have passed. CMMLU256 fresh reference is currently running as two128-item slices.
+
+The user supplied a15GiB concurrent-training bound. This is explicitly
+USER_ATTESTED_WORKLOAD_ENVELOPE, not assistant-measured or enforced reservation.
+Operational preflight receipts honestly remain STATIC_BOUND_READY_FOR_MONITORED_
+FULL_MODEL_RUN. The separate v5 measured resource receipt qualifies the observed
+full load and4096 workload, with owned39850MiB and board48708MiB peaks.
+
+Latest requested stop point: complete this Q64/C64 full-model reference test set,
+record results and stop owned testing. Lowbit, C128, asynchronous PLE, Dynamic,
+Q32 and larger context tiers remain later independent work; this milestone does
+not mean all Round9 roadmap objectives are complete. Both timers remain PAUSED.
+
+---
+
 # Live progression: admission, then full-model testing
 
 Latest user instruction pauses the Round9 heartbeat and requests live progression

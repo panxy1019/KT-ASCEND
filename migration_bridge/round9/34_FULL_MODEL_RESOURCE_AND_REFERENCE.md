@@ -45,3 +45,11 @@ any request; corrected to /round9/src. No model/runtime change was required.
 
 Local validation:23 admission/monitor regression tests PASS. Timers remain PAUSED;
 no push, merge, tag, or canceled Round8 performance work.
+
+## User-directed deferral after first128
+
+V6 first128 completed106 correct/0 invalid. Full256 remains INCOMPLETE.
+User requested development-first work on C128/lowbit/Dynamic and device tests
+tomorrow; v7 was not launched. v6 exited after bounded docker stop (137,
+OOMKilled=false); guard exited on teardown docker-top failure. Final own NPU
+processes absent, board8969MiB/training6124MiB. See35 for proposed next work.
