@@ -7,6 +7,9 @@ import signal
 import subprocess
 import sys
 import time
+import threading
+
+_state_lock = threading.Lock()
 
 ROOT = pathlib.Path('/home/admin/kt-round9-qwen38')
 REV = 'de4b8e4d43b917e7706784d8bb445c9af86a3540'
@@ -17,8 +20,9 @@ HF = '/home/admin/.local/bin/hf'
 def write_state(**data):
     data.update(updated=time.time(), revision=REV, controller_pid=os.getpid())
     tmp = ROOT / 'download-state.tmp'
-    tmp.write_text(json.dumps(data) + '\n')
-    tmp.replace(ROOT / 'download-state.json')
+    with _state_lock:
+        tmp.write_text(json.dumps(data) + '\n')
+        tmp.replace(ROOT / 'download-state.json')
 
 
 def pause_reason():
@@ -58,7 +62,10 @@ def guarded(command, phase, env):
                 paused = bool(reason)
             write_state(phase=phase, status='PAUSED' if paused else 'RUNNING',
                         reason=reason, child_pgid=child.pid)
-            time.sleep(5)
+            try:
+                child.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                pass
         if child.returncode:
             raise RuntimeError(f'{phase} exited {child.returncode}')
     finally:

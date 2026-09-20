@@ -2,10 +2,21 @@ import hashlib
 import sys
 import tempfile
 import unittest
+import threading
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 
 class RecoveryTest(unittest.TestCase):
+    def test_two_connections_overlap_but_results_stay_ordered(self):
+        import range_recovery as recovery
+        barrier = threading.Barrier(2)
+        def fetch(value):
+            barrier.wait(timeout=2)
+            return value
+        self.assertEqual(recovery.fetch_batch(fetch, [0, 1], 2), [0, 1])
+        with self.assertRaises(ValueError):
+            recovery.fetch_batch(fetch, [0, 1], 3)
+
     def test_only_validated_range_is_appended(self):
         import range_recovery as recovery
         with tempfile.TemporaryDirectory() as tmp:

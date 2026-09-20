@@ -1,10 +1,19 @@
 import sys
 import unittest
+import os
+import time
+from unittest.mock import patch
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 import download_guard as guard
 
 class DownloadCommandTest(unittest.TestCase):
+    def test_finished_child_does_not_wait_for_resource_poll_interval(self):
+        start = time.monotonic()
+        with patch.object(guard, 'pause_reason', return_value=None), patch.object(guard, 'write_state'):
+            guard.guarded([sys.executable, '-c', 'import time; time.sleep(0.1)'], 'TEST', dict(os.environ))
+        self.assertLess(time.monotonic()-start, 2)
+
     def test_endpoint_override_preserves_proxy_and_rejects_unapproved_host(self):
         self.assertTrue(hasattr(guard, 'download_environment'))
         env = guard.download_environment({'KT_DOWNLOAD_ENDPOINT': 'https://huggingface.co',

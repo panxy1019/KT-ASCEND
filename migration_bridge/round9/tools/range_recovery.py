@@ -6,12 +6,44 @@ from pathlib import Path
 import shutil
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from curl_shard_pilot import validate_range
 from download_guard import ROOT, REV, MODEL, guarded, download_environment, write_state
 from verify_download import verify_file
 
 STAGE = ROOT/'range-recovery-v1'
 CHUNK = 32 * 2**20
+
+
+def fetch_batch(fetch, starts, workers):
+    if workers not in (1, 2):
+        raise ValueError('only one or two connections are qualified candidates')
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return list(pool.map(fetch, starts))
+
+
+def fetch_range(row, start, env, stage=STAGE):
+    end = min(start+CHUNK, row['size'])-1
+    for attempt in range(3):
+        stem = f"{row['path']}.{start}.{time.time_ns()}"
+        part, headers = stage/(stem+'.part'), stage/(stem+'.headers')
+        url = f"https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/{REV}/{row['path']}"
+        cmd = ['/usr/bin/curl', '--disable', '--http1.1', '--fail', '--location',
+               '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
+               '--header', 'Accept-Encoding: identity', '--range', f'{start}-{end}',
+               '--connect-timeout', '15', '--max-time', '90',
+               '--max-filesize', str(end-start+1), '--dump-header', str(headers),
+               '--output', str(part), url]
+        try:
+            guarded(cmd, f"RANGE:{row['path']}:{start}:{attempt}", env)
+        except RuntimeError as exc:
+            (stage/(stem+'.failure.json')).write_text(json.dumps(dict(error=str(exc)))+'\n')
+            if attempt == 2:
+                raise
+            time.sleep(2*(attempt+1))
+        else:
+            validate_range(headers.read_text(), start, end, row['size'], part.stat().st_size)
+            return start, end, part, headers
 
 
 def append_range(target, part, headers, start, end, total):
@@ -51,6 +83,9 @@ def main():
     lock = (STAGE/'controller.lock').open('a')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     env = download_environment(os.environ)
+    workers = int(os.environ.get('KT_RANGE_WORKERS', '1'))
+    if workers not in (1, 2):
+        raise ValueError('invalid connection count')
     # HF can fetch metadata after weights: fetch missing metadata from the same
     # frozen allowlist, verify its Git blob/SHA identity, never overwrite existing.
     for row in rows:
@@ -92,32 +127,14 @@ def main():
         if start > row['size']:
             raise ValueError('oversized stage')
         while start < row['size']:
-            end = min(start+CHUNK, row['size'])-1
-            for attempt in range(3):
-                stem = f"{row['path']}.{start}.{time.time_ns()}"
-                part, headers = STAGE/(stem+'.part'), STAGE/(stem+'.headers')
-                url = f"https://huggingface.co/{manifest['repo']}/resolve/{REV}/{row['path']}"
-                cmd = ['/usr/bin/curl', '--disable', '--http1.1', '--fail', '--location',
-                       '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
-                       '--header', 'Accept-Encoding: identity', '--range', f'{start}-{end}',
-                       '--connect-timeout', '15', '--max-time', '90',
-                       '--max-filesize', str(end-start+1), '--dump-header', str(headers),
-                       '--output', str(part), url]
-                try:
-                    guarded(cmd, f"RANGE:{row['path']}:{start}:{attempt}", env)
-                    append_range(target, part, headers.read_text(), start, end, row['size'])
-                except RuntimeError as exc:
-                    # Only subprocess/transport failure retries; invalid ranges hard-stop.
-                    (STAGE/(stem+'.failure.json')).write_text(json.dumps(dict(error=str(exc)))+'\n')
-                    if attempt == 2:
-                        raise
-                    time.sleep(2*(attempt+1))
-                else:
-                    part.unlink()  # fully represented in fsynced stage, headers retained
-                    break
-            start = end+1
-            (STAGE/'progress.json').write_text(json.dumps(dict(file=row['path'], bytes=start,
-                                                            total=row['size'], updated=time.time()))+'\n')
+            starts = list(range(start, min(start+workers*CHUNK, row['size']), CHUNK))
+            results = fetch_batch(lambda offset: fetch_range(row, offset, env), starts, workers)
+            for offset, end, part, headers in results:
+                append_range(target, part, headers.read_text(), offset, end, row['size'])
+                part.unlink()  # fsynced stage now owns these bytes; retain headers
+                start = end+1
+                (STAGE/'progress.json').write_text(json.dumps(dict(file=row['path'], bytes=start,
+                    total=row['size'], workers=workers, updated=time.time()))+'\n')
         guarded([sys.executable, str(Path(__file__).resolve()), '--publish', row['path']],
                 'SHARD_IDENTITY:'+row['path'], env)
     guarded([sys.executable, str(ROOT/'verify_download.py'), str(manifest_path),
