@@ -65,6 +65,56 @@ def publish(stage, model, row):
     return receipt
 
 
+def shard_wave(fetch, rows, workers):
+    if workers not in (1, 2, 4, 8) or len({r['path'] for r in rows}) != len(rows):
+        raise ValueError('invalid shard concurrency or duplicate ownership')
+    def attempt(row):
+        try:
+            fetch(row)
+        except RuntimeError:
+            return row
+        return None
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        return [row for row in pool.map(attempt, rows) if row is not None]
+
+
+def download_row(row, env, workers):
+    if (MODEL/row['path']).exists():
+        if (MODEL/row['path']).stat().st_size != row['size']:
+            raise ValueError('existing published file size mismatch')
+        return  # full final audit verifies all existing completed files
+    target = STAGE/row['path']
+    if not target.exists():
+        seeds = list((MODEL/'.cache/huggingface/download').glob('*.'+row['sha256']+'.incomplete'))
+        if len(seeds) > 1:
+            raise ValueError('ambiguous seed')
+        if seeds:
+            if seeds[0].stat().st_size > row['size']:
+                raise ValueError('oversized seed')
+            with seeds[0].open('rb') as source, target.open('xb') as out:
+                shutil.copyfileobj(source, out, 2**20)
+                out.flush(); os.fsync(out.fileno())
+    start = target.stat().st_size if target.exists() else 0
+    if start > row['size']:
+        raise ValueError('oversized stage')
+    while start < row['size']:
+        starts = list(range(start, min(start+workers*CHUNK, row['size']), CHUNK))
+        results = fetch_batch(lambda offset: fetch_range(row, offset, env), starts, workers)
+        for offset, end, part, headers in results:
+            append_range(target, part, headers.read_text(), offset, end, row['size'])
+            part.unlink()
+            start = end+1
+            progress = STAGE/(row['path']+'.progress.json')
+            tmp = progress.with_suffix('.tmp')
+            tmp.write_text(json.dumps(dict(file=row['path'], bytes=start,
+                total=row['size'], workers=workers, updated=time.time()))+'\n')
+            tmp.replace(progress)
+    # Identity failures must propagate as hard failures, not transport retries.
+    receipt = publish(STAGE, MODEL, row)
+    (STAGE/(row['path']+'.verified.json')).write_text(json.dumps(receipt)+'\n')
+    print(json.dumps(receipt), flush=True)
+
+
 def main():
     manifest_path = ROOT/'download_source.json'
     manifest = json.loads(manifest_path.read_text())
@@ -106,39 +156,20 @@ def main():
                 receipt = publish(meta, MODEL, row)
                 (meta/'receipt.json').write_text(json.dumps(receipt)+'\n')
             verify_file(MODEL, row)
-    for row in rows:
-        if not row['path'].endswith('.safetensors'):
-            continue
-        if (MODEL/row['path']).exists():
-            if (MODEL/row['path']).stat().st_size != row['size']:
-                raise ValueError('existing published file size mismatch')
-            continue  # full final audit verifies all existing completed files
-        target = STAGE/row['path']
-        if not target.exists():
-            seeds = list((MODEL/'.cache/huggingface/download').glob('*.'+row['sha256']+'.incomplete'))
-            if len(seeds) > 1:
-                raise ValueError('ambiguous seed')
-            if seeds:
-                if seeds[0].stat().st_size > row['size']:
-                    raise ValueError('oversized seed')
-                # Copy, not rename: original failure evidence/cache remains untouched.
-                with seeds[0].open('rb') as source, target.open('xb') as out:
-                    shutil.copyfileobj(source, out, 2**20)
-                    out.flush(); os.fsync(out.fileno())
-        start = target.stat().st_size if target.exists() else 0
-        if start > row['size']:
-            raise ValueError('oversized stage')
-        while start < row['size']:
-            starts = list(range(start, min(start+workers*CHUNK, row['size']), CHUNK))
-            results = fetch_batch(lambda offset: fetch_range(row, offset, env), starts, workers)
-            for offset, end, part, headers in results:
-                append_range(target, part, headers.read_text(), offset, end, row['size'])
-                part.unlink()  # fsynced stage now owns these bytes; retain headers
-                start = end+1
-                (STAGE/'progress.json').write_text(json.dumps(dict(file=row['path'], bytes=start,
-                    total=row['size'], workers=workers, updated=time.time()))+'\n')
-        guarded([sys.executable, str(Path(__file__).resolve()), '--publish', row['path']],
-                'SHARD_IDENTITY:'+row['path'], env)
+    shard_workers = int(os.environ.get('KT_SHARD_WORKERS', '1'))
+    if shard_workers not in (1, 2, 4, 8):
+        raise ValueError('invalid shard count')
+    pending = [row for row in rows if row['path'].endswith('.safetensors')]
+    for concurrency in [n for n in (8, 4, 2, 1) if n <= shard_workers]:
+        write_state(status='SHARD_WAVE', shards=concurrency, connections_per_shard=workers)
+        pending = shard_wave(lambda row: download_row(row, env, workers), pending, concurrency)
+        (STAGE/'wave-summary.json').write_text(json.dumps(dict(concurrency=concurrency,
+            failed=[r['path'] for r in pending], updated=time.time()))+'\n')
+        if not pending:
+            break
+        time.sleep(10)
+    if pending:
+        raise RuntimeError('transport retry budget exhausted: '+str([r['path'] for r in pending]))
     guarded([sys.executable, str(ROOT/'verify_download.py'), str(manifest_path),
              str(MODEL), str(ROOT/'evidence')], 'IDENTITY_VERIFY', env)
     write_state(status='DOWNLOAD_IDENTITY_PASS', model_execution='NOT_RUN')

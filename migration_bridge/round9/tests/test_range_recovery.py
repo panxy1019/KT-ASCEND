@@ -8,6 +8,26 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 
 class RecoveryTest(unittest.TestCase):
+    def test_eight_shard_wave_preserves_success_and_isolates_transport_failure(self):
+        import range_recovery as recovery
+        barrier = threading.Barrier(8)
+        def fetch(row):
+            barrier.wait(timeout=2)
+            if row['path'] == '3':
+                raise RuntimeError('transport')
+        rows = [dict(path=str(i)) for i in range(8)]
+        failures = recovery.shard_wave(fetch, rows, 8)
+        self.assertEqual([r['path'] for r in failures], ['3'])
+        with self.assertRaises(ValueError):
+            recovery.shard_wave(fetch, rows+rows, 8)
+
+    def test_integrity_failure_is_not_transport_retry(self):
+        import range_recovery as recovery
+        def fetch(row):
+            raise ValueError('SHA mismatch')
+        with self.assertRaises(ValueError):
+            recovery.shard_wave(fetch, [dict(path='x')], 1)
+
     def test_tiny_tail_allows_redirect_but_validates_exact_body(self):
         import range_recovery as recovery
         with tempfile.TemporaryDirectory() as tmp:
