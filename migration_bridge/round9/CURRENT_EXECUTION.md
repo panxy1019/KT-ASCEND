@@ -1,5 +1,23 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 07:20 UTC — destination identity PASS; card7 sharing assessed
+
+Read17_CARD7_SHARED_TEST_ASSESSMENT.md. A3replication-state is
+REPLICATION_IDENTITY_PASS. Destination receipt confirms144files/131shards/
+1658tensors/359999963128payloadbytes and exact frozenmanifestSHA; all receipt
+file statuses/names/sizes match manifest and published directory sizes.
+No redundant full-weight hash run; model execution remainsNOT_RUN.
+
+User proposes sharing card7/physical14–15 with active training. Both dies have
+device-shareFalse; chip1 has0vNPU. Physical15 process2657094 belongs to privileged
+mzy-train container exposing all16devices. HBM usage~13–14%, variableAICore;
+hardware headroom is not reserved/isolation-qualified. Tentative targetphysical15
+for2–4GiB bounded operator probes AFTER supported access/isolation is established.
+No device mode changes, training modifications or NPU test launch in this audit.
+Shared correctness evidence must be labeled; formalperf/fullmodel admission
+still separate. Old blanket exclusive requirement is relaxed only for assessed
+bounded correctness work, not for performance claims or uncontrolled sharing.
+
 ## 2026-09-20 — A3 development resources supplemented
 
 Read `16_A3_DEVELOPMENT_RESOURCE_MANIFEST.md`. In addition to the background
