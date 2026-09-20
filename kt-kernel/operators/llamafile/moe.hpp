@@ -188,7 +188,11 @@ class LLAMA_MOE_TP {
 
   LLAMA_MOE_TP(GeneralMOEConfig config, int tp_part_idx) : config_(config), tp_part_idx(tp_part_idx) {
     fp32_tp_partial_ = config.pool->config.subpool_count > 1 &&
-        config.gate_type == GGML_TYPE_F32 && config.up_type == GGML_TYPE_F32 && config.down_type == GGML_TYPE_F32;
+        ((config.gate_type == GGML_TYPE_F32 && config.up_type == GGML_TYPE_F32 &&
+          config.down_type == GGML_TYPE_F32) ||
+         (llamafile_bf16_f32_tail_supported() &&
+          config.gate_type == GGML_TYPE_BF16 && config.up_type == GGML_TYPE_BF16 &&
+          config.down_type == GGML_TYPE_BF16));
     MemoryRequest mem_requests;
     mem_requests.append_pointer(&s_input_fp32_, sizeof(float) * config_.hidden_size);
     mem_requests.append_pointer(
@@ -844,9 +848,13 @@ class LLAMA_MOE_TP {
 #endif
 
     int m_block = QK_K;
-    const bool f32_tail = config_.gate_type == GGML_TYPE_F32 &&
-                          config_.up_type == GGML_TYPE_F32 && config_.down_type == GGML_TYPE_F32;
-    if (!f32_tail && config_.intermediate_size % m_block)
+    const bool unblocked_tail =
+        (config_.gate_type == GGML_TYPE_F32 && config_.up_type == GGML_TYPE_F32 &&
+         config_.down_type == GGML_TYPE_F32) ||
+        (llamafile_bf16_f32_tail_supported() &&
+         config_.gate_type == GGML_TYPE_BF16 && config_.up_type == GGML_TYPE_BF16 &&
+         config_.down_type == GGML_TYPE_BF16);
+    if (!unblocked_tail && config_.intermediate_size % m_block)
       throw std::runtime_error("blocked LLAMAFILE forward_many requires 256 alignment");
     int nth = (config_.intermediate_size + m_block - 1) / m_block;
     // printf("nth: %d, m_block: %d, activated_expert: %d\n", nth, m_block, activated_expert);
@@ -878,7 +886,7 @@ class LLAMA_MOE_TP {
                           config_.intermediate_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.gate_type,
                           kt_effective_vec_dot_type((ggml_type)config_.gate_type), GGML_TYPE_F32,
                           GGML_PREC_DEFAULT);
-          if (f32_tail && !gate_ok) throw std::runtime_error("LLAMAFILE F32 gate tile unsupported");
+          if (unblocked_tail && !gate_ok) throw std::runtime_error("LLAMAFILE unblocked gate tile unsupported");
           void* up_input_ptr = m_local_up_input_ptr_[expert_idx];
 
           void* up_proj_ptr = (uint8_t*)m_local_up_proj_ + (expert_idx * config_.intermediate_size + ith * m_block) *
@@ -893,7 +901,7 @@ class LLAMA_MOE_TP {
               config_.hidden_size / ggml_blck_size((ggml_type)config_.up_type), up_output_ptr,
               config_.intermediate_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.up_type,
               kt_effective_vec_dot_type((ggml_type)config_.up_type), GGML_TYPE_F32, GGML_PREC_DEFAULT);
-          if (f32_tail && !up_ok) throw std::runtime_error("LLAMAFILE F32 up tile unsupported");
+          if (unblocked_tail && !up_ok) throw std::runtime_error("LLAMAFILE unblocked up tile unsupported");
           for (int i = 0; i < m_local_num_[expert_idx]; i++) {
             for (int j = ith * m_block; j < ith * m_block + block_len; j++) {
               const int offset = i * config_.intermediate_size + j;
@@ -932,7 +940,7 @@ class LLAMA_MOE_TP {
 #endif
 
     m_block = QK_K;
-    nth = f32_tail ? (config_.hidden_size + m_block - 1) / m_block : config_.hidden_size / m_block;
+    nth = unblocked_tail ? (config_.hidden_size + m_block - 1) / m_block : config_.hidden_size / m_block;
     pool->do_work_stealing_job(
         nth * activated_expert, nullptr,
         [&](int task_id) {
@@ -956,7 +964,7 @@ class LLAMA_MOE_TP {
                           config_.hidden_size, 0, 1, GGML_TASK_TYPE_COMPUTE, (ggml_type)config_.down_type,
                           kt_effective_vec_dot_type((ggml_type)config_.down_type), GGML_TYPE_F32,
                           GGML_PREC_DEFAULT);
-          if (f32_tail && !down_ok) throw std::runtime_error("LLAMAFILE F32 down tile unsupported");
+          if (unblocked_tail && !down_ok) throw std::runtime_error("LLAMAFILE unblocked down tile unsupported");
         },
         nullptr);
 

@@ -80,17 +80,21 @@ class TP_MOE_Common : public MoE_Interface {
 #endif
 
     if (is_llamafile) {
-      const bool f32_tp = tp_count > 1 && config.gate_type == GGML_TYPE_F32 &&
-                          config.up_type == GGML_TYPE_F32 && config.down_type == GGML_TYPE_F32;
-      if (f32_tp) {
+      const bool unblocked_tp = tp_count > 1 &&
+          ((config.gate_type == GGML_TYPE_F32 && config.up_type == GGML_TYPE_F32 &&
+            config.down_type == GGML_TYPE_F32) ||
+           (llamafile_bf16_f32_tail_supported() &&
+            config.gate_type == GGML_TYPE_BF16 && config.up_type == GGML_TYPE_BF16 &&
+            config.down_type == GGML_TYPE_BF16));
+      if (unblocked_tp) {
         if (config.m_block != 32 || config.hidden_size % 32)
-          throw std::invalid_argument("F32 TP requires m_block=32 and aligned hidden size");
+          throw std::invalid_argument("unblocked TP requires m_block=32 and aligned hidden size");
         for (const auto& slice : make_llamafile_tp_slices(config.intermediate_size, tp_count, true)) {
           auto part = config;
           part.intermediate_size = slice.length;
           tps.push_back(nullptr);
           tp_configs.push_back(part);
-          printf("F32 tail-safe TP: offset=%d length=%d FP32 partial\n", slice.offset,slice.length);
+          printf("unblocked tail-safe TP: offset=%d length=%d FP32 partial\n", slice.offset,slice.length);
         }
       } else {
       // For Llamafile backend: use QK_K-aligned TP splitting
