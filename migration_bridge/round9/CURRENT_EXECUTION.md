@@ -1,3 +1,13 @@
+## Live continuation — 2026-09-20 13:57 UTC
+
+Formal f02 model initialization now passes original model_path and binds owned
+synchronous PLE reader after strict load audit. Red reproduced missing binding;
+green metadata/row read + adapter-v5 all36 PASS. Shared expert/final mixer
+report30 PASS. Actual layer0 GDN+GR+router/TopK+KTEP+shared integration probe is
+being implemented. Latest physical15 training is active (~8969MiB HBM observed);
+current idle assumption is invalid. Full model NOT_RUN, resource envelope still
+unresolved; both scheduled tasks PAUSED. Last commits c08d35754/fbc24db89.
+
 ## Live continuation — 2026-09-20 13:47 UTC
 
 Pool boundary8 PASS; real GDN/PLE/QSA-indexer/full-attention adapter v4 36 runs

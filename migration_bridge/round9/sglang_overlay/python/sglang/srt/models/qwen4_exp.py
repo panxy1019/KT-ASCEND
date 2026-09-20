@@ -80,6 +80,31 @@ class OriginalPLETable(Protocol):
         """Return BF16 rows with shape ``[*row_ids.shape, head_dim]``."""
 
 
+class CheckpointPLETable:
+    """Synchronous original BF16 row reader owned by the loaded model.
+
+    Full checkpoint identity and resource admission are caller prerequisites;
+    this reader validates shard structure and never materializes the full table.
+    """
+
+    def __init__(self, model_path):
+        from sglang.srt.layers.round9.ple_rows import ShardedBF16Rows
+        self.reader = ShardedBF16Rows(model_path)
+
+    def gather_rows(self, row_ids):
+        if row_ids.dtype not in (torch.int32, torch.int64):
+            raise TypeError("PLE row IDs must be integers")
+        shape = (*row_ids.shape, self.reader.width)
+        if row_ids.numel() == 0:
+            return torch.empty(shape, dtype=torch.bfloat16, device=row_ids.device)
+        raw = self.reader.gather_bytes(row_ids.detach().cpu().reshape(-1).tolist())
+        staged = torch.frombuffer(bytearray(raw), dtype=torch.bfloat16).reshape(shape)
+        return staged.to(device=row_ids.device)
+
+    def close(self):
+        self.reader.close()
+
+
 def _missing_pool(owner, names: Tuple[str, ...], component: str) -> None:
     missing = [name for name in names if not hasattr(owner, name)]
     if missing:
@@ -757,8 +782,10 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
         "gate_up_proj": ["gate_proj", "up_proj"],
     }
 
-    def __init__(self, config: Qwen4ExpConfig, quant_config=None, prefix=""):
+    def __init__(self, config: Qwen4ExpConfig, quant_config=None, prefix="", model_path=None):
         super().__init__()
+        self.original_model_path = model_path
+        self._owned_ple_table = None
         self.outer_config = config
         self.config = config.text_config
         self.pp_group = get_pp_group()
@@ -964,6 +991,21 @@ class Qwen4ExpForConditionalGeneration(nn.Module):
             expected_rows = max(0, min(shard_size, expected_ple_rows - shard * shard_size))
             if actual_rows != expected_rows:
                 raise RuntimeError(f"PLE shard {shard} row boundary mismatch")
+        if self.original_model_path is None:
+            raise RuntimeError("Round9 model loader must supply the original local model_path")
+        table = CheckpointPLETable(self.original_model_path)
+        if table.reader.total_rows != expected_ple_rows:
+            table.close()
+            raise RuntimeError("bound PLE table differs from the audited checkpoint rows")
+        try:
+            self.bind_original_ple_table(table)
+        except BaseException:
+            table.close()
+            raise
+        previous = self._owned_ple_table
+        self._owned_ple_table = table
+        if previous is not None:
+            previous.close()
         self.weight_load_audit = audit
         return audit.loaded
 

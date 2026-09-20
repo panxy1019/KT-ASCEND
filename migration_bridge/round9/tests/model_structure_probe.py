@@ -24,6 +24,8 @@ from sglang.srt.distributed import init_distributed_environment, initialize_mode
 from sglang.srt.layers.dp_attention import initialize_dp_attention
 from sglang.srt.layers.moe.utils import initialize_moe_config
 from sglang.srt.models.qwen4_exp import Qwen4ExpForConditionalGeneration
+from sglang.srt.model_loader.loader import _initialize_model
+from sglang.srt.configs.load_config import LoadConfig
 
 report = {"status": "RUNNING", "scope": "META_STRUCTURE_ONLY_NO_WEIGHT_LOAD"}
 try:
@@ -42,7 +44,7 @@ try:
     initialize_moe_config(args)
     torch.set_default_dtype(torch.bfloat16)
     with torch.device("meta"):
-        model = Qwen4ExpForConditionalGeneration(config.hf_config)
+        model = _initialize_model(config, LoadConfig())
     assert len(model.model.layers) == 48
     parameters = dict(model.named_parameters())
     decay = [v for k, v in parameters.items() if k.endswith(".A_log")]
@@ -86,6 +88,12 @@ try:
                     value = torch.empty(entry["shape"], dtype=dtype_map[entry["dtype"]], device="meta")
                 yield name, value
         loaded = model.load_weights(metadata_weights())
+        ple = model.model.layers[1].ple
+        assert ple._table is not None, "real model loader did not bind original PLE table"
+        sample = ple._table.gather_rows(torch.tensor([[0, 320001445]], dtype=torch.long))
+        assert sample.shape == (1, 2, 160) and sample.dtype == torch.bfloat16
+        assert torch.isfinite(sample).all()
+        report["original_ple_table_bound"] = True
         report.update(status="PASS_META_STRUCTURE_AND_LOADER_MAP_ONLY",
                       loaded_destinations=len(loaded), checkpoint_tensors=len(weight_map),
                       ple_shards=len(model.weight_load_audit.ple_shards))

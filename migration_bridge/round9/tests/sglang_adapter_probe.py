@@ -36,7 +36,6 @@ if args.output.exists():
 base = pathlib.Path(__file__).parents[1]
 sys.path[:0] = [str(base), str(base / "tools")]
 from probe_identity import verify_probe_identity  # noqa: E402
-from runtime.ple_rows import ShardedBF16Rows  # noqa: E402
 
 
 revision = "de4b8e4d43b917e7706784d8bb445c9af86a3540"
@@ -91,6 +90,7 @@ from sglang.srt.model_executor.forward_batch_info import (  # noqa: E402
     ForwardMode,
 )
 from sglang.srt.models.qwen4_exp import (  # noqa: E402
+    CheckpointPLETable,
     Qwen4ReferenceGatedDeltaNet,
     Qwen4ReferenceIndexer,
     Qwen4ReferencePLE,
@@ -182,19 +182,6 @@ def load_ple_buffers(module, checkpoint_prefix):
         destination.copy_(value.to(device=destination.device, dtype=destination.dtype))
         result[name] = value.clone()
     return result
-
-
-class OriginalTable:
-    def __init__(self, reader):
-        self.reader = reader
-
-    def gather_rows(self, row_ids):
-        shape = tuple(row_ids.shape) + (self.reader.width,)
-        ids = row_ids.detach().cpu().reshape(-1).tolist()
-        raw = self.reader.gather_bytes(ids)
-        return torch.frombuffer(bytearray(raw), dtype=torch.bfloat16).reshape(shape).to(
-            row_ids.device
-        )
 
 
 source_cache = config.mamba2_cache_params
@@ -543,9 +530,9 @@ report = {
     "rows": [],
     "repeat_hashes": {},
 }
-table_reader = ShardedBF16Rows(args.model)
+table_reader = CheckpointPLETable(args.model)
 try:
-    ple.bind_original_table(OriginalTable(table_reader))
+    ple.bind_original_table(table_reader)
     with torch.no_grad():
         runners = [("gdn_layer0", run_gdn), ("ple_layer1", run_ple), ("qsa_indexer_layer3", run_qsa)]
         if args.full_attention:

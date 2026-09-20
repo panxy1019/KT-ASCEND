@@ -63,3 +63,20 @@ Real full-model loading, runner PLE table binding, shared expert/router boundary
 final GR mixer, scheduler execution and full-model resource admission remain.
 Concurrent training envelope unresolved; idle telemetry is not a reservation.
 Both timers PAUSED. No full-model PASS, generation or CMMLU claim.
+
+## Formal loader PLE binding follow-up
+
+The real f02 `_initialize_model` entry, rather than direct construction, first
+reproduced `real model loader did not bind original PLE table` after successful
+metadata loading. Patch0003 passes the original local model_path to Qwen4.
+After all load audits succeed, the model owns a CheckpointPLETable, validates
+its row count against the audited padded vocabulary and binds every PLE layer.
+It closes any previous owned reader on replacement. Reads remain synchronous,
+BF16 and bounded to requested rows; no complete PLE table is allocated.
+
+The green actual initialization/metadata audit binds and reads first/last logical
+rows. Missing Q and shifted PLE shard negatives still reject. Adapter v5 replaces
+the table fixture with the production reader: all36 adapter runs PASS, exit0.
+All three patches apply to a fresh f02 archive. Evidence retains red/green logs,
+receipts, exact revised probes, container states and updated source hashes.
+This closes table binding, not actual full-model materialization or admission.
