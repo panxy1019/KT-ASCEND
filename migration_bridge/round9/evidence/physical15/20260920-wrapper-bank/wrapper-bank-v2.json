@@ -1,0 +1,55 @@
+{
+  "status": "FAIL",
+  "scope": "C64_CPU_WRAPPER_PARTIAL_NPU_TRANSFER_ONLY",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "bank_sha256": "731679cb66e83c7c9a2b4b2ae29af68581729e194d8d495530f2aec1342bd97b",
+  "cpu_workers": 64,
+  "numa_nodes": [
+    6,
+    7
+  ],
+  "resident_mask": "logical_id_mod8_eq0",
+  "bf16_numerical_compat": true,
+  "rel_l2_gate": 0.01,
+  "rows": [
+    {
+      "tokens": 1,
+      "kind": "mixed",
+      "relative_l2": 2.5703761252771073e-07,
+      "hashes": [
+        "23a578686b433691fd8c00eae8718f605e4456558339feee0f4e94c237d4b01f",
+        "23a578686b433691fd8c00eae8718f605e4456558339feee0f4e94c237d4b01f",
+        "23a578686b433691fd8c00eae8718f605e4456558339feee0f4e94c237d4b01f"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "resident_only",
+      "relative_l2": 0.0,
+      "hashes": [
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652",
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652",
+        "84ff92691f909a05b224e1c56abb4864f01b4f8e3c854e4bb4c7baf1d3f6d652"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "repeated_cpu",
+      "relative_l2": 0.16087329387664795,
+      "hashes": [
+        "f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa",
+        "f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa",
+        "f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa"
+      ]
+    }
+  ],
+  "native_sha256": "d4f2dd80b85bb5bd09300e5c9001117c0a35f46dd70041e0ca0425de3bd9ac55",
+  "error": "AssertionError({'tokens': 1, 'kind': 'repeated_cpu', 'relative_l2': 0.16087329387664795, 'hashes': ['f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa', 'f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa', 'f74b10ba3e28f30d430d723eb44070c84de87c44f1e5a9272392d749360c0daa']})"
+}

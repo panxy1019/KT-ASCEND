@@ -175,6 +175,7 @@ class LLAMA_MOE_TP {
   std::vector<std::vector<int>> m_local_pos_;          // [group_max_len, routed_expert_num]
   std::vector<int> m_local_num_;                       // [expert_num]
   std::vector<int> m_expert_id_map_;                   // [expert_num]
+  std::vector<int> s_route_position_;                 // active entry -> original top-k position
   std::vector<uint8_t*> m_local_gate_input_ptr_;       // [expert_num]
   std::vector<uint8_t*> m_local_up_input_ptr_;         // [expert_num]
   std::vector<float*> m_local_gate_output_ptr_;        // [expert_num]
@@ -272,6 +273,7 @@ class LLAMA_MOE_TP {
       m_local_pos_[i].resize(config_.num_experts_per_tok);
     }
     m_expert_id_map_.resize(config_.expert_num);
+    s_route_position_.resize(config_.expert_num);
     m_local_num_.resize(config_.expert_num);
     m_local_gate_input_ptr_.resize(config_.expert_num);
     m_local_up_input_ptr_.resize(config_.expert_num);
@@ -532,6 +534,7 @@ class LLAMA_MOE_TP {
         continue;
       }
       m_expert_id_map_[activated_expert] = expert_ids[i];
+      s_route_position_[activated_expert] = i;
       activated_expert++;
     }
 
@@ -652,13 +655,9 @@ class LLAMA_MOE_TP {
                 kt_effective_vec_dot_type((ggml_type)config_.down_type), GGML_TYPE_F32,
                 GGML_PREC_DEFAULT);
 
-            float expert_weight = 0.0f;
-            for (int j = 0; j < k; j++) {
-              if (expert_ids[j] == expert_id) {
-                expert_weight = weights[j];
-                break;
-              }
-            }
+            // Repeated expert IDs still represent distinct routed contributions.
+            // Looking up by ID would reuse the first route's weight for each entry.
+            float expert_weight = weights[s_route_position_[expert_idx]];
             if (config_.bf16_numerical_compat) {
               expert_weight = round_to_bf16_value(expert_weight);
             }
