@@ -1,5 +1,16 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — A3 development resources supplemented
+
+Read `16_A3_DEVELOPMENT_RESOURCE_MANIFEST.md`. In addition to the background
+model replication, A3 now has a verified Round8 compact handoff archive and the
+final `.22` source download state/manifest/verifier/identity receipt. Existing
+Round9 archive and full Git bundle remain verified. Large Qwen3.5 weights/GGUF,
+download pilots/caches and the unqualified old runtime image were deliberately
+not copied. The latter is frozen by digest only and may be exported after R9-A
+selects an actual Qwen3.8 runtime base. Model replication remains automatic and
+must reach `REPLICATION_IDENTITY_PASS`; A3 model execution is still `NOT_RUN`.
+
 ## 2026-09-20 — authorized post-download A3 replication
 
 User requested one verified copy under110.123.0.3:/home/admin/models and the
