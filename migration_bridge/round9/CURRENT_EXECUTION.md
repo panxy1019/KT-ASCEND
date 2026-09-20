@@ -1,3 +1,36 @@
+## Live trialv5 — 2026-09-20 14:54 UTC
+
+Trialv4 stopped duringconstruction by non-atomicboard/process subtraction.
+Training6124MiB unchanged; board28592-owned10864 falselyread17728nonowned.
+Guard repaired:prestartsystembaseline+trainingPID estimate, sameimmediate
+absolute board55.5GiB/owned40.5GiB limits;4regressiontestsPASS. See33.
+**kt-round9-full-model-v5 RUNNING**, corrected4098context/4100pool foractual
+4096workload, observerON, liveguardarmed. NeedfirstHTTPready,cleanrestart4
+againstv3compact then3840+256boundary. Do notstartduplicatefullserver.
+V3compact32/cancel/canariesPASS; CMMLU256frozen NOTSCORED;observerOFFpending.
+BothschedulesPAUSED;training4069720untouched.
+
+## Full-model retry with effective4096 slots — 2026-09-20 14:51 UTC
+
+Trialv3 compact32, activeabort+statereuse and fourknownanswercanaries ALLPASS.
+OwnedHBMpeak39850MiB; torchpeakallocated40705135616/reserved41502638080bytes;
+cgrouppeak334439145472bytes,failcnt0. Exact3840+256 request rejected before
+execution duef02guard slots; NOTcapacityPASS. See report32 for formula.
+Trialv3 stopped intentionally; allfinalevidence saved. **kt-round9-full-model-v4
+RUNNING** with internalcontext4098/tokenpool4100 for actual4096workload,
+same321MiB roundedstatebudget. Liveguardarmed; observerON. NeedwaitHTTPready,
+cleanrestart4 againstv3compact, thenactual3840+256context request. Afterwards
+observerOFF comparison and CMMLU256reference remain. BothschedulesPAUSED.
+
+## Full-model compact32 PASS — 2026-09-20 14:48 UTC
+
+Trialv3 remainsrunning with liveguard. compact-v1 PASS32/32, fourprompts,
+all repeated/prefix token trajectories identical, finiteoutputlogprobs.
+Protocolsha f31bddd6d1b37bf5b53e162dce61eb4abd1aa91181c59e9793bcdb125c1e8831.
+Actualactivecancel/state-reuse probe running, then3840+256token resource request.
+CMMLU manifest frozen incommite66726f2f;ackwritten;NOTSCORED.
+No restart/observer/4096resource PASS yet. Do notduplicatefullserver.
+
 ## First real full-model forward PASS — 2026-09-20 14:44 UTC
 
 Trialv3 full load and actualHello+4decodeHTTP PASS, finiteoutputlogprobs.

@@ -50,3 +50,24 @@ Real dispatch RED-v3 reproduced the exact wrong pool assertion. GREEN-v1
 passed both real-constructor controls, including12QSA full layers versus48
 ordinary Ascend layers and live PLE/GDN/QSA writes. Container exited0.
 Trialv3 starts with this source and refreshed independent monitor/admission.
+
+## Effective context correction after trialv3
+
+Trialv3 first HTTP prefill/decode passed, compact32 passed, and active streaming
+abort followed by a baseline request produced identical32 output IDs. The first
+3840+256 resource request was rejected by the tokenizer before model execution.
+Frozen f02 uses strict input+output<context_length; TpModelWorker additionally
+sets max_req_len=min(context_length-1,max_token_pool_size-1), and scheduler caps
+outputs to max_req_len-input-1. Thus profile4096/4096 actually caps total input
+plus output at4094. Do not report an actual4096 capacity from those flags.
+
+For the same4096-token workload envelope, revised internal context_length4098
+and page4-aligned max_total_tokens4100 provide the required two guard slots.
+Request pool gets4102slots; ordinary KV gets4104 physical token slots and1026
+QSA groups. Known state payload increases by about0.097MiB, still within the
+previous321MiB rounded state budget. Precision/Q64/C64/chunk32/batch1/TP1 and
+allocator/monitor limits are unchanged. The rejected exact-boundary request is
+retained. Re-admit and restart with the new profile; actual3840+256 must pass
+before claiming the4096 workload tier. The observer/restart comparison uses the
+same compact input IDs and output budgets; these short requests do not touch
+the newly reserved tail slots.

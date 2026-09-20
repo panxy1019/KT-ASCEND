@@ -59,6 +59,8 @@ profile=base/'runtime/profiles/q64_bf16_c64_sync_physical15.json'
 profile_data=json.loads(profile.read_text())
 assert profile_data['kt_cpuinfer']==64 and profile_data['kt_threadpool_count']==2
 assert profile_data['kt_numa_nodes']==[6,7]
+assert profile_data['context_length']==4098 and profile_data['max_total_tokens']==4100
+assert min(profile_data['context_length']-1,profile_data['max_total_tokens']-1)-1==4096
 #Physical representatives demonstrate topology capacity; not exclusive allocation.
 rows=[list(map(int,l.split(','))) for l in cmd(['lscpu','-p=CPU,CORE,SOCKET,NODE']).splitlines() if not l.startswith('#')]
 vis=[r for r in rows if r[0] in range(480,640)]

@@ -5,7 +5,7 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == 'parse_physical15']
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
@@ -21,6 +21,16 @@ class MonitorParserTests(unittest.TestCase):
         for raw in ('', '| 1 15 | 0000:83:00.0 | 0 / 0 | 100 / 32768 |'):
             with self.assertRaises(RuntimeError):
                 ns['parse_physical15'](raw)
+
+class MonitorBudgetTests(unittest.TestCase):
+    def test_async_board_process_counters_do_not_invent_training_growth(self):
+        #Actual v4 sample during owned allocations; training stayed at6124MiB.
+        self.assertFalse(ns['hbm_budget_exceeded'](28592,10864,6124,2845))
+
+    def test_absolute_board_owned_and_training_bounds_remain_immediate(self):
+        for values in [(56833,40000,6124,2845),(48000,41473,6124,2845),
+                       (30000,10000,12516,2845)]:
+            self.assertTrue(ns['hbm_budget_exceeded'](*values))
 
 if __name__ == '__main__':
     unittest.main()

@@ -18,6 +18,7 @@ if not re.fullmatch(r'kt-round9-full-model-v[0-9]+', a.container):
 if a.output.exists() or a.ready_file.exists():
     raise FileExistsError(a.output)
 started = time.monotonic()
+system_baseline_mib = None
 
 
 def command(args):
@@ -46,6 +47,13 @@ def parse_physical15(raw):
     return used, processes
 
 
+def hbm_budget_exceeded(used, owned, training, system_baseline):
+    #npu-smi board and process counters are not atomic. Do not infer a training
+    #spike by subtracting an asynchronously updated owned counter from board use.
+    #Keep absolute board/owned bounds and the pre-start system+training bound.
+    return used > 56832 or owned > 41472 or training + system_baseline > 15360
+
+
 while True:
     try:
         state = json.loads(command(['docker','inspect',a.container]))[0]
@@ -65,8 +73,16 @@ while True:
             raise RuntimeError(f'unbound physical15 process identity: {sorted(outsiders)}')
         training = sum(processes.get(pid,0) for pid in a.training_pids)
         owned = sum(value for pid,value in processes.items() if pid in owned_pids)
+        if system_baseline_mib is None:
+            if not waiting or owned != 0:
+                raise RuntimeError('guard must establish baseline before container start')
+            system_baseline_mib = used - training
+            if not 0 <= system_baseline_mib < 15360:
+                raise RuntimeError('invalid pre-start system HBM baseline')
         item = {'time':time.time(),'hbm_used_mib':used,'training_process_mib':training,
                 'owned_process_mib':owned,'nonowned_board_mib':used-owned,
+                'system_baseline_mib':system_baseline_mib,
+                'estimated_nonowned_board_mib':training+system_baseline_mib,
                 'container_status':state['State']['Status'],'processes':processes,'raw_npu_smi':raw}
         meminfo = dict(line.split(':',1) for line in pathlib.Path('/proc/meminfo').read_text().splitlines())
         item['host_mem_available_kib'] = int(meminfo['MemAvailable'].split()[0])
@@ -97,7 +113,7 @@ while True:
             break
         #Physical-board domain; 15GiB nonowned envelope includes system baseline.
         #Stop0.5GiB before41GiB owned/56GiB total budget, not at the boundary.
-        if used > 56832 or used-owned > 15360 or owned > 41472:
+        if hbm_budget_exceeded(used, owned, training, system_baseline_mib):
             stop_owned('shared HBM budget exceeded')
             break
         if waiting and not a.ready_file.exists():
