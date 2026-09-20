@@ -1,8 +1,11 @@
 """Fresh original-weight Round9 reference on the unchanged frozen256 items."""
-import argparse,hashlib,json,math,pathlib,time,urllib.request
+import argparse,hashlib,json,math,pathlib,re,time,urllib.request
 REVISION='de4b8e4d43b917e7706784d8bb445c9af86a3540'
+FROZEN_SHA='88efae7d68e7edf644add12909db89712dc001046b8624801dbb8ce7a8804858'
+FREEZE_COMMIT='e66726f2f6a07aad85a974a15e0aba7604a20852'
+PROFILE_SHA='2a88116fb6a67f31149494104106857a88ba4fcf4078a6b2606b3d1fe64e69c4'
 SOURCE_SHA='bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04'
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['freeze','run']);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--source',type=pathlib.Path);p.add_argument('--compact',type=pathlib.Path);p.add_argument('--start',type=int,default=0);p.add_argument('--count',type=int,default=256);a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['freeze','run']);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--source',type=pathlib.Path);p.add_argument('--compact',type=pathlib.Path);p.add_argument('--restart',type=pathlib.Path);p.add_argument('--start',type=int,default=0);p.add_argument('--count',type=int,default=256);a=p.parse_args()
 model=pathlib.Path('/models')/REVISION
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 def write(path,x):path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
@@ -22,15 +25,23 @@ if a.stage=='freeze':
  print(json.dumps(dict(status='FROZEN_NOT_SCORED',manifest_sha256=sha(a.output/'manifest.json'),count=256,min_tokens=min(len(r['input_ids']) for r in rows),max_tokens=max(len(r['input_ids']) for r in rows))),flush=True)
 else:
  assert json.loads((a.compact/'summary.json').read_text())['status']=='PASS_COMPACT32'
- ack=json.loads((a.output/'freeze-ack.json').read_text());assert ack['manifest_sha256']==sha(a.output/'manifest.json') and len(ack['local_commit'])==40
+ ack=json.loads((a.output/'freeze-ack.json').read_text());assert ack['manifest_sha256']==sha(a.output/'manifest.json')==FROZEN_SHA and ack['local_commit']==FREEZE_COMMIT
  manifest=json.loads((a.output/'manifest.json').read_text());assert manifest['revision']==REVISION and manifest['source_sha256']==SOURCE_SHA
  assert sha(model/'tokenizer.json')==manifest['tokenizer_sha256'] and sha(model/'tokenizer_config.json')==manifest['tokenizer_config_sha256']
  assert 0 <= a.start < 256 and 0 < a.count <= 256-a.start
  admission=json.loads((a.output.parent/'preflight/admission.json').read_text())
  container=json.loads((a.output.parent/'container-created.json').read_text())
- assert 'ROUND9_MEMORY_OBSERVER=0' in container['Config']['Env']
- runtime_identity=dict(implementation_sha256=admission['implementation_sha256'],profile_sha256=admission['profile_sha256'],image=container['Image'],observer=False)
- correct=0;predictions=[];summary={'status':'RUNNING','manifest_sha256':sha(a.output/'manifest.json'),'freeze_ack':ack,'start':a.start,'count':a.count,'driver_sha256':sha(pathlib.Path(__file__)),'runtime_identity':runtime_identity}
+ assert [v for v in container['Config']['Env'] if v.startswith('ROUND9_MEMORY_OBSERVER=')]==['ROUND9_MEMORY_OBSERVER=0']
+ assert admission['status'] in ['PASS','STATIC_BOUND_READY_FOR_MONITORED_FULL_MODEL_RUN']
+ assert re.fullmatch('[0-9a-f]{64}',admission['implementation_sha256']) and admission['profile_sha256']==PROFILE_SHA
+ assert re.fullmatch('sha256:[0-9a-f]{64}',container['Image'])
+ assert a.restart and a.restart.resolve().parent==a.output.resolve().parent
+ restart=json.loads((a.restart/'summary.json').read_text())
+ assert restart['status']=='PASS_RESTART4' and restart['container_id']==container['Id']
+ assert restart['implementation_sha256']==admission['implementation_sha256'] and restart['profile_sha256']==PROFILE_SHA
+ assert restart['protocol_sha256']==json.loads((a.compact/'summary.json').read_text())['protocol_sha256']
+ runtime_identity=dict(implementation_sha256=admission['implementation_sha256'],profile_sha256=admission['profile_sha256'],image=container['Image'],observer=False,admission_status=admission['status'])
+ correct=0;predictions=[];summary={'status':'RUNNING','manifest_sha256':sha(a.output/'manifest.json'),'freeze_ack':ack,'start':a.start,'count':a.count,'driver_sha256':sha(pathlib.Path(__file__)),'runtime_identity':runtime_identity,'restart_artifact_sha256':sha(a.restart/'summary.json'),'container_id':container['Id']}
  try:
   with (a.output/'raw.jsonl').open('x') as f:
    for i,r in enumerate(manifest['rows'][a.start:a.start+a.count]):

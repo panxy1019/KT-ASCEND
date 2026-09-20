@@ -20,7 +20,8 @@ if a.baseline:
  previous=[json.loads(l) for l in (a.baseline/'raw.jsonl').read_text().splitlines()]
  base={x['prompt_id']:x['output_ids'] for x in previous if x['budget']==32};budgets=[32]
 count=0
-summary={'status':'RUNNING','scope':protocol['scope'],'protocol_sha256':hashlib.sha256(encoded.encode()).hexdigest()}
+admission=json.loads((a.output.parent/'preflight/admission.json').read_text());container=json.loads((a.output.parent/'container-created.json').read_text())
+summary={'status':'RUNNING','scope':protocol['scope'],'protocol_sha256':hashlib.sha256(encoded.encode()).hexdigest(),'container_id':container['Id'],'implementation_sha256':admission['implementation_sha256'],'profile_sha256':admission['profile_sha256']}
 try:
  with (a.output/'raw.jsonl').open('x') as f:
   for key,ids in rows.items():
