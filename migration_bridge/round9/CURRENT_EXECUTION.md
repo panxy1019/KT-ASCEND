@@ -1,3 +1,21 @@
+## Full-model resource gate PASS; observerOFF quality trial starting — 2026-09-20 15:10 UTC
+
+Trial v5 completed actual 3840 input + 256 output tokens, finite logprobs,
+clean restart4 and post-long-request short reuse4 PASS against v3 compact.
+Measured owned process peak39850MiB, board48708MiB, cgroup303213101056bytes,
+failcnt0; training PID4069720 remained6124MiB. Evidence: physical15/
+20260920-full-model-v5/resource-measured.json. Scope is observed frozen-profile
+load and4096 resource workload, not long-context semantic qualification.
+v5 stopped intentionally. v6 now RUNNING observerOFF, guard upgraded with
+3 stable baseline samples and finally-stop even if logging fails. First HTTP,
+current-container restart4, then first128 frozen CMMLU items chained fail-closed.
+Quality driver fixed in34efa6551 to bind exact frozen manifest/commit, admission,
+image/profile/runtime and current-container restart receipt before scoring.
+Initial client command used a nonexistent /workspace path; no request executed;
+corrected to mounted /round9/src path. Both schedules remain PAUSED.
+Do not launch duplicate server. Remaining: observerOFF, two128 quality slices,
+raw audit, final cleanup and record. No quality score yet.
+
 ## Actual4096 request decode in progress — 2026-09-20 15:01 UTC
 
 Trialv5 firstHTTP andcleanrestart4 PASS againstv3compact; revisedinternal

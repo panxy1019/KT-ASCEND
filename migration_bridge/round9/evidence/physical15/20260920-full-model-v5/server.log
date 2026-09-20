@@ -1,0 +1,1771 @@
+can not use command: npu-smi info
+INFO 09-20 14:53:20 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 14:53:20 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 14:53:20 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 14:53:20 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+VERIFIED_SERVER_LOGICAL0_PHYSICAL15 (59254669312, 65796046848)
+[2026-09-20 14:53:23] server_args=ServerArgs(model_path='/models/de4b8e4d43b917e7706784d8bb445c9af86a3540', tokenizer_path='/models/de4b8e4d43b917e7706784d8bb445c9af86a3540', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='safetensors', model_loader_extra_config='{}', trust_remote_code=False, context_length=4098, is_embedding=False, enable_multimodal=False, revision=None, model_impl='auto', host='127.0.0.1', port=30091, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.9, max_running_requests=1, max_queued_requests=None, max_total_tokens=4100, chunked_prefill_size=32, enable_dynamic_chunking=False, max_prefill_tokens=32, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=4, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=20260920, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=1800, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='KT-ASCEND-R9-Q64-BF16-C64', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm=None, init_expert_location='trivial', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=1, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path='/round9/banks/all48-v1', kt_method='LLAMAFILE', kt_cpuinfer=64, kt_threadpool_count=2, kt_numa_nodes=[6, 7], kt_num_gpu_experts=64, kt_gpu_experts_ratio=None, kt_max_deferred_experts_per_token=0, kt_gpu_prefill_token_threshold=0, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=False, kt_expert_placement_strategy='uniform', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=64, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=True, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=32, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=False, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-09-20 14:53:23] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-20 14:53:24] Using default HuggingFace chat template with detected content format: openai
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-20 14:53:32 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 14:53:32 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 14:53:32 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 14:53:32 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-20 14:53:32 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 14:53:32 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 14:53:32 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 14:53:32 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-20 14:53:33] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-20 14:53:35] Mamba selective_state_update backend initialized: triton
+[2026-09-20 14:53:35] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-20 14:53:35] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-20 14:53:35] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-20 14:53:35] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-20 14:53:44] Init torch distributed begin.
+[W920 14:53:45.334962828 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[rank0]:[W920 14:53:45.439356807 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-20 14:53:45] Init torch distributed ends. elapsed=1.17 s, mem usage=0.01 GB
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-20 14:53:46] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-20 14:53:47] Load weight begin. avail mem=55.01 GB
+[2026-09-20 14:53:47] Round9 worker allocator cap set to 40448 MiB (visible total 65796046848 bytes)
+[2026-09-20 14:53:47] Using kt_num_gpu_experts=64 per layer, total GPU experts: 3072 (= 64 × 48 MoE layers)
+[2026-09-20 14:53:47] Using uniform strategy for GPU expert placement
+[2026-09-20 14:53:47] KT GPU experts: layer 0 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 1 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 2 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 3 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 4 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 5 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 6 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 7 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 8 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 9 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 10 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 11 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 12 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 13 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 14 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 15 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 16 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 17 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 18 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 19 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 20 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 21 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 22 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 23 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 24 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 25 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 26 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 27 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 28 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 29 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 30 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 31 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 32 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 33 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 34 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 35 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 36 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 37 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 38 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 39 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 40 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 41 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 42 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 43 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 44 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 45 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 46 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] KT GPU experts: layer 47 (MoE) has 64 GPU experts
+[2026-09-20 14:53:47] Generated KT GPU experts masks using 'uniform' strategy: 48 MoE layers (out of 48 total layers) x 512 experts, total GPU experts in MoE layers = 3072
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-20 14:53:47] [KT] Created shared staging buffer: 0.2 MiB (shape=torch.Size([32, 2560]), dtype=torch.bfloat16)
+/round9/runtime-python/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[2026-09-20 14:53:51] using attn output gate!
+
+[GGUFLoader] Loading GGUF files from directory: /round9/banks/all48-v1
+  Loading: layer-00-bf16.gguf
+  Loading: layer-01-bf16.gguf
+  Loading: layer-02-bf16.gguf
+  Loading: layer-03-bf16.gguf
+  Loading: layer-04-bf16.gguf
+  Loading: layer-05-bf16.gguf
+  Loading: layer-06-bf16.gguf
+  Loading: layer-07-bf16.gguf
+  Loading: layer-08-bf16.gguf
+  Loading: layer-09-bf16.gguf
+  Loading: layer-10-bf16.gguf
+  Loading: layer-11-bf16.gguf
+  Loading: layer-12-bf16.gguf
+  Loading: layer-13-bf16.gguf
+  Loading: layer-14-bf16.gguf
+  Loading: layer-15-bf16.gguf
+  Loading: layer-16-bf16.gguf
+  Loading: layer-17-bf16.gguf
+  Loading: layer-18-bf16.gguf
+  Loading: layer-19-bf16.gguf
+  Loading: layer-20-bf16.gguf
+  Loading: layer-21-bf16.gguf
+  Loading: layer-22-bf16.gguf
+  Loading: layer-23-bf16.gguf
+  Loading: layer-24-bf16.gguf
+  Loading: layer-25-bf16.gguf
+  Loading: layer-26-bf16.gguf
+  Loading: layer-27-bf16.gguf
+  Loading: layer-28-bf16.gguf
+  Loading: layer-29-bf16.gguf
+  Loading: layer-30-bf16.gguf
+  Loading: layer-31-bf16.gguf
+  Loading: layer-32-bf16.gguf
+  Loading: layer-33-bf16.gguf
+  Loading: layer-34-bf16.gguf
+  Loading: layer-35-bf16.gguf
+  Loading: layer-36-bf16.gguf
+  Loading: layer-37-bf16.gguf
+  Loading: layer-38-bf16.gguf
+  Loading: layer-39-bf16.gguf
+  Loading: layer-40-bf16.gguf
+  Loading: layer-41-bf16.gguf
+  Loading: layer-42-bf16.gguf
+  Loading: layer-43-bf16.gguf
+  Loading: layer-44-bf16.gguf
+  Loading: layer-45-bf16.gguf
+  Loading: layer-46-bf16.gguf
+  Loading: layer-47-bf16.gguf
+[GGUFLoader] Summary:
+  Files loaded: 48
+  Total tensors: 144
+  Metadata keys: 4
+ ffn_up_exps, Dtype: BF16
+ ffn_gate_exps, Dtype: BF16
+ ffn_down_exps, Dtype: BF16
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 1 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 2 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 3 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 4 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 5 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 6 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 7 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 9 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 10 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 11 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 12 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 13 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 14 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 15 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 16 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 18 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 19 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 20 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 21 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 22 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 23 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 24 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 25 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 26 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 27 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 28 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 29 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 30 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 31 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 32 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 33 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 34 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 35 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 36 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 37 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 38 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 39 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 40 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 41 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 42 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 43 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 44 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 45 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 46 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+[LlamafileMoEWrapper] Layer 47 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+Loading safetensors checkpoint shards:   0% Completed | 0/131 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   1% Completed | 1/131 [00:00<01:10,  1.84it/s]
+Loading safetensors checkpoint shards:   2% Completed | 2/131 [00:01<01:20,  1.61it/s]
+Loading safetensors checkpoint shards:   3% Completed | 4/131 [00:01<00:37,  3.38it/s]
+Loading safetensors checkpoint shards:   4% Completed | 5/131 [00:02<00:54,  2.30it/s]
+Loading safetensors checkpoint shards:   7% Completed | 9/131 [00:02<00:26,  4.68it/s]
+Loading safetensors checkpoint shards:   8% Completed | 11/131 [00:02<00:23,  5.06it/s]
+Loading safetensors checkpoint shards:  10% Completed | 13/131 [00:03<00:22,  5.28it/s]
+Loading safetensors checkpoint shards:  11% Completed | 15/131 [00:03<00:26,  4.46it/s]
+Loading safetensors checkpoint shards:  12% Completed | 16/131 [00:04<00:32,  3.49it/s]
+Loading safetensors checkpoint shards:  13% Completed | 17/131 [00:05<00:42,  2.71it/s]
+Loading safetensors checkpoint shards:  15% Completed | 19/131 [00:05<00:31,  3.60it/s]
+Loading safetensors checkpoint shards:  18% Completed | 23/131 [00:05<00:18,  5.69it/s]
+Loading safetensors checkpoint shards:  18% Completed | 24/131 [00:06<00:27,  3.90it/s]
+Loading safetensors checkpoint shards:  19% Completed | 25/131 [00:06<00:34,  3.05it/s]
+Loading safetensors checkpoint shards:  20% Completed | 26/131 [00:07<00:33,  3.13it/s]
+Loading safetensors checkpoint shards:  21% Completed | 27/131 [00:07<00:34,  3.04it/s]
+Loading safetensors checkpoint shards:  21% Completed | 28/131 [00:07<00:34,  3.01it/s]
+Loading safetensors checkpoint shards:  24% Completed | 32/131 [00:08<00:18,  5.37it/s]
+Loading safetensors checkpoint shards:  25% Completed | 33/131 [00:09<00:27,  3.53it/s]
+Loading safetensors checkpoint shards:  27% Completed | 36/131 [00:09<00:24,  3.92it/s]
+Loading safetensors checkpoint shards:  29% Completed | 38/131 [00:10<00:25,  3.58it/s]
+Loading safetensors checkpoint shards:  30% Completed | 39/131 [00:11<00:32,  2.85it/s]
+Loading safetensors checkpoint shards:  31% Completed | 41/131 [00:11<00:25,  3.57it/s]
+Loading safetensors checkpoint shards:  32% Completed | 42/131 [00:11<00:24,  3.69it/s]
+Loading safetensors checkpoint shards:  34% Completed | 44/131 [00:11<00:19,  4.49it/s]
+Loading safetensors checkpoint shards:  35% Completed | 46/131 [00:12<00:17,  4.76it/s]
+Loading safetensors checkpoint shards:  36% Completed | 47/131 [00:12<00:19,  4.22it/s]
+Loading safetensors checkpoint shards:  37% Completed | 48/131 [00:12<00:22,  3.74it/s]
+Loading safetensors checkpoint shards:  37% Completed | 49/131 [00:13<00:31,  2.60it/s]
+Loading safetensors checkpoint shards:  38% Completed | 50/131 [00:14<00:33,  2.45it/s]
+Loading safetensors checkpoint shards:  39% Completed | 51/131 [00:14<00:31,  2.55it/s]
+Loading safetensors checkpoint shards:  40% Completed | 52/131 [00:15<00:37,  2.11it/s]
+Loading safetensors checkpoint shards:  40% Completed | 53/131 [00:15<00:41,  1.87it/s]
+Loading safetensors checkpoint shards:  41% Completed | 54/131 [00:16<00:35,  2.15it/s]
+Loading safetensors checkpoint shards:  42% Completed | 55/131 [00:16<00:38,  1.96it/s]
+Loading safetensors checkpoint shards:  43% Completed | 56/131 [00:17<00:42,  1.75it/s]
+Loading safetensors checkpoint shards:  44% Completed | 57/131 [00:17<00:36,  2.04it/s]
+Loading safetensors checkpoint shards:  44% Completed | 58/131 [00:18<00:33,  2.19it/s]
+Loading safetensors checkpoint shards:  46% Completed | 60/131 [00:18<00:30,  2.34it/s]
+Loading safetensors checkpoint shards:  47% Completed | 62/131 [00:19<00:22,  3.11it/s]
+Loading safetensors checkpoint shards:  49% Completed | 64/131 [00:19<00:18,  3.59it/s]
+Loading safetensors checkpoint shards:  50% Completed | 65/131 [00:19<00:18,  3.62it/s]
+Loading safetensors checkpoint shards:  50% Completed | 66/131 [00:20<00:17,  3.74it/s]
+Loading safetensors checkpoint shards:  51% Completed | 67/131 [00:20<00:19,  3.25it/s]
+Loading safetensors checkpoint shards:  52% Completed | 68/131 [00:21<00:27,  2.29it/s]
+Loading safetensors checkpoint shards:  53% Completed | 69/131 [00:21<00:25,  2.44it/s]
+Loading safetensors checkpoint shards:  53% Completed | 70/131 [00:21<00:20,  3.05it/s]
+Loading safetensors checkpoint shards:  54% Completed | 71/131 [00:22<00:19,  3.02it/s]
+Loading safetensors checkpoint shards:  55% Completed | 72/131 [00:23<00:28,  2.06it/s]
+Loading safetensors checkpoint shards:  56% Completed | 73/131 [00:23<00:29,  1.96it/s]
+Loading safetensors checkpoint shards:  56% Completed | 74/131 [00:24<00:31,  1.81it/s]
+Loading safetensors checkpoint shards:  57% Completed | 75/131 [00:24<00:24,  2.29it/s]
+Loading safetensors checkpoint shards:  58% Completed | 76/131 [00:25<00:25,  2.13it/s]
+Loading safetensors checkpoint shards:  59% Completed | 77/131 [00:25<00:22,  2.38it/s]
+Loading safetensors checkpoint shards:  60% Completed | 78/131 [00:25<00:21,  2.48it/s]
+Loading safetensors checkpoint shards:  60% Completed | 79/131 [00:25<00:18,  2.74it/s]
+Loading safetensors checkpoint shards:  62% Completed | 81/131 [00:26<00:14,  3.56it/s]
+Loading safetensors checkpoint shards:  63% Completed | 82/131 [00:26<00:15,  3.25it/s]
+Loading safetensors checkpoint shards:  63% Completed | 83/131 [00:27<00:14,  3.36it/s]
+Loading safetensors checkpoint shards:  64% Completed | 84/131 [00:27<00:14,  3.20it/s]
+Loading safetensors checkpoint shards:  65% Completed | 85/131 [00:27<00:14,  3.09it/s]
+Loading safetensors checkpoint shards:  66% Completed | 86/131 [00:28<00:14,  3.03it/s]
+Loading safetensors checkpoint shards:  66% Completed | 87/131 [00:28<00:20,  2.20it/s]
+Loading safetensors checkpoint shards:  67% Completed | 88/131 [00:29<00:21,  2.00it/s]
+Loading safetensors checkpoint shards:  68% Completed | 89/131 [00:29<00:18,  2.29it/s]
+Loading safetensors checkpoint shards:  69% Completed | 91/131 [00:30<00:14,  2.72it/s]
+Loading safetensors checkpoint shards:  70% Completed | 92/131 [00:30<00:13,  2.85it/s]
+Loading safetensors checkpoint shards:  71% Completed | 93/131 [00:31<00:17,  2.16it/s]
+Loading safetensors checkpoint shards:  73% Completed | 95/131 [00:32<00:14,  2.44it/s]
+Loading safetensors checkpoint shards:  73% Completed | 96/131 [00:32<00:15,  2.27it/s]
+Loading safetensors checkpoint shards:  74% Completed | 97/131 [00:33<00:16,  2.06it/s]
+Loading safetensors checkpoint shards:  75% Completed | 98/131 [00:33<00:16,  2.06it/s]
+Loading safetensors checkpoint shards:  76% Completed | 99/131 [00:34<00:16,  1.92it/s]
+Loading safetensors checkpoint shards:  76% Completed | 100/131 [00:34<00:15,  1.97it/s]
+Loading safetensors checkpoint shards:  77% Completed | 101/131 [00:35<00:13,  2.24it/s]
+Loading safetensors checkpoint shards:  78% Completed | 102/131 [00:35<00:14,  2.04it/s]
+Loading safetensors checkpoint shards:  79% Completed | 103/131 [00:35<00:11,  2.44it/s]
+Loading safetensors checkpoint shards:  79% Completed | 104/131 [00:36<00:13,  2.02it/s]
+Loading safetensors checkpoint shards:  81% Completed | 106/131 [00:36<00:08,  2.90it/s]
+Loading safetensors checkpoint shards:  82% Completed | 107/131 [00:37<00:09,  2.41it/s]
+Loading safetensors checkpoint shards:  82% Completed | 108/131 [00:38<00:11,  2.06it/s]
+Loading safetensors checkpoint shards:  85% Completed | 112/131 [00:38<00:05,  3.23it/s]
+Loading safetensors checkpoint shards:  86% Completed | 113/131 [00:39<00:06,  2.93it/s]
+Loading safetensors checkpoint shards:  88% Completed | 115/131 [00:40<00:05,  3.01it/s]
+Loading safetensors checkpoint shards:  89% Completed | 116/131 [00:40<00:05,  2.99it/s]
+Loading safetensors checkpoint shards:  89% Completed | 117/131 [00:41<00:06,  2.32it/s]
+Loading safetensors checkpoint shards:  91% Completed | 119/131 [00:41<00:04,  2.51it/s]
+Loading safetensors checkpoint shards:  92% Completed | 120/131 [00:42<00:04,  2.63it/s]
+Loading safetensors checkpoint shards:  92% Completed | 121/131 [00:42<00:03,  2.71it/s]
+Loading safetensors checkpoint shards:  93% Completed | 122/131 [00:43<00:04,  2.16it/s]
+Loading safetensors checkpoint shards:  94% Completed | 123/131 [00:43<00:04,  1.95it/s]
+Loading safetensors checkpoint shards:  95% Completed | 124/131 [00:44<00:02,  2.34it/s]
+Loading safetensors checkpoint shards:  95% Completed | 125/131 [00:44<00:03,  1.91it/s]
+Loading safetensors checkpoint shards:  96% Completed | 126/131 [00:45<00:02,  2.20it/s]
+Loading safetensors checkpoint shards:  97% Completed | 127/131 [00:45<00:02,  1.94it/s]
+Loading safetensors checkpoint shards:  98% Completed | 128/131 [00:46<00:01,  1.83it/s]
+Loading safetensors checkpoint shards:  98% Completed | 129/131 [00:46<00:00,  2.10it/s]
+Loading safetensors checkpoint shards: 100% Completed | 131/131 [00:47<00:00,  2.94it/s]
+Loading safetensors checkpoint shards: 100% Completed | 131/131 [00:47<00:00,  2.78it/s]
+
+[2026-09-20 14:54:42] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-20 14:54:42] get env HOME = /root
+[2026-09-20 14:54:42] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-20 14:54:43] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/src/sglang-round9-port/python:/round9/runtime-python
+CPUInfer[0xaaab03888c40]: Hello
+WorkerPool[0xaaab0387d390] 2 subpools, [numa:threads][6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 1 from other numa for ffc1280096f0
+alloc 1 from other numa for ffc1280096f0
+alloc 0 from other numa for ffc41c0c8730
+alloc 0 from other numa for ffc41c0c8730
+TP MOE layer 1, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c18d8d0
+alloc 0 from other numa for ffc41c18d8d0
+alloc 1 from other numa for ffc128009fd0
+alloc 1 from other numa for ffc128009fd0
+TP MOE layer 2, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c09c830
+alloc 1 from other numa for ffc12800e3c0
+alloc 0 from other numa for ffc41c09c830
+alloc 1 from other numa for ffc12800e3c0
+TP MOE layer 3, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c17a130
+alloc 0 from other numa for ffc41c17a130
+alloc 1 from other numa for ffc12800cde0
+alloc 1 from other numa for ffc12800cde0
+TP MOE layer 4, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c09b0f0
+alloc 1 from other numa for ffc1280a8760
+alloc 0 from other numa for ffc41c09b0f0
+alloc 1 from other numa for ffc1280a8760
+TP MOE layer 5, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c174ee0
+alloc 1 from other numa for ffc1280a5730
+alloc 0 from other numa for ffc41c174ee0
+alloc 1 from other numa for ffc1280a5730
+TP MOE layer 6, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c169f10
+alloc 1 from other numa for ffc1280b2670
+alloc 1 from other numa for ffc1280b2670
+alloc 0 from other numa for ffc41c169f10
+TP MOE layer 7, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0acc10
+alloc 1 from other numa for ffc1280b5540
+alloc 1 from other numa for ffc1280b5540
+alloc 0 from other numa for ffc41c0acc10
+TP MOE layer 8, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0b9bf0
+alloc 1 from other numa for ffc128020bb0
+alloc 1 from other numa for ffc128020bb0
+alloc 0 from other numa for ffc41c0b9bf0
+TP MOE layer 9, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c010530
+alloc 1 from other numa for ffc1280133c0
+alloc 0 from other numa for ffc41c010530
+alloc 1 from other numa for ffc1280133c0
+TP MOE layer 10, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c1a01f0
+alloc 1 from other numa for ffc12802db70
+alloc 0 from other numa for ffc41c1a01f0
+alloc 1 from other numa for ffc12802db70
+TP MOE layer 11, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0267d0
+alloc 1 from other numa for ffc128046880
+alloc 0 from other numa for ffc41c0267d0
+alloc 1 from other numa for ffc128046880
+TP MOE layer 12, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c033e30
+alloc 1 from other numa for ffc128042040
+alloc 0 from other numa for ffc41c033e30
+alloc 1 from other numa for ffc128042040
+TP MOE layer 13, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c03da70
+alloc 1 from other numa for ffc12805e060
+alloc 0 from other numa for ffc41c03da70
+alloc 1 from other numa for ffc12805e060
+TP MOE layer 14, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0599a0
+alloc 1 from other numa for ffc12805af40
+alloc 1 from other numa for ffc12805af40
+alloc 0 from other numa for ffc41c0599a0
+TP MOE layer 15, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c067830
+alloc 1 from other numa for ffc128076850
+alloc 0 from other numa for ffc41c067830
+alloc 1 from other numa for ffc128076850
+TP MOE layer 16, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c062f20
+alloc 1 from other numa for ffc1280736a0
+alloc 0 from other numa for ffc41c062f20
+alloc 1 from other numa for ffc1280736a0
+TP MOE layer 17, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c06f450
+alloc 1 from other numa for ffc128080f30
+alloc 0 from other numa for ffc41c06f450
+alloc 1 from other numa for ffc128080f30
+TP MOE layer 18, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c07f6b0
+alloc 1 from other numa for ffc12808be00
+alloc 0 from other numa for ffc41c07f6b0
+alloc 1 from other numa for ffc12808be00
+TP MOE layer 19, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c08bfb0
+alloc 1 from other numa for ffc1280973c0
+alloc 1 from other numa for ffc1280973c0
+alloc 0 from other numa for ffc41c08bfb0
+TP MOE layer 20, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c094d40
+alloc 1 from other numa for ffc1280d3b30
+alloc 0 from other numa for ffc41c094d40
+alloc 1 from other numa for ffc1280d3b30
+TP MOE layer 21, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c028100
+alloc 1 from other numa for ffc1280dcfa0
+alloc 0 from other numa for ffc41c028100
+alloc 1 from other numa for ffc1280dcfa0
+TP MOE layer 22, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0e5590
+alloc 1 from other numa for ffc1280f74e0
+alloc 0 from other numa for ffc41c0e5590
+alloc 1 from other numa for ffc1280f74e0
+TP MOE layer 23, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0f2700
+alloc 1 from other numa for ffc1280f51f0
+alloc 0 from other numa for ffc41c0f2700
+alloc 1 from other numa for ffc1280f51f0
+TP MOE layer 24, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0fd520
+alloc 1 from other numa for ffc128104470
+alloc 0 from other numa for ffc41c0fd520
+alloc 1 from other numa for ffc128104470
+TP MOE layer 25, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c116020
+alloc 1 from other numa for ffc12811d150
+alloc 0 from other numa for ffc41c116020
+alloc 1 from other numa for ffc12811d150
+TP MOE layer 26, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c113f50
+alloc 1 from other numa for ffc128118910
+alloc 0 from other numa for ffc41c113f50
+alloc 1 from other numa for ffc128118910
+TP MOE layer 27, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c123010
+alloc 1 from other numa for ffc128126940
+alloc 0 from other numa for ffc41c123010
+alloc 1 from other numa for ffc128126940
+TP MOE layer 28, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c13bcf0
+alloc 1 from other numa for ffc1281420e0
+alloc 0 from other numa for ffc41c13bcf0
+alloc 1 from other numa for ffc1281420e0
+TP MOE layer 29, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c1374b0
+alloc 1 from other numa for ffc12813d7d0
+alloc 0 from other numa for ffc41c1374b0
+alloc 1 from other numa for ffc12813d7d0
+TP MOE layer 30, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c1454e0
+alloc 1 from other numa for ffc128149d00
+alloc 0 from other numa for ffc41c1454e0
+alloc 1 from other numa for ffc128149d00
+TP MOE layer 31, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c0e5b20
+alloc 1 from other numa for ffc1281556e0
+alloc 0 from other numa for ffc41c0e5b20
+alloc 1 from other numa for ffc1281556e0
+TP MOE layer 32, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c15da80
+alloc 1 from other numa for ffc128dd6d00
+alloc 0 from other numa for ffc41c15da80
+alloc 1 from other numa for ffc128dd6d00
+TP MOE layer 33, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce1c5e0
+alloc 1 from other numa for ffc128de3df0
+alloc 0 from other numa for ffc41ce1c5e0
+alloc 1 from other numa for ffc128de3df0
+TP MOE layer 34, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce18bd0
+alloc 1 from other numa for ffc128def480
+alloc 0 from other numa for ffc41ce18bd0
+alloc 1 from other numa for ffc128def480
+TP MOE layer 35, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce27e80
+alloc 1 from other numa for ffc128e0ab20
+alloc 0 from other numa for ffc41ce27e80
+alloc 1 from other numa for ffc128e0ab20
+TP MOE layer 36, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce31380
+alloc 1 from other numa for ffc128e07af0
+alloc 0 from other numa for ffc41ce31380
+alloc 1 from other numa for ffc128e07af0
+TP MOE layer 37, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce4ba10
+alloc 1 from other numa for ffc128e23960
+alloc 0 from other numa for ffc41ce4ba10
+alloc 1 from other numa for ffc128e23960
+TP MOE layer 38, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce597f0
+alloc 1 from other numa for ffc128e20840
+alloc 0 from other numa for ffc41ce597f0
+alloc 1 from other numa for ffc128e20840
+TP MOE layer 39, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 1 from other numa for ffc128e3c150
+alloc 1 from other numa for ffc128e3c150
+alloc 0 from other numa for ffc41ce55de0
+alloc 0 from other numa for ffc41ce55de0
+TP MOE layer 40, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41c15f3b0
+alloc 1 from other numa for ffc128e38fa0
+alloc 0 from other numa for ffc41c15f3b0
+alloc 1 from other numa for ffc128e38fa0
+TP MOE layer 41, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce70ee0
+alloc 1 from other numa for ffc128e46830
+alloc 0 from other numa for ffc41ce70ee0
+alloc 1 from other numa for ffc128e46830
+TP MOE layer 42, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce7e050
+alloc 1 from other numa for ffc128e51760
+alloc 1 from other numa for ffc128e51760
+alloc 0 from other numa for ffc41ce7e050
+TP MOE layer 43, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce88e70
+alloc 1 from other numa for ffc128e5da60
+alloc 0 from other numa for ffc41ce88e70
+alloc 1 from other numa for ffc128e5da60
+TP MOE layer 44, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41cea1970
+alloc 1 from other numa for ffc128e6dc90
+alloc 0 from other num[2026-09-20 14:55:56] Load weight end. elapsed=128.97 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=17.09 GB, mem usage=37.92 GB.
+[2026-09-20 14:55:56] Using KV cache dtype: torch.bfloat16
+[2026-09-20 14:55:56] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.21GB 
+[2026-09-20 14:55:56] KV Cache is allocated. #tokens: 4100, K size: 0.05 GB, V size: 0.05 GB
+[2026-09-20 14:55:56] Memory pool end. avail mem=16.78 GB
+[2026-09-20 14:55:57] Linear attention kernel backend: decode=triton, prefill=triton
+[2026-09-20 14:55:57] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-20 14:55:57] GDN kernel dispatcher: decode=TritonGDNKernel, extend=TritonGDNKernel, verify=TritonGDNKernel
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-20 14:55:58] max_total_num_tokens=4100, chunked_prefill_size=32, max_prefill_tokens=32, max_running_requests=1, context_len=4098, available_gpu_mem=16.77 GB
+[2026-09-20 14:55:58] INFO:     Started server process [70]
+[2026-09-20 14:55:58] INFO:     Waiting for application startup.
+[2026-09-20 14:55:58] Using default chat sampling params from model generation config: {'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}
+[2026-09-20 14:55:59] The server is fired up and ready to roll!
+[2026-09-20 14:55:59] INFO:     Application startup complete.
+[2026-09-20 14:55:59] INFO:     Uvicorn running on http://127.0.0.1:30091 (Press CTRL+C to quit)
+[2026-09-20 14:56:01] get env HOSTNAME = 8a707f238c77
+a for ffc41cea1970
+alloc 1 from other numa for ffc128e6dc90
+TP MOE layer 45, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ce93b90
+alloc 1 from other numa for ffc128e85370
+alloc 0 from other numa for ffc41ce93b90
+alloc 1 from other numa for ffc128e85370
+TP MOE layer 46, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ceab880
+alloc 1 from other numa for ffc128e82340
+alloc 0 from other numa for ffc41ceab880
+alloc 1 from other numa for ffc128e82340
+TP MOE layer 47, pool: 0xaaab0387d390, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc41ceae750
+alloc 1 from other numa for ffc128e9e1b0
+alloc 0 from other numa for ffc41ceae750
+alloc 1 from other numa for ffc128e9e1b0
+.[2026-09-20 14:56:09] get env ROUND9_MEMORY_OBSERVER = 1
+[2026-09-20 14:56:09] ROUND9_MEMORY tokens=1 mode=1 allocated=40591987712 reserved=41357934592 peak_allocated=40704204288 peak_reserved=41502638080
+[2026-09-20 14:56:09] Prefill batch, #new-seq: 1, #new-token: 4, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-09-20 14:56:09] ROUND9_MEMORY tokens=1 mode=1 allocated=40592986624 reserved=41357934592 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:09] Prefill batch, #new-seq: 1, #new-token: 4, #cached-token: 0, full token usage: 0.00, mamba usage: 0.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 14.18, npu graph: False
+[2026-09-20 14:56:10] INFO:     127.0.0.1:52068 - "GET /health HTTP/1.1" 200 OK
+[2026-09-20 14:56:10] ROUND9_MEMORY tokens=1 mode=1 allocated=40592983040 reserved=41360031744 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:10] Prefill batch, #new-seq: 1, #new-token: 4, #cached-token: 0, full token usage: 0.00, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 5.26, npu graph: False
+[2026-09-20 14:56:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40592980992 reserved=41360031744 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40592981504 reserved=41360031744 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40592981504 reserved=41360031744 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:11] INFO:     127.0.0.1:57612 - "POST /generate HTTP/1.1" 200 OK
+.[2026-09-20 14:56:46] ROUND9_MEMORY tokens=22 mode=1 allocated=40593529344 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:46] Prefill batch, #new-seq: 1, #new-token: 24, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.11, npu graph: False
+[2026-09-20 14:56:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41364226048 peak_allocated=40705230848 peak_reserved=41502638080
+[2026-09-20 14:56:55] INFO:     127.0.0.1:53154 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 14:56:57] ROUND9_MEMORY tokens=26 mode=1 allocated=40593631744 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:57] Prefill batch, #new-seq: 1, #new-token: 28, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.32, npu graph: False
+[2026-09-20 14:56:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:58] Decode batch, #running-req: 1, #full token: 32, full token usage: 0.01, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.20, #queue-req: 0
+[2026-09-20 14:56:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:56:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:06] INFO:     127.0.0.1:40168 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 14:57:07] ROUND9_MEMORY tokens=26 mode=1 allocated=40593631744 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:07] Prefill batch, #new-seq: 1, #new-token: 28, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.71, npu graph: False
+[2026-09-20 14:57:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:11] Decode batch, #running-req: 1, #full token: 44, full token usage: 0.01, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.13, #queue-req: 0
+[2026-09-20 14:57:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:16] INFO:     127.0.0.1:42518 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 14:57:17] ROUND9_MEMORY tokens=29 mode=1 allocated=40593708544 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:17] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.74, npu graph: False
+[2026-09-20 14:57:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:21] INFO:     127.0.0.1:50152 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 14:57:33] ROUND9_MEMORY tokens=32 mode=1 allocated=40593784320 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:33] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 1.98, npu graph: False
+[2026-09-20 14:57:35] ROUND9_MEMORY tokens=32 mode=1 allocated=40593789440 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:35] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.04, npu graph: False
+[2026-09-20 14:57:37] ROUND9_MEMORY tokens=32 mode=1 allocated=40593789952 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:37] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.38, npu graph: False
+[2026-09-20 14:57:38] ROUND9_MEMORY tokens=32 mode=1 allocated=40593789952 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:38] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.03, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.21, npu graph: False
+[2026-09-20 14:57:40] ROUND9_MEMORY tokens=32 mode=1 allocated=40593790464 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:40] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.04, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.28, npu graph: False
+[2026-09-20 14:57:41] ROUND9_MEMORY tokens=32 mode=1 allocated=40593790464 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:41] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.05, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.03, npu graph: False
+[2026-09-20 14:57:43] ROUND9_MEMORY tokens=32 mode=1 allocated=40593790976 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:43] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.05, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.34, npu graph: False
+[2026-09-20 14:57:44] ROUND9_MEMORY tokens=32 mode=1 allocated=40593790976 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:44] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.06, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.26, npu graph: False
+[2026-09-20 14:57:46] ROUND9_MEMORY tokens=32 mode=1 allocated=40593791488 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:46] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.07, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.04, npu graph: False
+[2026-09-20 14:57:48] ROUND9_MEMORY tokens=32 mode=1 allocated=40593791488 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:48] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.08, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.19, npu graph: False
+[2026-09-20 14:57:49] ROUND9_MEMORY tokens=32 mode=1 allocated=40593792000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:49] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.09, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.06, npu graph: False
+[2026-09-20 14:57:51] ROUND9_MEMORY tokens=32 mode=1 allocated=40593792000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:51] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.09, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.86, npu graph: False
+[2026-09-20 14:57:52] ROUND9_MEMORY tokens=32 mode=1 allocated=40593792512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:52] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.10, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.88, npu graph: False
+[2026-09-20 14:57:54] ROUND9_MEMORY tokens=32 mode=1 allocated=40593792512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:54] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.11, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.85, npu graph: False
+[2026-09-20 14:57:56] ROUND9_MEMORY tokens=32 mode=1 allocated=40593793024 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:56] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.12, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.28, npu graph: False
+[2026-09-20 14:57:57] ROUND9_MEMORY tokens=32 mode=1 allocated=40593793536 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:57] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.12, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.37, npu graph: False
+[2026-09-20 14:57:59] ROUND9_MEMORY tokens=32 mode=1 allocated=40593794048 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:57:59] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.13, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.10, npu graph: False
+[2026-09-20 14:58:00] ROUND9_MEMORY tokens=32 mode=1 allocated=40593794048 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:00] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.14, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.36, npu graph: False
+[2026-09-20 14:58:02] ROUND9_MEMORY tokens=32 mode=1 allocated=40593794560 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:02] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.15, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.45, npu graph: False
+[2026-09-20 14:58:03] ROUND9_MEMORY tokens=32 mode=1 allocated=40593794560 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:03] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.58, npu graph: False
+[2026-09-20 14:58:05] ROUND9_MEMORY tokens=32 mode=1 allocated=40593795072 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:05] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.16, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.25, npu graph: False
+[2026-09-20 14:58:07] ROUND9_MEMORY tokens=32 mode=1 allocated=40593795072 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:07] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.17, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.84, npu graph: False
+[2026-09-20 14:58:09] ROUND9_MEMORY tokens=32 mode=1 allocated=40593795584 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:09] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.18, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.49, npu graph: False
+[2026-09-20 14:58:10] ROUND9_MEMORY tokens=32 mode=1 allocated=40593795584 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:10] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.19, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.43, npu graph: False
+[2026-09-20 14:58:12] ROUND9_MEMORY tokens=32 mode=1 allocated=40593796096 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:12] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.20, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.59, npu graph: False
+[2026-09-20 14:58:14] ROUND9_MEMORY tokens=32 mode=1 allocated=40593796096 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:14] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.20, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.54, npu graph: False
+[2026-09-20 14:58:15] ROUND9_MEMORY tokens=32 mode=1 allocated=40593796608 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:15] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.21, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.56, npu graph: False
+[2026-09-20 14:58:17] ROUND9_MEMORY tokens=32 mode=1 allocated=40593796608 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:17] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.22, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.23, npu graph: False
+[2026-09-20 14:58:19] ROUND9_MEMORY tokens=32 mode=1 allocated=40593797120 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:19] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.23, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.33, npu graph: False
+[2026-09-20 14:58:21] ROUND9_MEMORY tokens=32 mode=1 allocated=40593797120 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:21] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.23, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.43, npu graph: False
+[2026-09-20 14:58:22] ROUND9_MEMORY tokens=32 mode=1 allocated=40593797632 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:22] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.24, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.55, npu graph: False
+[2026-09-20 14:58:24] ROUND9_MEMORY tokens=32 mode=1 allocated=40593798144 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:24] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.25, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.54, npu graph: False
+[2026-09-20 14:58:26] ROUND9_MEMORY tokens=32 mode=1 allocated=40593798656 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:26] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.26, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.55, npu graph: False
+[2026-09-20 14:58:28] ROUND9_MEMORY tokens=32 mode=1 allocated=40593798656 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:28] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.27, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.90, npu graph: False
+[2026-09-20 14:58:29] ROUND9_MEMORY tokens=32 mode=1 allocated=40593799168 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:29] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.27, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.07, npu graph: False
+[2026-09-20 14:58:31] ROUND9_MEMORY tokens=32 mode=1 allocated=40593799168 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:31] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.28, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.61, npu graph: False
+[2026-09-20 14:58:33] ROUND9_MEMORY tokens=32 mode=1 allocated=40593799680 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:33] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.29, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.70, npu graph: False
+[2026-09-20 14:58:35] ROUND9_MEMORY tokens=32 mode=1 allocated=40593799680 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:35] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.30, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.60, npu graph: False
+[2026-09-20 14:58:36] ROUND9_MEMORY tokens=32 mode=1 allocated=40593800192 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:36] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.30, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.70, npu graph: False
+[2026-09-20 14:58:38] ROUND9_MEMORY tokens=32 mode=1 allocated=40593800192 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:38] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.31, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.31, npu graph: False
+[2026-09-20 14:58:40] ROUND9_MEMORY tokens=32 mode=1 allocated=40593800704 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:40] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.32, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.89, npu graph: False
+[2026-09-20 14:58:42] ROUND9_MEMORY tokens=32 mode=1 allocated=40593800704 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:42] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.33, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.54, npu graph: False
+[2026-09-20 14:58:43] ROUND9_MEMORY tokens=32 mode=1 allocated=40593801216 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:43] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.34, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.57, npu graph: False
+[2026-09-20 14:58:45] ROUND9_MEMORY tokens=32 mode=1 allocated=40593801216 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:45] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.34, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.52, npu graph: False
+[2026-09-20 14:58:47] ROUND9_MEMORY tokens=32 mode=1 allocated=40593801728 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:47] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.35, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.34, npu graph: False
+[2026-09-20 14:58:48] ROUND9_MEMORY tokens=32 mode=1 allocated=40593801728 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:48] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.36, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.73, npu graph: False
+[2026-09-20 14:58:50] ROUND9_MEMORY tokens=32 mode=1 allocated=40593802240 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:50] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.37, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.51, npu graph: False
+[2026-09-20 14:58:52] ROUND9_MEMORY tokens=32 mode=1 allocated=40593802752 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:52] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.37, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.50, npu graph: False
+[2026-09-20 14:58:54] ROUND9_MEMORY tokens=32 mode=1 allocated=40593803264 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:54] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.38, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.76, npu graph: False
+[2026-09-20 14:58:55] ROUND9_MEMORY tokens=32 mode=1 allocated=40593803264 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:55] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.39, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.05, npu graph: False
+[2026-09-20 14:58:57] ROUND9_MEMORY tokens=32 mode=1 allocated=40593803776 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:57] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.40, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.05, npu graph: False
+[2026-09-20 14:58:59] ROUND9_MEMORY tokens=32 mode=1 allocated=40593803776 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:58:59] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.41, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.34, npu graph: False
+[2026-09-20 14:59:00] ROUND9_MEMORY tokens=32 mode=1 allocated=40593804288 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:00] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.41, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.46, npu graph: False
+[2026-09-20 14:59:02] ROUND9_MEMORY tokens=32 mode=1 allocated=40593804288 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:02] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.42, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.38, npu graph: False
+[2026-09-20 14:59:04] ROUND9_MEMORY tokens=32 mode=1 allocated=40593804800 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:04] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.43, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.15, npu graph: False
+[2026-09-20 14:59:06] ROUND9_MEMORY tokens=32 mode=1 allocated=40593804800 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:06] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.44, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.44, npu graph: False
+[2026-09-20 14:59:08] ROUND9_MEMORY tokens=32 mode=1 allocated=40593805312 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:08] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.44, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.89, npu graph: False
+[2026-09-20 14:59:09] ROUND9_MEMORY tokens=32 mode=1 allocated=40593805312 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:09] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.45, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.38, npu graph: False
+[2026-09-20 14:59:11] ROUND9_MEMORY tokens=32 mode=1 allocated=40593805824 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:11] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.46, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.73, npu graph: False
+[2026-09-20 14:59:13] ROUND9_MEMORY tokens=32 mode=1 allocated=40593805824 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:13] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.47, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.84, npu graph: False
+[2026-09-20 14:59:14] ROUND9_MEMORY tokens=32 mode=1 allocated=40593806336 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:14] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.48, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.84, npu graph: False
+[2026-09-20 14:59:16] ROUND9_MEMORY tokens=32 mode=1 allocated=40593806336 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:16] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.48, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.44, npu graph: False
+[2026-09-20 14:59:18] ROUND9_MEMORY tokens=32 mode=1 allocated=40593806848 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:18] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.49, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.51, npu graph: False
+[2026-09-20 14:59:20] ROUND9_MEMORY tokens=32 mode=1 allocated=40593807360 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:20] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.50, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.19, npu graph: False
+[2026-09-20 14:59:22] ROUND9_MEMORY tokens=32 mode=1 allocated=40593807872 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:22] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.51, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.44, npu graph: False
+[2026-09-20 14:59:24] ROUND9_MEMORY tokens=32 mode=1 allocated=40593807872 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:24] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.52, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.54, npu graph: False
+[2026-09-20 14:59:26] ROUND9_MEMORY tokens=32 mode=1 allocated=40593808384 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:26] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.52, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.44, npu graph: False
+[2026-09-20 14:59:28] ROUND9_MEMORY tokens=32 mode=1 allocated=40593808384 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:28] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.53, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.50, npu graph: False
+[2026-09-20 14:59:30] ROUND9_MEMORY tokens=32 mode=1 allocated=40593808896 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:30] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.54, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.49, npu graph: False
+[2026-09-20 14:59:32] ROUND9_MEMORY tokens=32 mode=1 allocated=40593808896 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:32] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.55, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 15.81, npu graph: False
+[2026-09-20 14:59:34] ROUND9_MEMORY tokens=32 mode=1 allocated=40593809408 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:34] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.55, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.45, npu graph: False
+[2026-09-20 14:59:35] ROUND9_MEMORY tokens=32 mode=1 allocated=40593809408 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:35] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.56, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.62, npu graph: False
+[2026-09-20 14:59:37] ROUND9_MEMORY tokens=32 mode=1 allocated=40593809920 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:37] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.57, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.21, npu graph: False
+[2026-09-20 14:59:39] ROUND9_MEMORY tokens=32 mode=1 allocated=40593809920 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:39] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.58, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.43, npu graph: False
+[2026-09-20 14:59:40] ROUND9_MEMORY tokens=32 mode=1 allocated=40593810432 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:40] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.59, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.47, npu graph: False
+[2026-09-20 14:59:42] ROUND9_MEMORY tokens=32 mode=1 allocated=40593810432 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:42] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.59, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.20, npu graph: False
+[2026-09-20 14:59:44] ROUND9_MEMORY tokens=32 mode=1 allocated=40593810944 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:44] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.60, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.27, npu graph: False
+[2026-09-20 14:59:46] ROUND9_MEMORY tokens=32 mode=1 allocated=40593810944 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:46] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.61, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.59, npu graph: False
+[2026-09-20 14:59:47] ROUND9_MEMORY tokens=32 mode=1 allocated=40593811456 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:47] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.62, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.62, npu graph: False
+[2026-09-20 14:59:49] ROUND9_MEMORY tokens=32 mode=1 allocated=40593811968 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:49] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.62, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.04, npu graph: False
+[2026-09-20 14:59:51] ROUND9_MEMORY tokens=32 mode=1 allocated=40593812480 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:51] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.63, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.66, npu graph: False
+[2026-09-20 14:59:53] ROUND9_MEMORY tokens=32 mode=1 allocated=40593812480 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:53] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.64, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.64, npu graph: False
+[2026-09-20 14:59:54] ROUND9_MEMORY tokens=32 mode=1 allocated=40593812992 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:54] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.65, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.94, npu graph: False
+[2026-09-20 14:59:56] ROUND9_MEMORY tokens=32 mode=1 allocated=40593812992 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:56] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.66, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.77, npu graph: False
+[2026-09-20 14:59:58] ROUND9_MEMORY tokens=32 mode=1 allocated=40593813504 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 14:59:58] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.66, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.45, npu graph: False
+[2026-09-20 15:00:00] ROUND9_MEMORY tokens=32 mode=1 allocated=40593813504 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:00] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.67, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.51, npu graph: False
+[2026-09-20 15:00:01] ROUND9_MEMORY tokens=32 mode=1 allocated=40593814016 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:01] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.68, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.64, npu graph: False
+[2026-09-20 15:00:03] ROUND9_MEMORY tokens=32 mode=1 allocated=40593814016 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:03] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.69, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.69, npu graph: False
+[2026-09-20 15:00:05] ROUND9_MEMORY tokens=32 mode=1 allocated=40593814528 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:05] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.69, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.05, npu graph: False
+[2026-09-20 15:00:07] ROUND9_MEMORY tokens=32 mode=1 allocated=40593814528 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:07] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.70, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.05, npu graph: False
+[2026-09-20 15:00:08] ROUND9_MEMORY tokens=32 mode=1 allocated=40593815040 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:08] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.71, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.71, npu graph: False
+[2026-09-20 15:00:10] ROUND9_MEMORY tokens=32 mode=1 allocated=40593815040 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:10] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.72, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.14, npu graph: False
+[2026-09-20 15:00:12] ROUND9_MEMORY tokens=32 mode=1 allocated=40593815552 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:12] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.73, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.27, npu graph: False
+[2026-09-20 15:00:14] ROUND9_MEMORY tokens=32 mode=1 allocated=40593815552 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:14] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.73, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.16, npu graph: False
+[2026-09-20 15:00:15] ROUND9_MEMORY tokens=32 mode=1 allocated=40593816064 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:15] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.74, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.29, npu graph: False
+[2026-09-20 15:00:17] ROUND9_MEMORY tokens=32 mode=1 allocated=40593816576 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:17] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.75, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.48, npu graph: False
+[2026-09-20 15:00:19] ROUND9_MEMORY tokens=32 mode=1 allocated=40593817088 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:19] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.76, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.27, npu graph: False
+[2026-09-20 15:00:21] ROUND9_MEMORY tokens=32 mode=1 allocated=40593817088 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:21] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.76, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.39, npu graph: False
+[2026-09-20 15:00:22] ROUND9_MEMORY tokens=32 mode=1 allocated=40593817600 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:22] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.77, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.27, npu graph: False
+[2026-09-20 15:00:24] ROUND9_MEMORY tokens=32 mode=1 allocated=40593817600 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:24] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.78, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.34, npu graph: False
+[2026-09-20 15:00:26] ROUND9_MEMORY tokens=32 mode=1 allocated=40593818112 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:26] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.79, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.43, npu graph: False
+[2026-09-20 15:00:28] ROUND9_MEMORY tokens=32 mode=1 allocated=40593818112 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:28] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.80, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 17.42, npu graph: False
+[2026-09-20 15:00:29] ROUND9_MEMORY tokens=32 mode=1 allocated=40593818624 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:29] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.80, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.31, npu graph: False
+[2026-09-20 15:00:31] ROUND9_MEMORY tokens=32 mode=1 allocated=40593818624 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:31] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.81, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.44, npu graph: False
+[2026-09-20 15:00:33] ROUND9_MEMORY tokens=32 mode=1 allocated=40593819136 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:33] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.82, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.35, npu graph: False
+[2026-09-20 15:00:35] ROUND9_MEMORY tokens=32 mode=1 allocated=40593819136 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:35] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.83, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.37, npu graph: False
+[2026-09-20 15:00:36] ROUND9_MEMORY tokens=32 mode=1 allocated=40593819648 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:36] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.84, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.35, npu graph: False
+[2026-09-20 15:00:38] ROUND9_MEMORY tokens=32 mode=1 allocated=40593819648 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:38] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.84, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.32, npu graph: False
+[2026-09-20 15:00:40] ROUND9_MEMORY tokens=32 mode=1 allocated=40593820160 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:40] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.85, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.31, npu graph: False
+[2026-09-20 15:00:42] ROUND9_MEMORY tokens=32 mode=1 allocated=40593820160 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:42] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.86, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.22, npu graph: False
+[2026-09-20 15:00:43] ROUND9_MEMORY tokens=32 mode=1 allocated=40593820672 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:43] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.87, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.07, npu graph: False
+[2026-09-20 15:00:45] ROUND9_MEMORY tokens=32 mode=1 allocated=40593821184 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:45] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.87, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.08, npu graph: False
+[2026-09-20 15:00:47] ROUND9_MEMORY tokens=32 mode=1 allocated=40593821696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:47] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.88, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.23, npu graph: False
+[2026-09-20 15:00:49] ROUND9_MEMORY tokens=32 mode=1 allocated=40593821696 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:49] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.89, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.42, npu graph: False
+[2026-09-20 15:00:50] ROUND9_MEMORY tokens=32 mode=1 allocated=40593822208 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:50] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.90, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.48, npu graph: False
+[2026-09-20 15:00:52] ROUND9_MEMORY tokens=32 mode=1 allocated=40593822208 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:52] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.91, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.47, npu graph: False
+[2026-09-20 15:00:54] ROUND9_MEMORY tokens=32 mode=1 allocated=40593822720 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:54] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.91, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.25, npu graph: False
+[2026-09-20 15:00:56] ROUND9_MEMORY tokens=32 mode=1 allocated=40593822720 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:56] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.92, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.79, npu graph: False
+[2026-09-20 15:00:57] ROUND9_MEMORY tokens=32 mode=1 allocated=40593823232 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:57] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.93, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.56, npu graph: False
+[2026-09-20 15:00:59] ROUND9_MEMORY tokens=32 mode=1 allocated=40593824256 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:00:59] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.94, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 18.62, npu graph: False
+[2026-09-20 15:00:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40593023488 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:03] Decode batch, #running-req: 1, #full token: 3852, full token usage: 0.94, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.17, #queue-req: 0
+[2026-09-20 15:01:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:15] Decode batch, #running-req: 1, #full token: 3892, full token usage: 0.95, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.27, #queue-req: 0
+[2026-09-20 15:01:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:26] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:26] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:26] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:27] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:27] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:27] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:28] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:28] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:28] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:28] Decode batch, #running-req: 1, #full token: 3932, full token usage: 0.96, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 2.98, #queue-req: 0
+[2026-09-20 15:01:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:38] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:38] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:38] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:40] Decode batch, #running-req: 1, #full token: 3972, full token usage: 0.97, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.35, #queue-req: 0
+[2026-09-20 15:01:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:48] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:52] Decode batch, #running-req: 1, #full token: 4012, full token usage: 0.98, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.26, #queue-req: 0
+[2026-09-20 15:01:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:53] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:54] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:55] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:56] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:56] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:56] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:57] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:58] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:01:59] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:00] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:01] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:02] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:03] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:04] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:05] Decode batch, #running-req: 1, #full token: 4052, full token usage: 0.99, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.19, #queue-req: 0
+[2026-09-20 15:02:05] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:06] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:07] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:08] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024000 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:09] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:10] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:11] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:12] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:13] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:14] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:15] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:16] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:17] Decode batch, #running-req: 1, #full token: 4092, full token usage: 1.00, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.36, #queue-req: 0
+[2026-09-20 15:02:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40593024512 reserved=41366323200 peak_allocated=40705233920 peak_reserved=41502638080
+[2026-09-20 15:02:18] INFO:     127.0.0.1:55388 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 15:03:17] ROUND9_MEMORY tokens=22 mode=1 allocated=40593529344 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:17] Prefill batch, #new-seq: 1, #new-token: 24, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.23, npu graph: False
+[2026-09-20 15:03:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:17] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:18] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:19] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:20] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:21] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:22] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:23] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:24] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:25] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:26] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:26] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:27] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:27] INFO:     127.0.0.1:44922 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 15:03:28] ROUND9_MEMORY tokens=26 mode=1 allocated=40593631744 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:28] Prefill batch, #new-seq: 1, #new-token: 28, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.14, npu graph: False
+[2026-09-20 15:03:28] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:29] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:30] Decode batch, #running-req: 1, #full token: 32, full token usage: 0.01, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 0.55, #queue-req: 0
+[2026-09-20 15:03:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:30] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:31] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:32] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:33] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:34] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:35] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:36] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:37] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:37] INFO:     127.0.0.1:59716 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 15:03:38] ROUND9_MEMORY tokens=26 mode=1 allocated=40593631744 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:38] Prefill batch, #new-seq: 1, #new-token: 28, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.69, npu graph: False
+[2026-09-20 15:03:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:39] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:40] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:41] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:42] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:43] Decode batch, #running-req: 1, #full token: 44, full token usage: 0.01, mamba num: 1, mamba usage: 1.00, npu graph: False, gen throughput (token/s): 3.10, #queue-req: 0
+[2026-09-20 15:03:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:43] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:44] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:45] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:46] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:47] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:47] INFO:     127.0.0.1:60766 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 15:03:49] ROUND9_MEMORY tokens=29 mode=1 allocated=40593708544 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:49] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 2.74, npu graph: False
+[2026-09-20 15:03:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989184 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:49] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:50] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:51] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:52] ROUND9_MEMORY tokens=1 mode=2 allocated=40592989696 reserved=41366323200 peak_allocated=40705238016 peak_reserved=41502638080
+[2026-09-20 15:03:52] INFO:     127.0.0.1:38556 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-20 15:08:16] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+[2026-09-20 15:08:16] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+[2026-09-20 15:08:21] Gracefully exiting... Remaining number of requests 0. Remaining requests remaining_rids=[].
