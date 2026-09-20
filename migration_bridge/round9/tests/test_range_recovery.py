@@ -8,6 +8,39 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 
 class RecoveryTest(unittest.TestCase):
+    def test_range_uses_approved_endpoint_and_frozen_revision(self):
+        import range_recovery as recovery
+        with tempfile.TemporaryDirectory() as tmp:
+            def transport(cmd, phase, env):
+                self.assertEqual(cmd[-1],
+                    f'https://hf-mirror.com/Qwen/Qwen3.8-Flash-Next/resolve/{recovery.REV}/x')
+                Path(cmd[cmd.index('--output')+1]).write_bytes(b'ab')
+                Path(cmd[cmd.index('--dump-header')+1]).write_text(
+                    'HTTP/1.1 206 OK\r\nContent-Range: bytes 0-1/2\r\n')
+            with patch.object(recovery, 'guarded', side_effect=transport) as fetch:
+                recovery.fetch_range(dict(path='x', size=2), 0,
+                    {'HF_ENDPOINT': 'https://hf-mirror.com'}, Path(tmp))
+                self.assertEqual(fetch.call_count, 1)
+                with self.assertRaises(ValueError):
+                    recovery.fetch_range(dict(path='x', size=2), 0,
+                        {'HF_ENDPOINT': 'http://unapproved.invalid'}, Path(tmp))
+                self.assertEqual(fetch.call_count, 1)
+
+    def test_slow_progressing_range_gets_time_to_finish(self):
+        import range_recovery as recovery
+        with tempfile.TemporaryDirectory() as tmp:
+            def slow_transport(cmd, phase, env):
+                # A 32MiB range at the observed 200KiB/s exceeds the old 90s cap.
+                self.assertGreaterEqual(int(cmd[cmd.index('--max-time')+1]), 240)
+                self.assertEqual(cmd[cmd.index('--speed-time')+1], '60')
+                self.assertEqual(cmd[cmd.index('--speed-limit')+1], '1024')
+                Path(cmd[cmd.index('--output')+1]).write_bytes(b'abcd')
+                Path(cmd[cmd.index('--dump-header')+1]).write_text(
+                    'HTTP/1.1 206 OK\r\nContent-Range: bytes 0-3/4\r\n')
+            with patch.object(recovery, 'guarded', side_effect=slow_transport):
+                result = recovery.fetch_range(dict(path='x', size=4), 0, {}, Path(tmp))
+                self.assertEqual(result[2].read_bytes(), b'abcd')
+
     def test_eight_shard_wave_preserves_success_and_isolates_transport_failure(self):
         import range_recovery as recovery
         barrier = threading.Barrier(8)

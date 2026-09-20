@@ -1,5 +1,33 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 02:26 UTC — download timeout repair and direct mirror selected
+
+Latest user authorized download repair/speed optimization and a bounded .3 speed
+test. See 13_DOWNLOAD_TIMEOUT_REPAIR_AND_ROUTE_SELECTION.md and
+evidence/download-slowfix-mirror-20260920.json. This supersedes v3/v4/v5 below.
+
+Active .22 service: kt-round9-range-recovery-v6, PID2594900. Four shards x two
+connections, HTTPS hf-mirror.com DIRECT; HTTP/HTTPS/ALL_PROXY empty, NO_PROXY=*.
+Same frozen revision and official SHA manifest; same stage/controller lock.
+MemoryMax16GiB, swap0, CPUQuota400%, Nice19, idle I/O and300MB/s disk caps.
+Old v4/v5 stopped during authorized repair; do not restart older controllers.
+Local proxy tunnel remains available but is not required by v6. Heartbeat PAUSED.
+
+Fixes: range hard deadline90->600s plus <1024B/s for60s stall abort; range URL
+now honors approved HF_ENDPOINT instead of silently hardcoding official host.
+20 tooling tests PASS. Deployed range_recovery.py SHA256:
+f1a2f7ca1b1d4499ac2dce87ccd2b127868fe249b07dd516825a6ba3f1dff5b2.
+
+02:23:04->02:26:05 committed saved bytes190754811064->193661071464:
+~16.12MB/s, no new failures, complete files62->64; newly published62/63 pass
+official whole-file SHA. Full model identity still PENDING. .3 eight-connection
+128MiB screen12.61MB/s provides no observed advantage over this .22 window;
+no full model download, container or persistent worker started on .3.
+
+Do not infer permanent network recovery or exact ETA from this short shared-link
+sample. Current transport no longer needs local proxy for progress. No NPU work,
+model precision change, source revision change, automation resume or push/tag.
+
 ## 2026-09-20 — user-requested GitHub repository study
 
 Read12_REPOSITORY_STUDY_AND_REUSE.md; immutable file identities are in

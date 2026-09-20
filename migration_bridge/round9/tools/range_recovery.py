@@ -23,15 +23,21 @@ def fetch_batch(fetch, starts, workers):
 
 
 def fetch_range(row, start, env, stage=STAGE):
+    endpoint = env.get('HF_ENDPOINT', 'https://huggingface.co')
+    if endpoint not in ('https://huggingface.co', 'https://hf-mirror.com'):
+        raise ValueError('unapproved range endpoint')
     end = min(start+CHUNK, row['size'])-1
     for attempt in range(3):
         stem = f"{row['path']}.{start}.{time.time_ns()}"
         part, headers = stage/(stem+'.part'), stage/(stem+'.headers')
-        url = f"https://huggingface.co/Qwen/Qwen3.8-Flash-Next/resolve/{REV}/{row['path']}"
+        url = f"{endpoint}/Qwen/Qwen3.8-Flash-Next/resolve/{REV}/{row['path']}"
         cmd = ['/usr/bin/curl', '--disable', '--http1.1', '--fail', '--location',
                '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
                '--header', 'Accept-Encoding: identity', '--range', f'{start}-{end}',
-               '--connect-timeout', '15', '--max-time', '90',
+               # Shared-link transfers can progress below 32MiB/90s. Abort
+               # sustained stalls, not ordinary slow ranges; retain a hard cap.
+               '--connect-timeout', '15', '--max-time', '600',
+               '--speed-limit', '1024', '--speed-time', '60',
                # A tiny tail can be smaller than the resolver's redirect body.
                # Keep transport bounded; validate the final body exactly below.
                '--max-filesize', str(CHUNK), '--dump-header', str(headers),
@@ -147,7 +153,7 @@ def main():
                     raise ValueError('metadata requires explicit size review')
                 meta = STAGE/('metadata-'+str(time.time_ns()))
                 meta.mkdir()
-                url = f"https://huggingface.co/{manifest['repo']}/resolve/{REV}/{row['path']}"
+                url = f"{env['HF_ENDPOINT']}/{manifest['repo']}/resolve/{REV}/{row['path']}"
                 guarded(['/usr/bin/curl', '--disable', '--http1.1', '--fail', '--location',
                          '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
                          '--header', 'Accept-Encoding: identity', '--max-time', '90',
