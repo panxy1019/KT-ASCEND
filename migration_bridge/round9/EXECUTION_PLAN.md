@@ -1,5 +1,11 @@
 # Round9 — Heterogeneous Working-Set Runtime
 
+2026-09-20 handoff override: user paused the `round7` heartbeat while keeping
+the .22 model download running. Do not resume that automation automatically.
+See docs/handoffs/2026-09-20-02-ROUND9_EXECUTION_HANDOFF.md for current execution.
+The precision amendment below supersedes historical Q64/F32 labels throughout
+this original mandate; freeze the actual unquantized reference before quality.
+
 Authorization: user mandate v1.0, 2026-09-19. This is an execution contract,
 not evidence of model or hardware qualification. Read latest user instructions
 first. Round8 is closed as COMPLETE_WITH_USER_SCOPE_CHANGE at

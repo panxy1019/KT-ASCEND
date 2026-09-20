@@ -1,5 +1,18 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — user-requested new-window handoff, heartbeat PAUSED
+
+User requested background download continue but scheduled task stop. App tool
+confirmed automation `round7` PAUSED. Do NOT automatically resume the old thread
+heartbeat. Remote v3 downloader and local proxy tunnel remain active; preserve
+both. Next window reads:
+- docs/handoffs/2026-09-20-01-HISTORY_AND_REUSABLE_COMPONENTS.md
+- docs/handoffs/2026-09-20-02-ROUND9_EXECUTION_HANDOFF.md
+
+These reconcile historical scope reductions, deployed overlays, latest BF16/
+MXFP4/Q8_0 precision plan and independent C128 study. Old instructions below
+to keep heartbeat active are superseded. No new model test started at handoff.
+
 ## 2026-09-20 — authorized production eight-shard / sixteen-connection download
 
 Latest user explicitly authorized8shards x2connections and autonomous recovery.
