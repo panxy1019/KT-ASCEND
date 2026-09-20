@@ -1,0 +1,88 @@
+{
+  "status": "PASS_SHARED_EXPERT_AND_FINAL_MIXER_COMPONENTS",
+  "scope": "REAL_SHARED_EXPERT_AND_FINAL_MIXER_COMPONENTS_WITH_ROUTED_FIXTURE",
+  "not_qualified": [
+    "routed_expert_computation",
+    "TopK_selection",
+    "KTEP",
+    "complete_MoE_output",
+    "decoder_layer_output",
+    "logits",
+    "full_model"
+  ],
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "physical_device": 15,
+  "runtime_shared_class": "sglang.srt.models.qwen2_moe.Qwen2MoeSparseMoeBlock",
+  "routed_fixture": "identifiable tensor at _forward_router_experts boundary; not KTEP evidence",
+  "separate_ktep_evidence": "migration_bridge/round9/tests/ktep_bank_probe.py",
+  "routed_scaling_contract": "f02 ordinary forward adds routed and gated-shared outputs once; actual config/source defines no routed_scaling_factor",
+  "tokens": [
+    1,
+    7,
+    17
+  ],
+  "repeats": 3,
+  "relative_l2_gate": 0.01,
+  "weights": {
+    "shared_and_router_tensors": 5,
+    "final_mixer_tensors": 3,
+    "all_sources_cpu_cloned_before_load": true
+  },
+  "rows": [
+    {
+      "tokens": 1,
+      "shared_relative_l2": 0.0039509241229470984,
+      "router_logits_relative_l2": 0.001582938407353733,
+      "merge_boundary_calls": [
+        1,
+        1,
+        1
+      ],
+      "shared_hash": "1875ddeb7de4bada4047a664994a0fe94db30829c443c3118430fb4f989294d2",
+      "boundary_hash": "23ab98117342673a7e9fa0033d3c328f7a15cbeb134e0a3cc7691e2c565d65e8",
+      "final_mixer_relative_l2": 0.003309539162640794,
+      "final_mixer_internal_norm_relative_l2": 0.0016853496522682273,
+      "final_mixer_hash": "3bbb562ca2a4ea4ecda3c99c429bd81c2e39505c98a2fdc7814f6ac10b966615"
+    },
+    {
+      "tokens": 7,
+      "shared_relative_l2": 0.0037335879438049847,
+      "router_logits_relative_l2": 0.0016380625171198684,
+      "merge_boundary_calls": [
+        1,
+        1,
+        1
+      ],
+      "shared_hash": "0eb976e57d7ab0c85e80ee9c9e308eb88d22edd54ece06ca28d745daffd97baf",
+      "boundary_hash": "46407085c1434aee1c10b7829f95df912cf735c7c0766fd0317be27530681a85",
+      "final_mixer_relative_l2": 0.003747619133173841,
+      "final_mixer_internal_norm_relative_l2": 0.0016592859306017351,
+      "final_mixer_hash": "a8c4493745f8f7ca9161bcc4db2904fb0a8d2cc803fe34b278f27721ceb2c37d"
+    },
+    {
+      "tokens": 17,
+      "shared_relative_l2": 0.003915301727133113,
+      "router_logits_relative_l2": 0.0016654340323250083,
+      "merge_boundary_calls": [
+        1,
+        1,
+        1
+      ],
+      "shared_hash": "7faf8391e62253b80865db67cdb147405a26273f51b1fedec6924e4e31e359da",
+      "boundary_hash": "a9868b80a0d85afc85348f1f6abf1443ddd3ed39499cb3341346c5cae8a66769",
+      "final_mixer_relative_l2": 0.003913529232201541,
+      "final_mixer_internal_norm_relative_l2": 0.001659876771530405,
+      "final_mixer_hash": "7c462c2f4ee98c37ce0c53aeae3c90987c8058ec962056ed60966598e616fc17"
+    }
+  ],
+  "rows_count": 3,
+  "final_post_mix_norm": "ABSENT_IN_CHECKPOINT_AND_IN_CANONICAL_MIX_OUTPUT",
+  "peak_npu_allocated": 60429824
+}

@@ -1,0 +1,26 @@
+can not use command: npu-smi info
+INFO 09-20 13:50:23 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 13:50:23 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 13:50:23 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 13:50:23 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[W920 13:50:24.956551963 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W920 13:50:24.957196944 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+{"tokens": 1, "shared_relative_l2": 0.0039509241229470984, "router_logits_relative_l2": 0.001582938407353733, "merge_boundary_calls": [1, 1, 1], "shared_hash": "1875ddeb7de4bada4047a664994a0fe94db30829c443c3118430fb4f989294d2", "boundary_hash": "23ab98117342673a7e9fa0033d3c328f7a15cbeb134e0a3cc7691e2c565d65e8", "final_mixer_relative_l2": 0.003309539162640794, "final_mixer_internal_norm_relative_l2": 0.0016853496522682273, "final_mixer_hash": "3bbb562ca2a4ea4ecda3c99c429bd81c2e39505c98a2fdc7814f6ac10b966615"}
+{"tokens": 7, "shared_relative_l2": 0.0037335879438049847, "router_logits_relative_l2": 0.0016380625171198684, "merge_boundary_calls": [1, 1, 1], "shared_hash": "0eb976e57d7ab0c85e80ee9c9e308eb88d22edd54ece06ca28d745daffd97baf", "boundary_hash": "46407085c1434aee1c10b7829f95df912cf735c7c0766fd0317be27530681a85", "final_mixer_relative_l2": 0.003747619133173841, "final_mixer_internal_norm_relative_l2": 0.0016592859306017351, "final_mixer_hash": "a8c4493745f8f7ca9161bcc4db2904fb0a8d2cc803fe34b278f27721ceb2c37d"}
+{"tokens": 17, "shared_relative_l2": 0.003915301727133113, "router_logits_relative_l2": 0.0016654340323250083, "merge_boundary_calls": [1, 1, 1], "shared_hash": "7faf8391e62253b80865db67cdb147405a26273f51b1fedec6924e4e31e359da", "boundary_hash": "a9868b80a0d85afc85348f1f6abf1443ddd3ed39499cb3341346c5cae8a66769", "final_mixer_relative_l2": 0.003913529232201541, "final_mixer_internal_norm_relative_l2": 0.001659876771530405, "final_mixer_hash": "7c462c2f4ee98c37ce0c53aeae3c90987c8058ec962056ed60966598e616fc17"}
+{"status": "PASS_SHARED_EXPERT_AND_FINAL_MIXER_COMPONENTS", "rows": 3}
