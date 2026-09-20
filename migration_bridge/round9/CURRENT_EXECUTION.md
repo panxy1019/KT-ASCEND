@@ -1,5 +1,19 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — authorized post-download A3 replication
+
+User requested one verified copy under110.123.0.3:/home/admin/models and the
+resources needed for a possible later development migration. Destination has
+~1.03TB free at admission; source/destination direct SSH is available. Planned
+final path is /home/admin/models/Qwen3.8-Flash-Next/<revision>; transfer stage is
+a hidden .<revision>.partial sibling and must never be used as a model result.
+
+The A3 watcher waits for .22 DOWNLOAD_IDENTITY_PASS, then rsyncs the immutable
+model over the private path, reruns the complete frozen-manifest SHA/tensor census
+on A3, and only then atomically publishes the final directory. Its state and final
+receipt live in <revision>.round9-support. A tracked Round9 support archive and
+git branch bundle are also copied there. Model execution on A3 remains NOT_RUN.
+
 ## 2026-09-20 03:17 UTC — proposed development host110.123.0.3
 
 User prefers subsequent Round9 development on110.123.0.3. Read
