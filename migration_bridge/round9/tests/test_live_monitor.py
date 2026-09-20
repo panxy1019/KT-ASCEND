@@ -5,7 +5,7 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded')]
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
@@ -31,6 +31,23 @@ class MonitorBudgetTests(unittest.TestCase):
         for values in [(56833,40000,6124,2845),(48000,41473,6124,2845),
                        (30000,10000,12516,2845)]:
             self.assertTrue(ns['hbm_budget_exceeded'](*values))
+
+class MonitorFailureTests(unittest.TestCase):
+    def test_output_failure_still_stops_only_owned_container(self):
+        from types import SimpleNamespace as NS
+        calls=[]
+        class BadPath:
+            def open(self,*args): raise OSError('simulated full log disk')
+        ns.update(a=NS(output=BadPath(),container='kt-round9-full-model-v99'),
+                  subprocess=NS(run=lambda cmd,**kw:calls.append(cmd)),
+                  time=NS(time=lambda:1000),json=__import__('json'))
+        with self.assertRaises(OSError): ns['stop_owned']('test failure')
+        self.assertEqual(calls,[['docker','stop','--time','10','kt-round9-full-model-v99']])
+
+    def test_baseline_needs_three_stable_created_samples(self):
+        self.assertIsNone(ns['stable_system_baseline']([2845]))
+        self.assertIsNone(ns['stable_system_baseline']([2845,12000,2845]))
+        self.assertEqual(ns['stable_system_baseline']([2845,2846,2845]),2846)
 
 if __name__ == '__main__':
     unittest.main()

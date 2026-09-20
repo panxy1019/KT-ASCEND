@@ -2,7 +2,7 @@
 import argparse,hashlib,json,math,pathlib,time,urllib.request
 REVISION='de4b8e4d43b917e7706784d8bb445c9af86a3540'
 SOURCE_SHA='bca1e1ec41da188e51f176813e6d916120eaab26b17a3dc63a99ed712cf9bf04'
-p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['freeze','run']);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--source',type=pathlib.Path);p.add_argument('--compact',type=pathlib.Path);a=p.parse_args()
+p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['freeze','run']);p.add_argument('--output',type=pathlib.Path,required=True);p.add_argument('--source',type=pathlib.Path);p.add_argument('--compact',type=pathlib.Path);p.add_argument('--start',type=int,default=0);p.add_argument('--count',type=int,default=256);a=p.parse_args()
 model=pathlib.Path('/models')/REVISION
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 def write(path,x):path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
@@ -25,10 +25,15 @@ else:
  ack=json.loads((a.output/'freeze-ack.json').read_text());assert ack['manifest_sha256']==sha(a.output/'manifest.json') and len(ack['local_commit'])==40
  manifest=json.loads((a.output/'manifest.json').read_text());assert manifest['revision']==REVISION and manifest['source_sha256']==SOURCE_SHA
  assert sha(model/'tokenizer.json')==manifest['tokenizer_sha256'] and sha(model/'tokenizer_config.json')==manifest['tokenizer_config_sha256']
- correct=0;predictions=[];summary={'status':'RUNNING','manifest_sha256':sha(a.output/'manifest.json'),'freeze_ack':ack}
+ assert 0 <= a.start < 256 and 0 < a.count <= 256-a.start
+ admission=json.loads((a.output.parent/'preflight/admission.json').read_text())
+ container=json.loads((a.output.parent/'container-created.json').read_text())
+ assert 'ROUND9_MEMORY_OBSERVER=0' in container['Config']['Env']
+ runtime_identity=dict(implementation_sha256=admission['implementation_sha256'],profile_sha256=admission['profile_sha256'],image=container['Image'],observer=False)
+ correct=0;predictions=[];summary={'status':'RUNNING','manifest_sha256':sha(a.output/'manifest.json'),'freeze_ack':ack,'start':a.start,'count':a.count,'driver_sha256':sha(pathlib.Path(__file__)),'runtime_identity':runtime_identity}
  try:
   with (a.output/'raw.jsonl').open('x') as f:
-   for i,r in enumerate(manifest['rows']):
+   for i,r in enumerate(manifest['rows'][a.start:a.start+a.count]):
     body=dict(rid='r9-cmmlu-'+r['id'],input_ids=r['input_ids'],sampling_params=dict(temperature=0,max_new_tokens=1,stop=r['stop']),return_logprob=True,logprob_start_len=-1,top_logprobs_num=0,token_ids_logprob=r['candidate_ids'])
     req=urllib.request.Request('http://127.0.0.1:30091/generate',data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
     with urllib.request.urlopen(req,timeout=900) as response:data=json.load(response)
@@ -37,8 +42,8 @@ else:
     values={v[1]:v[0] for v in positions[0]};assert set(values)==set(r['candidate_ids']) and all(math.isfinite(v) for v in values.values())
     predicted='ABCD'[max(range(4),key=lambda j:values[r['candidate_ids'][j]])]
     predictions.append(predicted);correct+=int(predicted==r['answer'])
-    write(a.output/'progress.json',dict(completed=i+1,total=256,correct=correct,invalid=0));print(f'{i+1}/256 correct={correct}',flush=True)
-  summary.update(status='REFERENCE_SCORED_PENDING_AUDIT',correct=correct,count=256,invalid=0,answer_distribution={c:predictions.count(c) for c in 'ABCD'},all_npu_reference=False)
+    write(a.output/'progress.json',dict(completed=i+1,total=a.count,start=a.start,correct=correct,invalid=0));print(f'{a.start+i+1}/256 correct_in_slice={correct}',flush=True)
+  summary.update(status='REFERENCE_SLICE_SCORED_PENDING_AUDIT',correct=correct,count=a.count,invalid=0,answer_distribution={c:predictions.count(c) for c in 'ABCD'},all_npu_reference=False)
  except BaseException as exc:
   summary.update(status='FAIL',completed=len(predictions),error=repr(exc));raise
  finally:write(a.output/'summary.json',summary)

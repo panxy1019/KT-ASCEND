@@ -19,6 +19,7 @@ if a.output.exists() or a.ready_file.exists():
     raise FileExistsError(a.output)
 started = time.monotonic()
 system_baseline_mib = None
+baseline_samples = []
 
 
 def command(args):
@@ -26,9 +27,11 @@ def command(args):
 
 
 def stop_owned(reason):
-    with a.output.open('a') as f:
-        f.write(json.dumps({'time':time.time(), 'action':'STOP_OWNED', 'reason':reason})+'\n')
-    subprocess.run(['docker','stop','--time','10',a.container], check=False, timeout=30)
+    try:
+        with a.output.open('a') as f:
+            f.write(json.dumps({'time':time.time(), 'action':'STOP_OWNED', 'reason':reason})+'\n')
+    finally:
+        subprocess.run(['docker','stop','--time','10',a.container], check=False, timeout=30)
 
 
 def parse_physical15(raw):
@@ -54,6 +57,13 @@ def hbm_budget_exceeded(used, owned, training, system_baseline):
     return used > 56832 or owned > 41472 or training + system_baseline > 15360
 
 
+def stable_system_baseline(samples):
+    recent = samples[-3:]
+    if len(recent) != 3 or max(recent)-min(recent) > 64:
+        return None
+    return max(recent)
+
+
 while True:
     try:
         state = json.loads(command(['docker','inspect',a.container]))[0]
@@ -76,13 +86,16 @@ while True:
         if system_baseline_mib is None:
             if not waiting or owned != 0:
                 raise RuntimeError('guard must establish baseline before container start')
-            system_baseline_mib = used - training
-            if not 0 <= system_baseline_mib < 15360:
+            candidate = used - training
+            if not 0 <= candidate < 15360:
                 raise RuntimeError('invalid pre-start system HBM baseline')
+            baseline_samples.append(candidate)
+            system_baseline_mib = stable_system_baseline(baseline_samples)
         item = {'time':time.time(),'hbm_used_mib':used,'training_process_mib':training,
                 'owned_process_mib':owned,'nonowned_board_mib':used-owned,
                 'system_baseline_mib':system_baseline_mib,
-                'estimated_nonowned_board_mib':training+system_baseline_mib,
+                'baseline_samples_mib':baseline_samples,
+                'estimated_nonowned_board_mib':None if system_baseline_mib is None else training+system_baseline_mib,
                 'container_status':state['State']['Status'],'processes':processes,'raw_npu_smi':raw}
         meminfo = dict(line.split(':',1) for line in pathlib.Path('/proc/meminfo').read_text().splitlines())
         item['host_mem_available_kib'] = int(meminfo['MemAvailable'].split()[0])
@@ -113,10 +126,10 @@ while True:
             break
         #Physical-board domain; 15GiB nonowned envelope includes system baseline.
         #Stop0.5GiB before41GiB owned/56GiB total budget, not at the boundary.
-        if hbm_budget_exceeded(used, owned, training, system_baseline_mib):
+        if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0):
             stop_owned('shared HBM budget exceeded')
             break
-        if waiting and not a.ready_file.exists():
+        if waiting and system_baseline_mib is not None and not a.ready_file.exists():
             a.ready_file.write_text(json.dumps({'time':time.time(),'status':'GUARD_ARMED'})+'\n')
         if time.monotonic()-started > a.seconds:
             stop_owned('bounded live-monitor window ended')

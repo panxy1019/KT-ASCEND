@@ -45,3 +45,11 @@ Qwen3.8 original tokenizer/chat template is freshly applied with thinkingOFF,
 225–722prompttokens. ManifestSHA88efae7d68e7edf644add12909db89712dc001046b8624801dbb8ce7a8804858
 is committed at e66726f2f6a07aad85a974a15e0aba7604a20852 before any scoring.
 No earlier model qualification or scores are inherited.
+
+Follow-up guard review found that a failed log append could prevent docker stop.
+A regression reproduced no stop call under simulated disk-full; stop_owned now
+runs docker stop in finally even if writing its event fails. Another regression
+requires three pre-start system-baseline samples within64MiB and uses their
+maximum before arming, rejecting an asynchronous baseline outlier. All6 monitor
+unit tests pass. This further guard revision is prepared for the next owned
+server restart; livev5 retains its recorded original guard/source fingerprint.

@@ -1,3 +1,14 @@
+## Actual4096 request decode in progress — 2026-09-20 15:01 UTC
+
+Trialv5 firstHTTP andcleanrestart4 PASS againstv3compact; revisedinternal
+4098context/4100pool admittedactual3840input+256output. Prefillcompleted,
+decodecurrentlyrunning withmemoryobserverON. NofinalboundaryPASSuntilresponse.
+Hostguardv5active, training6124MiBstable, ownpeak39850MiB atlastsample.
+Furtherguardfix(logfailurefinallystop+3stablebaselinesamples)6testsPASS isLOCAL,
+preparedforv6; do notclaimdeployedtov5. v6 plannedobserverOFF/restart4, then
+CMMLUfirst128; v7 sameprofile second128. Frozen256order preserved, noquality
+scoresyet. Runtimeidentity+profile/image/observerOFF boundinslicesforaggregate.
+
 ## Live trialv5 — 2026-09-20 14:54 UTC
 
 Trialv4 stopped duringconstruction by non-atomicboard/process subtraction.
