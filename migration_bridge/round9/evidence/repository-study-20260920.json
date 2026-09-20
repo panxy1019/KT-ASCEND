@@ -1,0 +1,98 @@
+{
+  "captured_utc": "2026-09-20T01:45:13.611622+00:00",
+  "status": "CODE_INSPECTED_ONLY",
+  "user_repo": "https://github.com/panxy1019/KT-ASCEND",
+  "user_main": "5feb57f91aa9c786d2bc0002585a8958a456eb0f",
+  "user_round8_branch": "codex/round8-qwen35-prep",
+  "user_round8_revision": "9c1f1dae92303c1a13078319ab2aa2b5026fdb9e",
+  "official_repo": "https://github.com/kvcache-ai/ktransformers",
+  "official_revision": "f7607c0f66c643220ff43b822b24483c98c41392",
+  "official_gitlinks": [
+    "160000 commit a94e6ff8774b7c9f950d9545baf0ce35e8d1ed2f\tthird_party/llama.cpp",
+    "160000 commit 541ddc37cbc92c60dc748db5ff1a2aad0b069a80\tthird_party/sglang"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 12010,
+      "sha256": "61831dccf4c35e9ea20f4a8b9637ca3fe4ad9e78cb84fa7b0616586ab137ad18",
+      "git_blob": "386b71c73e26326ba927a0357344c72ce5b19672",
+      "local_sha256": "a05eab1ca735c3bd1dd6afbce8c49781fa41e201c38343bdde4779442928fdd7",
+      "matches_local": false
+    },
+    {
+      "path": "kt-kernel/README.md",
+      "bytes": 30523,
+      "sha256": "94c78a1a841b5b6e272c8d92678938fc4559deaeecec9da9bc4928c9a80c07d6",
+      "git_blob": "1c7053bb09db42a0e40e9a389b3902c90d979411",
+      "local_sha256": "94c78a1a841b5b6e272c8d92678938fc4559deaeecec9da9bc4928c9a80c07d6",
+      "matches_local": true
+    },
+    {
+      "path": "doc/en/DeepSeek-V4-Flash_tutorial_for_Ascend_NPU.md",
+      "bytes": 15548,
+      "sha256": "023af5c55c8c8a01179a4f1c04635ddce691b94733094bc523272ea2c71a5dab",
+      "git_blob": "1faa293fd63dd2bcb60c9db25974bc4c5e784dff",
+      "local_sha256": "023af5c55c8c8a01179a4f1c04635ddce691b94733094bc523272ea2c71a5dab",
+      "matches_local": true
+    },
+    {
+      "path": "doc/en/kt-kernel/Native-Precision-Tutorial.md",
+      "bytes": 9597,
+      "sha256": "aed37372f057ef24d726cfb4c45010721afeb719156bcfc83fc9ab90b64aa93e",
+      "git_blob": "5aecdacf96a62ac6c530d88cd6d9c09a6617a6f1",
+      "local_sha256": "aed37372f057ef24d726cfb4c45010721afeb719156bcfc83fc9ab90b64aa93e",
+      "matches_local": true
+    },
+    {
+      "path": "kt-kernel/python/experts.py",
+      "bytes": 17302,
+      "sha256": "e75740b3ad53b85eeb4d9db97b918aebc4d2f3e86162d7e5dc153f472a23752b",
+      "git_blob": "1b9a958bbcca8dedc09308b777f0438746301548",
+      "local_sha256": "e75740b3ad53b85eeb4d9db97b918aebc4d2f3e86162d7e5dc153f472a23752b",
+      "matches_local": true
+    },
+    {
+      "path": "kt-kernel/python/experts_base.py",
+      "bytes": 38692,
+      "sha256": "2aa8f6e0fc225c592ad198eb21779a19c4e29cca1cc598eb149c54a2bd836720",
+      "git_blob": "647ab2948914a6f0c6a8ce332f39d0a2de307b14",
+      "local_sha256": "d208f1d71afc1a8aed2554939a7c53358294b2ae49d4b1af5791de6ad93186c3",
+      "matches_local": false
+    },
+    {
+      "path": "kt-kernel/operators/llamafile/moe.hpp",
+      "bytes": 54887,
+      "sha256": "59d6a1002a13edf162ff8314fb0fcdc10aa84786a9e5716e4badbe7086f5563d",
+      "git_blob": "88da8b401918882f121a953c0fd5eb740518fa38",
+      "local_sha256": "73a863bbc5637860f126d8c4e346c4e8cfe53f4f9a7cde8ede5c17583754b382",
+      "matches_local": false
+    },
+    {
+      "path": "kt-kernel/cpu_backend/worker_pool.cpp",
+      "bytes": 18209,
+      "sha256": "90d2e73c2ac36cccbbdc8eefd8ae16d5a10a9e4073fada91cfba787c306ef01d",
+      "git_blob": "05d70660b32b33a30be3f1fa83375857570b0806",
+      "local_sha256": "a3076a95a3408b10fdbc73bb6010b3d876b3f33b9d23de6a9eeffc576d1772e1",
+      "matches_local": false
+    },
+    {
+      "path": "kt-kernel/cpu_backend/ascend_callback_worker.cpp",
+      "bytes": 4762,
+      "sha256": "17bb6e3102f8fcfc6f801e65ae81d3d8c7e73a776feaf19a0812ffe47f25fddd",
+      "git_blob": "bbcbf445ae60a0ba43fe0175cdd4906f25ad1d0c",
+      "local_sha256": "17bb6e3102f8fcfc6f801e65ae81d3d8c7e73a776feaf19a0812ffe47f25fddd",
+      "matches_local": true
+    },
+    {
+      "path": "kt-kernel/cpu_backend/vendors/ascend_npu.h",
+      "bytes": 3019,
+      "sha256": "cee88948fcc4b33c841265e394e955c413cbabf215d7dfce1491616ecd6d821a",
+      "git_blob": "da763144ad2dfca43103272ea9ffd3aac4df5fe9",
+      "local_sha256": "cee88948fcc4b33c841265e394e955c413cbabf215d7dfce1491616ecd6d821a",
+      "matches_local": true
+    }
+  ],
+  "runtime_modified": false,
+  "model_qualification": "NOT_RUN"
+}

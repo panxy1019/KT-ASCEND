@@ -1,5 +1,23 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — user-requested GitHub repository study
+
+Read12_REPOSITORY_STUDY_AND_REUSE.md; immutable file identities are in
+evidence/repository-study-20260920.json. Remote usermain remains5feb57f91;
+publishedRound8branch is9c1f1dae. OfficialKTmain isf7607c0f. Its commit tree
+now independently verifies SGLanggitlink541ddc37 and llama.cppa94e6ff8;
+this supersedes the earlier official-gitlinkPENDING note below.
+
+Source audit identified a concrete BF16/low-bit C64 preparation gap: current
+moe-tp.hpp admits32-aligned multi-pool slices only for all-F32 weights;
+non-F32intermediate640 with multiple pools is rejected. Groupedforward_many
+and FP32partial rules also contain F32-only paths. Resolve through bounded
+format/shape/merge probes before full conversion, not by changing dtype labels
+or deleting guards. Native --kt-method BF16/MXFP4 is not LLAMAFILE storage.
+
+Documentation-only research; existing download/automation/runtime untouched.
+R9-A identity/resource/semantic/operator qualification remains incomplete.
+
 ## 2026-09-20 01:35 UTC — new-session takeover, R9-A still in progress
 
 Read11_TAKEOVER_SOURCE_PREFLIGHT.md and its two evidence JSON files.
