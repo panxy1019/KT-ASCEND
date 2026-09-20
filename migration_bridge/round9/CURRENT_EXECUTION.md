@@ -1,3 +1,14 @@
+# 2026-09-20 — Continuous progression authorized through full-model admission
+
+User requests monitoring, continued development and fixes until full-model
+resource admission. Thread heartbeat `round9` is ACTIVE every30minutes;
+old `round7` remains PAUSED. Do not confuse those automation IDs.
+Read `20_FULL_MODEL_ADMISSION_TRACKER.md` first, then the latest module reports.
+Use gpt-5.6-sol / medium for delegated agents. Active target remains .3 physical15.
+Before remote work check for existing owned jobs; do not duplicate active runs.
+At successful full-model admission, report and stop this automation's work;
+do not infer authorization to run full-model quality/performance from this scope.
+
 # 2026-09-20 — RESUMED: physical15 shared development on 110.123.0.3
 
 User explicitly resumed Round9 and resolved host ambiguity: use 110.123.0.3,
