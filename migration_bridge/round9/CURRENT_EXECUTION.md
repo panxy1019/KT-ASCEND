@@ -1,5 +1,26 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 — authorized production eight-shard / sixteen-connection download
+
+Latest user explicitly authorized8shards x2connections and autonomous recovery.
+Active owned unit now `kt-round9-range-recovery-v3`, controller2233665 on .22.
+Code41dfcd8a9. KT_SHARD_WORKERS=8, KT_RANGE_WORKERS=2. Oldv2 stopped; do not
+restart older units concurrently. Same frozen source/proxy and same stage lock.
+18 tooling tests pass. Per-file progress is now `range-recovery-v1/model-*.progress.json`;
+old progress.json is stale. Global download-state reflects last active transfer,
+not all children. Inspect owned systemd cgroup for all processes.
+First eight active shards53–60 each committed64MiB around1789864388; shard52
+completed and officialSHA PASS. Native/model qualification unchanged, pending.
+Second complete batch finished1789864451.9951 vs1789864388.9713:536870912
+additional committed bytes in63.0238seconds =8.52decimalMB/s. At1789864494
+unitACTIVE, memory.current3571154944bytes, no reported retry/timeout; shard58
+already entered its third committed batch.52complete shards before this wave.
+Per-range3attempts; failed shard transport jobs retained for bounded retry waves
+at4/2/1shards after current wave ends. Integrity errors do not become transport
+retries. Final whole-model audit still mandatory. No unconditional restart loop.
+CPUQuota400%, memory8GiB, swap0, idle I/O, disk caps300MB/s unchanged; no
+global network changes or other-user task changes. Download remains background.
+
 ## 2026-09-20 — user-authorized four-shard/two-connections test complete
 
 See10_MULTISHARD_DOWNLOAD_SCREEN.md and evidence/multishard-abba-v1.json.
