@@ -1,3 +1,24 @@
+## First real full-model forward PASS — 2026-09-20 14:44 UTC
+
+Trialv3 full load and actualHello+4decodeHTTP PASS, finiteoutputlogprobs.
+Round9 compact32 RUNNING: /out/compact-v1 (fourprompts,repeat/prefixtrajectories).
+CMMLU256 originalordereditems retokenized with frozenQwen3.8source;manifest
+88efae7d68e7edf644add12909db89712dc001046b8624801dbb8ce7a8804858,
+225–722prompttokens. FROZEN_NOT_SCORED. Full peakworkload notyetqualified.
+Hostmonitor remains active; bothautomationsPAUSED. Continuecompact results,
+then4096resourceboundary/cancel/restart/observer beforequalityreference.
+
+## Live full-model retry — 2026-09-20 14:41 UTC
+
+Commit4abb23f0d fixes real Ascend pool dispatch; RED-v3 reproduced wrong pool,
+GREEN-v1 passed Qwen4 hybrid12layers plus ordinaryAscend48layers control.
+**kt-round9-full-model-v3 is RUNNING** on .3physical15 with monitor armed,
+logs /mnt/data1/kt-round9/evidence/20260920-full-model-v3. HTTPfirst probe waits
+for readiness then Hello+4token fullforward. Monitor now recordsactualcgroupv1.
+Optional ROUND9_MEMORY_OBSERVER=1 records perforward torchalloc/reservedpeaks.
+No fullforward PASS yet. Compact32 client prepared but notstarted. Do not
+startduplicateownedserver. BothschedulesPAUSED;training4069720untouched.
+
 ## First full-model load result — 2026-09-20 14:33 UTC
 
 Trialv2 exited; no Round9 server remains. Original131shards loaded,48native

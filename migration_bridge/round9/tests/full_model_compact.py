@@ -9,7 +9,7 @@ revision='de4b8e4d43b917e7706784d8bb445c9af86a3540'
 model=pathlib.Path('/models')/revision
 prompts={'zh':'用两句话解释为什么天空通常呈蓝色。','en':'Explain the difference between a list and a set in two sentences.','math':'Compute 17 times 23 and briefly show the calculation.','json':'Return only a JSON object with keys name and count, values apple and 3.'}
 t=AutoTokenizer.from_pretrained(model,local_files_only=True)
-rows={k:t.apply_chat_template([{'role':'user','content':v}],tokenize=True,add_generation_prompt=True,enable_thinking=False) for k,v in prompts.items()}
+rows={k:t.encode(t.apply_chat_template([{'role':'user','content':v}],tokenize=False,add_generation_prompt=True,enable_thinking=False),add_special_tokens=False) for k,v in prompts.items()}
 protocol={'revision':revision,'prompts':prompts,'input_ids':rows,'temperature':0,'thinking':False,'budgets':[32,16,16,16,16,16,16,8],'scope':'SYSTEM_COMPACT_NOT_QUALITY_OR_PERFORMANCE','tokenizer_sha256':hashlib.sha256((model/'tokenizer.json').read_bytes()).hexdigest(),'tokenizer_config_sha256':hashlib.sha256((model/'tokenizer_config.json').read_bytes()).hexdigest()}
 encoded=json.dumps(protocol,ensure_ascii=False,sort_keys=True,indent=2)+'\n'
 (a.output/'protocol.json').write_text(encoded)
