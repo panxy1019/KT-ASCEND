@@ -32,7 +32,9 @@ def fetch_range(row, start, env, stage=STAGE):
                '--silent', '--show-error', '--proto', '=https', '--proto-redir', '=https',
                '--header', 'Accept-Encoding: identity', '--range', f'{start}-{end}',
                '--connect-timeout', '15', '--max-time', '90',
-               '--max-filesize', str(end-start+1), '--dump-header', str(headers),
+               # A tiny tail can be smaller than the resolver's redirect body.
+               # Keep transport bounded; validate the final body exactly below.
+               '--max-filesize', str(CHUNK), '--dump-header', str(headers),
                '--output', str(part), url]
         try:
             guarded(cmd, f"RANGE:{row['path']}:{start}:{attempt}", env)

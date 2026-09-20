@@ -2,11 +2,25 @@ import hashlib
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import threading
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 
 class RecoveryTest(unittest.TestCase):
+    def test_tiny_tail_allows_redirect_but_validates_exact_body(self):
+        import range_recovery as recovery
+        with tempfile.TemporaryDirectory() as tmp:
+            def fake_transport(cmd, phase, env):
+                self.assertEqual(int(cmd[cmd.index('--max-filesize')+1]), recovery.CHUNK)
+                Path(cmd[cmd.index('--output')+1]).write_bytes(b'cd')
+                Path(cmd[cmd.index('--dump-header')+1]).write_text(
+                    'HTTP/1.1 302 Found\r\nContent-Length: 1000\r\n\r\n'
+                    'HTTP/1.1 206 OK\r\nContent-Range: bytes 2-3/4\r\n')
+            with patch.object(recovery, 'guarded', side_effect=fake_transport):
+                result = recovery.fetch_range(dict(path='x', size=4), 2, {}, Path(tmp))
+                self.assertEqual(result[2].read_bytes(), b'cd')
+
     def test_two_connections_overlap_but_results_stay_ordered(self):
         import range_recovery as recovery
         barrier = threading.Barrier(2)
