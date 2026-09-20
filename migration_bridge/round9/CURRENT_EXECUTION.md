@@ -1,5 +1,16 @@
 # Round9 continuation checkpoint — 2026-09-19
 
+## 2026-09-20 01:16 UTC — user-authorized download memory limit increase
+
+Only owned kt-round9-range-recovery-v3 service MemoryMax increased live from
+8GiB to16GiB via systemctl set-property --runtime; MemorySwapMax remains0.
+Host MemAvailable1036681788KiB (~989GiB) before change. Old cgroup max events
+4539,OOM0; anon167776256bytes,file8142893056bytes. This addresses file-cache
+reclaim headroom, not a proven network-timeout fix. PID2233665 unchanged, no
+restart. If service recreated, explicitly preserve16G; old commands show8G.
+All other resource limits and eight-shard/two-range concurrency unchanged.
+Heartbeat remains PAUSED. User has not requested automatic scheduling resume.
+
 ## 2026-09-20 — user-requested new-window handoff, heartbeat PAUSED
 
 User requested background download continue but scheduled task stop. App tool
