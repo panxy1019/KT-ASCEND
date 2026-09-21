@@ -1,6 +1,6 @@
 # Framework ledger — plan: 43_FRAMEWORK_COMPLETION_EXECUTION_PLAN.md
 
-## Latest: v35–v44 integration and framework freeze preparation
+## Latest: v35–v45 integration and framework freeze complete
 
 F5 v35 passes the real async PLE consumer with 11 drains; v36 feature-OFF has
 identical tokens, zero maximum logprob difference and no async event file. F6
@@ -23,6 +23,9 @@ the missing Prefill-End + Layerwise + async PLE cell on one real request:48-laye
 prefill, four async drains, generation-1 commit/final drain and integer391 all
 pass with no cgroup pressure event. Final F12/F13 artifacts bind these receipts. No
 CMMLU256, formal performance, real long-context or deployment claim is added.
+Under the bounded definition in `ROUND9_FRAMEWORK_COMPLETION_REPORT.md`,
+`ROUND9_FRAMEWORK_COMPLETE = YES`; product, performance, real long-context and
+deployment qualification remain pending.
 
 ## Latest: MXFP4 NUMA trial34 and F4 bounded full-model smoke PASS
 

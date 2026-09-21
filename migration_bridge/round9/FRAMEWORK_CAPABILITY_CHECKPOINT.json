@@ -1,0 +1,92 @@
+{
+  "schema": 2,
+  "checkpoint_utc": "2026-09-21T11:24:10.925989+00:00",
+  "framework_complete": true,
+  "final_freeze": true,
+  "implementation_commit": "53902048d35ad4cc6e7fda2ef41706552a03bb88",
+  "capability_matrix_sha256": "929c4a992b59ef21bf30cbb86fe111dff82593ab832e258c31efb0d345c33ff7",
+  "cpu_frozen_snapshot": "framework-cpu-v16",
+  "cpu_tests_passed": 331,
+  "full_model_blocker": null,
+  "product_quality": "PENDING",
+  "performance": "PENDING",
+  "real_long_context": "PENDING",
+  "deployment": "PENDING",
+  "known_limitations": [
+    "native FP8 QSA unsupported",
+    "request-local tier is not integrated HiCache",
+    "mid-prefill HTTP abort not prompt/qualified"
+  ],
+  "capabilities": [
+    {
+      "phase": "F0",
+      "scope": "BASELINE_IDENTITY_FREEZE",
+      "status": "FROZEN"
+    },
+    {
+      "phase": "F1",
+      "scope": "QWEN38_STATIC_FREQUENCY_Q64_Q32",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F2",
+      "scope": "LAYERWISE_EXPERT_TRANSPORT",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F3",
+      "scope": "COMPLETE_PREFILL_ROUTE_TELEMETRY",
+      "status": "FULL_MODEL_SMOKE_PRODUCER"
+    },
+    {
+      "phase": "F4",
+      "scope": "PREFILL_END_DYNAMIC",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F5",
+      "scope": "PLE_ASYNC_EXACT_INPUT",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F6",
+      "scope": "JOINT_HOST_WORK_BUDGET",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F7",
+      "scope": "Q32_PHYSICAL_RESIDENT_CAPACITY",
+      "status": "FULL_MODEL_SMOKE"
+    },
+    {
+      "phase": "F8",
+      "scope": "QSA_CONTEXT_PLUMBING",
+      "status": "4K_FULL_MODEL_SMOKE_LARGER_BOUNDARIES_LOCAL"
+    },
+    {
+      "phase": "F9",
+      "scope": "FP8_HOST_REFERENCE_BF16_QSA_STAGING",
+      "status": "FULL_MODEL_SMOKE_NATIVE_UNSUPPORTED"
+    },
+    {
+      "phase": "F10",
+      "scope": "REQUEST_LOCAL_HOST_CONTEXT_TIER",
+      "status": "DEVICE_COMPONENT_QUALIFIED_ALLOCATOR_NOT_INTEGRATED"
+    },
+    {
+      "phase": "F11",
+      "scope": "THREE_PLANE_STREAMING_PREFILL",
+      "status": "FULL_MODEL_SMOKE_WITH_MIDPREFILL_HTTP_ABORT_LIMITATION"
+    },
+    {
+      "phase": "F12",
+      "scope": "BOUNDED_FEATURE_INTERACTION_MATRIX",
+      "status": "PASS"
+    },
+    {
+      "phase": "F13",
+      "scope": "FRAMEWORK_FREEZE",
+      "status": "COMPLETE"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-## Latest — 2026-09-21 Framework Completion freeze in progress
+## Latest — 2026-09-21 Framework Completion frozen
 
 Final CPU source snapshot v16 passes331 tests and a fresh preserved-baseline
 overlay install. Full-model gates now pass F1 Frequency, F2/F3 Layerwise route
@@ -15,6 +15,8 @@ the combined Q32 Layerwise Prefill-End Dynamic + PLE Async request with one
 generation commit/final drain, four async drains and391. No Round9 model process
 remains on physical15. F12/F13 reports bind the final receipts before commit/push. Old Round7 timers
 remain paused; no Round8 performance work, main merge or tag is authorized.
+`ROUND9_FRAMEWORK_COMPLETE = YES` under the bounded F0–F13 definition. Product
+quality, formal performance, real long-context and deployment remain pending.
 
 ## Historical —2026-09-21 MXFP4 NUMA validation and F4 full-model smoke passed
 
