@@ -8,6 +8,30 @@ from unittest.mock import patch
 
 
 class StreamingBindingTests(unittest.TestCase):
+    def test_cancel_fence_prevents_new_chunk_before_any_plane_begins(self):
+        from migration_bridge.round9.runtime.streaming_binding import streaming_before
+
+        request = NS(rid="cancelled", origin_input_ids=list(range(64)),
+                     last_extend_prefix_len=32, extend_input_len=32)
+        runner = NS(
+            _round9_streaming=NS(request_token=request, active=False),
+            _round9_context_reference=NS(identity=NS(allocation_epoch=4)),
+            _round9_prefill=NS(active=False),
+            _round9_ple=NS(context=None),
+        )
+        scheduler = NS(tp_worker=NS(model_runner=runner))
+        batch = NS(reqs=[request], forward_mode=NS(is_extend=lambda: True))
+        profile = {"schema": 1, "threshold_tokens": 4, "chunk_tokens": 32}
+        with patch(
+            "migration_bridge.round9.runtime.streaming_binding.load_streaming_profile",
+            return_value=profile,
+        ), patch(
+            "migration_bridge.round9.runtime.streaming_binding.scheduler_before_normal_submit",
+            return_value=False,
+        ):
+            self.assertFalse(streaming_before(scheduler, batch))
+        self.assertIsNone(runner._round9_streaming_request)
+
     def test_stack_contract_requires_all_planes_and_matching_threshold(self):
         from migration_bridge.round9.runtime.streaming_binding import validate_streaming_stack
         streaming = {"schema": 1, "threshold_tokens": 4, "chunk_tokens": 32}

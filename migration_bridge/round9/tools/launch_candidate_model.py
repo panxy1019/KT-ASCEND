@@ -16,6 +16,8 @@ p.add_argument('--context-reference-profile',type=pathlib.Path,
  help='opt-in BF16 compact or host-FP8/BF16-stage QSA reference consumer')
 p.add_argument('--streaming-profile',type=pathlib.Path,
  help='opt-in bounded three-plane streaming prefill coordinator')
+p.add_argument('--cancel-trace',action='store_true',
+ help='opt in to bounded P0 cancellation lifecycle JSONL at /out/cancel-events.jsonl')
 a=p.parse_args()
 root=pathlib.Path('/mnt/data1/kt-round9');source=pathlib.Path(__file__).resolve().parents[1]
 if a.version<10:raise ValueError('candidate full-model versions begin at10')
@@ -185,6 +187,7 @@ if context_reference is not None:
 if streaming is not None:
  for env in ('ROUND9_STREAMING_PROFILE=/out/streaming-profile.json',
              f'ROUND9_STREAMING_SHA256={digest(out/"streaming-profile.json")}'):args+=['-e',env]
+if a.cancel_trace:args+=['-e','ROUND9_CANCEL_TRACE_PATH=/out/cancel-events.jsonl']
 args+=['--entrypoint','bash','601e76d17e9f','-c',script];command(args)
 inspect=json.loads(command(['docker','inspect',name]))[0];hc=inspect['HostConfig']
 if hc['Memory']!=640*1024**3 or hc['MemorySwap']!=hc['Memory'] or hc['NanoCpus']!=136*10**9:raise RuntimeError('container limits differ')

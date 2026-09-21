@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 
 from .framework_config import load_framework
+from .cancel_lifecycle import scheduler_before_normal_submit, scheduler_request_admitted
 from .streaming_prefill import StreamingPrefillCoordinator
 
 
@@ -103,6 +104,12 @@ def streaming_before(scheduler, batch):
     context = runner._round9_context_reference
     if context.identity is None:
         raise RuntimeError("streaming context allocation identity is missing")
+    scheduler_request_admitted(
+        scheduler, request, context.identity.allocation_epoch)
+    if not scheduler_before_normal_submit(
+            scheduler, request, "STREAMING_CHUNK"):
+        runner._round9_streaming_request = None
+        return False
     boundary = getattr(scheduler, "_round9_dynamic_boundary", None)
     placement_epoch = boundary.generation if boundary is not None else 0
     started = coordinator.begin(
@@ -115,6 +122,7 @@ def streaming_before(scheduler, batch):
                 or runner._round9_ple.context is None or not context.active):
             raise RuntimeError("streaming planes did not begin the same scheduler batch")
         runner._round9_streaming_ple_before = runner._round9_ple.async_batches
+    return started
 
 
 def streaming_after(scheduler):
