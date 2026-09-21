@@ -9,12 +9,37 @@ from unittest.mock import patch
 
 class StreamingBindingTests(unittest.TestCase):
     def test_cancel_fence_prevents_new_chunk_before_any_plane_begins(self):
-        from migration_bridge.round9.runtime.streaming_binding import streaming_before
+        from migration_bridge.round9.runtime.streaming_binding import streaming_submit_fence
 
         request = NS(rid="cancelled", origin_input_ids=list(range(64)),
                      last_extend_prefix_len=32, extend_input_len=32)
+        scheduler = NS(tp_worker=NS(model_runner=NS()))
+        batch = NS(reqs=[request], forward_mode=NS(is_extend=lambda: True))
+        profile = {"schema": 1, "threshold_tokens": 4, "chunk_tokens": 32}
+        with patch(
+            "migration_bridge.round9.runtime.streaming_binding.load_streaming_profile",
+            return_value=profile,
+        ), patch(
+            "migration_bridge.round9.runtime.streaming_binding.scheduler_request_admitted",
+        ) as admitted, patch(
+            "migration_bridge.round9.runtime.streaming_binding.scheduler_before_normal_submit",
+            return_value=False,
+        ):
+            with self.assertRaisesRegex(RuntimeError, "post-cancel"):
+                streaming_submit_fence(scheduler, batch)
+        admitted.assert_called_once_with(scheduler, request, None)
+
+    def test_streaming_before_updates_fenced_identity_with_context_epoch(self):
+        from migration_bridge.round9.runtime.streaming_binding import streaming_before
+
+        request = NS(rid="live", origin_input_ids=list(range(32)),
+                     last_extend_prefix_len=0, extend_input_len=32)
+        coordinator = NS(
+            request_token=None,
+            begin=lambda *args, **kwargs: False,
+        )
         runner = NS(
-            _round9_streaming=NS(request_token=request, active=False),
+            _round9_streaming=coordinator,
             _round9_context_reference=NS(identity=NS(allocation_epoch=4)),
             _round9_prefill=NS(active=False),
             _round9_ple=NS(context=None),
@@ -26,11 +51,10 @@ class StreamingBindingTests(unittest.TestCase):
             "migration_bridge.round9.runtime.streaming_binding.load_streaming_profile",
             return_value=profile,
         ), patch(
-            "migration_bridge.round9.runtime.streaming_binding.scheduler_before_normal_submit",
-            return_value=False,
-        ):
+            "migration_bridge.round9.runtime.streaming_binding.scheduler_request_admitted",
+        ) as admitted:
             self.assertFalse(streaming_before(scheduler, batch))
-        self.assertIsNone(runner._round9_streaming_request)
+        admitted.assert_called_once_with(scheduler, request, 4)
 
     def test_stack_contract_requires_all_planes_and_matching_threshold(self):
         from migration_bridge.round9.runtime.streaming_binding import validate_streaming_stack
@@ -112,6 +136,40 @@ class StreamingBindingTests(unittest.TestCase):
             coordinator.active = True
             with self.assertRaisesRegex(RuntimeError, "unleased"):
                 streaming_after(scheduler)
+
+    def test_finished_request_flushes_and_retires_cancel_identity(self):
+        from migration_bridge.round9.runtime.streaming_binding import streaming_after
+
+        request = NS(finished=lambda: True)
+        calls = []
+        coordinator = NS(
+            active=False,
+            complete=True,
+            request_token=request,
+            request_end=lambda token: calls.append(("request_end", token)),
+        )
+        runner = NS(_round9_streaming=coordinator,
+                    _round9_streaming_request=request)
+        scheduler = NS(tp_worker=NS(model_runner=runner))
+        profile = {"schema": 1, "threshold_tokens": 4, "chunk_tokens": 32}
+        with patch(
+            "migration_bridge.round9.runtime.streaming_binding.load_streaming_profile",
+            return_value=profile,
+        ), patch(
+            "migration_bridge.round9.runtime.working_set_timeline.flush_request",
+            side_effect=lambda reason: calls.append(("flush", reason)),
+        ), patch(
+            "migration_bridge.round9.runtime.streaming_binding.scheduler_request_retired",
+            side_effect=lambda owner, token: calls.append(("retire", owner, token)),
+        ):
+            streaming_after(scheduler)
+
+        self.assertEqual(calls, [
+            ("request_end", request),
+            ("flush", "complete"),
+            ("retire", scheduler, request),
+        ])
+        self.assertIsNone(runner._round9_streaming_request)
 
 
 if __name__ == "__main__":

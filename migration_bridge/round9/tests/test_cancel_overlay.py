@@ -85,10 +85,17 @@ class Scheduler:
             self.last_batch = batch
     def abort_request(self, recv_req: object):
         self.order.append("upstream")
+        for req in []:
+            req.to_finish = FINISH_ABORT()
+
+    def _pause_engine(self):
+        pass
 '''
         order = []
         name, old = self.fake_module(
-            scheduler_abort_received=lambda scheduler, req: order.append("seen")
+            scheduler_batch_submit_fence=lambda scheduler, batch: order.append("batch-fence"),
+            scheduler_abort_received=lambda scheduler, req: order.append("seen"),
+            scheduler_abort_finished=lambda scheduler, req: order.append("finalized"),
         )
         try:
             scope = {"scheduler_before": lambda *args: None,
@@ -101,7 +108,8 @@ class Scheduler:
         finally:
             self.restore_module(name, old)
 
-        self.assertEqual(order, ["seen", "upstream"])
+        self.assertEqual(order, ["seen", "upstream", "finalized"])
+        self.assertIn("scheduler_batch_submit_fence(self, batch)", patched)
         with self.assertRaises(ValueError):
             patch_scheduler(patched)
 
@@ -149,6 +157,25 @@ async def abort_request(obj, request):
             check=True,
         )
         self.assertIn("--cancel-trace", result.stdout)
+        self.assertIn("--cancel-closure", result.stdout)
+        self.assertIn("--working-set-timeline", result.stdout)
+
+    def test_candidate_launcher_rejects_timeline_without_streaming_stack(self):
+        launcher = self.tools / "launch_candidate_model.py"
+        result = subprocess.run(
+            [sys.executable, str(launcher),
+             "--version", "54", "--storage", "MXFP4", "--placement", "static",
+             "--bank-receipt", "/missing-bank", "--device-gate", "/missing-gate",
+             "--overlay-python", "/missing-overlay", "--working-set-timeline"],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(
+            "working-set timeline requires the bounded three-plane streaming profile",
+            result.stdout,
+        )
 
 
 if __name__ == "__main__":

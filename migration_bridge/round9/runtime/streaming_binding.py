@@ -7,7 +7,11 @@ import os
 from pathlib import Path
 
 from .framework_config import load_framework
-from .cancel_lifecycle import scheduler_before_normal_submit, scheduler_request_admitted
+from .cancel_lifecycle import (
+    scheduler_before_normal_submit,
+    scheduler_request_admitted,
+    scheduler_request_retired,
+)
 from .streaming_prefill import StreamingPrefillCoordinator
 
 
@@ -83,6 +87,24 @@ def streaming_model_ready(runner):
     })
 
 
+def streaming_submit_fence(scheduler, batch):
+    """Reject a cancelled EXTEND before any Round9 plane begins its batch."""
+    if load_streaming_profile() is None:
+        return
+    if len(batch.reqs) != 1:
+        raise RuntimeError("enabled streaming mode requires one serial request")
+    if not batch.forward_mode.is_extend():
+        return
+    request = batch.reqs[0]
+    # The context allocation epoch is created later in framework_before.  The
+    # lifecycle deliberately permits filling it in on the same live identity.
+    scheduler_request_admitted(scheduler, request, None)
+    if not scheduler_before_normal_submit(
+            scheduler, request, "STREAMING_CHUNK"):
+        raise RuntimeError(
+            "post-cancel streaming chunk reached model-submit boundary")
+
+
 def streaming_before(scheduler, batch):
     if load_streaming_profile() is None:
         return
@@ -106,10 +128,6 @@ def streaming_before(scheduler, batch):
         raise RuntimeError("streaming context allocation identity is missing")
     scheduler_request_admitted(
         scheduler, request, context.identity.allocation_epoch)
-    if not scheduler_before_normal_submit(
-            scheduler, request, "STREAMING_CHUNK"):
-        runner._round9_streaming_request = None
-        return False
     boundary = getattr(scheduler, "_round9_dynamic_boundary", None)
     placement_epoch = boundary.generation if boundary is not None else 0
     started = coordinator.begin(
@@ -150,8 +168,18 @@ def streaming_after(scheduler):
         coordinator.mark_context(layers=12, hbm_release=False)
         coordinator.finish_chunk()
     if request.finished():
+        termination = None
         if coordinator.complete:
             coordinator.request_end(request)
+            termination = "complete"
         elif coordinator.request_token is request:
             coordinator.abort(request)
+            termination = "abort"
+        if termination is not None:
+            from .working_set_timeline import flush_request
+            flush_request(termination)
+        # Every traced request is admitted on its first bounded EXTEND batch.
+        # Release that strong request-object identity after normal completion,
+        # trace-only abort completion, or a below-threshold fallback finish.
+        scheduler_request_retired(scheduler, request)
     runner._round9_streaming_request = None

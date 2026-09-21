@@ -45,15 +45,24 @@ def patch_scheduler(source):
             or abort is None or 'framework_before(self' in source
             or 'scheduler_abort_received(self' in source):
         raise ValueError('unexpected or already installed framework scheduler seam')
-    source = source.replace(before, before +
+    source = source.replace(before,
+        '                from sglang.srt.layers.round9.cancel_lifecycle import scheduler_batch_submit_fence\n'
+        '                scheduler_batch_submit_fence(self, batch)\n' + before +
         '                from sglang.srt.layers.round9.framework_hooks import framework_before\n'
         '                framework_before(self, batch)\n')
     source = source.replace(after,
         '            from sglang.srt.layers.round9.framework_hooks import framework_after\n'
         '            framework_after(self)\n' + after)
-    return source.replace(abort, abort +
+    source = source.replace(abort, abort +
         '        from sglang.srt.layers.round9.cancel_lifecycle import scheduler_abort_received\n'
         '        scheduler_abort_received(self, recv_req)\n')
+    finish = '\n    def _pause_engine'
+    if source.count(finish) != 1:
+        raise ValueError('scheduler abort completion seam missing')
+    return source.replace(finish,
+        '        from sglang.srt.layers.round9.cancel_lifecycle import scheduler_abort_finished\n'
+        '        scheduler_abort_finished(self, recv_req)\n\n'
+        '    def _pause_engine')
 
 
 def patch_tokenizer_manager(source):
@@ -154,7 +163,7 @@ def install_framework(baseline, target):
                  'context_page_store.py','kv_quant_reference.py','context_staging.py','qsa.py',
                  'context_reference_gate.py','context_reference_runtime.py',
                  'context_reference_binding.py','streaming_prefill.py','streaming_binding.py',
-                 'cancel_lifecycle.py'):
+                 'cancel_lifecycle.py','working_set_timeline.py'):
         shutil.copy2(runtime / name, target / 'sglang/srt/layers/round9' / name)
         report['modules'][name] = hashlib.sha256((runtime / name).read_bytes()).hexdigest()
     report['framework_status'] = 'F1_INSTALLED_NOT_DEVICE_QUALIFIED_DEFAULT_OFF'

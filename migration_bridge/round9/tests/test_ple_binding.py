@@ -6,6 +6,23 @@ from unittest.mock import patch
 
 
 class PLEBindingTests(unittest.TestCase):
+    def test_timeline_wraps_backend_outside_gated_ring(self):
+        from migration_bridge.round9.runtime.ple_binding import bind_ple_timeline
+        events=[]
+        backend=NS(
+            launch_h2d=lambda *args:'rows',
+            wait_event=lambda *args:'stream',
+            synchronize_event=lambda *args:'done',
+        )
+        with patch('migration_bridge.round9.runtime.working_set_timeline.enabled',return_value=True), patch(
+                'migration_bridge.round9.runtime.working_set_timeline.event',
+                side_effect=lambda category,phase,**fields:events.append((category,phase,fields))):
+            self.assertTrue(bind_ple_timeline(backend))
+            self.assertEqual(backend.launch_h2d(1),'rows')
+            self.assertEqual(backend.wait_event(2),'stream')
+            self.assertEqual(backend.synchronize_event(3),'done')
+        self.assertEqual([event[1] for event in events],[
+            'h2d_enqueue','consumer_dependency_enqueue','transfer_consumer_retire_wait'])
     def test_disabled_binding_never_touches_model_or_imports_device(self):
         from migration_bridge.round9.runtime.ple_binding import ple_model_ready
         with patch('migration_bridge.round9.runtime.ple_binding.load_framework',return_value=None):

@@ -1,3 +1,26 @@
+## Latest — 2026-09-21 P0 cancellation closure and P1 timeline complete
+
+The approved stabilization scope is complete on `110.123.0.3` physical15 under
+the restored shared-mode contract. v58 passed mid-prefill cancel, terminal abort
+and same-process reuse while `/mzy-train` had a real NPU child. v61 repeated that
+PASS and produced a bounded unified timeline: 2 requests, 2,043 events, zero
+drops and three complete scheduler batch pairs. It observes a CPU-gather window,
+but no H2D/expert-compute overlap and no repeated complete shadow identity, so no
+new PLE or shadow optimization is selected; PLE Async remains default OFF.
+
+v59 and v60 exposed two observer-only startup bugs: binding before private
+transport preallocation and mutating a read-only slotted copy facade. Both are
+fixed by binding after preallocation through outer forwarding proxies and have
+regression tests. Device-gated Layerwise/Dynamic/PLE core hashes remain frozen.
+The final v6 build receipt SHA256 is
+`0a00966bcd9f96dca6b39e87474ce39fd902d65de46ce03c65c8855fdab250d5`.
+The v61 Round9 container was stopped after evidence capture; the training
+container was not changed. Product quality, formal performance, real long
+context and deployment remain pending and were not run. Read
+`62_CANCEL_CLOSURE_AND_TIMELINE_RESULTS.md` and
+`ROUND9_CANCEL_TIMELINE_STATUS.json`. Old Round7 timers remain paused; do not
+push, merge main or tag from this checkpoint.
+
 ## Latest — 2026-09-21 Framework Completion frozen
 
 Final CPU source snapshot v16 passes331 tests and a fresh preserved-baseline

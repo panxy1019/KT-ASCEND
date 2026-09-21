@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 
 
 def require_capacity_device_gate(capacity, candidate, identity, payload, native_sha256=None):
@@ -54,17 +55,33 @@ def main():
         raise RuntimeError('a separately verified resource admission receipt is required')
     admission = json.loads(a.admission.read_text())
     import time
+    mode=admission.get('resource_mode')
+    contracts={
+        'exclusive':dict(scope='CANDIDATE_EXCLUSIVE_FULL_MODEL_PREFLIGHT',training=0,
+                         allocator=43008,owned=45056,model=46080),
+        'shared':dict(scope='CANDIDATE_SHARED_FULL_MODEL_PREFLIGHT',training=15360,
+                      allocator=37376,owned=38400,model=38912),
+    }
+    contract=contracts.get(mode)
+    training_container_id=admission.get('training_container_id')
     if (admission.get('status') != 'CANDIDATE_READY_FOR_MONITORED_FULL_MODEL_RUN'
-            or admission.get('scope') != 'CANDIDATE_EXCLUSIVE_FULL_MODEL_PREFLIGHT'
+            or contract is None or admission.get('scope') != contract['scope']
             or admission.get('profile_sha256') != receipt['profile_sha256']
             or not 0 <= time.time()-admission.get('sampled_at',0) <= 30):
         raise RuntimeError('missing, stale or unrelated resource admission')
+    if ((training_container_id is not None and
+            re.fullmatch(r'[0-9a-f]{64}',training_container_id) is None)
+            or (mode == 'exclusive' and training_container_id is not None)):
+        raise RuntimeError('resource admission has invalid training container identity')
     import os
-    if (admission.get('resource_mode')!='exclusive' or admission.get('training_allowance_mib')!=0 or
-            admission.get('allocator_limit_mib')!=43008 or admission.get('owned_limit_mib')!=45056 or
-            admission.get('model_hbm_budget_mib')!=46080 or admission.get('reserve_hbm_mib')!=8192):
-        raise RuntimeError('candidate exclusive allocator/process budget mismatch')
-    os.environ['ROUND9_RESOURCE_MODE']='exclusive'
+    if (admission.get('training_allowance_mib')!=contract['training'] or
+            admission.get('allocator_limit_mib')!=contract['allocator'] or
+            admission.get('owned_limit_mib')!=contract['owned'] or
+            admission.get('model_hbm_budget_mib')!=contract['model'] or
+            admission.get('reserve_hbm_mib')!=8704):
+        raise RuntimeError('candidate allocator/process budget mismatch')
+    os.environ['ROUND9_RESOURCE_MODE']=mode
+    os.environ['ROUND9_ALLOCATOR_LIMIT_MIB']=str(contract['allocator'])
     from sglang.srt.layers.round9.candidate_config import load_candidate_profile
     from sglang.srt.layers.round9.candidate_bank import bind_verified_banks
     candidate,_,candidate_sha = load_candidate_profile(os.environ.get('ROUND9_CANDIDATE_PROFILE'))

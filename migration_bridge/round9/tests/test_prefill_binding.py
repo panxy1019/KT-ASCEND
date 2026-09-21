@@ -1,4 +1,5 @@
 import importlib.util
+import inspect
 from pathlib import Path
 import sys
 from types import SimpleNamespace as NS
@@ -9,6 +10,69 @@ from migration_bridge.round9.runtime.prefill_binding import prefill_model_ready
 
 
 class PrefillBindingTests(unittest.TestCase):
+    def test_timeline_binds_only_after_private_transport_preallocation(self):
+        source = inspect.getsource(prefill_model_ready)
+        self.assertLess(
+            source.index('transport = layerwise.LayerwiseTransport(backend, reservation)'),
+            source.index("bind_expert_timeline(backend, binding['source_identity'], args.model_path)"),
+        )
+
+    def test_timeline_wraps_outer_transport_without_changing_gated_core(self):
+        from migration_bridge.round9.runtime.prefill_binding import bind_expert_timeline
+        events=[]; calls=[]
+        adapter=NS(copied_bytes=0)
+        def copy(layer,moves):
+            calls.append(('copy',layer,tuple(moves)));adapter.copied_bytes+=128
+        adapter.copy_experts=copy
+        method=NS(apply=lambda layer,dispatch: calls.append(('apply',layer,dispatch)) or 'result')
+        backend=NS(adapter=adapter,method=method,
+                   synchronize=lambda identity:calls.append(('sync',identity)))
+        identity=NS(allocation_epoch=7)
+        with patch('migration_bridge.round9.runtime.working_set_timeline.enabled',return_value=True), patch(
+                'migration_bridge.round9.runtime.working_set_timeline.event',
+                side_effect=lambda category,phase,**fields:events.append((category,phase,fields))):
+            self.assertTrue(bind_expert_timeline(backend,'source','revision'))
+            backend.adapter.copy_experts(3,[(0,9),(1,10)])
+            self.assertEqual(backend.method.apply('layer','dispatch'),'result')
+            backend.synchronize(identity)
+        self.assertEqual([event[1] for event in events],
+                         ['shadow_prepare','compute_enqueue','device_wait'])
+        self.assertEqual(events[0][2]['logical_experts'],[9,10])
+        self.assertEqual(events[0][2]['bytes'],128)
+
+    def test_timeline_wraps_read_only_slotted_copy_adapter(self):
+        from migration_bridge.round9.runtime.prefill_binding import bind_expert_timeline
+
+        class SlottedAdapter:
+            __slots__ = ('copied_bytes', 'calls')
+
+            def __init__(self):
+                self.copied_bytes = 0
+                self.calls = []
+
+            def copy_experts(self, layer, moves):
+                self.calls.append((layer, tuple(moves)))
+                self.copied_bytes += 64
+
+            def synchronize(self):
+                self.calls.append('adapter_sync')
+
+        adapter = SlottedAdapter()
+        method = NS(apply=lambda layer, dispatch: 'result')
+        backend = NS(
+            adapter=adapter,
+            method=method,
+            synchronize=lambda identity: None,
+        )
+        with patch(
+            'migration_bridge.round9.runtime.working_set_timeline.enabled',
+            return_value=True,
+        ), patch('migration_bridge.round9.runtime.working_set_timeline.event'):
+            self.assertTrue(bind_expert_timeline(backend, 'source', 'revision'))
+            backend.adapter.copy_experts(2, [(0, 7)])
+            backend.adapter.synchronize()
+        self.assertEqual(adapter.calls, [(2, ((0, 7),)), 'adapter_sync'])
+
     def test_real_fused_moe_keyword_call_contract(self):
         from migration_bridge.round9.runtime.prefill_binding import bind_expert_method
         calls=[]

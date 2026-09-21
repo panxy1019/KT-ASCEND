@@ -1,7 +1,28 @@
-"""Fresh exclusive physical15/C128 capacity check. No reservation claim."""
+"""Fresh physical15/C128 capacity check. No reservation claim."""
 import os,pathlib,re,subprocess,time
 
-def sample(storage='BF16'):
+def resource_contract(resource_mode):
+ if resource_mode=='exclusive':
+  return dict(scope='CANDIDATE_EXCLUSIVE_FULL_MODEL_PREFLIGHT',training_allowance_mib=0,
+              model_hbm_budget_mib=46080,allocator_limit_mib=43008,owned_limit_mib=45056)
+ if resource_mode=='shared':
+  # This leaves at least the live guard's 8.5GiB board reserve after the
+  # user-attested 15GiB training peak and the observed system baseline.
+  return dict(scope='CANDIDATE_SHARED_FULL_MODEL_PREFLIGHT',training_allowance_mib=15360,
+              model_hbm_budget_mib=38912,allocator_limit_mib=37376,owned_limit_mib=38400)
+ raise ValueError('resource_mode must be shared or exclusive')
+
+def physical15_processes(raw):
+ return {int(match.group(1)):int(match.group(2)) for line in raw.splitlines()
+         if (match:=re.match(r'\|\s*7\s+1\s*\|\s*(\d+)\s*\|[^|]*\|\s*(\d+)\s*\|',line))}
+
+def cgroup_matches_container(raw,container_id):
+ if re.fullmatch(r'[0-9a-f]{64}',container_id) is None:
+  raise ValueError('training container ID must be a full Docker ID')
+ return any(line.split(':',2)[-1]==f'/docker/{container_id}'
+            for line in raw.splitlines())
+
+def sample(storage='BF16',resource_mode='exclusive',training_container_id=None):
  def command(args):return subprocess.check_output(args,text=True,timeout=30)
  if '110.123.0.3' not in command(['hostname','-I']).split():raise RuntimeError('wrong host')
  nodes=[2,3,6,7];cpus=[];cores=set();topology=[]
@@ -25,9 +46,25 @@ def sample(storage='BF16'):
  numa_policy=evaluate_nodes(numa,storage)
  npu=command(['npu-smi','info']);row=next(x for x in npu.splitlines() if '0000:83:00.0' in x)
  used,total=map(int,re.findall(r'(\d+)\s*/\s*(\d+)',row)[-1])
- if re.search(r'\|\s*7\s+1\s*\|\s*\d+\s*\|',npu):raise RuntimeError('physical15 not idle; exclusive admission denied')
- if total!=65536 or used+46080+8192>total:raise RuntimeError('insufficient exclusive HBM model+reserve')
- return dict(sampled_at=time.time(),host='110.123.0.3',physical=15,resource_mode='exclusive',cpu_quota=136,
+ contract=resource_contract(resource_mode);processes=physical15_processes(npu)
+ if resource_mode=='exclusive' and training_container_id is not None:
+  raise RuntimeError('exclusive admission cannot bind a training container')
+ if training_container_id is not None:
+  for pid in processes:
+   try:raw=pathlib.Path(f'/proc/{pid}/cgroup').read_text()
+   except OSError as error:raise RuntimeError('training process changed during cgroup admission') from error
+   if not cgroup_matches_container(raw,training_container_id):
+    raise RuntimeError(f'physical15 process {pid} is outside admitted training container')
+ training=sum(processes.values())
+ if resource_mode=='exclusive' and processes:raise RuntimeError('physical15 not idle; exclusive admission denied')
+ if training>contract['training_allowance_mib']:raise RuntimeError('physical15 training exceeds admitted15GiB peak')
+ baseline=used-training
+ if not 0<=baseline<15360:raise RuntimeError('invalid physical15 system HBM baseline')
+ if (total!=65536 or baseline+contract['training_allowance_mib']
+         +contract['owned_limit_mib']>56832):
+  raise RuntimeError('insufficient HBM for admitted mode, training peak and board reserve')
+ return dict(sampled_at=time.time(),host='110.123.0.3',physical=15,resource_mode=resource_mode,cpu_quota=136,
   cpus=cpus,numa_nodes=nodes,numa_policy=numa_policy,topology=topology,idle_fraction=idle,host_meminfo=mem,numa_meminfo=numa,
-  npu_smi=npu,baseline_hbm_mib=used,model_hbm_budget_mib=46080,allocator_limit_mib=43008,owned_limit_mib=45056,reserve_hbm_mib=8192,
-  training_allowance_mib=0,host_limit_gib=640,scope='CANDIDATE_EXCLUSIVE_FULL_MODEL_PREFLIGHT')
+  npu_smi=npu,baseline_hbm_mib=baseline,training_pids=sorted(processes),
+  training_container_id=training_container_id,
+  reserve_hbm_mib=8704,host_limit_gib=640,**contract)

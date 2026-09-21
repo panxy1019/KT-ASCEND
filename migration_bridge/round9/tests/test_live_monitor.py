@@ -5,7 +5,7 @@ import unittest
 
 source = Path(__file__).parents[1] / 'tools/monitor_owned_server.py'
 tree = ast.parse(source.read_text())
-nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('validate_owned_limit','parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot','owned_memory_cgroup','owned_container_finished')]
+nodes = [n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name in ('validate_owned_limit','parse_physical15','hbm_budget_exceeded','stop_owned','stable_system_baseline','owned_container_name','owned_process_snapshot','owned_memory_cgroup','owned_container_finished','process_in_container')]
 ns = {'re': re}
 exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
@@ -49,6 +49,14 @@ class MonitorParserTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 ns['parse_physical15'](raw)
 
+    def test_training_container_identity_is_exact_full_cgroup(self):
+        from unittest.mock import Mock
+        container='a'*64
+        ns.update(pathlib=Mock(Path=Mock(return_value=Mock(
+            read_text=Mock(return_value=f'12:memory:/docker/{container}\n0::/\n')))))
+        self.assertTrue(ns['process_in_container'](123,container))
+        self.assertFalse(ns['process_in_container'](123,'b'*64))
+
 class MonitorBudgetTests(unittest.TestCase):
     def test_async_board_process_counters_do_not_invent_training_growth(self):
         #Actual v4 sample during owned allocations; training stayed at6124MiB.
@@ -56,8 +64,9 @@ class MonitorBudgetTests(unittest.TestCase):
 
     def test_absolute_board_owned_and_training_bounds_remain_immediate(self):
         for values in [(56833,40000,6124,2845),(48000,41473,6124,2845),
-                       (30000,10000,12516,2845)]:
+                       (30000,10000,15361,2845)]:
             self.assertTrue(ns['hbm_budget_exceeded'](*values))
+        self.assertFalse(ns['hbm_budget_exceeded'](55000,38000,15000,2880,38400))
 
 class CandidateBudgetTests(unittest.TestCase):
     def test_exclusive_budget_cannot_relax_shared_guard(self):

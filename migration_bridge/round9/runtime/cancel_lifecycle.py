@@ -35,6 +35,15 @@ def _trace_path():
     return path
 
 
+def _closure_enabled():
+    raw = os.environ.get("ROUND9_CANCEL_CLOSURE_ENABLE")
+    if raw is None:
+        return False
+    if raw not in ("0", "1"):
+        raise ValueError("ROUND9_CANCEL_CLOSURE_ENABLE must be 0 or 1")
+    return raw == "1"
+
+
 def _emit(status, **fields):
     path = _trace_path()
     if path is None:
@@ -176,7 +185,11 @@ def scheduler_abort_received(scheduler, recv_req):
             continue
         lifecycle.cancelled.add(identity)
         _emit("CANCEL_SEEN", **asdict(identity))
-        _emit("SUBMIT_FENCE_PUBLISHED", **asdict(identity))
+        _emit(
+            "SUBMIT_FENCE_PUBLISHED" if _closure_enabled()
+            else "CANCEL_OBSERVED_NO_FENCE",
+            **asdict(identity),
+        )
     return tuple(identities)
 
 
@@ -188,13 +201,89 @@ def scheduler_before_normal_submit(scheduler, request, operation):
     if identity is None:
         identity = lifecycle.admit(request, None)
     if identity in lifecycle.cancelled:
-        _emit("POST_CANCEL_SUBMIT_REJECTED", operation=operation, **asdict(identity))
-        return False
+        if _closure_enabled():
+            _emit("POST_CANCEL_SUBMIT_REJECTED", operation=operation, **asdict(identity))
+            return False
+        _emit("POST_CANCEL_SUBMIT_OBSERVED", operation=operation, **asdict(identity))
+        return True
     _emit("NORMAL_SUBMIT_ADMITTED", operation=operation, **asdict(identity))
     return True
+
+
+def scheduler_batch_submit_fence(scheduler, batch):
+    """Final scheduler boundary: cancelled identities cannot reach any hook."""
+    if _trace_path() is None or not _closure_enabled():
+        return
+    lifecycle = _lifecycle(scheduler, create=False)
+    if lifecycle is None:
+        return
+    for request in batch.reqs:
+        identity = lifecycle.identity(request)
+        if identity is not None and identity in lifecycle.cancelled:
+            _emit(
+                "POST_CANCEL_BATCH_REJECTED",
+                operation="SCHEDULER_BATCH",
+                **asdict(identity),
+            )
+            raise RuntimeError(
+                "cancelled request reached scheduler model-submit boundary")
 
 
 def scheduler_request_retired(scheduler, request):
     if _trace_path() is None:
         return None
     return _lifecycle(scheduler, create=False).retire(request)
+
+
+def _finalize_chunked_request(scheduler, request):
+    """Finish one drained chunked request without a post-cancel model forward."""
+    if getattr(request, "to_finish", None) is None:
+        raise RuntimeError("cancelled chunked request is missing upstream finish reason")
+    request.check_finished()
+    if not request.finished():
+        raise RuntimeError("cancelled chunked request did not become terminal")
+
+    from .framework_hooks import framework_cancel
+    framework_cancel(scheduler, request)
+
+    # Import the authority directly.  schedule_batch currently re-exports this
+    # name as an implementation detail, but cancellation cleanup must not depend
+    # on that incidental import remaining present.
+    from sglang.srt.mem_cache.common import release_kv_cache
+    release_kv_cache(request, scheduler.tree_cache)
+    request.time_stats.set_completion_time()
+    # Cancellation publishes only the terminal reason.  It must not commit a
+    # stale logprob/top-logprob payload from the last completed chunk.
+    scheduler.stream_output([request], False)
+    if scheduler.chunked_req is not request:
+        raise RuntimeError("chunked request identity changed during cancel cleanup")
+    scheduler.chunked_req = None
+    scheduler._chunked_req_scheduled_last_iter = False
+
+
+def scheduler_abort_finished(scheduler, recv_req):
+    """Commit cleanup after the upstream abort method has assigned FINISH_ABORT."""
+    if _trace_path() is None or not _closure_enabled():
+        return ()
+    lifecycle = _lifecycle(scheduler, create=False)
+    if lifecycle is None:
+        raise RuntimeError("cancel closure has no scheduler lifecycle")
+    request = getattr(scheduler, "chunked_req", None)
+    if request is None or not (
+            recv_req.abort_all or request.rid.startswith(recv_req.rid)):
+        return ()
+    identity = lifecycle.identity(request)
+    if identity is None or identity not in lifecycle.cancelled:
+        raise RuntimeError("chunked cancel cleanup lacks a fenced request identity")
+    try:
+        _finalize_chunked_request(scheduler, request)
+        lifecycle.retire(request)
+        _emit("CANCEL_CLEANUP_COMMITTED", **asdict(identity))
+        return (identity,)
+    except BaseException as error:
+        _emit(
+            "CANCEL_CLEANUP_FAILED",
+            error_type=type(error).__name__,
+            **asdict(identity),
+        )
+        raise

@@ -21,6 +21,76 @@ def bind_expert_method(method, index, runtime, combine_type):
     method.apply = apply
 
 
+def bind_expert_timeline(backend, source_identity, model_revision):
+    """Observe a qualified transport from its outer Python seams."""
+    from . import working_set_timeline as timeline
+    if not timeline.enabled():
+        return False
+    import time
+    adapter = backend.adapter
+    class AdapterObserver:
+        """Observe the qualified read-only copy facade without mutating it."""
+        def __init__(self, inner):
+            self._inner = inner
+
+        def __getattr__(self, name):
+            return getattr(self._inner, name)
+
+        @property
+        def copied_bytes(self):
+            return self._inner.copied_bytes
+
+        def copy_experts(self, layer, moves):
+            moves = tuple(moves)
+            copied_before = self._inner.copied_bytes
+            started = time.monotonic_ns()
+            result = self._inner.copy_experts(layer, moves)
+            timeline.event(
+                'expert', 'shadow_prepare',
+                clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+                duration_ns=time.monotonic_ns()-started,
+                layer=layer, logical_experts=[logical for unused, logical in moves],
+                bytes=self._inner.copied_bytes-copied_before,
+                source_identity=source_identity, model_revision=model_revision,
+                precision='BF16', inference_layout='NZ29')
+            return result
+
+    backend.adapter = AdapterObserver(adapter)
+
+    method = backend.method
+    class MethodObserver:
+        """Observe apply() while preserving the real method object untouched."""
+        def __init__(self, inner):
+            self._inner = inner
+
+        def __getattr__(self, name):
+            return getattr(self._inner, name)
+
+        def apply(self, layer, dispatch_output):
+            started = time.monotonic_ns()
+            result = self._inner.apply(layer, dispatch_output)
+            timeline.event(
+                'expert', 'compute_enqueue',
+                clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+                duration_ns=time.monotonic_ns()-started)
+            return result
+
+    backend.method = MethodObserver(method)
+
+    original_synchronize = backend.synchronize
+    def synchronize(identity):
+        started = time.monotonic_ns()
+        result = original_synchronize(identity)
+        timeline.event(
+            'expert', 'device_wait',
+            clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+            duration_ns=time.monotonic_ns()-started,
+            allocation_epoch=identity.allocation_epoch)
+        return result
+    backend.synchronize = synchronize
+    return True
+
+
 def prefill_model_ready(runner):
     config = load_framework()
     if config is None or config.get('prefill') is None: return
@@ -61,12 +131,22 @@ def prefill_model_ready(runner):
     import torch
     torch.npu.synchronize()
     base_peak = max(int(torch.npu.max_memory_allocated()), int(torch.npu.memory_allocated()))
+    try:
+        allocator_limit_mib = int(os.environ['ROUND9_ALLOCATOR_LIMIT_MIB'])
+    except (KeyError, ValueError) as error:
+        raise RuntimeError('layerwise runtime requires admitted allocator limit') from error
+    if allocator_limit_mib not in (37376, 43008):
+        raise RuntimeError('layerwise allocator limit is outside admitted contracts')
     reservation = layerwise.make_reservation(capacity=32, hidden=2560, intermediate=640,
-        max_group_rows=gate['max_group_rows'], allocator_limit_bytes=43008 * 1024**2,
+        max_group_rows=gate['max_group_rows'], allocator_limit_bytes=allocator_limit_mib * 1024**2,
         observed_base_peak_bytes=base_peak,
         observed_workspace_bytes=max(gate['constructor_peak_extra_bytes'], gate['execution_peak_extra_bytes']))
     backend = layerwise.AscendBF16TransportBackend(layers[0], args.model_path)
     transport = layerwise.LayerwiseTransport(backend, reservation)
+    # LayerwiseTransport.preallocate() creates the private shadow method and
+    # copy adapter.  Timeline observers bind only after those outer seams
+    # exist; binding before preallocation dereferences backend.adapter=None.
+    bind_expert_timeline(backend, binding['source_identity'], args.model_path)
     # Persistent private weights already reduce free memory. Reserve remaining
     # transient projection/workspace before the Qwen KV/GDN pool profiler runs.
     runner._round9_prefill_workspace_bytes = reservation.reserve_bytes - reservation.private_bank_bytes

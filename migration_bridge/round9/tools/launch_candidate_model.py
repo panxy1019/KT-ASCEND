@@ -1,11 +1,14 @@
-"""Bounded exclusive physical15 candidate trial. Preserved baseline is untouched."""
-import argparse,hashlib,json,pathlib,shutil,subprocess,time
+"""Bounded physical15 candidate trial. Preserved baseline is untouched."""
+import argparse,hashlib,json,pathlib,re,shutil,subprocess,time
 from candidate_resources import sample
 from install_candidate_overlay import tree_files,tree_digest
 p=argparse.ArgumentParser()
 p.add_argument('--version',type=int,required=True)
 p.add_argument('--storage',choices=['BF16','Q8_0','MXFP4'],required=True)
 p.add_argument('--placement',choices=['static','request_boundary'],required=True)
+p.add_argument('--resource-mode',choices=['shared','exclusive'],default='shared')
+p.add_argument('--shared-training-container',
+ help='stable Docker name/ID whose physical15 child PIDs may rotate within the shared15GiB budget')
 p.add_argument('--bank-receipt',type=pathlib.Path,required=True)
 p.add_argument('--device-gate',type=pathlib.Path,required=True)
 p.add_argument('--overlay-python',type=pathlib.Path,required=True)
@@ -18,9 +21,20 @@ p.add_argument('--streaming-profile',type=pathlib.Path,
  help='opt-in bounded three-plane streaming prefill coordinator')
 p.add_argument('--cancel-trace',action='store_true',
  help='opt in to bounded P0 cancellation lifecycle JSONL at /out/cancel-events.jsonl')
+p.add_argument('--cancel-closure',action='store_true',
+ help='opt in to traced chunk-boundary cancel cleanup without another model forward')
+p.add_argument('--working-set-timeline',action='store_true',
+ help='opt in to one bounded batched scheduler/expert/PLE timeline per request')
+p.add_argument('--timeline-max-events',type=int,default=4096)
 a=p.parse_args()
 root=pathlib.Path('/mnt/data1/kt-round9');source=pathlib.Path(__file__).resolve().parents[1]
 if a.version<10:raise ValueError('candidate full-model versions begin at10')
+if a.shared_training_container and a.resource_mode!='shared':
+ raise ValueError('training container binding is valid only in shared mode')
+if a.working_set_timeline and a.streaming_profile is None:
+ raise ValueError('working-set timeline requires the bounded three-plane streaming profile')
+if not 1<=a.timeline_max_events<=65536:
+ raise ValueError('timeline max events must be within1..65536')
 def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def command(args):return subprocess.check_output(args,text=True,timeout=30)
 def tree(path):return {str(p.relative_to(path)):digest(p) for p in path.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
@@ -45,6 +59,14 @@ if receipt['status']!='VERIFIED48_BANK_BYTES_TYPES_SOURCE_NOT_MODEL_QUALIFIED' o
 if receipt['banks'][0]['sha256']!=gate['bank_sha256']:raise RuntimeError('gate is from a different layer0 bank')
 runtime=root/'candidate-runtime-python'
 if json.loads((a.device_gate.parent/'runtime-source-sha256.json').read_text())!=tree(runtime):raise RuntimeError('native runtime differs from device gate')
+training_container_id=None
+if a.shared_training_container:
+ inspected=json.loads(command(['docker','inspect',a.shared_training_container]))
+ if len(inspected)!=1 or not inspected[0]['State']['Running']:
+  raise RuntimeError('shared training container must resolve to one running container')
+ training_container_id=inspected[0]['Id']
+ if re.fullmatch(r'[0-9a-f]{64}',training_container_id) is None:
+  raise RuntimeError('shared training container has malformed full ID')
 if resident_capacity==32:
  from runtime.q32_gate import require_q32_device_gate
  native_sha256=gate.get('native_sha256')
@@ -56,7 +78,7 @@ if resident_capacity==32:
 # binds the preserved KTEP port, not full-model scheduler qualification.
 if json.loads((a.device_gate.parent/'sglang-source-sha256.json').read_text())!={str(p.relative_to(root/'src/sglang-round9-port/python')):digest(p) for p in (root/'src/sglang-round9-port/python').rglob('*.py')}:
  raise RuntimeError('KTEP port differs from device gate')
-pre=sample(a.storage);out.mkdir(exist_ok=False)
+pre=sample(a.storage,a.resource_mode,training_container_id);out.mkdir(exist_ok=False)
 for sub in ('runtime','tools','tests'):shutil.copytree(source/sub,out/'source'/sub,ignore=shutil.ignore_patterns('__pycache__'))
 values=json.loads((source/'runtime/profiles/q64_bf16_c64_sync_physical15.json').read_text())
 served_name=(f'KT-ASCEND-R9-C128-{a.storage}-{a.placement}' if resident_capacity==64 else
@@ -187,20 +209,37 @@ if context_reference is not None:
 if streaming is not None:
  for env in ('ROUND9_STREAMING_PROFILE=/out/streaming-profile.json',
              f'ROUND9_STREAMING_SHA256={digest(out/"streaming-profile.json")}'):args+=['-e',env]
-if a.cancel_trace:args+=['-e','ROUND9_CANCEL_TRACE_PATH=/out/cancel-events.jsonl']
+if a.cancel_trace or a.cancel_closure:
+ args+=['-e','ROUND9_CANCEL_TRACE_PATH=/out/cancel-events.jsonl']
+if a.cancel_closure:args+=['-e','ROUND9_CANCEL_CLOSURE_ENABLE=1']
+if a.working_set_timeline:
+ for env in ('ROUND9_TIMELINE_PATH=/out/working-set-timeline.jsonl',
+             f'ROUND9_TIMELINE_MAX_EVENTS={a.timeline_max_events}'):args+=['-e',env]
 args+=['--entrypoint','bash','601e76d17e9f','-c',script];command(args)
 inspect=json.loads(command(['docker','inspect',name]))[0];hc=inspect['HostConfig']
 if hc['Memory']!=640*1024**3 or hc['MemorySwap']!=hc['Memory'] or hc['NanoCpus']!=136*10**9:raise RuntimeError('container limits differ')
 (out/'container-created.json').write_text(json.dumps(inspect,indent=2)+'\n')
 with (out/'guard.log').open('w') as log:
- guard=subprocess.Popen(['python3',str(out/'source/tools/monitor_owned_server.py'),'--container',name,'--resource-mode','exclusive','--output',str(out/'monitor.jsonl'),'--ready-file',str(out/'guard-ready.json'),'--seconds','3600','--owned-limit-mib','45056','--numa-nodes','2','3','6','7'],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
+ guard_args=['python3',str(out/'source/tools/monitor_owned_server.py'),'--container',name,
+  '--resource-mode',a.resource_mode,'--output',str(out/'monitor.jsonl'),
+  '--ready-file',str(out/'guard-ready.json'),'--seconds','3600',
+  '--owned-limit-mib',str(pre['owned_limit_mib']),'--numa-nodes','2','3','6','7']
+ if pre['training_pids']:
+  guard_args+=['--training-pids',*map(str,pre['training_pids'])]
+ if training_container_id:
+  guard_args+=['--training-container-id',training_container_id]
+ guard=subprocess.Popen(guard_args,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
 try:
  deadline=time.monotonic()+40
  while not (out/'guard-ready.json').exists():
   if guard.poll() is not None:raise RuntimeError('guard failed')
   if time.monotonic()>deadline:raise RuntimeError('guard readiness timeout')
   time.sleep(.2)
- admission=sample(a.storage);admission.update(status='CANDIDATE_READY_FOR_MONITORED_FULL_MODEL_RUN',profile_sha256=digest(out/'server-profile.json'),candidate_profile_sha256=candidate_sha,payload_sha256=digest(out/'payload-sha256.json'),overlay_sha256=digest(overlay_path),
+ admission=sample(a.storage,a.resource_mode,training_container_id)
+ if (training_container_id is None and
+         admission['training_pids']!=pre['training_pids']):
+  raise RuntimeError('physical15 training identity changed during admission')
+ admission.update(status='CANDIDATE_READY_FOR_MONITORED_FULL_MODEL_RUN',profile_sha256=digest(out/'server-profile.json'),candidate_profile_sha256=candidate_sha,payload_sha256=digest(out/'payload-sha256.json'),overlay_sha256=digest(overlay_path),
   bank_identity=dict(receipt_sha256=digest(a.bank_receipt),catalog_sha256=receipt['catalog_sha256'],source_identity=receipt['source_identity'],layer0_sha256=receipt['banks'][0]['sha256']))
  if framework:admission['framework_profile_sha256']=digest(out/'framework-profile.json')
  if a.context_target is not None:admission['context_probe_sha256']=digest(out/'context-probe.json')

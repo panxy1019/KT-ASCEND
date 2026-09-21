@@ -19,6 +19,7 @@ p = argparse.ArgumentParser(description=__doc__)
 p.add_argument('--container', required=True)
 p.add_argument('--output', type=pathlib.Path, required=True)
 p.add_argument('--training-pids', nargs='*', type=int, default=[])
+p.add_argument('--training-container-id')
 p.add_argument('--ready-file', type=pathlib.Path, required=True)
 p.add_argument('--resource-mode', choices=['shared','exclusive'], default='shared')
 p.add_argument('--seconds', type=int, default=3600)
@@ -31,6 +32,10 @@ if not owned_container_name(a.container):
 if a.output.exists() or a.ready_file.exists():
     raise FileExistsError(a.output)
 if a.resource_mode=='exclusive' and a.training_pids:raise ValueError('exclusive mode cannot admit training PIDs')
+if a.training_container_id is not None and (
+        a.resource_mode != 'shared' or
+        re.fullmatch(r'[0-9a-f]{64}',a.training_container_id) is None):
+    raise ValueError('training container requires shared mode and a full Docker ID')
 started = time.monotonic()
 system_baseline_mib = None
 baseline_samples = []
@@ -78,11 +83,18 @@ def parse_physical15(raw):
     return used, processes
 
 
+def process_in_container(pid, container_id):
+    raw = pathlib.Path(f'/proc/{pid}/cgroup').read_text()
+    return any(line.split(':', 2)[-1] == f'/docker/{container_id}'
+               for line in raw.splitlines())
+
+
 def hbm_budget_exceeded(used, owned, training, system_baseline, owned_limit=41472):
     #npu-smi board and process counters are not atomic. Do not infer a training
     #spike by subtracting an asynchronously updated owned counter from board use.
-    #Keep absolute board/owned bounds and the pre-start system+training bound.
-    return used > 56832 or owned > owned_limit or training + system_baseline > 15360
+    # Keep absolute board/owned bounds and the user-attested training-process
+    # bound.  The board ceiling independently includes the system baseline.
+    return used > 56832 or owned > owned_limit or training > 15360
 
 
 def stable_system_baseline(samples):
@@ -126,10 +138,14 @@ while True:
             with a.output.open('a') as f:
                 f.write(json.dumps({'time':time.time(),'action':'OWNED_EXITED_DURING_SAMPLE'})+'\n')
             break
-        outsiders = set(processes)-owned_pids-set(a.training_pids)
+        container_training = ({pid for pid in processes
+                               if process_in_container(pid, a.training_container_id)}
+                              if a.training_container_id else set())
+        admitted_training = set(a.training_pids) | container_training
+        outsiders = set(processes)-owned_pids-admitted_training
         if outsiders:
             raise RuntimeError(f'unbound physical15 process identity: {sorted(outsiders)}')
-        training = sum(processes.get(pid,0) for pid in a.training_pids)
+        training = sum(processes.get(pid,0) for pid in admitted_training)
         owned = sum(value for pid,value in processes.items() if pid in owned_pids)
         if system_baseline_mib is None:
             if not waiting or owned != 0:
@@ -181,8 +197,10 @@ while True:
                 stop_owned(numa_reason)
                 break
         # Board ceiling remains55.5GiB; owned limit follows the admitted mode.
-        # The15GiB nonowned ceiling includes the system baseline, even when idle.
-        if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0, a.owned_limit_mib):
+        # Shared startup allows the full15GiB training process envelope plus at
+        # most3GiB board/system baseline established by candidate admission.
+        waiting_limit = 18432 if a.resource_mode == 'shared' else 15360
+        if (waiting and used > waiting_limit) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0, a.owned_limit_mib):
             stop_owned(f'{a.resource_mode} HBM budget exceeded (owned limit {a.owned_limit_mib}MiB)')
             break
         if waiting and system_baseline_mib is not None and not a.ready_file.exists():

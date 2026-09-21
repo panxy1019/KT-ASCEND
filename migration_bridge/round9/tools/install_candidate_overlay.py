@@ -35,11 +35,13 @@ def candidate_model_source(source):
 '''
     cap='            cap_bytes = 40448 * 1024**2  #39.5GiB; leaves1.5GiB for unmanaged use'
     if source.count(cap)!=1:raise ValueError('unexpected baseline allocator contract')
-    source=source.replace(cap,'''            if os.environ.get("ROUND9_RESOURCE_MODE") != "exclusive":
-                raise RuntimeError("candidate42GiB allocator requires exclusive admission")
-            cap_bytes = 43008 * 1024**2  #42GiB; separately admitted44GiB process guard''')
+    source=source.replace(cap,'''            resource_mode = os.environ.get("ROUND9_RESOURCE_MODE")
+            allocator_limits_mib = {"shared": 37376, "exclusive": 43008}
+            if resource_mode not in allocator_limits_mib:
+                raise RuntimeError("candidate allocator requires admitted resource mode")
+            cap_bytes = allocator_limits_mib[resource_mode] * 1024**2''')
     source=source.replace('# Physical64GiB minus user-provided training15GiB and reserve8GiB.',
-                          '# Exclusive candidate budget; no training allowance admitted.')
+                          '# Candidate allocator follows the separately admitted resource mode.')
     return source.replace(marker,marker+addition)
 
 

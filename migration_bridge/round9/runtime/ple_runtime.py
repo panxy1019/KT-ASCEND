@@ -66,9 +66,25 @@ class PLEConsumerRuntime:
         ticket = None
         try:
             expected = (len(rows), len(rows[0]), self.ring.row_width)
+            from . import working_set_timeline as timeline
+            import time
+            submitted_ns = time.monotonic_ns() if timeline.enabled() else None
             ticket = self.ring.submit_exact(rid, epoch, rows, phase=phase)
+            if submitted_ns is not None:
+                timeline.event(
+                    'ple', 'gather_submit',
+                    duration_ns=time.monotonic_ns()-submitted_ns,
+                    phase_name=phase, rows=len(rows)*len(rows[0]),
+                    bytes=len(rows)*len(rows[0])*self.ring.row_width*2,
+                    asynchronous=ticket is not None)
             if ticket is None:
+                gather_ns = time.monotonic_ns() if timeline.enabled() else None
                 gathered = sync_table.gather_rows(row_ids)
+                if gather_ns is not None:
+                    timeline.event(
+                        'ple', 'sync_gather',
+                        duration_ns=time.monotonic_ns()-gather_ns,
+                        phase_name=phase, rows=len(rows)*len(rows[0]))
                 if tuple(gathered.shape) != expected:
                     raise RuntimeError('sync PLE row shape differs from exact rows')
                 self.payload = DeferredPLERows(
@@ -105,14 +121,35 @@ class PLEConsumerRuntime:
                     or not embeddings.flattened):
                 raise ValueError('stale or unflattened PLE payload')
             if asynchronous:
+                from . import working_set_timeline as timeline
+                import time
+                wait_ns = time.monotonic_ns() if timeline.enabled() else None
                 embeddings = self.ring.wait(self.payload.ticket)
+                if wait_ns is not None:
+                    timeline.event(
+                        'ple', 'gather_wait_and_h2d_dependency',
+                        clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+                        duration_ns=time.monotonic_ns()-wait_ns,
+                        slot=getattr(self.payload.ticket, 'slot', None),
+                        rows=getattr(self.payload.ticket, 'row_count', self.payload.shape[0]),
+                        bytes=(getattr(self.payload.ticket, 'row_count', self.payload.shape[0])
+                               * self.ring.row_width * 2))
                 acquired = True
                 if tuple(embeddings.shape) != self.payload.shape:
                     raise RuntimeError('async PLE device shape differs from exact rows')
             else:
                 embeddings = self.payload.rows
             embeddings = embeddings.flatten(1)
+            from . import working_set_timeline as timeline
+            import time
+            consumer_ns = time.monotonic_ns() if timeline.enabled() else None
             result = consumer(embeddings)
+            if consumer_ns is not None:
+                timeline.event(
+                    'ple', 'consumer_enqueue',
+                    clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+                    duration_ns=time.monotonic_ns()-consumer_ns,
+                    asynchronous=asynchronous)
         except BaseException as error:
             self.state = 'BROKEN_RELOAD_REQUIRED'
             primary = error

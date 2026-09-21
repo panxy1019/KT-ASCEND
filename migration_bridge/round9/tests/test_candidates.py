@@ -51,11 +51,31 @@ class CandidateTests(unittest.TestCase):
         model=Path(__file__).parents[1]/'sglang_overlay/python/sglang/srt/models/qwen4_exp.py'
         source=model.read_text(); result=candidate_model_source(source)
         self.assertTrue('validate_kt_config' in result)
-        self.assertIn('cap_bytes = 43008 * 1024**2',result)
+        self.assertIn('allocator_limits_mib = {"shared": 37376, "exclusive": 43008}',result)
         self.assertIn('ROUND9_RESOURCE_MODE',result)
         self.assertTrue('Round9 requires the frozen Q64/BF16/C64 static profile' in result)
         compile(result,'candidate_model','exec')
         with self.assertRaises(ValueError):candidate_model_source(result)
+
+    def test_full_model_resource_modes_keep_shared_training_and_board_reserve(self):
+        from migration_bridge.round9.tools.candidate_resources import (
+            cgroup_matches_container, physical15_processes, resource_contract,
+        )
+        shared=resource_contract('shared')
+        exclusive=resource_contract('exclusive')
+        self.assertEqual(shared['training_allowance_mib'],15360)
+        self.assertEqual(shared['allocator_limit_mib'],37376)
+        self.assertLess(shared['owned_limit_mib'],exclusive['owned_limit_mib'])
+        self.assertLessEqual(2880+shared['training_allowance_mib']+shared['owned_limit_mib'],56832)
+        raw='| 7       1 | 1194144 | python3.10 | 6127 | NA |'
+        self.assertEqual(physical15_processes(raw),{1194144:6127})
+        container='a'*64
+        self.assertTrue(cgroup_matches_container(
+            f'12:memory:/docker/{container}\n0::/\n',container))
+        self.assertFalse(cgroup_matches_container(
+            f'12:memory:/docker/{"b"*64}\n',container))
+        with self.assertRaises(ValueError):cgroup_matches_container('', 'short')
+        with self.assertRaises(ValueError):resource_contract('invented')
 
     def test_overlay_install_isolated_and_binds_whole_tree(self):
         import hashlib,json,tempfile

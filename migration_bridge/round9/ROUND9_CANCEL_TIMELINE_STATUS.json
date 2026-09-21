@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "date": "2026-09-21",
+  "baseline_commit": "6f091b1b8ebcddabc9746e8b44b4aec72c9a248c",
+  "scope": "P0_CANCEL_CLOSURE_AND_P1_BOUNDED_TIMELINE_ONLY",
+  "resource_mode": {
+    "physical_device": 15,
+    "mode": "shared",
+    "training_peak_contract_mib": 15360,
+    "candidate_allocator_limit_mib": 37376,
+    "candidate_process_limit_mib": 38400,
+    "board_limit_mib": 56832,
+    "board_reserve_mib": 8704,
+    "training_container_name": "/mzy-train",
+    "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "training_identity": "EXACT_DOCKER_CGROUP_FULL_ID",
+    "v58_actual_shared_peaks_mib": {
+      "board": 30498,
+      "training_process": 1358,
+      "round9_owned_process": 26454
+    },
+    "v61_profile_peaks_mib": {
+      "board": 29220,
+      "training_process": 0,
+      "round9_owned_process": 26454
+    },
+    "v61_training_note": "shared contract active; training container had no active NPU child during the measured requests"
+  },
+  "p0": {
+    "control_trace": "FULL_MODEL_ROOT_CAUSE_OBSERVED",
+    "cancel_linearization": "SCHEDULER_CANCEL_SEEN",
+    "submit_fence": "FULL_MODEL_SMOKE",
+    "direct_cleanup": "FULL_MODEL_SMOKE",
+    "terminal_abort_and_reuse": "FULL_MODEL_SMOKE",
+    "scheduler_batch_fence": "LOCAL_QUALIFIED_PRE_HOOK_FAIL_CLOSED",
+    "normal_identity_retirement": "LOCAL_QUALIFIED",
+    "joint_budget_cancel_retirement": "LOCAL_QUALIFIED",
+    "passing_runs": [
+      "v58",
+      "v61"
+    ]
+  },
+  "p1": {
+    "bounded_timeline": "FULL_MODEL_PROFILE",
+    "device_gated_core_bytes_preserved": true,
+    "physical15_profile": "PASS_BOUNDED_TIMELINE_PROFILE",
+    "event_count": 2043,
+    "dropped_events": 0,
+    "request_count": 2,
+    "scheduler_batch_count": 3,
+    "cpu_gather_independent_work_observed": true,
+    "h2d_expert_compute_overlap_observed": false,
+    "repeated_shadow_identity_candidates": 0,
+    "optimization_selected": false,
+    "decision": "KEEP_PLE_ASYNC_DEFAULT_OFF_NO_SHADOW_REUSE_CHANGE"
+  },
+  "latest_attempts": {
+    "v50": "ROOT_CAUSE_TRACE_TERMINAL_TIMEOUT",
+    "v52": "EXTERNAL_PID_GUARD_STOP",
+    "v53": "TRAINING_PID_GUARD_STOP",
+    "v54": "DEVICE_GATE_SOURCE_SHA_REJECTED",
+    "v55": "READY_THEN_NEW_TRAINING_PID_GUARD_STOP",
+    "v56_first": "NUMA2_RECHECK_REJECTED_AFTER_TRAINING_RESTART_NO_CONTAINER",
+    "v56": "READY_LOAD_THEN_UNBOUND_TRAINING_PID_GUARD_STOP",
+    "v57": "SECOND_CHUNK_ABORT_SENT_THEN_UNBOUND_TRAINING_PID_GUARD_STOP",
+    "v58": "PASS_MIDPREFILL_CANCEL_AND_REUSE_ACTUAL_SHARED_OPERATION",
+    "v59": "TIMELINE_OBSERVER_BOUND_BEFORE_PRIVATE_PREALLOCATION",
+    "v60": "TIMELINE_OBSERVER_MUTATED_READ_ONLY_SLOTTED_ADAPTER",
+    "v61": "PASS_CANCEL_REUSE_AND_BOUNDED_TIMELINE_PROFILE"
+  },
+  "qualification": {
+    "p0_cancel_closure": "FULL_MODEL_SMOKE",
+    "p1_timeline": "FULL_MODEL_PROFILE",
+    "product_quality": "PENDING",
+    "performance": "PENDING",
+    "long_context": "OUT_OF_SCOPE"
+  },
+  "verification": {
+    "host_broad_discovery": {
+      "ran": 332,
+      "passed": 326,
+      "skipped": 3,
+      "dependency_import_errors": 3,
+      "assertion_failures": 0
+    },
+    "frozen_torch_dependency_tests": {
+      "ran": 13,
+      "passed": 13,
+      "npu_mounted": false,
+      "evidence": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/torch-tests.log"
+    },
+    "focused_p1_tests": {
+      "ran": 14,
+      "passed": 14
+    },
+    "p1_build_receipt_sha256": "0a00966bcd9f96dca6b39e87474ce39fd902d65de46ce03c65c8855fdab250d5",
+    "p1_source_tree_sha256": "8f68fb1157353c0e95c2e52ad93c8a2136d1d0a7dce8867324a3d17f0d6f2099",
+    "p1_build_path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6",
+    "v61_timeline_sha256": "6eac0e98c55955d70ad890bfd8b43e5027e97357448b83c82032c4015cac5840",
+    "v61_summary_sha256": "f331871c0a8c7b0e0a3d847db9408097a88865a6823513b300b4a4823a252d46",
+    "v61_result_sha256": "ad68bedae8b191e174d2ce2611e114e39c387df01cb863ad560222141d963bcb"
+  }
+}

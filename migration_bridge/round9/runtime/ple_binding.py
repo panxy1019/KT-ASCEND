@@ -6,6 +6,29 @@ from pathlib import Path
 from .framework_config import load_framework
 
 
+def bind_ple_timeline(backend):
+    """Time backend operations without modifying the device-gated PLE ring."""
+    from . import working_set_timeline as timeline
+    if not timeline.enabled():
+        return False
+    import time
+    for name, phase in (
+            ('launch_h2d', 'h2d_enqueue'),
+            ('wait_event', 'consumer_dependency_enqueue'),
+            ('synchronize_event', 'transfer_consumer_retire_wait')):
+        original = getattr(backend, name)
+        def observed(*args, _original=original, _phase=phase, **kwargs):
+            started = time.monotonic_ns()
+            result = _original(*args, **kwargs)
+            timeline.event(
+                'ple', _phase,
+                clock_domain='HOST_OBSERVED_DEVICE_OPERATION',
+                duration_ns=time.monotonic_ns()-started)
+            return result
+        setattr(backend, name, observed)
+    return True
+
+
 def ple_model_ready(runner):
     config=load_framework()
     if config is None or config.get('ple') is None:return
@@ -60,6 +83,7 @@ def ple_model_ready(runner):
     torch.npu.synchronize()
     before=int(torch.npu.memory_allocated())
     ring=ple_async.AsyncPLERing(reader,enabled=True,max_rows=512,budget=budget)
+    bind_ple_timeline(ring.backend)
     torch.npu.synchronize()
     persistent=int(torch.npu.memory_allocated())-before
     if not 327680<=persistent<=gate['peak_extra_bytes']:

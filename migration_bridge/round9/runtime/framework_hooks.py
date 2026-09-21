@@ -252,9 +252,35 @@ class RuntimeCollector:
 
 def framework_before(scheduler, batch):
     config = load_framework()
+    # This fence must run before context, PLE, expert or timeline ownership is
+    # acquired.  The ordinary closure removes the chunked request directly;
+    # reaching this backup means a stale post-cancel batch escaped scheduling.
+    from .streaming_binding import streaming_submit_fence
+    streaming_submit_fence(scheduler, batch)
     from .context_reference_binding import context_before
     context_before(scheduler, batch)
     if config is None: return
+    from .streaming_binding import load_streaming_profile
+    timeline_profile = load_streaming_profile()
+    from .working_set_timeline import enabled as timeline_enabled
+    if timeline_profile is not None and timeline_enabled():
+        if len(batch.reqs) != 1:
+            raise RuntimeError('timeline requires one serial request')
+        request = batch.reqs[0]
+        context = scheduler.tp_worker.model_runner._round9_context_reference
+        if context.identity is None:
+            raise RuntimeError('timeline requires context allocation identity')
+        boundary = getattr(scheduler, '_round9_dynamic_boundary', None)
+        placement_epoch = boundary.generation if boundary is not None else 0
+        from .working_set_timeline import begin_request, event
+        if len(request.origin_input_ids) >= timeline_profile['threshold_tokens']:
+            begin_request(request.rid, placement_epoch, context.identity.allocation_epoch)
+            mode = ('extend' if batch.forward_mode.is_extend() else
+                    'decode' if batch.forward_mode.is_decode() else 'other')
+            event('scheduler', 'batch_begin', mode=mode,
+                  start=getattr(request, 'last_extend_prefix_len', None),
+                  count=getattr(request, 'extend_input_len', None))
+            scheduler.tp_worker.model_runner._round9_timeline_batch = (request, mode)
     if config.get('ple') is not None:
         from .ple_binding import ple_before
         ple_before(scheduler,batch)
@@ -273,6 +299,54 @@ def framework_before(scheduler, batch):
     collector.before(batch)
 
 
+def framework_cancel(scheduler, request):
+    """Drain persistent Round9 request ownership after its last device batch."""
+    runner = scheduler.tp_worker.model_runner
+
+    prefill = getattr(runner, '_round9_prefill', None)
+    if prefill is not None and prefill.request is request:
+        if prefill.active:
+            raise RuntimeError('cancel cleanup reached active expert transport')
+        prefill._retire_cancelled()
+        if prefill.request is not None:
+            raise RuntimeError('cancelled expert transport retained request ownership')
+
+    ple = getattr(runner, '_round9_ple', None)
+    if ple is not None:
+        if ple.context is not None:
+            raise RuntimeError('cancel cleanup reached active PLE consumer')
+        if getattr(runner, '_round9_ple_request', None) is request:
+            budget = getattr(runner, '_round9_joint_host_budget', None)
+            if request.rid in runner._round9_ple_credit_requests:
+                (budget if budget is not None else ple.ring.budget).retire_request(
+                    request.rid)
+                runner._round9_ple_credit_requests.remove(request.rid)
+            if budget is not None:
+                snapshot = budget.snapshot()
+                baseline = getattr(runner, '_round9_joint_budget_baseline', None)
+                if baseline is None or snapshot != baseline:
+                    raise RuntimeError(
+                        'cancelled joint host budget did not return to baseline')
+            # A small batch can take the synchronous PLE fallback and therefore
+            # hold no async credit.  It still owns this request token until the
+            # normal after-hook or cancellation cleanup retires it.
+            runner._round9_ple_request = None
+
+    context = getattr(runner, '_round9_context_reference', None)
+    if context is not None and context.request_token is request:
+        if context.active:
+            raise RuntimeError('cancel cleanup reached active context consumer')
+        context.abort(request)
+
+    streaming = getattr(runner, '_round9_streaming', None)
+    if streaming is not None and streaming.request_token is request:
+        if streaming.active:
+            raise RuntimeError('cancel cleanup reached active streaming coordinator')
+        streaming.abort(request)
+        from .working_set_timeline import flush_request
+        flush_request('abort')
+
+
 def framework_after(scheduler):
     config = load_framework()
     from .context_reference_binding import context_after
@@ -283,6 +357,13 @@ def framework_after(scheduler):
     if config is not None and config.get('prefill') is not None:
         from .prefill_binding import prefill_after
         prefill_after(scheduler)
+    timeline_batch = getattr(scheduler.tp_worker.model_runner,
+                             '_round9_timeline_batch', None)
+    if timeline_batch is not None:
+        from .working_set_timeline import event
+        event('scheduler', 'batch_end', mode=timeline_batch[1],
+              finished=bool(timeline_batch[0].finished()))
+        scheduler.tp_worker.model_runner._round9_timeline_batch = None
     from .streaming_binding import streaming_after
     streaming_after(scheduler)
     collector = getattr(scheduler, '_round9_route_collector', None)
