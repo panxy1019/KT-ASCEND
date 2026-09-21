@@ -61,22 +61,34 @@ def validate_topology(candidate, rows, quota):
                 scope='TOPOLOGY_CAPACITY_ONLY_NOT_RESERVATION')
 
 
-def runtime_arguments(candidate, require_native=False, *, native_block32_tail=False, dynamic_boundary_installed=False):
+def _resident_capacity(value):
+    if type(value) is not int or value not in (32, 64):
+        raise ValueError('resident_capacity must be exactly32 or64')
+    return value
+
+
+def runtime_arguments(candidate, require_native=False, *, native_block32_tail=False,
+                      dynamic_boundary_installed=False, resident_capacity=64):
+    resident_capacity = _resident_capacity(resident_capacity)
     if require_native and candidate.storage!='BF16' and native_block32_tail is not True:raise RuntimeError(candidate.native_status())
     if require_native and candidate.placement!='static' and dynamic_boundary_installed is not True:
         raise RuntimeError('DYNAMIC_SCHEDULER_BOUNDARY_INSTALLATION_AND_DEVICE_GATE_REQUIRED')
     return dict(kt_cpuinfer=candidate.workers,kt_threadpool_count=len(candidate.numa_nodes),
                 kt_numa_nodes=list(candidate.numa_nodes),kt_method='LLAMAFILE',
-                kt_num_gpu_experts=64,kt_enable_dynamic_expert_update=False,
+                kt_num_gpu_experts=resident_capacity,kt_enable_dynamic_expert_update=False,
                 kt_max_deferred_experts_per_token=0,kt_gpu_prefill_token_threshold=0)
 
 
-def validate_kt_config(cfg, document, native_bf16_tail=False, native_block32_tail=False, dynamic_boundary_installed=False):
+def validate_kt_config(cfg, document, native_bf16_tail=False, native_block32_tail=False,
+                       dynamic_boundary_installed=False, resident_capacity=64):
     """Called from the actual model opt-in seam; baseline guard remains separate."""
     candidate=Candidate.from_dict(document)
-    expected=runtime_arguments(candidate,require_native=True,native_block32_tail=native_block32_tail,dynamic_boundary_installed=dynamic_boundary_installed)
+    resident_capacity = _resident_capacity(resident_capacity)
+    expected=runtime_arguments(candidate,require_native=True,native_block32_tail=native_block32_tail,
+                               dynamic_boundary_installed=dynamic_boundary_installed,
+                               resident_capacity=resident_capacity)
     if candidate.storage=='BF16' and not native_bf16_tail:raise RuntimeError('UNSUPPORTED_NATIVE_BF16_F32_TAIL')
-    if (cfg is None or int(cfg.gpu_experts_mask.sum())!=64 or
+    if (cfg is None or int(cfg.gpu_experts_mask.sum())!=resident_capacity or
         cfg.cpuinfer_threads!=expected['kt_cpuinfer'] or cfg.threadpool_count!=expected['kt_threadpool_count'] or
         list(cfg.numa_nodes)!=expected['kt_numa_nodes'] or cfg.method!='LLAMAFILE' or
         (cfg.max_deferred_experts_per_token or 0)!=0 or cfg.kt_enable_dynamic_expert_update or

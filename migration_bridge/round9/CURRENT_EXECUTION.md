@@ -1,4 +1,110 @@
-## Latest —2026-09-21 01:26UTC: full resource matrix complete; jobs stopped
+## Latest — 2026-09-21 Framework Completion freeze in progress
+
+Final CPU source snapshot v16 passes331 tests and a fresh preserved-baseline
+overlay install. Full-model gates now pass F1 Frequency, F2/F3 Layerwise route
+telemetry, F4 Prefill-End Dynamic, F5 async PLE, F6 joint host budget, F7 Q32,
+F8 actual4k pool sizing and F9 FP8-host-reference/BF16-stage QSA. F10 has an
+exact-byte physical15 request-local context-tier component gate; no allocator
+adapter or HBM saving is claimed.
+
+F11 v43 passes HOLDOUT2 and two real contiguous streaming chunks. An HTTP abort
+acknowledged during long prefill does not promptly interrupt queued chunks, so
+mid-prefill HTTP interruption remains explicitly unqualified. v44 passes clean
+restart, 391, exact 32+5 chunks and ordinary active abort/reuse. F12 v45 passes
+the combined Q32 Layerwise Prefill-End Dynamic + PLE Async request with one
+generation commit/final drain, four async drains and391. No Round9 model process
+remains on physical15. F12/F13 reports bind the final receipts before commit/push. Old Round7 timers
+remain paused; no Round8 performance work, main merge or tag is authorized.
+
+## Historical —2026-09-21 MXFP4 NUMA validation and F4 full-model smoke passed
+
+Trial33 preserved a false runtime stop caused by clean file-cache growth. Trial34
+uses corrected dual-condition pressure detection and passes on exclusive physical15:
+two HOLDOUT requests, four real Prefill-End commits/drains, active abort and state
+reuse. Peak owned anonymous memory per NUMA2/3/6/7 is23.086/18.063/15.072/
+14.997GiB; minimum conservative available headroom is129.239/148.963/202.084/
+200.732GiB. Owned cgroup high/OOM/failcnt remain zero. MXFP4 keeps a48GiB/node
+startup floor plus8GiB runtime dual-condition protection; BF16/Q8_0 remain80GiB.
+This is one exact short-smoke qualification, not a universal capacity claim.
+See57 and the v34 NUMA summary. F5 full-model async PLE is next. No timer restoration.
+
+## Historical checkpoint —2026-09-21 07:19 UTC
+
+Follow-up CPU v6 supersedes v5 as latest tested CPU snapshot:300 tests PASS and
+real overlay installer PASS, container exited0, no NPU devices mapped. Added
+context component receipt validation and mutation negatives. See the machine-
+readable FRAMEWORK_CAPABILITY_CHECKPOINT.json for exact scoped progress.
+
+CPU v5:298 tests PASS; preserved-baseline fresh overlay installation PASS.
+Context reference NPU v4:12 synthetic QSA layer cases PASS,355328bytes extra
+allocation, BF16 exact output and FP8 decoded-reference exact output. Scope is
+component-only; no allocator page was freed. See FRAMEWORK_PROGRESS.md.
+F8 pool-measurement binding is implemented, full-model execution remains pending.
+NUMA2 is still below80GiB free; no full-model v33 process has started.
+No new push/merge/tag or timer restoration. FRAMEWORK_COMPLETE remains NO.
+
+## Resource update —2026-09-21 05:52 UTC
+
+Physical15 became idle and passed fresh exclusive admission for PLE v2 and joint
+budget v3. Both component probes exited0 and passed; no shared mode was enabled.
+Dynamic Q32 core v19 passes; CPU v4 passes274 tests and real-overlay installation.
+Full-model v33 is NOT_STARTED: NUMA2 MemFree is below the unchanged80GiB minimum.
+Project-owned unmapped file cache reclamation is exhausted; do not repeatedly
+retry without a meaningful resource change or touch unrelated workload/cache.
+See FRAMEWORK_PROGRESS.md for current scopes. F4/F5/F6 full-model qualification,
+F8–F12 integration and F13 freeze remain open. FRAMEWORK_COMPLETE=NO.
+
+## Historical resource update —2026-09-21 05:04 UTC
+
+Physical15 is no longer idle: new PID3425392 belongs to `mzy-train`.
+The exclusive guard stopped our full-model v32 after two successful Layerwise
+HTTP requests. Abort/reuse is NOT_RUN. Device work is paused pending fresh
+exclusive admission or user-confirmed shared mode and this training's peak.
+Do not reuse the historical15GiB peak for this new process automatically.
+Continue CPU framework development; no training container was changed.
+See FRAMEWORK_PROGRESS.md and47_LAYERWISE_TRANSPORT_IMPLEMENTATION_AND_GATES.md.
+
+## Latest —2026-09-21 Framework Completion sprint IN PROGRESS
+
+User approved the revised F0–F13 plan and continuous execution with autonomous
+repairs/documentation. Read43_FRAMEWORK_COMPLETION_EXECUTION_PLAN.md and
+FRAMEWORK_PROGRESS.md first for this new sprint. Historical resource matrix
+below remains frozen, including BF16Dynamic strictJSON failure.
+
+Baseline commitdc52a63ca was already pushed for the prior documentation delivery.
+New sprint changes are local work in progress; no new push/main merge/tag.
+Automations remain paused. Exclusive110.123.0.3 physical15 only, fresh admission
+per process, no shared training allowance until user changes that instruction.
+
+F0 manifest frozen. F0a contracts and shared routes locally tested. Real F1:
+trial24 feature-OFF passes4short requests; trial25 real48-layer route collection
+passes2DEV requests/47tokens with identical output IDs and zero logprob difference
+versus24. Independent frequencyQ64/Q32 manifests generated and replay checked.
+Trial26 Q64Frequency passesHOLDOUT2 and activeabort/reuse; all48actual maps match,
+2578resident replacements versusUniform. Trial27 cleanrestart PASS with identical
+maps/output IDs. F1 scoped MXFP4/C128/Q64StaticFrequency is FULL_MODEL_SMOKE.
+Remote F1overlay/framework source: framework-sglang-v3/python and
+framework-dev-20260921-f1-v3 under/mnt/data1/kt-round9. Trial namespaces retain
+20260920-full-model-v24..v27 for continuity; actual sample times are in receipts.
+
+F7 Q32 realmodule v18 PASS; trial28 recorderdevice assumption failed beforefirst
+forward and was fixed, preservedasFAIL. Fresh29Static/30Dynamic bothpass short
+HTTP/actual48physicalmaps/abortreuse. Dynamic4transactions gen1..4. Ownedobserved
+peaks25446/26242MiB. See46. Sourcef7-v3/overlay5; bothprocessescontrolledstopped.
+
+F2 real privateBF16transport probev1 neverstarted (newcontainer name missing
+monitor allowlist). Added onlytheexactlayerwise namespace;14guardtestsPASS.
+Fresh probev2 PASS_LAYERWISE_BF16_TRANSPORT: six numericalcases (max32tokens),
+source48identitysweep, privateweight/mapnonalias, abortreuse, constructorpeak
+524289536bytes, executionextra616490496bytes. Componentonly; fullmodelpending.
+Runtime/profile2/schedulerbinding underreview beforefreshmodelgate.
+F5asyncring/F8context hostcode exists, integration/devicepending. F4hostliveprefill
+transaction exists, scheduler/devicepending. F6traffic/F9–F13 stillpending.
+Readlivecontainer/evidencebeforeanynewlaunch; nohistoricalqualificationinheritance.
+ROUND9_FRAMEWORK_COMPLETE=NO. No CMMLU256/formal performance/real64k128k/soak.
+Implementation issues and fixes:44_FRAMEWORK_F1_IMPLEMENTATION_NOTES.md.
+
+## Historical —2026-09-21 01:26UTC: full resource matrix complete; jobs stopped
 
 Exclusive110.123.0.3 physical15 full-model C128 matrix completed. BF16static(v10),
 MXFP4static(v19),MXFP4Dynamic(v20),Q8static(v21),Q8Dynamic(v22) pass five drivers.

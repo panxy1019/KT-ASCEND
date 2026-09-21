@@ -1,0 +1,103 @@
+{
+  "status": "PASS_ACTIVE_ABORT_AND_STATE_REUSE",
+  "scope": "ACTIVE_ABORT_AND_REQUEST_STATE_REUSE",
+  "events": [
+    {
+      "text": "3",
+      "output_ids": [
+        18
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": null,
+        "prompt_tokens": 27,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 1,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "response_sent_to_client_ts": 1789988665.131807
+      }
+    },
+    {
+      "text": "39",
+      "output_ids": [
+        18,
+        24
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": {
+          "type": "abort",
+          "message": "Aborted",
+          "status_code": null,
+          "err_type": null
+        },
+        "prompt_tokens": 27,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 2,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "e2e_latency": 255.88944987603463
+      }
+    }
+  ],
+  "abort_http_status": 200,
+  "reuse_response": {
+    "text": "391",
+    "output_ids": [
+      18,
+      24,
+      16,
+      248046
+    ],
+    "meta_info": {
+      "id": "r9-post-cancel-reuse",
+      "finish_reason": {
+        "type": "stop",
+        "matched": 248046
+      },
+      "prompt_tokens": 27,
+      "weight_version": "default",
+      "total_retractions": 0,
+      "input_token_logprobs": [
+        [
+          null,
+          271,
+          null
+        ]
+      ],
+      "output_token_logprobs": [
+        [
+          -0.0035630096681416035,
+          18,
+          null
+        ],
+        [
+          -0.0005548844928853214,
+          24,
+          null
+        ],
+        [
+          -0.000788139586802572,
+          16,
+          null
+        ],
+        [
+          -2.3007127310847864e-05,
+          248046,
+          null
+        ]
+      ],
+      "completion_tokens": 4,
+      "cached_tokens": 0,
+      "cached_tokens_details": null,
+      "dp_rank": null,
+      "e2e_latency": 257.01006049709395,
+      "response_sent_to_client_ts": 1789988922.5137038
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "PASS_STREAMING_FULL_MODEL_SMOKE_AND_CLEAN_RESTART",
+  "scope": "BOUNDED_LIFECYCLE_NOT_PERFORMANCE_OR_MIDPREFILL_INTERRUPT",
+  "http_status": "PASS_FRAMEWORK_HTTP2",
+  "known_answer": true,
+  "twochunk_total": 37,
+  "chunk_begins": [
+    [
+      0,
+      32
+    ],
+    [
+      32,
+      5
+    ]
+  ],
+  "chunk_drains": [
+    [
+      0,
+      32,
+      32
+    ],
+    [
+      32,
+      5,
+      37
+    ]
+  ],
+  "all_drained_planes_exact": true,
+  "abort_reuse_status": "PASS_ACTIVE_ABORT_AND_STATE_REUSE",
+  "event_sha256": "880286dfc86eb2a21a30d5ce9563814b367e8f7e676ea61dab45efa72f054a9d"
+}

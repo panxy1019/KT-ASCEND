@@ -1,0 +1,15 @@
+{"status": "STREAMING_BOUND", "threshold_tokens": 4, "chunk_tokens": 32, "planes": ["expert", "ple", "context"], "qualification": "LOCAL_LIFECYCLE_FULL_MODEL_PENDING"}
+{"status": "STREAMING_CHUNK_BEGIN", "request_id": "streaming-restart-canary", "placement_epoch": 0, "allocation_epoch": 0, "start": 0, "count": 27, "total": 27}
+{"status": "STREAMING_CHUNK_DRAINED", "request_id": "streaming-restart-canary", "placement_epoch": 0, "allocation_epoch": 0, "start": 0, "count": 27, "next_start": 27, "planes": ["expert", "ple", "context"]}
+{"status": "STREAMING_PREFILL_COMPLETE", "request_id": "streaming-restart-canary", "placement_epoch": 0, "allocation_epoch": 0, "chunks": 1, "tokens": 27}
+{"status": "STREAMING_CHUNK_BEGIN", "request_id": "streaming-twochunk-complete", "placement_epoch": 0, "allocation_epoch": 1, "start": 0, "count": 32, "total": 37}
+{"status": "STREAMING_CHUNK_DRAINED", "request_id": "streaming-twochunk-complete", "placement_epoch": 0, "allocation_epoch": 1, "start": 0, "count": 32, "next_start": 32, "planes": ["expert", "ple", "context"]}
+{"status": "STREAMING_CHUNK_BEGIN", "request_id": "streaming-twochunk-complete", "placement_epoch": 0, "allocation_epoch": 1, "start": 32, "count": 5, "total": 37}
+{"status": "STREAMING_CHUNK_DRAINED", "request_id": "streaming-twochunk-complete", "placement_epoch": 0, "allocation_epoch": 1, "start": 32, "count": 5, "next_start": 37, "planes": ["expert", "ple", "context"]}
+{"status": "STREAMING_PREFILL_COMPLETE", "request_id": "streaming-twochunk-complete", "placement_epoch": 0, "allocation_epoch": 1, "chunks": 2, "tokens": 37}
+{"status": "STREAMING_CHUNK_BEGIN", "request_id": "r9-cancel-active", "placement_epoch": 0, "allocation_epoch": 2, "start": 0, "count": 27, "total": 27}
+{"status": "STREAMING_CHUNK_DRAINED", "request_id": "r9-cancel-active", "placement_epoch": 0, "allocation_epoch": 2, "start": 0, "count": 27, "next_start": 27, "planes": ["expert", "ple", "context"]}
+{"status": "STREAMING_PREFILL_COMPLETE", "request_id": "r9-cancel-active", "placement_epoch": 0, "allocation_epoch": 2, "chunks": 1, "tokens": 27}
+{"status": "STREAMING_CHUNK_BEGIN", "request_id": "r9-post-cancel-reuse", "placement_epoch": 0, "allocation_epoch": 3, "start": 0, "count": 27, "total": 27}
+{"status": "STREAMING_CHUNK_DRAINED", "request_id": "r9-post-cancel-reuse", "placement_epoch": 0, "allocation_epoch": 3, "start": 0, "count": 27, "next_start": 27, "planes": ["expert", "ple", "context"]}
+{"status": "STREAMING_PREFILL_COMPLETE", "request_id": "r9-post-cancel-reuse", "placement_epoch": 0, "allocation_epoch": 3, "chunks": 1, "tokens": 27}

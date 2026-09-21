@@ -7,6 +7,23 @@ import unittest
 P=pathlib.Path(__file__).parents[1]/'runtime/ple_rows.py'
 PREFIX='model.language_model.layers.1.ple.ple_embedding.ngram_embedding.'
 class RowTests(unittest.TestCase):
+    def test_concurrent_gathers_share_one_descriptor_per_shard(self):
+        import concurrent.futures,os,time
+        from unittest.mock import patch
+        m=self.module();opened=[];original_open=os.open
+        def slow_open(*args,**kwargs):
+            fd=original_open(*args,**kwargs);opened.append(fd);time.sleep(.02);return fd
+        with tempfile.TemporaryDirectory() as td:
+            root=pathlib.Path(td);self.fixture(root)
+            with m.ShardedBF16Rows(root,expected_parts=2,expected_width=2) as table:
+                with patch.object(m.os,'open',slow_open),concurrent.futures.ThreadPoolExecutor(2) as pool:
+                    futures=[pool.submit(table.gather_bytes,[0,0]) for _ in range(2)]
+                    self.assertEqual([f.result() for f in futures],[bytes(range(4))*2]*2)
+                try:self.assertEqual(len(opened),1)
+                finally:
+                    # The red implementation leaks the descriptor it overwrites.
+                    for fd in opened:
+                        if fd not in table._fds.values():os.close(fd)
     def module(self):
         s=importlib.util.spec_from_file_location('ple_rows',P);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
     def fixture(self,root):

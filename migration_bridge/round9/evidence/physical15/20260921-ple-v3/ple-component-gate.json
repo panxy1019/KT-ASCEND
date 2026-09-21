@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "exact": true,
+      "generation": 0,
+      "request_id": "prefill-original",
+      "rows": 512,
+      "sha256": "f3880e1dc8f2ca03a409fd02f48d19d0f1aa0a12ef1b3442c10db475719f6acd"
+    },
+    {
+      "exact": true,
+      "generation": 1,
+      "request_id": "sampled-next",
+      "rows": 16,
+      "sha256": "379bcfab0b36b5c62532d127d958298071c57f378846012b1cc335dd721c836a"
+    },
+    {
+      "exact": true,
+      "generation": 2,
+      "request_id": "reuse-after-abort",
+      "rows": 16,
+      "sha256": "334f521714cb07a1583b70ba6637b849c42072be959e819bdf2e94c516fcf31c"
+    }
+  ],
+  "checks": {
+    "cancel_late_completion": true,
+    "consumer_stream_order": true,
+    "cross_shard_exact": true,
+    "duplicates_exact": true,
+    "original_rows_exact": true,
+    "request_switch": true,
+    "slot_reuse": true,
+    "zero_credits_after_close": true
+  },
+  "device_buffer_bytes": 327680,
+  "dtype": "torch.bfloat16",
+  "max_rows": 512,
+  "peak_extra_bytes": 493056,
+  "physical_device": 15,
+  "pinned_bytes": 327680,
+  "row_width": 160,
+  "schema": 1,
+  "scope": "COMPONENT_ONLY_NOT_MODEL_OR_OVERLAP_PERFORMANCE",
+  "slots": 2,
+  "source_identity": {
+    "file_sizes_checked": 144,
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_sha256": {
+    "framework_config.py": "1af586c0d49ac0d2c15734e7b8ea39d678f9c90e954bd6ebd3f4ff28c06c477e",
+    "host_budget.py": "2e08b04d8decfb17fe626f9fcbd509559b06e4a661b9ffa0aab59555d2c6a1da",
+    "ple_async.py": "792d077c8a1b2e302813eec05d25be0446f9b86dcb1faaf2e3e76f8499c11280",
+    "ple_rows.py": "0ea496c915d1ce4ac4f60309d0a001c85d299b434035b657d62241e9acc554d2"
+  },
+  "status": "PASS_PLE_ASYNC_ORIGINAL_ROWS",
+  "torch_npu_version": "2.9.0.post2",
+  "torch_version": "2.9.0+cpu"
+}

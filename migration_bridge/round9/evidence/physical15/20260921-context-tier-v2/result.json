@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "status": "PASS_CONTEXT_TIER_NPU_BYTE_IDENTITY",
+  "scope": "SYNTHETIC_12_LAYER_PAGE_NOT_MODEL_ALLOCATOR_OR_HICACHE",
+  "physical_device": 15,
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_sha256": {
+    "context_page_store.py": "2a472b55c4c834f76e0894ab44276c183896e4c08ee0df4bb4a5f8e401041b1f",
+    "context_tier.py": "cd6e7c5f0c8156f6ad52f171ce8f7dd04111368fee3f3533a1eb18e4f425c889"
+  },
+  "torch_version": "2.9.0+cpu",
+  "torch_npu_version": "2.9.0.post2",
+  "qsa_layers": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47
+  ],
+  "original_physical_generation": [
+    0,
+    0
+  ],
+  "restored_physical_generation": [
+    1,
+    1
+  ],
+  "all_layer_bytes_exact": true,
+  "request_isolation_rejected": true,
+  "final": {
+    "scope": "SYNCHRONOUS_REQUEST_LOCAL_TIER_NO_MODEL_HOOK",
+    "state": "READY",
+    "pages": 0,
+    "physical_owners": 0,
+    "states": {},
+    "host": {
+      "scope": "CPU_REQUEST_LOCAL_OWNERSHIP_ONLY",
+      "state": "HOST_PUBLISHED_NO_HBM_ACTION",
+      "pages": 0,
+      "host_bytes": 0,
+      "active_leases": 0,
+      "inflight_reloads": 0,
+      "invalidating": 0,
+      "retained_request_identities": 0,
+      "allocator_free_calls": 0,
+      "hbm_bytes_freed_claimed": 0
+    }
+  },
+  "peak_extra_bytes": 110592,
+  "model_allocator_hook_installed": false,
+  "hbm_capacity_savings_qualified": false
+}

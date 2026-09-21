@@ -10,11 +10,14 @@ p.add_argument('--storage',choices=['BF16','Q8_0','MXFP4'],default='BF16')
 p.add_argument('--candidate-native',action='store_true')
 p.add_argument('--npu-format',type=int,choices=[2,29],default=2)
 p.add_argument('--resource-mode',choices=['shared','exclusive'],default='shared')
+p.add_argument('--resident-capacity',type=int,choices=[32,64],default=64)
 a=p.parse_args()
+if a.resident_capacity==32 and (a.probe!='dynamic' or a.npu_format!=29 or not a.candidate_native):
+ raise ValueError('Q32 gate requires real NZ29 Dynamic and explicit candidate native')
 if a.probe=='wrapper' and a.storage!='BF16':raise ValueError('lowbit uses complete KTEP probe')
 assert a.version>0
 root=pathlib.Path('/mnt/data1/kt-round9')
-source=root/'candidate-dev-20260920/migration_bridge/round9'
+source=pathlib.Path(__file__).resolve().parents[1]
 name=f'kt-round9-c128-expert-v{a.version}'
 out=root/'evidence'/f'20260920-c128-expert-v{a.version}'
 out.mkdir(exist_ok=False)
@@ -55,10 +58,11 @@ receipt=dict(status='ADMITTED_BOUNDED_C128_EXPERT_ONLY',time=time.time(),host='1
  numa_nodes=nodes,topology=topology,logical_cpus=cpus,cpu_quota=136,idle_fraction=idle,
  host_meminfo=mem,node_meminfo=node_mem,npu_smi=npu,resource_mode=a.resource_mode,training_allowance_mib=15360 if a.resource_mode=='shared' else 0,
  owned_hbm_budget_mib=4096,board_reserve_mib=8192,host_memory_limit_gib=64,
- probe=a.probe,storage=a.storage,scope='CURRENT_CAPACITY_NOT_EXCLUSIVE_RESERVATION_NO_FULL_MODEL_ADMISSION')
+ probe=a.probe,storage=a.storage,resident_capacity=a.resident_capacity,scope='CURRENT_CAPACITY_NOT_EXCLUSIVE_RESERVATION_NO_FULL_MODEL_ADMISSION')
 (out/'admission.json').write_text(json.dumps(receipt,indent=2)+'\n')
 rev='de4b8e4d43b917e7706784d8bb445c9af86a3540'
 probe_file={'wrapper':'c128_expert_probe.py','ktep':'c128_ktep_probe.py','dynamic':'c128_ktep_probe.py'}[a.probe]
+if a.resident_capacity==32:probe_file='q32_ktep_probe.py'
 frozen=out/'source'
 for subdir in ('tests','tools','runtime'):
  shutil.copytree(source/subdir,frozen/subdir,ignore=shutil.ignore_patterns('__pycache__'))

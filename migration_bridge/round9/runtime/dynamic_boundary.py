@@ -50,17 +50,70 @@ def scheduler_before(scheduler,batch):
 def scheduler_after(scheduler):
     if not _enabled():return
     boundary=getattr(scheduler,'_round9_dynamic_boundary',None)
-    if boundary is not None:boundary.after()
+    if boundary is not None:
+        request=boundary.request
+        boundary.after()
+        if request is not None and boundary.request is None:
+            runner=scheduler.tp_worker.model_runner
+            budget=getattr(runner,'_round9_joint_host_budget',None)
+            if budget is not None:
+                if request.rid in runner._round9_ple_credit_requests:
+                    budget.retire_request(request.rid)
+                    runner._round9_ple_credit_requests.remove(request.rid)
+                snapshot=budget.snapshot()
+                baseline=getattr(runner,'_round9_joint_budget_baseline',None)
+                if baseline is None or snapshot != baseline:
+                    raise RuntimeError('joint host budget did not return to persistent baseline')
+                event=getattr(boundary,'event',None)
+                if callable(event):
+                    event(dict(status='JOINT_BUDGET_REQUEST_DRAINED',
+                               request_id=request.rid,budget=snapshot,
+                               persistent_baseline=baseline,
+                               at_persistent_baseline=True))
+                runner._round9_ple_request=None
+
+
+def _require_capacity_gate(capacity, candidate, binding, path, expected_sha, native_sha256=None):
+    identity = binding['bank_identity']
+    kwargs = dict(storage=candidate.storage, workers=candidate.workers,
+                  source_identity=identity['source_identity'],
+                  layer0_sha256=identity['layer0_sha256'])
+    if capacity == 32:
+        from .q32_gate import require_q32_device_gate
+        return require_q32_device_gate(path, expected_sha,
+                                       native_sha256=native_sha256, **kwargs)
+    if capacity != 64: raise RuntimeError('unsupported resident capacity')
+    from .candidate_config import require_dynamic_device_gate
+    return require_dynamic_device_gate(path, expected_sha, **kwargs)
+
+
+def _optional_framework():
+    """Candidate-only overlays predate the optional framework module."""
+    try:
+        from .framework_config import load_framework
+    except ModuleNotFoundError as error:
+        if not error.name or error.name.rsplit('.', 1)[-1] != 'framework_config': raise
+        return None
+    return load_framework()
+
+
+def _framework_capacity():
+    framework = _optional_framework()
+    return framework['resident_capacity'] if framework is not None else 64
 
 
 def _bind_scheduler(scheduler):
-    import json,os
+    import hashlib,json,os
     from pathlib import Path
-    from .candidate_config import require_dynamic_model_profile,load_candidate_profile,require_dynamic_device_gate
+    from .candidate_config import require_dynamic_model_profile,load_candidate_profile
     binding=require_dynamic_model_profile(os.environ.get("ROUND9_CANDIDATE_PROFILE"))
     candidate,_,_=load_candidate_profile(os.environ.get("ROUND9_CANDIDATE_PROFILE"))
-    gate=require_dynamic_device_gate(os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE'),os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE_SHA256'),
-        storage=candidate.storage,workers=candidate.workers,source_identity=binding['bank_identity']['source_identity'],layer0_sha256=binding['bank_identity']['layer0_sha256'])
+    capacity=_framework_capacity()
+    import kt_kernel_ext
+    native_sha256=hashlib.sha256(Path(kt_kernel_ext.__file__).resolve().read_bytes()).hexdigest()
+    gate=_require_capacity_gate(capacity,candidate,binding,
+        os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE'),os.environ.get('ROUND9_DYNAMIC_DEVICE_GATE_SHA256'),
+        native_sha256=native_sha256)
     from .expert_source import OriginalExpertSource
     from .dynamic_adapter import TorchKTEPAdapter,bind_controller
     from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod
@@ -71,6 +124,8 @@ def _bind_scheduler(scheduler):
         args.kt_gpu_prefill_token_threshold or args.tp_size!=1 or
         getattr(args,'speculative_algorithm',None) is not None):
         raise RuntimeError('unsupported Dynamic scheduler profile')
+    if args.kt_num_gpu_experts != capacity:
+        raise RuntimeError('Dynamic resident capacity differs from framework profile')
     if getattr(scheduler,'enable_hierarchical_cache',False) or getattr(scheduler,'enable_hicache_storage',False):
         raise RuntimeError('Dynamic rejects asynchronous cache offload')
     log=Path(os.environ['ROUND9_DYNAMIC_EVENTS'])
@@ -91,7 +146,20 @@ def _bind_scheduler(scheduler):
         host_staging_limit=64*1024**2,allow_unqualified_npu_probe=True,qualified_npu_formats=(29,))
     def event(item):
         with log.open('a') as f:f.write(json.dumps(item)+'\n')
-    boundary=RequestBoundary(bind_controller(adapter),event)
+    framework=_optional_framework()
+    if framework is not None and (framework.get('prefill') or {}).get('update_residents',False):
+        from .prefill_end_boundary import PrefillEndBoundary
+        from .live_request_state import snapshot_live_request
+        boundary=PrefillEndBoundary(bind_controller(adapter),
+            lambda request:snapshot_live_request(scheduler.tp_worker.model_runner,request),event)
+    else:
+        boundary=RequestBoundary(bind_controller(adapter),event)
+    shared_budget=getattr(scheduler.tp_worker.model_runner,'_round9_joint_host_budget',None)
+    if shared_budget is not None:
+        from .budgeted_migration import BudgetedMigration
+        boundary.controller.adapter=BudgetedMigration(adapter,shared_budget,
+            lambda:(boundary.request.rid,boundary.generation),
+            requests=scheduler.tp_worker.model_runner._round9_ple_credit_requests)
     # Instance-local interception records the original logical routing IDs,
     # before KTEP transforms them into the current NPU slot indices.
     for index,method in methods.items():

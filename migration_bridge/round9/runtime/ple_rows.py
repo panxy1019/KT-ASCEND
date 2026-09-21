@@ -9,6 +9,7 @@ import os
 import pathlib
 import re
 import struct
+import threading
 
 PREFIX='model.language_model.layers.1.ple.ple_embedding.ngram_embedding.'
 class ShardedBF16Rows:
@@ -19,7 +20,7 @@ class ShardedBF16Rows:
         expected=[f'{PREFIX}shard_{i}.weight' for i in range(expected_parts)]
         if set(names)!=set(expected):raise ValueError('missing or unexpected original PLE shards')
         self.width=expected_width;self.row_bytes=2*expected_width
-        self.parts=[];self.ends=[];self._fds={};self.closed=False
+        self.parts=[];self.ends=[];self._fds={};self.closed=False;self._lock=threading.RLock()
         total=0
         for name in expected:
             path=(self.root/index[name]).resolve(strict=True)
@@ -41,6 +42,11 @@ class ShardedBF16Rows:
         self.total_rows=total
 
     def gather_bytes(self,ids):
+        # Sync fallback and async workers share this reader. Serialize descriptor
+        # creation and close with reads; pread still never changes a shared offset.
+        with self._lock:return self._gather_bytes(ids)
+
+    def _gather_bytes(self,ids):
         if self.closed:raise RuntimeError('table reader closed')
         ids=list(ids)
         if any(type(i) is not int or not 0<=i<self.total_rows for i in ids):
@@ -58,7 +64,8 @@ class ShardedBF16Rows:
         return b''.join(out)
 
     def close(self):
-        for fd in self._fds.values():os.close(fd)
-        self._fds.clear();self.closed=True
+        with self._lock:
+            for fd in self._fds.values():os.close(fd)
+            self._fds.clear();self.closed=True
     def __enter__(self):return self
     def __exit__(self,*args):self.close()

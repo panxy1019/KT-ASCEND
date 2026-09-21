@@ -11,9 +11,13 @@ exec(compile(ast.Module(nodes, type_ignores=[]), str(source), 'exec'), ns)
 
 class MonitorOwnershipTests(unittest.TestCase):
     def test_candidate_scope_is_narrow(self):
-        for name in ('kt-round9-full-model-v7','kt-round9-c128-expert-v1'):
+        for name in ('kt-round9-full-model-v7','kt-round9-c128-expert-v1',
+                     'kt-round9-layerwise-v2','kt-round9-ple-v1',
+                     'kt-round9-context-tier-v1'):
             self.assertTrue(ns['owned_container_name'](name))
-        for name in ('mzy-train','kt-r7-a3-return-v1','kt-round9-c128-expert-v1-other'):
+        for name in ('mzy-train','kt-r7-a3-return-v1','kt-round9-c128-expert-v1-other',
+                     'kt-round9-layerwise-v2-other','kt-round9-layerwise-vx',
+                     'kt-round9-context-tier-v1-other','kt-round9-context-tier-vx'):
             self.assertFalse(ns['owned_container_name'](name))
 
 class MemoryDomainTests(unittest.TestCase):

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "split": "QWEN38_SCHED_HOLDOUT",
+  "scope": "Small hand-authored placement holdout; separate from calibration and future CMMLU",
+  "prompts": [
+    {"id": "sched-holdout-01", "text": "Compute 17 times 23. Answer with only the integer.", "expected_integer": 391},
+    {"id": "sched-holdout-02", "text": "Translate into English: 海水含有盐。"}
+  ]
+}

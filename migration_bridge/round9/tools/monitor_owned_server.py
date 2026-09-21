@@ -7,7 +7,9 @@ import subprocess
 import time
 
 def owned_container_name(name):
-    return re.fullmatch(r'kt-round9-(?:full-model|c128-expert)-v[0-9]+', name) is not None
+    return re.fullmatch(
+        r'kt-round9-(?:full-model|c128-expert|layerwise|ple|context-tier)-v[0-9]+',
+        name) is not None
 
 def validate_owned_limit(limit,resource_mode):
     ceiling={'shared':41472,'exclusive':45056}[resource_mode]
@@ -21,6 +23,7 @@ p.add_argument('--ready-file', type=pathlib.Path, required=True)
 p.add_argument('--resource-mode', choices=['shared','exclusive'], default='shared')
 p.add_argument('--seconds', type=int, default=3600)
 p.add_argument('--owned-limit-mib', type=int, default=41472)
+p.add_argument('--numa-nodes', nargs='*', type=int, default=[])
 a = p.parse_args()
 validate_owned_limit(a.owned_limit_mib,a.resource_mode)
 if not owned_container_name(a.container):
@@ -147,6 +150,10 @@ while True:
         item['host_swap_free_kib'] = int(meminfo['SwapFree'].split()[0])
         pressure = pathlib.Path('/proc/pressure/memory')
         item['memory_pressure'] = pressure.read_text() if pressure.exists() else 'UNAVAILABLE_KERNEL_PSI'
+        if a.numa_nodes:
+            from numa_policy import parse_node
+            item['numa_meminfo_kib'] = {n:parse_node(pathlib.Path(
+                f'/sys/devices/system/node/node{n}/meminfo').read_text()) for n in a.numa_nodes}
         if not waiting:
             if bound_cgroot is None:
                 lines=pathlib.Path(f"/proc/{state['State']['Pid']}/cgroup").read_text().splitlines()
@@ -160,13 +167,19 @@ while True:
             item['owned_cgroup']={name:(bound_cgroot/name).read_text().strip()
                 for name in ('memory.current','memory.peak','memory.swap.current','memory.events',
                              'memory.usage_in_bytes','memory.max_usage_in_bytes',
-                             'memory.memsw.usage_in_bytes','memory.failcnt')
+                             'memory.memsw.usage_in_bytes','memory.failcnt','memory.stat','memory.numa_stat')
                 if (bound_cgroot/name).exists()}
         with a.output.open('a') as f:
             f.write(json.dumps(item)+'\n')
         if item['host_mem_available_kib'] < 64*1024**2:
             stop_owned('host available memory fell below64GiB reserve')
             break
+        if a.numa_nodes:
+            from numa_policy import runtime_pressure
+            numa_reason=runtime_pressure(item['numa_meminfo_kib'],item.get('owned_cgroup',{}))
+            if numa_reason:
+                stop_owned(numa_reason)
+                break
         # Board ceiling remains55.5GiB; owned limit follows the admitted mode.
         # The15GiB nonowned ceiling includes the system baseline, even when idle.
         if (waiting and used > 15360) or hbm_budget_exceeded(used, owned, training, system_baseline_mib or 0, a.owned_limit_mib):

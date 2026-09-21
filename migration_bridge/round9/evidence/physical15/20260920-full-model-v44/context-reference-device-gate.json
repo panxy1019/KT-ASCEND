@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "status": "PASS_CONTEXT_REFERENCE_QSA_COMPONENT",
+  "scope": "SYNTHETIC_KV_CPU_RECORD_BF16_NPU_QSA_NOT_MODEL_OR_HICACHE",
+  "physical_device": 15,
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_sha256": {
+    "context_profile.py": "e7b2e5dd7ad45c54d9d70c5454b67257d79f288d29ce232773f76697baa8a308",
+    "context_page_store.py": "2a472b55c4c834f76e0894ab44276c183896e4c08ee0df4bb4a5f8e401041b1f",
+    "kv_quant_reference.py": "5d1368748cd56c5cf5beff11acaf843ec8f890b6dcd731924fbb2d8aadebf1a6",
+    "context_staging.py": "1e7919b20c9e978724e072c4d0714c92ee1e4e6ee19e76a3145775cfb0fbfddb",
+    "qsa.py": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c"
+  },
+  "torch_version": "2.9.0+cpu",
+  "torch_npu_version": "2.9.0.post2",
+  "qsa_layers": 12,
+  "cases": [
+    {
+      "layer": 3,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.034371115267276764,
+      "compact_bytes": 8192,
+      "output_sha256": "b3961df4b6b5e169b07fe6808bafbd80c103b85d4ce7e98026f1babc559d465b"
+    },
+    {
+      "layer": 7,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.029216287657618523,
+      "compact_bytes": 8192,
+      "output_sha256": "abfa6805054d1779e0b42e144a7d7324b93f05b17164a86c7f1c064f038a7d6b"
+    },
+    {
+      "layer": 11,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03587699681520462,
+      "compact_bytes": 8192,
+      "output_sha256": "214cbeb16cf8e569100c3428761882fdc74a1ce8dee23f653f8759e71db6fdd3"
+    },
+    {
+      "layer": 15,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03321543708443642,
+      "compact_bytes": 8192,
+      "output_sha256": "630061d794b990f7c42e8f8ee99df7df233a0603131de252783ea82e1056bc0e"
+    },
+    {
+      "layer": 19,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03765484318137169,
+      "compact_bytes": 8192,
+      "output_sha256": "aafed02170ad918ad2a8c7f11aea168b25742fef64a47d4919181f883c31dfc6"
+    },
+    {
+      "layer": 23,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03215251490473747,
+      "compact_bytes": 8192,
+      "output_sha256": "1ed35555916c201b2f14c85673e226c8dd8daecd8e49e667407ef68c9fd54935"
+    },
+    {
+      "layer": 27,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.031528208404779434,
+      "compact_bytes": 8192,
+      "output_sha256": "b2422bc23bf0386941e1b104fb56aa363a5e526026d3ab53233ad9e65372be65"
+    },
+    {
+      "layer": 31,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.034177958965301514,
+      "compact_bytes": 8192,
+      "output_sha256": "acbab484bca857480411c79a45910dc742dbb55a1870b8c8db360cd60a742162"
+    },
+    {
+      "layer": 35,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.030368242412805557,
+      "compact_bytes": 8192,
+      "output_sha256": "f922a16d017bceb2e45e8def4efd83e855fe8d1d370c11ec64ef5a0ec2739924"
+    },
+    {
+      "layer": 39,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03447694703936577,
+      "compact_bytes": 8192,
+      "output_sha256": "38c3a6b4f968182ed2c3ffb0aeb233ccb4c2e0c1e33229d625184359b286b514"
+    },
+    {
+      "layer": 43,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.034168925136327744,
+      "compact_bytes": 8192,
+      "output_sha256": "78a7053f396a5a717184a1f3653d1770650112721e6d29a49c52349082d6d434"
+    },
+    {
+      "layer": 47,
+      "bf16_output_exact": true,
+      "fp8_decoded_output_exact": true,
+      "fp8_vs_original_relative_l2": 0.03399995341897011,
+      "compact_bytes": 8192,
+      "output_sha256": "80a9a53f860e1b7a27f4640f8ba89be5f549b21e9215caeb911903e7b0ba03ae"
+    }
+  ],
+  "host_store_final": {
+    "scope": "CPU_REQUEST_LOCAL_OWNERSHIP_ONLY",
+    "state": "HOST_PUBLISHED_NO_HBM_ACTION",
+    "pages": 0,
+    "host_bytes": 0,
+    "active_leases": 0,
+    "inflight_reloads": 0,
+    "invalidating": 0,
+    "retained_request_identities": 0,
+    "allocator_free_calls": 0,
+    "hbm_bytes_freed_claimed": 0
+  },
+  "stale_lease_rejected": true,
+  "allocator_free_calls": 0,
+  "native_fp8_qualified": false,
+  "peak_extra_bytes": 355328
+}
