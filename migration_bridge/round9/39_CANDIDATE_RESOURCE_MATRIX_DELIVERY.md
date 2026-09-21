@@ -2,6 +2,8 @@
 
 更新：2026-09-21 01:26 UTC。目标：110.123.0.3，独占物理卡15。
 
+本轮完整开发总结见[40_ROUND9_DEVELOPMENT_SUMMARY_AND_HANDOFF.md](40_ROUND9_DEVELOPMENT_SUMMARY_AND_HANDOFF.md)，实现与效果见[41_ROUND9_IMPLEMENTED_CAPABILITIES_AND_RESULTS.md](41_ROUND9_IMPLEMENTED_CAPABILITIES_AND_RESULTS.md)，逐项问题复盘见[42_ROUND9_PROBLEMS_AND_RESOLUTIONS.md](42_ROUND9_PROBLEMS_AND_RESOLUTIONS.md)。
+
 **六个组合均完成全模型资源/系统门禁；五个组合同时通过严格内容检查，BF16 Dynamic 保留严格 JSON 失败。** 本轮一次性执行已结束并释放设备。
 
 | CPU 专家存储 | 放置策略 | 运行 | 资源/系统 | 严格答案 | 进程 HBM 峰值 MiB | 宿主容器峰值 GiB |
