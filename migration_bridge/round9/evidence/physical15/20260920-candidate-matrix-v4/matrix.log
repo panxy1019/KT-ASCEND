@@ -1,0 +1,161 @@
+STARTED_MONITORED_CANDIDATE kt-round9-full-model-v20
+kt-round9-full-model-v20 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE'}
+kt-round9-full-model-v20 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8'}
+kt-round9-full-model-v20 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES'}
+kt-round9-full-model-v20 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST'}
+kt-round9-full-model-v20 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST', 'cancel-reuse': 'PASS_ACTIVE_ABORT_AND_STATE_REUSE'}
+kt-round9-full-model-v20
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "5739d1275f954ca23173a445da724e0998106a57b8cb4f1a72246b62bec07279",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "7c6999d8313e36704bd10de7301302f65febf5156d211b2e26bd12a9cfa4efe4",
+    "system8.json": "f8551180691385c8719fd9150bc492ab7ae9b5fae309925b72311a8e6f3a3df7",
+    "canaries.json": "87ea3a4fd26d679eb7ed2b71d6e1fa657e97d583e762324149378d4f6d0d73a5",
+    "context4096.json": "36588bae9c392cd67583ea8dea1cfbb99308d894e30190c5113e88a71429d797",
+    "cancel-reuse.json": "4d2d6669dfcd3d184641f8f62d72ca824ec3baf0fc18a379acf5447714a2088a",
+    "admission.json": "59e0d3c93325521b100d7a2ca56ec908a0f6543a85dbd361090a47b984ca5c0d",
+    "payload-sha256.json": "31011dc0158d92a6eb417c561a4919de5edd6ffe81f0c49ebf2bd959429e5e60",
+    "server-profile.json": "7c9e63fed683ec75878e582bc43536140d3b1d633347b8ea8df80c0eecf794f2",
+    "resolved-profile.json": "a1c275e12a2955260eeb784bfede9d6f3cb78b1592c57bc47e85f1ffa07c27fd",
+    "monitor.jsonl": "1d292c488098e22614649349b6e044fffaad6b4603adfb259f976c5806d7d927",
+    "server.log": "a4198fd03b0c84e4d78e0936062544cdae81d6bab58150d9f422ebde5419fc26",
+    "controlled-stop.json": "c979460f3b285d8b76c47226d0a795633ba66faf401aa7356988d327d4184dc9",
+    "dynamic-events.jsonl": "142579698f1a593a9cfb32340a45e049936aaed425d1e5812c72c92f8804d91a",
+    "scheduler-affinity.json": "b29e34acc03959653c1e774fe58d64ee67bbe1bd097907392e42cb4dbc932c0f"
+  },
+  "peak_observed_board_mib": 43828,
+  "peak_observed_owned_mib": 41060,
+  "peak_observed_host_cgroup_bytes": 140692103168,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}
+STARTED_MONITORED_CANDIDATE kt-round9-full-model-v21
+kt-round9-full-model-v21 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE'}
+kt-round9-full-model-v21 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8'}
+kt-round9-full-model-v21 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES'}
+kt-round9-full-model-v21 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST'}
+kt-round9-full-model-v21 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST', 'cancel-reuse': 'PASS_ACTIVE_ABORT_AND_STATE_REUSE'}
+kt-round9-full-model-v21
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "bb2188db001d80e173689818e7b9ca1a7e75a1ad471013b555bda30312a2d3ae",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "94aed992a1e165fde78ad93563a43cb095432aa45004ced11ba998c93a8fb88b",
+    "system8.json": "5dca3f3c0e0bd5d014d38cd388e966d36b9c201a7283de26fc9c1d60f1592f3b",
+    "canaries.json": "83d4666cf4ca134d37d6ccdad6652a9bd49678ea23777889408a1d7881f586ec",
+    "context4096.json": "be36fbbf5ed2cf9cf634e9dc9aa5abced55941f144c0a0b84b570961f356ef16",
+    "cancel-reuse.json": "58749c4178a51f16039999b0337b5a5761fb0388ef9daacd3a72fb0e707eedda",
+    "admission.json": "5bebdf81e11d25dac2082a38a123466d10219150e9eef5a22d6f9935e3c13b87",
+    "payload-sha256.json": "b7dcf0779180f99d84cf1eaf204d90d6fd0f58255fcc37592b5a3ec81354907b",
+    "server-profile.json": "4c289e00fdf92b7f1921bac5bc8eefb0f80f78b46916342ae5d6c13f283bd396",
+    "resolved-profile.json": "e9428a4f29a2e9dc5f36cb4027347a8fb8e16337158f3d132ccaf632c3aff17d",
+    "monitor.jsonl": "1625ce368570ebdde3db390d12da79302555837dd2afd005dc4f6652950c7528",
+    "server.log": "0117ba1927d9af4b5b5c464641af5563e9c2b5ca120ea3988cb10675decfaab6",
+    "controlled-stop.json": "8ff17c6f4a4af91b887931d1aa84a480e1176446d72f172c27dbf1e459812dfe",
+    "scheduler-affinity.json": "113a465a3ffe8191d92b9666291d30ef133efd3aecdbe685ac9385a15010c4c2"
+  },
+  "peak_observed_board_mib": 42621,
+  "peak_observed_owned_mib": 39854,
+  "peak_observed_host_cgroup_bytes": 268915621888,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}
+STARTED_MONITORED_CANDIDATE kt-round9-full-model-v22
+kt-round9-full-model-v22 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE'}
+kt-round9-full-model-v22 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8'}
+kt-round9-full-model-v22 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES'}
+kt-round9-full-model-v22 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST'}
+kt-round9-full-model-v22 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'PASS_FOUR_KNOWN_ANSWER_CANARIES', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST', 'cancel-reuse': 'PASS_ACTIVE_ABORT_AND_STATE_REUSE'}
+kt-round9-full-model-v22
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "8fc85d981983f827e53f9c81bbd83f5b3a1ef5b6f6af52f318c4310aa557bcc4",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "439bb6f76a044bbdc0d99c89844d08f79b871feedc2980e45736670fe06586da",
+    "system8.json": "04cf3d974fd330f04caf8226907e4a6e856fe6b830ff7e254595e7fb4abfbce0",
+    "canaries.json": "8e2ad72866d5d456c67e56ddfac6375cf21530de1d671b18d9c5f9341ab32089",
+    "context4096.json": "cf9f9ca75e8d4be4a36e8ddc7c1ad5b130999a0a85f2bdbbf0461c81dcb95689",
+    "cancel-reuse.json": "42d60cce180aca3c15d2a3e74ece6b91994c30655101e50fa7762e667ef63c34",
+    "admission.json": "1a33aa0ed024c369d2fcd2bfac0e9813d1a9bdceaa452a773a12ffc5a380f7ef",
+    "payload-sha256.json": "14c76aae20b8bcad07881495fc30fa22c4f801ba0c1ce6f1794f0e1f16d60b17",
+    "server-profile.json": "e630bfe8e05cd40e59383621c0b21ad589a7007ba767b4511adecb6f26fc6028",
+    "resolved-profile.json": "356cc7da3c8e7d3487f5baf38d52f4726c407a3842470685c50a598746fc5a6f",
+    "monitor.jsonl": "0345c891717e41301f74a1bd83be9b2e3c04f1424545e2cc1c0a51f0eb939ea9",
+    "server.log": "20f5a0edd832585f29529b7a6f894cdf886e8d9889b483fcd40468728ba72df6",
+    "controlled-stop.json": "a38291e2a2c48def91d26f4a9568bab137a0e58bc7488e2243af817a09f6d89b",
+    "dynamic-events.jsonl": "4ca68d6e97f97d44c05bb691832e12ee1eea96c6784e5fa8b684ee5825f5820a",
+    "scheduler-affinity.json": "240acd3979f05feb9a202597758c773e3ff1aee5c94dc006be1ac7af73099ceb"
+  },
+  "peak_observed_board_mib": 43827,
+  "peak_observed_owned_mib": 41060,
+  "peak_observed_host_cgroup_bytes": 269033795584,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}
+STARTED_MONITORED_CANDIDATE kt-round9-full-model-v23
+kt-round9-full-model-v23 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE'}
+kt-round9-full-model-v23 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8'}
+kt-round9-full-model-v23 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'FAIL'}
+kt-round9-full-model-v23 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'FAIL', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST'}
+kt-round9-full-model-v23 {'first-http': 'PASS_FIRST_REAL_HTTP_PREFILL_DECODE', 'system8': 'PASS_FULL_MODEL_SYSTEM8', 'canaries': 'FAIL', 'context4096': 'PASS_4096_TOKEN_RESOURCE_REQUEST', 'cancel-reuse': 'PASS_ACTIVE_ABORT_AND_STATE_REUSE'}
+kt-round9-full-model-v23
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "FAIL_CANDIDATE_CONTENT_CANARY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "FAIL",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [
+    "canaries.json"
+  ],
+  "container_id": "ebbd9fc6319d45d1a729675aa02815504ecb20b0767ec5fc6764e5c894bcf911",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "b5f551122fbcd86c41c4df178495a78e4cf6374847cb717e146ec63b227066e2",
+    "system8.json": "b14460ee05edd15096aee147b82adc77012e6df98c593333eade806fcef519f2",
+    "canaries.json": "058b7d148a3a4d38a6ec356a1617eddfd4bc98c0c6927e6529ef166527a26b98",
+    "context4096.json": "47f85faa6f01af63a746a2fe4060a38fcfd1a9403eb2382fd854675f48c640cf",
+    "cancel-reuse.json": "820a964854b5b8ba8a7b6df7ba2bacaea3780bd0825089d3e49c010fda1bef17",
+    "admission.json": "edf1cb11ceb437815406d3d03f723a88183b32802b31b5317e4c52e526370adb",
+    "payload-sha256.json": "a553bf2ff1d38a7bfa313664ee26fe2cb2944f691f112814d6b6e8a5d63cca65",
+    "server-profile.json": "410a164d703a365be40b50d42d91c0c1785b5522f1b760a0c93e10e2fe004c50",
+    "resolved-profile.json": "2c6314354b0f679fda1883b2f96fd1d886f97a2ba9fb7d350df874d7b93b7958",
+    "monitor.jsonl": "2394570a904f393ad4fb88c8bc3c22486c47cd8c6167598e01540f91fb924af1",
+    "server.log": "ccad9c46c2a0238128e487fd682c398851dba69e5fd514b3a53107c6a2ac4d63",
+    "controlled-stop.json": "6ce4e706c409ff1528ef83c2d7345934c81a904745cf4625d173135b97c91379",
+    "dynamic-events.jsonl": "473b74a75b4f4ac68071c048728678f0b4720c6c745192a14f3ff2861937e140",
+    "scheduler-affinity.json": "6abe6fabfaa1225c148f7ab997dd5676f5cefb1d1eb1cddf1bf2042ec068bc4e"
+  },
+  "peak_observed_board_mib": 43829,
+  "peak_observed_owned_mib": 41062,
+  "peak_observed_host_cgroup_bytes": 253952180224,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}

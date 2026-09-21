@@ -1,0 +1,32 @@
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "bb2188db001d80e173689818e7b9ca1a7e75a1ad471013b555bda30312a2d3ae",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "94aed992a1e165fde78ad93563a43cb095432aa45004ced11ba998c93a8fb88b",
+    "system8.json": "5dca3f3c0e0bd5d014d38cd388e966d36b9c201a7283de26fc9c1d60f1592f3b",
+    "canaries.json": "83d4666cf4ca134d37d6ccdad6652a9bd49678ea23777889408a1d7881f586ec",
+    "context4096.json": "be36fbbf5ed2cf9cf634e9dc9aa5abced55941f144c0a0b84b570961f356ef16",
+    "cancel-reuse.json": "58749c4178a51f16039999b0337b5a5761fb0388ef9daacd3a72fb0e707eedda",
+    "admission.json": "5bebdf81e11d25dac2082a38a123466d10219150e9eef5a22d6f9935e3c13b87",
+    "payload-sha256.json": "b7dcf0779180f99d84cf1eaf204d90d6fd0f58255fcc37592b5a3ec81354907b",
+    "server-profile.json": "4c289e00fdf92b7f1921bac5bc8eefb0f80f78b46916342ae5d6c13f283bd396",
+    "resolved-profile.json": "e9428a4f29a2e9dc5f36cb4027347a8fb8e16337158f3d132ccaf632c3aff17d",
+    "monitor.jsonl": "1625ce368570ebdde3db390d12da79302555837dd2afd005dc4f6652950c7528",
+    "server.log": "0117ba1927d9af4b5b5c464641af5563e9c2b5ca120ea3988cb10675decfaab6",
+    "controlled-stop.json": "8ff17c6f4a4af91b887931d1aa84a480e1176446d72f172c27dbf1e459812dfe",
+    "scheduler-affinity.json": "113a465a3ffe8191d92b9666291d30ef133efd3aecdbe685ac9385a15010c4c2"
+  },
+  "peak_observed_board_mib": 42621,
+  "peak_observed_owned_mib": 39854,
+  "peak_observed_host_cgroup_bytes": 268915621888,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}

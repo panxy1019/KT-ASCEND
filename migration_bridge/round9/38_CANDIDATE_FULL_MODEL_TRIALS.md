@@ -12,7 +12,7 @@ onlyphysical15 mapping, live own-process guard and verified48-bank/source identi
 | v10 | C128/BF16/static | PASS functional/resource checks below; stopped normally |
 | v11 | C128/BF16/request-boundary Dynamic | FAIL CLOSED: actual full-model NPU layout was not qualified ND2; no migration admitted |
 | v21 / v22 | C128/Q8_0/static and Dynamic | Banks+local gates verified; full trials pending |
-| v19 / v20 | C128/MXFP4/static and Dynamic | Static v19 all gates PASS; Dynamic v20 running |
+| v19 / v20 | C128/MXFP4/static and Dynamic | Static v19 and Dynamic v20 all functional/resource+canary gates PASS |
 
 ## v10 measured evidence
 
@@ -196,3 +196,54 @@ no files were changed and no global cache flush occurred. Allfour nodes regained
 >80GiB free. Exact before/after and file list are in cache-reclaim-v1 evidence.
 Matrixv4 resumes onlyremainingv20-v23, adding per-trial post-stop cache advice
 for that candidate's low-bit files; every launch still samples fresh admission.
+
+## v20 MXFP4 Dynamic complete PASS —2026-09-21 00:22UTC
+
+All5drivers passed, including4strictcanaries,actual4096context,activeabort and
+post-abort reuse with drained Dynamic boundaries. Actual128distinct pinned
+workers. Normal controlled stop. Peak owned41060MiB,board43828MiB,cgroup
+140692103168bytes. Independent metadata/hash audit validates14files,18consecutive
+transactions with22072expert copies and all16required test requests drained.
+This is functional/resource PASS; it is not a same-placement numeric oracle,
+quality256,restart,performance or deployment qualification.
+
+Targeted post-stop advice reclaimed onlythisMXbank's file cache. Fresh admission
+then startedv21Q8static; v22Q8Dynamic andv23BF16Dynamic remain queued.
+
+## v21 Q8_0 static complete PASS —2026-09-21 00:33UTC
+
+All5drivers PASS: firstHTTP,system8 exact repeats,strict4canaries,actual4096,
+activeabort and identical reuse. Actual128distinct pinned workers; normalstop.
+Independent audit verifies13bound hashes. Peak owned39854MiB,board42621MiB,
+cgroup268915621888bytes. Complete evidence collected locally. Qualification is
+functional/resource only. Fresh admission startedv22 Q8Dynamic; v23 BF16Dynamic
+remains queued. All other qualification limits above remain applicable.
+
+## v22 Q8_0 Dynamic complete PASS —2026-09-21 00:59UTC
+
+All5drivers and strict4canaries PASS, actual4096context, activeabort/reuse with
+drained boundaries. Actual128distinct pinned workers; normalcontrolledstop.
+Independent audit verifies14bound files,18transactions,21740expertcopies and
+all16required requests drained. Peak owned41060MiB,board43827MiB,hostcgroup
+269033795584bytes. Full evidence collected locally. Same functional/resource
+scope and unqualified quality256/restart/full-model numeric oracle. Finalv23
+BF16Dynamic will run a fresh full sequence preserving actual strictJSON output.
+
+## v23 BF16 Dynamic: resource PASS, strict content FAIL —2026-09-21 01:26UTC
+
+FirstHTTP,system8,actual3840+256context and activeabort/reuse allPASS. Canary
+multiply/capital/echo PASS; fourth rawanswer is a correct apple/count3 object
+inside Markdown JSON fences. Strict json.loads fails at character0; alloutput
+logprobs finite. Rawanswer is fully preserved. No output stripping, prompt change,
+expected-answer change or overallPASS. This establishes the observed format
+mismatch, not the underlying cause of different trajectories; full-model
+same-placement numeric oracle remains pending.
+
+OverallFAIL_CANDIDATE_CONTENT_CANARY; resource_system_statusPASS. Finalizer and
+matrix exit1; matrixCOMPLETED_WITH_CANDIDATE_FAILURES. Independent audit verifies
+14hashes,18transactions,21440copies,16required drained requests.128distinct pinned
+workers; peakowned41062MiB,board43829MiB,hostcgroup253952180224bytes. Normalstop.
+Finalsnapshot confirms physical15 no processes and2878MiB baseline; no Round9
+jobs remain, unrelatedcontainers remain running. Both automationsPAUSED.
+All6summary hashes/audit hashes plus audit program and matrix identity are bound
+in candidate-matrix-v4/delivery-index.json. No performance or broaderqualification.

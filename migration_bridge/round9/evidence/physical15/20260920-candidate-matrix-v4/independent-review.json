@@ -1,0 +1,26 @@
+{
+  "time_utc": "2026-09-21T01:27:44.217280+00:00",
+  "reviewer": "/root/review_shared_gr",
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "medium",
+  "scope": "Read-only independent local evidence audit v20/v21/v22/v23 and final matrix/device state; no remote execution",
+  "findings_P1": [],
+  "findings_P2": [],
+  "verifications": [
+    "All summary evidence hashes independently recomputed",
+    "Profile/payload/overlay/bank/device gate identity bindings matched",
+    "Five report contents and output finite checks examined",
+    "Static exact-repeat and abort-reuse comparisons confirmed",
+    "Dynamic generations and required request IDs independently counted",
+    "Monitor peaks independently recomputed before explicit controlled stop",
+    "BF16 Dynamic strict JSON failure and matrix nonzero result retained",
+    "Final physical15 process absence and Round9 process exit verified"
+  ],
+  "bound_summaries": {
+    "v20": "a31b9a14f3077926553760a93fbd22f840986e954b6f2246a7638c9ac1a2c426",
+    "v21": "886cbcbd14b9375499f631ae8478f39f2953eec5d9f72d398ace63e245591da2",
+    "v22": "c6df409ce8264f275ece41aa936e9be985c7d7e617125b6fe8046aeee36e383d",
+    "v23": "d992e52bd4afc330d6549ee8d894c8cbbe9e6360a2f4b2a2aa5b66a5a22551e5"
+  },
+  "nonblocking_note": "Original post-trial audits did not self-bind summary or audit-program SHA. New delivery-index.json binds both without altering original evidence."
+}

@@ -1,0 +1,33 @@
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "resource_system_status": "PASS_CANDIDATE_RESOURCE_SYSTEM",
+  "content_canary_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "8fc85d981983f827e53f9c81bbd83f5b3a1ef5b6f6af52f318c4310aa557bcc4",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "439bb6f76a044bbdc0d99c89844d08f79b871feedc2980e45736670fe06586da",
+    "system8.json": "04cf3d974fd330f04caf8226907e4a6e856fe6b830ff7e254595e7fb4abfbce0",
+    "canaries.json": "8e2ad72866d5d456c67e56ddfac6375cf21530de1d671b18d9c5f9341ab32089",
+    "context4096.json": "cf9f9ca75e8d4be4a36e8ddc7c1ad5b130999a0a85f2bdbbf0461c81dcb95689",
+    "cancel-reuse.json": "42d60cce180aca3c15d2a3e74ece6b91994c30655101e50fa7762e667ef63c34",
+    "admission.json": "1a33aa0ed024c369d2fcd2bfac0e9813d1a9bdceaa452a773a12ffc5a380f7ef",
+    "payload-sha256.json": "14c76aae20b8bcad07881495fc30fa22c4f801ba0c1ce6f1794f0e1f16d60b17",
+    "server-profile.json": "e630bfe8e05cd40e59383621c0b21ad589a7007ba767b4511adecb6f26fc6028",
+    "resolved-profile.json": "356cc7da3c8e7d3487f5baf38d52f4726c407a3842470685c50a598746fc5a6f",
+    "monitor.jsonl": "0345c891717e41301f74a1bd83be9b2e3c04f1424545e2cc1c0a51f0eb939ea9",
+    "server.log": "20f5a0edd832585f29529b7a6f894cdf886e8d9889b483fcd40468728ba72df6",
+    "controlled-stop.json": "a38291e2a2c48def91d26f4a9568bab137a0e58bc7488e2243af817a09f6d89b",
+    "dynamic-events.jsonl": "4ca68d6e97f97d44c05bb691832e12ee1eea96c6784e5fa8b684ee5825f5820a",
+    "scheduler-affinity.json": "240acd3979f05feb9a202597758c773e3ff1aee5c94dc006be1ac7af73099ceb"
+  },
+  "peak_observed_board_mib": 43827,
+  "peak_observed_owned_mib": 41060,
+  "peak_observed_host_cgroup_bytes": 269033795584,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING",
+  "finalizer_sha256": "30cc9cc31337a134bf262c720dcf2dceced9a8d3dab62cdbb29b9f4d5be0d9e4"
+}

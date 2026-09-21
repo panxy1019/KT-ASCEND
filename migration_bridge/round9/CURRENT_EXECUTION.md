@@ -1,3 +1,62 @@
+## Latest —2026-09-21 01:26UTC: full resource matrix complete; jobs stopped
+
+Exclusive110.123.0.3 physical15 full-model C128 matrix completed. BF16static(v10),
+MXFP4static(v19),MXFP4Dynamic(v20),Q8static(v21),Q8Dynamic(v22) pass five drivers.
+BF16Dynamic(v23) passes resource/system axis (firstHTTP,system8,actual4096,
+abort/reuse) but FAIL_CANDIDATE_CONTENT_CANARY: actual fourth answer adds Markdown
+JSON fences. First3canaries PASS; all4finite. No stripping/prompt change or false
+PASS. Matrixv4 exits1/statusCOMPLETED_WITH_CANDIDATE_FAILURES, as designed.
+
+v23 audit verifies14hashes,18transactions,21440expertcopies,16required requests
+drained;128distinct pinned workers. Peak owned41062MiB,board43829MiB,hostcgroup
+253952180224bytes. All final evidence collected locally. Delivery index binds
+all6trial summaries/audits, audit program,matrix driver/status and device snapshot.
+
+Finaldevice: physical15 no running process,2878MiB baseline. No Round9container,
+server,guard or matrix process remains. Unrelatedmzy-train/kt-r7-a3-return-v1 remain.
+Localround7 andround9 automation.toml bothPAUSED. No performance/push/merge/tag.
+See39_CANDIDATE_RESOURCE_MATRIX_DELIVERY.md for finalscope and outstanding limits.
+Quality256,candidate restart,same-placement full-model Dynamic numeric oracle
+remain unqualified. Do not restart completed matrix or call allcandidatesPASS.
+
+## Latest —2026-09-21 00:59UTC: Q8_0 Dynamic complete PASS; BF16 Dynamic last
+
+Full-v22 passes all5drivers and strict4canaries, actual4096 and abort/reuse.
+Actual128distinct pinned workers, normalstop. Audit verifies14bound hashes,
+18transactions/generation18,21740expert copies,all16required requests drained.
+Peak owned41060MiB,board43827MiB,cgroup269033795584bytes. Evidence collected locally.
+Onlyv23 BF16 Dynamic remains in matrixv4; fresh admission required. Existingv18
+strictJSONFAIL remains historical; v23 captures full raw responses before parsing.
+Functional/resource scope only; no quality256/restart/numeric-oracle/performance
+qualification. Timers remain paused; no push/merge/tag.
+
+## Latest —2026-09-21 00:33UTC: Q8_0 static complete PASS; Dynamic running
+
+Full-v21 C128/Q8_0/static passes all5drivers, strict4canaries, actual4096context
+and activeabort+identicalreuse. Actual128distinct pinned workers. Normal controlled
+stop; independent post-trial audit verifies13bound evidence hashes. Peak owned
+39854MiB,board42621MiB,cgroup268915621888bytes. Evidence collected locally.
+Fresh exclusive admission startedv22 Q8_0/request_boundary; thenv23 BF16 Dynamic.
+Matrixv4 PID1501832 remains the one-shot runner. No performance or timer restart.
+Complete candidates: v10BF16static,v19MXstatic,v20MXDynamic,v21Q8static.
+Quality256/restart/same-placement full-model Dynamic numeric oracle remain pending.
+
+## Latest —2026-09-21 00:22UTC: MXFP4 Dynamic complete PASS; Q8 static running
+
+Full-v20 C128/MXFP4/request_boundary passes all5drivers and strict4canaries,
+actual4096context,abort+reuse with drained boundaries. Stopped normally.
+Independent post-trial audit verifies14evidence hashes,18consecutive Dynamic
+transactions,16required requests drained,22072expert copies; no numeric oracle
+claim. Actual128 distinct pinned workers. Peak owned41060MiB,board43828MiB,
+container memory140692103168bytes. All files collected locally; qualification
+scope remains functional/resource, not quality256/restart/deployment/performance.
+
+Matrixv4 PID1501832 automatically startedv21Q8static after per-bank cache advice
+and newCPU/NUMA/NPU admission. Thenv22Q8Dynamic andv23BF16Dynamic(rawJSONrepro).
+Currently complete full-gate candidates: v10BF16static, v19MXstatic, v20MXDynamic.
+Do not rerun these completed candidates. Oldv18BF16Dynamic remains strictJSONFAIL
+with incomplete resource axis; v23 will produce independent full raw evidence.
+
 ## Latest —2026-09-20 23:55UTC: MXFP4 static full gates PASS, Dynamic next
 
 Full-v19 C128/MXFP4/static passed all5 drivers: firstHTTP,system8 exact repeats,

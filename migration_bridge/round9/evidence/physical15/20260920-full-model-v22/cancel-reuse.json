@@ -1,0 +1,292 @@
+{
+  "status": "PASS_ACTIVE_ABORT_AND_STATE_REUSE",
+  "scope": "ACTIVE_ABORT_AND_REQUEST_STATE_REUSE",
+  "events": [
+    {
+      "text": "阳光",
+      "output_ids": [
+        99505
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": null,
+        "prompt_tokens": 22,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 1,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "response_sent_to_client_ts": 1789952129.7764103
+      }
+    },
+    {
+      "text": "阳光进入",
+      "output_ids": [
+        99505,
+        98406
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": null,
+        "prompt_tokens": 22,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 2,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null
+      }
+    },
+    {
+      "text": "阳光进入大气",
+      "output_ids": [
+        99505,
+        98406,
+        104257
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": {
+          "type": "abort",
+          "message": "Aborted",
+          "status_code": null,
+          "err_type": null
+        },
+        "prompt_tokens": 22,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 3,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "e2e_latency": 90.02375180507079
+      }
+    }
+  ],
+  "abort_http_status": 200,
+  "reuse_response": {
+    "text": "阳光进入大气层时，波长较短的蓝光比波长较长的红光更容易被空气分子散射，这一现象被称为瑞利散射。因此，当我们在白天",
+    "output_ids": [
+      99505,
+      98406,
+      104257,
+      96470,
+      95865,
+      3709,
+      125318,
+      123841,
+      95726,
+      120738,
+      96098,
+      125318,
+      142718,
+      132111,
+      110206,
+      96147,
+      98035,
+      98699,
+      135450,
+      3709,
+      97884,
+      100546,
+      109986,
+      98183,
+      96048,
+      135450,
+      1710,
+      100532,
+      3709,
+      96129,
+      108680,
+      109495
+    ],
+    "meta_info": {
+      "id": "r9-post-cancel-reuse",
+      "finish_reason": {
+        "type": "length",
+        "length": 32
+      },
+      "prompt_tokens": 22,
+      "weight_version": "default",
+      "total_retractions": 0,
+      "input_token_logprobs": [
+        [
+          null,
+          271,
+          null
+        ]
+      ],
+      "output_token_logprobs": [
+        [
+          -0.6870275735855103,
+          99505,
+          null
+        ],
+        [
+          -0.11447286605834961,
+          98406,
+          null
+        ],
+        [
+          -0.2255706638097763,
+          104257,
+          null
+        ],
+        [
+          -7.784063200233504e-05,
+          96470,
+          null
+        ],
+        [
+          -0.10350952297449112,
+          95865,
+          null
+        ],
+        [
+          -0.03642015531659126,
+          3709,
+          null
+        ],
+        [
+          -0.09895460307598114,
+          125318,
+          null
+        ],
+        [
+          -0.0011639971053227782,
+          123841,
+          null
+        ],
+        [
+          -0.0015862513100728393,
+          95726,
+          null
+        ],
+        [
+          -0.007920050993561745,
+          120738,
+          null
+        ],
+        [
+          -0.017672104761004448,
+          96098,
+          null
+        ],
+        [
+          -0.42686331272125244,
+          125318,
+          null
+        ],
+        [
+          -0.001946580014191568,
+          142718,
+          null
+        ],
+        [
+          -0.006651997100561857,
+          132111,
+          null
+        ],
+        [
+          -0.0026899129152297974,
+          110206,
+          null
+        ],
+        [
+          -0.053333915770053864,
+          96147,
+          null
+        ],
+        [
+          -0.2053513377904892,
+          98035,
+          null
+        ],
+        [
+          -0.0012891324004158378,
+          98699,
+          null
+        ],
+        [
+          -0.024865631014108658,
+          135450,
+          null
+        ],
+        [
+          -0.6690812110900879,
+          3709,
+          null
+        ],
+        [
+          -0.4142637550830841,
+          97884,
+          null
+        ],
+        [
+          -0.034433070570230484,
+          100546,
+          null
+        ],
+        [
+          -0.07969748973846436,
+          109986,
+          null
+        ],
+        [
+          -0.0008746135863475502,
+          98183,
+          null
+        ],
+        [
+          -2.1815061700181104e-05,
+          96048,
+          null
+        ],
+        [
+          -4.386805449030362e-05,
+          135450,
+          null
+        ],
+        [
+          -0.002936339471489191,
+          1710,
+          null
+        ],
+        [
+          -0.44176939129829407,
+          100532,
+          null
+        ],
+        [
+          -0.004664492793381214,
+          3709,
+          null
+        ],
+        [
+          -0.6390901207923889,
+          96129,
+          null
+        ],
+        [
+          -1.141574501991272,
+          108680,
+          null
+        ],
+        [
+          -0.15817596018314362,
+          109495,
+          null
+        ]
+      ],
+      "completion_tokens": 32,
+      "cached_tokens": 0,
+      "cached_tokens_details": null,
+      "dp_rank": null,
+      "e2e_latency": 99.29686822707299,
+      "response_sent_to_client_ts": 1789952229.6264725
+    }
+  },
+  "dynamic_abort_and_reuse_boundaries": true,
+  "same_placement_static_oracle": "PENDING_NOT_CLAIMED"
+}
