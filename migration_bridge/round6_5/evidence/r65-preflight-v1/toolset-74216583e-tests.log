@@ -1,0 +1,34 @@
+test_complete_model_denominator (test_frequency_policy.Frequency.test_complete_model_denominator) ... ok
+test_frequency_first (test_frequency_policy.Frequency.test_frequency_first) ... ok
+test_missing_layer_rejects (test_frequency_policy.Frequency.test_missing_layer_rejects) ... ok
+test_tie_rule (test_frequency_policy.Frequency.test_tie_rule) ... ok
+test_actual_sampler_tie_choice (test_pairwise.Pairwise.test_actual_sampler_tie_choice) ... can not use command: npu-smi info
+ok
+test_ambiguity_allowed (test_pairwise.Pairwise.test_ambiguity_allowed) ... ok
+test_new_candidate_in_union (test_pairwise.Pairwise.test_new_candidate_in_union) ... ok
+test_nonfinite (test_pairwise.Pairwise.test_nonfinite) ... ok
+test_overflow_rejected_without_token_flip (test_pairwise.Pairwise.test_overflow_rejected_without_token_flip) ... ok
+test_sampler_must_match_exported_logits (test_pairwise.Pairwise.test_sampler_must_match_exported_logits) ... ok
+test_stable_exact (test_pairwise.Pairwise.test_stable_exact) ... ok
+test_stable_flip (test_pairwise.Pairwise.test_stable_flip) ... ok
+test_bad_budget (test_ratio_profiles.Profiles.test_bad_budget) ... ok
+test_bad_layers (test_ratio_profiles.Profiles.test_bad_layers) ... ok
+test_nested (test_ratio_profiles.Profiles.test_nested) ... ok
+test_partition_and_budget (test_ratio_profiles.Profiles.test_partition_and_budget) ... ok
+test_repeat (test_ratio_profiles.Profiles.test_repeat) ... ok
+test_runtime_ratio_integer_roundtrip (test_ratio_profiles.Profiles.test_runtime_ratio_integer_roundtrip) ... ok
+test_unchanged_other_layers (test_ratio_profiles.Profiles.test_unchanged_other_layers) ... ok
+test_bytes (test_resource_monitor.ResourceParsing.test_bytes) ... ok
+test_meminfo_names (test_resource_monitor.ResourceParsing.test_meminfo_names) ... ok
+test_missing_not_zero (test_resource_monitor.ResourceParsing.test_missing_not_zero) ... ok
+test_duplicate_rejected (test_scheduling_analysis.Scheduling.test_duplicate_rejected) ... ok
+test_extra_forward_rejected (test_scheduling_analysis.Scheduling.test_extra_forward_rejected) ... ok
+test_holdout_never_changes_policy (test_scheduling_analysis.Scheduling.test_holdout_never_changes_policy) ... ok
+test_lookahead_excluded (test_scheduling_analysis.Scheduling.test_lookahead_excluded) ... ok
+test_one_shot (test_structure_hook.StructureHook.test_one_shot) ... ok
+test_reject_bad_physical_count (test_structure_hook.StructureHook.test_reject_bad_physical_count) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 7.458s
+
+OK

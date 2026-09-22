@@ -1,0 +1,67 @@
+{
+  "batch": 1,
+  "c64": "2x32_SUBPOOLS",
+  "chunked_prefill_size": 512,
+  "cmmlu_manifest_sha256": "365f557c0746db1e02ddee4ec66c7afb5e72eeb17e8dd8e0a47d1ed2b7af1b9d",
+  "configs_sha256": {
+    "cmmlu": "ab99bae7540caf2e99ab9f8a226cef70339c2ca6ec449300814fa2103c0cbd52",
+    "heldout": "515c4d679a0848ac71c077cd061d8fa7c7fe714d8d663d87e84af9f3fa19d959",
+    "perf-dynamic": "83ae114bf6aadcf3beb9ee7adc3595f69b92704976d05e2ca10bc439fe932031",
+    "perf-static": "497136b03d1d59a88256704d314294d66ca08ed22ca5f54455be503fb109d4ca"
+  },
+  "cpu_manifest_sha256": "35ca0ac63a3646ba7b89675053bbead19724325fa9d73f99910ef3c156a84405",
+  "deferred": false,
+  "dev1024": "SKIPPED_BY_USER_AFTER_PRESERVED_CHUNK512_TRIGGER_FAILURE",
+  "evidence_sha256": {
+    "dev_summary": "d50abbd4cb19447289324fc14b298eb1b83c729f0fc35bfde4f8bc9930aa94db",
+    "fixed_wrapper": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+    "restart_summary": "dd51f7145511f8625a3d64b1a32a989cafbfb1dee8c794847c1fe5a49c3cf149"
+  },
+  "graph": false,
+  "heldout_count": 128,
+  "heldout_decode_tokens": 16,
+  "heldout_sha256": "67432eca56ee9638dfe72e1d670ef1e30ce8833fe6b457dead6e12a806bac2d7",
+  "model_revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+  "performance": {
+    "blocks": 3,
+    "hooks": false,
+    "isolated": true,
+    "long": false,
+    "medium": [
+      256,
+      64
+    ],
+    "order": [
+      "static",
+      "dynamic",
+      "dynamic",
+      "static"
+    ],
+    "short": [
+      64,
+      32
+    ]
+  },
+  "q32_profile_sha256": "b358399e6405d60b81d8231529b1ec6024ff7138cddab2e0cbac3ccf0b25f486",
+  "quality_count": 256,
+  "quality_min_correct": 210,
+  "quality_reference_correct": 222,
+  "selection_reason": "DEV-compatible trigger; medium256 formal workload exercises migration. No held-out or quality fitting.",
+  "system_gate": "PASS",
+  "threshold": 256,
+  "tools_sha256": {
+    "admit_q64_host.py": "a8c462145c187b88e28a19c5b71644f115a52c6c76b4ce0d2e7fd161497233d1",
+    "audit_qwen_dynamic_results.py": "b8f12c15e7fa16ff052528d2e5084528f40a925b23963b0c549b3b915c21894f",
+    "qwen_cmmlu_reference.py": "8ffaf249a06c97d0116f8c917687da5bce58680eac1a44372ec000b0ef803c71",
+    "qwen_dynamic_audit.py": "6985a0eb6370a4c9c2f28f7e6d67eae9764e283f02c1fce1f06b6ce02bf28523",
+    "qwen_dynamic_evaluation.py": "859a9599b285ff8076cd9beb531da8ea07df1e11c8963137d7f4f32765cbaafa",
+    "qwen_dynamic_perf.py": "a580365f5eca083a8524d8be7206241104e6062e3c12dec67c12dc13d3760e2b",
+    "qwen_static_perf.py": "3f508c918f458384a06be7768a2f551d00ff4e04de3684a1e0e058b97158a177",
+    "round8_resource_guard.py": "3af27e3638656a33ae1e26675cddefbebc191d5d62f6a5d05ea0aa51f9fdc24f",
+    "run_qwen_abba.py": "318f982f1557a53e707b02f00789e50702d1c4b4ff71fcc1dc611d8e504e6336",
+    "run_qwen_dynamic_evaluation.py": "312dc63eb478ee275ef3d72fc3d437199192c57e3831ce93b4f9f2603c59946c",
+    "run_qwen_dynamic_perf.py": "22d66102e222f2fbde78edfdb298c3945ff1f3c97ccbf129990764cc0dd7d1bd"
+  },
+  "tp": 1,
+  "version": "qwen35-q32-dynamic-v2"
+}

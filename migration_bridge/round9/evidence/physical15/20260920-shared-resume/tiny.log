@@ -1,0 +1,19 @@
+{"status": "PASS_MAPPING_ONLY", "visible": "0", "compute_devices": ["/dev/davinci15"], "aclInit": 0, "count_rc": 0, "count": 1, "mapping_rc": 0, "physical_id": 15, "aclFinalize": 0}
+can not use command: npu-smi info
+Traceback (most recent call last):
+  File "/probe/shared_probe.py", line 16, in <module>
+    torch.npu.set_device(0)
+  File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/utils.py", line 91, in set_device
+    torch_npu._C._npu_setDevice(device_id)
+  File "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/__init__.py", line 276, in _lazy_init
+    torch_npu._C._npu_init()
+RuntimeError: Initialize:../torch_npu/csrc/core/npu/sys_ctrl/npu_sys_ctrl.cpp:165 NPU function error: aclInit, error code is 100000
+[ERROR] 2026-09-20-09:24:25 (PID:70, Device:0, RankID:-1) ERR00100 PTA call acl api failed
+[Error]: Parameter verification failed.
+        Check whether the input parameter value of the interface is correct.
+[PID: 70] 2026-09-20-09:24:25.707.462 Invalid_Argument(EE1001): The argument is invalid.Reason: rtGetDevMsg execution failed, the context is a null pointer.
+        Solution: 1.Check the input parameter range of the function. 2.Check the function invocation relationship.
+        TraceBack (most recent call last):
+        ctx is NULL![FUNC:GetDevErrMsg][FILE:api_impl.cc][LINE:6108]
+        The argument is invalid.Reason: rtGetDevMsg execution failed, the context is a null pointer.
+

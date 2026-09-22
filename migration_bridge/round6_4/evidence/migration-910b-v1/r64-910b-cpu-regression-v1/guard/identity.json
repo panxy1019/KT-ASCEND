@@ -1,0 +1,26 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "-p",
+    "no:cacheprovider",
+    "/workspace/round5-reference/legacy-tests/kt-kernel/test/per_commit/test_cpu_detect_metadata.py",
+    "/workspace/round5-reference/legacy-tests/kt-kernel/test/per_commit/test_llamafile_gguf_e2e.py",
+    "/workspace/round5-reference/legacy-tests/kt-kernel/test/per_commit/test_llamafile_routed_correctness.py",
+    "/workspace/round5-reference/legacy-tests/kt-kernel/test/per_commit/test_llamafile_cpuinfer_lifecycle.py",
+    "-k",
+    "not create_load_forward_destroy_and_loader_path_isolation and not threadpool_and_numa_mapping_are_observable",
+    "--junitxml=/workspace/results/r64-910b-cpu-regression-v1/junit.xml"
+  ],
+  "started_unix": 1789544582.4434173,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [],
+  "pid": 128847,
+  "pgid": 128847
+}

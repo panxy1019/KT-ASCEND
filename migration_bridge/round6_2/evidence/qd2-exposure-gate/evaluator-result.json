@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/round6_2-prequalification/tools/evaluate_contract_v2.py",
+    "derive",
+    "--baseline",
+    "/workspace/results/r62-qd2-defer0",
+    "--deferred",
+    "/workspace/results/r62-qd2-defer1-retry1",
+    "--corpus",
+    "/workspace/results/round6_2-prequalification/frozen-corpora/qd2.json",
+    "--output",
+    "/workspace/results/r62-qd2-derivation-retry1"
+  ],
+  "started_unix": 1789479768.1423829,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 289404,
+  "pgid": 289404,
+  "reason": "EXIT_NONZERO",
+  "matched_error": null,
+  "returncode": 1,
+  "ended_unix": 1789479785.1469495,
+  "success": false
+}

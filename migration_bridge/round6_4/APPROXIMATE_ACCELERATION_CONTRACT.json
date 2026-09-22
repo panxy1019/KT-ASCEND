@@ -1,0 +1,70 @@
+{
+  "version": "round6.4-approx-v2-fast-screen",
+  "status": "COMPLETE_IMPLEMENTED_NO_SPEEDUP",
+  "final_decision_date": "2026-09-16",
+  "acceleration_release_ready": false,
+  "evidence_platforms": {
+    "source": {
+      "host": "110.123.0.3",
+      "cpu_workers": 16,
+      "quality": "QUALITY_SCREEN_PASS",
+      "performance": "NO_MEASURABLE_SPEEDUP",
+      "stability": "2304_TOKENS_PASS"
+    },
+    "destination": {
+      "host": "110.129.0.22",
+      "device": "Ascend910B3",
+      "cpu_workers": 32,
+      "compact_migration": "PASS",
+      "expert_safety_16_workers": "16_OF_16_PASS",
+      "descriptive": "THREE_MODES_COMPLETE_AND_AUDITED",
+      "full_quality_and_formal_performance": "NOT_QUALIFIED",
+      "full_resource_sampling": "NOT_AVAILABLE_USER_PAUSED_MONITOR"
+    }
+  },
+  "final_descriptive_audit_sha256": "329a0e289ceb688cee7f3b28ccdd519a0f4e903f06fd3436496eae9cab7bb338",
+  "approval_date": "2026-09-15",
+  "approval_text": "方案已阅，同意按此计划执行。质量容忍度 2pp 获批",
+  "baseline_parent": "ba3494d9aedcc0e5623157832134e1e32a8ea44a",
+  "same_path_determinism_required": true,
+  "system_exact_once_required": true,
+  "finite_required": true,
+  "same_operand_expert_relative_l2_max": 0.01,
+  "cross_mode_exact_tokens_required": false,
+  "cross_mode_pairwise_order_gate": false,
+  "cross_mode_logit_error_gate": false,
+  "quality": {
+    "approved": true,
+    "absolute_noninferiority_margin": 0.02,
+    "effect": "accuracy_deferred_on_minus_off",
+    "primary_batch": 1,
+    "benchmarks": ["GSM8K_test_fixed_32", "CMMLU_test_stratified_256"],
+    "per_endpoint_one_sided_confidence": 0.975,
+    "pass_rule": "both_frozen_subset_observed_accuracy_deltas_greater_than_or_equal_minus_0.02",
+    "confidence_interval_is_gate": false,
+    "population_noninferiority_claim": false,
+    "qualification_scope": "SMALL_SAMPLE_ENGINEERING_SCREEN_ONLY",
+    "input_manifest_sha256": "55b7bda2413b510203f6208444a36d1cf538987fe4cc1cc363930f60091c7566",
+    "bootstrap_repeats_supplemental": 20000,
+    "seed": 6404,
+    "implementation_and_dataset_freeze": "FROZEN_AND_EXECUTED",
+    "execution_protocol_sha256": "19df819323339c50ae495a5658e89f8cbef2dcb5d8881a00e9de9973ea148184",
+    "result_summary_sha256": "03cf07513d49b0cf51c8d148192e3a5e1a7e3cb18f3a971280592e50683b37cc",
+    "execution_status": "QUALITY_SCREEN_PASS",
+    "primary_quality_execution_allowed": true
+  },
+  "speedup": {
+    "capture_enabled": false,
+    "minimum_paired_ABBA_blocks": 3,
+    "primary_shape": {"input_tokens": 192, "output_tokens": 256, "batch": 1},
+    "additional_shape_matrix_required": false,
+    "pass_rule": "primary_paired_speedup_confidence_interval_lower_bound_gt_1",
+    "execution_status": "NO_MEASURABLE_SPEEDUP",
+    "geometric_mean": 0.9892425411478906,
+    "confidence_interval_95": [0.9127433311809827, 1.0721533335669968]
+  },
+  "default_deferred": "OFF",
+  "release_requires": ["IMPLEMENTATION_READY", "QUALITY_SCREEN_PASS", "SPEEDUP_VERIFIED"],
+  "release_scope": "D1_BATCH1_APPROXIMATE_ACCELERATION_SMALL_SAMPLE_QUALIFIED",
+  "historical_round6_3": "REJECTED_UNCHANGED"
+}

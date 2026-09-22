@@ -1,0 +1,101 @@
+{
+  "version": "r67-compact-v1",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "s6_en_01",
+      "input_ids": [
+        99297,
+        2643,
+        15389,
+        72809,
+        2262,
+        2320,
+        245,
+        52631,
+        2483,
+        13
+      ],
+      "text": "Explain why ocean tides change during a lunar month."
+    },
+    {
+      "category": "chinese_factual",
+      "id": "s6_zh_01",
+      "input_ids": [
+        5449,
+        892,
+        13327,
+        33801,
+        85930,
+        36257,
+        1496,
+        11879,
+        885,
+        5649,
+        7435,
+        398
+      ],
+      "text": "简要说明长江三峡的地理位置和主要作用。"
+    },
+    {
+      "category": "math_numeric",
+      "id": "s6_math_01",
+      "input_ids": [
+        48796,
+        254,
+        2555,
+        280,
+        254,
+        1022,
+        15367,
+        4864,
+        8788,
+        26559,
+        13
+      ],
+      "text": "Compute the sum of the first twelve positive odd integers."
+    },
+    {
+      "category": "structured_json",
+      "id": "s6_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        16934,
+        1853,
+        9182,
+        12,
+        3205,
+        8247,
+        285,
+        704,
+        8370,
+        13
+      ],
+      "text": "Return only JSON describing three traffic-light colors and their actions."
+    }
+  ],
+  "parent_sha256": "b14bfe8e863d48bfc28fdc6cd610c6c02d9b8aca4a02a48c714c2131aa08c3ca",
+  "budgets": [
+    16,
+    8,
+    8,
+    8,
+    8,
+    8,
+    4,
+    2
+  ],
+  "restart_budget": 16,
+  "observer_budget": 8,
+  "operator_calls": [
+    1,
+    4,
+    7
+  ],
+  "operator_experts": [
+    1,
+    63
+  ]
+}

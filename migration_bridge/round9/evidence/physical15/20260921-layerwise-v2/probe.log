@@ -1,0 +1,16 @@
+can not use command: npu-smi info
+INFO 09-21 04:27:05 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-21 04:27:05 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-21 04:27:05 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-21 04:27:05 [__init__.py:239] Platform plugin ascend is activated
+/round9/candidate-sglang-v8/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/candidate-sglang-v8/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+{"tokens": 1, "kind": "one_group", "groups": 1, "relative_l2": 0.0029926913678031586, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 484975104, "output_sha256": "347ec944e0a118d8cbf6859e76e0cfb32d956e75805dba5401342a09c1112623", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+{"tokens": 1, "kind": "four_block_multigroup", "groups": 1, "relative_l2": 0.002932078100853808, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 484975104, "output_sha256": "1a62e9a54dcf519313d0e2bfffb4657134b9594510e6fbe3ed93d1b95b8b3385", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+{"tokens": 10, "kind": "one_group", "groups": 1, "relative_l2": 0.002031692732121878, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 485021696, "output_sha256": "396ff9e60f94c24d433047dc37163c6d84f7edbecf821082e38346d6959b3bc3", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+{"tokens": 10, "kind": "four_block_multigroup", "groups": 4, "relative_l2": 0.0026111700528450585, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 616156160, "output_sha256": "a1c755fe8a37dd4c68c1f5cb83ea2b62b903e01b0665ee5e2fa6d587180fae50", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+{"tokens": 32, "kind": "one_group", "groups": 1, "relative_l2": 0.0023616412730528826, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 485137408, "output_sha256": "01976d5ffa6c9ba9766deac5556e4bef80218ea3aeefa971879ab5a4c8c2c683", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+{"tokens": 32, "kind": "four_block_multigroup", "groups": 11, "relative_l2": 0.0027098602419477736, "relative_l2_tolerance": 0.01, "finite": true, "execution_peak_extra_bytes": 616490496, "output_sha256": "5a6a2fc4206ca908dfb25ac271daf2da681010e160a2ff06c5a05a8746d000c6", "all_top10_routes_executed": true, "last_group_original_weights_exact": true, "private_adapter_copy_only": true, "template_residents_unchanged": true}
+PASS_LAYERWISE_BF16_TRANSPORT

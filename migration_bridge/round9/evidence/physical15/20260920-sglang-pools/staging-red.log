@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/test_qwen4_exp_overlay.py", line 65, in <module>
+    C = _load_contracts()
+        ^^^^^^^^^^^^^^^^^
+  File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/test_qwen4_exp_overlay.py", line 61, in _load_contracts
+    raise AssertionError(f"missing model contract functions: {sorted(missing)}")
+AssertionError: missing model contract functions: ['_owned_cpu_staging']

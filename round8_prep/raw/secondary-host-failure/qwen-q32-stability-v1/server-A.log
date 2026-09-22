@@ -1,0 +1,31 @@
+can not use command: npu-smi info
+CANN_TBE_IMPORT_PASS
+DrvMngGetConsoleLogLevel failed. (ret=4)
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/__init__.py:405: UserWarning: Can't get ascend_hal device count
+  warnings.warn("Can't get ascend_hal device count")
+DrvMngGetConsoleLogLevel failed. (ret=4)
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/round8/tools/qwen_text_server.py", line 12, in <module>
+    from sglang.srt.server_args import prepare_server_args
+  File "/workspace/round8/sglang-python/sglang/srt/server_args.py", line 34, in <module>
+    from sglang.srt.configs.glm5_next import GLM5_NEXT_SUPPORTED_TP_SIZES
+  File "/workspace/round8/sglang-python/sglang/srt/configs/__init__.py", line 2, in <module>
+    from sglang.srt.configs.bailing_hybrid import BailingHybridConfig
+  File "/workspace/round8/sglang-python/sglang/srt/configs/bailing_hybrid.py", line 22, in <module>
+    from sglang.srt.configs.mamba_utils import Mamba2CacheParams, Mamba2StateShape
+  File "/workspace/round8/sglang-python/sglang/srt/configs/mamba_utils.py", line 23, in <module>
+    from sglang.srt.distributed.utils import divide
+  File "/workspace/round8/sglang-python/sglang/srt/distributed/__init__.py", line 1, in <module>
+    from sglang.srt.distributed.communication_op import *
+  File "/workspace/round8/sglang-python/sglang/srt/distributed/communication_op.py", line 8, in <module>
+    from .parallel_state import get_tp_group
+  File "/workspace/round8/sglang-python/sglang/srt/distributed/parallel_state.py", line 61, in <module>
+    _is_npu = is_npu()
+              ^^^^^^^^
+  File "/workspace/round8/sglang-python/sglang/srt/utils/common.py", line 158, in is_npu
+    raise RuntimeError(
+RuntimeError: torch_npu detected, but NPU device is not available or visible.
+[ERROR] 2026-09-19-12:09:57 (PID:7, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "call": 5,
+      "cpu_partial_exact_zero": true,
+      "layer": 7,
+      "merge_equals_npu_after_declared_cast": true,
+      "merge_max_abs": 0.0,
+      "shape": [
+        1,
+        2048
+      ]
+    },
+    {
+      "call": 5,
+      "cpu_partial_exact_zero": true,
+      "layer": 8,
+      "merge_equals_npu_after_declared_cast": true,
+      "merge_max_abs": 0.0,
+      "shape": [
+        1,
+        2048
+      ]
+    }
+  ],
+  "pass": true,
+  "schema_version": "round6.1-cpu-not-hit-boundary-v1"
+}

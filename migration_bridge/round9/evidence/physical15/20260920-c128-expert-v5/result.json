@@ -1,0 +1,191 @@
+{
+  "status": "PASS_REAL_KTEP_LOCAL_MERGE",
+  "scope": "REAL_KTEP_LOCAL_MERGE_NOT_FULL_MODEL",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "storage": "MXFP4",
+  "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+  "resident_experts": 64,
+  "resident_projections_exact": 128,
+  "cpu_workers": 128,
+  "numa_nodes": [
+    2,
+    3,
+    6,
+    7
+  ],
+  "dynamic_migrations": [
+    {
+      "generation": 1,
+      "moves": [
+        [
+          0,
+          511
+        ]
+      ],
+      "all64_NZ_experts_exact": true,
+      "pinned_mask_pointer_stable": true,
+      "copied_bytes": 9830400
+    },
+    {
+      "generation": 2,
+      "moves": [
+        [
+          0,
+          0
+        ]
+      ],
+      "all64_NZ_experts_exact": true,
+      "pinned_mask_pointer_stable": true,
+      "copied_bytes": 19660800
+    },
+    {
+      "generation": 3,
+      "moves": [
+        [
+          0,
+          511
+        ]
+      ],
+      "all64_NZ_experts_exact": true,
+      "pinned_mask_pointer_stable": true,
+      "copied_bytes": 29491200
+    }
+  ],
+  "rows": [
+    {
+      "tokens": 1,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.0015844237059354782,
+        "npu_owned_partial": 2.3241138080720702e-07,
+        "routed_merge": 0.0016464260406792164
+      },
+      "hashes": [
+        "6402c51ff339b67b97fdca5ebee280eea7d65481f4b33efeaf04df1c147c09f7",
+        "6402c51ff339b67b97fdca5ebee280eea7d65481f4b33efeaf04df1c147c09f7",
+        "6402c51ff339b67b97fdca5ebee280eea7d65481f4b33efeaf04df1c147c09f7"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0015595722943544388,
+        "npu_owned_partial": 0.00045451134792529047,
+        "routed_merge": 0.0011254639830440283
+      },
+      "hashes": [
+        "7d6dcb2b141508e29d4d4c450ea62704584504a609adc1cc7fee46141704ee5e",
+        "7d6dcb2b141508e29d4d4c450ea62704584504a609adc1cc7fee46141704ee5e",
+        "7d6dcb2b141508e29d4d4c450ea62704584504a609adc1cc7fee46141704ee5e"
+      ]
+    },
+    {
+      "tokens": 1,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 0.0,
+        "routed_merge": 0.0
+      },
+      "hashes": [
+        "5d6c174ff9b7fc7d64d8d26704b73f57d1e827febca7de3003923508d9b53885",
+        "5d6c174ff9b7fc7d64d8d26704b73f57d1e827febca7de3003923508d9b53885",
+        "5d6c174ff9b7fc7d64d8d26704b73f57d1e827febca7de3003923508d9b53885"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.0015876083634793758,
+        "npu_owned_partial": 0.0004281953733880073,
+        "routed_merge": 0.0020484908018261194
+      },
+      "hashes": [
+        "db1642713becf446afb5d28ae8d2e0da8324f316b6f4c353f85db09fa2ea0ace",
+        "db1642713becf446afb5d28ae8d2e0da8324f316b6f4c353f85db09fa2ea0ace",
+        "db1642713becf446afb5d28ae8d2e0da8324f316b6f4c353f85db09fa2ea0ace"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0015720156952738762,
+        "npu_owned_partial": 0.0002952447102870792,
+        "routed_merge": 0.0013443800853565335
+      },
+      "hashes": [
+        "ad51145c27cbcea08fa8c389b6ce14ece5fd5725c3cc90ad1bddae84dadadda7",
+        "ad51145c27cbcea08fa8c389b6ce14ece5fd5725c3cc90ad1bddae84dadadda7",
+        "ad51145c27cbcea08fa8c389b6ce14ece5fd5725c3cc90ad1bddae84dadadda7"
+      ]
+    },
+    {
+      "tokens": 10,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 6.814791413489729e-05,
+        "routed_merge": 6.817676330683753e-05
+      },
+      "hashes": [
+        "a7fe3041eea7d60b491a3a20571a286717dd278ca04ecbeaaac4f051427f25f6",
+        "a7fe3041eea7d60b491a3a20571a286717dd278ca04ecbeaaac4f051427f25f6",
+        "a7fe3041eea7d60b491a3a20571a286717dd278ca04ecbeaaac4f051427f25f6"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "mixed",
+      "errors": {
+        "cpu_partial": 0.0016041327035054564,
+        "npu_owned_partial": 0.00017136032693088055,
+        "routed_merge": 0.0021203579381108284
+      },
+      "hashes": [
+        "d7dd4ce26f74389a3a5e9812aff1f2373767dbbccd0b7aef6c90f0f058b75efb",
+        "d7dd4ce26f74389a3a5e9812aff1f2373767dbbccd0b7aef6c90f0f058b75efb",
+        "d7dd4ce26f74389a3a5e9812aff1f2373767dbbccd0b7aef6c90f0f058b75efb"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "resident_only",
+      "errors": {
+        "cpu_partial": 0.0016191753093153238,
+        "npu_owned_partial": 0.00016366274212487042,
+        "routed_merge": 0.0012598740868270397
+      },
+      "hashes": [
+        "68f778b9b331672c5425686f5cb15f6ce8586db7c4dc5bc424d5f9cc03a58833",
+        "68f778b9b331672c5425686f5cb15f6ce8586db7c4dc5bc424d5f9cc03a58833",
+        "68f778b9b331672c5425686f5cb15f6ce8586db7c4dc5bc424d5f9cc03a58833"
+      ]
+    },
+    {
+      "tokens": 32,
+      "kind": "repeated_cpu",
+      "errors": {
+        "cpu_partial": 0.0,
+        "npu_owned_partial": 0.00010213984933216125,
+        "routed_merge": 0.00010212403867626563
+      },
+      "hashes": [
+        "4195553bc494ee2ea0dcab60671070cd9b1efa2860d3c288555506f591bd7ebb",
+        "4195553bc494ee2ea0dcab60671070cd9b1efa2860d3c288555506f591bd7ebb",
+        "4195553bc494ee2ea0dcab60671070cd9b1efa2860d3c288555506f591bd7ebb"
+      ]
+    }
+  ],
+  "native_sha256": "07039126ea565b7a4f0629b974af1bbffe15c5d5ee542adeb2b687208e7be147",
+  "peak_allocated": 1048747520
+}

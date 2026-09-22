@@ -1,0 +1,1799 @@
+# Copyright 2025 Qwen Team
+# Copyright 2025 SGLang Team
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ==============================================================================
+"""Inference-only Qwen3.5 model and Qwen3.5 MoE model compatible with HuggingFace weights."""
+
+import json
+import logging
+import re
+from functools import lru_cache
+from pathlib import Path
+from typing import Dict, Iterable, Optional, Set, Tuple, Union
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from einops import rearrange
+
+# Configs
+from sglang.srt.configs.qwen3_5 import (
+    Qwen3_5Config,
+    Qwen3_5MoeConfig,
+    Qwen3_5TextConfig,
+)
+
+# Distributed
+from sglang.srt.distributed import get_pp_group
+from sglang.srt.eplb.expert_distribution import get_global_expert_distribution_recorder
+from sglang.srt.eplb.expert_location import ModelConfigForExpertLocation
+
+# Layers - Attention
+from sglang.srt.layers.attention.fla.layernorm_gated import RMSNorm as RMSNormGated
+from sglang.srt.layers.attention.mamba.mamba import mamba_v2_sharded_weight_loader
+from sglang.srt.layers.communicator import LayerCommunicator, LayerScatterModes
+from sglang.srt.layers.dp_attention import (
+    get_attention_tp_rank,
+    get_attention_tp_size,
+    is_dp_attention_enabled,
+)
+
+# Layers - Others
+from sglang.srt.layers.layernorm import GemmaRMSNorm
+
+# Layers - Linear
+from sglang.srt.layers.linear import (
+    ColumnParallelLinear,
+    MergedColumnParallelLinear,
+    QKVParallelLinear,
+    RowParallelLinear,
+)
+from sglang.srt.layers.moe.fused_moe_triton.layer import FusedMoE
+from sglang.srt.layers.quantization.base_config import QuantizationConfig
+from sglang.srt.layers.radix_attention import RadixAttention
+from sglang.srt.layers.radix_linear_attention import RadixLinearAttention
+from sglang.srt.layers.rotary_embedding import get_rope
+from sglang.srt.layers.vocab_parallel_embedding import VocabParallelEmbedding
+from sglang.srt.model_executor.cuda_graph_runner import get_is_capture_mode
+from sglang.srt.model_executor.forward_batch_info import ForwardBatch, PPProxyTensors
+from sglang.srt.model_loader.weight_utils import (
+    default_weight_loader,
+    sharded_weight_loader,
+)
+from sglang.srt.models.qwen2_moe import Qwen2MoeMLP, Qwen2MoeSparseMoeBlock
+
+# Models
+from sglang.srt.models.qwen3_vl import Qwen3VLForConditionalGeneration
+
+# Utils
+from sglang.srt.utils import add_prefix, is_cuda, is_npu, make_layers, set_weight_attrs
+from sglang.srt.utils.hf_transformers_utils import get_processor
+
+logger = logging.getLogger(__name__)
+_is_cuda = is_cuda()
+_is_npu = is_npu()
+
+cached_get_processor = lru_cache(get_processor)
+
+
+_LORA_PREFIXES = ("", "base_model.", "base_model.model.", "base_model.model.model.")
+_QWEN3_5_LORA_PATTERN = re.compile(
+    r"^model(?:\.language_model)?\.layers\.(\d+)\.(?:"
+    r"(?:qkv_proj|o_proj)|"
+    r"linear_attn\.(?:in_proj_qkv|in_proj_z|in_proj_b|in_proj_a|out_proj)|"
+    r"mlp\.(?:gate|shared_expert_gate|shared_expert\.(?:gate_up_proj|down_proj))"
+    r")$"
+)
+
+
+def _load_kt_lora_config(adapter_path: str) -> Tuple[int, float]:
+    config_path = Path(adapter_path) / "adapter_config.json"
+    if not config_path.is_file():
+        raise FileNotFoundError(f"KT LoRA adapter config not found: {config_path}")
+    with config_path.open("r", encoding="utf-8") as f:
+        config = json.load(f)
+    rank = int(config["r"])
+    alpha = float(config.get("lora_alpha", rank))
+    return rank, alpha
+
+
+def _load_kt_lora_state_dict(adapter_path: str) -> Dict[str, torch.Tensor]:
+    from safetensors.torch import load_file
+
+    adapter_dir = Path(adapter_path)
+    weight_file = adapter_dir / "adapter_model.safetensors"
+    if not weight_file.is_file():
+        candidates = sorted(adapter_dir.glob("*.safetensors"))
+        if not candidates:
+            raise FileNotFoundError(
+                f"No safetensors adapter weights found under {adapter_dir}"
+            )
+        weight_file = candidates[0]
+    return load_file(str(weight_file), device="cpu")
+
+
+def _find_lora_tensor(
+    state_dict: Dict[str, torch.Tensor],
+    suffix: str,
+) -> Tuple[Optional[str], Optional[torch.Tensor]]:
+    for prefix in _LORA_PREFIXES:
+        key = prefix + suffix
+        if key in state_dict:
+            return key, state_dict[key]
+    matches = [(key, tensor) for key, tensor in state_dict.items() if key.endswith(suffix)]
+    if len(matches) > 1:
+        raise ValueError(f"Ambiguous KT LoRA tensor suffix {suffix!r}: {[x[0] for x in matches[:4]]}")
+    if matches:
+        return matches[0]
+    return None, None
+
+
+def _get_lora_pair(
+    state_dict: Dict[str, torch.Tensor],
+    consumed_keys: Set[str],
+    layer_id: int,
+    block_name: str,
+    proj_name: str,
+) -> Optional[Tuple[torch.Tensor, torch.Tensor]]:
+    base = f"model.layers.{layer_id}.{block_name}.{proj_name}"
+    key_a, tensor_a = _find_lora_tensor(state_dict, f"{base}.lora_A.weight")
+    key_b, tensor_b = _find_lora_tensor(state_dict, f"{base}.lora_B.weight")
+    if tensor_a is None and tensor_b is None:
+        key_a, tensor_a = _find_lora_tensor(state_dict, f"{base}.lora_A.default.weight")
+        key_b, tensor_b = _find_lora_tensor(state_dict, f"{base}.lora_B.default.weight")
+    if (tensor_a is None) != (tensor_b is None):
+        raise ValueError(f"Incomplete KT LoRA pair for {base}")
+    if tensor_a is None or tensor_b is None:
+        return None
+    consumed_keys.add(key_a)
+    consumed_keys.add(key_b)
+    return tensor_a, tensor_b
+
+
+def _as_lora_weight(
+    tensor: torch.Tensor,
+    device: torch.device,
+    dtype: torch.dtype,
+) -> torch.Tensor:
+    return tensor.to(device=device, dtype=dtype, non_blocking=True).contiguous()
+
+
+def _slice_column_lora_b(
+    tensor: torch.Tensor,
+    tp_rank: int,
+    tp_size: int,
+) -> torch.Tensor:
+    shard = tensor.shape[0] // tp_size
+    return tensor[tp_rank * shard : (tp_rank + 1) * shard, :]
+
+
+def _slice_merged_column_lora_b(
+    tensor: torch.Tensor,
+    output_sizes: Tuple[int, ...],
+    tp_rank: int,
+    tp_size: int,
+) -> torch.Tensor:
+    shards = []
+    offset = 0
+    for size in output_sizes:
+        shard = size // tp_size
+        shards.append(tensor[offset + tp_rank * shard : offset + (tp_rank + 1) * shard, :])
+        offset += size
+    return torch.cat(shards, dim=0).contiguous()
+
+
+def _slice_row_lora_a(
+    tensor: torch.Tensor,
+    tp_rank: int,
+    tp_size: int,
+) -> torch.Tensor:
+    shard = tensor.shape[1] // tp_size
+    return tensor[:, tp_rank * shard : (tp_rank + 1) * shard]
+
+
+def _slice_full_attention_kv_lora_b(
+    tensor: torch.Tensor,
+    total_kv_heads: int,
+    head_dim: int,
+    tp_rank: int,
+    tp_size: int,
+) -> torch.Tensor:
+    if total_kv_heads >= tp_size:
+        shard = tensor.shape[0] // tp_size
+        return tensor[tp_rank * shard : (tp_rank + 1) * shard, :]
+    replicas = tp_size // total_kv_heads
+    kv_rank = tp_rank // replicas
+    start = kv_rank * head_dim
+    return tensor[start : start + head_dim, :]
+
+
+def _lora_delta(
+    hidden_states: torch.Tensor,
+    lora_a: torch.Tensor,
+    lora_b: torch.Tensor,
+    scale: float,
+) -> torch.Tensor:
+    return F.linear(F.linear(hidden_states, lora_a), lora_b) * scale
+
+
+class Qwen3_5GatedDeltaNet(nn.Module):
+    def __init__(
+        self,
+        config: Qwen3_5TextConfig,
+        layer_id: int,
+        quant_config: Optional[QuantizationConfig] = None,
+        alt_stream: Optional[torch.cuda.Stream] = None,
+        prefix: str = "",
+    ) -> None:
+        super().__init__()
+        self.config = config
+        self.attn_tp_rank = get_attention_tp_rank()
+        self.attn_tp_size = get_attention_tp_size()
+        self.hidden_size = config.hidden_size
+        self.num_v_heads = config.linear_num_value_heads
+        self.num_k_heads = config.linear_num_key_heads
+        self.head_k_dim = config.linear_key_head_dim
+        self.head_v_dim = config.linear_value_head_dim
+        self.key_dim = self.head_k_dim * self.num_k_heads
+        self.value_dim = self.head_v_dim * self.num_v_heads
+        self.alt_stream = alt_stream
+
+        self.conv_kernel_size = config.linear_conv_kernel_dim
+        self.layer_id = layer_id
+        self.activation = config.hidden_act
+        self.layer_norm_epsilon = config.rms_norm_eps
+
+        # Conv1d layer
+        self.conv_dim = self.key_dim * 2 + self.value_dim
+        self.conv1d = ColumnParallelLinear(
+            input_size=self.conv_kernel_size,
+            output_size=self.conv_dim,
+            bias=False,
+            quant_config=None,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("conv1d", prefix),
+        )
+        self.conv1d.weight.data = self.conv1d.weight.data.unsqueeze(1)
+
+        # Split projection layers (following vLLM's implementation)
+        # Instead of fused in_proj_qkvz and in_proj_ba, use separate layers
+        self.in_proj_qkv = MergedColumnParallelLinear(
+            input_size=self.hidden_size,
+            output_sizes=[self.key_dim, self.key_dim, self.value_dim],
+            bias=False,
+            quant_config=quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("in_proj_qkv", prefix),
+        )
+        self.in_proj_z = ColumnParallelLinear(
+            input_size=self.hidden_size,
+            output_size=self.value_dim,
+            bias=False,
+            quant_config=quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("in_proj_z", prefix),
+        )
+        self.in_proj_b = ColumnParallelLinear(
+            input_size=self.hidden_size,
+            output_size=self.num_v_heads,
+            bias=False,
+            quant_config=quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("in_proj_b", prefix),
+        )
+        self.in_proj_a = ColumnParallelLinear(
+            input_size=self.hidden_size,
+            output_size=self.num_v_heads,
+            bias=False,
+            quant_config=quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("in_proj_a", prefix),
+        )
+
+        # Conv1d weight loader setup
+        query_key_settings = (self.key_dim, 0, False)
+        value_settings = (self.value_dim, 0, False)
+
+        delattr(self.conv1d.weight, "weight_loader")
+        set_weight_attrs(
+            self.conv1d.weight,
+            {
+                "weight_loader": mamba_v2_sharded_weight_loader(
+                    [
+                        query_key_settings,
+                        query_key_settings,
+                        value_settings,
+                    ],
+                    self.attn_tp_size,
+                    self.attn_tp_rank,
+                )
+            },
+        )
+
+        # State parameters
+        self.dt_bias = nn.Parameter(
+            torch.ones(self.num_v_heads // self.attn_tp_size),
+        )
+        self.A_log = nn.Parameter(
+            torch.empty(self.num_v_heads // self.attn_tp_size),
+        )
+
+        set_weight_attrs(self.A_log, {"weight_loader": sharded_weight_loader(0)})
+        set_weight_attrs(self.dt_bias, {"weight_loader": sharded_weight_loader(0)})
+
+        conv_weights = self.conv1d.weight.view(
+            self.conv1d.weight.size(0), self.conv1d.weight.size(2)
+        )
+        # RadixLinearAttention layer
+        self.attn = RadixLinearAttention(
+            layer_id=layer_id,
+            num_q_heads=self.num_k_heads // self.attn_tp_size,
+            num_k_heads=self.num_k_heads // self.attn_tp_size,
+            num_v_heads=self.num_v_heads // self.attn_tp_size,
+            head_q_dim=self.head_k_dim,
+            head_k_dim=self.head_k_dim,
+            head_v_dim=self.head_v_dim,
+            conv_weights=conv_weights,
+            bias=self.conv1d.bias,
+            activation=self.activation,
+            A_log=self.A_log,
+            dt_bias=self.dt_bias,
+        )
+
+        # Normalization layer
+        self.norm = RMSNormGated(
+            self.head_v_dim,
+            eps=self.layer_norm_epsilon,
+            group_size=None,
+            norm_before_gate=True,
+            device=torch.get_device_module().current_device(),
+            dtype=config.torch_dtype,
+        )
+
+        # Output projection
+        self.out_proj = RowParallelLinear(
+            self.value_dim,
+            self.hidden_size,
+            bias=False,
+            input_is_parallel=True,
+            reduce_results=False,
+            quant_config=quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("out_proj", prefix),
+        )
+        self._kt_lora_scale: Optional[float] = None
+        self._kt_lora_in_proj_qkv: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_in_proj_z: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_in_proj_b: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_in_proj_a: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_out_proj: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+
+    def load_kt_lora(
+        self,
+        state_dict: Dict[str, torch.Tensor],
+        consumed_keys: Set[str],
+        rank: int,
+        alpha: float,
+    ) -> int:
+        device = self.in_proj_qkv.weight.device
+        dtype = self.in_proj_qkv.weight.dtype
+        self._kt_lora_scale = alpha / float(rank or 1)
+        loaded = 0
+
+        def set_column(name: str, attr: str, output_sizes: Tuple[int, ...]) -> None:
+            nonlocal loaded
+            pair = _get_lora_pair(state_dict, consumed_keys, self.layer_id, "linear_attn", name)
+            if pair is None:
+                return
+            lora_a, lora_b = pair
+            lora_b = (
+                _slice_merged_column_lora_b(lora_b, output_sizes, self.attn_tp_rank, self.attn_tp_size)
+                if len(output_sizes) > 1
+                else _slice_column_lora_b(lora_b, self.attn_tp_rank, self.attn_tp_size)
+            )
+            setattr(
+                self,
+                attr,
+                (
+                    _as_lora_weight(lora_a, device, dtype),
+                    _as_lora_weight(lora_b, device, dtype),
+                ),
+            )
+            loaded += 1
+
+        set_column("in_proj_qkv", "_kt_lora_in_proj_qkv", (self.key_dim, self.key_dim, self.value_dim))
+        set_column("in_proj_z", "_kt_lora_in_proj_z", (self.value_dim,))
+        set_column("in_proj_b", "_kt_lora_in_proj_b", (self.num_v_heads,))
+        set_column("in_proj_a", "_kt_lora_in_proj_a", (self.num_v_heads,))
+
+        pair = _get_lora_pair(state_dict, consumed_keys, self.layer_id, "linear_attn", "out_proj")
+        if pair is not None:
+            lora_a, lora_b = pair
+            self._kt_lora_out_proj = (
+                _as_lora_weight(
+                    _slice_row_lora_a(lora_a, self.attn_tp_rank, self.attn_tp_size),
+                    device,
+                    dtype,
+                ),
+                _as_lora_weight(lora_b, device, dtype),
+            )
+            loaded += 1
+        return loaded
+
+    def fix_query_key_value_ordering(
+        self,
+        mixed_qkv,
+        z,
+        b,
+        a,
+    ):
+        raise NotImplementedError(
+            "Qwen3.5 Series dont need to fix query key value ordering"
+        )
+
+    def forward(
+        self,
+        hidden_states: torch.Tensor,
+        forward_batch: ForwardBatch,
+    ):
+        """
+        Forward pass with three parts:
+        1. Input projection
+        2. Core attention (custom op)
+        3. Output projection
+        """
+        seq_len, _ = hidden_states.shape
+
+        mixed_qkv, _ = self.in_proj_qkv(hidden_states)
+        if self._kt_lora_in_proj_qkv is not None:
+            mixed_qkv = mixed_qkv + _lora_delta(
+                hidden_states,
+                self._kt_lora_in_proj_qkv[0],
+                self._kt_lora_in_proj_qkv[1],
+                self._kt_lora_scale,
+            )
+        z, _ = self.in_proj_z(hidden_states)
+        if self._kt_lora_in_proj_z is not None:
+            z = z + _lora_delta(
+                hidden_states,
+                self._kt_lora_in_proj_z[0],
+                self._kt_lora_in_proj_z[1],
+                self._kt_lora_scale,
+            )
+        z = z.reshape(z.size(0), -1, self.head_v_dim)
+        b, _ = self.in_proj_b(hidden_states)
+        if self._kt_lora_in_proj_b is not None:
+            b = b + _lora_delta(
+                hidden_states,
+                self._kt_lora_in_proj_b[0],
+                self._kt_lora_in_proj_b[1],
+                self._kt_lora_scale,
+            )
+        a, _ = self.in_proj_a(hidden_states)
+        if self._kt_lora_in_proj_a is not None:
+            a = a + _lora_delta(
+                hidden_states,
+                self._kt_lora_in_proj_a[0],
+                self._kt_lora_in_proj_a[1],
+                self._kt_lora_scale,
+            )
+
+        b = b.contiguous()
+        a = a.contiguous()
+
+        core_attn_out = self.attn(
+            forward_batch=forward_batch,
+            mixed_qkv=mixed_qkv,
+            a=a,
+            b=b,
+        )
+
+        z_shape_og = z.shape
+        core_attn_out = core_attn_out.reshape(-1, core_attn_out.shape[-1])
+        z = z.reshape(-1, z.shape[-1])
+        core_attn_out = self.norm(core_attn_out, z)
+        core_attn_out = core_attn_out.reshape(z_shape_og)
+        core_attn_out = rearrange(core_attn_out, "... h d -> ... (h d)")
+        output, _ = self.out_proj(core_attn_out)
+        if self._kt_lora_out_proj is not None:
+            output = output + _lora_delta(
+                core_attn_out,
+                self._kt_lora_out_proj[0],
+                self._kt_lora_out_proj[1],
+                self._kt_lora_scale,
+            )
+        return output
+
+
+class Qwen3_5LinearDecoderLayer(nn.Module):
+    """Qwen3.5 Decoder Layer with Linear Attention (GatedDeltaNet)."""
+
+    def __init__(
+        self,
+        config: Qwen3_5TextConfig,
+        layer_id: int,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+        alt_stream: Optional[torch.cuda.Stream] = None,
+    ) -> None:
+        super().__init__()
+        self.config = config
+        self.layer_id = layer_id
+
+        linear_attn_quant_config = (
+            None
+            if quant_config and quant_config.get_name() == "modelopt_fp4"
+            else quant_config
+        )
+        self.linear_attn = Qwen3_5GatedDeltaNet(
+            config, layer_id, linear_attn_quant_config, alt_stream, prefix
+        )
+
+        # NOTE: Determine the MLP type based on the model type
+        # Qwen3.5 use all layers for MLP / Qwen3.5-MoE use sparse MoE blocks
+        if config.model_type == "qwen3_5_moe_text":
+            self.mlp = Qwen2MoeSparseMoeBlock(
+                layer_id=layer_id,
+                config=config,
+                quant_config=quant_config,
+                alt_stream=alt_stream,
+                prefix=add_prefix("mlp", prefix.replace(".linear_attn", "")),
+            )
+            is_layer_sparse = True
+            is_previous_layer_sparse = True
+            is_next_layer_sparse = True
+        elif config.model_type == "qwen3_5_text":
+            self.mlp = Qwen2MoeMLP(
+                hidden_size=config.hidden_size,
+                intermediate_size=config.intermediate_size,
+                hidden_act=config.hidden_act,
+                quant_config=quant_config,
+                prefix=add_prefix("mlp", prefix.replace(".linear_attn", "")),
+            )
+            is_layer_sparse = False
+            is_previous_layer_sparse = False
+            is_next_layer_sparse = False
+        else:
+            raise ValueError(f"Invalid model type: {config.model_type}")
+
+        self.layer_scatter_modes = LayerScatterModes.init_new(
+            layer_id=layer_id,
+            num_layers=config.num_hidden_layers,
+            is_layer_sparse=is_layer_sparse,
+            is_previous_layer_sparse=is_previous_layer_sparse,
+            is_next_layer_sparse=is_next_layer_sparse,
+        )
+
+        self.input_layernorm = GemmaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
+        self.post_attention_layernorm = GemmaRMSNorm(
+            config.hidden_size, eps=config.rms_norm_eps
+        )
+        self.layer_communicator = LayerCommunicator(
+            layer_scatter_modes=self.layer_scatter_modes,
+            input_layernorm=self.input_layernorm,
+            post_attention_layernorm=self.post_attention_layernorm,
+            allow_reduce_scatter=True,
+        )
+
+    def forward(
+        self,
+        hidden_states: torch.Tensor,
+        residual: Optional[torch.Tensor],
+        **kwargs,
+    ):
+        forward_batch = kwargs.get("forward_batch", None)
+
+        hidden_states, residual = self.layer_communicator.prepare_attn(
+            hidden_states, residual, forward_batch
+        )
+
+        if not forward_batch.forward_mode.is_idle():
+            hidden_states = self.linear_attn(
+                hidden_states,
+                forward_batch,
+            )
+
+        # Fully Connected
+        hidden_states, residual = self.layer_communicator.prepare_mlp(
+            hidden_states, residual, forward_batch
+        )
+
+        use_reduce_scatter = self.layer_communicator.should_use_reduce_scatter(
+            forward_batch
+        )
+
+        should_allreduce_fusion = (
+            self.layer_communicator.should_fuse_mlp_allreduce_with_next_layer(
+                forward_batch
+            )
+        )
+        if isinstance(self.mlp, Qwen2MoeSparseMoeBlock):
+            hidden_states = self.mlp(hidden_states, forward_batch, use_reduce_scatter)
+        else:
+            hidden_states = self.mlp(
+                hidden_states, should_allreduce_fusion, use_reduce_scatter
+            )
+        if should_allreduce_fusion:
+            hidden_states._sglang_needs_allreduce_fusion = True
+        else:
+            hidden_states, residual = self.layer_communicator.postprocess_layer(
+                hidden_states, residual, forward_batch
+            )
+
+        return hidden_states, residual
+
+
+class Qwen3_5AttentionDecoderLayer(nn.Module):
+    """Qwen3.5 Decoder Layer with Full Attention."""
+
+    def __init__(
+        self,
+        config: Qwen3_5TextConfig,
+        layer_id: int,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+        alt_stream: Optional[torch.cuda.Stream] = None,
+    ) -> None:
+        super().__init__()
+        self.config = config
+        self.hidden_size = config.hidden_size
+        self.attn_tp_rank = get_attention_tp_rank()
+        self.attn_tp_size = get_attention_tp_size()
+        self.total_num_heads = config.num_attention_heads
+        assert self.total_num_heads % self.attn_tp_size == 0
+        self.num_heads = self.total_num_heads // self.attn_tp_size
+        self.total_num_kv_heads = config.num_key_value_heads
+        if self.total_num_kv_heads >= self.attn_tp_size:
+            assert self.total_num_kv_heads % self.attn_tp_size == 0
+        else:
+            assert self.attn_tp_size % self.total_num_kv_heads == 0
+        self.num_kv_heads = max(1, self.total_num_kv_heads // self.attn_tp_size)
+        self.head_dim = config.head_dim or (self.hidden_size // self.num_heads)
+        self.q_size = self.num_heads * self.head_dim
+        self.kv_size = self.num_kv_heads * self.head_dim
+        self.scaling = self.head_dim**-0.5
+        self.max_position_embeddings = getattr(config, "max_position_embeddings", 8192)
+
+        if hasattr(config, "rope_parameters"):
+            self.rope_scaling = getattr(config, "rope_parameters", None)
+        else:
+            self.rope_scaling = getattr(config, "rope_scaling", None)
+
+        self.rope_theta = self.rope_scaling.get("rope_theta", 10000)
+        self.partial_rotary_factor = self.rope_scaling.get("partial_rotary_factor", 1.0)
+        self.layer_id = layer_id
+
+        self.attn_output_gate = getattr(config, "attn_output_gate", True)
+        if self.attn_output_gate:
+            logger.warning_once("using attn output gate!")
+
+        self.rotary_emb = get_rope(
+            head_size=self.head_dim,
+            rotary_dim=self.head_dim,
+            max_position=self.max_position_embeddings,
+            rope_scaling=self.rope_scaling,
+            base=self.rope_theta,
+            partial_rotary_factor=self.partial_rotary_factor,
+            is_neox_style=True,
+            dtype=torch.get_default_dtype(),
+        )
+
+        attn_quant_config = (
+            None
+            if quant_config and quant_config.get_name() == "modelopt_fp4"
+            else quant_config
+        )
+
+        self.qkv_proj = QKVParallelLinear(
+            config.hidden_size,
+            self.head_dim,
+            self.total_num_heads * (1 + self.attn_output_gate),
+            self.total_num_kv_heads,
+            bias=False,
+            quant_config=attn_quant_config,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("qkv_proj", prefix),
+        )
+
+        self.o_proj = RowParallelLinear(
+            self.total_num_heads * self.head_dim,
+            config.hidden_size,
+            bias=False,
+            quant_config=attn_quant_config,
+            reduce_results=False,
+            tp_rank=self.attn_tp_rank,
+            tp_size=self.attn_tp_size,
+            prefix=add_prefix("o_proj", prefix),
+        )
+
+        self.attn = RadixAttention(
+            self.num_heads,
+            self.head_dim,
+            self.scaling,
+            num_kv_heads=self.num_kv_heads,
+            layer_id=layer_id,
+            prefix=f"{prefix}.attn",
+        )
+
+        # Dense MLP for non-MoE variant
+        if config.model_type == "qwen3_5_text":
+            self.mlp = Qwen2MoeMLP(
+                hidden_size=config.hidden_size,
+                intermediate_size=config.intermediate_size,
+                hidden_act=config.hidden_act,
+                quant_config=quant_config,
+                prefix=add_prefix("mlp", prefix.replace(".self_attn", "")),
+            )
+            is_layer_sparse = False
+            is_previous_layer_sparse = False
+            is_next_layer_sparse = False
+        elif config.model_type == "qwen3_5_moe_text":
+            self.mlp = Qwen2MoeSparseMoeBlock(
+                layer_id=layer_id,
+                config=config,
+                quant_config=quant_config,
+                alt_stream=alt_stream,
+                prefix=add_prefix("mlp", prefix.replace(".self_attn", "")),
+            )
+            is_layer_sparse = True
+            is_previous_layer_sparse = True
+            is_next_layer_sparse = True
+        else:
+            raise ValueError(f"Invalid model type: {config.model_type}")
+
+        self.layer_scatter_modes = LayerScatterModes.init_new(
+            layer_id=layer_id,
+            num_layers=config.num_hidden_layers,
+            is_layer_sparse=is_layer_sparse,
+            is_previous_layer_sparse=is_previous_layer_sparse,
+            is_next_layer_sparse=is_next_layer_sparse,
+        )
+
+        self.input_layernorm = GemmaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
+        self.post_attention_layernorm = GemmaRMSNorm(
+            config.hidden_size, eps=config.rms_norm_eps
+        )
+
+        self.q_norm = GemmaRMSNorm(self.head_dim, eps=config.rms_norm_eps)
+        self.k_norm = GemmaRMSNorm(self.head_dim, eps=config.rms_norm_eps)
+
+        self.layer_communicator = LayerCommunicator(
+            layer_scatter_modes=self.layer_scatter_modes,
+            input_layernorm=self.input_layernorm,
+            post_attention_layernorm=self.post_attention_layernorm,
+            allow_reduce_scatter=True,
+        )
+
+        self.alt_stream = alt_stream
+        self._kt_lora_scale: Optional[float] = None
+        self._kt_lora_q_proj: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_k_proj: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_v_proj: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+        self._kt_lora_o_proj: Optional[Tuple[torch.Tensor, torch.Tensor]] = None
+
+    def load_kt_lora(
+        self,
+        state_dict: Dict[str, torch.Tensor],
+        consumed_keys: Set[str],
+        rank: int,
+        alpha: float,
+    ) -> int:
+        device = self.qkv_proj.weight.device
+        dtype = self.qkv_proj.weight.dtype
+        self._kt_lora_scale = alpha / float(rank or 1)
+        loaded = 0
+
+        q_pair = _get_lora_pair(state_dict, consumed_keys, self.layer_id, "self_attn", "q_proj")
+        if q_pair is not None:
+            lora_a, lora_b = q_pair
+            q_out_per_rank = self.q_size * (2 if self.attn_output_gate else 1)
+            lora_b = lora_b[
+                self.attn_tp_rank * q_out_per_rank : (self.attn_tp_rank + 1) * q_out_per_rank,
+                :,
+            ]
+            self._kt_lora_q_proj = (
+                _as_lora_weight(lora_a, device, dtype),
+                _as_lora_weight(lora_b, device, dtype),
+            )
+            loaded += 1
+
+        for proj_name, attr in (("k_proj", "_kt_lora_k_proj"), ("v_proj", "_kt_lora_v_proj")):
+            pair = _get_lora_pair(state_dict, consumed_keys, self.layer_id, "self_attn", proj_name)
+            if pair is None:
+                continue
+            lora_a, lora_b = pair
+            lora_b = _slice_full_attention_kv_lora_b(
+                lora_b,
+                self.total_num_kv_heads,
+                self.head_dim,
+                self.attn_tp_rank,
+                self.attn_tp_size,
+            )
+            setattr(
+                self,
+                attr,
+                (
+                    _as_lora_weight(lora_a, device, dtype),
+                    _as_lora_weight(lora_b, device, dtype),
+                ),
+            )
+            loaded += 1
+
+        o_pair = _get_lora_pair(state_dict, consumed_keys, self.layer_id, "self_attn", "o_proj")
+        if o_pair is not None:
+            lora_a, lora_b = o_pair
+            self._kt_lora_o_proj = (
+                _as_lora_weight(
+                    _slice_row_lora_a(lora_a, self.attn_tp_rank, self.attn_tp_size),
+                    device,
+                    dtype,
+                ),
+                _as_lora_weight(lora_b, device, dtype),
+            )
+            loaded += 1
+        return loaded
+
+    def _apply_qk_norm(
+        self, q: torch.Tensor, k: torch.Tensor
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Apply Q/K normalization with optional alt_stream overlap."""
+        if self.alt_stream is not None and get_is_capture_mode():
+            current_stream = torch.cuda.current_stream()
+            self.alt_stream.wait_stream(current_stream)
+            q_by_head = q.reshape(-1, self.head_dim)
+            q_by_head = self.q_norm(q_by_head)
+            with torch.cuda.stream(self.alt_stream):
+                k_by_head = k.reshape(-1, self.head_dim)
+                k_by_head = self.k_norm(k_by_head)
+            current_stream.wait_stream(self.alt_stream)
+        else:
+            q_by_head = q.reshape(-1, self.head_dim)
+            q_by_head = self.q_norm(q_by_head)
+            k_by_head = k.reshape(-1, self.head_dim)
+            k_by_head = self.k_norm(k_by_head)
+        q = q_by_head.view(q.shape)
+        k = k_by_head.view(k.shape)
+        return q, k
+
+    def self_attention(
+        self,
+        positions: torch.Tensor,
+        hidden_states: torch.Tensor,
+        forward_batch: ForwardBatch,
+    ) -> torch.Tensor:
+        """Full attention forward pass."""
+        qkv, _ = self.qkv_proj(hidden_states)
+        if self._kt_lora_scale is not None:
+            q_dim = self.q_size * (2 if self.attn_output_gate else 1)
+            if self._kt_lora_q_proj is not None:
+                qkv[..., :q_dim] += _lora_delta(
+                    hidden_states,
+                    self._kt_lora_q_proj[0],
+                    self._kt_lora_q_proj[1],
+                    self._kt_lora_scale,
+                )
+            if self._kt_lora_k_proj is not None:
+                qkv[..., q_dim : q_dim + self.kv_size] += _lora_delta(
+                    hidden_states,
+                    self._kt_lora_k_proj[0],
+                    self._kt_lora_k_proj[1],
+                    self._kt_lora_scale,
+                )
+            if self._kt_lora_v_proj is not None:
+                qkv[..., q_dim + self.kv_size :] += _lora_delta(
+                    hidden_states,
+                    self._kt_lora_v_proj[0],
+                    self._kt_lora_v_proj[1],
+                    self._kt_lora_scale,
+                )
+
+        if self.attn_output_gate:
+            q_gate, k, v = qkv.split(
+                [self.q_size * 2, self.kv_size, self.kv_size], dim=-1
+            )
+            orig_shape = q_gate.shape[:-1]
+            q_gate = q_gate.view(*orig_shape, self.num_heads, -1)
+            q, gate = torch.chunk(q_gate, 2, dim=-1)
+            q = q.reshape(*orig_shape, -1)
+            gate = gate.reshape(*orig_shape, -1)
+        else:
+            q, k, v = qkv.split([self.q_size, self.kv_size, self.kv_size], dim=-1)
+
+        q, k = self._apply_qk_norm(q, k)
+        q, k = self.rotary_emb(positions, q, k)
+        attn_output = self.attn(q, k, v, forward_batch)
+
+        if self.attn_output_gate:
+            gate = torch.sigmoid(gate)
+            attn_output = attn_output * gate
+
+        output, _ = self.o_proj(attn_output)
+        if self._kt_lora_o_proj is not None:
+            output = output + _lora_delta(
+                attn_output,
+                self._kt_lora_o_proj[0],
+                self._kt_lora_o_proj[1],
+                self._kt_lora_scale,
+            )
+        return output
+
+    def forward(
+        self,
+        positions: torch.Tensor,
+        hidden_states: torch.Tensor,
+        residual: Optional[torch.Tensor],
+        forward_batch: ForwardBatch,
+        **kwargs,
+    ):
+        hidden_states, residual = self.layer_communicator.prepare_attn(
+            hidden_states, residual, forward_batch
+        )
+
+        if not forward_batch.forward_mode.is_idle():
+            hidden_states = self.self_attention(
+                positions=positions,
+                hidden_states=hidden_states,
+                forward_batch=forward_batch,
+            )
+
+        # Fully Connected
+        hidden_states, residual = self.layer_communicator.prepare_mlp(
+            hidden_states, residual, forward_batch
+        )
+        use_reduce_scatter = self.layer_communicator.should_use_reduce_scatter(
+            forward_batch
+        )
+
+        should_allreduce_fusion = (
+            self.layer_communicator.should_fuse_mlp_allreduce_with_next_layer(
+                forward_batch
+            )
+        )
+        if isinstance(self.mlp, Qwen2MoeSparseMoeBlock):
+            hidden_states = self.mlp(hidden_states, forward_batch, use_reduce_scatter)
+        else:
+            hidden_states = self.mlp(
+                hidden_states, should_allreduce_fusion, use_reduce_scatter
+            )
+        if should_allreduce_fusion:
+            hidden_states._sglang_needs_allreduce_fusion = True
+        else:
+            hidden_states, residual = self.layer_communicator.postprocess_layer(
+                hidden_states, residual, forward_batch
+            )
+
+        return hidden_states, residual
+
+
+ALL_DECODER_LAYER_TYPES = {
+    "attention": Qwen3_5AttentionDecoderLayer,
+    "linear_attention": Qwen3_5LinearDecoderLayer,
+}
+
+
+class Qwen3_5ForCausalLM(nn.Module):
+    """Qwen3.5 Model with support for dense variant."""
+
+    def __init__(
+        self,
+        config: Qwen3_5TextConfig,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+    ) -> None:
+        super().__init__()
+        self.config = config
+        self.hidden_size = config.hidden_size
+        self.pp_group = get_pp_group()
+
+        alt_stream = torch.cuda.Stream() if _is_cuda else None
+
+        # Embedding layer
+        if self.pp_group.is_first_rank:
+            self.embed_tokens = VocabParallelEmbedding(
+                config.vocab_size,
+                config.hidden_size,
+                org_num_embeddings=config.vocab_size,
+                enable_tp=not is_dp_attention_enabled(),
+            )
+
+        # Decoder layers
+        def get_layer(idx: int, prefix: str):
+            layer_type = config.layers_block_type[idx]
+            layer_class = ALL_DECODER_LAYER_TYPES[layer_type]
+            if layer_type == "attention":
+                prefix = add_prefix("self_attn", prefix)
+            else:
+                prefix = add_prefix("linear_attn", prefix)
+            return layer_class(
+                config=config,
+                layer_id=idx,
+                quant_config=quant_config,
+                prefix=prefix,
+                alt_stream=alt_stream,
+            )
+
+        self.layers = make_layers(
+            config.num_hidden_layers,
+            get_layer,
+            prefix=f"{prefix}.layers",
+        )
+
+        # Final normalization
+        if self.pp_group.is_last_rank:
+            self.norm = GemmaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
+
+    def get_input_embeddings(self) -> nn.Embedding:
+        return self.embed_tokens
+
+    def get_hidden_dim(self, module_name: str, layer_idx: int):
+        config = self.config
+        hidden_size = config.hidden_size
+
+        head_dim = (
+            getattr(config, "head_dim", None)
+            or hidden_size // config.num_attention_heads
+        )
+        attn_gate_multiplier = 1 + int(getattr(config, "attn_output_gate", True))
+        full_q_dim = config.num_attention_heads * head_dim * attn_gate_multiplier
+        full_kv_dim = config.num_key_value_heads * head_dim
+
+        linear_key_dim = config.linear_num_key_heads * config.linear_key_head_dim
+        linear_value_dim = (
+            config.linear_num_value_heads * config.linear_value_head_dim
+        )
+        if config.model_type == "qwen3_5_moe_text":
+            intermediate_size = config.shared_expert_intermediate_size
+        else:
+            intermediate_size = config.intermediate_size
+
+        if module_name == "qkv_proj":
+            return hidden_size, full_q_dim + 2 * full_kv_dim
+        elif module_name == "o_proj":
+            return config.num_attention_heads * head_dim, hidden_size
+        elif module_name == "in_proj_qkv":
+            return hidden_size, 2 * linear_key_dim + linear_value_dim
+        elif module_name == "in_proj_z":
+            return hidden_size, linear_value_dim
+        elif module_name in ("in_proj_b", "in_proj_a"):
+            return hidden_size, config.linear_num_value_heads
+        elif module_name == "out_proj":
+            return linear_value_dim, hidden_size
+        elif module_name == "gate":
+            return hidden_size, config.num_experts
+        elif module_name == "shared_expert_gate":
+            return hidden_size, 1
+        elif module_name == "gate_up_proj":
+            return hidden_size, intermediate_size * 2
+        elif module_name == "down_proj":
+            return intermediate_size, hidden_size
+        elif module_name == "embed_tokens":
+            return config.vocab_size, hidden_size
+        elif module_name == "lm_head":
+            return hidden_size, config.vocab_size
+        else:
+            raise NotImplementedError(
+                f"get_hidden_dim not implemented for {module_name}"
+            )
+
+    def load_kt_lora(self, adapter_path: str) -> None:
+        rank, alpha = _load_kt_lora_config(adapter_path)
+        state_dict = _load_kt_lora_state_dict(adapter_path)
+        consumed_keys: Set[str] = set()
+        loaded_modules = 0
+
+        for layer_id, layer in enumerate(self.layers):
+            if hasattr(layer, "linear_attn"):
+                loaded_modules += layer.linear_attn.load_kt_lora(
+                    state_dict, consumed_keys, rank, alpha
+                )
+            elif hasattr(layer, "load_kt_lora"):
+                loaded_modules += layer.load_kt_lora(
+                    state_dict, consumed_keys, rank, alpha
+                )
+
+        expert_tensors = sum(".mlp.experts." in key for key in state_dict)
+        unknown_nonexpert = sorted(
+            key
+            for key in state_dict
+            if ".mlp.experts." not in key and key not in consumed_keys
+        )
+        if unknown_nonexpert:
+            raise ValueError(
+                "Unrecognized KT non-expert LoRA tensors: "
+                + ", ".join(unknown_nonexpert[:8])
+            )
+        logger.info(
+            "Loaded static KT non-expert LoRA from %s: modules=%d tensors=%d "
+            "expert_tensors_skipped=%d rank=%d alpha=%.3f",
+            adapter_path,
+            loaded_modules,
+            len(consumed_keys),
+            expert_tensors,
+            rank,
+            alpha,
+        )
+
+    @torch.no_grad()
+    def forward(
+        self,
+        input_ids: torch.Tensor,
+        positions: torch.Tensor,
+        forward_batch: ForwardBatch,
+        input_embeds: Optional[torch.Tensor] = None,
+        pp_proxy_tensors: Optional[PPProxyTensors] = None,
+        input_deepstack_embeds: Optional[torch.Tensor] = None,
+    ) -> Union[torch.Tensor, PPProxyTensors]:
+        # Initialize hidden states
+        if self.pp_group.is_first_rank:
+            if input_embeds is None:
+                hidden_states = self.embed_tokens(input_ids)
+            else:
+                hidden_states = input_embeds
+            residual = None
+        else:
+            assert pp_proxy_tensors is not None
+            hidden_states = pp_proxy_tensors["hidden_states"]
+            residual = pp_proxy_tensors["residual"]
+
+        # Pass through decoder layers
+        for layer_idx in range(len(self.layers)):
+            layer = self.layers[layer_idx]
+            with get_global_expert_distribution_recorder().with_current_layer(
+                layer_idx
+            ):
+                hidden_states, residual = layer(
+                    positions=positions,
+                    hidden_states=hidden_states,
+                    residual=residual,
+                    forward_batch=forward_batch,
+                )
+
+            # Process deepstack embeddings if provided
+            if (
+                input_deepstack_embeds is not None
+                and input_deepstack_embeds.numel() > 0
+                and layer_idx < 3
+            ):
+                sep = self.hidden_size * layer_idx
+                hidden_states.add_(
+                    input_deepstack_embeds[:, sep : sep + self.hidden_size]
+                )
+
+        # Return intermediate tensors for pipeline parallelism
+        if not self.pp_group.is_last_rank:
+            return PPProxyTensors(
+                {
+                    "hidden_states": hidden_states,
+                    "residual": residual,
+                }
+            )
+
+        # Apply final normalization
+        if hidden_states.shape[0] != 0:
+            if residual is None:
+                hidden_states = self.norm(hidden_states)
+            else:
+                hidden_states, _ = self.norm(hidden_states, residual)
+
+        return hidden_states
+
+    def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
+        stacked_params_mapping = [
+            # (param_name, shard_name, shard_id)
+            ("qkv_proj", "q_proj", "q"),
+            ("qkv_proj", "k_proj", "k"),
+            ("qkv_proj", "v_proj", "v"),
+            ("gate_up_proj", "gate_proj", 0),
+            ("gate_up_proj", "up_proj", 1),
+        ]
+
+        loaded_params: Set[str] = set()
+        params_dict = dict(self.named_parameters(remove_duplicate=False))
+        for name, loaded_weight in weights:
+            if "rotary_emb.inv_freq" in name:
+                continue
+            if "mtp" in name:
+                continue
+            if "visual" in name:
+                continue
+            if "language_model" in name:
+                name = name.replace(r"model.language_model.", r"model.")
+            if ".self_attn." in name:
+                name = name.replace(".self_attn", "")
+
+            for param_name, weight_name, shard_id in stacked_params_mapping:
+                if weight_name not in name:
+                    continue
+
+                if "mlp.experts" in name:
+                    continue
+
+                name = name.replace(weight_name, param_name)
+                # Skip loading extra bias for GPTQ models.
+                if name.endswith(".bias") and name not in params_dict:
+                    continue
+                # Skip layers on other devices.
+                # if is_pp_missing_parameter(name, self):
+                #     continue
+                if name not in params_dict:
+                    continue
+                param = params_dict[name]
+                weight_loader = getattr(param, "weight_loader")
+                weight_loader(param, loaded_weight, shard_id)
+                break
+            else:
+                # Skip loading extra bias for GPTQ models.
+                if name.endswith(".bias") and name not in params_dict:
+                    continue
+                if name not in params_dict:
+                    logger.warning(f"Parameter {name} not found in params_dict")
+                    continue
+                param = params_dict[name]
+
+                weight_loader = getattr(param, "weight_loader", default_weight_loader)
+                weight_loader(param, loaded_weight)
+            loaded_params.add(name)
+        return loaded_params
+
+
+class Qwen3_5MoeForCausalLM(Qwen3_5ForCausalLM):
+    def __init__(
+        self,
+        config: Qwen3_5TextConfig,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+    ) -> None:
+        super().__init__(config=config, quant_config=quant_config, prefix=prefix)
+
+    def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
+        stacked_params_mapping = [
+            # (param_name, shard_name, shard_id)
+            ("qkv_proj", "q_proj", "q"),
+            ("qkv_proj", "k_proj", "k"),
+            ("qkv_proj", "v_proj", "v"),
+            ("gate_up_proj", "gate_proj", 0),
+            ("gate_up_proj", "up_proj", 1),
+        ]
+
+        # Params for weights, fp8 weight scales, fp8 activation scales
+        # (param_name, weight_name, expert_id, shard_id)
+        expert_params_mapping = FusedMoE.make_expert_params_mapping(
+            ckpt_gate_proj_name="gate_proj",
+            ckpt_down_proj_name="down_proj",
+            ckpt_up_proj_name="up_proj",
+            num_experts=self.config.num_experts,
+        )
+
+        # Skip loading extra parameters for GPTQ/modelopt models.
+        ignore_suffixes = (
+            ".bias",
+            "_bias",
+            ".k_scale",
+            "_k_scale",
+            ".v_scale",
+            "_v_scale",
+            ".weight_scale",
+            "_weight_scale",
+            ".input_scale",
+            "_input_scale",
+        )
+
+        is_fused_expert = False
+        fused_expert_params_mapping = [
+            ("experts.w13_weight", "experts.gate_up_proj", 0, "w1"),
+            ("experts.w2_weight", "experts.down_proj", 0, "w2"),
+        ]
+
+        num_experts = self.config.num_experts
+
+        def load_fused_expert_weights(
+            name: str,
+            params_dict: dict,
+            loaded_weight: torch.Tensor,
+            shard_id: str,
+            num_experts: int,
+        ):
+            param = params_dict[name]
+            weight_loader = param.weight_loader
+            # let ep moe layer to gracefully handle expert_ids that do not belong to local moe rank
+            for expert_id in range(num_experts):
+                curr_expert_weight = loaded_weight[expert_id]
+                weight_loader(
+                    param,
+                    curr_expert_weight,
+                    name,
+                    shard_id,
+                    expert_id,
+                )
+            return True
+
+        loaded_params: Set[str] = set()
+        params_dict = dict(self.named_parameters(remove_duplicate=False))
+
+        for name, loaded_weight in weights:
+            if "rotary_emb.inv_freq" in name:
+                continue
+            if "mtp" in name:
+                continue
+            if "visual" in name:
+                continue
+            if "language_model" in name:
+                name = name.replace(r"model.language_model.", r"model.")
+            if ".self_attn." in name:
+                name = name.replace(".self_attn", "")
+
+            for param_name, weight_name, shard_id in stacked_params_mapping:
+                if "experts.gate_up_proj" in name or "experts.down_proj" in name:
+                    is_fused_expert = True
+                    expert_params_mapping = fused_expert_params_mapping
+
+                # Skip non-stacked layers and experts (experts handled below).
+                if weight_name not in name:
+                    continue
+
+                # We have mlp.experts[0].gate_proj in the checkpoint.
+                # Since we handle the experts below in expert_params_mapping,
+                # we need to skip here BEFORE we update the name, otherwise
+                # name will be updated to mlp.experts[0].gate_up_proj, which
+                # will then be updated below in expert_params_mapping
+                # for mlp.experts[0].gate_gate_up_proj, which breaks load.
+                if "mlp.experts" in name:
+                    continue
+                name = name.replace(weight_name, param_name)
+                # Skip loading extra parameters for GPTQ/modelopt models.
+                if name.endswith(ignore_suffixes) and name not in params_dict:
+                    continue
+
+                if name not in params_dict:
+                    continue
+
+                param = params_dict[name]
+                weight_loader = param.weight_loader
+                weight_loader(param, loaded_weight, shard_id)
+                break
+            else:
+                # Track if this is an expert weight to enable early skipping
+                is_expert_weight = False
+
+                for mapping in expert_params_mapping:
+                    param_name, weight_name, expert_id, shard_id = mapping
+                    if weight_name not in name:
+                        continue
+                    # Anyway, this is an expert weight and should not be
+                    # attempted to load as other weights later
+                    is_expert_weight = True
+                    name_mapped = name.replace(weight_name, param_name)
+                    if is_fused_expert:
+                        if "experts.gate_up_proj" in name:
+                            loaded_weight = loaded_weight.chunk(2, dim=-2)
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight[0],
+                                "w1",
+                                num_experts,
+                            )
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight[1],
+                                "w3",
+                                num_experts,
+                            )
+                        else:
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight,
+                                shard_id,
+                                num_experts,
+                            )
+                    else:
+                        # Skip loading extra parameters for GPTQ/modelopt models.
+                        if (
+                            name_mapped.endswith(ignore_suffixes)
+                            and name_mapped not in params_dict
+                        ):
+                            continue
+                        param = params_dict[name_mapped]
+                        # We should ask the weight loader to return success or
+                        # not here since otherwise we may skip experts with
+                        # # other available replicas.
+                        weight_loader = param.weight_loader
+                        weight_loader(
+                            param,
+                            loaded_weight,
+                            name_mapped,
+                            shard_id=shard_id,
+                            expert_id=expert_id,
+                        )
+                    name = name_mapped
+                    break
+                else:
+                    if is_expert_weight:
+                        # This is an expert weight but not mapped to this rank, skip all remaining processing
+                        continue
+
+                    # Skip loading extra parameters for GPTQ/modelopt models.
+                    if name.endswith(ignore_suffixes) and name not in params_dict:
+                        continue
+
+                    if name in params_dict.keys():
+                        param = params_dict[name]
+                        weight_loader = getattr(
+                            param, "weight_loader", default_weight_loader
+                        )
+                        weight_loader(param, loaded_weight)
+                    else:
+                        logger.warning(f"Parameter {name} not found in params_dict")
+            loaded_params.add(name)
+
+        return loaded_params
+
+
+class Qwen3_5ForConditionalGeneration(Qwen3VLForConditionalGeneration):
+    def __init__(
+        self,
+        config: Qwen3_5Config,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+        language_model_cls=Qwen3_5ForCausalLM,
+    ):
+        super().__init__(config, quant_config, prefix, language_model_cls)
+
+        rope_config = getattr(self.config, "rope_parameters", None) or getattr(
+            self.config, "rope_scaling", {}
+        )
+        self.is_mrope_enabled = "mrope_section" in rope_config
+
+        self.deepstack_visual_indexes = self.visual.deepstack_visual_indexes
+
+    def get_embed_and_head(self):
+        return self.model.embed_tokens.weight, self.lm_head.weight
+
+    def set_embed_and_head(self, embed, head):
+        del self.model.embed_tokens.weight
+        del self.lm_head.weight
+        self.model.embed_tokens.weight = embed
+        self.lm_head.weight = head
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
+
+    def load_kt_lora(self, adapter_path: str) -> None:
+        self.model.load_kt_lora(adapter_path)
+
+    def get_hidden_dim(self, module_name: str, layer_idx: int):
+        return self.model.get_hidden_dim(module_name, layer_idx)
+
+    def should_apply_lora(self, module_name: str) -> bool:
+        return bool(_QWEN3_5_LORA_PATTERN.match(module_name))
+
+    def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
+        stacked_params_mapping = [
+            # (param_name, shard_name, shard_id)
+            ("qkv_proj", "q_proj", "q"),
+            ("qkv_proj", "k_proj", "k"),
+            ("qkv_proj", "v_proj", "v"),
+            ("gate_up_proj", "gate_proj", 0),
+            ("gate_up_proj", "up_proj", 1),
+        ]
+
+        loaded_params: Set[str] = set()
+        params_dict = dict(self.named_parameters(remove_duplicate=False))
+        for name, loaded_weight in weights:
+            if "rotary_emb.inv_freq" in name:
+                continue
+            if "mtp" in name:
+                continue
+            if "language_model" in name:
+                name = name.replace(r"model.language_model.", r"model.")
+            if ".self_attn." in name:
+                name = name.replace(".self_attn", "")
+
+            for param_name, weight_name, shard_id in stacked_params_mapping:
+                if weight_name not in name:
+                    continue
+
+                if "visual" in name or "mlp.experts" in name:
+                    continue
+
+                name = name.replace(weight_name, param_name)
+                # Skip loading extra bias for GPTQ models.
+                if name.endswith(".bias") and name not in params_dict:
+                    continue
+                # Skip layers on other devices.
+                # if is_pp_missing_parameter(name, self):
+                #     continue
+                if name not in params_dict:
+                    continue
+                param = params_dict[name]
+                weight_loader = getattr(param, "weight_loader")
+                weight_loader(param, loaded_weight, shard_id)
+                break
+            else:
+                if "visual" in name:
+                    # adapt to VisionAttention
+                    name = name.replace(r"attn.qkv.", r"attn.qkv_proj.")
+                    name = name.replace(r"model.visual.", r"visual.")
+
+                # print(name, loaded_weight.shape)
+                # Skip loading extra bias for GPTQ models.
+                if name.endswith(".bias") and name not in params_dict:
+                    continue
+                if name not in params_dict:
+                    logger.warning(f"Parameter {name} not found in params_dict")
+                    continue
+                param = params_dict[name]
+
+                weight_loader = getattr(param, "weight_loader", default_weight_loader)
+                weight_loader(param, loaded_weight)
+            loaded_params.add(name)
+        return loaded_params
+
+
+class Qwen3_5MoeForConditionalGeneration(Qwen3VLForConditionalGeneration):
+    """Qwen3.5 MoE Vision-Language Model."""
+
+    def __init__(
+        self,
+        config: Qwen3_5MoeConfig,
+        quant_config: Optional[QuantizationConfig] = None,
+        prefix: str = "",
+        language_model_cls=Qwen3_5MoeForCausalLM,
+    ) -> None:
+        super().__init__(config, quant_config, prefix, language_model_cls)
+        rope_config = getattr(self.config, "rope_parameters", None) or getattr(
+            self.config, "rope_scaling", {}
+        )
+        self.is_mrope_enabled = "mrope_section" in rope_config
+
+        self.deepstack_visual_indexes = self.visual.deepstack_visual_indexes
+
+    @classmethod
+    def get_model_config_for_expert_location(cls, config):
+        return ModelConfigForExpertLocation(
+            num_layers=config.text_config.num_hidden_layers,
+            num_logical_experts=config.text_config.num_experts,
+            num_groups=None,
+        )
+
+    def get_embed_and_head(self):
+        return self.model.embed_tokens.weight, self.lm_head.weight
+
+    def set_embed_and_head(self, embed, head):
+        del self.model.embed_tokens.weight
+        del self.lm_head.weight
+        self.model.embed_tokens.weight = embed
+        self.lm_head.weight = head
+        torch.cuda.empty_cache()
+        torch.cuda.synchronize()
+
+    def load_kt_lora(self, adapter_path: str) -> None:
+        self.model.load_kt_lora(adapter_path)
+
+    def get_hidden_dim(self, module_name: str, layer_idx: int):
+        return self.model.get_hidden_dim(module_name, layer_idx)
+
+    def should_apply_lora(self, module_name: str) -> bool:
+        return bool(_QWEN3_5_LORA_PATTERN.match(module_name))
+
+    def load_weights(self, weights: Iterable[Tuple[str, torch.Tensor]]):
+        stacked_params_mapping = [
+            # (param_name, shard_name, shard_id)
+            ("qkv_proj", "q_proj", "q"),
+            ("qkv_proj", "k_proj", "k"),
+            ("qkv_proj", "v_proj", "v"),
+            ("gate_up_proj", "gate_proj", 0),
+            ("gate_up_proj", "up_proj", 1),
+        ]
+
+        # Params for weights, fp8 weight scales, fp8 activation scales
+        # (param_name, weight_name, expert_id, shard_id)
+        expert_params_mapping = FusedMoE.make_expert_params_mapping(
+            ckpt_gate_proj_name="gate_proj",
+            ckpt_down_proj_name="down_proj",
+            ckpt_up_proj_name="up_proj",
+            num_experts=self.config.num_experts,
+        )
+
+        # Skip loading extra parameters for GPTQ/modelopt models.
+        ignore_suffixes = (
+            ".bias",
+            "_bias",
+            ".k_scale",
+            "_k_scale",
+            ".v_scale",
+            "_v_scale",
+            "_weight_scale",
+            "_input_scale",
+        )
+
+        is_fused_expert = False
+        fused_expert_params_mapping = [
+            ("experts.w13_weight", "experts.gate_up_proj", 0, "w1"),
+            ("experts.w2_weight", "experts.down_proj", 0, "w2"),
+        ]
+
+        num_experts = self.config.num_experts
+
+        def load_fused_expert_weights(
+            name: str,
+            params_dict: dict,
+            loaded_weight: torch.Tensor,
+            shard_id: str,
+            num_experts: int,
+        ):
+            param = params_dict[name]
+            weight_loader = param.weight_loader
+            # let ep moe layer to gracefully handle expert_ids that do not belong to local moe rank
+            for expert_id in range(num_experts):
+                curr_expert_weight = loaded_weight[expert_id]
+                weight_loader(
+                    param,
+                    curr_expert_weight,
+                    name,
+                    shard_id,
+                    expert_id,
+                )
+            return True
+
+        loaded_params: Set[str] = set()
+        params_dict = dict(self.named_parameters(remove_duplicate=False))
+
+        for name, loaded_weight in weights:
+            if "rotary_emb.inv_freq" in name:
+                continue
+            if "mtp" in name:
+                continue
+            if "language_model" in name:
+                name = name.replace(r"model.language_model.", r"model.")
+            if ".self_attn." in name:
+                name = name.replace(".self_attn", "")
+
+            for param_name, weight_name, shard_id in stacked_params_mapping:
+                if name.endswith("experts.gate_up_proj") or name.endswith(
+                    "experts.down_proj"
+                ):
+                    is_fused_expert = True
+                    expert_params_mapping = fused_expert_params_mapping
+
+                # Skip non-stacked layers and experts (experts handled below).
+                if weight_name not in name:
+                    continue
+                if "visual" in name:
+                    continue
+
+                # We have mlp.experts[0].gate_proj in the checkpoint.
+                # Since we handle the experts below in expert_params_mapping,
+                # we need to skip here BEFORE we update the name, otherwise
+                # name will be updated to mlp.experts[0].gate_up_proj, which
+                # will then be updated below in expert_params_mapping
+                # for mlp.experts[0].gate_gate_up_proj, which breaks load.
+                if "mlp.experts" in name:
+                    continue
+                name = name.replace(weight_name, param_name)
+                # Skip loading extra parameters for GPTQ/modelopt models.
+                if name.endswith(ignore_suffixes) and name not in params_dict:
+                    continue
+
+                if name not in params_dict:
+                    continue
+
+                param = params_dict[name]
+                weight_loader = param.weight_loader
+                weight_loader(param, loaded_weight, shard_id)
+                break
+            else:
+                # Track if this is an expert weight to enable early skipping
+                is_expert_weight = False
+
+                for mapping in expert_params_mapping:
+                    param_name, weight_name, expert_id, shard_id = mapping
+                    if weight_name not in name:
+                        continue
+                    if "visual" in name or self.config.encoder_only:
+                        continue
+                    # Anyway, this is an expert weight and should not be
+                    # attempted to load as other weights later
+                    is_expert_weight = True
+                    name_mapped = name.replace(weight_name, param_name)
+                    if is_fused_expert:
+                        if "experts.gate_up_proj" in name:
+                            loaded_weight = loaded_weight.chunk(2, dim=-2)
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight[0],
+                                "w1",
+                                num_experts,
+                            )
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight[1],
+                                "w3",
+                                num_experts,
+                            )
+                        else:
+                            load_fused_expert_weights(
+                                name_mapped,
+                                params_dict,
+                                loaded_weight,
+                                shard_id,
+                                num_experts,
+                            )
+                    else:
+                        # Skip loading extra parameters for GPTQ models.
+                        if (
+                            name_mapped.endswith(ignore_suffixes)
+                            and name_mapped not in params_dict
+                        ):
+                            continue
+                        param = params_dict[name_mapped]
+                        # We should ask the weight loader to return success or
+                        # not here since otherwise we may skip experts with
+                        # # other available replicas.
+                        weight_loader = param.weight_loader
+                        weight_loader(
+                            param,
+                            loaded_weight,
+                            name_mapped,
+                            shard_id=shard_id,
+                            expert_id=expert_id,
+                        )
+                    name = name_mapped
+                    break
+                else:
+                    if is_expert_weight:
+                        # This is an expert weight but not mapped to this rank, skip all remaining processing
+                        continue
+
+                    if "visual" in name:
+                        # adapt to VisionAttention
+                        name = name.replace(r"attn.qkv.", r"attn.qkv_proj.")
+                        name = name.replace(r"model.visual.", r"visual.")
+
+                    # Skip loading extra parameters for GPTQ/modelopt models.
+                    if name.endswith(ignore_suffixes) and name not in params_dict:
+                        continue
+
+                    if name in params_dict.keys():
+                        param = params_dict[name]
+                        weight_loader = getattr(
+                            param, "weight_loader", default_weight_loader
+                        )
+                        weight_loader(param, loaded_weight)
+                    else:
+                        logger.warning(f"Parameter {name} not found in params_dict")
+            loaded_params.add(name)
+
+        return loaded_params
+
+    @classmethod
+    def get_model_config_for_expert_location(cls, config):
+        text_config = getattr(config, "text_config", config)
+        return ModelConfigForExpertLocation(
+            num_layers=text_config.num_hidden_layers,
+            num_logical_experts=text_config.num_experts,
+            num_groups=None,
+        )
+
+
+EntryClass = [Qwen3_5MoeForConditionalGeneration, Qwen3_5ForConditionalGeneration]

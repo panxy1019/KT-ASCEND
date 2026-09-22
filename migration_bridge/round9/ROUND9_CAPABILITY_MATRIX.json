@@ -1,0 +1,248 @@
+{
+  "schema": 1,
+  "generated_utc": "2026-09-21T11:24:10.925989+00:00",
+  "project": "KT-ASCEND Round9",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "branch": "codex/round9-heterogeneous-working-set",
+  "implementation_commit": "53902048d35ad4cc6e7fda2ef41706552a03bb88",
+  "implementation_source_tree": {
+    "file_count": 195,
+    "sha256": "4b4b028bbd44cd06fb24b7428d9f0c448da9d863ecc5988910e29b70de2586b9"
+  },
+  "framework_complete": true,
+  "framework_definition": "IMPLEMENTED_PLUS_LOCAL_GATES_PLUS_BOUNDED_DEVICE_OR_FULL_MODEL_SMOKE_WHERE_APPLICABLE",
+  "product_quality": "PENDING",
+  "performance": "PENDING",
+  "real_long_context": "PENDING",
+  "deployment": "PENDING",
+  "native_fp8_qsa": "UNSUPPORTED_BY_DEMONSTRATED_BACKEND",
+  "integrated_hicache": "NOT_IMPLEMENTED",
+  "streaming_midprefill_http_interrupt": "NOT_QUALIFIED",
+  "cpu_validation": {
+    "snapshot": "20260921-framework-cpu-v16",
+    "tests_passed": 331,
+    "test_exit_code": 0,
+    "installer_exit_code": 0
+  },
+  "resource_scope": {
+    "host": "110.123.0.3",
+    "physical_device": 15,
+    "mode": "exclusive",
+    "cpu_workers": 128,
+    "numa_nodes": [
+      2,
+      3,
+      6,
+      7
+    ],
+    "mxfp4_startup_floor_gib_per_node": 48,
+    "bf16_q8_startup_floor_gib_per_node": 80,
+    "runtime_floor_gib_per_node": 8
+  },
+  "capabilities": [
+    {
+      "phase": "F0",
+      "capability": "BASELINE_IDENTITY_FREEZE",
+      "status": "FROZEN",
+      "evidence": [
+        {
+          "path": "FRAMEWORK_BASELINE_MANIFEST.json",
+          "sha256": "6dc76288c0ef28a1bb319147e442d125aca6d5d94e6cc678974345be4eddb07a",
+          "status": "FROZEN"
+        }
+      ]
+    },
+    {
+      "phase": "F1",
+      "capability": "QWEN38_STATIC_FREQUENCY_Q64_Q32",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v27/framework-summary.json",
+          "sha256": "feef9df78d9fb62e683de505cc6fc7b1344f0f0dd0ee05690dae15eb2a5c96c6",
+          "status": "PASS_CLEAN_RESTART"
+        }
+      ]
+    },
+    {
+      "phase": "F2",
+      "capability": "LAYERWISE_EXPERT_TRANSPORT",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v34/framework-driver-result.json",
+          "sha256": "44c5552ba67e957a92fc06dfdb06012e7bd6ea8e2873ee3ecbadb7a32da1d3dd",
+          "status": "PASS_PREFILL_END_FULL_MODEL_SMOKE"
+        }
+      ]
+    },
+    {
+      "phase": "F3",
+      "capability": "COMPLETE_PREFILL_ROUTE_TELEMETRY",
+      "status": "FULL_MODEL_SMOKE_PRODUCER",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v34/layerwise-events.jsonl",
+          "sha256": "8e542903839f940a426ffb3625a7a7a2ac3b7ffed2791a983bd0898ba4c6d813",
+          "status": "COMPLETE_48_LAYER_ROUTE_STATS"
+        }
+      ]
+    },
+    {
+      "phase": "F4",
+      "capability": "PREFILL_END_DYNAMIC",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v34/dynamic-events.jsonl",
+          "sha256": "b749df27329aebf486785867afab8ddcfa8b76d58eeabf24ef531131c383d9d4",
+          "status": "COMMIT_AND_FINAL_DRAIN"
+        }
+      ]
+    },
+    {
+      "phase": "F5",
+      "capability": "PLE_ASYNC_EXACT_INPUT",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v35/framework-driver-result.json",
+          "sha256": "934c2b2621a73f107681a2fe18f4f0e42bf7de6b46dfdfc3bf693e5805cf8122",
+          "status": "PASS_PLE_ASYNC_FULL_MODEL_SMOKE"
+        },
+        {
+          "path": "evidence/physical15/20260920-full-model-v36/framework-driver-result.json",
+          "sha256": "97fe3129ea8eebf385974d08c84f32d55a8c15857abc8ffa181763b40f4f2d99",
+          "status": "PASS_PLE_FEATURE_OFF_REGRESSION"
+        }
+      ]
+    },
+    {
+      "phase": "F6",
+      "capability": "JOINT_HOST_WORK_BUDGET",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v39/framework-driver-result.json",
+          "sha256": "e92f4d69d899c6d19c2f3c914ad96f9d8f3482af75b8d6da331ee978308ada1f",
+          "status": "PASS_JOINT_BUDGET_FULL_MODEL_SMOKE"
+        }
+      ]
+    },
+    {
+      "phase": "F7",
+      "capability": "Q32_PHYSICAL_RESIDENT_CAPACITY",
+      "status": "FULL_MODEL_SMOKE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v30/framework-summary.json",
+          "sha256": "5605b9863532ccc79c4f94cbe2a5f62168b946127c7b8520530142074728fe9a",
+          "status": "PASS_Q32_REQUEST_DYNAMIC"
+        }
+      ]
+    },
+    {
+      "phase": "F8",
+      "capability": "QSA_CONTEXT_PLUMBING",
+      "status": "4K_FULL_MODEL_SMOKE_LARGER_BOUNDARIES_LOCAL",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v41/context-pools.json",
+          "sha256": "7fc5608b7ab1ec4080ea20d71cf93467c6b355a705936dcbd12c11eb67f23c3f",
+          "status": "PASS_ACTUAL_CONTEXT_POOL_GEOMETRY"
+        }
+      ]
+    },
+    {
+      "phase": "F9",
+      "capability": "FP8_HOST_REFERENCE_BF16_QSA_STAGING",
+      "status": "FULL_MODEL_SMOKE_NATIVE_UNSUPPORTED",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v41/framework-driver-result.json",
+          "sha256": "8db1a55a0df2d56678716331ff0f76ea981fa8cade4dc6b8abfbd7fb61d6ff3c",
+          "status": "PASS_FP8_HOST_REFERENCE_FULL_MODEL_SMOKE"
+        }
+      ]
+    },
+    {
+      "phase": "F10",
+      "capability": "REQUEST_LOCAL_HOST_CONTEXT_TIER",
+      "status": "DEVICE_COMPONENT_QUALIFIED_ALLOCATOR_NOT_INTEGRATED",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260921-context-tier-v2/result.json",
+          "sha256": "e00942896f2e9abaa8ea393967cb029ea953cfedb801aae7ebad568047adaf6a",
+          "status": "PASS_CONTEXT_TIER_NPU_BYTE_IDENTITY"
+        }
+      ]
+    },
+    {
+      "phase": "F11",
+      "capability": "THREE_PLANE_STREAMING_PREFILL",
+      "status": "FULL_MODEL_SMOKE_WITH_MIDPREFILL_HTTP_ABORT_LIMITATION",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v43/streaming-gate-summary.json",
+          "sha256": "aa17c56314d1b7f0d5881db955dc922b9c6c9bee0e9b57117e961ed58295f427",
+          "status": "PASS_MULTICHUNK_PROGRESS_WITH_ABORT_LIMITATION"
+        },
+        {
+          "path": "evidence/physical15/20260920-full-model-v44/streaming-gate-summary.json",
+          "sha256": "6651990fc1c339ed5afe9e630fb0e20261eb9a2c8928670cbe0050795e1b83fa",
+          "status": "PASS_STREAMING_CLEAN_RESTART_TWOCHUNK_ABORT_REUSE"
+        }
+      ]
+    },
+    {
+      "phase": "F12",
+      "capability": "BOUNDED_FEATURE_INTERACTION_MATRIX",
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260920-full-model-v45/interaction-summary.json",
+          "sha256": "105df16ded12d7145536d97b95c55c802813304b27156be4998b685664aaaa31",
+          "status": "PASS_PREFILL_END_LAYERWISE_PLE_ASYNC_INTERACTION"
+        },
+        {
+          "path": "60_FEATURE_INTERACTION_MATRIX.md",
+          "sha256": "a1a068b3aa0414219a9cbc2411b0855c79e0d8848315f345d3b1bc72c73cf4ce",
+          "status": "BOUNDED_MATRIX"
+        }
+      ]
+    },
+    {
+      "phase": "F13",
+      "capability": "FRAMEWORK_FREEZE",
+      "status": "COMPLETE",
+      "evidence": [
+        {
+          "path": "evidence/physical15/20260921-framework-cpu-v16/tests.log",
+          "sha256": "992ea14ab8a3c853a0fcc71bdd313f8561f827a9e53cc00b1ba73fff32a0be40",
+          "status": "331_TESTS_PASS"
+        },
+        {
+          "path": "evidence/physical15/20260921-framework-cpu-v16/installer.log",
+          "sha256": "312c687537608e8233fd29689ee2023d40b372dca30adecbd346c5fb4402445a",
+          "status": "FRESH_OVERLAY_INSTALL_PASS"
+        }
+      ]
+    }
+  ],
+  "interaction_final": {
+    "path": "evidence/physical15/20260920-full-model-v45/interaction-summary.json",
+    "sha256": "105df16ded12d7145536d97b95c55c802813304b27156be4998b685664aaaa31",
+    "status": "PASS"
+  },
+  "deferred": [
+    "CMMLU256",
+    "formal_ABBA",
+    "formal_performance_matrix",
+    "real_64k_128k_generation",
+    "deployment_soak",
+    "multi_NPU",
+    "MTP",
+    "graph",
+    "multimodal"
+  ]
+}

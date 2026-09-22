@@ -1,0 +1,140 @@
+{
+  "started_unix": 1789564130.0450532,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-four-R32-failure-replay-v1/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-four-R32-failure-replay-v1",
+    "/workspace/results/r65-profiles-v1/four-R32.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        25430,
+        15
+      ],
+      [
+        25431,
+        15
+      ],
+      [
+        25432,
+        15
+      ],
+      [
+        25433,
+        15
+      ],
+      [
+        25434,
+        15
+      ],
+      [
+        25435,
+        15
+      ],
+      [
+        25436,
+        15
+      ],
+      [
+        25437,
+        15
+      ],
+      [
+        25438,
+        15
+      ],
+      [
+        25439,
+        256
+      ],
+      [
+        25440,
+        256
+      ],
+      [
+        25441,
+        256
+      ],
+      [
+        25442,
+        256
+      ],
+      [
+        25443,
+        256
+      ],
+      [
+        25444,
+        256
+      ],
+      [
+        25445,
+        256
+      ],
+      [
+        25446,
+        256
+      ],
+      [
+        25180,
+        9
+      ],
+      [
+        25181,
+        15
+      ],
+      [
+        25182,
+        15
+      ],
+      [
+        25347,
+        15
+      ],
+      [
+        25429,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-four-R32-failure-replay-v1",
+      "/workspace/results/r65-profiles-v1/four-R32.json",
+      "32"
+    ],
+    "started_unix": 1789564130.123097,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 25009,
+    "pgid": 25009,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789564406.483409,
+    "success": false
+  },
+  "ended_unix": 1789564406.5285897
+}

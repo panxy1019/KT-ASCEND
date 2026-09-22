@@ -1,0 +1,144 @@
+{
+  "started_unix": 1789570198.5432465,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-5a-causal-v1/npu_for_cpu/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-5a-causal-v1/npu_for_cpu",
+    "/workspace/results/r65-profiles-v1/four-R32.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        7085,
+        15
+      ],
+      [
+        7086,
+        15
+      ],
+      [
+        7087,
+        15
+      ],
+      [
+        7088,
+        15
+      ],
+      [
+        7089,
+        15
+      ],
+      [
+        7090,
+        15
+      ],
+      [
+        7091,
+        15
+      ],
+      [
+        7092,
+        15
+      ],
+      [
+        7093,
+        15
+      ],
+      [
+        7101,
+        256
+      ],
+      [
+        7102,
+        256
+      ],
+      [
+        7103,
+        256
+      ],
+      [
+        7104,
+        256
+      ],
+      [
+        7105,
+        256
+      ],
+      [
+        7106,
+        256
+      ],
+      [
+        7107,
+        256
+      ],
+      [
+        7108,
+        256
+      ],
+      [
+        6810,
+        9
+      ],
+      [
+        6811,
+        9
+      ],
+      [
+        6812,
+        15
+      ],
+      [
+        7008,
+        15
+      ],
+      [
+        7084,
+        15
+      ],
+      [
+        7870,
+        9
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65a-tools/migration_bridge/round6_5a/tools/launch_diagnostic.sh",
+      "/workspace/results/r65-5a-causal-v1/npu_for_cpu",
+      "/workspace/results/r65-profiles-v1/four-R32.json",
+      "32"
+    ],
+    "started_unix": 1789570198.6202006,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 6631,
+    "pgid": 6631,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789570381.7567945,
+    "success": false
+  },
+  "ended_unix": 1789570381.820532
+}

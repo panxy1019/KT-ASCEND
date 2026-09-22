@@ -1,0 +1,45 @@
+{
+  "Id": "cc8e5aa24fe1c7976cd7e15c441bf9a2f67452cd6cbc89bdf4a20c6c79ab855c",
+  "State": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-20T09:26:56.85353438Z",
+    "FinishedAt": "2026-09-20T09:27:16.907542214Z"
+  },
+  "HostConfig": {
+    "Devices": [
+      {
+        "PathOnHost": "/dev/davinci15",
+        "PathInContainer": "/dev/davinci15",
+        "CgroupPermissions": "rwm"
+      },
+      {
+        "PathOnHost": "/dev/davinci_manager",
+        "PathInContainer": "/dev/davinci_manager",
+        "CgroupPermissions": "rwm"
+      },
+      {
+        "PathOnHost": "/dev/devmm_svm",
+        "PathInContainer": "/dev/devmm_svm",
+        "CgroupPermissions": "rwm"
+      },
+      {
+        "PathOnHost": "/dev/hisi_hdc",
+        "PathInContainer": "/dev/hisi_hdc",
+        "CgroupPermissions": "rwm"
+      }
+    ],
+    "Memory": 4294967296,
+    "MemorySwap": 4294967296,
+    "NanoCpus": 2000000000,
+    "Privileged": false,
+    "NetworkMode": "none"
+  }
+}

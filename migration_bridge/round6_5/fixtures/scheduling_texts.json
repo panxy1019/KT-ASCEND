@@ -1,0 +1,57 @@
+{
+  "version": "r65-scheduling-texts-v1",
+  "purpose": "DEV fits per-layer count; HOLDOUT evaluates one frozen frequency policy; no quality fitting",
+  "token_budget": 64,
+  "dev": {
+    "english": [
+      "Explain how the counterweight helps a traditional elevator operate.",
+      "Describe the difference between a glacier and seasonal snow cover.",
+      "Why can a sealed glass jar become harder to open after cooling?",
+      "Explain what information a lighthouse conveys to nearby ships."
+    ],
+    "chinese": [
+      "说明陶瓷杯和不锈钢杯在保温方面有哪些影响因素。",
+      "为什么山区的铁路经常采用盘山线路或隧道？",
+      "请解释档案馆控制室内湿度的主要原因。",
+      "简述古代水车如何把流水运动转化为机械运动。"
+    ],
+    "numeric": [
+      "A warehouse packs 23 boxes with 14 bolts each. How many bolts are packed? Show the calculation.",
+      "A bicycle travels 18 km in 45 minutes. Calculate its average speed in km per hour.",
+      "A tank contains 84 litres and loses 7 litres each minute. When will it be empty? Explain.",
+      "Find the perimeter of a rectangle whose sides measure 19 cm and 8 cm."
+    ],
+    "structured": [
+      "Return a JSON object describing a fictional library, with name, floors, and weekend_open fields.",
+      "Write a JSON array of three maintenance tasks, each with an id, description, and priority.",
+      "Convert this record into JSON: item=compass, quantity=7, fragile=false.",
+      "Provide a JSON object with three example weather stations and their integer altitude_m values."
+    ]
+  },
+  "holdout": {
+    "english": [
+      "Explain why some bridges have expansion joints between sections.",
+      "How does a pressure cooker change the boiling conditions for food?",
+      "Describe how a sundial indicates time and one limitation of the method.",
+      "Why is ventilation important in an underground storage room?"
+    ],
+    "chinese": [
+      "请解释城市人行道为什么有时铺设透水砖。",
+      "简述图书修复中为什么需要选择合适的粘合剂。",
+      "说明海港防波堤的作用以及它不能完全阻止的现象。",
+      "为什么精密测量仪器通常需要定期校准？"
+    ],
+    "numeric": [
+      "There are 17 rows of chairs with 13 chairs in each row. Calculate the seating capacity.",
+      "A train covers 156 km in 2 hours and 36 minutes. Find the average speed.",
+      "A shop reduces a 240-unit price by 15 percent. Compute the new price.",
+      "A rectangular garden is 27 m long and 11 m wide. Calculate its area and perimeter."
+    ],
+    "structured": [
+      "Create a JSON object describing a fictional museum ticket, including ticket_id, price, and student_discount.",
+      "Return three example inventory entries as JSON, each containing sku, count, and location.",
+      "Convert this record into JSON: device=barometer, serial=903, calibrated=true.",
+      "Write a JSON object containing a workshop date string and a list of three required hand tools."
+    ]
+  }
+}

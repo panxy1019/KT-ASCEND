@@ -1,0 +1,25 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "bash",
+    "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+    "D1",
+    "/workspace/results/r64-tokenizer-serving-v1/D1-compat1",
+    "31000"
+  ],
+  "started_unix": 1789526609.5352983,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 395146,
+  "pgid": 395146,
+  "reason": "CANCELLED",
+  "matched_error": null,
+  "returncode": -9,
+  "ended_unix": 1789526720.6522532,
+  "success": false
+}

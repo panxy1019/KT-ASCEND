@@ -1,0 +1,63 @@
+{
+  "status": "DIAGNOSTIC_WINDOW_ONLY",
+  "samples": 72,
+  "errors": 0,
+  "start": 1789563128.1826503,
+  "end": 1789563993.033737,
+  "caveats": [
+    "RSS sums double-count shared mappings",
+    "NPU process accounting is not allocator tensor bytes",
+    "No throughput or bandwidth saturation conclusion",
+    "Sampled peak is a lower bound on true peak"
+  ],
+  "summary": {
+    "rss_sum_bytes": {
+      "min": 62173184,
+      "max": 36562042880,
+      "first": 904781824,
+      "last": 940511232
+    },
+    "pss_sum_bytes": {
+      "min": 42763264,
+      "max": 32433692672,
+      "first": 871057408,
+      "last": 920004608
+    },
+    "anon_sum_bytes": {
+      "min": 32960512,
+      "max": 29334999040,
+      "first": 538509312,
+      "last": 582914048
+    },
+    "file_sum_bytes": {
+      "min": 29212672,
+      "max": 9534783488,
+      "first": 366272512,
+      "last": 357597184
+    },
+    "swap_sum_bytes": {
+      "min": 0,
+      "max": 0,
+      "first": 0,
+      "last": 0
+    },
+    "cgroup_current_bytes": {
+      "min": 61709770752,
+      "max": 90998427648,
+      "first": 62216667136,
+      "last": 62707961856
+    },
+    "host_available_bytes": {
+      "min": 1028878299136,
+      "max": 1059041411072,
+      "first": 1058393055232,
+      "last": 1058352115712
+    },
+    "npu_owned_process_mib": {
+      "min": 0,
+      "max": 28948,
+      "first": 0,
+      "last": 0
+    }
+  }
+}

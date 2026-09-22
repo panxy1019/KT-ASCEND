@@ -1,0 +1,40 @@
+test_bad_telemetry_and_stale_or_future_timestamp (test_admission.AdmissionTests) ... ok
+test_does_not_modify_input (test_admission.AdmissionTests) ... ok
+test_identity_and_prerequisites (test_admission.AdmissionTests) ... ok
+test_missing_fields_fail_closed (test_admission.AdmissionTests) ... ok
+test_overcommitted_hbm (test_admission.AdmissionTests) ... ok
+test_rejects_wrong_or_additional_device (test_admission.AdmissionTests) ... ok
+test_smt_siblings_and_forged_physical_keys (test_admission.AdmissionTests) ... ok
+test_valid_bounded_probe (test_admission.AdmissionTests) ... ok
+test_exact_range_after_redirect (test_curl_pilot.RangeTest) ... ok
+test_reject_wrong_or_ignored_range (test_curl_pilot.RangeTest) ... ok
+test_endpoint_override_preserves_proxy_and_rejects_unapproved_host (test_download_command.DownloadCommandTest) ... ok
+test_finished_child_does_not_wait_for_resource_poll_interval (test_download_command.DownloadCommandTest) ... ok
+test_serial_transport_keeps_revision_allowlist_and_cache (test_download_command.DownloadCommandTest) ... ok
+test_content_not_just_size (test_download_verify.VerifyTests) ... ok
+test_git_blob_and_missing (test_download_verify.VerifyTests) ... ok
+test_path_escape_rejected (test_download_verify.VerifyTests) ... ok
+test_tensor_census_checks_index_and_offsets (test_download_verify.VerifyTests) ... ok
+test_verifier_exists (test_download_verify.VerifyTests) ... ok
+test_four_shards_run_concurrently_without_reordering (test_multishard_benchmark.MultiShardTest) ... ok
+test_serial_baseline_retains_all_shards (test_multishard_benchmark.MultiShardTest) ... ok
+test_eight_shard_wave_preserves_success_and_isolates_transport_failure (test_range_recovery.RecoveryTest) ... ok
+test_integrity_failure_is_not_transport_retry (test_range_recovery.RecoveryTest) ... ok
+test_only_validated_range_is_appended (test_range_recovery.RecoveryTest) ... ok
+test_publication_requires_sha_and_never_overwrites (test_range_recovery.RecoveryTest) ... ok
+test_range_uses_approved_endpoint_and_frozen_revision (test_range_recovery.RecoveryTest) ... ok
+test_slow_progressing_range_gets_time_to_finish (test_range_recovery.RecoveryTest) ... ok
+test_tiny_tail_allows_redirect_but_validates_exact_body (test_range_recovery.RecoveryTest) ... ok
+test_two_connections_overlap_but_results_stay_ordered (test_range_recovery.RecoveryTest) ... ok
+test_exact_categories_and_ple_layer_offset (test_semantic_census.SemanticCensusTests) ... ok
+test_missing_expert_fails (test_semantic_census.SemanticCensusTests) ... ok
+test_no_input_mutation (test_semantic_census.SemanticCensusTests) ... ok
+test_noncanonical_alias_cannot_duplicate_logical_tensor (test_semantic_census.SemanticCensusTests) ... ok
+test_payload_census_mismatch (test_semantic_census.SemanticCensusTests) ... ok
+test_ple_wrong_layer_missing_shard_and_width (test_semantic_census.SemanticCensusTests) ... ok
+test_wrong_axis_or_dtype_fails (test_semantic_census.SemanticCensusTests) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.210s
+
+OK

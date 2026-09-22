@@ -13,12 +13,129 @@ import torch
 from typing import Dict, List, Optional, Tuple
 from abc import ABC, abstractmethod
 import ctypes
+import json
 import logging
 import os
+import threading
+import time
+from pathlib import Path
 
 from kt_kernel import kt_kernel_ext
 
 logger = logging.getLogger(__name__)
+
+_deferred_trace_lock = threading.Lock()
+_deferred_trace_count = 0
+_round6_1_capture_lock = threading.Lock()
+_round6_1_capture_counts: Dict[Tuple[int, str], int] = {}
+
+
+def _round6_1_capture_tensor(stage: str, layer_idx: int, tensor: torch.Tensor) -> None:
+    """Persist an opt-in diagnostic tensor without changing production flow."""
+    if os.getenv("KT_R62_COMPLETE_FORWARD_DUMP") == "1":
+        from sglang.srt.debug_utils.tensor_dump_forward_hook import record_round62_stage
+        record_round62_stage("cpu", layer_idx, stage, tensor)
+    root = os.environ.get("KT_R61_STAGEWISE_DIR")
+    if not root:
+        return
+    requested = {
+        int(value)
+        for value in os.environ.get("KT_R61_STAGEWISE_LAYERS", "7,8").split(",")
+        if value.strip()
+    }
+    if layer_idx not in requested:
+        return
+    target = Path(root)
+    target.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "stage": stage,
+        "layer": int(layer_idx),
+        "source_device": str(tensor.device),
+        "source_dtype": str(tensor.dtype),
+        "tensor": tensor.detach().to(device="cpu").contiguous(),
+    }
+    key = (int(layer_idx), stage)
+    with _round6_1_capture_lock:
+        call_index = _round6_1_capture_counts.get(key, 0) + 1
+        _round6_1_capture_counts[key] = call_index
+    torch.save(
+        payload,
+        target / f"cpu_layer{layer_idx:02d}_{stage}_call{call_index:04d}.pt",
+    )
+
+
+def _round6_1_explicit_replay_enabled() -> bool:
+    return os.environ.get("KT_R61_EXPLICIT_REPLAY") == "1"
+
+
+def _trace_deferred_event(event: str, **payload) -> None:
+    """Append one opt-in JSONL record for Deferred Expert qualification.
+
+    The trace is disabled unless ``KT_DEBUG_DEFERRED_TRACE_FILE`` is set.  It
+    intentionally records only routing/scheduling metadata; tensor contents
+    and the execution path are unchanged.  A finite default limit prevents a
+    long serving run from growing the diagnostic artifact without bound.
+    """
+    if os.getenv("KT_R62_COMPLETE_FORWARD_DUMP") == "1":
+        from sglang.srt.debug_utils.tensor_dump_forward_hook import record_round62_event
+        record_round62_event(event, payload)
+    path = os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE")
+    if not path:
+        return
+
+    global _deferred_trace_count
+    limit = int(os.environ.get("KT_DEBUG_DEFERRED_TRACE_LIMIT", "20000"))
+    with _deferred_trace_lock:
+        if _deferred_trace_count >= limit:
+            return
+        record = {
+            "event": event,
+            "trace_sequence": _deferred_trace_count + 1,
+            "monotonic_ns": time.monotonic_ns(),
+            **payload,
+        }
+        with open(path, "a", encoding="utf-8") as trace_file:
+            trace_file.write(json.dumps(record, sort_keys=True) + "\n")
+        _deferred_trace_count += 1
+
+
+def _summarize_cpu_routes(
+    route_ids_cpu: Optional[torch.Tensor],
+    gpu_experts_mask: torch.Tensor,
+) -> Tuple[int, int, List[int]]:
+    """Return valid-route count, CPU-route count, and CPU expert IDs."""
+    if route_ids_cpu is None:
+        return 0, 0, []
+    valid_ids = route_ids_cpu[route_ids_cpu >= 0].to(torch.long)
+    if valid_ids.numel() == 0:
+        return 0, 0, []
+    cpu_ids = valid_ids[~gpu_experts_mask[valid_ids]]
+    unique_cpu_ids = sorted(int(expert_id) for expert_id in cpu_ids.unique().tolist())
+    return int(valid_ids.numel()), int(cpu_ids.numel()), unique_cpu_ids
+
+
+def _trace_last_row_cpu_routes(
+    route_ids_cpu: torch.Tensor,
+    route_weights_cpu: torch.Tensor,
+    gpu_experts_mask: torch.Tensor,
+) -> Tuple[List[int], List[float]]:
+    """Read target-row CPU IDs and weights only for opt-in numerical traces."""
+    ids = route_ids_cpu[-1].flatten().to(torch.long)
+    weights = route_weights_cpu[-1].flatten()
+    selected = (ids >= 0) & ~gpu_experts_mask[ids.clamp_min(0)]
+    return (
+        [int(value) for value in ids[selected].tolist()],
+        [float(value) for value in weights[selected].tolist()],
+    )
+
+
+def _has_cpu_routes(
+    route_ids_cpu: torch.Tensor,
+    gpu_experts_mask: torch.Tensor,
+) -> bool:
+    """Return whether the route set contains executable CPU-owned work."""
+    valid_ids = route_ids_cpu[route_ids_cpu >= 0].to(torch.long)
+    return bool(valid_ids.numel() and (~gpu_experts_mask[valid_ids]).any().item())
 
 # -----------------------------------------------------------------------------
 # NPU stream-callback bypass.
@@ -389,6 +506,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
     """
 
     _layer_has_pending_deferred: Dict[int, bool] = {}
+    _round6_1_explicit_pending: Dict[int, torch.Tensor] = {}
 
     def __init__(
         self,
@@ -437,6 +555,7 @@ class BaseMoEWrapper(_MoEBase, ABC):
         self.hidden_size = hidden_size
         self.moe_intermediate_size = moe_intermediate_size
         self.output_dtype: Optional[torch.dtype] = None
+        self._round6_1_explicit_output: Optional[torch.Tensor] = None
 
         # Process gpu_experts_mask: convert to bool tensor on CPU, pinned memory for async copy
         # This mask is shared between C and Python (C uses uint8_t*), both can read/write it
@@ -532,6 +651,16 @@ class BaseMoEWrapper(_MoEBase, ABC):
         deferred_ids = expert_ids.clone().masked_fill(protected_mask, -1)
 
         return immediate_ids, deferred_ids
+
+    def _clear_consumed_previous_pending(self, incremental: bool) -> None:
+        """Clear the producer flag after its incremental consumer is queued."""
+        if incremental:
+            BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx - 1] = False
+            _trace_deferred_event(
+                "previous_pending_consumed",
+                producer_layer=self.layer_idx - 1,
+                consumer_layer=self.layer_idx,
+            )
 
     def _check_qlen_fits_cpp_buffers(self, hidden_states: torch.Tensor) -> None:
         """Fail loudly when qlen would overrun the C++ MoE output buffer.
@@ -664,9 +793,11 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 kt_kernel_ext.subscribe_ascend_stream(int(cuda_stream))
             self.cpu_infer.submit(immediate_task)
 
+        self._clear_consumed_previous_pending(incremental)
+
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        has_deferred = (
-            self.max_deferred_experts_per_token > 0 and (deferred_experts_ids_cpu[current_slot] >= 0).any().item()
+        has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
+            deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
         )
         if has_deferred:
             deferred_task = self.moe.forward_task(
@@ -683,6 +814,15 @@ class BaseMoEWrapper(_MoEBase, ABC):
             else:
                 self.cpu_infer.submit_with_cuda_stream(cuda_stream, deferred_task)
             BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = True
+        _trace_deferred_event(
+            "pending_state",
+            layer_idx=self.layer_idx,
+            pending_layers=sorted(
+                int(layer_idx)
+                for layer_idx, pending in BaseMoEWrapper._layer_has_pending_deferred.items()
+                if pending
+            ),
+        )
 
     def run_pinned_forward_sync(
         self,
@@ -722,9 +862,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
             incremental,
         )
         self.cpu_infer.submit(immediate_task)
+        self._clear_consumed_previous_pending(incremental)
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        has_deferred = (
-            self.max_deferred_experts_per_token > 0 and (deferred_experts_ids_cpu[current_slot] >= 0).any().item()
+        has_deferred = self.max_deferred_experts_per_token > 0 and _has_cpu_routes(
+            deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
         )
         if has_deferred:
             deferred_task = self.moe.forward_task(
@@ -786,7 +927,75 @@ class BaseMoEWrapper(_MoEBase, ABC):
             # finished first, else the CPU MoE reads a half-copied input.
             _wait_device(hidden_states.device)
 
+        _round6_1_capture_tensor(
+            "input_hidden", self.layer_idx, input_tensor_cpu[current_slot]
+        )
+        _round6_1_capture_tensor(
+            "immediate_ids", self.layer_idx, immediate_experts_ids_cpu[current_slot]
+        )
+        if deferred_ids is not None:
+            _round6_1_capture_tensor(
+                "deferred_ids", self.layer_idx, deferred_experts_ids_cpu[current_slot]
+            )
+        _round6_1_capture_tensor(
+            "routing_weights", self.layer_idx, weights_cpu[current_slot]
+        )
+
         incremental = BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx - 1, False)
+        if incremental:
+            _round6_1_capture_tensor(
+                "incremental_input", self.layer_idx, output_cpu[current_slot]
+            )
+        # NPU and standalone CPU paths have already made the pinned D2H buffers
+        # host-visible above.  Suppress a deferred task when the selected route
+        # belongs only to accelerator-owned experts; otherwise the no-op task
+        # falsely marks the next layer incremental.  CUDA retains its existing
+        # asynchronous behavior because inspecting the pinned buffer here would
+        # race its outstanding D2H copy.
+        has_deferred = deferred_ids is not None and (
+            not sync_submit
+            or _has_cpu_routes(
+                deferred_experts_ids_cpu[current_slot], self.gpu_experts_mask
+            )
+        )
+        if os.environ.get("KT_DEBUG_DEFERRED_TRACE_FILE"):
+            immediate_valid, immediate_cpu, immediate_cpu_ids = _summarize_cpu_routes(
+                immediate_experts_ids_cpu[current_slot], self.gpu_experts_mask
+            )
+            deferred_valid, deferred_cpu, deferred_cpu_ids = _summarize_cpu_routes(
+                deferred_experts_ids_cpu[current_slot] if deferred_ids is not None else None,
+                self.gpu_experts_mask,
+            )
+            last_immediate_ids, last_immediate_weights = _trace_last_row_cpu_routes(
+                immediate_experts_ids_cpu[current_slot],
+                weights_cpu[current_slot],
+                self.gpu_experts_mask,
+            )
+            last_deferred_ids, last_deferred_weights = _trace_last_row_cpu_routes(
+                deferred_experts_ids_cpu[current_slot],
+                weights_cpu[current_slot],
+                self.gpu_experts_mask,
+            )
+            _trace_deferred_event(
+                "submit",
+                layer_idx=self.layer_idx,
+                rows=int(hidden_states.numel() // hidden_states.shape[-1]),
+                current_slot=current_slot,
+                next_slot=next_slot,
+                max_deferred_experts_per_token=self.max_deferred_experts_per_token,
+                incremental_from_previous=bool(incremental),
+                immediate_valid_routes=immediate_valid,
+                immediate_cpu_routes=immediate_cpu,
+                immediate_cpu_experts=immediate_cpu_ids,
+                deferred_valid_routes=deferred_valid,
+                deferred_cpu_routes=deferred_cpu,
+                deferred_cpu_experts=deferred_cpu_ids,
+                last_row_immediate_cpu_experts=last_immediate_ids,
+                last_row_immediate_cpu_weights=last_immediate_weights,
+                last_row_deferred_cpu_experts=last_deferred_ids,
+                last_row_deferred_cpu_weights=last_deferred_weights,
+                outgoing_pending=has_deferred,
+            )
         immediate_task = self.moe.forward_task(
             bsz_slot_tensor.data_ptr(),
             immediate_experts_ids_cpu[current_slot].size(-1),
@@ -811,33 +1020,61 @@ class BaseMoEWrapper(_MoEBase, ABC):
         else:
             self.cpu_infer.submit_with_cuda_stream(cuda_stream, immediate_task)
 
+        self._clear_consumed_previous_pending(incremental)
+
         BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = False
-        if deferred_ids is not None:
+        if has_deferred:
             if sync_submit:
                 _wait_device(hidden_states.device)
+            explicit_replay = _round6_1_explicit_replay_enabled()
+            if explicit_replay:
+                if not sync_submit:
+                    raise RuntimeError(
+                        "KT_R61_EXPLICIT_REPLAY requires a synchronous CPU submit path"
+                    )
+                self._round6_1_explicit_output = torch.zeros_like(
+                    output_cpu[next_slot], pin_memory=True
+                )
+                deferred_output = self._round6_1_explicit_output
+            else:
+                deferred_output = output_cpu[next_slot]
             deferred_task = self.moe.forward_task(
                 bsz_slot_tensor.data_ptr(),
                 deferred_experts_ids_cpu[current_slot].size(-1),
                 deferred_experts_ids_cpu[current_slot].data_ptr(),
                 weights_cpu[current_slot].data_ptr(),
                 input_tensor_cpu[current_slot].data_ptr(),
-                output_cpu[next_slot].data_ptr(),
+                deferred_output.data_ptr(),
                 False,
             )
-            if sync_submit:
+            if explicit_replay:
+                self.cpu_infer.submit(deferred_task)
+                BaseMoEWrapper._round6_1_explicit_pending[self.layer_idx] = deferred_output
+            elif sync_submit:
                 self.cpu_infer.submit(deferred_task)
             else:
                 self.cpu_infer.submit_with_cuda_stream(cuda_stream, deferred_task)
-            BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = True
+            if not explicit_replay:
+                BaseMoEWrapper._layer_has_pending_deferred[self.layer_idx] = True
+
+        _trace_deferred_event(
+            "pending_state",
+            layer_idx=self.layer_idx,
+            pending_layers=sorted(
+                int(layer_idx)
+                for layer_idx, pending in BaseMoEWrapper._layer_has_pending_deferred.items()
+                if pending
+            ),
+        )
 
     def copy_forward_output_to_device(self, hidden_states: torch.Tensor) -> torch.Tensor:
         """Copy pinned CPU output to the device tensor (CPU work already finished)."""
         flat_hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
         (
-            _input_tensor_cpu,
-            _immediate_experts_ids_cpu,
-            _deferred_experts_ids_cpu,
-            _weights_cpu,
+            input_tensor_cpu,
+            immediate_experts_ids_cpu,
+            deferred_experts_ids_cpu,
+            weights_cpu,
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
@@ -859,10 +1096,10 @@ class BaseMoEWrapper(_MoEBase, ABC):
         """
         flat_hidden_states = hidden_states.view(-1, hidden_states.shape[-1])
         (
-            _input_tensor_cpu,
-            _immediate_experts_ids_cpu,
-            _deferred_experts_ids_cpu,
-            _weights_cpu,
+            input_tensor_cpu,
+            immediate_experts_ids_cpu,
+            deferred_experts_ids_cpu,
+            weights_cpu,
             output_cpu,
             _bsz_tensor_cpu,
             output_gpu,
@@ -870,6 +1107,14 @@ class BaseMoEWrapper(_MoEBase, ABC):
 
         current_slot = self.layer_idx % KExpertsCPUBuffer.buffer_depth
         allow_pending = 1 if BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False) else 0
+        if os.environ.get("KT_R61_CAPTURE_DRAIN_DEFERRED") == "1":
+            allow_pending = 0
+        _trace_deferred_event(
+            "sync",
+            layer_idx=self.layer_idx,
+            current_slot=current_slot,
+            allow_pending=allow_pending,
+        )
         bypass = _should_bypass_stream_callback(hidden_states.device)
         if bypass:
             self.cpu_infer.sync(allow_pending)
@@ -889,6 +1134,63 @@ class BaseMoEWrapper(_MoEBase, ABC):
                 self.cpu_infer.sync(allow_pending)
             else:
                 self.cpu_infer.sync_with_cuda_stream(cuda_stream, allow_pending)
+
+        _trace_deferred_event(
+            "sync_complete",
+            layer_idx=self.layer_idx,
+            current_slot=current_slot,
+            allow_pending=allow_pending,
+        )
+        _round6_1_capture_tensor(
+            "input_hidden_after_sync", self.layer_idx, input_tensor_cpu[current_slot]
+        )
+        _round6_1_capture_tensor(
+            "immediate_ids_after_sync",
+            self.layer_idx,
+            immediate_experts_ids_cpu[current_slot],
+        )
+        _round6_1_capture_tensor(
+            "deferred_ids_after_sync",
+            self.layer_idx,
+            deferred_experts_ids_cpu[current_slot],
+        )
+        _round6_1_capture_tensor(
+            "routing_weights_after_sync", self.layer_idx, weights_cpu[current_slot]
+        )
+
+        explicit_previous = BaseMoEWrapper._round6_1_explicit_pending.pop(
+            self.layer_idx - 1, None
+        )
+        if explicit_previous is not None:
+            current = output_cpu[current_slot]
+            if current.dtype != explicit_previous.dtype or current.shape != explicit_previous.shape:
+                raise RuntimeError(
+                    "Round6.1 explicit replay pending tensor does not match consumer output"
+                )
+            _round6_1_capture_tensor(
+                "explicit_pending_input", self.layer_idx, explicit_previous
+            )
+            current.add_(explicit_previous)
+            _round6_1_capture_tensor(
+                "explicit_incremental_output", self.layer_idx, current
+            )
+
+        _round6_1_capture_tensor(
+            "cpu_output_after_sync", self.layer_idx, output_cpu[current_slot]
+        )
+        if (
+            BaseMoEWrapper._layer_has_pending_deferred.get(self.layer_idx, False)
+            and os.environ.get("KT_R61_CAPTURE_DRAIN_DEFERRED") == "1"
+        ):
+            next_slot = (current_slot + 1) % KExpertsCPUBuffer.buffer_depth
+            _round6_1_capture_tensor(
+                "deferred_output_after_completion", self.layer_idx, output_cpu[next_slot]
+            )
+        if self._round6_1_explicit_output is not None:
+            _round6_1_capture_tensor(
+                "explicit_deferred_output", self.layer_idx, self._round6_1_explicit_output
+            )
+            self._round6_1_explicit_output = None
 
         return self.copy_forward_output_to_device(hidden_states)
 

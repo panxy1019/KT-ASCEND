@@ -1,0 +1,281 @@
+{
+  "status": "DEPLOYED_ARITHMETIC_SOURCE_AUDITED",
+  "files": [
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/llamafile.py",
+      "sha256": "e480074dc2c724084c726022d28601cb9e14aec55e18b487d29958706b40a7d8",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 47,
+          "text": "        gpu_experts_mask: Optional[torch.Tensor],\n        cpuinfer_threads: int,\n        threadpool_count: int,\n        weight_path: str,\n        chunked_prefill_size: int,\n        cpu_save: bool = False,"
+        },
+        {
+          "line": 71,
+          "text": "                              If None, all experts are on CPU.\n            cpuinfer_threads: Number of CPU inference threads\n            threadpool_count: Number of NUMA subpools (TP count)\n            weight_path: Path to GGUF weights\n            chunked_prefill_size: Maximum prefill chunk size\n            cpu_save: Not supported for Llamafile backend"
+        },
+        {
+          "line": 97,
+          "text": "        qk_aligned_intermediate = moe_intermediate_size % QK_K == 0\n        if not qk_aligned_intermediate:\n            if threadpool_count != 1:\n                raise ValueError(\n                    f\"intermediate_size ({moe_intermediate_size}) is not divisible by QK_K ({QK_K}); \"\n                    \"the LLAMAFILE tail-safe path requires threadpool_count=1\""
+        },
+        {
+          "line": 100,
+          "text": "                raise ValueError(\n                    f\"intermediate_size ({moe_intermediate_size}) is not divisible by QK_K ({QK_K}); \"\n                    \"the LLAMAFILE tail-safe path requires threadpool_count=1\"\n                )\n            if moe_intermediate_size % 32 != 0:\n                raise ValueError("
+        },
+        {
+          "line": 110,
+          "text": "        print(f\"[LlamafileMoEWrapper] Layer {layer_idx} TP configuration:\")\n        print(f\"  intermediate_size: {moe_intermediate_size}\")\n        print(f\"  threadpool_count: {threadpool_count}\")\n        print(f\"  QK_K: {QK_K}\")\n        if not qk_aligned_intermediate:\n            print(\"  Tail-safe single-TP path: enabled\")"
+        },
+        {
+          "line": 118,
+          "text": "            # Calculate TP splits with QK_K alignment\n            num_blocks = moe_intermediate_size // QK_K\n            base_blocks = num_blocks // threadpool_count\n            extra_blocks = num_blocks % threadpool_count\n            if base_blocks == 0:\n                valid_tp_counts = list(range(1, num_blocks + 1))"
+        },
+        {
+          "line": 119,
+          "text": "            num_blocks = moe_intermediate_size // QK_K\n            base_blocks = num_blocks // threadpool_count\n            extra_blocks = num_blocks % threadpool_count\n            if base_blocks == 0:\n                valid_tp_counts = list(range(1, num_blocks + 1))\n                raise ValueError("
+        },
+        {
+          "line": 123,
+          "text": "                valid_tp_counts = list(range(1, num_blocks + 1))\n                raise ValueError(\n                    f\"intermediate_size ({moe_intermediate_size}) is too small for threadpool_count ({threadpool_count}).\\n\"\n                    f\"Total blocks: {num_blocks} (intermediate_size / QK_K)\\n\"\n                    f\"Cannot distribute to {threadpool_count} TPs (each TP needs at least 1 block).\\n\"\n                    f\"Valid threadpool_count values: {valid_tp_counts}\""
+        },
+        {
+          "line": 125,
+          "text": "                    f\"intermediate_size ({moe_intermediate_size}) is too small for threadpool_count ({threadpool_count}).\\n\"\n                    f\"Total blocks: {num_blocks} (intermediate_size / QK_K)\\n\"\n                    f\"Cannot distribute to {threadpool_count} TPs (each TP needs at least 1 block).\\n\"\n                    f\"Valid threadpool_count values: {valid_tp_counts}\"\n                )\n            print(f\"  Total blocks: {num_blocks}\")"
+        },
+        {
+          "line": 126,
+          "text": "                    f\"Total blocks: {num_blocks} (intermediate_size / QK_K)\\n\"\n                    f\"Cannot distribute to {threadpool_count} TPs (each TP needs at least 1 block).\\n\"\n                    f\"Valid threadpool_count values: {valid_tp_counts}\"\n                )\n            print(f\"  Total blocks: {num_blocks}\")\n            print(f\"  Base blocks per TP: {base_blocks}\")"
+        },
+        {
+          "line": 132,
+          "text": "            print(f\"  Extra blocks (distributed to first TPs): {extra_blocks}\")\n            current_offset = 0\n            for tp_id in range(threadpool_count):\n                tp_blocks = base_blocks + (1 if tp_id < extra_blocks else 0)\n                tp_size = tp_blocks * QK_K\n                print(f\"  TP {tp_id}: size={tp_size}, offset={current_offset}, blocks={tp_blocks}\")"
+        },
+        {
+          "line": 149,
+          "text": "            gpu_experts_mask=gpu_experts_mask,\n            cpuinfer_threads=cpuinfer_threads,\n            threadpool_count=threadpool_count,\n            weight_path=weight_path,\n            chunked_prefill_size=chunked_prefill_size,\n            cpu_save=cpu_save,"
+        },
+        {
+          "line": 160,
+          "text": "\n        self.weights_to_keep = None\n        self.output_dtype = torch.float32\n\n    def load_weights_from_tensors(\n        self,"
+        },
+        {
+          "line": 284,
+          "text": "        # fused SwiGLU, and down GMM. Keep llamafile's F32 accumulation while\n        # matching those values at the CPU/NPU merge boundary.\n        moe_config.bf16_numerical_compat = True\n\n        # Create MoE module\n        self.moe = MOE(moe_config)"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/experts_base.py",
+      "sha256": "d208f1d71afc1a8aed2554939a7c53358294b2ae49d4b1af5791de6ad93186c3",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 460,
+          "text": "                        f\"numa_nodes length ({len(numa_nodes)}) must match \" f\"threadpool_count ({threadpool_count})\"\n                    )\n                subpool_numa_map = list(numa_nodes)\n            else:\n                subpool_numa_map = list(range(threadpool_count))\n            subpool_thread_count = ["
+        },
+        {
+          "line": 462,
+          "text": "                subpool_numa_map = list(numa_nodes)\n            else:\n                subpool_numa_map = list(range(threadpool_count))\n            subpool_thread_count = [\n                cpuinfer_threads // threadpool_count + (1 if i < cpuinfer_threads % threadpool_count else 0)\n                for i in range(threadpool_count)"
+        },
+        {
+          "line": 463,
+          "text": "            else:\n                subpool_numa_map = list(range(threadpool_count))\n            subpool_thread_count = [\n                cpuinfer_threads // threadpool_count + (1 if i < cpuinfer_threads % threadpool_count else 0)\n                for i in range(threadpool_count)\n            ]"
+        },
+        {
+          "line": 468,
+          "text": "            ]\n\n            worker_config.subpool_count = threadpool_count\n            worker_config.subpool_numa_map = subpool_numa_map\n            worker_config.subpool_thread_count = subpool_thread_count\n            cls._cpu_infer_instance = kt_kernel_ext.CPUInfer(worker_config)"
+        },
+        {
+          "line": 469,
+          "text": "\n            worker_config.subpool_count = threadpool_count\n            worker_config.subpool_numa_map = subpool_numa_map\n            worker_config.subpool_thread_count = subpool_thread_count\n            cls._cpu_infer_instance = kt_kernel_ext.CPUInfer(worker_config)\n"
+        },
+        {
+          "line": 470,
+          "text": "            worker_config.subpool_count = threadpool_count\n            worker_config.subpool_numa_map = subpool_numa_map\n            worker_config.subpool_thread_count = subpool_thread_count\n            cls._cpu_infer_instance = kt_kernel_ext.CPUInfer(worker_config)\n\n        return cls._cpu_infer_instance"
+        },
+        {
+          "line": 1070,
+          "text": "        )\n\n    def copy_forward_output_to_device(self, hidden_states: torch.Tensor) -> torch.Tensor:\n        \"\"\"Copy pinned CPU output to the device tensor (CPU work already finished).\"\"\"\n        flat_hidden_states = hidden_states.view(-1, hidden_states.shape[-1])\n        ("
+        },
+        {
+          "line": 1195,
+          "text": "            self._round6_1_explicit_output = None\n\n        return self.copy_forward_output_to_device(hidden_states)\n\n    def forward(\n        self,"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/kt-src/kt-kernel/operators/llamafile/moe.hpp",
+      "sha256": "7aee7e59fa96da16d3096b0dbfb2de45b88257a1bca6e895f2b2fcc4071956ba",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 430,
+          "text": "  }\n\n  static float round_to_bf16_value(float value) {\n    return ggml_bf16_to_fp32(ggml_fp32_to_bf16(value));\n  }\n"
+        },
+        {
+          "line": 544,
+          "text": "              float gate = s_gate_output_[act_idx][i];\n              float up = s_up_output_[act_idx][i];\n              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }"
+        },
+        {
+          "line": 545,
+          "text": "              float up = s_up_output_[act_idx][i];\n              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }\n              float intermediate = act_fn(gate, up, config_.swiglu_limit);"
+        },
+        {
+          "line": 546,
+          "text": "              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }\n              float intermediate = act_fn(gate, up, config_.swiglu_limit);\n              s_intermediate_fp32_[act_idx][i] ="
+        },
+        {
+          "line": 550,
+          "text": "              float intermediate = act_fn(gate, up, config_.swiglu_limit);\n              s_intermediate_fp32_[act_idx][i] =\n                  config_.bf16_numerical_compat ? round_to_bf16_value(intermediate) : intermediate;\n            }\n            if (config_.m_block %\n                    ggml_blck_size(kt_effective_vec_dot_type((ggml_type)config_.down_type)) =="
+        },
+        {
+          "line": 621,
+          "text": "              }\n            }\n            if (config_.bf16_numerical_compat) {\n              expert_weight = round_to_bf16_value(expert_weight);\n            }\n"
+        },
+        {
+          "line": 622,
+          "text": "            }\n            if (config_.bf16_numerical_compat) {\n              expert_weight = round_to_bf16_value(expert_weight);\n            }\n\n            for (int i = ith * config_.m_block; i < (ith + 1) * config_.m_block; i++) {"
+        },
+        {
+          "line": 627,
+          "text": "            for (int i = ith * config_.m_block; i < (ith + 1) * config_.m_block; i++) {\n              float down = s_down_output_[expert_idx][i];\n              if (config_.bf16_numerical_compat) {\n                down = round_to_bf16_value(down);\n              }\n              output[i] += down * expert_weight;"
+        },
+        {
+          "line": 628,
+          "text": "              float down = s_down_output_[expert_idx][i];\n              if (config_.bf16_numerical_compat) {\n                down = round_to_bf16_value(down);\n              }\n              output[i] += down * expert_weight;\n            }"
+        },
+        {
+          "line": 849,
+          "text": "              float gate = m_local_gate_output_ptr_[expert_idx][offset];\n              float up = m_local_up_output_ptr_[expert_idx][offset];\n              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }"
+        },
+        {
+          "line": 850,
+          "text": "              float up = m_local_up_output_ptr_[expert_idx][offset];\n              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }\n              float intermediate = act_fn(gate, up, config_.swiglu_limit);"
+        },
+        {
+          "line": 851,
+          "text": "              if (config_.bf16_numerical_compat) {\n                gate = round_to_bf16_value(gate);\n                up = round_to_bf16_value(up);\n              }\n              float intermediate = act_fn(gate, up, config_.swiglu_limit);\n              m_local_intermediate_fp32_ptr_[expert_idx][offset] ="
+        },
+        {
+          "line": 855,
+          "text": "              float intermediate = act_fn(gate, up, config_.swiglu_limit);\n              m_local_intermediate_fp32_ptr_[expert_idx][offset] =\n                  config_.bf16_numerical_compat ? round_to_bf16_value(intermediate) : intermediate;\n            }\n            float* intermediate_fp32_ptr =\n                m_local_intermediate_fp32_ptr_[expert_idx] + i * config_.intermediate_size + ith * m_block;"
+        },
+        {
+          "line": 927,
+          "text": "            }\n            float expert_weight = weights[i * k + j];\n            if (config_.bf16_numerical_compat) {\n              expert_weight = round_to_bf16_value(expert_weight);\n            }\n            for (int e = 0; e < config_.hidden_size; e++) {"
+        },
+        {
+          "line": 928,
+          "text": "            float expert_weight = weights[i * k + j];\n            if (config_.bf16_numerical_compat) {\n              expert_weight = round_to_bf16_value(expert_weight);\n            }\n            for (int e = 0; e < config_.hidden_size; e++) {\n              float down = m_local_down_output_ptr_[expert_ids[i * k + j]]"
+        },
+        {
+          "line": 933,
+          "text": "              float down = m_local_down_output_ptr_[expert_ids[i * k + j]]\n                                                    [m_local_pos_[i][j] * config_.hidden_size + e];\n              if (config_.bf16_numerical_compat) {\n                down = round_to_bf16_value(down);\n              }\n              m_output_fp32_[i][e] += down * expert_weight;"
+        },
+        {
+          "line": 934,
+          "text": "                                                    [m_local_pos_[i][j] * config_.hidden_size + e];\n              if (config_.bf16_numerical_compat) {\n                down = round_to_bf16_value(down);\n              }\n              m_output_fp32_[i][e] += down * expert_weight;\n            }"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "sha256": "8eec41a88d728b4262d7f8407e00fd3b0239e36fc3b3600ea8a85d3db401a1f5",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 698,
+          "text": "\n        # Create runner config - update both num_experts and num_local_experts for full GPU fallback\n        # Set routed_scaling_factor=None to avoid double scaling:\n        # - moe_sum_reduce would apply routed_scaling_factor internally\n        # - deepseek_v2.py forward_normal also applies routed_scaling_factor for KTEPWrapperMethod\n        # By setting it to None here, we ensure it's only applied once in forward_normal"
+        },
+        {
+          "line": 706,
+          "text": "            num_experts=global_num_experts,\n            num_local_experts=global_num_experts,\n            routed_scaling_factor=None,\n        )\n        self.gpu_layer.moe_runner_config = runner_config\n        self.gpu_method.create_moe_runner(self.gpu_layer, runner_config)"
+        },
+        {
+          "line": 5470,
+          "text": "        # 4. routed_scaling_factor is applied uniformly in deepseek_v2.py forward_normal\n        # So we disable it in GPU method to avoid double scaling on GPU part.\n        gpu_runner_config = replace(moe_runner_config, routed_scaling_factor=None)\n        if self.override_num_local_experts:\n            gpu_runner_config = replace(\n                gpu_runner_config, num_local_experts=self.num_gpu_experts"
+        },
+        {
+          "line": 5479,
+          "text": "        # merge has one final BF16 cast instead of independently rounding both\n        # partials before addition.\n        self.gpu_method._kt_return_fp32_contribution = (\n            (self.kt_config.method or \"\").upper() == \"LLAMAFILE\"\n        )\n"
+        },
+        {
+          "line": 6015,
+          "text": "            if not _no_cpu_stream:\n                device_module.current_stream(x.device).wait_event(self._sync_done_event)\n            output = output + cpu_output\n            if getattr(self.gpu_method, \"_kt_return_fp32_contribution\", False):\n                output = output.to(x.dtype)\n            _r61_capture("
+        },
+        {
+          "line": 6016,
+          "text": "                device_module.current_stream(x.device).wait_event(self._sync_done_event)\n            output = output + cpu_output\n            if getattr(self.gpu_method, \"_kt_return_fp32_contribution\", False):\n                output = output.to(x.dtype)\n            _r61_capture(\n                \"routed_merge\","
+        }
+      ]
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/unquant.py",
+      "sha256": "56b46c170c8150afb437cb1bc0ea4453a456ca14f849170e7d0f27358cabcafb",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 425,
+          "text": "                        topk == 1\n                    ), \"Only support topk=1 when `apply_router_weight_on_input` is True\"\n                    x = x * topk_weights.to(x.dtype)\n                    topk_weights = torch.ones_like(\n                        topk_weights, dtype=torch.float32\n                    )  # topk_weights must be FP32 (float32)"
+        },
+        {
+          "line": 565,
+          "text": "        original_dtype = x.dtype\n        num_tokens = x.shape[0]\n        topk_weights = topk_weights.to(x.dtype)\n        # KT marks CPU-owned routes with expert ID -1. Ascend requires every\n        # route ID to be in the physical accelerator expert range, so use\n        # physical expert 0 as a zero-weight placeholder for disabled routes."
+        },
+        {
+          "line": 631,
+          "text": "            self, \"_kt_return_fp32_contribution\", False\n        )\n        finalize_hidden_states = (\n            hidden_states.float() if return_fp32_contribution else hidden_states\n        )\n        finalize_weights = ("
+        },
+        {
+          "line": 637,
+          "text": "            topk_weights.float() if return_fp32_contribution else topk_weights\n        )\n        final_hidden_states = torch.ops.npu.npu_moe_finalize_routing(\n            finalize_hidden_states,\n            skip1=None,\n            skip2=None,"
+        },
+        {
+          "line": 638,
+          "text": "        )\n        final_hidden_states = torch.ops.npu.npu_moe_finalize_routing(\n            finalize_hidden_states,\n            skip1=None,\n            skip2=None,\n            bias=None,"
+        }
+      ]
+    },
+    {
+      "path": "/workspace/kt-src/third_party/sglang/python/sglang/srt/models/deepseek_v2.py",
+      "sha256": "ebe16279c8ab4787c15086a1e2a4e1abfbea36fac91f1b98bb4e875515d6bda9",
+      "evidence_state": "CODE_INSPECTED",
+      "snippets": [
+        {
+          "line": 761,
+          "text": "            final_hidden_states = self.experts(hidden_states, topk_output)\n            if not _is_cuda or is_wrapped_method(self.experts.quant_method, \"kt_ep\"):\n                final_hidden_states *= self.routed_scaling_factor\n\n        current_stream.wait_stream(self.alt_stream)\n"
+        },
+        {
+          "line": 773,
+          "text": "            )\n        else:\n            final_hidden_states += shared_output\n\n        if (\n            self.tp_size > 1"
+        },
+        {
+          "line": 868,
+          "text": "        ):\n            # fused in biased_grouped_topk so we can skip here\n            final_hidden_states *= self.routed_scaling_factor\n\n        if (\n            is_wrapped_method(self.experts.quant_method, \"mxfp4_deepseek\")"
+        },
+        {
+          "line": 882,
+          "text": "        else:\n            if shared_output is not None:\n                final_hidden_states += shared_output\n\n        _r61_capture(\n            \"moe_visible_output\","
+        },
+        {
+          "line": 1169,
+          "text": "                self.experts.should_fuse_routed_scaling_factor_in_topk or _use_aiter\n            ):\n                final_hidden_states *= self.routed_scaling_factor\n\n        return final_hidden_states\n"
+        },
+        {
+          "line": 1459,
+          "text": "            pass\n        else:\n            final_hidden_states *= self.routed_scaling_factor\n\n        state.hidden_states_mlp_output = final_hidden_states\n"
+        }
+      ]
+    }
+  ],
+  "workers": 32,
+  "threadpool_count": 1,
+  "subpool_count": 1,
+  "subpool_numa_map": [
+    0
+  ],
+  "routed_scaling_factor": 1.0,
+  "topology_scope": "LAUNCH_AND_WORKER_CONFIG_SOURCE_NOT_INSTRUCTION_TRACE",
+  "scaling_limitation": "factor=1; multiplicity established by source, not sensitivity of outputs",
+  "reduction_tree_root_cause_proven": false
+}

@@ -1,0 +1,46 @@
+{
+  "cpu_bf16_full_pool_bytes": 64424509440,
+  "cpu_f32_full_pool_bytes": 128849018880,
+  "evidence": "ANALYTIC_DERIVED",
+  "excludes": [
+    "attention",
+    "GDN state",
+    "embeddings",
+    "shared expert",
+    "vision",
+    "KV cache",
+    "workspace",
+    "allocator",
+    "staging",
+    "anonymous copies"
+  ],
+  "per_expert_parameters": 3145728,
+  "profiles": [
+    {
+      "profile": "Q256",
+      "routed_bf16_bytes": 64424509440,
+      "routed_bf16_gib": 60.0
+    },
+    {
+      "profile": "Q64",
+      "routed_bf16_bytes": 16106127360,
+      "routed_bf16_gib": 15.0
+    },
+    {
+      "profile": "Q32",
+      "routed_bf16_bytes": 8053063680,
+      "routed_bf16_gib": 7.5
+    },
+    {
+      "profile": "Q16",
+      "routed_bf16_bytes": 4026531840,
+      "routed_bf16_gib": 3.75
+    },
+    {
+      "profile": "Q8",
+      "routed_bf16_bytes": 2013265920,
+      "routed_bf16_gib": 1.875
+    }
+  ],
+  "runtime_ram_and_hbm": "NOT_MEASURED"
+}

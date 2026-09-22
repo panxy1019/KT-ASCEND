@@ -29,6 +29,38 @@ def files_below(root: Path | None) -> set[Path]:
     return set() if root is None else set(root.rglob("*.pt"))
 
 
+def new_deferred_trace_records(path: Path | None, offset: int) -> list[dict]:
+    if path is None:
+        return []
+    with path.open("rb") as trace_file:
+        trace_file.seek(offset)
+        data = trace_file.read()
+    if not data or not data.endswith(b"\n"):
+        raise RuntimeError(f"missing or incomplete Deferred trace for request: {path}")
+    return [json.loads(line) for line in data.splitlines()]
+
+
+def summarize_deferred_request(records: list[dict]) -> dict:
+    submits = [record for record in records if record["event"] == "submit"]
+    pending_states = [record for record in records if record["event"] == "pending_state"]
+    if not submits or not pending_states or pending_states[-1]["pending_layers"]:
+        raise RuntimeError("Deferred request has no submits or did not drain pending state")
+    last_by_layer = {int(row["layer_idx"]): row for row in submits}
+    if not all("last_row_immediate_cpu_experts" in row for row in last_by_layer.values()):
+        raise RuntimeError("Deferred trace lacks target-row route fields")
+    return {
+        "cpu_hit_count": sum(len(row["last_row_immediate_cpu_experts"]) + len(row["last_row_deferred_cpu_experts"]) for row in last_by_layer.values()),
+        "cpu_hit_layers": sorted(layer for layer, row in last_by_layer.items() if row["last_row_immediate_cpu_experts"] or row["last_row_deferred_cpu_experts"]),
+        "cpu_hit_experts": sorted({int(expert) for row in last_by_layer.values() for expert in row["last_row_immediate_cpu_experts"] + row["last_row_deferred_cpu_experts"]}),
+        "actual_deferred_route_count": sum(len(row["last_row_deferred_cpu_experts"]) for row in last_by_layer.values()),
+        "deferred_producer_layers": sorted(layer for layer, row in last_by_layer.items() if row["last_row_deferred_cpu_experts"]),
+        "cpu_route_weights": [float(value) for row in last_by_layer.values() for value in row["last_row_immediate_cpu_weights"] + row["last_row_deferred_cpu_weights"]],
+        "deferred_trace_record_count": len(records),
+        "deferred_pending_final": [],
+        "route_telemetry_state": "POSITION_ALIGNED",
+    }
+
+
 def wait_for_new(root: Path | None, before: set[Path], minimum: int = 1) -> list[Path]:
     if root is None:
         return []
@@ -86,10 +118,19 @@ def main() -> None:
     parser.add_argument("--kt-dump-dir", type=Path)
     parser.add_argument("--mode", required=True)
     parser.add_argument("--positions", type=int, default=64)
+    parser.add_argument("--prompt-id", action="append", default=[], help="Optional prompt filter for a preflight; omit for the full frozen corpus.")
     parser.add_argument("--cpu-experts", default="6,8,25,36")
+    parser.add_argument(
+        "--deferred-trace-file", type=Path,
+        help="Optional opt-in JSONL trace on the shared filesystem; associate records with each sequential request.",
+    )
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
     corpus = json.loads(args.corpus.read_text())
+    selected_prompt_ids = set(args.prompt_id)
+    prompts = [prompt for prompt in corpus["prompts"] if not selected_prompt_ids or prompt["id"] in selected_prompt_ids]
+    if selected_prompt_ids - {prompt["id"] for prompt in prompts}:
+        raise SystemExit("unknown prompt ID in --prompt-id")
     history = json.loads(args.baseline_history.read_text())
     history_by_id = {row["prompt_id"]: history_output_ids(row) for row in history["rows"]}
     cpu_experts = {int(value) for value in args.cpu_experts.split(",") if value}
@@ -101,7 +142,7 @@ def main() -> None:
         raise RuntimeError(f"another sweep owns {lock_file.name} in {args.output_dir}") from error
     (args.output_dir / "logits").mkdir(exist_ok=True)
     rows = []
-    for prompt in corpus["prompts"]:
+    for prompt in prompts:
         generated = history_by_id[prompt["id"]]
         if len(generated) < args.positions:
             raise RuntimeError(f"insufficient baseline history for {prompt['id']}")
@@ -111,6 +152,11 @@ def main() -> None:
             prefix = prompt["input_ids"] + generated[:token_index]
             tensor_before = files_below(args.tensor_dump_dir)
             route_before = files_below(args.kt_dump_dir)
+            trace_before = (
+                args.deferred_trace_file.stat().st_size
+                if args.deferred_trace_file and args.deferred_trace_file.exists()
+                else 0
+            )
             response = post_json(
                 args.base_url.rstrip("/") + "/generate",
                 {
@@ -133,7 +179,10 @@ def main() -> None:
                     f"response gap={response_gap}"
                 )
             route_new = wait_for_new(args.kt_dump_dir, route_before, minimum=2) if args.kt_dump_dir else []
-            route = select_route_dump(route_new, cpu_experts)
+            route = (
+                summarize_deferred_request(new_deferred_trace_records(args.deferred_trace_file, trace_before))
+                if args.deferred_trace_file else select_route_dump(route_new, cpu_experts)
+            )
             top_values, top_ids = torch.topk(logits, k=16)
             prompt_logits.append(logits)
             positions.append(
@@ -163,7 +212,9 @@ def main() -> None:
         "baseline_history_sha256": history["sha256"],
         "positions_per_prompt": args.positions,
         "row_count": len(rows),
+        "prompt_ids": [prompt["id"] for prompt in prompts],
         "logit_dtype": "torch.float32",
+        "route_telemetry_state": "POSITION_ALIGNED" if args.deferred_trace_file else "LEGACY_OR_UNAVAILABLE",
         "vocab_size": int(stacked.shape[-1]),
         "rows": rows,
     }

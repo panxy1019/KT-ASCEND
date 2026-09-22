@@ -1,0 +1,53 @@
+{
+  "status": "PASS_IMPORT_CONFIG_ONLY",
+  "scope": "IMPORT_CONFIG_ONLY_NO_MODEL",
+  "imports": {
+    "torch": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/__init__.py",
+      "sha256": "3caf7f40140ede2465bde40b9003af10cbbc8f7bcf436fa1de026471daa1b288"
+    },
+    "torch_npu": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/__init__.py",
+      "sha256": "27f372506192fe194032728d1d4b296202937ecc71de2d65215d33a64640371d"
+    },
+    "kt_kernel": {
+      "path": "/round9/runtime-python/kt_kernel/__init__.py",
+      "sha256": "5655f31960dbf833ac17a9e99c89b84c091d30890677373e954bad4770548c5e"
+    },
+    "sglang.srt.layers.moe.kt_ep_wrapper": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b"
+    },
+    "sglang.srt.configs.qwen4_exp": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/configs/qwen4_exp.py",
+      "sha256": "73398f4ed765ae295efb9894c13eac09cdde7adbf83f2f7bba5fde95c642ce06"
+    },
+    "sglang.srt.utils.hf_transformers_utils": {
+      "path": "/round9/src/sglang-round9-port/python/sglang/srt/utils/hf_transformers_utils.py",
+      "sha256": "d92fbf106d8fdcac6eddcdcd4b29cd91011c54b2f8004acaa9b892ba35cee0b8"
+    }
+  },
+  "config": {
+    "class": "Qwen4ExpConfig",
+    "text_class": "Qwen4ExpTextConfig",
+    "full_attention_layers": [
+      3,
+      7,
+      11,
+      15,
+      19,
+      23,
+      27,
+      31,
+      35,
+      39,
+      43,
+      47
+    ],
+    "ple_layer": 1,
+    "short_conv_shape": [
+      10240,
+      9
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "status": "COMPLETED_WITH_CANDIDATE_FAILURES",
+  "scope": "FUNCTIONAL_RESOURCE_ONLY",
+  "trials": [
+    {
+      "version": 20,
+      "storage": "MXFP4",
+      "placement": "request_boundary",
+      "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY"
+    },
+    {
+      "version": 21,
+      "storage": "Q8_0",
+      "placement": "static",
+      "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY"
+    },
+    {
+      "version": 22,
+      "storage": "Q8_0",
+      "placement": "request_boundary",
+      "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY"
+    },
+    {
+      "version": 23,
+      "storage": "BF16",
+      "placement": "request_boundary",
+      "status": "FAIL_CANDIDATE_CONTENT_CANARY"
+    }
+  ]
+}

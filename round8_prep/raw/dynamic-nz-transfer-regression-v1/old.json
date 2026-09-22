@@ -1,0 +1,6 @@
+{
+  "returncode": 1,
+  "stdout": "WEIGHT_ORACLE_3_UPDATES_PASS\n\n",
+  "stderr": "can not use command: npu-smi info\n[W919 14:22:40.845682490 OpCommand.cpp:87] Warning: [Check][offset] Check input storage_offset[%ld] = 0 failed, result is untrustworthy12582912 (function operator())\n\nTraceback (most recent call last):\n  File \"/workspace/round8/tools/test_dynamic_nz_transfer.py\", line 18, in <module>\n    assert 'Check input storage_offset' not in result.stderr,'UNSAFE_NZ_SLICE_COPY_WARNING'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: UNSAFE_NZ_SLICE_COPY_WARNING\n",
+  "source_sha256": "3e5d6a38c375ed6e8d538cd4e3eea3b8dad2d725313f8554fe5a1b3e2ff0fbb7"
+}

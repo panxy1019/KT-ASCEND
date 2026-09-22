@@ -1,0 +1,30 @@
+{
+  "scope": "SYNTHETIC_GDN_PRIMITIVES_NOT_MODEL_OR_CACHE_QUALIFICATION",
+  "rows": [
+    {
+      "mode": "decode",
+      "tokens": 1,
+      "shape": [
+        1,
+        1,
+        32,
+        128
+      ],
+      "finite": true,
+      "repeat_exact": true
+    },
+    {
+      "mode": "prefill",
+      "tokens": 64,
+      "shape": [
+        1,
+        64,
+        32,
+        128
+      ],
+      "finite": true,
+      "repeat_exact": true
+    }
+  ],
+  "status": "PRIMITIVE_SMOKE_PASS"
+}

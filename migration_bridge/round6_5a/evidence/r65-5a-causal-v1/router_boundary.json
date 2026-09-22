@@ -1,0 +1,1875 @@
+{
+  "status": "ROUTER_REPLAY_EXACT",
+  "source_sha256": "17e9fee319807ba19a7a1448012aaac0f1ac43d0e59e0284f6c559e348d6cf67",
+  "rows": [
+    {
+      "layer": 12,
+      "paths": {
+        "npu": {
+          "logits_vs_capture": {
+            "exact": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 0.9999998211860657,
+            "finite": true
+          },
+          "ids": [
+            [
+              41,
+              29,
+              42,
+              26,
+              38,
+              5
+            ]
+          ],
+          "ids_exact": true,
+          "rank6_7": [
+            5,
+            30
+          ],
+          "rank6_7_margin": 0.0022378861904144287,
+          "E62": -0.31873947381973267,
+          "E29": 1.5242173671722412,
+          "E62_minus_E29": -1.842956781387329,
+          "E62_rank": 26,
+          "E29_rank": 2
+        },
+        "hybrid": {
+          "logits_vs_capture": {
+            "exact": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 0.9999998807907104,
+            "finite": true
+          },
+          "ids": [
+            [
+              41,
+              29,
+              42,
+              26,
+              38,
+              5
+            ]
+          ],
+          "ids_exact": true,
+          "rank6_7": [
+            5,
+            30
+          ],
+          "rank6_7_margin": 0.009814471006393433,
+          "E62": -0.30832645297050476,
+          "E29": 1.4757651090621948,
+          "E62_minus_E29": -1.784091591835022,
+          "E62_rank": 26,
+          "E29_rank": 2
+        }
+      },
+      "hidden_error": {
+        "exact": false,
+        "max_abs": 0.078125,
+        "relative_l2": 0.02566438727080822,
+        "cosine": 0.9996789693832397,
+        "finite": true
+      },
+      "router_error": {
+        "exact": false,
+        "max_abs": 0.04845225811004639,
+        "relative_l2": 0.016879992559552193,
+        "cosine": 0.999912679195404,
+        "finite": true
+      },
+      "topk_jaccard": 1.0,
+      "pair_score_perturbation": 0.05886518955230713
+    },
+    {
+      "layer": 17,
+      "paths": {
+        "npu": {
+          "logits_vs_capture": {
+            "exact": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0000001192092896,
+            "finite": true
+          },
+          "ids": [
+            [
+              40,
+              41,
+              25,
+              26,
+              54,
+              62
+            ]
+          ],
+          "ids_exact": true,
+          "rank6_7": [
+            62,
+            27
+          ],
+          "rank6_7_margin": 0.02518850564956665,
+          "E62": 0.6453612446784973,
+          "E29": 0.6031817197799683,
+          "E62_minus_E29": 0.04217952489852905,
+          "E62_rank": 6,
+          "E29_rank": 8
+        },
+        "hybrid": {
+          "logits_vs_capture": {
+            "exact": true,
+            "max_abs": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "finite": true
+          },
+          "ids": [
+            [
+              40,
+              41,
+              25,
+              26,
+              54,
+              29
+            ]
+          ],
+          "ids_exact": true,
+          "rank6_7": [
+            29,
+            27
+          ],
+          "rank6_7_margin": 0.029079675674438477,
+          "E62": 0.5582630634307861,
+          "E29": 0.620521068572998,
+          "E62_minus_E29": -0.062258005142211914,
+          "E62_rank": 8,
+          "E29_rank": 6
+        }
+      },
+      "hidden_error": {
+        "exact": false,
+        "max_abs": 0.1875,
+        "relative_l2": 0.041452184319496155,
+        "cosine": 0.9991482496261597,
+        "finite": true
+      },
+      "router_error": {
+        "exact": false,
+        "max_abs": 0.0931539535522461,
+        "relative_l2": 0.024883504956960678,
+        "cosine": 0.9997578859329224,
+        "finite": true
+      },
+      "topk_jaccard": 0.7142857142857143,
+      "pair_score_perturbation": -0.10443753004074097
+    }
+  ],
+  "history_boundary_diagnostics": [
+    {
+      "call": 1,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 3.4726203011814505e-05,
+        "cosine": 1.000002145767212,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 0.9999997615814209,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 3.4726203011814505e-05,
+        "cosine": 1.000002145767212,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0003820531419478357,
+        "cosine": 1.0000019073486328,
+        "finite": true
+      }
+    },
+    {
+      "call": 2,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 4.548897049971856e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 4.548897049971856e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002018081722781062,
+        "cosine": 0.9999991655349731,
+        "finite": true
+      }
+    },
+    {
+      "call": 3,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.0001393759885104373,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.0001393759885104373,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0024032345972955227,
+        "cosine": 0.9999979734420776,
+        "finite": true
+      }
+    },
+    {
+      "call": 4,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00019458195311017334,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00019458195311017334,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0022734699305146933,
+        "cosine": 0.9999985694885254,
+        "finite": true
+      }
+    },
+    {
+      "call": 5,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001453169243177399,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001453169243177399,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0027181613259017467,
+        "cosine": 0.9999974966049194,
+        "finite": true
+      }
+    },
+    {
+      "call": 6,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002145160222426057,
+        "cosine": 0.9999983310699463,
+        "finite": true
+      }
+    },
+    {
+      "call": 7,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 6.207999103935435e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 6.207999103935435e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.002265446586534381,
+        "cosine": 0.9999982118606567,
+        "finite": true
+      }
+    },
+    {
+      "call": 8,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001505694817751646,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001505694817751646,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.001979144988581538,
+        "cosine": 0.9999990463256836,
+        "finite": true
+      }
+    },
+    {
+      "call": 9,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00014249852392822504,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00014249852392822504,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0027133214753121138,
+        "cosine": 0.9999971985816956,
+        "finite": true
+      }
+    },
+    {
+      "call": 10,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0024968329817056656,
+        "cosine": 0.9999978542327881,
+        "finite": true
+      }
+    },
+    {
+      "call": 11,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002400799887254834,
+        "cosine": 0.9999980926513672,
+        "finite": true
+      }
+    },
+    {
+      "call": 12,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.002765448996797204,
+        "cosine": 0.9999971985816956,
+        "finite": true
+      }
+    },
+    {
+      "call": 13,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002174438675865531,
+        "cosine": 0.9999986290931702,
+        "finite": true
+      }
+    },
+    {
+      "call": 14,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.001645358162932098,
+        "cosine": 0.999999463558197,
+        "finite": true
+      }
+    },
+    {
+      "call": 15,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.0020241367164999247,
+        "cosine": 0.9999983906745911,
+        "finite": true
+      }
+    },
+    {
+      "call": 16,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.002082511782646179,
+        "cosine": 0.9999985694885254,
+        "finite": true
+      }
+    },
+    {
+      "call": 17,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000004768371582,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0021393620409071445,
+        "cosine": 0.9999988079071045,
+        "finite": true
+      }
+    },
+    {
+      "call": 18,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0015406664460897446,
+        "cosine": 0.9999998807907104,
+        "finite": true
+      }
+    },
+    {
+      "call": 19,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.0018593082204461098,
+        "cosine": 0.999998927116394,
+        "finite": true
+      }
+    },
+    {
+      "call": 20,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 6.103515625e-05,
+        "relative_l2": 5.177161074243486e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000004768371582,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 6.103515625e-05,
+        "relative_l2": 5.177161074243486e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002301538363099098,
+        "cosine": 0.9999984502792358,
+        "finite": true
+      }
+    },
+    {
+      "call": 21,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001672861399129033,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000005960464478,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001672861399129033,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.003017446491867304,
+        "cosine": 0.9999966025352478,
+        "finite": true
+      }
+    },
+    {
+      "call": 22,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0020091813057661057,
+        "cosine": 0.9999992847442627,
+        "finite": true
+      }
+    },
+    {
+      "call": 23,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0022458434104919434,
+        "cosine": 0.9999985098838806,
+        "finite": true
+      }
+    },
+    {
+      "call": 24,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.001999593572691083,
+        "cosine": 0.999998927116394,
+        "finite": true
+      }
+    },
+    {
+      "call": 25,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 9.8712946055457e-05,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 9.8712946055457e-05,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0025851293466985226,
+        "cosine": 0.9999973773956299,
+        "finite": true
+      }
+    },
+    {
+      "call": 26,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.00013828380906488746,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.00013828380906488746,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0020077405497431755,
+        "cosine": 0.9999990463256836,
+        "finite": true
+      }
+    },
+    {
+      "call": 27,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.001972766360267997,
+        "cosine": 0.9999991059303284,
+        "finite": true
+      }
+    },
+    {
+      "call": 28,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.002362943487241864,
+        "cosine": 0.9999982118606567,
+        "finite": true
+      }
+    },
+    {
+      "call": 29,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00010306113836122677,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000015497207642,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00010306113836122677,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.0030842646956443787,
+        "cosine": 0.9999963045120239,
+        "finite": true
+      }
+    },
+    {
+      "call": 30,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0022238895762711763,
+        "cosine": 0.9999982118606567,
+        "finite": true
+      }
+    },
+    {
+      "call": 31,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0018656171159818769,
+        "cosine": 0.9999991655349731,
+        "finite": true
+      }
+    },
+    {
+      "call": 32,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00012885360047221184,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 0.00012885360047221184,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.003143513575196266,
+        "cosine": 0.999995768070221,
+        "finite": true
+      }
+    },
+    {
+      "call": 33,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 6.103515625e-05,
+        "relative_l2": 3.825626117759384e-05,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 6.103515625e-05,
+        "relative_l2": 3.825626117759384e-05,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.0037569755222648382,
+        "cosine": 0.9999938011169434,
+        "finite": true
+      }
+    },
+    {
+      "call": 34,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000004768371582,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000004768371582,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.002911978866904974,
+        "cosine": 0.9999964237213135,
+        "finite": true
+      }
+    },
+    {
+      "call": 35,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0003833581868093461,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0003833581868093461,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0024703722447156906,
+        "cosine": 0.999997615814209,
+        "finite": true
+      }
+    },
+    {
+      "call": 36,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.002958207158371806,
+        "cosine": 0.999996542930603,
+        "finite": true
+      }
+    },
+    {
+      "call": 37,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0019826937932521105,
+        "cosine": 0.9999990463256836,
+        "finite": true
+      }
+    },
+    {
+      "call": 38,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.002325046109035611,
+        "cosine": 0.9999979734420776,
+        "finite": true
+      }
+    },
+    {
+      "call": 39,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001731055526761338,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000005960464478,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0001731055526761338,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0030707118567079306,
+        "cosine": 0.9999964833259583,
+        "finite": true
+      }
+    },
+    {
+      "call": 40,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 3.0517578125e-05,
+        "relative_l2": 2.0760970073752105e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 3.0517578125e-05,
+        "relative_l2": 2.0760970073752105e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.002156509319320321,
+        "cosine": 0.9999985694885254,
+        "finite": true
+      }
+    },
+    {
+      "call": 41,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 9.139949543168768e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 9.139949543168768e-05,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0022548462729901075,
+        "cosine": 0.9999982714653015,
+        "finite": true
+      }
+    },
+    {
+      "call": 42,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 6.904881593072787e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.0001220703125,
+        "relative_l2": 6.904881593072787e-05,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002285646740347147,
+        "cosine": 0.9999984502792358,
+        "finite": true
+      }
+    },
+    {
+      "call": 43,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 3.0517578125e-05,
+        "relative_l2": 1.2176668860774953e-05,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 3.0517578125e-05,
+        "relative_l2": 1.2176668860774953e-05,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.001672888989560306,
+        "cosine": 0.9999993443489075,
+        "finite": true
+      }
+    },
+    {
+      "call": 44,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0018923162715509534,
+        "cosine": 0.9999988675117493,
+        "finite": true
+      }
+    },
+    {
+      "call": 45,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0002629321825224906,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001311302185,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0002629321825224906,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0023644398897886276,
+        "cosine": 0.9999983310699463,
+        "finite": true
+      }
+    },
+    {
+      "call": 46,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0016591111198067665,
+        "cosine": 0.9999995231628418,
+        "finite": true
+      }
+    },
+    {
+      "call": 47,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000014305114746,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.001953125,
+        "relative_l2": 0.0022335106041282415,
+        "cosine": 0.9999985694885254,
+        "finite": true
+      }
+    },
+    {
+      "call": 48,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0003643869422376156,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0003643869422376156,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0026203254237771034,
+        "cosine": 0.9999975562095642,
+        "finite": true
+      }
+    },
+    {
+      "call": 49,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000007152557373,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0021120188757777214,
+        "cosine": 0.9999985098838806,
+        "finite": true
+      }
+    },
+    {
+      "call": 50,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0002923641004599631,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.0002923641004599631,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.003108658129349351,
+        "cosine": 0.9999959468841553,
+        "finite": true
+      }
+    },
+    {
+      "call": 51,
+      "L1_decoder_output_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.00030723027884960175,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": false,
+        "max_abs": 0.000244140625,
+        "relative_l2": 0.00030723027884960175,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.0009765625,
+        "relative_l2": 0.0034293329808861017,
+        "cosine": 0.9999949932098389,
+        "finite": true
+      }
+    },
+    {
+      "call": 52,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000015497207642,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0030724857933819294,
+        "cosine": 0.9999959468841553,
+        "finite": true
+      }
+    },
+    {
+      "call": 53,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000008344650269,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00244140625,
+        "relative_l2": 0.003589414060115814,
+        "cosine": 0.9999942779541016,
+        "finite": true
+      }
+    },
+    {
+      "call": 54,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000011920928955,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.0023638030979782343,
+        "cosine": 0.9999977350234985,
+        "finite": true
+      }
+    },
+    {
+      "call": 55,
+      "L1_decoder_output_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L1_decoder_output_residual": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.000001072883606,
+        "finite": true
+      },
+      "L2_decoder_input_hidden": {
+        "exact": true,
+        "max_abs": 0.0,
+        "relative_l2": 0.0,
+        "cosine": 1.0000009536743164,
+        "finite": true
+      },
+      "L2_attention_output": {
+        "exact": false,
+        "max_abs": 0.00048828125,
+        "relative_l2": 0.002189218532294035,
+        "cosine": 0.9999983906745911,
+        "finite": true
+      }
+    }
+  ]
+}

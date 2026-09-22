@@ -1,0 +1,28 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-15",
+    "/workspace/results/venv-r6/bin/python",
+    "-m",
+    "unittest",
+    "test_teacher_force",
+    "test_pilot_sample_size",
+    "test_stateful_contract_gate",
+    "test_natural_observer_control",
+    "test_stateful_evaluator_integration"
+  ],
+  "started_unix": 1789488891.2194326,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 313861,
+  "pgid": 313861,
+  "reason": "EXIT_ZERO",
+  "matched_error": null,
+  "returncode": 0,
+  "ended_unix": 1789488958.736039,
+  "success": true
+}

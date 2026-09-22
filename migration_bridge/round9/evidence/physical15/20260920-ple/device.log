@@ -1,0 +1,8 @@
+can not use command: npu-smi info
+
+libgomp: Thread creation failed: Resource temporarily unavailable
+pybind11::handle::dec_ref() is being called while the GIL is either not held or invalid. Please see https://pybind11.readthedocs.io/en/stable/advanced/misc.html#common-sources-of-global-interpreter-lock-errors for debugging advice.
+If you are convinced there is no bug in your code, you can #define PYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF to disable this check. In that case you have to ensure this #define is consistently used for all translation units linked into a given pybind11 extension, otherwise there will be ODR violations. The failing pybind11::handle::dec_ref() call was triggered on a pybind11_type object.
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  pybind11::handle::dec_ref() PyGILState_Check() failure.
+timeout: the monitored command dumped core

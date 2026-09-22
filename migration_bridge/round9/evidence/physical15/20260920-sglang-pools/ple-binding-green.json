@@ -1,0 +1,16 @@
+{
+  "status": "PASS_META_STRUCTURE_AND_LOADER_MAP_ONLY",
+  "scope": "META_STRUCTURE_ONLY_NO_WEIGHT_LOAD",
+  "parameter_tensors": 1091,
+  "non_meta_parameter_bytes": 9216,
+  "decay_fp32_layers": 36,
+  "peak_npu_allocated": 19968,
+  "original_ple_table_bound": true,
+  "loaded_destinations": 1094,
+  "checkpoint_tensors": 1658,
+  "ple_shards": 128,
+  "invalid_inputs_rejected": {
+    "missing_q": "packed parameter model.layers.3.qkv_proj.weight has components ['k', 'v'], expected ['k', 'q', 'v']",
+    "shifted_ple_boundary": "PLE shard 0 row boundary mismatch"
+  }
+}

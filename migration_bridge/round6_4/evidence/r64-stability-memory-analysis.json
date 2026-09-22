@@ -1,0 +1,81 @@
+{
+  "status": "MEMORY_OBSERVATION_COMPLETE_ADR_REVIEW_REQUIRED",
+  "generated_tokens": 2304,
+  "same_path_exact": true,
+  "campaigns": {
+    "A": {
+      "rss_start": 31725993984,
+      "rss_peak": 32254189568,
+      "rss_end": 32254189568,
+      "rss_cycle_ends": [
+        32254189568,
+        32254189568,
+        32254189568
+      ],
+      "rss_cycle_end_deltas": [
+        0,
+        0
+      ],
+      "hbm_start_mb": 30896,
+      "hbm_peak_mb": 30896,
+      "hbm_end_mb": 30896,
+      "hbm_cycle_ends_mb": [
+        30896,
+        30896,
+        30896
+      ],
+      "hbm_cycle_end_deltas_mb": [
+        0,
+        0
+      ],
+      "owned_hbm_samples": 13,
+      "other_npu0_hbm_mb_range": [
+        0,
+        0
+      ],
+      "all_cycle_ends_grow_review_required": false,
+      "rss_semantics": "sum of owned process RSS, includes shared-page double counting",
+      "observation_limit": "Finite campaign only; not a proof of zero leak or asymptotic boundedness"
+    },
+    "B": {
+      "rss_start": 31730311168,
+      "rss_peak": 32270389248,
+      "rss_end": 32270389248,
+      "rss_cycle_ends": [
+        32270381056,
+        32270381056,
+        32270389248
+      ],
+      "rss_cycle_end_deltas": [
+        0,
+        8192
+      ],
+      "hbm_start_mb": 30698,
+      "hbm_peak_mb": 30896,
+      "hbm_end_mb": 30896,
+      "hbm_cycle_ends_mb": [
+        30896,
+        30896,
+        30896
+      ],
+      "hbm_cycle_end_deltas_mb": [
+        0,
+        0
+      ],
+      "owned_hbm_samples": 13,
+      "other_npu0_hbm_mb_range": [
+        0,
+        0
+      ],
+      "all_cycle_ends_grow_review_required": false,
+      "rss_semantics": "sum of owned process RSS, includes shared-page double counting",
+      "observation_limit": "Finite campaign only; not a proof of zero leak or asymptotic boundedness"
+    }
+  },
+  "artifact_sha256": {
+    "campaign_a": "8cd5544f852d0fb789262618de21224d6900d6fbad53ddcc42b55f94a2ff823d",
+    "campaign_b": "151f508bad1b750b79c270cf9166543fcf0bb7f80ef196603d5c2a93564afc7c",
+    "memory_a": "a12cafd7bc167a0b1c216ae50b807f229f3ad93d99788c121aefbdb6c8618097",
+    "memory_b": "42ebea11b1cdc8c2f6b6a7fd27d9f36cefa827b7e6e412e205b0ec25e5839013"
+  }
+}

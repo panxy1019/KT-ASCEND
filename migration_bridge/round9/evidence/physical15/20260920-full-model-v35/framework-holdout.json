@@ -1,0 +1,214 @@
+{
+  "status": "PASS_FRAMEWORK_HTTP2",
+  "scope": "FRAMEWORK_SMALL_SMOKE_NOT_QUALITY_OR_PERFORMANCE",
+  "corpus_sha256": "68e7c6ef1ad572d9903c32156e84977e3ed02916c84c1bfe67b2f0a5806c76d8",
+  "tokenizer_files": {
+    "tokenizer.json": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "tokenizer_config.json": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27"
+  },
+  "rows": [
+    {
+      "request": {
+        "rid": "sched-holdout-01",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          44712,
+          220,
+          16,
+          22,
+          2942,
+          220,
+          17,
+          18,
+          13,
+          21134,
+          440,
+          1132,
+          279,
+          7308,
+          13,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 24
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "391",
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "meta_info": {
+          "id": "sched-holdout-01",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 27,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.008976934477686882,
+              18,
+              null
+            ],
+            [
+              -0.0009052231325767934,
+              24,
+              null
+            ],
+            [
+              -0.0007074952009133995,
+              16,
+              null
+            ],
+            [
+              -0.00017498392844572663,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 4,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 14.023509779013693,
+          "response_sent_to_client_ts": 1789983205.4912872
+        }
+      },
+      "finite": true,
+      "known_answer": true
+    },
+    {
+      "request": {
+        "rid": "sched-holdout-02",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          26583,
+          1083,
+          6163,
+          25,
+          220,
+          112762,
+          101774,
+          98206,
+          1710,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 24
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "Seawater contains salt.",
+        "output_ids": [
+          1460,
+          654,
+          932,
+          5435,
+          11679,
+          13,
+          248046
+        ],
+        "meta_info": {
+          "id": "sched-holdout-02",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 21,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.03960883244872093,
+              1460,
+              null
+            ],
+            [
+              -0.00023564898583572358,
+              654,
+              null
+            ],
+            [
+              -3.731180913746357e-05,
+              932,
+              null
+            ],
+            [
+              -0.0009040320874191821,
+              5435,
+              null
+            ],
+            [
+              -0.004336596466600895,
+              11679,
+              null
+            ],
+            [
+              -0.00040439533768221736,
+              13,
+              null
+            ],
+            [
+              -2.8132995794294402e-05,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 7,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 2.6437505959765986,
+          "response_sent_to_client_ts": 1789983208.1377718
+        }
+      },
+      "finite": true
+    }
+  ]
+}

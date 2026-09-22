@@ -1,0 +1,489 @@
+{
+  "config_path": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540/config.json",
+  "config_sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+  "geometry": {
+    "context_geometry": {
+      "gdn_bytes_per_request": 115458048,
+      "model_layers": 48,
+      "page_metadata_bytes": 16,
+      "page_size": 4,
+      "ple_bytes_per_request": 184336,
+      "position_element_bytes": 8,
+      "qsa_compress_ratio": 4,
+      "qsa_head_dim": 256,
+      "qsa_index_element_bytes": 2,
+      "qsa_index_head_dim": 128,
+      "qsa_index_heads": 1,
+      "qsa_kv_element_bytes": 2,
+      "qsa_kv_heads": 2,
+      "qsa_layers": 12,
+      "request_slots": 1,
+      "reserved_token_slots": 4
+    },
+    "gdn_bytes_per_live_request": 115458048,
+    "gdn_conv_shape_per_layer": [
+      10240,
+      3
+    ],
+    "gdn_layers": 36,
+    "gdn_temporal_shape_per_layer": [
+      48,
+      128,
+      128
+    ],
+    "index_token_budget": 2048,
+    "ple_bytes_per_live_request": 184336,
+    "ple_conv_shape_per_live_request": [
+      1,
+      10240,
+      9
+    ],
+    "ple_history_shape_per_live_request": [
+      2
+    ],
+    "qsa_layers": 12,
+    "raw_request_slots": 1,
+    "recurrent_request_slots": 1,
+    "recurrent_storage_slots": 2
+  },
+  "runtime_sha256": "e7b2e5dd7ad45c54d9d70c5454b67257d79f288d29ce232773f76697baa8a308",
+  "status": "PASS_CPU_CONFIG_DERIVATION_NOT_DEVICE",
+  "targets": {
+    "131072": {
+      "expected_tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ordinary_kv",
+          "shape": [
+            2,
+            12,
+            32770,
+            4,
+            2,
+            256
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_compressed",
+          "shape": [
+            12,
+            32770,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_raw",
+          "shape": [
+            12,
+            4,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "qsa_positions",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "gdn_conv",
+          "shape": [
+            36,
+            2,
+            10240,
+            3
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "name": "gdn_temporal",
+          "shape": [
+            36,
+            2,
+            48,
+            128,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ple_conv",
+          "shape": [
+            1,
+            2,
+            10240,
+            9
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "ple_history",
+          "shape": [
+            2,
+            2
+          ]
+        }
+      ],
+      "logical_pages": 32769,
+      "logical_token_capacity": 131076,
+      "physical_floor_bytes": 3553388608,
+      "physical_padding_pages": 1,
+      "physical_pages": 32770,
+      "physical_token_slots": 131080,
+      "plan": {
+        "compress_ratio": 4,
+        "compressed_slots": 32769,
+        "context_tokens": 131072,
+        "gdn_bytes": 115458048,
+        "native_kv_qualified": false,
+        "page_metadata_bytes": 524304,
+        "page_size": 4,
+        "pages": 32769,
+        "ple_bytes": 184336,
+        "qsa_index_bytes": 100666368,
+        "qsa_kv_bytes": 3221323776,
+        "qsa_pending_bytes": 12320,
+        "scope": "CPU_CONTEXT_PLAN_ONLY",
+        "token_capacity": 131076,
+        "total_bytes": 3438169152
+      },
+      "raw_request_slots": 1,
+      "recurrent_request_slots": 1,
+      "recurrent_storage_slots": 2,
+      "scope": "CPU_DERIVED_TP1_PHYSICAL_FLOOR_NOT_DEVICE_MEASURED"
+    },
+    "16384": {
+      "expected_tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ordinary_kv",
+          "shape": [
+            2,
+            12,
+            4098,
+            4,
+            2,
+            256
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_compressed",
+          "shape": [
+            12,
+            4098,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_raw",
+          "shape": [
+            12,
+            4,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "qsa_positions",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "gdn_conv",
+          "shape": [
+            36,
+            2,
+            10240,
+            3
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "name": "gdn_temporal",
+          "shape": [
+            36,
+            2,
+            48,
+            128,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ple_conv",
+          "shape": [
+            1,
+            2,
+            10240,
+            9
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "ple_history",
+          "shape": [
+            2,
+            2
+          ]
+        }
+      ],
+      "logical_pages": 4097,
+      "logical_token_capacity": 16388,
+      "physical_floor_bytes": 646735936,
+      "physical_padding_pages": 1,
+      "physical_pages": 4098,
+      "physical_token_slots": 16392,
+      "plan": {
+        "compress_ratio": 4,
+        "compressed_slots": 4097,
+        "context_tokens": 16384,
+        "gdn_bytes": 115458048,
+        "native_kv_qualified": false,
+        "page_metadata_bytes": 65552,
+        "page_size": 4,
+        "pages": 4097,
+        "ple_bytes": 184336,
+        "qsa_index_bytes": 12585984,
+        "qsa_kv_bytes": 402751488,
+        "qsa_pending_bytes": 12320,
+        "scope": "CPU_CONTEXT_PLAN_ONLY",
+        "token_capacity": 16388,
+        "total_bytes": 531057728
+      },
+      "raw_request_slots": 1,
+      "recurrent_request_slots": 1,
+      "recurrent_storage_slots": 2,
+      "scope": "CPU_DERIVED_TP1_PHYSICAL_FLOOR_NOT_DEVICE_MEASURED"
+    },
+    "4096": {
+      "expected_tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ordinary_kv",
+          "shape": [
+            2,
+            12,
+            1026,
+            4,
+            2,
+            256
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_compressed",
+          "shape": [
+            12,
+            1026,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_raw",
+          "shape": [
+            12,
+            4,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "qsa_positions",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "gdn_conv",
+          "shape": [
+            36,
+            2,
+            10240,
+            3
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "name": "gdn_temporal",
+          "shape": [
+            36,
+            2,
+            48,
+            128,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ple_conv",
+          "shape": [
+            1,
+            2,
+            10240,
+            9
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "ple_history",
+          "shape": [
+            2,
+            2
+          ]
+        }
+      ],
+      "logical_pages": 1025,
+      "logical_token_capacity": 4100,
+      "physical_floor_bytes": 335308864,
+      "physical_padding_pages": 1,
+      "physical_pages": 1026,
+      "physical_token_slots": 4104,
+      "plan": {
+        "compress_ratio": 4,
+        "compressed_slots": 1025,
+        "context_tokens": 4096,
+        "gdn_bytes": 115458048,
+        "native_kv_qualified": false,
+        "page_metadata_bytes": 16400,
+        "page_size": 4,
+        "pages": 1025,
+        "ple_bytes": 184336,
+        "qsa_index_bytes": 3148800,
+        "qsa_kv_bytes": 100761600,
+        "qsa_pending_bytes": 12320,
+        "scope": "CPU_CONTEXT_PLAN_ONLY",
+        "token_capacity": 4100,
+        "total_bytes": 219581504
+      },
+      "raw_request_slots": 1,
+      "recurrent_request_slots": 1,
+      "recurrent_storage_slots": 2,
+      "scope": "CPU_DERIVED_TP1_PHYSICAL_FLOOR_NOT_DEVICE_MEASURED"
+    },
+    "65536": {
+      "expected_tensors": [
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ordinary_kv",
+          "shape": [
+            2,
+            12,
+            16386,
+            4,
+            2,
+            256
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_compressed",
+          "shape": [
+            12,
+            16386,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "qsa_raw",
+          "shape": [
+            12,
+            4,
+            1,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "qsa_positions",
+          "shape": [
+            4
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "gdn_conv",
+          "shape": [
+            36,
+            2,
+            10240,
+            3
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "name": "gdn_temporal",
+          "shape": [
+            36,
+            2,
+            48,
+            128,
+            128
+          ]
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "name": "ple_conv",
+          "shape": [
+            1,
+            2,
+            10240,
+            9
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "name": "ple_history",
+          "shape": [
+            2,
+            2
+          ]
+        }
+      ],
+      "logical_pages": 16385,
+      "logical_token_capacity": 65540,
+      "physical_floor_bytes": 1892444224,
+      "physical_padding_pages": 1,
+      "physical_pages": 16386,
+      "physical_token_slots": 65544,
+      "plan": {
+        "compress_ratio": 4,
+        "compressed_slots": 16385,
+        "context_tokens": 65536,
+        "gdn_bytes": 115458048,
+        "native_kv_qualified": false,
+        "page_metadata_bytes": 262160,
+        "page_size": 4,
+        "pages": 16385,
+        "ple_bytes": 184336,
+        "qsa_index_bytes": 50334720,
+        "qsa_kv_bytes": 1610711040,
+        "qsa_pending_bytes": 12320,
+        "scope": "CPU_CONTEXT_PLAN_ONLY",
+        "token_capacity": 65540,
+        "total_bytes": 1776962624
+      },
+      "raw_request_slots": 1,
+      "recurrent_request_slots": 1,
+      "recurrent_storage_slots": 2,
+      "scope": "CPU_DERIVED_TP1_PHYSICAL_FLOOR_NOT_DEVICE_MEASURED"
+    }
+  }
+}

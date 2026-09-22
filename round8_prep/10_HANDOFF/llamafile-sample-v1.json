@@ -1,0 +1,31 @@
+{
+  "scope": "SINGLE_EXPERT_NOT_256_EXPERT_MODEL",
+  "cpu_workers": 64,
+  "threadpool_count": 2,
+  "numa_nodes": [
+    4,
+    5
+  ],
+  "gguf_sha256": "409ea8af33188438847c5cd6f29496e01a34f6f0762518e0c8d7c2b5d18d80d0",
+  "rows": [
+    {
+      "qlen": 1,
+      "finite": true,
+      "repeat_exact": true,
+      "relative_l2": 0.0016857870677885393
+    },
+    {
+      "qlen": 8,
+      "finite": true,
+      "repeat_exact": true,
+      "relative_l2": 0.0016604443919007194
+    },
+    {
+      "qlen": 64,
+      "finite": true,
+      "repeat_exact": true,
+      "relative_l2": 0.001654962726986457
+    }
+  ],
+  "status": "PASS_SINGLE_EXPERT_C64"
+}

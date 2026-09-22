@@ -1,0 +1,530 @@
+Process 91: sglang::scheduler
+Python v3.11.15 (/usr/local/python3.11.15/bin/python3.11)
+
+Thread 91 (active): "MainThread"
+    decorated (torch_npu/contrib/transfer_to_npu.py:183)
+        Locals:
+            args: [[62]]
+            kwargs: {"dtype": <torch.dtype at 0xffff70323750>, "device": <torch.device at 0xfffe40907990>}
+            replace_int: False
+            args_new: [[62]]
+            device_arg: "device_id"
+            device: None
+            device_ids: None
+    copy_expert (round9/dynamic_adapter.py:77)
+        Arguments:
+            self: <cell at 0xfffe40c89780>
+            layer: <cell at 0xfffe40c89c90>
+            slot: 62
+            logical: <cell at 0xfffe41a3e2f0>
+        Locals:
+            target: <FusedMoE at 0xfffe759eb310>
+            read: <function at 0xfffe41a6f100>
+            h: 2560
+            i: 640
+            gate: <Tensor at 0xfffe40c9f9b0>
+            up: <Tensor at 0xfffe40c9e150>
+            down: <Tensor at 0xfffe40c9fcb0>
+            gu: <Tensor at 0xfffe40c9deb0>
+            destination: <Parameter at 0xfffe759a4d70>
+            original: <Tensor at 0xfffe40c9f3b0>
+            fmt: 29
+            torch_npu: <module at 0xffff6a1e3dd0>
+    commit (round9/dynamic.py:98)
+        Arguments:
+            self: <PlacementController at 0xfffe41594110>
+            plans: (<LayerPlan at 0xfffe5d429150>, <LayerPlan at 0xfffe415c5d90>, <LayerPlan at 0xfffe41abf910>, ...)
+        Locals:
+            seen: <set at 0xfffe413ecd60>
+            expected: ((55, 95), (56, 97), (57, 100), (58, 157), (59, 286), (60, 293), (61, 344), (62, 346), (63, 424))
+            next_generation: 1
+            slot: 62
+            logical: 406
+    after (round9/dynamic_boundary.py:29)
+        Arguments:
+            self: <RequestBoundary at 0xfffe41596a50>
+        Locals:
+            req: <Req at 0xfffe435f7e10>
+            plans: (<LayerPlan at 0xfffe5d429150>, <LayerPlan at 0xfffe415c5d90>, <LayerPlan at 0xfffe41abf910>, ...)
+    scheduler_after (round9/dynamic_boundary.py:53)
+        Arguments:
+            scheduler: <Scheduler at 0xffff8a1df5d0>
+        Locals:
+            boundary: <RequestBoundary at 0xfffe41596a50>
+    event_loop_normal (scheduler.py:1144)
+        Arguments:
+            self: <Scheduler at 0xffff8a1df5d0>
+        Locals:
+            recv_reqs: [<TokenizedGenerateReqInput at 0xfffe35449310>]
+            batch: <ScheduleBatch at 0xfffe35449a10>
+            scheduler_before: <function at 0xfffe7596fa60>
+            result: <GenerationBatchResult at 0xfffe415c5d50>
+            scheduler_after: <function at 0xfffe7596fb00>
+    decorate_context (torch/utils/_contextlib.py:120)
+        Locals:
+            args: (<Scheduler at 0xffff8a1df5d0>)
+            kwargs: {}
+    run_scheduler_process (scheduler.py:3256)
+        Arguments:
+            server_args: <ServerArgs at 0xffff8a1df710>
+            port_args: <PortArgs at 0xfffede6017d0>
+            gpu_id: 0
+            tp_rank: 0
+            attn_cp_rank: 0
+            moe_dp_rank: 0
+            moe_ep_rank: 0
+            pp_rank: 0
+            dp_rank: None
+            pipe_writer: <Connection at 0xfffedf021b50>
+        Locals:
+            prefix: ""
+            parent_process: <Process at 0xfffedef411d0>
+            numa_node: None
+            scheduler: <Scheduler at 0xffff8a1df5d0>
+            result_dict: {"status": "ready", "max_total_num_tokens": 4100, "max_req_input_len": 4092}
+            disaggregation_mode: <DisaggregationMode at 0xfffee5e1c8d0>
+    run (multiprocessing/process.py:108)
+        Arguments:
+            self: <Process at 0xffff8a4477d0>
+    _bootstrap (multiprocessing/process.py:314)
+        Arguments:
+            self: <Process at 0xffff8a4477d0>
+            parent_sentinel: 3
+        Locals:
+            util: <module at 0xffff8a3c07c0>
+            context: <module at 0xffff8a5d7830>
+    _main (multiprocessing/spawn.py:135)
+        Arguments:
+            fd: 23
+            parent_sentinel: 3
+        Locals:
+            from_parent: <_io.BufferedReader at 0xffff8a55e560>
+            preparation_data: {"log_to_stderr": False, "authkey": <AuthenticationString at 0xffff8a3eab00>, "name": "Process-1", "sys_path": [...], ...}
+            self: <Process at 0xffff8a4477d0>
+    spawn_main (multiprocessing/spawn.py:122)
+        Arguments:
+            pipe_handle: 23
+            parent_pid: None
+            tracker_fd: 21
+        Locals:
+            fd: 23
+            parent_sentinel: 3
+            resource_tracker: <module at 0xffff8a3c0770>
+    <module> (<string>:1)
+Thread 350 (idle): "tqdm_monitor"
+    wait (threading.py:331)
+        Arguments:
+            self: <Condition at 0xfffe7578f850>
+            timeout: 10
+        Locals:
+            waiter: <_thread.lock at 0xfffece342f00>
+            saved_state: None
+            gotit: False
+    wait (threading.py:629)
+        Arguments:
+            self: <Event at 0xfffe75759e50>
+            timeout: 10
+        Locals:
+            signaled: False
+    run (tqdm/_monitor.py:69)
+        Arguments:
+            self: <TMonitor at 0xfffe757590d0>
+        Locals:
+            cur_t: 1789945922.6875885
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <TMonitor at 0xfffe757590d0>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <TMonitor at 0xfffe757590d0>
+Thread 362 (idle): "Thread-1"
+    _recv (multiprocessing/connection.py:395)
+        Arguments:
+            self: <Connection at 0xfffe5d6bc9d0>
+            size: 4
+            read: <builtin_function_or_method at 0xffff8a84c9f0>
+        Locals:
+            buf: <_io.BytesIO at 0xfffe5d6a98f0>
+            handle: 64
+            remaining: 4
+    _recv_bytes (multiprocessing/connection.py:430)
+        Arguments:
+            self: <Connection at 0xfffe5d6bc9d0>
+            maxsize: None
+    recv (multiprocessing/connection.py:250)
+        Arguments:
+            self: <Connection at 0xfffe5d6bc9d0>
+    _callmethod (multiprocessing/managers.py:822)
+        Arguments:
+            self: <AutoProxy[Queue] at 0xfffe5d6b3c90>
+            methodname: "get"
+            args: ()
+            kwds: {}
+        Locals:
+            conn: <Connection at 0xfffe5d6bc9d0>
+    get (<string>:2)
+        Arguments:
+            self: <AutoProxy[Queue] at 0xfffe5d6b3c90>
+        Locals:
+            args: ()
+            kwds: {}
+    run (tbe/common/repository_manager/utils/multiprocess_util.py:68)
+        Arguments:
+            self: <GlobalMgr at 0xfffe7546b410>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <GlobalMgr at 0xfffe7546b410>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <GlobalMgr at 0xfffe7546b410>
+Thread 433 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdacc50>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdb9c40>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1ed40>
+            notempty: <Condition at 0xfffe5cdacc50>
+            send_bytes: <method at 0xfffe5d63f680>
+            writelock: <Lock at 0xfffe5cdac990>
+            reader_close: <method at 0xfffe5d435fc0>
+            writer_close: <method at 0xfffe5cdb92c0>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdacad0>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda54e0>
+            nrelease: <builtin_function_or_method at 0xfffe5cda5530>
+            nwait: <method at 0xfffe5cdb97c0>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb44a0>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda51c0>
+            wrelease: <builtin_function_or_method at 0xfffe5cda5210>
+            obj: <memoryview at 0xfffe5ced7640>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9410>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9410>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9410>
+Thread 434 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdacf90>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdb9cc0>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1f100>
+            notempty: <Condition at 0xfffe5cdacf90>
+            send_bytes: <method at 0xfffe5cdacfc0>
+            writelock: <Lock at 0xfffe5cdacd10>
+            reader_close: <method at 0xfffe5cdb9440>
+            writer_close: <method at 0xfffe5cdb9780>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdace10>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda58a0>
+            nrelease: <builtin_function_or_method at 0xfffe5cda58f0>
+            nwait: <method at 0xfffe5cdb9a40>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb4d10>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda5580>
+            wrelease: <builtin_function_or_method at 0xfffe5cda55d0>
+            obj: <memoryview at 0xfffe5ced7700>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9810>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9810>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9810>
+Thread 435 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdad590>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdb9fc0>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1f4c0>
+            notempty: <Condition at 0xfffe5cdad590>
+            send_bytes: <method at 0xfffe5cdad5c0>
+            writelock: <Lock at 0xfffe5cdad2d0>
+            reader_close: <method at 0xfffe5cdb96c0>
+            writer_close: <method at 0xfffe5cdb9a00>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdad410>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda5df0>
+            nrelease: <builtin_function_or_method at 0xfffe5cda5e40>
+            nwait: <method at 0xfffe5cdb9d00>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb4fe0>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda5ad0>
+            wrelease: <builtin_function_or_method at 0xfffe5cda5b20>
+            obj: <memoryview at 0xfffe5ced7880>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9a90>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9a90>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9a90>
+Thread 436 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdadb90>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdba340>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1f6a0>
+            notempty: <Condition at 0xfffe5cdadb90>
+            send_bytes: <method at 0xfffe5cdadbc0>
+            writelock: <Lock at 0xfffe5cdad8d0>
+            reader_close: <method at 0xfffe5cdb9940>
+            writer_close: <method at 0xfffe5cdb9d40>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdada10>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda6340>
+            nrelease: <builtin_function_or_method at 0xfffe5cda6390>
+            nwait: <method at 0xfffe5cdba000>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb5300>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda6020>
+            wrelease: <builtin_function_or_method at 0xfffe5cda6070>
+            obj: <memoryview at 0xfffe5ced7a00>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9d90>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9d90>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdb9d90>
+Thread 437 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdae190>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdba6c0>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1f880>
+            notempty: <Condition at 0xfffe5cdae190>
+            send_bytes: <method at 0xfffe5cdae1c0>
+            writelock: <Lock at 0xfffe5cdaded0>
+            reader_close: <method at 0xfffe5cdb9bc0>
+            writer_close: <method at 0xfffe5cdba0c0>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdae010>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda68e0>
+            nrelease: <builtin_function_or_method at 0xfffe5cda6930>
+            nwait: <method at 0xfffe5cdba380>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb5620>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda6570>
+            wrelease: <builtin_function_or_method at 0xfffe5cda65c0>
+            obj: <memoryview at 0xfffe5ced7ac0>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdba110>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdba110>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdba110>
+Thread 438 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdae890>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdbaa40>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1fa60>
+            notempty: <Condition at 0xfffe5cdae890>
+            send_bytes: <method at 0xfffe5cdae8c0>
+            writelock: <Lock at 0xfffe5cdae550>
+            reader_close: <method at 0xfffe5cdba080>
+            writer_close: <method at 0xfffe5cdba440>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdae6d0>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda6e80>
+            nrelease: <builtin_function_or_method at 0xfffe5cda6ed0>
+            nwait: <method at 0xfffe5cdba700>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb5940>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda6b10>
+            wrelease: <builtin_function_or_method at 0xfffe5cda6b60>
+            obj: <memoryview at 0xfffe5ced7b80>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdba490>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdba490>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdba490>
+Thread 439 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdaef50>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5cdbadc0>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1fc40>
+            notempty: <Condition at 0xfffe5cdaef50>
+            send_bytes: <method at 0xfffe5cdaef80>
+            writelock: <Lock at 0xfffe5cdaec10>
+            reader_close: <method at 0xfffe5cdba400>
+            writer_close: <method at 0xfffe5cdba7c0>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdaed90>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda7420>
+            nrelease: <builtin_function_or_method at 0xfffe5cda7470>
+            nwait: <method at 0xfffe5cdbaa80>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb5c60>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda70b0>
+            wrelease: <builtin_function_or_method at 0xfffe5cda7100>
+            obj: <memoryview at 0xfffe5ced7d00>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdba810>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdba810>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdba810>
+Thread 440 (idle): "QueueFeederThread"
+    wait (threading.py:327)
+        Arguments:
+            self: <Condition at 0xfffe5cdaf610>
+            timeout: None
+        Locals:
+            waiter: <_thread.lock at 0xfffe5d436c40>
+            saved_state: None
+            gotit: False
+    _feed (multiprocessing/queues.py:231)
+        Arguments:
+            buffer: <collections.deque at 0xfffe5cf1fe20>
+            notempty: <Condition at 0xfffe5cdaf610>
+            send_bytes: <method at 0xfffe5cdaf640>
+            writelock: <Lock at 0xfffe5cdaf2d0>
+            reader_close: <method at 0xfffe5cdba780>
+            writer_close: <method at 0xfffe5cdbab40>
+            ignore_epipe: False
+            onerror: <function at 0xffff2cabe700>
+            queue_sem: <BoundedSemaphore at 0xfffe5cdaf450>
+        Locals:
+            nacquire: <builtin_function_or_method at 0xfffe5cda79c0>
+            nrelease: <builtin_function_or_method at 0xfffe5cda7a10>
+            nwait: <method at 0xfffe5cdbae80>
+            bpopleft: <builtin_function_or_method at 0xfffe5cdb5f80>
+            sentinel: <object at 0xffff2e711a90>
+            wacquire: <builtin_function_or_method at 0xfffe5cda7650>
+            wrelease: <builtin_function_or_method at 0xfffe5cda76a0>
+            obj: <memoryview at 0xfffe5ced7e80>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe5cdbab90>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe5cdbab90>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe5cdbab90>
+Thread 644 (idle): "Thread-5 (_watchdog_thread)"
+    _watchdog_once (utils/watchdog.py:145)
+        Arguments:
+            self: <WatchdogRaw at 0xfffe5d42aad0>
+        Locals:
+            watchdog_last_counter: 0
+            watchdog_last_time: 998721.831382524
+            current: 998721.831382985
+            current_counter: 0
+    _watchdog_thread (utils/watchdog.py:125)
+        Arguments:
+            self: <WatchdogRaw at 0xfffe5d42aad0>
+    run (threading.py:982)
+        Arguments:
+            self: <Thread at 0xfffe41c0d6d0>
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <Thread at 0xfffe41c0d6d0>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <Thread at 0xfffe41c0d6d0>
+Thread 1035 (idle): "tqdm_monitor"
+    wait (threading.py:331)
+        Arguments:
+            self: <Condition at 0xfffe414ef250>
+            timeout: 10
+        Locals:
+            waiter: <_thread.lock at 0xfffe41106200>
+            saved_state: None
+            gotit: False
+    wait (threading.py:629)
+        Arguments:
+            self: <Event at 0xfffe407f3850>
+            timeout: 10
+        Locals:
+            signaled: False
+    run (tqdm/_monitor.py:69)
+        Arguments:
+            self: <TMonitor at 0xfffe410e2bd0>
+        Locals:
+            cur_t: 1789945922.034176
+    _bootstrap_inner (threading.py:1045)
+        Arguments:
+            self: <TMonitor at 0xfffe410e2bd0>
+    _bootstrap (threading.py:1002)
+        Arguments:
+            self: <TMonitor at 0xfffe410e2bd0>

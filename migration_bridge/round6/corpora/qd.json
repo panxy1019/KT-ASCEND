@@ -1,0 +1,345 @@
+{
+  "category_counts": {
+    "chinese_factual": 4,
+    "code_reasoning": 3,
+    "english_factual": 4,
+    "math_numeric": 3,
+    "structured_json": 2
+  },
+  "corpus": "QD",
+  "count": 16,
+  "model": "deepseek-ai/DeepSeek-V2-Lite",
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "qd_en_01",
+      "input_ids": [
+        6568,
+        536,
+        36749,
+        8551,
+        2752,
+        463,
+        93391,
+        14539,
+        853,
+        51561,
+        8551,
+        30
+      ],
+      "text": "Why do coastal regions often have milder temperatures than inland regions?"
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_02",
+      "input_ids": [
+        2640,
+        5315,
+        1699,
+        12655,
+        245,
+        42701,
+        1166,
+        9748,
+        30
+      ],
+      "text": "What physical process creates a rainbow after rain?"
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_03",
+      "input_ids": [
+        99297,
+        254,
+        5012,
+        280,
+        11024,
+        9389,
+        279,
+        254,
+        3807,
+        3123,
+        13
+      ],
+      "text": "Explain the role of platelets in the human body."
+    },
+    {
+      "category": "english_factual",
+      "id": "qd_en_04",
+      "input_ids": [
+        15526,
+        5298,
+        18688,
+        245,
+        56843,
+        473,
+        274,
+        83740,
+        30
+      ],
+      "text": "Which properties distinguish a comet from an asteroid?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_01",
+      "input_ids": [
+        4575,
+        13327,
+        5536,
+        2656,
+        8809,
+        92603,
+        398
+      ],
+      "text": "请说明季风形成的主要原因。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_02",
+      "input_ids": [
+        5449,
+        9080,
+        4865,
+        19383,
+        70652,
+        6020,
+        612,
+        8330,
+        5808,
+        7435,
+        398
+      ],
+      "text": "简述京杭大运河在历史上的作用。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_03",
+      "input_ids": [
+        18467,
+        10431,
+        4861,
+        2961,
+        1620,
+        5958,
+        72426,
+        18867,
+        851,
+        6676,
+        3500,
+        39461,
+        3618,
+        2551,
+        56000,
+        2224
+      ],
+      "text": "中国的暖温带与亚热带通常以哪条地理界线划分？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "qd_zh_04",
+      "input_ids": [
+        10285,
+        24855,
+        18867,
+        7875,
+        20310,
+        3041,
+        2106,
+        1729,
+        2224
+      ],
+      "text": "为什么金属通常具有良好的导电性？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_01",
+      "input_ids": [
+        32,
+        6822,
+        29099,
+        207,
+        18,
+        16,
+        20,
+        49785,
+        279,
+        207,
+        19,
+        13,
+        20,
+        3821,
+        13,
+        2461,
+        317,
+        895,
+        5137,
+        4583,
+        30
+      ],
+      "text": "A train travels 315 kilometers in 4.5 hours. What is its average speed?"
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_02",
+      "input_ids": [
+        12971,
+        254,
+        2754,
+        3064,
+        4606,
+        280,
+        207,
+        18,
+        21,
+        11,
+        207,
+        19,
+        23,
+        11,
+        285,
+        207,
+        21,
+        15,
+        13
+      ],
+      "text": "Find the least common multiple of 36, 48, and 60."
+    },
+    {
+      "category": "math_numeric",
+      "id": "qd_math_03",
+      "input_ids": [
+        32,
+        9982,
+        643,
+        11846,
+        207,
+        22,
+        13,
+        16270,
+        895,
+        3046,
+        1244,
+        22041,
+        13
+      ],
+      "text": "A circle has radius 7. Express its area using pi."
+    },
+    {
+      "category": "structured_json",
+      "id": "qd_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        327,
+        984,
+        18999,
+        366,
+        4773,
+        11,
+        8650,
+        11,
+        285,
+        7243,
+        5467,
+        4605,
+        13
+      ],
+      "text": "Return only JSON for two sensors with names, units, and boolean active states."
+    },
+    {
+      "category": "structured_json",
+      "id": "qd_json_02",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        3869,
+        8891,
+        254,
+        4223,
+        279,
+        254,
+        1022,
+        8404,
+        13
+      ],
+      "text": "Return only a JSON array containing the months in the first quarter."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_01",
+      "input_ids": [
+        9081,
+        12974,
+        2985,
+        276,
+        2592,
+        3073,
+        457,
+        704,
+        1022,
+        5371,
+        1477,
+        30973,
+        1835,
+        13
+      ],
+      "text": "Write Python code to group words by their first letter while preserving order."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_02",
+      "input_ids": [
+        99297,
+        254,
+        15138,
+        16162,
+        457,
+        41278,
+        3734,
+        13
+      ],
+      "text": "Explain the invariant maintained by insertion sort."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "qd_code_03",
+      "input_ids": [
+        27559,
+        24315,
+        64645,
+        344,
+        13373,
+        254,
+        1022,
+        2170,
+        12,
+        248,
+        65274,
+        3199,
+        279,
+        245,
+        2662,
+        13
+      ],
+      "text": "Give pseudocode that finds the first non-repeating character in a string."
+    }
+  ],
+  "protocol": {
+    "baseline_history": "captured_after_prompt_freeze_and_bound_by_manifest",
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "deferred_numerical_contract_derivation",
+  "round": "round6",
+  "schema_version": 1,
+  "sha256": "fe28d7fe4b4421b53901950b41a7d98b58650de359bd5141e9d05ef71e6bf6f1",
+  "tokenizer_class": "Tokenizer",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+}

@@ -1,0 +1,173 @@
+{
+  "category_counts": {
+    "chinese_factual": 2,
+    "code_reasoning": 2,
+    "english_factual": 2,
+    "math_numeric": 1,
+    "structured_json": 1
+  },
+  "corpus": "FD",
+  "count": 8,
+  "model": "deepseek-ai/DeepSeek-V2-Lite",
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "fd_en_01",
+      "input_ids": [
+        99297,
+        946,
+        26862,
+        5775,
+        12789,
+        22764,
+        855,
+        1234,
+        20421,
+        13
+      ],
+      "text": "Explain how migratory birds navigate over long distances."
+    },
+    {
+      "category": "english_factual",
+      "id": "fd_en_02",
+      "input_ids": [
+        6568,
+        1217,
+        8752,
+        18182,
+        9154,
+        279,
+        73097,
+        2354,
+        30
+      ],
+      "text": "Why does iron rust faster in salty water?"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "fd_zh_01",
+      "input_ids": [
+        4575,
+        5449,
+        9080,
+        97086,
+        13091,
+        5699,
+        13426,
+        17156,
+        398
+      ],
+      "text": "请简述丝绸之路促进文化交流的方式。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "fd_zh_02",
+      "input_ids": [
+        10285,
+        98670,
+        22351,
+        75003,
+        7630,
+        4861,
+        6236,
+        17117,
+        2224
+      ],
+      "text": "为什么月球表面昼夜温差很大？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "fd_math_01",
+      "input_ids": [
+        32,
+        4085,
+        5410,
+        207,
+        20,
+        3074,
+        11,
+        207,
+        22,
+        5501,
+        11,
+        285,
+        207,
+        23,
+        5575,
+        19709,
+        13,
+        2461,
+        12044,
+        418,
+        5501,
+        30
+      ],
+      "text": "A box contains 5 red, 7 blue, and 8 green balls. What fraction are blue?"
+    },
+    {
+      "category": "structured_json",
+      "id": "fd_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        16689,
+        2685,
+        20404,
+        366,
+        63641,
+        5750,
+        13
+      ],
+      "text": "Return only JSON listing four seasons with ordinal numbers."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "fd_code_01",
+      "input_ids": [
+        9081,
+        24315,
+        64645,
+        327,
+        43016,
+        40077,
+        34417,
+        17761,
+        13
+      ],
+      "text": "Write pseudocode for merging overlapping numeric intervals."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "fd_code_02",
+      "input_ids": [
+        28654,
+        58621,
+        285,
+        19762,
+        327,
+        16464,
+        245,
+        6088,
+        499,
+        13
+      ],
+      "text": "Compare recursion and iteration for computing a factorial."
+    }
+  ],
+  "protocol": {
+    "baseline_history": "captured_after_prompt_freeze_and_bound_by_manifest",
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "deferred_free_generation_validation",
+  "round": "round6",
+  "schema_version": 1,
+  "sha256": "197f8a9a4bca0349a2984d603e71c1722cea1828fdbff30be00fe7441a4aa1a6",
+  "tokenizer_class": "Tokenizer",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+}

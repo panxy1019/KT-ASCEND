@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "execution": "A3 container CPU-only real torch tensors",
+  "tests": {
+    "unconsumed_state": {
+      "status": "PASS",
+      "observed_error": "Round6.2 capture contains unflushed forward data"
+    },
+    "missing_entry": {
+      "status": "PASS",
+      "observed_error": "Round6.2 output without matching entry"
+    },
+    "duplicate_forward": {
+      "status": "PASS",
+      "observed_error": "Round6.2 duplicate forward sequence"
+    },
+    "missing_logits": {
+      "status": "PASS",
+      "observed_error": "Round6.2 requires an outer LogitsProcessorOutput"
+    }
+  }
+}

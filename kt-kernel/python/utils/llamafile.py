@@ -4,6 +4,7 @@ import os
 from typing import Dict, List, Optional
 
 import torch
+import kt_kernel_ext as _native
 
 # Use relative imports for package structure
 from ..experts_base import BaseMoEWrapper
@@ -21,6 +22,13 @@ except (ImportError, AttributeError):
 from kt_kernel_ext.kvcache import ggml_type
 
 _LLAMAFILE_QK_K = 256
+_BF16_F32_TAIL_SUPPORTED = bool(
+    getattr(_native, "llamafile_bf16_f32_tail_supported", lambda: False)()
+)
+
+_BLOCK32_TAIL_SUPPORTED = bool(
+    getattr(_native, "llamafile_block32_tail_supported", lambda: False)()
+)
 
 
 class LlamafileMoEWrapper(BaseMoEWrapper):
@@ -93,7 +101,21 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
         QK_K = _LLAMAFILE_QK_K
 
         qk_aligned_intermediate = moe_intermediate_size % QK_K == 0
-        if not qk_aligned_intermediate:
+        self._unblocked_tail_tp = False
+        if threadpool_count > 1:
+            types = [self.gguf_loader.get_undequanted_tensor_and_ggml_type(
+                f"blk.{layer_idx}.ffn_{name}_exps.weight")[1] for name in ("gate", "up", "down")]
+            self._unblocked_tail_tp = len({int(t) for t in types}) == 1 and (
+                int(types[0]) == int(ggml_type.FP32)
+                or (int(types[0]) == int(ggml_type.BF16) and _BF16_F32_TAIL_SUPPORTED)
+                or (int(types[0]) in (8,39) and _BLOCK32_TAIL_SUPPORTED)
+            )
+            if self._unblocked_tail_tp and (
+                moe_intermediate_size % threadpool_count or
+                (moe_intermediate_size // threadpool_count) % 32
+            ):
+                raise ValueError("tail-safe TP requires equal 32-aligned partitions")
+        if not qk_aligned_intermediate and not self._unblocked_tail_tp:
             if threadpool_count != 1:
                 raise ValueError(
                     f"intermediate_size ({moe_intermediate_size}) is not divisible by QK_K ({QK_K}); "
@@ -109,7 +131,12 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
         print(f"  intermediate_size: {moe_intermediate_size}")
         print(f"  threadpool_count: {threadpool_count}")
         print(f"  QK_K: {QK_K}")
-        if not qk_aligned_intermediate:
+        if self._unblocked_tail_tp:
+            print("  32-aligned tail-safe multi-TP path: FP32 partials, final merge cast")
+            width = moe_intermediate_size // threadpool_count
+            for slot in range(threadpool_count):
+                print(f"  TP {slot}: size={width}, offset={slot * width}")
+        elif not qk_aligned_intermediate:
             print("  Tail-safe single-TP path: enabled")
             print(f"  TP 0: size={moe_intermediate_size}, offset=0")
         else:
@@ -254,12 +281,12 @@ class LlamafileMoEWrapper(BaseMoEWrapper):
                 f"<= 0 is unsafe for KT MoE C++ buffer sizing; falling back to "
                 f"{_effective_chunk}."
             )
-        # forward_many tiles the intermediate dimension in QK_K=256 chunks
-        # and has no tail. DeepSeek-V2-Lite uses 1408, so retain the
-        # correctness-first forward_one path for every supported chunk.
+        # Multi-TP F32/BF16 has explicit tail tiles. Preserve the existing single-TP
+        # 1408 forward_one path so C32 numerical behavior remains unchanged.
+        # Block-quantized paths still require their existing QK_K alignment.
         moe_config.group_min_len = (
             10
-            if self.moe_intermediate_size % _LLAMAFILE_QK_K == 0
+            if self._unblocked_tail_tp or self.moe_intermediate_size % _LLAMAFILE_QK_K == 0
             else _effective_chunk + 1
         )
         moe_config.max_len = _effective_chunk

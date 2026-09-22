@@ -1,0 +1,13 @@
+{
+  "status": "FAILED",
+  "completed": [
+    "router",
+    "baseline_routes",
+    "baseline_routes-compare",
+    "npu_for_cpu",
+    "npu_for_cpu-compare"
+  ],
+  "scope": "DIAGNOSTIC_ONLY_NO_PROMOTION",
+  "active": "layer-analysis",
+  "error": "CalledProcessError(1, ['/workspace/results/venv-r6/bin/python', '/workspace/r65a-tools/migration_bridge/round6_5a/tools/summarize_causal_profiles.py', '--profiles', '/workspace/results/r65-5a-causal-v1/diagnostic_profiles.json', '--output', '/workspace/results/r65-5a-causal-v1/counterfactual_replay.json'])"
+}

@@ -1,0 +1,18 @@
+{
+  "scope": "LOAD_COMPACT32_CANCEL_CANARIES_NOT_4096_BOUNDARY",
+  "owned_process_peak_mib": 39850,
+  "board_peak_mib": 48708,
+  "host_cgroup_peak_bytes": 334439145472,
+  "cgroup_failcnt_max": 0,
+  "compact_status": "PASS_COMPACT32",
+  "cancel_status": "PASS_ACTIVE_ABORT_AND_STATE_REUSE",
+  "canaries_status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "context4096_status": "REJECTED_BEFORE_EXECUTION_F02_GUARD_SLOTS",
+  "torch_peak_allocated_bytes": 40705135616,
+  "torch_peak_reserved_bytes": 41502638080,
+  "nonowned_board_while_model_active_mib": [
+    8656,
+    15264
+  ],
+  "teardown_accounting_note": "Board/process counters release asynchronously; do not treat final subtraction as training spike"
+}

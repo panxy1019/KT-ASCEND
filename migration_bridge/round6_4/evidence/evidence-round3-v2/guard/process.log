@@ -1,0 +1,130 @@
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+INFO 09-16 02:21:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 02:21:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 02:21:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 02:21:34 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-p2-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 12
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+/workspace/round5-reference/tools/round3/verify_real_single_layer_hybrid.py:55: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  output = torch.zeros_like(hidden_states, dtype=torch.float32)
+{
+  "cases": {
+    "cpu_not_hit_row": 0,
+    "mixed_row": 1,
+    "reversed_mixed_row": 2
+  },
+  "cpu_expert": 8,
+  "cpu_hit_routes": 2,
+  "execution": {
+    "cpu_stream_native_handle": 187652594367376,
+    "distinct_staging_buffer": true,
+    "distinct_streams": true,
+    "input_data_ptr": 20618009413120,
+    "main_stream_native_handle": 187652579577456,
+    "mode": "overlap",
+    "staging_data_ptr": 20618009379840
+  },
+  "finite_final_hybrid": true,
+  "finite_routed_hybrid": true,
+  "layer": 17,
+  "metrics": {
+    "cpu_not_hit_vs_all_npu": {
+      "cosine": 1.000000238418579,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "final_with_shared_once_vs_all_npu": {
+      "cosine": 0.9999959468841553,
+      "max_abs": 0.015625,
+      "mean_abs": 0.0015252720331773162,
+      "relative_l2": 0.003124126269339239
+    },
+    "ktep_vs_explicit_cpu_plus_npu": {
+      "cosine": 1.0000007152557373,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "relative_l2": 0.0
+    },
+    "mixed_vs_all_npu": {
+      "cosine": 0.999995231628418,
+      "max_abs": 0.01171875,
+      "mean_abs": 0.0016575856134295464,
+      "relative_l2": 0.003270712430139086
+    }
+  },
+  "npu_experts_exercised": [
+    25,
+    36,
+    0,
+    51,
+    12,
+    30
+  ],
+  "output_sha256": {
+    "final_hybrid": "ab0feacedfe5794a5e2a50b407e6ec098c0992924d4c38e14196c7361bbfab36",
+    "routed_hybrid": "d7af3a5e23c1502e9e9002295cdb306d9c633e58ae83dbbe36a8df183d019134"
+  },
+  "placement": "one CPU routed expert; all other logical experts NPU-owned",
+  "routed_scaling_factor": 1.0,
+  "routed_scaling_owner": "DeepseekV2MoE outer forward after KTEP routed output",
+  "routing_weight_owner": "CPU and NPU expert providers; applied exactly once before additive merge",
+  "shared_expert_count": 2,
+  "shared_expert_owner": "DeepseekV2MoE outer forward; not KTEPWrapperMethod"
+}
+CPUInfer[0xaaab4538fe10]: Hello
+WorkerPool[0xaaab453a1920] 1 subpools, [numa:threads][0:16] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 17, pool: 0xaaab453a1920, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaab4538fe10]: Goodbye

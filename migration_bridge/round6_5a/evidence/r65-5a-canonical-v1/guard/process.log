@@ -1,0 +1,100 @@
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+INFO 09-16 14:31:41 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 14:31:41 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 14:31:41 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 14:31:41 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+set_mempolicy: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+CPUInfer[0xc623df297b80]: Hello
+WorkerPool[0xc623df2b7e40] 1 subpools, [numa:threads][0:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 32 threads
+TP MOE layer 1, pool: 0xc623df2b7e40, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+[W916 14:31:46.302648363 TensorFactories.cpp:340] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+
+[GGUFLoader] Loading single GGUF file : all-moe-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 78
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 1 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 1, "hidden_sha256": "25a30a4ad0aebdb94d7d88c429531e1e7369c908b87e6ee616fe4322b39fa67b", "ids": [[60, 62, 25, 55, 13, 50]], "routing_weights_sha256": "08f48eab7bed3d6d6055bf9932bccc9c35f2578611e7deff521be469a5da2241", "expert_rows": [{"expert": 13, "cpu_owned": true, "route_weight": 0.030517578125, "output_sha256": "89e12de399aa92770907c2e62329919b8f0aa61287ffc06b47dc98f4c7f5b929", "npu_sha256": "89e12de399aa92770907c2e62329919b8f0aa61287ffc06b47dc98f4c7f5b929", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true}, {"expert": 25, "cpu_owned": true, "route_weight": 0.054443359375, "output_sha256": "df7a23066ae49e37c6030b8ea1dac7de59650664c571b100ce198d3b31840a2d", "npu_sha256": "df7a23066ae49e37c6030b8ea1dac7de59650664c571b100ce198d3b31840a2d", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, {"expert": 50, "cpu_owned": false, "route_weight": 0.0264892578125, "output_sha256": "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb", "npu_sha256": "2ecc5a50fda3b945f3ef0f5ec9dd9e7c4a6ca3760f515de4f4c9d7693f7ba6fb", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, {"expert": 55, "cpu_owned": true, "route_weight": 0.031494140625, "output_sha256": "c4c7d39554c97da854bd9ac2016a0efcd014ef8b7d5db36207913ebe42efa8df", "npu_sha256": "c4c7d39554c97da854bd9ac2016a0efcd014ef8b7d5db36207913ebe42efa8df", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}, {"expert": 60, "cpu_owned": false, "route_weight": 0.0771484375, "output_sha256": "bf3f0243f87eb77bacfe1b0ddbbf1c7284133ae831f470e0ad18a717a6d0a92f", "npu_sha256": "bf3f0243f87eb77bacfe1b0ddbbf1c7284133ae831f470e0ad18a717a6d0a92f", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true}, {"expert": 62, "cpu_owned": false, "route_weight": 0.06298828125, "output_sha256": "40955d6f614bd5330eb8d0da5430058b939cccfdf9060e3bf5b32a6f83529569", "npu_sha256": "40955d6f614bd5330eb8d0da5430058b939cccfdf9060e3bf5b32a6f83529569", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}], "cpu_replay_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 0.9999997615814209, "finite": true}, "canonical_cpu_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 0.9999997615814209, "finite": true}, "canonical_npu_vs_capture": {"exact": false, "max_abs": 9.313225746154785e-10, "relative_l2": 1.8941583856957322e-09, "cosine": 0.999999463558197, "finite": true}, "canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true}, "split_canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true}, "same_input_all_npu_vs_hybrid": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true}}
+[LlamafileMoEWrapper] Layer 9 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 9, "hidden_sha256": "5f93f4219f92b9519691fe059e3aecba66f6318d77c80f4fe250029a6a405ecf", "ids": [[41, 46, 35, 45, 1, 23]], "routing_weights_sha256": "6deec516c0398b49972d93321dcf5a8bddf76ca4059ea4b127b95e4609cf1104", "expert_rows": [{"expert": 1, "cpu_owned": true, "route_weight": 0.0458984375, "output_sha256": "e1a2e6763fa620c7303ca42ab74d21f37e250970cb150aaa5833dc561440c109", "npu_sha256": "e1a2e6763fa620c7303ca42ab74d21f37e250970cb150aaa5833dc561440c109", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true}, {"expert": 23, "cpu_owned": true, "route_weight": 0.03857421875, "output_sha256": "7e45f17dfa37e8c70955c988b821d4164a01f5e827f2077e1a9db940fbc93973", "npu_sha256": "6194dec4ef8486deb59657698917f3211392855746a23365ca168c50f6c6d679", "exact": false, "max_abs": 0.00048828125, "relative_l2": 3.186783942510374e-05, "cosine": 1.0000007152557373, "finite": true}, {"expert": 35, "cpu_owned": true, "route_weight": 0.095703125, "output_sha256": "fc569dcfc1e269bb82700afee52a48e70a7745e538245f7d6356f6acafdba85f", "npu_sha256": "fc569dcfc1e269bb82700afee52a48e70a7745e538245f7d6356f6acafdba85f", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true}, {"expert": 41, "cpu_owned": true, "route_weight": 0.1640625, "output_sha256": "07ed19047d761faa623b3e7a79b8c1bf567c497bd258278fe62317edb02a3e40", "npu_sha256": "ec1635df58a0a65e14bf04912b502128967e8d2a31985616b430c4ee0fef2166", "exact": false, "max_abs": 6.103515625e-05, "relative_l2": 2.512459559511626e-06, "cosine": 1.0000008344650269, "finite": true}, {"expert": 45, "cpu_owned": true, "route_weight": 0.07373046875, "output_sha256": "ea99cc5a96077cb1d0e5187769d89765992b2267095d1d5fccfb1ca0755346ee", "npu_sha256": "85eef66d7a0047ddadb73415187c148381a0d5d48f35555f708ad75c39e364b2", "exact": false, "max_abs": 0.0009765625, "relative_l2": 0.0001327342470176518, "cosine": 1.0000008344650269, "finite": true}, {"expert": 46, "cpu_owned": false, "route_weight": 0.15625, "output_sha256": "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b", "npu_sha256": "58a8f2becc4ad0d2b2614d90d5709167d133534a1c9fe3515b38f04ff57fcc4b", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}], "cpu_replay_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0, "finite": true}, "canonical_cpu_vs_capture": {"exact": false, "max_abs": 7.450580596923828e-09, "relative_l2": 1.84133319702795e-09, "cosine": 1.0, "finite": true}, "canonical_npu_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 0.9999998807907104, "finite": true}, "canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, "split_canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, "same_input_all_npu_vs_hybrid": {"exact": false, "max_abs": 3.0517578125e-05, "relative_l2": 4.781985353474738e-06, "cosine": 1.0000007152557373, "finite": true}}
+[LlamafileMoEWrapper] Layer 17 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 17, "hidden_sha256": "c5e8cd0aa08bfa7afea5942e574d8f5d0b28bed9ad4f6c39b4810b0d1db0194d", "ids": [[40, 41, 25, 26, 54, 29]], "routing_weights_sha256": "dcbdd4b318d3f1f581835accaf7aeaa0cae99249319967d3fbbf35be2a018a10", "expert_rows": [{"expert": 25, "cpu_owned": true, "route_weight": 0.045654296875, "output_sha256": "5538257b4d4f5d05fe0f68520bea0bc51e8d49371bbe699bae07913f85dd4b70", "npu_sha256": "5538257b4d4f5d05fe0f68520bea0bc51e8d49371bbe699bae07913f85dd4b70", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true}, {"expert": 26, "cpu_owned": false, "route_weight": 0.040283203125, "output_sha256": "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536", "npu_sha256": "09f752e6ffbeaea14a7df10035fdcc3c568a75efd6a1575d9ae961fb92b31536", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true}, {"expert": 29, "cpu_owned": true, "route_weight": 0.038330078125, "output_sha256": "349cb66ae00e867ebc28f3395adf5c633609bf0041a761bb0676bb311759728e", "npu_sha256": "9103003b0d715b1015dca5a6d918b14b7f42d61e4d33544d446486f41a9d0f57", "exact": false, "max_abs": 0.00390625, "relative_l2": 0.0003341426490806043, "cosine": 1.000001072883606, "finite": true}, {"expert": 40, "cpu_owned": false, "route_weight": 0.060546875, "output_sha256": "527d4f66f6676cd96ddc6959b72a992d87a3f4f22a53f49170d11adaf6cdc5f5", "npu_sha256": "527d4f66f6676cd96ddc6959b72a992d87a3f4f22a53f49170d11adaf6cdc5f5", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true}, {"expert": 41, "cpu_owned": true, "route_weight": 0.049072265625, "output_sha256": "f9a24d2a9c4347b75f76d9837cfea12c94b0edc0944aa461073e51603af297d2", "npu_sha256": "f9a24d2a9c4347b75f76d9837cfea12c94b0edc0944aa461073e51603af297d2", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, {"expert": 54, "cpu_owned": false, "route_weight": 0.0390625, "output_sha256": "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460", "npu_sha256": "a0fe2b2f4f6bb7beef9c0c3ef7868587f69d7b0cb8a82aa22d17197cac108460", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000004768371582, "finite": true}], "cpu_replay_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0, "finite": true}, "canonical_cpu_vs_capture": {"exact": false, "max_abs": 3.725290298461914e-09, "relative_l2": 1.1352588868973612e-09, "cosine": 1.0, "finite": true}, "canonical_npu_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000001192092896, "finite": true}, "canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}, "split_canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}, "same_input_all_npu_vs_hybrid": {"exact": false, "max_abs": 0.0001220703125, "relative_l2": 3.4717733797151595e-05, "cosine": 1.0000007152557373, "finite": true}}
+[LlamafileMoEWrapper] Layer 26 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+{"layer": 26, "hidden_sha256": "ea9113047645d9d344bc3df6a78229e0535a20b77ad6b062a67f58ef574dea01", "ids": [[63, 0, 48, 26, 34, 59]], "routing_weights_sha256": "c91d3bda5b663ba2ceb4cd33f841859debce4d683e82b0dead4b7d1069907fca", "expert_rows": [{"expert": 0, "cpu_owned": false, "route_weight": 0.09130859375, "output_sha256": "32ff6d60cc43f021a404913dad2b6b3552bb763f03f36d3fc6cabe9144367f15", "npu_sha256": "32ff6d60cc43f021a404913dad2b6b3552bb763f03f36d3fc6cabe9144367f15", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}, {"expert": 26, "cpu_owned": false, "route_weight": 0.07275390625, "output_sha256": "37ae88d6debe5879e1355ed53c932bcaa36fdc0fff2b0530e6b15ee8296ead61", "npu_sha256": "37ae88d6debe5879e1355ed53c932bcaa36fdc0fff2b0530e6b15ee8296ead61", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true}, {"expert": 34, "cpu_owned": false, "route_weight": 0.0537109375, "output_sha256": "620ecc71c523719588e23c454ed4230e8ea507356fc53e00d74e3f61c8a9b662", "npu_sha256": "620ecc71c523719588e23c454ed4230e8ea507356fc53e00d74e3f61c8a9b662", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true}, {"expert": 48, "cpu_owned": false, "route_weight": 0.07666015625, "output_sha256": "42bc7bc26bafecda3fe84884105e5791847a4f57bdeba82e27478acc50e14f4e", "npu_sha256": "42bc7bc26bafecda3fe84884105e5791847a4f57bdeba82e27478acc50e14f4e", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}, {"expert": 59, "cpu_owned": true, "route_weight": 0.0537109375, "output_sha256": "d956b0e1c76b952954cedd222f962a1636be8784d8e53b531e92075893557845", "npu_sha256": "cf22903596726a6c703934540a66265e47fe7f779036816b2f109370446c4eb5", "exact": false, "max_abs": 0.03125, "relative_l2": 0.0005172126111574471, "cosine": 1.0000009536743164, "finite": true}, {"expert": 63, "cpu_owned": true, "route_weight": 0.30078125, "output_sha256": "90f8317a7ee4491df0e2fb0278a26b13a6b6420ed7d87446f810c6258bf134e6", "npu_sha256": "90f8317a7ee4491df0e2fb0278a26b13a6b6420ed7d87446f810c6258bf134e6", "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true}], "cpu_replay_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0, "finite": true}, "canonical_cpu_vs_capture": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0, "finite": true}, "canonical_npu_vs_capture": {"exact": false, "max_abs": 2.9802322387695312e-08, "relative_l2": 1.921286463257843e-09, "cosine": 1.000000238418579, "finite": true}, "canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true}, "split_canonical_final_vs_production": {"exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true}, "same_input_all_npu_vs_hybrid": {"exact": false, "max_abs": 0.00390625, "relative_l2": 3.859310527332127e-05, "cosine": 1.0000008344650269, "finite": true}}
+TP MOE layer 9, pool: 0xc623df2b7e40, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+TP MOE layer 17, pool: 0xc623df2b7e40, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+TP MOE layer 26, pool: 0xc623df2b7e40, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xc623df297b80]: Goodbye

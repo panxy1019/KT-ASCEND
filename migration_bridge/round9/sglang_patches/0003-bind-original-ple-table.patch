@@ -1,0 +1,15 @@
+diff --git a/python/sglang/srt/model_loader/loader.py b/python/sglang/srt/model_loader/loader.py
+index da5c315afb..b2b070ef52 100644
+--- a/python/sglang/srt/model_loader/loader.py
++++ b/python/sglang/srt/model_loader/loader.py
+@@ -266,6 +266,10 @@ def _initialize_model(
+         "quant_config": quant_config,
+     }
+ 
++    # Round9 synchronous PLE reads immutable rows from the original local model.
++    if model_class.__name__ == "Qwen4ExpForConditionalGeneration":
++        kwargs["model_path"] = model_config.model_path
++
+     # Only add sparse head kwargs if envs.SGLANG_EMBEDDINGS_SPARSE_HEAD.is_set()
+     if envs.SGLANG_EMBEDDINGS_SPARSE_HEAD.is_set():
+         kwargs["sparse_head"] = envs.SGLANG_EMBEDDINGS_SPARSE_HEAD.get()

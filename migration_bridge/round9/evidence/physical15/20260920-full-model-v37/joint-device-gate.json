@@ -1,0 +1,127 @@
+{
+  "case": {
+    "actual_migration_h2d_bytes": 19660800,
+    "full_q32_h2d_bytes": 314572800,
+    "migration_experts": 2,
+    "migration_sha256": "8eca02bdec774408ad743e89af338ac0f5a65e38532d9b25e5d1ce7ef8b28896",
+    "ple_payload_bytes": 163840,
+    "ple_row_width": 160,
+    "ple_rows": 512,
+    "ple_sha256": "f3880e1dc8f2ca03a409fd02f48d19d0f1aa0a12ef1b3442c10db475719f6acd"
+  },
+  "checks": {
+    "full_q32_budget_math": true,
+    "migration_h2d_exact": true,
+    "no_capacity_exceeded": true,
+    "physical_mapping": true,
+    "ple_current_overlap": true,
+    "prefetch_cancel_reclaim": true,
+    "request_retirement": true,
+    "required_progress_with_prefetch": true,
+    "zero_credits_after_close": true
+  },
+  "configured_budget": {
+    "capacity": {
+      "h2d_bytes": 314900480,
+      "host_bytes": 40304640,
+      "pinned_bytes": 327680
+    },
+    "reserve": {
+      "h2d_bytes": 314572800,
+      "host_bytes": 39321600,
+      "pinned_bytes": 0
+    }
+  },
+  "expert_bytes": 9830400,
+  "migration_probe_experts": 2,
+  "peak_extra_bytes": 20154368,
+  "physical_device": 15,
+  "ple_gate_sha256": "b753270612776c26b15d2c00e9bb9817bf9d86ca8bcf7e12c183e455ffa2e551",
+  "resident_capacity": 32,
+  "schema": 1,
+  "scope": "SYNTHETIC_Q32_TRANSPORT_CREDITS_NOT_EXPERT_MATH_OR_MODEL",
+  "snapshots": [
+    {
+      "active_requests": 3,
+      "allocations": 3,
+      "in_flight": 1,
+      "stage": "ple_current_live",
+      "used": {
+        "h2d_bytes": 163840,
+        "host_bytes": 327680,
+        "pinned_bytes": 327680
+      }
+    },
+    {
+      "active_requests": 3,
+      "allocations": 4,
+      "in_flight": 2,
+      "stage": "prefetch_live",
+      "used": {
+        "h2d_bytes": 168960,
+        "host_bytes": 337920,
+        "pinned_bytes": 327680
+      }
+    },
+    {
+      "active_requests": 3,
+      "allocations": 5,
+      "in_flight": 3,
+      "stage": "migration_live",
+      "used": {
+        "h2d_bytes": 19829760,
+        "host_bytes": 39659520,
+        "pinned_bytes": 327680
+      }
+    },
+    {
+      "active_requests": 3,
+      "allocations": 4,
+      "in_flight": 2,
+      "stage": "after_migration",
+      "used": {
+        "h2d_bytes": 168960,
+        "host_bytes": 337920,
+        "pinned_bytes": 327680
+      }
+    },
+    {
+      "active_requests": 3,
+      "allocations": 2,
+      "in_flight": 0,
+      "stage": "after_cancel",
+      "used": {
+        "h2d_bytes": 0,
+        "host_bytes": 0,
+        "pinned_bytes": 327680
+      }
+    },
+    {
+      "active_requests": 0,
+      "allocations": 0,
+      "in_flight": 0,
+      "stage": "final",
+      "used": {
+        "h2d_bytes": 0,
+        "host_bytes": 0,
+        "pinned_bytes": 0
+      }
+    }
+  ],
+  "source_identity": {
+    "file_sizes_checked": 144,
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_sha256": {
+    "budgeted_migration.py": "71372c62f55c817f87d634f345462004cd1de24994bb93088b9c38248bc09d55",
+    "host_budget.py": "2e08b04d8decfb17fe626f9fcbd509559b06e4a661b9ffa0aab59555d2c6a1da",
+    "ple_async.py": "792d077c8a1b2e302813eec05d25be0446f9b86dcb1faaf2e3e76f8499c11280"
+  },
+  "status": "PASS_JOINT_BUDGET_SYNTHETIC_CONTENTION",
+  "torch_npu_version": "2.9.0.post2",
+  "torch_version": "2.9.0+cpu"
+}

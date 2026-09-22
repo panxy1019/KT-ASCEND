@@ -1,0 +1,21 @@
+test_chunking_matches_full_run_and_does_not_mutate_input_state (__main__.GDNTests.test_chunking_matches_full_run_and_does_not_mutate_input_state) ... ok
+test_output_norm_uses_sigmoid_gate_instead_of_swish (__main__.GDNTests.test_output_norm_uses_sigmoid_gate_instead_of_swish) ... ok
+test_recurrence_matches_independent_fp64_equations (__main__.GDNTests.test_recurrence_matches_independent_fp64_equations) ... ok
+test_token_decode_matches_prefill_and_reset_is_fresh (__main__.GDNTests.test_token_decode_matches_prefill_and_reset_is_fresh) ... ok
+test_value_heads_expand_each_key_head_contiguously_three_times (__main__.GDNTests.test_value_heads_expand_each_key_head_contiguously_three_times) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.053s
+
+OK
+test_causal_boundaries_and_exact_tail (__main__.QSATests.test_causal_boundaries_and_exact_tail) ... ok
+test_compress_raw_before_norm_and_first_position (__main__.QSATests.test_compress_raw_before_norm_and_first_position) ... ok
+test_invalid_and_more_than_budget (__main__.QSATests.test_invalid_and_more_than_budget) ... ok
+test_relu_per_head_not_after_head_sum (__main__.QSATests.test_relu_per_head_not_after_head_sum) ... ok
+test_sparse_gqa_and_padding_independent_of_unselected_kv (__main__.QSATests.test_sparse_gqa_and_padding_independent_of_unselected_kv) ... ok
+test_text_rope_partial_neox_and_reject_multiaxis (__main__.QSATests.test_text_rope_partial_neox_and_reject_multiaxis) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.031s
+
+OK

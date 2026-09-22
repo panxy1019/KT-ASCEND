@@ -1,0 +1,43 @@
+{
+  "allowed_profile_sha256": [
+    "dc9754048575609eb832049778e6c97e6c9b527a2bbebf8a8e96331549bc8285",
+    "5b5c685956943f575a5cfa8d4c754a2774c0c4e53577fe9340aab35f8b03469b"
+  ],
+  "asset_sha256": {
+    "/workspace/models/DeepSeek-V2-Lite-604d5664/config.json": "f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d",
+    "/workspace/results/r64-tokenizer-compat-v1/config.json": "f346286b0f1c8b044252fd54cb4fa78b9fab6472a6e8bebb9edfe03d414ea03d",
+    "/workspace/results/r64-tokenizer-compat-v1/tokenizer.json": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+    "/workspace/results/r64-tokenizer-compat-v1/tokenizer_config.json": "d5f57d20f87e97e94dac06c5f91871bc819fe3fff41b2b0c96c04c2622dc95bb"
+  },
+  "candidate_sha256": "43a0bd582a4b126feb7ed851b85e1e94c1de98131700547eead4615d3e21967a",
+  "execution_tool_sha256": {
+    "analyze_free_generation.py": "39ef6d69b66457d44e197eb3c7c164b19b70575340970666d5886185cf790c42",
+    "compare_quality_screen.py": "065cc8c6c304303e6339af6b3bd018b01ecf6fda2e15116b7d4548a9a90f09ec",
+    "quality_answers.py": "4cae28e44dba632d4a4bf2e4d2c5cd6138abc77e6b5401f5e682bff451d882ba",
+    "quality_answers_v2.py": "7d394487111e227f1f5b709d8199564fe5688b91363628c2b4fa4ef4ab743fbc",
+    "run_final_screen_sequence.py": "a97abf2823f23d87049d45b1180f6ffdea5c24454b1fc09e09b83b11975a9286",
+    "run_quality_screen.py": "c5a0f1f68cce88e780e48861af353e07beaa0ee95ee7a920ae15d82730a9e1e8",
+    "run_study_generation.py": "dcfd8df80f5188e5334b4f6e20c892f16518797ba99f4d4fc013d9fbb0d24e34"
+  },
+  "final_qualification": false,
+  "heldout_logits_sha256": "36af0eeef0ab9117f17b2d4b8fdaea0648fc253a2b1c40dce49366033738c903",
+  "heldout_rerun": false,
+  "heldout_routers_sha256": "902ec37ac56287b47aba9dd1602dbe1e5c376d3e93d6b844e9f38e1252567832",
+  "heldout_system_review": "PASS",
+  "heldout_transfers_sha256": "2dc605e7797e28b8da20f2ba10e1496e2cb5bed480b410653f5023b9e49a6691",
+  "historical_bound_pass": false,
+  "historical_overflow_positions": 3,
+  "interpretation": "Local tail safety passed; larger model drift remains and requires independent task quality. No claim of global-logit equivalence.",
+  "model_distribution_review": "TAILS_REVIEWED_UNDER_PRE_FROZEN_DIAGNOSTIC_ONLY_CONTRACT",
+  "new_threshold_fitting": false,
+  "parser_sha256": {
+    "quality_answers.py": "4cae28e44dba632d4a4bf2e4d2c5cd6138abc77e6b5401f5e682bff451d882ba",
+    "quality_answers_v2.py": "7d394487111e227f1f5b709d8199564fe5688b91363628c2b4fa4ef4ab743fbc"
+  },
+  "quality_execution_allowed": true,
+  "quality_scope": "PRE_FROZEN_32_GSM8K_256_CMMLU_ENGINEERING_SCREEN_NOT_POPULATION_NONINFERIORITY",
+  "runtime_manifest_sha256": "68d1a5814a70e123eb55c840ec9a995fda1fe4802120374f61f32e2d1775570a",
+  "tail_operator_count": 52,
+  "tail_operator_sha256": "56a06916d695478168dc55e87c3db5e83f338590d663f6a022110153b2ccd1c7",
+  "version": "r66-quality-execution-review-v1"
+}

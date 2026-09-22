@@ -1,0 +1,34 @@
+can not use command: npu-smi info
+INFO 09-20 13:41:48 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 13:41:48 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 13:41:48 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 13:41:48 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[W920 13:41:50.169613480 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W920 13:41:50.170055081 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/sglang_adapter_probe.py", line 375, in <module>
+[rank0]:     gdn_cpu = load_module(gdn, "model.language_model.layers.0.linear_attn.")
+[rank0]:               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/sglang_adapter_probe.py", line 158, in load_module
+[rank0]:     original = load_original(key)
+[rank0]:                ^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/sglang_adapter_probe.py", line 148, in load_original
+[rank0]:     raise KeyError(f"missing original checkpoint tensor: {key}")
+[rank0]: KeyError: 'missing original checkpoint tensor: model.language_model.layers.0.linear_attn.attn.A_log'
+[ERROR] 2026-09-20-13:41:52 (PID:72, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

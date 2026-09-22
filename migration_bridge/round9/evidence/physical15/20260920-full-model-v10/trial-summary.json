@@ -1,0 +1,28 @@
+{
+  "telemetry_scope": "before explicitly recorded controlled shutdown; old guard could read root cgroup during exit",
+  "status": "PASS_CANDIDATE_SYSTEM_RESOURCE_ONLY",
+  "scope": "FUNCTIONAL_RESOURCE_NOT_ACCURACY_PERFORMANCE_OR_DEPLOYMENT_QUALIFICATION",
+  "failed": [],
+  "container_id": "0dd1d696b5a839f06587fe6ddb9dea3d512248d3121301b6f9927bd7ec26e7b0",
+  "resource_mode": "exclusive",
+  "evidence_sha256": {
+    "first-http.json": "a3fd03e94c40bebb735b7d2f8944e878144f3bfbda5f1075500db596baa2282e",
+    "system8.json": "69e45cd3094ccdc5f0c0c491c4011bb34228dd1253bc2138cf2039c9532ad2d9",
+    "canaries.json": "bbb8f8584ac1e19089a770a51753b6a1c6477e0a28a2ac5c2f0d883c0df0a232",
+    "context4096.json": "d92bbcb3790fc30da620c0ac386c1f9ba5e88051d5204ba74865739fbc0f3221",
+    "cancel-reuse.json": "19dc44b84353667926750bcc1b028ada27f1ff8a334e4742683b2eaf4fd3b982",
+    "admission.json": "ea91a2c56d9c3ddae8dd68728fceb340a7a70745a3042dafe62181110277be1c",
+    "payload-sha256.json": "0721c193c774fa18b0fa773bcd0377672288e982bb397b9cd21fb0a240b5b1cc",
+    "server-profile.json": "1bf464d7ff56a1fc04e974fd8f0ad6d5a2f48d5df75b569d5e0f1010329266e1",
+    "resolved-profile.json": "789e6f081d49c866e39187f6dc459ddeebe46aad60b5e82a97e848c93451cb23",
+    "monitor.jsonl": "4fbd367711d2f81cd43c7a83eeb86143e7dc5f94d7aa42290085695df536d1a7",
+    "server.log": "b78c605c394f6f355c933c831c4e0bdf956bc68b7c9c851b6ca5456a361e9e15",
+    "controlled-stop.json": "3310382de8aa25b5813135ec04cf483e3da6af99ee1746929be37754181c4b3b"
+  },
+  "peak_observed_board_mib": 42624,
+  "peak_observed_owned_mib": 39856,
+  "peak_observed_host_cgroup_bytes": 309354479616,
+  "same_placement_static_oracle": "PENDING_FOR_DYNAMIC",
+  "quality_reference256": "INCOMPLETE_NO_INHERITANCE",
+  "restart_qualification": "PENDING"
+}

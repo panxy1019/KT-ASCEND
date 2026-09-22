@@ -1,0 +1,140 @@
+{
+  "started_unix": 1789580209.444343,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-r66-final-screen-v1/free_hybrid/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-r66-final-screen-v1/free_hybrid",
+    "/workspace/results/r65-profiles-v1/four-R32.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        15543,
+        15
+      ],
+      [
+        15544,
+        15
+      ],
+      [
+        15545,
+        15
+      ],
+      [
+        15546,
+        15
+      ],
+      [
+        15547,
+        15
+      ],
+      [
+        15548,
+        15
+      ],
+      [
+        15549,
+        15
+      ],
+      [
+        15550,
+        15
+      ],
+      [
+        15551,
+        15
+      ],
+      [
+        15552,
+        256
+      ],
+      [
+        15553,
+        256
+      ],
+      [
+        15554,
+        256
+      ],
+      [
+        15555,
+        256
+      ],
+      [
+        15556,
+        256
+      ],
+      [
+        15557,
+        256
+      ],
+      [
+        15558,
+        256
+      ],
+      [
+        15559,
+        256
+      ],
+      [
+        15292,
+        9
+      ],
+      [
+        15293,
+        15
+      ],
+      [
+        15294,
+        15
+      ],
+      [
+        15460,
+        15
+      ],
+      [
+        15542,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-r66-final-screen-v1/free_hybrid",
+      "/workspace/results/r65-profiles-v1/four-R32.json",
+      "32"
+    ],
+    "started_unix": 1789580209.5240753,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 15017,
+    "pgid": 15017,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789580540.9329894,
+    "success": false
+  },
+  "ended_unix": 1789580540.9867177
+}

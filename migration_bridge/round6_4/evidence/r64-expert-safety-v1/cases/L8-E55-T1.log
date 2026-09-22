@@ -1,0 +1,143 @@
+can not use command: npu-smi info
+[identity] load_selected_safetensors: 0.025s
+set_mempolicy: Operation not permitted
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+Failed to set thread CPU binding: Invalid argument
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+hwloc_set_membind_nodeset: Operation not permitted
+
+[GGUFLoader] Loading single GGUF file : deepseek-v2-lite-round6-d3-f32.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 24
+  Metadata keys: 12
+[LlamafileMoEWrapper] Layer 8 TP configuration:
+  intermediate_size: 1408
+  threadpool_count: 1
+  QK_K: 256
+  Tail-safe single-TP path: enabled
+  TP 0: size=1408, offset=0
+[identity] construct_cpu_wrapper: 1.563s
+/workspace/results/venv-r6/lib/python3.11/site-packages/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[identity] load_cpu_expert_weights: 0.001s
+[identity] cpu_expert_forward: 0.235s
+[identity] copy_hidden_to_npu: 0.039s
+[identity] copy_gate_to_npu: 0.001s
+[identity] copy_up_to_npu: 0.001s
+[identity] copy_down_to_npu: 0.000s
+[identity] npu_gate_linear_submit: 0.162s
+[identity] npu_up_linear_submit: 0.000s
+[identity] npu_down_linear_submit: 0.003s
+[identity] npu_synchronize_and_copy_output: 0.002s
+[identity] cpu_fp32_reference: 0.074s
+{
+  "cpu_gguf_dtype": "float32",
+  "cpu_repeat_max_abs": 0.0,
+  "cpu_repeat_unique_hashes": [
+    "b761d1ec082acfa9d30bbb94740823dc2d7b44f647a1dedb28356a4e620bc92e"
+  ],
+  "cpu_repeats": 10,
+  "cpuinfer_threads": 16,
+  "down_shape": [
+    2048,
+    1408
+  ],
+  "finite_cpu": true,
+  "finite_npu": true,
+  "gate_shape": [
+    1408,
+    2048
+  ],
+  "layer": 8,
+  "logical_expert_id": 55,
+  "metrics": {
+    "cosine": 0.9999951124191284,
+    "max_abs": 0.015625,
+    "mean_abs": 0.002647802233695984,
+    "relative_l2": 0.0032223673164935534
+  },
+  "npu_compute_dtype": "torch.bfloat16",
+  "num_tokens": 1,
+  "physical_expert_id": 55,
+  "reference_metrics": {
+    "cpu_vs_bf16_rounded_fp32": {
+      "cosine": 0.999993622303009,
+      "max_abs": 0.03125,
+      "mean_abs": 0.0032211802899837494,
+      "relative_l2": 0.0037243697551230157
+    },
+    "cpu_vs_fp32": {
+      "cosine": 0.9999946355819702,
+      "max_abs": 0.023284912109375,
+      "mean_abs": 0.0036432610359042883,
+      "relative_l2": 0.0033910616228052855
+    },
+    "npu_vs_bf16_rounded_fp32": {
+      "cosine": 0.999993085861206,
+      "max_abs": 0.03125,
+      "mean_abs": 0.0034784041345119476,
+      "relative_l2": 0.003920927061095464
+    },
+    "npu_vs_fp32": {
+      "cosine": 0.9999940991401672,
+      "max_abs": 0.023284912109375,
+      "mean_abs": 0.00386118539609015,
+      "relative_l2": 0.003593895738904499
+    }
+  },
+  "source_dtype": "torch.bfloat16",
+  "source_keys": {
+    "down": "model.layers.8.mlp.experts.55.down_proj.weight",
+    "gate": "model.layers.8.mlp.experts.55.gate_proj.weight",
+    "up": "model.layers.8.mlp.experts.55.up_proj.weight"
+  },
+  "source_shard": "model-00002-of-000004.safetensors",
+  "timings_seconds": {
+    "construct_cpu_wrapper": 1.563172603957355,
+    "copy_down_to_npu": 0.00043834198731929064,
+    "copy_gate_to_npu": 0.0006068500224500895,
+    "copy_hidden_to_npu": 0.03946565696969628,
+    "copy_up_to_npu": 0.0005486379377543926,
+    "cpu_expert_forward": 0.23457085201516747,
+    "cpu_fp32_reference": 0.07384772994555533,
+    "load_cpu_expert_weights": 0.0013577970676124096,
+    "load_selected_safetensors": 0.024935562978498638,
+    "npu_down_linear_submit": 0.003318426082842052,
+    "npu_gate_linear_submit": 0.16230087901931256,
+    "npu_synchronize_and_copy_output": 0.001722455956041813,
+    "npu_up_linear_submit": 0.00010062498040497303
+  },
+  "total_seconds": 2.1074752239510417,
+  "up_shape": [
+    1408,
+    2048
+  ]
+}
+CPUInfer[0xaaaaede96970]: Hello
+WorkerPool[0xaaaaedeb8090] 1 subpools, [numa:threads][0:16] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 0, 16 threads
+TP MOE layer 8, pool: 0xaaaaedeb8090, expert num: 64, num_experts_per_tok: 6
+Llamafile tail-safe single-TP path: intermediate_size=1408
+CPUInfer[0xaaaaede96970]: Goodbye

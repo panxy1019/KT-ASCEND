@@ -1,0 +1,20 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-31",
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65a-tools/migration_bridge/round6_5a/tools/probe_npu_subset.py",
+    "--trace",
+    "/workspace/results/r65-four-R32-localization-v1",
+    "--model",
+    "/workspace/models/DeepSeek-V2-Lite-604d5664",
+    "--output",
+    "/workspace/results/r65-5a-subset-v1/probe"
+  ],
+  "started_unix": 1789568896.6067135,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [],
+  "pid": 177,
+  "pgid": 177
+}

@@ -1,0 +1,1099 @@
+{
+  "sequence_status": "BLOCKED",
+  "final_qualification": false,
+  "population_noninferiority_claim": false,
+  "performance_claim": false,
+  "modes": {
+    "quality_npu": {
+      "status": "QUALITY_SCREEN_COLLECTION_COMPLETE",
+      "lifecycle": "COMPLETE",
+      "profile_sha256": "dc9754048575609eb832049778e6c97e6c9b527a2bbebf8a8e96331549bc8285",
+      "benchmarks": {
+        "gsm8k": {
+          "n": 32,
+          "correct": 3,
+          "accuracy": 0.09375,
+          "accuracy_wilson95": [
+            0.032401551298366194,
+            0.24218154728387864
+          ],
+          "invalid": 0,
+          "truncated": 18,
+          "generated_tokens": 12182,
+          "request_seconds": 1123.9754308008123,
+          "request_latency_median": 46.40236639342038,
+          "end_to_end_tokens_per_second": 10.838315203492076,
+          "not_decode_only": true,
+          "subjects": {
+            "main": {
+              "n": 32,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 18
+            }
+          },
+          "baseline_floor_review_required": false
+        },
+        "cmmlu": {
+          "n": 256,
+          "correct": 145,
+          "accuracy": 0.56640625,
+          "accuracy_wilson95": [
+            0.5051606379526138,
+            0.6256883811158253
+          ],
+          "invalid": 8,
+          "truncated": 0,
+          "generated_tokens": 542,
+          "request_seconds": 79.26191566942725,
+          "request_latency_median": 0.2869263995089568,
+          "end_to_end_tokens_per_second": 6.838088575356742,
+          "not_decode_only": true,
+          "subjects": {
+            "agronomy": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "anatomy": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "ancient_chinese": {
+              "n": 5,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "arts": {
+              "n": 4,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "astronomy": {
+              "n": 3,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "business_ethics": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_civil_service_exam": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_driving_rule": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_food_culture": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_foreign_policy": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_history": {
+              "n": 7,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_literature": {
+              "n": 6,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_teacher_qualification": {
+              "n": 4,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "clinical_knowledge": {
+              "n": 7,
+              "correct": 5,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_actuarial_science": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_education": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_engineering_hydrology": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_law": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_mathematics": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_medical_statistics": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_medicine": {
+              "n": 6,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "computer_science": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "computer_security": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "conceptual_physics": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "construction_project_management": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "economics": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "education": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "electrical_engineering": {
+              "n": 5,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "elementary_chinese": {
+              "n": 6,
+              "correct": 5,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_commonsense": {
+              "n": 4,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_information_and_technology": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_mathematics": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "ethnology": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "food_science": {
+              "n": 3,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "genetics": {
+              "n": 7,
+              "correct": 2,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "global_facts": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_biology": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_chemistry": {
+              "n": 6,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_geography": {
+              "n": 3,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "high_school_mathematics": {
+              "n": 7,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_physics": {
+              "n": 3,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_politics": {
+              "n": 3,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "human_sexuality": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "international_law": {
+              "n": 7,
+              "correct": 1,
+              "invalid": 2,
+              "truncated": 0
+            },
+            "journalism": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "jurisprudence": {
+              "n": 15,
+              "correct": 8,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "legal_and_moral_basis": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "logical": {
+              "n": 4,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "machine_learning": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "management": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "marketing": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "marxist_theory": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "modern_chinese": {
+              "n": 2,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "nutrition": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "philosophy": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_accounting": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_law": {
+              "n": 6,
+              "correct": 5,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_medicine": {
+              "n": 6,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_psychology": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "public_relations": {
+              "n": 4,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "security_study": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "sociology": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "sports_science": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "traditional_chinese_medicine": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "virology": {
+              "n": 6,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "world_history": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "world_religions": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            }
+          },
+          "baseline_floor_review_required": false
+        }
+      }
+    },
+    "quality_hybrid": {
+      "status": "QUALITY_SCREEN_COLLECTION_COMPLETE",
+      "lifecycle": "COMPLETE",
+      "profile_sha256": "5b5c685956943f575a5cfa8d4c754a2774c0c4e53577fe9340aab35f8b03469b",
+      "benchmarks": {
+        "gsm8k": {
+          "n": 32,
+          "correct": 2,
+          "accuracy": 0.0625,
+          "accuracy_wilson95": [
+            0.017310567031640967,
+            0.2014712314415458
+          ],
+          "invalid": 0,
+          "truncated": 17,
+          "generated_tokens": 11858,
+          "request_seconds": 2679.9174569449387,
+          "request_latency_median": 112.74437761603622,
+          "end_to_end_tokens_per_second": 4.42476314681644,
+          "not_decode_only": true,
+          "subjects": {
+            "main": {
+              "n": 32,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 17
+            }
+          },
+          "baseline_floor_review_required": false
+        },
+        "cmmlu": {
+          "n": 256,
+          "correct": 142,
+          "accuracy": 0.5546875,
+          "accuracy_wilson95": [
+            0.4934438909769816,
+            0.6143141247264388
+          ],
+          "invalid": 7,
+          "truncated": 0,
+          "generated_tokens": 538,
+          "request_seconds": 732.3305244855583,
+          "request_latency_median": 2.651491993048694,
+          "end_to_end_tokens_per_second": 0.7346409606207934,
+          "not_decode_only": true,
+          "subjects": {
+            "agronomy": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "anatomy": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "ancient_chinese": {
+              "n": 5,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "arts": {
+              "n": 4,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "astronomy": {
+              "n": 3,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "business_ethics": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_civil_service_exam": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_driving_rule": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_food_culture": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_foreign_policy": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_history": {
+              "n": 7,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_literature": {
+              "n": 6,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "chinese_teacher_qualification": {
+              "n": 4,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "clinical_knowledge": {
+              "n": 7,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_actuarial_science": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_education": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_engineering_hydrology": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_law": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_mathematics": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_medical_statistics": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "college_medicine": {
+              "n": 6,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "computer_science": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "computer_security": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "conceptual_physics": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "construction_project_management": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "economics": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "education": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "electrical_engineering": {
+              "n": 5,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "elementary_chinese": {
+              "n": 6,
+              "correct": 5,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_commonsense": {
+              "n": 4,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_information_and_technology": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "elementary_mathematics": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "ethnology": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "food_science": {
+              "n": 3,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "genetics": {
+              "n": 7,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "global_facts": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_biology": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_chemistry": {
+              "n": 6,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_geography": {
+              "n": 3,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "high_school_mathematics": {
+              "n": 7,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_physics": {
+              "n": 3,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "high_school_politics": {
+              "n": 3,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "human_sexuality": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "international_law": {
+              "n": 7,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "journalism": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "jurisprudence": {
+              "n": 15,
+              "correct": 8,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "legal_and_moral_basis": {
+              "n": 4,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "logical": {
+              "n": 4,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "machine_learning": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "management": {
+              "n": 3,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "marketing": {
+              "n": 2,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "marxist_theory": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "modern_chinese": {
+              "n": 2,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "nutrition": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "philosophy": {
+              "n": 1,
+              "correct": 0,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_accounting": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_law": {
+              "n": 6,
+              "correct": 5,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_medicine": {
+              "n": 6,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "professional_psychology": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "public_relations": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "security_study": {
+              "n": 1,
+              "correct": 1,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "sociology": {
+              "n": 4,
+              "correct": 1,
+              "invalid": 1,
+              "truncated": 0
+            },
+            "sports_science": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "traditional_chinese_medicine": {
+              "n": 5,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "virology": {
+              "n": 6,
+              "correct": 3,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "world_history": {
+              "n": 5,
+              "correct": 4,
+              "invalid": 0,
+              "truncated": 0
+            },
+            "world_religions": {
+              "n": 2,
+              "correct": 2,
+              "invalid": 0,
+              "truncated": 0
+            }
+          },
+          "baseline_floor_review_required": false
+        }
+      }
+    }
+  },
+  "evidence_sha256": {
+    "free_analysis.json": "75b4c17979d0b796a9b4c49197ba0b062e9d30b29d6230198fac1b7612f080a4",
+    "paired_quality.json": "1c6ce180a032134881ae7448fa7e5800216341e123d4ea8405ec84a1bcfb0c40",
+    "quality_npu/quality-report.json": "70612da6e09d847fda2e36e656d7cda3fd0fb41f33afdb3030af5965b15e49ce",
+    "quality_npu/requests.jsonl": "02c7f4f3b70544ac2e31923a42b4ae676503104b25df00805de396a0d683ef5e",
+    "quality_npu/lifecycle.json": "4455c1d364b929d5f67529461d6da8f72808b83d13909be0a19c237aded09ac1",
+    "quality_hybrid/quality-report.json": "8090670fc8f6ed064c3d2a64f866ff2ef0cdb011c09d955d3917aefb9128b775",
+    "quality_hybrid/requests.jsonl": "75797c2bc565c6cd46ef5d0b51502e0a9dd9fc148f0808ad52296d3ec65efa32",
+    "quality_hybrid/lifecycle.json": "914bdf56551bd37724ad591a6cf95ff0c1dfc19c90ff5a5a1a1bf2be8f61567d"
+  },
+  "free_analysis": {
+    "status": "FREE_GENERATION_COMMON_HISTORY_AUDIT_PASS",
+    "rows": [
+      {
+        "rid": "r66-hd6-00",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-01",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-02",
+        "first_divergence": 24,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": {
+          "rid": "r66-hd6-02",
+          "token_index": 24,
+          "baseline_top1": 20177,
+          "hybrid_top1": 14859,
+          "top1_equal": false,
+          "max_abs": 0.1875,
+          "mean_abs": 0.03155965730547905,
+          "relative_l2": 0.0054219258017838,
+          "cosine": 0.9999800324440002,
+          "max_pairwise": 0.125,
+          "historical_B_pair_overflow_pairs": 0,
+          "historical_stable": false,
+          "historical_stable_exact": true,
+          "historical_ambiguity_membership": true
+        }
+      },
+      {
+        "rid": "r66-hd6-03",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-04",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-05",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-06",
+        "first_divergence": 47,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": {
+          "rid": "r66-hd6-06",
+          "token_index": 47,
+          "baseline_top1": 207,
+          "hybrid_top1": 185,
+          "top1_equal": false,
+          "max_abs": 0.375,
+          "mean_abs": 0.06105019897222519,
+          "relative_l2": 0.015057600103318691,
+          "cosine": 0.9998700618743896,
+          "max_pairwise": 0.125,
+          "historical_B_pair_overflow_pairs": 0,
+          "historical_stable": false,
+          "historical_stable_exact": true,
+          "historical_ambiguity_membership": true
+        }
+      },
+      {
+        "rid": "r66-hd6-07",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-08",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-09",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-10",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      },
+      {
+        "rid": "r66-hd6-11",
+        "first_divergence": null,
+        "common_history_observer_parity": true,
+        "first_divergence_diagnostics": null
+      }
+    ],
+    "generation_sha256": "a6154705d63216161abc42779694da765d79c9b91ef0e746eba5bc9a90c9a029",
+    "role": "First-divergence diagnostics under the frozen heavy-static study; not downstream quality"
+  },
+  "paired_quality": {
+    "status": "PAIRED_SCREEN_FAILED",
+    "benchmarks": [
+      {
+        "benchmark": "gsm8k",
+        "n": 32,
+        "correct_npu": 3,
+        "correct_hybrid": 2,
+        "invalid_npu": 0,
+        "invalid_hybrid": 0,
+        "truncated_npu": 18,
+        "truncated_hybrid": 17,
+        "gains": 0,
+        "losses": 1,
+        "exact_marginal_interval": {
+          "delta": -0.03125,
+          "lower": -0.18343510046636374,
+          "upper": 0.1275829901453828,
+          "one_sided_confidence": 0.975,
+          "method": "paired_discordance_exact_marginals_bonferroni"
+        },
+        "bootstrap_percentile95": [
+          -0.09375,
+          0.0
+        ],
+        "bootstrap_seed": 6606,
+        "bootstrap_replicates": 20000,
+        "observed_screen_pass": false
+      },
+      {
+        "benchmark": "cmmlu",
+        "n": 256,
+        "correct_npu": 145,
+        "correct_hybrid": 142,
+        "invalid_npu": 8,
+        "invalid_hybrid": 7,
+        "truncated_npu": 0,
+        "truncated_hybrid": 0,
+        "gains": 2,
+        "losses": 5,
+        "exact_marginal_interval": {
+          "delta": -0.01171875,
+          "lower": -0.04845826110693162,
+          "upper": 0.026035462424837626,
+          "one_sided_confidence": 0.975,
+          "method": "paired_discordance_exact_marginals_bonferroni"
+        },
+        "bootstrap_percentile95": [
+          -0.03125,
+          0.0078125
+        ],
+        "bootstrap_seed": 6606,
+        "bootstrap_replicates": 20000,
+        "observed_screen_pass": false
+      }
+    ],
+    "population_noninferiority_claim": false,
+    "caveat": "Subset collapse, reference floor and truncation require explicit ADR review; bootstrap zero width is not zero population uncertainty"
+  },
+  "review_requirements": [
+    "No final promotion without same-path, source/provenance and ADR review.",
+    "CMMLU small subject cells cannot support subject-level equivalence claims.",
+    "A zero-width empirical bootstrap is not zero population uncertainty.",
+    "Request throughput includes prefill and differs with output lengths; not a causal speedup claim.",
+    "Old Round6.5 remains blocked under its unchanged global numerical bound."
+  ]
+}

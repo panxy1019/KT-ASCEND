@@ -1,0 +1,162 @@
+{
+  "profile": "D1",
+  "batch_cap": 1,
+  "cpu_workers": 32,
+  "capture": false,
+  "capacity_adapter": true,
+  "performance_observer_off": false,
+  "tokenizer_compatibility_overlay": true,
+  "started_unix": 1789546836.6259937,
+  "status": "PLANNED_STOP",
+  "stream_overrides": {
+    "SGLANG_KT_HYBRID_NO_CPU_STREAM": null,
+    "SGLANG_KT_HYBRID_TIMING": null,
+    "SGLANG_KT_HYBRID_TIMING_DEEP": null,
+    "SGLANG_KT_BYPASS_GPU_MOE": null,
+    "KT_FORCE_SYNC_SUBMIT": null,
+    "KT_EXTERNAL_NPU_REPORT_SUBSCRIBER": null
+  },
+  "migration_binary": {
+    "manifest_path": "/workspace/results/migration-cpu-build-v1/QUALIFIED_BINARY.json",
+    "manifest_sha256": "26d930ef31ce11987efaa3e76ffcc78459326fe30353176395544797c8f98091",
+    "original_sha256": "3fbb95c00c5906b905e8fd689346f4e78f86714fddb6372fa0e481e0da7ce43f",
+    "target_sha256": "0f3aac9009931b18853c9b8fd6f6bba8b02d6ea396e79b2029bf9ce092049895"
+  },
+  "owned_guard_pid": 152581,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/r64-migration-tools-v6/tools/run_owned_process.py",
+    "--output",
+    "/workspace/results/r64-910b-compact32-v1/D1-restart/guard",
+    "--timeout-seconds",
+    "7200",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+    "D1",
+    "/workspace/results/r64-910b-compact32-v1/D1-restart",
+    "31000"
+  ],
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+      "D1",
+      "/workspace/results/r64-910b-compact32-v1/D1-restart",
+      "31000"
+    ],
+    "started_unix": 1789546862.7650027,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 152583,
+    "pgid": 152583,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789547042.9230206,
+    "success": false
+  },
+  "reaping": {
+    "status": "OWNED_DESCENDANTS_REAPED",
+    "reaped": [
+      {
+        "pid": 153193,
+        "wait_status": 15
+      },
+      {
+        "pid": 153194,
+        "wait_status": 15
+      },
+      {
+        "pid": 153195,
+        "wait_status": 15
+      },
+      {
+        "pid": 153196,
+        "wait_status": 15
+      },
+      {
+        "pid": 153197,
+        "wait_status": 15
+      },
+      {
+        "pid": 153198,
+        "wait_status": 15
+      },
+      {
+        "pid": 153199,
+        "wait_status": 15
+      },
+      {
+        "pid": 153200,
+        "wait_status": 15
+      },
+      {
+        "pid": 153201,
+        "wait_status": 15
+      },
+      {
+        "pid": 153202,
+        "wait_status": 256
+      },
+      {
+        "pid": 153203,
+        "wait_status": 256
+      },
+      {
+        "pid": 153204,
+        "wait_status": 256
+      },
+      {
+        "pid": 153205,
+        "wait_status": 256
+      },
+      {
+        "pid": 153206,
+        "wait_status": 256
+      },
+      {
+        "pid": 153207,
+        "wait_status": 256
+      },
+      {
+        "pid": 153208,
+        "wait_status": 256
+      },
+      {
+        "pid": 153209,
+        "wait_status": 256
+      },
+      {
+        "pid": 153116,
+        "wait_status": 15
+      },
+      {
+        "pid": 153192,
+        "wait_status": 15
+      },
+      {
+        "pid": 152835,
+        "wait_status": 9
+      },
+      {
+        "pid": 152836,
+        "wait_status": 15
+      },
+      {
+        "pid": 152837,
+        "wait_status": 15
+      }
+    ]
+  },
+  "ended_unix": 1789547042.98066
+}

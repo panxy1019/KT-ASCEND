@@ -1,0 +1,19 @@
+{
+  "status": "ATTRIBUTABLE_WITH_RECORDED_LIMITATIONS",
+  "campaign_root": "/tmp/r64-performance-complete",
+  "a3_campaign_root": "/workspace/results/r64-minimal-performance-v1",
+  "basis": [
+    "12/12 preregistered independent phases completed in fixed three-block ABBA order",
+    "10 or 11 exact-owned-guard resource samples per phase, zero monitor errors",
+    "No other NPU0 HBM process observed in owned-phase samples",
+    "Identical actual source hashes enforced across phases by campaign runner"
+  ],
+  "limitations": [
+    "Shared host, not exclusive hardware; no claim of absent transient contention",
+    "Host one-minute load varies, maximum observed 59.372; not affinity-specific attribution",
+    "Only three independent ABBA blocks and one sparse-deferred workload",
+    "Resource samples include startup/warmup/teardown and are not exact timed-request boundaries",
+    "Interpret small effects cautiously; do not claim general hardware performance"
+  ],
+  "decision_scope": "Allow descriptive paired timing inference for this fixed run only; no causal isolation or broad speedup claim"
+}

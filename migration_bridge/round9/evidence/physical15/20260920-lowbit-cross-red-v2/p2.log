@@ -1,0 +1,22 @@
+can not use command: npu-smi info
+CPUInfer[0xaaab1a17b130]: Hello
+WorkerPool[0xaaab187f51c0] 2 subpools, [numa:threads][6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0xaaab187f51c0, expert num: 10, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for fffd180096f0
+alloc 0 from other numa for fffd180096f0
+alloc 1 from other numa for fffd980096f0
+alloc 1 from other numa for fffd980096f0
+{"tokens": 1, "relative_l2": 0.0015638815239071846, "cross_pool_relative_l2": null, "repeat_hashes": ["1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6", "1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6", "1279e99d7e13ee8f2232a735decbf85c3f772f60fe473e6c0417992b86bb81b6"], "ownership_flip_exact": true}
+{"tokens": 2, "relative_l2": 0.0015223112422972918, "cross_pool_relative_l2": null, "repeat_hashes": ["8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe", "8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe", "8df6e1a1703388b63a376715faec26bd9649c40d0bb65b08568a9a6020d1dbfe"], "ownership_flip_exact": true}
+{"tokens": 9, "relative_l2": 0.0015388363972306252, "cross_pool_relative_l2": null, "repeat_hashes": ["48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374", "48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374", "48fe60331a5c00dbb9949c09dc57b9d8dfc759de93744c7b93c21a47fa148374"], "ownership_flip_exact": true}
+{"tokens": 10, "relative_l2": 0.0015657116891816258, "cross_pool_relative_l2": null, "repeat_hashes": ["fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032", "fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032", "fd61287150b1594de51f63b6c24fa0188f1c0d7da608904f6bcc5184626a4032"], "ownership_flip_exact": true}
+{"tokens": 11, "relative_l2": 0.001555448048748076, "cross_pool_relative_l2": null, "repeat_hashes": ["eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82", "eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82", "eedcd5fce41cc221f445a03ba29fc08cc0bea1962f01fa88541cdd3bf2b3ba82"], "ownership_flip_exact": true}
+{"tokens": 32, "relative_l2": 0.0015676106559112668, "cross_pool_relative_l2": null, "repeat_hashes": ["45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7", "45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7", "45f01e738c9fb3851b0e4fb82aec777abe824e663dc9cb549afff67432a838d7"], "ownership_flip_exact": true}
+PASS_REAL10_EXPERT_LOWBIT_CPU_MOE
+CPUInfer[0xaaab1a17b130]: Goodbye

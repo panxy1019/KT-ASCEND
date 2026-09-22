@@ -1,0 +1,14 @@
+--- a/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py
++++ b/python/sglang/srt/model_executor/model_runner_kv_cache_mixin.py
+@@ -802,7 +802,10 @@
+                 enable_hisparse=self.enable_hisparse,
+             )
+ 
+-        elif self.server_args.attention_backend == "ascend":
++        elif (self.server_args.attention_backend == "ascend"
++              and getattr(self.mambaish_config, "model_type", None) != "qwen4_exp_text"):
++            #Qwen4 owns QSA side state and sparse attention-layer mapping in
++            #Round9QSAKVPool below; the generic NPU pool cannot replace it.
+             if self.use_mla_backend:
+                 from sglang.srt.hardware_backend.npu.memory_pool_npu import (
+                     NPUMLATokenToKVPool,

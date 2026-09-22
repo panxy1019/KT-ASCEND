@@ -1,0 +1,1490 @@
+{
+  "contract_sha256": "d5b228befe5bfc08554b7f9d1c87b4ff6d2348913d2cc94d73a9b3710ca27f26",
+  "derivation_rule": "QD max * 1.25, predeclared before HD",
+  "route_telemetry_state": "POSITION_ALIGNED",
+  "schema_version": 1,
+  "selected": {
+    "ambiguity_membership": 169,
+    "ambiguity_ratio": 0.1650390625,
+    "ambiguity_size_max_diagnostic": 7,
+    "ambiguous": 169,
+    "bound": 0.46875,
+    "factor": 1.25,
+    "failures": [],
+    "pairwise_overflow": 0,
+    "pass": true,
+    "source": "max",
+    "stable": 855,
+    "stable_exact": 855,
+    "stable_ratio": 0.8349609375
+  },
+  "sensitivity": [
+    {
+      "ambiguity_membership": 81,
+      "ambiguity_ratio": 0.0791015625,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 81,
+      "bound": 0.125,
+      "factor": 1.0,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 14,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 18,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 28,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 31,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 34,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 35,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 41,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 48,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_04",
+          "token_index": 1,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_math_02",
+          "token_index": 0,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 38,
+      "pass": false,
+      "source": "p99",
+      "stable": 943,
+      "stable_exact": 943,
+      "stable_ratio": 0.9208984375
+    },
+    {
+      "ambiguity_membership": 81,
+      "ambiguity_ratio": 0.0791015625,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 81,
+      "bound": 0.15625,
+      "factor": 1.25,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 14,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 18,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 28,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 31,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 34,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 35,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 41,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 48,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_04",
+          "token_index": 1,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_math_02",
+          "token_index": 0,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 38,
+      "pass": false,
+      "source": "p99",
+      "stable": 943,
+      "stable_exact": 943,
+      "stable_ratio": 0.9208984375
+    },
+    {
+      "ambiguity_membership": 87,
+      "ambiguity_ratio": 0.0849609375,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 87,
+      "bound": 0.1875,
+      "factor": 1.5,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 25,
+      "pass": false,
+      "source": "p99",
+      "stable": 937,
+      "stable_exact": 937,
+      "stable_ratio": 0.9150390625
+    },
+    {
+      "ambiguity_membership": 81,
+      "ambiguity_ratio": 0.0791015625,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 81,
+      "bound": 0.125,
+      "factor": 1.0,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 14,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 18,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 28,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 31,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 34,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 35,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 41,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 48,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_04",
+          "token_index": 1,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_math_02",
+          "token_index": 0,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 38,
+      "pass": false,
+      "source": "p99_5",
+      "stable": 943,
+      "stable_exact": 943,
+      "stable_ratio": 0.9208984375
+    },
+    {
+      "ambiguity_membership": 81,
+      "ambiguity_ratio": 0.0791015625,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 81,
+      "bound": 0.15625,
+      "factor": 1.25,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 14,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 18,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 28,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 31,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 34,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 35,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 41,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_01",
+          "token_index": 48,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_zh_04",
+          "token_index": 1,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.1875,
+          "prompt_id": "qd_math_02",
+          "token_index": 0,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 38,
+      "pass": false,
+      "source": "p99_5",
+      "stable": 943,
+      "stable_exact": 943,
+      "stable_ratio": 0.9208984375
+    },
+    {
+      "ambiguity_membership": 87,
+      "ambiguity_ratio": 0.0849609375,
+      "ambiguity_size_max_diagnostic": 4,
+      "ambiguous": 87,
+      "bound": 0.1875,
+      "factor": 1.5,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 8,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 13,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 15,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 19,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_02",
+          "token_index": 23,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 20,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 21,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_en_03",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 33,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_zh_01",
+          "token_index": 38,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_json_01",
+          "token_index": 4,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 3,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 6,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 7,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.25,
+          "prompt_id": "qd_code_01",
+          "token_index": 10,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 25,
+      "pass": false,
+      "source": "p99_5",
+      "stable": 937,
+      "stable_exact": 937,
+      "stable_ratio": 0.9150390625
+    },
+    {
+      "ambiguity_membership": 120,
+      "ambiguity_ratio": 0.1171875,
+      "ambiguity_size_max_diagnostic": 5,
+      "ambiguous": 120,
+      "bound": 0.25,
+      "factor": 1.0,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.3125,
+          "prompt_id": "qd_zh_01",
+          "token_index": 52,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 6,
+      "pass": false,
+      "source": "p99_9",
+      "stable": 904,
+      "stable_exact": 904,
+      "stable_ratio": 0.8828125
+    },
+    {
+      "ambiguity_membership": 124,
+      "ambiguity_ratio": 0.12109375,
+      "ambiguity_size_max_diagnostic": 5,
+      "ambiguous": 124,
+      "bound": 0.3125,
+      "factor": 1.25,
+      "failures": [
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 17,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_en_02",
+          "token_index": 22,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_zh_01",
+          "token_index": 32,
+          "type": "PAIRWISE_OVERFLOW"
+        },
+        {
+          "observed": 0.375,
+          "prompt_id": "qd_json_01",
+          "token_index": 2,
+          "type": "PAIRWISE_OVERFLOW"
+        }
+      ],
+      "pairwise_overflow": 5,
+      "pass": false,
+      "source": "p99_9",
+      "stable": 900,
+      "stable_exact": 900,
+      "stable_ratio": 0.87890625
+    },
+    {
+      "ambiguity_membership": 166,
+      "ambiguity_ratio": 0.162109375,
+      "ambiguity_size_max_diagnostic": 7,
+      "ambiguous": 166,
+      "bound": 0.375,
+      "factor": 1.5,
+      "failures": [],
+      "pairwise_overflow": 0,
+      "pass": true,
+      "source": "p99_9",
+      "stable": 858,
+      "stable_exact": 858,
+      "stable_ratio": 0.837890625
+    },
+    {
+      "ambiguity_membership": 166,
+      "ambiguity_ratio": 0.162109375,
+      "ambiguity_size_max_diagnostic": 7,
+      "ambiguous": 166,
+      "bound": 0.375,
+      "factor": 1.0,
+      "failures": [],
+      "pairwise_overflow": 0,
+      "pass": true,
+      "source": "max",
+      "stable": 858,
+      "stable_exact": 858,
+      "stable_ratio": 0.837890625
+    },
+    {
+      "ambiguity_membership": 169,
+      "ambiguity_ratio": 0.1650390625,
+      "ambiguity_size_max_diagnostic": 7,
+      "ambiguous": 169,
+      "bound": 0.46875,
+      "factor": 1.25,
+      "failures": [],
+      "pairwise_overflow": 0,
+      "pass": true,
+      "source": "max",
+      "stable": 855,
+      "stable_exact": 855,
+      "stable_ratio": 0.8349609375
+    },
+    {
+      "ambiguity_membership": 205,
+      "ambiguity_ratio": 0.2001953125,
+      "ambiguity_size_max_diagnostic": 9,
+      "ambiguous": 205,
+      "bound": 0.5625,
+      "factor": 1.5,
+      "failures": [],
+      "pairwise_overflow": 0,
+      "pass": true,
+      "source": "max",
+      "stable": 819,
+      "stable_exact": 819,
+      "stable_ratio": 0.7998046875
+    }
+  ],
+  "sha256": "5e5ec52d62e4c99f5b673f720d5563315c0afa7a4c31977615c269056bfc8e5b"
+}

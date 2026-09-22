@@ -1,0 +1,29 @@
+/usr/local/python3.11.15/lib/python3.11/site-packages/gguf/__init__.py
+30
+    def add_tensor(
+        self, name: str, tensor: np.ndarray[Any, Any], raw_shape: Sequence[int] | None = None,
+        raw_dtype: GGMLQuantizationType | None = None, tensor_endianess: GGUFEndian | None = None
+    ) -> None:
+        # if tensor endianness is not passed, assume it's native to system
+        if tensor_endianess is None:
+            tensor_endianess = GGUFEndian.BIG if sys.byteorder == 'big' else GGUFEndian.LITTLE
+
+        if tensor_endianess != self.endianess:
+            # Don't byteswap inplace since lazy copies cannot handle it
+            tensor = tensor.byteswap(inplace=False)
+        if self.use_temp_file and self.temp_file is None:
+            fp = tempfile.SpooledTemporaryFile(mode="w+b", max_size=256 * 1024 * 1024)
+            fp.seek(0)
+            self.temp_file = fp
+
+        shape: Sequence[int] = raw_shape if raw_shape is not None else tensor.shape
+        self.add_tensor_info(name, shape, tensor.dtype, tensor.nbytes, raw_dtype=raw_dtype)
+
+        if self.temp_file is None:
+            self.tensors[-1][name].tensor = tensor
+            return
+
+        tensor.tofile(self.temp_file)
+        self.write_padding(self.temp_file, tensor.nbytes)
+
+(self, name: 'str', tensor_shape: 'Sequence[int]', tensor_dtype: 'np.dtype', tensor_nbytes: 'int', raw_dtype: 'GGMLQuantizationType | None' = None) -> 'None'

@@ -1,0 +1,15 @@
+Error response from daemon: Container 8a707f238c777bc8291c39984e8f870d90610bccd446054364d47dc58af45336 is not running
+kt-round9-full-model-v5
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/tools/monitor_owned_server.py", line 69, in <module>
+    state = json.loads(command(['docker','inspect',a.container]))[0]
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data1/kt-round9/tools/monitor_owned_server.py", line 25, in command
+    def command(args):
+               ^^^^^^^^
+  File "/usr/lib64/python3.11/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib64/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['docker', 'top', 'kt-round9-full-model-v5', '-eo', 'pid']' returned non-zero exit status 1.

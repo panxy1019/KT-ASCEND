@@ -1,0 +1,106 @@
+can not use command: npu-smi info
+.........EEEEE.................E........................................................................................................................................................................................................
+======================================================================
+ERROR: test_slice_shape_and_distinct_restarts_are_required (test_aggregate_cmmlu_reference.AggregateCMMLUTests.test_slice_shape_and_distinct_restarts_are_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 191, in test_slice_shape_and_distinct_restarts_are_required
+    slices = self.fixture(root)
+             ^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 27, in fixture
+    manifest = json.loads(MANIFEST.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/migration_bridge/round9/evidence/physical15/20260920-full-model-v3/cmmlu-frozen-v2/manifest.json'
+
+======================================================================
+ERROR: test_tampered_restart_container_or_admission_is_rejected (test_aggregate_cmmlu_reference.AggregateCMMLUTests.test_tampered_restart_container_or_admission_is_rejected) (name='restart')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 182, in test_tampered_restart_container_or_admission_is_rejected
+    slices = self.fixture(root)
+             ^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 27, in fixture
+    manifest = json.loads(MANIFEST.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/migration_bridge/round9/evidence/physical15/20260920-full-model-v3/cmmlu-frozen-v2/manifest.json'
+
+======================================================================
+ERROR: test_tampered_restart_container_or_admission_is_rejected (test_aggregate_cmmlu_reference.AggregateCMMLUTests.test_tampered_restart_container_or_admission_is_rejected) (name='container')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 182, in test_tampered_restart_container_or_admission_is_rejected
+    slices = self.fixture(root)
+             ^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 27, in fixture
+    manifest = json.loads(MANIFEST.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/migration_bridge/round9/evidence/physical15/20260920-full-model-v3/cmmlu-frozen-v2/manifest.json'
+
+======================================================================
+ERROR: test_tampered_restart_container_or_admission_is_rejected (test_aggregate_cmmlu_reference.AggregateCMMLUTests.test_tampered_restart_container_or_admission_is_rejected) (name='admission')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 182, in test_tampered_restart_container_or_admission_is_rejected
+    slices = self.fixture(root)
+             ^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 27, in fixture
+    manifest = json.loads(MANIFEST.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/migration_bridge/round9/evidence/physical15/20260920-full-model-v3/cmmlu-frozen-v2/manifest.json'
+
+======================================================================
+ERROR: test_two_real_frozen_128_slices_pass (test_aggregate_cmmlu_reference.AggregateCMMLUTests.test_two_real_frozen_128_slices_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 150, in test_two_real_frozen_128_slices_pass
+    process, output = self.aggregate(root, self.fixture(root))
+                                           ^^^^^^^^^^^^^^^^^^
+  File "/work/migration_bridge/round9/tests/test_aggregate_cmmlu_reference.py", line 27, in fixture
+    manifest = json.loads(MANIFEST.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/migration_bridge/round9/evidence/physical15/20260920-full-model-v3/cmmlu-frozen-v2/manifest.json'
+
+======================================================================
+ERROR: test_native_four_pool_partition_matches_python (test_candidates.CandidateTests.test_native_four_pool_partition_matches_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_candidates.py", line 98, in test_native_four_pool_partition_matches_python
+    subprocess.run(['g++','-std=c++17','-I',str(root),str(source),'-o',str(exe)],check=True,capture_output=True)
+  File "/usr/local/python3.11.15/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['g++', '-std=c++17', '-I', '/work', '/tmp/tmpv51uvkpc/check.cpp', '-o', '/tmp/tmpv51uvkpc/check']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 230 tests in 1.489s
+
+FAILED (errors=6)

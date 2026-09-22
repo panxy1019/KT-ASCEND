@@ -1,0 +1,43 @@
+{
+  "cgroup_samples": 1205,
+  "driver_sha256": "44c5552ba67e957a92fc06dfdb06012e7bd6ea8e2873ee3ecbadb7a32da1d3dd",
+  "driver_status": "PASS_TWO_DRIVERS",
+  "failures": [],
+  "monitor_sha256": "c5c1a15d98bac87ce70bbfbdc9a54e3c52e91c69d2d17f29ad40f87942dc1e16",
+  "nodes": {
+    "2": {
+      "minimum_conservative_available_gib": 129.2394256591797,
+      "minimum_memfree_gib": 6.618900299072266,
+      "peak_owned_anon_gib": 23.085758209228516
+    },
+    "3": {
+      "minimum_conservative_available_gib": 148.9632453918457,
+      "minimum_memfree_gib": 15.555458068847656,
+      "peak_owned_anon_gib": 18.06283187866211
+    },
+    "6": {
+      "minimum_conservative_available_gib": 202.08364486694336,
+      "minimum_memfree_gib": 208.55047607421875,
+      "peak_owned_anon_gib": 15.072490692138672
+    },
+    "7": {
+      "minimum_conservative_available_gib": 200.7322769165039,
+      "minimum_memfree_gib": 207.28650665283203,
+      "peak_owned_anon_gib": 14.996658325195312
+    }
+  },
+  "owned_cgroup_event_peaks": {
+    "high": 0,
+    "oom": 0,
+    "oom_kill": 0
+  },
+  "owned_cgroup_failcnt_peak": 0,
+  "peak_owned_cgroup_recorded_gib": 342.8665199279785,
+  "peak_owned_cgroup_usage_gib": 342.86433029174805,
+  "peak_owned_hbm_gib": 25.81640625,
+  "qualification": "ONE_MONITORED_FRAMEWORK_SMOKE_NOT_UNIVERSAL_CAPACITY_PROOF",
+  "samples": 1210,
+  "schema": 1,
+  "scope": "MXFP4_C128_Q32_LAYERWISE_PREFILL_END_DYNAMIC_SHORT_SMOKE",
+  "status": "PASS_MONITORED_MXFP4_NUMA_VALIDATION"
+}

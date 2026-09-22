@@ -1,0 +1,116 @@
+{
+  "version": "r66-reference-runtime-supplement-v2",
+  "time_unix": 1789578184.9308925,
+  "python": "3.11.15",
+  "machine": "aarch64",
+  "torch_version": "2.9.0+cpu",
+  "torch_npu_version": "2.9.0.post2",
+  "torch_package": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch",
+  "torch_build_config": "PyTorch built with:\n  - GCC 13.3\n  - C++ Version: 201703\n  - Intel(R) MKL-DNN v3.7.1 (Git Hash 8d263e693366ef8db40acc569cc7d8edf644556d)\n  - OpenMP 201511 (a.k.a. OpenMP 4.5)\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: DEFAULT\n  - Build settings: BLAS_INFO=open, BUILD_TYPE=Release, COMMIT_SHA=0fabc3ba44823f257e70ce397d989c8de5e362c1, CXX_COMPILER=/opt/rh/gcc-toolset-13/root/usr/bin/c++, CXX_FLAGS=-ffunction-sections -fdata-sections -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DLIBKINETO_NOCUPTI -DLIBKINETO_NOROCTRACER -DLIBKINETO_NOXPUPTI=ON -DUSE_PYTORCH_QNNPACK -DAT_BUILD_ARM_VEC256_WITH_SLEEF -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -O2 -fPIC -DC10_NODEPRECATED -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wno-stringop-overflow -Wsuggest-override -Wno-psabi -Wno-error=old-style-cast -faligned-new -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Wno-dangling-reference -Wno-error=dangling-reference -Wno-stringop-overflow, LAPACK_INFO=open, TORCH_VERSION=2.9.0, USE_CUDA=OFF, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n",
+  "ldd_libtorch_cpu": "\tlinux-vdso.so.1 (0x0000e454376d9000)\n\tlibopenblasp-r0-121ca252.3.30.so => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/../../torch.libs/libopenblasp-r0-121ca252.3.30.so (0x0000e45436160000)\n\tlibrt.so.1 => /lib/aarch64-linux-gnu/librt.so.1 (0x0000e45436140000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000e45436110000)\n\tlibdl.so.2 => /lib/aarch64-linux-gnu/libdl.so.2 (0x0000e454360f0000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000e45436050000)\n\tlibgomp-a49a47f9.so.1.0.0 => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/../../torch.libs/libgomp-a49a47f9.so.1.0.0 (0x0000e45435fe0000)\n\tlibpthread.so.0 => /lib/aarch64-linux-gnu/libpthread.so.0 (0x0000e45435fc0000)\n\tlibarm_compute-544c1f65.so => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/../../torch.libs/libarm_compute-544c1f65.so (0x0000e454350a0000)\n\tlibarm_compute_graph-91f54ff9.so => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/../../torch.libs/libarm_compute_graph-91f54ff9.so (0x0000e45434f60000)\n\tlibc10.so => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libc10.so (0x0000e45434e40000)\n\tlibstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000e45434c10000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000e45434a60000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000e45437690000)\n\tlibgfortran-e1b7dfc8.so.5.0.0 => /usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/../../torch.libs/libgfortran-e1b7dfc8.so.5.0.0 (0x0000e454348e0000)\n\tlibz.so.1 => /lib/aarch64-linux-gnu/libz.so.1 (0x0000e454348b0000)\n",
+  "files": [
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/ld-linux-aarch64.so.1",
+      "bytes": 187776,
+      "sha256": "fb4cb0c8dd9bac3bbd40f4b284d16ac11d282ab9069298de858d2301ada5e646"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libc.so.6",
+      "bytes": 1661968,
+      "sha256": "f09403ee90fc8a4980e98d844ed73e8d5aaafc3e68b53398d9a17d2f01fa45a9"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libdl.so.2",
+      "bytes": 6152,
+      "sha256": "de4b1fdc0a06cf99f9cbad9bc042123ff3f82c70f03849f946e8a6d00c975bcc"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libgcc_s.so.1",
+      "bytes": 84296,
+      "sha256": "d4bbb45d5d80f4b15d4bf50bfc8ded0a26a44c638859df97be40a6339adb3485"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libm.so.6",
+      "bytes": 551064,
+      "sha256": "bef4f59cfd4875e401d732ac93fc9bc17c6ddeeca1edb1247f8b82d91ac49bd6"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libpthread.so.0",
+      "bytes": 13752,
+      "sha256": "fef6ee085624b092060920f16e53d8959a894f0337adf749421ee0070a2fdce6"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/librt.so.1",
+      "bytes": 6240,
+      "sha256": "99e5cc6ac9cf906c2dabe5ae016355b99ec5c9ae5adeaf57a78ecc2c26880d59"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.30",
+      "bytes": 2198944,
+      "sha256": "03efc8de2eb1f016fa59a937b8858c48ad893558737ef61fe16bbb622283c759"
+    },
+    {
+      "path": "/usr/lib/aarch64-linux-gnu/libz.so.1.2.11",
+      "bytes": 104608,
+      "sha256": "8cd4dd1e893bc67102bbe7d2f0e895a98dd142857228c70bef7878a55eb58bb6"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libc10.so",
+      "bytes": 1469336,
+      "sha256": "14176d01526770ecaa6f877e328c094ab18a8cea6661d87181fe21f04501e570"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libshm.so",
+      "bytes": 266465,
+      "sha256": "e42b154860d465520fa6b8f098584d78ef4ac5a17a98eba3458562254e3a3b54"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libtorch.so",
+      "bytes": 265833,
+      "sha256": "43de14f79a6d90f239622bf0624c57fcac1a0ffd302e031f7843b8a819f1b797"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libtorch_cpu.so",
+      "bytes": 252826513,
+      "sha256": "f5012582f34fd604e65a8798433ac42652bc0c328252fa54c26793bebb0adb50"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libtorch_global_deps.so",
+      "bytes": 201072,
+      "sha256": "188dfe4f3260496f17c7280c5c2c26c810ee6c889b115af30d4cf79e5e34bfe5"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/lib/libtorch_python.so",
+      "bytes": 28862721,
+      "sha256": "52ba06956fd6ab3fa218386670385743bc292d6e4227f5a9103a5f98910ad9ed"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch.libs/libarm_compute-544c1f65.so",
+      "bytes": 18607121,
+      "sha256": "d1af5b15a03d4fb74e50621e401a5a691a7e9381d424d5dc61732ebeae5be5b5"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch.libs/libarm_compute_graph-91f54ff9.so",
+      "bytes": 1430097,
+      "sha256": "62882069f2d6f59bf573df27b8a13f2ed24d27e47f4c806ada1d6562edb3c56f"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch.libs/libgfortran-e1b7dfc8.so.5.0.0",
+      "bytes": 1484433,
+      "sha256": "296e40e3d92d0c4377e1f8b40a929045fee6bc5686226faf940fc824e469a7be"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch.libs/libgomp-a49a47f9.so.1.0.0",
+      "bytes": 343345,
+      "sha256": "43642df04bdf20f9b4122d336ef3e2e6a486c536e614159ac0e981a901d54537"
+    },
+    {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch.libs/libopenblasp-r0-121ca252.3.30.so",
+      "bytes": 23907585,
+      "sha256": "eeed4eeb5b5c2691b5ee0812a4e909adf8c0d936dc29aa72ea56d91614f3f623"
+    }
+  ],
+  "canonical_implementation": "CPU FP32 torch.nn.functional.linear and silu; explicit BF16 boundary controls separate",
+  "scope": "Post-B0 build provenance supplement; not a replacement for original B0 result",
+  "production_backend_replaced": false
+}

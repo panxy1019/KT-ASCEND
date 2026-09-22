@@ -1,0 +1,31 @@
+{
+  "version": "r64-descriptive-entry-v1",
+  "status": "R64_DESCRIPTIVE_ENTRY_APPROVED",
+  "date_utc": "2026-09-16",
+  "no_holdout_fitting": true,
+  "role": "DESCRIPTIVE_NOT_QUALITY_GATE",
+  "corpus_raw_sha256": {
+    "hd3.json": "4e54ac5c0e6ab9f25991ca29d54e32d1632d4e687f72d344430d4b5691b8590e",
+    "fd3.json": "9b8703afbdfd3bd925096725168f9d68914bd116e726336a972f5376443f7fe9"
+  },
+  "prior_record": "migration_bridge/round6_3/ROUND6_3_BLOCKED_SUMMARY.md explicitly records HD3 and FD3 NOT_RUN",
+  "search_scope": "Read-only A3 persisted result-directory inventory through depth 3 found no HD3/FD3 execution results; frozen input files remain in round6_3-formal-inputs. This is an audit of accessible project artifacts, not a claim about unknown external copies.",
+  "engineering_prerequisites": [
+    "r64-d1-runtime-v1 RUNTIME_PASS",
+    "r64-engineering-oracle-v2 identical common tensors and full logits",
+    "r64-d1-lifecycle-v1 3042 actual CPU tasks, drained",
+    "r64-nohit-v1 whole-request exact control",
+    "r64-expert-safety-v1 all 16 cases within 0.01"
+  ],
+  "protocol": {
+    "hd3_prompts": 128,
+    "fd3_prompts": 8,
+    "tokens_per_prompt": 64,
+    "batch": 1,
+    "context_length": 512,
+    "modes": ["D1_NODEFER native", "D1 baseline-history forced", "D1 native"],
+    "old_pairwise_threshold_gate": false,
+    "finite_and_capture_integrity_required": true,
+    "quality_approval_from_this_report": false
+  }
+}

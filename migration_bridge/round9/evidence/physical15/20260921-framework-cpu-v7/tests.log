@@ -1,0 +1,16 @@
+can not use command: npu-smi info
+...................................E.......................................................................................................................................................................................................................................................................................
+======================================================================
+ERROR: test_native_four_pool_partition_matches_python (test_candidates.CandidateTests.test_native_four_pool_partition_matches_python)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/migration_bridge/round9/tests/test_candidates.py", line 98, in test_native_four_pool_partition_matches_python
+    subprocess.run(['g++','-std=c++17','-I',str(root),str(source),'-o',str(exe)],check=True,capture_output=True)
+  File "/usr/local/python3.11.15/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['g++', '-std=c++17', '-I', '/work', '/tmp/tmpvzs9x6i0/check.cpp', '-o', '/tmp/tmpvzs9x6i0/check']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 315 tests in 3.832s
+
+FAILED (errors=1)

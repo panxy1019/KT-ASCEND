@@ -1,0 +1,70 @@
+{
+  "status": "OBSERVED_HTTP_ABORT_ACK_NOT_PROMPT_PREFILL_INTERRUPT",
+  "scope": "LIMITATION_NOT_PASS",
+  "recorded_at": 1789987519.1069772,
+  "request_id": "streaming-multichunk-01",
+  "abort_http_statuses": [
+    200,
+    200
+  ],
+  "events_before_controlled_stop": [
+    {
+      "status": "STREAMING_CHUNK_BEGIN",
+      "request_id": "streaming-multichunk-01",
+      "placement_epoch": 0,
+      "allocation_epoch": 2,
+      "start": 0,
+      "count": 32,
+      "total": 193
+    },
+    {
+      "status": "STREAMING_CHUNK_DRAINED",
+      "request_id": "streaming-multichunk-01",
+      "placement_epoch": 0,
+      "allocation_epoch": 2,
+      "start": 0,
+      "count": 32,
+      "next_start": 32,
+      "planes": [
+        "expert",
+        "ple",
+        "context"
+      ]
+    },
+    {
+      "status": "STREAMING_CHUNK_BEGIN",
+      "request_id": "streaming-multichunk-01",
+      "placement_epoch": 0,
+      "allocation_epoch": 2,
+      "start": 32,
+      "count": 32,
+      "total": 193
+    },
+    {
+      "status": "STREAMING_CHUNK_DRAINED",
+      "request_id": "streaming-multichunk-01",
+      "placement_epoch": 0,
+      "allocation_epoch": 2,
+      "start": 32,
+      "count": 32,
+      "next_start": 64,
+      "planes": [
+        "expert",
+        "ple",
+        "context"
+      ]
+    },
+    {
+      "status": "STREAMING_CHUNK_BEGIN",
+      "request_id": "streaming-multichunk-01",
+      "placement_epoch": 0,
+      "allocation_epoch": 2,
+      "start": 64,
+      "count": 32,
+      "total": 193
+    }
+  ],
+  "completed_chunks": 2,
+  "entered_chunks": 3,
+  "claim": "coordinator multi-chunk progression only; no mid-prefill HTTP abort qualification"
+}

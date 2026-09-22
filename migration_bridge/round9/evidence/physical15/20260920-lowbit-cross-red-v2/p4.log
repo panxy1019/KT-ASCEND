@@ -1,0 +1,31 @@
+can not use command: npu-smi info
+CPUInfer[0xaaaad8b58f70]: Hello
+WorkerPool[0xaaaad8b513e0] 4 subpools, [numa:threads][2:32] [3:32] [6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0xaaaad8b513e0, expert num: 10, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffbb80096f0
+alloc 0 from other numa for ffff1c030370
+alloc 1 from other numa for fffbbc0096f0
+alloc 1 from other numa for fffbbc0096f0
+alloc 2 from other numa for fffbb80096f0
+alloc 0 from other numa for ffff1c030370
+alloc 3 from other numa for fffbb00096f0
+alloc 3 from other numa for fffbb00096f0
+Traceback (most recent call last):
+  File "/round9/candidate-dev-20260920/migration_bridge/round9/tests/native_lowbit_moe.py", line 65, in <module>
+    assert cross_error<=1e-5,('C64/C128',q,cross_error)
+           ^^^^^^^^^^^^^^^^^
+AssertionError: ('C64/C128', 1, 0.0021650732960551977)
+[ERROR] 2026-09-20-22:40:20 (PID:142, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception
+CPUInfer[0xaaaad8b58f70]: Goodbye

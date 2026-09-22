@@ -1,0 +1,25 @@
+{
+  "command": [
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r67-tools-v1/migration_bridge/round6_7/tools/launch_serial.sh",
+    "/workspace/results/r65-r67-serial-v1/R64/compact",
+    "/workspace/results/r65-r67-serial-v1/profiles/R64.json",
+    "0"
+  ],
+  "started_unix": 1789603951.892339,
+  "scope": "new_child_process_group_only",
+  "signals_sent": [
+    "SIGTERM",
+    "SIGKILL"
+  ],
+  "pid": 24514,
+  "pgid": 24514,
+  "reason": "EXIT_NONZERO",
+  "matched_error": null,
+  "returncode": 1,
+  "ended_unix": 1789603962.3974304,
+  "success": false
+}

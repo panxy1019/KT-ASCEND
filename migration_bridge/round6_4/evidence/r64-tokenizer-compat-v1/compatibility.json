@@ -1,0 +1,131 @@
+{
+  "status": "TOKENIZER_ONLY_VERIFIED_SERVING_NOT_YET_VERIFIED",
+  "transformers": "5.3.0.dev0",
+  "source_model": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "original_class": "LlamaTokenizer",
+  "new_class": "TokenizersBackend",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669",
+  "source_config_sha256": "31181eaf79394ea26728d95ecb54fe7c8413e6f56085dbabc8b0818134380ec8",
+  "overlay_config_sha256": "d5f57d20f87e97e94dac06c5f91871bc819fe3fff41b2b0c96c04c2622dc95bb",
+  "changed_keys": [
+    "tokenizer_class"
+  ],
+  "eos_token_id": 100001,
+  "probes": [
+    {
+      "text": "hello world",
+      "ids": [
+        31539,
+        1843
+      ],
+      "raw_decode": "hello world",
+      "old_ids": [
+        18678,
+        322,
+        3982
+      ],
+      "old_decode": "helloĠworld"
+    },
+    {
+      "text": "\n\nAnswer: 72",
+      "ids": [
+        185,
+        185,
+        32349,
+        25,
+        207,
+        22,
+        17
+      ],
+      "raw_decode": "\n\nAnswer: 72",
+      "old_ids": [
+        32349,
+        25,
+        22,
+        17
+      ],
+      "old_decode": "ĊĊAnswer:Ġ72"
+    },
+    {
+      "text": "中文 空格与换行\n答案：A",
+      "ids": [
+        43757,
+        207,
+        3347,
+        2887,
+        1620,
+        6381,
+        1127,
+        185,
+        25610,
+        45326,
+        32
+      ],
+      "raw_decode": "中文 空格与换行\n答案：A",
+      "old_ids": [
+        32
+      ],
+      "old_decode": "ä¸ŃæĸĩĠç©ºæł¼ä¸İæį¢è¡ĮĊçŃĶæ¡Īï¼ļA"
+    },
+    {
+      "text": "def f(x):\n    return x + 1",
+      "ids": [
+        1558,
+        267,
+        7,
+        87,
+        1780,
+        185,
+        300,
+        972,
+        1376,
+        919,
+        207,
+        16
+      ],
+      "raw_decode": "def f(x):\n    return x + 1",
+      "old_ids": [
+        584,
+        539,
+        7,
+        87,
+        1780,
+        2136,
+        87,
+        10,
+        16
+      ],
+      "old_decode": "defĠf(x):ĊĠĠĠĠreturnĠxĠ+Ġ1"
+    },
+    {
+      "text": "#### -1,234.50",
+      "ids": [
+        3589,
+        570,
+        16,
+        11,
+        17,
+        18,
+        19,
+        13,
+        20,
+        15
+      ],
+      "raw_decode": "#### -1,234.50",
+      "old_ids": [
+        3589,
+        12,
+        16,
+        11,
+        17,
+        18,
+        19,
+        13,
+        20,
+        15
+      ],
+      "old_decode": "####Ġ-1,234.50"
+    }
+  ],
+  "source": "https://github.com/huggingface/transformers/issues/45488"
+}

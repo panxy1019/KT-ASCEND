@@ -1,0 +1,11 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+{"path": "/workspace/results/r63-r64-engineering-oracle-v2-production-server/provenance.json", "sha256": "da5997a65333b0dbf0190840325dd0e8f9fc5eaddf41c6e521e565f1ed5a3f70"}
+{"status": "PASS", "endpoint": "/model_info", "generating_probe": false, "capture_session_empty": true, "model_info": {"model_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "tokenizer_path": "/workspace/models/DeepSeek-V2-Lite-604d5664", "is_generation": true, "preferred_sampling_params": null, "weight_version": "default", "has_image_understanding": false, "has_audio_understanding": false, "model_type": "deepseek_v2", "architectures": ["DeepseekV2ForCausalLM"]}, "time_unix": 1789519800.6077366}
+can not use command: npu-smi info
+{"rid": "r64-oracle-s6_en_01", "targets": 64, "forwards": 65, "exposed_targets": 60, "seconds": 11.877097920980304}
+{"rid": "r64-oracle-s6_zh_01", "targets": 64, "forwards": 65, "exposed_targets": 42, "seconds": 10.368897314998321}
+{"rid": "r64-oracle-s6_math_01", "targets": 64, "forwards": 65, "exposed_targets": 61, "seconds": 10.683736750972457}
+{"rid": "r64-oracle-s6_json_01", "targets": 64, "forwards": 65, "exposed_targets": 62, "seconds": 10.910961707006209}
+{"command": ["taskset", "-c", "0-15", "bash", "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh", "D1", "/workspace/results/r63-r64-engineering-oracle-v2-production-server", "31000"], "started_unix": 1789519734.7961524, "scope": "new_child_process_group_only", "signals_sent": ["SIGTERM", "SIGKILL"], "pid": 367809, "pgid": 367809, "reason": "CANCELLED", "matched_error": null, "returncode": -9, "ended_unix": 1789519859.932053, "success": false}
+{"status": "PASS", "physical_captures": 260, "indexed": 260, "targets": 256, "lookahead": 4, "unknown": 0, "incomplete": 0, "numerical_metrics_read": false}

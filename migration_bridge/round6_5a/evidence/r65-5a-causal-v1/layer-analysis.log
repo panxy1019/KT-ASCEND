@@ -1,0 +1,8 @@
+can not use command: npu-smi info
+Traceback (most recent call last):
+  File "/workspace/r65a-tools/migration_bridge/round6_5a/tools/summarize_causal_profiles.py", line 6, in <module>
+    from probe_npu_subset import metrics, digest
+  File "/workspace/r65a-tools/migration_bridge/round6_5a/tools/probe_npu_subset.py", line 18, in <module>
+    from sglang.srt.layers.quantization.unquant import UnquantizedFusedMoEMethod
+ModuleNotFoundError: No module named 'sglang'
+[ERROR] 2026-09-16-14:53:20 (PID:7918, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

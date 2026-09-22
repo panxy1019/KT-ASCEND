@@ -1,0 +1,123 @@
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+INFO 09-20 14:06:51 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 14:06:51 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 14:06:51 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 14:06:51 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+KTransformers EP is enabled. --disable-shared-experts-fusion is automatically set to prevent shared experts from being offloaded to CPU.
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[W920 14:06:52.795086931 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W920 14:06:52.795490920 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+/round9/runtime-python/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+CPUInfer[0xaaab113f3a40]: Hello
+WorkerPool[0xaaab113e8190] 2 subpools, [numa:threads][6:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 6, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+[rank0]:[W920 14:06:57.555099816 TensorFactories.cpp:340] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+
+[GGUFLoader] Loading GGUF files from directory: /round9/banks/all48-v1
+  Loading: layer-00-bf16.gguf
+  Loading: layer-01-bf16.gguf
+  Loading: layer-02-bf16.gguf
+  Loading: layer-03-bf16.gguf
+  Loading: layer-04-bf16.gguf
+  Loading: layer-05-bf16.gguf
+  Loading: layer-06-bf16.gguf
+  Loading: layer-07-bf16.gguf
+  Loading: layer-08-bf16.gguf
+  Loading: layer-09-bf16.gguf
+  Loading: layer-10-bf16.gguf
+  Loading: layer-11-bf16.gguf
+  Loading: layer-12-bf16.gguf
+  Loading: layer-13-bf16.gguf
+  Loading: layer-14-bf16.gguf
+  Loading: layer-15-bf16.gguf
+  Loading: layer-16-bf16.gguf
+  Loading: layer-17-bf16.gguf
+  Loading: layer-18-bf16.gguf
+  Loading: layer-19-bf16.gguf
+  Loading: layer-20-bf16.gguf
+  Loading: layer-21-bf16.gguf
+  Loading: layer-22-bf16.gguf
+  Loading: layer-23-bf16.gguf
+  Loading: layer-24-bf16.gguf
+  Loading: layer-25-bf16.gguf
+  Loading: layer-26-bf16.gguf
+  Loading: layer-27-bf16.gguf
+  Loading: layer-28-bf16.gguf
+  Loading: layer-29-bf16.gguf
+  Loading: layer-30-bf16.gguf
+  Loading: layer-31-bf16.gguf
+  Loading: layer-32-bf16.gguf
+  Loading: layer-33-bf16.gguf
+  Loading: layer-34-bf16.gguf
+  Loading: layer-35-bf16.gguf
+  Loading: layer-36-bf16.gguf
+  Loading: layer-37-bf16.gguf
+  Loading: layer-38-bf16.gguf
+  Loading: layer-39-bf16.gguf
+  Loading: layer-40-bf16.gguf
+  Loading: layer-41-bf16.gguf
+  Loading: layer-42-bf16.gguf
+  Loading: layer-43-bf16.gguf
+  Loading: layer-44-bf16.gguf
+  Loading: layer-45-bf16.gguf
+  Loading: layer-46-bf16.gguf
+  Loading: layer-47-bf16.gguf
+[GGUFLoader] Summary:
+  Files loaded: 48
+  Total tensors: 144
+  Metadata keys: 4
+ ffn_up_exps, Dtype: BF16
+ ffn_gate_exps, Dtype: BF16
+ ffn_down_exps, Dtype: BF16
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 2
+  QK_K: 256
+  F32/BF16 tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=320, offset=0
+  TP 1: size=320, offset=320
+{"path": "whole", "repeat": 0, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 1, "cpu_partial_nonzero": 1, "npu_owned_partial": 1, "npu_owned_partial_nonzero": 1, "routed_merge": 1, "routed_merge_nonzero": 1}}
+{"path": "whole", "repeat": 1, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 1, "cpu_partial_nonzero": 1, "npu_owned_partial": 1, "npu_owned_partial_nonzero": 1, "routed_merge": 1, "routed_merge_nonzero": 1}}
+{"path": "whole", "repeat": 2, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 1, "cpu_partial_nonzero": 1, "npu_owned_partial": 1, "npu_owned_partial_nonzero": 1, "routed_merge": 1, "routed_merge_nonzero": 1}}
+{"path": "chunks_3_4_10", "repeat": 0, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 3, "cpu_partial_nonzero": 3, "npu_owned_partial": 3, "npu_owned_partial_nonzero": 3, "routed_merge": 3, "routed_merge_nonzero": 3}}
+{"path": "chunks_3_4_10", "repeat": 1, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 3, "cpu_partial_nonzero": 3, "npu_owned_partial": 3, "npu_owned_partial_nonzero": 3, "routed_merge": 3, "routed_merge_nonzero": 3}}
+{"path": "chunks_3_4_10", "repeat": 2, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 3, "cpu_partial_nonzero": 3, "npu_owned_partial": 3, "npu_owned_partial_nonzero": 3, "routed_merge": 3, "routed_merge_nonzero": 3}}
+{"path": "token_decode", "repeat": 0, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 17, "cpu_partial_nonzero": 17, "npu_owned_partial": 17, "npu_owned_partial_nonzero": 14, "routed_merge": 17, "routed_merge_nonzero": 17}}
+{"path": "token_decode", "repeat": 1, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 17, "cpu_partial_nonzero": 17, "npu_owned_partial": 17, "npu_owned_partial_nonzero": 14, "routed_merge": 17, "routed_merge_nonzero": 17}}
+{"path": "token_decode", "repeat": 2, "output_relative_l2": 0.0, "state_relative_l2": 0.0, "ktep_capture": {"cpu_partial": 17, "cpu_partial_nonzero": 17, "npu_owned_partial": 17, "npu_owned_partial_nonzero": 14, "routed_merge": 17, "routed_merge_nonzero": 17}}
+{"status": "PASS_REAL_LAYER0_END_TO_END_COMPONENT", "rows": 9}
+TP MOE layer 0, pool: 0xaaab113e8190, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=320 FP32 partial
+unblocked tail-safe TP: offset=320 length=320 FP32 partial
+alloc 0 from other numa for ffc5200b8950
+alloc 0 from other numa for ffc5200b8950
+alloc 1 from other numa for ffc3a80096f0
+alloc 1 from other numa for ffc3a80096f0
+CPUInfer[0xaaab113f3a40]: Goodbye

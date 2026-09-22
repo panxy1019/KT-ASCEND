@@ -1,0 +1,11 @@
+git status --short
+git rev-parse HEAD
+git branch --show-current
+git submodule status
+git ls-tree HEAD third_party/llama.cpp
+git -C third_party/llama.cpp rev-parse HEAD
+git -C third_party/sglang rev-parse HEAD
+git ls-remote upstream-audit 0dce4c9b097710951d1b3e232f50b973ff0a5505 refs/heads/main
+docker inspect -f '{{.Id}} {{.Config.Image}} {{json .HostConfig.CpusetCpus}} {{json .HostConfig.Devices}}' kt-r6-deferred-ascend
+/workspace/results/venv-r6/bin/python -c 'import platform, torch, torch_npu; ...'
+cat /usr/local/Ascend/ascend-toolkit/latest/aarch64-linux/ascend_toolkit_install.info

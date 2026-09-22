@@ -1,0 +1,9 @@
+can not use command: npu-smi info
+Traceback (most recent call last):
+  File "/workspace/r66-v6/tools/run_final_screen_sequence.py", line 65, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/r66-v6/tools/run_final_screen_sequence.py", line 58, in main
+    if decision['status']!='PAIRED_SCREEN_PASS_AWAIT_ADR':raise ValueError('QUALITY_SCREEN_FAILURE')
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: QUALITY_SCREEN_FAILURE

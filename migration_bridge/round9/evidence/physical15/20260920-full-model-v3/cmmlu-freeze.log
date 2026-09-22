@@ -1,0 +1,29 @@
+can not use command: npu-smi info
+You are using a model of type `qwen4_exp` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+Traceback (most recent call last):
+  File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/full_model_cmmlu.py", line 21, in <module>
+    write(a.output/'manifest.json',dict(revision=REVISION,source_sha256=SOURCE_SHA,tokenizer_sha256=sha(model/'tokenizer.json'),tokenizer_config_sha256=sha(model/'tokenizer_config.json'),rows=rows,protocol=dict(item_selection='UNCHANGED256_ORDERED_ITEMS_AND_FEWSHOT_TEXT',wrapper='ORIGINAL_REVISION_CHAT_TEMPLATE',thinking=False,temperature=0,max_new_tokens=1,scoring='ARGMAX_ABCD_FIRST_OUTPUT_LOGPROBS',tie='ABCD_ORDER',reference='FRESH_Q64_BF16_STORAGE_F32_CPU_C64_NOT_ALL_NPU')))
+  File "/round9/src/KT-ASCEND/migration_bridge/round9/tests/full_model_cmmlu.py", line 8, in write
+    def write(path,x):path.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type BatchEncoding is not JSON serializable
+[ERROR] 2026-09-20-14:43:34 (PID:646, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

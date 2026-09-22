@@ -1,0 +1,140 @@
+{
+  "started_unix": 1789569745.2624128,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/owned_guard.py",
+    "--output",
+    "/workspace/results/r65-5a-bisection-v2/C3/guard",
+    "--timeout-seconds",
+    "10800",
+    "--",
+    "taskset",
+    "-c",
+    "0-31",
+    "bash",
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+    "/workspace/results/r65-5a-bisection-v2/C3",
+    "/workspace/results/r65-5a-bisection-v2/C3.json",
+    "32"
+  ],
+  "status": "COMPLETE",
+  "reaping": {
+    "complete": true,
+    "reaped": [
+      [
+        4372,
+        15
+      ],
+      [
+        4373,
+        15
+      ],
+      [
+        4374,
+        15
+      ],
+      [
+        4375,
+        15
+      ],
+      [
+        4376,
+        15
+      ],
+      [
+        4377,
+        15
+      ],
+      [
+        4378,
+        15
+      ],
+      [
+        4379,
+        15
+      ],
+      [
+        4380,
+        15
+      ],
+      [
+        4381,
+        256
+      ],
+      [
+        4382,
+        256
+      ],
+      [
+        4383,
+        256
+      ],
+      [
+        4384,
+        256
+      ],
+      [
+        4385,
+        256
+      ],
+      [
+        4386,
+        256
+      ],
+      [
+        4387,
+        256
+      ],
+      [
+        4388,
+        256
+      ],
+      [
+        4284,
+        15
+      ],
+      [
+        4371,
+        15
+      ],
+      [
+        4116,
+        9
+      ],
+      [
+        4117,
+        15
+      ],
+      [
+        4118,
+        15
+      ]
+    ]
+  },
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-31",
+      "bash",
+      "/workspace/r65-tools/migration_bridge/round6_5/tools/launch_static.sh",
+      "/workspace/results/r65-5a-bisection-v2/C3",
+      "/workspace/results/r65-5a-bisection-v2/C3.json",
+      "32"
+    ],
+    "started_unix": 1789569745.3403559,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 3945,
+    "pgid": 3945,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789569923.483831,
+    "success": false
+  },
+  "ended_unix": 1789569923.5082266
+}

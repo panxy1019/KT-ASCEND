@@ -1,0 +1,122 @@
+{
+  "status": "PASS_ACTIVE_ABORT_AND_STATE_REUSE",
+  "scope": "ACTIVE_ABORT_AND_REQUEST_STATE_REUSE",
+  "events": [
+    {
+      "text": "3",
+      "output_ids": [
+        18
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": null,
+        "prompt_tokens": 27,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 1,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "response_sent_to_client_ts": 1789964128.5097036
+      }
+    },
+    {
+      "text": "39",
+      "output_ids": [
+        18,
+        24
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": null,
+        "prompt_tokens": 27,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 2,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null
+      }
+    },
+    {
+      "text": "391",
+      "output_ids": [
+        18,
+        24,
+        16
+      ],
+      "meta_info": {
+        "id": "r9-cancel-active",
+        "finish_reason": {
+          "type": "abort",
+          "message": "Aborted",
+          "status_code": null,
+          "err_type": null
+        },
+        "prompt_tokens": 27,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 3,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "e2e_latency": 1.75836740701925
+      }
+    }
+  ],
+  "abort_http_status": 200,
+  "reuse_response": {
+    "text": "391",
+    "output_ids": [
+      18,
+      24,
+      16,
+      248046
+    ],
+    "meta_info": {
+      "id": "r9-post-cancel-reuse",
+      "finish_reason": {
+        "type": "stop",
+        "matched": 248046
+      },
+      "prompt_tokens": 27,
+      "weight_version": "default",
+      "total_retractions": 0,
+      "input_token_logprobs": [
+        [
+          null,
+          271,
+          null
+        ]
+      ],
+      "output_token_logprobs": [
+        [
+          -0.008535569533705711,
+          18,
+          null
+        ],
+        [
+          -0.0007887351675890386,
+          24,
+          null
+        ],
+        [
+          -0.0008605591137893498,
+          16,
+          null
+        ],
+        [
+          -0.00011598390847211704,
+          248046,
+          null
+        ]
+      ],
+      "completion_tokens": 4,
+      "cached_tokens": 0,
+      "cached_tokens_details": null,
+      "dp_rank": null,
+      "e2e_latency": 2.015371785964817,
+      "response_sent_to_client_ts": 1789964131.0696452
+    }
+  }
+}

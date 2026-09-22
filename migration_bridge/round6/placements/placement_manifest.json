@@ -1,0 +1,253 @@
+{
+  "profiles": {
+    "d1": {
+      "block_terminal_layer": 8,
+      "deferred_layers": [
+        7
+      ],
+      "gpu_experts_ratio": 0.9951923076923077,
+      "layer_placements": [
+        {
+          "cpu_experts": [
+            16,
+            38,
+            41,
+            50
+          ],
+          "layer": 7,
+          "lowest_rank_hits": 104,
+          "route_hits": 1212
+        },
+        {
+          "cpu_experts": [
+            8,
+            25,
+            33,
+            55
+          ],
+          "layer": 8,
+          "lowest_rank_hits": 96,
+          "route_hits": 1026
+        }
+      ],
+      "layers": [
+        7,
+        8
+      ],
+      "placement_file": "placement_d1.pt",
+      "placement_sha256": "23edad71e52c05b1dc3a227ea6e27cacad0b4db6a18c4419647efae00530d39c",
+      "requested_max_deferred": 1,
+      "score": [
+        2238,
+        200,
+        1026
+      ],
+      "selected_cpu_expert_count": 8,
+      "selected_layer_count": 2,
+      "terminal_layer_max_deferred": 0
+    },
+    "d2": {
+      "block_terminal_layer": 9,
+      "deferred_layers": [
+        6,
+        7,
+        8
+      ],
+      "gpu_experts_ratio": 0.9903846153846154,
+      "layer_placements": [
+        {
+          "cpu_experts": [
+            11,
+            37,
+            46,
+            56
+          ],
+          "layer": 6,
+          "lowest_rank_hits": 105,
+          "route_hits": 1014
+        },
+        {
+          "cpu_experts": [
+            16,
+            38,
+            41,
+            50
+          ],
+          "layer": 7,
+          "lowest_rank_hits": 104,
+          "route_hits": 1212
+        },
+        {
+          "cpu_experts": [
+            8,
+            25,
+            33,
+            55
+          ],
+          "layer": 8,
+          "lowest_rank_hits": 96,
+          "route_hits": 1026
+        },
+        {
+          "cpu_experts": [
+            19,
+            41,
+            45,
+            46
+          ],
+          "layer": 9,
+          "lowest_rank_hits": 73,
+          "route_hits": 1134
+        }
+      ],
+      "layers": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "placement_file": "placement_d2.pt",
+      "placement_sha256": "aed57f4a8d08443c1d19eceeac14b4963b5945c7fe4649079707a76667dd0e31",
+      "requested_max_deferred": 1,
+      "score": [
+        4386,
+        378,
+        1014
+      ],
+      "selected_cpu_expert_count": 16,
+      "selected_layer_count": 4,
+      "terminal_layer_max_deferred": 0
+    },
+    "d3": {
+      "block_terminal_layer": 12,
+      "deferred_layers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "gpu_experts_ratio": 0.9807692307692307,
+      "layer_placements": [
+        {
+          "cpu_experts": [
+            25,
+            38,
+            40,
+            50
+          ],
+          "layer": 5,
+          "lowest_rank_hits": 127,
+          "route_hits": 1094
+        },
+        {
+          "cpu_experts": [
+            11,
+            37,
+            46,
+            56
+          ],
+          "layer": 6,
+          "lowest_rank_hits": 105,
+          "route_hits": 1014
+        },
+        {
+          "cpu_experts": [
+            16,
+            38,
+            41,
+            50
+          ],
+          "layer": 7,
+          "lowest_rank_hits": 104,
+          "route_hits": 1212
+        },
+        {
+          "cpu_experts": [
+            8,
+            25,
+            33,
+            55
+          ],
+          "layer": 8,
+          "lowest_rank_hits": 96,
+          "route_hits": 1026
+        },
+        {
+          "cpu_experts": [
+            19,
+            41,
+            45,
+            46
+          ],
+          "layer": 9,
+          "lowest_rank_hits": 73,
+          "route_hits": 1134
+        },
+        {
+          "cpu_experts": [
+            17,
+            44,
+            55,
+            59
+          ],
+          "layer": 10,
+          "lowest_rank_hits": 109,
+          "route_hits": 956
+        },
+        {
+          "cpu_experts": [
+            16,
+            28,
+            43,
+            47
+          ],
+          "layer": 11,
+          "lowest_rank_hits": 105,
+          "route_hits": 1135
+        },
+        {
+          "cpu_experts": [
+            28,
+            29,
+            38,
+            41
+          ],
+          "layer": 12,
+          "lowest_rank_hits": 90,
+          "route_hits": 1077
+        }
+      ],
+      "layers": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "placement_file": "placement_d3.pt",
+      "placement_sha256": "769ee8bcb2bbfe0777f184bc38407d055427a0a9cff17b51811caa8c371850de",
+      "requested_max_deferred": 1,
+      "score": [
+        8648,
+        809,
+        956
+      ],
+      "selected_cpu_expert_count": 32,
+      "selected_layer_count": 8,
+      "terminal_layer_max_deferred": 0
+    }
+  },
+  "rank_semantics": "rank_0_highest_to_rank_5_lowest_returned_topk",
+  "route_rank_artifact_sha256": "c58c9fec7ce1741f22f0c5a7fc2d1deab2e4e5452b980dfd2b864a8ab1f9f48f",
+  "schema_version": 1,
+  "selection_corpus": "S6",
+  "selection_corpus_sha256": "e51af126389507e03b58ae37e5b39c912ece14d54c1daa0ba4baea634ff8f9c5",
+  "selection_rule": "D3=max total selected-top4 route hits, then rank-6 hits, then minimum layer hits, then earliest contiguous start; D2 best contiguous four inside D3; D1 best contiguous two inside D2; per-layer experts use the same ordered criteria",
+  "sha256": "5ca3db30aa401b7a5e442fd7cd4b0a617808d420d90a713e570667c101a7c5b1"
+}

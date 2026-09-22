@@ -1,0 +1,42 @@
+can not use command: npu-smi info
+INFO 09-16 14:28:32 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-16 14:28:32 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-16 14:28:32 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-16 14:28:32 [__init__.py:239] Platform plugin ascend is activated
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/workspace/kt-src/third_party/sglang/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+[W916 14:28:36.776078751 TensorFactories.cpp:340] Warning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (function operator())
+{"layer": 1, "expert": 8, "physical_slots": [8, 4], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000004768371582, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 50, "physical_slots": [50, 25], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 6, "physical_slots": [6, 3], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 0, "physical_slots": [0, 0], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001311302185, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 4, "physical_slots": [4, 2], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 48, "physical_slots": [48, 24], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000004768371582, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 16, "physical_slots": [16, 8], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true, "deterministic": true}
+{"layer": 1, "expert": 18, "physical_slots": [18, 9], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 46, "physical_slots": [46, 23], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 38, "physical_slots": [38, 19], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 12, "physical_slots": [12, 6], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 50, "physical_slots": [50, 25], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 48, "physical_slots": [48, 24], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 44, "physical_slots": [44, 22], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 28, "physical_slots": [28, 14], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 9, "expert": 10, "physical_slots": [10, 5], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 0, "physical_slots": [0, 0], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 32, "physical_slots": [32, 16], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 54, "physical_slots": [54, 27], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000004768371582, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 36, "physical_slots": [36, 18], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000004768371582, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 62, "physical_slots": [62, 31], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 26, "physical_slots": [26, 13], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 14, "physical_slots": [14, 7], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 17, "expert": 52, "physical_slots": [52, 26], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000007152557373, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 6, "physical_slots": [6, 3], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.000001072883606, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 60, "physical_slots": [60, 30], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 22, "physical_slots": [22, 11], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 26, "physical_slots": [26, 13], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000011920928955, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 34, "physical_slots": [34, 17], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 42, "physical_slots": [42, 21], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000008344650269, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 44, "physical_slots": [44, 22], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000005960464478, "finite": true, "deterministic": true}
+{"layer": 26, "expert": 58, "physical_slots": [58, 29], "exact": true, "max_abs": 0.0, "relative_l2": 0.0, "cosine": 1.0000009536743164, "finite": true, "deterministic": true}

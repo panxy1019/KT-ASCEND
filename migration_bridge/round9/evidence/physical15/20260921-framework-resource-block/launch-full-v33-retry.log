@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/framework-f4-gate-v1/tools/launch_candidate_model.py", line 51, in <module>
+    pre=sample();out.mkdir(exist_ok=False)
+        ^^^^^^^^
+  File "/mnt/data1/kt-round9/framework-f4-gate-v1/tools/candidate_resources.py", line 26, in sample
+    if free<80*1024**2:raise RuntimeError('less than80GiB free on selected NUMA node')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: less than80GiB free on selected NUMA node

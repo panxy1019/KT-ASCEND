@@ -1,0 +1,10 @@
+{
+  "status": "APPROVED_FOR_PRE_PRIMARY_FREEZE",
+  "primary_outputs_observed": false,
+  "dev_report_sha256": "4f4201d524b996abb74391d2813daa34b1574de6532dd66593928d1c2e8cbfcd",
+  "stopping_review": "Normal EOS and frozen task stops; no prompt truncation. CMMLU 32 requests terminated normally.",
+  "parser_review": "Frozen v2 explicit hash or last numeric GSM extractor and single-letter CMMLU parser. GSM invalid1/32; CMMLU invalid2/32. Do not change parser after primary outputs.",
+  "truncation_review": "GSM19/32 reached512 cap and count wrong. Preserve512 budget and report this limitation; no new prompt search under user minimum-cost scope.",
+  "baseline_validity_review": "GSM2/32 and CMMLU19/32 on development only. Low GSM floor limits sensitivity; this is an engineering screen, not evidence of general reasoning quality preservation. Tokenizer serving parity verified and16 pilot intersections exact after clean restart.",
+  "statistical_assumptions": "User-approved frozen subset engineering screen only; point estimate delta >= -2pp per endpoint. Intervals diagnostic, no population noninferiority claim, no automatic sample expansion. Disclose low OFF floor, invalid and truncation counts."
+}

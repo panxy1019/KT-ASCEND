@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/workspace/round8/tools/qwen_dynamic_dev_client.py", line 80, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/workspace/round8/tools/qwen_dynamic_dev_client.py", line 58, in main
+    first_layers=validate_events(after_first);assert all(len(x)==1 for x in first_layers.values())
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/round8/tools/qwen_dynamic_dev_client.py", line 36, in validate_events
+    assert all(per_layer.values())
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

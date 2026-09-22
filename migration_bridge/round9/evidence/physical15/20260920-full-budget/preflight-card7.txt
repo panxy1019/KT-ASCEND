@@ -1,0 +1,26 @@
+Must input parameter of type.
+Usage: npu-smi info <watch|proc|-h|-m|-l|-t type> [Options...]
+
+Commands:
+       watch          Show all device's status in scrolling format
+       proc           Show device's matrix process status in scrolling format
+       -h, --help     Show this help text and exit
+       -m             Show all device's mapping information
+       -l             Show all device's topology information
+       -t type        Show information for type
+                      type: board, flash, memory, usages, sensors, temp, power, volt, mac-addr,
+                            common, health, product, ecc, ip, sys-time, i2c_check, work-mode,
+                            ecc-enable, p2p-enable, ssh-enable, license, customized-info, device-share,
+                            device-share-cfg-recover, nve-level, aicpu-config, pcie-err, mcu-monitor,
+                            err-count, boot-area, vnpu-mode, info-vnpu, vnpu-svm, cpu-num-cfg,
+                            first-power-on-date, proc-mem, phyid-remap, vnpu-cfg-recover, key-manage,
+                            template-info, pkcs-enable, p2p-mem-cfg, pwm-mode, pwm-duty-ratio,
+                            boot-select, topo, hccs, sio-info, spod-info, tls-csr-get, tls-cert,
+                            tls-cert-period, rootkey, hccs-bw, cpu-freq-up, sys-log-info, hccs-credit,
+                            custom-op-secverify-enable, custom-op-secverify-mode, op-timeout,
+                            custom-op-secverify-cert, multi-die-policy, multi-die-policy-cfg-recover.
+
+Options:
+       -i %d          Card ID
+       -c %d          Chip ID
+       -p %d          Chip Physical ID

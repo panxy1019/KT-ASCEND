@@ -1,0 +1,41 @@
+{
+  "base_commit": "f02f304a25364d1e8fe9c52515a22f20f5089a52",
+  "semantic_donor": "4ccff141dbe992794f9da6c3aa23535b4f72000d",
+  "patches": [
+    {
+      "file": "0001-add-frozen-qwen4-config-registration.patch",
+      "sha256": "ce18af9b708136cf52b8ab7be346ef17188f6160efc605cf13563a093f382369"
+    },
+    {
+      "file": "0002-add-bounded-request-and-qsa-pool-wiring.patch",
+      "sha256": "17837a7a2f2c3b9d32b48ea9d6b2f1d07ecc48fab72cce4c731ebef340f73f1a"
+    },
+    {
+      "file": "0003-bind-original-ple-table.patch",
+      "sha256": "8274f91b5c3a6d903295b1f32c4825fd8b5fabfc8ef05468fa284c4be2ef8d0f"
+    },
+    {
+      "file": "0004-preserve-qsa-pool-on-ascend.patch",
+      "sha256": "99a32acad2cce610c718aca2387c4f4db9b9cd00ef0e52971c6495b218c1914b"
+    }
+  ],
+  "scope": "CONFIG_POOLS_LOADER_MAPPING_AND_BOUNDED_DECODER_GATES_NOT_FULL_MODEL_QUALIFIED",
+  "overlay_files": [
+    {
+      "file": "python/sglang/srt/mem_cache/round9_qsa_pool.py",
+      "sha256": "99ae4f5a3db4af3c1c3fe1e79295dd0c2159fa5427271678b605d7d09c567a7a"
+    },
+    {
+      "file": "python/sglang/srt/models/qwen4_exp.py",
+      "sha256": "f333b905c6534f65a41795ba3a99605fc1f67a4e4f8659991436c7f706f9c361"
+    }
+  ],
+  "canonical_runtime_copy": {
+    "gdn.py": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1",
+    "qsa.py": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+    "hyperconnection.py": "33fc2bba3babd629695312a326d438b91509b07bc4801582c04d1837e9be57b1",
+    "ple_sync.py": "2753d5d966eaf7e59e638f4f896f925b7701a144c91b690216113f4e765fc0b2",
+    "ple_hash.py": "882db551e216a2302da54783e1e0268add65bc10fc9dc11dc92e019b8e136cc4",
+    "ple_rows.py": "84a9666c4bb432dc0519527f69a27edb1662279ca7a3ea867888e6b4122f722e"
+  }
+}

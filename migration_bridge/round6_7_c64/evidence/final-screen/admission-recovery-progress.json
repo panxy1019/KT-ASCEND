@@ -1,0 +1,53 @@
+{
+  "status": "COMPLETE",
+  "started": 1789636686.5633368,
+  "steps": [
+    "recovered-r8-timing",
+    "recovered-quality-R16",
+    "recovered-quality-R8"
+  ],
+  "admission_policy": "CGROUP_ZERO_SWAP_HOST_NO_ACTIVE_SWAP_V2",
+  "phase": "recovered-quality-R8",
+  "quality": {
+    "R16": {
+      "status": "PASS",
+      "profile": "R16",
+      "correct": 174,
+      "baseline_correct": 174,
+      "invalid": 0,
+      "delta_pp": 0.0,
+      "pass_5pp": true,
+      "paired": {
+        "regressed": 2,
+        "improved": 2,
+        "delta_pp": 0,
+        "paired_bootstrap_95ci_pp": [
+          -1.5625,
+          1.5625
+        ],
+        "population_noninferiority_claim": false
+      }
+    },
+    "R8": {
+      "status": "PASS",
+      "profile": "R8",
+      "correct": 174,
+      "baseline_correct": 174,
+      "invalid": 0,
+      "delta_pp": 0.0,
+      "pass_5pp": true,
+      "paired": {
+        "regressed": 2,
+        "improved": 2,
+        "delta_pp": 0,
+        "paired_bootstrap_95ci_pp": [
+          -1.5625,
+          1.5625
+        ],
+        "population_noninferiority_claim": false
+      }
+    }
+  },
+  "final_review": "PENDING_FULL_COMPARISON_AND_PERFORMANCE_INTERPRETATION",
+  "updated": 1789638539.0827892
+}

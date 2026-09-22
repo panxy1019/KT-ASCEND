@@ -1,0 +1,254 @@
+{
+  "category_counts": {
+    "chinese_factual": 3,
+    "code_reasoning": 2,
+    "english_factual": 3,
+    "math_numeric": 2,
+    "structured_json": 2
+  },
+  "corpus": "S6",
+  "count": 12,
+  "model": "deepseek-ai/DeepSeek-V2-Lite",
+  "model_dir": "/workspace/models/DeepSeek-V2-Lite-604d5664",
+  "model_revision": "604d5664dddd88a0433dbae533b7fe9472482de0",
+  "prompts": [
+    {
+      "category": "english_factual",
+      "id": "s6_en_01",
+      "input_ids": [
+        99297,
+        2643,
+        15389,
+        72809,
+        2262,
+        2320,
+        245,
+        52631,
+        2483,
+        13
+      ],
+      "text": "Explain why ocean tides change during a lunar month."
+    },
+    {
+      "category": "english_factual",
+      "id": "s6_en_02",
+      "input_ids": [
+        1744,
+        254,
+        10653,
+        280,
+        11687,
+        6,
+        82,
+        13510,
+        473,
+        13740,
+        276,
+        7492,
+        13
+      ],
+      "text": "Name the layers of Earth's atmosphere from lowest to highest."
+    },
+    {
+      "category": "english_factual",
+      "id": "s6_en_03",
+      "input_ids": [
+        41800,
+        946,
+        245,
+        18573,
+        11098,
+        42213,
+        5489,
+        13
+      ],
+      "text": "Describe how a compass indicates geographic direction."
+    },
+    {
+      "category": "chinese_factual",
+      "id": "s6_zh_01",
+      "input_ids": [
+        5449,
+        892,
+        13327,
+        33801,
+        85930,
+        36257,
+        1496,
+        11879,
+        885,
+        5649,
+        7435,
+        398
+      ],
+      "text": "简要说明长江三峡的地理位置和主要作用。"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "s6_zh_02",
+      "input_ids": [
+        2493,
+        28444,
+        34375,
+        46475,
+        11732,
+        17391,
+        2224
+      ],
+      "text": "中国古代四大发明分别是什么？"
+    },
+    {
+      "category": "chinese_factual",
+      "id": "s6_zh_03",
+      "input_ids": [
+        10285,
+        1331,
+        59392,
+        8840,
+        29459,
+        36659,
+        1589,
+        43434,
+        2224
+      ],
+      "text": "为什么高海拔地区水的沸点较低？"
+    },
+    {
+      "category": "math_numeric",
+      "id": "s6_math_01",
+      "input_ids": [
+        48796,
+        254,
+        2555,
+        280,
+        254,
+        1022,
+        15367,
+        4864,
+        8788,
+        26559,
+        13
+      ],
+      "text": "Compute the sum of the first twelve positive odd integers."
+    },
+    {
+      "category": "math_numeric",
+      "id": "s6_math_02",
+      "input_ids": [
+        32,
+        28099,
+        643,
+        55389,
+        207,
+        20,
+        19,
+        285,
+        3973,
+        207,
+        16,
+        21,
+        13,
+        11424,
+        895,
+        4572,
+        13
+      ],
+      "text": "A rectangle has perimeter 54 and length 16. Find its width."
+    },
+    {
+      "category": "structured_json",
+      "id": "s6_json_01",
+      "input_ids": [
+        8925,
+        889,
+        11573,
+        16934,
+        1853,
+        9182,
+        12,
+        3205,
+        8247,
+        285,
+        704,
+        8370,
+        13
+      ],
+      "text": "Return only JSON describing three traffic-light colors and their actions."
+    },
+    {
+      "category": "structured_json",
+      "id": "s6_json_02",
+      "input_ids": [
+        8925,
+        889,
+        245,
+        11573,
+        2159,
+        366,
+        254,
+        26532,
+        280,
+        26559,
+        207,
+        17,
+        1184,
+        207,
+        21,
+        13
+      ],
+      "text": "Return only a JSON object with the squares of integers 2 through 6."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "s6_code_01",
+      "input_ids": [
+        9081,
+        24315,
+        64645,
+        327,
+        36106,
+        245,
+        9170,
+        279,
+        245,
+        91366,
+        12115,
+        1525,
+        13
+      ],
+      "text": "Write pseudocode for detecting a cycle in a singly linked list."
+    },
+    {
+      "category": "code_reasoning",
+      "id": "s6_code_02",
+      "input_ids": [
+        99297,
+        754,
+        245,
+        9456,
+        36279,
+        6712,
+        10146,
+        11,
+        366,
+        634,
+        2203,
+        13
+      ],
+      "text": "Explain when a stable sorting algorithm matters, with one example."
+    }
+  ],
+  "protocol": {
+    "baseline_history": "captured_after_prompt_freeze_and_bound_by_manifest",
+    "candidate_top_k": 32,
+    "seed": 0,
+    "teacher_forced_positions": 64,
+    "temperature": 0
+  },
+  "purpose": "defer0_route_stress_and_placement_selection",
+  "round": "round6",
+  "schema_version": 1,
+  "sha256": "e51af126389507e03b58ae37e5b39c912ece14d54c1daa0ba4baea634ff8f9c5",
+  "tokenizer_class": "Tokenizer",
+  "tokenizer_sha256": "41f3bf64213da8c012d8bd0871a58a1fdf70463e8f08f110ddbb1082f529f669"
+}

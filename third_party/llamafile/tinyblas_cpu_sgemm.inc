@@ -372,7 +372,11 @@ bool llamafile_sgemm(long m, long n, long k, const void* A, long lda, const void
             return true;
         }
     }
-    if ((Btype == GGML_TYPE_Q8_0 || Btype == GGML_TYPE_Q8_1) && Ctype == GGML_TYPE_F32) {
+    // ARM IQK Q80 reads block_q8_0_x4-repacked activation groups. The public
+    // Q8_0 input contract (and MoE from_float) supplies ordinary block_q8_0 rows.
+    // Keep Q8_0 weights on tinyBLAS, which honors that layout and lda/ldb.
+    if (Atype != GGML_TYPE_Q8_0 &&
+        (Btype == GGML_TYPE_Q8_0 || Btype == GGML_TYPE_Q8_1) && Ctype == GGML_TYPE_F32) {
         // assert(QK8_0 == QK8_1 == QK4_0 == QK4_1 == QK5_0 == QK5_1 == 32);
         assert((QK8_0 == 32) && (QK8_1 == 32) && (QK4_0 == 32) && (QK4_1 == 32) && (QK5_0 == 32) && (QK5_1 == 32));
         if (iqk_mul_mat(m, n, k * QK8_0, Atype, A, B, (float*)C, ldc, ith, nth)) {

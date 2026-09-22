@@ -1,0 +1,78 @@
+{
+  "status": "REJECTED_PRESERVED",
+  "source_raw_sha256": "7297cbbbac5ccd20901190e92e98724d20da2d07e4c73bbd0fc76dc5e17a23f9",
+  "source_canonical_sha256": "fea1bfb82b7da91e2c5f5834173eab9ac74f400eb656b4234eccce8dba9eea6e",
+  "threshold_unchanged": 2.125,
+  "failure_counts": {
+    "STABLE_CANDIDATE_PAIR_FLIP": 2
+  },
+  "positions": 8192,
+  "exposed": 7390,
+  "stable_positions": 4647,
+  "stable_top1_mismatches": 0,
+  "failures": [
+    {
+      "prompt_id": "qd3-math-11",
+      "token_index": 43,
+      "reasons": [
+        "STABLE_CANDIDATE_PAIR_FLIP"
+      ],
+      "baseline_token": 380,
+      "deferred_token": 380,
+      "exposure": "PREFIX_ONLY_EXPOSURE",
+      "anchor_contraction": 1.875,
+      "anchor_expansion": 1.75,
+      "pairs": [
+        {
+          "tokens": [
+            11,
+            825
+          ],
+          "baseline_margin": 2.25,
+          "deferred_margin": -0.75,
+          "contraction": 3.0,
+          "includes_anchor": false
+        }
+      ],
+      "baseline_capture": "/workspace/results/r63-qd3-v1-force0-server/tensors/TP0_PP0_Rank0_pid316389/Pass07648.pt",
+      "deferred_capture": "/workspace/results/r63-qd3-v1-force1-server/tensors/TP0_PP0_Rank0_pid317802/Pass07648.pt"
+    },
+    {
+      "prompt_id": "qd3-math-19",
+      "token_index": 56,
+      "reasons": [
+        "STABLE_CANDIDATE_PAIR_FLIP"
+      ],
+      "baseline_token": 87,
+      "deferred_token": 87,
+      "exposure": "PREFIX_ONLY_EXPOSURE",
+      "anchor_contraction": 0.75,
+      "anchor_expansion": 2.375,
+      "pairs": [
+        {
+          "tokens": [
+            64,
+            28
+          ],
+          "baseline_margin": 2.875,
+          "deferred_margin": -0.125,
+          "contraction": 3.0,
+          "includes_anchor": false
+        },
+        {
+          "tokens": [
+            64,
+            1366
+          ],
+          "baseline_margin": 3.0,
+          "deferred_margin": 0.0,
+          "contraction": 3.0,
+          "includes_anchor": false
+        }
+      ],
+      "baseline_capture": "/workspace/results/r63-qd3-v1-force0-server/tensors/TP0_PP0_Rank0_pid316389/Pass07986.pt",
+      "deferred_capture": "/workspace/results/r63-qd3-v1-force1-server/tensors/TP0_PP0_Rank0_pid317802/Pass07986.pt"
+    }
+  ],
+  "not_claimed": "No production root cause or repaired contract established"
+}

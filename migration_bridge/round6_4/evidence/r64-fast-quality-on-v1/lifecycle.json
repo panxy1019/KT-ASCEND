@@ -1,0 +1,155 @@
+{
+  "profile": "D1",
+  "batch_cap": 1,
+  "capture": false,
+  "capacity_adapter": true,
+  "performance_observer_off": false,
+  "tokenizer_compatibility_overlay": true,
+  "started_unix": 1789531685.3753154,
+  "status": "PLANNED_STOP",
+  "stream_overrides": {
+    "SGLANG_KT_HYBRID_NO_CPU_STREAM": null,
+    "SGLANG_KT_HYBRID_TIMING": null,
+    "SGLANG_KT_HYBRID_TIMING_DEEP": null,
+    "SGLANG_KT_BYPASS_GPU_MOE": null,
+    "KT_FORCE_SYNC_SUBMIT": null,
+    "KT_EXTERNAL_NPU_REPORT_SUBSCRIBER": null
+  },
+  "owned_guard_pid": 400899,
+  "command": [
+    "/workspace/results/venv-r6/bin/python",
+    "/workspace/results/r64-fast-v1/tools/run_owned_process.py",
+    "--output",
+    "/workspace/results/r64-fast-quality-on-v1/guard",
+    "--timeout-seconds",
+    "172800",
+    "--",
+    "taskset",
+    "-c",
+    "0-15",
+    "bash",
+    "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+    "D1",
+    "/workspace/results/r64-fast-quality-on-v1",
+    "31000"
+  ],
+  "guard": {
+    "command": [
+      "taskset",
+      "-c",
+      "0-15",
+      "bash",
+      "/workspace/kt-src/migration_bridge/round6/tools/launch_round6_profile.sh",
+      "D1",
+      "/workspace/results/r64-fast-quality-on-v1",
+      "31000"
+    ],
+    "started_unix": 1789531702.709621,
+    "scope": "new_child_process_group_only",
+    "signals_sent": [
+      "SIGTERM",
+      "SIGKILL"
+    ],
+    "pid": 400901,
+    "pgid": 400901,
+    "reason": "CANCELLED",
+    "matched_error": null,
+    "returncode": -9,
+    "ended_unix": 1789533546.527772,
+    "success": false
+  },
+  "reaping": {
+    "status": "OWNED_DESCENDANTS_REAPED",
+    "reaped": [
+      {
+        "pid": 401365,
+        "wait_status": 15
+      },
+      {
+        "pid": 401366,
+        "wait_status": 15
+      },
+      {
+        "pid": 401367,
+        "wait_status": 15
+      },
+      {
+        "pid": 401368,
+        "wait_status": 15
+      },
+      {
+        "pid": 401369,
+        "wait_status": 15
+      },
+      {
+        "pid": 401370,
+        "wait_status": 15
+      },
+      {
+        "pid": 401371,
+        "wait_status": 15
+      },
+      {
+        "pid": 401372,
+        "wait_status": 15
+      },
+      {
+        "pid": 401373,
+        "wait_status": 15
+      },
+      {
+        "pid": 401374,
+        "wait_status": 256
+      },
+      {
+        "pid": 401375,
+        "wait_status": 256
+      },
+      {
+        "pid": 401376,
+        "wait_status": 256
+      },
+      {
+        "pid": 401377,
+        "wait_status": 256
+      },
+      {
+        "pid": 401378,
+        "wait_status": 256
+      },
+      {
+        "pid": 401379,
+        "wait_status": 256
+      },
+      {
+        "pid": 401380,
+        "wait_status": 256
+      },
+      {
+        "pid": 401381,
+        "wait_status": 256
+      },
+      {
+        "pid": 401089,
+        "wait_status": 9
+      },
+      {
+        "pid": 401090,
+        "wait_status": 15
+      },
+      {
+        "pid": 401091,
+        "wait_status": 15
+      },
+      {
+        "pid": 401288,
+        "wait_status": 15
+      },
+      {
+        "pid": 401364,
+        "wait_status": 15
+      }
+    ]
+  },
+  "ended_unix": 1789533546.556395
+}

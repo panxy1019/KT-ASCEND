@@ -1,0 +1,26 @@
+can not use command: npu-smi info
+INFO 09-20 13:33:57 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-20 13:33:57 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-20 13:33:57 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-20 13:33:57 [__init__.py:239] Platform plugin ascend is activated
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/src/sglang-round9-port/python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+MODEL_CONFIG_PASS
+[W920 13:33:59.159877378 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W920 13:33:59.160452385 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+`torch_dtype` is deprecated! Use `dtype` instead!
+using attn output gate!
+{'status': 'PASS_META_STRUCTURE_AND_LOADER_MAP_ONLY', 'scope': 'META_STRUCTURE_ONLY_NO_WEIGHT_LOAD', 'parameter_tensors': 1091, 'non_meta_parameter_bytes': 9216, 'decay_fp32_layers': 36, 'peak_npu_allocated': 19968, 'loaded_destinations': 1094, 'checkpoint_tensors': 1658, 'ple_shards': 128, 'invalid_inputs_rejected': {'missing_q': "packed parameter model.layers.3.qkv_proj.weight has components ['k', 'v'], expected ['k', 'q', 'v']", 'shifted_ple_boundary': 'PLE shard 0 row boundary mismatch'}}

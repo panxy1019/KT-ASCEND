@@ -1,0 +1,427 @@
+{
+  "status": "PASS_FOUR_KNOWN_ANSWER_CANARIES",
+  "scope": "FIXED_KNOWN_ANSWER_CANARIES_NOT_BENCHMARK_SCORE",
+  "rows": [
+    {
+      "name": "multiply",
+      "expected": "391",
+      "request": {
+        "rid": "r9-canary-multiply",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          46270,
+          220,
+          16,
+          22,
+          348,
+          220,
+          17,
+          18,
+          13,
+          17308,
+          440,
+          1132,
+          279,
+          7308,
+          13,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 32
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "391",
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "meta_info": {
+          "id": "r9-canary-multiply",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 27,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.0034391088411211967,
+              18,
+              null
+            ],
+            [
+              -0.00045563330058939755,
+              24,
+              null
+            ],
+            [
+              -0.00037222131504677236,
+              16,
+              null
+            ],
+            [
+              -1.5616295058862306e-05,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 4,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 2.3027899359585717,
+          "response_sent_to_client_ts": 1789944665.1043148
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "capital",
+      "expected": "北京",
+      "request": {
+        "rid": "r9-canary-capital",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          96328,
+          102357,
+          96878,
+          96795,
+          130699,
+          10992,
+          96227,
+          97913,
+          97035,
+          96009,
+          1710,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 32
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "北京",
+        "output_ids": [
+          98116,
+          248046
+        ],
+        "meta_info": {
+          "id": "r9-canary-capital",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 23,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.0017018134240061045,
+              98116,
+              null
+            ],
+            [
+              -2.5391254894202575e-05,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 2,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 1.4851738429861143,
+          "response_sent_to_client_ts": 1789944666.592158
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "echo",
+      "expected": "ORANGE",
+      "request": {
+        "rid": "r9-canary-echo",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          20206,
+          440,
+          6681,
+          411,
+          3299,
+          321,
+          4161,
+          745,
+          25,
+          2639,
+          11172,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 32
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "ORANGE",
+        "output_ids": [
+          842,
+          11172,
+          248046
+        ],
+        "meta_info": {
+          "id": "r9-canary-echo",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 23,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.0021752286702394485,
+              842,
+              null
+            ],
+            [
+              -0.00012444675667211413,
+              11172,
+              null
+            ],
+            [
+              -2.312633478140924e-05,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 3,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 1.7160186039982364,
+          "response_sent_to_client_ts": 1789944668.3105896
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "json",
+      "expected": {
+        "name": "apple",
+        "count": 3
+      },
+      "request": {
+        "rid": "r9-canary-json",
+        "input_ids": [
+          248045,
+          846,
+          198,
+          5423,
+          1132,
+          264,
+          4566,
+          1576,
+          440,
+          6679,
+          803,
+          321,
+          1698,
+          11,
+          2663,
+          22544,
+          321,
+          220,
+          18,
+          13,
+          248046,
+          198,
+          248045,
+          74455,
+          198,
+          248068,
+          271,
+          248069,
+          271
+        ],
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 32
+        },
+        "return_logprob": true,
+        "logprob_start_len": -1
+      },
+      "response": {
+        "text": "{\"name\": \"apple\", \"count\": 3}",
+        "output_ids": [
+          4754,
+          591,
+          763,
+          328,
+          21680,
+          487,
+          328,
+          1767,
+          763,
+          220,
+          18,
+          92,
+          248046
+        ],
+        "meta_info": {
+          "id": "r9-canary-json",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 29,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.7795255780220032,
+              4754,
+              null
+            ],
+            [
+              -0.004181808326393366,
+              591,
+              null
+            ],
+            [
+              -0.08919747173786163,
+              763,
+              null
+            ],
+            [
+              -0.00031144535751082003,
+              328,
+              null
+            ],
+            [
+              -0.00024995062267407775,
+              21680,
+              null
+            ],
+            [
+              -0.0004951919545419514,
+              487,
+              null
+            ],
+            [
+              -5.4238753364188597e-05,
+              328,
+              null
+            ],
+            [
+              -0.00012706902634818107,
+              1767,
+              null
+            ],
+            [
+              -6.6756979322235566e-06,
+              763,
+              null
+            ],
+            [
+              -0.0015401893761008978,
+              220,
+              null
+            ],
+            [
+              -0.00017021637177094817,
+              18,
+              null
+            ],
+            [
+              -0.001327824778854847,
+              92,
+              null
+            ],
+            [
+              -1.4543426914315205e-05,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 13,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 4.910348448087461,
+          "response_sent_to_client_ts": 1789944673.2234113
+        }
+      },
+      "passed": true
+    }
+  ]
+}

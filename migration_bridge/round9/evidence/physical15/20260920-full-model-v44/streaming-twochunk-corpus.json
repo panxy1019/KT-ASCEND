@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "split": "ROUND9_STREAMING_RESTART",
+  "scope": "clean restart canary plus exact two-chunk lifecycle",
+  "prompts": [
+    {
+      "id": "streaming-restart-canary",
+      "text": "Compute 17 times 23. Answer with only the integer.",
+      "expected_integer": 391
+    },
+    {
+      "id": "streaming-twochunk-complete",
+      "text": "apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple apple"
+    }
+  ]
+}

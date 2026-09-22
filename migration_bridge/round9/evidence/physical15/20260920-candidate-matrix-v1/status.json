@@ -1,0 +1,14 @@
+{
+  "status": "STOPPED_ON_FAILURE",
+  "scope": "FUNCTIONAL_RESOURCE_ONLY",
+  "trials": [
+    {
+      "version": 13,
+      "storage": "BF16",
+      "placement": "request_boundary",
+      "status": "RUNNING"
+    }
+  ],
+  "error": "RuntimeError(\"owned server exited before acceptance: {'Status': 'exited', 'Running': False, 'Paused': False, 'Restarting': False, 'OOMKilled': False, 'Dead': False, 'Pid': 0, 'ExitCode': 137, 'Error': '', 'StartedAt': '2026-09-20T23:19:02.366491274Z', 'FinishedAt': '2026-09-20T23:21:50.997139896Z'}\")",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round9_candidate_matrix_v1.py\", line 28, in <module>\n    if not state['Running']:raise RuntimeError('owned server exited before acceptance: '+str(state))\n                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: owned server exited before acceptance: {'Status': 'exited', 'Running': False, 'Paused': False, 'Restarting': False, 'OOMKilled': False, 'Dead': False, 'Pid': 0, 'ExitCode': 137, 'Error': '', 'StartedAt': '2026-09-20T23:19:02.366491274Z', 'FinishedAt': '2026-09-20T23:21:50.997139896Z'}\n"
+}

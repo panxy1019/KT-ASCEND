@@ -1,0 +1,127 @@
+{
+  "date": "2026-09-20",
+  "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "host": "110.129.0.22",
+  "service": "kt-round9-range-recovery-v6",
+  "pid": 2594900,
+  "endpoint": "https://hf-mirror.com",
+  "proxy": false,
+  "shards": 4,
+  "connections_per_shard": 2,
+  "range_bytes": 33554432,
+  "max_time_seconds": 600,
+  "speed_limit_bytes_per_second": 1024,
+  "speed_time_seconds": 60,
+  "script_sha256": "f1a2f7ca1b1d4499ac2dce87ccd2b127868fe249b07dd516825a6ba3f1dff5b2",
+  "memory_max_bytes": 17179869184,
+  "swap_max_bytes": 0,
+  "tests_passed": 20,
+  "mirror_samples": [
+    {
+      "epoch": 1789870984.7324204,
+      "saved_bytes": 190754811064,
+      "complete_files": 62,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871014.7853987,
+      "saved_bytes": 191110934632,
+      "complete_files": 64,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871044.8333383,
+      "saved_bytes": 191513587816,
+      "complete_files": 64,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871074.8796015,
+      "saved_bytes": 192117567592,
+      "complete_files": 64,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871104.9262226,
+      "saved_bytes": 192587329640,
+      "complete_files": 64,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871134.9710445,
+      "saved_bytes": 193194463336,
+      "complete_files": 64,
+      "failures_since_start": 0
+    },
+    {
+      "epoch": 1789871165.0157225,
+      "saved_bytes": 193661071464,
+      "complete_files": 64,
+      "failures_since_start": 0
+    }
+  ],
+  "committed_mean_MB_s": 16.120519020071832,
+  "mirror_reference_prefix": {
+    "shard": 61,
+    "bytes": 8388608,
+    "sha256": "80c667ce4b8ba8b6aeccd8ed963993f5192c624690a1f4354d6722ab0a6d8d05",
+    "range_identity": "PASS",
+    "matches_published_official_shard": true,
+    "seconds": 5.795857
+  },
+  "other_probes": {
+    "local_proxy": {
+      "http": 206,
+      "received_bytes": 4446319,
+      "seconds": 35.034876,
+      "exit": 28
+    },
+    "remote_official_direct": {
+      "host": "110.129.0.22",
+      "exit": 28,
+      "bytes": 0
+    },
+    "a3": {
+      "host": "110.123.0.3",
+      "single_mirror": {
+        "bytes": 16777216,
+        "seconds": 4.513639,
+        "MB_s": 3.717004
+      },
+      "official_direct": {
+        "exit": 28,
+        "bytes": 0
+      },
+      "eight_connections": {
+        "bytes": 134217728,
+        "seconds": 10.639543152065016,
+        "MB_s": 12.614989768047497,
+        "all_status_206": true,
+        "all_expected_lengths": true,
+        "exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "per_shard_seconds": [
+          4.575173,
+          6.687671,
+          6.851595,
+          8.116513,
+          7.104187,
+          10.629225,
+          6.066463,
+          6.38538
+        ]
+      },
+      "model_deployment": false
+    }
+  },
+  "full_model_identity": "PENDING",
+  "scope": "Shared-network exploratory transport samples; not isolated network benchmark. Aggregate production speed measures committed stage bytes and published bytes without duplicate hardlinks."
+}

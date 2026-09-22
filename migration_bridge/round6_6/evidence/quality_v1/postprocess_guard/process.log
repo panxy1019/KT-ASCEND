@@ -1,0 +1,83 @@
+{
+  "sequence_status": "BLOCKED",
+  "final_qualification": false,
+  "population_noninferiority_claim": false,
+  "performance_claim": false,
+  "evidence_sha256": {
+    "free_analysis.json": "75b4c17979d0b796a9b4c49197ba0b062e9d30b29d6230198fac1b7612f080a4",
+    "paired_quality.json": "1c6ce180a032134881ae7448fa7e5800216341e123d4ea8405ec84a1bcfb0c40",
+    "quality_npu/quality-report.json": "70612da6e09d847fda2e36e656d7cda3fd0fb41f33afdb3030af5965b15e49ce",
+    "quality_npu/requests.jsonl": "02c7f4f3b70544ac2e31923a42b4ae676503104b25df00805de396a0d683ef5e",
+    "quality_npu/lifecycle.json": "4455c1d364b929d5f67529461d6da8f72808b83d13909be0a19c237aded09ac1",
+    "quality_hybrid/quality-report.json": "8090670fc8f6ed064c3d2a64f866ff2ef0cdb011c09d955d3917aefb9128b775",
+    "quality_hybrid/requests.jsonl": "75797c2bc565c6cd46ef5d0b51502e0a9dd9fc148f0808ad52296d3ec65efa32",
+    "quality_hybrid/lifecycle.json": "914bdf56551bd37724ad591a6cf95ff0c1dfc19c90ff5a5a1a1bf2be8f61567d"
+  },
+  "paired_quality": {
+    "status": "PAIRED_SCREEN_FAILED",
+    "benchmarks": [
+      {
+        "benchmark": "gsm8k",
+        "n": 32,
+        "correct_npu": 3,
+        "correct_hybrid": 2,
+        "invalid_npu": 0,
+        "invalid_hybrid": 0,
+        "truncated_npu": 18,
+        "truncated_hybrid": 17,
+        "gains": 0,
+        "losses": 1,
+        "exact_marginal_interval": {
+          "delta": -0.03125,
+          "lower": -0.18343510046636374,
+          "upper": 0.1275829901453828,
+          "one_sided_confidence": 0.975,
+          "method": "paired_discordance_exact_marginals_bonferroni"
+        },
+        "bootstrap_percentile95": [
+          -0.09375,
+          0.0
+        ],
+        "bootstrap_seed": 6606,
+        "bootstrap_replicates": 20000,
+        "observed_screen_pass": false
+      },
+      {
+        "benchmark": "cmmlu",
+        "n": 256,
+        "correct_npu": 145,
+        "correct_hybrid": 142,
+        "invalid_npu": 8,
+        "invalid_hybrid": 7,
+        "truncated_npu": 0,
+        "truncated_hybrid": 0,
+        "gains": 2,
+        "losses": 5,
+        "exact_marginal_interval": {
+          "delta": -0.01171875,
+          "lower": -0.04845826110693162,
+          "upper": 0.026035462424837626,
+          "one_sided_confidence": 0.975,
+          "method": "paired_discordance_exact_marginals_bonferroni"
+        },
+        "bootstrap_percentile95": [
+          -0.03125,
+          0.0078125
+        ],
+        "bootstrap_seed": 6606,
+        "bootstrap_replicates": 20000,
+        "observed_screen_pass": false
+      }
+    ],
+    "population_noninferiority_claim": false,
+    "caveat": "Subset collapse, reference floor and truncation require explicit ADR review; bootstrap zero width is not zero population uncertainty"
+  },
+  "review_requirements": [
+    "No final promotion without same-path, source/provenance and ADR review.",
+    "CMMLU small subject cells cannot support subject-level equivalence claims.",
+    "A zero-width empirical bootstrap is not zero population uncertainty.",
+    "Request throughput includes prefill and differs with output lengths; not a causal speedup claim.",
+    "Old Round6.5 remains blocked under its unchanged global numerical bound."
+  ]
+}
+{"gsm8k": {"gain": 0, "loss": 1, "both_correct": 2, "both_wrong": 29}, "cmmlu": {"gain": 2, "loss": 5, "both_correct": 140, "both_wrong": 109}}

@@ -1,0 +1,21 @@
+{
+  "status": "SINGLE_R32_ENTRY_COMPLETE_LOCAL_CONTROLS_PENDING",
+  "completed": [
+    "oracle_capture",
+    "single_R32_determinism",
+    "single_R32_numeric",
+    "single_R32_evaluate"
+  ],
+  "started_unix": 1789559501.0946927,
+  "active": "single_R32_evaluate",
+  "command": [
+    "/workspace/r65-tools/migration_bridge/round6_5/tools/evaluate_static_pairwise.py",
+    "--baseline",
+    "/workspace/results/r65-numeric-r64-v1",
+    "--hybrid",
+    "/workspace/results/r65-numeric-single-R32-v1",
+    "--output",
+    "/workspace/results/r65-single-entry-v1/single-R32-pairwise.json"
+  ],
+  "ended_unix": 1789560571.357853
+}

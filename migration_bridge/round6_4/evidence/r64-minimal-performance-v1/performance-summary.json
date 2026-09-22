@@ -1,0 +1,65 @@
+{
+  "status": "NO_MEASURABLE_SPEEDUP",
+  "primary_shape": "medium-192-256",
+  "primary_batch": 1,
+  "shapes": {
+    "medium-192-256": {
+      "block_ratios": [
+        0.9805603438272165,
+        1.025396283834296,
+        0.9628137606070474
+      ],
+      "geometric_mean": 0.9892425411478906,
+      "lower": 0.9127433311809827,
+      "upper": 1.0721533335669968,
+      "variance_resolved": true,
+      "method": "student_t_log_ratio_df2_95",
+      "independent_unit": "ABBA_block_not_token",
+      "off": {
+        "requests": 6,
+        "latency_p50_p95": [
+          29.606183634023182,
+          30.229712928063236
+        ],
+        "ttft_p50_p95": [
+          0.3613250259659253,
+          1.6534128072380554
+        ],
+        "e2e_tokens_per_second_mean": 8.680572923315589
+      },
+      "on": {
+        "requests": 6,
+        "latency_p50_p95": [
+          29.797723095456604,
+          30.947425782564096
+        ],
+        "ttft_p50_p95": [
+          0.35456939350115135,
+          1.5568455265311059
+        ],
+        "e2e_tokens_per_second_mean": 8.588667892216497
+      }
+    }
+  },
+  "limitations": "Fixed-length streaming client timing; block independence/log-ratio approximation; shared-host confounding reviewed separately",
+  "resource_review": {
+    "status": "ATTRIBUTABLE_WITH_RECORDED_LIMITATIONS",
+    "campaign_root": "/tmp/r64-performance-complete",
+    "a3_campaign_root": "/workspace/results/r64-minimal-performance-v1",
+    "basis": [
+      "12/12 preregistered independent phases completed in fixed three-block ABBA order",
+      "10 or 11 exact-owned-guard resource samples per phase, zero monitor errors",
+      "No other NPU0 HBM process observed in owned-phase samples",
+      "Identical actual source hashes enforced across phases by campaign runner"
+    ],
+    "limitations": [
+      "Shared host, not exclusive hardware; no claim of absent transient contention",
+      "Host one-minute load varies, maximum observed 59.372; not affinity-specific attribution",
+      "Only three independent ABBA blocks and one sparse-deferred workload",
+      "Resource samples include startup/warmup/teardown and are not exact timed-request boundaries",
+      "Interpret small effects cautiously; do not claim general hardware performance"
+    ],
+    "decision_scope": "Allow descriptive paired timing inference for this fixed run only; no causal isolation or broad speedup claim"
+  },
+  "other_shapes_not_used_to_select_primary": true
+}

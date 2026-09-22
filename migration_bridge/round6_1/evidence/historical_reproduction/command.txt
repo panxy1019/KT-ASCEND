@@ -1,0 +1,11 @@
+# Start D1_NODEFER and D1 separately with the frozen Round6 launcher and
+# KT_R6_ENABLE_TENSOR_DUMP=1, NPU0 only, port 31000.
+migration_bridge/round6/tools/launch_round6_profile.sh D1_NODEFER /workspace/results/round6_1-repro-nodefer 31000
+migration_bridge/round6/tools/launch_round6_profile.sh D1 /workspace/results/round6_1-repro-deferred 31000
+
+# In each fresh process, capture the first 44 matched-history positions for the
+# single frozen prompt. D1 additionally uses the opt-in Deferred JSONL trace.
+migration_bridge/round4a3/tools/run_teacher_forced_sweep.py --corpus migration_bridge/round6/corpora/hd.json --baseline-history /workspace/results/hd-nodefer-history/result.json --positions 44 --prompt-id hd_en_02
+
+# Compare each new tensor exactly with positions 0:44 of the corresponding
+# immutable Round6 raw capture and extract logits 21 and 16520 at position 43.
