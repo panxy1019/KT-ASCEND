@@ -1,0 +1,58 @@
+....EEFEEE........
+======================================================================
+ERROR: test_execution_peak_includes_projection_and_workspace (migration_bridge.round9.tests.test_shadow_decomposition.ResourceArithmeticTests.test_execution_peak_includes_projection_and_workspace)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 106, in test_execution_peak_includes_projection_and_workspace
+    from migration_bridge.round9.tests.shadow_decomposition_probe import validate_execution_peak
+ImportError: cannot import name 'validate_execution_peak' from 'migration_bridge.round9.tests.shadow_decomposition_probe' (/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/shadow_decomposition_probe.py)
+
+======================================================================
+ERROR: test_context_correlation_in_every_nested_event (migration_bridge.round9.tests.test_shadow_decomposition.ReviewRegressionTests.test_context_correlation_in_every_nested_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 92, in test_context_correlation_in_every_nested_event
+    r=Recorder(run_id='run')
+TypeError: Recorder.__init__() got an unexpected keyword argument 'run_id'
+
+======================================================================
+ERROR: test_off_on_identity_must_not_change (migration_bridge.round9.tests.test_shadow_decomposition.ReviewRegressionTests.test_off_on_identity_must_not_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 77, in test_off_on_identity_must_not_change
+    from migration_bridge.round9.tools.launch_shadow_decomposition import validate_pair_identity
+ImportError: cannot import name 'validate_pair_identity' from 'migration_bridge.round9.tools.launch_shadow_decomposition' (/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tools/launch_shadow_decomposition.py)
+
+======================================================================
+ERROR: test_phase_costs_and_device_are_reported_separately (migration_bridge.round9.tests.test_shadow_decomposition.ReviewRegressionTests.test_phase_costs_and_device_are_reported_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 84, in test_phase_costs_and_device_are_reported_separately
+    s=summarize(rows);self.assertEqual(s['phases']['source_file_read']['host_union_ns'],30);self.assertEqual(s['phases']['copy_call']['device_ms'],[1.25]);self.assertEqual(s['parents'][0]['covered_ns'],80)
+                                       ~^^^^^^^^^^
+KeyError: 'phases'
+
+======================================================================
+ERROR: test_physical_off_on_results_must_match (migration_bridge.round9.tests.test_shadow_decomposition.ReviewRegressionTests.test_physical_off_on_results_must_match)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 99, in test_physical_off_on_results_must_match
+    from migration_bridge.round9.tests.shadow_decomposition_probe import compare_modes
+ImportError: cannot import name 'compare_modes' from 'migration_bridge.round9.tests.shadow_decomposition_probe' (/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/shadow_decomposition_probe.py)
+
+======================================================================
+FAIL: test_errored_provider_does_not_make_valid_report (migration_bridge.round9.tests.test_shadow_decomposition.ReviewRegressionTests.test_errored_provider_does_not_make_valid_report)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 90, in test_errored_provider_does_not_make_valid_report
+    self.assertEqual(r.report()['status'],'INCOMPLETE')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'VALID_HOST_DECOMPOSITION' != 'INCOMPLETE'
+- VALID_HOST_DECOMPOSITION
++ INCOMPLETE
+
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.050s
+
+FAILED (failures=1, errors=5)

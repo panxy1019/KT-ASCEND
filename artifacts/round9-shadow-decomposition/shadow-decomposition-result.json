@@ -1,0 +1,39 @@
+{
+  "plan": "EXPERT_SHADOW_PREPARATION_COST_DECOMPOSITION",
+  "execution_authorization": "USER_APPROVED_REVISED_08_AND_PARALLEL_09",
+  "plan_state": "BLOCKED_WITH_EVIDENCE",
+  "blocker": "SELECTED_CPU_BUSY",
+  "stages": {
+    "E0_provider_contract": "AUDITED",
+    "E1_fixtures_reference_protocol": "DEFINED_NOT_DEVICE_VALIDATED",
+    "E2_observation": "IMPLEMENTED_DEFAULT_OFF",
+    "E3_local_tests": "PASS_63",
+    "E3_frozen_cpu_only_tests": "PASS_78",
+    "E3_physical_OFF_ON": "NOT_STARTED_ADMISSION_DENIED",
+    "E4_numeric_decomposition": "NOT_RUN",
+    "09_evidence_audit": "COMPLETE_19_ROWS"
+  },
+  "measurements": {
+    "parent_ns": null,
+    "phase_costs": null,
+    "numeric_A": null,
+    "numeric_B": null,
+    "physical_OFF_ON": null,
+    "device_cleanup": null
+  },
+  "resource": {
+    "sample_selected_cpu_idle": 0.4057625386967666,
+    "required_cpu_idle_strictly_greater_than": 0.8,
+    "physical_component_starts": 0,
+    "own_active_containers": [],
+    "training_unchanged": true
+  },
+  "next_step": "FRESH_ADMISSION_THEN_FROZEN_OFF_ON_COMPONENTS",
+  "behavior_change": "NONE",
+  "M2": "NOT_ENTERED",
+  "M3": "NOT_ENTERED",
+  "PRODUCT_QUALITY": "PENDING",
+  "PERFORMANCE_QUALIFICATION": "PENDING",
+  "inherited_full_model_attribution": "PARTIAL_ATTRIBUTION",
+  "events_file": null
+}

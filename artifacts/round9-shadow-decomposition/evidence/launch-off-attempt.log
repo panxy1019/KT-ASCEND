@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/shadow-decomposition-20260922-v1/source/tools/launch_shadow_decomposition.py", line 65, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/mnt/data1/kt-round9/shadow-decomposition-20260922-v1/source/tools/launch_shadow_decomposition.py", line 26, in main
+    try:admission=sample('MXFP4','shared',training)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data1/kt-round9/shadow-decomposition-20260922-v1/source/tools/candidate_resources.py", line 41, in sample
+    if sum(idle.values())/len(idle)<=.8:raise RuntimeError('selected CPUs busy')
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: selected CPUs busy

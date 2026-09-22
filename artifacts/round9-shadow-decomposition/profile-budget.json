@@ -1,0 +1,37 @@
+{
+  "limits": {
+    "full_model_starts": 0,
+    "http_requests": 0,
+    "full_model_profiles": 0,
+    "component_starts": 2,
+    "component_seconds": 1200,
+    "guard_seconds": 1250,
+    "trace_events": 2048,
+    "trace_bytes": 8388608,
+    "automatic_retries": 0,
+    "extra_warmups": 0,
+    "extra_repeats": 0,
+    "host_only_dependency_checks": 1
+  },
+  "used": {
+    "component_starts": 0,
+    "full_model_starts": 0,
+    "http_requests": 0,
+    "host_only_dependency_checks": 1
+  },
+  "component_resources": {
+    "allocator_fraction": 0.04,
+    "allocator_max_bytes": 2631841873,
+    "owned_limit_mib": 4096,
+    "host_memory_gib": 64,
+    "memory_swap_gib": 64,
+    "cpu_quota": 136,
+    "numa_nodes": [
+      2,
+      3,
+      6,
+      7
+    ],
+    "workspace_mib": 512
+  }
+}

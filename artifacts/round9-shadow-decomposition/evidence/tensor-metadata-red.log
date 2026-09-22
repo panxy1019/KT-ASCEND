@@ -1,0 +1,13 @@
+..................E
+======================================================================
+ERROR: test_tensor_identity_is_read_only_and_bounded (migration_bridge.round9.tests.test_shadow_decomposition.TensorIdentityTests.test_tensor_identity_is_read_only_and_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 112, in test_tensor_identity_is_read_only_and_bounded
+    from migration_bridge.round9.runtime.shadow_decomposition import record_tensor
+ImportError: cannot import name 'record_tensor' from 'migration_bridge.round9.runtime.shadow_decomposition' (/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/runtime/shadow_decomposition.py)
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.046s
+
+FAILED (errors=1)

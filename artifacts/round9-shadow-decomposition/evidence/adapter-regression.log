@@ -1,0 +1,17 @@
+E.......................................................
+======================================================================
+ERROR: test_dynamic_tensor_adapter (unittest.loader._FailedTest.test_dynamic_tensor_adapter)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_dynamic_tensor_adapter
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_dynamic_tensor_adapter.py", line 6, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+
+
+----------------------------------------------------------------------
+Ran 56 tests in 0.103s
+
+FAILED (errors=1)

@@ -1,3 +1,15 @@
+## Latest — 2026-09-22 revised08 implemented, physical stage CPU-blocked;09 audited
+
+Branch `codex/round9-shadow-decomposition`, baseline `a5b26444e`. User approved revised08 and parallel09. See `../../artifacts/round9-shadow-decomposition/SHADOW_PREPARE_DECOMPOSITION.md` and `shadow-decomposition-result.json` in that artifact directory.
+
+- Default-OFF prepare phase observation, captured-input BF16 shadow A/derivedB and guarded OFF/ON harness are implemented in a new snapshot. Existing v63/v20 snapshots unchanged; no behavior optimization.
+-63 local tests and78 frozen-image CPU-only tests pass. Five important independent-review findings fixed RED→GREEN. Core AST after stripping observation equals frozen baseline.
+-Physical OFF startup denied before container creation: selected160 CPUs onNUMA2/3/6/7 busy; quantifiedmeanidle~40.6% vs required>80%. NPU15 idle does not bypassCPU gate.0/2 component starts consumed,0model/HTTP. No actualphasecost/numeric/physicalOFFON/cleanup qualification.
+-09 existing evidence audit complete:19capability rows, explicit current/historical/not-revalidated distinctions andproposedNOT_RUNcanary. No M2/M3/quality/performance extension.
+-Remote frozen source `/mnt/data1/kt-round9/shadow-decomposition-20260922-v1/source`; source manifest at parent. Evidence `/mnt/data1/kt-round9/evidence/20260922-shadow-decomposition-v1`.
+-Next: re-admit same sharedcontract andrun OFF thenON withimmutable source/capture identities. Namev21was not created; verify availability before future launch. Never silently editfrozen snapshot. Budget2components1200s each,owned4GiB,allocator4%,Host64GiB,workspace512MiB. No extra model/HTTP/warmup/repeats.
+-No ownedrunningcontainers orbackgroundmonitor. Training untouched; existingexternalRound7container untouched; timersunchanged. No push/merge/tag. Originalpausedhandofffile untouched.
+
 ## Latest — 2026-09-22 KT mainline audit and bounded attribution completed
 
 Branch `codex/round9-kt-mainline-attribution`, isolated checkout `kt-round9-mainline`, baseline `57de93dfbb5775f1265378c1eae737edb8d5cc3e`.

@@ -1,0 +1,17 @@
+E
+======================================================================
+ERROR: test_shadow_decomposition (unittest.loader._FailedTest.test_shadow_decomposition)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_shadow_decomposition
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_shadow_decomposition.py", line 2, in <module>
+    from migration_bridge.round9.runtime.shadow_decomposition import Recorder, phase, activate, summarize
+ModuleNotFoundError: No module named 'migration_bridge.round9.runtime.shadow_decomposition'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

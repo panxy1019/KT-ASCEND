@@ -8,6 +8,7 @@ import json
 import math
 from pathlib import Path
 import struct
+from .shadow_decomposition import phase
 
 
 class OriginalExpertSource:
@@ -46,7 +47,8 @@ class OriginalExpertSource:
             raise ValueError('invalid original BF16 expert layout')
         count=self.hidden*self.intermediate*2
         offset=(expert*count if projection=='down' else expert*2*count+(count if projection=='up' else 0))
-        with path.open('rb') as f:
-            f.seek(base+begin+offset);raw=f.read(count)
+        with phase('source_file_read', layer=layer, expert=expert, projection=projection, logical_bytes=count):
+            with path.open('rb') as f:
+                f.seek(base+begin+offset);raw=f.read(count)
         if len(raw)!=count:raise ValueError('short original expert read')
         return raw

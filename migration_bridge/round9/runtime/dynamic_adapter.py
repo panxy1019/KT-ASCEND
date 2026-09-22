@@ -90,6 +90,7 @@ class TorchKTEPAdapter:
         bounded host staging. Maximum additional ND device staging is400MiB.
         """
         import torch
+        from .shadow_decomposition import phase, record_tensor
         target=self.layers[layer];moves=tuple(moves)
         if not moves:return
         if (len({slot for slot,_ in moves})!=len(moves) or
@@ -108,25 +109,35 @@ class TorchKTEPAdapter:
         h=self.source.hidden;i=self.source.intermediate
         if len(moves)*h*2*i*2>400*1024**2:raise ValueError('layer device staging exceeds400MiB')
         def read(logical,name,shape):
-            value=torch.frombuffer(bytearray(self.source.read(layer,logical,name)),dtype=torch.bfloat16).reshape(shape)
-            if not bool(torch.isfinite(value).all()):raise ValueError('nonfinite original expert')
+            with phase('host_materialization', logical=logical, projection=name):
+                value=torch.frombuffer(bytearray(self.source.read(layer,logical,name)),dtype=torch.bfloat16).reshape(shape)
+                if not bool(torch.isfinite(value).all()):raise ValueError('nonfinite original expert')
             return value
         with torch.no_grad():
             index=torch.tensor([slot for slot,_ in moves],dtype=torch.int64,device=target.w13_weight.device)
             for name in ('w13_weight','w2_weight'):
                 destination=getattr(target,name)
-                staged=torch.empty((len(moves),*destination.shape[1:]),dtype=torch.bfloat16,device=destination.device)
+                with phase('nd_allocation', projection=name, shape=(len(moves),*destination.shape[1:])):
+                    staged=torch.empty((len(moves),*destination.shape[1:]),dtype=torch.bfloat16,device=destination.device)
+                    record_tensor("staged", staged, layout=2)
+                    record_tensor("destination", destination, layout=29)
                 if int(torch_npu.get_npu_format(staged))!=2:raise RuntimeError('expected ND staging tensor')
                 for position,(_,logical) in enumerate(moves):
-                    if name=='w13_weight':
-                        original=torch.cat((read(logical,'gate',(i,h)),read(logical,'up',(i,h))),dim=0).T
-                    else:original=read(logical,'down',(h,i)).T
-                    staged[position].copy_(original,non_blocking=False)
+                    with phase('host_projection_build', projection=name, logical=logical):
+                        if name=='w13_weight':
+                            original=torch.cat((read(logical,'gate',(i,h)),read(logical,'up',(i,h))),dim=0).T
+                        else:original=read(logical,'down',(h,i)).T
+                    with phase('copy_call', device=True, projection=name, logical=logical, slot=position):
+                        record_tensor("source", original, layout="CPU_STRIDED")
+                        staged[position].copy_(original,non_blocking=False)
                     del original
-                destination.index_copy_(0,index,staged)
-                self.synchronize()
+                with phase('nz_index_copy', device=True, projection=name):
+                    destination.index_copy_(0,index,staged)
+                with phase('existing_sync', projection=name):
+                    self.synchronize()
                 if int(torch_npu.get_npu_format(destination))!=29:raise RuntimeError('NZ publication changed resident layout')
-                del staged
+                with phase('staging_retire', projection=name):
+                    del staged
         self.copied_bytes+=len(moves)*self.expert_bytes
 
     def publish(self,layer,slots,generation):
