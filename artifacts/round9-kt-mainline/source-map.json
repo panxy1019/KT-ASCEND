@@ -1,0 +1,1658 @@
+[
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/models/qwen4_exp.py",
+    "sha256": "ab8fe1edc5bf0c5a36c98a86fb827160ca51ca40f51f2ec91dead64f86cbd756",
+    "symbols": [
+      {
+        "symbol": "OriginalPLETable",
+        "line": 78
+      },
+      {
+        "symbol": "CheckpointPLETable",
+        "line": 85
+      },
+      {
+        "symbol": "_missing_pool",
+        "line": 110
+      },
+      {
+        "symbol": "_owned_cpu_staging",
+        "line": 118
+      },
+      {
+        "symbol": "_prepare_kt_runtime",
+        "line": 125
+      },
+      {
+        "symbol": "_check_kt_layer",
+        "line": 167
+      },
+      {
+        "symbol": "_compat_config",
+        "line": 175
+      },
+      {
+        "symbol": "_speculation_is_active",
+        "line": 181
+      },
+      {
+        "symbol": "_mean_in_storage_dtype",
+        "line": 191
+      },
+      {
+        "symbol": "_flatten_token_kv",
+        "line": 198
+      },
+      {
+        "symbol": "_qsa_rope_settings",
+        "line": 213
+      },
+      {
+        "symbol": "_guard_profile",
+        "line": 234
+      },
+      {
+        "symbol": "Qwen4ReferenceGatedDeltaNet",
+        "line": 254
+      },
+      {
+        "symbol": "Qwen4ReferenceIndexer",
+        "line": 329
+      },
+      {
+        "symbol": "Qwen4ReferencePLE",
+        "line": 466
+      },
+      {
+        "symbol": "Qwen4ExpLayerExtensionMixin",
+        "line": 541
+      },
+      {
+        "symbol": "Qwen4ExpLinearDecoderLayer",
+        "line": 584
+      },
+      {
+        "symbol": "Qwen4ExpAttentionDecoderLayer",
+        "line": 605
+      },
+      {
+        "symbol": "Qwen4ExpModel",
+        "line": 690
+      },
+      {
+        "symbol": "WeightLoadAudit",
+        "line": 783
+      },
+      {
+        "symbol": "_normalize_checkpoint_name",
+        "line": 802
+      },
+      {
+        "symbol": "_ple_shard_index",
+        "line": 812
+      },
+      {
+        "symbol": "_validate_packed_parts",
+        "line": 831
+      },
+      {
+        "symbol": "Qwen4ExpForConditionalGeneration",
+        "line": 847
+      },
+      {
+        "symbol": "gather_rows",
+        "line": 81
+      },
+      {
+        "symbol": "__init__",
+        "line": 92
+      },
+      {
+        "symbol": "gather_rows",
+        "line": 96
+      },
+      {
+        "symbol": "close",
+        "line": 106
+      },
+      {
+        "symbol": "__init__",
+        "line": 257
+      },
+      {
+        "symbol": "_enable_reference_path",
+        "line": 261
+      },
+      {
+        "symbol": "convert",
+        "line": 275
+      },
+      {
+        "symbol": "forward",
+        "line": 283
+      },
+      {
+        "symbol": "__init__",
+        "line": 332
+      },
+      {
+        "symbol": "_rope",
+        "line": 357
+      },
+      {
+        "symbol": "forward",
+        "line": 365
+      },
+      {
+        "symbol": "__init__",
+        "line": 469
+      },
+      {
+        "symbol": "bind_original_table",
+        "line": 489
+      },
+      {
+        "symbol": "prepare",
+        "line": 492
+      },
+      {
+        "symbol": "run",
+        "line": 531
+      },
+      {
+        "symbol": "_init_qwen4_extensions",
+        "line": 542
+      },
+      {
+        "symbol": "_before_attention",
+        "line": 562
+      },
+      {
+        "symbol": "_after_attention",
+        "line": 576
+      },
+      {
+        "symbol": "__init__",
+        "line": 587
+      },
+      {
+        "symbol": "forward",
+        "line": 596
+      },
+      {
+        "symbol": "__init__",
+        "line": 608
+      },
+      {
+        "symbol": "self_attention",
+        "line": 623
+      },
+      {
+        "symbol": "forward",
+        "line": 675
+      },
+      {
+        "symbol": "__init__",
+        "line": 691
+      },
+      {
+        "symbol": "get_input_embeddings",
+        "line": 732
+      },
+      {
+        "symbol": "bind_original_ple_table",
+        "line": 735
+      },
+      {
+        "symbol": "forward",
+        "line": 744
+      },
+      {
+        "symbol": "__init__",
+        "line": 854
+      },
+      {
+        "symbol": "bind_original_ple_table",
+        "line": 894
+      },
+      {
+        "symbol": "forward",
+        "line": 898
+      },
+      {
+        "symbol": "load_weights",
+        "line": 927
+      },
+      {
+        "symbol": "get_model_config_for_expert_location",
+        "line": 1111
+      },
+      {
+        "symbol": "build",
+        "line": 707
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/models/qwen3_5.py",
+    "sha256": "88c6667748bf8d15e6573af04a76cdf2bf174cc72e294f39905a50140733607e",
+    "symbols": [
+      {
+        "symbol": "_load_kt_lora_config",
+        "line": 99
+      },
+      {
+        "symbol": "_load_kt_lora_state_dict",
+        "line": 110
+      },
+      {
+        "symbol": "_find_lora_tensor",
+        "line": 125
+      },
+      {
+        "symbol": "_get_lora_pair",
+        "line": 141
+      },
+      {
+        "symbol": "_as_lora_weight",
+        "line": 163
+      },
+      {
+        "symbol": "_slice_column_lora_b",
+        "line": 171
+      },
+      {
+        "symbol": "_slice_merged_column_lora_b",
+        "line": 180
+      },
+      {
+        "symbol": "_slice_row_lora_a",
+        "line": 195
+      },
+      {
+        "symbol": "_slice_full_attention_kv_lora_b",
+        "line": 204
+      },
+      {
+        "symbol": "_lora_delta",
+        "line": 220
+      },
+      {
+        "symbol": "Qwen3_5GatedDeltaNet",
+        "line": 229
+      },
+      {
+        "symbol": "Qwen3_5LinearDecoderLayer",
+        "line": 524
+      },
+      {
+        "symbol": "Qwen3_5AttentionDecoderLayer",
+        "line": 642
+      },
+      {
+        "symbol": "Qwen3_5ForCausalLM",
+        "line": 991
+      },
+      {
+        "symbol": "Qwen3_5MoeForCausalLM",
+        "line": 1256
+      },
+      {
+        "symbol": "Qwen3_5ForConditionalGeneration",
+        "line": 1451
+      },
+      {
+        "symbol": "Qwen3_5MoeForConditionalGeneration",
+        "line": 1551
+      },
+      {
+        "symbol": "__init__",
+        "line": 230
+      },
+      {
+        "symbol": "load_kt_lora",
+        "line": 387
+      },
+      {
+        "symbol": "fix_query_key_value_ordering",
+        "line": 439
+      },
+      {
+        "symbol": "forward",
+        "line": 450
+      },
+      {
+        "symbol": "__init__",
+        "line": 527
+      },
+      {
+        "symbol": "forward",
+        "line": 594
+      },
+      {
+        "symbol": "__init__",
+        "line": 645
+      },
+      {
+        "symbol": "load_kt_lora",
+        "line": 791
+      },
+      {
+        "symbol": "_apply_qk_norm",
+        "line": 853
+      },
+      {
+        "symbol": "self_attention",
+        "line": 875
+      },
+      {
+        "symbol": "forward",
+        "line": 937
+      },
+      {
+        "symbol": "__init__",
+        "line": 994
+      },
+      {
+        "symbol": "get_input_embeddings",
+        "line": 1042
+      },
+      {
+        "symbol": "get_hidden_dim",
+        "line": 1045
+      },
+      {
+        "symbol": "load_kt_lora",
+        "line": 1095
+      },
+      {
+        "symbol": "forward",
+        "line": 1134
+      },
+      {
+        "symbol": "load_weights",
+        "line": 1197
+      },
+      {
+        "symbol": "__init__",
+        "line": 1257
+      },
+      {
+        "symbol": "load_weights",
+        "line": 1265
+      },
+      {
+        "symbol": "__init__",
+        "line": 1452
+      },
+      {
+        "symbol": "get_embed_and_head",
+        "line": 1468
+      },
+      {
+        "symbol": "set_embed_and_head",
+        "line": 1471
+      },
+      {
+        "symbol": "load_kt_lora",
+        "line": 1479
+      },
+      {
+        "symbol": "get_hidden_dim",
+        "line": 1482
+      },
+      {
+        "symbol": "should_apply_lora",
+        "line": 1485
+      },
+      {
+        "symbol": "load_weights",
+        "line": 1488
+      },
+      {
+        "symbol": "__init__",
+        "line": 1554
+      },
+      {
+        "symbol": "get_model_config_for_expert_location",
+        "line": 1570
+      },
+      {
+        "symbol": "get_embed_and_head",
+        "line": 1577
+      },
+      {
+        "symbol": "set_embed_and_head",
+        "line": 1580
+      },
+      {
+        "symbol": "load_kt_lora",
+        "line": 1588
+      },
+      {
+        "symbol": "get_hidden_dim",
+        "line": 1591
+      },
+      {
+        "symbol": "should_apply_lora",
+        "line": 1594
+      },
+      {
+        "symbol": "load_weights",
+        "line": 1597
+      },
+      {
+        "symbol": "get_model_config_for_expert_location",
+        "line": 1790
+      },
+      {
+        "symbol": "set_column",
+        "line": 399
+      },
+      {
+        "symbol": "get_layer",
+        "line": 1017
+      },
+      {
+        "symbol": "load_fused_expert_weights",
+        "line": 1306
+      },
+      {
+        "symbol": "load_fused_expert_weights",
+        "line": 1636
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+    "sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+    "symbols": [
+      {
+        "symbol": "_glm5_next_fp8_transport_mode",
+        "line": 100
+      },
+      {
+        "symbol": "_load_glm5_next_fp8_native_transport_api",
+        "line": 112
+      },
+      {
+        "symbol": "_glm5_next_fp8_native_transport_capabilities",
+        "line": 133
+      },
+      {
+        "symbol": "_validate_glm5_next_tp_size",
+        "line": 158
+      },
+      {
+        "symbol": "KTConfig",
+        "line": 167
+      },
+      {
+        "symbol": "KTExpertLoraWeights",
+        "line": 203
+      },
+      {
+        "symbol": "_map_kt_method_to_sft_method",
+        "line": 228
+      },
+      {
+        "symbol": "_configure_kt_sft_wrapper_for_serving",
+        "line": 238
+      },
+      {
+        "symbol": "_validate_kt_sft_runtime",
+        "line": 243
+      },
+      {
+        "symbol": "_load_native_fp8_sft_weights",
+        "line": 257
+      },
+      {
+        "symbol": "_kt_supports_swiglu_parameters",
+        "line": 333
+      },
+      {
+        "symbol": "_load_adapter_config",
+        "line": 342
+      },
+      {
+        "symbol": "_find_adapter_weight_file",
+        "line": 357
+      },
+      {
+        "symbol": "_get_expert_lora_tensor",
+        "line": 375
+      },
+      {
+        "symbol": "_load_kt_expert_lora_weights",
+        "line": 404
+      },
+      {
+        "symbol": "SharedStagingBuffer",
+        "line": 489
+      },
+      {
+        "symbol": "get_or_create_shared_staging_buffer",
+        "line": 526
+      },
+      {
+        "symbol": "SharedFullContext",
+        "line": 544
+      },
+      {
+        "symbol": "_Mxfp4PrefillSlot",
+        "line": 2714
+      },
+      {
+        "symbol": "_Mxfp4LayerwisePrefillManager",
+        "line": 2756
+      },
+      {
+        "symbol": "_mxfp4_pipeline_signature",
+        "line": 3332
+      },
+      {
+        "symbol": "_mxfp4_pipeline_requested",
+        "line": 3343
+      },
+      {
+        "symbol": "_mxfp4_pipeline_backend_supported",
+        "line": 3350
+      },
+      {
+        "symbol": "_mxfp4_pipeline_runtime_supported",
+        "line": 3363
+      },
+      {
+        "symbol": "_mxfp4_raw_slot_storage_nbytes",
+        "line": 3372
+      },
+      {
+        "symbol": "get_mxfp4_layerwise_prefill_reservation_bytes",
+        "line": 3397
+      },
+      {
+        "symbol": "_register_mxfp4_prefill_layer",
+        "line": 3444
+      },
+      {
+        "symbol": "_all_tp_ranks_succeeded",
+        "line": 3461
+      },
+      {
+        "symbol": "_any_tp_rank_true",
+        "line": 3469
+      },
+      {
+        "symbol": "_disable_mxfp4_layerwise_pipeline",
+        "line": 3477
+      },
+      {
+        "symbol": "_try_mxfp4_initialization",
+        "line": 3489
+      },
+      {
+        "symbol": "_allocate_mxfp4_slot_storage",
+        "line": 3500
+      },
+      {
+        "symbol": "_initialize_mxfp4_layerwise_pipeline",
+        "line": 3529
+      },
+      {
+        "symbol": "_get_or_initialize_mxfp4_layerwise_manager",
+        "line": 3651
+      },
+      {
+        "symbol": "_glm5_next_fp8_pipeline_requested",
+        "line": 3676
+      },
+      {
+        "symbol": "_validate_glm5_next_fp8_shared_full_context",
+        "line": 3692
+      },
+      {
+        "symbol": "_glm5_next_forward_mode_name",
+        "line": 3850
+      },
+      {
+        "symbol": "_glm5_next_fp8_native_prefetch_signature",
+        "line": 3855
+      },
+      {
+        "symbol": "_register_glm5_next_fp8_native_prefetch_layer",
+        "line": 3866
+      },
+      {
+        "symbol": "_glm5_next_fp8_native_prefetch_runtime_supported",
+        "line": 3888
+      },
+      {
+        "symbol": "_Glm5NextFp8NativeSingleSlotPrefetchManager",
+        "line": 3907
+      },
+      {
+        "symbol": "_get_or_initialize_glm5_next_fp8_native_prefetch_manager",
+        "line": 4259
+      },
+      {
+        "symbol": "generate_front_loading_masks",
+        "line": 4322
+      },
+      {
+        "symbol": "generate_uniform_masks",
+        "line": 4358
+      },
+      {
+        "symbol": "generate_random_masks",
+        "line": 4407
+      },
+      {
+        "symbol": "_init_kt_gpu_experts_masks",
+        "line": 4457
+      },
+      {
+        "symbol": "create_kt_config_from_server_args",
+        "line": 4705
+      },
+      {
+        "symbol": "layer_needs_kt_wrapper",
+        "line": 4781
+      },
+      {
+        "symbol": "resolve_layer_max_deferred",
+        "line": 4790
+      },
+      {
+        "symbol": "mask_and_remap_expert_ids",
+        "line": 4830
+      },
+      {
+        "symbol": "select_top_experts_from_batch",
+        "line": 4855
+      },
+      {
+        "symbol": "copy_experts_weights_int4",
+        "line": 4902
+      },
+      {
+        "symbol": "copy_experts_weights_fp8",
+        "line": 4939
+      },
+      {
+        "symbol": "copy_experts_weights_fp8_channel",
+        "line": 4974
+      },
+      {
+        "symbol": "copy_experts_weights_bf16",
+        "line": 5009
+      },
+      {
+        "symbol": "update_gpu_expert_mappings",
+        "line": 5059
+      },
+      {
+        "symbol": "update_kt_wrapper_masks",
+        "line": 5096
+      },
+      {
+        "symbol": "KTEPWrapperMethod",
+        "line": 5121
+      },
+      {
+        "symbol": "_kt_ep_predicate",
+        "line": 6376
+      },
+      {
+        "symbol": "_kt_ep_factory",
+        "line": 6380
+      },
+      {
+        "symbol": "__init__",
+        "line": 498
+      },
+      {
+        "symbol": "get_slice",
+        "line": 518
+      },
+      {
+        "symbol": "__init__",
+        "line": 545
+      },
+      {
+        "symbol": "initialize_cpu_buffers",
+        "line": 579
+      },
+      {
+        "symbol": "_init_mxfp8_aux",
+        "line": 585
+      },
+      {
+        "symbol": "_build_layers",
+        "line": 596
+      },
+      {
+        "symbol": "_get_base_quant_method",
+        "line": 711
+      },
+      {
+        "symbol": "_detect_quant_type_from_created_weights",
+        "line": 738
+      },
+      {
+        "symbol": "_detect_fp8_quant",
+        "line": 817
+      },
+      {
+        "symbol": "_detect_fp8_channel_quant",
+        "line": 837
+      },
+      {
+        "symbol": "_detect_bf16_quant",
+        "line": 864
+      },
+      {
+        "symbol": "_resolve_int4_quant_params",
+        "line": 881
+      },
+      {
+        "symbol": "weight_names",
+        "line": 923
+      },
+      {
+        "symbol": "_cleanup_cpu_buffers_after_failure",
+        "line": 980
+      },
+      {
+        "symbol": "close",
+        "line": 1017
+      },
+      {
+        "symbol": "__del__",
+        "line": 1022
+      },
+      {
+        "symbol": "_commit_cpu_buffer_phase",
+        "line": 1029
+      },
+      {
+        "symbol": "_create_cpu_buffers",
+        "line": 1043
+      },
+      {
+        "symbol": "_collect_all_rank_buffer_pointers",
+        "line": 1162
+      },
+      {
+        "symbol": "_prepare_weight_int4",
+        "line": 1193
+      },
+      {
+        "symbol": "_close_glm5_next_fp8_transport",
+        "line": 1381
+      },
+      {
+        "symbol": "_tp_all_gather_object",
+        "line": 1433
+      },
+      {
+        "symbol": "_glm5_next_fp8_pointer_layout",
+        "line": 1445
+      },
+      {
+        "symbol": "_initialize_glm5_next_fp8_native_transport",
+        "line": 1511
+      },
+      {
+        "symbol": "_initialize_glm5_next_fp8_transport",
+        "line": 1614
+      },
+      {
+        "symbol": "_initialize_glm5_next_fp8_legacy_transport",
+        "line": 1704
+      },
+      {
+        "symbol": "_prepare_weight_fp8_glm5_next_legacy",
+        "line": 1725
+      },
+      {
+        "symbol": "_prepare_weight_fp8_glm5_next_native",
+        "line": 1858
+      },
+      {
+        "symbol": "_validate_glm5_next_fp8_native_gpu_slot",
+        "line": 1948
+      },
+      {
+        "symbol": "load_glm5_next_fp8_native",
+        "line": 1962
+      },
+      {
+        "symbol": "_prepare_weight_fp8_glm5_next",
+        "line": 2010
+      },
+      {
+        "symbol": "_prepare_weight_fp8",
+        "line": 2022
+      },
+      {
+        "symbol": "_prepare_weight_mxfp8",
+        "line": 2211
+      },
+      {
+        "symbol": "_prepare_weight_mxfp4",
+        "line": 2243
+      },
+      {
+        "symbol": "_prepare_weight_fp8_channel",
+        "line": 2287
+      },
+      {
+        "symbol": "_prepare_weight_bf16",
+        "line": 2456
+      },
+      {
+        "symbol": "_restore_raw_attrs",
+        "line": 2625
+      },
+      {
+        "symbol": "load",
+        "line": 2641
+      },
+      {
+        "symbol": "__init__",
+        "line": 2724
+      },
+      {
+        "symbol": "invalidate",
+        "line": 2748
+      },
+      {
+        "symbol": "__init__",
+        "line": 2764
+      },
+      {
+        "symbol": "registry",
+        "line": 2804
+      },
+      {
+        "symbol": "layer_order",
+        "line": 2808
+      },
+      {
+        "symbol": "successor_layer_idx",
+        "line": 2811
+      },
+      {
+        "symbol": "abort_round",
+        "line": 2816
+      },
+      {
+        "symbol": "_advance_round",
+        "line": 2826
+      },
+      {
+        "symbol": "_find_ready_slot",
+        "line": 2847
+      },
+      {
+        "symbol": "_record_prepared_backing_on_stream",
+        "line": 2858
+      },
+      {
+        "symbol": "_bind_slot",
+        "line": 2872
+      },
+      {
+        "symbol": "_tp_phase_succeeded",
+        "line": 2878
+      },
+      {
+        "symbol": "_commit_tp_runtime_phase",
+        "line": 2896
+      },
+      {
+        "symbol": "_tp_device_phase_succeeded",
+        "line": 2906
+      },
+      {
+        "symbol": "_commit_tp_device_runtime_phase",
+        "line": 2933
+      },
+      {
+        "symbol": "_submit_host_write",
+        "line": 2943
+      },
+      {
+        "symbol": "_postprocess_slot",
+        "line": 2969
+      },
+      {
+        "symbol": "_load_slot",
+        "line": 2998
+      },
+      {
+        "symbol": "_acquire",
+        "line": 3236
+      },
+      {
+        "symbol": "_prefetch_successor",
+        "line": 3249
+      },
+      {
+        "symbol": "apply",
+        "line": 3268
+      },
+      {
+        "symbol": "__init__",
+        "line": 3916
+      },
+      {
+        "symbol": "_mark_poisoned",
+        "line": 3966
+      },
+      {
+        "symbol": "_raise_if_unusable",
+        "line": 3971
+      },
+      {
+        "symbol": "_commit_rank_local_error",
+        "line": 3984
+      },
+      {
+        "symbol": "_drain_cpu_infer_once",
+        "line": 3998
+      },
+      {
+        "symbol": "_load_layer",
+        "line": 4019
+      },
+      {
+        "symbol": "_prime",
+        "line": 4029
+      },
+      {
+        "symbol": "_finish_future",
+        "line": 4034
+      },
+      {
+        "symbol": "_drain_interrupted_round",
+        "line": 4076
+      },
+      {
+        "symbol": "_acquire",
+        "line": 4091
+      },
+      {
+        "symbol": "_prefetch_successor",
+        "line": 4150
+      },
+      {
+        "symbol": "apply",
+        "line": 4182
+      },
+      {
+        "symbol": "close",
+        "line": 4237
+      },
+      {
+        "symbol": "__init__",
+        "line": 5145
+      },
+      {
+        "symbol": "create_weights",
+        "line": 5230
+      },
+      {
+        "symbol": "process_weights_after_loading",
+        "line": 5386
+      },
+      {
+        "symbol": "create_moe_runner",
+        "line": 5495
+      },
+      {
+        "symbol": "_submit_cpu_forward",
+        "line": 5529
+      },
+      {
+        "symbol": "_sync_cpu_forward",
+        "line": 5551
+      },
+      {
+        "symbol": "submit",
+        "line": 5562
+      },
+      {
+        "symbol": "sync",
+        "line": 5601
+      },
+      {
+        "symbol": "_submit_with_staged_input",
+        "line": 5618
+      },
+      {
+        "symbol": "_sync_with_staged_input",
+        "line": 5644
+      },
+      {
+        "symbol": "apply",
+        "line": 5660
+      },
+      {
+        "symbol": "_update_gpu_experts_from_batch",
+        "line": 6109
+      },
+      {
+        "symbol": "__getattr__",
+        "line": 6216
+      },
+      {
+        "symbol": "_build_full_context",
+        "line": 6236
+      },
+      {
+        "symbol": "add_candidate",
+        "line": 890
+      },
+      {
+        "symbol": "postprocess_expert",
+        "line": 1254
+      },
+      {
+        "symbol": "submit_write_expert",
+        "line": 1758
+      },
+      {
+        "symbol": "all_ranks_succeeded",
+        "line": 1775
+      },
+      {
+        "symbol": "postprocess_expert",
+        "line": 2111
+      },
+      {
+        "symbol": "postprocess_expert",
+        "line": 2359
+      },
+      {
+        "symbol": "postprocess_expert",
+        "line": 2529
+      },
+      {
+        "symbol": "expert_nbytes",
+        "line": 2947
+      },
+      {
+        "symbol": "rank_pointers",
+        "line": 2956
+      },
+      {
+        "symbol": "submit_write_expert",
+        "line": 1313
+      },
+      {
+        "symbol": "submit_write_expert",
+        "line": 2142
+      },
+      {
+        "symbol": "submit_write_expert",
+        "line": 2390
+      },
+      {
+        "symbol": "submit_write_expert",
+        "line": 2558
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/quantization/unquant.py",
+    "sha256": "56b46c170c8150afb437cb1bc0ea4453a456ca14f849170e7d0f27358cabcafb",
+    "symbols": [
+      {
+        "symbol": "UnquantizedEmbeddingMethod",
+        "line": 65
+      },
+      {
+        "symbol": "UnquantizedLinearMethod",
+        "line": 103
+      },
+      {
+        "symbol": "_sanitize_ascend_moe_routes",
+        "line": 155
+      },
+      {
+        "symbol": "UnquantizedFusedMoEMethod",
+        "line": 164
+      },
+      {
+        "symbol": "create_weights",
+        "line": 68
+      },
+      {
+        "symbol": "apply",
+        "line": 91
+      },
+      {
+        "symbol": "embedding",
+        "line": 99
+      },
+      {
+        "symbol": "create_weights",
+        "line": 106
+      },
+      {
+        "symbol": "process_weights_after_loading",
+        "line": 128
+      },
+      {
+        "symbol": "apply",
+        "line": 132
+      },
+      {
+        "symbol": "__init__",
+        "line": 167
+      },
+      {
+        "symbol": "create_weights",
+        "line": 177
+      },
+      {
+        "symbol": "process_weights_after_loading",
+        "line": 235
+      },
+      {
+        "symbol": "create_moe_runner",
+        "line": 330
+      },
+      {
+        "symbol": "load_up_proj_weight_first",
+        "line": 343
+      },
+      {
+        "symbol": "apply",
+        "line": 347
+      },
+      {
+        "symbol": "forward_cuda",
+        "line": 357
+      },
+      {
+        "symbol": "forward_cpu",
+        "line": 452
+      },
+      {
+        "symbol": "forward_xpu",
+        "line": 502
+      },
+      {
+        "symbol": "forward_npu",
+        "line": 550
+      },
+      {
+        "symbol": "forward_tpu",
+        "line": 650
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/gdn.py",
+    "sha256": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1",
+    "symbols": [
+      {
+        "symbol": "GDNConfig",
+        "line": 10
+      },
+      {
+        "symbol": "GDNState",
+        "line": 51
+      },
+      {
+        "symbol": "zero_state",
+        "line": 56
+      },
+      {
+        "symbol": "_require_shape",
+        "line": 80
+      },
+      {
+        "symbol": "gated_delta_recurrence",
+        "line": 85
+      },
+      {
+        "symbol": "sigmoid_gated_rms_norm",
+        "line": 154
+      },
+      {
+        "symbol": "_conv_weight_2d",
+        "line": 176
+      },
+      {
+        "symbol": "eager_gdn",
+        "line": 187
+      },
+      {
+        "symbol": "__post_init__",
+        "line": 18
+      },
+      {
+        "symbol": "query_dim",
+        "line": 34
+      },
+      {
+        "symbol": "key_dim",
+        "line": 38
+      },
+      {
+        "symbol": "value_dim",
+        "line": 42
+      },
+      {
+        "symbol": "conv_dim",
+        "line": 46
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/qsa.py",
+    "sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+    "symbols": [
+      {
+        "symbol": "compress_index_keys",
+        "line": 10
+      },
+      {
+        "symbol": "select_tokens",
+        "line": 22
+      },
+      {
+        "symbol": "sparse_gqa",
+        "line": 52
+      },
+      {
+        "symbol": "text_rope",
+        "line": 74
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/hyperconnection.py",
+    "sha256": "33fc2bba3babd629695312a326d438b91509b07bc4801582c04d1837e9be57b1",
+    "symbols": [
+      {
+        "symbol": "HyperConnectionConfig",
+        "line": 14
+      },
+      {
+        "symbol": "GroupedGemmaRMSNorm",
+        "line": 24
+      },
+      {
+        "symbol": "GatedResidual",
+        "line": 55
+      },
+      {
+        "symbol": "__init__",
+        "line": 25
+      },
+      {
+        "symbol": "_weight_loader",
+        "line": 37
+      },
+      {
+        "symbol": "forward",
+        "line": 43
+      },
+      {
+        "symbol": "__init__",
+        "line": 56
+      },
+      {
+        "symbol": "_check_hyper",
+        "line": 77
+      },
+      {
+        "symbol": "mix",
+        "line": 81
+      },
+      {
+        "symbol": "combine",
+        "line": 96
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/ple_sync.py",
+    "sha256": "2753d5d966eaf7e59e638f4f896f925b7701a144c91b690216113f4e765fc0b2",
+    "symbols": [
+      {
+        "symbol": "SynchronousPLE",
+        "line": 12
+      },
+      {
+        "symbol": "__init__",
+        "line": 13
+      },
+      {
+        "symbol": "forward",
+        "line": 28
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/ple_async.py",
+    "sha256": "792d077c8a1b2e302813eec05d25be0446f9b86dcb1faaf2e3e76f8499c11280",
+    "symbols": [
+      {
+        "symbol": "PLEDeviceStateError",
+        "line": 23
+      },
+      {
+        "symbol": "PLEAsyncTicket",
+        "line": 28
+      },
+      {
+        "symbol": "_SlotState",
+        "line": 38
+      },
+      {
+        "symbol": "_positive_int",
+        "line": 52
+      },
+      {
+        "symbol": "_normalize_rows",
+        "line": 58
+      },
+      {
+        "symbol": "AsyncPLERing",
+        "line": 86
+      },
+      {
+        "symbol": "_TorchNPUSlot",
+        "line": 459
+      },
+      {
+        "symbol": "_TorchNPUEvent",
+        "line": 467
+      },
+      {
+        "symbol": "TorchNPUAsyncPLEBackend",
+        "line": 472
+      },
+      {
+        "symbol": "__init__",
+        "line": 96
+      },
+      {
+        "symbol": "submit_exact",
+        "line": 162
+      },
+      {
+        "symbol": "poll",
+        "line": 231
+      },
+      {
+        "symbol": "wait",
+        "line": 263
+      },
+      {
+        "symbol": "release",
+        "line": 285
+      },
+      {
+        "symbol": "cancel",
+        "line": 299
+      },
+      {
+        "symbol": "cancel_and_drain",
+        "line": 305
+      },
+      {
+        "symbol": "close",
+        "line": 325
+      },
+      {
+        "symbol": "snapshot",
+        "line": 350
+      },
+      {
+        "symbol": "_require_open",
+        "line": 361
+      },
+      {
+        "symbol": "_idle_slot",
+        "line": 365
+      },
+      {
+        "symbol": "_release_slot_reservations",
+        "line": 368
+      },
+      {
+        "symbol": "_ticket_slot",
+        "line": 374
+      },
+      {
+        "symbol": "_finish_gather",
+        "line": 382
+      },
+      {
+        "symbol": "_launch",
+        "line": 387
+      },
+      {
+        "symbol": "_cancel_slot",
+        "line": 398
+      },
+      {
+        "symbol": "_retire",
+        "line": 416
+      },
+      {
+        "symbol": "_retire_after_failure",
+        "line": 433
+      },
+      {
+        "symbol": "_reset",
+        "line": 446
+      },
+      {
+        "symbol": "__init__",
+        "line": 475
+      },
+      {
+        "symbol": "allocate_slots",
+        "line": 486
+      },
+      {
+        "symbol": "submit_gather",
+        "line": 507
+      },
+      {
+        "symbol": "launch_h2d",
+        "line": 522
+      },
+      {
+        "symbol": "query_event",
+        "line": 540
+      },
+      {
+        "symbol": "wait_event",
+        "line": 543
+      },
+      {
+        "symbol": "record_event",
+        "line": 549
+      },
+      {
+        "symbol": "synchronize_event",
+        "line": 552
+      },
+      {
+        "symbol": "release_slot",
+        "line": 555
+      },
+      {
+        "symbol": "close",
+        "line": 559
+      },
+      {
+        "symbol": "_require",
+        "line": 563
+      },
+      {
+        "symbol": "_event",
+        "line": 568
+      },
+      {
+        "symbol": "gather",
+        "line": 512
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/round9/layerwise.py",
+    "sha256": "6647b1ef56b80941b49222552a13746d519140613026f3bb6a3d1b83cceccbc6",
+    "symbols": [
+      {
+        "symbol": "RouteGroup",
+        "line": 21
+      },
+      {
+        "symbol": "TransportReservation",
+        "line": 28
+      },
+      {
+        "symbol": "_positive_int",
+        "line": 42
+      },
+      {
+        "symbol": "_host_rows",
+        "line": 48
+      },
+      {
+        "symbol": "make_reservation",
+        "line": 58
+      },
+      {
+        "symbol": "group_topk_routes",
+        "line": 92
+      },
+      {
+        "symbol": "_build_private_shadow",
+        "line": 142
+      },
+      {
+        "symbol": "_CopyOnlyAdapter",
+        "line": 159
+      },
+      {
+        "symbol": "LayerwiseTransport",
+        "line": 177
+      },
+      {
+        "symbol": "AscendBF16TransportBackend",
+        "line": 340
+      },
+      {
+        "symbol": "emit",
+        "line": 116
+      },
+      {
+        "symbol": "__init__",
+        "line": 163
+      },
+      {
+        "symbol": "copied_bytes",
+        "line": 167
+      },
+      {
+        "symbol": "copy_experts",
+        "line": 170
+      },
+      {
+        "symbol": "synchronize",
+        "line": 173
+      },
+      {
+        "symbol": "__init__",
+        "line": 179
+      },
+      {
+        "symbol": "_ready",
+        "line": 201
+      },
+      {
+        "symbol": "_fail_stop",
+        "line": 205
+      },
+      {
+        "symbol": "begin",
+        "line": 214
+      },
+      {
+        "symbol": "_require",
+        "line": 223
+      },
+      {
+        "symbol": "_rows",
+        "line": 232
+      },
+      {
+        "symbol": "execute_layer",
+        "line": 245
+      },
+      {
+        "symbol": "finish",
+        "line": 320
+      },
+      {
+        "symbol": "abort",
+        "line": 329
+      },
+      {
+        "symbol": "__init__",
+        "line": 344
+      },
+      {
+        "symbol": "preallocate",
+        "line": 363
+      },
+      {
+        "symbol": "execute_group",
+        "line": 479
+      },
+      {
+        "symbol": "synchronize",
+        "line": 503
+      },
+      {
+        "symbol": "release",
+        "line": 513
+      },
+      {
+        "symbol": "assemble",
+        "line": 519
+      },
+      {
+        "symbol": "abort",
+        "line": 522
+      },
+      {
+        "symbol": "fail_stop",
+        "line": 534
+      }
+    ]
+  },
+  {
+    "path": "/mnt/data1/kt-round9/candidate-runtime-python/kt_kernel/device_stream.py",
+    "sha256": "829f5d864b3f6afd7d7e9f4ac4276ab93c4195f0ca8657166a7c6864601dd991"
+  },
+  {
+    "path": "/mnt/data1/kt-round9/candidate-runtime-python/kt_kernel/utils/llamafile.py",
+    "sha256": "5db476574ed090b26b44dfb25bab03b040740c22a53a9e4e0104cf77a8c9ea69"
+  },
+  {
+    "path": "/mnt/data1/kt-round9/candidate-runtime-python/kt_kernel/experts_base.py",
+    "sha256": "d208f1d71afc1a8aed2554939a7c53358294b2ae49d4b1af5791de6ad93186c3"
+  }
+]

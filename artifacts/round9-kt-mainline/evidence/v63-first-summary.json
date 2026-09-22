@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "PARTIAL_ATTRIBUTION",
+  "coverage_batches": 1,
+  "missing_request_coverage": 0,
+  "observer_errors": [],
+  "device_duration_samples": 13,
+  "host_union_ns": 3617271595,
+  "components": {
+    "GR_MIX:extend": {
+      "calls": 4,
+      "inclusive_host_ns": 102049887,
+      "device_duration_ms": [
+        103.76226043701172,
+        0.2545199990272522,
+        0.5259600281715393,
+        0.18357999622821808
+      ],
+      "device_missing": 0
+    },
+    "GDN:extend": {
+      "calls": 1,
+      "inclusive_host_ns": 64641297,
+      "device_duration_ms": [
+        61.48297882080078
+      ],
+      "device_missing": 0
+    },
+    "GR_COMBINE:extend": {
+      "calls": 4,
+      "inclusive_host_ns": 2008203,
+      "device_duration_ms": [
+        2.594099998474121,
+        0.3319399952888489,
+        0.04131999984383583,
+        0.2998400032520294
+      ],
+      "device_missing": 0
+    },
+    "ROUTED_EXPERT:extend": {
+      "calls": 2,
+      "inclusive_host_ns": 3225448078,
+      "device_duration_ms": [
+        2117.143798828125,
+        1108.3590087890625
+      ],
+      "device_missing": 0
+    },
+    "QSA_INDEXER:extend": {
+      "calls": 1,
+      "inclusive_host_ns": 139317042,
+      "device_duration_ms": [
+        47.16263961791992
+      ],
+      "device_missing": 0
+    },
+    "QSA_ATTENTION:extend": {
+      "calls": 1,
+      "inclusive_host_ns": 223124130,
+      "device_duration_ms": [
+        223.84402465820312
+      ],
+      "device_missing": 0
+    }
+  },
+  "invalid_spans": 0,
+  "dropped_events": 0,
+  "decode_spans": 0,
+  "cpu_worker_ns": null,
+  "dram_bandwidth": null,
+  "device_overlap": "UNKNOWN_UNCALIBRATED_CLOCKS",
+  "requests": [
+    {
+      "allocation_epoch": 0,
+      "placement_epoch": 0,
+      "request_id": "r9-mainline-profile"
+    }
+  ],
+  "interpretation": "Inclusive sampled durations; no mutually exclusive percentages or full critical path."
+}

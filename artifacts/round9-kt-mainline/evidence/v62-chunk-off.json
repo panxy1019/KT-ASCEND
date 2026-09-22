@@ -1,0 +1,206 @@
+{
+  "status": "NORMAL_HTTP_COMPLETE_NOT_QUALITY_QUALIFIED",
+  "body": {
+    "rid": "r9-mainline-chunk-off",
+    "stream": true,
+    "sampling_params": {
+      "temperature": 0,
+      "max_new_tokens": 4,
+      "ignore_eos": false
+    },
+    "input_ids": [
+      37436,
+      1439,
+      4105,
+      303,
+      1906,
+      25,
+      220,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438,
+      6105,
+      5983,
+      13358,
+      2438
+    ]
+  },
+  "events": [
+    {
+      "client_seconds": 282.8621705910191,
+      "response": {
+        "text": " blue",
+        "output_ids": [
+          6105
+        ],
+        "meta_info": {
+          "id": "r9-mainline-chunk-off",
+          "finish_reason": null,
+          "prompt_tokens": 64,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 1,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "response_sent_to_client_ts": 1790066885.8276722
+        }
+      }
+    },
+    {
+      "client_seconds": 287.472275497159,
+      "response": {
+        "text": " blue green",
+        "output_ids": [
+          6105,
+          5983
+        ],
+        "meta_info": {
+          "id": "r9-mainline-chunk-off",
+          "finish_reason": null,
+          "prompt_tokens": 64,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 2,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 287.8090516780503,
+      "response": {
+        "text": " blue green yellow",
+        "output_ids": [
+          6105,
+          5983,
+          13358
+        ],
+        "meta_info": {
+          "id": "r9-mainline-chunk-off",
+          "finish_reason": null,
+          "prompt_tokens": 64,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 3,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 288.1442103511654,
+      "response": {
+        "text": " blue green yellow red",
+        "output_ids": [
+          6105,
+          5983,
+          13358,
+          2438
+        ],
+        "meta_info": {
+          "id": "r9-mainline-chunk-off",
+          "finish_reason": {
+            "type": "length",
+            "length": 4
+          },
+          "prompt_tokens": 64,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 4,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 288.1389033589512
+        }
+      }
+    }
+  ],
+  "started_unix": 1790066602.9662702,
+  "clock": "CLIENT_MONOTONIC",
+  "actual_prompt_tokens": 64,
+  "actual_output_tokens": 4,
+  "output_ids": [
+    6105,
+    5983,
+    13358,
+    2438
+  ],
+  "final_text": " blue green yellow red",
+  "finish_reason": {
+    "type": "length",
+    "length": 4
+  },
+  "client_wall_seconds": 288.15021157613955,
+  "client_ttft_seconds": 282.8621705910191,
+  "token_arrival_samples": [
+    {
+      "cumulative_tokens": 1,
+      "client_seconds": 282.8621705910191
+    },
+    {
+      "cumulative_tokens": 2,
+      "client_seconds": 287.472275497159
+    },
+    {
+      "cumulative_tokens": 3,
+      "client_seconds": 287.8090516780503
+    },
+    {
+      "cumulative_tokens": 4,
+      "client_seconds": 288.1442103511654
+    }
+  ]
+}

@@ -292,6 +292,8 @@ def framework_before(scheduler, batch):
     if config['resident_capacity'] == 32 and not getattr(scheduler, '_round9_q32_physical_recorded', False):
         write_q32_physical(scheduler)
         scheduler._round9_q32_physical_recorded = True
+    from .mainline_attribution import before as mainline_before
+    mainline_before(scheduler, batch)
     if not config['route_collection']: return
     collector = getattr(scheduler, '_round9_route_collector', None)
     if collector is None:
@@ -357,6 +359,8 @@ def framework_after(scheduler):
     if config is not None and config.get('prefill') is not None:
         from .prefill_binding import prefill_after
         prefill_after(scheduler)
+    from .mainline_attribution import after as mainline_after
+    mainline_after(scheduler)
     timeline_batch = getattr(scheduler.tp_worker.model_runner,
                              '_round9_timeline_batch', None)
     if timeline_batch is not None:

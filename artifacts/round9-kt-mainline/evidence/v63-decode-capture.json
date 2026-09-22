@@ -1,0 +1,320 @@
+{
+  "status": "NORMAL_HTTP_COMPLETE_NOT_QUALITY_QUALIFIED",
+  "body": {
+    "rid": "r9-mainline-capture",
+    "stream": true,
+    "sampling_params": {
+      "temperature": 0,
+      "max_new_tokens": 8,
+      "ignore_eos": false
+    },
+    "text": "Continue the sequence: one, two, three,"
+  },
+  "events": [
+    {
+      "client_seconds": 90.24344969308004,
+      "response": {
+        "text": " four",
+        "output_ids": [
+          2943
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 1,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "response_sent_to_client_ts": 1790068191.973211
+        }
+      }
+    },
+    {
+      "client_seconds": 90.59117585397325,
+      "response": {
+        "text": " four,",
+        "output_ids": [
+          2943,
+          11
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 2,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 90.89566151495092,
+      "response": {
+        "text": " four, five",
+        "output_ids": [
+          2943,
+          11,
+          4097
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 3,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 91.18301895400509,
+      "response": {
+        "text": " four, five,",
+        "output_ids": [
+          2943,
+          11,
+          4097,
+          11
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 4,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 91.47014826303348,
+      "response": {
+        "text": " four, five, six",
+        "output_ids": [
+          2943,
+          11,
+          4097,
+          11,
+          4590
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 5,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 91.76500283693895,
+      "response": {
+        "text": " four, five, six,",
+        "output_ids": [
+          2943,
+          11,
+          4097,
+          11,
+          4590,
+          11
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 6,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 92.0705835011322,
+      "response": {
+        "text": " four, five, six, seven",
+        "output_ids": [
+          2943,
+          11,
+          4097,
+          11,
+          4590,
+          11,
+          7840
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": null,
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 7,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null
+        }
+      }
+    },
+    {
+      "client_seconds": 92.36033776309341,
+      "response": {
+        "text": " four, five, six, seven,",
+        "output_ids": [
+          2943,
+          11,
+          4097,
+          11,
+          4590,
+          11,
+          7840,
+          11
+        ],
+        "meta_info": {
+          "id": "r9-mainline-capture",
+          "finish_reason": {
+            "type": "length",
+            "length": 8
+          },
+          "prompt_tokens": 10,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 8,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 92.35640535806306
+        }
+      }
+    }
+  ],
+  "started_unix": 1790068101.7302992,
+  "clock": "CLIENT_MONOTONIC",
+  "actual_prompt_tokens": 10,
+  "actual_output_tokens": 8,
+  "output_ids": [
+    2943,
+    11,
+    4097,
+    11,
+    4590,
+    11,
+    7840,
+    11
+  ],
+  "final_text": " four, five, six, seven,",
+  "finish_reason": {
+    "type": "length",
+    "length": 8
+  },
+  "decode_capture_manifest": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+    "layer": 0,
+    "layout": "NZ29",
+    "cpu_precision": "MXFP4",
+    "npu_precision": "BF16",
+    "tokens": 1,
+    "hidden": 2560,
+    "topk": 10,
+    "resident_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "intrusive_capture": true,
+    "original_physical_rows": 1,
+    "selected_row": 0,
+    "actual_weight_formats": {
+      "w13_weight": 29,
+      "w2_weight": 29
+    },
+    "request_id": "r9-mainline-capture",
+    "placement_epoch": 0,
+    "allocation_epoch": 2,
+    "mode": "decode",
+    "tensor_sha256": "de82a710a2fd56c7587a91dbc5c37b8989ff0265a502391d797588c77c6e8fc6"
+  },
+  "client_wall_seconds": 92.36064488813281,
+  "client_ttft_seconds": 90.24344969308004,
+  "token_arrival_samples": [
+    {
+      "cumulative_tokens": 1,
+      "client_seconds": 90.24344969308004
+    },
+    {
+      "cumulative_tokens": 2,
+      "client_seconds": 90.59117585397325
+    },
+    {
+      "cumulative_tokens": 3,
+      "client_seconds": 90.89566151495092
+    },
+    {
+      "cumulative_tokens": 4,
+      "client_seconds": 91.18301895400509
+    },
+    {
+      "cumulative_tokens": 5,
+      "client_seconds": 91.47014826303348
+    },
+    {
+      "cumulative_tokens": 6,
+      "client_seconds": 91.76500283693895
+    },
+    {
+      "cumulative_tokens": 7,
+      "client_seconds": 92.0705835011322
+    },
+    {
+      "cumulative_tokens": 8,
+      "client_seconds": 92.36033776309341
+    }
+  ]
+}

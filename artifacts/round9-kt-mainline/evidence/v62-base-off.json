@@ -1,0 +1,60 @@
+{
+  "status": "NORMAL_HTTP_COMPLETE_NOT_QUALITY_QUALIFIED",
+  "body": {
+    "rid": "r9-mainline-base-off",
+    "stream": true,
+    "sampling_params": {
+      "temperature": 0,
+      "max_new_tokens": 1,
+      "ignore_eos": false
+    },
+    "text": "Answer with exactly OK."
+  },
+  "events": [
+    {
+      "client_seconds": 69.23354962281883,
+      "response": {
+        "text": "\n\n",
+        "output_ids": [
+          271
+        ],
+        "meta_info": {
+          "id": "r9-mainline-base-off",
+          "finish_reason": {
+            "type": "length",
+            "length": 1
+          },
+          "prompt_tokens": 5,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "completion_tokens": 1,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 69.22299243090674,
+          "response_sent_to_client_ts": 1790066536.0523577
+        }
+      }
+    }
+  ],
+  "started_unix": 1790066466.8195074,
+  "clock": "CLIENT_MONOTONIC",
+  "actual_prompt_tokens": 5,
+  "actual_output_tokens": 1,
+  "output_ids": [
+    271
+  ],
+  "final_text": "\n\n",
+  "finish_reason": {
+    "type": "length",
+    "length": 1
+  },
+  "client_wall_seconds": 69.23366934899241,
+  "client_ttft_seconds": 69.23354962281883,
+  "token_arrival_samples": [
+    {
+      "cumulative_tokens": 1,
+      "client_seconds": 69.23354962281883
+    }
+  ]
+}

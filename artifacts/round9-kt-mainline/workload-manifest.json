@@ -1,0 +1,261 @@
+{
+  "run_id": "round9-kt-mainline-20260922",
+  "requests": [
+    {
+      "evidence": "v62-base-off.json",
+      "body": {
+        "rid": "r9-mainline-base-off",
+        "stream": true,
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 1,
+          "ignore_eos": false
+        },
+        "text": "Answer with exactly OK."
+      },
+      "input_tokens": 5,
+      "output_tokens": 1,
+      "output_ids": [
+        271
+      ],
+      "clock": "CLIENT_MONOTONIC"
+    },
+    {
+      "evidence": "v62-chunk-off.json",
+      "body": {
+        "rid": "r9-mainline-chunk-off",
+        "stream": true,
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 4,
+          "ignore_eos": false
+        },
+        "input_ids": [
+          37436,
+          1439,
+          4105,
+          303,
+          1906,
+          25,
+          220,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438
+        ]
+      },
+      "input_tokens": 64,
+      "output_tokens": 4,
+      "output_ids": [
+        6105,
+        5983,
+        13358,
+        2438
+      ],
+      "clock": "CLIENT_MONOTONIC"
+    },
+    {
+      "evidence": "v63-base-profile.json",
+      "body": {
+        "rid": "r9-mainline-profile",
+        "stream": true,
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 1,
+          "ignore_eos": false
+        },
+        "text": "Answer with exactly OK."
+      },
+      "input_tokens": 5,
+      "output_tokens": 1,
+      "output_ids": [
+        271
+      ],
+      "clock": "CLIENT_MONOTONIC"
+    },
+    {
+      "evidence": "v63-chunk-profile.json",
+      "body": {
+        "rid": "r9-mainline-chunk-profile",
+        "stream": true,
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 4,
+          "ignore_eos": false
+        },
+        "input_ids": [
+          37436,
+          1439,
+          4105,
+          303,
+          1906,
+          25,
+          220,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438,
+          6105,
+          5983,
+          13358,
+          2438
+        ]
+      },
+      "input_tokens": 64,
+      "output_tokens": 4,
+      "output_ids": [
+        6105,
+        5983,
+        13358,
+        2438
+      ],
+      "clock": "CLIENT_MONOTONIC"
+    },
+    {
+      "evidence": "v63-decode-capture.json",
+      "body": {
+        "rid": "r9-mainline-capture",
+        "stream": true,
+        "sampling_params": {
+          "temperature": 0,
+          "max_new_tokens": 8,
+          "ignore_eos": false
+        },
+        "text": "Continue the sequence: one, two, three,"
+      },
+      "input_tokens": 10,
+      "output_tokens": 8,
+      "output_ids": [
+        2943,
+        11,
+        4097,
+        11,
+        4590,
+        11,
+        7840,
+        11
+      ],
+      "clock": "CLIENT_MONOTONIC"
+    },
+    {
+      "evidence": "v63-cancel-result.json",
+      "request_id": "r9-p0-midprefill-cancel",
+      "input_tokens": 181,
+      "output_tokens": 0,
+      "status": "ABORTED_AFTER_TWO_32_TOKEN_CHUNKS",
+      "trigger_start": 32
+    },
+    {
+      "evidence": "v63-cancel-result.json",
+      "request_id": "r9-p0-post-cancel-reuse",
+      "input_tokens": 5,
+      "output_tokens": 1,
+      "output_ids": [
+        271
+      ]
+    }
+  ],
+  "component_replay": "v20-real-expert-replay.json"
+}

@@ -1,0 +1,25 @@
+test_capture_rejects_wrong_bank_layer_layout_and_oversize (migration_bridge.round9.tests.test_mainline_attribution.AttributionTests.test_capture_rejects_wrong_bank_layer_layout_and_oversize) ... FAIL
+test_one_output_token_cannot_be_requested_as_decode_evidence (migration_bridge.round9.tests.test_mainline_attribution.DecodeProbeContractTests.test_one_output_token_cannot_be_requested_as_decode_evidence) ... FAIL
+
+======================================================================
+FAIL: test_capture_rejects_wrong_bank_layer_layout_and_oversize (migration_bridge.round9.tests.test_mainline_attribution.AttributionTests.test_capture_rejects_wrong_bank_layer_layout_and_oversize)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 42, in test_capture_rejects_wrong_bank_layer_layout_and_oversize
+    with self.assertRaises(ValueError):validate_capture({**doc,key:value},expected)
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_one_output_token_cannot_be_requested_as_decode_evidence (migration_bridge.round9.tests.test_mainline_attribution.DecodeProbeContractTests.test_one_output_token_cannot_be_requested_as_decode_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 97, in test_one_output_token_cannot_be_requested_as_decode_evidence
+    self.assertIn('decode requires',result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'decode requires' not found in 'Traceback (most recent call last):\n  File "/usr/lib/python3.13/urllib/request.py", line 1319, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header(\'Transfer-encoding\'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/http/client.py", line 1367, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/http/client.py", line 1413, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/http/client.py", line 1362, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/http/client.py", line 1122, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File "/usr/lib/python3.13/http/client.py", line 1066, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File "/usr/lib/python3.13/http/client.py", line 1032, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/socket.py", line 864, in create_connection\n    raise exceptions[0]\n  File "/usr/lib/python3.13/socket.py", line 849, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nConnectionRefusedError: [Errno 111] Connection refused\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/mainline_http_probe.py", line 20, in <module>\n    with urllib.request.urlopen(req,timeout=900) as response:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/urllib/request.py", line 189, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/urllib/request.py", line 489, in open\n    response = self._open(req, data)\n  File "/usr/lib/python3.13/urllib/request.py", line 506, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              \'_open\', req)\n  File "/usr/lib/python3.13/urllib/request.py", line 466, in _call_chain\n    result = func(*args)\n  File "/usr/lib/python3.13/urllib/request.py", line 1348, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3.13/urllib/request.py", line 1322, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 111] Connection refused>\n'
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.503s
+
+FAILED (failures=2)

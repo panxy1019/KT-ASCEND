@@ -1,3 +1,19 @@
+## Latest — 2026-09-22 KT mainline audit and bounded attribution completed
+
+Branch `codex/round9-kt-mainline-attribution`, isolated checkout `kt-round9-mainline`, baseline `57de93dfbb5775f1265378c1eae737edb8d5cc3e`.
+Approved scope T0–T4 + decision + T6 is complete. T5 behavior experiment was not entered.
+
+- v62/v63 normal5→1 and64→4 workloads returned identical token IDs with observation OFF/ON. No speedup qualification is inferred.
+- Three normal v63 samples produced242 completed NPU event duration pairs; sampled providers include real GDN/QSA/GR/KTEP paths. Status remains PARTIAL_ATTRIBUTION: worker internals, DRAM bandwidth and calibrated overlap are unknown.
+- v20 replayed a real layer0 decode activation through C128 MXFP4 CPU + Q32 BF16 NZ29 NPU. Full-model-vs-replay relative error0; three output hashes identical; mixed-precision oracle checks passed.
+- v63 cancellation/reuse passed. CONTROL_SENT→CANCEL_SEEN339.116509s: response remains limited by the in-flight chunk, not low-latency cancellation. No next chunk after acceptance in this probe.
+-49 related local tests passed. Default-OFF bounded observation and real replay harness added; qualified layerwise/dynamic/PLE arithmetic unchanged.
+-2model starts,7HTTP requests,3profile requests,1component start used. All owned model/replay containers stopped/exited; exact training container remains running. No active training NPU PID was observed this round. Shared contention qualification remains pending.
+
+Read `../../artifacts/round9-kt-mainline/ROUND9_MAINLINE_DELIVERY_ZH.md`, `KT_QWEN_ATTRIBUTION_REPORT.md`, `NEXT_ROUND_STATUS.json` and `NARROW_EXPERIMENT_DECISION.md` in that artifact directory. Remote aggregate evidence: `/mnt/data1/kt-round9/evidence/20260922-kt-mainline-v1`; v63 frozen observation build and separate replay source are recorded by distinct manifests.
+
+No behavior optimization selected. Next proposal: separately attribute BF16 materialization, ND/NZ preparation and copy/retire costs inside expert shadow preparation. It has not been started. No resource lease or background continuation remains. Keep shared-mode admission fresh; old Round7 timers remain paused. No push, merge main or tag. Product quality, formal performance, real long context and deployment remain pending.
+
 ## Latest — 2026-09-21 P0 cancellation closure and P1 timeline complete
 
 The approved stabilization scope is complete on `110.123.0.3` physical15 under

@@ -1,0 +1,43 @@
+test_device_end_and_sink_failure_do_not_mask_provider_exception (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_device_end_and_sink_failure_do_not_mask_provider_exception) ... ERROR
+test_device_setup_failure_cannot_skip_provider (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_device_setup_failure_cannot_skip_provider) ... ERROR
+test_empty_or_malformed_trace_cannot_claim_usable_attribution (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_empty_or_malformed_trace_cannot_claim_usable_attribution) ... FAIL
+
+======================================================================
+ERROR: test_device_end_and_sink_failure_do_not_mask_provider_exception (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_device_end_and_sink_failure_do_not_mask_provider_exception)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 77, in test_device_end_and_sink_failure_do_not_mask_provider_exception
+    wrapped=observe(original,sink,'x',0,lambda:{},lambda:(Start(),Event()),errors.append)
+TypeError: observe() takes from 5 to 6 positional arguments but 7 were given
+
+======================================================================
+ERROR: test_device_setup_failure_cannot_skip_provider (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_device_setup_failure_cannot_skip_provider)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 66, in test_device_setup_failure_cannot_skip_provider
+    self.assertEqual(wrapped(),7);self.assertEqual(calls,[1])
+                     ~~~~~~~^^
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/runtime/mainline_attribution.py", line 34, in call
+    pair = device_factory() if device_factory is not None else None
+           ~~~~~~~~~~~~~~^^
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 64, in broken
+    def broken():raise RuntimeError('timing unavailable')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: timing unavailable
+
+======================================================================
+FAIL: test_empty_or_malformed_trace_cannot_claim_usable_attribution (migration_bridge.round9.tests.test_mainline_attribution.ReviewRegressionTests.test_empty_or_malformed_trace_cannot_claim_usable_attribution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 82, in test_empty_or_malformed_trace_cannot_claim_usable_attribution
+    self.assertEqual(summarize([])['status'],'EVIDENCE_INCOMPLETE')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'PARTIAL_ATTRIBUTION' != 'EVIDENCE_INCOMPLETE'
+- PARTIAL_ATTRIBUTION
++ EVIDENCE_INCOMPLETE
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=1, errors=2)

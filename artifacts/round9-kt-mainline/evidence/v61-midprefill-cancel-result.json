@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "status": "PASS_MIDPREFILL_CANCEL_AND_REUSE",
+  "scope": "P0_MIDPREFILL_CANCEL_TRACE",
+  "request_id": "r9-p0-midprefill-cancel",
+  "trigger_start": 32,
+  "trigger_event": {
+    "status": "STREAMING_CHUNK_BEGIN",
+    "request_id": "r9-p0-midprefill-cancel",
+    "placement_epoch": 0,
+    "allocation_epoch": 0,
+    "start": 32,
+    "count": 32,
+    "total": 181
+  },
+  "streaming_events_at_abort_send": 3,
+  "abort_http_status": 200,
+  "abort_http_body": "",
+  "generation_thread_alive": false,
+  "generation_errors": [],
+  "response_events": [
+    {
+      "text": "",
+      "output_ids": [],
+      "meta_info": {
+        "id": "r9-p0-midprefill-cancel",
+        "finish_reason": {
+          "type": "abort",
+          "message": "Aborted",
+          "status_code": null,
+          "err_type": null
+        },
+        "prompt_tokens": 181,
+        "weight_version": "default",
+        "total_retractions": 0,
+        "completion_tokens": 0,
+        "cached_tokens": 0,
+        "cached_tokens_details": null,
+        "dp_rank": null,
+        "e2e_latency": 618.2726013788488,
+        "response_sent_to_client_ts": 1790007149.4525497
+      }
+    }
+  ],
+  "streaming_events": [
+    {
+      "status": "STREAMING_CHUNK_BEGIN",
+      "request_id": "r9-p0-midprefill-cancel",
+      "placement_epoch": 0,
+      "allocation_epoch": 0,
+      "start": 0,
+      "count": 32,
+      "total": 181
+    },
+    {
+      "status": "STREAMING_CHUNK_DRAINED",
+      "request_id": "r9-p0-midprefill-cancel",
+      "placement_epoch": 0,
+      "allocation_epoch": 0,
+      "start": 0,
+      "count": 32,
+      "next_start": 32,
+      "planes": [
+        "expert",
+        "ple",
+        "context"
+      ]
+    },
+    {
+      "status": "STREAMING_CHUNK_BEGIN",
+      "request_id": "r9-p0-midprefill-cancel",
+      "placement_epoch": 0,
+      "allocation_epoch": 0,
+      "start": 32,
+      "count": 32,
+      "total": 181
+    },
+    {
+      "status": "STREAMING_CHUNK_DRAINED",
+      "request_id": "r9-p0-midprefill-cancel",
+      "placement_epoch": 0,
+      "allocation_epoch": 0,
+      "start": 32,
+      "count": 32,
+      "next_start": 64,
+      "planes": [
+        "expert",
+        "ple",
+        "context"
+      ]
+    },
+    {
+      "status": "STREAMING_ABORTED",
+      "request_id": "r9-p0-midprefill-cancel",
+      "placement_epoch": 0,
+      "allocation_epoch": 0,
+      "next_start": 64
+    }
+  ],
+  "cancel_events": [
+    {
+      "allocation_epoch": null,
+      "event_seq": 0,
+      "monotonic_ns": 1059455565253134,
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "REQUEST_ADMITTED"
+    },
+    {
+      "allocation_epoch": null,
+      "event_seq": 1,
+      "monotonic_ns": 1059455565406491,
+      "operation": "STREAMING_CHUNK",
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "NORMAL_SUBMIT_ADMITTED"
+    },
+    {
+      "allocation_epoch": 0,
+      "event_seq": 2,
+      "monotonic_ns": 1059726444601657,
+      "operation": "STREAMING_CHUNK",
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "NORMAL_SUBMIT_ADMITTED"
+    },
+    {
+      "abort_all": false,
+      "event_seq": 0,
+      "monotonic_ns": 1059726465236501,
+      "pid": 71,
+      "requested_id": "r9-p0-midprefill-cancel",
+      "status": "HTTP_ABORT_RECEIVED"
+    },
+    {
+      "abort_all": false,
+      "event_seq": 1,
+      "monotonic_ns": 1059726465380807,
+      "pid": 71,
+      "reason": null,
+      "requested_id": "r9-p0-midprefill-cancel",
+      "status": "CONTROL_SENT"
+    },
+    {
+      "abort_all": false,
+      "event_seq": 3,
+      "matched_requests": 1,
+      "monotonic_ns": 1060070399710596,
+      "pid": 91,
+      "requested_id": "r9-p0-midprefill-cancel",
+      "status": "SCHEDULER_ABORT_RECEIVED"
+    },
+    {
+      "allocation_epoch": 0,
+      "event_seq": 4,
+      "monotonic_ns": 1060070399836912,
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "CANCEL_SEEN"
+    },
+    {
+      "allocation_epoch": 0,
+      "event_seq": 5,
+      "monotonic_ns": 1060070399898785,
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "SUBMIT_FENCE_PUBLISHED"
+    },
+    {
+      "allocation_epoch": 0,
+      "event_seq": 6,
+      "monotonic_ns": 1060070441181432,
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "REQUEST_RETIRED"
+    },
+    {
+      "allocation_epoch": 0,
+      "event_seq": 7,
+      "monotonic_ns": 1060070441289287,
+      "pid": 91,
+      "request_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel",
+      "status": "CANCEL_CLEANUP_COMMITTED"
+    }
+  ],
+  "reuse_response": {
+    "text": "\n\n",
+    "output_ids": [
+      271
+    ],
+    "meta_info": {
+      "id": "r9-p0-post-cancel-reuse",
+      "finish_reason": {
+        "type": "length",
+        "length": 1
+      },
+      "prompt_tokens": 5,
+      "weight_version": "default",
+      "total_retractions": 0,
+      "completion_tokens": 1,
+      "cached_tokens": 0,
+      "cached_tokens_details": null,
+      "dp_rank": null,
+      "e2e_latency": 60.289925071876496,
+      "response_sent_to_client_ts": 1790007209.7445333
+    }
+  }
+}

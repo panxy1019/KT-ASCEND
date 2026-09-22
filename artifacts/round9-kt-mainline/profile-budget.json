@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "run_id": "round9-kt-mainline-20260922",
+  "limits": {
+    "full_model_http_requests": 8,
+    "heavy_profile_requests": 3,
+    "full_model_starts": 2,
+    "active_requests": 1,
+    "component_starts": 2,
+    "component_wall_seconds": 1200,
+    "model_wall_seconds": 3600,
+    "capture_bundles": 2,
+    "capture_tokens_per_bundle": 32,
+    "capture_layer": 0,
+    "capture_bytes": 1048576,
+    "trace_bytes": 268435456,
+    "timeline_events_per_request": 4096,
+    "automatic_retries": 0
+  },
+  "used": {
+    "full_model_http_requests": 7,
+    "heavy_profile_requests": 3,
+    "full_model_starts": 2,
+    "component_starts": 1
+  },
+  "resource": {
+    "training_mib": 15360,
+    "allocator_mib": 37376,
+    "owned_mib": 38400,
+    "board_mib": 56832,
+    "reserve_mib": 8704,
+    "startup_free_gib_per_numa": 48,
+    "numa_nodes": [
+      2,
+      3,
+      6,
+      7
+    ],
+    "cpu_workers": 128,
+    "auxiliary_cpus": 8
+  }
+}

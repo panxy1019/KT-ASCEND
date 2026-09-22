@@ -13,6 +13,7 @@ from kt_kernel.utils.llamafile import LlamafileMoEWrapper
 from kt_kernel.experts_base import BaseMoEWrapper,KExpertsCPUBuffer
 p=argparse.ArgumentParser(description=__doc__)
 for arg in ('model','identity-receipt','bank','output'):p.add_argument('--'+arg,type=pathlib.Path,required=True)
+p.add_argument('--replay-bundle',type=pathlib.Path,help='one bounded real layer0 decode fixture; no HTTP/model runtime')
 p.add_argument('--dynamic',action='store_true')
 p.add_argument('--npu-format',type=int,choices=[2,29],default=2)
 p.add_argument('--storage',choices=['BF16','Q8_0','MXFP4'],default='BF16')
@@ -39,6 +40,25 @@ else:
  assert manifest['source_identity']['receipt_sha256']==identity['receipt_sha256']
  assert len(manifest['projection_identities'])==1536
  assert kt_kernel_ext.llamafile_block32_tail_supported()
+replay=None
+if a.replay_bundle is not None:
+ if a.dynamic or a.storage!='MXFP4' or a.npu_format!=29:
+  raise ValueError('real replay requires static MXFP4/NZ29')
+ sys.path.insert(0,str(pathlib.Path(__file__).parents[1]))
+ from runtime.mainline_attribution import validate_capture
+ meta=json.loads(a.replay_bundle.with_suffix('.json').read_text())
+ validate_capture(meta,dict(model_revision=rev,bank_sha256=h.hexdigest(),layer=0,
+  layout='NZ29',cpu_precision='MXFP4',npu_precision='BF16'))
+ if a.replay_bundle.stat().st_size>1048576 or hashlib.sha256(a.replay_bundle.read_bytes()).hexdigest()!=meta['tensor_sha256']:
+  raise ValueError('capture bytes changed or oversized')
+ replay=torch.load(a.replay_bundle,map_location='cpu',weights_only=True)
+ specs={'hidden_states':((1,2560),torch.bfloat16),'topk_ids':((1,10),(torch.int32,torch.int64)),
+        'topk_weights':((1,10),torch.float32),'output':((1,2560),torch.bfloat16)}
+ if set(replay)!=set(specs):raise ValueError('unexpected capture tensors')
+ for name,(shape,dtype) in specs.items():
+  t=replay[name]
+  if tuple(t.shape)!=shape or t.dtype not in (dtype if isinstance(dtype,tuple) else (dtype,)) or not torch.isfinite(t).all():raise ValueError('invalid capture '+name)
+ if (replay['topk_ids']<0).any() or (replay['topk_ids']>=512).any():raise ValueError('invalid expert IDs')
 assert kt_kernel_ext.llamafile_bf16_f32_tail_supported()
 torch_npu.npu.config.allow_internal_format=(a.npu_format==29)
 torch.npu.set_device(0)
@@ -57,6 +77,10 @@ from sglang.srt.layers.moe.token_dispatcher.standard import StandardDispatchOutp
 from sglang.srt.layers.moe.topk import StandardTopKOutput
 from sglang.srt.eplb.expert_distribution import get_global_expert_distribution_recorder,set_global_expert_distribution_recorder
 mask=torch.arange(512).remainder(16)==0
+if replay is not None:
+ # Actual frozen full-model uniform mapping is contiguous0..31. The older
+ # synthetic qualification fixture deliberately used a spread resident set.
+ mask=torch.zeros(512,dtype=torch.bool);mask[meta['resident_ids']]=True
 config=ep.KTConfig(layer_idx=0,gpu_experts_mask=mask,cpuinfer_threads=128,
  threadpool_count=4,numa_nodes=[2,3,6,7],weight_path=str(a.bank),chunked_prefill_size=32,
  max_deferred_experts_per_token=0,method='LLAMAFILE',num_layers=48)
@@ -155,7 +179,8 @@ if a.dynamic:
  print('DYNAMIC_REAL_DEVICE_PROMOTE_DEMOTE_PROMOTE_PASS',flush=True)
 weights={}
 resident_routes=torch.where(mask)[0].tolist()[:10]
-for e in sorted(set([0,1,7,16,63,64,127,128,496,511]+resident_routes)):
+replay_routes=[] if replay is None else replay['topk_ids'][0].tolist()
+for e in sorted(set([0,1,7,16,63,64,127,128,496,511]+resident_routes+replay_routes)):
  gu,down=expert(e);gate,up=gu.float().chunk(2,0);weights[e]=(gate,up,down.float())
 del gu,down
 cpu_weights=weights
@@ -197,10 +222,11 @@ report['measured_migration']=dict(peak_extra_allocated_bytes=max(measured_extras
  allocator_limit_bytes=allocator_limit_bytes,samples=len(measured_extras))
 try:
  with patch.object(ep,'_r61_capture',side_effect=capture):
-  for q in (1,10,32):
-   for kind,route_ids in (('mixed',[0,1,7,16,63,64,127,128,496,511]),('resident_only',resident_routes),('repeated_cpu',[1]*10)):
+  for q in ((1,) if replay is not None else (1,10,32)):
+   for kind,route_ids in ((('real_decode',replay_routes),) if replay is not None else (('mixed',[0,1,7,16,63,64,127,128,496,511]),('resident_only',resident_routes),('repeated_cpu',[1]*10))):
     torch.manual_seed(15900+q);x=torch.randn(q,2560).bfloat16();r=torch.softmax(torch.randn(q,10),-1).float()
     ids=torch.tensor(route_ids,dtype=torch.long).repeat(q,1)
+    if replay is not None:x=replay['hidden_states'];r=replay['topk_weights'];ids=replay['topk_ids']
     expected_cpu=torch.zeros(q,2560);expected_npu=torch.zeros_like(expected_cpu)
     for column,e in enumerate(route_ids):
      quantized_cpu=a.storage!='BF16' and not bool(mask[e])
@@ -230,9 +256,14 @@ try:
     assert captured['cpu_partial'].dtype==captured['npu_owned_partial'].dtype==torch.float32
     merge=(captured['cpu_partial']+captured['npu_owned_partial']).bfloat16()
     assert torch.equal(captured['routed_merge'],merge)
+    if replay is not None:
+     original=replay['output'].float();actual=captured['routed_merge'].float()
+     errors['full_model_vs_replay']=float((actual-original).norm()/original.norm().clamp_min(1e-30))
+     assert errors['full_model_vs_replay']<=.01,errors
     row={'tokens':q,'kind':kind,'errors':errors,'hashes':hashes};report['rows'].append(row);print(json.dumps(row),flush=True)
     del out,dispatch
- report['status']='PASS_Q32_REAL_KTEP_LOCAL_MERGE'
+ report['status']='PASS_REAL_LAYER0_DECODE_REPLAY' if replay is not None else 'PASS_Q32_REAL_KTEP_LOCAL_MERGE'
+ report['replay_manifest']=meta if replay is not None else None
  report['peak_allocated']=torch.npu.max_memory_allocated()
 except BaseException as exc:
  report.update(status='FAIL',error=repr(exc));raise

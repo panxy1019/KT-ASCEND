@@ -1,0 +1,17 @@
+test_capture_rejects_wrong_bank_layer_layout_and_oversize (migration_bridge.round9.tests.test_mainline_attribution.AttributionTests.test_capture_rejects_wrong_bank_layer_layout_and_oversize) ... ERROR
+
+======================================================================
+ERROR: test_capture_rejects_wrong_bank_layer_layout_and_oversize (migration_bridge.round9.tests.test_mainline_attribution.AttributionTests.test_capture_rejects_wrong_bank_layer_layout_and_oversize)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/tests/test_mainline_attribution.py", line 40, in test_capture_rejects_wrong_bank_layer_layout_and_oversize
+    validate_capture(doc,expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/migration_bridge/round9/runtime/mainline_attribution.py", line 28, in validate_capture
+    raise ValueError('capture outside frozen Q32 layer0 decode contract')
+ValueError: capture outside frozen Q32 layer0 decode contract
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

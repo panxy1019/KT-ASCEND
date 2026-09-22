@@ -1,0 +1,27 @@
+INFO 09-22 08:46:02 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-22 08:46:02 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-22 08:46:02 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-22 08:46:02 [__init__.py:239] Platform plugin ascend is activated
+{
+  "torch": "2.9.0+cpu",
+  "torch_npu": "2.9.0.post2",
+  "kt_version": "0.6.1",
+  "qsa_symbol": "(self, positions, hidden_states, forward_batch)",
+  "npu_event_api": "(enable_timing=False, blocking=False, interprocess=False)",
+  "device_initialized": false
+}
+
+STDERR
+can not use command: npu-smi info
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float64'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:549: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/local/python3.11.15/lib/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for <class 'numpy.float32'> type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/framework-dev-20260921-p1-timeline-v6/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")

@@ -25,12 +25,15 @@ p.add_argument('--cancel-closure',action='store_true',
  help='opt in to traced chunk-boundary cancel cleanup without another model forward')
 p.add_argument('--working-set-timeline',action='store_true',
  help='opt in to one bounded batched scheduler/expert/PLE timeline per request')
+p.add_argument('--mainline-attribution',action='store_true',help='default-OFF sampled provider durations and bounded decode capture')
 p.add_argument('--timeline-max-events',type=int,default=4096)
 a=p.parse_args()
 root=pathlib.Path('/mnt/data1/kt-round9');source=pathlib.Path(__file__).resolve().parents[1]
 if a.version<10:raise ValueError('candidate full-model versions begin at10')
 if a.shared_training_container and a.resource_mode!='shared':
  raise ValueError('training container binding is valid only in shared mode')
+if a.mainline_attribution and not a.working_set_timeline:
+ raise ValueError('mainline attribution requires bounded timeline')
 if a.working_set_timeline and a.streaming_profile is None:
  raise ValueError('working-set timeline requires the bounded three-plane streaming profile')
 if not 1<=a.timeline_max_events<=65536:
@@ -212,6 +215,7 @@ if streaming is not None:
 if a.cancel_trace or a.cancel_closure:
  args+=['-e','ROUND9_CANCEL_TRACE_PATH=/out/cancel-events.jsonl']
 if a.cancel_closure:args+=['-e','ROUND9_CANCEL_CLOSURE_ENABLE=1']
+if a.mainline_attribution:args+=['-e','ROUND9_MAINLINE_ENABLE=1']
 if a.working_set_timeline:
  for env in ('ROUND9_TIMELINE_PATH=/out/working-set-timeline.jsonl',
              f'ROUND9_TIMELINE_MAX_EVENTS={a.timeline_max_events}'):args+=['-e',env]

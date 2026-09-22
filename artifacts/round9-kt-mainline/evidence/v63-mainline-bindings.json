@@ -1,0 +1,116 @@
+[
+  {
+    "component": "GDN",
+    "layer": 0,
+    "provider": "sglang.srt.models.qwen4_exp.Qwen4ReferenceGatedDeltaNet",
+    "symbol": "forward"
+  },
+  {
+    "component": "ROUTED_EXPERT",
+    "layer": 0,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "apply"
+  },
+  {
+    "component": "CPU_SUBMIT",
+    "layer": 0,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "_submit_cpu_forward"
+  },
+  {
+    "component": "CPU_RESULT_WAIT",
+    "layer": 0,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "_sync_cpu_forward"
+  },
+  {
+    "component": "NPU_RESIDENT",
+    "layer": 0,
+    "provider": "sglang.srt.layers.quantization.unquant.UnquantizedFusedMoEMethod",
+    "symbol": "apply"
+  },
+  {
+    "component": "GR_MIX",
+    "layer": 0,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "mix"
+  },
+  {
+    "component": "GR_COMBINE",
+    "layer": 0,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "combine"
+  },
+  {
+    "component": "GR_MIX",
+    "layer": 0,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "mix"
+  },
+  {
+    "component": "GR_COMBINE",
+    "layer": 0,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "combine"
+  },
+  {
+    "component": "QSA_ATTENTION",
+    "layer": 3,
+    "provider": "sglang.srt.models.qwen4_exp.Qwen4ExpAttentionDecoderLayer",
+    "symbol": "self_attention"
+  },
+  {
+    "component": "ROUTED_EXPERT",
+    "layer": 3,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "apply"
+  },
+  {
+    "component": "CPU_SUBMIT",
+    "layer": 3,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "_submit_cpu_forward"
+  },
+  {
+    "component": "CPU_RESULT_WAIT",
+    "layer": 3,
+    "provider": "sglang.srt.layers.moe.kt_ep_wrapper.KTEPWrapperMethod",
+    "symbol": "_sync_cpu_forward"
+  },
+  {
+    "component": "NPU_RESIDENT",
+    "layer": 3,
+    "provider": "sglang.srt.layers.quantization.unquant.UnquantizedFusedMoEMethod",
+    "symbol": "apply"
+  },
+  {
+    "component": "QSA_INDEXER",
+    "layer": 3,
+    "provider": "sglang.srt.models.qwen4_exp.Qwen4ReferenceIndexer",
+    "symbol": "forward"
+  },
+  {
+    "component": "GR_MIX",
+    "layer": 3,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "mix"
+  },
+  {
+    "component": "GR_COMBINE",
+    "layer": 3,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "combine"
+  },
+  {
+    "component": "GR_MIX",
+    "layer": 3,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "mix"
+  },
+  {
+    "component": "GR_COMBINE",
+    "layer": 3,
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "symbol": "combine"
+  }
+]

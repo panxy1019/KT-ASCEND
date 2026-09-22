@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "status": "PASS_BOUNDED_TIMELINE_PROFILE",
+  "scope": "PROFILE_ONLY_NOT_PERFORMANCE_QUALIFICATION",
+  "requests": [
+    {
+      "allocation_epoch": 0,
+      "placement_epoch": 0,
+      "request_id": "r9-p0-midprefill-cancel"
+    },
+    {
+      "allocation_epoch": 1,
+      "placement_epoch": 0,
+      "request_id": "r9-p0-post-cancel-reuse"
+    }
+  ],
+  "event_count": 2043,
+  "dropped_events": 0,
+  "clock_domains": {
+    "HOST_MONOTONIC": 9,
+    "HOST_OBSERVED_DEVICE_OPERATION": 2034
+  },
+  "phase_metrics": {
+    "expert:compute_enqueue": {
+      "count": 673,
+      "total_ns": 443503530,
+      "max_ns": 15629863,
+      "bytes": 0
+    },
+    "expert:device_wait": {
+      "count": 673,
+      "total_ns": 40492210,
+      "max_ns": 123096,
+      "bytes": 0
+    },
+    "expert:shadow_prepare": {
+      "count": 673,
+      "total_ns": 660594083649,
+      "max_ns": 1536894065,
+      "bytes": 187986739200
+    },
+    "ple:consumer_dependency_enqueue": {
+      "count": 3,
+      "total_ns": 118186,
+      "max_ns": 48712,
+      "bytes": 0
+    },
+    "ple:consumer_enqueue": {
+      "count": 3,
+      "total_ns": 216062287,
+      "max_ns": 211611309,
+      "bytes": 0
+    },
+    "ple:gather_submit": {
+      "count": 3,
+      "total_ns": 1341202,
+      "max_ns": 1004857,
+      "bytes": 353280
+    },
+    "ple:gather_wait_and_h2d_dependency": {
+      "count": 3,
+      "total_ns": 1612575,
+      "max_ns": 915473,
+      "bytes": 353280
+    },
+    "ple:h2d_enqueue": {
+      "count": 3,
+      "total_ns": 1076401,
+      "max_ns": 707863,
+      "bytes": 0
+    },
+    "ple:transfer_consumer_retire_wait": {
+      "count": 3,
+      "total_ns": 155557,
+      "max_ns": 108145,
+      "bytes": 0
+    },
+    "scheduler:batch_begin": {
+      "count": 3,
+      "total_ns": 0,
+      "max_ns": 0,
+      "bytes": 0
+    },
+    "scheduler:batch_end": {
+      "count": 3,
+      "total_ns": 0,
+      "max_ns": 0,
+      "bytes": 0
+    }
+  },
+  "scheduler_batches": [
+    {
+      "mode": "extend",
+      "duration_ns": 270875734505
+    },
+    {
+      "mode": "extend",
+      "duration_ns": 343954414866
+    },
+    {
+      "mode": "extend",
+      "duration_ns": 58786810552
+    }
+  ],
+  "independent_work_before_ple_wait_observed": true,
+  "h2d_expert_compute_overlap_observed": false,
+  "repeated_shadow_identity_candidates": 0,
+  "limitations": [
+    "device operations use host enqueue/wait observations; no cross-domain timestamp subtraction",
+    "work before the PLE wait can overlap CPU gather but does not by itself prove H2D overlap",
+    "profile does not establish product quality or performance qualification"
+  ]
+}

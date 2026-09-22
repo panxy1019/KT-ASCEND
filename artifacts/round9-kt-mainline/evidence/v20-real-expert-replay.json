@@ -1,0 +1,136 @@
+{
+  "status": "PASS_REAL_LAYER0_DECODE_REPLAY",
+  "scope": "REAL_KTEP_LOCAL_MERGE_NOT_FULL_MODEL",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "npu_weight_formats": {
+    "w13_weight": 29,
+    "w2_weight": 29
+  },
+  "storage": "MXFP4",
+  "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+  "resident_experts": 32,
+  "resident_projections_exact": 64,
+  "schema": 1,
+  "resident_capacity": 32,
+  "cpu_workers": 128,
+  "numa_nodes": [
+    2,
+    3,
+    6,
+    7
+  ],
+  "dynamic_migrations": [],
+  "batch_copy_probe": null,
+  "rows": [
+    {
+      "tokens": 1,
+      "kind": "real_decode",
+      "errors": {
+        "cpu_partial": 0.0001172528718598187,
+        "npu_owned_partial": 8.8173933932012e-08,
+        "routed_merge": 0.00030556225101463497,
+        "full_model_vs_replay": 0.0
+      },
+      "hashes": [
+        "0851f485287fca4f258ac946482d32d807e3220dfa5ace0398860198f5dd7897",
+        "0851f485287fca4f258ac946482d32d807e3220dfa5ace0398860198f5dd7897",
+        "0851f485287fca4f258ac946482d32d807e3220dfa5ace0398860198f5dd7897"
+      ]
+    }
+  ],
+  "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+  "physical_capacity": {
+    "resident_capacity": 32,
+    "tensors": {
+      "w13_weight": {
+        "shape": [
+          32,
+          2560,
+          1280
+        ],
+        "dtype": "torch.bfloat16",
+        "bytes": 209715200
+      },
+      "w2_weight": {
+        "shape": [
+          32,
+          640,
+          2560
+        ],
+        "dtype": "torch.bfloat16",
+        "bytes": 104857600
+      }
+    },
+    "total_bytes": 314572800
+  },
+  "measured_migration": {
+    "peak_extra_allocated_bytes": 0,
+    "allocator_limit_bytes": 2631841873,
+    "samples": 0
+  },
+  "replay_manifest": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+    "layer": 0,
+    "layout": "NZ29",
+    "cpu_precision": "MXFP4",
+    "npu_precision": "BF16",
+    "tokens": 1,
+    "hidden": 2560,
+    "topk": 10,
+    "resident_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ],
+    "intrusive_capture": true,
+    "original_physical_rows": 1,
+    "selected_row": 0,
+    "actual_weight_formats": {
+      "w13_weight": 29,
+      "w2_weight": 29
+    },
+    "request_id": "r9-mainline-capture",
+    "placement_epoch": 0,
+    "allocation_epoch": 2,
+    "mode": "decode",
+    "tensor_sha256": "de82a710a2fd56c7587a91dbc5c37b8989ff0265a502391d797588c77c6e8fc6"
+  },
+  "peak_allocated": 734175232
+}
