@@ -1,3 +1,7 @@
+## Latest — 2026-09-22 CPU/NUMA reselection measured, no qualifying set
+
+User authorized selecting a different measured CPU/NUMA set. Surveyed all8NUMA nodes in two independent60s rounds (12x10s windows), excluding explicit external-container affinity and its SMT siblings. Even the optimistic per-window best136 different physical cores, taking the better SMT thread and relaxing4-node balance, reached only52.1–59.2% idle after48GiB/node memory screening;12/12windows fail>80%. NUMA5MemFree minimum8.9GiB. No fixed qualifying profile exists in these observations; none published/applied. No thresholds, affinity, training, other containers, cache or timers changed.08 remains resource-blocked with0/2physical starts. See `../../artifacts/round9-cpu-reselection/CPU_NUMA_RESELECTION.md` and `selection-result.json` in that directory. No new backgroundmonitor or retry.
+
 ## Latest — 2026-09-22 revised08 implemented, physical stage CPU-blocked;09 audited
 
 Branch `codex/round9-shadow-decomposition`, baseline `a5b26444e`. User approved revised08 and parallel09. See `../../artifacts/round9-shadow-decomposition/SHADOW_PREPARE_DECOMPOSITION.md` and `shadow-decomposition-result.json` in that artifact directory.
