@@ -75,7 +75,7 @@ Used2/2model starts,7/8HTTP requests,3/3device-profile requests,1/2component sta
 
 ## Implementation, verification and remaining uncertainty
 
-Default-OFF observation wraps sampled real providers without rebuilding native kernels. Bounded event pairs, request identity, real decode capture and a conservative offline summarizer were added. The replay entry point now accepts a validated real capture. Four review findings were fixed with RED→GREEN regressions; actual residency was corrected before the first physical replay.49 related local tests passed; frozen container host checks also passed. See PROBLEMS_AND_RESOLUTIONS.md for each issue.
+Default-OFF observation wraps sampled real providers without rebuilding native kernels. Bounded event pairs, request identity, real decode capture and a conservative offline summarizer were added. The replay entry point now accepts a validated real capture. Four review findings were fixed with RED→GREEN regressions; actual residency was corrected before the first physical replay.49 related local tests passed; frozen container host checks also passed. Source diff/compile checks passed. The full staged whitespace check retained four warnings in verbatim evidence/user-plan lines, explicitly recorded in verification metadata. See PROBLEMS_AND_RESOLUTIONS.md for each issue.
 
 The v63 observation build is immutable and differs from the subsequent replay snapshot in the real-mask validator/harness; both source manifests are retained. The running capture producer was correct, and was not hot patched. Source hashes for the delivered files are frozen in PATCH_MANIFEST.json.
 

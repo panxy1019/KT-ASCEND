@@ -17,3 +17,5 @@ Deferred minor review findings: module discovery is required for all test_mainli
 10. **Remote host interpreter name.** A cleanup command initially used `python`, unavailable on the host; it performed no mutation. It was rerun using `python3`, then exact container identity and stopped state were verified. Container Python remained unchanged.
 
 Post-v63 NUMA file-cache pressure again required the same179-file scoped advice before replay admission; no threshold reduction or active-process cache manipulation occurred. Replay completed on its first physical attempt. Final related tests49/49 passed.
+
+11. **Full staged whitespace check includes verbatim inputs.** Final source diff check passed. The full staged check reported one trailing space in the original native probe log and three Markdown hard-break lines in the exact copied user plan. These bytes were preserved for evidence/source fidelity; no executable-source whitespace warning occurred. Verification metadata distinguishes the scopes rather than claiming the entire staged check passed.
