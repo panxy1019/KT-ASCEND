@@ -1,0 +1,60 @@
+{
+  "candidate_limit": 2,
+  "candidate_processes_used": 0,
+  "candidate_roots": [
+    {
+      "disposition": "NOT_SELECTED_EVIDENCE_GATE_FALSE",
+      "eligibility": "queue/task scheduling or worker imbalance is material",
+      "measured_evidence": {
+        "queue_wait_share": 0.011993757794238908,
+        "worker_runtime_max_min": 1.0108958454525898
+      },
+      "root": "SCHEDULING_GUIDED_BLOCK",
+      "source_fact": "worker_pool.cpp calculates a guided block and then forces block=1"
+    },
+    {
+      "disposition": "NOT_SELECTED_EVIDENCE_GATE_FALSE",
+      "eligibility": "quantization is material",
+      "measured_evidence": {
+        "critical_group_native_us": 244.70000000000005,
+        "quant_us_per_row_range": [
+          2.0,
+          2.6
+        ]
+      },
+      "root": "SHARED_INPUT_QUANTIZATION",
+      "source_fact": "four TP paths quantize the same input locally"
+    },
+    {
+      "disposition": "DEFERRED_NEW_BACKEND_PROJECT_OUTSIDE_BOUNDED_T3",
+      "eligibility": "requires a new qualified kernel rather than a supported single-variable switch",
+      "root": "NEW_MXFP4_MICROKERNEL",
+      "source_fact": "native NEON+SDOT MXFP4 compute dominates; existing SVE/BF16/I8MM flags select no distinct MXFP4 path"
+    }
+  ],
+  "created_at": 1790413743.1144593,
+  "final_backend": "ORIGINAL_C128_MXFP4",
+  "full_model_budget_used": 0,
+  "next_stage": "T4_DYNAMIC_BREAK_EVEN",
+  "parent_baseline": "HFINAL_C128_MXFP4",
+  "performance_claim": "NO_NEW_KUNPENG_GAIN_CLAIMED",
+  "precision_route_map_unchanged": true,
+  "promotion_limit": 1,
+  "schema": 1,
+  "status": "KUNPENG_NO_PROMOTION_NO_BOUNDED_CANDIDATE",
+  "t2_evidence": {
+    "attribution_total_median_us": 366.8575,
+    "baseline_total_median_us": 375.5825,
+    "enqueue_share": 0.1179258976578099,
+    "enqueue_us": 43.262,
+    "hardware_counter_status": "PARTIAL_OR_UNAVAILABLE",
+    "native_compute_merge_us": 244.70000000000005,
+    "native_share": 0.6670164846023321,
+    "queue_wait_share": 0.011993757794238908,
+    "queue_wait_us": 4.4,
+    "sha256": "34fd1a3efc3a1caeb8ab3a040369d75e75d5e5b1e410d6761f2411a754231f9a",
+    "status": "PASS_ROUND11_T2_DEEP_ATTRIBUTION",
+    "worker_runtime_cv": 0.0020975211433161252,
+    "worker_runtime_max_min": 1.0108958454525898
+  }
+}

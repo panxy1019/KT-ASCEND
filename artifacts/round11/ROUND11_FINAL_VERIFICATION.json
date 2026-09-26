@@ -1,0 +1,110 @@
+{
+  "archive_sha256": {
+    "147": "0834b7139b8480fbf083f16bdfb9491964371aa93e6efe2945e5cc33dc24131c",
+    "148": "26d65cf039b6082c5975be30905bf71470aea8480a18577e5df618f1457604c5",
+    "149": "ec80137516febc416db5fbebaf1daf5faa56fa9216aa53b2626e1f4da18cf130",
+    "150": "257e7bbc4348fb0fbd80c5df573d6c2dc223ffeace883ae71aac2254f94f2754"
+  },
+  "artifact_statuses": {
+    "final": "ROUND11_HYBRID_PERFORMANCE_AND_BACKEND_QUALIFIED",
+    "remote_cleanup": "PASS_FINAL_REMOTE_CLEANUP",
+    "retirement": "PASS_ROUND11_RESOURCE_RETIREMENT",
+    "t5": "COMPLETE_QSA_COMPONENT_ONLY_NO_PROMOTION",
+    "t6": "PASS_ROUND11_T6_FINAL_INTEGRATION"
+  },
+  "budget": {
+    "abort_controls_limit": 5,
+    "abort_controls_used": 4,
+    "automatic_retries_used": 0,
+    "generation_limit": 108,
+    "generation_used": 80,
+    "model_starts_limit": 21,
+    "model_starts_used": 19
+  },
+  "checks": {
+    "core_tests": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "test_count": 35
+    },
+    "py_compile": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "py_compile",
+        "artifacts/round11/analyze_round11_t6.py",
+        "artifacts/round11/round11_t6_driver.py",
+        "artifacts/round11/build_round11_t6_snapshot.py",
+        "artifacts/round11/analyze_round11_t5.py",
+        "artifacts/round11/analyze_round11_t5_qsa_component.py",
+        "artifacts/round11/round11_t5_qsa_model_driver.py",
+        "artifacts/round11/build_round11_t5_qsa_model.py",
+        "artifacts/round11/verify_round11_final.py"
+      ],
+      "exit_code": 0,
+      "test_count": null
+    },
+    "qsa_tests": {
+      "command": [
+        "/home/admin/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "-m",
+        "unittest",
+        "migration_bridge.round9.tests.qsa_module_tests",
+        "migration_bridge.round9.tests.round11_t5_qsa_component_probe_tests"
+      ],
+      "exit_code": 0,
+      "test_count": 11
+    },
+    "round11_tests": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/round11/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "test_count": 91
+    },
+    "t6_replay": {
+      "byte_exact": true,
+      "command": [
+        "/usr/bin/python3",
+        "artifacts/round11/analyze_round11_t6.py",
+        "--archive",
+        "artifacts/round11/remote-evidence/20260926-round11-t6-v147-evidence.tar.gz",
+        "--archive",
+        "artifacts/round11/remote-evidence/20260926-round11-t6-v148-evidence.tar.gz",
+        "--archive",
+        "artifacts/round11/remote-evidence/20260926-round11-t6-v149-evidence.tar.gz",
+        "--archive",
+        "artifacts/round11/remote-evidence/20260926-round11-t6-v150-evidence.tar.gz",
+        "--output",
+        "/tmp/round11-t6-co5of_n9.json"
+      ],
+      "exit_code": 0,
+      "test_count": null
+    }
+  },
+  "dirty_worktree_preserved": true,
+  "evidence_hashes_recomputed": 10,
+  "repository": {
+    "branch": "codex/round11-hybrid-performance-backend",
+    "head": "b41e901c059222b8c1e4367abe193d7f58cc1d83"
+  },
+  "schema": 1,
+  "status": "PASS_ROUND11_FINAL_VERIFICATION",
+  "verified_at": 1790435850.4275048
+}

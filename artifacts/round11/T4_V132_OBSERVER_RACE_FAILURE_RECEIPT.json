@@ -1,0 +1,30 @@
+{
+  "archive_sha256": {
+    "admission": "81be12911a141fbaaac55e23b1898c78ef381dfd4e5d722af82f3844ebe9fd28",
+    "result": "79763b1cd543aef72ab8ed5f5c5a092ad623f0f59e2303314269a15b5ea42359"
+  },
+  "automatic_retries": 0,
+  "block": "A",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+  "generation_attempts": 1,
+  "mode": "DYNAMIC",
+  "model_starts_consumed": 1,
+  "post_cleanup_event_counts": {
+    "PREFILL_END_COMMIT": 1,
+    "PREFILL_END_REQUEST_DRAINED": 1,
+    "ROUND11_DYNAMIC_TIMING": 1
+  },
+  "root_cause": "DRIVER_READ_DYNAMIC_JSONL_BEFORE_ASYNC_DRAIN_APPEND",
+  "runtime_transaction_evidence_present_after_driver_failure": true,
+  "schema": 1,
+  "source_sha256": {
+    "dynamic-events.jsonl": "070851026c561405b40a7fecc1af189ff146fc63383c56d7b1c5c4dbc6564745",
+    "host-controller.json": "4fd64c160868a43492457a50235a6960a9974dec5d0239755d2275de36f46675",
+    "post-cleanup-proc-mem.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "round11-t4-process.json": "a9bf7ad6dacc3e4a29ab5900266f4fb5faff8756758460dc4a264fa190f175da",
+    "round11-t4-supervisor.json": "ebc7b8e611fe110a14384e00ff6e4a8a79c8504ab8dfd19d9e61396d6d4f46ba",
+    "server.log": "c9ca4d898379e613ec8af8fb5c57a7d2216ceb5ada30d0b71479c40eb299d885"
+  },
+  "status": "PRESERVED_OBSERVER_RACE_FAIL_AFTER_ONE_GENERATION",
+  "version": 132
+}

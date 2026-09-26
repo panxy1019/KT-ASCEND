@@ -1,3 +1,218 @@
+# Round11 current execution
+
+Updated: 2026-09-26 UTC
+
+Status: `ROUND11_HYBRID_PERFORMANCE_AND_BACKEND_QUALIFIED`
+
+Round11 T0–T6 is complete. Final runtime remains HFINAL: threshold129, C128/MXFP4 on NUMA2/3/4/7, Static Q32 BF16/NZ29, chunk32, PLE ASYNC, Dynamic OFF, original QSA and original Layerwise shadow32. Hybrid forced-path evidence is qualified through prompt768 and Decode256; 1024 hit the resource guard and 769–1023 remain unqualified. The default path switch at 129 is unchanged.
+
+Kunpeng attribution assigns 66.70% of the frozen group parent to native compute+merge and only 1.20% to queue wait; no bounded candidate was selected. Dynamic is transaction-correct but has `NO_FINITE_BREAK_EVEN`. QSA is the dominant B-route hotspot and its single component candidate passed numerical/component gates, but the model integration gate failed before any request and the candidate closes `COMPONENT_ONLY_NO_PROMOTION`.
+
+T6 v147–v150 passed four independent unprofiled HFINAL processes, exact Decode32/64/128 outputs, five canary classes, two cancel/reuse controls, all guards and cleanup. BASELINE/FINAL labels use identical compute code; timing ratios are process variance, not a speedup claim. Final budget is 19/21 model starts, 80/108 generations, 4/5 aborts and zero retries. Exact post-hash cache retirement completed after each final block without global drop_caches. Physical12 is empty; no Round11 container or process remains; automation stays paused.
+
+Primary evidence: `artifacts/round11/ROUND11_FINAL_STATUS.json`, `ROUND11_T6_FINAL_ANALYSIS.json`, `ROUND11_T5_FINAL_DISPOSITION.json`, `ROUND11_RESOURCE_RETIREMENT_RECEIPT.json`, and `docs/reports/2026-09-26-round11-final-zh.md`.
+
+---
+
+# Round10 current execution
+
+Updated: 2026-09-26 UTC
+
+Status: `ROUND10_AB_NARROW_QUALIFIED`
+
+Round10 T0–T6 is complete under the frozen serial TP1, input≤128 narrow contract. HFINAL equals the H0 Hybrid129 static configuration: C128/MXFP4 CPU experts, Q32 BF16/NZ29 resident NPU experts, chunk32, PLE ASYNC and Dynamic OFF. No new performance candidate is promoted.
+
+T1 qualified Hybrid policy, deterministic canaries, edge lengths through 128, multi-step Decode, cancellation and same-process reuse. T2 froze host-only cost attribution and a real replay fixture. T3 verified the current native Kunpeng worker path against an independent same-precision reference and retained the existing backend. T4 proved the current Hybrid→Dynamic transaction, then rejected enablement because its 64-token median was 4.558176× H0. T5 independently qualified current GDN, QSA and PLE semantics/state and selected no B-path performance candidate.
+
+T6 v107 completed 8/8 generations and 1/1 abort with exact matching token outputs against the corresponding v95 rows. Its 64-token measurements were 5.409330s and 5.832713s, median 5.621022s versus historical H0 median 5.188200s (1.083424×); this is reported as same-configuration repeat dispersion and does not support a speedup claim. The supervisor passed, guard acknowledged exit, the owned container was removed, and physical12 is empty. The outer controller's post-cleanup receipt filename bug is preserved and reconciled; its generator regression is fixed locally without another model start.
+
+Final Round10 budget: 4 model starts, 36 generations, 4 abort controls, zero automatic retries; T3 used 6 component processes and T5 used 3. Targeted cache retirement covered 179 unreferenced project files without global drop_caches. Automation remains paused. No push, merge or tag occurred.
+
+Primary final evidence: `artifacts/round10/ROUND10_FINAL_STATUS.json`, `T6_FINAL_REGRESSION.json`, `RESOURCE_RETIREMENT_RECEIPT.json`, and `docs/reports/2026-09-26-round10-final-zh.md`. Live 129/130 Layerwise boundary, long context, concurrency and deployment remain outside qualification.
+
+---
+
+## 2026-09-25T18:30Z — Plan13 final: COMPLETE_WITH_NO_PROMOTION
+
+R2 and R3 are terminal `NO_COMPONENT_GAIN`; R4 is `DEFERRED_NO_CURRENT_OVERLAP`. No Layerwise update/transport candidate is promoted and all remain default OFF/deferred. Independent threshold v89/v90 qualification completed: threshold64 Layerwise 64-token E2E samples708.326/702.309/694.657s versus threshold129 Hybrid6.131/6.116/6.149s. All path, output, repeat, resource and cleanup gates pass, so threshold129 is `HYBRID_THRESHOLD_BOUNDED_QUALIFIED` under the narrow frozen single-request contract. This path change is not Layerwise prepare acceleration.
+
+v89/v90 each used one model start and seven generations, 0abort/0retry. Both supervisors PASS, guard ACK and containers removed. A post-v89 admission failed closed at NUMA3 MemFree17.42GiB before v90 launch; targeted retirement touched only unreferenced project tensor file cache, never global drop_caches or external tasks. Fresh admission-21 then passed and v90 ran once. Final physical12 has no task process; NUMA2/3/4/7 MemFree230.33/229.99/156.99/224.26GiB. Plan15 totals are8 component processes/144prepares and4 model starts/16generations. Automation remains paused; no push/merge/tag. Final evidence root: `artifacts/round9-fixed-shadow32-update-20260925/PLAN13_FINAL_REPORT_ZH.md`.
+
+## 2026-09-25T16:58Z — R3 NO_COMPONENT_GAIN; R4 DEFERRED; threshold next
+
+New admission-18 passed after resource recovery and launched v88 OFF exactly once. v88 PASS, 22 prepares, exit0, guard ACK, container removed; physical12 returned empty. Four-process v85/v86/v87/v88 comparator passes all exact/numeric/identity/mapping/allocation/cleanup checks but returns `NO_COMPONENT_GAIN`: high-reuse prepare ratios0.84797 and0.94286 both miss the frozen <=0.80 gate, and true low-reuse lifecycle first block1.05657 exceeds1.05. R3 remains default OFF and consumes no full-model budget. Component budget is now8 processes/144 prepares. R4 is `DEFERRED_NO_CURRENT_OVERLAP`; one-parent mutation cannot overlap its consumer, while independent host/device staging requires a new ownership subsystem without current benefit evidence. Next: independently build/freeze and run threshold v89 baseline64 then v90 candidate129 under fresh admissions. Scheduled automation remains paused.
+
+## 2026-09-25T11:28Z — USER PAUSE / v88 NOT STARTED
+
+Execution is paused at the user's request. Three fresh admission identities (12/13/14) completed the required 2x60s sampling and failed the unchanged continuous CPU idle >80% gate before container creation. Admissions 15/16/17 were interrupted on the pause request and are preserved as `KeyboardInterrupt`; they are not full admission failures. v88 has no evidence directory, component or prepare consumption. Post-pause verification found no controller/sampler/component process, no Plan15/R3 running container and no process on physical12. Actual component budget remains 7 processes / 122 prepares. On resume, use a new admission identity, rerun fresh 2x60s sampling, and launch v88 OFF exactly once only after PASS. Do not rerun v85-v87 or reuse admission-12 through -17.
+
+## 2026-09-25T11:24Z — Plan13 execution resumed at R3 component closure
+
+v86 ON and v87 ON raw run plus admission evidence are now archived locally and pass the frozen strict single-run validator. Together with v85, all three completed runs have exact frozen identities and paired group/sequence outputs, 22 prepares each, allocator cleanup, guard ACK and removed containers. Actual budget is corrected to R2 4 processes/56 prepares plus R3 3 processes/66 prepares, total 7/122. R3 remains 3/4 and benefit UNKNOWN. v88 OFF is still not started. Next action is a new 2x60s admission identity for physical12/NUMA2,3,4,7, followed by exactly one v88 launch only if every resource and identity gate passes. Automation remains paused; v85-v87 must not be repeated.
+
+## 2026-09-25 对话迁移交接
+
+当前完整接手入口：`docs/handoffs/2026-09-25-04-ROUND9_PLAN15_DIALOG_HANDOFF.md`。R2 已 `NO_COMPONENT_GAIN` 收口；R3 fixed-shadow32 slot reuse 的 v85 OFF、v86 ON、v87 ON 已在远端 PASS 并清理，v88 OFF 尚未启动，故当前只能标 `R3_COMPONENT_ABBA=3/4`，不能声明组件收益或晋级。物理12当前只读无设备进程，自动任务仍暂停。新对话先归档/校验 v86、v87 并修正账本，再 fresh admission 后只启动一次 v88；禁止重跑 v85–v87。
+
+## Latest Plan15 state — 2026-09-25T10:02:50.371717+00:00
+
+R2 ABBA v81–v84 complete and all resources retired: NO_COMPONENT_GAIN, no R2 request promotion. R3 fixed32 same-layer slot reuse implementation now selected; device gate pending. P4a v80 ON gate/capture PASS, old v66 FAIL retained. No task containers running from R2. Automation remains paused. See artifacts/round9-fixed-shadow32-update-20260925/R2_FINAL_DISPOSITION.md and BUDGET_LEDGER.json.
+
+# Latest Plan15 execution — 2026-09-25T09:23:46.858899+00:00
+
+P4a v80 RUNNING on physical12 with background guard; root `/mnt/data1/kt-round9/plan15-p4a-20260925-v80`, controller621549. v74 precontainer receipt failure and v75 observer profile-digest failure retained; v75 consumed1 model start,0 generations and cleanly retired. v80 is one authorized diagnosed script repair; current cumulative model starts2. Details and evidence links in `artifacts/round9-fixed-shadow32-update-20260925/CONTINUATION.md`. R2 components81–84 NOT_RUN. No promotion, no request benefit claimed. Automation PAUSED.
+
+## 2026-09-25 Plan15 常驻授权生效
+
+Plan15已覆盖Plan13人工审批门；当前继续执行，wall-time明确，无需再询问。新独立入口：[执行账本](../../artifacts/round9-fixed-shadow32-update-20260925/EXECUTION_LEDGER.md)。物理12/NUMA2,3,4,7准入01通过，正在刷新启动前准入02；P4a v74准备捕获真实Prefill及ON证据，尚未启动。R2默认OFF本地helper和私有adapter接线已实现，只有host合同测试，没有设备资格。自动任务仍PAUSED。
+
+## 2026-09-25 Plan13：固定 shadow32 更新优化进入只读准备
+
+用户已要求按计划13持续实施；新次数额度独立记账，旧预算不续用，自动任务维持暂停。新入口：[Plan13 CONTINUATION](../../artifacts/round9-fixed-shadow32-update-20260925/CONTINUATION.md)。
+
+v71实际2557项仅可变execution-budget不同于启动前hash，其余2556项匹配；v72实际150项全匹配。镜像torch_npu版本/库hash已恢复，当前batch API文档只声明ND；R2暂作唯一待合同审查方向，尚无行为改动或新设备PASS。
+
+当前等待计划第8节要求的本轮wall-time明确回复；建议组件1800秒、模型21600秒、请求1800秒。新启动/generation/prepare均0。物理12只读proc-mem无进程，尚非CPU/NUMA准入。详见新独立状态与预算账本。
+
+# 2026-09-25 本轮有界验证已收口（不是全Round9完成）
+
+物理12/NUMA2/3/4/7已重新准入。v71 Layerwise回归、Hybrid中途取消、reuse通过；v69 shadow32和v72 shadow320真实组件通过。v70原峰值记账失败保留，修复说明及新独立证据完备。320在14个同输入用例全部更慢，因此NO_PROMOTION，不进全模型；异步按证据依赖保持DEFERRED_NO_PROMOTION_OR_OVERLAP_EVIDENCE，不能称已实现。
+
+所有本轮自有容器已移除且guard退出ACK，最终physical12无任务进程/约3121MiB系统基线。自动任务核实PAUSED，不恢复。38本地测试通过。不要重复启动v68/v71/v69/v70/v72；旧预算不重置。下一项行为变化须独立单变量合同，用户已授权持续开发原则，但不能复活失败候选或掩盖负收益。
+
+完整报告：docs/reports/2026-09-25-physical12-hybrid-workset-round-report.md。证据及最终状态：artifacts/round9-workset-component-20260925/{FINAL_STATUS.json,PAIRED_COMPARISON.json,EXECUTION_LEDGER.md,ASYNC_MIGRATION_DECISION.md,SHA256SUMS.json}。
+
+# 最新执行状态：v71 PASS，shadow32组件 v69 已提交
+
+v71三项真实请求与回收全部通过，见artifacts/round9-physical12-20260924/v71-pass/RECEIPT.md。物理12、NUMA2/3/4/7新两轮60秒准入最低idle99.5907%、各node至少156.97GiB，训练CID/cgroup未变。shadow32组件controller PID504819，快照/mnt/data1/kt-round9/workset-component-20260925-v2，manifest SHA3e1661a2fa0d7818aefb4042cdc30fc1287c6cc497f3b2feda5f1e3534493068。输出evidence/20260925-workset-v69，勿重复启动。v1仅准备版本未启动。v69 PASS+回收后新准入再v70 shadow320，resident始终32。保留原同步，异步仍待真实成本证据。
+
+# 当前：v71 正在执行 Layerwise 回归
+
+物理12、NUMA2/3/4/7完成新两轮60秒准入；最低平均idle99.5619%。v68因allocator白名单遗漏36352而在请求前失败，已完整回收；最小修复及6项本地测试通过。v71 controller PID468361，完整容器ID3368ac758ed72d03354e1ecd2ae6a3cae0a0df00a766743351270ea08d61f60f，已加载并提交64-token Layerwise请求。后续driver自动执行Hybrid取消及reuse，不可重复提交。guard持续，自动任务保持暂停。组件32/320待前置通过及清理后独立新准入。
+
+# 2026-09-25 06:01UTC v68已提交，勿重复启动
+
+用户要求继续；物理12 fresh准入PASS，NUMA2/3/4/7两轮idle最低99.5974%，内存最低157GiB。controllerPID460231。远端/mnt/data1/kt-round9/hybrid-physical12-20260924-v68，输出evidence/20260924-hybrid-physical12-v68；先Layerwise/Hybrid取消reuse，后台guard。工作集仅独立本地开发，未接运行快照。
+
+# 2026-09-25 最新：已恢复授权，CPU准入阻塞
+
+物理12无进程，登记训练容器身份一致，2558冻结文件hash一致。完整2×60s的12窗口CPU空闲率41.63%–43.58%，全机最闲136物理核也仅约46.5%；无法靠换NUMA达到80%。NUMA2/3/4/7 free至少约165–219GiB。v68模型/请求/组件启动仍0，无自有设备占用。详见artifacts/round9-physical12-20260924/resume-20260925/BLOCKED.json。持续授权有效，后续先新准入再按原顺序；不自动恢复定时任务。
+
+# 2026-09-25 已恢复执行
+
+用户明确解除暂停，要求按既定顺序持续完成。正在110.123.0.3物理12刷新CPU/NUMA/HBM准入，训练容器完整身份不变，当前物理12无进程。NUMA候选2/3/4/7。v68尚无启动账本，不重复旧v67。自动任务仍暂停；本线程实时执行。
+
+# 当前状态：用户要求暂停（2026-09-24）
+
+等待机器资源空闲后续接。v68未启动、模型/generation/组件均0，新配置/旧证据已保存。禁止自动恢复定时任务或继续测试。下次恢复从物理12、NUMA2/3/4/7的新资源准入开始，再Layerwise回归、Hybrid取消/reuse、工作集组件及证据驱动异步搬运。
+
+# 2026-09-24 物理12迁移（最新）
+
+用户要求physical12并更换NUMA，顺序为Layerwise回归→Hybrid取消/reuse→工作集组件→有证据的异步搬运。新NUMA2/3/4/7连续两轮60秒已通过，48层MXFP4重新hash通过，新v68快照准备完成。**尚未启动：登记训练HBM实测15499MiB超过15360MiB，按共享合同拦截**。CPU通过不代替HBM准入，未改训练峰值上限。新阶段设备预算0消耗，自动任务保持暂停。
+
+详情：artifacts/round9-physical12-20260924/{STATUS.json,CONTINUATION.md,EXECUTION_REPORT.md,WORKSET_COMPONENT_GATE_CONTRACT.md}。旧v67已回收，不重启旧controller；历史记录如下。
+
+## 2026-09-24 v67结束：Hybrid两请求PASS，资源身份阻塞
+
+最新报告：artifacts/round9-hybrid-threshold-20260924/PHYSICAL_RESULT_AND_BLOCKER.md。未知卡15 PID134438触发guard；原supervisor FAIL_CLEANUP，人工核验后自有容器/cgroup已回收。NUMA6仅15.834GiB<48GiB，外部新增vLLM容器，未修改其他任务。64token回归、取消/reuse未完成。禁止重启v67。新阶段授权继续有效；当前待资源/身份恢复，不是预算待批。定时任务保持暂停。
+
+## 2026-09-24 Hybrid→工作集→搬运阶段已获持续执行授权
+
+最新入口：artifacts/round9-hybrid-threshold-20260924/CONTINUATION.md 和 STATUS.json。
+新阶段独立记账，旧预算不重置。v67已提交controller，未验证完成；不要重复启动。共享卡15规则、资源身份门禁及定时任务暂停不变。
+
+## 2026-09-24 最终：资源已回收，终验竞态本地修复，原始FAIL保留
+
+OFF3和ON5请求分别通过，ON原始driver在最后cost JSONL即时读取时报告cost coverage incomplete；随后五条完整记录经离线48层覆盖、互斥成本、epoch、cancel/reuse验证通过。原始driver/supervisor/controller FAIL不改写。prepare占正常请求host95.86%–98.75%，性能优化决定NO_CHANGE，无安全可消除部分的证据。
+
+本地request_driver增加30秒有界证据发布等待，无generation/retry；40项相关测试+4项最终证据负例PASS，修复未部署／设备复验。预算2/2启动、8/8generation、1/1abort耗尽。自有v66容器及cgroup已回收，卡15无进程、整卡2878MiB；训练身份不变。2554冻结文件hash匹配。自动任务保持PAUSED，不要恢复或重启v66。
+
+完整报告：artifacts/round9-request-cost/REQUEST_COST_REPORT_ZH.md。若需要完整driver PASS，需新授权窄ON终验预算；建议1启动/5generation/1abort、0重试/0warmup，OFF不重跑。没有新增性能优化设备预算。未push/merge/tag，旧08/09/M3结论保留。
+
+---
+## 2026-09-24 01:46 UTC — ON v66 running; shared admission restored
+
+Latest user instruction restores shared resource admission and cancels automation; automation remains PAUSED. Fresh two60-second CPU/NUMA admission passed, with CPU meanidle96.78% and every candidate node above48GiB. ON v66 started exactly once at01:26, fullCID9e896c572c044bc64c97d0394240d1b8e835e4bb48cbed9a41051a6d76c8686c. Canary and short requests PASS; medium is in flight, then cancel/reuse. Do not restart controller/driver or submit requests. Backend resource guard remains active. Frozen runtime unchanged. Both starts consumed; final generation/abort totals come from remote cost-results and budget. Current host evidence locates cost in prepare, but no optimization selected and no full-run completion claimed. See artifacts/round9-request-cost/CONTINUATION.md.
+
+---
+
+## 2026-09-24 — shared admission attempted; NUMA2 blocked
+
+User restored shared admission and cancelled automation (PAUSED, do not resume). Two60-second samplings complete:12windows CPU meanidle96.7804–96.8030%; NUMA minima2=25.461,3=227.570,6=231.749,7=228.919GiB. Frozen validator rejected NUMA floor before host-affinity/training final checks; those remaining checks must not be labelled PASS. No ON claim/model/generation launched; budget remains1/2,3/8,0/1. Preserve48GiB threshold and fixed profile; no drop_caches or external task modifications. Local on-admission-20260924 contains raw samples, blocked receipt, scripts and log. New UPSTREAM_COST_AUDIT.md and revision-bound upstream files document official mechanisms; no behavior optimization chosen without ON evidence. Fresh full admission is required after resources recover.
+
+
+## 2026-09-23 OFF v65 verified; ON resource blocked
+
+OFF completed all three requests with frozen token identities and raw-response validation: canary 285.928 s, short 170.655 s, medium 719.043 s. Sampled resource ceilings and logged request lifecycles passed. Supervisor explicitly stopped its container after driver exit 0, received OWNED_EXITED guard ACK, then removed it. Container exit 137 records that intentional stop; it is not a natural exit 0. Remote budget now off_verified=true, model starts 1/2, generations 3/8, aborts 0/1.
+
+At post-run admission, approved training PID 679083 used 15799 MiB, above the unchanged 15360 MiB ceiling by 439 MiB. Full training CID/cgroup match. ON has NOT started. An independent postprocessing assertion initially required an empty card; that is too restrictive for shared mode and was corrected to distinguish owned cleanup from recognized training. This was not a runtime failure.
+
+Next heartbeat: one bounded current training/card/identity check. If HBM qualifies, perform fresh two 60-second CPU/NUMA admission, validate frozen launcher identity, then launch ON exactly once. Do not rerun OFF or lower thresholds. Resource blocking waits for the next scheduled check. No training modifications. Local off-v65 receipts archive results, supervisor, model start, resource summary, verification, card snapshot and finalized budget; large logs remain remotely available. Actual device time/bandwidth/DRAM and optimization selection remain UNKNOWN/PENDING until ON attribution.
+
+---
+## 2026-09-23 最新：真实请求成本阶段 OFF v65 已启动
+
+用户批准2model/8generation/1abort，新阶段预算独立于已完成M3。新observer默认OFF，68本地测试PASS。目标110.123.0.3物理15共享，训练fullCID不变。OFF v65完整CID3af298d4c5c71a81d44b8ff04f4b3a0cf0c89a2b055291454c848564c3fbe71d，已消耗1/2启动；由bounded supervisor执行3请求并清理。真实请求成本与优化选择尚未完成。用户要求生成期间不频繁查日志；Round9 heartbeat每30分钟检查一次后续接。唯一当前交接入口：artifacts/round9-request-cost/CONTINUATION.md、STATUS.json、EXECUTION_LEDGER.md；远端运行账本优先，勿重复启动。未push/merge/tag。
+
+---
+
+## 2026-09-23：最终收口（最新）
+
+v64 13/13 PASS；5 canary、2 warmup、6 measurements，short/medium E2E中位数163.697/700.275秒。最终离线证据与身份核对PASS；资源独立回收PASS，训练未变。保留M2数值拒绝和用户随后授权baseline-only的历史；09按该窄范围完成。guard在容器删除后出现STOP_OWNED竞态，已记录PROBLEM_03并完成本地修复测试，未设备复验。prepare计数/TTFT/TPOT UNKNOWN。预算1/1启动、13/13请求耗尽，无新启动。Round9 automation PAUSED；未push/merge/tag。详见artifacts/round9-autorun/ROUND9_08_09_DELIVERY_ZH.md及final-verification.json。
+
+---
+以下保留历史记录。
+
+## Latest — 2026-09-22 23:01 UTC baseline M3 five canaries PASS; performance running
+
+Same v64 owned container and snapshot below; model1/1 consumed, no new start/retry. All five raw canary responses replayed offline: marker, arithmetic391, JSON, context quote, uppercase transform. All five retired before successor; prefix cache zero, finite logprobs and response/input-token identities verified. Request6/13 short17-token warmup in flight; medium64-token warmup then3short+3medium samples remain. No performance qualification or final cleanup yet. Actual results authoritative remote m3-results.json; local artifacts/round9-autorun/m3-v64 is a progress snapshot. Keep monitoring; do not restart. M2 rejection unchanged, baseline-only exception user-authorized. Resource/identity guard remains active.
+
+## Latest — 2026-09-22 22:30 UTC baseline M3 explicitly authorized and running
+
+User approved baseline-only continuation after rejected S3. Candidate stays disabled; historical numeric stop does NOT prohibit this newly authorized baseline. One model start used1/1,13requestmax/no retry; do not launch anothermodel. Host110.123.0.3 physical15shared unchangedtrainingCID. Modelkt-round9-full-model-v64 CID06fb8c36ef2061b2be14fb34e7d46490bada87724bbe8e755a61b9252a3dd260. Remote /mnt/data1/kt-round9/evidence/20260922-plan10-m3-baseline-v64 contains m3-supervisor.json/m3-results.json; authoritative requestsledger. Supervisor2196283 waitsreadiness thenruns5canary,2warmup,6measurements; cleansmodeloncompletion/failure. No readinessgeneration/HTTP. Snapshot /mnt/data1/kt-round9/plan10-m3-baseline-20260922-v1 sha bffe0bb4d1d7b46435779183f0dc0e5a0e539e0bb45ef48591a03dbcb30d2500. Runtime/provider/bank/profiles10identitychecks matchv63; profilerOFF. CPU12windowsmean98.16–98.39%idle andNUMA>=48GiB passed. See artifacts/round9-autorun budget/ledger. HeartbeatACTIVE forbaselineonly; Round7paused. No push/merge/tag.
+
+## Latest — 2026-09-22 Plan10 HARD STOP: S3 numeric regression; resources released
+
+S1 audit completed,1/2componentstarts. One private transpose-view candidate tested OFFv24/ONv25 (S3used2/6). OFFpasses08exacthash/oracle/unused22slots/allocationbaseline. ONexit1: caseArelativeL2=0.9835492231451818 >0.01. Plan10 numeric guard stops all further device execution; no S4/M3/model/HTTP. Do not automatically resume baseline qualification after this failure without explicit new authorization. Do not consume remaining repetitions as retries.
+
+Candidate REJECTED_NUMERIC, production/Dynamic copier neverchanged, localenabledhelpernowfailclosedbeforetensoraccess. Original experiment/source retained under artifacts/round9-autorun/rejected-candidate and remote frozen snapshot. 3containmenttests+19existingobserverregressionsPASS. Unique internal NZ corruption mechanism remainsUNKNOWN; metadataalias checks were insufficient.
+
+v23/v24/v25 exited andownedcontainersremoved; no own runningcontainer. Training exactCID/cgroupunchanged, physical15now8968MiB withtrainingPID904871using6126MiB; no task-ownedNPUprocess. ON in-process allocationreturn NOT_VERIFIED, separate from processcleanup. Round9heartbeatPAUSED by numeric hardstop;Round7remainsPAUSED. No push/merge/tag. All budget/results/sourcehashes in artifacts/round9-autorun. M3localpreparation mayexist but NOT_RUN. Currenttasknotcomplete.
+
+## Latest — 2026-09-22 Plan10 S1 PASS; S3 candidate validation started
+
+User approved automatic Plan10 M2/M3. New plan docs/plans/2026-09-22-round9-08-09-autorun.md; authoritative new budget/status/ledger under artifacts/round9-autorun. Old08 finished2/2; do not repeat. Round9heartbeat resumed with Plan10 rules, Round7 stays paused.
+
+S1 v23 exit0, exact A/B outputs/content/cleanup match08. CPU dispatch observes repeated format_contiguous/clone/format_cast/Transpose and per-slot item/copy then format_fresh_view. Installed torch_npu commit912882db... binds op-plugin dedc316...; device subcost remains UNKNOWN. One of2S1starts used, v23 removed. Evidence and receipt in new artifacts.
+
+One defaultOFF transpose-view candidate selected ONLY for private disposable component. No production/Dynamic wiring. Local5contract tests pass, not provider qualification. Independent review added frozen geometry eligibility, unchanged22slot hash and post-mutation failure exit. v1/v2 candidate snapshots never run; reviewed v3manifest996e0fd9243020d3135074348b5e0c58459a1aa2ff829e7811e47391b319edcc. S3 OFFv24 launch requested; verify remote /mnt/data1/kt-round9/evidence/20260922-plan10-layout-candidate-v1/run-ledger.json and container before any repeat. Max6S3starts alternatingOFF/ON, no retries. Both observerON; candidate flag independent. Latest2x60s fixed160physical-core aggregate idle85.34–87.40%, NUMA>=48GiB; launcher still rechecks sharedidentity/HBM. Host110.123.0.3 physical15 shared, fulltrainingCID unchanged. M3 NOT_RUN; baseline profile includes explicitPLEASYNC and BF16_COMPACT, don't silently switch. No push/main/tag.
+
+## Latest — 2026-09-22 08 physical decomposition delivered; 09 evidence audit delivered
+
+OFFv21/ONv22 both exit0, twoA/B BF16shadow cases validated, output/copy identities exact. ON222events VALID_HOST_DECOMPOSITION,prepare1042.999ms/sync747.372ms;deviceNZ832.899ms is separateview ofsamework,notadditive. A/BrelL2 .002422864/.002513433<=.01;allocatedbaseline629325824bytesrestored.2/2componentstarts consumed,0model/HTTP;bothownedcontainers removed;physical15back2878MiB,no process. Training/externaltasks untouched.
+
+See `../../artifacts/round9-shadow-decomposition/DELIVERY_ZH.md`,SHADOW_PREPARE_DECOMPOSITION.md andphysical-20260922/ evidence. Independentgpt-5.6-sol mediumreview acceptedlimitedscope. DecisionNO_BEHAVIOR_CHANGE;nextspecificcandidateNZparentupdate layout necessity,notremoving sync.09originalevidenceaudit+physicalsupplementcomplete;09entireroadmap M2/M3/product/performance stillPENDING,newbudgetrequired. Round9heartbeatPAUSEDviaappafterauthorizeddelivery;Round7stillPAUSED. No push/main/tag. Preservealluncommittedartifacts.
+
+## Latest — 2026-09-22 14:40 UTC resource admission passed; OFF launch requested
+
+Fresh2x60s/12windows fixed160physical cores onNUMA2/3/6/7 conservativeSMT meanidle94.54–98.39%;nodeMemFree>=133.24/198.17/173.33/203.93GiB. Frozen shared candidate_resources preflight passed. No ownactivecontainer/08ledger beforelaunch;v21name available. Requested frozenOFFlauncher --version21; verify remote run-ledger andcontainer before further action. Do not launchduplicate. Evidence `../../artifacts/round9-heartbeats/20260922T144034/`. Existingtraining/externalcontainers untouched.
+
+## Latest — 2026-09-22 14:06 UTC scheduled admission remains blocked
+
+Fresh2x60s/12windows: optimistic best136physical-core idle67.45–73.37%,12/12fail>80%;NUMA4/5 minimumMemFree2.00/1.46GiB. Physical15HBM2878MiB,no own activecontainer/08run-ledger.0/2starts unchanged. Externalstage1rGGUFcontainers and training untouched. LowCPU GDN reuse audit found existing realadapter/pool paths andFP64oracle; historicalv4/v5notcurrentqualification (wrapperhashdiffers). See `../../artifacts/round9-heartbeats/20260922T140604/REPORT.md`. No newnumeric/devicegate. Heartbeatcontinues.
+
+## Latest — 2026-09-22 13:29 UTC scheduled admission remains blocked
+
+Two fresh60s rounds/12windows: optimistic best136physical-core idle upper bound65.97–73.21%, all below>80%;NUMA5MemFree minimum0.92GiB. Physical15HBM2878MiB, no own activecontainer or remote08run-ledger. No component starts (0/2),no model/HTTP. Training and externalstage1r container untouched. Local evidence verifier4negative tests PASS; no numeric qualification promotion. Evidence: `../../artifacts/round9-heartbeats/20260922T132934/REPORT.md`.30-minuteRound9heartbeat remains active;Round7paused.
+
+## Latest — 2026-09-22 ordered low-CPU contract and test preparation
+
+Completed ordered local work: component/state contracts; QSA boundary/mapping test preparation; GDN actual wrapper/pool interface and validation design;09gap supplement. See `../../artifacts/round9-architecture-audit/COMPONENT_STATE_VALIDATION_CONTRACT.md` and `LOW_CPU_PROGRESS.json`. QSA local run:2standard-library fixture tests PASS,3provider numeric tests SKIP because torch is unavailable (NOT_RUN, not numeric qualification). Existing qsa_module_tests already contains a513-block case; remaining gap is current wrapper/pool coverage. No runtime changes,remote jobs,NPU runs or budget expansion.08remains CPU-blocked0/2starts.
+
+## Latest — 2026-09-22 low-CPU 09 architecture/metrics audit
+
+User redirected work to local low-CPU development while cluster CPU resources are occupied. See `../../artifacts/round9-architecture-audit/09_METRICS_AND_OPERATOR_PLAN.md`. Revalidated19matrix rows/19unique saved evidence hashes and generated48per-layer Q32 map/metadata digests; no fresh device qualification. Audited QSA architecture and bounded optimization candidates, with GDN/GR contracts recorded in the same report.08 remains CPU-blocked,0/2physical starts. No SSH/model/NPU/remote jobs, timer changes or push.
+
 ## Latest — 2026-09-22 CPU/NUMA reselection measured, no qualifying set
 
 User authorized selecting a different measured CPU/NUMA set. Surveyed all8NUMA nodes in two independent60s rounds (12x10s windows), excluding explicit external-container affinity and its SMT siblings. Even the optimistic per-window best136 different physical cores, taking the better SMT thread and relaxing4-node balance, reached only52.1–59.2% idle after48GiB/node memory screening;12/12windows fail>80%. NUMA5MemFree minimum8.9GiB. No fixed qualifying profile exists in these observations; none published/applied. No thresholds, affinity, training, other containers, cache or timers changed.08 remains resource-blocked with0/2physical starts. See `../../artifacts/round9-cpu-reselection/CPU_NUMA_RESELECTION.md` and `selection-result.json` in that directory. No new backgroundmonitor or retry.

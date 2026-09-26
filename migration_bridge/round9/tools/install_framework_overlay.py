@@ -163,7 +163,8 @@ def install_framework(baseline, target):
                  'context_page_store.py','kv_quant_reference.py','context_staging.py','qsa.py',
                  'context_reference_gate.py','context_reference_runtime.py',
                  'context_reference_binding.py','streaming_prefill.py','streaming_binding.py',
-                 'cancel_lifecycle.py','working_set_timeline.py','mainline_attribution.py','shadow_decomposition.py'):
+                 'cancel_lifecycle.py','working_set_timeline.py','mainline_attribution.py','shadow_decomposition.py',
+                 'request_cost_ledger.py','request_cost_binding.py','hybrid_probe.py'):
         shutil.copy2(runtime / name, target / 'sglang/srt/layers/round9' / name)
         report['modules'][name] = hashlib.sha256((runtime / name).read_bytes()).hexdigest()
     report['framework_status'] = 'F1_INSTALLED_NOT_DEVICE_QUALIFIED_DEFAULT_OFF'

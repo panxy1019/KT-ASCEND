@@ -1,0 +1,218 @@
+{
+  "automation": "PAUSED",
+  "budget": {
+    "abort_controls_limit": 5,
+    "abort_controls_used": 4,
+    "automatic_retries_used": 0,
+    "generation_limit": 108,
+    "generation_used": 80,
+    "model_starts_limit": 21,
+    "model_starts_used": 19
+  },
+  "created_at": 1790435412.261021,
+  "evidence": {
+    "ROUND11_EXECUTION_BUDGET.json": {
+      "path": "artifacts/round11/ROUND11_EXECUTION_BUDGET.json",
+      "sha256": "b96419b25b0f9fa89165846c55c4cde66670263b164877fceab47399c05ad9d7"
+    },
+    "ROUND11_RESOURCE_RETIREMENT_RECEIPT.json": {
+      "path": "artifacts/round11/ROUND11_RESOURCE_RETIREMENT_RECEIPT.json",
+      "sha256": "08525dffb94b6494127a30690da62a28e34a90e0577c66df8c723fca0970a6ad"
+    },
+    "ROUND11_T1_RESULT.json": {
+      "path": "artifacts/round11/ROUND11_T1_RESULT.json",
+      "sha256": "3b76f5c56abd8f63c03ba8fb26d027ec3107209c1ae6309687cd3c1e6fef6c6a"
+    },
+    "ROUND11_T2_ATTRIBUTION.json": {
+      "path": "artifacts/round11/ROUND11_T2_ATTRIBUTION.json",
+      "sha256": "34fd1a3efc3a1caeb8ab3a040369d75e75d5e5b1e410d6761f2411a754231f9a"
+    },
+    "ROUND11_T3_DISPOSITION.json": {
+      "path": "artifacts/round11/ROUND11_T3_DISPOSITION.json",
+      "sha256": "66380faad1f1752f6a5c863dfd1d12a8d1f658600c271c96b211d69abf0864fa"
+    },
+    "ROUND11_T4_BREAK_EVEN.json": {
+      "path": "artifacts/round11/ROUND11_T4_BREAK_EVEN.json",
+      "sha256": "bb455c715818e0c485c1cc4bfd2effa17b4c2b0ce645eb6612f8ab6cee88380d"
+    },
+    "ROUND11_T5_FINAL_DISPOSITION.json": {
+      "path": "artifacts/round11/ROUND11_T5_FINAL_DISPOSITION.json",
+      "sha256": "14ac314c46eb12fed341525daf796bde7cc1f4789d858ee259b755f53bea678d"
+    },
+    "ROUND11_T5_HOTSPOT_RANKING.json": {
+      "path": "artifacts/round11/ROUND11_T5_HOTSPOT_RANKING.json",
+      "sha256": "e2f0a22f9593d449c7d09ccefa4cc35580da8a0b2b3a8dbc58c94334ad7db6f3"
+    },
+    "ROUND11_T5_QSA_COMPONENT_V144_ANALYSIS.json": {
+      "path": "artifacts/round11/ROUND11_T5_QSA_COMPONENT_V144_ANALYSIS.json",
+      "sha256": "83ea9975210eed86ac487d8f0010afa2b663768b2fa2bef4930931a3e9dbd787"
+    },
+    "ROUND11_T6_FINAL_ANALYSIS.json": {
+      "path": "artifacts/round11/ROUND11_T6_FINAL_ANALYSIS.json",
+      "sha256": "b6be9e94eebe24e528fb5e458379060fe3822938c6ab3ab7445af2c537f0c81a"
+    }
+  },
+  "final_configuration": {
+    "concurrency": "SERIAL_SINGLE_REQUEST",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "cpu_expert": "ORIGINAL_KUNPENG_C128_4_NUMA_POOLS_X_32_WORKERS",
+    "decode": "HYBRID",
+    "dynamic": "OFF",
+    "extend_selection": "request total tokens < 129 => Hybrid; >= 129 => Layerwise",
+    "hybrid_threshold": 129,
+    "layerwise": "ORIGINAL_SHADOW32",
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "npu_resident": "STATIC_Q32_BF16_NZ29",
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "ple": "ASYNC",
+    "profiler": "OFF",
+    "qsa": "ORIGINAL_HFINAL_PROVIDER",
+    "r2_r3_shadow320_transpose_view": "OFF",
+    "scheduler_chunk": 32,
+    "tp": 1
+  },
+  "negative_or_bounded_conclusions": [
+    "Hybrid forced-path prompt is qualified through 768; 1024 hit the resource guard and 769-1023 remain unqualified.",
+    "No bounded Kunpeng single-variable candidate met the evidence-selection gate.",
+    "Prefill-End Dynamic is transaction-correct but has no finite break-even because dynamic steady decode is slower than static.",
+    "The QSA candidate passed component gates but did not reach a request; it remains default OFF and makes no request-level gain claim.",
+    "T6 BASELINE and FINAL execute identical HFINAL code; their ratios are reproducibility evidence only."
+  ],
+  "performance_promotions": [],
+  "repository": {
+    "branch": "codex/round11-hybrid-performance-backend",
+    "dirty_worktree_preserved": true,
+    "head": "b41e901c059222b8c1e4367abe193d7f58cc1d83",
+    "merged": false,
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline",
+    "pushed": false,
+    "tagged": false
+  },
+  "resource_peaks_t6": {
+    "final_physical12": "EMPTY",
+    "final_round11_containers_running": 0,
+    "final_round11_processes_running": 0,
+    "max_hbm_used_mib": 28783.0,
+    "max_host_cgroup_peak_gib": 336.1943244934082,
+    "max_owned_process_mib": 25766.0,
+    "min_system_available_gib": 1700.208381652832,
+    "post_each_block_cache_retirement": true
+  },
+  "resource_retirement_status": "PASS_ROUND11_RESOURCE_RETIREMENT",
+  "round": 11,
+  "schema": 1,
+  "scope_limits": [
+    "serial single request and TP1",
+    "default threshold remains 129",
+    "Hybrid prompt lengths 769-1023 and 1024 are not qualified",
+    "no concurrency, TP2, Graph, MTP, HiCache, KV offload, FP8 KV, 64K/128K, full CMMLU, or deployment qualification",
+    "PMU/uncore LLC, bandwidth, and remote-NUMA counters remain UNKNOWN because perf_event_open was denied or no validated event mapping existed"
+  ],
+  "stages": {
+    "T0": {
+      "status": "COMPLETE_HFINAL_IDENTITY_FROZEN"
+    },
+    "T1": {
+      "crossover": "NOT_FOUND_WITHIN_QUALIFIED_RANGE",
+      "decode_steps_qualified": [
+        32,
+        64,
+        128,
+        256
+      ],
+      "default_boundary": {
+        "128": "HYBRID",
+        "129": "LAYERWISE",
+        "130": "LAYERWISE"
+      },
+      "default_threshold_changed": false,
+      "hybrid_tested_qualified_through_prompt_tokens": 768,
+      "resource_cutoff_reason": "NUMA4 free and conservative reclaim headroom below reserve",
+      "resource_cutoff_tokens": 1024,
+      "status": "PASS_ROUND11_T1_WITH_RESOURCE_CUTOFF",
+      "unqualified_gap": "PROMPT_769_THROUGH_1023_NOT_TESTED_OR_QUALIFIED"
+    },
+    "T2": {
+      "attribution_group_median_us": 366.8575,
+      "baseline_group_median_us": 375.5825,
+      "hardware_counters": "PARTIAL_OR_UNAVAILABLE",
+      "native_compute_merge_share": 0.6670164846023321,
+      "native_compute_merge_us": 244.70000000000005,
+      "queue_wait_share": 0.011993757794238908,
+      "queue_wait_us": 4.4,
+      "status": "PASS_ROUND11_T2_DEEP_ATTRIBUTION"
+    },
+    "T3": {
+      "performance_claim": "NO_NEW_KUNPENG_GAIN_CLAIMED",
+      "promoted_candidate": null,
+      "selected_backend": "ORIGINAL_C128_MXFP4",
+      "status": "KUNPENG_NO_PROMOTION_NO_BOUNDED_CANDIDATE"
+    },
+    "T4": {
+      "break_even_tokens": null,
+      "disposition": "NO_FINITE_BREAK_EVEN",
+      "dynamic_default": "OFF",
+      "dynamic_seconds_per_token": 0.4052964265,
+      "migration_exposed_seconds": 13.824945035999999,
+      "static_seconds_per_token": 0.3964049145,
+      "status": "PASS_ROUND11_T4_BREAK_EVEN"
+    },
+    "T5": {
+      "component_candidate": "QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+      "component_status": "PASS_ROUND11_T5_QSA_COMPONENT_ANALYSIS",
+      "disposition": "COMPONENT_ONLY_NO_PROMOTION",
+      "hotspot": "QSA",
+      "qsa_attributable_fraction": 0.5387103065626927,
+      "request_status": "FAIL_BEFORE_REQUEST",
+      "selected_final_provider": "ORIGINAL_HFINAL_QSA",
+      "status": "COMPLETE_QSA_COMPONENT_ONLY_NO_PROMOTION"
+    },
+    "T6": {
+      "abort_controls": 2,
+      "all_performance_outputs_exact": true,
+      "cleanup": "ALL_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "decode_lengths": [
+        32,
+        64,
+        128
+      ],
+      "disposition": "HFINAL_REQUALIFIED_NO_NEW_PROMOTION",
+      "five_canary_classes": [
+        "arithmetic",
+        "json",
+        "marker",
+        "quote",
+        "transform"
+      ],
+      "generation_attempts": 24,
+      "process_blocks": 4,
+      "status": "PASS_ROUND11_T6_FINAL_INTEGRATION"
+    }
+  },
+  "status": "ROUND11_HYBRID_PERFORMANCE_AND_BACKEND_QUALIFIED",
+  "unprofiled_reproducibility": {
+    "128": {
+      "baseline_median_seconds": 71.1572554325,
+      "final_median_seconds": 68.513867053,
+      "final_over_baseline": 0.9628514567708767,
+      "interpretation": "SAME_HFINAL_PROCESS_VARIANCE_NOT_CANDIDATE_SPEEDUP"
+    },
+    "32": {
+      "baseline_median_seconds": 27.7539587005,
+      "final_median_seconds": 27.5845027795,
+      "final_over_baseline": 0.9938943513309707,
+      "interpretation": "SAME_HFINAL_PROCESS_VARIANCE_NOT_CANDIDATE_SPEEDUP"
+    },
+    "64": {
+      "baseline_median_seconds": 40.775422506,
+      "final_median_seconds": 38.996865396000004,
+      "final_over_baseline": 0.9563816387251834,
+      "interpretation": "SAME_HFINAL_PROCESS_VARIANCE_NOT_CANDIDATE_SPEEDUP"
+    }
+  }
+}

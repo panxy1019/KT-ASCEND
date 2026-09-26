@@ -1,0 +1,246 @@
+{
+  "automatic_retries_limit": 0,
+  "global": {
+    "abort_controls_limit": 5,
+    "abort_controls_used": 4,
+    "automatic_retries_used": 0,
+    "generation_limit": 108,
+    "generation_used": 80,
+    "model_starts_limit": 21,
+    "model_starts_used": 19
+  },
+  "notes": [
+    "fresh run identity for every repair",
+    "admission failures do not consume model/component budget",
+    "cache-triggered admission rerun is bounded to one fresh identity and is not a model/component retry",
+    "no stage borrows another stage reserved budget",
+    "T2 v113/v114/v115 each passed after fresh admission; component use 3/6",
+    "T3 selected no bounded candidate from evidence and used 0 component/model budget",
+    "post-block cache retirement passed for v113/v114/v115 on the exact registered 179-file set",
+    "T4 v120 consumed one model start and zero generations; immutable failure root cause was wrong fixture wiring after model ready",
+    "T4 v121/v122/v123 remain unrun and are rejected as sharing the frozen fixture-wiring defect",
+    "T4 repair reserve adds one process to the original four-process ABBA stage only; v124/v125/v126/v127 are new identities",
+    "post-v120 exact cache retirement passed: 68,711,731 resident pages before and zero afterward",
+    "T4 v124 Static-A passed: one model start and five generations",
+    "T4 v125 failed before container creation due qualified source gate binding; zero model/generation budget",
+    "T4 v128 passed derived source gate but failed its first Dynamic generation because HFINAL candidate profile remained static; cleanup and cache retirement passed",
+    "T4 second repair is a profile-only rebind with unchanged 48-file bank payload; v132/v133 replace Dynamic A/B while v127 remains Static-B",
+    "T4 v132 completed one Dynamic transaction but driver read JSONL before asynchronous drain append; raw run remains FAIL",
+    "T4 v134/v135 add only a 30-second bounded exact-once lifecycle-evidence wait; duplicate or missing evidence still fails closed",
+    "post-v132 exact cache retirement passed before any replacement launch",
+    "T4 v134 Dynamic-A passed: one model start, five generations, exact post-block cache retirement passed (69,208,537 pages to zero)",
+    "T4 v135 Dynamic-B passed: one model start, five generations, outputs exact with v134 at 32/64/128/256 and cache retirement passed (70,850,560 pages to zero)",
+    "T4 v127 Static-B passed; four-block comparator is NO_FINITE_BREAK_EVEN because D=0.4052964265s/token >= S=0.3964049145s/token; Dynamic remains correct default OFF",
+    "post-v127 exact cache retirement passed: 69,138,928 resident pages to zero",
+    "T5 v139/v140 profiling passed in two independent model processes (8 generations total) and ranked QSA at 53.87% median attributable critical-path share.",
+    "T5 QSA component used v142/v143/v144 (3 component processes); v144 passed numerical/component gates, but request promotion ended COMPONENT_ONLY_NO_PROMOTION.",
+    "T5 v145 failed before model start at the old launcher source gate; v146 consumed one model start and zero generations, then failed before readiness at an independent runtime source gate. Both original failures are preserved.",
+    "T6 v147/v148/v149/v150 all passed with 4 model starts, 24 generations, 2 abort controls, zero retry, exact 32/64/128-step outputs, and complete cleanup.",
+    "T6 BASELINE/FINAL labels share the exact HFINAL compute identity; observed timing ratios are reproducibility/process variance, not a promoted speedup.",
+    "Exact 179-file cache retirement ran only after evidence hashing for every T5/T6 completed block; no global drop_caches or external-task modification occurred."
+  ],
+  "old_round_budget_reused": false,
+  "resource_admission_attempts": {
+    "T2_v113": {
+      "attempts_completed": 3,
+      "budget_consumed": true,
+      "failure_receipt_sha256": "67b00e2eb62c90ad367013318083af544a59d382e2983ae2964ce4816c26f024",
+      "last_status": "PASS_ATTEMPT3_V113_LAUNCHED",
+      "launches": 1
+    },
+    "T2_v114": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V114_LAUNCHED",
+      "launches": 1
+    },
+    "T2_v115": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V115_LAUNCHED",
+      "launches": 1
+    },
+    "T4_v120": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V120_LAUNCHED_RAW_FAIL_BEFORE_GENERATION",
+      "launches": 1
+    },
+    "T4_v124": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V124_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T4_v125": {
+      "attempts_completed": 1,
+      "budget_consumed": false,
+      "last_status": "PASS_ATTEMPT1_PRELAUNCH_DEVICE_GATE_REJECTION",
+      "launches": 0
+    },
+    "T4_v127": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V127_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T4_v128": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V128_LAUNCHED_RUNTIME_FAIL",
+      "launches": 1
+    },
+    "T4_v132": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V132_LAUNCHED_OBSERVER_RACE_FAIL",
+      "launches": 1
+    },
+    "T4_v134": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V134_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T4_v135": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V135_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T5_v139": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V139_PROFILE_PASS",
+      "launches": 1
+    },
+    "T5_v140": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V140_PROFILE_PASS",
+      "launches": 1
+    },
+    "T5_v145": {
+      "attempts_completed": 1,
+      "budget_consumed": false,
+      "last_status": "PASS_ADMISSION_PRELAUNCH_SOURCE_GATE_REJECTION",
+      "launches": 0
+    },
+    "T5_v146": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ADMISSION_LAUNCHED_FAIL_BEFORE_READY",
+      "launches": 1
+    },
+    "T6_v147": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V147_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T6_v148": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V148_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T6_v149": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V149_LAUNCHED_PASS",
+      "launches": 1
+    },
+    "T6_v150": {
+      "attempts_completed": 1,
+      "budget_consumed": true,
+      "last_status": "PASS_ATTEMPT1_V150_LAUNCHED_PASS",
+      "launches": 1
+    }
+  },
+  "round": 11,
+  "schema": 1,
+  "stages": {
+    "REPAIR": {
+      "component_process_limit": 6,
+      "component_process_used": 0
+    },
+    "T0": {
+      "device_budget": 0,
+      "device_runs_used": 0,
+      "status": "COMPLETE"
+    },
+    "T1": {
+      "abort_controls_limit": 2,
+      "abort_controls_used": 2,
+      "generation_limit": 36,
+      "generation_used": 26,
+      "model_starts_limit": 6,
+      "model_starts_used": 5,
+      "status": "COMPLETE_WITH_RESOURCE_CUTOFF_1024"
+    },
+    "T2": {
+      "component_process_limit": 6,
+      "component_process_used": 3,
+      "status": "COMPLETE_DEEP_ATTRIBUTION"
+    },
+    "T3": {
+      "candidate_limit": 2,
+      "component_process_limit": 10,
+      "component_process_used": 0,
+      "generation_limit": 16,
+      "generation_used": 0,
+      "model_starts_limit": 4,
+      "model_starts_used": 0,
+      "promotion_limit": 1,
+      "status": "COMPLETE_NO_PROMOTION_NO_BOUNDED_CANDIDATE"
+    },
+    "T4": {
+      "abort_controls_limit": 1,
+      "abort_controls_used": 0,
+      "component_process_limit": 4,
+      "component_process_used": 0,
+      "effective_generation_limit": 22,
+      "effective_model_starts_limit": 7,
+      "generation_limit": 20,
+      "generation_limit_original": 20,
+      "generation_used": 22,
+      "model_starts_limit": 4,
+      "model_starts_limit_original": 4,
+      "model_starts_used": 7,
+      "repair_generation_limit": 2,
+      "repair_generation_used": 2,
+      "repair_model_starts_limit": 3,
+      "repair_model_starts_used": 3,
+      "status": "COMPLETE_NO_FINITE_BREAK_EVEN_DEFAULT_OFF",
+      "successful_process_blocks": 4
+    },
+    "T5": {
+      "abort_controls_limit": 0,
+      "abort_controls_used": 0,
+      "candidate_limit": 1,
+      "candidate_model_processes": 1,
+      "candidate_request_generations": 0,
+      "component_process_limit": 9,
+      "component_process_used": 3,
+      "generation_limit": 12,
+      "generation_used": 8,
+      "model_starts_limit": 3,
+      "model_starts_used": 3,
+      "promotion_limit": 1,
+      "qsa_component_processes": 3,
+      "status": "COMPLETE_QSA_COMPONENT_ONLY_NO_PROMOTION",
+      "successful_profile_process_blocks": 2
+    },
+    "T6": {
+      "abort_controls_limit": 2,
+      "abort_controls_used": 2,
+      "generation_limit": 24,
+      "generation_used": 24,
+      "model_starts_limit": 4,
+      "model_starts_used": 4,
+      "status": "COMPLETE_HFINAL_REQUALIFIED_NO_NEW_PROMOTION",
+      "successful_process_blocks": 4
+    }
+  },
+  "status": "COMPLETE_ROUND11_HYBRID_PERFORMANCE_AND_BACKEND_QUALIFIED"
+}

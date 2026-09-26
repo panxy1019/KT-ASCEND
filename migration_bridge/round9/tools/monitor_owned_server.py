@@ -65,6 +65,18 @@ def stop_owned(reason):
             f.write(json.dumps({'time':time.time(), 'action':'STOP_OWNED', 'reason':reason})+'\n')
     finally:
         subprocess.run(['docker','stop','--time','10',a.container], check=False, timeout=30)
+    # A guard-triggered stop exits this monitor rather than reaching the next
+    # sampling iteration. Publish its terminal handshake explicitly; STOP_OWNED
+    # alone is an intent record, not proof that the container actually exited.
+    terminal = json.loads(command(['docker','inspect',a.container]))[0]
+    if (terminal['State']['Running'] or
+            terminal['State']['Status'] not in ('exited', 'dead')):
+        raise RuntimeError('guard stop did not reach terminal container state')
+    with a.output.open('a') as f:
+        f.write(json.dumps({'time':time.time(), 'action':'OWNED_EXITED',
+                            'container_id':terminal['Id'],
+                            'state':terminal['State'],
+                            'after_guard_stop':True})+'\n')
 
 
 def parse_physical15(raw):

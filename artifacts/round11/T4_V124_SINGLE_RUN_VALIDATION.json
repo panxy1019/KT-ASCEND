@@ -1,0 +1,52 @@
+{
+  "admission": {
+    "min_mean_idle": 0.9968415285508575,
+    "min_numa_free_gib": {
+      "2": 230.53599166870117,
+      "3": 229.9169807434082,
+      "4": 160.73841094970703,
+      "7": 224.50027084350586
+    },
+    "training_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "windows": 12
+  },
+  "archive_sha256": {
+    "admission": "ee6d207c9ee6cf58316811df4e55530021ff67eb386b219732609839d4309b6f",
+    "result": "77cfbee7a2ad4d1d6850690ccdc56899cda7f09eee40a831d8ea29259d08b20d"
+  },
+  "block": "A",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+  "decode_lengths": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "e2e_seconds": {
+    "128": 54.2931556,
+    "256": 116.525244593,
+    "32": 15.853957467,
+    "64": 27.68091907
+  },
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "generation_attempts": 5,
+  "mode": "STATIC",
+  "output_ids_sha256": {
+    "128": "610c6345772129be1ac4ad87621b09b47761aa60900d3acaeffe527222fb3239",
+    "256": "270242beb6fc211eb70e5bac7043d5cde461b0bb1e6736a2d0e8be3658375aff",
+    "32": "601c5bcfd086dca34c80784d6b9044dbb443ef399e9d25e585246aacb74779ee",
+    "64": "cf376ec9eb70d0486df90e33d213a53d0c8b12d5469bf832c3c6ce3f9946d1ad"
+  },
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "quality": "PASS_EXACT_LENGTH_FINITE_LOGPROB_HYBRID_PATH",
+  "schema": 1,
+  "snapshot_manifest_sha256": "55c53e2f3b9c0e6fe4ec855291ccee44cf95c5a1b8ea57297138e06dfa0cf899",
+  "source_sha256": {
+    "host-controller.json": "40473e715a7175d34b649e8011d53d757262a8cc62cf51e5dde951bf87ca7ac8",
+    "post-cleanup-proc-mem.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "round11-t4-final.json": "1ae4af8e68567643316b25fc44eeb57bb9b34b0310af58975264b8250f9bd6fc",
+    "round11-t4-supervisor.json": "39ed0a9dcf5faafed9164a0562df690d8bb0ea1acb4cd936aa9cf883640726cd"
+  },
+  "status": "PASS_ROUND11_T4_SINGLE_RUN_VALIDATION",
+  "version": 124
+}

@@ -29,6 +29,16 @@ class PLEGateTests(unittest.TestCase):
                     source_identity=identity,source_sha256=sources,
                     torch_version='test',torch_npu_version='test')
             self.assertEqual(verify(gate),gate)
+            current_device=copy.deepcopy(gate);current_device['physical_device']=12
+            raw=json.dumps(current_device).encode();path.write_bytes(raw)
+            self.assertEqual(require_ple_device_gate(path,hashlib.sha256(raw).hexdigest(),
+                source_identity=identity,source_sha256=sources,
+                torch_version='test',torch_npu_version='test',expected_physical_device=12),
+                current_device)
+            with self.assertRaises(RuntimeError):
+                require_ple_device_gate(path,hashlib.sha256(raw).hexdigest(),
+                    source_identity=identity,source_sha256=sources,
+                    torch_version='test',torch_npu_version='test')
             for name, value in [('status','PENDING'),('slots',3),('max_rows',513),
                                 ('peak_extra_bytes',0),('torch_version','other'),
                                 ('source_identity',{}),('source_sha256',{})]:

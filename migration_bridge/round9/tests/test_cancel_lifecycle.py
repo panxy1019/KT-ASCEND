@@ -222,6 +222,10 @@ class CancelLifecycleTests(unittest.TestCase):
                 "migration_bridge.round9.runtime.framework_hooks.framework_cancel",
                 side_effect=lambda owner, req: order.append(
                     ("framework_cancel", owner, req)),
+            ), patch(
+                "migration_bridge.round9.runtime.dynamic_boundary.scheduler_cancel",
+                side_effect=lambda owner, req: order.append(
+                    ("dynamic_cancel", owner, req)),
             ):
                 _finalize_chunked_request(scheduler, request)
         finally:
@@ -234,8 +238,9 @@ class CancelLifecycleTests(unittest.TestCase):
         self.assertEqual(order[0], "check_finished")
         self.assertEqual(order[1], ("framework_cancel", scheduler, request))
         self.assertEqual(order[2], ("release_kv_cache", request, scheduler.tree_cache))
-        self.assertEqual(order[3], "completion_time")
-        self.assertEqual(order[4], ("stream_output", [request], False))
+        self.assertEqual(order[3], ("dynamic_cancel", scheduler, request))
+        self.assertEqual(order[4], "completion_time")
+        self.assertEqual(order[5], ("stream_output", [request], False))
         self.assertIsNone(scheduler.chunked_req)
         self.assertFalse(scheduler._chunked_req_scheduled_last_iter)
 

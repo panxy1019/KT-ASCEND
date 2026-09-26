@@ -1,0 +1,82 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+[  1%] Building CXX object third_party/llama.cpp/common/CMakeFiles/build_info.dir/build-info.cpp.o
+[  2%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/flags.cpp.o
+[  7%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx.cpp.o
+[  7%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm82.cpp.o
+[  8%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_amd_zen4.cpp.o
+[  7%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_amd_avx2.cpp.o
+[  8%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/sgemm.cpp.o
+[ 15%] Built target ggml
+[ 16%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx2.cpp.o
+[ 19%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avx512f.cpp.o
+[ 19%] Built target build_info
+[ 20%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_avxvnni.cpp.o
+[ 21%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_fma.cpp.o
+[ 23%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_amd_zen4.cpp.o
+[ 24%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_arm80.cpp.o
+[ 26%] Linking CXX static library libggml_static.a
+[ 26%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_mixmul_arm82.cpp.o
+[ 28%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx.cpp.o
+[ 29%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx2.cpp.o
+[ 30%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avx512f.cpp.o
+[ 35%] Built target llama
+[ 37%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_avxvnni.cpp.o
+[ 38%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_fma.cpp.o
+[ 39%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_amd_zen4.cpp.o
+[ 41%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_arm80.cpp.o
+[ 41%] Built target ggml_static
+[ 42%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_sgemm_arm82.cpp.o
+[ 43%] Building CXX object CMakeFiles/llamafile.dir/round9/candidate-native-src/third_party/llamafile/tinyblas_cpu_unsupported.cpp.o
+[ 46%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/sampling.cpp.o
+[ 46%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/common.cpp.o
+[ 47%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/console.cpp.o
+[ 48%] Building CXX object CMakeFiles/kt_kernel_ext.dir/ext_bindings.cpp.o
+In file included from /round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm82.cpp:9:
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1652 | IQK_ALWAYS_INLINE void compute_8_blocks(const int8x16_t * qx, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1652:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1630 | IQK_ALWAYS_INLINE void compute_8_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1630:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 1673 | IQK_ALWAYS_INLINE void compute_16_blocks(const uint8x16x4_t& qx_1, const uint8x16x4_t& qx_2, const Q8& q8,
+      |                        ^~~~~~~~~~~~~~~~~
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:1673:24: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:2147:29: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2147 | IQK_ALWAYS_INLINE int32x4_t prepare_scales_8(const uint32x4_t& v1) {
+      |                             ^~~~~~~~~~~~~~~~
+/round9/candidate-native-src/third_party/llamafile/iqk_mul_mat_arm.inc:2132:31: warning: ‘always_inline’ function might not be inlinable [-Wattributes]
+ 2132 | IQK_ALWAYS_INLINE int32x4x2_t prepare_scales_8(const uint32x4_t& v1, const uint32x4_t& v2) {
+      |                               ^~~~~~~~~~~~~~~~
+[ 50%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/grammar-parser.cpp.o
+[ 51%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/json-schema-to-grammar.cpp.o
+[ 52%] Building CXX object CMakeFiles/kt_kernel_ext.dir/cpu_backend/task_queue.cpp.o
+[ 53%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/train.cpp.o
+[ 55%] Building CXX object third_party/llama.cpp/common/CMakeFiles/common.dir/ngram-cache.cpp.o
+[ 56%] Linking CXX static library libcommon.a
+[ 56%] Built target common
+[ 57%] Linking CXX static library libllamafile.a
+[ 57%] Built target llamafile
+[ 58%] Linking CXX shared module kt_kernel_ext.cpython-311-aarch64-linux-gnu.so
+[100%] Built target kt_kernel_ext

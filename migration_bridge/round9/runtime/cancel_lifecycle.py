@@ -251,6 +251,8 @@ def _finalize_chunked_request(scheduler, request):
     # on that incidental import remaining present.
     from sglang.srt.mem_cache.common import release_kv_cache
     release_kv_cache(request, scheduler.tree_cache)
+    from .dynamic_boundary import scheduler_cancel
+    scheduler_cancel(scheduler, request)
     request.time_stats.set_completion_time()
     # Cancellation publishes only the terminal reason.  It must not commit a
     # stale logprob/top-logprob payload from the last completed chunk.

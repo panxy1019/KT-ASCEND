@@ -1,7 +1,8 @@
 import unittest
+from unittest.mock import patch
 from types import SimpleNamespace as NS
 from migration_bridge.round9.runtime.dynamic import PlacementController
-from migration_bridge.round9.runtime.dynamic_boundary import RequestBoundary
+from migration_bridge.round9.runtime.dynamic_boundary import RequestBoundary, scheduler_cancel
 class Adapter:
     def synchronize(self):pass
     def copy_expert(self,*args):pass
@@ -29,6 +30,17 @@ class BoundaryTests(unittest.TestCase):
         self.boundary.before([self.req]);self.boundary.observe(0,[3,3,1])
         self.req.done=True;self.req.req_pool_idx=self.req.mamba_pool_idx=None
         self.boundary.after();self.assertEqual(self.controller.generation,1)
+    def test_explicit_cancel_discards_routes_without_migration(self):
+        self.boundary.before([self.req]);self.boundary.observe(0,[3,3,1])
+        self.req.done=True;self.req.req_pool_idx=self.req.mamba_pool_idx=None
+        scheduler=NS(_round9_dynamic_boundary=self.boundary)
+        with patch(
+                'migration_bridge.round9.runtime.dynamic_boundary._enabled',
+                return_value=True):
+            scheduler_cancel(scheduler,self.req)
+        self.assertEqual(self.controller.generation,0)
+        self.assertEqual(self.controller._counts,{})
+        self.assertIsNone(self.boundary.request)
 class ProfileBindingTests(unittest.TestCase):
     def test_dynamic_rejects_missing_static_changed_and_partial_model_profiles(self):
         import tempfile,json

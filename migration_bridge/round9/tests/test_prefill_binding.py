@@ -6,10 +6,39 @@ from types import SimpleNamespace as NS
 import unittest
 from unittest.mock import patch
 
-from migration_bridge.round9.runtime.prefill_binding import prefill_model_ready
+from migration_bridge.round9.runtime.prefill_binding import prefill_after, prefill_model_ready
+from migration_bridge.round9.runtime.prefill_end_boundary import PrefillEndBoundary
 
 
 class PrefillBindingTests(unittest.TestCase):
+    def test_hybrid_after_commits_boundary_route_statistics(self):
+        boundary = object.__new__(PrefillEndBoundary)
+        boundary.state = 'PREFILL_ACTIVE'
+        calls = []
+        boundary.hybrid_statistics = lambda **kwargs: calls.append(('statistics', kwargs)) or {'tokens': 64}
+        boundary.prefill_complete = lambda statistics: calls.append(('complete', statistics))
+        runtime = NS(after=lambda: None)
+        scheduler = NS(
+            tp_worker=NS(model_runner=NS(_round9_prefill=runtime)),
+            _round9_dynamic_boundary=boundary,
+        )
+        self.assertEqual(prefill_after(scheduler), {'tokens': 64})
+        self.assertEqual(calls, [
+            ('statistics', {'topk': 10}),
+            ('complete', {'tokens': 64}),
+        ])
+
+    def test_hybrid_after_does_not_recommit_during_decode(self):
+        boundary = object.__new__(PrefillEndBoundary)
+        boundary.state = 'DECODE_ACTIVE'
+        boundary.hybrid_statistics = lambda **kwargs: self.fail('decode cannot republish prefill')
+        boundary.prefill_complete = lambda statistics: self.fail('decode cannot migrate')
+        scheduler = NS(
+            tp_worker=NS(model_runner=NS(_round9_prefill=NS(after=lambda: None))),
+            _round9_dynamic_boundary=boundary,
+        )
+        self.assertIsNone(prefill_after(scheduler))
+
     def test_timeline_binds_only_after_private_transport_preallocation(self):
         source = inspect.getsource(prefill_model_ready)
         self.assertLess(

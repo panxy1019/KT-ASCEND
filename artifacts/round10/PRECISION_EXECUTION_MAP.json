@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "model": {
+    "model_type": "qwen4_exp",
+    "architecture": "Qwen4ExpForConditionalGeneration",
+    "layers": 48,
+    "hidden_size": 2560,
+    "routed_expert_intermediate_size": 640,
+    "experts": 512,
+    "experts_per_token": 10,
+    "layer_pattern": "three linear-attention layers followed by one full-attention layer, repeated 12 times",
+    "linear_attention_layers": 36,
+    "full_attention_layers": 12
+  },
+  "experts": {
+    "router_and_shared_path": {
+      "provider": "SGLang Qwen4Exp model overlay and FusedMoE dispatcher",
+      "precision": "loaded BF16 model tensors; routing weights follow model/runtime dtype",
+      "source": "overlay-python/sglang/srt/models/qwen4_exp.py"
+    },
+    "cpu_routed_experts": {
+      "provider": "kt_kernel 0.6.1 LLAMAFILE MOEWrapper via kt_kernel_ext",
+      "weight_precision": "MXFP4",
+      "accumulation_contract": "CPU and resident NPU partial route sums return FP32 before one final BF16 cast",
+      "source": "overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py"
+    },
+    "npu_resident_experts": {
+      "provider": "SGLang Ascend fused MoE method",
+      "resident_count": 32,
+      "weight_precision_layout": "BF16/NZ29",
+      "placement": "uniform static Q32",
+      "dynamic_update": false
+    },
+    "layerwise_private_shadow": {
+      "provider": "Round9 AscendBF16TransportBackend",
+      "capacity": 32,
+      "weight_precision_layout": "BF16/NZ29",
+      "status": "preserved boundary path; update candidates disabled"
+    }
+  },
+  "gdn": {
+    "provider": "Qwen4ReferenceGatedDeltaNet",
+    "implementation": "sglang.srt.layers.round9.gdn.eager_gdn",
+    "layers": 36,
+    "state": "request-owned mamba2 conv and temporal state",
+    "state_dtype": "float32",
+    "source": "overlay-python/sglang/srt/models/qwen4_exp.py"
+  },
+  "qsa": {
+    "provider": "Qwen4ReferenceIndexer plus sparse_gqa/text_rope",
+    "layers": 12,
+    "indexer_compress_ratio": 4,
+    "indexer_budget": 2048,
+    "indexer_head_dim": 128,
+    "indexer_kv_heads": 1,
+    "state": "request-owned KV, QSA key state, rope position, and compressed-K buffers",
+    "source": "overlay-python/sglang/srt/models/qwen4_exp.py"
+  },
+  "ple": {
+    "provider": "Qwen4ReferencePLE with SynchronousPLE semantics and Round9 ASYNC row preparation binding",
+    "layers": [2],
+    "embedding_dim": 2560,
+    "conv_kernel": 4,
+    "table_source": "original checkpoint BF16 rows",
+    "mode": "ASYNC",
+    "state": "request-owned ngram context and short-conv state",
+    "source": "overlay-python/sglang/srt/models/qwen4_exp.py"
+  },
+  "hyperconnection_and_residual": {
+    "provider": "sglang.srt.layers.round9.hyperconnection.GatedResidual",
+    "hyperconnection_count": 4,
+    "low_rank_size": 320,
+    "source": "overlay-python/sglang/srt/models/qwen4_exp.py"
+  },
+  "attention": {
+    "backend": "ascend",
+    "dtype": "bfloat16",
+    "graph": false,
+    "mtp": false
+  },
+  "evidence": [
+    "artifacts/round10/T0_MODEL_IDENTITY.json",
+    "artifacts/round10/T0_PROVIDER_IDENTITY.json",
+    "artifacts/round9-fixed-shadow32-update-20260925/v90/run/server-profile.json",
+    "artifacts/round9-fixed-shadow32-update-20260925/v90/run/framework-profile.json"
+  ],
+  "qualification_boundary": "This map records the current providers and intended precision/state ownership. Independent GDN/QSA/PLE correctness qualification remains T5 work."
+}

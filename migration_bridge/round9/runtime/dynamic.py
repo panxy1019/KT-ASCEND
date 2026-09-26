@@ -6,6 +6,15 @@ No automatic scheduler hook and no token-level update is installed here.
 """
 from dataclasses import dataclass
 import threading
+import time
+
+
+def _record_timing(timing, name, started_ns, clock):
+    if timing is not None:
+        elapsed = int(clock()) - int(started_ns)
+        if elapsed < 0:
+            raise RuntimeError('non-monotonic Dynamic timing clock')
+        timing[name] = timing.get(name, 0) + elapsed
 
 
 @dataclass(frozen=True)
@@ -90,10 +99,12 @@ class PlacementController:
     def commit(self,plans):
         return self._commit(plans)
 
-    def _commit(self,plans,*,allow_live_prefill=False):
+    def _commit(self,plans,*,allow_live_prefill=False,timing=None,clock=None):
+        clock = clock or time.monotonic_ns
         with self._lock:
             self._ready()
             if self._active is not None and not allow_live_prefill:raise RuntimeError('request still active')
+            selection_started = clock() if timing is not None else None
             plans=tuple(plans)
             if plans!=self._plan(allow_live_prefill=allow_live_prefill):raise ValueError('stale/incomplete or forged migration plan')
             seen=set()
@@ -103,10 +114,17 @@ class PlacementController:
                 if plan.generation!=self.generation or plan.observation_epoch!=self._observation_epoch or plan.previous!=self._residents[plan.layer]:raise ValueError('stale generation/placement')
                 expected=tuple((i,x) for i,x in enumerate(plan.slots) if x!=plan.previous[i])
                 if not expected or plan.moves!=expected:raise ValueError('incomplete migration diff')
+            if timing is not None:
+                _record_timing(timing, 'selection', selection_started, clock)
             if not plans:
-                self._counts.clear();return self.generation
+                cleanup_started = clock() if timing is not None else None
+                self._counts.clear()
+                if timing is not None:
+                    _record_timing(timing, 'cleanup', cleanup_started, clock)
+                return self.generation
             self.state='MIGRATING';next_generation=self.generation+1
             try:
+                copy_started = clock() if timing is not None else None
                 self.adapter.synchronize()
                 for plan in plans:
                     batch_copy=getattr(self.adapter,'copy_experts',None)
@@ -114,10 +132,21 @@ class PlacementController:
                     else:
                         for slot,logical in plan.moves:self.adapter.copy_expert(plan.layer,slot,logical)
                 self.adapter.synchronize()
+                if timing is not None:
+                    _record_timing(timing, 'migration_copy_and_sync', copy_started, clock)
+                publication_started = clock() if timing is not None else None
                 for plan in plans:self.adapter.publish(plan.layer,plan.slots,next_generation)
+                if timing is not None:
+                    _record_timing(timing, 'mapping_publication', publication_started, clock)
+                fence_started = clock() if timing is not None else None
                 self.adapter.synchronize()
+                if timing is not None:
+                    _record_timing(timing, 'state_fence_after', fence_started, clock)
+                cleanup_started = clock() if timing is not None else None
                 for plan in plans:self._residents[plan.layer]=plan.slots
                 self.generation=next_generation;self._counts.clear();self.state='READY'
+                if timing is not None:
+                    _record_timing(timing, 'cleanup', cleanup_started, clock)
                 return self.generation
             except BaseException:
                 # Device writes may already have happened. Metadata rollback alone
@@ -125,7 +154,8 @@ class PlacementController:
                 self.state='BROKEN_RELOAD_REQUIRED'
                 raise
 
-    def commit_prefill(self,request_id,generation,statistics,*,placement_consumers_drained):
+    def commit_prefill(self,request_id,generation,statistics,*,placement_consumers_drained,
+                       timing=None,clock=None):
         """Opt-in live barrier; preserve the active request and reuse one engine.
 
         Caller synchronizes old-placement consumers, verifies the same KV/GDN/PLE
@@ -134,6 +164,11 @@ class PlacementController:
         first output token belongs to the previous placement epoch.
         """
         from .route_stats import frequency_mask
+        clock = clock or time.monotonic_ns
+        if timing is not None:
+            for name in ('selection','migration_copy_and_sync','mapping_publication',
+                         'state_fence_after','cleanup'):
+                timing.setdefault(name, 0)
         with self._lock:
             self._ready()
             if (self._active is None or self._active!=request_id or
@@ -147,11 +182,14 @@ class PlacementController:
                     statistics.get('layers')!=len(self._residents) or
                     set(self._residents)!=set(range(len(self._residents)))):
                 raise ValueError('complete source-bound prefill statistics required')
+            selection_started = clock() if timing is not None else None
             frequency_mask(statistics,self.resident)  # geometry/token conservation validation
             if (set(self._counts)!=set(self._residents) or
                     any(self._counts[layer]!=statistics['counts'][layer] for layer in self._residents)):
                 raise ValueError('prefill statistics differ from leased logical routes')
             plans=self._plan(allow_live_prefill=True)
-            result=self._commit(plans,allow_live_prefill=True)
+            if timing is not None:
+                _record_timing(timing, 'selection', selection_started, clock)
+            result=self._commit(plans,allow_live_prefill=True,timing=timing,clock=clock)
             self._prefill_committed=True
             return result

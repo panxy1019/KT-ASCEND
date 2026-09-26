@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T4_BREAK_EVEN",
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "process_blocks": "STATIC_A_DYNAMIC_A_DYNAMIC_B_STATIC_B",
+  "decode_lengths": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "S_static_seconds_per_token": 0.3964049145,
+  "D_dynamic_seconds_per_token": 0.4052964265,
+  "M_migration_exposed_seconds": 13.824945035999999,
+  "N_break_even_tokens": null,
+  "request_confirmed_at_tokens": null,
+  "disposition": "NO_FINITE_BREAK_EVEN",
+  "per_length_e2e": {
+    "32": {
+      "static_e2e_median_seconds": 16.2749544365,
+      "dynamic_e2e_median_seconds": 32.910214232
+    },
+    "64": {
+      "static_e2e_median_seconds": 28.5433998675,
+      "dynamic_e2e_median_seconds": 43.023364398
+    },
+    "128": {
+      "static_e2e_median_seconds": 54.391936121,
+      "dynamic_e2e_median_seconds": 68.8117710705
+    },
+    "256": {
+      "static_e2e_median_seconds": 115.864638139,
+      "dynamic_e2e_median_seconds": 131.757030777
+    }
+  },
+  "migration_phase_median_seconds": {
+    "route_statistics": 0.0151270895,
+    "consumer_drain_sync": 5.7907499999999994e-05,
+    "state_fence_before": 0.1161619785,
+    "selection": 0.021160099,
+    "migration_copy_and_sync": 13.536355479000001,
+    "mapping_publication": 0.0087253775,
+    "state_fence_after": 0.128063596,
+    "cleanup": 9.80545e-05,
+    "total_exposed": 13.824945035999999
+  },
+  "migration_phase_interpretation": "All phases are exclusive subdivisions of total_exposed. The first-to-second token interval is excluded from S and D because it contains M.",
+  "quality": {
+    "all_output_budgets_completed": true,
+    "all_logprobs_finite": true,
+    "all_live_state_preserved": true,
+    "same_mode_output_ids_exact": true,
+    "cross_mode_bit_exact_required": false
+  },
+  "cleanup": "ALL_FOUR_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY"
+}

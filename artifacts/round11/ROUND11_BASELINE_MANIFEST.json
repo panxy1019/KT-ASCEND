@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "identity": "ROUND11_HFINAL_FROM_ROUND10_V107",
+  "status": "FROZEN_VERIFIED",
+  "repository": {
+    "branch": "codex/round11-hybrid-performance-backend",
+    "base_head": "b41e901c059222b8c1e4367abe193d7f58cc1d83",
+    "dirty_round9_round10_state_preserved": true
+  },
+  "parent": {
+    "round10_status": "ROUND10_AB_NARROW_QUALIFIED",
+    "round10_final_status_sha256": "52ed35beb83da4285a584147949d96cf5d9914f1403ea73a28b4569f026b34c2",
+    "t6_result_sha256": "62dab2f4a96b533e2469f96cb14ce15d8346091361ace63394a1be8fe9f2739c"
+  },
+  "snapshot": {
+    "local_root": "artifacts/round10/t6-snapshots/v107",
+    "remote_root": "/mnt/data1/kt-round9/round10-t6-final-v107",
+    "manifest_sha256": "8bf610b72d7b0967d1ed26f7befde5e6f97d33120231de18142447bf769ab51b",
+    "manifest_entries_checked": 2568,
+    "missing": 0,
+    "mismatches": 0
+  },
+  "model": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "remote_root": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "model_type": "qwen4_exp",
+    "architecture": "Qwen4ExpForConditionalGeneration",
+    "config_sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+    "tokenizer_json_sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+    "tokenizer_config_sha256": "b11349aafa7cdc6a320767cf7ceb29ed82f7eda5d65e8e0819e76f0ce947bf27",
+    "weight_index_sha256": "99e815241ef03325536b0aaa4441deea45174c17fae31e10f0bb456410c590de"
+  },
+  "runtime": {
+    "image_id": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+    "python": "3.11.15",
+    "cann_home": "/usr/local/Ascend/cann-9.0.0",
+    "torch": "2.9.0+cpu",
+    "torch_npu": "2.9.0.post2",
+    "transformers": "5.3.0.dev0",
+    "sglang": "0.0.0.dev0",
+    "kt_kernel": "0.6.1",
+    "kt_kernel_ext_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d"
+  },
+  "configuration": {
+    "threshold_tokens": 129,
+    "selection_basis": "REQUEST_TOTAL",
+    "input_scope_tokens_lte": 128,
+    "cpu_backend": "C128_MXFP4_CURRENT",
+    "npu_resident": "Q32_BF16_NZ29",
+    "shadow": "FIXED32_ORIGINAL",
+    "chunk_tokens": 32,
+    "dynamic": "OFF",
+    "ple": "ASYNC_CURRENT",
+    "r2_r3_transpose_shadow320": "OFF",
+    "tp": 1,
+    "concurrency": 1,
+    "profiler": "OFF",
+    "physical_device": 12,
+    "npu_smi_card": 6,
+    "npu_smi_chip": 0,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "workers_per_pool": 32,
+    "threadpool_count": 4,
+    "cpu_bank": "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1"
+  },
+  "frozen_facts": [
+    "HYBRID_LE_128_NARROW_PASS",
+    "DECODE_32_49_PASS",
+    "CANCEL_REUSE_PASS",
+    "C128_MXFP4_NUMERIC_PASS",
+    "DYNAMIC_TRANSACTION_PASS_DEFAULT_OFF",
+    "GDN_QSA_PLE_CORRECTNESS_PASS"
+  ],
+  "disabled": [
+    "R2",
+    "R3",
+    "TRANSPOSE_VIEW",
+    "SHADOW320",
+    "SINGLE_PARENT_ASYNC_TRANSPORT"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "abort_controls_consumed": 1,
+  "classification": "OBSERVER_VALIDATOR_EVENT_NAME_DRIFT",
+  "cleanup": "PASS",
+  "frozen_runtime_event_name": "SUBMIT_FENCE_PUBLISHED",
+  "invalid_required_name": "CANCEL_FENCE_ADVANCED",
+  "model_runtime_regression": false,
+  "passing_rows_before_failure": 13,
+  "physical_generations_consumed": 15,
+  "raw_runtime_lifecycle": [
+    "CANCEL_SEEN",
+    "SUBMIT_FENCE_PUBLISHED",
+    "REQUEST_RETIRED",
+    "CANCEL_CLEANUP_COMMITTED"
+  ],
+  "repair_plan": "new v112 two-generation HYBRID_CANCEL_REPAIR; immutable v109 prefix plus repair composed explicitly",
+  "result_sha256": "06bee31bef74dd21378bf2660ca9f4783a81df0237cbdebc710d4793d2c068a1",
+  "reuse_row_passed": true,
+  "schema": "round11_t1_v109_failure_analysis_v1",
+  "status": "FAIL_PRESERVED_REPAIRABLE_CONTROLLER_CONTRACT",
+  "supervisor_sha256": "2cc1cb30b47eb5a8aa6d136bb14a9784cdc3de036d30d62d6b6afa2e233ab96f",
+  "version": 109
+}

@@ -342,7 +342,10 @@ class AscendBF16TransportBackend:
     status = 'DEVICE_PENDING_LAYERWISE_BF16_TRANSPORT'
 
     def __init__(self, template_layer, original_model_path, *, capacity=32,
-                 layers=48, experts=512, host_staging_limit=64 * 1024**2):
+                 layers=48, experts=512, host_staging_limit=64 * 1024**2,
+                 enable_same_layer_slot_reuse=False):
+        if type(enable_same_layer_slot_reuse) is not bool:
+            raise ValueError('same-layer slot reuse flag must be boolean')
         self.template_layer = template_layer
         self.original_model_path = original_model_path
         self.capacity = _positive_int(capacity, 'capacity')
@@ -359,6 +362,25 @@ class AscendBF16TransportBackend:
         self._synchronized = None
         self.state = 'NEW'
         self.measured_preallocation_peak_bytes = None
+        self._slot_reuse = None
+        if enable_same_layer_slot_reuse:
+            if self.capacity != 32 or self.layers != 48:
+                raise ValueError('same-layer slot reuse requires the fixed shadow32 all48 profile')
+            from .slot_reuse import SameLayerSlotReuse
+            self._slot_reuse = SameLayerSlotReuse(capacity=self.capacity)
+
+    def slot_reuse_snapshot(self):
+        if self._slot_reuse is not None:
+            return self._slot_reuse.snapshot()
+        return {
+            'enabled': False,
+            'committed_scope': None,
+            'committed_slots': {},
+            'pending_identity': None,
+            'requested_slots': 0,
+            'cache_hits': 0,
+            'changed_slots': 0,
+        }
 
     def preallocate(self, reservation):
         if self.state != 'NEW':
@@ -465,6 +487,8 @@ class AscendBF16TransportBackend:
             ).StandardTopKOutput
             self.state = 'READY'
         except BaseException as primary:
+            if self._slot_reuse is not None:
+                self._slot_reuse.invalidate()
             self.state = 'BROKEN_RELOAD_REQUIRED'
             self.shadow = self.method = self.adapter = None
             adapter = raw_adapter = method_map = layer_map = method = shadow = source = None
@@ -485,33 +509,52 @@ class AscendBF16TransportBackend:
             raise RuntimeError('invalid shadow-bank group identity')
         self._current = identity
         self._synchronized = None
-        moves = tuple(enumerate(group.logical_experts))
-        self.adapter.copy_experts(layer, moves)
-        torch = self._torch
-        rows = torch.tensor(group.rows, dtype=torch.int64, device=self.device)
-        hidden = hidden_states.index_select(0, rows)
-        weights = topk_weights.index_select(0, rows)
-        remapped = torch.tensor(
-            group.remapped_ids, dtype=torch.int32, device=self.device
-        )
-        dispatch = self._StandardDispatchOutput(
-            hidden, None, self._StandardTopKOutput(weights, remapped, None)
-        )
-        result = self.method.apply(self.shadow, dispatch).hidden_states
-        return tuple(result[index] for index in range(result.shape[0]))
+        try:
+            moves = tuple(enumerate(group.logical_experts))
+            remapped_ids = group.remapped_ids
+            if self._slot_reuse is not None:
+                plan = self._slot_reuse.prepare(
+                    layer, group.logical_experts, group.remapped_ids, identity
+                )
+                moves, remapped_ids = plan.moves, plan.remapped_ids
+            self.adapter.copy_experts(layer, moves)
+            torch = self._torch
+            rows = torch.tensor(group.rows, dtype=torch.int64, device=self.device)
+            hidden = hidden_states.index_select(0, rows)
+            weights = topk_weights.index_select(0, rows)
+            remapped = torch.tensor(
+                remapped_ids, dtype=torch.int32, device=self.device
+            )
+            dispatch = self._StandardDispatchOutput(
+                hidden, None, self._StandardTopKOutput(weights, remapped, None)
+            )
+            result = self.method.apply(self.shadow, dispatch).hidden_states
+            return tuple(result[index] for index in range(result.shape[0]))
+        except BaseException:
+            if self._slot_reuse is not None:
+                self._slot_reuse.invalidate()
+            raise
 
     def synchronize(self, identity):
         if self._current != identity:
+            if self._slot_reuse is not None:
+                self._slot_reuse.invalidate()
             raise RuntimeError('stale private shadow allocation')
         try:
             self._torch.npu.synchronize(self.device)
+            if self._slot_reuse is not None:
+                self._slot_reuse.publish_if_pending(identity)
         except BaseException:
+            if self._slot_reuse is not None:
+                self._slot_reuse.invalidate()
             self.state = 'BROKEN_RELOAD_REQUIRED'
             raise
         self._synchronized = identity
 
     def release(self, identity):
         if self._current != identity or self._synchronized != identity:
+            if self._slot_reuse is not None:
+                self._slot_reuse.invalidate()
             raise RuntimeError('stale private shadow release')
         self._current = None
         self._synchronized = None
@@ -520,6 +563,8 @@ class AscendBF16TransportBackend:
         return self._torch.stack(rows, dim=0).to(dtype=hidden_states.dtype)
 
     def abort(self, request_id):
+        if self._slot_reuse is not None:
+            self._slot_reuse.invalidate()
         if self.state != 'READY':
             raise RuntimeError(self.state)
         if self._current is not None:
@@ -532,4 +577,6 @@ class AscendBF16TransportBackend:
             self._synchronized = None
 
     def fail_stop(self, error):
+        if self._slot_reuse is not None:
+            self._slot_reuse.invalidate()
         self.state = 'BROKEN_RELOAD_REQUIRED'

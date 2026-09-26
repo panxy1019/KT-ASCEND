@@ -1,0 +1,6271 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T2_DEEP_ATTRIBUTION",
+  "scope": "ROUND11_T2_REAL_LAYER0_C128_MXFP4_DEEP_ATTRIBUTION",
+  "iterations": 3000,
+  "warmups": 5,
+  "tokens": 3,
+  "numa_nodes": [
+    2,
+    3,
+    4,
+    7
+  ],
+  "cpu_workers": 128,
+  "threadpool_count": 4,
+  "profiler": "NATIVE_RUNTIME_PHASE_TIMING_AND_PROC_THREAD_ACCOUNTING",
+  "admission": {
+    "sha256": "89794520698214c31dd7bfef38c6ef9bfa6fcdd64ba88f268c9188d2ab0ae2d5",
+    "ended_at": 1790413107.54333,
+    "windows": 12,
+    "min_mean_idle": 0.996829827113945,
+    "training_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef"
+  },
+  "capture_sha256": "c837641468b9db93c422a3610af7a7ecc1f14d4bbb359841d69ac0dfd655dc6e",
+  "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+  "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+  "native_path": "/round9/candidate-runtime-python/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+  "binary_role": "FROZEN_HFINAL_NATIVE",
+  "attribution_build_receipt": null,
+  "output_sha256": "f5e189843493b9f42fcf724d9487ec5e1b9c630a6b0e780079cbc2bf6053f7c4",
+  "repeat_hash_exact": true,
+  "parent_and_exclusive_us": {
+    "total_parent": {
+      "count": 3000,
+      "median_us": 371.548,
+      "p05_us": 366.137,
+      "p95_us": 397.96355,
+      "min_us": 360.967,
+      "max_us": 555.376,
+      "mean_us": 374.87643266666663
+    },
+    "submit_parent": {
+      "count": 3000,
+      "median_us": 61.2675,
+      "p05_us": 60.343,
+      "p95_us": 68.15445,
+      "min_us": 59.593,
+      "max_us": 138.706,
+      "mean_us": 62.164497000000004
+    },
+    "pinned_gather_and_metadata": {
+      "count": 3000,
+      "median_us": 18.0205,
+      "p05_us": 17.601,
+      "p95_us": 19.471,
+      "min_us": 17.15,
+      "max_us": 62.333,
+      "mean_us": 18.247332
+    },
+    "enqueue_and_task_construction_exclusive": {
+      "count": 3000,
+      "median_us": 43.262,
+      "p05_us": 42.512,
+      "p95_us": 48.28345,
+      "min_us": 41.932,
+      "max_us": 76.37299999999999,
+      "mean_us": 43.917165
+    },
+    "sync_parent": {
+      "count": 3000,
+      "median_us": 309.22450000000003,
+      "p05_us": 304.47349999999994,
+      "p95_us": 333.21004999999997,
+      "min_us": 299.024,
+      "max_us": 494.603,
+      "mean_us": 312.04908
+    },
+    "exposed_queue_and_compute_wait_exclusive": {
+      "count": 3000,
+      "median_us": 296.524,
+      "p05_us": 291.94255,
+      "p95_us": 320.36099999999993,
+      "min_us": 286.654,
+      "max_us": 482.41200000000003,
+      "mean_us": 299.2646893333333
+    },
+    "result_publication": {
+      "count": 3000,
+      "median_us": 12.591,
+      "p05_us": 12.24,
+      "p95_us": 13.800999999999998,
+      "min_us": 11.881,
+      "max_us": 36.112,
+      "mean_us": 12.784390666666667
+    }
+  },
+  "native_phases": {
+    "tp_partitions": {
+      "0": {
+        "calls": 9015,
+        "quant_us_per_row": 2.6,
+        "gateup_activation_us_per_row": 27.1,
+        "down_weighted_sum_us_per_row": 47.1
+      },
+      "3": {
+        "calls": 9015,
+        "quant_us_per_row": 2.1,
+        "gateup_activation_us_per_row": 27.5,
+        "down_weighted_sum_us_per_row": 47.1
+      },
+      "1": {
+        "calls": 9015,
+        "quant_us_per_row": 2.6,
+        "gateup_activation_us_per_row": 27.7,
+        "down_weighted_sum_us_per_row": 48.3
+      },
+      "2": {
+        "calls": 9015,
+        "quant_us_per_row": 2.5,
+        "gateup_activation_us_per_row": 27.4,
+        "down_weighted_sum_us_per_row": 47.8
+      }
+    },
+    "critical_tp_compute_us_per_group": 235.79999999999998,
+    "fastest_tp_compute_us_per_group": 230.10000000000002,
+    "tp_partition_imbalance_ratio": 1.0247718383311601,
+    "merge": {
+      "calls": 3005,
+      "merge_publication_us_per_group": 10.8
+    },
+    "native_compute_plus_merge_us_per_group": 246.6
+  },
+  "queue_wait_separation": "BOUNDED_RESIDUAL_ONLY_WITH_FROZEN_BINARY",
+  "thread_accounting": {
+    "elapsed_ns": 1126161489,
+    "clock_ticks_per_second": 100,
+    "compute_thread_ids": [
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218
+    ],
+    "rows": [
+      {
+        "tid": 71,
+        "name": "python",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 634,
+        "cpu_ticks": 42,
+        "sched_runtime_ns": 427078830,
+        "sched_wait_ns": 4970,
+        "sched_timeslices": 3000
+      },
+      {
+        "tid": 73,
+        "name": "PlogFlush",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 624,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 36760,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 57
+      },
+      {
+        "tid": 74,
+        "name": "WatchdogMonitor",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 624,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 49350,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 6
+      },
+      {
+        "tid": 75,
+        "name": "AtraceMonitor",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 624,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 4960,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 12
+      },
+      {
+        "tid": 80,
+        "name": "adx_data_dump_t",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 624,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 38430,
+        "sched_wait_ns": 4580,
+        "sched_timeslices": 3
+      },
+      {
+        "tid": 82,
+        "name": "TraceClientRecv",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 624,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 67060,
+        "sched_wait_ns": 1900,
+        "sched_timeslices": 8
+      },
+      {
+        "tid": 83,
+        "name": "MONITOR_0",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 626,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 120110,
+        "sched_wait_ns": 2280,
+        "sched_timeslices": 58
+      },
+      {
+        "tid": 84,
+        "name": "REPORT_RAS",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 626,
+        "cpu_ticks": 0,
+        "sched_runtime_ns": 79880,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 86,
+        "name": "python",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 628,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1142619190,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 88,
+        "name": "numa_2_t_1",
+        "allowed_cpus": "162",
+        "last_cpu": 162,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139668160,
+        "sched_wait_ns": 3659480,
+        "sched_timeslices": 293
+      },
+      {
+        "tid": 89,
+        "name": "numa_2_t_2",
+        "allowed_cpus": "164",
+        "last_cpu": 164,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139594320,
+        "sched_wait_ns": 3631630,
+        "sched_timeslices": 293
+      },
+      {
+        "tid": 90,
+        "name": "numa_2_t_3",
+        "allowed_cpus": "166",
+        "last_cpu": 166,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1142826190,
+        "sched_wait_ns": 27130,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 91,
+        "name": "numa_2_t_4",
+        "allowed_cpus": "168",
+        "last_cpu": 168,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1142451770,
+        "sched_wait_ns": 31100,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 92,
+        "name": "numa_2_t_5",
+        "allowed_cpus": "170",
+        "last_cpu": 170,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138499740,
+        "sched_wait_ns": 25460,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 93,
+        "name": "numa_2_t_6",
+        "allowed_cpus": "172",
+        "last_cpu": 172,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138585960,
+        "sched_wait_ns": 29810,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 94,
+        "name": "numa_2_t_7",
+        "allowed_cpus": "174",
+        "last_cpu": 174,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138624460,
+        "sched_wait_ns": 24050,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 95,
+        "name": "numa_2_t_8",
+        "allowed_cpus": "176",
+        "last_cpu": 176,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137971800,
+        "sched_wait_ns": 26950,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 96,
+        "name": "numa_2_t_9",
+        "allowed_cpus": "178",
+        "last_cpu": 178,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137830500,
+        "sched_wait_ns": 47830,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 97,
+        "name": "numa_2_t_10",
+        "allowed_cpus": "180",
+        "last_cpu": 180,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137826980,
+        "sched_wait_ns": 54770,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 98,
+        "name": "numa_2_t_11",
+        "allowed_cpus": "182",
+        "last_cpu": 182,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137925840,
+        "sched_wait_ns": 49600,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 99,
+        "name": "numa_2_t_12",
+        "allowed_cpus": "184",
+        "last_cpu": 184,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137823800,
+        "sched_wait_ns": 51410,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 100,
+        "name": "numa_2_t_13",
+        "allowed_cpus": "186",
+        "last_cpu": 186,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137763480,
+        "sched_wait_ns": 50630,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 101,
+        "name": "numa_2_t_14",
+        "allowed_cpus": "188",
+        "last_cpu": 188,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137834660,
+        "sched_wait_ns": 48550,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 102,
+        "name": "numa_2_t_15",
+        "allowed_cpus": "190",
+        "last_cpu": 190,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137976930,
+        "sched_wait_ns": 25860,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 103,
+        "name": "numa_2_t_16",
+        "allowed_cpus": "192",
+        "last_cpu": 192,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137916820,
+        "sched_wait_ns": 26860,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 104,
+        "name": "numa_2_t_17",
+        "allowed_cpus": "194",
+        "last_cpu": 194,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137907010,
+        "sched_wait_ns": 23620,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 105,
+        "name": "numa_2_t_18",
+        "allowed_cpus": "196",
+        "last_cpu": 196,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137820470,
+        "sched_wait_ns": 25880,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 106,
+        "name": "numa_2_t_19",
+        "allowed_cpus": "198",
+        "last_cpu": 198,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138170840,
+        "sched_wait_ns": 27630,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 107,
+        "name": "numa_2_t_20",
+        "allowed_cpus": "200",
+        "last_cpu": 200,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138393260,
+        "sched_wait_ns": 25260,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 108,
+        "name": "numa_2_t_21",
+        "allowed_cpus": "202",
+        "last_cpu": 202,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138248710,
+        "sched_wait_ns": 23510,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 109,
+        "name": "numa_2_t_22",
+        "allowed_cpus": "204",
+        "last_cpu": 204,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138386450,
+        "sched_wait_ns": 26860,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 110,
+        "name": "numa_2_t_23",
+        "allowed_cpus": "206",
+        "last_cpu": 206,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138117450,
+        "sched_wait_ns": 25610,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 111,
+        "name": "numa_2_t_24",
+        "allowed_cpus": "208",
+        "last_cpu": 208,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138874550,
+        "sched_wait_ns": 925700,
+        "sched_timeslices": 28
+      },
+      {
+        "tid": 112,
+        "name": "numa_2_t_25",
+        "allowed_cpus": "210",
+        "last_cpu": 210,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139336680,
+        "sched_wait_ns": 28820,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 113,
+        "name": "numa_2_t_26",
+        "allowed_cpus": "212",
+        "last_cpu": 212,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1140711530,
+        "sched_wait_ns": 22140,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 114,
+        "name": "numa_2_t_27",
+        "allowed_cpus": "214",
+        "last_cpu": 214,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1140423030,
+        "sched_wait_ns": 24830,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 115,
+        "name": "numa_2_t_28",
+        "allowed_cpus": "216",
+        "last_cpu": 216,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1140813670,
+        "sched_wait_ns": 29220,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 116,
+        "name": "numa_2_t_29",
+        "allowed_cpus": "218",
+        "last_cpu": 218,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1140822070,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 117,
+        "name": "numa_2_t_30",
+        "allowed_cpus": "220",
+        "last_cpu": 220,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1140324270,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 118,
+        "name": "numa_2_t_31",
+        "allowed_cpus": "222",
+        "last_cpu": 222,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1140483880,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 120,
+        "name": "numa_3_t_1",
+        "allowed_cpus": "242",
+        "last_cpu": 242,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137237210,
+        "sched_wait_ns": 31080,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 121,
+        "name": "numa_3_t_2",
+        "allowed_cpus": "244",
+        "last_cpu": 244,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137317970,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 122,
+        "name": "numa_3_t_3",
+        "allowed_cpus": "246",
+        "last_cpu": 246,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1141373810,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 123,
+        "name": "numa_3_t_4",
+        "allowed_cpus": "248",
+        "last_cpu": 248,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1141698660,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 124,
+        "name": "numa_3_t_5",
+        "allowed_cpus": "250",
+        "last_cpu": 250,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1141632260,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 125,
+        "name": "numa_3_t_6",
+        "allowed_cpus": "252",
+        "last_cpu": 252,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137561080,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 126,
+        "name": "numa_3_t_7",
+        "allowed_cpus": "254",
+        "last_cpu": 254,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137586590,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 127,
+        "name": "numa_3_t_8",
+        "allowed_cpus": "256",
+        "last_cpu": 256,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137098480,
+        "sched_wait_ns": 14610,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 128,
+        "name": "numa_3_t_9",
+        "allowed_cpus": "258",
+        "last_cpu": 258,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137003070,
+        "sched_wait_ns": 20100,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 129,
+        "name": "numa_3_t_10",
+        "allowed_cpus": "260",
+        "last_cpu": 260,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137021570,
+        "sched_wait_ns": 46550,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 130,
+        "name": "numa_3_t_11",
+        "allowed_cpus": "262",
+        "last_cpu": 262,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137215360,
+        "sched_wait_ns": 42420,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 131,
+        "name": "numa_3_t_12",
+        "allowed_cpus": "264",
+        "last_cpu": 264,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137230720,
+        "sched_wait_ns": 29040,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 132,
+        "name": "numa_3_t_13",
+        "allowed_cpus": "266",
+        "last_cpu": 266,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137151550,
+        "sched_wait_ns": 29360,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 133,
+        "name": "numa_3_t_14",
+        "allowed_cpus": "268",
+        "last_cpu": 268,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137111480,
+        "sched_wait_ns": 26660,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 134,
+        "name": "numa_3_t_15",
+        "allowed_cpus": "270",
+        "last_cpu": 270,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137285010,
+        "sched_wait_ns": 29270,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 135,
+        "name": "numa_3_t_16",
+        "allowed_cpus": "272",
+        "last_cpu": 272,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137608540,
+        "sched_wait_ns": 27420,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 136,
+        "name": "numa_3_t_17",
+        "allowed_cpus": "274",
+        "last_cpu": 274,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137598460,
+        "sched_wait_ns": 28780,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 137,
+        "name": "numa_3_t_18",
+        "allowed_cpus": "276",
+        "last_cpu": 276,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137608820,
+        "sched_wait_ns": 28390,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 138,
+        "name": "numa_3_t_19",
+        "allowed_cpus": "278",
+        "last_cpu": 278,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137407940,
+        "sched_wait_ns": 25600,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 139,
+        "name": "numa_3_t_20",
+        "allowed_cpus": "280",
+        "last_cpu": 280,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137289450,
+        "sched_wait_ns": 28020,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 140,
+        "name": "numa_3_t_21",
+        "allowed_cpus": "282",
+        "last_cpu": 282,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137286200,
+        "sched_wait_ns": 27260,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 141,
+        "name": "numa_3_t_22",
+        "allowed_cpus": "284",
+        "last_cpu": 284,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137110580,
+        "sched_wait_ns": 26410,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 142,
+        "name": "numa_3_t_23",
+        "allowed_cpus": "286",
+        "last_cpu": 286,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137250450,
+        "sched_wait_ns": 28230,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 143,
+        "name": "numa_3_t_24",
+        "allowed_cpus": "288",
+        "last_cpu": 288,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137523100,
+        "sched_wait_ns": 27630,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 144,
+        "name": "numa_3_t_25",
+        "allowed_cpus": "290",
+        "last_cpu": 290,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137659560,
+        "sched_wait_ns": 26120,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 145,
+        "name": "numa_3_t_26",
+        "allowed_cpus": "292",
+        "last_cpu": 292,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137546670,
+        "sched_wait_ns": 29200,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 146,
+        "name": "numa_3_t_27",
+        "allowed_cpus": "294",
+        "last_cpu": 294,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1137566180,
+        "sched_wait_ns": 26750,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 147,
+        "name": "numa_3_t_28",
+        "allowed_cpus": "296",
+        "last_cpu": 296,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137505970,
+        "sched_wait_ns": 45390,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 148,
+        "name": "numa_3_t_29",
+        "allowed_cpus": "298",
+        "last_cpu": 298,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137460860,
+        "sched_wait_ns": 43490,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 149,
+        "name": "numa_3_t_30",
+        "allowed_cpus": "300",
+        "last_cpu": 300,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137555700,
+        "sched_wait_ns": 11990,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 150,
+        "name": "numa_3_t_31",
+        "allowed_cpus": "302",
+        "last_cpu": 302,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137719990,
+        "sched_wait_ns": 14990,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 152,
+        "name": "numa_4_t_1",
+        "allowed_cpus": "322",
+        "last_cpu": 322,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138051430,
+        "sched_wait_ns": 29860,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 153,
+        "name": "numa_4_t_2",
+        "allowed_cpus": "324",
+        "last_cpu": 324,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138022470,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 154,
+        "name": "numa_4_t_3",
+        "allowed_cpus": "326",
+        "last_cpu": 326,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138006430,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 155,
+        "name": "numa_4_t_4",
+        "allowed_cpus": "328",
+        "last_cpu": 328,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139735550,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 156,
+        "name": "numa_4_t_5",
+        "allowed_cpus": "330",
+        "last_cpu": 330,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1142534440,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 157,
+        "name": "numa_4_t_6",
+        "allowed_cpus": "332",
+        "last_cpu": 332,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1143571310,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 158,
+        "name": "numa_4_t_7",
+        "allowed_cpus": "334",
+        "last_cpu": 334,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1142549430,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 159,
+        "name": "numa_4_t_8",
+        "allowed_cpus": "336",
+        "last_cpu": 336,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138209180,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 160,
+        "name": "numa_4_t_9",
+        "allowed_cpus": "338",
+        "last_cpu": 338,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138099340,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 161,
+        "name": "numa_4_t_10",
+        "allowed_cpus": "340",
+        "last_cpu": 340,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139442820,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 162,
+        "name": "numa_4_t_11",
+        "allowed_cpus": "342",
+        "last_cpu": 342,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139262440,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 163,
+        "name": "numa_4_t_12",
+        "allowed_cpus": "344",
+        "last_cpu": 344,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139356200,
+        "sched_wait_ns": 25730,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 164,
+        "name": "numa_4_t_13",
+        "allowed_cpus": "346",
+        "last_cpu": 346,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137946490,
+        "sched_wait_ns": 29460,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 165,
+        "name": "numa_4_t_14",
+        "allowed_cpus": "348",
+        "last_cpu": 348,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138061430,
+        "sched_wait_ns": 26140,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 166,
+        "name": "numa_4_t_15",
+        "allowed_cpus": "350",
+        "last_cpu": 350,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1137972880,
+        "sched_wait_ns": 29360,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 167,
+        "name": "numa_4_t_16",
+        "allowed_cpus": "352",
+        "last_cpu": 352,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139508890,
+        "sched_wait_ns": 27310,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 168,
+        "name": "numa_4_t_17",
+        "allowed_cpus": "354",
+        "last_cpu": 354,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138350270,
+        "sched_wait_ns": 28290,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 169,
+        "name": "numa_4_t_18",
+        "allowed_cpus": "356",
+        "last_cpu": 356,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139400210,
+        "sched_wait_ns": 27010,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 170,
+        "name": "numa_4_t_19",
+        "allowed_cpus": "358",
+        "last_cpu": 358,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139490520,
+        "sched_wait_ns": 30740,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 171,
+        "name": "numa_4_t_20",
+        "allowed_cpus": "360",
+        "last_cpu": 360,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139180630,
+        "sched_wait_ns": 21150,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 172,
+        "name": "numa_4_t_21",
+        "allowed_cpus": "362",
+        "last_cpu": 362,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139193750,
+        "sched_wait_ns": 26600,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 173,
+        "name": "numa_4_t_22",
+        "allowed_cpus": "364",
+        "last_cpu": 364,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139152250,
+        "sched_wait_ns": 18140,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 174,
+        "name": "numa_4_t_23",
+        "allowed_cpus": "366",
+        "last_cpu": 366,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139145590,
+        "sched_wait_ns": 25390,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 175,
+        "name": "numa_4_t_24",
+        "allowed_cpus": "368",
+        "last_cpu": 368,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139632560,
+        "sched_wait_ns": 26980,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 176,
+        "name": "numa_4_t_25",
+        "allowed_cpus": "370",
+        "last_cpu": 370,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139600070,
+        "sched_wait_ns": 25870,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 177,
+        "name": "numa_4_t_26",
+        "allowed_cpus": "372",
+        "last_cpu": 372,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138426330,
+        "sched_wait_ns": 27300,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 178,
+        "name": "numa_4_t_27",
+        "allowed_cpus": "374",
+        "last_cpu": 374,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138389710,
+        "sched_wait_ns": 29350,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 179,
+        "name": "numa_4_t_28",
+        "allowed_cpus": "376",
+        "last_cpu": 376,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139347710,
+        "sched_wait_ns": 27620,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 180,
+        "name": "numa_4_t_29",
+        "allowed_cpus": "378",
+        "last_cpu": 378,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139195590,
+        "sched_wait_ns": 25390,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 181,
+        "name": "numa_4_t_30",
+        "allowed_cpus": "380",
+        "last_cpu": 380,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138293470,
+        "sched_wait_ns": 28720,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 182,
+        "name": "numa_4_t_31",
+        "allowed_cpus": "382",
+        "last_cpu": 382,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139326780,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 184,
+        "name": "numa_7_t_1",
+        "allowed_cpus": "562",
+        "last_cpu": 562,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139356450,
+        "sched_wait_ns": 30120,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 185,
+        "name": "numa_7_t_2",
+        "allowed_cpus": "564",
+        "last_cpu": 564,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139404650,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 186,
+        "name": "numa_7_t_3",
+        "allowed_cpus": "566",
+        "last_cpu": 566,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139354960,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 187,
+        "name": "numa_7_t_4",
+        "allowed_cpus": "568",
+        "last_cpu": 568,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139717810,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 188,
+        "name": "numa_7_t_5",
+        "allowed_cpus": "570",
+        "last_cpu": 570,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139640030,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 189,
+        "name": "numa_7_t_6",
+        "allowed_cpus": "572",
+        "last_cpu": 572,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1143590650,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 190,
+        "name": "numa_7_t_7",
+        "allowed_cpus": "574",
+        "last_cpu": 574,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1143568630,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 191,
+        "name": "numa_7_t_8",
+        "allowed_cpus": "576",
+        "last_cpu": 576,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1143178760,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 192,
+        "name": "numa_7_t_9",
+        "allowed_cpus": "578",
+        "last_cpu": 578,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139228520,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 193,
+        "name": "numa_7_t_10",
+        "allowed_cpus": "580",
+        "last_cpu": 580,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139194350,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 194,
+        "name": "numa_7_t_11",
+        "allowed_cpus": "582",
+        "last_cpu": 582,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139000510,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 0
+      },
+      {
+        "tid": 195,
+        "name": "numa_7_t_12",
+        "allowed_cpus": "584",
+        "last_cpu": 584,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1138585840,
+        "sched_wait_ns": 26630,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 196,
+        "name": "numa_7_t_13",
+        "allowed_cpus": "586",
+        "last_cpu": 586,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139020070,
+        "sched_wait_ns": 28440,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 197,
+        "name": "numa_7_t_14",
+        "allowed_cpus": "588",
+        "last_cpu": 588,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139124410,
+        "sched_wait_ns": 28630,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 198,
+        "name": "numa_7_t_15",
+        "allowed_cpus": "590",
+        "last_cpu": 590,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139077340,
+        "sched_wait_ns": 31160,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 199,
+        "name": "numa_7_t_16",
+        "allowed_cpus": "592",
+        "last_cpu": 592,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139174130,
+        "sched_wait_ns": 29310,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 200,
+        "name": "numa_7_t_17",
+        "allowed_cpus": "594",
+        "last_cpu": 594,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139213540,
+        "sched_wait_ns": 50310,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 201,
+        "name": "numa_7_t_18",
+        "allowed_cpus": "596",
+        "last_cpu": 596,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139069220,
+        "sched_wait_ns": 53240,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 202,
+        "name": "numa_7_t_19",
+        "allowed_cpus": "598",
+        "last_cpu": 598,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139075720,
+        "sched_wait_ns": 54230,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 203,
+        "name": "numa_7_t_20",
+        "allowed_cpus": "600",
+        "last_cpu": 600,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139105260,
+        "sched_wait_ns": 53880,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 204,
+        "name": "numa_7_t_21",
+        "allowed_cpus": "602",
+        "last_cpu": 602,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139057880,
+        "sched_wait_ns": 52020,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 205,
+        "name": "numa_7_t_22",
+        "allowed_cpus": "604",
+        "last_cpu": 604,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139090110,
+        "sched_wait_ns": 56620,
+        "sched_timeslices": 2
+      },
+      {
+        "tid": 206,
+        "name": "numa_7_t_23",
+        "allowed_cpus": "606",
+        "last_cpu": 606,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138561860,
+        "sched_wait_ns": 120660,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 207,
+        "name": "numa_7_t_24",
+        "allowed_cpus": "608",
+        "last_cpu": 608,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139104870,
+        "sched_wait_ns": 27300,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 208,
+        "name": "numa_7_t_25",
+        "allowed_cpus": "610",
+        "last_cpu": 610,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139196880,
+        "sched_wait_ns": 27300,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 209,
+        "name": "numa_7_t_26",
+        "allowed_cpus": "612",
+        "last_cpu": 612,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139089020,
+        "sched_wait_ns": 28660,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 210,
+        "name": "numa_7_t_27",
+        "allowed_cpus": "614",
+        "last_cpu": 614,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139131940,
+        "sched_wait_ns": 25350,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 211,
+        "name": "numa_7_t_28",
+        "allowed_cpus": "616",
+        "last_cpu": 616,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139326470,
+        "sched_wait_ns": 24400,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 212,
+        "name": "numa_7_t_29",
+        "allowed_cpus": "618",
+        "last_cpu": 618,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139224880,
+        "sched_wait_ns": 29370,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 213,
+        "name": "numa_7_t_30",
+        "allowed_cpus": "620",
+        "last_cpu": 620,
+        "cpu_ticks": 115,
+        "sched_runtime_ns": 1139311240,
+        "sched_wait_ns": 24980,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 214,
+        "name": "numa_7_t_31",
+        "allowed_cpus": "622",
+        "last_cpu": 622,
+        "cpu_ticks": 113,
+        "sched_runtime_ns": 1139177200,
+        "sched_wait_ns": 28420,
+        "sched_timeslices": 1
+      },
+      {
+        "tid": 215,
+        "name": "numa_2_m_0",
+        "allowed_cpus": "160",
+        "last_cpu": 160,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1139750580,
+        "sched_wait_ns": 3663050,
+        "sched_timeslices": 293
+      },
+      {
+        "tid": 216,
+        "name": "numa_3_m_0",
+        "allowed_cpus": "240",
+        "last_cpu": 240,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137434590,
+        "sched_wait_ns": 122200,
+        "sched_timeslices": 5
+      },
+      {
+        "tid": 217,
+        "name": "numa_4_m_0",
+        "allowed_cpus": "320",
+        "last_cpu": 320,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1137832600,
+        "sched_wait_ns": 97650,
+        "sched_timeslices": 8
+      },
+      {
+        "tid": 218,
+        "name": "numa_7_m_0",
+        "allowed_cpus": "560",
+        "last_cpu": 560,
+        "cpu_ticks": 114,
+        "sched_runtime_ns": 1138899550,
+        "sched_wait_ns": 26800,
+        "sched_timeslices": 4
+      },
+      {
+        "tid": 219,
+        "name": "python",
+        "allowed_cpus": "160,162,164,166,168,170,172,174,176,178,180,182,184,186,188,190,192,194,196,198,200,202,204,206,208,210,212,214,216,218,220,222,224,226,228,230,232,234,236,238,240,242,244,246,248,250,252,254,256,258,260,262,264,266,268,270,272,274,276,278,280,282,284,286,288,290,292,294,296,298,300,302,304,306,308,310,312,314,316,318,320,322,324,326,328,330,332,334,336,338,340,342,344,346,348,350,352,354,356,358,360,362,364,366,368,370,372,374,376,378,380,382,384,386,388,390,392,394,396,398,560,562,564,566,568,570,572,574,576,578,580,582,584,586,588,590,592,594,596,598,600,602,604,606,608,610,612,614,616,618,620,622,624,626,628,630,632,634,636,638",
+        "last_cpu": 636,
+        "cpu_ticks": 79,
+        "sched_runtime_ns": 800289050,
+        "sched_wait_ns": 0,
+        "sched_timeslices": 3000
+      }
+    ]
+  },
+  "hardware_counters": {
+    "status": "PARTIAL_OR_UNAVAILABLE",
+    "target_thread_count": 128,
+    "opened_counter_count": 0,
+    "open_errors": [
+      {
+        "tid": 88,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 88,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 88,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 88,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 88,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 88,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 89,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 90,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 91,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 92,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 93,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 94,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 95,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 96,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 97,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 98,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 99,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 100,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 101,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 102,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 103,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 104,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 105,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 106,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 107,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 108,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 109,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 110,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 111,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 112,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 113,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 114,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 115,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 116,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 117,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 118,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 120,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 121,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 122,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 123,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 124,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 125,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 126,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 127,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 128,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 129,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 130,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 131,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 132,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 133,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 134,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 135,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 136,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 137,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 138,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 139,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 140,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 141,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 142,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 143,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 144,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 145,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 146,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 147,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 148,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 149,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 150,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 152,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 153,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 154,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 155,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 156,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 157,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 158,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 159,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 160,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 161,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 162,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 163,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 164,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 165,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 166,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 167,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 168,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 169,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 170,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 171,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 172,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 173,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 174,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 175,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 176,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 177,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 178,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 179,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 180,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 181,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 182,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 184,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 185,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 186,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 187,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 188,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 189,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 190,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 191,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 192,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 193,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 194,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 195,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 196,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 197,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 198,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 199,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 200,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 201,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 202,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 203,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 204,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 205,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 206,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 207,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 208,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 209,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 210,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 211,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 212,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 213,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 214,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 215,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 216,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 217,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "cycles",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "instructions",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "cache_references",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "cache_misses",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "context_switches",
+        "errno": 1,
+        "error": "Operation not permitted"
+      },
+      {
+        "tid": 218,
+        "event": "cpu_migrations",
+        "errno": 1,
+        "error": "Operation not permitted"
+      }
+    ],
+    "rows": [],
+    "llc_misses": "UNKNOWN_GENERIC_CACHE_EVENT_IS_NOT_LLC_SPECIFIC",
+    "memory_controller_bandwidth": "UNKNOWN_NO_SUPPORTED_CONTROLLER_EVENT_MAPPING",
+    "remote_numa_accesses": "UNKNOWN_NO_SUPPORTED_UNCORE_OR_NUMA_ACCESS_EVENT_MAPPING"
+  },
+  "peak_rss_kib": 3887716,
+  "ended_at": 1790413147.6585016
+}

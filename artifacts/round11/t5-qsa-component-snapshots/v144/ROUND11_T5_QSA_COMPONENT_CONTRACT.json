@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND11_T5_QSA_SINGLE_CANDIDATE_COMPONENT",
+  "version": 144,
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "hotspot_ranking_sha256": "e2f0a22f9593d449c7d09ccefa4cc35580da8a0b2b3a8dbc58c94334ad7db6f3",
+  "candidate": "QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+  "changed_runtime_files": [
+    "runtime/qsa.py"
+  ],
+  "unchanged": [
+    "QSA indexer",
+    "KV pool",
+    "selected token IDs",
+    "precision",
+    "provider count",
+    "Hybrid threshold",
+    "resident map",
+    "PLE",
+    "Dynamic",
+    "Decode sparse GQA row implementation"
+  ],
+  "fixtures": {
+    "layers": [
+      3,
+      23,
+      47
+    ],
+    "prefill_context_tokens": [
+      32,
+      64,
+      128
+    ],
+    "query_tokens": 32,
+    "decode_context_tokens": 129,
+    "decode_query_tokens": 1,
+    "weights": "REAL_CHECKPOINT",
+    "hidden": "DETERMINISTIC_SYNTHETIC"
+  },
+  "gates": {
+    "relative_l2_max": 0.001,
+    "repeat_hashes": 3,
+    "each_prefill_context_ratio_max": 0.9,
+    "decode_ratio_max": 1.05
+  },
+  "iterations_per_side": 9,
+  "automatic_retries": 0,
+  "repair_lineage": {
+    "v141": "PRELAUNCH_GUARD_MISSING_NUMA_POLICY_ZERO_COMPONENT_EXECUTION",
+    "v142": "COMPONENT_COMPLETE_PROBE_CLEANUP_FAIL_UNUSED_GATE_REFERENCE",
+    "v143": "CLEAN_COMPONENT_QUERY_AGNOSTIC_DECODE_RATIO_1_059338_NO_PROMOTION",
+    "v144_changes": [
+      "STAGE_EXISTING_GUARD_NUMA_POLICY_DEPENDENCY",
+      "DO_NOT_RETAIN_UNUSED_GATE_TENSOR_VIEW_IN_PROBE",
+      "USE_VECTORIZED_PATH_ONLY_WHEN_QUERY_TOKENS_EXCEED_ONE"
+    ]
+  }
+}

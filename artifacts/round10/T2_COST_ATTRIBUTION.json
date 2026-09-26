@@ -1,0 +1,565 @@
+{
+  "schema": 1,
+  "status": "PASS_T2_HYBRID_COST_AND_FIXTURE",
+  "source_run": "v95-R",
+  "instrumentation": {
+    "kind": "host-only monotonic intervals",
+    "added_device_synchronization": false,
+    "timed_layers": [
+      0,
+      3
+    ],
+    "limitations": [
+      "CPU_SUBMIT and NPU_RESIDENT_APPLY measure host return intervals, not device completion",
+      "CPU_RESULT is the exposed native result wait inside the enclosing apply interval",
+      "nested intervals are not added to request E2E",
+      "layers 0 and 3 are samples and are not multiplied across all layers",
+      "decode has request-level E2E/completion evidence but no per-stage synchronized device timing"
+    ]
+  },
+  "timing": {
+    "selection_count": 39,
+    "timed_layer_apply_count": 78,
+    "layers": [
+      0,
+      3
+    ],
+    "by_layer_stage": {
+      "layer0.CPU_RESULT": {
+        "count": 39,
+        "median_ms": 0.987227,
+        "p95_observed_ms": 1.858789,
+        "min_ms": 0.293834,
+        "max_ms": 1.905861
+      },
+      "layer0.CPU_SUBMIT": {
+        "count": 39,
+        "median_ms": 1.119184,
+        "p95_observed_ms": 1.417257,
+        "min_ms": 0.285463,
+        "max_ms": 1.594336
+      },
+      "layer0.NPU_RESIDENT_APPLY": {
+        "count": 39,
+        "median_ms": 0.41039,
+        "p95_observed_ms": 1.595156,
+        "min_ms": 0.370338,
+        "max_ms": 12.504755
+      },
+      "layer0.ORIGINAL_HYBRID_APPLY": {
+        "count": 39,
+        "median_ms": 3.613952,
+        "p95_observed_ms": 4.842371,
+        "min_ms": 2.808993,
+        "max_ms": 868.612305
+      },
+      "layer3.CPU_RESULT": {
+        "count": 39,
+        "median_ms": 1.394426,
+        "p95_observed_ms": 1.948693,
+        "min_ms": 0.286193,
+        "max_ms": 2.015706
+      },
+      "layer3.CPU_SUBMIT": {
+        "count": 39,
+        "median_ms": 0.301945,
+        "p95_observed_ms": 1.46987,
+        "min_ms": 0.291324,
+        "max_ms": 1.89835
+      },
+      "layer3.NPU_RESIDENT_APPLY": {
+        "count": 39,
+        "median_ms": 0.392769,
+        "p95_observed_ms": 0.492424,
+        "min_ms": 0.382089,
+        "max_ms": 0.523615
+      },
+      "layer3.ORIGINAL_HYBRID_APPLY": {
+        "count": 39,
+        "median_ms": 3.304817,
+        "p95_observed_ms": 4.017681,
+        "min_ms": 2.331151,
+        "max_ms": 5.084082
+      }
+    },
+    "by_batch_tokens": {
+      "1": {
+        "CPU_RESULT": {
+          "count": 2,
+          "median_ms": 0.325805,
+          "p95_observed_ms": 0.286193,
+          "min_ms": 0.286193,
+          "max_ms": 0.365417
+        },
+        "CPU_SUBMIT": {
+          "count": 2,
+          "median_ms": 0.963391,
+          "p95_observed_ms": 0.332446,
+          "min_ms": 0.332446,
+          "max_ms": 1.594336
+        },
+        "NPU_RESIDENT_APPLY": {
+          "count": 2,
+          "median_ms": 0.540516,
+          "p95_observed_ms": 0.492424,
+          "min_ms": 0.492424,
+          "max_ms": 0.588608
+        },
+        "ORIGINAL_HYBRID_APPLY": {
+          "count": 2,
+          "median_ms": 3.382171,
+          "p95_observed_ms": 2.331151,
+          "min_ms": 2.331151,
+          "max_ms": 4.433191
+        }
+      },
+      "25": {
+        "CPU_RESULT": {
+          "count": 2,
+          "median_ms": 0.6209495,
+          "p95_observed_ms": 0.305575,
+          "min_ms": 0.305575,
+          "max_ms": 0.936324
+        },
+        "CPU_SUBMIT": {
+          "count": 2,
+          "median_ms": 1.3912315,
+          "p95_observed_ms": 1.335044,
+          "min_ms": 1.335044,
+          "max_ms": 1.447419
+        },
+        "NPU_RESIDENT_APPLY": {
+          "count": 2,
+          "median_ms": 1.007903,
+          "p95_observed_ms": 0.42065,
+          "min_ms": 0.42065,
+          "max_ms": 1.595156
+        },
+        "ORIGINAL_HYBRID_APPLY": {
+          "count": 2,
+          "median_ms": 4.3646080000000005,
+          "p95_observed_ms": 3.886845,
+          "min_ms": 3.886845,
+          "max_ms": 4.842371
+        }
+      },
+      "27": {
+        "CPU_RESULT": {
+          "count": 4,
+          "median_ms": 0.7063535,
+          "p95_observed_ms": 1.001947,
+          "min_ms": 0.293834,
+          "max_ms": 1.063391
+        },
+        "CPU_SUBMIT": {
+          "count": 4,
+          "median_ms": 1.2698055,
+          "p95_observed_ms": 1.357675,
+          "min_ms": 0.299824,
+          "max_ms": 1.46987
+        },
+        "NPU_RESIDENT_APPLY": {
+          "count": 4,
+          "median_ms": 0.40626450000000003,
+          "p95_observed_ms": 0.41443,
+          "min_ms": 0.387989,
+          "max_ms": 1.507762
+        },
+        "ORIGINAL_HYBRID_APPLY": {
+          "count": 4,
+          "median_ms": 3.6259125,
+          "p95_observed_ms": 4.017681,
+          "min_ms": 2.876267,
+          "max_ms": 4.675993
+        }
+      },
+      "31": {
+        "CPU_RESULT": {
+          "count": 6,
+          "median_ms": 1.205648,
+          "p95_observed_ms": 1.370935,
+          "min_ms": 0.360577,
+          "max_ms": 1.515722
+        },
+        "CPU_SUBMIT": {
+          "count": 6,
+          "median_ms": 1.198807,
+          "p95_observed_ms": 1.412907,
+          "min_ms": 0.307585,
+          "max_ms": 1.89835
+        },
+        "NPU_RESIDENT_APPLY": {
+          "count": 6,
+          "median_ms": 0.4029645,
+          "p95_observed_ms": 0.42152,
+          "min_ms": 0.391439,
+          "max_ms": 12.504755
+        },
+        "ORIGINAL_HYBRID_APPLY": {
+          "count": 6,
+          "median_ms": 3.9616439999999997,
+          "p95_observed_ms": 5.084082,
+          "min_ms": 3.007603,
+          "max_ms": 868.612305
+        }
+      },
+      "32": {
+        "CPU_RESULT": {
+          "count": 64,
+          "median_ms": 1.3105525,
+          "p95_observed_ms": 1.905861,
+          "min_ms": 0.297614,
+          "max_ms": 2.015706
+        },
+        "CPU_SUBMIT": {
+          "count": 64,
+          "median_ms": 0.301714,
+          "p95_observed_ms": 1.207498,
+          "min_ms": 0.285463,
+          "max_ms": 1.627628
+        },
+        "NPU_RESIDENT_APPLY": {
+          "count": 64,
+          "median_ms": 0.394484,
+          "p95_observed_ms": 0.457662,
+          "min_ms": 0.370338,
+          "max_ms": 1.729973
+        },
+        "ORIGINAL_HYBRID_APPLY": {
+          "count": 64,
+          "median_ms": 3.429729,
+          "p95_observed_ms": 3.762679,
+          "min_ms": 2.808993,
+          "max_ms": 5.169546
+        }
+      }
+    }
+  },
+  "request_cost": {
+    "h64": [
+      {
+        "phase": "warmup",
+        "e2e_seconds": 7.273539099
+      },
+      {
+        "phase": "measurement",
+        "e2e_seconds": 5.194822899
+      },
+      {
+        "phase": "measurement",
+        "e2e_seconds": 5.200894899
+      },
+      {
+        "phase": "edge",
+        "e2e_seconds": 5.165291934
+      },
+      {
+        "phase": "warmup",
+        "e2e_seconds": 5.178630628
+      },
+      {
+        "phase": "measurement",
+        "e2e_seconds": 5.181577629
+      },
+      {
+        "phase": "measurement",
+        "e2e_seconds": 5.181312766
+      }
+    ],
+    "decode": [
+      {
+        "e2e_seconds": 15.20222446,
+        "completion_tokens": 32,
+        "seconds_per_completion_token_including_prefill": 0.475069514375,
+        "finish_reason": {
+          "type": "length",
+          "length": 32
+        }
+      },
+      {
+        "e2e_seconds": 20.999427759,
+        "completion_tokens": 49,
+        "seconds_per_completion_token_including_prefill": 0.4285597501836735,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      }
+    ]
+  },
+  "fixture": {
+    "source": "qualified v80 real request capture reused read-only",
+    "request": {
+      "chunk": [
+        0,
+        32
+      ],
+      "input_tokens": 64,
+      "placement_epoch": 0,
+      "request_id": "r9-plan15-p4a-on-medium"
+    },
+    "groups": [
+      {
+        "allocation_epoch": 1,
+        "group_index": 0,
+        "logical_experts": [
+          2,
+          77,
+          83,
+          90,
+          109,
+          123,
+          136,
+          142,
+          165,
+          169,
+          175,
+          197,
+          215,
+          220,
+          226,
+          242,
+          249,
+          257,
+          302,
+          309,
+          317,
+          331,
+          333,
+          353,
+          373,
+          380,
+          386,
+          398,
+          414,
+          435
+        ],
+        "logical_ids": [
+          [
+            136,
+            317,
+            77,
+            257,
+            175,
+            2,
+            414,
+            242,
+            373,
+            142
+          ],
+          [
+            123,
+            215,
+            226,
+            386,
+            353,
+            398,
+            302,
+            220,
+            309,
+            197
+          ],
+          [
+            165,
+            109,
+            380,
+            435,
+            331,
+            169,
+            249,
+            333,
+            83,
+            90
+          ]
+        ],
+        "logical_layer": 0,
+        "request_token_span": [
+          0,
+          3
+        ],
+        "rows": [
+          0,
+          1,
+          2
+        ],
+        "slot_ids": [
+          [
+            6,
+            20,
+            1,
+            17,
+            10,
+            0,
+            28,
+            15,
+            24,
+            7
+          ],
+          [
+            5,
+            12,
+            14,
+            26,
+            23,
+            27,
+            18,
+            13,
+            19,
+            11
+          ],
+          [
+            8,
+            4,
+            25,
+            29,
+            21,
+            9,
+            16,
+            22,
+            2,
+            3
+          ]
+        ],
+        "token_span": [
+          0,
+          3
+        ]
+      },
+      {
+        "allocation_epoch": 2,
+        "group_index": 1,
+        "logical_experts": [
+          0,
+          19,
+          24,
+          54,
+          58,
+          79,
+          95,
+          98,
+          99,
+          149,
+          187,
+          188,
+          234,
+          270,
+          278,
+          289,
+          293,
+          302,
+          316,
+          330,
+          338,
+          340,
+          359,
+          369,
+          381,
+          392,
+          404,
+          416,
+          425,
+          470
+        ],
+        "logical_ids": [
+          [
+            95,
+            270,
+            425,
+            316,
+            0,
+            302,
+            98,
+            99,
+            470,
+            340
+          ],
+          [
+            79,
+            188,
+            278,
+            381,
+            234,
+            330,
+            24,
+            416,
+            54,
+            149
+          ],
+          [
+            289,
+            58,
+            19,
+            187,
+            338,
+            392,
+            369,
+            293,
+            404,
+            359
+          ]
+        ],
+        "logical_layer": 0,
+        "request_token_span": [
+          3,
+          6
+        ],
+        "rows": [
+          3,
+          4,
+          5
+        ],
+        "slot_ids": [
+          [
+            6,
+            13,
+            28,
+            18,
+            0,
+            17,
+            7,
+            8,
+            29,
+            21
+          ],
+          [
+            5,
+            11,
+            14,
+            24,
+            12,
+            19,
+            2,
+            27,
+            3,
+            9
+          ],
+          [
+            15,
+            4,
+            1,
+            10,
+            20,
+            25,
+            23,
+            16,
+            26,
+            22
+          ]
+        ],
+        "token_span": [
+          3,
+          6
+        ]
+      }
+    ],
+    "performance_evidence": false,
+    "tensor_sha256": "c837641468b9db93c422a3610af7a7ecc1f14d4bbb359841d69ac0dfd655dc6e",
+    "receipt_sha256": "6d0c6114c515934a426d2c546fe3fc9c213a6f36d38db198ce5a9511da2e55dc",
+    "route_tape_sha256": "201a9b65b24c2fd9774c8c2dbfc4f795078d12dc8f20ce4b2a82efee12d857c0"
+  },
+  "disposition": {
+    "new_device_run_used": false,
+    "critical_path_finding": "CPU_RESULT is an exposed blocking subset of Hybrid apply; submit and resident apply return intervals are much smaller host-side launch intervals",
+    "next": "T3 native Kunpeng worker component verification"
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T5_HOTSPOT_RANKING",
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "process_blocks": "A_B",
+  "sampled_layers": {
+    "GDN": [
+      0,
+      24,
+      46
+    ],
+    "QSA": [
+      3,
+      23,
+      47
+    ],
+    "PLE": [
+      1
+    ]
+  },
+  "actual_layer_counts": {
+    "GDN": 36,
+    "QSA": 12,
+    "PLE": 1
+  },
+  "module_medians": {
+    "GDN": {
+      "attributable_ms": 6548.157351493835,
+      "critical_fraction": 0.19065220035489946
+    },
+    "QSA": {
+      "attributable_ms": 18156.386266708374,
+      "critical_fraction": 0.5387103065626927,
+      "indexer_device_ms": 2709.233272075653,
+      "exclusive_remainder_ms": 15447.152994632721
+    },
+    "PLE": {
+      "consumer_device_ms": 97.11112982034683,
+      "critical_fraction": 0.002782471521909289,
+      "prepare_host_ms": 38.5517525,
+      "exposed_wait_ms": 6.0633655,
+      "exposed_wait_fraction": 0.00017748332741271002
+    }
+  },
+  "request_details": [
+    {
+      "block": "A",
+      "request_id": "r11-t5-a-02-edge128-measurement-decode32",
+      "e2e_ms": 28545.475115999998,
+      "attributable_ms": {
+        "GDN": 5422.741892337799,
+        "QSA": 14979.529209136963,
+        "QSA_INDEXER": 2135.9452800750732,
+        "QSA_EXCLUSIVE": 12843.58392906189,
+        "PLE_PREPARE_HOST": 26.720673,
+        "PLE_EXPOSED_WAIT": 4.302196,
+        "PLE_CONSUMER": 67.71653962135315
+      },
+      "fractions": {
+        "GDN": 0.18996852812228385,
+        "QSA": 0.5247601992352476,
+        "PLE_CONSUMER": 0.002372233754953247,
+        "PLE_EXPOSED_WAIT": 0.0001507137640034788
+      },
+      "per_mode_ms": {
+        "extend": {
+          "GDN": 3219.57861328125,
+          "QSA": 9255.596649169922,
+          "QSA_INDEXER": 993.1965637207031,
+          "QSA_EXCLUSIVE": 8262.400085449219,
+          "PLE_PREPARE_HOST": 4.136126,
+          "PLE_EXPOSED_WAIT": 0.60789,
+          "PLE_CONSUMER": 8.931820034980774
+        },
+        "decode": {
+          "GDN": 2203.163279056549,
+          "QSA": 5723.932559967041,
+          "QSA_INDEXER": 1142.7487163543701,
+          "QSA_EXCLUSIVE": 4581.183843612671,
+          "PLE_PREPARE_HOST": 22.584547,
+          "PLE_EXPOSED_WAIT": 3.694306,
+          "PLE_CONSUMER": 58.784719586372375
+        }
+      }
+    },
+    {
+      "block": "A",
+      "request_id": "r11-t5-a-03-edge128-measurement-decode64",
+      "e2e_ms": 39938.362009000004,
+      "attributable_ms": {
+        "GDN": 7720.428959369659,
+        "QSA": 21333.243324279785,
+        "QSA_INDEXER": 3282.521264076233,
+        "QSA_EXCLUSIVE": 18050.722060203552,
+        "PLE_PREPARE_HOST": 47.927626,
+        "PLE_EXPOSED_WAIT": 7.675937,
+        "PLE_CONSUMER": 126.50572001934052
+      },
+      "fractions": {
+        "GDN": 0.19330860283228143,
+        "QSA": 0.5341541878826276,
+        "PLE_CONSUMER": 0.003167523995872259,
+        "PLE_EXPOSED_WAIT": 0.00019219458720591114
+      },
+      "per_mode_ms": {
+        "extend": {
+          "GDN": 3253.4863357543945,
+          "QSA": 9244.156951904297,
+          "QSA_INDEXER": 982.8544692993164,
+          "QSA_EXCLUSIVE": 8261.30248260498,
+          "PLE_PREPARE_HOST": 3.987189,
+          "PLE_EXPOSED_WAIT": 0.484522,
+          "PLE_CONSUMER": 7.938660025596619
+        },
+        "decode": {
+          "GDN": 4466.942623615265,
+          "QSA": 12089.086372375488,
+          "QSA_INDEXER": 2299.6667947769165,
+          "QSA_EXCLUSIVE": 9789.419577598572,
+          "PLE_PREPARE_HOST": 43.940437,
+          "PLE_EXPOSED_WAIT": 7.191415,
+          "PLE_CONSUMER": 118.5670599937439
+        }
+      }
+    },
+    {
+      "block": "B",
+      "request_id": "r11-t5-b-02-edge128-measurement-decode32",
+      "e2e_ms": 27343.720978,
+      "attributable_ms": {
+        "GDN": 5090.117015361786,
+        "QSA": 14854.925548553467,
+        "QSA_INDEXER": 2049.883918762207,
+        "QSA_EXCLUSIVE": 12805.04162979126,
+        "PLE_PREPARE_HOST": 29.175879,
+        "PLE_EXPOSED_WAIT": 4.450794,
+        "PLE_CONSUMER": 65.61130023002625
+      },
+      "fractions": {
+        "GDN": 0.18615304842589467,
+        "QSA": 0.5432664252427578,
+        "PLE_CONSUMER": 0.002399501526614292,
+        "PLE_EXPOSED_WAIT": 0.0001627720676195089
+      },
+      "per_mode_ms": {
+        "extend": {
+          "GDN": 3005.963264465332,
+          "QSA": 9272.078430175781,
+          "QSA_INDEXER": 949.04736328125,
+          "QSA_EXCLUSIVE": 8323.031066894531,
+          "PLE_PREPARE_HOST": 4.427969,
+          "PLE_EXPOSED_WAIT": 0.60419,
+          "PLE_CONSUMER": 8.694080114364624
+        },
+        "decode": {
+          "GDN": 2084.153750896454,
+          "QSA": 5582.847118377686,
+          "QSA_INDEXER": 1100.836555480957,
+          "QSA_EXCLUSIVE": 4482.0105628967285,
+          "PLE_PREPARE_HOST": 24.74791,
+          "PLE_EXPOSED_WAIT": 3.846604,
+          "PLE_CONSUMER": 56.91722011566162
+        }
+      }
+    },
+    {
+      "block": "B",
+      "request_id": "r11-t5-b-03-edge128-measurement-decode64",
+      "e2e_ms": 40105.248989,
+      "attributable_ms": {
+        "GDN": 7673.572810649872,
+        "QSA": 21857.354461669922,
+        "QSA_INDEXER": 3312.2303981781006,
+        "QSA_EXCLUSIVE": 18545.12406349182,
+        "PLE_PREPARE_HOST": 55.847637,
+        "PLE_EXPOSED_WAIT": 8.232977,
+        "PLE_CONSUMER": 126.95082020759583
+      },
+      "fractions": {
+        "GDN": 0.19133587258751508,
+        "QSA": 0.544999844475842,
+        "PLE_CONSUMER": 0.003165441517204286,
+        "PLE_EXPOSED_WAIT": 0.00020528427593749954
+      },
+      "per_mode_ms": {
+        "extend": {
+          "GDN": 3327.3568954467773,
+          "QSA": 9620.93051147461,
+          "QSA_INDEXER": 1043.446792602539,
+          "QSA_EXCLUSIVE": 8577.48371887207,
+          "PLE_PREPARE_HOST": 4.344316,
+          "PLE_EXPOSED_WAIT": 0.525745,
+          "PLE_CONSUMER": 8.272899866104126
+        },
+        "decode": {
+          "GDN": 4346.2159152030945,
+          "QSA": 12236.423950195312,
+          "QSA_INDEXER": 2268.7836055755615,
+          "QSA_EXCLUSIVE": 9967.640344619751,
+          "PLE_PREPARE_HOST": 51.503321,
+          "PLE_EXPOSED_WAIT": 7.707232,
+          "PLE_CONSUMER": 118.6779203414917
+        }
+      }
+    }
+  ],
+  "candidate": "QSA",
+  "disposition": "B_ROUTE_CANDIDATE_QSA",
+  "screen": {
+    "attributable_critical_fraction": 0.1,
+    "exposed_wait_fraction": 0.05,
+    "eligible": {
+      "GDN": 0.19065220035489946,
+      "QSA": 0.5387103065626927
+    }
+  },
+  "accounting": "QSA_ATTENTION is the parent and already contains QSA_INDEXER. The indexer is reported as a child breakdown and is never added to the QSA total. PLE exposed wait is reported separately from device duration. Sampled layer medians are scaled by the frozen 36-GDN/12-QSA model census.",
+  "limitations": [
+    "bounded intrusive observer; excluded from unprofiled performance",
+    "device event durations are durations only and do not establish cross-stream absolute overlap",
+    "sampled layers are real early/middle/late providers; whole-model cost is a frozen-census estimate"
+  ],
+  "cleanup": "BOTH_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY"
+}

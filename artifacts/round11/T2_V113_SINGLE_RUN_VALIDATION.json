@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T2_SINGLE_RUN",
+  "role": "baseline",
+  "version": 113,
+  "binary_role": "FROZEN_HFINAL_NATIVE",
+  "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+  "iterations": 3000,
+  "warmups": 5,
+  "tokens": 3,
+  "repeat_hash_exact": true,
+  "output_sha256": "f5e189843493b9f42fcf724d9487ec5e1b9c630a6b0e780079cbc2bf6053f7c4",
+  "total_parent_median_us": 375.5825,
+  "native_compute_plus_merge_us_per_group": 246.1,
+  "tp_partition_imbalance_ratio": 1.0342555994729907,
+  "hardware_counters": "DISABLED_FOR_TIMING_ISOLATION",
+  "source_sha256": {
+    "result": "62643302e183e1b1585574dbb7daa86db0a908da876372273bdf22307d0c35c1",
+    "controller": "9f0bc90a91f66ab4440b69639ea1dabf0e75655095b89fe5164b964f7872dd50",
+    "post_cleanup_proc_mem": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01"
+  },
+  "archive": {
+    "path": "artifacts/round11/remote-evidence/20260926-round11-t2-v113.tar.gz",
+    "sha256": "4b317c836d1f4787ee5648fd97de0f584b73b012736b749da7c6d503cca200ee"
+  },
+  "admission": {
+    "attempt": 3,
+    "status": "PASS",
+    "windows": 12,
+    "min_mean_idle": 0.9967775821496436,
+    "min_numa_free_gib": {
+      "2": 230.60691452026367,
+      "3": 229.94754028320312,
+      "4": 160.70874786376953,
+      "7": 224.47834014892578
+    },
+    "archive_sha256": "4bdb51bb9bfd091b6ea8bc3a3c704f5dafbdc09301edb4ce6682b5143e41b6f5"
+  },
+  "cleanup": {
+    "guard_exit_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY",
+    "oom_killed": false
+  },
+  "next": "CACHE_RETIREMENT_THEN_FRESH_V114_ADMISSION"
+}

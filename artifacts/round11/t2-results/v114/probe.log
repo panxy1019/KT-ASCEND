@@ -1,0 +1,47 @@
+can not use command: npu-smi info
+/round9/candidate-runtime-python/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+CPUInfer[0xaaab1ef9ed00]: Hello
+WorkerPool[0xaaab1efb1a70] 4 subpools, [numa:threads][2:32] [3:32] [4:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 4, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0xaaab1efb1a70, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffb4c0096f0
+alloc 2 from other numa for fffb4c0096f0
+alloc 0 from other numa for fffe3c035930
+alloc 0 from other numa for fffe3c035930
+alloc 3 from other numa for fffb440096f0
+alloc 1 from other numa for fffb500096f0
+alloc 1 from other numa for fffb500096f0
+alloc 3 from other numa for fffb440096f0
+
+[GGUFLoader] Loading single GGUF file : layer-00-mxfp4.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 4
+ ffn_up_exps, Dtype: MXFP4
+ ffn_gate_exps, Dtype: MXFP4
+ ffn_down_exps, Dtype: MXFP4
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 4
+  QK_K: 256
+  32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=160, offset=0
+  TP 1: size=160, offset=160
+  TP 2: size=160, offset=320
+  TP 3: size=160, offset=480
+  Using default identity mapping for 512 experts
+PASS_ROUND11_T2_DEEP_ATTRIBUTION 3000
+CPUInfer[0xaaab1ef9ed00]: Goodbye

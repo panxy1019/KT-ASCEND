@@ -132,7 +132,19 @@ class TorchKTEPAdapter:
                         staged[position].copy_(original,non_blocking=False)
                     del original
                 with phase('nz_index_copy', device=True, projection=name):
-                    destination.index_copy_(0,index,staged)
+                    if getattr(self,'_round9_private_parent_update',False) is True:
+                        from .nd_parent_update import update_parent
+                        update_parent(
+                            destination,index,staged,
+                            enabled=True,
+                            private_shadow_only=True,
+                            host_slots=tuple(slot for slot,_ in moves),
+                            slot_count=destination.shape[0],
+                            update_count=len(moves),
+                            host_phase_costs=getattr(self,'_round9_parent_update_phase_costs',None),
+                        )
+                    else:
+                        destination.index_copy_(0,index,staged)
                 with phase('existing_sync', projection=name):
                     self.synchronize()
                 if int(torch_npu.get_npu_format(destination))!=29:raise RuntimeError('NZ publication changed resident layout')

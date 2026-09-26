@@ -1,5 +1,39 @@
 import unittest
+import ast
+import pathlib
 from migration_bridge.round9.runtime.shadow_decomposition import Recorder, phase, activate, summarize
+
+_PRIVATE_PARENT_UPDATE_GUARD=ast.dump(ast.parse(
+ "getattr(self, '_round9_private_parent_update', False) is True",mode='eval').body)
+
+def _frozen_off_compute_ast(source,*,allow_private_parent_update=False):
+ class Strip(ast.NodeTransformer):
+  def __init__(self):self.private_parent_update_guards=0
+  def visit_Expr(self,node):
+   if isinstance(node.value,ast.Call) and isinstance(node.value.func,ast.Name) and node.value.func.id=="record_tensor":return None
+   return self.generic_visit(node)
+  def visit_ImportFrom(self,node):
+   return None if node.module=='shadow_decomposition' else node
+  def visit_With(self,node):
+   node=self.generic_visit(node)
+   if len(node.items)==1 and isinstance(node.items[0].context_expr,ast.Call) and isinstance(node.items[0].context_expr.func,ast.Name) and node.items[0].context_expr.func.id=='phase':return node.body
+   return node
+  def visit_If(self,node):
+   node=self.generic_visit(node)
+   mentions_private_flag=any(
+    isinstance(part,ast.Constant) and part.value=='_round9_private_parent_update'
+    for part in ast.walk(node.test))
+   if not mentions_private_flag:return node
+   if not allow_private_parent_update or ast.dump(node.test)!=_PRIVATE_PARENT_UPDATE_GUARD:
+    raise AssertionError('private parent update guard changed or appeared outside dynamic_adapter')
+   self.private_parent_update_guards+=1
+   if self.private_parent_update_guards!=1 or not node.orelse:
+    raise AssertionError('private parent update guard must be unique and have an OFF branch')
+   return node.orelse
+ tree=Strip();normalized=tree.visit(ast.parse(source))
+ if allow_private_parent_update and tree.private_parent_update_guards!=1:
+  raise AssertionError('expected exactly one private parent update guard')
+ return ast.dump(normalized)
 class ShadowDecompositionTests(unittest.TestCase):
  def test_off_never_records(self):
   calls=[]
@@ -49,22 +83,36 @@ class InstrumentationContractTests(unittest.TestCase):
   for name in ['host_materialization','nd_allocation','copy_call','nz_index_copy','existing_sync','staging_retire']:
    self.assertIn(name,source)
  def test_no_compute_statement_change_after_stripping_observation(self):
-  import ast,subprocess,pathlib
-  class Strip(ast.NodeTransformer):
-   def visit_Expr(self,node):
-    if isinstance(node.value,ast.Call) and isinstance(node.value.func,ast.Name) and node.value.func.id=="record_tensor":return None
-    return node
-   def visit_ImportFrom(self,node):
-    return None if node.module=='shadow_decomposition' else node
-   def visit_With(self,node):
-    node=self.generic_visit(node)
-    if len(node.items)==1 and isinstance(node.items[0].context_expr,ast.Call) and isinstance(node.items[0].context_expr.func,ast.Name) and node.items[0].context_expr.func.id=='phase':return node.body
-    return node
   for filename in ['dynamic_adapter.py','expert_source.py']:
    root=pathlib.Path(__file__).resolve().parents[1]
    before=(root/'tests/fixtures/shadow_baseline'/filename).read_text()
    current=(root/'runtime'/filename).read_text()
-   self.assertEqual(ast.dump(ast.parse(before)),ast.dump(Strip().visit(ast.parse(current))))
+   self.assertEqual(
+    ast.dump(ast.parse(before)),
+    _frozen_off_compute_ast(current,allow_private_parent_update=filename=='dynamic_adapter.py'))
+ def test_frozen_off_contract_rejects_copy_or_sync_mutation(self):
+  root=pathlib.Path(__file__).resolve().parents[1]
+  before=(root/'tests/fixtures/shadow_baseline/dynamic_adapter.py').read_text()
+  current=(root/'runtime/dynamic_adapter.py').read_text()
+  frozen=ast.dump(ast.parse(before))
+  mutations={
+   'index_copy':current.replace('destination.index_copy_(0,index,staged)','destination.copy_(staged)',1),
+   'existing_sync':current.replace('self.synchronize()','pass # removed existing sync',1),
+  }
+  for name,mutated in mutations.items():
+   self.assertNotEqual(current,mutated)
+   with self.subTest(mutation=name):
+    self.assertNotEqual(frozen,_frozen_off_compute_ast(mutated,allow_private_parent_update=True))
+ def test_private_parent_update_guard_must_be_exact_and_unique(self):
+  root=pathlib.Path(__file__).resolve().parents[1]
+  current=(root/'runtime/dynamic_adapter.py').read_text()
+  changed=current.replace("getattr(self,'_round9_private_parent_update',False) is True","getattr(self,'_round9_private_parent_update',True) is True",1)
+  with self.assertRaisesRegex(AssertionError,'guard changed'):
+   _frozen_off_compute_ast(changed,allow_private_parent_update=True)
+  duplicate=current.replace('                    else:\n                        destination.index_copy_(0,index,staged)',
+   "                    else:\n                        if getattr(self,'_round9_private_parent_update',False) is True:\n                            destination.index_copy_(0,index,staged)\n                        else:\n                            destination.index_copy_(0,index,staged)",1)
+  with self.assertRaisesRegex(AssertionError,'unique'):
+   _frozen_off_compute_ast(duplicate,allow_private_parent_update=True)
 
 class FixtureTests(unittest.TestCase):
  def test_derived_fixture_changes_one_expert_without_mutating_capture(self):

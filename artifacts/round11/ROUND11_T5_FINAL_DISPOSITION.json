@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "status": "COMPLETE_QSA_COMPONENT_ONLY_NO_PROMOTION",
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "hotspot_ranking": {
+    "status": "PASS_ROUND11_T5_HOTSPOT_RANKING",
+    "selected_module": "QSA",
+    "qsa_median_critical_fraction": 0.5387103065626927,
+    "gdn_median_critical_fraction": 0.19065220035489946,
+    "ple_consumer_median_critical_fraction": 0.002782471521909289,
+    "ple_exposed_wait_fraction": 0.00017748332741271002,
+    "sha256": "e2f0a22f9593d449c7d09ccefa4cc35580da8a0b2b3a8dbc58c94334ad7db6f3"
+  },
+  "component_candidate": {
+    "name": "QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+    "status": "PASS_ROUND11_T5_QSA_COMPONENT_ANALYSIS",
+    "max_relative_l2": 5.645496551606974e-05,
+    "prefill_candidate_over_baseline": {
+      "32": 0.056913559575635375,
+      "64": 0.05675305392698696,
+      "128": 0.056490038564320506
+    },
+    "decode_candidate_over_baseline": 1.005057546679789,
+    "allocator_cleanup": "RETURNED_TO_BASELINE",
+    "analysis_sha256": "83ea9975210eed86ac487d8f0010afa2b663768b2fa2bef4930931a3e9dbd787"
+  },
+  "request_promotion": {
+    "status": "FAIL_BEFORE_REQUEST",
+    "v145": {
+      "model_starts": 0,
+      "generations": 0,
+      "cause": "launcher context-reference source gate still bound the original QSA source hash",
+      "archive_sha256": "ed01875c3954a798b23615e7f5f26c6047a6a8a865e1836ece40e9557af0255a"
+    },
+    "v146": {
+      "model_starts": 1,
+      "generations": 0,
+      "cause": "runtime context_reference_binding independently reapplied the original-QSA gate and the server exited before ready",
+      "candidate_numeric_failure": false,
+      "archive_sha256": "b8bba47e4adb04b7108185a561081a28315369e082d9349bb62c8f3cd959f534"
+    },
+    "model_budget_exhausted": true,
+    "request_level_gain": "NOT_MEASURED",
+    "disposition": "COMPONENT_ONLY_NO_PROMOTION"
+  },
+  "selected_final_provider": "ORIGINAL_HFINAL_QSA",
+  "candidate_default_enabled": false,
+  "baseline_correctness_regressed": false,
+  "cleanup": "ALL_STARTED_PROCESSES_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+  "budget": {
+    "component_processes": 3,
+    "model_starts": 3,
+    "generations": 8,
+    "abort_controls": 0,
+    "automatic_retries": 0
+  },
+  "limitations": [
+    "The QSA component candidate has real-device numerical and component timing evidence, but no full-model request timing evidence.",
+    "The v146 failure is an integration source-gate contract failure before request execution; it is not a numerical rejection of the QSA candidate.",
+    "The original HFINAL QSA provider remains the only request-qualified provider in Round11."
+  ]
+}

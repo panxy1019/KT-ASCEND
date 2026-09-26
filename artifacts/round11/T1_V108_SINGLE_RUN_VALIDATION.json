@@ -1,0 +1,48 @@
+{
+  "admission": {
+    "minimum_idle_fraction": 0.9797979797979798,
+    "status": "CANDIDATE_READY_FOR_MONITORED_FULL_MODEL_RUN",
+    "training_identity_exact": true
+  },
+  "admission_sha256": "2ddf8d80842c6ee95e811c108109c91557c824ce9110126c0c2827befe3778c1",
+  "automatic_retries": 0,
+  "cleanup": {
+    "container_removed": true,
+    "current_remote_check": "PASS_EMPTY_PHYSICAL12",
+    "guard_exit_ack": "OWNED_EXITED_DURING_SAMPLE",
+    "oom_killed": false
+  },
+  "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+  "generation_attempts": 3,
+  "path_contract": {
+    "edge128": {
+      "e2e_seconds": 26.103200164,
+      "path": "HYBRID",
+      "request_total_tokens": 128
+    },
+    "edge129": {
+      "e2e_seconds": 1175.462570734,
+      "path": "LAYERWISE",
+      "request_total_tokens": 129
+    },
+    "edge130": {
+      "e2e_seconds": 1173.084273998,
+      "path": "LAYERWISE",
+      "request_total_tokens": 130
+    }
+  },
+  "process": "BOUNDARY",
+  "quality_contract": {
+    "finite_output_logprobs": true,
+    "normal_eos": true,
+    "output_ids": [
+      3897,
+      248046
+    ]
+  },
+  "result_sha256": "83e4ecedc16b0414cef59d5d3dd9fcbb646bb0eca73449dc440d04beb184da04",
+  "schema": "round11_t1_single_run_validation_v1",
+  "status": "PASS_STRICT_SINGLE_RUN",
+  "supervisor_sha256": "5513454f1cf9ee298e402e77348ffa91965c6fafffc439dbaade1eb3d5227cbe",
+  "version": 108
+}

@@ -2,8 +2,28 @@
 import pathlib,sys,unittest
 import torch
 sys.path.insert(0,str(pathlib.Path(__file__).parents[1]))
-from runtime.qsa import compress_index_keys,select_tokens,sparse_gqa,text_rope
+from runtime.qsa import (
+    compress_index_keys,
+    select_tokens,
+    sparse_gqa,
+    sparse_gqa_candidate,
+    sparse_gqa_strategy,
+    sparse_gqa_vectorized,
+    text_rope,
+)
 class QSATests(unittest.TestCase):
+    def test_sparse_gqa_candidate_uses_row_decode_and_vectorized_prefill(self):
+        self.assertEqual(sparse_gqa_strategy(1),"ROW")
+        self.assertEqual(sparse_gqa_strategy(2),"VECTORIZED")
+        self.assertEqual(sparse_gqa_strategy(32),"VECTORIZED")
+        with self.assertRaises(ValueError):sparse_gqa_strategy(0)
+        q=torch.tensor([[[1.,0.],[0.,1.],[2.,0.],[0.,2.]]])
+        k=torch.arange(12,dtype=torch.float32).reshape(3,2,2)/10
+        v=torch.arange(12,dtype=torch.float32).reshape(3,2,2)
+        selected=torch.tensor([[0,2,-1]])
+        self.assertTrue(torch.equal(
+            sparse_gqa_candidate(q,k,v,selected),sparse_gqa(q,k,v,selected)))
+
     def test_compress_raw_before_norm_and_first_position(self):
         raw=torch.tensor([[1.,0.],[0.,3.],[2.,1.],[1.,4.],[9.,1.]])
         positions=torch.tensor([10,11,12,13,14]);seen=[]
@@ -38,6 +58,27 @@ class QSATests(unittest.TestCase):
         v[1]=9999;k[1]=-9999
         torch.testing.assert_close(sparse_gqa(q,k,v,chosen),out,rtol=0,atol=0)
         self.assertTrue(torch.equal(sparse_gqa(q,k,v,torch.full((1,3),-1)),torch.zeros_like(q)))
+    def test_vectorized_sparse_gqa_matches_reference_for_variable_prefixes(self):
+        torch.manual_seed(611)
+        q=torch.randn(4,4,3)
+        k=torch.randn(6,2,3)
+        v=torch.randn(6,2,3)
+        selected=torch.tensor([
+            [0,-1,-1,-1,-1,-1,-1],
+            [0,1,2,-1,-1,-1,-1],
+            [0,2,3,5,-1,-1,-1],
+            [1,2,3,4,5,-1,-1],
+        ])
+        want=sparse_gqa(q,k,v,selected)
+        got=sparse_gqa_vectorized(q,k,v,selected)
+        torch.testing.assert_close(got,want,rtol=1e-6,atol=1e-6)
+    def test_vectorized_sparse_gqa_all_padding_is_zero(self):
+        q=torch.randn(2,4,3)
+        k=torch.randn(5,2,3)
+        v=torch.randn(5,2,3)
+        selected=torch.full((2,7),-1)
+        self.assertTrue(torch.equal(
+            sparse_gqa_vectorized(q,k,v,selected),torch.zeros_like(q)))
     def test_text_rope_partial_neox_and_reject_multiaxis(self):
         x=torch.arange(24,dtype=torch.float32).reshape(2,2,6)/10
         positions=torch.tensor([0,3]);out=text_rope(x,positions,rotary_dim=4,theta=100.)

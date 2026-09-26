@@ -1,0 +1,48 @@
+{
+  "environment": {
+    "ASCEND_HOME_PATH": "/usr/local/Ascend/cann-9.0.0",
+    "ASCEND_OPP_PATH": "/usr/local/Ascend/cann-9.0.0/opp",
+    "PYTHONPATH": "/usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/plan15-threshold-candidate129-20260925-v90/overlay-python:/round9/candidate-runtime-python"
+  },
+  "executable": "/usr/local/python3.11.15/bin/python",
+  "modules": {
+    "kt_kernel": {
+      "path": "/round9/candidate-runtime-python/kt_kernel/__init__.py",
+      "sha256": "5655f31960dbf833ac17a9e99c89b84c091d30890677373e954bad4770548c5e",
+      "status": "IMPORTED",
+      "version": "0.6.1"
+    },
+    "kt_kernel_ext": {
+      "path": "/round9/candidate-runtime-python/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+      "sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+      "status": "IMPORTED",
+      "version": null
+    },
+    "sglang": {
+      "path": "/round9/plan15-threshold-candidate129-20260925-v90/overlay-python/sglang/__init__.py",
+      "sha256": "08aeb4bb5278dfd08965a3e2856aa50e3159f1da080bee58808633f84d4f221e",
+      "status": "IMPORTED",
+      "version": "0.0.0.dev0"
+    },
+    "torch": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch/__init__.py",
+      "sha256": "3caf7f40140ede2465bde40b9003af10cbbc8f7bcf436fa1de026471daa1b288",
+      "status": "IMPORTED",
+      "version": "2.9.0+cpu"
+    },
+    "torch_npu": {
+      "path": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/__init__.py",
+      "sha256": "27f372506192fe194032728d1d4b296202937ecc71de2d65215d33a64640371d",
+      "status": "IMPORTED",
+      "version": "2.9.0.post2"
+    },
+    "transformers": {
+      "path": "/transformers/src/transformers/__init__.py",
+      "sha256": "bcb3bb367b0c210f75bd63c4c694fbac9fbeb079c955756d7fbe5b69877953a4",
+      "status": "IMPORTED",
+      "version": "5.3.0.dev0"
+    }
+  },
+  "platform": "Linux-6.6.0-72.0.0.76.oe2403sp1.aarch64-aarch64-with-glibc2.35",
+  "python": "3.11.15 (main, May 13 2026, 09:39:24) [GCC 11.4.0]"
+}

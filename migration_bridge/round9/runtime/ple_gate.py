@@ -11,14 +11,16 @@ CHECKS = frozenset(('original_rows_exact','duplicates_exact','cross_shard_exact'
 
 
 def require_ple_device_gate(path, expected_sha, *, source_identity, source_sha256,
-                            torch_version, torch_npu_version):
+                            torch_version, torch_npu_version, expected_physical_device=15):
     if not path or not isinstance(expected_sha,str) or re.fullmatch('[0-9a-f]{64}',expected_sha) is None:
         raise RuntimeError('PLE requires frozen component receipt')
     raw=Path(path).read_bytes()
     if hashlib.sha256(raw).hexdigest()!=expected_sha:raise RuntimeError('PLE receipt SHA changed')
     gate=json.loads(raw)
+    if type(expected_physical_device) is not int or expected_physical_device < 0:
+        raise RuntimeError('PLE expected physical device is invalid')
     exact=dict(schema=1,status='PASS_PLE_ASYNC_ORIGINAL_ROWS',
-        scope='COMPONENT_ONLY_NOT_MODEL_OR_OVERLAP_PERFORMANCE',physical_device=15,
+        scope='COMPONENT_ONLY_NOT_MODEL_OR_OVERLAP_PERFORMANCE',physical_device=expected_physical_device,
         slots=2,max_rows=512,row_width=160,dtype='torch.bfloat16',
         pinned_bytes=327680,device_buffer_bytes=327680,
         torch_version=torch_version,torch_npu_version=torch_npu_version,

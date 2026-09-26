@@ -1,0 +1,104 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND10_RESOURCE_RETIREMENT",
+  "owned_containers_running": 0,
+  "physical12_processes": 0,
+  "guard_exit_ack": {
+    "time": 1790393760.2977471,
+    "action": "OWNED_EXITED",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-09-26T03:32:32.256057257Z",
+      "FinishedAt": "2026-09-26T03:35:59.673085059Z"
+    }
+  },
+  "owned_container_removed": true,
+  "targeted_cache_retirement": {
+    "schema": 1,
+    "status": "PASS_TARGETED_OWNED_FILE_CACHE_RETIREMENT",
+    "started": 1790393953.044183,
+    "operation": "POSIX_FADV_DONTNEED",
+    "global_drop_caches": false,
+    "roots": [
+      "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1",
+      "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+    ],
+    "suffixes": [
+      ".gguf",
+      ".safetensors"
+    ],
+    "file_count": 179,
+    "file_stat_identity_sha256": "78e505f906e88f500543c6b8aedfe00aa4d0c27bbbd0f93b299d8e9fbc89ab83",
+    "active_references_before": [],
+    "before_numa_meminfo_kib": {
+      "2": {
+        "MemFree": 19456848,
+        "FilePages": 229681336,
+        "AnonPages": 13520552,
+        "FileHugePages": 199757824
+      },
+      "3": {
+        "MemFree": 210030892,
+        "FilePages": 37463640,
+        "AnonPages": 15103792,
+        "FileHugePages": 18059264
+      },
+      "4": {
+        "MemFree": 150329400,
+        "FilePages": 97408144,
+        "AnonPages": 14386076,
+        "FileHugePages": 23500800
+      },
+      "7": {
+        "MemFree": 218978704,
+        "FilePages": 21642296,
+        "AnonPages": 21291476,
+        "FileHugePages": 131072
+      }
+    },
+    "before_system_memavailable_kib": 1860658388,
+    "failures": [],
+    "ended": 1790393978.1807375,
+    "file_stats_unchanged": true,
+    "active_references_after": [],
+    "after_numa_meminfo_kib": {
+      "2": {
+        "MemFree": 241660748,
+        "FilePages": 7582452,
+        "AnonPages": 13520552,
+        "FileHugePages": 204800
+      },
+      "3": {
+        "MemFree": 241086316,
+        "FilePages": 6463936,
+        "AnonPages": 15103792,
+        "FileHugePages": 1255424
+      },
+      "4": {
+        "MemFree": 164599540,
+        "FilePages": 83190964,
+        "AnonPages": 14386716,
+        "FileHugePages": 23500800
+      },
+      "7": {
+        "MemFree": 235265324,
+        "FilePages": 5423732,
+        "AnonPages": 21291468,
+        "FileHugePages": 131072
+      }
+    },
+    "after_system_memavailable_kib": 1860881216,
+    "other_tasks_modified": false,
+    "automation": "PAUSED_UNCHANGED"
+  },
+  "automation": "PAUSED_UNCHANGED",
+  "other_tasks_modified": false
+}

@@ -1,0 +1,52 @@
+{
+  "admission": {
+    "min_mean_idle": 0.9969316409313942,
+    "min_numa_free_gib": {
+      "2": 230.78180694580078,
+      "3": 229.93950271606445,
+      "4": 160.72368621826172,
+      "7": 224.64408111572266
+    },
+    "training_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "windows": 12
+  },
+  "archive_sha256": {
+    "admission": "c8dc85fbb3a786ee41e586c5c2f480badbf890c4499cc2acfdd4f46a8cb55c6b",
+    "result": "b63600d172ee18bd7de7be996079953417c3a3f3073ec6850a9f8c9fca33140c"
+  },
+  "block": "B",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+  "decode_lengths": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "e2e_seconds": {
+    "128": 69.030195592,
+    "256": 131.916578206,
+    "32": 32.961984008,
+    "64": 43.27058042
+  },
+  "generation_attempts": 5,
+  "migration_exposed_seconds": {
+    "128": 13.158325667,
+    "256": 11.804011943,
+    "32": 16.560720496,
+    "64": 14.525804372
+  },
+  "mode": "DYNAMIC",
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "quality": "PASS_EXACT_LENGTH_FINITE_LOGPROB_HYBRID_PATH_LIVE_STATE",
+  "same_mode_repeat": "PASS_OUTPUT_IDS_EXACT_V134_DYNAMIC_A",
+  "schema": 1,
+  "source_sha256": {
+    "dynamic-events.jsonl": "74d716e2d6909ca5cab68f11c40460cc2b0341d402e3f4a3a50d5bb136867a0b",
+    "host-controller.json": "744617c474735b65b0c0f0528e8d66f011f89793de68fc6a678171ab60416bd0",
+    "post-cleanup-proc-mem.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "round11-t4-final.json": "9c31f319d2c16876c75dc141a6ff42afb5c7b58601e55eafd747b938fb563047",
+    "round11-t4-supervisor.json": "4e09b80e104665282f17c5717049c29b3ec838ea493b8b5c8c30512547097733"
+  },
+  "status": "PASS_ROUND11_T4_SINGLE_RUN_VALIDATION",
+  "version": 135
+}

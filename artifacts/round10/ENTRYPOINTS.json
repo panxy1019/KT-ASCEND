@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "source_root": "artifacts/round10/h0-v90-source",
+  "server": {
+    "file": "source/runtime/candidate_server.py",
+    "profile": "server-profile.json",
+    "resolved_profile": "resolved-profile.json"
+  },
+  "policy": {
+    "file": "overlay-python/sglang/srt/layers/round9/prefill_runtime.py",
+    "symbol": "PrefillRuntime.before",
+    "binding_file": "overlay-python/sglang/srt/layers/round9/prefill_binding.py",
+    "before_symbol": "prefill_before",
+    "after_symbol": "prefill_after"
+  },
+  "hybrid": {
+    "file": "overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+    "class": "KTEPWrapperMethod",
+    "apply": "KTEPWrapperMethod.apply",
+    "cpu_submit": "KTEPWrapperMethod._submit_cpu_forward",
+    "cpu_sync": "KTEPWrapperMethod._sync_cpu_forward",
+    "native_submit": "kt_kernel_ext.MOEWrapper.submit_forward",
+    "native_sync": "kt_kernel_ext.MOEWrapper.sync_forward",
+    "probe_file": "overlay-python/sglang/srt/layers/round9/hybrid_probe.py"
+  },
+  "dynamic": {
+    "server_arg": "kt_enable_dynamic_expert_update",
+    "boundary_enable_env": "ROUND9_DYNAMIC_BOUNDARY_ENABLE",
+    "boundary_file": "overlay-python/sglang/srt/layers/round9/prefill_end_boundary.py",
+    "scheduler_binding_file": "overlay-python/sglang/srt/layers/round9/prefill_binding.py"
+  },
+  "model": {
+    "file": "overlay-python/sglang/srt/models/qwen4_exp.py",
+    "entry_class": "Qwen4ExpForConditionalGeneration",
+    "gdn_class": "Qwen4ReferenceGatedDeltaNet",
+    "qsa_class": "Qwen4ReferenceIndexer",
+    "ple_class": "Qwen4ReferencePLE"
+  },
+  "request_drivers": {
+    "round9_threshold_reference": "request_driver.py",
+    "round9_cancel_component": "source/tests/full_model_cancel_probe.py",
+    "round10_t1": "round10_t1_driver.py"
+  },
+  "loaded_native_library": {
+    "path_in_container": "/round9/candidate-runtime-python/kt_kernel/kt_kernel_ext.cpython-311-aarch64-linux-gnu.so",
+    "sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d"
+  }
+}

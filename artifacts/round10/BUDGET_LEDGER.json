@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "round": 10,
+  "updated_at": "2026-09-26T03:40:00Z",
+  "status": "ROUND10_AB_NARROW_QUALIFIED",
+  "old_round_budget_reused": false,
+  "global": {
+    "model_starts_used": 4,
+    "generation_used": 36,
+    "abort_controls_used": 4,
+    "automatic_retries_used": 0
+  },
+  "stages": {
+    "T0": {
+      "device_budget": 0,
+      "device_runs_used": 0,
+      "status": "COMPLETE"
+    },
+    "T1": {
+      "model_starts_limit": 2,
+      "model_starts_used": 2,
+      "generation_limit": 24,
+      "generation_used": 23,
+      "abort_controls_planned": 2,
+      "abort_controls_used": 2,
+      "automatic_retries_limit": 0,
+      "status": "PASS_T1_H0_ROUND10_NARROW",
+      "runs": [
+        {
+          "identity": "v91-A",
+          "model_start_consumed": false,
+          "generation_consumed": 0,
+          "status": "GUARD_NAME_REJECTED_BEFORE_DOCKER_START",
+          "cleanup": "OWNED_NEVER_STARTED_VERIFIED_AND_REMOVED"
+        },
+        {
+          "identity": "v93-A",
+          "model_start_consumed": true,
+          "generation_consumed": 4,
+          "abort_controls_consumed": 0,
+          "status": "QUALITY_FAIL_CANARY_QUOTE",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        },
+        {
+          "identity": "v95-R",
+          "model_start_consumed": true,
+          "generation_consumed": 19,
+          "abort_controls_consumed": 2,
+          "status": "PASS_ROUND10_T1_PROCESS",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        }
+      ]
+    },
+    "T2": {
+      "status": "PASS_T2_HYBRID_COST_AND_FIXTURE",
+      "model_starts_limit": 1,
+      "model_starts_used": 0,
+      "generation_limit": 3,
+      "generation_used": 0,
+      "abort_controls_limit": 0,
+      "purpose": "diagnostic attribution and replay fixture only; diagnostic timing is excluded from unprofiled performance"
+    },
+    "T3": {
+      "status": "CURRENT_NATIVE_SAME_PRECISION_VERIFIED_CROSS_PRECISION_BOUNDARY_RECORDED_NO_CANDIDATE",
+      "component_process_limit": 6,
+      "component_process_used": 6,
+      "candidate_limit": 2,
+      "promotion_limit": 1,
+      "full_model_starts_limit": 1,
+      "full_model_starts_used": 0,
+      "candidate_used": 0,
+      "promotion_used": 0
+    },
+    "T4": {
+      "status": "PASS_TRANSACTION_NO_NET_BENEFIT_DEFAULT_OFF",
+      "model_starts_limit": 2,
+      "model_starts_used": 1,
+      "generation_limit": 8,
+      "generation_used": 5,
+      "abort_controls_limit": 1,
+      "abort_controls_used": 1,
+      "trigger_wiring_limit": 1,
+      "migration_tweak_limit": 1,
+      "trigger_wiring_used": 1,
+      "migration_tweak_used": 0,
+      "runs": [
+        {
+          "identity": "v102-D1",
+          "status": "PASS_ROUND10_T4_D1_PROCESS",
+          "disposition": "NO_NET_BENEFIT_DEFAULT_OFF",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        }
+      ]
+    },
+    "T5": {
+      "status": "PASS_T5_CURRENT_PROVIDER_AND_STATE_NO_PERFORMANCE_CANDIDATE",
+      "component_process_limit": 6,
+      "component_process_used": 3,
+      "model_starts_limit": 1,
+      "model_starts_used": 0,
+      "generation_limit": 4,
+      "generation_used": 0,
+      "performance_candidate_limit": 1,
+      "performance_candidate_used": 0,
+      "automatic_retries_used": 0,
+      "runs": [
+        {
+          "identity": "v103",
+          "scope": "GDN_QSA_PLE",
+          "status": "FAIL_PLE_GATE_IDENTITY_AFTER_GDN_QSA_PASS",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        },
+        {
+          "identity": "v104",
+          "scope": "PLE_RECOVERY",
+          "status": "FAIL_CONTROLLER_LITERAL_PATH",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        },
+        {
+          "identity": "v105",
+          "scope": "PLE_RECOVERY",
+          "status": "PLE_PASS_AGGREGATOR_SCHEMA_FAIL",
+          "cleanup": "GUARD_ACK_AND_REMOVED"
+        },
+        {
+          "identity": "v106-offline",
+          "scope": "OFFLINE_COMBINATION",
+          "status": "PASS_ROUND10_T5_COMPONENTS",
+          "device_processes": 0
+        }
+      ]
+    },
+    "T6": {
+      "status": "PASS_ROUND10_T6_FINAL_REGRESSION_WITH_CONTROLLER_RECONCILIATION",
+      "model_starts_limit": 1,
+      "model_starts_used": 1,
+      "generation_limit": 8,
+      "generation_used": 8,
+      "abort_controls_limit": 1,
+      "abort_controls_used": 1,
+      "automatic_retries_used": 0,
+      "runs": [
+        {
+          "identity": "v107",
+          "model_result": "PASS_ROUND10_T6_PROCESS",
+          "supervisor": "PASS",
+          "host_controller": "FAIL_POST_CLEANUP_RECEIPT_FILENAME",
+          "cleanup": "GUARD_ACK_AND_REMOVED",
+          "reconciled": true
+        }
+      ]
+    }
+  },
+  "notes": [
+    "Round9 counters are historical evidence and are not available to Round10.",
+    "The supplied plan fixes the T1 limit at two model starts and 24 generations.",
+    "The supplied excerpt did not include the later stage numeric device caps; each later stage must freeze a bounded cap before its first device submission and may not borrow from another stage.",
+    "A controller or adapter repair uses a new run identity; automatic retry remains zero."
+  ]
+}

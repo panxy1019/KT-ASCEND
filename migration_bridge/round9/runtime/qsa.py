@@ -71,6 +71,54 @@ def sparse_gqa(query,keys,values,selected):
     return result
 
 
+def sparse_gqa_vectorized(query,keys,values,selected):
+    """Evaluate the same sparse GQA contract with one batched token path."""
+    if (query.ndim!=3 or keys.ndim!=3 or values.shape!=keys.shape
+            or query.shape[-1]!=keys.shape[-1] or keys.shape[1]<1
+            or query.shape[1]%keys.shape[1] or selected.ndim!=2
+            or selected.shape[0]!=query.shape[0]
+            or selected.dtype not in (torch.int32,torch.int64)):
+        raise ValueError('invalid sparse GQA layout')
+    width=min(selected.shape[1],keys.shape[0])
+    invalid=((selected<-1)|(selected>=keys.shape[0])).any()
+    if selected.shape[1]>width:
+        invalid=invalid|(selected[:,width:]>=0).any()
+    if bool(invalid):
+        raise ValueError('selected token outside ordinary KV cache or packed prefix')
+    if width==0:
+        return torch.zeros_like(query)
+    ids=selected[:,:width]
+    valid=ids>=0
+    safe_ids=ids.clamp_min(0).long()
+    tokens=query.shape[0]
+    kv_heads=keys.shape[1]
+    repeats=query.shape[1]//kv_heads
+    head_dim=query.shape[-1]
+    k=keys.index_select(0,safe_ids.reshape(-1)).reshape(
+        tokens,width,kv_heads,head_dim).float()
+    v=values.index_select(0,safe_ids.reshape(-1)).reshape_as(k).float()
+    q=query.float().reshape(tokens,kv_heads,repeats,head_dim)
+    score=torch.einsum('tkrd,tskd->tkrs',q,k)/math.sqrt(head_dim)
+    safe_mask=valid.clone()
+    safe_mask[:,0]|=~valid.any(-1)
+    score=score.masked_fill(~safe_mask[:,None,None,:],float('-inf'))
+    weights=score.softmax(-1)*valid[:,None,None,:]
+    out=torch.einsum('tkrs,tskd->tkrd',weights,v)
+    return out.reshape_as(query).to(query.dtype)
+
+
+def sparse_gqa_strategy(query_tokens):
+    if type(query_tokens) is not int or query_tokens<1:
+        raise ValueError('invalid sparse GQA query token count')
+    return 'ROW' if query_tokens==1 else 'VECTORIZED'
+
+
+def sparse_gqa_candidate(query,keys,values,selected):
+    function=(sparse_gqa if sparse_gqa_strategy(query.shape[0])=='ROW'
+              else sparse_gqa_vectorized)
+    return function(query,keys,values,selected)
+
+
 def text_rope(x,positions,*,rotary_dim=64,theta=10000000.0):
     """NeoX partial RoPE for one-axis text positions only.
 

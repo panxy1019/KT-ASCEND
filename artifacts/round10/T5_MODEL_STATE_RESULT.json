@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "status": "PASS_T5_CURRENT_PROVIDER_AND_STATE_NO_PERFORMANCE_CANDIDATE",
+  "stage": "T5",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "component_processes_used": 3,
+  "model_starts_used": 0,
+  "automatic_retries": 0,
+  "gdn": {
+    "run": "v103",
+    "layers": [
+      0,
+      24,
+      46
+    ],
+    "rows": 18,
+    "max_relative_error": {
+      "torch.float32": 1.087496400804069e-06,
+      "torch.bfloat16": 0.005065960661894483
+    },
+    "gates": {
+      "float32": 0.0001,
+      "bfloat16": 0.03
+    },
+    "repeat_exact": true,
+    "decode_and_reset_state_pass": true,
+    "allocator_after": [
+      0,
+      0
+    ]
+  },
+  "qsa": {
+    "run": "v103",
+    "rows": 30,
+    "layers": [
+      3,
+      23,
+      47
+    ],
+    "lengths": [
+      1,
+      3,
+      4,
+      9,
+      17
+    ],
+    "max_relative_error": {
+      "torch.float32": 1.079354747169595e-06,
+      "torch.bfloat16": 0.005116598336579965
+    },
+    "gates": {
+      "float32": 0.0001,
+      "bfloat16": 0.03
+    },
+    "topk_stress": true,
+    "signed_multihead_ranking": true,
+    "repeat_exact": true,
+    "allocator_after": [
+      0,
+      0
+    ]
+  },
+  "ple": {
+    "run": "v105",
+    "cases": 3,
+    "checks": {
+      "cancel_late_completion": true,
+      "consumer_stream_order": true,
+      "cross_shard_exact": true,
+      "duplicates_exact": true,
+      "original_rows_exact": true,
+      "request_switch": true,
+      "slot_reuse": true,
+      "zero_credits_after_close": true
+    },
+    "all_exact": true,
+    "peak_extra_bytes": 493056,
+    "physical_device": 12
+  },
+  "live_state_pool": {
+    "source_run": "T4_v102",
+    "commits": 4,
+    "all_live_state_preserved": true,
+    "tensors_per_commit": 124,
+    "coverage_per_commit": {
+      "gdn": 72,
+      "qsa": 49,
+      "ple": 1,
+      "request_metadata": 2
+    },
+    "cancel_and_reuse": "PASS_FROM_T4_V102"
+  },
+  "performance": {
+    "candidate_used": 0,
+    "disposition": "NO_B_MODULE_HOTSPOT_IDENTIFIED_BY_T2;_KEEP_CURRENT_PROVIDER"
+  },
+  "cleanup": {
+    "v103_container_removed": true,
+    "v104_container_removed": true,
+    "v105_container_removed": true,
+    "physical12_processes_after": 0
+  },
+  "evidence": {
+    "gdn_sha256": "a7eb7a9caf60ae7dd2850ff97987ab96f14187422931e110bd08420509bd4884",
+    "qsa_sha256": "eb4d7cbd2c758ba338df3a2c1b7c839f244a44332d8e8b3b698ec3513f5e2380",
+    "ple_sha256": "f3e809fd083e05bb88ab8e81210ed9224db7c6859c2c06b8030054febe648cd2",
+    "combined_sha256": "ffa727ba748bbf4ea8c0fad9222be8d8d200f759a31b261712026d6ae4b7a71c",
+    "v103_archive_sha256": "99c4604fa187110f2087343c77578cd0775d57a7cc52d34149cc6ca3288acd35",
+    "v104_archive_sha256": "4c911fcaddeebb497aaa15125f9759d9423937a81a182420129ebb6380efe052",
+    "v105_archive_sha256": "ddf7e5ea241a5bc3fda380b9336d5310b2606b785faed486e6dcf567d7035565",
+    "offline_archive_sha256": "31af3961bf8898c4a39dd7a81c7523744169c961cc1f4316ef56c7ffe452cbe2"
+  },
+  "limitations": [
+    "component/reference and current live-state narrow qualification only",
+    "no B-module performance candidate was justified",
+    "not long-context or concurrent qualification"
+  ]
+}

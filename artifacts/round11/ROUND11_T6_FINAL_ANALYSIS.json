@@ -1,0 +1,185 @@
+{
+  "block_order": [
+    {
+      "block": "A",
+      "mode": "BASELINE",
+      "version": 147
+    },
+    {
+      "block": "A",
+      "mode": "FINAL",
+      "version": 148
+    },
+    {
+      "block": "B",
+      "mode": "FINAL",
+      "version": 149
+    },
+    {
+      "block": "B",
+      "mode": "BASELINE",
+      "version": 150
+    }
+  ],
+  "budget": {
+    "abort_controls": 2,
+    "automatic_retries": 0,
+    "generation_attempts": 24,
+    "model_processes": 4
+  },
+  "disposition": "HFINAL_REQUALIFIED_NO_NEW_PROMOTION",
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "limitations": [
+    "HFINAL contains no newly promoted Kunpeng or B-route candidate.",
+    "T6 records unprofiled E2E and streamed inter-token arrival gaps; it does not infer an independent TTFT or prefill duration.",
+    "Qualification remains serial TP1 and the Round11 tested Hybrid boundary; it is not production deployment qualification."
+  ],
+  "performance": {
+    "comparison": {
+      "128": {
+        "baseline_blocks_seconds": [
+          72.148552671,
+          70.165958194
+        ],
+        "baseline_median_seconds": 71.1572554325,
+        "final_blocks_seconds": [
+          69.102610516,
+          67.92512359
+        ],
+        "final_median_seconds": 68.513867053,
+        "final_over_baseline": 0.9628514567708767,
+        "output_sha256": "1c4802167ee9d65b1fba1023a144004d1613463bfea04e2856a2f47aa449341b",
+        "per_block_median_inter_token_seconds": {
+          "147": 0.450276192,
+          "148": 0.441450703,
+          "149": 0.43054774,
+          "150": 0.443211119
+        }
+      },
+      "32": {
+        "baseline_blocks_seconds": [
+          27.528126458,
+          27.979790943
+        ],
+        "baseline_median_seconds": 27.7539587005,
+        "final_blocks_seconds": [
+          27.045362327,
+          28.123643232
+        ],
+        "final_median_seconds": 27.5845027795,
+        "final_over_baseline": 0.9938943513309707,
+        "output_sha256": "432bdc56a05af4dad58754e5ab2d8823812a0736386ebd505e7cf5a6d7d2a6a7",
+        "per_block_median_inter_token_seconds": {
+          "147": 0.397443219,
+          "148": 0.391855842,
+          "149": 0.406630716,
+          "150": 0.406493457
+        }
+      },
+      "64": {
+        "baseline_blocks_seconds": [
+          40.323356587,
+          41.227488425
+        ],
+        "baseline_median_seconds": 40.775422506,
+        "final_blocks_seconds": [
+          38.628270512,
+          39.36546028
+        ],
+        "final_median_seconds": 38.996865396000004,
+        "final_over_baseline": 0.9563816387251834,
+        "output_sha256": "47ff0278fd6013734469c365e31cc3b0a14ad1a1d0411e7d13ce18a75097d01b",
+        "per_block_median_inter_token_seconds": {
+          "147": 0.433311168,
+          "148": 0.403228947,
+          "149": 0.414825321,
+          "150": 0.432233191
+        }
+      }
+    },
+    "interpretation": "BASELINE and FINAL labels execute the same frozen HFINAL compute identity. Ratios quantify independent-process reproducibility and process variance; they are not a candidate speedup claim.",
+    "profiler": "OFF",
+    "same_compute_identity": true
+  },
+  "quality": {
+    "abort_controls": 2,
+    "all_performance_logprobs_finite": true,
+    "all_performance_output_ids_exact_across_blocks": true,
+    "all_performance_paths": "HYBRID",
+    "canary_classes": [
+      "arithmetic",
+      "json",
+      "marker",
+      "quote",
+      "transform"
+    ],
+    "cleanup": "ALL_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+    "decode_lengths": [
+      32,
+      64,
+      128
+    ],
+    "five_deterministic_canary_classes": true,
+    "input_tokens": 128,
+    "same_process_reuse_controls": 2
+  },
+  "resources": {
+    "blocks": {
+      "147": {
+        "max_hbm_used_mib": 28777.0,
+        "max_host_cgroup_current_gib": 333.5099906921387,
+        "max_host_cgroup_peak_gib": 333.6185874938965,
+        "max_owned_process_mib": 25760.0,
+        "min_host_available_gib": 1700.365306854248,
+        "min_numa_memfree_gib": {
+          "2": 194.93101119995117,
+          "3": 201.19258880615234,
+          "4": 1.3123970031738281,
+          "7": 124.38718032836914
+        }
+      },
+      "148": {
+        "max_hbm_used_mib": 28783.0,
+        "max_host_cgroup_current_gib": 336.15330505371094,
+        "max_host_cgroup_peak_gib": 336.1943244934082,
+        "max_owned_process_mib": 25766.0,
+        "min_host_available_gib": 1701.7968139648438,
+        "min_numa_memfree_gib": {
+          "2": 183.8955192565918,
+          "3": 0.36170196533203125,
+          "4": 144.19099807739258,
+          "7": 192.52776336669922
+        }
+      },
+      "149": {
+        "max_hbm_used_mib": 28777.0,
+        "max_host_cgroup_current_gib": 335.6349105834961,
+        "max_host_cgroup_peak_gib": 335.6793403625488,
+        "max_owned_process_mib": 25760.0,
+        "min_host_available_gib": 1700.7934074401855,
+        "min_numa_memfree_gib": {
+          "2": 198.0268096923828,
+          "3": 197.78162384033203,
+          "4": 0.9017982482910156,
+          "7": 125.87155532836914
+        }
+      },
+      "150": {
+        "max_hbm_used_mib": 28781.0,
+        "max_host_cgroup_current_gib": 335.0756301879883,
+        "max_host_cgroup_peak_gib": 335.13934326171875,
+        "max_owned_process_mib": 25764.0,
+        "min_host_available_gib": 1700.208381652832,
+        "min_numa_memfree_gib": {
+          "2": 2.2397689819335938,
+          "3": 182.61344146728516,
+          "4": 144.61776733398438,
+          "7": 193.4164810180664
+        }
+      }
+    }
+  },
+  "runtime_identity": "ROUND11_HFINAL_EQUALS_V107_ORIGINAL_PROVIDERS",
+  "schema": 1,
+  "status": "PASS_ROUND11_T6_FINAL_INTEGRATION"
+}

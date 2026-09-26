@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "status": "PASS_T2_SOURCE_AND_ISA_AUDIT_PENDING_MEASUREMENT",
+  "created_at": 1790409170.0077002,
+  "source_identity": {
+    "moe.hpp": {
+      "path": "kt-kernel/operators/llamafile/moe.hpp",
+      "sha256": "e4bb9d2a05fb9a883a06b49e1997c39887fcdd577bf48c5eb4169c836d7ac7e9",
+      "remote_candidate_exact": true
+    },
+    "worker_pool.cpp": {
+      "path": "kt-kernel/cpu_backend/worker_pool.cpp",
+      "sha256": "a3076a95a3408b10fdbc73bb6010b3d876b3f33b9d23de6a9eeffc576d1772e1",
+      "remote_candidate_exact": true
+    },
+    "tinyblas_cpu_sgemm.inc": {
+      "path": "third_party/llamafile/tinyblas_cpu_sgemm.inc",
+      "sha256": "90725aa53a92bcfb3c3bd3ba8ab8e936649623d87972d178902510f298797ca2",
+      "remote_candidate_exact": true
+    },
+    "mxfp4_patch": {
+      "path": "kt-kernel/third_party_patches/llama.cpp/0001-ggml-mxfp4-type.patch",
+      "sha256": "829c39b67331d3d34fdc4f649ac3befcb18932cb448392fb916343c6fcd21bfa",
+      "remote_candidate_exact": true
+    },
+    "llamafile.py": {
+      "path": "kt-kernel/python/utils/llamafile.py",
+      "sha256": "5db476574ed090b26b44dfb25bab03b040740c22a53a9e4e0104cf77a8c9ea69",
+      "remote_candidate_exact": true
+    }
+  },
+  "hardware": {
+    "architecture": "aarch64",
+    "vendor": "HiSilicon",
+    "logical_cpus": 640,
+    "physical_cores": 320,
+    "numa_nodes": 8,
+    "features": {
+      "ASIMD": true,
+      "FP16": true,
+      "DOTPROD": true,
+      "SVE": true,
+      "BF16": true,
+      "I8MM": true
+    },
+    "perf_event_paranoid": 2,
+    "perf_cli": "ABSENT",
+    "direct_perf_event_open": "TO_BE_MEASURED_BY_V114"
+  },
+  "frozen_build": {
+    "LLAMA_ARM_FP16": "ON",
+    "LLAMA_ARM_DOTPROD": "ON",
+    "LLAMA_ARM_SVE": "OFF",
+    "LLAMA_ARM_BF16": "OFF",
+    "LLAMA_ARM_I8MM": "OFF",
+    "LLAMA_NATIVE": "OFF",
+    "LTO": "OFF",
+    "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+    "sdot_instruction_matches": 8304
+  },
+  "mxfp4_kernel_finding": {
+    "implementation": "ggml_vec_dot_mxfp4_q8_0 invoked once per output row through the llamafile MXFP4 fallback",
+    "current_isa": "AArch64 NEON table lookup plus SDOT/DOTPROD",
+    "source_contract": "The frozen implementation deliberately avoids SVE and I8MM requirements.",
+    "consequence": "Turning SVE/BF16/I8MM CMake switches on without adding and qualifying a new MXFP4 kernel has no source-backed performance mechanism.",
+    "isa_flag_only_candidate": "REJECTED_NO_DISTINCT_MXFP4_CODE_PATH"
+  },
+  "measurable_single_variable_options": [
+    {
+      "root": "SCHEDULING",
+      "source_fact": "InNumaPool computes a guided block then unconditionally overwrites it with block=1.",
+      "eligible_when": "queue/task scheduling or worker imbalance is material in T2",
+      "candidate": "remove the unconditional unit-block override while preserving the same task IDs and arithmetic"
+    },
+    {
+      "root": "INPUT_QUANTIZATION",
+      "source_fact": "Each of four TP forward_one paths converts/quantizes the same token input locally.",
+      "eligible_when": "quant phase is material in T2",
+      "candidate": "bounded shared or precomputed Q8_0 activation with explicit NUMA ownership; new buffer contract required"
+    },
+    {
+      "root": "MXFP4_COMPUTE",
+      "source_fact": "gate/up/down call the same NEON SDOT vec-dot fallback for each output row.",
+      "eligible_when": "native compute dominates and neither scheduling nor quant is material",
+      "candidate": "a new qualified Kunpeng MXFP4 microkernel; not represented by existing SVE/I8MM flags"
+    }
+  ],
+  "selection": "PENDING_V113_V114_V115_ATTRIBUTION",
+  "candidate_limit": 2,
+  "promotion_limit": 1
+}

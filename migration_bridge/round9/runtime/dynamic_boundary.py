@@ -32,6 +32,21 @@ class RequestBoundary:
             plans=[dict(layer=p.layer,previous=list(p.previous),slots=list(p.slots),moves=list(p.moves)) for p in plans]))
         self.request=None;self.generation=None
 
+    def cancel(self,request):
+        """Retire one fenced request without publishing stale placement."""
+        if self.request is not request:
+            raise RuntimeError('Dynamic cancel identity is not the live lease')
+        if not request.finished():
+            raise RuntimeError('Dynamic cancel requires a terminal request')
+        if request.req_pool_idx is not None or request.mamba_pool_idx is not None:
+            raise RuntimeError('Dynamic cancel requires released KV/GDN/PLE consumers')
+        self.controller.adapter.synchronize()
+        self.controller.finish(request.rid,consumers_drained=True)
+        self.controller.discard_observations()
+        self.event(dict(status='DYNAMIC_REQUEST_ABORT_DRAINED',request_id=request.rid,
+                        generation=self.generation,changed_layers=0,copied_experts=0))
+        self.request=None;self.generation=None
+
 
 def _enabled():
     import os
@@ -71,6 +86,17 @@ def scheduler_after(scheduler):
                                persistent_baseline=baseline,
                                at_persistent_baseline=True))
                 runner._round9_ple_request=None
+
+
+def scheduler_cancel(scheduler,request):
+    """Retire Dynamic only after the cancel path released live model pools."""
+    if not _enabled():return
+    boundary=getattr(scheduler,'_round9_dynamic_boundary',None)
+    if boundary is None:
+        raise RuntimeError('enabled Dynamic cancel is missing its live boundary')
+    boundary.cancel(request)
+    if boundary.request is not None:
+        raise RuntimeError('Dynamic cancel retained request ownership')
 
 
 def _require_capacity_gate(capacity, candidate, binding, path, expected_sha, native_sha256=None):
@@ -151,7 +177,8 @@ def _bind_scheduler(scheduler):
         from .prefill_end_boundary import PrefillEndBoundary
         from .live_request_state import snapshot_live_request
         boundary=PrefillEndBoundary(bind_controller(adapter),
-            lambda request:snapshot_live_request(scheduler.tp_worker.model_runner,request),event)
+            lambda request:snapshot_live_request(scheduler.tp_worker.model_runner,request),event,
+            round11_timing=os.environ.get('ROUND11_DYNAMIC_TIMING_ENABLE')=='1')
     else:
         boundary=RequestBoundary(bind_controller(adapter),event)
     shared_budget=getattr(scheduler.tp_worker.model_runner,'_round9_joint_host_budget',None)

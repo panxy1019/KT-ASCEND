@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "status": "FROZEN_READY_WAITING_FRESH_ADMISSION",
+  "created_at": 1790409028.8291416,
+  "fixture": {
+    "capture": "/mnt/data1/kt-round9/evidence/20260925-plan15-p4a-v80/real-prefill.pt",
+    "capture_sha256": "c837641468b9db93c422a3610af7a7ecc1f14d4bbb359841d69ac0dfd655dc6e",
+    "bank": "/mnt/data1/kt-round9/banks/candidate-layer0-mxfp4-v1/layer-00-mxfp4.gguf",
+    "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+    "output_sha256": "f5e189843493b9f42fcf724d9487ec5e1b9c630a6b0e780079cbc2bf6053f7c4",
+    "tokens": 3,
+    "warmups": 5,
+    "iterations": 3000
+  },
+  "roles": {
+    "v113": {
+      "role": "baseline",
+      "hardware_counters": "OFF",
+      "runtime": "candidate-runtime-python",
+      "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d"
+    },
+    "v114": {
+      "role": "counters",
+      "hardware_counters": "ON",
+      "runtime": "candidate-runtime-python",
+      "native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d"
+    },
+    "v115": {
+      "role": "attribution",
+      "hardware_counters": "OFF",
+      "runtime": "round11-t2-attribution-runtime-v2",
+      "native_sha256": "dff773ecabb3c7419afd8e3586e3c09934ebd9f23c7d9604eca5fa1218b39183"
+    }
+  },
+  "files": {
+    "probe": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/round11_t2_attribution_probe.py",
+      "sha256": "28f8742f62fa2c55cee270f3740d58f35857f243199f2086949585bef7b5fe57"
+    },
+    "controller": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/round11_t2_component_controller.py",
+      "sha256": "73a6ba74d8ece8652441d5e0d70106ccd4269b01e32997f8a0d043113517d191"
+    },
+    "guard": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/round11_monitor_owned.py",
+      "sha256": "084a816c8cbd2456b0a659570841cc946acc46ff2314e56490dd9aede30143b2"
+    },
+    "analyzer": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/analyze_round11_t2.py",
+      "sha256": "057efb0670c4a65a4dbf05d8258b4998c611cf3e1482f19dfdc38ff69150f9d9"
+    },
+    "numa_policy": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round10/t6-results/v107/source/tools/numa_policy.py",
+      "sha256": "88239e9b0b6069f3c4f81c7d5b64bf994dbcb8dc8ef99aea37fd56bde985f292"
+    },
+    "attribution_build_receipt": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/t2-build/round11-t2-attribution-build-v2.json",
+      "sha256": "61d8fc59387fadd1c11199cb4c779ef47f9d0a1b08fefbc9c32336ac178d3bba"
+    },
+    "attribution_source_receipt": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round11/t2-build/round11-t2-attribution-source-v2.json",
+      "sha256": "630082fabdd52e86cd0719cfdb447496ea16aba12bbb1fc882d9b7da47cb0382"
+    }
+  },
+  "resource_contract": {
+    "fresh_windows": 12,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "minimum_free_gib_each": 48,
+    "component_owned_limit_mib": 11264,
+    "component_allocator_limit_mib": 10240,
+    "physical_device": 12,
+    "card": 6,
+    "chip": 0
+  },
+  "budget": {
+    "component_processes": 3,
+    "automatic_retries": 0
+  },
+  "counter_scope": "exact 128 named numa_*_[tm]_* compute threads; generic cache events are not LLC-specific",
+  "known_unknowns": [
+    "LLC-specific misses",
+    "memory-controller bandwidth",
+    "remote NUMA accesses"
+  ],
+  "admission_attempts_before_freeze": 2,
+  "component_processes_used": 0
+}

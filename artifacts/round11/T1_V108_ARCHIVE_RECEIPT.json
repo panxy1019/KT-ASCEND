@@ -1,0 +1,23 @@
+{
+  "archive_validation_rule": "member == archive_root OR member below archive_root; absolute/traversal paths and unsafe links rejected",
+  "archives": {
+    "admission": {
+      "members": 4,
+      "path": "artifacts/round11/remote-evidence/20260926-round11-t1-admission-v108.tar.gz",
+      "root": "20260926-round11-t1-admission-v108",
+      "sha256": "4c9d040b5c50cd870a4f646f3c861712b01363a3d558b5496cd0e0980f233497"
+    },
+    "run": {
+      "members": 251,
+      "path": "artifacts/round11/remote-evidence/20260926-round11-t1-v108.tar.gz",
+      "root": "20260926-round11-t1-v108",
+      "sha256": "7e993005722f884e48ce45657f31da49568b73159a2dc0f8551adcfc694b0dd0"
+    }
+  },
+  "failed_attempts": [
+    "T1_V108_ARCHIVE_ATTEMPT_01_FAIL.json"
+  ],
+  "schema": "round11_t1_archive_receipt_v1",
+  "status": "PASS_ARCHIVED_READ_ONLY",
+  "version": 108
+}

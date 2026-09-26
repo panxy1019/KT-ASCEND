@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T1_WITH_RESOURCE_CUTOFF",
+  "baseline_boundary": {
+    "128": "HYBRID",
+    "129": "LAYERWISE",
+    "130": "LAYERWISE"
+  },
+  "experimental_threshold": 1025,
+  "hybrid_qualified_up_to_tokens": 768,
+  "decode_steps_qualified": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "deterministic_canaries_pass": true,
+  "repeatability_pass": true,
+  "cancel_and_reuse_pass": true,
+  "same_input_path_ratios": {
+    "129": {
+      "layerwise_seconds": 1175.462570734,
+      "forced_hybrid_seconds": 17.665590055,
+      "hybrid_over_layerwise": 0.015028628299043997
+    },
+    "130": {
+      "layerwise_seconds": 1173.084273998,
+      "forced_hybrid_seconds": 15.94381755,
+      "hybrid_over_layerwise": 0.01359136585785241
+    }
+  },
+  "baseline_path_switch_at_tokens": 129,
+  "crossover": "NOT_FOUND_WITHIN_QUALIFIED_RANGE",
+  "expanded_hybrid_crossover": "NOT_FOUND_WITHIN_QUALIFIED_RANGE",
+  "resource_cutoff_tokens": 1024,
+  "resource_cutoff_reason": "NUMA4 free and conservative reclaim headroom below reserve",
+  "qualification_scope": "SERIAL_SINGLE_REQUEST_PROMPT_UP_TO_768_DECODE_UP_TO_256",
+  "default_threshold_changed": false
+}

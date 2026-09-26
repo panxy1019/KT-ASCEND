@@ -1,0 +1,14 @@
+can not use command: npu-smi info
+can not use command: npu-smi info
+CMake Error: The current CMakeCache.txt directory /round9/candidate-native-build/CMakeCache.txt is different than the directory /build where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+/bin/sh: 1: cd: can't cd to /build
+gmake[2]: *** [third_party/llama.cpp/common/CMakeFiles/build_info.dir/build.make:107: third_party/llama.cpp/common/CMakeFiles/build_info.dir/depend] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:326: third_party/llama.cpp/common/CMakeFiles/build_info.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+/bin/sh: 1: cd: can't cd to /build
+gmake[2]: *** [CMakeFiles/llamafile.dir/build.make:448: CMakeFiles/llamafile.dir/depend] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/llamafile.dir/all] Error 2
+/bin/sh: 1: cd: can't cd to /build
+gmake[2]: *** [third_party/llama.cpp/CMakeFiles/ggml.dir/build.make:162: third_party/llama.cpp/CMakeFiles/ggml.dir/depend] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:230: third_party/llama.cpp/CMakeFiles/ggml.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2

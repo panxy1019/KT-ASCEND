@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "status": "PASS_TRANSACTION_NO_NET_BENEFIT_DEFAULT_OFF",
+  "stage": "T4",
+  "candidate": "D1_HYBRID_PREFILL_END_DYNAMIC",
+  "parent": "H0_ROUND10_V95",
+  "run": "v102",
+  "full_model_starts": 1,
+  "generation_attempts": 5,
+  "abort_controls": 1,
+  "automatic_retries": 0,
+  "trigger_wiring_used": 1,
+  "migration_tweak_used": 0,
+  "quality": {
+    "successful_outputs": [
+      [
+        3897,
+        248046
+      ],
+      [
+        3897,
+        248046
+      ],
+      [
+        3897,
+        248046
+      ],
+      [
+        18,
+        24,
+        16,
+        248046
+      ]
+    ],
+    "live_state_preserved_all": true,
+    "commit_generations": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "cancel_status": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE",
+    "cancel_late_commit": false,
+    "cancel_lease_returned": true
+  },
+  "transactions": [
+    {
+      "request_id": "r10-t4-d1-01-edge64-warmup",
+      "generation": 1,
+      "changed_layers": 48,
+      "copied_experts": 1431
+    },
+    {
+      "request_id": "r10-t4-d1-02-edge64-measurement",
+      "generation": 2,
+      "changed_layers": 45,
+      "copied_experts": 118
+    },
+    {
+      "request_id": "r10-t4-d1-03-edge64-measurement",
+      "generation": 3,
+      "changed_layers": 42,
+      "copied_experts": 86
+    },
+    {
+      "request_id": "r10-t4-d1-05-canary_math391-reuse",
+      "generation": 4,
+      "changed_layers": 48,
+      "copied_experts": 905
+    }
+  ],
+  "performance": {
+    "scope": "UNPROFILED_REQUEST_E2E_INCLUDES_SYNCHRONOUS_STATE_PROOF_AND_MIGRATION",
+    "h0_v95_edge64_measurements_seconds": [
+      5.194822899,
+      5.200894899,
+      5.181577629,
+      5.181312766
+    ],
+    "d1_v102_edge64_measurements_seconds": [
+      24.130848356,
+      23.166608651
+    ],
+    "h0_median_seconds": 5.188200264000001,
+    "d1_median_seconds": 23.648728503500003,
+    "d1_over_h0": 4.558175725712503,
+    "warmup_first_placement_seconds": 68.381126747,
+    "reuse_after_abort_seconds": 41.587523062
+  },
+  "resources": {
+    "monitor_samples": 115,
+    "max_board_hbm_mib": 29574,
+    "max_owned_hbm_mib": 26558,
+    "max_host_cgroup_gib": 338.63109970092773,
+    "max_allocator_mib": 25212.62109375
+  },
+  "cleanup": {
+    "supervisor": "PASS",
+    "owned_container_removed": true,
+    "physical12_processes_after": 0
+  },
+  "evidence": {
+    "archive": "remote-evidence/20260926-round10-t4-v102.tar.gz",
+    "archive_sha256": "c73b5d17f3ffccf93201670e624abd8a993a6fe89fc5a35a166bea50e89c043c",
+    "admission": "remote-evidence/round10-t4-v102-admission.json",
+    "snapshot": "t4-snapshots/v102"
+  }
+}

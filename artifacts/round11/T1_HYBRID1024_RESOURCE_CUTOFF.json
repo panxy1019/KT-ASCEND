@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND11_T1_PROCESS_WITH_RESOURCE_CUTOFF",
+  "process": "HYBRID1024",
+  "composite": true,
+  "raw_source_status": "FAIL",
+  "raw_generation_attempts": 2,
+  "generation_attempts": 2,
+  "abort_controls": 0,
+  "automatic_retries": 0,
+  "results": [
+    {
+      "index": 1,
+      "case_id": "edge768",
+      "phase": "extended_prefill",
+      "request_id": "r11-t1-hybrid1024-01-edge768-extended_prefill",
+      "started_wall": 1790405765.5649545,
+      "ended_wall": 1790406047.6041617,
+      "e2e_seconds": 282.039209205,
+      "response": {
+        "text": "ACK",
+        "output_ids": [
+          3897,
+          248046
+        ],
+        "meta_info": {
+          "id": "r11-t1-hybrid1024-01-edge768-extended_prefill",
+          "finish_reason": {
+            "type": "stop",
+            "matched": 248046
+          },
+          "prompt_tokens": 768,
+          "weight_version": "default",
+          "total_retractions": 0,
+          "input_token_logprobs": [
+            [
+              null,
+              271,
+              null
+            ]
+          ],
+          "output_token_logprobs": [
+            [
+              -0.017962055280804634,
+              3897,
+              null
+            ],
+            [
+              -0.011485408060252666,
+              248046,
+              null
+            ]
+          ],
+          "completion_tokens": 2,
+          "cached_tokens": 0,
+          "cached_tokens_details": null,
+          "dp_rank": null,
+          "e2e_latency": 282.0324591640092,
+          "response_sent_to_client_ts": 1790406047.6028533
+        }
+      },
+      "state": "PASS",
+      "validated": {
+        "output_ids": [
+          3897,
+          248046
+        ],
+        "completion_tokens": 2,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        },
+        "normal_eos": true
+      },
+      "path": {
+        "path": "HYBRID",
+        "request_total_tokens": 768,
+        "scheduler_chunks": [
+          [
+            0,
+            32
+          ],
+          [
+            32,
+            32
+          ],
+          [
+            64,
+            32
+          ],
+          [
+            96,
+            32
+          ],
+          [
+            128,
+            32
+          ],
+          [
+            160,
+            32
+          ],
+          [
+            192,
+            32
+          ],
+          [
+            224,
+            32
+          ],
+          [
+            256,
+            32
+          ],
+          [
+            288,
+            32
+          ],
+          [
+            320,
+            32
+          ],
+          [
+            352,
+            32
+          ],
+          [
+            384,
+            32
+          ],
+          [
+            416,
+            32
+          ],
+          [
+            448,
+            32
+          ],
+          [
+            480,
+            32
+          ],
+          [
+            512,
+            32
+          ],
+          [
+            544,
+            32
+          ],
+          [
+            576,
+            32
+          ],
+          [
+            608,
+            32
+          ],
+          [
+            640,
+            32
+          ],
+          [
+            672,
+            32
+          ],
+          [
+            704,
+            32
+          ],
+          [
+            736,
+            32
+          ]
+        ],
+        "actual_dispatch_tokens": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "hybrid_provider_event_count": 192,
+        "layerwise_event_count": 0,
+        "streaming_event_count": 0
+      }
+    }
+  ],
+  "cancel_receipts": [],
+  "hybrid_qualified_up_to_tokens": 768,
+  "resource_cutoff_tokens": 1024,
+  "resource_cutoff_reason": "NUMA4 free and conservative reclaim headroom below reserve",
+  "cleanup": {
+    "guard_exit_ack": true,
+    "oom_killed": false,
+    "owned_container_removed": true,
+    "physical12_after": "EMPTY"
+  },
+  "source_hashes": {
+    "raw_result": "5533a590c8d2538f92f7556120564b6c13230e72e4b5fadd0bbb43784db96c7d",
+    "raw_supervisor": "85e6a800158bc9e4471bbabe6aec75eebc90e8b57d7fedefafcfdf5e580e5ebc",
+    "raw_monitor": "fa8581a9818e6a3778c2ffc7173db9a1f420a07416b98e1839353a92cc7a7a8a",
+    "post_cleanup_proc_mem": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01"
+  }
+}

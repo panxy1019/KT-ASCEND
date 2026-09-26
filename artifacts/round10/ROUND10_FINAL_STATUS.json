@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "ROUND10_AB_NARROW_QUALIFIED",
+  "completed_at": "2026-09-26T03:40:00Z",
+  "hfinal": "H0_ROUND10_HYBRID129_STATIC",
+  "promoted_changes": [],
+  "enabled_configuration": {
+    "threshold_tokens": 129,
+    "selection_basis": "REQUEST_TOTAL",
+    "input_scope_tokens_lte": 128,
+    "cpu_backend": "C128_MXFP4_CURRENT",
+    "npu_resident": "Q32_BF16_NZ29",
+    "shadow": "FIXED32_ORIGINAL",
+    "chunk_tokens": 32,
+    "dynamic": "OFF",
+    "ple": "ASYNC_CURRENT",
+    "r2_r3_transpose_shadow320": "OFF",
+    "tp": 1,
+    "concurrency": 1,
+    "profiler": "OFF"
+  },
+  "stage_status": {
+    "T0": "COMPLETE_IDENTITY_RECOVERED",
+    "T1": "PASS_T1_H0_ROUND10_NARROW",
+    "T2": "PASS_T2_HYBRID_COST_AND_FIXTURE",
+    "T3": "CURRENT_NATIVE_SAME_PRECISION_VERIFIED_CROSS_PRECISION_BOUNDARY_RECORDED_NO_CANDIDATE",
+    "T4": "PASS_TRANSACTION_NO_NET_BENEFIT_DEFAULT_OFF",
+    "T5": "PASS_T5_CURRENT_PROVIDER_AND_STATE_NO_PERFORMANCE_CANDIDATE",
+    "T6": "PASS_ROUND10_T6_FINAL_REGRESSION_WITH_CONTROLLER_RECONCILIATION"
+  },
+  "performance_objective": "NO_NEW_PROMOTED_PERFORMANCE_GAIN",
+  "quality": "PASS_NARROW_FIXED_CONFIGURATION",
+  "controller_reconciliation": {
+    "host_controller_status": "FAIL",
+    "root_cause": "post-supervisor receipt filename remained round10-t1-supervisor.json",
+    "model_or_request_failure": false,
+    "supervisor_and_cleanup_authority": true,
+    "generator_regression_fixed": true,
+    "rerun": false
+  },
+  "limitations": [
+    "single request, TP1, input <=128 tokens",
+    "new 129/130 live boundary not qualified",
+    "not long-context, concurrency, deployment or broad product quality",
+    "HFINAL v107 64-token median was 1.083424x historical H0; no speedup claim"
+  ]
+}

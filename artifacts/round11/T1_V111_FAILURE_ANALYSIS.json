@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "status": "V111_RAW_FAIL_RESOURCE_CUTOFF_PRESERVED",
+  "run": "v111",
+  "process": "HYBRID1024",
+  "raw_result_status": "FAIL",
+  "raw_result_sha256": "5533a590c8d2538f92f7556120564b6c13230e72e4b5fadd0bbb43784db96c7d",
+  "raw_supervisor_status": "FAIL",
+  "raw_supervisor_sha256": "85e6a800158bc9e4471bbabe6aec75eebc90e8b57d7fedefafcfdf5e580e5ebc",
+  "monitor_sha256": "fa8581a9818e6a3778c2ffc7173db9a1f420a07416b98e1839353a92cc7a7a8a",
+  "archive_sha256": "7aca539093ed55a069f96dd80689a33ba148dcb04b8e0ba6f203f70c475fa7a3",
+  "admission_archive_sha256": "67a96d6ed005d89fbb407044d6e5759849c7f6809241adbe3423621aff4340e0",
+  "completed": {
+    "tokens": 768,
+    "e2e_seconds": 282.039209205,
+    "quality": "PASS_ACK_EOS_FINITE_LOGPROB",
+    "path": "HYBRID"
+  },
+  "interrupted": {
+    "tokens": 1024,
+    "cause": "NUMA4 free and conservative reclaim headroom below reserve",
+    "guard_action": "STOP_OWNED",
+    "container_exit_code": 137,
+    "oom_killed": false
+  },
+  "resources": {
+    "max_hbm_used_mib": 28773,
+    "max_owned_hbm_mib": 25756,
+    "max_host_cgroup_gib": 333.0606994628906
+  },
+  "cleanup": {
+    "guard_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY"
+  },
+  "automatic_retry": false,
+  "default_threshold_changed": false,
+  "disposition": "HYBRID_QUALIFIED_UP_TO_768;_1024_RESOURCE_CUTOFF;_NO_RERUN"
+}

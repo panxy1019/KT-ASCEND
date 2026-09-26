@@ -1,0 +1,45 @@
+{
+  "admission": {
+    "min_mean_idle": 0.9968593072377558,
+    "min_numa_free_gib": {
+      "2": 230.7500343322754,
+      "3": 229.9167709350586,
+      "4": 165.91545867919922,
+      "7": 224.6370506286621
+    },
+    "training_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "windows": 12
+  },
+  "archive_sha256": {
+    "admission": "b1080ca4df02b4c7c8719f253f5d5daddc3eff623580d37b35a7b5aae71e0f13",
+    "result": "ebdaa20f2834e237b8ff82be3e3754cae92513195616eebc023cc82fc00002e9"
+  },
+  "block": "B",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+  "decode_lengths": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "e2e_seconds": {
+    "128": 54.490716642,
+    "256": 115.204031685,
+    "32": 16.695951406,
+    "64": 29.405880665
+  },
+  "generation_attempts": 5,
+  "mode": "STATIC",
+  "parent_identity": "ROUND11_HFINAL_V107_ORIGINAL_C128_MXFP4",
+  "quality": "PASS_EXACT_LENGTH_FINITE_LOGPROB_HYBRID_PATH_NO_MIGRATION",
+  "same_mode_repeat": "PASS_OUTPUT_IDS_EXACT_V124_STATIC_A",
+  "schema": 1,
+  "source_sha256": {
+    "host-controller.json": "3c8fad331ed94bb4d62e935ba142ed0b91ebddd95cdb4358a5d8273d6499e995",
+    "post-cleanup-proc-mem.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "round11-t4-final.json": "04bf80638b9e01cd28ca98858a2e7c20cbce1272dddb58056638e2dab96afda8",
+    "round11-t4-supervisor.json": "3edc12f0239da7161ca0a3ed5d17e57ed42234a73d105aaf81b3bfb22423b6a3"
+  },
+  "status": "PASS_ROUND11_T4_SINGLE_RUN_VALIDATION",
+  "version": 127
+}

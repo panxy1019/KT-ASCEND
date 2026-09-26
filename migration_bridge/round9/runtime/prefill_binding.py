@@ -135,7 +135,7 @@ def prefill_model_ready(runner):
         allocator_limit_mib = int(os.environ['ROUND9_ALLOCATOR_LIMIT_MIB'])
     except (KeyError, ValueError) as error:
         raise RuntimeError('layerwise runtime requires admitted allocator limit') from error
-    if allocator_limit_mib not in (37376, 43008):
+    if allocator_limit_mib not in (36352, 37376, 43008):
         raise RuntimeError('layerwise allocator limit is outside admitted contracts')
     reservation = layerwise.make_reservation(capacity=32, hidden=2560, intermediate=640,
         max_group_rows=gate['max_group_rows'], allocator_limit_bytes=allocator_limit_mib * 1024**2,
@@ -156,9 +156,14 @@ def prefill_model_ready(runner):
         with log.open('a') as stream: stream.write(json.dumps(item, allow_nan=False) + '\n')
     from .prefill_runtime import PrefillRuntime
     runtime = PrefillRuntime(transport, threshold_tokens=config['prefill']['threshold_tokens'], event=event)
+    if os.environ.get('ROUND9_HYBRID_PROBE') == '1':
+        from .hybrid_probe import bind as bind_hybrid_probe
+        bind_hybrid_probe(runtime, methods)
     for index, method in methods.items():
         bind_expert_method(method, index, runtime, StandardCombineInput)
     runner._round9_prefill = runtime
+    from .request_cost_binding import bind as bind_request_cost
+    bind_request_cost(runner)
     event(dict(status='PRIVATE_TRANSPORT_BOUND_BEFORE_KV_POOL', device_gate_sha256=receipt['sha256'],
                capacity=32, max_group_rows=32, reserve_bytes=reservation.reserve_bytes,
                base_peak_bytes=base_peak, constructor_peak_extra_bytes=backend.measured_preallocation_peak_bytes,
@@ -176,11 +181,15 @@ def prefill_after(scheduler):
     runtime = getattr(scheduler.tp_worker.model_runner, '_round9_prefill', None)
     if runtime is None: raise RuntimeError('enabled layerwise model binding is missing')
     statistics = runtime.after()
-    if statistics is not None:
-        boundary = getattr(scheduler, '_round9_dynamic_boundary', None)
-        if boundary is not None:
-            from .prefill_end_boundary import PrefillEndBoundary
-            if not isinstance(boundary, PrefillEndBoundary):
+    boundary = getattr(scheduler, '_round9_dynamic_boundary', None)
+    if boundary is not None:
+        from .prefill_end_boundary import PrefillEndBoundary
+        if not isinstance(boundary, PrefillEndBoundary):
+            if statistics is not None:
                 raise RuntimeError('layerwise updates require a live-prefill boundary')
-            boundary.prefill_complete(statistics)
+        else:
+            if statistics is None and boundary.state == 'PREFILL_ACTIVE':
+                statistics = boundary.hybrid_statistics(topk=10)
+            if statistics is not None:
+                boundary.prefill_complete(statistics)
     return statistics
