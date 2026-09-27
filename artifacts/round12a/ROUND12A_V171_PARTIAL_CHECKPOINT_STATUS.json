@@ -1,0 +1,152 @@
+{
+  "budget": {
+    "abort_controls_limit": 1,
+    "abort_controls_used": 0,
+    "automatic_retries": 0,
+    "component_process_limit": 2,
+    "component_process_used": 2,
+    "generation_limit": 44,
+    "generation_used": 0,
+    "model_starts_limit": 8,
+    "model_starts_used": 0
+  },
+  "candidate": {
+    "offloader_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+    "qualified": false,
+    "tie_weights_false_used": false,
+    "v171_allocator_after_cleanup_bytes": 4608,
+    "v171_allocator_baseline_bytes": 0,
+    "v171_identity_preserved": true,
+    "v171_max_relative_l2": 0.0,
+    "v171_output_exact": true
+  },
+  "claim_limits": [
+    "v171 semantic evidence does not satisfy the frozen allocator gate",
+    "no non-KT completed request exists",
+    "no KT/non-KT performance ratio exists",
+    "the result is not a performance win or loss"
+  ],
+  "completion_class": "PARTIAL_WITH_GAPS",
+  "created_at": 1790467933.5458465,
+  "evidence": {
+    "ROUND12A_BASELINE_MANIFEST.json": {
+      "path": "artifacts/round12a/ROUND12A_BASELINE_MANIFEST.json",
+      "sha256": "8c19f1705935193775f97a3dbbac2dce9ed3367fc9b2483153068adf55f4e45f"
+    },
+    "ROUND12A_COMPONENT_DISPOSITION.json": {
+      "path": "artifacts/round12a/ROUND12A_COMPONENT_DISPOSITION.json",
+      "sha256": "56b0aef7d35c4da1abb71ad2007ea3867de1f27002eddc4a56389c52531be35d"
+    },
+    "ROUND12A_CURRENT_EXECUTION.md": {
+      "path": "artifacts/round12a/ROUND12A_CURRENT_EXECUTION.md",
+      "sha256": "a2007d735afbcf3c243b7afc6fcebe944869c59f58a64d5204e736a371d22cff"
+    },
+    "ROUND12A_EXECUTION_BUDGET.json": {
+      "path": "artifacts/round12a/ROUND12A_EXECUTION_BUDGET.json",
+      "sha256": "bd43d7d23ab47790b68e96fa1ce5d787c63a1dde20763d8f539cd8b73d8b0325"
+    },
+    "ROUND12A_FINAL_REMOTE_STATE.json": {
+      "path": "artifacts/round12a/ROUND12A_FINAL_REMOTE_STATE.json",
+      "sha256": "eaf17071b404eb4eda00563535e74ac299a432143cfc34dc4bb43d4ccfca1d9c"
+    },
+    "ROUND12A_FINAL_REPORT_ZH.md": {
+      "path": "artifacts/round12a/ROUND12A_FINAL_REPORT_ZH.md",
+      "sha256": "a5f0aeb2bbfbae986877c0f8c18edc190065e46bb05768a149c53ddf42863fc8"
+    },
+    "ROUND12A_RESOURCE_CONTRACT.json": {
+      "path": "artifacts/round12a/ROUND12A_RESOURCE_CONTRACT.json",
+      "sha256": "c65a9152ad021699620bf25755f7465cf74b0148159613ae25ec4d18cbb5f573"
+    },
+    "ROUND12A_RESOURCE_RETIREMENT_RECEIPT.json": {
+      "path": "artifacts/round12a/ROUND12A_RESOURCE_RETIREMENT_RECEIPT.json",
+      "sha256": "b22baa700216e856e789347e2182a103fc27dc12e7f76e4f57c95a64a0c68cbf"
+    },
+    "ROUND12A_TEST_RECEIPT.json": {
+      "path": "artifacts/round12a/ROUND12A_TEST_RECEIPT.json",
+      "sha256": "2077f367a37804456ada20215c9e44384253116860917e4801c7d4c71d3175d3"
+    },
+    "ROUND12A_TIED_SEMANTICS.json": {
+      "path": "artifacts/round12a/ROUND12A_TIED_SEMANTICS.json",
+      "sha256": "4072a049bd11a1310984690b9a508296029112d2fc7dce579e523a54254039cf"
+    },
+    "ROUND12A_V169_PREFLIGHT.json": {
+      "path": "artifacts/round12a/ROUND12A_V169_PREFLIGHT.json",
+      "sha256": "7782a0e2041c13c6b91fa9dcfceb0804999cc949e8f9bb5f240bdd4b9d276e76"
+    },
+    "ROUND12A_V170_PREFLIGHT.json": {
+      "path": "artifacts/round12a/ROUND12A_V170_PREFLIGHT.json",
+      "sha256": "78fe106ef9f1f2406d294054dd192374683fc64bf1e8242ec6babd9b60b3a541"
+    },
+    "ROUND12A_V171_POST_FAILURE_RESOURCE.txt": {
+      "path": "artifacts/round12a/ROUND12A_V171_POST_FAILURE_RESOURCE.txt",
+      "sha256": "2b7f8b1aa126f9021138affa372a4ff7effbe48f325d63caef394f4e8d26c1f1"
+    },
+    "ROUND12A_V171_PREFLIGHT.json": {
+      "path": "artifacts/round12a/ROUND12A_V171_PREFLIGHT.json",
+      "sha256": "12399bdf68ecb0da8b2f2af4435c411a8f323b7bbd91aeed3830a5c94c98188d"
+    }
+  },
+  "fairness_contract_preserved": {
+    "performance_samples_collected": false,
+    "qsa_consumer_sha256": "d4583c5abe9791b09c48d1dd8f8491a2988eb5147d45df188e0e48908c699f1f",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "same_promoted_qsa_required": true
+  },
+  "objective_result": {
+    "fair_kt_nonkt_abba": "NOT_RUN_COMPONENT_GATE_CLOSED",
+    "first_nonkt_request": "NOT_RUN_COMPONENT_GATE_CLOSED",
+    "kt_style_heterogeneous_execution_value": "UNANSWERED_INTEGRATION_INCOMPLETE",
+    "tied_parameter_aware_offloader": "SEMANTICS_AND_NUMERICS_PASS_RESOURCE_GATE_FAIL",
+    "worth_it": null
+  },
+  "repository": {
+    "branch": "codex/round12-qsa-request-fair-benchmark",
+    "dirty_worktree_preserved": true,
+    "head": "31a36fe13bf3f14a5825428ef84c99fcb16ddfa8",
+    "merged": false,
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline",
+    "round12a_pushed": false,
+    "tagged": false
+  },
+  "resource_final": {
+    "cache_retirement": "NOT_APPLICABLE_NO_REGISTERED_WEIGHT_FILES_OPENED",
+    "matching_active_timers": 0,
+    "physical12": "EMPTY",
+    "round12a_containers": 0,
+    "round12a_processes": 0,
+    "training_container_unchanged_and_running": true
+  },
+  "round": "12a",
+  "schema": 1,
+  "stages": {
+    "P0": {
+      "status": "PASS_OFFLINE_TIED_SEMANTICS"
+    },
+    "P1": {
+      "device_component_runs": [
+        170,
+        171
+      ],
+      "status": "FAIL_ALLOCATOR_BASELINE_COMPONENT_BUDGET_EXHAUSTED",
+      "versions": [
+        169,
+        170,
+        171
+      ]
+    },
+    "P2": {
+      "generations": 0,
+      "model_starts": 0,
+      "status": "NOT_RUN_COMPONENT_GATE_CLOSED"
+    },
+    "P3": {
+      "generations": 0,
+      "model_starts": 0,
+      "status": "NOT_RUN_COMPONENT_GATE_CLOSED"
+    },
+    "P4": {
+      "status": "COMPLETE_EVIDENCE_FROZEN_RESOURCES_CLEAN"
+    }
+  },
+  "status": "ROUND12A_PARTIAL_WITH_GAPS"
+}

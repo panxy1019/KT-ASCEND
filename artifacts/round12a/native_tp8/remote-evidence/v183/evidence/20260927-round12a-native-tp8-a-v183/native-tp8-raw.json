@@ -1,0 +1,801 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_NATIVE_TP8_DRIVER_RAW",
+  "stage": "ROUND12A_NATIVE_TP8_OLD_QSA_ABBA",
+  "version": 183,
+  "mode": "NATIVE_TP8",
+  "block": "A",
+  "profiler": "OFF",
+  "timing_primary": "CLIENT_UNPROFILED_E2E",
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "queue_sha256": "ab3fc4141081318b400721e041b8ec5dc740bc23a8c7e900ffa8cabe35804637",
+  "generation_budget": 4,
+  "generation_attempts": 4,
+  "abort_controls": 0,
+  "automatic_retries": 0,
+  "runtime": {
+    "schema": 1,
+    "status": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT",
+    "tp_size": 8,
+    "physical_devices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "precision": "BF16",
+    "attention_backend": "ascend",
+    "qsa_mode": "QUALIFIED_ORIGINAL",
+    "cpu_offload_gb": 0,
+    "kt_weight_path": null,
+    "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+    "patched_qwen_sha256": "8f9747f6b5e3f8de63d0d8bca2bd68ba77f63466a9e34030aaad77945d36b377",
+    "ple_binding_sha256": "886e71a2c4fd375e471cebac6b243d9dd71437663928f446028e518393092833",
+    "profile_sha256": "ce86cef5c1f8421004d7d24a9b8224dfddf6cf7d618d42f08df70a3605af64f0",
+    "identity_sha256": "b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d",
+    "pure_npu_scope": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS",
+    "host_dependency": "PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED",
+    "pci_numa_locality": "UNKNOWN_KERNEL_REPORTS_MINUS_ONE",
+    "overlap_policy": "NO_OVERLAP_WITH_PHYSICAL12_PERFORMANCE_WINDOWS"
+  },
+  "results": [
+    {
+      "index": 1,
+      "workload": "W1",
+      "phase": "warmup",
+      "repeat": 0,
+      "request_id": "r12a-native-tp8-v183-a-w1-warmup-0",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 13.860944314,
+      "e2e_seconds": 17.667185623,
+      "tpot_seconds": 3.806121903,
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "path": "SGLANG_NATIVE_TP8_BF16",
+      "qsa": "QUALIFIED_ORIGINAL",
+      "ple": {
+        "0": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "1": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "2": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "3": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "4": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "5": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "6": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "7": {
+          "drained_batches": 3,
+          "async_batches": 3
+        }
+      }
+    },
+    {
+      "index": 2,
+      "workload": "W1",
+      "phase": "measurement",
+      "repeat": 1,
+      "request_id": "r12a-native-tp8-v183-a-w1-measurement-1",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 3.078461213,
+      "e2e_seconds": 3.344532272,
+      "tpot_seconds": 0.265995186,
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "path": "SGLANG_NATIVE_TP8_BF16",
+      "qsa": "QUALIFIED_ORIGINAL",
+      "ple": {
+        "0": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "1": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "2": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "3": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "4": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "5": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "6": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "7": {
+          "drained_batches": 3,
+          "async_batches": 3
+        }
+      }
+    },
+    {
+      "index": 3,
+      "workload": "W1",
+      "phase": "measurement",
+      "repeat": 2,
+      "request_id": "r12a-native-tp8-v183-a-w1-measurement-2",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 3.058502988,
+      "e2e_seconds": 3.320902534,
+      "tpot_seconds": 0.262338863,
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "path": "SGLANG_NATIVE_TP8_BF16",
+      "qsa": "QUALIFIED_ORIGINAL",
+      "ple": {
+        "0": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "1": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "2": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "3": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "4": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "5": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "6": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "7": {
+          "drained_batches": 3,
+          "async_batches": 3
+        }
+      }
+    },
+    {
+      "index": 4,
+      "workload": "W1",
+      "phase": "measurement",
+      "repeat": 3,
+      "request_id": "r12a-native-tp8-v183-a-w1-measurement-3",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 3.063772468,
+      "e2e_seconds": 3.325310193,
+      "tpot_seconds": 0.261478752,
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "path": "SGLANG_NATIVE_TP8_BF16",
+      "qsa": "QUALIFIED_ORIGINAL",
+      "ple": {
+        "0": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "1": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "2": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "3": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "4": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "5": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "6": {
+          "drained_batches": 3,
+          "async_batches": 3
+        },
+        "7": {
+          "drained_batches": 3,
+          "async_batches": 3
+        }
+      }
+    }
+  ],
+  "rank_evidence": {
+    "ranks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "physical": {
+      "0": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "1": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "2": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "3": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "4": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "5": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "6": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      },
+      "7": {
+        "layers": 48,
+        "expert_bytes": 30198988800
+      }
+    },
+    "old_qsa": {
+      "0": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "1": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "2": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "3": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "4": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "5": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "6": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      },
+      "7": {
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "query_heads": 3,
+        "kv_heads": 1
+      }
+    },
+    "gdn_tp_local": {
+      "0": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "1": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "2": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "3": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "4": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "5": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "6": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      },
+      "7": {
+        "layers": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          16,
+          17,
+          18,
+          20,
+          21,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          44,
+          45,
+          46
+        ],
+        "key_heads": 2,
+        "value_heads": 6
+      }
+    }
+  }
+}

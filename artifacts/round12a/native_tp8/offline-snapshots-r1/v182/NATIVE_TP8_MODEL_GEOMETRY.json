@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "READ_ONLY_FROZEN_CONFIG_GEOMETRY",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "config_sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+  "config_size_bytes": 4745,
+  "global": {
+    "hidden_size": 2560,
+    "layers": 48,
+    "query_heads": 24,
+    "kv_heads": 2,
+    "gdn_key_heads": 16,
+    "gdn_value_heads": 48,
+    "experts": 512,
+    "experts_per_token": 10,
+    "indexer_query_heads": 4,
+    "indexer_kv_heads": 1,
+    "indexer_compress_ratio": 4,
+    "indexer_budget": 2048,
+    "ple_layer_ids": [
+      2
+    ]
+  },
+  "tp8_local": {
+    "query_heads": 3,
+    "kv_heads": 1,
+    "kv_replication_group_ranks": 4,
+    "gdn_key_heads": 2,
+    "gdn_value_heads": 6
+  },
+  "qsa_layers": [
+    3,
+    7,
+    11,
+    15,
+    19,
+    23,
+    27,
+    31,
+    35,
+    39,
+    43,
+    47
+  ],
+  "source_scope": "remote config.json small-file hash/read only; no device process started"
+}

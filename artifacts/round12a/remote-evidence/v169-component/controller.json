@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "status": "FAIL_ROUND12A_TIED_OFFLOADER_COMPONENT_CONTROLLER",
+  "version": 169,
+  "container": "kt-round12a-tied-offloader-v169",
+  "started_at": 1790466702.536843,
+  "automatic_retries": 0,
+  "candidate_manifest": {
+    "ROUND12A_COMPONENT_CONTRACT.json": "47867892d7a570052ecd83202b587316ae2a5de57fb1560f45a1c1e9c415d13f",
+    "offloader.py": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+    "round12a_tied_offloader_controller.py": "8127260be71e1887137575763bbad2f0b5f0114fa85d1c3b6c7f144c5765d49b",
+    "round12a_tied_offloader_probe.py": "8eecb4b41d4eb9330dc165b2f376a2e31ab8c131a1d5da6e4ddef8cc6c4225ec"
+  },
+  "candidate_manifest_sha256": "e8e765b3de701117ae8d4d61adc844d20439558cb56048d2b0ce8f1e263dd212",
+  "offloader_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+  "admission_sha256": "90f6f3c8c855726be21e508090d961af7d62f118fee1dd3644bfac57c9721ee6",
+  "ended_at": 1790466702.9450245,
+  "error": "RuntimeError: Round12a component guard exited before readiness",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round12a-tied-offloader-component-v169/round12a_tied_offloader_controller.py\", line 191, in main\n    raise RuntimeError(\"Round12a component guard exited before readiness\")\nRuntimeError: Round12a component guard exited before readiness\n"
+}

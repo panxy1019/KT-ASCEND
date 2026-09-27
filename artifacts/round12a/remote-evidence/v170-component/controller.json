@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "status": "FAIL_ROUND12A_TIED_OFFLOADER_COMPONENT_CONTROLLER",
+  "version": 170,
+  "container": "kt-round12a-tied-offloader-v170",
+  "started_at": 1790467234.640765,
+  "automatic_retries": 0,
+  "candidate_manifest": {
+    "ROUND12A_COMPONENT_CONTRACT.json": "ca5affee450d8deaaca8019896656ea0c6622bbae9a2cd5bc894f3a094f423d5",
+    "offloader.py": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+    "round12a_monitor_owned.py": "6cf3174146a1803ac365f732b7608770a86456ed3adaed31403ad9b5f753cfe7",
+    "round12a_tied_offloader_controller.py": "c5b421a3467c890b40a339edf8f37925dfb7f79df6242f96305b67b36002e84b",
+    "round12a_tied_offloader_probe.py": "8eecb4b41d4eb9330dc165b2f376a2e31ab8c131a1d5da6e4ddef8cc6c4225ec"
+  },
+  "candidate_manifest_sha256": "fdd2e82d5bb4abcb4e399ae1df99f19b44cc199d2af49b0b9d657368c2520f45",
+  "offloader_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+  "admission_sha256": "9251d24f8b079b62e96a92f3f698365156e09d116bfd16afbcfae9c19f0e85e7",
+  "container_id": "fc6388312713e8610f649803a672418eeda9858871e82d462a70ed29a4ea2d3c",
+  "ended_at": 1790467258.363401,
+  "error": "RuntimeError: Round12a tied-aware OffloaderV1 component failed",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round12a-tied-offloader-component-v170/round12a_tied_offloader_controller.py\", line 226, in main\n    raise RuntimeError(\"Round12a tied-aware OffloaderV1 component failed\")\nRuntimeError: Round12a tied-aware OffloaderV1 component failed\n"
+}

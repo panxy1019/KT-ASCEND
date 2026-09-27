@@ -1,0 +1,118 @@
+{
+  "schema": 1,
+  "status": "FAIL_ROUND12_P4_OFFLOADER_ALLOCATOR_CLEANUP",
+  "backend": "SGLANG_OFFLOADER_V1_TIED_AWARE",
+  "source_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+  "physical_device": 12,
+  "iterations": 7,
+  "pin_memory_available": false,
+  "allocator_baseline_bytes": 0,
+  "automatic_retries": 0,
+  "parameter_bytes": 8392704,
+  "offloader_accounted_bytes": 8392704,
+  "parameter_devices": {
+    "weight": "cpu",
+    "bias": "cpu"
+  },
+  "buffer_devices": {
+    "scale": "npu:0"
+  },
+  "reference_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+  "repeat_hash_exact": true,
+  "max_relative_l2": 0.0,
+  "tied_state_groups": {
+    "parameter": [
+      "weight",
+      "alias.weight"
+    ],
+    "buffer": [
+      "scale",
+      "alias.scale"
+    ]
+  },
+  "tied_identity_preserved": true,
+  "tie_weights_false_used": false,
+  "identity_observations": [
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    },
+    {
+      "parameter": true,
+      "buffer": true
+    }
+  ],
+  "rows": [
+    {
+      "iteration": 0,
+      "wall_ms": 1.718771,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 1,
+      "wall_ms": 1.48665,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 2,
+      "wall_ms": 1.446259,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 3,
+      "wall_ms": 1.450398,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 4,
+      "wall_ms": 1.427487,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 5,
+      "wall_ms": 1.452049,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    },
+    {
+      "iteration": 6,
+      "wall_ms": 1.407367,
+      "relative_l2": 0.0,
+      "output_sha256": "001db0d770eaad8514e201eb36e03d476e8e728bdb37bcc0345febc73b4553ce",
+      "allocator_bytes": 202752
+    }
+  ],
+  "allocator_after_cleanup_bytes": 4608,
+  "allocator_reserved_after_cleanup_bytes": 2097152
+}

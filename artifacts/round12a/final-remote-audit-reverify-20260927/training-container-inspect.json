@@ -1,0 +1,320 @@
+[
+    {
+        "Id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+        "Created": "2026-09-08T06:35:50.597149017Z",
+        "Path": "sleep",
+        "Args": [
+            "infinity"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 31808,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-24T11:20:38.502414666Z",
+            "FinishedAt": "2026-09-24T19:20:35.033734752+08:00"
+        },
+        "Image": "sha256:c4a76b1b4e8ea236be8940b50133870b51bdda66ba8572924f747f4edf0a0624",
+        "ResolvConfPath": "/mnt/data1/docker/containers/0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef/resolv.conf",
+        "HostnamePath": "/mnt/data1/docker/containers/0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef/hostname",
+        "HostsPath": "/mnt/data1/docker/containers/0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef/hosts",
+        "LogPath": "/mnt/data1/docker/containers/0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef/0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef-json.log",
+        "Name": "/mzy-train",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/mnt/data1:/mnt/data1",
+                "/home/SFT_DATA:/home/SFT_DATA",
+                "/home/wh/code/sft:/home/wh/code/sft:ro",
+                "/usr/local/Ascend/driver:/usr/local/Ascend/driver:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "host",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "shareable",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": true,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": [
+                "label=disable"
+            ],
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "HookSpec": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [
+                {
+                    "PathOnHost": "/dev/davinci0",
+                    "PathInContainer": "/dev/davinci0",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci1",
+                    "PathInContainer": "/dev/davinci1",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci2",
+                    "PathInContainer": "/dev/davinci2",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci3",
+                    "PathInContainer": "/dev/davinci3",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci4",
+                    "PathInContainer": "/dev/davinci4",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci5",
+                    "PathInContainer": "/dev/davinci5",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci6",
+                    "PathInContainer": "/dev/davinci6",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci7",
+                    "PathInContainer": "/dev/davinci7",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci8",
+                    "PathInContainer": "/dev/davinci8",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci9",
+                    "PathInContainer": "/dev/davinci9",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci10",
+                    "PathInContainer": "/dev/davinci10",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci11",
+                    "PathInContainer": "/dev/davinci11",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci12",
+                    "PathInContainer": "/dev/davinci12",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci13",
+                    "PathInContainer": "/dev/davinci13",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci14",
+                    "PathInContainer": "/dev/davinci14",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci15",
+                    "PathInContainer": "/dev/davinci15",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/davinci_manager",
+                    "PathInContainer": "/dev/davinci_manager",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/devmm_svm",
+                    "PathInContainer": "/dev/devmm_svm",
+                    "CgroupPermissions": "rwm"
+                },
+                {
+                    "PathOnHost": "/dev/hisi_hdc",
+                    "PathInContainer": "/dev/hisi_hdc",
+                    "CgroupPermissions": "rwm"
+                }
+            ],
+            "DeviceCgroupRules": null,
+            "DiskQuota": 0,
+            "KernelMemory": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": 0,
+            "FilesLimit": 0,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Hugetlbs": [],
+            "MaskedPaths": null,
+            "ReadonlyPaths": null
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/mnt/data1/docker/overlay2/c05aeed0e26ed1c3a84556805133dcfe69b0579163a33f40af39625a721c170a-init/diff:/mnt/data1/docker/overlay2/11f91e449560643a0e66a1a02139f69f15db26fb8c92874a685a30f1041323b3/diff",
+                "MergedDir": "/mnt/data1/docker/overlay2/c05aeed0e26ed1c3a84556805133dcfe69b0579163a33f40af39625a721c170a/merged",
+                "UpperDir": "/mnt/data1/docker/overlay2/c05aeed0e26ed1c3a84556805133dcfe69b0579163a33f40af39625a721c170a/diff",
+                "WorkDir": "/mnt/data1/docker/overlay2/c05aeed0e26ed1c3a84556805133dcfe69b0579163a33f40af39625a721c170a/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/SFT_DATA",
+                "Destination": "/home/SFT_DATA",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/home/wh/code/sft",
+                "Destination": "/home/wh/code/sft",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/mnt/data1",
+                "Destination": "/mnt/data1",
+                "Mode": "",
+                "RW": true,
+                "Propagation": "rslave"
+            },
+            {
+                "Type": "bind",
+                "Source": "/usr/local/Ascend/driver",
+                "Destination": "/usr/local/Ascend/driver",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "a3-server-00",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": [
+                "sleep",
+                "infinity"
+            ],
+            "Image": "swr.cn-south-1.myhuaweicloud.com/ascendhub/verl_pt27_25rc3:a3-arm",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {},
+            "Annotations": {
+                "native.umask": "secure"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "28b69e5cd2f39dc9068c049183de5ecb47fc33aa25b959c6b81b7d55bfa329c3",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/default",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "host": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "11472ea37bcc105dbf75194a000b6c73ae3faf1437a05bcc85ee82129f584bfc",
+                    "EndpointID": "ef5eb25529e5d9972e01abb44e56741ec145f8719677974d42d0b6c22130e414",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]

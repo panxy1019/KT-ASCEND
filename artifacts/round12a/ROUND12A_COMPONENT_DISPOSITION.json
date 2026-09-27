@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_TIED_OFFLOADER_COMPONENT_QUALIFIED",
+  "budget": {
+    "round12_component_process_limit": 8,
+    "round12_component_process_used_before_round12a": 3,
+    "round12a_component_process_limit": 3,
+    "round12a_component_process_used": 3,
+    "combined_component_process_used": 6,
+    "combined_component_process_remaining": 2,
+    "unchanged_retries": 0
+  },
+  "candidate": {
+    "change": "deduplicate exact state tensor objects and retain functional_call tie_weights=True",
+    "offloader_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+    "tie_weights_false_used": false,
+    "numeric_tolerance_relaxed": false,
+    "allocator_gate_relaxed": false
+  },
+  "offline_semantics": {
+    "status": "PASS_ROUND12A_TIED_SEMANTICS",
+    "receipt_sha256": "4072a049bd11a1310984690b9a508296029112d2fc7dce579e523a54254039cf"
+  },
+  "runs": [
+    {
+      "version": 169,
+      "status": "PRE_DEVICE_GUARD_NAME_REJECTED",
+      "device_process_started": false,
+      "budget_charged": false,
+      "archive_manifest_sha256": "f5050ee428bf5c141ccdf0ae23a19444d0ab999e0c9054a2e58d7405d9dd8ade"
+    },
+    {
+      "version": 170,
+      "status": "FAIL_FIXTURE_ALIAS_SPLIT_BEFORE_OFFLOADER",
+      "device_process_started": true,
+      "budget_charged": true,
+      "archive_manifest_sha256": "ae945dd8b723117471889350a9c4a5013f8df67ce472fdaf99ad5baaac8a156e"
+    },
+    {
+      "version": 171,
+      "status": "FAIL_ROUND12_P4_OFFLOADER_ALLOCATOR_CLEANUP",
+      "device_process_started": true,
+      "budget_charged": true,
+      "controller_status": "FAIL_ROUND12A_TIED_OFFLOADER_COMPONENT_CONTROLLER",
+      "archive_manifest_sha256": "3cd07111c6efec850a4635e0781eb8e346aa7340c42a5581457b14d791c1a9c0"
+    },
+    {
+      "version": 172,
+      "status": "PASS_ROUND12A_TIED_OFFLOADER_COMPONENT",
+      "device_process_started": true,
+      "budget_charged": true,
+      "controller_status": "PASS_ROUND12A_TIED_OFFLOADER_COMPONENT_CONTROLLER",
+      "snapshot_manifest_sha256": "f53fc4a77090daee030c0eae6c44c03e4c4b4dd019b2a5f8e339b5a6fba155c3",
+      "result_sha256": "74ffd827446d40f390b314a73cfe012460f285308d5048a56280c9194a461bb4",
+      "archive_manifest_sha256": "1a079fda58f67ae901d3aaa6b63d844c466b8cde20aa97a1bbaf3108a8b88558",
+      "admission_archive_sha256": "8512faae5190f6af5e68a91af40aeef77430062f9b299cffc57b125dd5fbda7e"
+    }
+  ],
+  "qualified_evidence": {
+    "iterations": 7,
+    "max_relative_l2": 0.0,
+    "repeat_hash_exact": true,
+    "all_identity_observations_pass": true,
+    "tied_identity_preserved": true,
+    "parameter_bytes": 8392704,
+    "offloader_accounted_bytes": 8392704,
+    "allocator_baseline_bytes": 0,
+    "allocator_after_cleanup_bytes": 0,
+    "allocator_reserved_after_cleanup_bytes": 0,
+    "guard_exit_ack": true,
+    "owned_container_removed": true,
+    "physical12_after": "EMPTY"
+  },
+  "downstream": {
+    "first_nonkt_request": "PASS_V173_SAME_REVISION_PROMOTED_QSA",
+    "kt_nonkt_abba": "PASS_V174_V177_FOUR_INDEPENDENT_PROCESSES",
+    "performance_conclusion": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+    "comparison_result": "ROUND12A_KT_NONKT_ABBA_RESULT.json"
+  }
+}

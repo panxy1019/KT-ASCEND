@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_NATIVE_TP8_MODEL_PROCESS",
+  "version": 182,
+  "mode": "NATIVE_TP8",
+  "block": "B",
+  "container_id": "89193515faa9fd3c3561d922b3dbb79f816e30c0ad01d5fe1e95befedb0777ad",
+  "started_at": 1790488751.5032032,
+  "generation_driver_starts": 1,
+  "server_ready_at": 1790488852.2368245,
+  "driver_command": [
+    "docker",
+    "exec",
+    "89193515faa9fd3c3561d922b3dbb79f816e30c0ad01d5fe1e95befedb0777ad",
+    "python",
+    "/round9/round12a-native-tp8-v182-r2/native_tp8_driver.py",
+    "--version",
+    "182",
+    "--block",
+    "B",
+    "--out",
+    "/out",
+    "--fixture",
+    "/round9/round12a-native-tp8-v182-r2/round10-t1-fixture.json",
+    "--queue",
+    "/round9/round12a-native-tp8-v182-r2/ROUND12A_ABBA_QUEUE.json"
+  ],
+  "guard_exit_ack": {
+    "time": 1790488883.2767942,
+    "action": "OWNED_EXITED",
+    "container_id": "89193515faa9fd3c3561d922b3dbb79f816e30c0ad01d5fe1e95befedb0777ad"
+  },
+  "ended_at": 1790488885.0121672,
+  "final_result": "native-tp8-final.json"
+}

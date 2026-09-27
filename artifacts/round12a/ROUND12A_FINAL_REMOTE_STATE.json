@@ -1,0 +1,66 @@
+{
+  "checked_at": 1790490151.1495976,
+  "host": "110.123.0.3",
+  "ignored_exited_legacy_round9_containers": [
+    {
+      "ID": "9984cebd26e77a4c5b75b11240112c1eb5b28723924546d2574af5f0f69f8035",
+      "Names": "kt-round9-c128-expert-v20",
+      "Status": "Exited (0) 4 days ago"
+    },
+    {
+      "ID": "2b47331f92c379f627893fc67b0d1c4cacdb11fe085bfbbee055ae9efc9bd762",
+      "Names": "kt-round9-full-model-v63",
+      "Status": "Exited (137) 4 days ago"
+    },
+    {
+      "ID": "508c94cda27e0a18f91eea20fba8b613b909bf06752514824bbb973a8d912753",
+      "Names": "kt-round9-full-model-v62",
+      "Status": "Exited (137) 4 days ago"
+    }
+  ],
+  "matching_active_timers": [],
+  "parser_repair": {
+    "original_status": "FAIL_ROUND12A_FINAL_REMOTE_STATE_REVERIFIED",
+    "preserved_evidence": "FINAL_REMOTE_STATE_PARSER_FALSE_POSITIVE.json",
+    "reason": "Initial local filter included exited Round9 containers when the contract checks Round12 ownership.",
+    "remote_commands_reused": true
+  },
+  "physical0_7_empty": true,
+  "physical12_empty": true,
+  "proc_mem": {
+    "0": "No process in device.",
+    "1": "No process in device.",
+    "12": "No process in device.",
+    "2": "No process in device.",
+    "3": "No process in device.",
+    "4": "No process in device.",
+    "5": "No process in device.",
+    "6": "No process in device.",
+    "7": "No process in device."
+  },
+  "raw_sha256": {
+    "docker-ps-a.jsonl": "8ff6a565f831b6d0bc64f2bec58173226ce1d8233b5045daea602740c4dcb613",
+    "npu-smi-info.txt": "4b6ffac252025fc77ade9ce7e1f6bed16068e91610dfabb1fd093eb86f9ff42a",
+    "proc-mem-physical-0.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-1.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-12.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-2.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-3.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-4.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-5.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-6.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "proc-mem-physical-7.txt": "3d111ab6de18ebdb4ff9b5f09c58f271bc50cc6269ba5a5ace5768053b118e01",
+    "ps.txt": "34226f24122b08434616a3335ae75ab55852fa3864a2aaa63789b7b550d68d20",
+    "timers.txt": "f28870a58bec39d47c636b42e2a6cfb5eb3f7507265585580fad66466ad22222",
+    "training-cgroup.txt": "b60e98c1abe00248c85d52ebec07ae9bfa1699e21236777745591dbf53e61c49",
+    "training-container-inspect.json": "78f62174a675fcb2ef50f3d52e4d0b39f8e9adea345ac05f89630f8118d0dc27"
+  },
+  "round12_containers": [],
+  "round12_owned_processes": [],
+  "schema": 1,
+  "status": "PASS_ROUND12A_FINAL_REMOTE_STATE_REVERIFIED",
+  "training_cgroup_exact_match": true,
+  "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+  "training_pid": 31808,
+  "training_running": true
+}

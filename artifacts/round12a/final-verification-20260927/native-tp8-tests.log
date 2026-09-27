@@ -1,0 +1,23 @@
+test_container_name_gate_only_allows_new_versions (test_native_tp8.AdmissionAndMonitorTest.test_container_name_gate_only_allows_new_versions) ... ok
+test_json_roundtrip_numeric_device_keys_are_accepted (test_native_tp8.AdmissionAndMonitorTest.test_json_roundtrip_numeric_device_keys_are_accepted) ... ok
+test_npu_parser_maps_first_eight_physical_devices (test_native_tp8.AdmissionAndMonitorTest.test_npu_parser_maps_first_eight_physical_devices) ... ok
+test_ple_and_framework_patches_are_explicit_and_tp8_only (test_native_tp8.BuilderContractTest.test_ple_and_framework_patches_are_explicit_and_tp8_only) ... ok
+test_qwen_patch_adds_tp_reduce_and_keeps_explicit_gate (test_native_tp8.BuilderContractTest.test_qwen_patch_adds_tp_reduce_and_keeps_explicit_gate) ... ok
+test_qwen_patch_rejects_promoted_parent (test_native_tp8.BuilderContractTest.test_qwen_patch_rejects_promoted_parent) ... ok
+test_roles_are_isolated_four_process_abba_replicates (test_native_tp8.BuilderContractTest.test_roles_are_isolated_four_process_abba_replicates) ... ok
+test_self_contained_builder_produces_frozen_native_snapshot (test_native_tp8.BuilderContractTest.test_self_contained_builder_produces_frozen_native_snapshot) ... ok
+test_self_contained_frozen_inputs_match_builder_contract (test_native_tp8.BuilderContractTest.test_self_contained_frozen_inputs_match_builder_contract) ... ok
+test_success_receipt_is_written_only_after_container_removal (test_native_tp8.BuilderContractTest.test_success_receipt_is_written_only_after_container_removal) ... ok
+test_four_process_order_is_fixed (test_native_tp8.ComparatorTest.test_four_process_order_is_fixed) ... ok
+test_identical_native_repeats_require_resource_safety_and_stability (test_native_tp8.ComparatorTest.test_identical_native_repeats_require_resource_safety_and_stability) ... ok
+test_rank_evidence_requires_all_eight_ranks_and_layers (test_native_tp8.DriverContractTest.test_rank_evidence_requires_all_eight_ranks_and_layers) ... ok
+test_schedule_is_same_64x2_warmup_plus_three_measurements (test_native_tp8.DriverContractTest.test_schedule_is_same_64x2_warmup_plus_three_measurements) ... ok
+test_tp8_sparse_gqa_partition_matches_full_geometry (test_native_tp8.DriverContractTest.test_tp8_sparse_gqa_partition_matches_full_geometry) ... ok
+test_no_device_import_shim_is_scoped_and_restores_probe (test_native_tp8.ImagePreflightTest.test_no_device_import_shim_is_scoped_and_restores_probe) ... ok
+test_no_device_import_shim_rejects_visible_devices (test_native_tp8.ImagePreflightTest.test_no_device_import_shim_rejects_visible_devices) ... ok
+test_no_device_preflight_defers_full_qwen_native_extension_import (test_native_tp8.ImagePreflightTest.test_no_device_preflight_defers_full_qwen_native_extension_import) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.106s
+
+OK

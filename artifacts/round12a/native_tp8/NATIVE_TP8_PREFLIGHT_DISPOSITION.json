@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "CLOSED_BY_REAL_DEVICE_PREFLIGHT",
+  "created_at": 1790489809.3778179,
+  "same_image_no_device_attempts": [
+    {
+      "attempt": 1,
+      "evidence": "remote-evidence/preflight/evidence/20260927-round12a-native-tp8-v180-preflight",
+      "failure": "frozen SGLang is_npu() raises when torch_npu is installed and no device is visible"
+    },
+    {
+      "attempt": 2,
+      "evidence": "remote-evidence/preflight/evidence/20260927-round12a-native-tp8-v180-preflight-attempt2",
+      "failure": "full qwen4_exp import loads a native extension that aborts without an NPU",
+      "diagnostic_log": "import-diagnostic.log"
+    },
+    {
+      "attempt": 3,
+      "evidence": "remote-evidence/preflight/evidence/20260927-round12a-native-tp8-v180-preflight-attempt3",
+      "failure": "ServerArgs calls torch.npu.mem_get_info() twice and aclInit fails with 507899 without a visible device"
+    }
+  ],
+  "repair_revision_limit": 2,
+  "repairs_used": 2,
+  "decision": "Do not add a third fake-device shim. The no-device ServerArgs requirement was a locally imposed preflight design, not a user runtime requirement.",
+  "replacement_gate": "Each admitted model process constructs real ServerArgs and verifies old-QSA/Qwen/PLE SHA identities on devices before run_server weight loading.",
+  "replacement_gate_results": {
+    "180": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT",
+    "181": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT",
+    "182": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT",
+    "183": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT"
+  },
+  "model_start_budget_effect": "Attempts 1-3 loaded no model and consumed zero generations; v180-v183 are the four budgeted starts."
+}

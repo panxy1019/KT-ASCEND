@@ -1,0 +1,28 @@
+{
+  "automatic_retries": 0,
+  "base_offloader_sha256": "98a37555dd1fb6bda68dc5485ca0999dce75a5c43a6df62f86a16f740532442e",
+  "bounded_guard_sha256": "6cf3174146a1803ac365f732b7608770a86456ed3adaed31403ad9b5f753cfe7",
+  "candidate_offloader_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+  "component_manifest_sha256": "fdd2e82d5bb4abcb4e399ae1df99f19b44cc199d2af49b0b9d657368c2520f45",
+  "created_at": 1790467010.8752837,
+  "device_processes_started": 0,
+  "failure_parent": {
+    "admission_archive_manifest_sha256": "0fc505f8e0d4e26637fe9703cfd082ec323043bba20c5525486a1d3eec5eb3bf",
+    "cause": "bounded guard did not yet admit Round12a-owned container names",
+    "component_archive_manifest_sha256": "f5050ee428bf5c141ccdf0ae23a19444d0ab999e0c9054a2e58d7405d9dd8ade",
+    "component_budget_charged": 0,
+    "device_processes_started": 0,
+    "run": "v169"
+  },
+  "remote_manifest_verified": true,
+  "remote_root": "/mnt/data1/kt-round9/round12a-tied-offloader-component-v170",
+  "remote_tree_read_only": true,
+  "same_image_cpu_semantics": {
+    "receipt_sha256": "4072a049bd11a1310984690b9a508296029112d2fc7dce579e523a54254039cf",
+    "status": "PASS_ROUND12A_TIED_SEMANTICS"
+  },
+  "same_image_file_mount_preflight": "PASS_V170_SAME_IMAGE_FILE_MOUNT",
+  "schema": 1,
+  "single_repair": "add exact Round12a owned-name alternatives and bind the guard inside the immutable snapshot",
+  "status": "PASS_ROUND12A_V170_OFFLINE_PREFLIGHT"
+}

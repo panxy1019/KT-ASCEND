@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_LAUNCHED",
+  "mode": "CANDIDATE129",
+  "version": 90,
+  "threshold_tokens": 129,
+  "streaming_threshold_tokens": 129,
+  "chunk_tokens": 32,
+  "observer": "OFF",
+  "profiler": "OFF",
+  "fixture_sha256": "14b0157098fb766eaaa5527c516513133fffc7c3f583331c7b5653749678cc5e",
+  "ack_reference_sha256": "0fa4eedb8a89c1099237d18682bf3601c3882e9195293148682468a9e187db04",
+  "v71_identity": {
+    "manifest_sha256": "850f06f00d1a10f03ee6dd4872c2d50f6251e4406ecc0174dfa31f5c8f375d85",
+    "manifest_entries": 2557,
+    "verified_immutable_files": 2556,
+    "mutable_exception": "execution-budget.json"
+  },
+  "framework_differences_from_v71": [
+    [
+      "prefill",
+      "threshold_tokens"
+    ]
+  ],
+  "streaming_differences_from_v71": [
+    [
+      "threshold_tokens"
+    ]
+  ],
+  "claim_scope": "BOUNDED_COUPLED_REQUEST_MODE_THRESHOLD_ONLY"
+}

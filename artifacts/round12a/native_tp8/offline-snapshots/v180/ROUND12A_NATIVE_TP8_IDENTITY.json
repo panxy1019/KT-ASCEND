@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "FROZEN_ROUND12A_NATIVE_TP8_OLD_QSA",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "source_receipt": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540.round9-support/destination-verification/verification-1789886190714568317.json",
+  "tp_size": 8,
+  "precision": "BF16",
+  "attention_backend": "ascend",
+  "qsa_mode": "QUALIFIED_ORIGINAL",
+  "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+  "promoted_qsa_rejected_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+  "parent_qwen_sha256": "09c3d027fc86071be687989bdb04901037adaa34e4c310f2471f40275091a0a4",
+  "patched_qwen_sha256": "8f9747f6b5e3f8de63d0d8bca2bd68ba77f63466a9e34030aaad77945d36b377",
+  "config_sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+  "tp8_geometry": {
+    "global_query_heads": 24,
+    "global_kv_heads": 2,
+    "local_query_heads": 3,
+    "local_kv_heads": 1,
+    "replicated_indexer_query_heads": 4,
+    "replicated_indexer_kv_heads": 1,
+    "global_gdn_key_heads": 16,
+    "global_gdn_value_heads": 48,
+    "local_gdn_key_heads": 2,
+    "local_gdn_value_heads": 6
+  },
+  "ple_binding_sha256": "886e71a2c4fd375e471cebac6b243d9dd71437663928f446028e518393092833",
+  "framework_hooks_sha256": "7ee048c71f943692afd3b4c6f14bc096f7ed08767f6b4cdd6ee6a0df341b716e",
+  "loaded_text_bytes": 251487307800,
+  "mean_text_bytes_per_rank": 31435913475,
+  "expert_text_bytes": 241591910400,
+  "non_expert_text_bytes": 9895397400,
+  "conservative_weight_bytes_per_rank": 40094386200,
+  "ple_external_table_bytes": 102400491520,
+  "pure_npu_scope": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS",
+  "host_dependency": "PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED",
+  "upstream_tp_semantic_donor": {
+    "repository": "https://github.com/sgl-project/sglang",
+    "commit": "4ccff141dbe992794f9da6c3aa23535b4f72000d",
+    "contract": "attn_tp_all_reduce_before_attention_hyperconnection_combine"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "cleanup": {
+    "cache_retirement_after_archive_and_full_sha_only": true,
+    "guard_exit_ack_required": true,
+    "physical_device_must_be_empty_after_owned_exit": true,
+    "remove_only_owned_container_after_exit_ack": true
+  },
+  "container": {
+    "cpuset_mems": "2,3,4,7",
+    "device_nodes": [
+      "/dev/davinci12",
+      "/dev/davinci_manager",
+      "/dev/devmm_svm",
+      "/dev/hisi_hdc"
+    ],
+    "memory_bytes": 687194767360,
+    "nano_cpus": 136000000000,
+    "network": "none",
+    "pids_limit": 4096,
+    "restart": "no",
+    "shm_bytes": 17179869184
+  },
+  "cpu": {
+    "admission_rounds": 2,
+    "auxiliary_cpu_count": 8,
+    "metric": "conservative_smt_min_average_idle_percent",
+    "minimum_idle_percent_exclusive": 80,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "seconds_per_round": 60,
+    "threadpool_count": 4,
+    "worker_count": 128,
+    "workers_per_pool": 32
+  },
+  "device": {
+    "npu_smi_card": 6,
+    "npu_smi_chip": 0,
+    "physical": 12,
+    "unknown_process_policy": "FAIL_CLOSED"
+  },
+  "fresh_admission_before_every_device_process": true,
+  "host": "110.123.0.3",
+  "identity": {
+    "external_training_container_full_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "global_drop_caches": false,
+    "modify_external_tasks": false,
+    "pid_may_rotate_with_matching_container_and_cgroup": true,
+    "resume_automations": false
+  },
+  "memory": {
+    "component_allocator_mib": 10240,
+    "component_owned_mib": 11264,
+    "full_model_allocator_mib": 36352,
+    "full_model_owned_mib": 37376,
+    "maximum_owned_host_gib": 640,
+    "maximum_total_hbm_mib": 56832,
+    "minimum_hbm_reserve_mib": 8704,
+    "minimum_memfree_gib_per_candidate_numa": 48,
+    "minimum_system_memavailable_gib": 704
+  },
+  "parent_contract_sha256": "7fa5f9d5fb9fa046501ae7bf6204b57caabda42d417413e5a89822d7e6ad032c",
+  "round": "12a",
+  "schema": 1,
+  "wall_time_seconds": {
+    "admission": 900,
+    "component": 1800,
+    "full_model": 21600,
+    "generation": 1800
+  }
+}

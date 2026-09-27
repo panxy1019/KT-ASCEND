@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_MODEL_PROCESS",
+  "version": 173,
+  "mode": "NON_KT",
+  "stage": "P2_FIRST_NONKT_REQUEST",
+  "container_id": "5674e8c48f59dae215f1b675beb710f186f1198e36f37e5ea2f53db20aa216aa",
+  "started_at": 1790469817.581999,
+  "generation_driver_starts": 1,
+  "server_ready_at": 1790470492.783973,
+  "driver_command": [
+    "docker",
+    "exec",
+    "5674e8c48f59dae215f1b675beb710f186f1198e36f37e5ea2f53db20aa216aa",
+    "python",
+    "/round9/round12a-nonkt-smoke-v173/round12a_model_driver.py",
+    "--mode",
+    "NON_KT",
+    "--block",
+    "SMOKE",
+    "--version",
+    "173",
+    "--out",
+    "/out",
+    "--fixture",
+    "/round9/round12a-nonkt-smoke-v173/round10-t1-fixture.json"
+  ],
+  "driver_exit": 0,
+  "ended_at": 1790472477.7573347,
+  "owned_exit_state": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 2983290,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-09-27T00:43:37.529249163Z",
+    "FinishedAt": "0001-01-01T00:00:00Z"
+  },
+  "guard_exit_ack": {
+    "time": 1790472516.050407,
+    "action": "OWNED_EXITED_DURING_SAMPLE"
+  },
+  "owned_container_removed": true,
+  "physical12_after": "EMPTY"
+}

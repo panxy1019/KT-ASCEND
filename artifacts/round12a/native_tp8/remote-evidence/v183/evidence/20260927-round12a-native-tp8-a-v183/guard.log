@@ -1,0 +1,8 @@
+kt-round12a-native-tp8-a-v183
+Traceback (most recent call last):
+  File "/mnt/data1/kt-round9/round12a-native-tp8-v183-r2/native_tp8_monitor.py", line 175, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/mnt/data1/kt-round9/round12a-native-tp8-v183-r2/native_tp8_monitor.py", line 97, in main
+    raise RuntimeError(f"physical{device} has unowned processes {sorted(outsiders)}")
+RuntimeError: physical0 has unowned processes [3604596]

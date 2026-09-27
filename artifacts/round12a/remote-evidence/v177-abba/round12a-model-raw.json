@@ -1,0 +1,310 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_MODEL_DRIVER_RAW",
+  "stage": "P3_KT_NONKT_ABBA",
+  "mode": "KT",
+  "block": "B",
+  "version": 177,
+  "profiler": "OFF",
+  "timing_primary": "CLIENT_UNPROFILED_E2E",
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "queue_sha256": "ab3fc4141081318b400721e041b8ec5dc740bc23a8c7e900ffa8cabe35804637",
+  "workloads": [
+    "W1"
+  ],
+  "generation_budget": 4,
+  "generation_attempts": 4,
+  "abort_controls": 0,
+  "automatic_retries": 0,
+  "results": [
+    {
+      "index": 1,
+      "workload": "W1",
+      "case_id": "edge64",
+      "phase": "warmup",
+      "repeat": 0,
+      "request_id": "r12a-v177-kt-b-w1-warmup-0",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 11.186326588,
+      "e2e_seconds": 15.304548584,
+      "tpot_seconds": 4.118126051,
+      "timing_primary": "CLIENT_UNPROFILED_E2E",
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "qsa_dispatch": {
+        "mode": "APPROVED_CANDIDATE",
+        "dispatch_count": 36,
+        "vectorized_count": 24,
+        "row_count": 12,
+        "vectorized_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ]
+      },
+      "ple": {
+        "drained_batches": 3,
+        "async_batches": 3
+      },
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4
+      }
+    },
+    {
+      "index": 2,
+      "workload": "W1",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 1,
+      "request_id": "r12a-v177-kt-b-w1-measurement-1",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 3.032843532,
+      "e2e_seconds": 3.4180861,
+      "tpot_seconds": 0.385155984,
+      "timing_primary": "CLIENT_UNPROFILED_E2E",
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "qsa_dispatch": {
+        "mode": "APPROVED_CANDIDATE",
+        "dispatch_count": 36,
+        "vectorized_count": 24,
+        "row_count": 12,
+        "vectorized_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ]
+      },
+      "ple": {
+        "drained_batches": 3,
+        "async_batches": 3
+      },
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4
+      }
+    },
+    {
+      "index": 3,
+      "workload": "W1",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 2,
+      "request_id": "r12a-v177-kt-b-w1-measurement-2",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 3.006187733,
+      "e2e_seconds": 3.386335781,
+      "tpot_seconds": 0.380057144,
+      "timing_primary": "CLIENT_UNPROFILED_E2E",
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "qsa_dispatch": {
+        "mode": "APPROVED_CANDIDATE",
+        "dispatch_count": 36,
+        "vectorized_count": 24,
+        "row_count": 12,
+        "vectorized_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ]
+      },
+      "ple": {
+        "drained_batches": 3,
+        "async_batches": 3
+      },
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4
+      }
+    },
+    {
+      "index": 4,
+      "workload": "W1",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 3,
+      "request_id": "r12a-v177-kt-b-w1-measurement-3",
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "ttft_seconds": 2.997808548,
+      "e2e_seconds": 3.3791129,
+      "tpot_seconds": 0.381220148,
+      "timing_primary": "CLIENT_UNPROFILED_E2E",
+      "quality_pass": true,
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "qsa_dispatch": {
+        "mode": "APPROVED_CANDIDATE",
+        "dispatch_count": 36,
+        "vectorized_count": 24,
+        "row_count": 12,
+        "vectorized_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ]
+      },
+      "ple": {
+        "drained_batches": 3,
+        "async_batches": 3
+      },
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4
+      }
+    }
+  ],
+  "qsa_source_binding": {
+    "mode": "APPROVED_CANDIDATE",
+    "candidate": "QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+    "qualified_qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+    "candidate_qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "candidate_qwen4_exp_sha256": "d4583c5abe9791b09c48d1dd8f8491a2988eb5147d45df188e0e48908c699f1f",
+    "candidate_context_reference_runtime_sha256": "0b6e6a7fad90e3856ffdcbea233a13baaf1bb342837c68ff344579370773c028",
+    "candidate_context_reference_binding_sha256": "97eb1b60d0ee24305ad1a052884b79a3045fa3574fcfc85e8b2c4ccfdbfc0c11"
+  }
+}

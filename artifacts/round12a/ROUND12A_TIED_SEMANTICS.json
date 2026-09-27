@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_TIED_SEMANTICS",
+  "torch_version": "2.9.0+cpu",
+  "functional_call_signature": "(module: 'torch.nn.Module', parameter_and_buffer_dicts: Union[dict[str, torch.Tensor], collections.abc.Sequence[dict[str, torch.Tensor]]], args: Union[Any, tuple, NoneType] = None, kwargs: Optional[dict[str, Any]] = None, *, tie_weights: bool = True, strict: bool = False)",
+  "candidate_source_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+  "state_keys": [
+    "weight",
+    "scale",
+    "inner.weight",
+    "inner.scale"
+  ],
+  "state_object_ids": {
+    "weight": 281466407454672,
+    "scale": 281468013584624,
+    "inner.weight": 281466407454672,
+    "inner.scale": 281468013584624
+  },
+  "unique_state_keys": [
+    "weight",
+    "scale"
+  ],
+  "default_full_error": "functional_call got multiple values for keys ['inner.weight', 'weight'], which are tied. Consider using tie_weights=False",
+  "tie_weights_false_output_exact": true,
+  "tie_weights_false_identity": [
+    {
+      "parameter": false,
+      "buffer": false
+    }
+  ],
+  "candidate_output_exact": true,
+  "candidate_identity": [
+    {
+      "parameter": true,
+      "buffer": true
+    }
+  ],
+  "aliases_restored_after_call": true,
+  "reference": [
+    [
+      5676.0,
+      9568.0
+    ]
+  ],
+  "candidate": [
+    [
+      5676.0,
+      9568.0
+    ]
+  ]
+}

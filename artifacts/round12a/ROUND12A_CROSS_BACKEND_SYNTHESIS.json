@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "created_at": 1790489809.3778179,
+  "status": "PASS_ROUND12A_CROSS_BACKEND_SYNTHESIS",
+  "primary_answer": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+  "fair_promoted_qsa_comparison": {
+    "scope": "SERIAL_TP1_ASCEND12_KUNPENG_C128_PROMOTED_QSA",
+    "same_qsa": true,
+    "same_model_request_sampling_admission": true,
+    "backend_difference": "KT C128/MXFP4 plus Static Q32 BF16/NZ29 versus supported SGLang OffloaderV1 full-BF16 decoder-layer staging",
+    "block_A_kt_improvement_percent": 99.75245446758818,
+    "block_B_kt_improvement_percent": 99.74909164037398,
+    "kt_process_medians_seconds": [
+      2.982178643,
+      3.386335781
+    ],
+    "nonkt_process_medians_seconds": [
+      1204.699036151,
+      1349.630512928
+    ],
+    "quality_exact_across_modes": true
+  },
+  "native_tp8_old_qsa_supplement": {
+    "fair_speedup_comparison": false,
+    "reason": "old QSA differs from the promoted QSA in the KT/OffloaderV1 ABBA and TP8 uses eight NPUs",
+    "native_process_medians_seconds": [
+      3.428952584,
+      3.371347328,
+      3.489020653,
+      3.325310193
+    ],
+    "native_median_of_process_medians_seconds": 3.400149956,
+    "kt_promoted_qsa_median_of_two_process_medians_seconds": 3.1842572120000003,
+    "descriptive_only_kt_over_native_ratio": 0.9365049345488339,
+    "descriptive_only_kt_lower_latency_percent": 6.349506545116612,
+    "native_eight_device_total_peak_hbm_mib_median": 292857.5,
+    "kt_single_device_peak_hbm_mib": [
+      28773,
+      28773
+    ],
+    "native_host_cgroup_peak_gib": [
+      293.8530082702637,
+      293.8375778198242,
+      293.83842849731445,
+      293.8396797180176
+    ]
+  },
+  "resource_tradeoff": {
+    "kt_host_cgroup_peak_gib": [
+      340.09400939941406,
+      352.6435775756836
+    ],
+    "offloaderv1_host_cgroup_peak_gib": [
+      482.4195251464844,
+      482.44555282592773
+    ],
+    "native_tp8_host_cgroup_peak_gib": [
+      293.8530082702637,
+      293.8375778198242,
+      293.83842849731445,
+      293.8396797180176
+    ],
+    "interpretation": "KT buys single-NPU feasibility and near-Native-TP8 short-request latency by spending Kunpeng CPU and MXFP4 Host memory; OffloaderV1 minimizes HBM but serial full-layer staging is not economically viable for this request."
+  },
+  "decision_limits": [
+    "W1 only: 64 input tokens and 2 generated tokens",
+    "serial single request",
+    "promoted-QSA fairness applies only to KT versus OffloaderV1 on physical12",
+    "Native TP8 uses old QSA and is contextual evidence only",
+    "PLE remains Host-backed in Native TP8",
+    "not product, concurrency, long-context, power, or total-cost qualification"
+  ]
+}

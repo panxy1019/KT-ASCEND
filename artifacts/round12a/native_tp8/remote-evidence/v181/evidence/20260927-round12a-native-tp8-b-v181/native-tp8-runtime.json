@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT",
+  "tp_size": 8,
+  "physical_devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "precision": "BF16",
+  "attention_backend": "ascend",
+  "qsa_mode": "QUALIFIED_ORIGINAL",
+  "cpu_offload_gb": 0,
+  "kt_weight_path": null,
+  "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+  "patched_qwen_sha256": "8f9747f6b5e3f8de63d0d8bca2bd68ba77f63466a9e34030aaad77945d36b377",
+  "ple_binding_sha256": "886e71a2c4fd375e471cebac6b243d9dd71437663928f446028e518393092833",
+  "profile_sha256": "ce86cef5c1f8421004d7d24a9b8224dfddf6cf7d618d42f08df70a3605af64f0",
+  "identity_sha256": "b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d",
+  "pure_npu_scope": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS",
+  "host_dependency": "PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED",
+  "pci_numa_locality": "UNKNOWN_KERNEL_REPORTS_MINUS_ONE",
+  "overlap_policy": "NO_OVERLAP_WITH_PHYSICAL12_PERFORMANCE_WINDOWS"
+}

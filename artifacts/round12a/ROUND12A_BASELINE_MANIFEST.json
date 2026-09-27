@@ -1,0 +1,47 @@
+{
+  "configuration": {
+    "concurrency": 1,
+    "dynamic": "OFF",
+    "hybrid_threshold": 129,
+    "kt_arm": "C128_MXFP4_STATIC_Q32_BF16_NZ29",
+    "nonkt_arm": "SGLANG_OFFLOADERV1_FULL_BF16_CPU_LAYER_OFFLOAD",
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "ple": "ASYNC",
+    "qsa": "QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+    "qsa_qwen_consumer_sha256": "d4583c5abe9791b09c48d1dd8f8491a2988eb5147d45df188e0e48908c699f1f",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "scheduler_chunk": 32,
+    "tp": 1
+  },
+  "image": "601e76d17e9f",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "offloader": {
+    "base_sha256": "98a37555dd1fb6bda68dc5485ca0999dce75a5c43a6df62f86a16f740532442e",
+    "candidate_sha256": "8b68d4012a9bd0fab3bab70ab28db1d7c09b6242af912066d2aedd3f3a3c9006",
+    "cpu_semantics_receipt": "ROUND12A_TIED_SEMANTICS.json",
+    "cpu_semantics_receipt_sha256": "4072a049bd11a1310984690b9a508296029112d2fc7dce579e523a54254039cf",
+    "single_change": "deduplicate exact state objects before device copy and retain functional_call tie_weights=True",
+    "tie_weights_false_used": false
+  },
+  "parent": {
+    "failed_archive_sha256": "2464dae19b519c298ade502cbe064e579c1ae2e6691cfa04af8321a6a78d84fc",
+    "failed_run": "v167",
+    "round12_final_status_sha256": "8983afca366981d8f23763d6ff0109cd1bfd321d83dde76ecb338b43de9ab313",
+    "round12_nonkt_disposition_sha256": "d5fb3363c4489d9422aa8df4be8692404a12f47e6fc5f01f71dd0dbf2d2181ce",
+    "round12_qsa_abba_sha256": "6630165d3e8a8679dc35cf6c0acb796c091d955669f63f55d07fd2122af99630",
+    "round12_status": "ROUND12_PARTIAL_WITH_GAPS"
+  },
+  "repository": {
+    "branch": "codex/round12-qsa-request-fair-benchmark",
+    "head": "31a36fe13bf3f14a5825428ef84c99fcb16ddfa8",
+    "round12a_push": false
+  },
+  "round": "12a",
+  "schema": 1,
+  "status": "P0_TIED_SEMANTICS_PASS_P1_COMPONENT_READY"
+}

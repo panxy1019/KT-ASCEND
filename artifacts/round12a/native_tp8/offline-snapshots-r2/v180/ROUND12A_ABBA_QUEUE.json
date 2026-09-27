@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "status": "FROZEN_ROUND12A_ABBA_QUEUE",
+  "created_at_utc": "2026-09-27T01:35:30Z",
+  "stage": "P3_KT_NONKT_ABBA",
+  "source_smoke_version": 173,
+  "source_smoke_status": "PASS_ROUND12A_MODEL_PROCESS",
+  "source_smoke_evidence": "artifacts/round12a/remote-evidence/v173-smoke",
+  "source_smoke_final_sha256": "6f74a4728b504d472344b412cb5a2b3ac100c65a95f19cc12d7182f052fc8d26",
+  "source_smoke_evidence_sha256s_sha256": "5177f6355f8f55bec05fbd854359736d32dc05e3377b0ad0ad68bbd3ec591c58",
+  "source_smoke_observed": {
+    "input_tokens": 64,
+    "decode_tokens": 4,
+    "output_ids": [
+      3897,
+      248046,
+      198,
+      248044
+    ],
+    "ttft_seconds": 815.045499455,
+    "tpot_seconds": 389.66712424733333,
+    "e2e_seconds": 1984.047039175,
+    "request_wall_limit_exceeded": true
+  },
+  "workloads": [
+    "W1"
+  ],
+  "workload_definitions": {
+    "W1": {
+      "case_id": "edge64",
+      "input_tokens": 64,
+      "decode_tokens": 2
+    }
+  },
+  "expected_output_ids": {
+    "W1": [
+      3897,
+      248046
+    ]
+  },
+  "request_wall_limit_seconds": 1800,
+  "projection": {
+    "formula": "smoke_ttft_seconds + smoke_tpot_seconds",
+    "projected_w1_seconds": 1204.7126237023333,
+    "headroom_seconds": 595.2873762976667,
+    "basis": "v173 observed TTFT plus one observed token interval; two output tokens exercise Prefill VECTOR QSA and one Decode ROW step",
+    "is_measurement": false
+  },
+  "measurement_design": {
+    "process_order": [
+      "v174 KT A",
+      "v175 NON_KT A",
+      "v176 NON_KT B",
+      "v177 KT B"
+    ],
+    "per_process": [
+      "warmup1",
+      "measurement1",
+      "measurement2",
+      "measurement3"
+    ],
+    "independent_model_processes": 4,
+    "profiler": "OFF",
+    "timing_primary": "CLIENT_UNPROFILED_E2E",
+    "automatic_retries": 0
+  },
+  "excluded_workloads": {
+    "W1_64x4": "v173 observed E2E exceeded the declared 1800-second per-request wall limit",
+    "W2_128x16": "not admitted after the smaller v173 smoke exceeded the request wall limit"
+  },
+  "value_gate": "KT/NON_KT median E2E <= 0.95 in each independent ABBA block"
+}

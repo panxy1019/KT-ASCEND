@@ -1,0 +1,75 @@
+{
+  "budget": {
+    "automatic_retries": 0,
+    "main_components": "3/3",
+    "main_generations": "17/44",
+    "main_model_starts": "5/8",
+    "native_generations": "16/16",
+    "native_model_starts": "4/4"
+  },
+  "claim_boundary": "serial W1 64x2 narrow qualification; not long-context, concurrency, deployment, power, or full product quality",
+  "complete": true,
+  "created_at": 1790490543.446309,
+  "final_remote": {
+    "checked_at": 1790490151.1495976,
+    "matching_active_timers": 0,
+    "parser_false_positive_preserved": "final-remote-audit-reverify-20260927/FINAL_REMOTE_STATE_PARSER_FALSE_POSITIVE.json",
+    "physical0_7_empty": true,
+    "physical12_empty": true,
+    "round12_containers": 0,
+    "round12_owned_processes": 0,
+    "status": "PASS_ROUND12A_FINAL_REMOTE_STATE_REVERIFIED",
+    "training_cgroup_exact_match": true,
+    "training_running": true
+  },
+  "fresh_verification": {
+    "cache_retirement_runs": 9,
+    "main_archive_sha_entries": 388,
+    "main_comparator_canonical_exact": true,
+    "native_archive_sha_entries": 156,
+    "native_comparator_exact": true,
+    "python_files_compiled": 34,
+    "raw_archives_read_only": true,
+    "resident_pages_after_total": 0,
+    "resident_pages_before_total": 578112868,
+    "unit_tests": 148
+  },
+  "git_actions": "USER_AUTHORIZED_PUSH_TO_ORIGIN_BRANCH; NO_MERGE_NO_TAG",
+  "goal": "tied-parameter-aware OffloaderV1 -> first non-KT request -> same promoted-QSA fair KT/non-KT ABBA -> assess KT-style value, plus user-requested Native SGLang TP8 old-QSA baseline",
+  "hashes": {
+    "cross_backend_synthesis": "6cf72ea1b45e83166297c9e352b819f7500f1b4200e14791e0dacf7eee6cf5ff",
+    "evidence_manifest": "d78a0c41511b51876cc231625eec02dcf2517e6937713f5d887e106ce297030d",
+    "final_remote_state": "1f66c7155a141a8d5ac8c66d0464a09837687f4a5862c1289ba3531abe454193",
+    "final_report_zh": "0f2133ecf8fe732801c422cc60d7fa4ee7e721704c86893cfca7c96c9b3f7af0",
+    "final_status": "03582e065428c782a1de01349150649f30ba7a6676b496d1e8a007e622220aee",
+    "native_report_zh": "1602090fffd6d852e81620e8b239bfb55d9a7a98735b7cc6df74b43cf4c8d186",
+    "native_result": "5f7adfdd2be8e30effe7761452d5d49809fa3c2b306e2b01c4fc97878594a5c8",
+    "primary_result": "3f7e717d5e3b468289a7d7da764125ce5d9fc6164903066135ef3dfc7ed00b56",
+    "resource_retirement": "01c7bdb4dd2965d39e316f771e82b38d61a30972639a2c2774ff1f80f2a9b1af",
+    "test_receipt": "2a2d74452cf352349bcdfdbbb23f3e0189e59967f9508c522440398300c2c4e2"
+  },
+  "native_boundary": "old-QSA TP8 repeatability baseline; not a same-QSA causal speedup arm; PLE row table remains Host-backed",
+  "publication": {
+    "authorized_at": "2026-09-27",
+    "branch": "codex/round12-qsa-request-fair-benchmark",
+    "high_confidence_secret_scan": "PASS_0_HITS",
+    "max_staged_file_bytes": 32358497,
+    "remote": "origin",
+    "scope": "Round12a implementation, raw evidence, reports, and frozen hashes",
+    "staged_paths": 32034,
+    "unique_blob_uncompressed_bytes": 137423644,
+    "unique_staged_blobs": 2842
+  },
+  "requirements": {
+    "cache_retirement_after_archive": true,
+    "fair_same_promoted_qsa_abba": "PASS_V174_V177",
+    "final_cleanup": true,
+    "first_nonkt_request": "PASS_V173",
+    "kt_style_value_decision": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+    "native_quality_performance_resource_consistency": true,
+    "native_tp8_old_qsa_four_process_repeat": "PASS_V180_V183",
+    "tied_parameter_aware_offloaderv1": "PASS_V172"
+  },
+  "schema": 2,
+  "status": "PASS_ROUND12A_FINAL_ARTIFACT_VERIFICATION"
+}

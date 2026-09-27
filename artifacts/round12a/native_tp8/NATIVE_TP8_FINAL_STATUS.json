@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "created_at": 1790489809.3778179,
+  "status": "PASS_ROUND12A_NATIVE_TP8_BASELINE_OLD_QSA",
+  "qualified": true,
+  "scope": "SERIAL_W1_64_INPUT_2_OUTPUT_NATIVE_SGLANG_TP8_BF16_OLD_QSA",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+  "physical_devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "quality": {
+    "measurement_requests": 12,
+    "warmup_requests": 4,
+    "all_exact": true,
+    "expected_output_ids": [
+      3897,
+      248046
+    ],
+    "finite_logprobs": true,
+    "all_eight_rank_layer_receipts": true
+  },
+  "performance": {
+    "process_median_e2e_seconds": {
+      "v180": 3.428952584,
+      "v181": 3.371347328,
+      "v182": 3.489020653,
+      "v183": 3.325310193
+    },
+    "median_of_process_medians_e2e_seconds": 3.400149956,
+    "median_of_process_medians_ttft_seconds": 3.1374853145,
+    "median_of_process_medians_tpot_seconds": 0.2657260085,
+    "max_over_min": 1.04923163569661,
+    "stable_within_5_percent": true
+  },
+  "resource": {
+    "stable": true,
+    "cross_run_per_device_spread_mib": {
+      "0": 2,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 2,
+      "6": 2,
+      "7": 0
+    },
+    "within_run_device_imbalance_mib": [
+      314,
+      316,
+      317,
+      316
+    ],
+    "host_cgroup_peak_bytes": [
+      315522265088,
+      315505696768,
+      315506610176,
+      315507953664
+    ],
+    "host_peak_max_over_min": 1.0000525135367435,
+    "min_host_mem_available_kib": [
+      1929377984,
+      1929097460,
+      1929283428,
+      1929315164
+    ],
+    "min_numa_memfree_kib": {
+      "2": [
+        236134564,
+        50031736,
+        33631316,
+        126457660
+      ],
+      "3": [
+        248357216,
+        166528344,
+        187255644,
+        93672144
+      ],
+      "4": [
+        157048824,
+        189540672,
+        189027984,
+        188209412
+      ],
+      "7": [
+        13321544,
+        248364236,
+        244841552,
+        246432392
+      ]
+    },
+    "runtime_memory_safety_floors_pass": true,
+    "aggregate_eight_device_peak_hbm_mib_by_run": [
+      292853,
+      292857,
+      292858,
+      292860
+    ],
+    "aggregate_eight_device_peak_hbm_mib_median": 292857.5
+  },
+  "runtime_boundary": {
+    "main_and_expert_weights_and_compute": "NPU0_7",
+    "cpu_offload_gb": 0,
+    "kt_weight_path": null,
+    "ple_checkpoint_row_table": "HOST_BACKED",
+    "pure_npu_claim": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ONLY"
+  },
+  "budget": {
+    "model_starts": "4/4",
+    "generations": "16/16",
+    "abort_controls": 0,
+    "automatic_retries": 0
+  },
+  "cache_retirement": {
+    "runs": 4,
+    "all_pass": true,
+    "global_drop_caches": false
+  },
+  "claim_boundary": "This is an old-QSA Native TP8 repeatability baseline. It is not a fair causal speedup comparison with the promoted-QSA KT arm.",
+  "comparator": "NATIVE_TP8_ABBA_RESULT.json",
+  "comparator_sha256": "5f7adfdd2be8e30effe7761452d5d49809fa3c2b306e2b01c4fc97878594a5c8"
+}

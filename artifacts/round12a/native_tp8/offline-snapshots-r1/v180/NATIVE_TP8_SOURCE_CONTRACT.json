@@ -1,0 +1,44 @@
+{
+  "config_sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+  "measurement_trace": "OFF_AFTER_WARMUP_ONE_SHOT_RECEIPTS",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "old_qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+  "old_qwen_sha256": "09c3d027fc86071be687989bdb04901037adaa34e4c310f2471f40275091a0a4",
+  "parent_runtime": "ROUND12_P2_BASELINE_V153_OLD_QSA",
+  "promoted_qsa_rejected_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+  "promoted_qwen_rejected_sha256": "d4583c5abe9791b09c48d1dd8f8491a2988eb5147d45df188e0e48908c699f1f",
+  "required_gdn_tp_fix": "use TP-local key/value head counts and TP-local z reshape in the eager GDN reference",
+  "required_tp_fix": "attn_tp_all_reduce before attention/GDN HyperConnection combine",
+  "runtime_evidence": {
+    "expert_residency": "one warmup-only BF16/NPU tensor receipt for every rank and all 48 MoE layers",
+    "gdn": "one warmup-only TP-local geometry/state-device receipt for every rank and each of 36 GDN layers",
+    "old_qsa": "one warmup-only hit receipt for every rank and each of 12 QSA layers",
+    "ple": "rank-separated ASYNC bind and request-drain receipts"
+  },
+  "same_image_preflight": {
+    "availability_probe_override": "PROCESS_LOCAL_IMPORT_AND_SERVERARGS_ONLY",
+    "availability_probe_restored": true,
+    "device_nodes_exposed": false,
+    "failed_attempt_preserved": "20260927-round12a-native-tp8-v180-preflight",
+    "reason": "frozen SGLang is_npu raises when torch_npu is installed and no device is visible",
+    "runtime_model_path_unchanged": true
+  },
+  "schema": 1,
+  "semantic_donor": {
+    "commit": "4ccff141dbe992794f9da6c3aa23535b4f72000d",
+    "repository": "https://github.com/sgl-project/sglang"
+  },
+  "status": "PASS_LOCAL_SOURCE_GATES_NOT_DEVICE_QUALIFIED",
+  "tp8_geometry": {
+    "global_gdn_key_heads": 16,
+    "global_gdn_value_heads": 48,
+    "global_kv_heads": 2,
+    "global_query_heads": 24,
+    "local_gdn_key_heads": 2,
+    "local_gdn_value_heads": 6,
+    "local_kv_heads": 1,
+    "local_query_heads": 3,
+    "replicated_indexer_kv_heads": 1,
+    "replicated_indexer_query_heads": 4
+  }
+}

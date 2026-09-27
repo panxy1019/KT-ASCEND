@@ -1,0 +1,218 @@
+{
+  "automatic_retries_limit": 0,
+  "budget_amendment": "ROUND12A_BUDGET_AMENDMENT_V172.json",
+  "cache_retirements": [
+    {
+      "after_version": 173,
+      "registered_files": 179,
+      "resident_pages_after": 0,
+      "resident_pages_before": 61832467,
+      "result_sha256": "16dda13a671e539d7961e922916795c86c48596dc937142856c8ec316d1fd5a4",
+      "status": "PASS_CACHE_RETIRED"
+    },
+    {
+      "after_version": 174,
+      "registered_files": 179,
+      "resident_pages_after": 0,
+      "resident_pages_before": 70991188,
+      "result_sha256": "3adbff596ddc1cfc04955930ea278b3dfee574a71f217d208a3c53c16e121032",
+      "status": "PASS_CACHE_RETIRED"
+    },
+    {
+      "after_version": 175,
+      "registered_files": 179,
+      "resident_pages_after": 0,
+      "resident_pages_before": 61832443,
+      "result_sha256": "9ded6de2b4e3300b7332d9827d694e9bbdee688be66a14e83edc9c167d682a77",
+      "status": "PASS_CACHE_RETIRED"
+    },
+    {
+      "after_version": 176,
+      "registered_files": 179,
+      "resident_pages_after": 0,
+      "resident_pages_before": 61832443,
+      "result_sha256": "39f50af3f1de5aa83fc06f21867db9f99709efacfbaf5c861204b015ce4e2d0d",
+      "status": "PASS_CACHE_RETIRED"
+    },
+    {
+      "after_version": 177,
+      "registered_files": 179,
+      "resident_pages_after": 0,
+      "resident_pages_before": 74281068,
+      "result_sha256": "cc39942e30076b531225fcecf90079eac90bce8d9f65807392f713f904f484f8",
+      "status": "PASS_CACHE_RETIRED"
+    }
+  ],
+  "cleanup_reserve_seconds": 600,
+  "component_runs": [
+    {
+      "budget_charged": false,
+      "device_process_started": false,
+      "status": "PRE_DEVICE_GUARD_NAME_REJECTED",
+      "version": 169
+    },
+    {
+      "budget_charged": true,
+      "device_process_started": true,
+      "status": "FIXTURE_ALIAS_BROKEN_BEFORE_OFFLOADER",
+      "version": 170
+    },
+    {
+      "budget_charged": true,
+      "device_process_started": true,
+      "status": "SEMANTICS_PASS_ALLOCATOR_BASELINE_FAIL",
+      "version": 171
+    },
+    {
+      "budget_charged": true,
+      "device_process_started": true,
+      "status": "PASS_ROUND12A_TIED_OFFLOADER_COMPONENT",
+      "version": 172
+    }
+  ],
+  "global": {
+    "abort_controls_limit": 1,
+    "abort_controls_used": 0,
+    "component_process_limit": 3,
+    "component_process_used": 3,
+    "generation_limit": 44,
+    "generation_used": 17,
+    "model_starts_limit": 8,
+    "model_starts_used": 5
+  },
+  "model_runs": [
+    {
+      "abort_controls": 0,
+      "automatic_retries": 0,
+      "block": "SMOKE",
+      "e2e_seconds": 1984.047039175,
+      "generations": 1,
+      "mode": "NON_KT",
+      "model_starts": 1,
+      "request_wall_limit_compliant": false,
+      "status": "PASS_ROUND12A_MODEL_PROCESS",
+      "use": "CORRECTNESS_FIRST_REQUEST_AND_COST_EVIDENCE_ONLY",
+      "version": 173
+    },
+    {
+      "abort_controls": 0,
+      "automatic_retries": 0,
+      "block": "A",
+      "generations": 4,
+      "mode": "KT",
+      "model_starts": 1,
+      "request_wall_limit_compliant": true,
+      "status": "PASS_ROUND12A_MODEL_PROCESS",
+      "version": 174
+    },
+    {
+      "abort_controls": 0,
+      "automatic_retries": 0,
+      "block": "A",
+      "generations": 4,
+      "mode": "NON_KT",
+      "model_starts": 1,
+      "request_wall_limit_compliant": true,
+      "status": "PASS_ROUND12A_MODEL_PROCESS",
+      "version": 175
+    },
+    {
+      "abort_controls": 0,
+      "automatic_retries": 0,
+      "block": "B",
+      "generations": 4,
+      "median_e2e_seconds": 1349.630512928,
+      "median_tpot_seconds": 460.142055466,
+      "median_ttft_seconds": 868.332766578,
+      "mode": "NON_KT",
+      "model_starts": 1,
+      "request_wall_limit_compliant": true,
+      "status": "PASS_ROUND12A_MODEL_PROCESS",
+      "version": 176
+    },
+    {
+      "abort_controls": 0,
+      "automatic_retries": 0,
+      "block": "B",
+      "generations": 4,
+      "median_e2e_seconds": 3.386335781,
+      "median_tpot_seconds": 0.381220148,
+      "median_ttft_seconds": 3.006187733,
+      "mode": "KT",
+      "model_starts": 1,
+      "request_wall_limit_compliant": true,
+      "status": "PASS_ROUND12A_MODEL_PROCESS",
+      "version": 177
+    }
+  ],
+  "notes": [
+    "warmup and failed starts count",
+    "fresh 2x60s admission before every device process",
+    "no unchanged automatic retry",
+    "cache retirement only after archive and full SHA"
+  ],
+  "resource_failure_cycles_limit": 6,
+  "resource_failure_cycles_used": 0,
+  "round": "12a",
+  "same_root_repair_revision_limit": 2,
+  "schema": 1,
+  "stages": {
+    "P0_OFFLINE": {
+      "device_processes": 0,
+      "status": "PASS_TIED_SEMANTICS"
+    },
+    "P1_COMPONENT": {
+      "component_limit": 3,
+      "component_used": 3,
+      "status": "PASS"
+    },
+    "P2_FIRST_NONKT_REQUEST": {
+      "generation_limit": 4,
+      "generation_used": 1,
+      "model_starts_limit": 2,
+      "model_starts_used": 1,
+      "status": "PASS_FIRST_NONKT_REQUEST"
+    },
+    "P3_ABBA": {
+      "generation_limit": 16,
+      "generation_used": 16,
+      "model_starts_limit": 4,
+      "model_starts_used": 4,
+      "status": "PASS_ROUND12A_KT_STYLE_VALUE_CONFIRMED",
+      "comparator": "ROUND12A_KT_NONKT_ABBA_RESULT.json"
+    },
+    "REPAIR": {
+      "generation_limit": 8,
+      "generation_used": 0,
+      "model_starts_limit": 2,
+      "model_starts_used": 0,
+      "status": "COMPONENT_REPAIR_RESERVE_CONSUMED"
+    }
+  },
+  "status": "COMPLETE_KT_NONKT_ABBA_WITH_NATIVE_TP8_SUPPLEMENT",
+  "updated_at": 1790489809.3778179,
+  "wall_time_seconds": {
+    "admission": 900,
+    "component": 1800,
+    "full_model": 21600,
+    "generation": 1800
+  },
+  "final_disposition": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+  "native_tp8_supplement": {
+    "separate_user_added_budget": true,
+    "model_starts_limit": 4,
+    "model_starts_used": 4,
+    "generation_limit": 16,
+    "generation_used": 16,
+    "abort_controls_used": 0,
+    "automatic_retries": 0,
+    "versions": [
+      180,
+      181,
+      182,
+      183
+    ],
+    "status": "PASS_ROUND12A_NATIVE_TP8_BASELINE_ABBA",
+    "comparison_scope": "OLD_QSA_REPEATABILITY_NOT_FAIR_KT_VS_NATIVE_SPEEDUP"
+  }
+}

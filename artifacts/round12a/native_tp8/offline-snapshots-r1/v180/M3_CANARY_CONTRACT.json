@@ -1,0 +1,175 @@
+{
+  "schema": "round9.plan10.m3-canary-contract.v1",
+  "scope": "DETERMINISTIC_CANARIES_AND_NARROW_UNPROFILED_BASELINE_PERFORMANCE_NOT_BROAD_QUALITY",
+  "execution_state": {
+    "run_status": "NOT_RUN",
+    "status": "PREPARED_NOT_RUN_STOP_NUMERIC_GUARD",
+    "reason": "Plan10 S3 ON-v25 numeric guard failed: case A relative_l2=0.9835492231451818 exceeds 0.01.",
+    "prohibition": "DO_NOT_USE_UNTIL_SEPARATELY_AUTHORIZED_BASELINE_CONTINUATION",
+    "authorization_required_before_http": true,
+    "authorization_manifest": {
+      "schema": "round9.plan10.m3-execution-authorization.v1",
+      "plan": "Plan10-M3",
+      "mode": "baseline",
+      "status": "AUTHORIZED_AFTER_NUMERIC_GUARD_REVIEW"
+    }
+  },
+  "endpoint": "http://127.0.0.1:30091/generate",
+  "mode": "baseline",
+  "model": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "local_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+  },
+  "required_launch_profile": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "cpu_workers": 128,
+    "cpu_storage": "MXFP4",
+    "resident_capacity": 32,
+    "placement": "STATIC_UNIFORM",
+    "prefill": "LAYERWISE",
+    "prefill_threshold": 4,
+    "streaming_chunk": 32,
+    "ple_mode": "ASYNC",
+    "context_reference_mode": "BF16_COMPACT",
+    "context_reference_retained": true,
+    "prefix_cache": false,
+    "profiler": false
+  },
+  "tokenization": {
+    "chat_template": "ACTUAL_TOKENIZER_CHAT_TEMPLATE_AT_RUNTIME",
+    "add_generation_prompt": true,
+    "enable_thinking": false,
+    "add_special_tokens": false,
+    "required_hash_files": [
+      "tokenizer.json",
+      "tokenizer_config.json"
+    ],
+    "freeze_all_encoded_inputs_before_first_generation": true,
+    "maximum_input_tokens": 256,
+    "medium_actual_token_counts_allowed": [
+      64,
+      96
+    ]
+  },
+  "sampling": {
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 20260920,
+    "canary_max_new_tokens": 32,
+    "performance_max_new_tokens": 4
+  },
+  "canaries": [
+    {
+      "id": "strict-marker",
+      "prompt": "Reply with exactly this marker and no other characters: ROUND9-CANARY-7F3A",
+      "validator": {
+        "kind": "exact_text",
+        "expected": "ROUND9-CANARY-7F3A"
+      }
+    },
+    {
+      "id": "arithmetic",
+      "prompt": "Calculate 17 * 23. Reply with only the integer.",
+      "validator": {
+        "kind": "exact_text",
+        "expected": "391"
+      }
+    },
+    {
+      "id": "json",
+      "prompt": "Return only a JSON object with keys name and count, values apple and 3. Do not use a Markdown code fence.",
+      "validator": {
+        "kind": "exact_json",
+        "expected": {
+          "name": "apple",
+          "count": 3
+        }
+      }
+    },
+    {
+      "id": "short-context-quote",
+      "prompt": "Context: The brass key rests beneath the blue cup. Quote exactly the four words that state where the key rests. Reply with only those four words.",
+      "validator": {
+        "kind": "exact_text",
+        "expected": "beneath the blue cup"
+      }
+    },
+    {
+      "id": "deterministic-short-generation",
+      "prompt": "Transform the fixed lowercase sequence 'alpha beta gamma' to uppercase and join the words with vertical bars. Reply with only the transformed sequence.",
+      "validator": {
+        "kind": "exact_text",
+        "expected": "ALPHA|BETA|GAMMA"
+      }
+    }
+  ],
+  "workloads": {
+    "short": {
+      "prompt": "Answer with exactly OK."
+    },
+    "medium": {
+      "base_prompt": "Read this short operational note and answer with exactly ACK. Each sentence describes a harmless deterministic fixture for measuring one local request.",
+      "padding_unit": " The fixture remains unchanged for this measurement.",
+      "construction": "Append complete padding units, then complete words from one additional unit, and accept only an actual chat-template encoding of exactly 64 tokens, otherwise try 96; fail locally if neither can be formed.",
+      "allowed_actual_input_tokens": [
+        64,
+        96
+      ]
+    }
+  },
+  "request_budget": {
+    "model_starts_per_mode": 1,
+    "generation_requests_per_mode": 13,
+    "canaries": 5,
+    "warmups": {
+      "short": 1,
+      "medium": 1
+    },
+    "measurements": {
+      "short": 3,
+      "medium": 3
+    },
+    "failed_or_interrupted_attempt_consumes_budget": true,
+    "retries": 0,
+    "hidden_requests": 0
+  },
+  "timeouts_seconds": {
+    "per_http_request": 1800,
+    "total_driver": 21600
+  },
+  "response_contract": {
+    "return_logprob": true,
+    "require_nonempty_output": true,
+    "require_finite_output_logprobs": true,
+    "require_output_id_and_logprob_count_match": true,
+    "require_terminal_finish_reason": true,
+    "finish_reason_length_never_passes_canary": true,
+    "performance_requires_exactly_four_output_tokens": true,
+    "missing_ttft": "UNKNOWN",
+    "missing_tpot": "UNKNOWN",
+    "preserve": [
+      "request_id",
+      "request",
+      "raw_response",
+      "parsed_response",
+      "error",
+      "client_e2e_seconds"
+    ]
+  },
+  "stop_rules": {
+    "canary_failure": "STOP_BEFORE_WARMUP_OR_MEASUREMENT",
+    "profile_drift": "REJECT_BEFORE_FIRST_GENERATION",
+    "tokenization_failure": "REJECT_BEFORE_FIRST_GENERATION",
+    "budget_exhaustion": "STOP_WITHOUT_RETRY"
+  },
+  "claims": {
+    "allowed": "Five frozen known-answer canaries plus three raw repetitions for each of two frozen input lengths under one exact baseline launch profile.",
+    "forbidden": [
+      "broad model quality",
+      "statistical performance qualification",
+      "long-context qualification",
+      "deployment qualification",
+      "candidate qualification"
+    ]
+  }
+}

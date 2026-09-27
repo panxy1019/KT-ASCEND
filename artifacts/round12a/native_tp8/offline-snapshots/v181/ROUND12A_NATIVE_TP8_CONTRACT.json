@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND12A_NATIVE_TP8_OLD_QSA_ABBA",
+  "version": 181,
+  "mode": "NATIVE_TP8",
+  "block": "B",
+  "container": "kt-round12a-native-tp8-b-v181",
+  "evidence": "20260927-round12a-native-tp8-b-v181",
+  "parent": "ROUND12_P2_BASELINE_V153_OLD_QSA",
+  "qsa_source": "QUALIFIED_ORIGINAL",
+  "tp_size": 8,
+  "arm_semantics": "IDENTICAL_NATIVE_REPEAT_COHORT",
+  "physical_devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "profiler": "OFF",
+  "generation_limit": 4,
+  "abort_limit": 0,
+  "automatic_retries": 0,
+  "raw_result": "native-tp8-raw.json",
+  "driver_pass_status": "PASS_ROUND12A_NATIVE_TP8_DRIVER_RAW",
+  "driver_command": [
+    "{DRIVER_ROOT}/native_tp8_driver.py",
+    "--version",
+    "181",
+    "--block",
+    "B",
+    "--out",
+    "/out",
+    "--fixture",
+    "{DRIVER_ROOT}/round10-t1-fixture.json",
+    "--queue",
+    "{DRIVER_ROOT}/ROUND12A_ABBA_QUEUE.json"
+  ]
+}

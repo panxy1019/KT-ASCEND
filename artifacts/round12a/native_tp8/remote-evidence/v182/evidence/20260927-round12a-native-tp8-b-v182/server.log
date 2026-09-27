@@ -1,0 +1,924 @@
+can not use command: npu-smi info
+INFO 09-27 05:59:21 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:21 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:21 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:21 [__init__.py:239] Platform plugin ascend is activated
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT {'schema': 1, 'status': 'PASS_ROUND12A_NATIVE_TP8_SERVER_PREFLIGHT', 'tp_size': 8, 'physical_devices': [0, 1, 2, 3, 4, 5, 6, 7], 'precision': 'BF16', 'attention_backend': 'ascend', 'qsa_mode': 'QUALIFIED_ORIGINAL', 'cpu_offload_gb': 0, 'kt_weight_path': None, 'qsa_sha256': '76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c', 'patched_qwen_sha256': '8f9747f6b5e3f8de63d0d8bca2bd68ba77f63466a9e34030aaad77945d36b377', 'ple_binding_sha256': '886e71a2c4fd375e471cebac6b243d9dd71437663928f446028e518393092833', 'profile_sha256': 'ce86cef5c1f8421004d7d24a9b8224dfddf6cf7d618d42f08df70a3605af64f0', 'identity_sha256': 'b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d', 'pure_npu_scope': 'MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS', 'host_dependency': 'PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED', 'pci_numa_locality': 'UNKNOWN_KERNEL_REPORTS_MINUS_ONE', 'overlap_policy': 'NO_OVERLAP_WITH_PHYSICAL12_PERFORMANCE_WINDOWS'}
+[2026-09-27 05:59:24] server_args=ServerArgs(model_path='/models/de4b8e4d43b917e7706784d8bb445c9af86a3540', tokenizer_path='/models/de4b8e4d43b917e7706784d8bb445c9af86a3540', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='safetensors', model_loader_extra_config='{}', trust_remote_code=False, context_length=4098, is_embedding=False, enable_multimodal=False, revision=None, model_impl='auto', host='127.0.0.1', port=30091, fastapi_root_path='', grpc_mode=False, skip_server_warmup=True, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.7, max_running_requests=1, max_queued_requests=None, max_total_tokens=4100, chunked_prefill_size=32, enable_dynamic_chunking=False, max_prefill_tokens=32, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=4, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='npu', tp_size=8, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=20260920, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=1800, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, extra_metric_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='QWEN38-ROUND12A-NATIVE-TP8-OLD-QSA', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', attn_cp_size=1, moe_dp_size=1, dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='ascend', decode_attention_backend='ascend', prefill_attention_backend='ascend', sampling_backend='pytorch', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='flashinfer_cutlass', nsa_prefill_backend=None, nsa_decode_backend=None, disable_flashinfer_autotune=False, mamba_backend='triton', speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='auto', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='auto', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, enable_aiter_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm=None, init_expert_location='trivial', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=1, mamba_ssm_dtype=None, mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, linear_attn_backend='triton', linear_attn_decode_backend=None, linear_attn_prefill_backend=None, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, enable_hisparse=False, hisparse_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path=None, kt_method=None, kt_cpuinfer=None, kt_threadpool_count=None, kt_numa_nodes=None, kt_num_gpu_experts=None, kt_gpu_experts_ratio=None, kt_max_deferred_experts_per_token=None, kt_gpu_prefill_token_threshold=None, record_kt_gpu_expert_distribution=False, kt_enable_dynamic_expert_update=False, kt_expert_placement_strategy='uniform', kt_lora_path=None, kt_expert_lora_path=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=True, cuda_graph_max_bs=256, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256], disable_cuda_graph=True, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=True, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=True, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=32, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=True, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, enable_return_indexer_topk=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='round-robin-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=False, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, enable_mm_global_cache=False, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-09-27 05:59:24] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-27 05:59:25] Using default HuggingFace chat template with detected content format: openai
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+can not use command: npu-smi info
+INFO 09-27 05:59:33 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:33 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:33 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:33 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:33 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:33 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:33 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:33 [__init__.py:239] Platform plugin ascend is activated
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+INFO 09-27 05:59:34 [__init__.py:239] Platform plugin ascend is activated
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:35 TP6] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:35 TP2] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-27 05:59:35 TP4] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:35 TP7] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:35 TP0] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:35 TP5] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:35 TP1] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[2026-09-27 05:59:35 TP3] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 05:59:36 TP6] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:36 TP6] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP2] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP2] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP3] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP3] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP1] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP1] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP6] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP6] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP6] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP4] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP4] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP0] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP7] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP0] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP7] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP5] Mamba selective_state_update backend initialized: triton
+[2026-09-27 05:59:37 TP5] Transformers version 5.3.0.dev0 is used for model type qwen4_exp. If you experience issues related to RoPE parameters, they may be due to incompatibilities between Transformers >=5.0.0 and some models. You can try downgrading to transformers==4.57.1 as a workaround.
+[2026-09-27 05:59:37 TP2] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP2] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP2] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP4] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP4] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP4] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP3] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP3] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP1] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP3] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP1] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP1] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP5] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP5] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP7] Using Megatron-FSDP without Transformer Engine.
+[2026-09-27 05:59:37 TP0] Using Megatron-FSDP without Transformer Engine.
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/distributed/fsdp/src/megatron_fsdp/mixed_precision.py:114: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+[2026-09-27 05:59:37 TP5] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP0] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP7] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP0] Detected Megatron Core, using Megatron-FSDP with Megatron.
+[2026-09-27 05:59:37 TP7] Detected Megatron Core, using Megatron-FSDP with Megatron.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-27 05:59:50 TP1] Init torch distributed begin.
+[2026-09-27 05:59:50 TP3] Init torch distributed begin.
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-27 05:59:50 TP6] Init torch distributed begin.
+[W927 05:59:51.266096885 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+[W927 05:59:51.397553025 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/__init__.py:24: UserWarning: Transformer Engine and Apex are not installed. Falling back to Torch optimizers.
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/optimizer.py:28: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier and multi_tensor_scale
+  warnings.warn(
+/Megatron-LM/megatron/core/optimizer/clip_grads.py:29: UserWarning: Transformer Engine and Apex are not installed. Falling back to local implementations of multi_tensor_applier, multi_tensor_l2norm, and multi_tensor_scale
+  warnings.warn(
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:362: ImportWarning: 
+    *************************************************************************************************************
+    The torch.Tensor.cuda and torch.nn.Module.cuda are replaced with torch.Tensor.npu and torch.nn.Module.npu now..
+    The torch.cuda.DoubleTensor is replaced with torch.npu.FloatTensor cause the double type is not supported now..
+    The backend in torch.distributed.init_process_group set to hccl now..
+    The torch.cuda.* and torch.cuda.amp.* are replaced with torch.npu.* and torch.npu.amp.* now..
+    The device parameters have been replaced with npu in the function below:
+    torch.logspace, torch.randint, torch.hann_window, torch.rand, torch.full_like, torch.ones_like, torch.rand_like, torch.randperm, torch.arange, torch.frombuffer, torch.normal, torch._empty_per_channel_affine_quantized, torch.empty_strided, torch.empty_like, torch.scalar_tensor, torch.tril_indices, torch.bartlett_window, torch.ones, torch.sparse_coo_tensor, torch.randn, torch.kaiser_window, torch.tensor, torch.triu_indices, torch.as_tensor, torch.zeros, torch.randint_like, torch.full, torch.eye, torch._sparse_csr_tensor_unsafe, torch.empty, torch._sparse_coo_tensor_unsafe, torch.blackman_window, torch.zeros_like, torch.range, torch.sparse_csr_tensor, torch.randn_like, torch.from_file, torch._cudnn_init_dropout_state, torch._empty_affine_quantized, torch.linspace, torch.hamming_window, torch.empty_quantized, torch._pin_memory, torch.load, torch.set_default_device, torch.get_device_module, torch.sparse_compressed_tensor, torch.Tensor.new_empty, torch.Tensor.new_empty_strided, torch.Tensor.new_full, torch.Tensor.new_ones, torch.Tensor.new_tensor, torch.Tensor.new_zeros, torch.Tensor.to, torch.Tensor.pin_memory, torch.nn.Module.to, torch.nn.Module.to_empty
+    *************************************************************************************************************
+    
+  warnings.warn(msg, ImportWarning)
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/contrib/transfer_to_npu.py:291: RuntimeWarning: torch.jit.script and torch.jit.script_method will be disabled by transfer_to_npu, which currently does not support them, if you need to enable them, please do not use transfer_to_npu.
+  warnings.warn(msg, RuntimeWarning)
+[2026-09-27 05:59:51 TP2] Init torch distributed begin.
+[2026-09-27 05:59:51 TP7] Init torch distributed begin.
+[2026-09-27 05:59:51 TP4] Init torch distributed begin.
+[2026-09-27 05:59:51 TP0] Init torch distributed begin.
+[2026-09-27 05:59:51 TP5] Init torch distributed begin.
+[W927 05:59:51.999377042 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W927 05:59:52.712238039 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W927 05:59:52.758151198 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W927 05:59:52.782739475 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W927 05:59:52.790974846 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[W927 05:59:52.833878373 socket.cpp:209] [c10d] The hostname of the client socket cannot be retrieved. err=-3
+[rank4]:[W927 05:59:52.934662667 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank6]:[W927 05:59:52.956051242 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank5]:[W927 05:59:53.189705493 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank7]:[W927 05:59:53.334406721 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank2]:[W927 05:59:53.551002372 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank1]:[W927 05:59:53.941717858 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank3]:[W927 05:59:53.962158919 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[rank0]:[W927 05:59:53.021727176 ProcessGroupGloo.cpp:516] Warning: Unable to resolve hostname to a (local) address. Using the loopback address as fallback. Manually set the network interface to bind to with GLOO_SOCKET_IFNAME. (function operator())
+[Gloo] Rank 0 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 3 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 2 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 7 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 6 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 1 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 4 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 5 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 0 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 1 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 4 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 2 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 3 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 5 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 6 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 7 is connected to 7 peer ranks. Expected number of connected peer ranks is : 7
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-09-27 05:59:54 TP0] Init torch distributed ends. elapsed=2.35 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP7] Init torch distributed ends. elapsed=2.46 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP5] Init torch distributed ends. elapsed=2.33 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP6] Init torch distributed ends. elapsed=3.14 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP4] Init torch distributed ends. elapsed=2.40 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP1] Init torch distributed ends. elapsed=3.86 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP3] Init torch distributed ends. elapsed=3.76 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP2] Init torch distributed ends. elapsed=2.48 s, mem usage=0.01 GB
+[2026-09-27 05:59:54 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4: No module named 'tilelang'
+[2026-09-27 05:59:54 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.deepseek_v4_nextn: No module named 'tilelang'
+[2026-09-27 05:59:54 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:54 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.glm5_next_dsa: No module named 'custom_ops'
+[2026-09-27 05:59:55 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.lfm2_moe: No module named 'sgl_kernel'
+[2026-09-27 05:59:55 TP7] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP6] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP0] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP2] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP3] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP1] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP4] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:55 TP5] In import_model_classes: Ignore import error when loading sglang.srt.models.mindspore: No module named 'mindspore'
+[2026-09-27 05:59:56 TP2] Load weight begin. avail mem=60.79 GB
+[2026-09-27 05:59:56 TP2] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP0] Load weight begin. avail mem=60.72 GB
+[2026-09-27 05:59:56 TP0] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP3] Load weight begin. avail mem=61.01 GB
+[2026-09-27 05:59:56 TP3] get env ROUND12A_NATIVE_TP8_MODE = 1
+[2026-09-27 05:59:56 TP6] Load weight begin. avail mem=60.77 GB
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP6] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP1] Load weight begin. avail mem=61.02 GB
+[2026-09-27 05:59:56 TP1] get env ROUND12A_NATIVE_TP8_MODE = 1
+[2026-09-27 05:59:56 TP4] Load weight begin. avail mem=60.78 GB
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP4] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP7] Load weight begin. avail mem=61.02 GB
+[2026-09-27 05:59:56 TP7] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP5] Load weight begin. avail mem=61.02 GB
+[2026-09-27 05:59:56 TP5] get env ROUND12A_NATIVE_TP8_MODE = 1
+`torch_dtype` is deprecated! Use `dtype` instead!
+[2026-09-27 05:59:56 TP2] using attn output gate!
+[2026-09-27 05:59:56 TP3] using attn output gate!
+[2026-09-27 05:59:56 TP0] using attn output gate!
+[2026-09-27 05:59:56 TP1] using attn output gate!
+[2026-09-27 05:59:56 TP4] using attn output gate!
+[2026-09-27 05:59:56 TP6] using attn output gate!
+[2026-09-27 05:59:56 TP7] using attn output gate!
+[2026-09-27 05:59:56 TP5] using attn output gate!
+Loading safetensors checkpoint shards:   0% Completed | 0/131 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:   1% Completed | 1/131 [00:00<01:29,  1.45it/s]
+Loading safetensors checkpoint shards:   2% Completed | 2/131 [00:01<01:22,  1.57it/s]
+Loading safetensors checkpoint shards:   3% Completed | 4/131 [00:01<00:40,  3.12it/s]
+Loading safetensors checkpoint shards:   4% Completed | 5/131 [00:02<00:45,  2.76it/s]
+Loading safetensors checkpoint shards:   7% Completed | 9/131 [00:02<00:23,  5.29it/s]
+Loading safetensors checkpoint shards:   8% Completed | 11/131 [00:02<00:21,  5.55it/s]
+Loading safetensors checkpoint shards:  10% Completed | 13/131 [00:03<00:20,  5.77it/s]
+Loading safetensors checkpoint shards:  11% Completed | 15/131 [00:03<00:21,  5.28it/s]
+Loading safetensors checkpoint shards:  12% Completed | 16/131 [00:03<00:27,  4.18it/s]
+Loading safetensors checkpoint shards:  13% Completed | 17/131 [00:04<00:32,  3.55it/s]
+Loading safetensors checkpoint shards:  15% Completed | 19/131 [00:04<00:26,  4.15it/s]
+Loading safetensors checkpoint shards:  18% Completed | 23/131 [00:05<00:17,  6.23it/s]
+Loading safetensors checkpoint shards:  18% Completed | 24/131 [00:05<00:22,  4.83it/s]
+Loading safetensors checkpoint shards:  19% Completed | 25/131 [00:05<00:26,  3.95it/s]
+Loading safetensors checkpoint shards:  20% Completed | 26/131 [00:06<00:26,  3.94it/s]
+Loading safetensors checkpoint shards:  21% Completed | 27/131 [00:06<00:27,  3.82it/s]
+Loading safetensors checkpoint shards:  21% Completed | 28/131 [00:06<00:26,  3.85it/s]
+Loading safetensors checkpoint shards:  24% Completed | 32/131 [00:07<00:14,  6.92it/s]
+Loading safetensors checkpoint shards:  25% Completed | 33/131 [00:07<00:19,  5.14it/s]
+Loading safetensors checkpoint shards:  27% Completed | 36/131 [00:07<00:16,  5.66it/s]
+Loading safetensors checkpoint shards:  29% Completed | 38/131 [00:08<00:18,  5.04it/s]
+Loading safetensors checkpoint shards:  30% Completed | 39/131 [00:08<00:22,  4.11it/s]
+Loading safetensors checkpoint shards:  31% Completed | 41/131 [00:09<00:18,  4.79it/s]
+Loading safetensors checkpoint shards:  32% Completed | 42/131 [00:09<00:19,  4.46it/s]
+Loading safetensors checkpoint shards:  34% Completed | 44/131 [00:09<00:17,  5.06it/s]
+Loading safetensors checkpoint shards:  35% Completed | 46/131 [00:10<00:15,  5.45it/s]
+Loading safetensors checkpoint shards:  36% Completed | 47/131 [00:10<00:16,  5.05it/s]
+Loading safetensors checkpoint shards:  37% Completed | 48/131 [00:10<00:18,  4.42it/s]
+Loading safetensors checkpoint shards:  37% Completed | 49/131 [00:11<00:22,  3.61it/s]
+Loading safetensors checkpoint shards:  38% Completed | 50/131 [00:11<00:29,  2.75it/s]
+Loading safetensors checkpoint shards:  39% Completed | 51/131 [00:12<00:29,  2.67it/s]
+Loading safetensors checkpoint shards:  40% Completed | 52/131 [00:12<00:37,  2.10it/s]
+Loading safetensors checkpoint shards:  40% Completed | 53/131 [00:13<00:37,  2.06it/s]
+Loading safetensors checkpoint shards:  41% Completed | 54/131 [00:13<00:35,  2.19it/s]
+Loading safetensors checkpoint shards:  42% Completed | 55/131 [00:14<00:38,  1.98it/s]
+Loading safetensors checkpoint shards:  43% Completed | 56/131 [00:14<00:36,  2.05it/s]
+Loading safetensors checkpoint shards:  44% Completed | 57/131 [00:15<00:31,  2.36it/s]
+Loading safetensors checkpoint shards:  44% Completed | 58/131 [00:15<00:28,  2.56it/s]
+Loading safetensors checkpoint shards:  46% Completed | 60/131 [00:15<00:23,  3.03it/s]
+Loading safetensors checkpoint shards:  47% Completed | 62/131 [00:16<00:21,  3.20it/s]
+Loading safetensors checkpoint shards:  48% Completed | 63/131 [00:16<00:18,  3.62it/s]
+Loading safetensors checkpoint shards:  49% Completed | 64/131 [00:16<00:19,  3.41it/s]
+Loading safetensors checkpoint shards:  50% Completed | 65/131 [00:17<00:18,  3.48it/s]
+Loading safetensors checkpoint shards:  50% Completed | 66/131 [00:17<00:19,  3.26it/s]
+Loading safetensors checkpoint shards:  51% Completed | 67/131 [00:18<00:31,  2.00it/s]
+Loading safetensors checkpoint shards:  52% Completed | 68/131 [00:19<00:31,  2.02it/s]
+Loading safetensors checkpoint shards:  53% Completed | 69/131 [00:19<00:27,  2.22it/s]
+Loading safetensors checkpoint shards:  54% Completed | 71/131 [00:19<00:21,  2.85it/s]
+Loading safetensors checkpoint shards:  55% Completed | 72/131 [00:20<00:23,  2.46it/s]
+Loading safetensors checkpoint shards:  56% Completed | 73/131 [00:21<00:28,  2.01it/s]
+Loading safetensors checkpoint shards:  56% Completed | 74/131 [00:21<00:31,  1.81it/s]
+Loading safetensors checkpoint shards:  57% Completed | 75/131 [00:22<00:32,  1.72it/s]
+Loading safetensors checkpoint shards:  58% Completed | 76/131 [00:23<00:29,  1.85it/s]
+Loading safetensors checkpoint shards:  59% Completed | 77/131 [00:23<00:25,  2.12it/s]
+Loading safetensors checkpoint shards:  60% Completed | 78/131 [00:23<00:22,  2.37it/s]
+Loading safetensors checkpoint shards:  60% Completed | 79/131 [00:23<00:20,  2.60it/s]
+Loading safetensors checkpoint shards:  62% Completed | 81/131 [00:24<00:14,  3.53it/s]
+Loading safetensors checkpoint shards:  63% Completed | 82/131 [00:24<00:14,  3.42it/s]
+Loading safetensors checkpoint shards:  63% Completed | 83/131 [00:24<00:13,  3.50it/s]
+Loading safetensors checkpoint shards:  64% Completed | 84/131 [00:25<00:13,  3.49it/s]
+Loading safetensors checkpoint shards:  65% Completed | 85/131 [00:25<00:12,  3.59it/s]
+Loading safetensors checkpoint shards:  66% Completed | 86/131 [00:25<00:12,  3.61it/s]
+Loading safetensors checkpoint shards:  66% Completed | 87/131 [00:26<00:14,  3.01it/s]
+Loading safetensors checkpoint shards:  67% Completed | 88/131 [00:26<00:15,  2.74it/s]
+Loading safetensors checkpoint shards:  68% Completed | 89/131 [00:26<00:14,  2.87it/s]
+Loading safetensors checkpoint shards:  69% Completed | 91/131 [00:27<00:11,  3.50it/s]
+Loading safetensors checkpoint shards:  70% Completed | 92/131 [00:27<00:11,  3.54it/s]
+Loading safetensors checkpoint shards:  71% Completed | 93/131 [00:28<00:12,  3.03it/s]
+Loading safetensors checkpoint shards:  73% Completed | 95/131 [00:28<00:10,  3.40it/s]
+Loading safetensors checkpoint shards:  73% Completed | 96/131 [00:29<00:11,  2.92it/s]
+Loading safetensors checkpoint shards:  74% Completed | 97/131 [00:29<00:12,  2.62it/s]
+Loading safetensors checkpoint shards:  75% Completed | 98/131 [00:30<00:13,  2.39it/s]
+Loading safetensors checkpoint shards:  76% Completed | 99/131 [00:30<00:17,  1.82it/s]
+Loading safetensors checkpoint shards:  76% Completed | 100/131 [00:31<00:18,  1.66it/s]
+Loading safetensors checkpoint shards:  77% Completed | 101/131 [00:32<00:15,  1.91it/s]
+Loading safetensors checkpoint shards:  78% Completed | 102/131 [00:32<00:17,  1.61it/s]
+Loading safetensors checkpoint shards:  79% Completed | 103/131 [00:33<00:17,  1.63it/s]
+Loading safetensors checkpoint shards:  79% Completed | 104/131 [00:34<00:18,  1.44it/s]
+Loading safetensors checkpoint shards:  81% Completed | 106/131 [00:34<00:11,  2.24it/s]
+Loading safetensors checkpoint shards:  82% Completed | 107/131 [00:35<00:10,  2.24it/s]
+Loading safetensors checkpoint shards:  82% Completed | 108/131 [00:35<00:10,  2.24it/s]
+Loading safetensors checkpoint shards:  85% Completed | 112/131 [00:36<00:04,  3.85it/s]
+Loading safetensors checkpoint shards:  86% Completed | 113/131 [00:36<00:05,  3.31it/s]
+Loading safetensors checkpoint shards:  88% Completed | 115/131 [00:37<00:04,  3.21it/s]
+Loading safetensors checkpoint shards:  89% Completed | 116/131 [00:37<00:05,  2.77it/s]
+Loading safetensors checkpoint shards:  89% Completed | 117/131 [00:38<00:06,  2.11it/s]
+Loading safetensors checkpoint shards:  91% Completed | 119/131 [00:39<00:04,  2.56it/s]
+Loading safetensors checkpoint shards:  92% Completed | 120/131 [00:39<00:04,  2.64it/s]
+Loading safetensors checkpoint shards:  92% Completed | 121/131 [00:39<00:03,  2.78it/s]
+Loading safetensors checkpoint shards:  93% Completed | 122/131 [00:40<00:03,  2.50it/s]
+Loading safetensors checkpoint shards:  94% Completed | 123/131 [00:40<00:03,  2.21it/s]
+Loading safetensors checkpoint shards:  95% Completed | 124/131 [00:41<00:03,  2.13it/s]
+Loading safetensors checkpoint shards:  95% Completed | 125/131 [00:42<00:03,  1.74it/s]
+Loading safetensors checkpoint shards:  96% Completed | 126/131 [00:42<00:02,  2.07it/s]
+Loading safetensors checkpoint shards:  97% Completed | 127/131 [00:43<00:01,  2.10it/s]
+Loading safetensors checkpoint shards:  98% Completed | 128/131 [00:43<00:01,  2.12it/s]
+Loading safetensors checkpoint shards:  98% Completed | 129/131 [00:43<00:00,  2.33it/s]
+Loading safetensors checkpoint shards: 100% Completed | 131/131 [00:44<00:00,  3.34it/s]
+Loading safetensors checkpoint shards: 100% Completed | 131/131 [00:44<00:00,  2.97it/s]
+
+[2026-09-27 06:00:44 TP4] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP2] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP7] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP6] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP0] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP3] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP5] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:44 TP1] get env ASCEND_OPP_PATH = /usr/local/Ascend/cann-9.0.0/opp
+[2026-09-27 06:00:45 TP2] get env HOME = /root
+[2026-09-27 06:00:45 TP4] get env HOME = /root
+[2026-09-27 06:00:45 TP7] get env HOME = /root
+[2026-09-27 06:00:45 TP0] get env HOME = /root
+[2026-09-27 06:00:45 TP6] get env HOME = /root
+[2026-09-27 06:00:45 TP2] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP4] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP3] get env HOME = /root
+[2026-09-27 06:00:45 TP7] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP5] get env HOME = /root
+[2026-09-27 06:00:45 TP1] get env HOME = /root
+[2026-09-27 06:00:45 TP6] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP3] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP0] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP5] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:45 TP1] get env TE_AUTO_RESTART_COUNTER = 0
+[2026-09-27 06:00:46 TP0] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP2] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP4] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP7] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP1] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP5] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP6] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:46 TP3] get env PYTHONPATH = /usr/local/Ascend/cann-9.0.0/python/site-packages:/usr/local/Ascend/cann-9.0.0/opp/built-in/op_impl/ai_core/tbe:/round9/round12a-native-tp8-v182-r2/overlay-python
+[2026-09-27 06:00:47 TP2] Load weight end. elapsed=51.46 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=28.89 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP4] Load weight end. elapsed=51.39 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=28.88 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP7] Load weight end. elapsed=51.39 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=29.12 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP1] Load weight end. elapsed=51.41 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=29.12 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP5] Load weight end. elapsed=51.37 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=29.12 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP6] Load weight end. elapsed=51.50 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=28.87 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:47 TP0] Load weight end. elapsed=51.67 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=28.82 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:48 TP3] Load weight end. elapsed=51.76 s, type=Qwen4ExpForConditionalGeneration, dtype=torch.bfloat16, avail mem=29.11 GB, mem usage=31.90 GB.
+[2026-09-27 06:00:48 TP0] Using KV cache dtype: torch.bfloat16
+[2026-09-27 06:00:48 TP2] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP7] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP1] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP2] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP7] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP1] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP6] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP4] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP6] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP4] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP5] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP5] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP3] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP3] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP0] get env ROUND9_FRAMEWORK_PROFILE = /round9/round12a-native-tp8-v182-r2/native-tp8-framework-profile.json
+[2026-09-27 06:00:48 TP0] get env ROUND9_FRAMEWORK_PROFILE_SHA256 = 897b4e6142520ea64cc005117c9676ba5cdd65bccce3dd77412e37caca7580bd
+[2026-09-27 06:00:48 TP7] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP7] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP2] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP2] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP6] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP6] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP1] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP4] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP1] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP4] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP5] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP5] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP3] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP3] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP0] get env ROUND12A_NATIVE_TP8_IDENTITY = /round9/round12a-native-tp8-v182-r2/ROUND12A_NATIVE_TP8_IDENTITY.json
+[2026-09-27 06:00:48 TP0] get env ROUND12A_NATIVE_TP8_IDENTITY_SHA256 = b2c0142fb4a46ccac0d43348d6cf7e9463615012d811ca58e158216d0ae47c0d
+[2026-09-27 06:00:48 TP7] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP6] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP5] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP2] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP4] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP1] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP3] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP0] Mamba Cache is allocated. max_mamba_cache_size: 1, conv_state size: 0.00GB, ssm_state size: 0.03GB 
+[2026-09-27 06:00:48 TP7] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP6] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP2] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP5] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP4] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP1] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP7] Memory pool end. avail mem=29.05 GB
+[2026-09-27 06:00:48 TP2] Memory pool end. avail mem=28.81 GB
+[2026-09-27 06:00:48 TP6] Memory pool end. avail mem=28.80 GB
+[2026-09-27 06:00:48 TP5] Memory pool end. avail mem=29.05 GB
+[2026-09-27 06:00:48 TP1] Memory pool end. avail mem=29.04 GB
+[2026-09-27 06:00:48 TP4] Memory pool end. avail mem=28.80 GB
+[2026-09-27 06:00:48 TP3] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP0] KV Cache is allocated. #tokens: 4100, K size: 0.02 GB, V size: 0.02 GB
+[2026-09-27 06:00:48 TP3] Memory pool end. avail mem=29.03 GB
+[2026-09-27 06:00:48 TP0] Memory pool end. avail mem=28.74 GB
+[2026-09-27 06:00:48 TP4] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP5] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP2] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP1] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP6] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP7] Using hybrid linear attention backend for hybrid GDN models.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 06:00:48 TP3] Using hybrid linear attention backend for hybrid GDN models.
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[2026-09-27 06:00:48 TP0] Linear attention kernel backend: decode=triton, prefill=triton
+[2026-09-27 06:00:48 TP0] Using hybrid linear attention backend for hybrid GDN models.
+[2026-09-27 06:00:48 TP0] GDN kernel dispatcher: decode=TritonGDNKernel, extend=TritonGDNKernel, verify=TritonGDNKernel
+Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+/round9/round12a-native-tp8-v182-r2/overlay-python/sglang/srt/utils/common.py:1293: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:206.)
+  tensor_data = torch.ByteTensor(
+[2026-09-27 06:00:49 TP0] max_total_num_tokens=4100, chunked_prefill_size=32, max_prefill_tokens=32, max_running_requests=1, context_len=4098, available_gpu_mem=28.72 GB
+[2026-09-27 06:00:50 TP4] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP1] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP2] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP5] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP7] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP6] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP3] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50 TP0] get env ROUND9_DYNAMIC_BOUNDARY_ENABLE = 0
+[2026-09-27 06:00:50] INFO:     Started server process [70]
+[2026-09-27 06:00:50] INFO:     Waiting for application startup.
+[2026-09-27 06:00:50] Using default chat sampling params from model generation config: {'temperature': 1.0, 'top_k': 20, 'top_p': 0.95}
+[2026-09-27 06:00:51] The server is fired up and ready to roll!
+[2026-09-27 06:00:51] INFO:     Application startup complete.
+[2026-09-27 06:00:51] INFO:     Uvicorn running on http://127.0.0.1:30091 (Press CTRL+C to quit)
+[2026-09-27 06:00:52] INFO:     127.0.0.1:42554 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-27 06:00:52 TP0] get env HOSTNAME = 89193515faa9
+[2026-09-27 06:00:56 TP0] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP4] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP6] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP2] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP1] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP3] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP5] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+[2026-09-27 06:00:56 TP7] get env SGLANG_ENABLE_DETERMINISTIC_INFERENCE = 0
+........[2026-09-27 06:01:04 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 0.00, npu graph: False
+[2026-09-27 06:01:06 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 20.83, npu graph: False
+[2026-09-27 06:01:10] INFO:     127.0.0.1:56866 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-27 06:01:11 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 5.91, npu graph: False
+[2026-09-27 06:01:13 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.86, npu graph: False
+[2026-09-27 06:01:13] INFO:     127.0.0.1:56878 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-27 06:01:15 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 16.92, npu graph: False
+[2026-09-27 06:01:17 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.91, npu graph: False
+[2026-09-27 06:01:17] INFO:     127.0.0.1:50146 - "POST /generate HTTP/1.1" 200 OK
+[2026-09-27 06:01:18 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.01, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 16.86, npu graph: False
+[2026-09-27 06:01:20 TP0] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 0, full token usage: 0.02, mamba usage: 1.00, #running-req: 0, #queue-req: 0, input throughput (token/s): 19.92, npu graph: False
+[2026-09-27 06:01:21] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+[2026-09-27 06:01:21] SIGTERM received. signum=None frame=None. Draining requests and shutting down...
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+Exception in thread Thread-1:
+Traceback (most recent call last):
+    item = self.task_q.get()
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+           ^^^^^^^^^^^^^^^^^
+    self.run()
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+    kind, result = conn.recv()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    kind, result = conn.recv()
+    buf = self._recv_bytes()
+Exception in thread Thread-1:
+Traceback (most recent call last):
+          ^^^^^^^^^^^^^^^^^^
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+    buf = self._recv(4)
+    self.run()
+          ^^^^^^^^^^^^^
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    raise EOFError
+    item = self.task_q.get()
+    buf = self._recv(4)
+EOFError
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    raise EOFError
+EOFError
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    self.run()
+    item = self.task_q.get()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    kind, result = conn.recv()
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+          ^^^^^^^^^^^^^
+    raise EOFError
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+EOFError
+    raise EOFError
+EOFError
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/local/python3.11.15/lib/python3.11/threading.py", line 1045, in _bootstrap_inner
+    self.run()
+  File "/usr/local/Ascend/cann-9.0.0/python/site-packages/tbe/common/repository_manager/utils/multiprocess_util.py", line 68, in run
+    item = self.task_q.get()
+           ^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/managers.py", line 822, in _callmethod
+    kind, result = conn.recv()
+                   ^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 250, in recv
+    buf = self._recv_bytes()
+          ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/python3.11.15/lib/python3.11/multiprocessing/connection.py", line 399, in _recv
+    raise EOFError
+EOFError
+[2026-09-27 06:01:22] Gracefully exiting... Remaining number of requests 0. Remaining requests remaining_rids=[].

@@ -1,0 +1,197 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_KT_STYLE_VALUE_CONFIRMED",
+  "decision": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+  "scope": "SERIAL_TP1_ASCEND12_KUNPENG_C128_PROMOTED_QSA",
+  "fairness": {
+    "same_model_revision": true,
+    "same_promoted_qsa_tuple": true,
+    "same_requests_and_sampling": true,
+    "same_device_and_cpu_admission": true,
+    "same_process_order": "KT/NON_KT/NON_KT/KT",
+    "intrinsic_backend_precision_difference": "KT routed experts use MXFP4 CPU bank with Static Q32 BF16/NZ29; non-KT OffloaderV1 stages full BF16 decoder layers",
+    "claim_boundary": "SYSTEM_LEVEL_KT_STYLE_VS_SUPPORTED_SGLANG_OFFLOADERV1"
+  },
+  "profiler": "OFF",
+  "timing_primary": "CLIENT_UNPROFILED_E2E",
+  "value_gate": "KT/NON_KT E2E <= 0.95 in every block and queued workload",
+  "queue": {
+    "schema": 1,
+    "status": "FROZEN_ROUND12A_ABBA_QUEUE",
+    "created_at_utc": "2026-09-27T01:35:30Z",
+    "stage": "P3_KT_NONKT_ABBA",
+    "source_smoke_version": 173,
+    "source_smoke_status": "PASS_ROUND12A_MODEL_PROCESS",
+    "source_smoke_evidence": "artifacts/round12a/remote-evidence/v173-smoke",
+    "source_smoke_final_sha256": "6f74a4728b504d472344b412cb5a2b3ac100c65a95f19cc12d7182f052fc8d26",
+    "source_smoke_evidence_sha256s_sha256": "5177f6355f8f55bec05fbd854359736d32dc05e3377b0ad0ad68bbd3ec591c58",
+    "source_smoke_observed": {
+      "input_tokens": 64,
+      "decode_tokens": 4,
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044
+      ],
+      "ttft_seconds": 815.045499455,
+      "tpot_seconds": 389.66712424733333,
+      "e2e_seconds": 1984.047039175,
+      "request_wall_limit_exceeded": true
+    },
+    "workloads": [
+      "W1"
+    ],
+    "workload_definitions": {
+      "W1": {
+        "case_id": "edge64",
+        "input_tokens": 64,
+        "decode_tokens": 2
+      }
+    },
+    "expected_output_ids": {
+      "W1": [
+        3897,
+        248046
+      ]
+    },
+    "request_wall_limit_seconds": 1800,
+    "projection": {
+      "formula": "smoke_ttft_seconds + smoke_tpot_seconds",
+      "projected_w1_seconds": 1204.7126237023333,
+      "headroom_seconds": 595.2873762976667,
+      "basis": "v173 observed TTFT plus one observed token interval; two output tokens exercise Prefill VECTOR QSA and one Decode ROW step",
+      "is_measurement": false
+    },
+    "measurement_design": {
+      "process_order": [
+        "v174 KT A",
+        "v175 NON_KT A",
+        "v176 NON_KT B",
+        "v177 KT B"
+      ],
+      "per_process": [
+        "warmup1",
+        "measurement1",
+        "measurement2",
+        "measurement3"
+      ],
+      "independent_model_processes": 4,
+      "profiler": "OFF",
+      "timing_primary": "CLIENT_UNPROFILED_E2E",
+      "automatic_retries": 0
+    },
+    "excluded_workloads": {
+      "W1_64x4": "v173 observed E2E exceeded the declared 1800-second per-request wall limit",
+      "W2_128x16": "not admitted after the smaller v173 smoke exceeded the request wall limit"
+    },
+    "value_gate": "KT/NON_KT median E2E <= 0.95 in each independent ABBA block",
+    "sha256": "ab3fc4141081318b400721e041b8ec5dc740bc23a8c7e900ffa8cabe35804637"
+  },
+  "runs": {
+    "174": {
+      "version": 174,
+      "mode": "KT",
+      "block": "A",
+      "evidence_manifest_sha256": "b0ba589e772e51da1afbb64036aba5922a776da53322bd94ff305dbe17e1dd69",
+      "startup_seconds": 131.42669034004211,
+      "peak_hbm_mib": 28773,
+      "peak_owned_npu_mib": 25756,
+      "peak_host_cgroup_gib": 340.09400939941406,
+      "min_host_available_gib": 0.0
+    },
+    "175": {
+      "version": 175,
+      "mode": "NON_KT",
+      "block": "A",
+      "evidence_manifest_sha256": "7002603e25a1408b48a2b6b3bfd0f86d342f41b7b8ba4acb8fbdec60274951fa",
+      "startup_seconds": 685.6840977668762,
+      "peak_hbm_mib": 22311,
+      "peak_owned_npu_mib": 19294,
+      "peak_host_cgroup_gib": 482.4195251464844,
+      "min_host_available_gib": 0.0
+    },
+    "176": {
+      "version": 176,
+      "mode": "NON_KT",
+      "block": "B",
+      "evidence_manifest_sha256": "053a5e6e62142f4af63cc0dd4d276e782b3825e4bb1248f5619b3bef5209fb9c",
+      "startup_seconds": 695.3502910137177,
+      "peak_hbm_mib": 22312,
+      "peak_owned_npu_mib": 19294,
+      "peak_host_cgroup_gib": 482.44555282592773,
+      "min_host_available_gib": 0.0
+    },
+    "177": {
+      "version": 177,
+      "mode": "KT",
+      "block": "B",
+      "evidence_manifest_sha256": "3e5314f381641aac1c9e506de3819088ec735b55a7a290f98c1e52d61091cd2e",
+      "startup_seconds": 131.2724232673645,
+      "peak_hbm_mib": 28773,
+      "peak_owned_npu_mib": 25756,
+      "peak_host_cgroup_gib": 352.6435775756836,
+      "min_host_available_gib": 0.0
+    }
+  },
+  "blocks": {
+    "A": {
+      "kt_version": 174,
+      "nonkt_version": 175,
+      "metrics": {
+        "W1": {
+          "e2e_seconds": {
+            "kt_median": 2.982178643,
+            "nonkt_median": 1204.699036151,
+            "kt_over_nonkt": 0.002475455324118153,
+            "kt_improvement_percent": 99.75245446758818
+          },
+          "ttft_seconds": {
+            "kt_median": 2.638158788,
+            "nonkt_median": 798.590286557,
+            "kt_over_nonkt": 0.0033035197552602584,
+            "kt_improvement_percent": 99.66964802447397
+          },
+          "tpot_seconds": {
+            "kt_median": 0.343927341,
+            "nonkt_median": 400.752083584,
+            "kt_over_nonkt": 0.0008582047482428393,
+            "kt_improvement_percent": 99.91417952517571
+          },
+          "output_tokens_exact_across_modes": true,
+          "kt_e2e_at_least_5_percent_faster": true
+        }
+      },
+      "pass_value_gate": true
+    },
+    "B": {
+      "kt_version": 177,
+      "nonkt_version": 176,
+      "metrics": {
+        "W1": {
+          "e2e_seconds": {
+            "kt_median": 3.386335781,
+            "nonkt_median": 1349.630512928,
+            "kt_over_nonkt": 0.0025090835962602856,
+            "kt_improvement_percent": 99.74909164037398
+          },
+          "ttft_seconds": {
+            "kt_median": 3.006187733,
+            "nonkt_median": 868.332766578,
+            "kt_over_nonkt": 0.003462022681519945,
+            "kt_improvement_percent": 99.653797731848
+          },
+          "tpot_seconds": {
+            "kt_median": 0.381220148,
+            "nonkt_median": 460.142055466,
+            "kt_over_nonkt": 0.0008284836029906604,
+            "kt_improvement_percent": 99.91715163970093
+          },
+          "output_tokens_exact_across_modes": true,
+          "kt_e2e_at_least_5_percent_faster": true
+        }
+      },
+      "pass_value_gate": true
+    }
+  }
+}

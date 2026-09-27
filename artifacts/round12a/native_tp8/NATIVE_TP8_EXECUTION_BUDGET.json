@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "status": "COMPLETE_PASS_NATIVE_TP8_ABBA",
+  "versions": [
+    180,
+    181,
+    182,
+    183
+  ],
+  "process_order": [
+    "v180 A",
+    "v181 B",
+    "v182 B",
+    "v183 A"
+  ],
+  "interpretation": "A/B are identical-code independent process replicas, not implementation variants",
+  "model_starts_limit": 4,
+  "model_starts_used": 4,
+  "generation_limit": 16,
+  "generation_used": 16,
+  "per_process": [
+    "warmup1",
+    "measurement1",
+    "measurement2",
+    "measurement3"
+  ],
+  "workload": {
+    "input_tokens": 64,
+    "output_tokens": 2,
+    "temperature": 0,
+    "sampling_seed": 20260920
+  },
+  "abort_limit": 0,
+  "automatic_retries_limit": 0,
+  "model_wall_seconds": 21600,
+  "request_wall_seconds": 1800,
+  "cleanup_reserve_seconds": 600,
+  "process_roles": {
+    "v180": "NATIVE_TP8_OLD_QSA_REPEAT_A1",
+    "v181": "NATIVE_TP8_OLD_QSA_REPEAT_B1",
+    "v182": "NATIVE_TP8_OLD_QSA_REPEAT_B2",
+    "v183": "NATIVE_TP8_OLD_QSA_REPEAT_A2"
+  },
+  "abba_scope": "IDENTICAL_IMPLEMENTATION_REPEATABILITY_AND_RESOURCE_CONSISTENCY_ONLY",
+  "not_a_speedup_comparison": "KT versus Native requires an independently frozen same-QSA paired arm",
+  "updated_at": 1790489809.3778179,
+  "model_runs": [
+    {
+      "version": 180,
+      "block": "A",
+      "status": "PASS_ROUND12A_NATIVE_TP8_MODEL_PROCESS",
+      "model_starts": 1,
+      "generations": 4,
+      "median_e2e_seconds": 3.428952584,
+      "median_ttft_seconds": 3.172700564,
+      "median_tpot_seconds": 0.256151165,
+      "final_sha256": "7996ea3d1c7090b84d41a4036cf5ee69d8d22bbe38e87738b7d2bfa2e70a4af4",
+      "automatic_retries": 0,
+      "abort_controls": 0
+    },
+    {
+      "version": 181,
+      "block": "B",
+      "status": "PASS_ROUND12A_NATIVE_TP8_MODEL_PROCESS",
+      "model_starts": 1,
+      "generations": 4,
+      "median_e2e_seconds": 3.371347328,
+      "median_ttft_seconds": 3.102270065,
+      "median_tpot_seconds": 0.269113154,
+      "final_sha256": "59f15aa209ff024e126052fa2944e08af3352cadd3c3fb225f822dce95b06158",
+      "automatic_retries": 0,
+      "abort_controls": 0
+    },
+    {
+      "version": 182,
+      "block": "B",
+      "status": "PASS_ROUND12A_NATIVE_TP8_MODEL_PROCESS",
+      "model_starts": 1,
+      "generations": 4,
+      "median_e2e_seconds": 3.489020653,
+      "median_ttft_seconds": 3.210625308,
+      "median_tpot_seconds": 0.278328291,
+      "final_sha256": "2e0ade5f0c9eb391d7901b1d4ac26ebb8ff0618397493cbd565254a14cd0f7d2",
+      "automatic_retries": 0,
+      "abort_controls": 0
+    },
+    {
+      "version": 183,
+      "block": "A",
+      "status": "PASS_ROUND12A_NATIVE_TP8_MODEL_PROCESS",
+      "model_starts": 1,
+      "generations": 4,
+      "median_e2e_seconds": 3.325310193,
+      "median_ttft_seconds": 3.063772468,
+      "median_tpot_seconds": 0.262338863,
+      "final_sha256": "a2aef418f8c16693e5bc95aa72b9852784281daadcbae2c9a3e58c0b402bf8de",
+      "automatic_retries": 0,
+      "abort_controls": 0
+    }
+  ],
+  "cache_retirements": [
+    {
+      "after_version": 180,
+      "status": "PASS_CACHE_RETIRED",
+      "registered_files": 179,
+      "resident_pages_before": 61833268,
+      "resident_pages_after": 0,
+      "result_sha256": "e423cddeda6ac94d6b1d7705d26b6148553031fcf06e54f6685c48764a0d8677",
+      "numa7_memfree_gib_before": 27.450542449951172,
+      "numa7_memfree_gib_after": 244.2819938659668,
+      "global_drop_caches": false
+    },
+    {
+      "after_version": 181,
+      "status": "PASS_CACHE_RETIRED",
+      "registered_files": 179,
+      "resident_pages_before": 61837371,
+      "resident_pages_after": 0,
+      "result_sha256": "907eec709fa1b7ca944202912fb1d55d7be7dae927e806057eec1a1169eeac4f",
+      "numa7_memfree_gib_before": 245.32514572143555,
+      "numa7_memfree_gib_after": 245.32566833496094,
+      "global_drop_caches": false
+    },
+    {
+      "after_version": 182,
+      "status": "PASS_CACHE_RETIRED",
+      "registered_files": 179,
+      "resident_pages_before": 61835095,
+      "resident_pages_after": 0,
+      "result_sha256": "65559c8975862ce57fd656fa115d4bbb01a82ac67993b4307636536cfe9b5aa5",
+      "numa7_memfree_gib_before": 243.96011352539062,
+      "numa7_memfree_gib_after": 243.97237396240234,
+      "global_drop_caches": false
+    },
+    {
+      "after_version": 183,
+      "status": "PASS_CACHE_RETIRED",
+      "registered_files": 179,
+      "resident_pages_before": 61837525,
+      "resident_pages_after": 0,
+      "result_sha256": "b00d77e50594e5a94826e3479294b0c70a2606dd51acbc9b66ee97d2b126780d",
+      "numa7_memfree_gib_before": 243.89832305908203,
+      "numa7_memfree_gib_after": 243.9083480834961,
+      "global_drop_caches": false
+    }
+  ],
+  "preflight_attempts": [
+    {
+      "attempt": 1,
+      "device_nodes_exposed": false,
+      "status": "FAIL_FROZEN_SGLANG_IS_NPU_PROBE_WITHOUT_DEVICE",
+      "model_start_charged": false
+    },
+    {
+      "attempt": 2,
+      "device_nodes_exposed": false,
+      "status": "FAIL_QWEN_NATIVE_EXTENSION_IMPORT_REQUIRES_DEVICE",
+      "model_start_charged": false
+    },
+    {
+      "attempt": 3,
+      "device_nodes_exposed": false,
+      "status": "FAIL_SERVERARGS_NPU_MEMORY_CAPACITY_PROBE_REQUIRES_DEVICE",
+      "acl_error": 507899,
+      "model_start_charged": false
+    },
+    {
+      "disposition": "NO_THIRD_SHIM; REAL_DEVICE_SERVER_PREFLIGHT_PASSED_IN_V180_V183"
+    }
+  ],
+  "comparator_sha256": "5f7adfdd2be8e30effe7761452d5d49809fa3c2b306e2b01c4fc97878594a5c8"
+}

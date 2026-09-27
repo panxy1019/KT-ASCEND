@@ -1,0 +1,135 @@
+{
+  "archive_cache": {
+    "cache_retirement_runs": 9,
+    "errors": [],
+    "main_local_map_files": 56,
+    "main_sha_entries": 388,
+    "native_sha_entries": 156,
+    "resident_pages_after_total": 0,
+    "resident_pages_before_total": 578112868,
+    "status": "PASS"
+  },
+  "comparators": {
+    "main": {
+      "canonical_exact_match": true,
+      "decision": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+      "frozen_sha256": "3f7e717d5e3b468289a7d7da764125ce5d9fc6164903066135ef3dfc7ed00b56",
+      "status": "PASS_ROUND12A_KT_STYLE_VALUE_CONFIRMED"
+    },
+    "native": {
+      "exact_match": true,
+      "frozen_sha256": "5f7adfdd2be8e30effe7761452d5d49809fa3c2b306e2b01c4fc97878594a5c8",
+      "qualified": true,
+      "status": "PASS_ROUND12A_NATIVE_TP8_BASELINE_ABBA"
+    }
+  },
+  "py_compile": {
+    "files": 34,
+    "log": "artifacts/round12a/final-verification-20260927/py-compile.log",
+    "log_sha256": "5404a1e09849b5591ea0df2fc522bf0b355346cb285b15d7759df0718fb2068e",
+    "status": "PASS"
+  },
+  "read_only_archives": {
+    "roots": {
+      "artifacts/round12a/cache-retirements": {
+        "files": 25,
+        "writable": 0
+      },
+      "artifacts/round12a/final-remote-audit-20260927": {
+        "files": 16,
+        "writable": 0
+      },
+      "artifacts/round12a/final-remote-audit-reverify-20260927": {
+        "files": 17,
+        "writable": 0
+      },
+      "artifacts/round12a/native_tp8/cache-retirements": {
+        "files": 24,
+        "writable": 0
+      },
+      "artifacts/round12a/native_tp8/remote-evidence": {
+        "files": 154,
+        "writable": 0
+      },
+      "artifacts/round12a/remote-evidence": {
+        "files": 672,
+        "writable": 0
+      }
+    },
+    "status": "PASS"
+  },
+  "remote_state": "final-remote-audit-reverify-20260927/FINAL_REMOTE_STATE.json",
+  "schema": 2,
+  "status": "PASS_ROUND12A_FINAL_LOCAL_VERIFICATION",
+  "unit_test_commands": [
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/round12a/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "artifacts/round12a/final-verification-20260927/round12a-tests.log",
+      "log_sha256": "244e0b0876f0039ed7007fa33b66ce4812ff484e8e6d00d339dfb977df7a3291",
+      "tests_ran": 17
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/round12a/native_tp8/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "artifacts/round12a/final-verification-20260927/native-tp8-tests.log",
+      "log_sha256": "4c8cedf59b083bf6af4b979fc1fc14084232e28a4530bec74289cd531c2bdcc2",
+      "tests_ran": 18
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_kt_cache_retirement_hook.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "log": "artifacts/round12a/final-verification-20260927/cache-hook-tests.log",
+      "log_sha256": "094172db9287842fa0c2e2ae8f161ae7792e883f54bb7200c473fadc4461fd9d",
+      "tests_ran": 22
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "artifacts/round11/tests",
+        "-p",
+        "test_*.py"
+      ],
+      "exit_code": 0,
+      "log": "artifacts/round12a/final-verification-20260927/round11-tests.log",
+      "log_sha256": "0dc663d4c089e2cb5cc19eff461ff43d89245c1b401ac226f6784f45f307a43c",
+      "tests_ran": 91
+    }
+  ],
+  "unit_tests_total": 148,
+  "verified_at": 1790490431.3106668
+}

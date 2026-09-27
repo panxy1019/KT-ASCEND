@@ -1,0 +1,10 @@
+can not use command: npu-smi info
+[W927 00:06:57.514272245 ToKernelNpu.cpp:41] Warning: Device do not support double dtype now, dtype cast replace with float. (function operator())
+Traceback (most recent call last):
+  File "/candidate/round12a_tied_offloader_probe.py", line 270, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/candidate/round12a_tied_offloader_probe.py", line 264, in main
+    raise RuntimeError(report["status"])
+RuntimeError: FAIL_ROUND12_P4_OFFLOADER_ALLOCATOR_CLEANUP
+[ERROR] 2026-09-27-00:06:59 (PID:71, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

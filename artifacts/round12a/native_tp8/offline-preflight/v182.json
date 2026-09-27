@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND12A_NATIVE_TP8_OFFLINE_PREFLIGHT",
+  "version": 182,
+  "block": "B",
+  "compiled_python_files": 1898,
+  "snapshot_manifest_sha256": "cae21a20f7a863d61d81e11b1b055f65bee5a94b81b30e50790b565252de83d7",
+  "overlay_tree_sha256": "b6241348e930782702a4b8f567a5122298ee5d5eb852e29824aa66d3fce9db85",
+  "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+  "patched_qwen_sha256": "8f9747f6b5e3f8de63d0d8bca2bd68ba77f63466a9e34030aaad77945d36b377",
+  "tp_size": 8,
+  "physical_devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "mean_text_bytes_per_rank": 31435913475,
+  "static_budget_bytes_per_rank": 48103633715,
+  "mean_shard_margin_bytes_per_rank": 16667720240,
+  "conservative_weight_bytes_per_rank": 40094386200,
+  "conservative_weight_headroom_bytes_per_rank": 8009247515,
+  "capacity_qualification": "SOURCE_ARITHMETIC_PLAUSIBLE_ACTUAL_DEVICE_LOAD_REQUIRED",
+  "pure_npu_scope": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS",
+  "host_dependency": "PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED",
+  "overlap_disposition": "FORBIDDEN_PCI_NUMA_UNKNOWN_AND_SHARED_HOST_CACHE_CGROUP"
+}

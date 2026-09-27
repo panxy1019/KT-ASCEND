@@ -1,0 +1,47 @@
+{
+  "budgets": {
+    "automatic_retries": 0,
+    "main_components": "3/3",
+    "main_generations": "17/44",
+    "main_model_starts": "5/8",
+    "native_generations": "16/16",
+    "native_model_starts": "4/4"
+  },
+  "claim_boundary": "serial W1 64x2 narrow qualification; not long-context, concurrency, deployment, power, or full product quality",
+  "completed": true,
+  "created_at": 1790489809.3778179,
+  "decision": "KT_STYLE_HETEROGENEOUS_EXECUTION_WORTH_IT_IN_QUALIFIED_SCOPE",
+  "fair_kt_nonkt_abba": "PASS_V174_V177",
+  "first_same_revision_nonkt_request": "PASS_V173",
+  "native_result": "native_tp8/NATIVE_TP8_ABBA_RESULT.json",
+  "native_result_sha256": "5f7adfdd2be8e30effe7761452d5d49809fa3c2b306e2b01c4fc97878594a5c8",
+  "native_tp8_old_qsa_supplement": "PASS_V180_V183_REPEATABILITY_BASELINE",
+  "next": "No further device work is required by Round12a. Future work needs a new budget and should compare the same QSA on Native TP8 if a causal KT-vs-TP8 speedup is desired.",
+  "primary_result": "ROUND12A_KT_NONKT_ABBA_RESULT.json",
+  "primary_result_sha256": "3f7e717d5e3b468289a7d7da764125ce5d9fc6164903066135ef3dfc7ed00b56",
+  "resource_final": {
+    "audit": "final-remote-audit-reverify-20260927/FINAL_REMOTE_STATE.json",
+    "audit_sha256": "1f66c7155a141a8d5ac8c66d0464a09837687f4a5862c1289ba3531abe454193",
+    "owned_containers": 0,
+    "owned_processes": 0,
+    "physical0_7": "EMPTY",
+    "physical12": "EMPTY",
+    "timers": 0,
+    "training_identity_unchanged": true
+  },
+  "round": "12a",
+  "schema": 1,
+  "status": "ROUND12A_COMPLETE_KT_STYLE_VALUE_CONFIRMED",
+  "synthesis": "ROUND12A_CROSS_BACKEND_SYNTHESIS.json",
+  "tied_parameter_aware_offloaderv1": "PASS_COMPONENT_V172",
+  "verification": {
+    "main_comparator_canonical_exact": true,
+    "native_comparator_exact": true,
+    "python_files_compiled": 34,
+    "raw_evidence_read_only": true,
+    "receipt": "ROUND12A_TEST_RECEIPT.json",
+    "status": "PASS_ROUND12A_FINAL_LOCAL_VERIFICATION",
+    "unit_tests": 148
+  },
+  "verified_at": 1790490474.2482624
+}

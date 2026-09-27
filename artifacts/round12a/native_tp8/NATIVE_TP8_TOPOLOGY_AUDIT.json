@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "status": "PASS_READ_ONLY_TOPOLOGY_AUDIT_NO_DEVICE_RUN",
+  "audited_at_utc": "2026-09-27T04:27:08Z",
+  "host": "110.123.0.3",
+  "devices": [
+    {"logical": 0, "physical": 0, "card": 0, "chip": 0, "pci": "0000:9D:00.0", "hbm_total_mib": 65536},
+    {"logical": 1, "physical": 1, "card": 0, "chip": 1, "pci": "0000:9F:00.0", "hbm_total_mib": 65536},
+    {"logical": 2, "physical": 2, "card": 1, "chip": 0, "pci": "0000:99:00.0", "hbm_total_mib": 65536},
+    {"logical": 3, "physical": 3, "card": 1, "chip": 1, "pci": "0000:9B:00.0", "hbm_total_mib": 65536},
+    {"logical": 4, "physical": 4, "card": 2, "chip": 0, "pci": "0000:95:00.0", "hbm_total_mib": 65536},
+    {"logical": 5, "physical": 5, "card": 2, "chip": 1, "pci": "0000:97:00.0", "hbm_total_mib": 65536},
+    {"logical": 6, "physical": 6, "card": 3, "chip": 0, "pci": "0000:91:00.0", "hbm_total_mib": 65536},
+    {"logical": 7, "physical": 7, "card": 3, "chip": 1, "pci": "0000:93:00.0", "hbm_total_mib": 65536}
+  ],
+  "hccs": "each same-card chip pair is SIO; other physical0-7 links report HCCS_SW",
+  "processes_at_audit": {"0": {}, "1": {}, "2": {}, "3": {}, "4": {}, "5": {}, "6": {}, "7": {}},
+  "pci_numa": {
+    "0": -1, "1": -1, "2": -1, "3": -1,
+    "4": -1, "5": -1, "6": -1, "7": -1
+  },
+  "pci_local_cpulist": "0-639 for every physical0-7 PCI function",
+  "locality_conclusion": "KERNEL_EXPOSES_NO_TRUSTWORTHY_DEVICE_TO_NUMA_LOCALITY",
+  "overlap_disposition": "FORBIDDEN_WITH_PHYSICAL12_PERFORMANCE_ABBA",
+  "overlap_reasons": [
+    "PCI NUMA locality is unknown",
+    "the frozen CPU admission uses the same NUMA2/3/4/7 host set",
+    "model and PLE checkpoint reads share host page cache and storage",
+    "the unrestricted external training container prevents proof of CPU isolation",
+    "Host memory and cgroup pressure would contaminate both timing arms"
+  ]
+}

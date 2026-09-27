@@ -1,0 +1,9 @@
+can not use command: npu-smi info
+Traceback (most recent call last):
+  File "/candidate/round12a_tied_offloader_probe.py", line 267, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/candidate/round12a_tied_offloader_probe.py", line 133, in main
+    raise RuntimeError("probe aliases were not tied before OffloaderV1")
+RuntimeError: probe aliases were not tied before OffloaderV1
+[ERROR] 2026-09-27-00:00:53 (PID:71, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

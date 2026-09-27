@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "physical_devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "device_mapping": "card0-3/chip0-1",
+  "fresh_admission_per_process": "2x60s, six 10s windows per round",
+  "cpu_numa_contract": {
+    "nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "selected_physical_cores": 160,
+    "minimum_mean_idle_strictly_greater_than": 0.8,
+    "minimum_memfree_gib_per_node": 48,
+    "minimum_system_memavailable_gib": 704
+  },
+  "hbm_contract_per_device": {
+    "capacity_mib": 65536,
+    "maximum_total_used_mib": 56832,
+    "minimum_reserve_mib": 8704,
+    "maximum_prelaunch_baseline_mib": 8192,
+    "unknown_process_policy": "FAIL_CLOSED"
+  },
+  "container": {
+    "cpus_quota": 136,
+    "memory_gib": 640,
+    "memory_swap_gib": 640,
+    "shm_gib": 32,
+    "pids_limit": 8192,
+    "network": "none"
+  },
+  "profile": {
+    "tp_size": 8,
+    "dtype": "bfloat16",
+    "attention_backend": "ascend",
+    "mem_fraction_static": 0.7,
+    "cpu_offload_gib": 0,
+    "kt_weight_path": null,
+    "chunked_prefill_size": 32,
+    "max_running_requests": 1
+  },
+  "capacity": {
+    "loaded_text_bytes": 251487307800,
+    "mean_text_bytes_per_rank": 31435913475,
+    "static_budget_bytes_per_rank": 48103633715,
+    "minimum_planned_margin_bytes_per_rank": 7516192768,
+    "ple_external_table_bytes": 102400491520,
+    "expert_text_bytes": 241591910400,
+    "non_expert_text_bytes": 9895397400,
+    "conservative_weight_bytes_per_rank": 40094386200,
+    "conservative_weight_headroom_bytes_per_rank": 8009247515,
+    "conservative_weight_headroom_gib": 7.459193016402423,
+    "source_capacity_disposition": "PLAUSIBLE_ACTUAL_TP8_DEVICE_LOAD_REQUIRED",
+    "upper_bound_method": "expert BF16 matrices sharded 8 ways; all non-expert text bytes pessimistically fully replicated"
+  },
+  "pure_npu_scope": "MAIN_AND_EXPERT_WEIGHTS_AND_COMPUTE_ON_EIGHT_NPUS",
+  "host_dependency": "PLE_CHECKPOINT_ROW_TABLE_REMAINS_HOST_BACKED",
+  "overlap_policy": "NO_OTHER_KT_PERFORMANCE_CONTAINER"
+}

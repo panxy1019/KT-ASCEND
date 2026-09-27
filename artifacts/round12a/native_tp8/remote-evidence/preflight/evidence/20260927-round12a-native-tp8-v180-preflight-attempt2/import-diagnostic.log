@@ -1,0 +1,28 @@
+STEP import torch
+can not use command: npu-smi info
+STEP import torch_npu
+DEVICE_ENV None
+/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/npu/__init__.py:405: UserWarning: Can't get ascend_hal device count
+  warnings.warn("Can't get ascend_hal device count")
+ORIGINAL_AVAILABLE False
+BEFORE sglang.srt.server_args
+/snapshot/overlay-python/sglang/srt/layers/attention/fla/utils.py:212: UserWarning: Triton is not supported on current platform, roll back to CPU.
+  warnings.warn(
+AFTER sglang.srt.server_args
+BEFORE sglang.srt.layers.round9.ple_binding
+AFTER sglang.srt.layers.round9.ple_binding
+BEFORE sglang.srt.layers.round9.qsa
+AFTER sglang.srt.layers.round9.qsa
+BEFORE sglang.srt.mem_cache.round9_qsa_pool
+INFO 09-27 05:33:59 [__init__.py:44] Available plugins for group vllm.platform_plugins:
+INFO 09-27 05:33:59 [__init__.py:46] - ascend -> vllm_ascend:register
+INFO 09-27 05:33:59 [__init__.py:49] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-27 05:33:59 [__init__.py:239] Platform plugin ascend is activated
+/snapshot/overlay-python/sglang/srt/layers/quantization/awq.py:80: UserWarning: Only CUDA, HIP and XPU support AWQ currently.
+  warnings.warn(f"Only CUDA, HIP and XPU support AWQ currently.")
+/snapshot/overlay-python/sglang/srt/layers/quantization/gguf.py:47: UserWarning: Only CUDA support GGUF quantization currently.
+  warnings.warn(f"Only CUDA support GGUF quantization currently.")
+AFTER sglang.srt.mem_cache.round9_qsa_pool
+BEFORE sglang.srt.models.qwen4_exp
+terminate called after throwing an instance of 'std::logic_error'
+  what():  basic_string::_S_construct null not valid
