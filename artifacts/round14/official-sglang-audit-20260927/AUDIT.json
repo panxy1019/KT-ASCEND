@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFICIAL_SOURCE_READ_ONLY_AUDIT",
+  "source": "https://github.com/sgl-project/sglang",
+  "branch": "master",
+  "retrieved_at": 1790538500.395066,
+  "use": "MECHANISM_REFERENCE_ONLY_LOCAL_FROZEN_SOURCE_CONTROLS_EXECUTION",
+  "interface_drift_observed": true,
+  "files": {
+    "gdn_backend.py": {
+      "bytes": 59313,
+      "sha256": "c12e054cbe9f85cf15b0590a8ea7e3e175f62121160c3f548e0aa7ce71d1af0d",
+      "checks": {
+        "causal_conv1d_fn_npu": true,
+        "causal_conv1d_update_npu": true,
+        "TritonGDNKernel": true,
+        "fused_gdn_gating_npu": true,
+        "last_recurrent_state = last_recurrent_state.to": true
+      }
+    },
+    "qwen3_5.py": {
+      "bytes": 116790,
+      "sha256": "3dbf4bf458797875abbfc60949d1d9cfd599b4aa8cd072b7af043aab7841efa7",
+      "checks": {
+        "class Qwen3_5GatedDeltaNet": true,
+        "RadixLinearAttention": true,
+        "attn_result = self.attn": true
+      }
+    }
+  }
+}

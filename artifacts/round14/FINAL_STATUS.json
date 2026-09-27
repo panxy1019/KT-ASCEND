@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "status": "ROUND14_PARTIAL_WITH_GAPS",
+  "performance_objective": "NOT_ACHIEVED",
+  "baseline": "ROUND13_S0_UNIFORM_Q32_KT_PROMOTED_QSA",
+  "A": {
+    "status": "PASS_ROUND14_A_SYSTEM_COMPARISON",
+    "native_tp8_w2_serial_output_tokens_per_second": [
+      3.228323339651056,
+      3.341693520657864
+    ],
+    "kt_w2_serial_output_tokens_per_second": [
+      3.0427066032174093,
+      2.9419028659737165
+    ],
+    "claim_scope": "SYSTEM_DEPLOYMENT_COMPARISON_NOT_PURE_KT_CAUSAL"
+  },
+  "B": {
+    "status": "ROUND14_B_PARTIAL_WITH_ONE_COMPLETE_BLOCK",
+    "default_profile": "S0_LEGACY_H129",
+    "qualified_hybrid_scope": "INPUT_TOTAL_TOKENS_LE_128_FROM_ROUND10",
+    "h512_disposition": "NOT_DEFAULT_QUALITY_REGRESSION",
+    "h768_disposition": "NOT_RUN_CONDITION_NOT_MET_AND_B_MODEL_GROUP_CAP",
+    "complete_blocks": 1,
+    "required_complete_blocks": 2
+  },
+  "C": {
+    "status": "ROUND14_C_COMPONENT_REJECTED_RESOURCE_CLEANUP",
+    "selected_hotspot": "GDN",
+    "request_gain": "NOT_MEASURED_COMPONENT_GATE_FAILED",
+    "candidate_promotion": false,
+    "default": "S0_UNCHANGED"
+  },
+  "optional_concurrency": "NOT_RUN",
+  "gaps": [
+    "B_SECOND_COMPLETE_CONFIRMATION_BLOCK_MISSING",
+    "H512_PUBLIC_PROXY_QUALITY_REGRESSION",
+    "H768_NOT_RUN",
+    "C_COMPONENT_ALLOCATOR_REUSE_NOT_PROVEN",
+    "C_SMOKE_AND_REQUEST_ABBA_NOT_RUN"
+  ],
+  "resource_retirement": "PASS",
+  "physical12_final": "EMPTY",
+  "timers": "PAUSED_NOT_RESTORED",
+  "budget_used": {
+    "model_groups": 14,
+    "generation_attempts": 238,
+    "abort_controls": 1,
+    "component_processes": 6,
+    "npu_device_hours": 4.164636628507438
+  },
+  "budget_limits": {
+    "model_groups": 24,
+    "generation_attempts": 664,
+    "abort_controls": 14,
+    "component_processes": 24
+  },
+  "claim": "A is a deployment-system comparison. B preserves H129 as default. C has no request-level performance conclusion because the component resource gate failed."
+}

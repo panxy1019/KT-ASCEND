@@ -1,0 +1,522 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14_C_FRESH_ATTRIBUTION",
+  "process_order": [
+    274,
+    275
+  ],
+  "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+  "requests": [
+    {
+      "block": "A",
+      "version": 274,
+      "workload": "W2",
+      "request_id": "r14-c-profile-v274-a-02-w2",
+      "phase_wall_ms": {
+        "extend": 5303.600778,
+        "decode": 40452.682686
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 3300.8292388916016,
+          "QSA_ATTENTION": 1072.6862411499023,
+          "QSA_INDEXER": 944.0030364990234,
+          "PLE_PREPARE": 3.79142,
+          "PLE_EXPOSED_WAIT": 0.476982,
+          "PLE_CONSUMER": 7.39847993850708,
+          "ROUTED_EXPERT": 671.144645690918,
+          "CPU_SUBMIT": 62.541647999999995,
+          "CPU_RESULT_WAIT": 311.34331199999997,
+          "NPU_RESIDENT": 80.71776151657104,
+          "QSA_EXCLUSIVE": 128.6832046508789,
+          "EXPERT_EXCLUSIVE_DEVICE": 590.4268841743469
+        },
+        "decode": {
+          "GDN": 9625.496395111084,
+          "QSA_ATTENTION": 9184.336309432983,
+          "QSA_INDEXER": 4972.498798370361,
+          "PLE_PREPARE": 94.560926,
+          "PLE_EXPOSED_WAIT": 16.77629,
+          "PLE_CONSUMER": 249.1978598833084,
+          "ROUTED_EXPERT": 11956.943996429443,
+          "CPU_SUBMIT": 2116.441536,
+          "CPU_RESULT_WAIT": 2063.425584,
+          "NPU_RESIDENT": 2731.345916748047,
+          "QSA_EXCLUSIVE": 4211.837511062622,
+          "EXPERT_EXCLUSIVE_DEVICE": 9225.598079681396
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6223751328689472,
+          "QSA_ATTENTION": 0.20225621913314804,
+          "QSA_INDEXER": 0.17799285353733,
+          "PLE_PREPARE": 0.00071487658266574,
+          "PLE_EXPOSED_WAIT": 8.993550230601464e-05,
+          "PLE_CONSUMER": 0.0013949918646209009,
+          "ROUTED_EXPERT": 0.12654509149235177,
+          "CPU_SUBMIT": 0.011792299348667152,
+          "CPU_RESULT_WAIT": 0.058704138005916846,
+          "NPU_RESIDENT": 0.015219426366214898,
+          "QSA_EXCLUSIVE": 0.024263365595818025,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.11132566512613686
+        },
+        "decode": {
+          "GDN": 0.2379445751429066,
+          "QSA_ATTENTION": 0.2270389922152562,
+          "QSA_INDEXER": 0.1229213606664277,
+          "PLE_PREPARE": 0.0023375687277404212,
+          "PLE_EXPOSED_WAIT": 0.00041471390489031756,
+          "PLE_CONSUMER": 0.0061602307520027995,
+          "ROUTED_EXPERT": 0.29557851797471874,
+          "CPU_SUBMIT": 0.05231894142665759,
+          "CPU_RESULT_WAIT": 0.051008374401683806,
+          "NPU_RESIDENT": 0.06751952492123149,
+          "QSA_EXCLUSIVE": 0.1041176315488285,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.2280589930534872
+        }
+      },
+      "profile_batch_count": {
+        "extend": 4,
+        "decode": 127
+      }
+    },
+    {
+      "block": "A",
+      "version": 274,
+      "workload": "W3",
+      "request_id": "r14-c-profile-v274-a-03-w3",
+      "phase_wall_ms": {
+        "extend": 20831.243426,
+        "decode": 4323.271671
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 12852.218147277832,
+          "QSA_ATTENTION": 4183.428405761719,
+          "QSA_INDEXER": 3658.590980529785,
+          "PLE_PREPARE": 15.826768,
+          "PLE_EXPOSED_WAIT": 1.927584,
+          "PLE_CONSUMER": 29.000280022621155,
+          "ROUTED_EXPERT": 2720.7177658081055,
+          "CPU_SUBMIT": 245.701584,
+          "CPU_RESULT_WAIT": 1322.636976,
+          "NPU_RESIDENT": 318.35712003707886,
+          "QSA_EXCLUSIVE": 524.8374252319336,
+          "EXPERT_EXCLUSIVE_DEVICE": 2402.3606457710266
+        },
+        "decode": {
+          "GDN": 1017.7840762138367,
+          "QSA_ATTENTION": 958.0015125274658,
+          "QSA_INDEXER": 505.54536151885986,
+          "PLE_PREPARE": 10.341736,
+          "PLE_EXPOSED_WAIT": 1.747442,
+          "PLE_CONSUMER": 26.26635992527008,
+          "ROUTED_EXPERT": 1308.2975978851318,
+          "CPU_SUBMIT": 232.693008,
+          "CPU_RESULT_WAIT": 229.475904,
+          "NPU_RESIDENT": 295.1299195289612,
+          "QSA_EXCLUSIVE": 452.45615100860596,
+          "EXPERT_EXCLUSIVE_DEVICE": 1013.1676783561707
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6169683625911958,
+          "QSA_ATTENTION": 0.20082470931813298,
+          "QSA_INDEXER": 0.1756299854843713,
+          "PLE_PREPARE": 0.0007597610798521134,
+          "PLE_EXPOSED_WAIT": 9.253331453052552e-05,
+          "PLE_CONSUMER": 0.0013921530956920783,
+          "ROUTED_EXPERT": 0.13060755472773694,
+          "CPU_SUBMIT": 0.011794859239815403,
+          "CPU_RESULT_WAIT": 0.06349294417774329,
+          "NPU_RESIDENT": 0.015282674851743573,
+          "QSA_EXCLUSIVE": 0.025194723833761683,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.11532487987599337
+        },
+        "decode": {
+          "GDN": 0.2354198749620601,
+          "QSA_ATTENTION": 0.22159179099329512,
+          "QSA_INDEXER": 0.11693583008211093,
+          "PLE_PREPARE": 0.00239210875165934,
+          "PLE_EXPOSED_WAIT": 0.0004041943539476448,
+          "PLE_CONSUMER": 0.006075574686055874,
+          "ROUTED_EXPERT": 0.3026174844993061,
+          "CPU_SUBMIT": 0.05382336010963119,
+          "CPU_RESULT_WAIT": 0.05307922366741315,
+          "NPU_RESIDENT": 0.06826541147267198,
+          "QSA_EXCLUSIVE": 0.10465596091118418,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.23435207302663413
+        }
+      },
+      "profile_batch_count": {
+        "extend": 16,
+        "decode": 15
+      }
+    },
+    {
+      "block": "B",
+      "version": 275,
+      "workload": "W2",
+      "request_id": "r14-c-profile-v275-b-02-w2",
+      "phase_wall_ms": {
+        "extend": 5622.119282,
+        "decode": 39338.00791
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 3408.7175903320312,
+          "QSA_ATTENTION": 1234.4548645019531,
+          "QSA_INDEXER": 1092.4936752319336,
+          "PLE_PREPARE": 4.073953,
+          "PLE_EXPOSED_WAIT": 0.513774,
+          "PLE_CONSUMER": 7.925339937210083,
+          "ROUTED_EXPERT": 694.3334426879883,
+          "CPU_SUBMIT": 71.215248,
+          "CPU_RESULT_WAIT": 299.74728,
+          "NPU_RESIDENT": 90.6268801689148,
+          "QSA_EXCLUSIVE": 141.96118927001953,
+          "EXPERT_EXCLUSIVE_DEVICE": 603.7065625190735
+        },
+        "decode": {
+          "GDN": 9244.568894863129,
+          "QSA_ATTENTION": 8940.357851028442,
+          "QSA_INDEXER": 4814.4506549835205,
+          "PLE_PREPARE": 93.000637,
+          "PLE_EXPOSED_WAIT": 15.71319,
+          "PLE_CONSUMER": 236.4162598848343,
+          "ROUTED_EXPERT": 12080.049585342407,
+          "CPU_SUBMIT": 2149.531728,
+          "CPU_RESULT_WAIT": 2136.963072,
+          "NPU_RESIDENT": 2654.759044647217,
+          "QSA_EXCLUSIVE": 4125.907196044922,
+          "EXPERT_EXCLUSIVE_DEVICE": 9425.29054069519
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6063047437014574,
+          "QSA_ATTENTION": 0.21957109100374886,
+          "QSA_INDEXER": 0.19432061477772353,
+          "PLE_PREPARE": 0.0007246294138659296,
+          "PLE_EXPOSED_WAIT": 9.138440047775564e-05,
+          "PLE_CONSUMER": 0.0014096712537893256,
+          "ROUTED_EXPERT": 0.12350030439784403,
+          "CPU_SUBMIT": 0.01266697564173097,
+          "CPU_RESULT_WAIT": 0.05331570978219598,
+          "NPU_RESIDENT": 0.016119700707715224,
+          "QSA_EXCLUSIVE": 0.02525047622602532,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.1073806036901288
+        },
+        "decode": {
+          "GDN": 0.23500348355243209,
+          "QSA_ATTENTION": 0.22727022353248702,
+          "QSA_INDEXER": 0.12238674276537662,
+          "PLE_PREPARE": 0.0023641420077186617,
+          "PLE_EXPOSED_WAIT": 0.00039944040979272865,
+          "PLE_CONSUMER": 0.006009868634571493,
+          "ROUTED_EXPERT": 0.30708340933226497,
+          "CPU_SUBMIT": 0.054642617717649444,
+          "CPU_RESULT_WAIT": 0.05432311358747703,
+          "NPU_RESIDENT": 0.0674858536487395,
+          "QSA_EXCLUSIVE": 0.1048834807671104,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.23959755568352548
+        }
+      },
+      "profile_batch_count": {
+        "extend": 4,
+        "decode": 127
+      }
+    },
+    {
+      "block": "B",
+      "version": 275,
+      "workload": "W3",
+      "request_id": "r14-c-profile-v275-b-03-w3",
+      "phase_wall_ms": {
+        "extend": 21147.886162,
+        "decode": 4583.914596
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 12672.76457977295,
+          "QSA_ATTENTION": 4612.822334289551,
+          "QSA_INDEXER": 4046.6128463745117,
+          "PLE_PREPARE": 16.584186,
+          "PLE_EXPOSED_WAIT": 1.965951,
+          "PLE_CONSUMER": 30.230719923973083,
+          "ROUTED_EXPERT": 2770.783676147461,
+          "CPU_SUBMIT": 268.818384,
+          "CPU_RESULT_WAIT": 1312.17456,
+          "NPU_RESIDENT": 337.00608015060425,
+          "QSA_EXCLUSIVE": 566.2094879150391,
+          "EXPERT_EXCLUSIVE_DEVICE": 2433.7775959968567
+        },
+        "decode": {
+          "GDN": 1070.0755262374878,
+          "QSA_ATTENTION": 1020.7202339172363,
+          "QSA_INDEXER": 541.9490432739258,
+          "PLE_PREPARE": 10.779469,
+          "PLE_EXPOSED_WAIT": 1.795697,
+          "PLE_CONSUMER": 27.234820008277893,
+          "ROUTED_EXPERT": 1416.3993759155273,
+          "CPU_SUBMIT": 249.52104,
+          "CPU_RESULT_WAIT": 249.757104,
+          "NPU_RESIDENT": 313.03200101852417,
+          "QSA_EXCLUSIVE": 478.77119064331055,
+          "EXPERT_EXCLUSIVE_DEVICE": 1103.3673748970032
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.5992449780888389,
+          "QSA_ATTENTION": 0.21812214700579355,
+          "QSA_INDEXER": 0.19134833691538158,
+          "PLE_PREPARE": 0.0007842006464835065,
+          "PLE_EXPOSED_WAIT": 9.296205705573346e-05,
+          "PLE_CONSUMER": 0.0014294913303578188,
+          "ROUTED_EXPERT": 0.13101941512841123,
+          "CPU_SUBMIT": 0.012711359515592232,
+          "CPU_RESULT_WAIT": 0.06204755170083178,
+          "NPU_RESIDENT": 0.01593568631725285,
+          "QSA_EXCLUSIVE": 0.02677381009041196,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.11508372881115837
+        },
+        "decode": {
+          "GDN": 0.2334414186449402,
+          "QSA_ATTENTION": 0.22267435671858588,
+          "QSA_INDEXER": 0.1182284337816502,
+          "PLE_PREPARE": 0.0023515859151054747,
+          "PLE_EXPOSED_WAIT": 0.0003917387556842694,
+          "PLE_CONSUMER": 0.005941389054683404,
+          "ROUTED_EXPERT": 0.30899340427317323,
+          "CPU_SUBMIT": 0.0544340508040303,
+          "CPU_RESULT_WAIT": 0.05448554914568919,
+          "NPU_RESIDENT": 0.06828923062652195,
+          "QSA_EXCLUSIVE": 0.10444592293693566,
+          "EXPERT_EXCLUSIVE_DEVICE": 0.24070417364665125
+        }
+      },
+      "profile_batch_count": {
+        "extend": 16,
+        "decode": 15
+      }
+    }
+  ],
+  "screen": {
+    "GDN": {
+      "component": "GDN",
+      "threshold": 0.1,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 0.6223751328689472,
+          "B": 0.6063047437014574
+        },
+        "decode": {
+          "A": 0.2379445751429066,
+          "B": 0.23500348355243209
+        }
+      },
+      "eligible_phases": [
+        "extend",
+        "decode"
+      ],
+      "both_blocks": true
+    },
+    "QSA": {
+      "component": "QSA_ATTENTION",
+      "threshold": 0.1,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 0.20225621913314804,
+          "B": 0.21957109100374886
+        },
+        "decode": {
+          "A": 0.2270389922152562,
+          "B": 0.22727022353248702
+        }
+      },
+      "eligible_phases": [
+        "extend",
+        "decode"
+      ],
+      "both_blocks": true
+    },
+    "PLE": {
+      "component": "PLE_CONSUMER",
+      "threshold": 0.1,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 0.0013949918646209009,
+          "B": 0.0014294913303578188
+        },
+        "decode": {
+          "A": 0.0061602307520027995,
+          "B": 0.006009868634571493
+        }
+      },
+      "eligible_phases": [],
+      "both_blocks": false
+    },
+    "EXPERT": {
+      "component": "ROUTED_EXPERT",
+      "threshold": 0.1,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 0.13060755472773694,
+          "B": 0.13101941512841123
+        },
+        "decode": {
+          "A": 0.3026174844993061,
+          "B": 0.30899340427317323
+        }
+      },
+      "eligible_phases": [
+        "extend",
+        "decode"
+      ],
+      "both_blocks": true
+    },
+    "PLE_EXPOSED_WAIT": {
+      "component": "PLE_EXPOSED_WAIT",
+      "threshold": 0.05,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 9.253331453052552e-05,
+          "B": 9.296205705573346e-05
+        },
+        "decode": {
+          "A": 0.00041471390489031756,
+          "B": 0.00039944040979272865
+        }
+      },
+      "eligible_phases": [],
+      "both_blocks": false
+    },
+    "CPU_EXPOSED_WAIT": {
+      "component": "CPU_RESULT_WAIT",
+      "threshold": 0.05,
+      "per_block_phase_max_fraction": {
+        "extend": {
+          "A": 0.06349294417774329,
+          "B": 0.06204755170083178
+        },
+        "decode": {
+          "A": 0.05307922366741315,
+          "B": 0.05448554914568919
+        }
+      },
+      "eligible_phases": [
+        "extend",
+        "decode"
+      ],
+      "both_blocks": true
+    }
+  },
+  "eligible_hotspots": [
+    "GDN",
+    "QSA",
+    "EXPERT"
+  ],
+  "ranking": [
+    {
+      "module": "GDN",
+      "component": "GDN",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 0.6116365531463266,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "EXPERT",
+      "component": "ROUTED_EXPERT",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.30485044691578556,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "GDN",
+      "component": "GDN",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.2352116792572461,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "QSA",
+      "component": "QSA_ATTENTION",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.22485667446692104,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "QSA",
+      "component": "QSA_ATTENTION",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 0.2101891830694708,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "EXPERT",
+      "component": "ROUTED_EXPERT",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 0.12857632311004435,
+      "threshold": 0.1,
+      "both_blocks": true
+    },
+    {
+      "module": "CPU_EXPOSED_WAIT",
+      "component": "CPU_RESULT_WAIT",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 0.060375844853374314,
+      "threshold": 0.05,
+      "both_blocks": true
+    },
+    {
+      "module": "CPU_EXPOSED_WAIT",
+      "component": "CPU_RESULT_WAIT",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.05370116862744509,
+      "threshold": 0.05,
+      "both_blocks": true
+    },
+    {
+      "module": "PLE",
+      "component": "PLE_CONSUMER",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.006042721660313683,
+      "threshold": 0.1,
+      "both_blocks": false
+    },
+    {
+      "module": "PLE",
+      "component": "PLE_CONSUMER",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 0.0014023315592051134,
+      "threshold": 0.1,
+      "both_blocks": false
+    },
+    {
+      "module": "PLE_EXPOSED_WAIT",
+      "component": "PLE_EXPOSED_WAIT",
+      "phase": "decode",
+      "median_fraction_across_blocks_and_workloads": 0.00040181738187018674,
+      "threshold": 0.05,
+      "both_blocks": false
+    },
+    {
+      "module": "PLE_EXPOSED_WAIT",
+      "component": "PLE_EXPOSED_WAIT",
+      "phase": "extend",
+      "median_fraction_across_blocks_and_workloads": 9.195885750414059e-05,
+      "threshold": 0.05,
+      "both_blocks": false
+    }
+  ],
+  "candidate_gate": "PROFILE_COMPLETE_REQUIRES_ONE_HOTSPOT_CODE_AUDIT",
+  "accounting": "QSA_ATTENTION and ROUTED_EXPERT are parents; QSA_INDEXER, CPU_SUBMIT, CPU_RESULT_WAIT, and NPU_RESIDENT are child breakdowns and are never added to their parents. Device event time and host exposed waits remain separate clock domains."
+}

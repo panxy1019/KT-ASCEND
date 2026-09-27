@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "status": "ROUND14_T0_IDENTITY_FROZEN",
+  "created_at": 1790524194.4820464,
+  "repository": {
+    "branch": "codex/round14-tp8-boundary-critical-path",
+    "head": "a18d05cf166851a1440fede49e21ea2ac1788fd6",
+    "dirty_runtime_snapshot_required": true
+  },
+  "model": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+  },
+  "kt_s0": {
+    "parent_remote": "/mnt/data1/kt-round9/round13-f-final-a-v228",
+    "parent_local": "artifacts/round14/parents/round13-final-v228",
+    "physical_device": 12,
+    "npu_smi_card": 6,
+    "npu_smi_chip": 0,
+    "tp": 1,
+    "concurrency": 1,
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "placement": "UNIFORM_Q32",
+    "npu_experts": "BF16_NZ29",
+    "scheduler_chunk": 32,
+    "default_hybrid_threshold": 129,
+    "w3_experimental_threshold": 513,
+    "ple": "ASYNC",
+    "dynamic": "OFF",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "runtime_sha256": "eb51e7b0073d397673887b0e0fe6e41d745b8ee72a385faf7f1c28cf78b23fd2"
+  },
+  "native_tp8": {
+    "parent_local": "artifacts/round12a/native_tp8/offline-snapshots-r2/v180",
+    "physical_devices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "tp": 8,
+    "precision": "BF16",
+    "cpu_offload_gb": 0,
+    "kt_weight_path": null,
+    "ple": "HOST_ASYNC",
+    "qsa": "QUALIFIED_ORIGINAL",
+    "qsa_sha256": "76e9f34066f0b42f42545427967c0b789d5c32031dc5c085e230efaf95e3c54c",
+    "comparison_semantics": "SYSTEM_DEPLOYMENT_COMPARISON_NOT_PURE_KT_CAUSAL"
+  },
+  "workloads": {
+    "order": [
+      "W2",
+      "W0",
+      "W1",
+      "W4",
+      "W3"
+    ],
+    "W0": [
+      64,
+      2
+    ],
+    "W1": [
+      128,
+      16
+    ],
+    "W2": [
+      128,
+      128
+    ],
+    "W3": [
+      512,
+      16
+    ],
+    "W4": [
+      64,
+      32
+    ]
+  },
+  "a_snapshots": {
+    "235": {
+      "backend": "KT",
+      "block": "A",
+      "container": "kt-round14-a-k-a-v235",
+      "evidence": "20260927-round14-a-k-a-v235",
+      "snapshot": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235",
+      "manifest_sha256": "fcc1813f41e7496f703857ecae8f4039d112887d2a66bb7bc11046ee54957661",
+      "driver_sha256": "74228faec12be32865a1e0e8bc69e6ad1e05d24f54b5f65eb4260a6cf12d49a6"
+    },
+    "236": {
+      "backend": "NATIVE_TP8",
+      "block": "A",
+      "container": "kt-round14-a-n-a-v236",
+      "evidence": "20260927-round14-a-n-a-v236",
+      "snapshot": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v236",
+      "manifest_sha256": "c068632e918bcdd2f043eeeea0ee091358ee32c15ca668acda030e823a5584d3",
+      "driver_sha256": "74228faec12be32865a1e0e8bc69e6ad1e05d24f54b5f65eb4260a6cf12d49a6"
+    },
+    "237": {
+      "backend": "NATIVE_TP8",
+      "block": "B",
+      "container": "kt-round14-a-n-b-v237",
+      "evidence": "20260927-round14-a-n-b-v237",
+      "snapshot": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v237",
+      "manifest_sha256": "d8b8ef329997652491f545f1cb7701e0ae336078de0629d0aeb81bc2fd3b8f20",
+      "driver_sha256": "74228faec12be32865a1e0e8bc69e6ad1e05d24f54b5f65eb4260a6cf12d49a6"
+    },
+    "238": {
+      "backend": "KT",
+      "block": "B",
+      "container": "kt-round14-a-k-b-v238",
+      "evidence": "20260927-round14-a-k-b-v238",
+      "snapshot": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v238",
+      "manifest_sha256": "3b8a687998351205a7346a53c1242c3767a1e81b92da0d11d8d8a9a8b7181f1d",
+      "driver_sha256": "74228faec12be32865a1e0e8bc69e6ad1e05d24f54b5f65eb4260a6cf12d49a6"
+    }
+  },
+  "offline_preflight": {
+    "tests": 13,
+    "status": "PASS",
+    "manifest_and_compile": "PASS",
+    "same_image_device_free_preflight": "PENDING_REMOTE"
+  },
+  "missing_references": {
+    "36_C线_关键路径加速与并发演进.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "37_执行合同_预算_自动推进与终态.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "ruling": "USER_ROUND14_MESSAGE_IS_BINDING_AND_COMPLETE_ENOUGH_TO_EXECUTE"
+  }
+}

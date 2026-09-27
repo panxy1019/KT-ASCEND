@@ -1,0 +1,655 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14_A_SYSTEM_COMPARISON",
+  "process_order": [
+    235,
+    251,
+    252,
+    238
+  ],
+  "claim_scope": "SYSTEM_DEPLOYMENT_COMPARISON_NOT_PURE_KT_CAUSAL",
+  "differences": [
+    "NPU_COUNT_1_VS_8",
+    "MXFP4_PLUS_BF16_VS_BF16",
+    "PROMOTED_QSA_VS_OLD_QSA",
+    "KT_HETEROGENEOUS_VS_NATIVE_PURE_NPU"
+  ],
+  "processes": {
+    "235": {
+      "version": 235,
+      "backend": "KT",
+      "block": "A",
+      "quality_requests_passed": 4,
+      "workloads": {
+        "W0": {
+          "e2e_median_seconds": 2.828346781,
+          "ttft_median_seconds": 2.546664097,
+          "tpot_median_seconds": 0.280962519,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.7037919544663703,
+          "requests_per_second": 0.35189597723318516,
+          "measurement_window_seconds": 8.525246647,
+          "errors": 0
+        },
+        "W1": {
+          "e2e_median_seconds": 9.580120439,
+          "ttft_median_seconds": 5.073844622,
+          "tpot_median_seconds": 0.2927157652,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.6716647454551696,
+          "requests_per_second": 0.1044790465909481,
+          "measurement_window_seconds": 28.713891425,
+          "errors": 0
+        },
+        "W2": {
+          "e2e_median_seconds": 41.94805249,
+          "ttft_median_seconds": 5.041116113,
+          "tpot_median_seconds": 0.29060445558267717,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.0427066032174093,
+          "requests_per_second": 0.02377114533763601,
+          "measurement_window_seconds": 126.203426776,
+          "errors": 0
+        },
+        "W3": {
+          "e2e_median_seconds": 25.309880465,
+          "ttft_median_seconds": 20.832120668,
+          "tpot_median_seconds": 0.2985079326666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.6336642314158789,
+          "requests_per_second": 0.03960401446349243,
+          "measurement_window_seconds": 75.749896586,
+          "errors": 0
+        },
+        "W4": {
+          "e2e_median_seconds": 11.577976499,
+          "ttft_median_seconds": 2.637950429,
+          "tpot_median_seconds": 0.2892891559032258,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.7597701166205297,
+          "requests_per_second": 0.08624281614439155,
+          "measurement_window_seconds": 34.785506018,
+          "errors": 0
+        }
+      },
+      "resources": {
+        "physical_devices": [
+          12
+        ],
+        "simultaneous_whole_card_hbm_peak_mib": 28813,
+        "per_device_whole_card_hbm_peak_mib": {
+          "12": 28813
+        },
+        "simultaneous_owned_process_hbm_peak_mib": 25796,
+        "host_cgroup_peak_bytes": 360975634432,
+        "minimum_host_mem_available_kib": 1923578212,
+        "minimum_numa_memfree_kib": {
+          "2": 2482364,
+          "4": 176165432,
+          "3": 226158408,
+          "7": 219611004
+        },
+        "sample_count": 197
+      }
+    },
+    "251": {
+      "version": 251,
+      "backend": "NATIVE_TP8",
+      "block": "A",
+      "quality_requests_passed": 4,
+      "workloads": {
+        "W0": {
+          "e2e_median_seconds": 3.448515526,
+          "ttft_median_seconds": 3.187642135,
+          "tpot_median_seconds": 0.260818278,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.5773593451330342,
+          "requests_per_second": 0.2886796725665171,
+          "measurement_window_seconds": 10.392141481,
+          "errors": 0
+        },
+        "W1": {
+          "e2e_median_seconds": 10.324089509,
+          "ttft_median_seconds": 6.376250396,
+          "tpot_median_seconds": 0.26318542333333333,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.5468650039151364,
+          "requests_per_second": 0.09667906274469602,
+          "measurement_window_seconds": 31.030503553,
+          "errors": 0
+        },
+        "W2": {
+          "e2e_median_seconds": 39.659801394,
+          "ttft_median_seconds": 6.321666533,
+          "tpot_median_seconds": 0.26250417823622046,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.228323339651056,
+          "requests_per_second": 0.025221276091023873,
+          "measurement_window_seconds": 118.947193202,
+          "errors": 0
+        },
+        "W3": {
+          "e2e_median_seconds": 29.704725352,
+          "ttft_median_seconds": 25.571425101,
+          "tpot_median_seconds": 0.27554203886666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.5317149744961831,
+          "requests_per_second": 0.033232185906011444,
+          "measurement_window_seconds": 90.273929271,
+          "errors": 0
+        },
+        "W4": {
+          "e2e_median_seconds": 11.385777276,
+          "ttft_median_seconds": 3.183071038,
+          "tpot_median_seconds": 0.2646013640322581,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.795484201773582,
+          "requests_per_second": 0.08735888130542444,
+          "measurement_window_seconds": 34.341099098,
+          "errors": 0
+        }
+      },
+      "resources": {
+        "physical_devices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "simultaneous_whole_card_hbm_peak_mib": 292903,
+        "per_device_whole_card_hbm_peak_mib": {
+          "0": 36793,
+          "1": 36478,
+          "2": 36721,
+          "3": 36489,
+          "4": 36732,
+          "5": 36478,
+          "6": 36734,
+          "7": 36478
+        },
+        "simultaneous_owned_process_hbm_peak_mib": 269416,
+        "host_cgroup_peak_bytes": 314574393344,
+        "minimum_host_mem_available_kib": 1930201948,
+        "minimum_numa_memfree_kib": {
+          "2": 285012,
+          "4": 194701448,
+          "3": 221046352,
+          "7": 248647656
+        },
+        "sample_count": 199
+      }
+    },
+    "252": {
+      "version": 252,
+      "backend": "NATIVE_TP8",
+      "block": "B",
+      "quality_requests_passed": 4,
+      "workloads": {
+        "W0": {
+          "e2e_median_seconds": 3.068622404,
+          "ttft_median_seconds": 2.822302598,
+          "tpot_median_seconds": 0.244391014,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.6490979973684996,
+          "requests_per_second": 0.3245489986842498,
+          "measurement_window_seconds": 9.243596536,
+          "errors": 0
+        },
+        "W1": {
+          "e2e_median_seconds": 9.374784208,
+          "ttft_median_seconds": 5.667540152,
+          "tpot_median_seconds": 0.2450658527333333,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.7068607437427383,
+          "requests_per_second": 0.10667879648392115,
+          "measurement_window_seconds": 28.121802072,
+          "errors": 0
+        },
+        "W2": {
+          "e2e_median_seconds": 38.850608232,
+          "ttft_median_seconds": 6.124489669,
+          "tpot_median_seconds": 0.257252676007874,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.341693520657864,
+          "requests_per_second": 0.026106980630139564,
+          "measurement_window_seconds": 114.911794761,
+          "errors": 0
+        },
+        "W3": {
+          "e2e_median_seconds": 27.466914542,
+          "ttft_median_seconds": 23.448989024,
+          "tpot_median_seconds": 0.2678550062666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.5818062551848735,
+          "requests_per_second": 0.036362890949054594,
+          "measurement_window_seconds": 82.501691194,
+          "errors": 0
+        },
+        "W4": {
+          "e2e_median_seconds": 10.74509657,
+          "ttft_median_seconds": 2.8181539,
+          "tpot_median_seconds": 0.25171574461290325,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 3.0005757330308076,
+          "requests_per_second": 0.09376799165721274,
+          "measurement_window_seconds": 31.993860026,
+          "errors": 0
+        }
+      },
+      "resources": {
+        "physical_devices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "simultaneous_whole_card_hbm_peak_mib": 292889,
+        "per_device_whole_card_hbm_peak_mib": {
+          "0": 36791,
+          "1": 36476,
+          "2": 37282,
+          "3": 36487,
+          "4": 36732,
+          "5": 36476,
+          "6": 36732,
+          "7": 36476
+        },
+        "simultaneous_owned_process_hbm_peak_mib": 269401,
+        "host_cgroup_peak_bytes": 315542265856,
+        "minimum_host_mem_available_kib": 1928629156,
+        "minimum_numa_memfree_kib": {
+          "2": 82160652,
+          "4": 192856692,
+          "3": 138307268,
+          "7": 248715104
+        },
+        "sample_count": 184
+      }
+    },
+    "238": {
+      "version": 238,
+      "backend": "KT",
+      "block": "B",
+      "quality_requests_passed": 4,
+      "workloads": {
+        "W0": {
+          "e2e_median_seconds": 2.807944175,
+          "ttft_median_seconds": 2.534562901,
+          "tpot_median_seconds": 0.273574553,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.670456470511575,
+          "requests_per_second": 0.3352282352557875,
+          "measurement_window_seconds": 8.949126847,
+          "errors": 0
+        },
+        "W1": {
+          "e2e_median_seconds": 9.094950912,
+          "ttft_median_seconds": 5.037632329,
+          "tpot_median_seconds": 0.2704818872,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.7552641634131136,
+          "requests_per_second": 0.1097040102133196,
+          "measurement_window_seconds": 27.346311171,
+          "errors": 0
+        },
+        "W2": {
+          "e2e_median_seconds": 43.193504277,
+          "ttft_median_seconds": 4.984903648,
+          "tpot_median_seconds": 0.3008540250551181,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 2.9419028659737165,
+          "requests_per_second": 0.02298361614041966,
+          "measurement_window_seconds": 130.52776298,
+          "errors": 0
+        },
+        "W3": {
+          "e2e_median_seconds": 25.484513404,
+          "ttft_median_seconds": 20.974565809,
+          "tpot_median_seconds": 0.31163809793333336,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.6268556000967136,
+          "requests_per_second": 0.0391784750060446,
+          "measurement_window_seconds": 76.572658827,
+          "errors": 0
+        },
+        "W4": {
+          "e2e_median_seconds": 10.84221474,
+          "ttft_median_seconds": 2.481564681,
+          "tpot_median_seconds": 0.27026147632258063,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.8679853975716862,
+          "requests_per_second": 0.0896245436741152,
+          "measurement_window_seconds": 33.472973775,
+          "errors": 0
+        }
+      },
+      "resources": {
+        "physical_devices": [
+          12
+        ],
+        "simultaneous_whole_card_hbm_peak_mib": 28813,
+        "per_device_whole_card_hbm_peak_mib": {
+          "12": 28813
+        },
+        "simultaneous_owned_process_hbm_peak_mib": 25796,
+        "host_cgroup_peak_bytes": 362191872000,
+        "minimum_host_mem_available_kib": 1923246628,
+        "minimum_numa_memfree_kib": {
+          "2": 1128236,
+          "4": 175557040,
+          "3": 220419872,
+          "7": 226169676
+        },
+        "sample_count": 201
+      }
+    }
+  },
+  "blocks": {
+    "A": {
+      "W0": {
+        "kt_version": 235,
+        "native_version": 251,
+        "native_over_kt_e2e": 1.2192689910466816,
+        "native_over_kt_ttft": 1.251693200824985,
+        "native_over_kt_tpot": 0.9283027463175613,
+        "native_over_kt_serial_throughput": 0.8203551368682526,
+        "native_over_kt_requests_per_second": 0.8203551368682526,
+        "kt": {
+          "e2e_median_seconds": 2.828346781,
+          "ttft_median_seconds": 2.546664097,
+          "tpot_median_seconds": 0.280962519,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.7037919544663703,
+          "requests_per_second": 0.35189597723318516,
+          "measurement_window_seconds": 8.525246647,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 3.448515526,
+          "ttft_median_seconds": 3.187642135,
+          "tpot_median_seconds": 0.260818278,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.5773593451330342,
+          "requests_per_second": 0.2886796725665171,
+          "measurement_window_seconds": 10.392141481,
+          "errors": 0
+        }
+      },
+      "W1": {
+        "kt_version": 235,
+        "native_version": 251,
+        "native_over_kt_e2e": 1.0776575905007786,
+        "native_over_kt_ttft": 1.2566901178551697,
+        "native_over_kt_tpot": 0.8991159842501485,
+        "native_over_kt_serial_throughput": 0.9253440369073214,
+        "native_over_kt_requests_per_second": 0.9253440369073214,
+        "kt": {
+          "e2e_median_seconds": 9.580120439,
+          "ttft_median_seconds": 5.073844622,
+          "tpot_median_seconds": 0.2927157652,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.6716647454551696,
+          "requests_per_second": 0.1044790465909481,
+          "measurement_window_seconds": 28.713891425,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 10.324089509,
+          "ttft_median_seconds": 6.376250396,
+          "tpot_median_seconds": 0.26318542333333333,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.5468650039151364,
+          "requests_per_second": 0.09667906274469602,
+          "measurement_window_seconds": 31.030503553,
+          "errors": 0
+        }
+      },
+      "W2": {
+        "kt_version": 235,
+        "native_version": 251,
+        "native_over_kt_e2e": 0.9454503615741041,
+        "native_over_kt_ttft": 1.254021211036525,
+        "native_over_kt_tpot": 0.9033040381637846,
+        "native_over_kt_serial_throughput": 1.0610038234502703,
+        "native_over_kt_requests_per_second": 1.0610038234502703,
+        "kt": {
+          "e2e_median_seconds": 41.94805249,
+          "ttft_median_seconds": 5.041116113,
+          "tpot_median_seconds": 0.29060445558267717,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.0427066032174093,
+          "requests_per_second": 0.02377114533763601,
+          "measurement_window_seconds": 126.203426776,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 39.659801394,
+          "ttft_median_seconds": 6.321666533,
+          "tpot_median_seconds": 0.26250417823622046,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.228323339651056,
+          "requests_per_second": 0.025221276091023873,
+          "measurement_window_seconds": 118.947193202,
+          "errors": 0
+        }
+      },
+      "W3": {
+        "kt_version": 235,
+        "native_version": 251,
+        "native_over_kt_e2e": 1.1736414714829433,
+        "native_over_kt_ttft": 1.2274998550810043,
+        "native_over_kt_tpot": 0.9230643769000094,
+        "native_over_kt_serial_throughput": 0.8391115485690313,
+        "native_over_kt_requests_per_second": 0.8391115485690313,
+        "kt": {
+          "e2e_median_seconds": 25.309880465,
+          "ttft_median_seconds": 20.832120668,
+          "tpot_median_seconds": 0.2985079326666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.6336642314158789,
+          "requests_per_second": 0.03960401446349243,
+          "measurement_window_seconds": 75.749896586,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 29.704725352,
+          "ttft_median_seconds": 25.571425101,
+          "tpot_median_seconds": 0.27554203886666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.5317149744961831,
+          "requests_per_second": 0.033232185906011444,
+          "measurement_window_seconds": 90.273929271,
+          "errors": 0
+        }
+      },
+      "W4": {
+        "kt_version": 235,
+        "native_version": 251,
+        "native_over_kt_e2e": 0.9833995842868916,
+        "native_over_kt_ttft": 1.206645508955468,
+        "native_over_kt_tpot": 0.9146605001701953,
+        "native_over_kt_serial_throughput": 1.0129409637918632,
+        "native_over_kt_requests_per_second": 1.0129409637918632,
+        "kt": {
+          "e2e_median_seconds": 11.577976499,
+          "ttft_median_seconds": 2.637950429,
+          "tpot_median_seconds": 0.2892891559032258,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.7597701166205297,
+          "requests_per_second": 0.08624281614439155,
+          "measurement_window_seconds": 34.785506018,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 11.385777276,
+          "ttft_median_seconds": 3.183071038,
+          "tpot_median_seconds": 0.2646013640322581,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.795484201773582,
+          "requests_per_second": 0.08735888130542444,
+          "measurement_window_seconds": 34.341099098,
+          "errors": 0
+        }
+      }
+    },
+    "B": {
+      "W0": {
+        "kt_version": 238,
+        "native_version": 252,
+        "native_over_kt_e2e": 1.0928359727806911,
+        "native_over_kt_ttft": 1.1135263586815989,
+        "native_over_kt_tpot": 0.8933250966510763,
+        "native_over_kt_serial_throughput": 0.9681433857640626,
+        "native_over_kt_requests_per_second": 0.9681433857640626,
+        "kt": {
+          "e2e_median_seconds": 2.807944175,
+          "ttft_median_seconds": 2.534562901,
+          "tpot_median_seconds": 0.273574553,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.670456470511575,
+          "requests_per_second": 0.3352282352557875,
+          "measurement_window_seconds": 8.949126847,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 3.068622404,
+          "ttft_median_seconds": 2.822302598,
+          "tpot_median_seconds": 0.244391014,
+          "actual_output_tokens": 6,
+          "serial_output_tokens_per_second": 0.6490979973684996,
+          "requests_per_second": 0.3245489986842498,
+          "measurement_window_seconds": 9.243596536,
+          "errors": 0
+        }
+      },
+      "W1": {
+        "kt_version": 238,
+        "native_version": 252,
+        "native_over_kt_e2e": 1.0307679831048657,
+        "native_over_kt_ttft": 1.1250404519150448,
+        "native_over_kt_tpot": 0.9060342460274483,
+        "native_over_kt_serial_throughput": 0.9724238546656961,
+        "native_over_kt_requests_per_second": 0.9724238546656961,
+        "kt": {
+          "e2e_median_seconds": 9.094950912,
+          "ttft_median_seconds": 5.037632329,
+          "tpot_median_seconds": 0.2704818872,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.7552641634131136,
+          "requests_per_second": 0.1097040102133196,
+          "measurement_window_seconds": 27.346311171,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 9.374784208,
+          "ttft_median_seconds": 5.667540152,
+          "tpot_median_seconds": 0.2450658527333333,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 1.7068607437427383,
+          "requests_per_second": 0.10667879648392115,
+          "measurement_window_seconds": 28.121802072,
+          "errors": 0
+        }
+      },
+      "W2": {
+        "kt_version": 238,
+        "native_version": 252,
+        "native_over_kt_e2e": 0.8994548805961886,
+        "native_over_kt_ttft": 1.2286074318522113,
+        "native_over_kt_tpot": 0.8550747358648232,
+        "native_over_kt_serial_throughput": 1.1358952599381027,
+        "native_over_kt_requests_per_second": 1.1358952599381027,
+        "kt": {
+          "e2e_median_seconds": 43.193504277,
+          "ttft_median_seconds": 4.984903648,
+          "tpot_median_seconds": 0.3008540250551181,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 2.9419028659737165,
+          "requests_per_second": 0.02298361614041966,
+          "measurement_window_seconds": 130.52776298,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 38.850608232,
+          "ttft_median_seconds": 6.124489669,
+          "tpot_median_seconds": 0.257252676007874,
+          "actual_output_tokens": 384,
+          "serial_output_tokens_per_second": 3.341693520657864,
+          "requests_per_second": 0.026106980630139564,
+          "measurement_window_seconds": 114.911794761,
+          "errors": 0
+        }
+      },
+      "W3": {
+        "kt_version": 238,
+        "native_version": 252,
+        "native_over_kt_e2e": 1.0777884633923929,
+        "native_over_kt_ttft": 1.1179725596006496,
+        "native_over_kt_tpot": 0.8595066137387577,
+        "native_over_kt_serial_throughput": 0.9281344142017879,
+        "native_over_kt_requests_per_second": 0.9281344142017879,
+        "kt": {
+          "e2e_median_seconds": 25.484513404,
+          "ttft_median_seconds": 20.974565809,
+          "tpot_median_seconds": 0.31163809793333336,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.6268556000967136,
+          "requests_per_second": 0.0391784750060446,
+          "measurement_window_seconds": 76.572658827,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 27.466914542,
+          "ttft_median_seconds": 23.448989024,
+          "tpot_median_seconds": 0.2678550062666667,
+          "actual_output_tokens": 48,
+          "serial_output_tokens_per_second": 0.5818062551848735,
+          "requests_per_second": 0.036362890949054594,
+          "measurement_window_seconds": 82.501691194,
+          "errors": 0
+        }
+      },
+      "W4": {
+        "kt_version": 238,
+        "native_version": 252,
+        "native_over_kt_e2e": 0.9910425893298623,
+        "native_over_kt_ttft": 1.1356358839151288,
+        "native_over_kt_tpot": 0.9313785598967814,
+        "native_over_kt_serial_throughput": 1.0462311752254336,
+        "native_over_kt_requests_per_second": 1.0462311752254336,
+        "kt": {
+          "e2e_median_seconds": 10.84221474,
+          "ttft_median_seconds": 2.481564681,
+          "tpot_median_seconds": 0.27026147632258063,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 2.8679853975716862,
+          "requests_per_second": 0.0896245436741152,
+          "measurement_window_seconds": 33.472973775,
+          "errors": 0
+        },
+        "native": {
+          "e2e_median_seconds": 10.74509657,
+          "ttft_median_seconds": 2.8181539,
+          "tpot_median_seconds": 0.25171574461290325,
+          "actual_output_tokens": 96,
+          "serial_output_tokens_per_second": 3.0005757330308076,
+          "requests_per_second": 0.09376799165721274,
+          "measurement_window_seconds": 31.993860026,
+          "errors": 0
+        }
+      }
+    }
+  },
+  "w2_native_serial_output_tokens_per_second": [
+    3.228323339651056,
+    3.341693520657864
+  ]
+}

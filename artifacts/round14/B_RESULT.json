@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "status": "ROUND14_B_PARTIAL_WITH_ONE_COMPLETE_BLOCK",
+  "process_order": [
+    269,
+    273
+  ],
+  "required_complete_blocks": 2,
+  "complete_blocks": 1,
+  "default_profile": "S0_LEGACY_H129",
+  "h512_disposition": "NOT_DEFAULT_QUALITY_REGRESSION",
+  "h768_disposition": "NOT_RUN_CONDITION_NOT_MET_AND_B_MODEL_GROUP_CAP",
+  "fixture_sha256": "9c20fa730d84770b133352c2ce87e78239f0be7bde21deff0ca55629fe3d3706",
+  "fixture_scope": "PUBLIC_PROXY_DISTRIBUTION_NOT_BUSINESS_LOGS",
+  "failed_block": {
+    "version": 269,
+    "block": "A",
+    "completed_results": 60,
+    "complete_quality_requests": 48,
+    "automatic_quality_fail": 8,
+    "human_review_pending": 9,
+    "failure": "HOST_ONLY_HYBRID_PATH_PROBE_4096_ROW_BOUND_EXHAUSTED_DURING_BOUNDARY_ACCEPT",
+    "cleanup": "PASS",
+    "usable_as_complete_confirmation_block": false
+  },
+  "complete_block": {
+    "version": 273,
+    "block": "B",
+    "quality": {
+      "requests": 48,
+      "dev": 12,
+      "holdout": 36,
+      "automatic_pass": 31,
+      "automatic_fail": 8,
+      "human_review_pending": 9,
+      "by_bucket": {
+        "LE128": {
+          "requests": 16,
+          "automatic_pass": 10,
+          "automatic_fail": 3,
+          "human_review_pending": 3,
+          "e2e_median_seconds": 9.398358689
+        },
+        "129_256": {
+          "requests": 16,
+          "automatic_pass": 10,
+          "automatic_fail": 3,
+          "human_review_pending": 3,
+          "e2e_median_seconds": 11.191559992
+        },
+        "257_512": {
+          "requests": 16,
+          "automatic_pass": 11,
+          "automatic_fail": 2,
+          "human_review_pending": 3,
+          "e2e_median_seconds": 18.621116148
+        }
+      },
+      "by_category": {
+        "CHINESE": {
+          "requests": 7,
+          "automatic_fail": 0,
+          "human_review_pending": 0
+        },
+        "CODE": {
+          "requests": 9,
+          "automatic_fail": 0,
+          "human_review_pending": 9
+        },
+        "ENGLISH": {
+          "requests": 8,
+          "automatic_fail": 8,
+          "human_review_pending": 0
+        },
+        "MULTI_TURN_HISTORY": {
+          "requests": 7,
+          "automatic_fail": 0,
+          "human_review_pending": 0
+        },
+        "STRUCTURED_FORMAT": {
+          "requests": 8,
+          "automatic_fail": 0,
+          "human_review_pending": 0
+        },
+        "SUMMARY_RETRIEVAL": {
+          "requests": 9,
+          "automatic_fail": 0,
+          "human_review_pending": 0
+        }
+      }
+    },
+    "performance_by_bucket": {
+      "LE128": {
+        "requests": 4,
+        "actual_output_tokens": 128,
+        "e2e_median_seconds": 13.0603943745,
+        "ttft_median_seconds": 3.942467639,
+        "tpot_median_seconds": 0.2941235234193548
+      },
+      "129_256": {
+        "requests": 4,
+        "actual_output_tokens": 128,
+        "e2e_median_seconds": 17.3315249685,
+        "ttft_median_seconds": 8.201981215,
+        "tpot_median_seconds": 0.2940428147580645
+      },
+      "257_512": {
+        "requests": 4,
+        "actual_output_tokens": 128,
+        "e2e_median_seconds": 25.374059181,
+        "ttft_median_seconds": 15.7080602025,
+        "tpot_median_seconds": 0.3115994483387097
+      }
+    },
+    "boundary": {
+      "accepted_input_tokens": 512,
+      "accepted_output_tokens": 256,
+      "accepted_total_context": 768,
+      "outside_request_rejected_before_scheduler": true
+    },
+    "cancel_reuse": "PASS",
+    "provider": "VECTORIZED_PREFILL_DIRECT_BF16_ROW_DECODE",
+    "resources": {
+      "physical_device": 12,
+      "whole_card_hbm_peak_mib": 28815,
+      "owned_process_hbm_peak_mib": 25798,
+      "host_cgroup_peak_bytes": 363646230528,
+      "minimum_host_mem_available_kib": 1923628112,
+      "minimum_numa_memfree_kib": {
+        "2": 219583148,
+        "3": 1610368,
+        "4": 175445176,
+        "7": 225937684
+      },
+      "sample_count": 497
+    }
+  },
+  "coverage": {
+    "frozen_fixture_requests": 64,
+    "complete_quality_distribution_blocks": 2,
+    "complete_end_to_end_schedule_blocks": 1,
+    "tested_input_buckets": [
+      "LE128",
+      "129_256",
+      "257_512"
+    ],
+    "unexecuted_fixture_bucket": "513_768",
+    "boundary_cancel_reuse_complete_blocks": 1
+  },
+  "claim_scope": "H512 executed one complete 64-request process after the bounded host-only probe repair. The failed v269 prefix is retained but is not promoted to a second independent confirmation block. H129 remains the default.",
+  "source_repair": {
+    "scope": "HOST_ONLY_OBSERVER_CAPACITY",
+    "hybrid_probe_rows_before": 4096,
+    "hybrid_probe_rows_after": 8192,
+    "model_math_changed": false,
+    "snapshot_manifest_sha256": "ed80ae174c97211657e32dd08f846613fe1c75463ec909f3bb105f69529f57fc",
+    "same_image_no_device_preflight": "PASS",
+    "preflight_overlay_digest": "8b18711278135a051366ca48d679b5fcf0215f4b5f9ccdbea3464b75e5aef397"
+  },
+  "evidence": {
+    "v269_archive": "artifacts/round14/b-results/v269-failure/v269-failure.tar",
+    "v269_archive_sha256": "ae8e5d856669e87f33720692ddfafde5be228db903dc961371ba210988a85f89",
+    "v273_archive": "artifacts/round14/b-results/v273/v273-evidence.tar",
+    "v273_archive_sha256": "bc67ab517fdeb69b4c759ba0310f0a4dfc3b5f3dc4e99596e6b2d3151e768376",
+    "v273_cache_retirement": "artifacts/round14/cache-retirements/v273/result.json",
+    "v273_cache_retirement_archive_sha256": "07fed7cedf8d3a881301546f1b942ac9a0ce526055e98ee3c6c230cdca711ccf"
+  }
+}

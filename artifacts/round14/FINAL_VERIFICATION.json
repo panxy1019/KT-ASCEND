@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14_FINAL_VERIFICATION",
+  "verified_at_utc": "2026-09-27T20:44:11Z",
+  "terminal_status": "ROUND14_PARTIAL_WITH_GAPS",
+  "tests": {
+    "round14_unittest_count": 62,
+    "result": "PASS",
+    "python_files_compiled": 34,
+    "py_compile_result": "PASS"
+  },
+  "semantic_checks": {
+    "json_parse": "PASS",
+    "a_status": "PASS_ROUND14_A_SYSTEM_COMPARISON",
+    "b_status": "ROUND14_B_PARTIAL_WITH_ONE_COMPLETE_BLOCK",
+    "c_profile_status": "PASS_ROUND14_C_FRESH_ATTRIBUTION",
+    "c_status": "ROUND14_C_COMPONENT_REJECTED_RESOURCE_CLEANUP",
+    "final_status": "ROUND14_PARTIAL_WITH_GAPS",
+    "performance_objective": "NOT_ACHIEVED",
+    "benchmark_csv_rows_excluding_header": 27,
+    "benchmark_csv_columns": 15,
+    "budget_bounds": "PASS"
+  },
+  "hash_verification": {
+    "budget_event_evidence_archives": 20,
+    "named_auxiliary_archives": 6,
+    "formal_result_hashes": [
+      "A_RESULT.json",
+      "B_RESULT.json",
+      "C_RESULT.json"
+    ],
+    "result": "PASS"
+  },
+  "final_cache_retirement": {
+    "status": "PASS_CACHE_RETIRED",
+    "registered_files": 179,
+    "active_references": 0,
+    "resident_pages_before": 34048,
+    "resident_pages_after": 0,
+    "archive_sha256": "bf9ef584fe802d3499dfb04e261de3ab9b900fffe7e8c3b00f405335bbec71d3",
+    "global_drop_caches": false
+  },
+  "remote_read_only_recheck": {
+    "observed_at_utc": "2026-09-27T20:42:37Z",
+    "physical12": "EMPTY_NO_PROCESS_IN_DEVICE",
+    "owned_process_matches": 0,
+    "owned_containers_running": 0,
+    "external_training_container": {
+      "id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+      "name": "mzy-train",
+      "status": "RUNNING_UNCHANGED"
+    },
+    "numa_memfree_kib": {
+      "2": 256451688,
+      "3": 254822104,
+      "4": 205949156,
+      "7": 257673100
+    }
+  },
+  "background_state": {
+    "round14_controller_running": false,
+    "round14_model_or_probe_running": false,
+    "historical_timers_restored": false
+  }
+}

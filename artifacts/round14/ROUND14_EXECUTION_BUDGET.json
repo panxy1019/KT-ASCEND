@@ -1,0 +1,412 @@
+{
+  "schema": 1,
+  "status": "ROUND14_TERMINAL_PARTIAL_WITH_GAPS",
+  "limits": {
+    "A": {
+      "model_groups": 4,
+      "generation_attempts": 96,
+      "abort_controls": 0,
+      "component_processes": 0
+    },
+    "B": {
+      "model_groups": 4,
+      "generation_attempts": 256,
+      "abort_controls": 4,
+      "component_processes": 4
+    },
+    "C_profile": {
+      "model_groups": 2,
+      "generation_attempts": 8,
+      "abort_controls": 0,
+      "component_processes": 0
+    },
+    "C_smoke": {
+      "model_groups": 2,
+      "generation_attempts": 16,
+      "abort_controls": 2,
+      "component_processes": 0
+    },
+    "C_final_abba": {
+      "model_groups": 4,
+      "generation_attempts": 128,
+      "abort_controls": 4,
+      "component_processes": 12
+    },
+    "optional_concurrency": {
+      "model_groups": 4,
+      "generation_attempts": 128,
+      "abort_controls": 2,
+      "component_processes": 4
+    },
+    "repair_reserve": {
+      "model_groups": 4,
+      "generation_attempts": 32,
+      "abort_controls": 2,
+      "component_processes": 4
+    },
+    "total": {
+      "model_groups": 24,
+      "generation_attempts": 664,
+      "abort_controls": 14,
+      "component_processes": 24
+    },
+    "wall_clock_hours": 72,
+    "npu_device_hours": 128,
+    "offline_cpu_hours": 12
+  },
+  "used": {
+    "model_groups": 14,
+    "generation_attempts": 238,
+    "abort_controls": 1,
+    "component_processes": 6,
+    "npu_device_hours": 4.164636628507438
+  },
+  "events": [
+    {
+      "kind": "T0_OFFLINE_FREEZE",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "versions": [
+        235,
+        236,
+        237,
+        238
+      ],
+      "offline_tests_passed": 13
+    },
+    {
+      "kind": "A_FORMAL_KT_A_PASS",
+      "stage_bucket": "A",
+      "version": 235,
+      "model_groups": 1,
+      "generation_attempts": 24,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.1455976712041431,
+      "evidence": "artifacts/round14/a-results/v235/v235-evidence.tar",
+      "archive_sha256": "016e260b3cb7b14cc09eefe2a191997920af74da1c63bb0a9c2ee1c229656f8c"
+    },
+    {
+      "kind": "A_NATIVE_CONTROL_PLANE_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 241,
+      "root_cause": "MISSING_FROZEN_ROUND11_FIXTURE",
+      "model_groups": 1,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.2468734884262085,
+      "evidence": "artifacts/round14/a-results/v241-failure/v241-failure.tar",
+      "archive_sha256": "ec11f7ec46f4e0028ae817993e2ab50036b70d68294cdb3842692e3cb373b452"
+    },
+    {
+      "kind": "A_NATIVE_CONTROL_PLANE_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 247,
+      "root_cause": "MISSING_LAZY_ROUND10_PROTOCOL_MODULE",
+      "model_groups": 1,
+      "generation_attempts": 1,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.25867366313934326,
+      "evidence": "artifacts/round14/a-results/v247-failure/v247-failure.tar",
+      "archive_sha256": "b2931868d1c8b2d82f12dd836562ea8e683372b250edfa804a5e6e5f8f2a3504"
+    },
+    {
+      "kind": "A_NATIVE_DEPENDENCY_REPAIR_V2_PREFLIGHT_PASS",
+      "stage_bucket": "offline_cpu",
+      "versions": [
+        251,
+        252
+      ],
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0,
+      "preflight_archive_sha256": "ba7057e184492d6c3c88649827e608e2f69941f354e3b1e3b44dd52162b88b3d"
+    },
+    {
+      "kind": "A_FORMAL_NATIVE_A_PASS",
+      "stage_bucket": "A",
+      "version": 251,
+      "model_groups": 1,
+      "generation_attempts": 24,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 1.1878187407387628,
+      "w2_serial_output_tokens_per_second": 3.228323339651056,
+      "evidence": "artifacts/round14/a-results/v251/v251-evidence.tar",
+      "archive_sha256": "06feb8b959513f018e1ee979890869d920a0377a8cc8e640870b1222ca934508"
+    },
+    {
+      "kind": "A_FORMAL_NATIVE_B_PASS",
+      "stage_bucket": "A",
+      "version": 252,
+      "model_groups": 1,
+      "generation_attempts": 24,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 1.1112914440366957,
+      "w2_serial_output_tokens_per_second": 3.341693520657864,
+      "evidence": "artifacts/round14/a-results/v252/v252-evidence.tar",
+      "archive_sha256": "f6b16a5bf04e7610cd9fabf3c64ccb951e5653743fa480e78ddfb7d21c29ec6d"
+    },
+    {
+      "kind": "A_FORMAL_KT_B_PASS",
+      "stage_bucket": "A",
+      "version": 238,
+      "model_groups": 1,
+      "generation_attempts": 24,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.14565532796912722,
+      "w2_serial_output_tokens_per_second": 2.9419028659737165,
+      "evidence": "artifacts/round14/a-results/v238/v238-evidence.tar",
+      "archive_sha256": "aaec77a429c3ce96d803b098f4432eba2c24ce2dc87aff90f3757073d9bda522"
+    },
+    {
+      "kind": "B_H512_SOURCE_GATE_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 243,
+      "root_cause": "STALE_OVERLAY_CANDIDATE_TREE_RECEIPT_AFTER_H_BOUNDED_GATE_INSTALL",
+      "model_groups": 1,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.0,
+      "container_created": false,
+      "evidence": "artifacts/round14/b-results/v243-failure/v243-failure.tar",
+      "archive_sha256": "55ef6c900bf5ab489af30142b6e874ac02e6747f3a97cca22c88cadf25660ced"
+    },
+    {
+      "kind": "B_H512_QSA_VALIDATOR_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 257,
+      "root_cause": "QSA_DECODE_FORWARD_COUNT_MUST_EQUAL_ACTUAL_COMPLETION_TOKENS_MINUS_ONE",
+      "model_groups": 1,
+      "generation_attempts": 1,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.04071268618106842,
+      "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/b-results/v257-failure/v257-failure.tar",
+      "archive_sha256": "ba32b2e96b2d390eaacd116c9d9bf6c3d365d7c17b695730c31902302185dec5",
+      "cache_retirement_sha256": "d035ab3c721541d0c4e51f52fbfb599f7c239bf7ed8227794d27f9e59c334ee9"
+    },
+    {
+      "kind": "B_H512_FORMAL_QUALITY_FAIL_FAST",
+      "stage_bucket": "B",
+      "version": 261,
+      "result": "KNOWN_ANSWER_FAIL_R14_B_01_AFTER_R14_B_00_PASS",
+      "model_groups": 1,
+      "generation_attempts": 2,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.049126066499286226,
+      "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/b-results/v261-failure/v261-failure.tar",
+      "archive_sha256": "d033c5e4ae7c2c18004b70838b291c5049ec4c755b55c2cc3a693a601b45ca8d",
+      "cache_retirement_sha256": "f50afde0ec7e0b9bd1745299cc5350b125a1755289a87b7b5fb4ff220f6988ad"
+    },
+    {
+      "kind": "B_H512_FORMAL_PROMPT_TAIL_ACCOUNTING_FAILURE",
+      "stage_bucket": "B",
+      "version": 265,
+      "root_cause": "ONE_TOKEN_PROMPT_TAIL_EXECUTES_DIRECT_ROW_AND_MUST_BE_SUBTRACTED_FROM_GENERATED_DECODE_STEPS",
+      "model_groups": 1,
+      "generation_attempts": 5,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.05879960470729404,
+      "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/b-results/v265-failure/v265-failure.tar",
+      "archive_sha256": "f171492917e0591e7b2be976b2b8d63450486e86320ca1caa77e399dddddb4ab",
+      "cache_retirement_sha256": "374b9715feac269f6404fd0eab742457ebaa7ca52f8d5558fd30f28d4940ab9a"
+    },
+    {
+      "kind": "B_H512_HYBRID_PROBE_BOUND_FAILURE",
+      "stage_bucket": "B",
+      "version": 269,
+      "root_cause": "HOST_ONLY_HYBRID_PATH_PROBE_4096_ROW_BOUND_EXHAUSTED_DURING_512_256_BOUNDARY_REQUEST",
+      "model_groups": 1,
+      "generation_attempts": 61,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.3331222601731618,
+      "completed_results_before_failure": 60,
+      "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/b-results/v269-failure/v269-failure.tar",
+      "archive_sha256": "ae8e5d856669e87f33720692ddfafde5be228db903dc961371ba210988a85f89",
+      "cache_retirement_sha256": "64d3b81cb47dc05776d8fbff7b81b21ad0bb37b7678e18ff4f954da7d01a808c"
+    },
+    {
+      "kind": "B_H512_FORMAL_COMPLETE_BLOCK_PASS",
+      "stage_bucket": "B",
+      "version": 273,
+      "model_groups": 1,
+      "generation_attempts": 64,
+      "abort_controls": 1,
+      "component_processes": 0,
+      "npu_device_hours": 0.3681269660923216,
+      "quality": {
+        "automatic_pass": 31,
+        "automatic_fail": 8,
+        "human_review_pending": 9
+      },
+      "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/b-results/v273/v273-evidence.tar",
+      "archive_sha256": "bc67ab517fdeb69b4c759ba0310f0a4dfc3b5f3dc4e99596e6b2d3151e768376",
+      "cache_retirement_sha256": "07fed7cedf8d3a881301546f1b942ac9a0ce526055e98ee3c6c230cdca711ccf"
+    },
+    {
+      "kind": "C_FRESH_S0_PROFILE_PASS",
+      "stage_bucket": "C_profile",
+      "version": 274,
+      "model_groups": 1,
+      "generation_attempts": 4,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.06298838502777777,
+      "evidence": "artifacts/round14/c-profile-results/v274/v274-evidence.tar",
+      "archive_sha256": "d9020d9e77b812dda3aa0bb0c94bf4a5ce87427f115f544f79cd4c1049459fa3"
+    },
+    {
+      "kind": "C_FRESH_S0_PROFILE_PASS",
+      "stage_bucket": "C_profile",
+      "version": 275,
+      "model_groups": 1,
+      "generation_attempts": 4,
+      "abort_controls": 0,
+      "component_processes": 0,
+      "npu_device_hours": 0.06312944605555555,
+      "evidence": "artifacts/round14/c-profile-results/v275/v275-evidence.tar",
+      "archive_sha256": "d71a3b781d1775df2a5a6b61eab909b6385d455b738482579cc7ab52a4f67f74"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 276,
+      "root_cause": "GUARD_PACKAGING_MISSING_NUMA_POLICY",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v276-failure/v276-failure.tar",
+      "archive_sha256": "6e9f7ae455dc8e37c7da4d8d751517ed864176730e2446b246934b575e5a0563"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 278,
+      "root_cause": "PROBE_HYBRID_BACKEND_DISPATCH_INTERFACE",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0.008143700228797065,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v278-failure/v278-failure.tar",
+      "archive_sha256": "8389bb3d9b04e5b405b7dd7598ffd5641384e873bf4c9911a9cd265cb237abdc"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "C_final_abba",
+      "version": 280,
+      "root_cause": "FULL_PARENT_SWISH_GATE_NUMERICAL_REJECTION",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0.019879032439655726,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v280-failure/v280-failure.tar",
+      "archive_sha256": "a94b63ffde0f17e66eb7ece2f8eb33af1cd934158a18e089cbf8199416a5409f"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 282,
+      "root_cause": "PRE_WARM_ALLOCATOR_BASELINE_INVALID",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0.021422562003135682,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v282-failure/v282-failure.tar",
+      "archive_sha256": "6804dd7f43fa99a16285d87f18749e030bc844408c8d444e79c9a17980196368"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "repair_reserve",
+      "version": 284,
+      "root_cause": "PROBE_TIMING_EVENT_RESOURCE_ACCOUNTING",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0.02192311293549008,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v284-failure/v284-failure.tar",
+      "archive_sha256": "2d5269125d70117be523d953394f3d2a1849f9ea6edd394eb214cc11df1ae21b"
+    },
+    {
+      "kind": "C_GDN_COMPONENT_FAILURE",
+      "stage_bucket": "C_final_abba",
+      "version": 286,
+      "root_cause": "TERMINAL_ALLOCATOR_NON_REUSE",
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "component_processes": 1,
+      "npu_device_hours": 0.021352470649613275,
+      "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+      "evidence": "artifacts/round14/c-gdn-component-results/v286-failure/v286-failure.tar",
+      "archive_sha256": "02ae6b513b49b63f3af07bc1de905c7794d8bf7e7891eef860529fb9cd4cc3bc"
+    }
+  ],
+  "automatic_retries": 0,
+  "blind_retry_limit": 0,
+  "modified_validations_per_root_cause": 2,
+  "current_formal_a_order": [
+    235,
+    251,
+    252,
+    238
+  ],
+  "repair_revisions_for_native_driver_dependency_root": 2,
+  "a_status": "PASS_ROUND14_A_SYSTEM_COMPARISON",
+  "a_result_sha256": "337eb7d434e1710bba955766d122645f17ab522ab2a8eda4ebaf8770e7f30611",
+  "b_formal_versions": [
+    269,
+    273
+  ],
+  "b_repair": "OVERLAY_RECEIPT_REFRESH_AND_PREFLIGHT_LAUNCHER_GATE",
+  "repair_reserve_model_groups_used": 4,
+  "b_h768_versions": [
+    267,
+    268
+  ],
+  "b_h768_status": "NOT_ELIGIBLE_IF_H512_QUALITY_FAILS_OR_B_MODEL_GROUP_CAP_REACHED",
+  "b_second_complete_block_status": "IMPOSSIBLE_WITHIN_B_MODEL_GROUP_CAP_AFTER_V269_INSTRUMENTATION_FAILURE",
+  "b_probe_capacity_repair": {
+    "from_rows": 4096,
+    "to_rows": 8192,
+    "repair_version": 273,
+    "model_math_change": "NONE"
+  },
+  "b_status": "ROUND14_B_PARTIAL_WITH_ONE_COMPLETE_BLOCK",
+  "b_default_profile": "S0_LEGACY_H129",
+  "b_h512_disposition": "NOT_DEFAULT_QUALITY_REGRESSION",
+  "b_result_sha256": "09471a21cd25384cd30c32b8b59a5cf56e4754ed5bf6c5e5cf602044b07dac3e",
+  "b_model_group_cap_reached": true,
+  "c_status": "ROUND14_C_COMPONENT_REJECTED_RESOURCE_CLEANUP",
+  "c_result_sha256": "4b9816b82c3b189b424a2bcc80f4d0f07eda93b8e77e1532f584eef805ecff71",
+  "c_request_abba_status": "NOT_RUN_COMPONENT_RESOURCE_GATE_FAILED",
+  "optional_concurrency_status": "NOT_RUN"
+}

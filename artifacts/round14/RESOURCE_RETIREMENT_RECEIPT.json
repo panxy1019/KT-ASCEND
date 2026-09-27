@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14_RESOURCE_RETIREMENT",
+  "verified_at_utc": "2026-09-27T20:35:11Z",
+  "physical12": "EMPTY",
+  "owned_containers_running": 0,
+  "owned_processes_running": 0,
+  "external_containers_unchanged": [
+    {
+      "id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+      "name": "mzy-train",
+      "status": "RUNNING"
+    }
+  ],
+  "numa_memfree_kib": {
+    "2": 256307200,
+    "3": 254545476,
+    "4": 205863080,
+    "7": 257668116
+  },
+  "final_cache_retirement": {
+    "result": "artifacts/round14/cache-retirements/v286/result.json",
+    "status": "PASS_CACHE_RETIRED",
+    "registered_files": 179,
+    "active_references": [],
+    "resident_pages_before": 34048,
+    "resident_pages_after": 0,
+    "archive": "artifacts/round14/cache-retirements/v286/v286-cache-retirement.tar",
+    "archive_sha256": "bf9ef584fe802d3499dfb04e261de3ab9b900fffe7e8c3b00f405335bbec71d3"
+  },
+  "global_drop_caches": false,
+  "historical_timers_restored": false
+}
