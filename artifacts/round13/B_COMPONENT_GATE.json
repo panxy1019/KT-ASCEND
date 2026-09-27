@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_B_COMPONENT_GATE",
+  "blocks": [
+    {
+      "path": "artifacts/round13/remote-evidence/v233/20260927-round13-b-component-a-v233/result.json",
+      "block": "A",
+      "status": "PASS_ROUND13_B_QSA_DECODE_COMPONENT",
+      "row_count": 9,
+      "ratios": [
+        0.19233977075760167,
+        0.11236188158834429,
+        0.033492064478829284,
+        0.1808007366177629,
+        0.11260086315927408,
+        0.03277088808051827,
+        0.1979383044719095,
+        0.11061782847619735,
+        0.0316973297076121
+      ],
+      "worst_candidate_over_baseline": 0.1979383044719095,
+      "numerical_pass": true,
+      "contract_checks_pass": true,
+      "allocator_cleanup_pass": true
+    },
+    {
+      "path": "artifacts/round13/remote-evidence/v234/20260927-round13-b-component-b-v234/result.json",
+      "block": "B",
+      "status": "PASS_ROUND13_B_QSA_DECODE_COMPONENT",
+      "row_count": 9,
+      "ratios": [
+        0.1884020115922579,
+        0.10831129500775558,
+        0.030786369446038242,
+        0.18566164463887708,
+        0.11081530076686244,
+        0.03316746097680156,
+        0.1889114747121572,
+        0.11310858168691632,
+        0.03129070687218623
+      ],
+      "worst_candidate_over_baseline": 0.1889114747121572,
+      "numerical_pass": true,
+      "contract_checks_pass": true,
+      "allocator_cleanup_pass": true
+    }
+  ],
+  "correctness_pass": true,
+  "all_complete_calls_improve_10pct": true,
+  "request_gate_open": true,
+  "threshold": "each of 9 full-call candidate/baseline medians <= 0.90 in both independent blocks"
+}

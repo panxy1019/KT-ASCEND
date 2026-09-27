@@ -1,0 +1,147 @@
+{
+  "dev": {
+    "fixture": "qwen38_sched_dev.json",
+    "fixture_sha256": "ca32133dd300fb779305deaf6e3b4d4472a993ca15757d8ec2e392cdad3c94fe",
+    "prefill_decode_counts_separate": true,
+    "split": "QWEN38_SCHED_DEV",
+    "use": "PLACEMENT_COUNTS_ONLY"
+  },
+  "holdout": {
+    "fixture": "qwen38_sched_holdout.json",
+    "fixture_sha256": "68e7c6ef1ad572d9903c32156e84977e3ed02916c84c1bfe67b2f0a5806c76d8",
+    "split": "QWEN38_SCHED_HOLDOUT",
+    "use": "QUALITY_ONLY_NEVER_MASK_TUNING"
+  },
+  "metrics": {
+    "requests_per_second": {
+      "definition": "successful requests divided by the same measurement-window wall time"
+    },
+    "serial_output_tokens_per_second": {
+      "definition": "qualified actual output tokens divided by continuous measurement-window wall time",
+      "excludes_warmup_quality_startup": true,
+      "includes_request_handoffs_failures_and_timeouts": true,
+      "scope": "MEASUREMENT_WINDOW"
+    },
+    "tpot": {
+      "definition": "(last token time - first token time)/(actual output tokens - 1)",
+      "network_batch_is_token_clock": false,
+      "unknown_when_fewer_than_two_tokens": true
+    },
+    "ttft": {
+      "definition": "first real output token monotonic time minus request submission monotonic time"
+    }
+  },
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "quality_and_performance_separation": "performance uses ignore_eos=true to exercise the frozen decode budget; quality requests retain normal EOS",
+  "quality_cases": [
+    "canary_marker",
+    "canary_math391",
+    "canary_json",
+    "canary_quote",
+    "canary_transform"
+  ],
+  "schema": 1,
+  "status": "ROUND13_WORKLOADS_FROZEN",
+  "workloads": {
+    "W0": {
+      "case_id": "edge64",
+      "fixture": "round10-t1-fixture.json",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "hybrid_threshold": 129,
+      "input_tokens": 64,
+      "output_tokens": 2,
+      "path": "HYBRID",
+      "purpose": "ROUND12A_W1_BRIDGE",
+      "sampling": {
+        "ignore_eos": true,
+        "logprob_start_len": -1,
+        "max_new_tokens": 2,
+        "return_logprob": true,
+        "sampling_seed": 20260920,
+        "stream": true,
+        "temperature": 0,
+        "top_p": 1
+      }
+    },
+    "W1": {
+      "case_id": "edge128",
+      "fixture": "round11-t1-fixture.json",
+      "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+      "hybrid_threshold": 129,
+      "input_tokens": 128,
+      "output_tokens": 16,
+      "path": "HYBRID",
+      "purpose": "PREFILL_TTFT",
+      "sampling": {
+        "ignore_eos": true,
+        "logprob_start_len": -1,
+        "max_new_tokens": 16,
+        "return_logprob": true,
+        "sampling_seed": 20260920,
+        "stream": true,
+        "temperature": 0,
+        "top_p": 1
+      }
+    },
+    "W2": {
+      "case_id": "edge128",
+      "fixture": "round11-t1-fixture.json",
+      "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+      "hybrid_threshold": 129,
+      "input_tokens": 128,
+      "output_tokens": 128,
+      "path": "HYBRID",
+      "purpose": "DECODE_TPOT",
+      "sampling": {
+        "ignore_eos": true,
+        "logprob_start_len": -1,
+        "max_new_tokens": 128,
+        "return_logprob": true,
+        "sampling_seed": 20260920,
+        "stream": true,
+        "temperature": 0,
+        "top_p": 1
+      }
+    },
+    "W3": {
+      "case_id": "edge512",
+      "fixture": "round11-t1-fixture.json",
+      "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+      "hybrid_threshold": 513,
+      "input_tokens": 512,
+      "output_tokens": 16,
+      "path": "HYBRID",
+      "purpose": "LONGER_PREFILL_EXPERIMENTAL",
+      "sampling": {
+        "ignore_eos": true,
+        "logprob_start_len": -1,
+        "max_new_tokens": 16,
+        "return_logprob": true,
+        "sampling_seed": 20260920,
+        "stream": true,
+        "temperature": 0,
+        "top_p": 1
+      }
+    },
+    "W4": {
+      "case_id": "edge64",
+      "fixture": "round10-t1-fixture.json",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "hybrid_threshold": 129,
+      "input_tokens": 64,
+      "output_tokens": 32,
+      "path": "HYBRID",
+      "purpose": "SHORT_CONTROL",
+      "sampling": {
+        "ignore_eos": true,
+        "logprob_start_len": -1,
+        "max_new_tokens": 32,
+        "return_logprob": true,
+        "sampling_seed": 20260920,
+        "stream": true,
+        "temperature": 0,
+        "top_p": 1
+      }
+    }
+  }
+}

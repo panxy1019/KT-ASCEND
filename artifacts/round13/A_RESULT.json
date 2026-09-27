@@ -1,0 +1,511 @@
+{
+  "schema": 1,
+  "status": "A_NO_PROMOTION_WITH_MIRROR_GAPS",
+  "runs": [
+    {
+      "version": 207,
+      "strategy": "uniform",
+      "block": "A",
+      "path": "artifacts/round13/remote-evidence/v207/20260927-round13-a-uniform-a-v207/round13-a-final.json",
+      "metrics": {
+        "W0": {
+          "e2e_seconds_median": 2.789990711,
+          "ttft_seconds_median": 2.467017568,
+          "tpot_seconds_median": 0.326794784,
+          "serial_output_tokens_per_second": 0.7145109397021807,
+          "requests_per_second": 0.35725546985109036,
+          "actual_output_tokens": 6,
+          "successes": 3
+        },
+        "W1": {
+          "e2e_seconds_median": 10.675822436,
+          "ttft_seconds_median": 4.998889665,
+          "tpot_seconds_median": 0.3788941136,
+          "serial_output_tokens_per_second": 1.4983048758759259,
+          "requests_per_second": 0.09364405474224537,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W2": {
+          "e2e_seconds_median": 59.021464731,
+          "ttft_seconds_median": 5.011017254,
+          "tpot_seconds_median": 0.424991650976378,
+          "serial_output_tokens_per_second": 2.1699165738311654,
+          "requests_per_second": 0.01695247323305598,
+          "actual_output_tokens": 384,
+          "successes": 3
+        },
+        "W3": {
+          "e2e_seconds_median": 30.153384441,
+          "ttft_seconds_median": 20.222061516,
+          "tpot_seconds_median": 0.661574377,
+          "serial_output_tokens_per_second": 0.5302805818211699,
+          "requests_per_second": 0.03314253636382312,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W4": {
+          "e2e_seconds_median": 13.019790066,
+          "ttft_seconds_median": 2.449904106,
+          "tpot_seconds_median": 0.34099534951612903,
+          "serial_output_tokens_per_second": 2.4476618808248833,
+          "requests_per_second": 0.0764894337757776,
+          "actual_output_tokens": 96,
+          "successes": 3
+        }
+      },
+      "quality_pass_count": 3,
+      "cancel_pass": true,
+      "qsa_complete": true,
+      "ple_complete": true,
+      "physical": {
+        "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+        "total_experts": 1536,
+        "total_bytes": 15099494400,
+        "per_layer_counts": null
+      },
+      "resource": {
+        "whole_card_hbm_peak_mib": 28812,
+        "owned_hbm_peak_mib": 25794,
+        "host_cgroup_peak_gib": 336.5592918395996
+      }
+    },
+    {
+      "version": 208,
+      "strategy": "frequency",
+      "block": "A",
+      "path": "artifacts/round13/remote-evidence/v208/20260927-round13-a-frequency-a-v208/round13-a-final.json",
+      "metrics": {
+        "W0": {
+          "e2e_seconds_median": 3.329978932,
+          "ttft_seconds_median": 2.972968046,
+          "tpot_seconds_median": 0.356925472,
+          "serial_output_tokens_per_second": 0.600140834329423,
+          "requests_per_second": 0.3000704171647115,
+          "actual_output_tokens": 6,
+          "successes": 3
+        },
+        "W1": {
+          "e2e_seconds_median": 10.170751829,
+          "ttft_seconds_median": 4.858007072,
+          "tpot_seconds_median": 0.35417649346666663,
+          "serial_output_tokens_per_second": 1.5289072764893086,
+          "requests_per_second": 0.09555670478058179,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W2": {
+          "e2e_seconds_median": 57.228168664,
+          "ttft_seconds_median": 4.983550348,
+          "tpot_seconds_median": 0.41219157676377954,
+          "serial_output_tokens_per_second": 2.2374323260188094,
+          "requests_per_second": 0.017479940047021948,
+          "actual_output_tokens": 384,
+          "successes": 3
+        },
+        "W3": {
+          "e2e_seconds_median": 33.941215105,
+          "ttft_seconds_median": 23.768525115,
+          "tpot_seconds_median": 0.6781730957333334,
+          "serial_output_tokens_per_second": 0.48368745326516666,
+          "requests_per_second": 0.030230465829072916,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W4": {
+          "e2e_seconds_median": 12.725912941,
+          "ttft_seconds_median": 2.502600293,
+          "tpot_seconds_median": 0.3297125552903226,
+          "serial_output_tokens_per_second": 2.5066138388692765,
+          "requests_per_second": 0.07833168246466489,
+          "actual_output_tokens": 96,
+          "successes": 3
+        }
+      },
+      "quality_pass_count": 3,
+      "cancel_pass": true,
+      "qsa_complete": true,
+      "ple_complete": true,
+      "physical": {
+        "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+        "total_experts": 1536,
+        "total_bytes": 15099494400,
+        "per_layer_counts": null
+      },
+      "resource": {
+        "whole_card_hbm_peak_mib": 30865,
+        "owned_hbm_peak_mib": 27848,
+        "host_cgroup_peak_gib": 327.58974838256836
+      }
+    },
+    {
+      "version": 225,
+      "strategy": "front_loading",
+      "block": "A",
+      "path": "artifacts/round13/remote-evidence/v225/20260927-round13-a-front-a-v225/round13-a-final.json",
+      "metrics": {
+        "W0": {
+          "e2e_seconds_median": 3.428877907,
+          "ttft_seconds_median": 3.059472288,
+          "tpot_seconds_median": 0.369589057,
+          "serial_output_tokens_per_second": 0.5826684185241373,
+          "requests_per_second": 0.29133420926206866,
+          "actual_output_tokens": 6,
+          "successes": 3
+        },
+        "W1": {
+          "e2e_seconds_median": 11.086759887,
+          "ttft_seconds_median": 5.216232863,
+          "tpot_seconds_median": 0.39017179673333335,
+          "serial_output_tokens_per_second": 1.4521250640177426,
+          "requests_per_second": 0.09075781650110891,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W2": {
+          "e2e_seconds_median": 58.638239312,
+          "ttft_seconds_median": 5.082724861,
+          "tpot_seconds_median": 0.421695856968504,
+          "serial_output_tokens_per_second": 2.2002289748167,
+          "requests_per_second": 0.017189288865755468,
+          "actual_output_tokens": 384,
+          "successes": 3
+        },
+        "W3": {
+          "e2e_seconds_median": 31.037866285,
+          "ttft_seconds_median": 21.014396808,
+          "tpot_seconds_median": 0.6435270437999999,
+          "serial_output_tokens_per_second": 0.5212831689311153,
+          "requests_per_second": 0.032580198058194704,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W4": {
+          "e2e_seconds_median": 13.667010232,
+          "ttft_seconds_median": 2.686873888,
+          "tpot_seconds_median": 0.35416964245161286,
+          "serial_output_tokens_per_second": 2.3388826908455624,
+          "requests_per_second": 0.07309008408892383,
+          "actual_output_tokens": 96,
+          "successes": 3
+        }
+      },
+      "quality_pass_count": 3,
+      "cancel_pass": true,
+      "qsa_complete": true,
+      "ple_complete": true,
+      "physical": {
+        "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+        "total_experts": 1536,
+        "total_bytes": 15099494400,
+        "per_layer_counts": null
+      },
+      "resource": {
+        "whole_card_hbm_peak_mib": 30861,
+        "owned_hbm_peak_mib": 27844,
+        "host_cgroup_peak_gib": 331.5210838317871
+      }
+    },
+    {
+      "version": 226,
+      "strategy": "random_seed42",
+      "block": "A",
+      "path": "artifacts/round13/remote-evidence/v226/20260927-round13-a-random-a-v226/round13-a-final.json",
+      "metrics": {
+        "W0": {
+          "e2e_seconds_median": 3.451771242,
+          "ttft_seconds_median": 3.062027917,
+          "tpot_seconds_median": 0.390420107,
+          "serial_output_tokens_per_second": 0.578766150997206,
+          "requests_per_second": 0.289383075498603,
+          "actual_output_tokens": 6,
+          "successes": 3
+        },
+        "W1": {
+          "e2e_seconds_median": 11.547902051,
+          "ttft_seconds_median": 5.063751763,
+          "tpot_seconds_median": 0.4104155142,
+          "serial_output_tokens_per_second": 1.3891547035208212,
+          "requests_per_second": 0.08682216897005132,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W2": {
+          "e2e_seconds_median": 57.329694796,
+          "ttft_seconds_median": 5.034685994,
+          "tpot_seconds_median": 0.41177063721259843,
+          "serial_output_tokens_per_second": 2.1946554306925656,
+          "requests_per_second": 0.01714574555228567,
+          "actual_output_tokens": 384,
+          "successes": 3
+        },
+        "W3": {
+          "e2e_seconds_median": 30.139713437,
+          "ttft_seconds_median": 20.42645831,
+          "tpot_seconds_median": 0.6447280816666666,
+          "serial_output_tokens_per_second": 0.5316471475355276,
+          "requests_per_second": 0.03322794672097047,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W4": {
+          "e2e_seconds_median": 13.141045222,
+          "ttft_seconds_median": 2.470655024,
+          "tpot_seconds_median": 0.3442229065483871,
+          "serial_output_tokens_per_second": 2.4270861597639173,
+          "requests_per_second": 0.07584644249262242,
+          "actual_output_tokens": 96,
+          "successes": 3
+        }
+      },
+      "quality_pass_count": 3,
+      "cancel_pass": true,
+      "qsa_complete": true,
+      "ple_complete": true,
+      "physical": {
+        "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+        "total_experts": 1536,
+        "total_bytes": 15099494400,
+        "per_layer_counts": null
+      },
+      "resource": {
+        "whole_card_hbm_peak_mib": 28905,
+        "owned_hbm_peak_mib": 25888,
+        "host_cgroup_peak_gib": 333.5660171508789
+      }
+    }
+  ],
+  "superseded_pre_common_source_runs": [
+    {
+      "version": 206,
+      "strategy": "uniform",
+      "block": "A",
+      "path": "artifacts/round13/remote-evidence/v206/20260927-round13-a-uniform-a-v206/round13-a-final.json",
+      "metrics": {
+        "W0": {
+          "e2e_seconds_median": 2.984400449,
+          "ttft_seconds_median": 2.63347016,
+          "tpot_seconds_median": 0.350306789,
+          "serial_output_tokens_per_second": 0.6659454147811636,
+          "requests_per_second": 0.3329727073905818,
+          "actual_output_tokens": 6,
+          "successes": 3
+        },
+        "W1": {
+          "e2e_seconds_median": 11.314832983,
+          "ttft_seconds_median": 5.281307196,
+          "tpot_seconds_median": 0.4015785351333333,
+          "serial_output_tokens_per_second": 1.416418877344967,
+          "requests_per_second": 0.08852617983406044,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W2": {
+          "e2e_seconds_median": 61.188238832,
+          "ttft_seconds_median": 5.326539414,
+          "tpot_seconds_median": 0.43987142229921256,
+          "serial_output_tokens_per_second": 2.0913866374010976,
+          "requests_per_second": 0.016338958104696075,
+          "actual_output_tokens": 384,
+          "successes": 3
+        },
+        "W3": {
+          "e2e_seconds_median": 31.723270233,
+          "ttft_seconds_median": 21.551047104,
+          "tpot_seconds_median": 0.6773046303333333,
+          "serial_output_tokens_per_second": 0.5039552757580656,
+          "requests_per_second": 0.0314972047348791,
+          "actual_output_tokens": 48,
+          "successes": 3
+        },
+        "W4": {
+          "e2e_seconds_median": 14.105871132,
+          "ttft_seconds_median": 2.714479406,
+          "tpot_seconds_median": 0.3673981586774194,
+          "serial_output_tokens_per_second": 2.2654968163870235,
+          "requests_per_second": 0.07079677551209448,
+          "actual_output_tokens": 96,
+          "successes": 3
+        }
+      },
+      "quality_pass_count": 3,
+      "cancel_pass": true,
+      "qsa_complete": true,
+      "ple_complete": true,
+      "physical": {
+        "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+        "total_experts": 1536,
+        "total_bytes": 15099494400,
+        "per_layer_counts": null
+      },
+      "resource": {
+        "whole_card_hbm_peak_mib": 28812,
+        "owned_hbm_peak_mib": 25794,
+        "host_cgroup_peak_gib": 337.8921585083008
+      }
+    }
+  ],
+  "candidates": {
+    "frequency": {
+      "status": "INCOMPLETE_PAIR",
+      "missing": [
+        "frequency:B",
+        "uniform:B"
+      ],
+      "observed_first_block_ratios": {
+        "W0": {
+          "e2e": 1.1935448096192602,
+          "ttft": 1.2050858836851217,
+          "tpot": 1.0922006392856014,
+          "serial_output_tokens_per_second": 0.8399323243106271,
+          "requests_per_second": 0.8399323243106271
+        },
+        "W1": {
+          "e2e": 0.9526902390867004,
+          "ttft": 0.9718172229352456,
+          "tpot": 0.934763778992281,
+          "serial_output_tokens_per_second": 1.0204246819897,
+          "requests_per_second": 1.0204246819897
+        },
+        "W2": {
+          "e2e": 0.9696162053047439,
+          "ttft": 0.9945186965824004,
+          "tpot": 0.969881586654252,
+          "serial_output_tokens_per_second": 1.0311144460583752,
+          "requests_per_second": 1.0311144460583752
+        },
+        "W3": {
+          "e2e": 1.1256187567074438,
+          "ttft": 1.1753759672916624,
+          "tpot": 1.0250897243158095,
+          "serial_output_tokens_per_second": 0.9121349524133318,
+          "requests_per_second": 0.9121349524133318
+        },
+        "W4": {
+          "e2e": 0.9774284282995136,
+          "ttft": 1.021509489645306,
+          "tpot": 0.966912175659238,
+          "serial_output_tokens_per_second": 1.0240850088430211,
+          "requests_per_second": 1.0240850088430211
+        }
+      },
+      "observed_first_block_primary_w2_tpot_pass": false,
+      "promotion_eligible": false
+    },
+    "front_loading": {
+      "status": "INCOMPLETE_PAIR",
+      "missing": [
+        "front_loading:B",
+        "uniform:B"
+      ],
+      "observed_first_block_ratios": {
+        "W0": {
+          "e2e": 1.228992588929089,
+          "ttft": 1.240150182829991,
+          "tpot": 1.1309515178797958,
+          "serial_output_tokens_per_second": 0.8154786528069151,
+          "requests_per_second": 0.8154786528069151
+        },
+        "W1": {
+          "e2e": 1.0384923459961524,
+          "ttft": 1.0434782946944678,
+          "tpot": 1.029764735657095,
+          "serial_output_tokens_per_second": 0.96917862806047,
+          "requests_per_second": 0.96917862806047
+        },
+        "W2": {
+          "e2e": 0.9935070161212262,
+          "ttft": 1.014309990040996,
+          "tpot": 0.992245038225334,
+          "serial_output_tokens_per_second": 1.0139693854367937,
+          "requests_per_second": 1.0139693854367937
+        },
+        "W3": {
+          "e2e": 1.0293327551913993,
+          "ttft": 1.039181726916076,
+          "tpot": 0.9727206285076544,
+          "serial_output_tokens_per_second": 0.9830327317301449,
+          "requests_per_second": 0.9830327317301449
+        },
+        "W4": {
+          "e2e": 1.0497104916991062,
+          "ttft": 1.0967261459008306,
+          "tpot": 1.0386348170266195,
+          "serial_output_tokens_per_second": 0.9555579180149419,
+          "requests_per_second": 0.9555579180149419
+        }
+      },
+      "observed_first_block_primary_w2_tpot_pass": false,
+      "promotion_eligible": false
+    },
+    "random_seed42": {
+      "status": "INCOMPLETE_PAIR",
+      "missing": [
+        "random_seed42:B",
+        "uniform:B"
+      ],
+      "observed_first_block_ratios": {
+        "W0": {
+          "e2e": 1.237198112664254,
+          "ttft": 1.2411861012738439,
+          "tpot": 1.1946950383394124,
+          "serial_output_tokens_per_second": 0.8100172003502769,
+          "requests_per_second": 0.8100172003502769
+        },
+        "W1": {
+          "e2e": 1.0816873472960036,
+          "ttft": 1.0129753009861642,
+          "tpot": 1.083193165236864,
+          "serial_output_tokens_per_second": 0.9271508929107006,
+          "requests_per_second": 0.9271508929107006
+        },
+        "W2": {
+          "e2e": 0.971336361394782,
+          "ttft": 1.004723340351923,
+          "tpot": 0.9688911211940152,
+          "serial_output_tokens_per_second": 1.011400833174762,
+          "requests_per_second": 1.011400833174762
+        },
+        "W3": {
+          "e2e": 0.9995466179252034,
+          "ttft": 1.010107614094551,
+          "tpot": 0.9745360523034081,
+          "serial_output_tokens_per_second": 1.0025770615806153,
+          "requests_per_second": 1.0025770615806153
+        },
+        "W4": {
+          "e2e": 1.0093131421770498,
+          "ttft": 1.008470093971915,
+          "tpot": 1.0094651057172421,
+          "serial_output_tokens_per_second": 0.9915937241078282,
+          "requests_per_second": 0.9915937241078282
+        }
+      },
+      "observed_first_block_primary_w2_tpot_pass": false,
+      "promotion_eligible": false
+    }
+  },
+  "promoted": null,
+  "full_four_strategy_coverage": false,
+  "all_strategies_single_block_measured": true,
+  "all_first_blocks_reject_primary_gate": true,
+  "single_block_w2_tpot_ranking": [
+    {
+      "strategy": "random_seed42",
+      "w2_tpot_ratio": 0.9688911211940152
+    },
+    {
+      "strategy": "frequency",
+      "w2_tpot_ratio": 0.969881586654252
+    },
+    {
+      "strategy": "front_loading",
+      "w2_tpot_ratio": 0.992245038225334
+    }
+  ],
+  "shared_uniform_control": true,
+  "gate": {
+    "primary": "W2 TPOT candidate/baseline <= 0.95 in both blocks",
+    "protection": "No workload has TTFT/E2E >1.05 in both blocks or serial throughput <0.95 in both blocks"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND13_A_PLACEMENT_COMPONENT",
+  "profiles_sha256": "27987bceb25506c9ab01115c328f519c14ecb24fbce19e89967cc5cea063ecad",
+  "runs": {
+    "190": {
+      "strategy": "front_loading",
+      "layer": 0,
+      "capacity": 512,
+      "guard_role": "front-a"
+    },
+    "191": {
+      "strategy": "front_loading",
+      "layer": 3,
+      "capacity": 0,
+      "guard_role": "front-b"
+    },
+    "192": {
+      "strategy": "frequency",
+      "layer": 2,
+      "capacity": 242,
+      "guard_role": "frequency-a"
+    },
+    "193": {
+      "strategy": "random_seed42",
+      "layer": 44,
+      "capacity": 44,
+      "guard_role": "random-a"
+    },
+    "194": {
+      "strategy": "front_loading",
+      "layer": 0,
+      "capacity": 512,
+      "guard_role": "front-a",
+      "repair_for": 190
+    }
+  },
+  "unchanged": [
+    "model revision",
+    "MXFP4 CPU bank",
+    "BF16/NZ29 NPU experts",
+    "C128 NUMA2/3/4/7",
+    "route precision",
+    "deferred off",
+    "Dynamic off"
+  ],
+  "relative_l2_max": 0.01,
+  "repeat_hashes": 3,
+  "automatic_retries": 0
+}

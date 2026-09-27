@@ -5,7 +5,12 @@ from types import SimpleNamespace as NS
 import unittest
 from unittest.mock import patch
 
-from migration_bridge.round9.runtime.framework_hooks import RuntimeCollector, framework_before, prepare_masks
+from migration_bridge.round9.runtime.framework_hooks import (
+    RuntimeCollector,
+    framework_before,
+    nonkt_physical_document,
+    prepare_masks,
+)
 from migration_bridge.round9.runtime.prefill_telemetry import PrefillCollector
 
 
@@ -63,6 +68,24 @@ class FrameworkHooksTests(unittest.TestCase):
             result = json.loads(c.path.read_text())
             self.assertEqual(result['statistics']['completed_phases'], 1)
             self.assertEqual([r['request_id'] for r in result['requests']], ['new'])
+
+    def test_nonkt_physical_record_rejects_q32_and_binds_full_bf16_layers(self):
+        binding = {
+            'status': 'PASS_ROUND12_NONKT_OFFLOADER_BINDING',
+            'decoder_layers': 48,
+            'cpu_parameter_bytes': 248931386496,
+            'offloader_accounted_bytes': 248931386496,
+            'offloader_sha256': 'a' * 64,
+            'source_identity': {'revision': 'frozen'},
+        }
+        document = nonkt_physical_document(binding)
+        self.assertEqual(document['status'], 'RECORDED_NONKT_FULL_BF16_OFFLOADERV1')
+        self.assertFalse(document['static_q32_active'])
+        self.assertEqual(document['decoder_layers'], 48)
+        self.assertEqual(document['cpu_parameter_bytes'], 248931386496)
+        broken = dict(binding, offloader_accounted_bytes=1)
+        with self.assertRaises(RuntimeError):
+            nonkt_physical_document(broken)
 
 
 if __name__ == '__main__': unittest.main()

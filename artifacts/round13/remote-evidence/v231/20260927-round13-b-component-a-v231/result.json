@@ -1,0 +1,441 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "candidate": "DIRECT_RESIDENT_BF16_ROW_DECODE",
+  "block": "A",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "physical_device": 12,
+  "iterations": 5,
+  "precision": "BF16_INPUT_FP32_ATTENTION",
+  "rows": [
+    {
+      "layer": 3,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.481529,
+        5.363783,
+        5.30091,
+        5.2888,
+        5.271509
+      ],
+      "candidate_wall_ms": [
+        0.966796,
+        0.967236,
+        0.942175,
+        0.979326,
+        0.973436
+      ],
+      "baseline_device_ms": [
+        5.348859786987305,
+        5.2554402351379395,
+        5.191279888153076,
+        5.17855978012085,
+        5.166560173034668
+      ],
+      "candidate_device_ms": [
+        0.8540199995040894,
+        0.8525400161743164,
+        0.8330000042915344,
+        0.8730800151824951,
+        0.854640007019043
+      ],
+      "baseline_median_ms": 5.30091,
+      "candidate_median_ms": 0.967236,
+      "candidate_over_baseline": 0.18246602941759058,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7",
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7",
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        8.920771,
+        9.083779,
+        8.994065,
+        9.177764,
+        9.010886
+      ],
+      "candidate_wall_ms": [
+        0.957215,
+        0.972296,
+        0.979496,
+        0.994037,
+        0.949925
+      ],
+      "baseline_device_ms": [
+        8.804960250854492,
+        8.965080261230469,
+        8.880999565124512,
+        9.06332015991211,
+        8.898200035095215
+      ],
+      "candidate_device_ms": [
+        0.8507000207901001,
+        0.8637800216674805,
+        0.867680013179779,
+        0.8856800198554993,
+        0.8363199830055237
+      ],
+      "baseline_median_ms": 9.010886,
+      "candidate_median_ms": 0.972296,
+      "candidate_over_baseline": 0.10790237497178415,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb",
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb",
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        31.580262,
+        32.248893,
+        31.197054,
+        32.272944,
+        31.275657
+      ],
+      "candidate_wall_ms": [
+        1.05196,
+        1.036279,
+        1.015398,
+        0.998547,
+        1.039229
+      ],
+      "baseline_device_ms": [
+        31.45401954650879,
+        32.12812042236328,
+        31.07939910888672,
+        32.15843963623047,
+        31.148460388183594
+      ],
+      "candidate_device_ms": [
+        0.9413999915122986,
+        0.9206200242042542,
+        0.9024199843406677,
+        0.8908799886703491,
+        0.9258599877357483
+      ],
+      "baseline_median_ms": 31.580262,
+      "candidate_median_ms": 1.036279,
+      "candidate_over_baseline": 0.032814135614201045,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94",
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94",
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.352293,
+        5.338002,
+        5.30582,
+        5.340192,
+        5.366904
+      ],
+      "candidate_wall_ms": [
+        1.031319,
+        0.988126,
+        1.018198,
+        0.982537,
+        1.024378
+      ],
+      "baseline_device_ms": [
+        5.2311601638793945,
+        5.222259998321533,
+        5.192160129547119,
+        5.214280128479004,
+        5.250899791717529
+      ],
+      "candidate_device_ms": [
+        0.8994399905204773,
+        0.8649399876594543,
+        0.9039599895477295,
+        0.8725399971008301,
+        0.9141200184822083
+      ],
+      "baseline_median_ms": 5.340192,
+      "candidate_median_ms": 1.018198,
+      "candidate_over_baseline": 0.19066692733145174,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95",
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95",
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.031217,
+        9.080259,
+        9.084769,
+        9.025126,
+        9.077649
+      ],
+      "candidate_wall_ms": [
+        1.030169,
+        1.013008,
+        1.015808,
+        1.010618,
+        1.031449
+      ],
+      "baseline_device_ms": [
+        8.908180236816406,
+        8.957440376281738,
+        8.95341968536377,
+        8.90250015258789,
+        8.955699920654297
+      ],
+      "candidate_device_ms": [
+        0.9130799770355225,
+        0.8980000019073486,
+        0.8928200006484985,
+        0.891319990158081,
+        0.9128000140190125
+      ],
+      "baseline_median_ms": 9.077649,
+      "candidate_median_ms": 1.015808,
+      "candidate_over_baseline": 0.11190210152430438,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7",
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7",
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        31.504277,
+        31.462615,
+        31.454705,
+        32.800019,
+        31.522499
+      ],
+      "candidate_wall_ms": [
+        1.362905,
+        1.04647,
+        1.030849,
+        1.054229,
+        1.007227
+      ],
+      "baseline_device_ms": [
+        31.384780883789062,
+        31.34514045715332,
+        31.332199096679688,
+        32.705421447753906,
+        31.40637969970703
+      ],
+      "candidate_device_ms": [
+        1.235200047492981,
+        0.9275400042533875,
+        0.9182599782943726,
+        0.9420599937438965,
+        0.8766999840736389
+      ],
+      "baseline_median_ms": 31.504277,
+      "candidate_median_ms": 1.04647,
+      "candidate_over_baseline": 0.0332167597434469,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da",
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da",
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.421536,
+        5.416005,
+        5.5005,
+        5.463578,
+        5.585994
+      ],
+      "candidate_wall_ms": [
+        1.024658,
+        1.032739,
+        1.070881,
+        1.078721,
+        1.027179
+      ],
+      "baseline_device_ms": [
+        5.309639930725098,
+        5.294740200042725,
+        5.3810601234436035,
+        5.340320110321045,
+        5.438320159912109
+      ],
+      "candidate_device_ms": [
+        0.9128599762916565,
+        0.9151600003242493,
+        0.9557200074195862,
+        0.9499199986457825,
+        0.9181399941444397
+      ],
+      "baseline_median_ms": 5.463578,
+      "candidate_median_ms": 1.032739,
+      "candidate_over_baseline": 0.18902246842636822,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf",
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf",
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.100729,
+        9.225166,
+        9.10933,
+        9.30732,
+        9.071338
+      ],
+      "candidate_wall_ms": [
+        1.023618,
+        1.023829,
+        1.06321,
+        0.998557,
+        0.973206
+      ],
+      "baseline_device_ms": [
+        8.983779907226562,
+        9.112580299377441,
+        8.985039710998535,
+        9.195879936218262,
+        8.96716022491455
+      ],
+      "candidate_device_ms": [
+        0.913100004196167,
+        0.9024800062179565,
+        0.9386199712753296,
+        0.8909800052642822,
+        0.8605999946594238
+      ],
+      "baseline_median_ms": 9.10933,
+      "candidate_median_ms": 1.023618,
+      "candidate_over_baseline": 0.11237028409334165,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564",
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564",
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        31.572261,
+        31.512838,
+        31.591992,
+        31.727718,
+        31.54846
+      ],
+      "candidate_wall_ms": [
+        0.978926,
+        0.998177,
+        0.993157,
+        0.984027,
+        1.047429
+      ],
+      "baseline_device_ms": [
+        31.448780059814453,
+        31.39080047607422,
+        31.469100952148438,
+        31.6058406829834,
+        31.391380310058594
+      ],
+      "candidate_device_ms": [
+        0.8555799722671509,
+        0.8750200271606445,
+        0.8804600238800049,
+        0.8680599927902222,
+        0.8873000144958496
+      ],
+      "baseline_median_ms": 31.572261,
+      "candidate_median_ms": 0.993157,
+      "candidate_over_baseline": 0.03145663213667212,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e",
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e",
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e"
+      ]
+    }
+  ],
+  "contract_checks": {
+    "per_query_causal_future_rejected": true,
+    "unqualified_geometry_strategy": "ROW",
+    "unqualified_geometry_reference": true,
+    "complete_batch_drained": true,
+    "cancel_drained": true,
+    "stale_completion_rejected": true,
+    "stale_completion_fail_stop": true,
+    "runtime_ready_after_cancel": true,
+    "event_statuses": [
+      "CONTEXT_REFERENCE_QSA_DISPATCH",
+      "CONTEXT_REFERENCE_BATCH_DRAINED",
+      "CONTEXT_REFERENCE_REQUEST_DRAINED",
+      "CONTEXT_REFERENCE_ABORTED"
+    ]
+  },
+  "automatic_retries": 0,
+  "baseline_allocated": 0,
+  "baseline_reserved": 0,
+  "row_count": 9,
+  "worst_candidate_over_baseline": 0.19066692733145174,
+  "all_rows_improve_10pct": true,
+  "peak_allocated": 129611264,
+  "after_allocated": 16896,
+  "after_reserved": 2097152,
+  "error": "RuntimeError: Round13 B allocator did not return to baseline"
+}

@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_F_MODEL_PROCESS",
+  "version": 229,
+  "stage": "ROUND13_F_FINAL",
+  "container_id": "9ba43aaa32b267eb3df68befb16f7b41a439981490f3beaae011d79b1a63c8ce",
+  "started_at": 1790516530.395241,
+  "generation_driver_starts": 1,
+  "server_ready_at": 1790516661.4958339,
+  "driver_command": [
+    "docker",
+    "exec",
+    "9ba43aaa32b267eb3df68befb16f7b41a439981490f3beaae011d79b1a63c8ce",
+    "python",
+    "/round9/round13-f-final-b-v229/round13_f_model_driver.py",
+    "--version",
+    "229",
+    "--implementation",
+    "candidate",
+    "--block",
+    "B",
+    "--out",
+    "/out",
+    "--fixture10",
+    "/round9/round13-f-final-b-v229/round10-t1-fixture.json",
+    "--fixture11",
+    "/round9/round13-f-final-b-v229/round11-t1-fixture.json"
+  ],
+  "driver_exit": 0,
+  "ended_at": 1790517059.5045986,
+  "owned_exit_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 137,
+    "Error": "",
+    "StartedAt": "2026-09-27T13:42:10.295747052Z",
+    "FinishedAt": "2026-09-27T13:51:09.463395778Z"
+  },
+  "guard_exit_ack": {
+    "time": 1790517070.1047533,
+    "action": "OWNED_EXITED",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-09-27T13:42:10.295747052Z",
+      "FinishedAt": "2026-09-27T13:51:09.463395778Z"
+    }
+  },
+  "owned_container_removed": true,
+  "physical12_after": "EMPTY"
+}

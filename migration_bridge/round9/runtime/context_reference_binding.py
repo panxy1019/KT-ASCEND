@@ -14,6 +14,25 @@ def _sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def _qsa_binding_arguments(consumer_path, *, runtime_path=None, binding_path=None):
+    path = os.environ.get("ROUND9_QSA_SOURCE_BINDING")
+    digest = os.environ.get("ROUND9_QSA_SOURCE_BINDING_SHA256")
+    if path is None and digest is None:
+        return {}
+    if not path or not digest:
+        raise RuntimeError("QSA source binding requires a path/hash pair")
+    runtime_path = runtime_path or Path(__file__).with_name(
+        "context_reference_runtime.py")
+    binding_path = binding_path or Path(__file__)
+    return {
+        "qsa_source_binding_path": path,
+        "qsa_source_binding_sha256": digest,
+        "qsa_consumer_sha256": _sha(consumer_path),
+        "qsa_runtime_source_sha256": _sha(runtime_path),
+        "qsa_binding_source_sha256": _sha(binding_path),
+    }
+
+
 def _serial_profile(args):
     return (
         args.disable_overlap_schedule and args.disable_radix_cache
@@ -42,6 +61,7 @@ def context_reference_prepare(runner):
     import torch
     import torch_npu
     receipt = profile["device_gate"]
+    qwen_source = Path(qsa.__file__).resolve().parents[2] / "models/qwen4_exp.py"
     gate = require_context_reference_gate(
         receipt["path"], receipt["sha256"],
         source_identity=binding["source_identity"],
@@ -52,6 +72,7 @@ def context_reference_prepare(runner):
         },
         torch_version=str(torch.__version__),
         torch_npu_version=str(torch_npu.__version__),
+        **_qsa_binding_arguments(qwen_source),
     )
     from .context_staging import MAX_FINAL_STAGING_BYTES
     runner._round9_context_reference_gate = gate
@@ -82,7 +103,12 @@ def context_reference_ready(runner):
         with log.open("a") as stream:
             stream.write(json.dumps(item, allow_nan=False) + "\n")
 
-    runtime = ContextReferenceRuntime(profile["mode"], event=event)
+    runtime = ContextReferenceRuntime(
+        profile["mode"], event=event,
+        approved_prefill_candidate=(
+            runner._round9_context_reference_gate.get(
+                "qsa_source_binding", {}).get("mode") == "APPROVED_CANDIDATE"),
+    )
     for layer, owner in owners:
         if getattr(owner, "_round9_context_consumer", None) is not None:
             raise RuntimeError("context reference consumer already bound")
@@ -97,6 +123,8 @@ def context_reference_ready(runner):
         "workspace_bytes": runner._round9_context_workspace_bytes,
         "hbm_release": False,
         "qualification": "COMPONENT_GATE_BOUND_FULL_MODEL_PENDING",
+        "qsa_source_binding": runner._round9_context_reference_gate.get(
+            "qsa_source_binding", {"mode": "QUALIFIED_ORIGINAL"}),
     })
 
 

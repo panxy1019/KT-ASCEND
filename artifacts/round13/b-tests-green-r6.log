@@ -1,0 +1,23 @@
+...E.s.
+======================================================================
+ERROR: test_model_snapshots_change_only_candidate_runtime_tuple (artifacts.round13.tests.test_round13_b.Round13BSourceTests.test_model_snapshots_change_only_candidate_runtime_tuple)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round13/tests/test_round13_b.py", line 252, in test_model_snapshots_change_only_candidate_runtime_tuple
+    self.model_builder.build(args)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round13/build_round13_b_snapshot.py", line 134, in build
+    shutil.copy2(args.inputs / source, args.output / target)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/shutil.py", line 468, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ~~~~^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round13/round11_t4_driver.py'
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.041s
+
+FAILED (errors=1, skipped=1)

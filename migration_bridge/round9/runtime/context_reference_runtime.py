@@ -99,15 +99,56 @@ def _consume_reference_rows(identity, mode, layer_id, q, keys, values, selected,
     return torch.cat(outputs, dim=0)
 
 
+def _consume_approved_candidate(identity, mode, layer_id, q, keys, values,
+                                selected, positions, reference_consumer):
+    """Use the v144 batched branch only for its qualified TP1 text geometry."""
+    import torch
+
+    if (not isinstance(q, torch.Tensor) or not isinstance(keys, torch.Tensor)
+            or not isinstance(values, torch.Tensor)
+            or not isinstance(selected, torch.Tensor)
+            or not isinstance(positions, torch.Tensor)):
+        raise TypeError("QSA candidate consumer requires Torch tensors")
+    qualified_common = (
+        mode == "BF16_COMPACT"
+        and q.ndim == 3 and tuple(q.shape[1:]) == (24, 256)
+        and q.dtype == torch.bfloat16
+        and keys.ndim == 3 and tuple(keys.shape[1:]) == (2, 256)
+        and values.shape == keys.shape
+        and keys.dtype == torch.bfloat16 and values.dtype == torch.bfloat16
+        and selected.ndim == 2 and selected.shape[0] == q.shape[0]
+        and selected.dtype in (torch.int32, torch.int64)
+        and positions.ndim == 1 and positions.shape[0] == q.shape[0]
+        and positions.dtype in (torch.int32, torch.int64)
+    )
+    qualified_prefill = qualified_common and q.shape[0] > 1
+    qualified_decode = qualified_common and q.shape[0] == 1
+    if not (qualified_prefill or qualified_decode):
+        result = _consume_reference_rows(
+            identity, mode, layer_id, q, keys, values, selected, positions,
+            reference_consumer)
+        return result, "ROW" if q.shape[0] == 1 else "ROW_FALLBACK"
+    valid = selected >= 0
+    if bool((valid & (selected > positions[:, None])).any()):
+        raise ValueError("QSA candidate selected a future logical token")
+    result = reference_consumer(q, keys, values, selected)
+    if result.shape != q.shape or result.dtype != q.dtype:
+        raise RuntimeError("QSA candidate changed output shape or dtype")
+    strategy = "VECTORIZED" if qualified_prefill else "DIRECT_BF16_ROW"
+    return result, strategy
+
+
 class ContextReferenceRuntime:
     """One serial request; each scheduler batch must consume all QSA layers."""
 
-    def __init__(self, mode, *, layers=QSA_LAYERS, consume_rows=None, event=None):
+    def __init__(self, mode, *, layers=QSA_LAYERS, consume_rows=None, event=None,
+                 approved_prefill_candidate=False):
         if mode not in MODES or not layers or any(type(layer) is not int for layer in layers):
             raise ValueError("invalid context reference runtime geometry")
         self.mode = mode
         self.layers = tuple(layers)
         self.consume_rows = consume_rows or _consume_reference_rows
+        self.approved_prefill_candidate = bool(approved_prefill_candidate)
         self.event = event or (lambda item: None)
         self.state = "READY"
         self.identity = None
@@ -145,9 +186,22 @@ class ContextReferenceRuntime:
                 or layer_id != self.layers[self.next_layer]):
             self._poison(RuntimeError("QSA layers must consume in exact ordered sequence"))
         try:
-            result = self.consume_rows(
-                self.identity, self.mode, layer_id, q, keys, values, selected,
-                positions, reference_consumer)
+            if self.approved_prefill_candidate:
+                result, strategy = _consume_approved_candidate(
+                    self.identity, self.mode, layer_id, q, keys, values,
+                    selected, positions, reference_consumer)
+                self.event({
+                    "status": "CONTEXT_REFERENCE_QSA_DISPATCH",
+                    "request_id": self.identity.request_id,
+                    "allocation_epoch": self.identity.allocation_epoch,
+                    "layer": layer_id,
+                    "query_tokens": int(q.shape[0]),
+                    "strategy": strategy,
+                })
+            else:
+                result = self.consume_rows(
+                    self.identity, self.mode, layer_id, q, keys, values, selected,
+                    positions, reference_consumer)
             self.next_layer += 1
             return result
         except BaseException as error:

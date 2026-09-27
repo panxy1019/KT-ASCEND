@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/round9/round13-a-front-a-v209/round13_a_model_driver.py", line 251, in <module>
+    if __name__ == "__main__": main()
+                               ^^^^^^
+  File "/round9/round13-a-front-a-v209/round13_a_model_driver.py", line 247, in main
+    result = run(args.version,args.strategy,args.block,args.out,args.profiles,args.fixture10,args.fixture11)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/round9/round13-a-front-a-v209/round13_a_model_driver.py", line 161, in run
+    path = validate_hybrid_path(rid, read_jsonl(out / "hybrid-path.jsonl"),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/round9/round13-a-front-a-v209/round11_t4_driver.py", line 223, in validate_hybrid_path
+    raise RuntimeError("T4 request did not use the complete Hybrid path")
+RuntimeError: T4 request did not use the complete Hybrid path

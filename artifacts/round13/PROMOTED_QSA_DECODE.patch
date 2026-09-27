@@ -1,0 +1,47 @@
+--- a/runtime/context_reference_gate.py
++++ b/runtime/context_reference_gate.py
+@@ -22,7 +22,7 @@
+     'component_result_sha256': (
+         '651fd396942b61bab45b73d34c6dcb66399a7690753e3617eac44fe7f92f0465'),
+     'candidate_context_reference_runtime_sha256': (
+-        '0b6e6a7fad90e3856ffdcbea233a13baaf1bb342837c68ff344579370773c028'),
++        'eb51e7b0073d397673887b0e0fe6e41d745b8ee72a385faf7f1c28cf78b23fd2'),
+     'candidate_context_reference_binding_sha256': (
+         '97eb1b60d0ee24305ad1a052884b79a3045fa3574fcfc85e8b2c4ccfdbfc0c11'),
+     'integration_component_result_sha256': (
+--- a/runtime/context_reference_runtime.py
++++ b/runtime/context_reference_runtime.py
+@@ -109,10 +109,10 @@
+             or not isinstance(selected, torch.Tensor)
+             or not isinstance(positions, torch.Tensor)):
+         raise TypeError("QSA candidate consumer requires Torch tensors")
+-    qualified = (
++    qualified_common = (
+         mode == "BF16_COMPACT"
+         and q.ndim == 3 and tuple(q.shape[1:]) == (24, 256)
+-        and q.shape[0] > 1 and q.dtype == torch.bfloat16
++        and q.dtype == torch.bfloat16
+         and keys.ndim == 3 and tuple(keys.shape[1:]) == (2, 256)
+         and values.shape == keys.shape
+         and keys.dtype == torch.bfloat16 and values.dtype == torch.bfloat16
+@@ -121,7 +121,9 @@
+         and positions.ndim == 1 and positions.shape[0] == q.shape[0]
+         and positions.dtype in (torch.int32, torch.int64)
+     )
+-    if not qualified:
++    qualified_prefill = qualified_common and q.shape[0] > 1
++    qualified_decode = qualified_common and q.shape[0] == 1
++    if not (qualified_prefill or qualified_decode):
+         result = _consume_reference_rows(
+             identity, mode, layer_id, q, keys, values, selected, positions,
+             reference_consumer)
+@@ -132,7 +134,8 @@
+     result = reference_consumer(q, keys, values, selected)
+     if result.shape != q.shape or result.dtype != q.dtype:
+         raise RuntimeError("QSA candidate changed output shape or dtype")
+-    return result, "VECTORIZED"
++    strategy = "VECTORIZED" if qualified_prefill else "DIRECT_BF16_ROW"
++    return result, strategy
+ 
+ 
+ class ContextReferenceRuntime:

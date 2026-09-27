@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "version": 205,
+  "stage": "ROUND13_A_STATIC_PLACEMENT",
+  "container_id": "ac878f15cd29740431a3cbb434c92ca288098f0a5a00345bdf42cdce8136cadd",
+  "started_at": 1790501839.806443,
+  "generation_driver_starts": 0,
+  "error": "RuntimeError('server exited before Round13 completion')",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round13-a-uniform-a-v205/round13_model_supervisor.py\", line 54, in main\n    raise RuntimeError(\"server exited before Round13 completion\")\nRuntimeError: server exited before Round13 completion\n",
+  "ended_at": 1790501981.1044946,
+  "owned_exit_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 137,
+    "Error": "",
+    "StartedAt": "2026-09-27T09:37:19.730103895Z",
+    "FinishedAt": "2026-09-27T09:39:36.874560715Z"
+  },
+  "guard_exit_ack": {
+    "time": 1790501977.1126895,
+    "action": "OWNED_EXITED",
+    "container_id": "ac878f15cd29740431a3cbb434c92ca288098f0a5a00345bdf42cdce8136cadd",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-09-27T09:37:19.730103895Z",
+      "FinishedAt": "2026-09-27T09:39:36.874560715Z"
+    },
+    "after_guard_stop": true
+  },
+  "owned_container_removed": true,
+  "physical12_after": "EMPTY"
+}

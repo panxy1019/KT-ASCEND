@@ -1,0 +1,537 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_B_SMOKE_PROCESS",
+  "stage": "ROUND13_B_QSA_DECODE",
+  "version": 218,
+  "implementation": "candidate",
+  "mode": "smoke",
+  "block": "B",
+  "profiler": "OFF",
+  "profile_threshold": 513,
+  "default_threshold": 129,
+  "generation_budget": 8,
+  "generation_attempts": 8,
+  "abort_controls": 1,
+  "automatic_retries": 0,
+  "results": [
+    {
+      "case_id": "canary_marker",
+      "phase": "quality",
+      "request_id": "r13-b-v218-candidate-smoke-canary_marker-quality",
+      "e2e_seconds": 16.369644106,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          49,
+          16,
+          15,
+          10951,
+          56,
+          12717,
+          887,
+          12,
+          3793,
+          248046
+        ],
+        "completion_tokens": 10,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          29
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 120
+      },
+      "ple": {
+        "drained": 10,
+        "async": 10
+      }
+    },
+    {
+      "case_id": "canary_math391",
+      "phase": "quality",
+      "request_id": "r13-b-v218-candidate-smoke-canary_math391-quality",
+      "e2e_seconds": 2.26441767,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "completion_tokens": 4,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          27
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 48
+      },
+      "ple": {
+        "drained": 4,
+        "async": 4
+      }
+    },
+    {
+      "case_id": "canary_json",
+      "phase": "quality",
+      "request_id": "r13-b-v218-candidate-smoke-canary_json-quality",
+      "e2e_seconds": 2.937183053,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          4754,
+          547,
+          763,
+          1802,
+          92,
+          248046
+        ],
+        "completion_tokens": 6,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          28
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 72
+      },
+      "ple": {
+        "drained": 6,
+        "async": 6
+      }
+    },
+    {
+      "case_id": "canary_quote",
+      "phase": "quality",
+      "request_id": "r13-b-v218-candidate-smoke-canary_quote-quality",
+      "e2e_seconds": 2.092817956,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          82601,
+          3045,
+          248046
+        ],
+        "completion_tokens": 3,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          31
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "case_id": "canary_transform",
+      "phase": "quality",
+      "request_id": "r13-b-v218-candidate-smoke-canary_transform-quality",
+      "e2e_seconds": 1.863245235,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          24606,
+          31134,
+          248046
+        ],
+        "completion_tokens": 3,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          25
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "case_id": "edge128",
+      "phase": "multi_step",
+      "request_id": "r13-b-v218-candidate-smoke-edge128-multi_step",
+      "e2e_seconds": 17.02010589,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          3897,
+          248046,
+          198,
+          248044,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045
+        ],
+        "completion_tokens": 32,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "length",
+          "length": 32
+        }
+      },
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 420
+      },
+      "ple": {
+        "drained": 35,
+        "async": 35
+      }
+    },
+    {
+      "case_id": "cancel256",
+      "phase": "cancel",
+      "request_id": "r13-b-v218-candidate-smoke-cancel256-cancel",
+      "e2e_seconds": 2.516749602,
+      "cancel_status": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE"
+    },
+    {
+      "case_id": "canary_json",
+      "phase": "reuse",
+      "request_id": "r13-b-v218-candidate-smoke-canary_json-reuse",
+      "e2e_seconds": 2.470274296,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          4754,
+          547,
+          763,
+          1802,
+          92,
+          248046
+        ],
+        "completion_tokens": 6,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          28
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "dispatch_count": 72
+      },
+      "ple": {
+        "drained": 6,
+        "async": 6
+      }
+    }
+  ],
+  "measurement_windows": {},
+  "startup": {
+    "supervisor_started_at": 1790511172.774739,
+    "server_ready_at": 1790511298.8974812,
+    "seconds": 126.12274217605591
+  },
+  "cleanup": {
+    "guard_exit_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY"
+  }
+}

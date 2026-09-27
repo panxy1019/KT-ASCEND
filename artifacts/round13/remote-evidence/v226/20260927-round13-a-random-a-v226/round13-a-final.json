@@ -1,0 +1,5394 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_A_MODEL_PROCESS",
+  "stage": "ROUND13_A_STATIC_PLACEMENT",
+  "version": 226,
+  "strategy": "random_seed42",
+  "block": "A",
+  "profiler": "OFF",
+  "profile_threshold": 513,
+  "default_threshold": 129,
+  "placement_profile_sha256": "bd31302faf424d0a6e8af856a0d095b00845615664e9774da439553f3467c593",
+  "placement_document_sha256": "27987bceb25506c9ab01115c328f519c14ecb24fbce19e89967cc5cea063ecad",
+  "generation_budget": 24,
+  "generation_attempts": 24,
+  "abort_controls": 1,
+  "automatic_retries": 0,
+  "results": [
+    {
+      "workload": "W0",
+      "case_id": "edge64",
+      "phase": "warmup",
+      "repeat": 0,
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "request_id": "r13-a-v226-random_seed42-a-w0-warmup-0",
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "saw_done_marker": true,
+      "ttft_seconds": 11.217281969,
+      "e2e_seconds": 15.487625735,
+      "tpot_seconds": 4.270230531,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "workload": "W0",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 1,
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "request_id": "r13-a-v226-random_seed42-a-w0-measurement-1",
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "saw_done_marker": true,
+      "ttft_seconds": 3.066516699,
+      "e2e_seconds": 3.457338275,
+      "tpot_seconds": 0.39071224,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "workload": "W0",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 2,
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "request_id": "r13-a-v226-random_seed42-a-w0-measurement-2",
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "saw_done_marker": true,
+      "ttft_seconds": 3.062027917,
+      "e2e_seconds": 3.451771242,
+      "tpot_seconds": 0.38963688,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "workload": "W0",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 3,
+      "input_tokens": 64,
+      "decode_tokens": 2,
+      "request_id": "r13-a-v226-random_seed42-a-w0-measurement-3",
+      "output_ids": [
+        3897,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 2,
+      "saw_done_marker": true,
+      "ttft_seconds": 3.059523068,
+      "e2e_seconds": 3.45004973,
+      "tpot_seconds": 0.390420107,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3
+      }
+    },
+    {
+      "workload": "W1",
+      "case_id": "edge128",
+      "phase": "warmup",
+      "repeat": 0,
+      "input_tokens": 128,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w1-warmup-0",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 6.088687974,
+      "e2e_seconds": 12.658341899,
+      "tpot_seconds": 0.4379696473333333,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 228
+      },
+      "ple": {
+        "drained": 19,
+        "async": 19
+      }
+    },
+    {
+      "workload": "W1",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 1,
+      "input_tokens": 128,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w1-measurement-1",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 6.083460386,
+      "e2e_seconds": 12.239803294,
+      "tpot_seconds": 0.4104155142,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 228
+      },
+      "ple": {
+        "drained": 19,
+        "async": 19
+      }
+    },
+    {
+      "workload": "W1",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 2,
+      "input_tokens": 128,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w1-measurement-2",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 5.063751763,
+      "e2e_seconds": 10.749507019,
+      "tpot_seconds": 0.3790435560666667,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 228
+      },
+      "ple": {
+        "drained": 19,
+        "async": 19
+      }
+    },
+    {
+      "workload": "W1",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 3,
+      "input_tokens": 128,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w1-measurement-3",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 5.046240327,
+      "e2e_seconds": 11.547902051,
+      "tpot_seconds": 0.4334368912666666,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 228
+      },
+      "ple": {
+        "drained": 19,
+        "async": 19
+      }
+    },
+    {
+      "workload": "W2",
+      "case_id": "edge128",
+      "phase": "warmup",
+      "repeat": 0,
+      "input_tokens": 128,
+      "decode_tokens": 128,
+      "request_id": "r13-a-v226-random_seed42-a-w2-warmup-0",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 128,
+      "saw_done_marker": true,
+      "ttft_seconds": 5.552727964,
+      "e2e_seconds": 62.43758614,
+      "tpot_seconds": 0.44791113904724406,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 1572
+      },
+      "ple": {
+        "drained": 131,
+        "async": 131
+      }
+    },
+    {
+      "workload": "W2",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 1,
+      "input_tokens": 128,
+      "decode_tokens": 128,
+      "request_id": "r13-a-v226-random_seed42-a-w2-measurement-1",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 128,
+      "saw_done_marker": true,
+      "ttft_seconds": 5.105310795,
+      "e2e_seconds": 60.421385443,
+      "tpot_seconds": 0.4355585274094488,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 1572
+      },
+      "ple": {
+        "drained": 131,
+        "async": 131
+      }
+    },
+    {
+      "workload": "W2",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 2,
+      "input_tokens": 128,
+      "decode_tokens": 128,
+      "request_id": "r13-a-v226-random_seed42-a-w2-measurement-2",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 128,
+      "saw_done_marker": true,
+      "ttft_seconds": 5.034685994,
+      "e2e_seconds": 57.329694796,
+      "tpot_seconds": 0.41177063721259843,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 1572
+      },
+      "ple": {
+        "drained": 131,
+        "async": 131
+      }
+    },
+    {
+      "workload": "W2",
+      "case_id": "edge128",
+      "phase": "measurement",
+      "repeat": 3,
+      "input_tokens": 128,
+      "decode_tokens": 128,
+      "request_id": "r13-a-v226-random_seed42-a-w2-measurement-3",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 128,
+      "saw_done_marker": true,
+      "ttft_seconds": 4.981702268,
+      "e2e_seconds": 57.153148847,
+      "tpot_seconds": 0.4107976803385827,
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 1572
+      },
+      "ple": {
+        "drained": 131,
+        "async": 131
+      }
+    },
+    {
+      "workload": "W3",
+      "case_id": "edge512",
+      "phase": "warmup",
+      "repeat": 0,
+      "input_tokens": 512,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w3-warmup-0",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 20.00563448,
+      "e2e_seconds": 29.695231429,
+      "tpot_seconds": 0.6459658949333332,
+      "path": {
+        "selection_count": 16,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 32,
+        "cpu_result_count": 32,
+        "npu_resident_count": 32,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 372
+      },
+      "ple": {
+        "drained": 31,
+        "async": 31
+      }
+    },
+    {
+      "workload": "W3",
+      "case_id": "edge512",
+      "phase": "measurement",
+      "repeat": 1,
+      "input_tokens": 512,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w3-measurement-1",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 20.468687377,
+      "e2e_seconds": 30.139713437,
+      "tpot_seconds": 0.6447280816666666,
+      "path": {
+        "selection_count": 16,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 32,
+        "cpu_result_count": 32,
+        "npu_resident_count": 32,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 372
+      },
+      "ple": {
+        "drained": 31,
+        "async": 31
+      }
+    },
+    {
+      "workload": "W3",
+      "case_id": "edge512",
+      "phase": "measurement",
+      "repeat": 2,
+      "input_tokens": 512,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w3-measurement-2",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 20.42645831,
+      "e2e_seconds": 30.363489139,
+      "tpot_seconds": 0.6624593895333333,
+      "path": {
+        "selection_count": 16,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 32,
+        "cpu_result_count": 32,
+        "npu_resident_count": 32,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 372
+      },
+      "ple": {
+        "drained": 31,
+        "async": 31
+      }
+    },
+    {
+      "workload": "W3",
+      "case_id": "edge512",
+      "phase": "measurement",
+      "repeat": 3,
+      "input_tokens": 512,
+      "decode_tokens": 16,
+      "request_id": "r13-a-v226-random_seed42-a-w3-measurement-3",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248046
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 16,
+      "saw_done_marker": true,
+      "ttft_seconds": 20.05807808,
+      "e2e_seconds": 29.675147499,
+      "tpot_seconds": 0.6411303422666667,
+      "path": {
+        "selection_count": 16,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 32,
+        "cpu_result_count": 32,
+        "npu_resident_count": 32,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 372
+      },
+      "ple": {
+        "drained": 31,
+        "async": 31
+      }
+    },
+    {
+      "workload": "W4",
+      "case_id": "edge64",
+      "phase": "warmup",
+      "repeat": 0,
+      "input_tokens": 64,
+      "decode_tokens": 32,
+      "request_id": "r13-a-v226-random_seed42-a-w4-warmup-0",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 32,
+      "saw_done_marker": true,
+      "ttft_seconds": 2.495705248,
+      "e2e_seconds": 13.17037714,
+      "tpot_seconds": 0.34434097764516125,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 396
+      },
+      "ple": {
+        "drained": 33,
+        "async": 33
+      }
+    },
+    {
+      "workload": "W4",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 1,
+      "input_tokens": 64,
+      "decode_tokens": 32,
+      "request_id": "r13-a-v226-random_seed42-a-w4-measurement-1",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 32,
+      "saw_done_marker": true,
+      "ttft_seconds": 2.470655024,
+      "e2e_seconds": 12.996180762,
+      "tpot_seconds": 0.339529808483871,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 396
+      },
+      "ple": {
+        "drained": 33,
+        "async": 33
+      }
+    },
+    {
+      "workload": "W4",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 2,
+      "input_tokens": 64,
+      "decode_tokens": 32,
+      "request_id": "r13-a-v226-random_seed42-a-w4-measurement-2",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 32,
+      "saw_done_marker": true,
+      "ttft_seconds": 2.470029254,
+      "e2e_seconds": 13.141045222,
+      "tpot_seconds": 0.3442229065483871,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 396
+      },
+      "ple": {
+        "drained": 33,
+        "async": 33
+      }
+    },
+    {
+      "workload": "W4",
+      "case_id": "edge64",
+      "phase": "measurement",
+      "repeat": 3,
+      "input_tokens": 64,
+      "decode_tokens": 32,
+      "request_id": "r13-a-v226-random_seed42-a-w4-measurement-3",
+      "output_ids": [
+        3897,
+        248046,
+        198,
+        248044,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045,
+        248045
+      ],
+      "finite_logprobs": true,
+      "finish_reason": "length",
+      "completion_tokens": 32,
+      "saw_done_marker": true,
+      "ttft_seconds": 2.542482701,
+      "e2e_seconds": 13.292304355,
+      "tpot_seconds": 0.34676522806451615,
+      "path": {
+        "selection_count": 2,
+        "dispatch_tokens": [
+          32,
+          32
+        ],
+        "cpu_submit_count": 4,
+        "cpu_result_count": 4,
+        "npu_resident_count": 4,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 396
+      },
+      "ple": {
+        "drained": 33,
+        "async": 33
+      }
+    },
+    {
+      "case_id": "canary_marker",
+      "phase": "quality",
+      "request_id": "r13-a-v226-random_seed42-a-canary_marker-quality",
+      "e2e_seconds": 6.173472336,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          49,
+          16,
+          15,
+          10951,
+          56,
+          12717,
+          887,
+          12,
+          3793,
+          248046
+        ],
+        "completion_tokens": 10,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          29
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 120
+      },
+      "ple": {
+        "drained": 10,
+        "async": 10
+      }
+    },
+    {
+      "case_id": "canary_math391",
+      "phase": "quality",
+      "request_id": "r13-a-v226-random_seed42-a-canary_math391-quality",
+      "e2e_seconds": 2.404338558,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "completion_tokens": 4,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          27
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 48
+      },
+      "ple": {
+        "drained": 4,
+        "async": 4
+      }
+    },
+    {
+      "case_id": "cancel256",
+      "phase": "cancel",
+      "request_id": "r13-a-v226-random_seed42-a-cancel256-cancel",
+      "e2e_seconds": 2.570509586,
+      "cancel_status": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE"
+    },
+    {
+      "case_id": "canary_json",
+      "phase": "reuse",
+      "request_id": "r13-a-v226-random_seed42-a-canary_json-reuse",
+      "e2e_seconds": 3.075584381,
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          4754,
+          547,
+          763,
+          1802,
+          92,
+          248046
+        ],
+        "completion_tokens": 6,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          28
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2,
+        "npu_evidence": "OBSERVED_NPU_RESIDENT_APPLY"
+      },
+      "qsa": {
+        "vector_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "row_layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 72
+      },
+      "ple": {
+        "drained": 6,
+        "async": 6
+      }
+    }
+  ],
+  "measurement_windows": {
+    "W0": {
+      "seconds": 10.366881321,
+      "successful_requests": 3,
+      "output_tokens": 6,
+      "serial_output_tokens_per_second": 0.578766150997206,
+      "requests_per_second": 0.289383075498603
+    },
+    "W1": {
+      "seconds": 34.553386947,
+      "successful_requests": 3,
+      "output_tokens": 48,
+      "serial_output_tokens_per_second": 1.3891547035208212,
+      "requests_per_second": 0.08682216897005132
+    },
+    "W2": {
+      "seconds": 174.970519121,
+      "successful_requests": 3,
+      "output_tokens": 384,
+      "serial_output_tokens_per_second": 2.1946554306925656,
+      "requests_per_second": 0.01714574555228567
+    },
+    "W3": {
+      "seconds": 90.28544632,
+      "successful_requests": 3,
+      "output_tokens": 48,
+      "serial_output_tokens_per_second": 0.5316471475355276,
+      "requests_per_second": 0.03322794672097047
+    },
+    "W4": {
+      "seconds": 39.553602007,
+      "successful_requests": 3,
+      "output_tokens": 96,
+      "serial_output_tokens_per_second": 2.4270861597639173,
+      "requests_per_second": 0.07584644249262242
+    }
+  },
+  "physical": {
+    "document_sha256": "27987bceb25506c9ab01115c328f519c14ecb24fbce19e89967cc5cea063ecad",
+    "layers": [
+      {
+        "layer": 0,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 37,
+        "selected_logical_experts": [
+          44,
+          69,
+          71,
+          91,
+          101,
+          107,
+          127,
+          151,
+          158,
+          162,
+          186,
+          187,
+          188,
+          201,
+          210,
+          211,
+          212,
+          234,
+          236,
+          239,
+          251,
+          271,
+          300,
+          321,
+          348,
+          356,
+          365,
+          369,
+          416,
+          423,
+          428,
+          439,
+          457,
+          460,
+          477,
+          481,
+          508
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 242483200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              37,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 121241600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              37,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 363724800
+      },
+      {
+        "layer": 1,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 34,
+        "selected_logical_experts": [
+          20,
+          21,
+          30,
+          36,
+          97,
+          98,
+          112,
+          122,
+          123,
+          131,
+          138,
+          185,
+          203,
+          210,
+          254,
+          260,
+          316,
+          319,
+          332,
+          336,
+          346,
+          352,
+          360,
+          366,
+          386,
+          439,
+          446,
+          453,
+          464,
+          466,
+          470,
+          473,
+          499,
+          507
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 222822400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 111411200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 334233600
+      },
+      {
+        "layer": 2,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 24,
+        "selected_logical_experts": [
+          28,
+          34,
+          50,
+          76,
+          86,
+          88,
+          95,
+          113,
+          118,
+          169,
+          196,
+          201,
+          251,
+          273,
+          306,
+          351,
+          376,
+          386,
+          390,
+          392,
+          394,
+          461,
+          495,
+          511
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 157286400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              24,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 78643200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              24,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 235929600
+      },
+      {
+        "layer": 3,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          7,
+          14,
+          27,
+          45,
+          58,
+          82,
+          87,
+          91,
+          92,
+          107,
+          116,
+          142,
+          156,
+          169,
+          184,
+          239,
+          284,
+          289,
+          295,
+          300,
+          308,
+          336,
+          356,
+          367,
+          388,
+          421,
+          427,
+          483,
+          487,
+          492,
+          506
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 4,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          5,
+          44,
+          58,
+          105,
+          109,
+          124,
+          149,
+          158,
+          197,
+          211,
+          218,
+          221,
+          227,
+          230,
+          240,
+          273,
+          284,
+          297,
+          303,
+          320,
+          330,
+          362,
+          397,
+          398,
+          403,
+          406,
+          419,
+          423,
+          427,
+          437,
+          461,
+          488,
+          510
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 5,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          22,
+          62,
+          75,
+          91,
+          129,
+          165,
+          191,
+          199,
+          201,
+          202,
+          227,
+          240,
+          271,
+          284,
+          302,
+          306,
+          307,
+          311,
+          329,
+          339,
+          356,
+          362,
+          368,
+          385,
+          391,
+          396,
+          413,
+          436,
+          465,
+          468,
+          484,
+          489,
+          493
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 6,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 24,
+        "selected_logical_experts": [
+          9,
+          47,
+          58,
+          80,
+          83,
+          107,
+          156,
+          182,
+          183,
+          195,
+          208,
+          209,
+          216,
+          232,
+          242,
+          286,
+          288,
+          310,
+          370,
+          372,
+          378,
+          396,
+          466,
+          498
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 157286400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              24,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 78643200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              24,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 235929600
+      },
+      {
+        "layer": 7,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          5,
+          31,
+          57,
+          62,
+          65,
+          67,
+          85,
+          116,
+          117,
+          127,
+          167,
+          174,
+          190,
+          212,
+          243,
+          265,
+          266,
+          276,
+          279,
+          288,
+          315,
+          346,
+          362,
+          372,
+          384,
+          389,
+          435,
+          439,
+          440,
+          442,
+          483,
+          494,
+          508
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 8,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 38,
+        "selected_logical_experts": [
+          2,
+          8,
+          44,
+          46,
+          74,
+          91,
+          93,
+          102,
+          150,
+          186,
+          196,
+          197,
+          207,
+          249,
+          257,
+          262,
+          277,
+          278,
+          281,
+          282,
+          285,
+          286,
+          295,
+          316,
+          322,
+          327,
+          329,
+          330,
+          351,
+          364,
+          384,
+          388,
+          389,
+          399,
+          450,
+          466,
+          496,
+          499
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 249036800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 124518400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 373555200
+      },
+      {
+        "layer": 9,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 37,
+        "selected_logical_experts": [
+          14,
+          19,
+          35,
+          46,
+          67,
+          76,
+          95,
+          112,
+          139,
+          143,
+          152,
+          212,
+          237,
+          244,
+          250,
+          255,
+          264,
+          265,
+          273,
+          275,
+          279,
+          299,
+          314,
+          316,
+          346,
+          368,
+          371,
+          383,
+          443,
+          448,
+          461,
+          468,
+          481,
+          484,
+          492,
+          499,
+          505
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 242483200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              37,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 121241600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              37,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 363724800
+      },
+      {
+        "layer": 10,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          10,
+          11,
+          15,
+          21,
+          26,
+          43,
+          45,
+          78,
+          87,
+          96,
+          98,
+          112,
+          116,
+          119,
+          155,
+          160,
+          204,
+          214,
+          229,
+          255,
+          259,
+          296,
+          347,
+          356,
+          371,
+          375,
+          407,
+          410,
+          477,
+          495,
+          504
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 11,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 38,
+        "selected_logical_experts": [
+          4,
+          29,
+          40,
+          58,
+          59,
+          79,
+          83,
+          115,
+          120,
+          126,
+          149,
+          153,
+          162,
+          163,
+          165,
+          206,
+          212,
+          225,
+          230,
+          238,
+          243,
+          255,
+          256,
+          293,
+          297,
+          299,
+          342,
+          343,
+          385,
+          392,
+          399,
+          413,
+          414,
+          434,
+          435,
+          450,
+          455,
+          471
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 249036800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 124518400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 373555200
+      },
+      {
+        "layer": 12,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 30,
+        "selected_logical_experts": [
+          4,
+          22,
+          43,
+          51,
+          63,
+          67,
+          89,
+          95,
+          113,
+          122,
+          123,
+          137,
+          196,
+          248,
+          249,
+          251,
+          253,
+          259,
+          261,
+          295,
+          334,
+          354,
+          361,
+          399,
+          401,
+          428,
+          437,
+          438,
+          466,
+          491
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 196608000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 98304000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 294912000
+      },
+      {
+        "layer": 13,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          7,
+          41,
+          62,
+          75,
+          86,
+          99,
+          102,
+          109,
+          127,
+          137,
+          153,
+          161,
+          180,
+          199,
+          213,
+          223,
+          249,
+          273,
+          299,
+          317,
+          324,
+          353,
+          360,
+          363,
+          370,
+          382,
+          403,
+          452,
+          475,
+          483,
+          485,
+          491,
+          496
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 14,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          2,
+          11,
+          17,
+          49,
+          65,
+          81,
+          83,
+          114,
+          116,
+          125,
+          126,
+          156,
+          159,
+          173,
+          216,
+          220,
+          238,
+          254,
+          262,
+          277,
+          319,
+          334,
+          336,
+          349,
+          350,
+          371,
+          466,
+          469,
+          488,
+          492,
+          499
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 15,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 29,
+        "selected_logical_experts": [
+          0,
+          1,
+          9,
+          15,
+          45,
+          82,
+          89,
+          101,
+          115,
+          119,
+          141,
+          145,
+          206,
+          223,
+          300,
+          303,
+          328,
+          337,
+          340,
+          369,
+          370,
+          374,
+          382,
+          392,
+          425,
+          430,
+          469,
+          472,
+          497
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 190054400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 95027200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 285081600
+      },
+      {
+        "layer": 16,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 39,
+        "selected_logical_experts": [
+          0,
+          1,
+          2,
+          22,
+          24,
+          37,
+          53,
+          56,
+          65,
+          96,
+          104,
+          111,
+          116,
+          138,
+          142,
+          146,
+          174,
+          194,
+          198,
+          213,
+          232,
+          281,
+          289,
+          297,
+          299,
+          301,
+          303,
+          366,
+          380,
+          414,
+          457,
+          467,
+          468,
+          470,
+          482,
+          487,
+          497,
+          502,
+          505
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 255590400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              39,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 127795200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              39,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 383385600
+      },
+      {
+        "layer": 17,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 34,
+        "selected_logical_experts": [
+          6,
+          35,
+          41,
+          68,
+          78,
+          101,
+          112,
+          132,
+          141,
+          142,
+          143,
+          145,
+          147,
+          150,
+          154,
+          172,
+          176,
+          188,
+          208,
+          211,
+          223,
+          242,
+          245,
+          280,
+          281,
+          307,
+          320,
+          350,
+          383,
+          408,
+          425,
+          448,
+          456,
+          500
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 222822400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 111411200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 334233600
+      },
+      {
+        "layer": 18,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 29,
+        "selected_logical_experts": [
+          3,
+          12,
+          26,
+          36,
+          41,
+          65,
+          68,
+          81,
+          112,
+          118,
+          121,
+          141,
+          146,
+          208,
+          237,
+          259,
+          275,
+          279,
+          288,
+          301,
+          359,
+          373,
+          390,
+          408,
+          411,
+          419,
+          463,
+          472,
+          488
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 190054400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 95027200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 285081600
+      },
+      {
+        "layer": 19,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          8,
+          12,
+          13,
+          14,
+          41,
+          47,
+          58,
+          76,
+          81,
+          84,
+          88,
+          89,
+          95,
+          103,
+          112,
+          159,
+          167,
+          175,
+          223,
+          233,
+          234,
+          237,
+          245,
+          275,
+          286,
+          312,
+          343,
+          364,
+          388,
+          402,
+          411,
+          456,
+          457
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 20,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          12,
+          16,
+          31,
+          52,
+          100,
+          127,
+          141,
+          148,
+          159,
+          199,
+          201,
+          217,
+          225,
+          267,
+          268,
+          269,
+          299,
+          307,
+          315,
+          318,
+          373,
+          376,
+          389,
+          413,
+          425,
+          429,
+          433,
+          441,
+          456,
+          459,
+          498
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 21,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 34,
+        "selected_logical_experts": [
+          22,
+          55,
+          68,
+          69,
+          85,
+          103,
+          126,
+          139,
+          145,
+          167,
+          181,
+          185,
+          210,
+          220,
+          231,
+          233,
+          236,
+          261,
+          269,
+          291,
+          338,
+          345,
+          368,
+          374,
+          385,
+          411,
+          422,
+          424,
+          427,
+          430,
+          431,
+          493,
+          496,
+          511
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 222822400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 111411200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 334233600
+      },
+      {
+        "layer": 22,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 34,
+        "selected_logical_experts": [
+          7,
+          17,
+          27,
+          37,
+          60,
+          72,
+          83,
+          86,
+          93,
+          121,
+          130,
+          142,
+          155,
+          162,
+          172,
+          225,
+          252,
+          278,
+          280,
+          282,
+          315,
+          328,
+          331,
+          340,
+          343,
+          348,
+          353,
+          363,
+          371,
+          388,
+          397,
+          439,
+          477,
+          507
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 222822400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 111411200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              34,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 334233600
+      },
+      {
+        "layer": 23,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          7,
+          8,
+          37,
+          51,
+          78,
+          90,
+          94,
+          128,
+          131,
+          149,
+          151,
+          157,
+          160,
+          161,
+          200,
+          261,
+          276,
+          300,
+          322,
+          341,
+          357,
+          368,
+          398,
+          413,
+          419,
+          430,
+          451,
+          477,
+          485,
+          492,
+          505
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 24,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 18,
+        "selected_logical_experts": [
+          82,
+          118,
+          130,
+          226,
+          229,
+          241,
+          257,
+          306,
+          341,
+          408,
+          426,
+          433,
+          437,
+          449,
+          457,
+          471,
+          473,
+          489
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 117964800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              18,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 58982400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              18,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 176947200
+      },
+      {
+        "layer": 25,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          10,
+          22,
+          41,
+          43,
+          49,
+          84,
+          88,
+          110,
+          132,
+          156,
+          166,
+          167,
+          195,
+          201,
+          238,
+          246,
+          258,
+          261,
+          307,
+          316,
+          345,
+          363,
+          369,
+          373,
+          374,
+          399,
+          402,
+          414,
+          421,
+          460,
+          462,
+          485,
+          508
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 26,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 26,
+        "selected_logical_experts": [
+          34,
+          48,
+          64,
+          66,
+          125,
+          143,
+          175,
+          190,
+          195,
+          207,
+          256,
+          259,
+          262,
+          293,
+          320,
+          336,
+          361,
+          367,
+          416,
+          433,
+          451,
+          463,
+          474,
+          495,
+          497,
+          510
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 170393600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              26,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 85196800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              26,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 255590400
+      },
+      {
+        "layer": 27,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 38,
+        "selected_logical_experts": [
+          16,
+          24,
+          30,
+          34,
+          39,
+          43,
+          55,
+          63,
+          76,
+          114,
+          136,
+          154,
+          161,
+          222,
+          229,
+          254,
+          257,
+          280,
+          286,
+          311,
+          342,
+          350,
+          358,
+          362,
+          381,
+          385,
+          386,
+          393,
+          404,
+          411,
+          423,
+          468,
+          475,
+          480,
+          486,
+          500,
+          502,
+          505
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 249036800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 124518400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 373555200
+      },
+      {
+        "layer": 28,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 28,
+        "selected_logical_experts": [
+          5,
+          30,
+          40,
+          63,
+          64,
+          86,
+          115,
+          128,
+          140,
+          171,
+          194,
+          198,
+          201,
+          225,
+          289,
+          313,
+          318,
+          326,
+          335,
+          341,
+          342,
+          353,
+          357,
+          360,
+          408,
+          445,
+          503,
+          509
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 183500800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              28,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 91750400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              28,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 275251200
+      },
+      {
+        "layer": 29,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 35,
+        "selected_logical_experts": [
+          3,
+          6,
+          17,
+          42,
+          46,
+          47,
+          56,
+          61,
+          76,
+          127,
+          146,
+          165,
+          203,
+          211,
+          212,
+          242,
+          253,
+          264,
+          272,
+          294,
+          297,
+          303,
+          318,
+          327,
+          339,
+          371,
+          375,
+          411,
+          414,
+          424,
+          425,
+          457,
+          474,
+          490,
+          507
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 229376000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              35,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 114688000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              35,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 344064000
+      },
+      {
+        "layer": 30,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 31,
+        "selected_logical_experts": [
+          4,
+          10,
+          19,
+          36,
+          66,
+          70,
+          73,
+          79,
+          99,
+          113,
+          114,
+          192,
+          195,
+          202,
+          232,
+          233,
+          239,
+          253,
+          286,
+          305,
+          355,
+          373,
+          374,
+          422,
+          438,
+          444,
+          460,
+          470,
+          480,
+          490,
+          500
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 203161600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 101580800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              31,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 304742400
+      },
+      {
+        "layer": 31,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 32,
+        "selected_logical_experts": [
+          7,
+          17,
+          22,
+          36,
+          42,
+          44,
+          103,
+          113,
+          117,
+          140,
+          151,
+          152,
+          188,
+          201,
+          203,
+          224,
+          242,
+          247,
+          261,
+          264,
+          310,
+          312,
+          331,
+          337,
+          354,
+          383,
+          395,
+          424,
+          431,
+          438,
+          443,
+          463
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 209715200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 104857600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 314572800
+      },
+      {
+        "layer": 32,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 38,
+        "selected_logical_experts": [
+          4,
+          7,
+          12,
+          16,
+          20,
+          24,
+          36,
+          62,
+          85,
+          86,
+          90,
+          104,
+          113,
+          130,
+          179,
+          180,
+          182,
+          251,
+          273,
+          276,
+          307,
+          312,
+          317,
+          333,
+          334,
+          336,
+          344,
+          345,
+          356,
+          400,
+          405,
+          407,
+          417,
+          418,
+          432,
+          468,
+          471,
+          493
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 249036800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 124518400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              38,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 373555200
+      },
+      {
+        "layer": 33,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 32,
+        "selected_logical_experts": [
+          7,
+          12,
+          20,
+          26,
+          55,
+          74,
+          88,
+          90,
+          95,
+          114,
+          119,
+          143,
+          148,
+          179,
+          186,
+          192,
+          211,
+          221,
+          278,
+          281,
+          285,
+          310,
+          314,
+          336,
+          363,
+          409,
+          413,
+          433,
+          478,
+          483,
+          486,
+          496
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 209715200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 104857600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 314572800
+      },
+      {
+        "layer": 34,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 28,
+        "selected_logical_experts": [
+          9,
+          21,
+          66,
+          80,
+          94,
+          97,
+          111,
+          153,
+          197,
+          237,
+          243,
+          259,
+          276,
+          284,
+          295,
+          303,
+          316,
+          320,
+          351,
+          362,
+          367,
+          387,
+          390,
+          408,
+          425,
+          499,
+          501,
+          506
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 183500800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              28,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 91750400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              28,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 275251200
+      },
+      {
+        "layer": 35,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 30,
+        "selected_logical_experts": [
+          72,
+          106,
+          107,
+          117,
+          131,
+          138,
+          177,
+          181,
+          183,
+          185,
+          222,
+          240,
+          270,
+          276,
+          277,
+          286,
+          298,
+          337,
+          340,
+          343,
+          354,
+          357,
+          363,
+          365,
+          383,
+          409,
+          410,
+          411,
+          424,
+          447
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 196608000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 98304000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 294912000
+      },
+      {
+        "layer": 36,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 32,
+        "selected_logical_experts": [
+          11,
+          17,
+          21,
+          68,
+          97,
+          108,
+          118,
+          121,
+          125,
+          143,
+          151,
+          155,
+          163,
+          165,
+          183,
+          209,
+          210,
+          216,
+          275,
+          280,
+          282,
+          293,
+          296,
+          304,
+          308,
+          333,
+          364,
+          453,
+          456,
+          458,
+          473,
+          510
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 209715200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 104857600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 314572800
+      },
+      {
+        "layer": 37,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 32,
+        "selected_logical_experts": [
+          11,
+          18,
+          43,
+          53,
+          83,
+          88,
+          90,
+          150,
+          169,
+          178,
+          183,
+          186,
+          189,
+          221,
+          236,
+          242,
+          247,
+          275,
+          286,
+          299,
+          304,
+          344,
+          353,
+          458,
+          464,
+          469,
+          478,
+          486,
+          487,
+          491,
+          503,
+          510
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 209715200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 104857600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              32,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 314572800
+      },
+      {
+        "layer": 38,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 30,
+        "selected_logical_experts": [
+          16,
+          69,
+          76,
+          80,
+          112,
+          140,
+          191,
+          195,
+          200,
+          220,
+          226,
+          234,
+          276,
+          321,
+          334,
+          344,
+          395,
+          398,
+          406,
+          417,
+          419,
+          423,
+          426,
+          430,
+          439,
+          457,
+          477,
+          493,
+          507,
+          509
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 196608000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 98304000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              30,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 294912000
+      },
+      {
+        "layer": 39,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 29,
+        "selected_logical_experts": [
+          5,
+          9,
+          17,
+          26,
+          44,
+          54,
+          95,
+          96,
+          108,
+          157,
+          158,
+          161,
+          176,
+          191,
+          217,
+          222,
+          233,
+          242,
+          244,
+          260,
+          267,
+          288,
+          327,
+          341,
+          372,
+          407,
+          439,
+          447,
+          474
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 190054400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 95027200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 285081600
+      },
+      {
+        "layer": 40,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 27,
+        "selected_logical_experts": [
+          6,
+          100,
+          103,
+          118,
+          120,
+          134,
+          141,
+          143,
+          158,
+          166,
+          175,
+          190,
+          204,
+          229,
+          232,
+          242,
+          265,
+          267,
+          338,
+          392,
+          419,
+          421,
+          429,
+          431,
+          467,
+          482,
+          501
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 176947200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              27,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 88473600,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              27,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 265420800
+      },
+      {
+        "layer": 41,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          2,
+          47,
+          49,
+          62,
+          79,
+          110,
+          122,
+          141,
+          153,
+          158,
+          167,
+          182,
+          207,
+          217,
+          232,
+          250,
+          251,
+          284,
+          305,
+          353,
+          364,
+          376,
+          396,
+          414,
+          417,
+          438,
+          440,
+          442,
+          445,
+          450,
+          467,
+          482,
+          504
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 42,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          5,
+          39,
+          64,
+          75,
+          83,
+          88,
+          171,
+          176,
+          203,
+          225,
+          226,
+          231,
+          232,
+          248,
+          254,
+          258,
+          281,
+          287,
+          293,
+          294,
+          296,
+          299,
+          308,
+          318,
+          337,
+          346,
+          363,
+          375,
+          394,
+          415,
+          439,
+          481,
+          485
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 43,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 33,
+        "selected_logical_experts": [
+          17,
+          23,
+          27,
+          71,
+          91,
+          94,
+          105,
+          114,
+          136,
+          144,
+          147,
+          152,
+          164,
+          194,
+          196,
+          249,
+          266,
+          285,
+          309,
+          344,
+          352,
+          374,
+          382,
+          399,
+          423,
+          427,
+          428,
+          462,
+          474,
+          480,
+          487,
+          489,
+          506
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 216268800,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 108134400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              33,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 324403200
+      },
+      {
+        "layer": 44,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 44,
+        "selected_logical_experts": [
+          19,
+          20,
+          41,
+          50,
+          53,
+          59,
+          70,
+          77,
+          81,
+          82,
+          91,
+          135,
+          146,
+          159,
+          162,
+          165,
+          182,
+          195,
+          209,
+          210,
+          218,
+          235,
+          238,
+          244,
+          266,
+          328,
+          334,
+          339,
+          341,
+          350,
+          368,
+          369,
+          378,
+          379,
+          385,
+          402,
+          417,
+          431,
+          453,
+          464,
+          468,
+          492,
+          499,
+          507
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 288358400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              44,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 144179200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              44,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 432537600
+      },
+      {
+        "layer": 45,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 25,
+        "selected_logical_experts": [
+          13,
+          17,
+          22,
+          24,
+          31,
+          36,
+          41,
+          162,
+          197,
+          208,
+          225,
+          231,
+          249,
+          280,
+          331,
+          347,
+          360,
+          371,
+          400,
+          420,
+          440,
+          455,
+          462,
+          485,
+          500
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 163840000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              25,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 81920000,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              25,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 245760000
+      },
+      {
+        "layer": 46,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 29,
+        "selected_logical_experts": [
+          3,
+          4,
+          9,
+          40,
+          47,
+          51,
+          55,
+          70,
+          124,
+          135,
+          151,
+          157,
+          170,
+          224,
+          230,
+          253,
+          281,
+          288,
+          306,
+          313,
+          332,
+          347,
+          370,
+          386,
+          416,
+          457,
+          474,
+          498,
+          501
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 190054400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 95027200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              29,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 285081600
+      },
+      {
+        "layer": 47,
+        "provider": "KTEP_MIXED",
+        "resident_capacity": 39,
+        "selected_logical_experts": [
+          6,
+          23,
+          67,
+          83,
+          84,
+          86,
+          120,
+          122,
+          126,
+          133,
+          135,
+          142,
+          150,
+          151,
+          160,
+          173,
+          197,
+          210,
+          213,
+          215,
+          267,
+          269,
+          281,
+          287,
+          304,
+          307,
+          311,
+          337,
+          347,
+          355,
+          356,
+          381,
+          439,
+          457,
+          462,
+          468,
+          473,
+          482,
+          492
+        ],
+        "tensors": {
+          "w13_weight": {
+            "bytes": 255590400,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              39,
+              2560,
+              1280
+            ]
+          },
+          "w2_weight": {
+            "bytes": 127795200,
+            "dtype": "torch.bfloat16",
+            "format": 29,
+            "shape": [
+              39,
+              640,
+              2560
+            ]
+          }
+        },
+        "total_bytes": 383385600
+      }
+    ],
+    "profile_sha256": "bd31302faf424d0a6e8af856a0d095b00845615664e9774da439553f3467c593",
+    "schema": 1,
+    "status": "PASS_ROUND13_STATIC_PLACEMENT_PHYSICAL",
+    "strategy": "random_seed42",
+    "total_bytes": 15099494400,
+    "total_experts": 1536
+  },
+  "startup": {
+    "supervisor_started_at": 1790508424.8256314,
+    "server_ready_at": 1790508556.1055017,
+    "seconds": 131.27987027168274
+  },
+  "cleanup": {
+    "guard_exit_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY"
+  }
+}

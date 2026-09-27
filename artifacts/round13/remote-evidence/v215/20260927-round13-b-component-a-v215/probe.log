@@ -1,0 +1,10 @@
+can not use command: npu-smi info
+/candidate/runtime/qsa.py:61: UserWarning: Cannot create tensor with interal format while allow_internel_format=False, tensor will be created with base format. (Triggered internally at ../torch_npu/csrc/aten/common/TensorFactories.cpp:340.)
+  result=torch.zeros_like(query)
+Traceback (most recent call last):
+  File "/candidate/round13_b_qsa_component_probe.py", line 429, in <module>
+    main()
+  File "/candidate/round13_b_qsa_component_probe.py", line 419, in main
+    raise RuntimeError("Round13 B allocator did not return to baseline")
+RuntimeError: Round13 B allocator did not return to baseline
+[ERROR] 2026-09-27-11:42:22 (PID:71, Device:0, RankID:-1) ERR99999 UNKNOWN applicaiton exception

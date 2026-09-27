@@ -140,6 +140,74 @@ class ContextReferenceTorchTests(unittest.TestCase):
         error = (actual.float() - expected.float()).norm() / expected.float().norm()
         self.assertLess(float(error), 0.10)
 
+    def test_approved_prefill_candidate_keeps_queries_batched_and_is_causal(self):
+        q, keys, values, selected, positions = self.tensors()
+        calls = []
+
+        def candidate(actual_q, actual_keys, actual_values, actual_selected):
+            calls.append((actual_q.shape, actual_keys.shape, actual_selected.clone()))
+            return self.qsa.sparse_gqa_vectorized(
+                actual_q, actual_keys, actual_values, actual_selected)
+
+        expected = self.qsa.sparse_gqa_vectorized(q, keys, values, selected)
+        actual, strategy = api._consume_approved_candidate(
+            self.identity, "BF16_COMPACT", 3, q, keys, values,
+            selected, positions, candidate)
+        self.assertEqual(strategy, "VECTORIZED")
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][0][0], 2)
+        self.assertTrue(self.torch.equal(actual, expected))
+
+        future = selected.clone()
+        future[0, 0] = positions[0] + 1
+        with self.assertRaisesRegex(ValueError, "future logical token"):
+            api._consume_approved_candidate(
+                self.identity, "BF16_COMPACT", 3, q, keys, values,
+                future, positions, candidate)
+
+    def test_approved_candidate_uses_direct_decode_and_unqualified_shapes_on_row_path(self):
+        q, keys, values, selected, positions = self.tensors()
+        calls = []
+
+        def candidate(actual_q, actual_keys, actual_values, actual_selected):
+            calls.append(actual_q.shape[0])
+            return self.qsa.sparse_gqa(
+                actual_q, actual_keys, actual_values, actual_selected)
+
+        decoded, strategy = api._consume_approved_candidate(
+            self.identity, "BF16_COMPACT", 3, q[1:], keys, values,
+            selected[1:], positions[1:], candidate)
+        self.assertEqual(strategy, "DIRECT_BF16_ROW")
+        self.assertEqual(calls, [1])
+        self.assertEqual(decoded.shape, q[1:].shape)
+
+        calls.clear()
+        unqualified_q = q[:, :12]
+        row_result, strategy = api._consume_approved_candidate(
+            self.identity, "BF16_COMPACT", 3, unqualified_q, keys, values,
+            selected, positions, candidate)
+        self.assertEqual(strategy, "ROW_FALLBACK")
+        self.assertEqual(calls, [1, 1])
+        self.assertEqual(row_result.shape, unqualified_q.shape)
+
+    def test_candidate_runtime_publishes_actual_vectorized_and_row_hits(self):
+        q, keys, values, selected, positions = self.tensors()
+        events = []
+        runtime = api.ContextReferenceRuntime(
+            "BF16_COMPACT", layers=(3,), approved_prefill_candidate=True,
+            event=events.append)
+        request = object()
+        runtime.begin("request", request)
+        runtime.consume(
+            3, q, keys, values, selected, positions,
+            self.qsa.sparse_gqa_candidate)
+        runtime.after(request, finished=False)
+        hits = [event for event in events
+                if event["status"] == "CONTEXT_REFERENCE_QSA_DISPATCH"]
+        self.assertEqual(len(hits), 1)
+        self.assertEqual(hits[0]["strategy"], "VECTORIZED")
+        self.assertEqual(hits[0]["query_tokens"], 2)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "ROUND13_PARTIAL_WITH_GAPS",
+  "created_at": "2026-09-27T14:09:54Z",
+  "request_gain_subresult": "ROUND13_REQUEST_GAIN_QUALIFIED",
+  "final_config": "HFINAL_ROUND13_LIMITED",
+  "lines": {
+    "P0": "PASS_TWO_INDEPENDENT_FRESH_ATTRIBUTION_BLOCKS",
+    "A": "A_NO_PROMOTION_WITH_MIRROR_GAPS",
+    "B": "B_PROMOTED_F_CONFIRMED",
+    "C": "C_DEFERRED_WITH_REASON",
+    "F": "F_FINAL_PROMOTED"
+  },
+  "why_partial": "A required an eight-process U/Frequency/Front/Random/Random/Front/Frequency/U mirror. Integration failures consumed frozen A slots; all four strategies have one successful common-source block, but the second mirror is absent. Every candidate already failed the necessary W2 TPOT <=0.95 first-block gate, so Uniform remains selected, yet missing required coverage cannot be relabeled complete.",
+  "final_gain": {
+    "primary": "W2_TPOT",
+    "candidate_over_s0_ratios": [
+      0.6777063867609654,
+      0.6790094013454339
+    ],
+    "improvement_percent": [
+      32.22936132390346,
+      32.09905986545662
+    ],
+    "w2_e2e_improvement_percent": [
+      29.80615362967668,
+      29.29601952014005
+    ],
+    "w2_serial_throughput_increase_percent": [
+      41.64692473084279,
+      41.75195056898937
+    ],
+    "protection_regressions": [],
+    "quality_pass": true
+  },
+  "answers": {
+    "static_placement": "Uniform Q32 remains the appropriate static placement. Frequency, Front-loading and Random seed42 improved first-block W2 TPOT by only 3.01%, 0.78% and 3.11%, each below 5%, and introduced other workload regressions. Formal second mirror coverage is missing.",
+    "remaining_hotspot": "QSA Decode was the actionable remaining hotspot. Direct consumption of resident BF16 K/V rows removes redundant CPU staging while keeping vectorized Prefill and sparse-GQA math.",
+    "deferred": "Not worth device research under the frozen trigger: CPU Expert exposed wait was 6.7043% and 6.4842%, below 10%. No d=1 code ran, so Round13 did not change semantics and makes no deferred speed/quality claim.",
+    "fresh_s0_gain": "In F, W2 TPOT improved 32.23%/32.10%, E2E improved 29.81%/29.30%, and serial output throughput increased 41.65%/41.75%. Owned HBM was unchanged at 25,794 MiB; Host/whole-card peaks had no consistent paired regression."
+  },
+  "budget_used": {
+    "model_processes": 21,
+    "generation_attempts": 328,
+    "abort_controls": 9,
+    "component_processes": 9
+  },
+  "automatic_retries": 0,
+  "resource_terminal": "PASS_ROUND13_RESOURCE_RETIREMENT",
+  "next": "STOP_ROUND13_NO_AUTOMATIC_ROUND14"
+}

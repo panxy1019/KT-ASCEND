@@ -1,0 +1,297 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_P0_FRESH_ATTRIBUTION",
+  "parent_identity": "ROUND12A_V174_V177_KT_PROMOTED_QSA_S0",
+  "process_blocks": [
+    "A",
+    "B"
+  ],
+  "requests": [
+    {
+      "block": "A",
+      "case_id": "edge128",
+      "request_id": "r13-p0-a-04-edge128-measurement-decode128",
+      "phase_wall_ms": {
+        "extend": 5212.083972,
+        "decode": 56674.979655999996
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 3149.8343811035156,
+          "QSA_ATTENTION": 1113.1943893432617,
+          "QSA_INDEXER": 980.6011276245117,
+          "PLE_PREPARE": 4.255702,
+          "PLE_EXPOSED_WAIT": 0.545906,
+          "PLE_CONSUMER": 7.966560125350952,
+          "ROUTED_EXPERT": 688.6060752868652,
+          "CPU_SUBMIT": 73.559616,
+          "CPU_RESULT_WAIT": 302.293296,
+          "NPU_RESIDENT": 80.62943887710571,
+          "QSA_EXCLUSIVE": 132.59326171875,
+          "EXPERT_EXCLUSIVE_DEVICE": 607.9766364097595
+        },
+        "decode": {
+          "GDN": 9014.769367218018,
+          "QSA_ATTENTION": 27063.25532913208,
+          "QSA_INDEXER": 4641.248156547546,
+          "PLE_PREPARE": 95.973862,
+          "PLE_EXPOSED_WAIT": 16.703468,
+          "PLE_CONSUMER": 244.64308059215546,
+          "ROUTED_EXPERT": 11920.10975074768,
+          "CPU_SUBMIT": 2239.822176,
+          "CPU_RESULT_WAIT": 2183.994576,
+          "NPU_RESIDENT": 2532.571198940277,
+          "QSA_EXCLUSIVE": 22422.007172584534,
+          "EXPERT_EXCLUSIVE_DEVICE": 9387.538551807404
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6043330073008877,
+          "QSA": 0.21357951931002803,
+          "PLE_CONSUMER": 0.0015284788518658485,
+          "PLE_EXPOSED_WAIT": 0.00010473852741680271,
+          "EXPERT": 0.13211722585172217,
+          "CPU_EXPOSED_WAIT": 0.05799854676631445
+        },
+        "decode": {
+          "GDN": 0.15906083110986444,
+          "QSA": 0.4775168071236702,
+          "PLE_CONSUMER": 0.004316597589925308,
+          "PLE_EXPOSED_WAIT": 0.0002947238464201488,
+          "EXPERT": 0.2103240234597197,
+          "CPU_EXPOSED_WAIT": 0.038535427612964086
+        }
+      }
+    },
+    {
+      "block": "A",
+      "case_id": "edge512",
+      "request_id": "r13-p0-a-06-edge512-measurement-decode16",
+      "phase_wall_ms": {
+        "extend": 20614.677663,
+        "decode": 10090.100989000004
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 12531.542266845703,
+          "QSA_ATTENTION": 4403.700485229492,
+          "QSA_INDEXER": 3866.4708251953125,
+          "PLE_PREPARE": 17.012221,
+          "PLE_EXPOSED_WAIT": 2.125569,
+          "PLE_CONSUMER": 32.29647958278656,
+          "ROUTED_EXPERT": 2787.383045196533,
+          "CPU_SUBMIT": 309.28248,
+          "CPU_RESULT_WAIT": 1382.07144,
+          "NPU_RESIDENT": 319.7625575065613,
+          "QSA_EXCLUSIVE": 537.2296600341797,
+          "EXPERT_EXCLUSIVE_DEVICE": 2467.620487689972
+        },
+        "decode": {
+          "GDN": 1057.3279223442078,
+          "QSA_ATTENTION": 6661.357681274414,
+          "QSA_INDEXER": 531.2980842590332,
+          "PLE_PREPARE": 10.92772,
+          "PLE_EXPOSED_WAIT": 1.9552019999999999,
+          "PLE_CONSUMER": 28.85778021812439,
+          "ROUTED_EXPERT": 1415.8809642791748,
+          "CPU_SUBMIT": 267.558912,
+          "CPU_RESULT_WAIT": 278.69592,
+          "NPU_RESIDENT": 291.83904218673706,
+          "QSA_EXCLUSIVE": 6130.059597015381,
+          "EXPERT_EXCLUSIVE_DEVICE": 1124.0419220924377
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6078941651043998,
+          "QSA": 0.21361966251519032,
+          "PLE_CONSUMER": 0.0015666740033851462,
+          "PLE_EXPOSED_WAIT": 0.00010310949483411286,
+          "EXPERT": 0.13521351586299277,
+          "CPU_EXPOSED_WAIT": 0.06704307787846685
+        },
+        "decode": {
+          "GDN": 0.10478863625813878,
+          "QSA": 0.6601874142326695,
+          "PLE_CONSUMER": 0.0028600090573508113,
+          "PLE_EXPOSED_WAIT": 0.00019377427462138547,
+          "EXPERT": 0.1403237654234319,
+          "CPU_EXPOSED_WAIT": 0.02762072652234382
+        }
+      }
+    },
+    {
+      "block": "B",
+      "case_id": "edge128",
+      "request_id": "r13-p0-b-04-edge128-measurement-decode128",
+      "phase_wall_ms": {
+        "extend": 5393.932785,
+        "decode": 57021.649148000004
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 3307.924072265625,
+          "QSA_ATTENTION": 1127.8629684448242,
+          "QSA_INDEXER": 987.9751052856445,
+          "PLE_PREPARE": 4.121655,
+          "PLE_EXPOSED_WAIT": 0.536655,
+          "PLE_CONSUMER": 8.203180074691772,
+          "ROUTED_EXPERT": 684.5606460571289,
+          "CPU_SUBMIT": 66.611328,
+          "CPU_RESULT_WAIT": 319.171872,
+          "NPU_RESIDENT": 84.98399877548218,
+          "QSA_EXCLUSIVE": 139.8878631591797,
+          "EXPERT_EXCLUSIVE_DEVICE": 599.5766472816467
+        },
+        "decode": {
+          "GDN": 9124.920709133148,
+          "QSA_ATTENTION": 27145.16328048706,
+          "QSA_INDEXER": 4595.177035331726,
+          "PLE_PREPARE": 95.160628,
+          "PLE_EXPOSED_WAIT": 15.905657,
+          "PLE_CONSUMER": 243.53633999824524,
+          "ROUTED_EXPERT": 11799.27070426941,
+          "CPU_SUBMIT": 2048.701056,
+          "CPU_RESULT_WAIT": 2161.438176,
+          "NPU_RESIDENT": 2610.7449531555176,
+          "QSA_EXCLUSIVE": 22549.986245155334,
+          "EXPERT_EXCLUSIVE_DEVICE": 9188.525751113892
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6132675737941412,
+          "QSA": 0.20909844697755614,
+          "PLE_CONSUMER": 0.0015208161468945284,
+          "PLE_EXPOSED_WAIT": 9.949234100439389e-05,
+          "EXPERT": 0.1269130842640133,
+          "CPU_EXPOSED_WAIT": 0.059172385849446583
+        },
+        "decode": {
+          "GDN": 0.16002554898840907,
+          "QSA": 0.476050126330644,
+          "PLE_CONSUMER": 0.0042709452223338076,
+          "PLE_EXPOSED_WAIT": 0.0002789406696869952,
+          "EXPERT": 0.2069261566540164,
+          "CPU_EXPOSED_WAIT": 0.037905571099670854
+        }
+      }
+    },
+    {
+      "block": "B",
+      "case_id": "edge512",
+      "request_id": "r13-p0-b-06-edge512-measurement-decode16",
+      "phase_wall_ms": {
+        "extend": 21092.555254,
+        "decode": 10560.476122
+      },
+      "attributable_ms": {
+        "extend": {
+          "GDN": 13111.19563293457,
+          "QSA_ATTENTION": 4352.853813171387,
+          "QSA_INDEXER": 3808.8357467651367,
+          "PLE_PREPARE": 16.488246,
+          "PLE_EXPOSED_WAIT": 2.080839,
+          "PLE_CONSUMER": 32.182000041007996,
+          "ROUTED_EXPERT": 2768.150402069092,
+          "CPU_SUBMIT": 291.51312,
+          "CPU_RESULT_WAIT": 1367.680608,
+          "NPU_RESIDENT": 332.2521586418152,
+          "QSA_EXCLUSIVE": 544.01806640625,
+          "EXPERT_EXCLUSIVE_DEVICE": 2435.8982434272766
+        },
+        "decode": {
+          "GDN": 1160.5341539382935,
+          "QSA_ATTENTION": 6808.6651611328125,
+          "QSA_INDEXER": 575.6035137176514,
+          "PLE_PREPARE": 11.696872,
+          "PLE_EXPOSED_WAIT": 1.993285,
+          "PLE_CONSUMER": 30.763620138168335,
+          "ROUTED_EXPERT": 1477.0886478424072,
+          "CPU_SUBMIT": 260.178144,
+          "CPU_RESULT_WAIT": 276.27076800000003,
+          "NPU_RESIDENT": 327.13728046417236,
+          "QSA_EXCLUSIVE": 6233.061647415161,
+          "EXPERT_EXCLUSIVE_DEVICE": 1149.9513673782349
+        }
+      },
+      "fractions": {
+        "extend": {
+          "GDN": 0.6216030004448209,
+          "QSA": 0.2063692028184167,
+          "PLE_CONSUMER": 0.0015257516054108708,
+          "PLE_EXPOSED_WAIT": 9.865276989640168e-05,
+          "EXPERT": 0.13123826718643483,
+          "CPU_EXPOSED_WAIT": 0.06484186441757134
+        },
+        "decode": {
+          "GDN": 0.10989411277779636,
+          "QSA": 0.6447308892587459,
+          "PLE_CONSUMER": 0.002913090260587811,
+          "PLE_EXPOSED_WAIT": 0.0001887495390333311,
+          "EXPERT": 0.13986951258431218,
+          "CPU_EXPOSED_WAIT": 0.026160825024210972
+        }
+      }
+    }
+  ],
+  "screen": {
+    "GDN": {
+      "threshold": 0.1,
+      "per_block_max_fraction": {
+        "A": 0.6078941651043998,
+        "B": 0.6216030004448209
+      },
+      "both_blocks": true
+    },
+    "QSA": {
+      "threshold": 0.1,
+      "per_block_max_fraction": {
+        "A": 0.6601874142326695,
+        "B": 0.6447308892587459
+      },
+      "both_blocks": true
+    },
+    "PLE": {
+      "threshold": 0.1,
+      "per_block_max_fraction": {
+        "A": 0.004316597589925308,
+        "B": 0.0042709452223338076
+      },
+      "both_blocks": false
+    },
+    "PLE_EXPOSED_WAIT": {
+      "threshold": 0.05,
+      "per_block_max_fraction": {
+        "A": 0.0002947238464201488,
+        "B": 0.0002789406696869952
+      },
+      "both_blocks": false
+    },
+    "EXPERT": {
+      "threshold": 0.1,
+      "per_block_max_fraction": {
+        "A": 0.2103240234597197,
+        "B": 0.2069261566540164
+      },
+      "both_blocks": true
+    },
+    "CPU_EXPOSED_WAIT_FOR_C": {
+      "threshold": 0.1,
+      "per_block_max_fraction": {
+        "A": 0.06704307787846685,
+        "B": 0.06484186441757134
+      },
+      "both_blocks": false
+    }
+  },
+  "b_candidate_pool": [
+    "GDN",
+    "QSA"
+  ],
+  "b_preliminary_disposition": "HOTSPOT_CANDIDATE_PRESENT",
+  "c_cpu_wait_trigger": false,
+  "accounting": "QSA_ATTENTION and ROUTED_EXPERT are parents. Child spans are breakdowns and are never added to their parent. Device event durations are queried at later scheduler boundaries without synchronization.",
+  "placement_profile_status": "FROZEN_ROUND13_PLACEMENTS_FROM_FRESH_P0_DEV"
+}

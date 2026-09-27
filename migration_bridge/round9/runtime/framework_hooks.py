@@ -145,6 +145,46 @@ def collect_q32_physical_layers(model, method_type):
                 summary=summary, maps=maps, devices=devices, layers=records)
 
 
+def nonkt_physical_document(binding):
+    """Describe the full-BF16 OffloaderV1 arm without claiming Q32 residency."""
+    if (not isinstance(binding, dict) or
+            binding.get('status') != 'PASS_ROUND12_NONKT_OFFLOADER_BINDING' or
+            binding.get('decoder_layers') != 48 or
+            type(binding.get('cpu_parameter_bytes')) is not int or
+            binding['cpu_parameter_bytes'] <= 0 or
+            binding.get('offloader_accounted_bytes') != binding['cpu_parameter_bytes'] or
+            not isinstance(binding.get('source_identity'), dict) or
+            not isinstance(binding.get('offloader_sha256'), str) or
+            len(binding['offloader_sha256']) != 64):
+        raise RuntimeError('non-KT physical record requires the complete OffloaderV1 binding')
+    return dict(
+        schema=1,
+        status='RECORDED_NONKT_FULL_BF16_OFFLOADERV1',
+        backend='SGLANG_OFFLOADERV1',
+        static_q32_active=False,
+        resident_capacity=None,
+        expert_precision='BF16',
+        decoder_layers=binding['decoder_layers'],
+        cpu_parameter_bytes=binding['cpu_parameter_bytes'],
+        offloader_accounted_bytes=binding['offloader_accounted_bytes'],
+        offloader_sha256=binding['offloader_sha256'],
+        source_identity=binding['source_identity'],
+    )
+
+
+def write_nonkt_physical():
+    path = Path('/out/nonkt-physical.json')
+    binding_path = Path('/out/nonkt-offloader-binding.json')
+    if path.exists():
+        raise FileExistsError('non-KT physical output must be fresh per model process')
+    if not binding_path.is_file():
+        raise RuntimeError('non-KT physical record requires its binding receipt')
+    document = nonkt_physical_document(json.loads(binding_path.read_text()))
+    temp = path.with_suffix('.tmp')
+    temp.write_text(json.dumps(document, sort_keys=True, allow_nan=False) + '\n')
+    temp.replace(path)
+
+
 def write_q32_physical(scheduler):
     from sglang.srt.layers.moe.kt_ep_wrapper import KTEPWrapperMethod
     path = Path('/out/q32-physical.json')
@@ -290,7 +330,10 @@ def framework_before(scheduler, batch):
     from .streaming_binding import streaming_before
     streaming_before(scheduler, batch)
     if config['resident_capacity'] == 32 and not getattr(scheduler, '_round9_q32_physical_recorded', False):
-        write_q32_physical(scheduler)
+        if os.environ.get('ROUND12_NONKT_MODE') == '1':
+            write_nonkt_physical()
+        else:
+            write_q32_physical(scheduler)
         scheduler._round9_q32_physical_recorded = True
     from .mainline_attribution import before as mainline_before
     mainline_before(scheduler, batch)

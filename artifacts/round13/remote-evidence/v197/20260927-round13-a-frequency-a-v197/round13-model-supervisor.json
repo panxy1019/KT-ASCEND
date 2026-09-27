@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "version": 197,
+  "stage": "ROUND13_A_STATIC_PLACEMENT",
+  "container_id": "db2a33b2daee09d4724a0316bf844b19146a0d01b0dd28d69feefc13e413bf35",
+  "started_at": 1790503507.6845114,
+  "generation_driver_starts": 0,
+  "error": "RuntimeError('server exited before Round13 completion')",
+  "traceback": "Traceback (most recent call last):\n  File \"/mnt/data1/kt-round9/round13-a-frequency-a-v197/round13_model_supervisor.py\", line 54, in main\n    raise RuntimeError(\"server exited before Round13 completion\")\nRuntimeError: server exited before Round13 completion\n",
+  "ended_at": 1790503639.1291358,
+  "owned_exit_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 137,
+    "Error": "",
+    "StartedAt": "2026-09-27T10:05:07.609229056Z",
+    "FinishedAt": "2026-09-27T10:07:17.10240004Z"
+  },
+  "guard_exit_ack": {
+    "time": 1790503638.1624742,
+    "action": "OWNED_EXITED_DURING_SAMPLE"
+  },
+  "owned_container_removed": true,
+  "physical12_after": "EMPTY"
+}

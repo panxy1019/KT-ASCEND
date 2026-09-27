@@ -1,0 +1,199 @@
+{
+  "component_contract": {
+    "contexts": [
+      64,
+      128,
+      512
+    ],
+    "final_repair_identity": "DELETE_NEGATIVE_CAUSAL_FIXTURE_AND_EXACT_ALLOCATOR_BASELINE",
+    "final_repair_versions": [
+      233,
+      234
+    ],
+    "gate_path": "B_COMPONENT_GATE.json",
+    "iterations": 5,
+    "layers": [
+      3,
+      23,
+      47
+    ],
+    "measured_versions": [
+      233,
+      234
+    ],
+    "original_v215_status": "FAIL_ALLOCATOR_ABSOLUTE_ZERO_GATE_WITH_ALL_COMPUTE_AND_LIFECYCLE_CHECKS_PASS",
+    "original_versions": [
+      215,
+      216
+    ],
+    "repair_identity": "INITIALIZED_TORCH_NPU_RUNTIME_ALLOCATOR_BASELINE",
+    "repair_v2_v231_status": "FAIL_NEGATIVE_CAUSAL_FIXTURE_REMAINED_LIVE",
+    "repair_v2_versions": [
+      231,
+      232
+    ],
+    "repair_versions": [
+      231,
+      232
+    ],
+    "request_gate_open": true,
+    "required_complete_call_ratio_le": 0.9,
+    "status": "PASS_ROUND13_B_COMPONENT_GATE",
+    "superseded_failures": [
+      215,
+      231
+    ],
+    "versions": [
+      215,
+      216
+    ],
+    "worst_complete_call_ratio_by_block": {
+      "A": 0.1979383044719095,
+      "B": 0.1889114747121572
+    }
+  },
+  "component_failure_evidence": {
+    "after_allocated": 16896,
+    "after_reserved": 2097152,
+    "archive_sha256": "89074d6b06d0cfa8bc09c3d3d5cd630dc8c1640eb2e3e09e03f470050d2115ca",
+    "cleanup": "PASS",
+    "reason": "ABSOLUTE_ZERO_ALLOCATOR_ASSERTION_REJECTED_PROVIDER_PROCESS_LIFETIME_STATE",
+    "result_status": "FAIL",
+    "row_count": 9,
+    "version": 215,
+    "worst_candidate_over_baseline": 0.18940340085910162
+  },
+  "component_failure_evidence_v231": {
+    "after_allocated": 16896,
+    "after_reserved": 2097152,
+    "archive": "v231-b-component-a-fail.tar.gz",
+    "baseline_allocated": 0,
+    "baseline_reserved": 0,
+    "cleanup": "PASS",
+    "root_cause": "LIVE_FUTURE_SELECTION_TENSOR",
+    "row_count": 9,
+    "status": "FAIL",
+    "version": 231,
+    "worst_candidate_over_baseline": 0.19066692733145174
+  },
+  "model_contract": {
+    "measured_versions": [
+      217,
+      218,
+      219,
+      220,
+      221,
+      222
+    ],
+    "offline_preflight_versions": [
+      217,
+      218,
+      219,
+      220,
+      221,
+      222
+    ],
+    "primary_metric": "W2_TPOT",
+    "request_abba_versions": [
+      219,
+      220,
+      221,
+      222
+    ],
+    "required_request_ratio_le": 0.95,
+    "smoke_evidence": {
+      "baseline": 217,
+      "cancel_reuse": "PASS",
+      "candidate": 218,
+      "candidate_decode_strategy": "DIRECT_BF16_ROW",
+      "candidate_prefill": "VECTORIZED"
+    },
+    "smoke_versions": [
+      217,
+      218
+    ],
+    "status": "B_PROMOTED"
+  },
+  "parent": "S0_ROUND12A_V174_V177_PROMOTED_QSA",
+  "profile": {
+    "eligible": [
+      "GDN",
+      "QSA"
+    ],
+    "gdn_decode_max_fraction_by_block": {
+      "A": 0.15906083110986444,
+      "B": 0.16002554898840907
+    },
+    "ple_eligible": false,
+    "qsa_decode_max_fraction_by_block": {
+      "A": 0.6601874142326695,
+      "B": 0.6447308892587459
+    },
+    "source": "P0_PROFILE_RESULT.json",
+    "source_sha256": "fef73df980e03acd6c8ac0b7e605c93719209567522caa2c7dd4623a9f9d8848"
+  },
+  "request_result": {
+    "path": "B_REQUEST_RESULT.json",
+    "primary_w2_tpot_ratios": [
+      0.6634459212416863,
+      0.6831393298297348
+    ],
+    "promoted": true,
+    "protection_regressions": [],
+    "quality_pass": true,
+    "sha256": "a24d6a8350754a303cee9025627da90d1417048aacf59a972f2c81451d4994ec",
+    "status": "B_PROMOTED"
+  },
+  "schema": 1,
+  "selection": {
+    "candidate": "DIRECT_RESIDENT_BF16_ROW_DECODE",
+    "gdn_disposition": "NOT_SELECTED_SINGLE_CANDIDATE_LIMIT_QSA_HAS_LARGER_DECODE_SHARE_AND_EXPLICIT_REMOVABLE_STAGING",
+    "module": "QSA Decode / remaining row preparation",
+    "primary_metric": "W2_TPOT",
+    "reason": "Promoted QSA still accounts for 47.60%-66.02% of Decode phase wall time across the two sampled S0 blocks. The qualified Decode path still calls _consume_reference_rows, copying already resident BF16 K/V to CPU and back to device for each row although the frozen scope claims no HBM release. The candidate removes only this redundant staging for the exact TP1 BF16 text geometry and retains sparse_gqa, causal selection, precision, state and fallback semantics."
+  },
+  "single_change": {
+    "decode_baseline": "ROW_STAGED_REFERENCE",
+    "decode_candidate": "DIRECT_BF16_ROW_USING_RESIDENT_DEVICE_KV",
+    "precision": "UNCHANGED_BF16_INPUT_FP32_ATTENTION",
+    "prefill": "UNCHANGED_VECTORIZED",
+    "qsa_math": "UNCHANGED_SPARSE_GQA",
+    "unqualified_shapes": "UNCHANGED_STAGED_ROW_FALLBACK"
+  },
+  "source_sha256": {
+    "B_COMPONENT_GATE.json": "9fe4609eeb1395d232cb69be3689f60839e5cdb02e45242b082f8a41d8067316",
+    "b_qsa_component_v2_manifest": "959a53ac104d3243ab5fe839f42b12460ef722134a42be80a959286f81fa5fb7",
+    "b_qsa_component_v3_manifest": "ed8b746ac59d95f94acf8578f596e81dcae36b7224bbe50a8501752cf07de6ee",
+    "build_round13_b.py": "f5f4032c170e94a29220e53b478c6bfcae9df48b1fec197f1b71ba278b966a15",
+    "build_round13_b_component.py": "4e97db6f3768d241eddd52026747aa9e62cbbd01bc43ea2dbdfac36a162f348f",
+    "build_round13_b_snapshot.py": "695e2aaa20ecb41601c28e2ac09752056c275297f298b04f44e23e3d2fb81c8c",
+    "round13_b_component_controller.py": "766f6a89534f113d846132140453ecbefc88c1f6232d3f94e6e961205f9e9287",
+    "round13_b_component_controller_v2.py": "9e4967798b26f179f5371acb704e77f5f1507224039bcbcc527da31d14593bfc",
+    "round13_b_component_controller_v3.py": "3bf98535699c45afaf314002d8a388e9609494bef1b85120ef70c41f9c2ac668",
+    "round13_b_component_runner_v2.py": "9293bb237015b1381bad06d4a740e76400fd179dffdbcde0bc3f625cd34239ba",
+    "round13_b_component_runner_v3.py": "d5d047a4aa2a687ce0ba737a7ae640451117fbdbc2f84570ab78d59c58903764",
+    "round13_b_model_driver.py": "2946ff01aa92f9ddcd5f83167cdf034f3d94f3b2e13c5b97dd475d740e6f82d7",
+    "round13_b_offline_preflight.py": "39533528660454c42f92b8c1b4cb5228aec6f4229a4c6d567326def2d33d4b7b",
+    "round13_b_qsa_component_probe.py": "0abaedd41f083e922de473d32e587f554922394f193f866cca64a9923d302900",
+    "round13_b_qsa_component_probe_v3": "fff6af66b3bfacce3ee5a3a443fef078afbce5f98de744bd84bb81da6c77efd1"
+  },
+  "status": "B_PROMOTED_F_CONFIRMED",
+  "final_integration": {
+    "path": "F_RESULT.json",
+    "sha256": "ac7ff158b560ad6f0b7b228f0ebf6bd03437b52a790ed11b7aa05223020d6f95",
+    "status": "F_FINAL_PROMOTED",
+    "promoted": true,
+    "versions": [
+      227,
+      228,
+      229,
+      230
+    ],
+    "primary_w2_tpot_ratios": [
+      0.6777063867609654,
+      0.6790094013454339
+    ],
+    "protection_regressions": [],
+    "quality_pass": true
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "status": "ROUND13_FINAL_CONFIG_REQUEST_GAIN_QUALIFIED_WITH_ROUND_COVERAGE_GAP",
+  "name": "HFINAL_ROUND13_LIMITED",
+  "parent": "S0_ROUND12A_V174_V177_PROMOTED_QSA",
+  "configuration": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "tp": 1,
+    "concurrency": 1,
+    "device": "PHYSICAL12_CARD6_CHIP0",
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "placement": "UNIFORM_Q32_48_LAYERS_1536_EXPERTS",
+    "npu_experts": "BF16_NZ29",
+    "scheduler_chunk": 32,
+    "hybrid_threshold_default": 129,
+    "w3_experimental_threshold": 513,
+    "dynamic": "OFF",
+    "ple": "ASYNC",
+    "qsa_prefill": "PROMOTED_QUERY_AWARE_VECTORIZED_SPARSE_GQA",
+    "qsa_decode": "DIRECT_RESIDENT_BF16_ROW_SPARSE_GQA",
+    "deferred": 0,
+    "r2": "OFF",
+    "r3": "OFF",
+    "transpose_view": "OFF",
+    "shadow320": "OFF",
+    "profiler": "OFF"
+  },
+  "single_promoted_change": {
+    "module": "QSA Decode",
+    "before": "ROW_STAGED_REFERENCE_CPU_ROUNDTRIP",
+    "after": "DIRECT_BF16_ROW_USING_RESIDENT_DEVICE_KV",
+    "unchanged": [
+      "QSA sparse-GQA equations",
+      "causal selection",
+      "BF16 input / FP32 attention math",
+      "vectorized Prefill",
+      "unqualified-shape staged fallback"
+    ]
+  },
+  "source_identity": {
+    "baseline_context_reference_runtime_sha256": "0b6e6a7fad90e3856ffdcbea233a13baaf1bb342837c68ff344579370773c028",
+    "final_context_reference_runtime_sha256": "eb51e7b0073d397673887b0e0fe6e41d745b8ee72a385faf7f1c28cf78b23fd2",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "f_transfer_sha256": "2b43577a510f275d7917a7299eee1fea597240460d364873ab8f97828c380e82",
+    "f_result_sha256": "ac7ff158b560ad6f0b7b228f0ebf6bd03437b52a790ed11b7aa05223020d6f95",
+    "promoted_patch": "PROMOTED_QSA_DECODE.patch",
+    "promoted_patch_sha256": "e42e442b261281e37767a2c8b4996df9b24a21e308ee04133d303073ae8e516e"
+  },
+  "promotion_evidence": {
+    "component": "B_COMPONENT_GATE.json",
+    "request_abba": "B_REQUEST_RESULT.json",
+    "final_mirror": "F_RESULT.json",
+    "versions": [
+      233,
+      234,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      227,
+      228,
+      229,
+      230
+    ]
+  },
+  "held_off": {
+    "static_placement_candidates": [
+      "frequency_global_budget",
+      "front_loading",
+      "random_seed42"
+    ],
+    "deferred": "TRIGGER_FALSE_NOT_IMPLEMENTED",
+    "dynamic": "ROUND10_DEFAULT_OFF",
+    "layerwise_update_candidates": "UNCHANGED_OFF"
+  },
+  "qualification_boundary": "Single-request serial W0-W4 on physical12 plus experimental H513 W3; no concurrency, p99, power, deployment, TP, HiCache, FP8 KV, Graph or MTP qualification."
+}

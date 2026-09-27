@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND13_B_DIRECT_BF16_QSA_DECODE_COMPONENT",
+  "candidate": "DIRECT_RESIDENT_BF16_ROW_DECODE",
+  "versions": {
+    "215": "A",
+    "216": "B"
+  },
+  "layers": [
+    3,
+    23,
+    47
+  ],
+  "contexts": [
+    64,
+    128,
+    512
+  ],
+  "iterations": 5,
+  "precision": "BF16_INPUT_FP32_ATTENTION",
+  "baseline_runtime_sha256": "0b6e6a7fad90e3856ffdcbea233a13baaf1bb342837c68ff344579370773c028",
+  "candidate_runtime_sha256": "eb51e7b0073d397673887b0e0fe6e41d745b8ee72a385faf7f1c28cf78b23fd2",
+  "numerical_gate_relative_l2": 0.001,
+  "performance_gate_candidate_over_baseline": 0.9,
+  "required": [
+    "independent sparse_gqa oracle",
+    "causal future token rejection",
+    "unqualified geometry staged-row fallback",
+    "repeat hash exact",
+    "batch drain, cancel drain, stale completion fail-stop",
+    "allocator cleanup",
+    "two independent blocks each improve complete call >=10%"
+  ],
+  "automatic_retries": 0
+}

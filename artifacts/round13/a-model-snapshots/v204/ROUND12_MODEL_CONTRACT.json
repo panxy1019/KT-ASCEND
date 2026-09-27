@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "P2_SMOKE",
+  "version": 154,
+  "mode": "CANDIDATE",
+  "block": "A",
+  "container": "kt-round12-p2-candidate-v154",
+  "evidence": "20260926-round12-p2-candidate-v154",
+  "parent": "ROUND11_HFINAL_V107_ORIGINAL_PROVIDERS",
+  "qsa_source": "APPROVED_CANDIDATE",
+  "default_threshold": 129,
+  "effective_threshold": 129,
+  "forced_hybrid_experiment": false,
+  "default_policy_promoted": false,
+  "profiler": "OFF",
+  "generation_limit": 8,
+  "abort_limit": 1,
+  "automatic_retries": 0,
+  "raw_result": "round12-p2-raw.json",
+  "driver_pass_status": "PASS_ROUND12_P2_DRIVER_RAW",
+  "driver_command": [
+    "{DRIVER_ROOT}/round12_p2_driver.py",
+    "--mode",
+    "CANDIDATE",
+    "--version",
+    "154",
+    "--out",
+    "/out",
+    "--fixture",
+    "{DRIVER_ROOT}/round10-t1-fixture.json"
+  ]
+}

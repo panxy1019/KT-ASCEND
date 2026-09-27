@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND13_B_QSA_DECODE_COMPONENT",
+  "candidate": "DIRECT_RESIDENT_BF16_ROW_DECODE",
+  "block": "B",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "physical_device": 12,
+  "iterations": 5,
+  "precision": "BF16_INPUT_FP32_ATTENTION",
+  "rows": [
+    {
+      "layer": 3,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.433566,
+        5.409645,
+        5.410556,
+        5.397684,
+        5.406536
+      ],
+      "candidate_wall_ms": [
+        1.018398,
+        0.980367,
+        1.019188,
+        1.03953,
+        1.021468
+      ],
+      "baseline_device_ms": [
+        5.32289981842041,
+        5.298799991607666,
+        5.295599937438965,
+        5.286600112915039,
+        5.295780181884766
+      ],
+      "candidate_device_ms": [
+        0.8980600237846375,
+        0.869920015335083,
+        0.9088199734687805,
+        0.9196400046348572,
+        0.9063199758529663
+      ],
+      "baseline_median_ms": 5.409645,
+      "candidate_median_ms": 1.019188,
+      "candidate_over_baseline": 0.1884020115922579,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "c4455bb3c98d8542d3b43ac71e0b1737f67ab7fe5a6274be39e53e31b813dae3",
+        "c4455bb3c98d8542d3b43ac71e0b1737f67ab7fe5a6274be39e53e31b813dae3",
+        "c4455bb3c98d8542d3b43ac71e0b1737f67ab7fe5a6274be39e53e31b813dae3"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.269458,
+        9.266658,
+        9.283288,
+        9.201374,
+        9.269488
+      ],
+      "candidate_wall_ms": [
+        0.999417,
+        1.001317,
+        1.017858,
+        1.003987,
+        1.008458
+      ],
+      "baseline_device_ms": [
+        9.158539772033691,
+        9.155920028686523,
+        9.171219825744629,
+        9.084659576416016,
+        9.159279823303223
+      ],
+      "candidate_device_ms": [
+        0.8913400173187256,
+        0.8747400045394897,
+        0.9110000133514404,
+        0.8976399898529053,
+        0.8985400199890137
+      ],
+      "baseline_median_ms": 9.269458,
+      "candidate_median_ms": 1.003987,
+      "candidate_over_baseline": 0.10831129500775558,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "c38074887cda2619b20d6205179ad0f7043aa9211ef6005c6ed01fb10cd5433a",
+        "c38074887cda2619b20d6205179ad0f7043aa9211ef6005c6ed01fb10cd5433a",
+        "c38074887cda2619b20d6205179ad0f7043aa9211ef6005c6ed01fb10cd5433a"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        32.984228,
+        32.537606,
+        32.483434,
+        32.448522,
+        32.449273
+      ],
+      "candidate_wall_ms": [
+        1.009288,
+        0.965476,
+        1.000047,
+        0.979626,
+        1.049989
+      ],
+      "baseline_device_ms": [
+        32.868980407714844,
+        32.41461944580078,
+        32.367061614990234,
+        32.33835983276367,
+        32.33382034301758
+      ],
+      "candidate_device_ms": [
+        0.8941799998283386,
+        0.8614199757575989,
+        0.8922200202941895,
+        0.8586599826812744,
+        0.9346200227737427
+      ],
+      "baseline_median_ms": 32.483434,
+      "candidate_median_ms": 1.000047,
+      "candidate_over_baseline": 0.030786369446038242,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "722b3549be204ed49b04e48220f207fb4316f6c80e6ab121b9b88ebfaed2f98e",
+        "722b3549be204ed49b04e48220f207fb4316f6c80e6ab121b9b88ebfaed2f98e",
+        "722b3549be204ed49b04e48220f207fb4316f6c80e6ab121b9b88ebfaed2f98e"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.450388,
+        5.416365,
+        5.440467,
+        5.479679,
+        5.468468
+      ],
+      "candidate_wall_ms": [
+        1.009288,
+        1.039359,
+        1.011928,
+        1.027338,
+        0.996307
+      ],
+      "baseline_device_ms": [
+        5.342120170593262,
+        5.300220012664795,
+        5.333320140838623,
+        5.3642802238464355,
+        5.358739852905273
+      ],
+      "candidate_device_ms": [
+        0.9034000039100647,
+        0.9310399889945984,
+        0.9022200107574463,
+        0.9047200083732605,
+        0.8714799880981445
+      ],
+      "baseline_median_ms": 5.450388,
+      "candidate_median_ms": 1.011928,
+      "candidate_over_baseline": 0.18566164463887708,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "682621ac22287b4e90d13ea4434e167b6c5a2e32c4d1dd30e86aa172c0043585",
+        "682621ac22287b4e90d13ea4434e167b6c5a2e32c4d1dd30e86aa172c0043585",
+        "682621ac22287b4e90d13ea4434e167b6c5a2e32c4d1dd30e86aa172c0043585"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.3083,
+        9.341571,
+        9.294059,
+        9.368432,
+        9.474678
+      ],
+      "candidate_wall_ms": [
+        0.999098,
+        1.035189,
+        1.04833,
+        0.990557,
+        1.049349
+      ],
+      "baseline_device_ms": [
+        9.199319839477539,
+        9.2252197265625,
+        9.18220043182373,
+        9.239740371704102,
+        9.354339599609375
+      ],
+      "candidate_device_ms": [
+        0.892520010471344,
+        0.9270200133323669,
+        0.9337599873542786,
+        0.881600022315979,
+        0.930840015411377
+      ],
+      "baseline_median_ms": 9.341571,
+      "candidate_median_ms": 1.035189,
+      "candidate_over_baseline": 0.11081530076686244,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "11eba58973f3fa0b82ae2441a2ab73cec281593773853b96f066f62e41f0863d",
+        "11eba58973f3fa0b82ae2441a2ab73cec281593773853b96f066f62e41f0863d",
+        "11eba58973f3fa0b82ae2441a2ab73cec281593773853b96f066f62e41f0863d"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        32.835171,
+        32.587219,
+        32.666082,
+        32.538986,
+        32.666643
+      ],
+      "candidate_wall_ms": [
+        1.087382,
+        1.083451,
+        1.099952,
+        1.06126,
+        1.0588
+      ],
+      "baseline_device_ms": [
+        32.707481384277344,
+        32.46451950073242,
+        32.52748107910156,
+        32.41780090332031,
+        32.54322052001953
+      ],
+      "candidate_device_ms": [
+        0.9676600098609924,
+        0.9442800283432007,
+        0.9763000011444092,
+        0.9332399964332581,
+        0.9381600022315979
+      ],
+      "baseline_median_ms": 32.666082,
+      "candidate_median_ms": 1.083451,
+      "candidate_over_baseline": 0.03316746097680156,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "008cf3e81762a22a3014e676c159c9f2a686efbae504f983204afeb212f79242",
+        "008cf3e81762a22a3014e676c159c9f2a686efbae504f983204afeb212f79242",
+        "008cf3e81762a22a3014e676c159c9f2a686efbae504f983204afeb212f79242"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.50121,
+        5.535921,
+        5.522741,
+        5.546802,
+        5.625756
+      ],
+      "candidate_wall_ms": [
+        1.044079,
+        1.085071,
+        1.045799,
+        1.027798,
+        1.063481
+      ],
+      "baseline_device_ms": [
+        5.378139972686768,
+        5.415919780731201,
+        5.3959197998046875,
+        5.425340175628662,
+        5.460259914398193
+      ],
+      "candidate_device_ms": [
+        0.926360011100769,
+        0.9556400179862976,
+        0.9268400073051453,
+        0.9083799719810486,
+        0.9447000026702881
+      ],
+      "baseline_median_ms": 5.535921,
+      "candidate_median_ms": 1.045799,
+      "candidate_over_baseline": 0.1889114747121572,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "feb5df1d24f8d65e73bac180cab4e33c9532d96d657688d478252043dc29965e",
+        "feb5df1d24f8d65e73bac180cab4e33c9532d96d657688d478252043dc29965e",
+        "feb5df1d24f8d65e73bac180cab4e33c9532d96d657688d478252043dc29965e"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.390543,
+        9.682568,
+        9.826695,
+        9.333381,
+        9.376982
+      ],
+      "candidate_wall_ms": [
+        1.074071,
+        1.063151,
+        1.062151,
+        1.001927,
+        1.017008
+      ],
+      "baseline_device_ms": [
+        9.267459869384766,
+        9.556119918823242,
+        9.689740180969238,
+        9.215319633483887,
+        9.25745964050293
+      ],
+      "candidate_device_ms": [
+        0.954200029373169,
+        0.9381399750709534,
+        0.9433799982070923,
+        0.8855999708175659,
+        0.897599995136261
+      ],
+      "baseline_median_ms": 9.390543,
+      "candidate_median_ms": 1.062151,
+      "candidate_over_baseline": 0.11310858168691632,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "caeb707d94d97b4a16096bdae50eb925d216a7c5e316b11dffcf20ae9a29d36d",
+        "caeb707d94d97b4a16096bdae50eb925d216a7c5e316b11dffcf20ae9a29d36d",
+        "caeb707d94d97b4a16096bdae50eb925d216a7c5e316b11dffcf20ae9a29d36d"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        32.522616,
+        32.555928,
+        32.539566,
+        33.582266,
+        33.04047
+      ],
+      "candidate_wall_ms": [
+        1.03842,
+        0.998988,
+        1.018698,
+        1.007598,
+        1.028058
+      ],
+      "baseline_device_ms": [
+        32.39659881591797,
+        32.43159866333008,
+        32.413658142089844,
+        33.45859909057617,
+        32.9134407043457
+      ],
+      "candidate_device_ms": [
+        0.9116799831390381,
+        0.8816999793052673,
+        0.8967000246047974,
+        0.8899800181388855,
+        0.910319983959198
+      ],
+      "baseline_median_ms": 32.555928,
+      "candidate_median_ms": 1.018698,
+      "candidate_over_baseline": 0.03129070687218623,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "7e7c770fbc28dc6c8e8006fc29084ca174332cecad1c200740259c60e923b703",
+        "7e7c770fbc28dc6c8e8006fc29084ca174332cecad1c200740259c60e923b703",
+        "7e7c770fbc28dc6c8e8006fc29084ca174332cecad1c200740259c60e923b703"
+      ]
+    }
+  ],
+  "contract_checks": {
+    "per_query_causal_future_rejected": true,
+    "unqualified_geometry_strategy": "ROW",
+    "unqualified_geometry_reference": true,
+    "complete_batch_drained": true,
+    "cancel_drained": true,
+    "stale_completion_rejected": true,
+    "stale_completion_fail_stop": true,
+    "runtime_ready_after_cancel": true,
+    "event_statuses": [
+      "CONTEXT_REFERENCE_QSA_DISPATCH",
+      "CONTEXT_REFERENCE_BATCH_DRAINED",
+      "CONTEXT_REFERENCE_REQUEST_DRAINED",
+      "CONTEXT_REFERENCE_ABORTED"
+    ]
+  },
+  "automatic_retries": 0,
+  "baseline_allocated": 0,
+  "baseline_reserved": 0,
+  "row_count": 9,
+  "worst_candidate_over_baseline": 0.1889114747121572,
+  "all_rows_improve_10pct": true,
+  "peak_allocated": 129594368,
+  "after_allocated": 0,
+  "after_reserved": 0
+}

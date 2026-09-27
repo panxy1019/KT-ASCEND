@@ -1,0 +1,439 @@
+{
+  "schema": 1,
+  "status": "FAIL",
+  "candidate": "DIRECT_RESIDENT_BF16_ROW_DECODE",
+  "block": "A",
+  "source_identity": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+    "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+    "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "file_sizes_checked": 144,
+    "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+  },
+  "physical_device": 12,
+  "iterations": 5,
+  "precision": "BF16_INPUT_FP32_ATTENTION",
+  "rows": [
+    {
+      "layer": 3,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.510441,
+        5.324181,
+        5.337363,
+        5.387014,
+        5.301401
+      ],
+      "candidate_wall_ms": [
+        1.000558,
+        0.990977,
+        1.009798,
+        0.998477,
+        1.010538
+      ],
+      "baseline_device_ms": [
+        5.388840198516846,
+        5.219480037689209,
+        5.22983980178833,
+        5.274139881134033,
+        5.193719863891602
+      ],
+      "candidate_device_ms": [
+        0.8986999988555908,
+        0.8913800120353699,
+        0.908519983291626,
+        0.8995199799537659,
+        0.9119600057601929
+      ],
+      "baseline_median_ms": 5.337363,
+      "candidate_median_ms": 1.000558,
+      "candidate_over_baseline": 0.18746298499839717,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7",
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7",
+        "50c678f72c45038cd50b20fa1e227f7a46a6e743cbbd47fa7e88fb59310389f7"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.067839,
+        9.335281,
+        9.047388,
+        9.047818,
+        9.061109
+      ],
+      "candidate_wall_ms": [
+        1.032089,
+        1.002198,
+        0.998507,
+        0.993417,
+        0.991046
+      ],
+      "baseline_device_ms": [
+        8.96205997467041,
+        9.228500366210938,
+        8.93157958984375,
+        8.945059776306152,
+        8.948360443115234
+      ],
+      "candidate_device_ms": [
+        0.9265400171279907,
+        0.8964400291442871,
+        0.8895800113677979,
+        0.8913800120353699,
+        0.8805999755859375
+      ],
+      "baseline_median_ms": 9.061109,
+      "candidate_median_ms": 0.998507,
+      "candidate_over_baseline": 0.11019699685766941,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb",
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb",
+        "8fe6f2383c9197f7083b2afea78953d1da8b52b9ea9351c6a31e3bb890b9e8cb"
+      ]
+    },
+    {
+      "layer": 3,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        32.98265,
+        32.396142,
+        34.073331,
+        35.622504,
+        35.780842
+      ],
+      "candidate_wall_ms": [
+        1.051349,
+        0.998948,
+        1.114622,
+        1.088672,
+        1.102783
+      ],
+      "baseline_device_ms": [
+        32.8709602355957,
+        32.2923583984375,
+        33.958961486816406,
+        35.505821228027344,
+        35.67095947265625
+      ],
+      "candidate_device_ms": [
+        0.9325799942016602,
+        0.8901000022888184,
+        1.0128599405288696,
+        0.9864000082015991,
+        0.9975200295448303
+      ],
+      "baseline_median_ms": 34.073331,
+      "candidate_median_ms": 1.088672,
+      "candidate_over_baseline": 0.03195085329344525,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94",
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94",
+        "fd30539e52ace619bebd3cf46acc69bbc1ec214fb2ce59020287aed3f6420a94"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.391445,
+        5.442707,
+        5.517151,
+        5.513991,
+        5.463149
+      ],
+      "candidate_wall_ms": [
+        1.128443,
+        1.034739,
+        0.996337,
+        1.014298,
+        1.05276
+      ],
+      "baseline_device_ms": [
+        5.2789201736450195,
+        5.33542013168335,
+        5.391200065612793,
+        5.409780025482178,
+        5.34119987487793
+      ],
+      "candidate_device_ms": [
+        1.0225800275802612,
+        0.9330400228500366,
+        0.8960000276565552,
+        0.9144399762153625,
+        0.9494600296020508
+      ],
+      "baseline_median_ms": 5.463149,
+      "candidate_median_ms": 1.034739,
+      "candidate_over_baseline": 0.18940340085910162,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95",
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95",
+        "4d8eb8c9dc5c192365e6c3409006672539bb0066f20e630855291dd938118c95"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.203725,
+        9.254207,
+        9.229437,
+        9.249017,
+        9.246598
+      ],
+      "candidate_wall_ms": [
+        1.04437,
+        1.05711,
+        1.053219,
+        1.012788,
+        1.019099
+      ],
+      "baseline_device_ms": [
+        9.098560333251953,
+        9.144479751586914,
+        9.118359565734863,
+        9.144280433654785,
+        9.13595962524414
+      ],
+      "candidate_device_ms": [
+        0.9319199919700623,
+        0.9379400014877319,
+        0.9332399964332581,
+        0.9094200134277344,
+        0.9184799790382385
+      ],
+      "baseline_median_ms": 9.246598,
+      "candidate_median_ms": 1.04437,
+      "candidate_over_baseline": 0.1129464047209579,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7",
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7",
+        "a3fb9839d8e9d45af25947c3faa8d64dfa40cde5f21199bf19280b6ce23a61b7"
+      ]
+    },
+    {
+      "layer": 23,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        31.7286,
+        31.7016,
+        31.589714,
+        31.675788,
+        31.671918
+      ],
+      "candidate_wall_ms": [
+        1.04938,
+        0.992707,
+        1.034879,
+        1.039039,
+        1.102032
+      ],
+      "baseline_device_ms": [
+        31.611679077148438,
+        31.583520889282227,
+        31.484079360961914,
+        31.57084083557129,
+        31.56328010559082
+      ],
+      "candidate_device_ms": [
+        0.9467599987983704,
+        0.8946999907493591,
+        0.9339399933815002,
+        0.9220600128173828,
+        0.9644399881362915
+      ],
+      "baseline_median_ms": 31.675788,
+      "candidate_median_ms": 1.039039,
+      "candidate_over_baseline": 0.032802309448465815,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da",
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da",
+        "e414ffbaf67051632853f12bf5d1dfb2301e06834e74fc24ef445d053e5403da"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 64,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        5.487379,
+        5.578444,
+        5.467859,
+        5.485789,
+        5.478719
+      ],
+      "candidate_wall_ms": [
+        1.025268,
+        1.027329,
+        1.038369,
+        1.097812,
+        1.077421
+      ],
+      "baseline_device_ms": [
+        5.377079963684082,
+        5.468999862670898,
+        5.358439922332764,
+        5.378180027008057,
+        5.37332010269165
+      ],
+      "candidate_device_ms": [
+        0.9250800013542175,
+        0.9265199899673462,
+        0.9387199878692627,
+        0.9779999852180481,
+        0.9525399804115295
+      ],
+      "baseline_median_ms": 5.485789,
+      "candidate_median_ms": 1.038369,
+      "candidate_over_baseline": 0.18928343762401365,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf",
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf",
+        "e6194c8b4369e10feed0d176f0f8ef96bc89ff74f2c79543743a64559f5c6cdf"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 128,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        9.275378,
+        9.327561,
+        9.30949,
+        9.260168,
+        9.236367
+      ],
+      "candidate_wall_ms": [
+        1.027459,
+        1.026748,
+        1.04886,
+        1.020918,
+        0.979117
+      ],
+      "baseline_device_ms": [
+        9.159919738769531,
+        9.223600387573242,
+        9.203160285949707,
+        9.14303970336914,
+        9.126319885253906
+      ],
+      "candidate_device_ms": [
+        0.928380012512207,
+        0.9262800216674805,
+        0.947700023651123,
+        0.9090999960899353,
+        0.8743000030517578
+      ],
+      "baseline_median_ms": 9.275378,
+      "candidate_median_ms": 1.026748,
+      "candidate_over_baseline": 0.11069608160443704,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564",
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564",
+        "af04012c87bceb75f3ab23dda6cecaa35bc724016792f3f6d6b4e430da690564"
+      ]
+    },
+    {
+      "layer": 47,
+      "context_tokens": 512,
+      "query_tokens": 1,
+      "strategy": "DIRECT_BF16_ROW",
+      "baseline_wall_ms": [
+        32.103628,
+        31.991542,
+        31.860727,
+        31.972742,
+        32.078667
+      ],
+      "candidate_wall_ms": [
+        1.019408,
+        0.988197,
+        0.998487,
+        1.000008,
+        1.05819
+      ],
+      "baseline_device_ms": [
+        31.991939544677734,
+        31.887939453125,
+        31.74925994873047,
+        31.867219924926758,
+        31.967119216918945
+      ],
+      "candidate_device_ms": [
+        0.9137799739837646,
+        0.8875600099563599,
+        0.8915600180625916,
+        0.8968200087547302,
+        0.943340003490448
+      ],
+      "baseline_median_ms": 31.991542,
+      "candidate_median_ms": 1.000008,
+      "candidate_over_baseline": 0.03125851201545709,
+      "baseline_relative_l2": 0.0,
+      "candidate_relative_l2": 0.0,
+      "repeat_hashes": [
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e",
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e",
+        "c9c19e3de2da3c785ca8b34425d462707425c690499ed5071534196ab81dd86e"
+      ]
+    }
+  ],
+  "contract_checks": {
+    "per_query_causal_future_rejected": true,
+    "unqualified_geometry_strategy": "ROW",
+    "unqualified_geometry_reference": true,
+    "complete_batch_drained": true,
+    "cancel_drained": true,
+    "stale_completion_rejected": true,
+    "stale_completion_fail_stop": true,
+    "runtime_ready_after_cancel": true,
+    "event_statuses": [
+      "CONTEXT_REFERENCE_QSA_DISPATCH",
+      "CONTEXT_REFERENCE_BATCH_DRAINED",
+      "CONTEXT_REFERENCE_REQUEST_DRAINED",
+      "CONTEXT_REFERENCE_ABORTED"
+    ]
+  },
+  "automatic_retries": 0,
+  "row_count": 9,
+  "worst_candidate_over_baseline": 0.18940340085910162,
+  "all_rows_improve_10pct": true,
+  "peak_allocated": 129611264,
+  "after_allocated": 16896,
+  "after_reserved": 2097152,
+  "error": "RuntimeError: Round13 B allocator did not return to baseline"
+}

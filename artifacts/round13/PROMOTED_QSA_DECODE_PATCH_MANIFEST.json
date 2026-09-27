@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "ROUND13_PROMOTED_QSA_DECODE_PATCH_FROZEN",
+  "baseline_run": 227,
+  "candidate_run": 228,
+  "files": {
+    "runtime/context_reference_gate.py": {
+      "baseline_sha256": "97a6cc5b363a271e0a168e7ffee3f8f24a1de6504bf02e4d409ce322ca1c8ac4",
+      "candidate_sha256": "9eb3f725427aedac9d25b1d36f9443ee3f313c4b4d5d683d42904dcfa7e02ac2"
+    },
+    "runtime/context_reference_runtime.py": {
+      "baseline_sha256": "0b6e6a7fad90e3856ffdcbea233a13baaf1bb342837c68ff344579370773c028",
+      "candidate_sha256": "eb51e7b0073d397673887b0e0fe6e41d745b8ee72a385faf7f1c28cf78b23fd2"
+    }
+  },
+  "patch_sha256": "e42e442b261281e37767a2c8b4996df9b24a21e308ee04133d303073ae8e516e",
+  "excluded_snapshot_identity_only_difference": "tools/launch_hybrid.py v227/v228 fixed run identity; not part of promoted runtime behavior"
+}

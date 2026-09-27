@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "status": "ROUND13_REQUIREMENTS_CHECKED_WITH_DECLARED_GAP",
+  "items": [
+    {
+      "requirement": "Restore Round12a S0 identity without replacing dirty runtime snapshot",
+      "status": "PASS",
+      "evidence": [
+        "BASELINE_MANIFEST.json",
+        "P0_INPUT_RECEIPT.json"
+      ]
+    },
+    {
+      "requirement": "Freeze W0-W4, DEV/HOLDOUT and metric definitions",
+      "status": "PASS",
+      "evidence": [
+        "WORKLOADS.json"
+      ]
+    },
+    {
+      "requirement": "Four exact same-budget static placement definitions and component capacity contract",
+      "status": "PASS",
+      "evidence": [
+        "PLACEMENT_PROFILES.json",
+        "A_COMPONENT_GATE.json"
+      ]
+    },
+    {
+      "requirement": "Eight-process A mirror U/F/Front/Random/Random/Front/F/U",
+      "status": "GAP",
+      "evidence": [
+        "A_RESULT.json"
+      ],
+      "detail": "Only one successful common-source block per strategy; integration failures consumed frozen A slots. All candidates failed the necessary first-block W2 gate, so no A promotion."
+    },
+    {
+      "requirement": "Two independent fresh S0 attribution blocks select at most one B hotspot",
+      "status": "PASS",
+      "evidence": [
+        "P0_PROFILE_RESULT.json",
+        "B_PROFILE_AND_RESULT.json"
+      ]
+    },
+    {
+      "requirement": "B component, smoke and S0/B/B/S0 request qualification",
+      "status": "PASS",
+      "evidence": [
+        "B_COMPONENT_GATE.json",
+        "B_REQUEST_RESULT.json"
+      ]
+    },
+    {
+      "requirement": "Conditional deferred decision after A/B",
+      "status": "PASS_DEFERRED_WITH_REASON",
+      "evidence": [
+        "C_DISPOSITION.json"
+      ],
+      "detail": "Entry trigger false; no d1 build or run."
+    },
+    {
+      "requirement": "Fresh S0/FINAL/FINAL/S0 integration when a candidate promotes",
+      "status": "PASS",
+      "evidence": [
+        "F_RESULT.json",
+        "F_BENCHMARK.csv"
+      ]
+    },
+    {
+      "requirement": "Final source/build/patch/hash identities",
+      "status": "PASS",
+      "evidence": [
+        "FINAL_CONFIG.json",
+        "PROMOTED_QSA_DECODE.patch",
+        "PROMOTED_QSA_DECODE_PATCH_MANIFEST.json",
+        "EVIDENCE_SHA256SUMS.txt"
+      ]
+    },
+    {
+      "requirement": "Resource cleanup and registered-file cache retirement",
+      "status": "PASS",
+      "evidence": [
+        "ROUND13_RESOURCE_RETIREMENT_RECEIPT.json",
+        "ROUND13_FINAL_REMOTE_AUDIT.txt"
+      ]
+    },
+    {
+      "requirement": "Respect hard budgets and zero unchanged retry",
+      "status": "PASS",
+      "evidence": [
+        "ROUND13_EXECUTION_BUDGET.json"
+      ]
+    },
+    {
+      "requirement": "Terminal classification reflects missing mandatory coverage",
+      "status": "PASS",
+      "evidence": [
+        "FINAL_STATUS.json"
+      ],
+      "detail": "ROUND13_PARTIAL_WITH_GAPS plus separately qualified B/F request-gain subresult."
+    }
+  ],
+  "unresolved_required_gap_count": 1,
+  "unresolved_required_gaps": [
+    "A_EIGHT_PROCESS_MIRROR_SECOND_HALF_NOT_MEASURED"
+  ]
+}

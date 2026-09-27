@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "status": "C_DEFERRED_WITH_REASON",
+  "parent": "S0_ROUND12A_V174_V177_PROMOTED_QSA",
+  "trigger": {
+    "metric": "CPU Expert exposed wait / corresponding phase wall time",
+    "threshold": 0.1,
+    "per_block_max_fraction": {
+      "A": 0.06704307787846685,
+      "B": 0.06484186441757134
+    },
+    "both_blocks": false,
+    "passed": false
+  },
+  "decision": "NO_DEFERRED_DEVICE_RESEARCH",
+  "reason": "Two independent S0 blocks measured CPU Expert exposed-wait maxima of 6.7043% and 6.4842%, both below the frozen 10% device-entry threshold.",
+  "semantics": {
+    "changed": false,
+    "d0_d1_run": false,
+    "cross_layer_non_equivalent_deferred_qualified": false,
+    "statement": "No d=1 implementation was built or run. The round therefore makes no quality or speed claim for deferred and does not alter downstream-layer inputs."
+  },
+  "safety": {
+    "single_parent_sync_removed": false,
+    "buffer_ready_consumed_epoch_contract_built": false,
+    "cancel_drain_changed": false
+  },
+  "does_not_block_ab": true,
+  "source_evidence": {
+    "path": "artifacts/round13/P0_PROFILE_RESULT.json",
+    "sha256": "fef73df980e03acd6c8ac0b7e605c93719209567522caa2c7dd4623a9f9d8848"
+  }
+}
