@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND15_P0_FRESH_PROMOTED_S0_PROFILE",
+  "versions": [
+    331,
+    332
+  ],
+  "blocks": [
+    "A",
+    "B"
+  ],
+  "parent": "ROUND14A_V295_PROMOTED_GDN_UNIFORM_Q32_H129_GRAPH_OFF",
+  "workloads": [
+    {
+      "ordinal": 1,
+      "workload": "WARMUP",
+      "input_tokens": 128,
+      "output_tokens": 16,
+      "phase": "warmup"
+    },
+    {
+      "ordinal": 2,
+      "workload": "W1",
+      "input_tokens": 128,
+      "output_tokens": 16,
+      "phase": "measurement"
+    },
+    {
+      "ordinal": 3,
+      "workload": "W2",
+      "input_tokens": 128,
+      "output_tokens": 128,
+      "phase": "measurement"
+    },
+    {
+      "ordinal": 4,
+      "workload": "DRAIN",
+      "input_tokens": 27,
+      "output_tokens": 4,
+      "phase": "drain"
+    }
+  ],
+  "generation_attempts_per_process": 4,
+  "model_processes": 2,
+  "profiler": "BOUNDED_EXISTING_EVENT_OBSERVER",
+  "graph": false,
+  "observer": {
+    "sampled_layers": {
+      "GDN": [
+        0,
+        24,
+        46
+      ],
+      "QSA_ATTENTION": [
+        3,
+        23,
+        47
+      ],
+      "QSA_INDEXER": [
+        3,
+        23,
+        47
+      ],
+      "PLE": [
+        1
+      ],
+      "EXPERT": [
+        0,
+        24,
+        47
+      ]
+    },
+    "device_query": "DEFERRED_QUERY_ONLY_NO_SYNCHRONIZE",
+    "no_parent_child_sum": true
+  },
+  "required": {
+    "promoted_gdn_hits": true,
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "hybrid_path": true,
+    "finite_logprobs": true,
+    "ack_prefix": [
+      3897,
+      248046
+    ],
+    "resource_caps": "ROUND14A_STRICT"
+  },
+  "automatic_retries": 0
+}

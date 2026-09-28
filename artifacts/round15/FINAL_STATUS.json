@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+  "performance_objective": "NOT_ACHIEVED",
+  "scope": {
+    "user_amendment": "A/B request benchmarking was reduced to one fresh baseline process and one fresh candidate process with two measurements per W1/W2.",
+    "original_four_process_abba": "SUPERSEDED_BY_USER",
+    "evidence_strength": "DIRECTION_AND_ROUGH_MAGNITUDE_ONLY"
+  },
+  "p0": "PASS_TWO_FRESH_PROFILE_BLOCKS",
+  "a": {
+    "component": "PASS_TWO_BLOCK_GATE",
+    "request": "NO_REQUEST_GAIN_IN_W2_DIRECTIONAL_SCREEN",
+    "disposition": "KEEP_DEFAULT_OFF"
+  },
+  "b": {
+    "component": "PASS_ONE_EXACT_PRODUCTION_INT32_PROCESS",
+    "request": "SMALL_DIRECTIONAL_GAIN_BELOW_ORIGINAL_PROMOTION_GATE",
+    "disposition": "KEEP_DEFAULT_OFF"
+  },
+  "quality": {
+    "a_output_token_sequences_exact": true,
+    "b_output_token_sequences_exact": true,
+    "finite_logprobs": true,
+    "cancel_reuse": "PASS"
+  },
+  "resources": {
+    "all_owned_containers_removed_after_each_run": true,
+    "all_owned_device_processes_exited": true,
+    "cache_retirement": "PASS_REGISTERED_READ_ONLY_FILES_ONLY_AFTER_ARCHIVE_AND_SHA",
+    "external_tasks_modified": false,
+    "final_remote_snapshot_note": "At 2026-09-28T16:11Z, new external qwen38-vllm containers were present. They were not Round15-owned and were not modified."
+  },
+  "budget_used": {
+    "model_processes": 13,
+    "generation_attempts": 83,
+    "abort_controls": 5,
+    "component_processes": 4,
+    "npu_device_hours": 0.8372649977093123
+  },
+  "final_config": "artifacts/round15/FINAL_CONFIG.json",
+  "limitations": [
+    "No four-process request ABBA was performed after the explicit user scope reduction.",
+    "The results do not establish statistical stability or production qualification.",
+    "B host cgroup peak is unknown because the request monitor did not record it.",
+    "Round15 did not expand the existing <=128 input/output narrow qualification."
+  ]
+}

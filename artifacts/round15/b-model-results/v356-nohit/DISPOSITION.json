@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "status": "FAIL_INTEGRATION_NOT_A_PERFORMANCE_RESULT",
+  "version": 356,
+  "stage": "ROUND15_B_GRAPH_FULL_MODEL",
+  "requests_completed": 14,
+  "quality_cancel_reuse": "PASS_ON_EAGER_FALLBACK",
+  "candidate_graph_captures": 0,
+  "candidate_graph_replays": 0,
+  "fallback_reason": "IDS_DTYPE",
+  "observed_topk_ids_dtype": "torch.int32",
+  "component_v347_topk_ids_dtype": "torch.int64",
+  "root_cause": "component and fail-closed policy did not reproduce the production Decode routed-ID dtype",
+  "performance_interpretation": "INVALID_AS_CANDIDATE_PERFORMANCE_BECAUSE_GRAPH_NEVER_EXECUTED",
+  "repair": "v357 repeats the component with exact production int32; only an exact pass may open one final candidate model run",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_REGISTERED_TRAINING_ONLY",
+  "evidence_tar_sha256": "eac9b108b6c7fa7b05426b578fffbc877b35af29b6ed8c552e2f1c12e3a2b45d"
+}

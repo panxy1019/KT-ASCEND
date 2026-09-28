@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "ROUND15_A_COMPLETE_NO_PROMOTION",
+  "profile_basis": {
+    "status": "PASS_ROUND15_P0_TWO_FRESH_BLOCKS",
+    "finding": "QSA was the largest sampled NPU cost in both fresh S0 blocks",
+    "decode_attention_ms_per_sampled_call": "approximately 6.06",
+    "decode_indexer_ms_per_sampled_call": "approximately 2.8-3.0"
+  },
+  "provider_review": {
+    "qualified_parent": "Round14a promoted QSA VECTORIZED Prefill plus DIRECT_BF16_ROW Decode",
+    "mature_operator_screen": "npu_lightning_indexer was expressible only for the 520-group Top512 case and did not match the currently qualified <=256-token shapes",
+    "selected_candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+    "semantics": "when the causal selected set is the complete available set, avoid ranking work while preserving causal, GQA and state identities",
+    "default": "OFF"
+  },
+  "component": {
+    "status": "PASS_ROUND15_A1_QSA_TWO_BLOCK_COMPONENT_GATE",
+    "versions": [339, 340],
+    "numerical": "PASS_FP32_AND_DOWNSTREAM_CONTRACT",
+    "lifecycle": "PASS_20_CYCLES_EACH_BLOCK",
+    "complete_parent_candidate_over_baseline_range": [0.170, 0.198]
+  },
+  "request_screen": {
+    "evidence_class": "TWO_FRESH_PROCESS_DIRECTIONAL_SCREEN_NOT_ABBA",
+    "versions": {
+      "baseline": 341,
+      "candidate": 342
+    },
+    "candidate_hit_layers": 12,
+    "quality": {
+      "all_14_output_token_sequences_exact": true,
+      "finite_logprobs": true,
+      "cancel_reuse": "PASS"
+    },
+    "w1": {
+      "ttft_improvement_percent": 3.6404287822965564,
+      "tpot_improvement_percent": 3.734599782044545,
+      "e2e_improvement_percent": 3.6972022966889506,
+      "serial_output_throughput_improvement_percent": 3.8391431867631276
+    },
+    "w2": {
+      "ttft_improvement_percent": -3.250605403349116,
+      "tpot_improvement_percent": -0.4143190447881251,
+      "e2e_improvement_percent": -0.6290277968916014,
+      "serial_output_throughput_improvement_percent": -0.6250957707364946
+    },
+    "resource": {
+      "baseline_whole_card_hbm_peak_mib": 35048,
+      "candidate_whole_card_hbm_peak_mib": 35047,
+      "baseline_owned_hbm_peak_mib": 25754,
+      "candidate_owned_hbm_peak_mib": 25754
+    }
+  },
+  "disposition": {
+    "candidate": "KEEP_DEFAULT_OFF",
+    "reason": "The Decode-heavy W2 direction regressed slightly despite a large component gain; no request gain was demonstrated.",
+    "not_claimed": [
+      "FOUR_PROCESS_ABBA_STABILITY",
+      "STATISTICAL_QUALIFICATION",
+      "PRODUCTION_PROMOTION"
+    ]
+  }
+}

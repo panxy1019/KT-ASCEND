@@ -1,0 +1,113 @@
+{
+  "schema": 1,
+  "status": "P0_IDENTITY_FROZEN_PROFILE_COMPLETE",
+  "repository": {
+    "branch": "codex/round15-npu-ops-segmented-graph",
+    "start_head": "e3a443ee7bb3e075b6ca3bfe19709b2a183c95fb",
+    "dirty_runtime_snapshot_required": true
+  },
+  "parent": {
+    "round": "14a",
+    "status": "ROUND14A_COMPLETE_GDN_PROMOTED_B_C_NO_PROMOTION",
+    "final_config_sha256": "d0c72de841c5afc581752382cbea9c02409aaba387523ec63f36fc7f9ebb74b5",
+    "final_status_sha256": "01611f5dd483573c1b3aa8a1a9681807753a88e2dc5684536a816004d825278d",
+    "baseline_manifest_sha256": "a2273c288240de860474210ce7f25b4cd0fd100c1460b633cdceeb12132aa265",
+    "actual_runtime_parent": "artifacts/round14a/a-gdn-model-snapshots/v295",
+    "actual_runtime_manifest_sha256": "5639b0a21ac4f94c0c2ca6f5ca66248a0dddcd3b5a83a2eb1f25b4899a7c28cd",
+    "actual_runtime_qwen_sha256": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545",
+    "remote_success_root": "/mnt/data1/kt-round9/round14a-a-gdn-model-20260927-v2/v295",
+    "remote_evidence": "/mnt/data1/kt-round9/evidence/20260927-round14a-a-gdn-abba-candidate-a-v295"
+  },
+  "fixed_runtime": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "npu_resident": "STATIC_UNIFORM_Q32_BF16_NZ29",
+    "scheduler_chunk": 32,
+    "ple": "ASYNC",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "gdn": "PROMOTED_NPU_CONV_RECURRENCE_PLUS_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+    "hybrid_threshold": 129,
+    "tp": 1,
+    "concurrency": 1,
+    "input_tokens_max": 128,
+    "output_tokens_max": 128,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "transpose_view": false,
+    "shadow320": false,
+    "graph": false
+  },
+  "host": {
+    "address": "110.123.0.3",
+    "physical_device": 12,
+    "npu_smi_card": 6,
+    "npu_smi_chip": 0,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "training_container_full_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef"
+  },
+  "pending_p0_fields": [],
+  "p0_result": {
+    "status": "PASS_ROUND15_P0_TWO_FRESH_BLOCKS",
+    "result": "artifacts/round15/P0_PROFILE_RESULT.json"
+  },
+  "images": {
+    "s0": {
+      "name": "kt-round64-migration:20260916",
+      "image_id": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+      "torch": "2.9.0+cpu",
+      "torch_npu": "2.9.0.post2",
+      "cann": "9.0.0"
+    },
+    "donor": {
+      "name": "quay.io/ascend/vllm-ascend:qwen3.8-next-a3-openeuler",
+      "image_id": "sha256:7e3ab7e56a54259d3ecec91073346f9ca8b2a4c1f58e15826e3ed6ff67036f00",
+      "repo_digest": "sha256:38e4a59458c82d2972dc08ea3aa209784cc9fb925c417a5559d422f2bbebf830",
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post4",
+      "cann": "9.1.0",
+      "vllm_ascend_commit": "550ab66e7feb89f6e2ba49394f6ffb153189ac2b",
+      "vllm_commit": "568afb3a13806beb53bb2e6bd518269357b237c0"
+    }
+  },
+  "source_identity": {
+    "qwen4_exp_sha256": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "gdn_sha256": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1",
+    "unquantized_moe_sha256": "56b46c170c8150afb437cb1bc0ea4453a456ca14f849170e7d0f27358cabcafb",
+    "kt_ep_wrapper_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+    "torch_npu_graphs_sha256": "5ed98b6b5bbbaa162513801e877a24671b58ec2b8eaba3c8d446357efe0e5dc1"
+  },
+  "provider_symbols": {
+    "qsa": "Qwen4ReferenceIndexer.forward -> round9.qsa.select_tokens / sparse_gqa_candidate",
+    "gdn": "Qwen4ReferenceGatedDeltaNet.forward -> promoted native attn core -> sigmoid_gated_rms_norm -> out_proj",
+    "resident_moe": "UnquantizedFusedMoEMethod.forward_npu -> npu_moe_init_routing_v2 / npu_grouped_matmul / npu_swiglu / npu_moe_finalize_routing",
+    "ple": "Qwen4ReferencePLE with async prepare and existing ready/consumed events",
+    "graph_gate": "_guard_profile currently rejects get_is_capture_mode(); B uses an internal resident-MoE NPUGraph segment and does not enable whole-model SGLang graph capture"
+  },
+  "graph_api_capability": {
+    "source_status": "AVAILABLE_IN_TORCH_NPU_2_9",
+    "device_dispatch_status": "PENDING_FIRST_COMPONENT",
+    "api": [
+      "NPUGraph",
+      "graph",
+      "graph_pool_handle",
+      "replay",
+      "reset"
+    ]
+  },
+  "source_gate_tuple": {
+    "parent_snapshot_manifest": "5639b0a21ac4f94c0c2ca6f5ca66248a0dddcd3b5a83a2eb1f25b4899a7c28cd",
+    "qwen4_exp": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545",
+    "provider_map": "artifacts/round15/PROVIDER_MAP.md",
+    "graph_contract": "artifacts/round15/GRAPH_CONTRACT.md"
+  }
+}

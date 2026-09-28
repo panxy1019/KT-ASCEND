@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "FAIL_INTEGRATION_FIRST_CAPTURE_OUTPUT_NOT_A_PERFORMANCE_RESULT",
+  "version": 358,
+  "stage": "ROUND15_B_GRAPH_FULL_MODEL",
+  "generation_attempts": 1,
+  "requests_completed": 0,
+  "wrong_output_published": false,
+  "prefill_fallback_layers": 48,
+  "decode_failure_layer": 0,
+  "relative_l2": 1.0,
+  "max_abs": 0.008573532104492188,
+  "root_cause": "ResidentMoeDecodeGraph capture records the graph but the full-model first-capture path read graph.output before calling replay; the passing component always called replay before comparing",
+  "regression": "test_round15_b_first_capture_replay.py fails on graph.output and passes only when the first candidate comes from graph.replay(dispatch_output)",
+  "repair": "single dataflow change: first full-model candidate is produced by replay, followed by one-time synchronization before self-check",
+  "performance_interpretation": "INVALID_BECAUSE_NO_REQUEST_COMPLETED",
+  "cleanup": "PASS_GUARD_ACK_CONTAINER_REMOVED_REGISTERED_TRAINING_ONLY",
+  "archive_sha256": "a39b43fba2acda8387dfa9b4cf340c2073ee1f010babf17c4b689b30c450dbbb"
+}

@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND15_P0_PROFILE_EVIDENCE_SALVAGED_AFTER_CONTROL_FAILURE",
+  "version": 335,
+  "block": "A",
+  "original_raw_status": "PASS_ROUND15_P0_PROFILE_DRIVER_RAW",
+  "original_supervisor_status": "FAIL_CLEANUP",
+  "control_failures": [
+    {
+      "kind": "PROFILER_METADATA_NAME_MISMATCH",
+      "raw": "BOUNDED_OBSERVER_ON",
+      "contract": "BOUNDED_EXISTING_EVENT_OBSERVER"
+    },
+    {
+      "kind": "REGISTERED_TRAINING_PROCESS_MISTAKEN_FOR_UNKNOWN_PROCESS",
+      "accepted_identity": {
+        "status": "REGISTERED_TRAINING_ONLY",
+        "processes": [
+          {
+            "pid": 2980236,
+            "memory_mib": 6123
+          }
+        ]
+      }
+    }
+  ],
+  "measurements": {
+    "WARMUP": {
+      "completion_tokens": 16,
+      "ttft_seconds": 46.04404829,
+      "tpot_seconds": 0.9133611065333334,
+      "e2e_seconds": 59.744600674,
+      "finite_logprobs": true
+    },
+    "W1": {
+      "completion_tokens": 16,
+      "ttft_seconds": 3.032747497,
+      "tpot_seconds": 0.29404621393333336,
+      "e2e_seconds": 7.443564622,
+      "finite_logprobs": true
+    },
+    "W2": {
+      "completion_tokens": 128,
+      "ttft_seconds": 2.927217414,
+      "tpot_seconds": 0.2890148117559055,
+      "e2e_seconds": 39.632258415,
+      "finite_logprobs": true
+    },
+    "DRAIN": {
+      "completion_tokens": 4,
+      "ttft_seconds": 2.556411808,
+      "tpot_seconds": 0.2985767946666667,
+      "e2e_seconds": 3.452268778,
+      "finite_logprobs": true
+    }
+  },
+  "five_bucket_memory": {
+    "unique_storage_count": 1116,
+    "unique_storage_bytes": 25678547588,
+    "buckets": {
+      "Expert": {
+        "npu_bytes": 15099494400,
+        "host_bytes": 0,
+        "other_bytes": 0,
+        "unique_storages": 96
+      },
+      "PLE": {
+        "npu_bytes": 65679640,
+        "host_bytes": 0,
+        "other_bytes": 0,
+        "unique_storages": 9
+      },
+      "Dense backbone": {
+        "npu_bytes": 9863275648,
+        "host_bytes": 0,
+        "other_bytes": 0,
+        "unique_storages": 990
+      },
+      "KV+GDN state": {
+        "npu_bytes": 335333484,
+        "host_bytes": 0,
+        "other_bytes": 0,
+        "unique_storages": 13
+      },
+      "Workspace": {
+        "npu_bytes": 314739200,
+        "host_bytes": 25216,
+        "other_bytes": 0,
+        "unique_storages": 8
+      }
+    },
+    "allocator": {
+      "allocated_bytes": 25793916416,
+      "reserved_bytes": 26373783552,
+      "persistent_classified_npu_bytes": 25678522372,
+      "workspace_unclassified_allocated_bytes": 115394044,
+      "allocator_reserved_unallocated_bytes": 579867136,
+      "owned_used_bytes": null,
+      "board_used_bytes": null,
+      "board_driver_or_external_residual_bytes": null
+    }
+  },
+  "cleanup": {
+    "driver_exit": 0,
+    "guard_exit_ack": {
+      "time": 1790596893.0149426,
+      "action": "OWNED_EXITED_DURING_SAMPLE"
+    },
+    "owned_container_removed": true,
+    "oom_killed": false,
+    "physical12_after": {
+      "status": "REGISTERED_TRAINING_ONLY",
+      "processes": [
+        {
+          "pid": 2980236,
+          "memory_mib": 6123
+        }
+      ]
+    }
+  },
+  "runtime": {
+    "seconds": 267.532153,
+    "npu_device_hours": 0.07431448694444444
+  },
+  "evidence": {
+    "files": 251,
+    "local_remote_sha256_exact": true,
+    "evidence_tar_sha256": "348c871faf98cba039535a5ca2da8136102de6c47bbf41a02f4629ad267793be",
+    "admission_tar_sha256": "3830f46b53d9e15bf650173228c45b408609aaf2bf93deba6e3e221455d569d7",
+    "raw_sha256": "9831e884372b9a7794c2f399cd409b699fa04c618ac10ceb91a3128a089ec920",
+    "supervisor_sha256": "cb83bccd077157ee9b7854ead7ce2743a4ce49138053284c64bb90b272e9cb4b",
+    "census_sha256": "fb0672f10e1228ce5a6cae234f7fa75f22438a238d0a041d433059430413ff59"
+  },
+  "qualification_boundary": "Measurements are admitted as P0 block-A data; the original control failure remains preserved and this receipt is not a replacement process PASS."
+}

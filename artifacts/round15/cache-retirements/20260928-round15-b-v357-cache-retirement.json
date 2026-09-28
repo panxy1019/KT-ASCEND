@@ -1,0 +1,92 @@
+{
+  "active_references_after": [],
+  "active_references_before": [],
+  "after_fincore": {
+    "file_count": 179,
+    "resident_bytes": 0,
+    "resident_file_count": 0,
+    "resident_pages": 0,
+    "total_size_bytes": 424173059448
+  },
+  "after_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 407092,
+      "FileHugePages": 1157120,
+      "FilePages": 10059292,
+      "MemFree": 251845920
+    },
+    "3": {
+      "AnonPages": 1413888,
+      "FileHugePages": 172032,
+      "FilePages": 1636996,
+      "MemFree": 259447956
+    },
+    "4": {
+      "AnonPages": 155476,
+      "FileHugePages": 12931072,
+      "FilePages": 170867608,
+      "MemFree": 89616320
+    },
+    "7": {
+      "AnonPages": 13003676,
+      "FileHugePages": 3801088,
+      "FilePages": 12411696,
+      "MemFree": 236031328
+    }
+  },
+  "after_system_memavailable_kib": 1955579152,
+  "automation": "PAUSED_UNCHANGED",
+  "before_fincore": {
+    "file_count": 179,
+    "resident_bytes": 344858624,
+    "resident_file_count": 2,
+    "resident_pages": 84194,
+    "total_size_bytes": 424173059448
+  },
+  "before_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 407672,
+      "FileHugePages": 1247232,
+      "FilePages": 10395892,
+      "MemFree": 251506264
+    },
+    "3": {
+      "AnonPages": 1415640,
+      "FileHugePages": 172032,
+      "FilePages": 1636340,
+      "MemFree": 259447240
+    },
+    "4": {
+      "AnonPages": 149964,
+      "FileHugePages": 12931072,
+      "FilePages": 170867592,
+      "MemFree": 89632504
+    },
+    "7": {
+      "AnonPages": 13003344,
+      "FileHugePages": 3801088,
+      "FilePages": 12411684,
+      "MemFree": 236038568
+    }
+  },
+  "before_system_memavailable_kib": 1955616308,
+  "ended_unix": 1790609790.2692497,
+  "expected_file_count": 179,
+  "failures": [],
+  "file_count": 179,
+  "file_stat_identity_sha256": "af3c1ef33b8d40f710da63efe5cd8a88b975fdba4735a15e147b1c0b9e14946e",
+  "global_drop_caches": false,
+  "manifest_path": "/mnt/data1/kt-round9/evidence/20260928-round15-b-cache-contract/full-manifest.json",
+  "manifest_sha256": "ba9057bdf7801ebd292d3b8a789e5aa18b0390d002e0a9c9f76e93feb1d46da0",
+  "minimum_drop_bytes": 1,
+  "operation": "POSIX_FADV_DONTNEED",
+  "other_tasks_modified": false,
+  "resident_bytes_released": 344858624,
+  "roles": {
+    "bank": 48,
+    "model": 131
+  },
+  "schema": 2,
+  "started_unix": 1790609776.380501,
+  "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+}

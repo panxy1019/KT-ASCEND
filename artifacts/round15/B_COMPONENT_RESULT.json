@@ -1,0 +1,246 @@
+{
+  "schema": 2,
+  "status": "PASS_ROUND15_B_GRAPH_COMPONENT_PRODUCTION_INT32_GATE_DIRECTIONAL_MODEL_OPEN",
+  "candidate": "DECODE_BS1_RESIDENT_MOE_NPU_SEGMENT_GRAPH_TOPK_IDS_INT32",
+  "candidate_default": "OFF",
+  "evidence_class": "V347_INT64_FEASIBILITY_PLUS_ONE_V357_EXACT_PRODUCTION_INT32_COMPONENT_PROCESS_NOT_TWO_BLOCK_ABBA",
+  "request_scope": "DECODE_ONLY_BATCH1_TP1_Q32_BF16_NZ29_TOPK_IDS_INT32",
+  "graph_boundary": "UNQUANTIZED_FUSED_MOE_METHOD_APPLY_ONLY",
+  "excluded_from_graph": [
+    "CPU_EXPERT_SUBMIT",
+    "CPU_EXPERT_WAIT",
+    "CPU_NPU_MERGE",
+    "PLE",
+    "QSA",
+    "GDN",
+    "KV_STATE",
+    "REQUEST_EPOCH",
+    "CANCELLATION"
+  ],
+  "production_contract": {
+    "observed_in_full_model_version": 356,
+    "observed_topk_ids_dtype": "torch.int32",
+    "policy": "EXACT_INT32_ONLY",
+    "int64": "FAIL_CLOSED_AFTER_V357"
+  },
+  "numerical": {
+    "cycles": 20,
+    "max_relative_l2": 0.0,
+    "max_abs": 0.0,
+    "changing_output_hashes": 20,
+    "repeat_hash_exact": true
+  },
+  "timings": {
+    "host_ms": {
+      "eager": [
+        0.480842,
+        0.472692,
+        0.472763,
+        0.459642,
+        0.478973,
+        0.491003,
+        0.643521,
+        0.467142,
+        0.482993,
+        0.509714,
+        0.452671,
+        0.495974,
+        0.493043,
+        0.521494,
+        0.486273
+      ],
+      "graph": [
+        0.391348,
+        0.403249,
+        0.373438,
+        0.362317,
+        0.368297,
+        0.354846,
+        0.306104,
+        0.291114,
+        0.307425,
+        0.359157,
+        0.324355,
+        0.346946,
+        0.340856,
+        0.333655,
+        0.334166
+      ]
+    },
+    "device_ms": {
+      "eager": [
+        0.3604600131511688,
+        0.3799999952316284,
+        0.3869200050830841,
+        0.34821999073028564,
+        0.3661400079727173,
+        0.36136001348495483,
+        0.5574600100517273,
+        0.35989999771118164,
+        0.3635599911212921,
+        0.355459988117218,
+        0.35881999135017395,
+        0.3856399953365326,
+        0.36583998799324036,
+        0.35199999809265137,
+        0.3772999942302704
+      ],
+      "graph": [
+        0.2871600091457367,
+        0.32548001408576965,
+        0.29166001081466675,
+        0.2527799904346466,
+        0.2875399887561798,
+        0.27456000447273254,
+        0.1763399988412857,
+        0.20788000524044037,
+        0.21862000226974487,
+        0.25060001015663147,
+        0.2316800057888031,
+        0.2245599925518036,
+        0.24111999571323395,
+        0.2375199943780899,
+        0.2266799956560135
+      ]
+    },
+    "eager_host_median_ms": 0.482993,
+    "graph_host_median_ms": 0.346946,
+    "graph_over_eager_host": 0.7183251103018056,
+    "eager_device_median_ms": 0.3635599911212921,
+    "graph_device_median_ms": 0.24111999571323395,
+    "graph_over_eager_device": 0.6632192804537469,
+    "candidate_includes_static_input_copies": true
+  },
+  "allocator": {
+    "initial": {
+      "allocated": 0,
+      "reserved": 0,
+      "max_allocated": 0,
+      "max_reserved": 0
+    },
+    "before_capture": {
+      "allocated": 314580480,
+      "reserved": 553648128,
+      "max_allocated": 524289536,
+      "max_reserved": 553648128
+    },
+    "after_capture": {
+      "allocated": 314598912,
+      "reserved": 448790528,
+      "max_allocated": 524289536,
+      "max_reserved": 574619648
+    },
+    "after_reset": {
+      "allocated": 314584576,
+      "reserved": 448790528,
+      "max_allocated": 524289536,
+      "max_reserved": 574619648
+    },
+    "post_reset_growth_bytes": 4096
+  },
+  "request_directional_gate_open": true,
+  "versions": [
+    347,
+    357
+  ],
+  "prior_v347": {
+    "scope": "EXPLORATORY_INT64_NOT_PRODUCTION_DTYPE",
+    "status": "PASS_ROUND15_B_GRAPH_COMPONENT_GATE_DIRECTIONAL_MODEL_OPEN",
+    "timings": {
+      "host_ms": {
+        "eager": [
+          0.604699,
+          0.6181,
+          0.571187,
+          0.599639,
+          0.595268,
+          0.805508,
+          1.427857,
+          0.590698,
+          0.570957,
+          0.63121,
+          0.568897,
+          0.602289,
+          0.575977,
+          0.599698,
+          0.585407
+        ],
+        "graph": [
+          0.379648,
+          0.376497,
+          0.397299,
+          0.368817,
+          1.544193,
+          0.41417,
+          0.64155,
+          0.355307,
+          0.357167,
+          0.342406,
+          0.367467,
+          0.356017,
+          0.357967,
+          0.349737,
+          0.370507
+        ]
+      },
+      "device_ms": {
+        "eager": [
+          0.4680199921131134,
+          0.46498000621795654,
+          0.4135200083255768,
+          0.491100013256073,
+          0.4230000078678131,
+          0.6900799870491028,
+          1.294700026512146,
+          0.45677998661994934,
+          0.41585999727249146,
+          0.4893600046634674,
+          0.46066001057624817,
+          0.4693000018596649,
+          0.4196999967098236,
+          0.4666599929332733,
+          0.43841999769210815
+        ],
+        "graph": [
+          0.27845999598503113,
+          0.2584800124168396,
+          0.2873600125312805,
+          0.275160014629364,
+          1.4287999868392944,
+          0.30302000045776367,
+          0.5158200263977051,
+          0.23465999960899353,
+          0.24838000535964966,
+          0.22883999347686768,
+          0.2700999975204468,
+          0.2524000108242035,
+          0.23583999276161194,
+          0.23316000401973724,
+          0.20674000680446625
+        ]
+      },
+      "eager_host_median_ms": 0.599639,
+      "graph_host_median_ms": 0.368817,
+      "graph_over_eager_host": 0.6150650641469284,
+      "eager_device_median_ms": 0.46498000621795654,
+      "graph_device_median_ms": 0.2584800124168396,
+      "graph_over_eager_device": 0.5558948964693304,
+      "candidate_includes_static_input_copies": true
+    },
+    "evidence": {
+      "result_sha256": "b4cbf4a9f951ec2de83c5aa6560bb2eb0565a51ee18cab63fa5a96faedc7d51f",
+      "evidence_tar_sha256": "80e8ea9fd97059a3c5c6f3adb9a1b7aa9eb90dff9c5c27d3630c3d1283952330",
+      "admission_tar_sha256": "969545d9258243a81a7639dedcdd7c823d8f4f7fb7b6b6ff42eb4ef8a7dd6738",
+      "snapshot_manifest_sha256": "6d479de317f6b7b240985e20c705dfec7990ba8a81f3abf7db281bb79fec01b0",
+      "preflight_sha256": "6b4a91ca80ee36ba43fb9bdfe902bc26fd4378d743f3dfd5b5714c48d2a13a16"
+    }
+  },
+  "evidence": {
+    "v357_result_sha256": "9c7b72aa8387a0a07019bb8c73031617a0009bdce742a50d7082b4271ba345f1",
+    "v357_archive_sha256": "52f8cc9e1df499e13433884f8e7d1617c886a78fd5cb145c22bfb67adcd6ced5",
+    "v357_snapshot_manifest_sha256": "e5c46de22fcecbb081af3d88dcaa613e281a8499b08d7818bca4bc6f49aa2aba",
+    "v357_preflight_sha256": "ffe8cd03c88aa7273fb7581253a16b482d018ad178fe4d649f8d471bb1ea095e",
+    "v357_admission_sha256": "189481edba7456b910cf4193affa0677331c6bf724c140ae7a61b93519fe84ca"
+  },
+  "interpretation": "The exact production int32 component is numerically exact and faster in one real process, so it opens only one final simplified model candidate against preserved v354. It is not two-block component ABBA or request performance qualification."
+}

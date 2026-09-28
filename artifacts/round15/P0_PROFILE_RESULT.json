@@ -1,0 +1,711 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND15_P0_TWO_FRESH_BLOCKS",
+  "identity": {
+    "parent": "ROUND14A_V295_PROMOTED_GDN_S0",
+    "fixture_sha256": "221c6c8dff4b389d0f6cdab97e58e3f252296ce3592c72058a0f09a0544656ef",
+    "threshold": 129,
+    "graph": false,
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "cross_block_output_ids_exact": true,
+    "cross_block_hybrid_path_exact": true,
+    "five_bucket_storage_exact": true
+  },
+  "blocks": {
+    "A_v335_salvaged": {
+      "metrics": {
+        "WARMUP": {
+          "ttft_seconds": 46.04404829,
+          "tpot_seconds": 0.9133611065333334,
+          "e2e_seconds": 59.744600674,
+          "completion_tokens": 16
+        },
+        "W1": {
+          "ttft_seconds": 3.032747497,
+          "tpot_seconds": 0.29404621393333336,
+          "e2e_seconds": 7.443564622,
+          "completion_tokens": 16
+        },
+        "W2": {
+          "ttft_seconds": 2.927217414,
+          "tpot_seconds": 0.2890148117559055,
+          "e2e_seconds": 39.632258415,
+          "completion_tokens": 128
+        },
+        "DRAIN": {
+          "ttft_seconds": 2.556411808,
+          "tpot_seconds": 0.2985767946666667,
+          "e2e_seconds": 3.452268778,
+          "completion_tokens": 4
+        }
+      },
+      "profile": {
+        "W1": {
+          "extend": {
+            "observed_batches": 4,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 12,
+                "host_median_ms": 1.728957,
+                "host_total_ms": 21.765722,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.506594,
+                "host_total_ms": 7.727256000000001,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 12,
+                "host_median_ms": 5.403517,
+                "host_total_ms": 63.878076,
+                "device_median_ms": 5.478990077972412,
+                "device_total_ms": 64.61223983764648
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.4766225,
+                "host_total_ms": 5.785584,
+                "device_median_ms": 0.5378299951553345,
+                "device_total_ms": 6.674579948186874
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 4,
+                "host_median_ms": 2.210715,
+                "host_total_ms": 8.728974000000001,
+                "device_median_ms": 2.229889988899231,
+                "device_total_ms": 8.8542799949646
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 4,
+                "host_median_ms": 0.142662,
+                "host_total_ms": 0.572487,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 4,
+                "host_median_ms": 1.146439,
+                "host_total_ms": 4.65272,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 12,
+                "host_median_ms": 27.1890215,
+                "host_total_ms": 320.920816,
+                "device_median_ms": 27.252470016479492,
+                "device_total_ms": 321.1467590332031
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 12,
+                "host_median_ms": 23.421308,
+                "host_total_ms": 279.454507,
+                "device_median_ms": 23.51559066772461,
+                "device_total_ms": 280.29840087890625
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 12,
+                "host_median_ms": 3.8802445,
+                "host_total_ms": 47.916935,
+                "device_median_ms": 3.8960800170898438,
+                "device_total_ms": 48.26165986061096
+              }
+            }
+          },
+          "decode": {
+            "observed_batches": 15,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.399738,
+                "host_total_ms": 18.261428,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.404029,
+                "host_total_ms": 18.617563,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 45,
+                "host_median_ms": 1.107883,
+                "host_total_ms": 49.860282,
+                "device_median_ms": 1.1532599925994873,
+                "device_total_ms": 53.657440304756165
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.42403,
+                "host_total_ms": 18.9561,
+                "device_median_ms": 0.4611999988555908,
+                "device_total_ms": 21.96239998936653
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 15,
+                "host_median_ms": 2.09826,
+                "host_total_ms": 31.796202,
+                "device_median_ms": 2.109920024871826,
+                "device_total_ms": 31.504760026931763
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 15,
+                "host_median_ms": 0.139346,
+                "host_total_ms": 2.058698,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 15,
+                "host_median_ms": 0.865651,
+                "host_total_ms": 12.989065,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 45,
+                "host_median_ms": 6.065418,
+                "host_total_ms": 291.80267,
+                "device_median_ms": 6.110720157623291,
+                "device_total_ms": 291.787579536438
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 45,
+                "host_median_ms": 3.049064,
+                "host_total_ms": 156.781491,
+                "device_median_ms": 3.144399881362915,
+                "device_total_ms": 160.01995992660522
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 45,
+                "host_median_ms": 2.095079,
+                "host_total_ms": 94.848946,
+                "device_median_ms": 2.1268599033355713,
+                "device_total_ms": 96.16663992404938
+              }
+            }
+          }
+        },
+        "W2": {
+          "extend": {
+            "observed_batches": 4,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 12,
+                "host_median_ms": 1.754658,
+                "host_total_ms": 24.890433,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.42749550000000003,
+                "host_total_ms": 6.370532,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 12,
+                "host_median_ms": 4.428445999999999,
+                "host_total_ms": 59.842644,
+                "device_median_ms": 4.525619983673096,
+                "device_total_ms": 60.5598201751709
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.43911100000000003,
+                "host_total_ms": 5.548244,
+                "device_median_ms": 0.47293999791145325,
+                "device_total_ms": 6.41004005074501
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 4,
+                "host_median_ms": 2.143397,
+                "host_total_ms": 9.0608,
+                "device_median_ms": 2.083050012588501,
+                "device_total_ms": 8.211120128631592
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 4,
+                "host_median_ms": 0.13256099999999998,
+                "host_total_ms": 0.536465,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 4,
+                "host_median_ms": 1.2462295,
+                "host_total_ms": 5.114794,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 12,
+                "host_median_ms": 25.271386,
+                "host_total_ms": 305.167547,
+                "device_median_ms": 25.37172031402588,
+                "device_total_ms": 307.2896614074707
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 12,
+                "host_median_ms": 22.239286,
+                "host_total_ms": 267.153801,
+                "device_median_ms": 22.28380012512207,
+                "device_total_ms": 268.13142013549805
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 12,
+                "host_median_ms": 4.0469919999999995,
+                "host_total_ms": 48.348927,
+                "device_median_ms": 4.080140113830566,
+                "device_total_ms": 48.72278022766113
+              }
+            }
+          },
+          "decode": {
+            "observed_batches": 127,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.371158,
+                "host_total_ms": 142.776391,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.379458,
+                "host_total_ms": 149.119266,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 381,
+                "host_median_ms": 1.05734,
+                "host_total_ms": 405.177326,
+                "device_median_ms": 1.1126799583435059,
+                "device_total_ms": 425.66000014543533
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.404799,
+                "host_total_ms": 155.320514,
+                "device_median_ms": 0.44411998987197876,
+                "device_total_ms": 174.79951990395784
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 127,
+                "host_median_ms": 1.991204,
+                "host_total_ms": 270.404206,
+                "device_median_ms": 2.032399892807007,
+                "device_total_ms": 272.61085999011993
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 127,
+                "host_median_ms": 0.132086,
+                "host_total_ms": 16.841897,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 127,
+                "host_median_ms": 0.817949,
+                "host_total_ms": 107.426188,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 381,
+                "host_median_ms": 6.063538,
+                "host_total_ms": 2444.968977,
+                "device_median_ms": 6.1290998458862305,
+                "device_total_ms": 2462.243681907654
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 381,
+                "host_median_ms": 2.893747,
+                "host_total_ms": 1270.091573,
+                "device_median_ms": 2.988539934158325,
+                "device_total_ms": 1304.673859834671
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 381,
+                "host_median_ms": 1.994305,
+                "host_total_ms": 768.385381,
+                "device_median_ms": 2.0186800956726074,
+                "device_total_ms": 775.9655220508575
+              }
+            }
+          }
+        }
+      },
+      "boundary": "raw measurements salvaged; original control FAIL preserved"
+    },
+    "B_v338": {
+      "metrics": {
+        "WARMUP": {
+          "ttft_seconds": 48.074339254,
+          "tpot_seconds": 0.8837470632000001,
+          "e2e_seconds": 61.33071346,
+          "completion_tokens": 16
+        },
+        "W1": {
+          "ttft_seconds": 2.868098855,
+          "tpot_seconds": 0.28589128680000003,
+          "e2e_seconds": 7.156611793,
+          "completion_tokens": 16
+        },
+        "W2": {
+          "ttft_seconds": 2.834167222,
+          "tpot_seconds": 0.284902809,
+          "e2e_seconds": 39.017012204,
+          "completion_tokens": 128
+        },
+        "DRAIN": {
+          "ttft_seconds": 2.56971187,
+          "tpot_seconds": 0.2924180276666667,
+          "e2e_seconds": 3.447098159,
+          "completion_tokens": 4
+        }
+      },
+      "profile": {
+        "W1": {
+          "extend": {
+            "observed_batches": 4,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 12,
+                "host_median_ms": 1.906236,
+                "host_total_ms": 23.32091,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.3615425,
+                "host_total_ms": 5.797505,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 12,
+                "host_median_ms": 4.2608975000000004,
+                "host_total_ms": 58.683749,
+                "device_median_ms": 4.275230169296265,
+                "device_total_ms": 59.319040298461914
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.42777,
+                "host_total_ms": 5.367604,
+                "device_median_ms": 0.47885000705718994,
+                "device_total_ms": 5.9629199504852295
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 4,
+                "host_median_ms": 2.046177,
+                "host_total_ms": 8.160296,
+                "device_median_ms": 2.0870399475097656,
+                "device_total_ms": 8.3439199924469
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 4,
+                "host_median_ms": 0.13471149999999998,
+                "host_total_ms": 0.536276,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 4,
+                "host_median_ms": 1.118388,
+                "host_total_ms": 4.459942,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 12,
+                "host_median_ms": 24.4514225,
+                "host_total_ms": 298.802098,
+                "device_median_ms": 24.634770393371582,
+                "device_total_ms": 299.36502265930176
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 12,
+                "host_median_ms": 21.5254935,
+                "host_total_ms": 263.056226,
+                "device_median_ms": 21.50529956817627,
+                "device_total_ms": 263.8303966522217
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 12,
+                "host_median_ms": 3.6316525,
+                "host_total_ms": 45.536097,
+                "device_median_ms": 3.659060001373291,
+                "device_total_ms": 45.909040451049805
+              }
+            }
+          },
+          "decode": {
+            "observed_batches": 15,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.310295,
+                "host_total_ms": 16.119982,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.334976,
+                "host_total_ms": 16.147299,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 45,
+                "host_median_ms": 1.0484,
+                "host_total_ms": 47.478416,
+                "device_median_ms": 1.105780005455017,
+                "device_total_ms": 50.49278008937836
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 45,
+                "host_median_ms": 0.4043,
+                "host_total_ms": 18.385135000000002,
+                "device_median_ms": 0.4420599937438965,
+                "device_total_ms": 22.36922001838684
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 15,
+                "host_median_ms": 2.09081,
+                "host_total_ms": 35.834155,
+                "device_median_ms": 2.140079975128174,
+                "device_total_ms": 35.09067928791046
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 15,
+                "host_median_ms": 0.129436,
+                "host_total_ms": 1.9598419999999999,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 15,
+                "host_median_ms": 0.823009,
+                "host_total_ms": 12.447182,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 45,
+                "host_median_ms": 5.45946,
+                "host_total_ms": 265.327206,
+                "device_median_ms": 5.520540237426758,
+                "device_total_ms": 267.06509923934937
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 45,
+                "host_median_ms": 2.777482,
+                "host_total_ms": 141.975779,
+                "device_median_ms": 2.8621599674224854,
+                "device_total_ms": 146.20762014389038
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 45,
+                "host_median_ms": 1.88887,
+                "host_total_ms": 88.813721,
+                "device_median_ms": 1.9149399995803833,
+                "device_total_ms": 89.90316021442413
+              }
+            }
+          }
+        },
+        "W2": {
+          "extend": {
+            "observed_batches": 4,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 12,
+                "host_median_ms": 1.8947954999999999,
+                "host_total_ms": 22.035868999999998,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.349762,
+                "host_total_ms": 5.813459,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 12,
+                "host_median_ms": 4.046978,
+                "host_total_ms": 56.96434,
+                "device_median_ms": 4.1067399978637695,
+                "device_total_ms": 57.59910035133362
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 12,
+                "host_median_ms": 0.4132295,
+                "host_total_ms": 5.324583,
+                "device_median_ms": 0.4760400056838989,
+                "device_total_ms": 5.8357000052928925
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 4,
+                "host_median_ms": 1.9498730000000002,
+                "host_total_ms": 7.8709050000000005,
+                "device_median_ms": 1.9811000227928162,
+                "device_total_ms": 8.003560066223145
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 4,
+                "host_median_ms": 0.13179649999999998,
+                "host_total_ms": 0.528515,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 4,
+                "host_median_ms": 1.1327340000000001,
+                "host_total_ms": 4.5438659999999995,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 12,
+                "host_median_ms": 24.2396575,
+                "host_total_ms": 294.558724,
+                "device_median_ms": 24.32190990447998,
+                "device_total_ms": 294.54663848876953
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 12,
+                "host_median_ms": 21.35876,
+                "host_total_ms": 259.860602,
+                "device_median_ms": 21.35547924041748,
+                "device_total_ms": 260.35078048706055
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 12,
+                "host_median_ms": 3.642953,
+                "host_total_ms": 44.184571,
+                "device_median_ms": 3.667289972305298,
+                "device_total_ms": 44.553340673446655
+              }
+            }
+          },
+          "decode": {
+            "observed_batches": 127,
+            "components": {
+              "CPU_RESULT_WAIT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.345126,
+                "host_total_ms": 133.315253,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "CPU_SUBMIT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.361937,
+                "host_total_ms": 141.639312,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "GDN": {
+                "observed_calls": 381,
+                "host_median_ms": 1.03933,
+                "host_total_ms": 398.669327,
+                "device_median_ms": 1.0908199548721313,
+                "device_total_ms": 420.44008123874664
+              },
+              "NPU_RESIDENT": {
+                "observed_calls": 381,
+                "host_median_ms": 0.400039,
+                "host_total_ms": 153.867828,
+                "device_median_ms": 0.4376800060272217,
+                "device_total_ms": 171.68931975960732
+              },
+              "PLE_CONSUMER": {
+                "observed_calls": 127,
+                "host_median_ms": 2.009615,
+                "host_total_ms": 264.448978,
+                "device_median_ms": 2.0429201126098633,
+                "device_total_ms": 266.63443982601166
+              },
+              "PLE_EXPOSED_WAIT": {
+                "observed_calls": 127,
+                "host_median_ms": 0.135306,
+                "host_total_ms": 16.984624,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "PLE_PREPARE": {
+                "observed_calls": 127,
+                "host_median_ms": 0.869162,
+                "host_total_ms": 121.778631,
+                "device_median_ms": null,
+                "device_total_ms": null
+              },
+              "QSA_ATTENTION": {
+                "observed_calls": 381,
+                "host_median_ms": 6.061629,
+                "host_total_ms": 2401.950759,
+                "device_median_ms": 6.085840225219727,
+                "device_total_ms": 2412.6930623054504
+              },
+              "QSA_INDEXER": {
+                "observed_calls": 381,
+                "host_median_ms": 2.797593,
+                "host_total_ms": 1247.579691,
+                "device_median_ms": 2.9072399139404297,
+                "device_total_ms": 1278.6884603500366
+              },
+              "ROUTED_EXPERT": {
+                "observed_calls": 381,
+                "host_median_ms": 1.949953,
+                "host_total_ms": 749.86824,
+                "device_median_ms": 1.9739199876785278,
+                "device_total_ms": 758.820620059967
+              }
+            }
+          }
+        }
+      },
+      "runtime_seconds": 257.461817,
+      "npu_device_hours": 0.07151717138888888,
+      "cleanup": {
+        "guard_exit_ack": true,
+        "container_removed": true,
+        "physical12_after": "REGISTERED_TRAINING_ONLY",
+        "physical12_processes": [
+          {
+            "pid": 2980236,
+            "memory_mib": 6123
+          }
+        ]
+      }
+    }
+  },
+  "hotspot_disposition": {
+    "decode": "QSA_ATTENTION is the largest observed per-sampled-call device span; QSA_INDEXER is second among the QSA subpaths and is the first new A1 candidate.",
+    "prefill": "QSA_ATTENTION and QSA_INDEXER dominate the observed sampled device spans; GDN RMSNorm-only work is a smaller fraction of the complete promoted GDN parent.",
+    "no_parent_child_sum": true,
+    "selection": "SCREEN_A1_LIGHTNING_INDEXER_THEN_A2_RMSNORM_IF_A1_INAPPLICABLE",
+    "request_gate_if_a1_advances": "DECODE_W2"
+  },
+  "evidence": {
+    "a_raw_sha256": "9831e884372b9a7794c2f399cd409b699fa04c618ac10ceb91a3128a089ec920",
+    "b_final_sha256": "e3d5eb8b30c7e2046a982b903af8b12cec488ced38150ddcc7cd4dad60fe96f9",
+    "b_supervisor_sha256": "a69e2475db82a45a6b02a72991c20c6ca48e8b95d74a4dc7fd1e0b1e3556d454"
+  }
+}

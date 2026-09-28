@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND15_A1_QSA_TWO_BLOCK_COMPONENT_GATE",
+  "candidate_family": "QSA_INDEX_SELECTION",
+  "selected_candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+  "blocks": [
+    {
+      "block": "A",
+      "status": "PASS_ROUND15_A1_QSA_COMPONENT_PROCESS",
+      "candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "row_count": 12,
+      "row_keys": [
+        [
+          3,
+          32
+        ],
+        [
+          3,
+          64
+        ],
+        [
+          3,
+          128
+        ],
+        [
+          3,
+          256
+        ],
+        [
+          23,
+          32
+        ],
+        [
+          23,
+          64
+        ],
+        [
+          23,
+          128
+        ],
+        [
+          23,
+          256
+        ],
+        [
+          47,
+          32
+        ],
+        [
+          47,
+          64
+        ],
+        [
+          47,
+          128
+        ],
+        [
+          47,
+          256
+        ]
+      ],
+      "ratios": [
+        0.17242096782784702,
+        0.17509354622782808,
+        0.17793575625977096,
+        0.17997191406900262,
+        0.17541302110688378,
+        0.1734636765021868,
+        0.17707833729396708,
+        0.18037982424906293,
+        0.17122964298023896,
+        0.17829164145751875,
+        0.1872540123272313,
+        0.19840005279322162
+      ],
+      "worst_ratio": 0.19840005279322162,
+      "max_downstream_relative_l2": 4.258316632844083e-06,
+      "numerical_pass": true,
+      "performance_pass": true,
+      "lifecycle_pass": true,
+      "process_component_gate": true,
+      "peak_npu_allocated": 157635072,
+      "lightning_disposition": "SEMANTICALLY_EXPRESSIBLE_OUTSIDE_CURRENT_REQUEST_RANGE"
+    },
+    {
+      "block": "B",
+      "status": "PASS_ROUND15_A1_QSA_COMPONENT_PROCESS",
+      "candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "row_count": 12,
+      "row_keys": [
+        [
+          3,
+          32
+        ],
+        [
+          3,
+          64
+        ],
+        [
+          3,
+          128
+        ],
+        [
+          3,
+          256
+        ],
+        [
+          23,
+          32
+        ],
+        [
+          23,
+          64
+        ],
+        [
+          23,
+          128
+        ],
+        [
+          23,
+          256
+        ],
+        [
+          47,
+          32
+        ],
+        [
+          47,
+          64
+        ],
+        [
+          47,
+          128
+        ],
+        [
+          47,
+          256
+        ]
+      ],
+      "ratios": [
+        0.1759881337393672,
+        0.17679655952395157,
+        0.18279234897662752,
+        0.17803967277515162,
+        0.18400787304711527,
+        0.17115710768062,
+        0.18061540449172067,
+        0.1802261094766575,
+        0.17219014350699288,
+        0.1749223928545142,
+        0.17043701409391107,
+        0.19527989238538979
+      ],
+      "worst_ratio": 0.19527989238538979,
+      "max_downstream_relative_l2": 1.1018127101255641e-05,
+      "numerical_pass": true,
+      "performance_pass": true,
+      "lifecycle_pass": true,
+      "process_component_gate": true,
+      "peak_npu_allocated": 157635072,
+      "lightning_disposition": "SEMANTICALLY_EXPRESSIBLE_OUTSIDE_CURRENT_REQUEST_RANGE"
+    }
+  ],
+  "source_identity_match": true,
+  "candidate_identity_match": true,
+  "correctness_pass": true,
+  "all_24_full_parent_rows_improve_15pct": true,
+  "request_gate": "DECODE_W2",
+  "request_smoke_gate_open": true,
+  "threshold": "both independent blocks: 12/12 full index-selection parent host medians candidate/baseline <=0.85; selected set exact; downstream rel-L2 <=0.001; repeat/lifecycle/resource/source identity pass",
+  "lightning_disposition": "SEMANTICALLY_EXPRESSIBLE_OUTSIDE_CURRENT_REQUEST_RANGE; not selected because <=256-token qualified requests select every completed group"
+}

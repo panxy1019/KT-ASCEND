@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "status": "FAIL_PRE_MODEL_START_LEGACY_LAYERWISE_SOURCE_GATE_REJECTED_APPROVED_KTEP_PATCH",
+  "version": 355,
+  "model_started": false,
+  "container_created": false,
+  "generation_attempts": 0,
+  "abort_controls": 0,
+  "npu_device_hours": 0.0,
+  "root_cause": "legacy layerwise source manifest rejected exact Round15 B kt_ep_wrapper hash before container creation",
+  "repair_version": 356,
+  "repair": "accept only kt_ep_wrapper.py when its actual hash equals the already-bound ROUND15_B_GRAPH_SOURCE_BINDING ktep_sha256; retain exact historical checks for all other MoE/quant files"
+}

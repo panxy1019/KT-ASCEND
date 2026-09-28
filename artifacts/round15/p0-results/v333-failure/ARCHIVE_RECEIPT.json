@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "status": "PASS_V333_FAILURE_EVIDENCE_ARCHIVED_AND_VERIFIED",
+  "version": 333,
+  "block": "A",
+  "run_outcome": "FAIL_POST_REQUEST_MISSING_FIVE_BUCKET_CENSUS",
+  "model_started": true,
+  "generation_attempts": 4,
+  "abort_controls": 0,
+  "component_processes": 0,
+  "container_started_at": "2026-09-28T11:18:29.263941934Z",
+  "container_finished_at": "2026-09-28T11:22:41.760240398Z",
+  "npu_device_seconds": 252.496299,
+  "npu_device_hours": 0.07013786083333333,
+  "evidence": {
+    "remote_root": "/mnt/data1/kt-round9/evidence/20260928-round15-p0-a-v333",
+    "file_count": 249,
+    "remote_local_sha256_match": true,
+    "tar_sha256": "af1e0404e544b1796fbe2059d0a0a74927e041cb281b46b8d1b555028dd00f65",
+    "local_file_manifest_sha256": "7be62116bfb41d177c5bf3b36f48f603e1465ee7c2d6d73bc10197aa84ae834c",
+    "remote_file_manifest_sha256": "3cfe6da50a882fd051d8153ff31d129d9c1e4ded9259c70032050a08c6e99191"
+  },
+  "admission": {
+    "remote_root": "/mnt/data1/kt-round9/round15/admission/v333",
+    "status": "PASS",
+    "windows": 12,
+    "min_mean_idle": 0.9959933959393459,
+    "min_numa_free_gib": {
+      "2": 240.4347915649414,
+      "3": 248.9554901123047,
+      "4": 85.25232315063477,
+      "7": 243.9375228881836
+    },
+    "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "tar_sha256": "783e4a09be05c347bfd32b1750bb3d9fc12a852bc73f7d5856bcdf27e83ed593",
+    "file_count": 4,
+    "file_manifest_sha256": "2deda37466b47b12b794530f0b409116c1b0f2c90db83702d99a39de2a171258"
+  },
+  "requests": [
+    {
+      "workload": "WARMUP",
+      "input_tokens": 128,
+      "completion_tokens": 16,
+      "ttft_seconds": 45.437947283,
+      "tpot_seconds": 0.8489064245333333,
+      "e2e_seconds": 58.171644106
+    },
+    {
+      "workload": "W1",
+      "input_tokens": 128,
+      "completion_tokens": 16,
+      "ttft_seconds": 2.686881824,
+      "tpot_seconds": 0.26980312626666664,
+      "e2e_seconds": 6.734013082
+    },
+    {
+      "workload": "W2",
+      "input_tokens": 128,
+      "completion_tokens": 128,
+      "ttft_seconds": 2.664509317,
+      "tpot_seconds": 0.27421317194488193,
+      "e2e_seconds": 37.489754552
+    },
+    {
+      "workload": "DRAIN",
+      "input_tokens": 27,
+      "completion_tokens": 4,
+      "ttft_seconds": 2.525632456,
+      "tpot_seconds": 0.2736882553333333,
+      "e2e_seconds": 3.346785576
+    }
+  ],
+  "cleanup": {
+    "oom_killed": false,
+    "guard_action": "OWNED_EXITED_DURING_SAMPLE",
+    "owned_container_removed": true,
+    "physical12_after": "EMPTY"
+  },
+  "root_cause": {
+    "classification": "ROUND15_SNAPSHOT_BUILDER_OMITTED_EXISTING_ROUND14A_CENSUS_INTEGRATION",
+    "missing": [
+      "round14a_five_bucket runtime module",
+      "model_runner ready hook",
+      "ROUND14A_FIVE_BUCKET_ENABLE and ROUND14A_FIVE_BUCKET_PATH launcher environment"
+    ],
+    "not_a_model_or_request_failure": true
+  }
+}

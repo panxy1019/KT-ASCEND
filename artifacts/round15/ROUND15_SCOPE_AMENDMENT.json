@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "FROZEN_USER_SCOPE_AMENDMENT",
+  "time_utc": "2026-09-28T13:50:00Z",
+  "request_evidence": "DIRECTIONAL_TWO_PROCESS_SCREEN_FOR_A_AND_B",
+  "stages": {
+    "A": {
+      "baseline": 341,
+      "candidate": 342,
+      "status": "COMPLETE"
+    },
+    "B": {
+      "baseline": 354,
+      "invalid_no_hit_candidate": 356,
+      "production_dtype_component": 357,
+      "first_capture_failure": 358,
+      "final_repair_candidate": 360,
+      "status": "COMPLETE_DIRECTIONAL_SMALL_GAIN_KEEP_DEFAULT_OFF"
+    }
+  },
+  "per_process": {
+    "generation_attempts": 14,
+    "abort_controls": 1,
+    "quality_requests": 8,
+    "workloads": {
+      "W1": {
+        "warmup": 1,
+        "measurements": 2
+      },
+      "W2": {
+        "warmup": 1,
+        "measurements": 2
+      }
+    }
+  },
+  "removed_from_original_abba": [
+    343,
+    344,
+    345,
+    346,
+    350,
+    351
+  ],
+  "preserved_control_failures": [
+    348,
+    355
+  ],
+  "preserved_resource_failures": [
+    352
+  ],
+  "interpretation": "For both A and B, report only direction, rough magnitude and raw samples from one fresh baseline process plus one fresh candidate process. Do not claim four-process ABBA stability, statistical qualification, or production promotion.",
+  "unchanged": [
+    "component correctness, numerical and lifecycle gates remain strict; v357 is one exact production-dtype process and is not called two-block evidence",
+    "quality and cancel/reuse checks",
+    "fresh admission and resource contract",
+    "cleanup and evidence hashing",
+    "candidate remains default OFF until evidence is reviewed"
+  ],
+  "preserved_integration_failures": [
+    356,
+    358
+  ]
+}

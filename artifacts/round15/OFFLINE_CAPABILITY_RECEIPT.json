@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND15_OFFLINE_SOURCE_CAPABILITY_WITH_DEVICE_IMPORT_PENDING",
+  "checked_at_utc": "2026-09-28T10:55:00Z",
+  "frozen_image": {
+    "name": "kt-round64-migration:20260916",
+    "image_id": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+    "torch": "2.9.0+cpu",
+    "torch_npu": "2.9.0.post2",
+    "cann": "9.0.0"
+  },
+  "source_proofs": {
+    "torch_npu_graphs_sha256": "5ed98b6b5bbbaa162513801e877a24671b58ec2b8eaba3c8d446357efe0e5dc1",
+    "native_functions_registry": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/csrc/aten/npu_native_functions_by_codegen.yaml",
+    "operator_docs": "/usr/local/python3.11.15/lib/python3.11/site-packages/torch_npu/_op_plugin_docs.py"
+  },
+  "registered_by_source": {
+    "npu_lightning_indexer": true,
+    "npu_recurrent_gated_delta_rule": true,
+    "npu_recurrent_gated_delta_rule_functional": true,
+    "npu_grouped_matmul": true,
+    "npu_grouped_matmul_finalize_routing": true,
+    "npu_rms_norm": true,
+    "npu_fused_causal_conv1d": true,
+    "NPUGraph": true,
+    "graph_context": true,
+    "graph_pool_handle": true
+  },
+  "graph_source_constraints": {
+    "fixed_static_addresses": true,
+    "copy_new_inputs_before_replay": true,
+    "capture_context_synchronizes_and_empties_cache": true,
+    "api_beta": true
+  },
+  "device_free_import": {
+    "status": "NOT_QUALIFIED",
+    "reason": "The runtime image requires host Ascend driver/device initialization; driver-only import did not complete within the bounded preflight. No model or NPU process was started.",
+    "automatic_retries": 0
+  },
+  "next_gate": "Verify actual dispatcher schemas and capture eligibility inside the first admitted component process before allocating candidate buffers."
+}

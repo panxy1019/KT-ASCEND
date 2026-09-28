@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "status": "FAIL_RESOURCE_GUARD_NUMA4_TRANSIENT_DURING_COLD_LOAD",
+  "version": 352,
+  "model_started": true,
+  "generation_attempts": 0,
+  "abort_controls": 0,
+  "npu_device_hours": 0.0406347076760398,
+  "guard_reason": "NUMA4 free and conservative reclaim headroom below reserve",
+  "oom_killed": false,
+  "owned_container_removed": true,
+  "guard_exit_ack": true,
+  "physical12_after": "REGISTERED_TRAINING_ONLY",
+  "evidence_tar_sha256": "b4b253a0599a7a85b1838b5ab8f01a4af529b07d41b21de8aade205d47e8f0f1",
+  "admission_tar_sha256": "7a4f968126fdd3112d1c406a6efa9609e67a5b5d52165d236fdfa2dc65dea4f5",
+  "repair": {
+    "versions": {
+      "baseline": 354,
+      "candidate": 355
+    },
+    "bounded_hook": "after model load and global fd/mmap count zero, retire only 131 checkpoint safetensors; exclude mapped bank; verify with fincore; no drop_caches"
+  }
+}

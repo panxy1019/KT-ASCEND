@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "PASS_TARGETED_OWNED_FILE_CACHE_RETIREMENT",
+  "started": 1790605608.3453069,
+  "operation": "POSIX_FADV_DONTNEED",
+  "global_drop_caches": false,
+  "roots": [
+    "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1",
+    "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+  ],
+  "suffixes": [
+    ".gguf",
+    ".safetensors"
+  ],
+  "file_count": 179,
+  "file_stat_identity_sha256": "78e505f906e88f500543c6b8aedfe00aa4d0c27bbbd0f93b299d8e9fbc89ab83",
+  "active_references_before": [],
+  "before_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 251859120,
+      "FilePages": 10062636,
+      "AnonPages": 396632,
+      "FileHugePages": 1169408
+    },
+    "3": {
+      "MemFree": 259195084,
+      "FilePages": 1943916,
+      "AnonPages": 1387304,
+      "FileHugePages": 262144
+    },
+    "4": {
+      "MemFree": 89127892,
+      "FilePages": 171426532,
+      "AnonPages": 155972,
+      "FileHugePages": 13346816
+    },
+    "7": {
+      "MemFree": 236049244,
+      "FilePages": 12407200,
+      "AnonPages": 12984732,
+      "FileHugePages": 3801088
+    }
+  },
+  "before_system_memavailable_kib": 1955662380,
+  "failures": [],
+  "ended": 1790605619.4973066,
+  "file_stats_unchanged": true,
+  "active_references_after": [],
+  "after_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 251863280,
+      "FilePages": 10062820,
+      "AnonPages": 399456,
+      "FileHugePages": 1169408
+    },
+    "3": {
+      "MemFree": 259529508,
+      "FilePages": 1609576,
+      "AnonPages": 1390032,
+      "FileHugePages": 172032
+    },
+    "4": {
+      "MemFree": 89127800,
+      "FilePages": 171426408,
+      "AnonPages": 157516,
+      "FileHugePages": 13346816
+    },
+    "7": {
+      "MemFree": 236054912,
+      "FilePages": 12407200,
+      "AnonPages": 12984964,
+      "FileHugePages": 3801088
+    }
+  },
+  "after_system_memavailable_kib": 1955674384,
+  "other_tasks_modified": false,
+  "automation": "PAUSED_UNCHANGED"
+}

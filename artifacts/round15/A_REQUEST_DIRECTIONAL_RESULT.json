@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "status": "ROUND15_A_DIRECTIONAL_NO_REQUEST_GAIN_KEEP_DEFAULT_OFF",
+  "evidence_class": "TWO_FRESH_PROCESS_DIRECTIONAL_SCREEN_NOT_ABBA",
+  "versions": {
+    "baseline": 341,
+    "candidate": 342
+  },
+  "candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+  "actual_candidate_binding": {
+    "implementation": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+    "layers": [
+      3,
+      7,
+      11,
+      15,
+      19,
+      23,
+      27,
+      31,
+      35,
+      39,
+      43,
+      47
+    ],
+    "first_hit_rows": 12
+  },
+  "quality": {
+    "all_14_output_sequences_exact": true,
+    "cancel_reuse_pass": true,
+    "finite_logprobs": true,
+    "comparisons": [
+      {
+        "identity": [
+          "canary_marker",
+          null,
+          "quality",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "canary_math391",
+          null,
+          "quality",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "canary_json",
+          null,
+          "quality",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "canary_quote",
+          null,
+          "quality",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "canary_transform",
+          null,
+          "quality",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          null,
+          "multi_step",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "cancel128",
+          null,
+          "cancel",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "canary_math391",
+          null,
+          "reuse",
+          null
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W1",
+          "warmup",
+          0
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W1",
+          "measurement",
+          1
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W1",
+          "measurement",
+          2
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W2",
+          "warmup",
+          0
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W2",
+          "measurement",
+          1
+        ],
+        "output_ids_exact": true
+      },
+      {
+        "identity": [
+          "edge128",
+          "W2",
+          "measurement",
+          2
+        ],
+        "output_ids_exact": true
+      }
+    ]
+  },
+  "workloads": {
+    "W1": {
+      "ttft_seconds": {
+        "baseline_samples": [
+          2.993437834,
+          2.73656422
+        ],
+        "candidate_samples": [
+          2.731320184,
+          2.790085226
+        ],
+        "baseline_median": 2.865001027,
+        "candidate_median": 2.760702705,
+        "candidate_over_baseline": 0.9635957121770344,
+        "candidate_improvement_fraction": 0.036404287822965564
+      },
+      "tpot_seconds": {
+        "baseline_samples": [
+          0.27884879226666665,
+          0.28531962460000004
+        ],
+        "candidate_samples": [
+          0.2835780318666667,
+          0.25952095253333335
+        ],
+        "baseline_median": 0.28208420843333337,
+        "candidate_median": 0.2715494922,
+        "candidate_over_baseline": 0.9626540021795545,
+        "candidate_improvement_fraction": 0.03734599782044545
+      },
+      "e2e_seconds": {
+        "baseline_samples": [
+          7.176336196,
+          7.016476474
+        ],
+        "candidate_samples": [
+          6.985079336,
+          6.682996338
+        ],
+        "baseline_median": 7.096406335,
+        "candidate_median": 6.834037837,
+        "candidate_over_baseline": 0.9630279770331105,
+        "candidate_improvement_fraction": 0.036972022966889506
+      },
+      "serial_output_tokens_per_second": {
+        "baseline": 2.2546623240959045,
+        "candidate": 2.3412220390959475,
+        "candidate_over_baseline": 1.0383914318676313,
+        "candidate_improvement_fraction": 0.038391431867631276
+      }
+    },
+    "W2": {
+      "ttft_seconds": {
+        "baseline_samples": [
+          2.800850017,
+          2.743160856
+        ],
+        "candidate_samples": [
+          2.939914457,
+          2.784310333
+        ],
+        "baseline_median": 2.7720054364999998,
+        "candidate_median": 2.862112395,
+        "candidate_over_baseline": 1.0325060540334912,
+        "candidate_improvement_fraction": -0.03250605403349116
+      },
+      "tpot_seconds": {
+        "baseline_samples": [
+          0.2680851832362205,
+          0.26493682877165353
+        ],
+        "candidate_samples": [
+          0.2690918334409449,
+          0.26613859027559056
+        ],
+        "baseline_median": 0.266511006003937,
+        "candidate_median": 0.26761521185826775,
+        "candidate_over_baseline": 1.0041431904478813,
+        "candidate_improvement_fraction": -0.004143190447881251
+      },
+      "e2e_seconds": {
+        "baseline_samples": [
+          36.847803334,
+          36.390273787
+        ],
+        "candidate_samples": [
+          37.11471648,
+          36.584048504
+        ],
+        "baseline_median": 36.6190385605,
+        "candidate_median": 36.849382492000004,
+        "candidate_over_baseline": 1.006290277968916,
+        "candidate_improvement_fraction": -0.006290277968916014
+      },
+      "serial_output_tokens_per_second": {
+        "baseline": 3.495449499268674,
+        "candidate": 3.473599592280516,
+        "candidate_over_baseline": 0.993749042292635,
+        "candidate_improvement_fraction": -0.006250957707364946
+      }
+    }
+  },
+  "resources": {
+    "baseline": {
+      "samples": 133,
+      "whole_card_hbm_peak_mib": 35048,
+      "owned_hbm_peak_mib": 25754,
+      "training_hbm_peak_mib": 6123,
+      "host_cgroup_usage_peak_bytes": 370182516736,
+      "host_cgroup_recorded_peak_bytes": 370294190080,
+      "host_memavailable_min_kib": 1880639060,
+      "oom_false": true,
+      "failcnt_zero": true
+    },
+    "candidate": {
+      "samples": 131,
+      "whole_card_hbm_peak_mib": 35047,
+      "owned_hbm_peak_mib": 25754,
+      "training_hbm_peak_mib": 6123,
+      "host_cgroup_usage_peak_bytes": 371407327232,
+      "host_cgroup_recorded_peak_bytes": 371522023424,
+      "host_memavailable_min_kib": 1879224264,
+      "oom_false": true,
+      "failcnt_zero": true
+    }
+  },
+  "disposition": {
+    "default": "OFF",
+    "request_gain": "NOT_OBSERVED_IN_W2_DIRECTIONAL_SCREEN",
+    "component_gain": "PASS_TWO_INDEPENDENT_BLOCKS",
+    "reason": "W2 candidate median TPOT is not lower and serial output throughput is not higher; the user-authorized two-process screen does not support promotion.",
+    "limitation": "One fresh process per arm with two measurements per workload estimates direction and magnitude only; it is not a four-process ABBA stability qualification."
+  }
+}

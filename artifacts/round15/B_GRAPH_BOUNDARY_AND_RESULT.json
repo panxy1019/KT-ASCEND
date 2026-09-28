@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "status": "ROUND15_B_COMPLETE_SMALL_DIRECTIONAL_GAIN_NO_PROMOTION",
+  "parent": "UNCHANGED_S0_BECAUSE_A_WAS_NOT_PROMOTED",
+  "boundary": {
+    "captured": "UnquantizedFusedMoEMethod.apply resident-NPU MoE subcall for Decode batch1",
+    "eager": [
+      "Prefill",
+      "CPU expert submit, execution, wait and merge",
+      "PLE host gather and transfer",
+      "QSA",
+      "GDN and model state",
+      "scheduler, request epoch and cancellation"
+    ],
+    "production_topk_ids_dtype": "torch.int32",
+    "unsupported_shapes": "SIDE_EFFECT_FREE_EAGER_FALLBACK_BEFORE_CAPTURE",
+    "whole_model_graph": false,
+    "cross_layer_deferred": false
+  },
+  "component": {
+    "status": "PASS_EXACT_PRODUCTION_INT32_COMPONENT",
+    "version": 357,
+    "evidence_class": "ONE_PRODUCTION_DTYPE_COMPONENT_PROCESS_NOT_TWO_BLOCK_ABBA",
+    "cycles": 20,
+    "max_relative_l2": 0.0,
+    "repeat_hash_exact": true,
+    "changing_output_hashes": 20,
+    "eager_host_median_ms": 0.482993,
+    "graph_host_median_ms": 0.346946,
+    "host_improvement_percent": 28.167488969819445,
+    "eager_device_median_ms": 0.3635599911212921,
+    "graph_device_median_ms": 0.24111999571323395,
+    "device_improvement_percent": 33.67807195462531,
+    "post_reset_growth_bytes": 4096
+  },
+  "preserved_failures": [
+    {
+      "version": 356,
+      "failure": "GRAPH_NOT_HIT",
+      "root_cause": "the exploratory component froze int64 topk_ids while production Decode uses int32",
+      "request_output": "quality passed on eager fallback only",
+      "performance_valid": false
+    },
+    {
+      "version": 358,
+      "failure": "FIRST_CAPTURE_SELF_CHECK",
+      "root_cause": "the full-model capture path read graph.output before the first replay",
+      "wrong_output_published": false,
+      "performance_valid": false
+    }
+  ],
+  "repair": {
+    "regression_test": "test_round15_b_first_capture_replay.py",
+    "change": "run the first replay after capture before validating or consuming graph output",
+    "final_version": 360
+  },
+  "request_screen": {
+    "evidence_class": "ONE_BASELINE_PROCESS_ONE_CANDIDATE_PROCESS_TWO_MEASUREMENTS_PER_WORKLOAD",
+    "versions": {
+      "baseline": 354,
+      "candidate": 360
+    },
+    "quality": {
+      "aligned_output_token_sequences_exact": 13,
+      "finite_logprobs": true,
+      "cancel_reuse": "PASS"
+    },
+    "graph_runtime": {
+      "capture_layers": 48,
+      "capture_events": 48,
+      "replay_layers": 48,
+      "replay_markers": 192,
+      "max_capture_relative_l2": 0.0
+    },
+    "w1_improvement_percent": {
+      "ttft": 3.972588116799769,
+      "tpot": 2.7355565006756177,
+      "e2e": 3.249801009811959,
+      "serial_output_throughput": 3.358960543472933
+    },
+    "w2_improvement_percent": {
+      "ttft": -5.294537890398754,
+      "tpot": 1.202864643059176,
+      "e2e": 0.7210513905696603,
+      "serial_output_throughput": 0.7262883024741873
+    },
+    "resources": {
+      "baseline_whole_card_hbm_peak_mib": 35047,
+      "candidate_whole_card_hbm_peak_mib": 36031,
+      "baseline_owned_hbm_peak_mib": 25754,
+      "candidate_owned_hbm_peak_mib": 26738,
+      "candidate_increment_mib": 984,
+      "host_cgroup_peak": "UNKNOWN_NOT_RECORDED_BY_THIS_MONITOR"
+    }
+  },
+  "disposition": {
+    "candidate": "KEEP_DEFAULT_OFF",
+    "reason": "The request gain is small, far below the original 10% Decode gate, W2 TTFT regressed by more than 5%, and graph state costs about 984 MiB additional owned HBM.",
+    "not_claimed": [
+      "FOUR_PROCESS_ABBA_STABILITY",
+      "STATISTICAL_QUALIFICATION",
+      "PRODUCTION_PROMOTION"
+    ]
+  }
+}
