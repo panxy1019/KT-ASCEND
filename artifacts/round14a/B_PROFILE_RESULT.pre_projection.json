@@ -1,0 +1,975 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_B_TWO_FRESH_S0_FIVE_BUCKET_ATTRIBUTION",
+  "blocks": [
+    {
+      "version": 298,
+      "block": "A",
+      "resources": {
+        "board_hbm_peak_mib": 28775,
+        "system_hbm_baseline_mib": 3123,
+        "inferred_owned_board_increment_mib": 25652,
+        "host_cgroup_peak_bytes": 363331162112,
+        "host_cgroup_peak_gib": 338.37851333618164,
+        "host_cgroup_sampled_current_peak_bytes": 363124322304,
+        "allocator": {
+          "allocated_bytes": 25793916416,
+          "reserved_bytes": 26373783552,
+          "persistent_classified_npu_bytes": 25678522372,
+          "workspace_unclassified_allocated_bytes": 115394044,
+          "allocator_reserved_unallocated_bytes": 579867136,
+          "owned_used_bytes": null,
+          "board_used_bytes": null,
+          "board_driver_or_external_residual_bytes": null
+        },
+        "storage_buckets": {
+          "Expert": {
+            "npu_bytes": 15099494400,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 96
+          },
+          "PLE": {
+            "npu_bytes": 65679640,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 9
+          },
+          "Dense backbone": {
+            "npu_bytes": 9863275648,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 990
+          },
+          "KV+GDN state": {
+            "npu_bytes": 335333484,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 13
+          },
+          "Workspace": {
+            "npu_bytes": 314739200,
+            "host_bytes": 25216,
+            "other_bytes": 0,
+            "unique_storages": 8
+          }
+        },
+        "host_read_only_bank": {
+          "status": "REGISTERED_READ_ONLY_MXFP4_BANK",
+          "receipt": "/round9/round14a-b-profile-20260928-v1/v298/rebound/bank-receipt.json",
+          "bank_root": "/round9/banks/candidate-mxfp4-all48-v1",
+          "files": 48,
+          "logical_file_bytes": 64172866560,
+          "accounting": "READ_ONLY_FILE_BYTES_NOT_ASSUMED_RESIDENT_OR_ANONYMOUS_RSS"
+        },
+        "declared_transient_reservations": {
+          "layerwise_prefill_bytes": 826205696,
+          "ple_bytes": 164352,
+          "qsa_context_bytes": 4555776
+        },
+        "alias_count": 105
+      },
+      "requests": [
+        {
+          "workload": "W1",
+          "request_id": "r14a-b-profile-v298-a-02-w1",
+          "ttft_seconds": 6.145061868,
+          "e2e_seconds": 10.68099788,
+          "tpot_seconds": 0.3023889451333333,
+          "phases": {
+            "extend": {
+              "phase_wall_ms": 6115.681199000001,
+              "sampled_attributable_ms": {
+                "GDN": 321.3748188018799,
+                "QSA_ATTENTION": 323.87134170532227,
+                "QSA_INDEXER": 285.19034004211426,
+                "PLE_PREPARE": 4.5179030000000004,
+                "PLE_EXPOSED_WAIT": 0.598929,
+                "PLE_CONSUMER": 8.721299886703491,
+                "ROUTED_EXPERT": 42.4452600479126,
+                "CPU_SUBMIT": 6.165011,
+                "CPU_RESULT_WAIT": 18.127906,
+                "NPU_RESIDENT": 6.246639996767044,
+                "QSA_EXCLUSIVE": 38.68100166320801,
+                "EXPERT_EXCLUSIVE_DEVICE": 36.198620051145554
+              },
+              "sampled_calls": {
+                "GDN": 12,
+                "QSA_ATTENTION": 12,
+                "QSA_INDEXER": 12,
+                "PLE_PREPARE": 4,
+                "PLE_EXPOSED_WAIT": 4,
+                "PLE_CONSUMER": 4,
+                "ROUTED_EXPERT": 12,
+                "CPU_SUBMIT": 12,
+                "CPU_RESULT_WAIT": 12,
+                "NPU_RESIDENT": 12
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.05254930862884566,
+                "QSA_ATTENTION": 0.05295752528079452,
+                "QSA_INDEXER": 0.046632636784394006,
+                "PLE_PREPARE": 0.000738740763782576,
+                "PLE_EXPOSED_WAIT": 9.793332590618577e-05,
+                "PLE_CONSUMER": 0.0014260553490148481,
+                "ROUTED_EXPERT": 0.006940397752396412,
+                "CPU_SUBMIT": 0.0010080661171494789,
+                "CPU_RESULT_WAIT": 0.0029641679168894816,
+                "NPU_RESIDENT": 0.0010214136076596761,
+                "QSA_EXCLUSIVE": 0.006324888496400514,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.005918984144736736
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 42.4452600479126,
+                  "exclusive_device_sample_ms": 36.198620051145554,
+                  "npu_resident_child_ms": 6.246639996767044,
+                  "cpu_submit_host_ms": 6.165011,
+                  "cpu_result_exposed_wait_ms": 18.127906,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 4.5179030000000004,
+                  "exposed_wait_host_ms": 0.598929,
+                  "consumer_device_ms": 8.721299886703491,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 323.87134170532227,
+                  "qsa_indexer_child_device_ms": 285.19034004211426,
+                  "qsa_exclusive_device_sample_ms": 38.68100166320801,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 321.3748188018799,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            },
+            "decode": {
+              "phase_wall_ms": 4479.465802,
+              "sampled_attributable_ms": {
+                "GDN": 89.52057993412018,
+                "QSA_ATTENTION": 250.79709911346436,
+                "QSA_INDEXER": 136.13087964057922,
+                "PLE_PREPARE": 11.221451,
+                "PLE_EXPOSED_WAIT": 1.8875789999999997,
+                "PLE_CONSUMER": 28.24981987476349,
+                "ROUTED_EXPERT": 84.75183963775635,
+                "CPU_SUBMIT": 15.793251,
+                "CPU_RESULT_WAIT": 13.635251999999998,
+                "NPU_RESIDENT": 19.26562002301216,
+                "QSA_EXCLUSIVE": 114.66621947288513,
+                "EXPERT_EXCLUSIVE_DEVICE": 65.48621961474419
+              },
+              "sampled_calls": {
+                "GDN": 45,
+                "QSA_ATTENTION": 45,
+                "QSA_INDEXER": 45,
+                "PLE_PREPARE": 15,
+                "PLE_EXPOSED_WAIT": 15,
+                "PLE_CONSUMER": 15,
+                "ROUTED_EXPERT": 45,
+                "CPU_SUBMIT": 45,
+                "CPU_RESULT_WAIT": 45,
+                "NPU_RESIDENT": 45
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.019984655289510385,
+                "QSA_ATTENTION": 0.055988171402377496,
+                "QSA_INDEXER": 0.030389980782931588,
+                "PLE_PREPARE": 0.0025050868777678416,
+                "PLE_EXPOSED_WAIT": 0.00042138484440649824,
+                "PLE_CONSUMER": 0.006306515357735393,
+                "ROUTED_EXPERT": 0.018920077389566452,
+                "CPU_SUBMIT": 0.003525699647700983,
+                "CPU_RESULT_WAIT": 0.0030439459977375217,
+                "NPU_RESIDENT": 0.0043008744512371124,
+                "QSA_EXCLUSIVE": 0.025598190619445908,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.014619202938329339
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 84.75183963775635,
+                  "exclusive_device_sample_ms": 65.48621961474419,
+                  "npu_resident_child_ms": 19.26562002301216,
+                  "cpu_submit_host_ms": 15.793251,
+                  "cpu_result_exposed_wait_ms": 13.635251999999998,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 11.221451,
+                  "exposed_wait_host_ms": 1.8875789999999997,
+                  "consumer_device_ms": 28.24981987476349,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 250.79709911346436,
+                  "qsa_indexer_child_device_ms": 136.13087964057922,
+                  "qsa_exclusive_device_sample_ms": 114.66621947288513,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 89.52057993412018,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            }
+          }
+        },
+        {
+          "workload": "W2",
+          "request_id": "r14a-b-profile-v298-a-03-w2",
+          "ttft_seconds": 5.134060361,
+          "e2e_seconds": 41.826883161,
+          "tpot_seconds": 0.2889187062440945,
+          "phases": {
+            "extend": {
+              "phase_wall_ms": 5107.621621,
+              "sampled_attributable_ms": {
+                "GDN": 263.0423812866211,
+                "QSA_ATTENTION": 263.09310150146484,
+                "QSA_INDEXER": 230.82049751281738,
+                "PLE_PREPARE": 3.885125,
+                "PLE_EXPOSED_WAIT": 0.467521,
+                "PLE_CONSUMER": 7.2505799531936646,
+                "ROUTED_EXPERT": 40.58142042160034,
+                "CPU_SUBMIT": 5.1002279999999995,
+                "CPU_RESULT_WAIT": 20.290319999999998,
+                "NPU_RESIDENT": 5.245599985122681,
+                "QSA_EXCLUSIVE": 32.27260398864746,
+                "EXPERT_EXCLUSIVE_DEVICE": 35.33582043647766
+              },
+              "sampled_calls": {
+                "GDN": 12,
+                "QSA_ATTENTION": 12,
+                "QSA_INDEXER": 12,
+                "PLE_PREPARE": 4,
+                "PLE_EXPOSED_WAIT": 4,
+                "PLE_CONSUMER": 4,
+                "ROUTED_EXPERT": 12,
+                "CPU_SUBMIT": 12,
+                "CPU_RESULT_WAIT": 12,
+                "NPU_RESIDENT": 12
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.051499974118114314,
+                "QSA_ATTENTION": 0.051509904418087046,
+                "QSA_INDEXER": 0.04519138547064612,
+                "PLE_PREPARE": 0.0007606524696399393,
+                "PLE_EXPOSED_WAIT": 9.153399266652529e-05,
+                "PLE_CONSUMER": 0.00141956090157166,
+                "ROUTED_EXPERT": 0.007945267569302653,
+                "CPU_SUBMIT": 0.0009985524336866298,
+                "CPU_RESULT_WAIT": 0.003972557386901232,
+                "NPU_RESIDENT": 0.001027014210206054,
+                "QSA_EXCLUSIVE": 0.006318518947440931,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.006918253359096598
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 40.58142042160034,
+                  "exclusive_device_sample_ms": 35.33582043647766,
+                  "npu_resident_child_ms": 5.245599985122681,
+                  "cpu_submit_host_ms": 5.1002279999999995,
+                  "cpu_result_exposed_wait_ms": 20.290319999999998,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 3.885125,
+                  "exposed_wait_host_ms": 0.467521,
+                  "consumer_device_ms": 7.2505799531936646,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 263.09310150146484,
+                  "qsa_indexer_child_device_ms": 230.82049751281738,
+                  "qsa_exclusive_device_sample_ms": 32.27260398864746,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 263.0423812866211,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            },
+            "decode": {
+              "phase_wall_ms": 36241.76141199999,
+              "sampled_attributable_ms": {
+                "GDN": 730.536098241806,
+                "QSA_ATTENTION": 2149.24530172348,
+                "QSA_INDEXER": 1138.0945401191711,
+                "PLE_PREPARE": 90.69149000000002,
+                "PLE_EXPOSED_WAIT": 14.609311999999989,
+                "PLE_CONSUMER": 224.10990011692047,
+                "ROUTED_EXPERT": 699.6549993753433,
+                "CPU_SUBMIT": 126.45645300000002,
+                "CPU_RESULT_WAIT": 128.26111499999993,
+                "NPU_RESIDENT": 153.6074600815773,
+                "QSA_EXCLUSIVE": 1011.1507616043091,
+                "EXPERT_EXCLUSIVE_DEVICE": 546.047539293766
+              },
+              "sampled_calls": {
+                "GDN": 381,
+                "QSA_ATTENTION": 381,
+                "QSA_INDEXER": 381,
+                "PLE_PREPARE": 127,
+                "PLE_EXPOSED_WAIT": 127,
+                "PLE_CONSUMER": 127,
+                "ROUTED_EXPERT": 381,
+                "CPU_SUBMIT": 381,
+                "CPU_RESULT_WAIT": 381,
+                "NPU_RESIDENT": 381
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.020157301129406988,
+                "QSA_ATTENTION": 0.05930300344099293,
+                "QSA_INDEXER": 0.03140284842067133,
+                "PLE_PREPARE": 0.0025024029314969,
+                "PLE_EXPOSED_WAIT": 0.0004031071181645908,
+                "PLE_CONSUMER": 0.0061837474610909925,
+                "ROUTED_EXPERT": 0.019305215092103135,
+                "CPU_SUBMIT": 0.003489246881861793,
+                "CPU_RESULT_WAIT": 0.0035390419781730436,
+                "NPU_RESIDENT": 0.004238410444110379,
+                "QSA_EXCLUSIVE": 0.027900155020321595,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.015066804647992756
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 699.6549993753433,
+                  "exclusive_device_sample_ms": 546.047539293766,
+                  "npu_resident_child_ms": 153.6074600815773,
+                  "cpu_submit_host_ms": 126.45645300000002,
+                  "cpu_result_exposed_wait_ms": 128.26111499999993,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 90.69149000000002,
+                  "exposed_wait_host_ms": 14.609311999999989,
+                  "consumer_device_ms": 224.10990011692047,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 2149.24530172348,
+                  "qsa_indexer_child_device_ms": 1138.0945401191711,
+                  "qsa_exclusive_device_sample_ms": 1011.1507616043091,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 730.536098241806,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "version": 299,
+      "block": "B",
+      "resources": {
+        "board_hbm_peak_mib": 28775,
+        "system_hbm_baseline_mib": 3124,
+        "inferred_owned_board_increment_mib": 25651,
+        "host_cgroup_peak_bytes": 363705851904,
+        "host_cgroup_peak_gib": 338.7274703979492,
+        "host_cgroup_sampled_current_peak_bytes": 363498381312,
+        "allocator": {
+          "allocated_bytes": 25793916416,
+          "reserved_bytes": 26373783552,
+          "persistent_classified_npu_bytes": 25678522372,
+          "workspace_unclassified_allocated_bytes": 115394044,
+          "allocator_reserved_unallocated_bytes": 579867136,
+          "owned_used_bytes": null,
+          "board_used_bytes": null,
+          "board_driver_or_external_residual_bytes": null
+        },
+        "storage_buckets": {
+          "Expert": {
+            "npu_bytes": 15099494400,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 96
+          },
+          "PLE": {
+            "npu_bytes": 65679640,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 9
+          },
+          "Dense backbone": {
+            "npu_bytes": 9863275648,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 990
+          },
+          "KV+GDN state": {
+            "npu_bytes": 335333484,
+            "host_bytes": 0,
+            "other_bytes": 0,
+            "unique_storages": 13
+          },
+          "Workspace": {
+            "npu_bytes": 314739200,
+            "host_bytes": 25216,
+            "other_bytes": 0,
+            "unique_storages": 8
+          }
+        },
+        "host_read_only_bank": {
+          "status": "REGISTERED_READ_ONLY_MXFP4_BANK",
+          "receipt": "/round9/round14a-b-profile-20260928-v1/v299/rebound/bank-receipt.json",
+          "bank_root": "/round9/banks/candidate-mxfp4-all48-v1",
+          "files": 48,
+          "logical_file_bytes": 64172866560,
+          "accounting": "READ_ONLY_FILE_BYTES_NOT_ASSUMED_RESIDENT_OR_ANONYMOUS_RSS"
+        },
+        "declared_transient_reservations": {
+          "layerwise_prefill_bytes": 826205696,
+          "ple_bytes": 164352,
+          "qsa_context_bytes": 4555776
+        },
+        "alias_count": 105
+      },
+      "requests": [
+        {
+          "workload": "W1",
+          "request_id": "r14a-b-profile-v299-b-02-w1",
+          "ttft_seconds": 6.138512258,
+          "e2e_seconds": 10.951274643,
+          "tpot_seconds": 0.320844186,
+          "phases": {
+            "extend": {
+              "phase_wall_ms": 6109.544876999999,
+              "sampled_attributable_ms": {
+                "GDN": 321.54759979248047,
+                "QSA_ATTENTION": 325.3992176055908,
+                "QSA_INDEXER": 285.7078399658203,
+                "PLE_PREPARE": 4.637821000000001,
+                "PLE_EXPOSED_WAIT": 0.600299,
+                "PLE_CONSUMER": 8.983279943466187,
+                "ROUTED_EXPERT": 43.299920320510864,
+                "CPU_SUBMIT": 6.533456,
+                "CPU_RESULT_WAIT": 18.199320999999998,
+                "NPU_RESIDENT": 6.329460084438324,
+                "QSA_EXCLUSIVE": 39.69137763977051,
+                "EXPERT_EXCLUSIVE_DEVICE": 36.97046023607254
+              },
+              "sampled_calls": {
+                "GDN": 12,
+                "QSA_ATTENTION": 12,
+                "QSA_INDEXER": 12,
+                "PLE_PREPARE": 4,
+                "PLE_EXPOSED_WAIT": 4,
+                "PLE_CONSUMER": 4,
+                "ROUTED_EXPERT": 12,
+                "CPU_SUBMIT": 12,
+                "CPU_RESULT_WAIT": 12,
+                "NPU_RESIDENT": 12
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.052630368753485875,
+                "QSA_ATTENTION": 0.05326079506029805,
+                "QSA_INDEXER": 0.0467641773189025,
+                "PLE_PREPARE": 0.0007591107182892702,
+                "PLE_EXPOSED_WAIT": 9.82559277467437e-05,
+                "PLE_CONSUMER": 0.0014703681083159982,
+                "ROUTED_EXPERT": 0.007087257920556047,
+                "CPU_SUBMIT": 0.001069385057567194,
+                "CPU_RESULT_WAIT": 0.0029788341630017623,
+                "NPU_RESIDENT": 0.0010359953502045982,
+                "QSA_EXCLUSIVE": 0.006496617741395553,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.006051262570351448
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 43.299920320510864,
+                  "exclusive_device_sample_ms": 36.97046023607254,
+                  "npu_resident_child_ms": 6.329460084438324,
+                  "cpu_submit_host_ms": 6.533456,
+                  "cpu_result_exposed_wait_ms": 18.199320999999998,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 4.637821000000001,
+                  "exposed_wait_host_ms": 0.600299,
+                  "consumer_device_ms": 8.983279943466187,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 325.3992176055908,
+                  "qsa_indexer_child_device_ms": 285.7078399658203,
+                  "qsa_exclusive_device_sample_ms": 39.69137763977051,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 321.54759979248047,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            },
+            "decode": {
+              "phase_wall_ms": 4757.044201,
+              "sampled_attributable_ms": {
+                "GDN": 99.35519981384277,
+                "QSA_ATTENTION": 269.14972019195557,
+                "QSA_INDEXER": 146.5908603668213,
+                "PLE_PREPARE": 12.109172000000001,
+                "PLE_EXPOSED_WAIT": 2.029545,
+                "PLE_CONSUMER": 30.196280002593994,
+                "ROUTED_EXPERT": 94.13896083831787,
+                "CPU_SUBMIT": 17.559925000000003,
+                "CPU_RESULT_WAIT": 17.739988000000004,
+                "NPU_RESIDENT": 20.51575994491577,
+                "QSA_EXCLUSIVE": 122.55885982513428,
+                "EXPERT_EXCLUSIVE_DEVICE": 73.6232008934021
+              },
+              "sampled_calls": {
+                "GDN": 45,
+                "QSA_ATTENTION": 45,
+                "QSA_INDEXER": 45,
+                "PLE_PREPARE": 15,
+                "PLE_EXPOSED_WAIT": 15,
+                "PLE_CONSUMER": 15,
+                "ROUTED_EXPERT": 45,
+                "CPU_SUBMIT": 45,
+                "CPU_RESULT_WAIT": 45,
+                "NPU_RESIDENT": 45
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.020885910581397767,
+                "QSA_ATTENTION": 0.056579192628770696,
+                "QSA_INDEXER": 0.03081553464144936,
+                "PLE_PREPARE": 0.0025455243820216088,
+                "PLE_EXPOSED_WAIT": 0.0004266399289654194,
+                "PLE_CONSUMER": 0.006347698008827897,
+                "ROUTED_EXPERT": 0.019789381149439077,
+                "CPU_SUBMIT": 0.0036913520787359203,
+                "CPU_RESULT_WAIT": 0.0037292039448090057,
+                "NPU_RESIDENT": 0.004312711649936542,
+                "QSA_EXCLUSIVE": 0.025763657987321335,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.015476669499502535
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 94.13896083831787,
+                  "exclusive_device_sample_ms": 73.6232008934021,
+                  "npu_resident_child_ms": 20.51575994491577,
+                  "cpu_submit_host_ms": 17.559925000000003,
+                  "cpu_result_exposed_wait_ms": 17.739988000000004,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 12.109172000000001,
+                  "exposed_wait_host_ms": 2.029545,
+                  "consumer_device_ms": 30.196280002593994,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 269.14972019195557,
+                  "qsa_indexer_child_device_ms": 146.5908603668213,
+                  "qsa_exclusive_device_sample_ms": 122.55885982513428,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 99.35519981384277,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            }
+          }
+        },
+        {
+          "workload": "W2",
+          "request_id": "r14a-b-profile-v299-b-03-w2",
+          "ttft_seconds": 5.069997492,
+          "e2e_seconds": 41.361782304,
+          "tpot_seconds": 0.28576099688976375,
+          "phases": {
+            "extend": {
+              "phase_wall_ms": 5043.1544619999995,
+              "sampled_attributable_ms": {
+                "GDN": 260.2526397705078,
+                "QSA_ATTENTION": 260.0875606536865,
+                "QSA_INDEXER": 227.49282264709473,
+                "PLE_PREPARE": 3.9861690000000003,
+                "PLE_EXPOSED_WAIT": 0.47312199999999993,
+                "PLE_CONSUMER": 7.492259979248047,
+                "ROUTED_EXPERT": 41.26460003852844,
+                "CPU_SUBMIT": 5.5073799999999995,
+                "CPU_RESULT_WAIT": 20.316812,
+                "NPU_RESIDENT": 5.2487799525260925,
+                "QSA_EXCLUSIVE": 32.5947380065918,
+                "EXPERT_EXCLUSIVE_DEVICE": 36.01582008600235
+              },
+              "sampled_calls": {
+                "GDN": 12,
+                "QSA_ATTENTION": 12,
+                "QSA_INDEXER": 12,
+                "PLE_PREPARE": 4,
+                "PLE_EXPOSED_WAIT": 4,
+                "PLE_CONSUMER": 4,
+                "ROUTED_EXPERT": 12,
+                "CPU_SUBMIT": 12,
+                "CPU_RESULT_WAIT": 12,
+                "NPU_RESIDENT": 12
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.05160512963295151,
+                "QSA_ATTENTION": 0.051572396327226856,
+                "QSA_INDEXER": 0.04510923160518789,
+                "PLE_PREPARE": 0.0007904118404533612,
+                "PLE_EXPOSED_WAIT": 9.381469545796355e-05,
+                "PLE_CONSUMER": 0.0014856296858844946,
+                "ROUTED_EXPERT": 0.00818229946146917,
+                "CPU_SUBMIT": 0.0010920506285298068,
+                "CPU_RESULT_WAIT": 0.004028592055445951,
+                "NPU_RESIDENT": 0.001040773189097315,
+                "QSA_EXCLUSIVE": 0.0064631647220389655,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.0071415262723718564
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 41.26460003852844,
+                  "exclusive_device_sample_ms": 36.01582008600235,
+                  "npu_resident_child_ms": 5.2487799525260925,
+                  "cpu_submit_host_ms": 5.5073799999999995,
+                  "cpu_result_exposed_wait_ms": 20.316812,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 3.9861690000000003,
+                  "exposed_wait_host_ms": 0.47312199999999993,
+                  "consumer_device_ms": 7.492259979248047,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 260.0875606536865,
+                  "qsa_indexer_child_device_ms": 227.49282264709473,
+                  "qsa_exclusive_device_sample_ms": 32.5947380065918,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 260.2526397705078,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            },
+            "decode": {
+              "phase_wall_ms": 35853.986531,
+              "sampled_attributable_ms": {
+                "GDN": 726.4047794342041,
+                "QSA_ATTENTION": 2107.7675223350525,
+                "QSA_INDEXER": 1112.3680403232574,
+                "PLE_PREPARE": 88.58491799999996,
+                "PLE_EXPOSED_WAIT": 14.506284999999998,
+                "PLE_CONSUMER": 221.32518005371094,
+                "ROUTED_EXPERT": 704.7021601200104,
+                "CPU_SUBMIT": 128.83940700000002,
+                "CPU_RESULT_WAIT": 130.18918899999997,
+                "NPU_RESIDENT": 152.86811977624893,
+                "QSA_EXCLUSIVE": 995.399482011795,
+                "EXPERT_EXCLUSIVE_DEVICE": 551.8340403437614
+              },
+              "sampled_calls": {
+                "GDN": 381,
+                "QSA_ATTENTION": 381,
+                "QSA_INDEXER": 381,
+                "PLE_PREPARE": 127,
+                "PLE_EXPOSED_WAIT": 127,
+                "PLE_CONSUMER": 127,
+                "ROUTED_EXPERT": 381,
+                "CPU_SUBMIT": 381,
+                "CPU_RESULT_WAIT": 381,
+                "NPU_RESIDENT": 381
+              },
+              "fractions_of_phase_wall": {
+                "GDN": 0.020260084016212297,
+                "QSA_ATTENTION": 0.05878753595538501,
+                "QSA_INDEXER": 0.031024947235964516,
+                "PLE_PREPARE": 0.0024707132057242183,
+                "PLE_EXPOSED_WAIT": 0.00040459336334768806,
+                "PLE_CONSUMER": 0.006172958754875116,
+                "ROUTED_EXPERT": 0.019654778402694837,
+                "CPU_SUBMIT": 0.003593447185813024,
+                "CPU_RESULT_WAIT": 0.0036310938223685684,
+                "NPU_RESIDENT": 0.004263629642524588,
+                "QSA_EXCLUSIVE": 0.027762588719420497,
+                "EXPERT_EXCLUSIVE_DEVICE": 0.015391148760170248
+              },
+              "five_bucket_time_ledger": {
+                "Expert": {
+                  "parent_device_sample_ms": 704.7021601200104,
+                  "exclusive_device_sample_ms": 551.8340403437614,
+                  "npu_resident_child_ms": 152.86811977624893,
+                  "cpu_submit_host_ms": 128.83940700000002,
+                  "cpu_result_exposed_wait_ms": 130.18918899999997,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    47
+                  ],
+                  "actual_layer_calls": "NOT_EXTRAPOLATED_ACROSS_OVERLAPPING_CLOCK_DOMAINS"
+                },
+                "PLE": {
+                  "prepare_host_ms": 88.58491799999996,
+                  "exposed_wait_host_ms": 14.506284999999998,
+                  "consumer_device_ms": 221.32518005371094,
+                  "sampled_layers": [
+                    1
+                  ]
+                },
+                "Dense backbone": {
+                  "qsa_parent_device_sample_ms": 2107.7675223350525,
+                  "qsa_indexer_child_device_ms": 1112.3680403232574,
+                  "qsa_exclusive_device_sample_ms": 995.399482011795,
+                  "sampled_layers": [
+                    3,
+                    23,
+                    47
+                  ],
+                  "remaining_dense_device_time": "UNKNOWN_NOT_SUMMED_FROM_PARENT_SPANS"
+                },
+                "KV+GDN state": {
+                  "gdn_device_sample_ms": 726.4047794342041,
+                  "sampled_layers": [
+                    0,
+                    24,
+                    46
+                  ]
+                },
+                "Workspace": {
+                  "compute_ms": "NOT_AN_EXECUTION_PROVIDER"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "memory_repeat_exact": true,
+  "five_bucket_interpretation": {
+    "memory_largest": "Expert",
+    "decode_sampled_time_largest": "Expert",
+    "expert_bottleneck": "CPU_MXFP4_DRAM_COMPUTE_PLUS_RESULT_DEPENDENCY",
+    "layerwise_weight_transfer_in_hybrid": 0,
+    "ple_exposed_wait_material": false,
+    "gdn_and_qsa_location": "ALREADY_NPU",
+    "transfer_bytes": {
+      "expert_activation_and_result": "UNKNOWN_NO_RUNTIME_BYTE_COUNTER",
+      "ple_h2d": "UNKNOWN_NO_RUNTIME_BYTE_COUNTER",
+      "layerwise_expert_weights": 0
+    },
+    "clock_domain_rule": "PARENT_DEVICE_SPANS_AND_HOST_WAITS_REPORTED_SEPARATELY_NOT_SUMMED"
+  },
+  "fplus_capacity": {
+    "increment_per_full_front_layer_bytes": 4718592000,
+    "increment_per_full_front_layer_mib": 4500.0,
+    "increment_per_full_front_layer_gib": 4.39453125,
+    "caps": {
+      "allocator_mib": 36352.0,
+      "owned_mib": 37376.0,
+      "board_mib": 56832.0
+    },
+    "baseline_allocator_mib": 24598.99560546875,
+    "baseline_owned_mib": 25652,
+    "reserves": {
+      "promoted_gdn_workspace_reserve_mib": 1024.0,
+      "c4_additional_kv_gdn_state_mib": 959.3967933654785,
+      "c4_additional_workspace_mib": 330.1450080871582,
+      "load_and_guard_margin_mib": 1024.0
+    },
+    "reserve_total_mib": 3337.5418014526367,
+    "projections": [
+      {
+        "k": 0,
+        "added_expert_mib": 0.0,
+        "projected_allocator_with_reserves_mib": 27936.537406921387,
+        "projected_owned_with_reserves_mib": 28989.541801452637,
+        "projected_board_with_reserves_mib": 32112.541801452637
+      },
+      {
+        "k": 1,
+        "added_expert_mib": 4500.0,
+        "projected_allocator_with_reserves_mib": 32436.537406921387,
+        "projected_owned_with_reserves_mib": 33489.54180145264,
+        "projected_board_with_reserves_mib": 36612.54180145264
+      },
+      {
+        "k": 2,
+        "added_expert_mib": 9000.0,
+        "projected_allocator_with_reserves_mib": 36936.53740692139,
+        "projected_owned_with_reserves_mib": 37989.54180145264,
+        "projected_board_with_reserves_mib": 41112.54180145264
+      },
+      {
+        "k": 3,
+        "added_expert_mib": 13500.0,
+        "projected_allocator_with_reserves_mib": 41436.53740692139,
+        "projected_owned_with_reserves_mib": 42489.54180145264,
+        "projected_board_with_reserves_mib": 45612.54180145264
+      },
+      {
+        "k": 4,
+        "added_expert_mib": 18000.0,
+        "projected_allocator_with_reserves_mib": 45936.53740692139,
+        "projected_owned_with_reserves_mib": 46989.54180145264,
+        "projected_board_with_reserves_mib": 50112.54180145264
+      },
+      {
+        "k": 5,
+        "added_expert_mib": 22500.0,
+        "projected_allocator_with_reserves_mib": 50436.53740692139,
+        "projected_owned_with_reserves_mib": 51489.54180145264,
+        "projected_board_with_reserves_mib": 54612.54180145264
+      },
+      {
+        "k": 6,
+        "added_expert_mib": 27000.0,
+        "projected_allocator_with_reserves_mib": 54936.53740692139,
+        "projected_owned_with_reserves_mib": 55989.54180145264,
+        "projected_board_with_reserves_mib": 59112.54180145264
+      }
+    ],
+    "k_safe": 1,
+    "profile": "FPLUS(1)_LAYER0_Q512_LAYERS1_47_Q32",
+    "same_nominal_control": "U_PLUS_Q42_ALL48"
+  },
+  "conclusion": "SCREEN_FPLUS1_AND_UPLUS_Q42_THEN_PROMOTE_AT_MOST_ONE_TO_REQUEST_ABBA"
+}

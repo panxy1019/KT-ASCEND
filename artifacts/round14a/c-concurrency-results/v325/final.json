@@ -1,0 +1,1256 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_C_CONCURRENCY_PROCESS",
+  "stage": "ROUND14A_C_TRUE_CONCURRENCY",
+  "version": 325,
+  "kind": "smoke",
+  "block": "C2",
+  "tier_order": [
+    2
+  ],
+  "server_max_concurrency": 2,
+  "generation_budget": 9,
+  "generation_attempts": 9,
+  "abort_controls": 1,
+  "automatic_retries": 0,
+  "profiler": "OFF",
+  "baseline": "S0_UNIFORM_Q32_GDN_BASELINE_QSA_PROMOTED_PLE_ASYNC_H129",
+  "tiers": {},
+  "quality": [
+    {
+      "request_id": "r14a-c-v325-quality-canary_marker",
+      "case_id": "canary_marker",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          49,
+          16,
+          15,
+          10951,
+          56,
+          12717,
+          887,
+          12,
+          3793,
+          248046
+        ],
+        "completion_tokens": 10,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 19.341491114,
+      "engine": {
+        "batch_sizes": [
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "decode_batch_sizes": [
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    },
+    {
+      "request_id": "r14a-c-v325-quality-canary_math391",
+      "case_id": "canary_math391",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "completion_tokens": 4,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 13.516865617,
+      "engine": {
+        "batch_sizes": [
+          1,
+          2,
+          2,
+          2
+        ],
+        "decode_batch_sizes": [
+          2,
+          2,
+          2
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    },
+    {
+      "request_id": "r14a-c-v325-quality-canary_json",
+      "case_id": "canary_json",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          4754,
+          547,
+          763,
+          1802,
+          92,
+          248046
+        ],
+        "completion_tokens": 6,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 4.293492523,
+      "engine": {
+        "batch_sizes": [
+          1,
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "decode_batch_sizes": [
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    },
+    {
+      "request_id": "r14a-c-v325-quality-canary_quote",
+      "case_id": "canary_quote",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          82601,
+          3045,
+          248046
+        ],
+        "completion_tokens": 3,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 3.364030432,
+      "engine": {
+        "batch_sizes": [
+          1,
+          2,
+          2
+        ],
+        "decode_batch_sizes": [
+          2,
+          2
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    },
+    {
+      "request_id": "r14a-c-v325-quality-canary_transform",
+      "case_id": "canary_transform",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          24606,
+          31134,
+          248046
+        ],
+        "completion_tokens": 3,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 9.175281794,
+      "engine": {
+        "batch_sizes": [
+          1,
+          2,
+          2
+        ],
+        "decode_batch_sizes": [
+          2,
+          2
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    },
+    {
+      "request_id": "r14a-c-v325-multi_step-edge128",
+      "case_id": "edge128",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          3897,
+          248046,
+          198,
+          248044,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045
+        ],
+        "completion_tokens": 32,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "length",
+          "length": 32
+        }
+      },
+      "e2e_seconds": 18.087846049,
+      "engine": {
+        "batch_sizes": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "decode_batch_sizes": [
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "max_batch_size": 2,
+        "max_decode_batch_size": 2
+      }
+    }
+  ],
+  "cancel_isolation": {
+    "cancel": {
+      "status": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE",
+      "request_id": "r14a-c-v325-cancel",
+      "trigger_start": 32,
+      "abort_http_status": 200,
+      "generation_thread_alive": false,
+      "terminal_finish_reason": "abort",
+      "hybrid_events": [
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "stage": "SELECTION"
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "CPU_SUBMIT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093178429457,
+          "end_ns": 320093178729321
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "NPU_RESIDENT_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093179293507,
+          "end_ns": 320093179682124
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "CPU_RESULT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093179832311,
+          "end_ns": 320093180916791
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "ORIGINAL_HYBRID_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093178225877,
+          "end_ns": 320093181142182
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "CPU_SUBMIT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093260622566,
+          "end_ns": 320093260915269
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "NPU_RESIDENT_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093261468785,
+          "end_ns": 320093261860663
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "CPU_RESULT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093262010870,
+          "end_ns": 320093263572651
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 0,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "ORIGINAL_HYBRID_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320093260423607,
+          "end_ns": 320093263779051
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "stage": "SELECTION"
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "CPU_SUBMIT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094479573647,
+          "end_ns": 320094479868260
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "NPU_RESIDENT_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094480405315,
+          "end_ns": 320094480790053
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "CPU_RESULT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094480944160,
+          "end_ns": 320094482691380
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 0,
+          "stage": "ORIGINAL_HYBRID_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094479375768,
+          "end_ns": 320094482894510
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "CPU_SUBMIT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094562789063,
+          "end_ns": 320094563078576
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "NPU_RESIDENT_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094563549458,
+          "end_ns": 320094563940496
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "CPU_RESULT",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094564148015,
+          "end_ns": 320094565965239
+        },
+        {
+          "request_id": "r14a-c-v325-cancel",
+          "generation": 0,
+          "request_tokens": 128,
+          "batch_tokens": 32,
+          "start": 32,
+          "threshold": 129,
+          "path": "HYBRID",
+          "basis": "REQUEST_TOTAL",
+          "engine_batch_size": 1,
+          "layer": 3,
+          "stage": "ORIGINAL_HYBRID_APPLY",
+          "outcome": "RETURN",
+          "span_scope": "SHARED_ENGINE_BATCH",
+          "start_ns": 320094562592654,
+          "end_ns": 320094566168238
+        }
+      ],
+      "cancel_events": [
+        {
+          "allocation_epoch": null,
+          "event_seq": 26,
+          "monotonic_ns": 320093147103667,
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "REQUEST_ADMITTED"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 27,
+          "monotonic_ns": 320093147217712,
+          "operation": "STREAMING_CHUNK",
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "NORMAL_SUBMIT_ADMITTED"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 28,
+          "monotonic_ns": 320094452423689,
+          "operation": "STREAMING_CHUNK",
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "NORMAL_SUBMIT_ADMITTED"
+        },
+        {
+          "abort_all": false,
+          "event_seq": 0,
+          "monotonic_ns": 320094476109368,
+          "pid": 71,
+          "requested_id": "r14a-c-v325-cancel",
+          "status": "HTTP_ABORT_RECEIVED"
+        },
+        {
+          "abort_all": false,
+          "event_seq": 1,
+          "monotonic_ns": 320094476263105,
+          "pid": 71,
+          "reason": null,
+          "requested_id": "r14a-c-v325-cancel",
+          "status": "CONTROL_SENT"
+        },
+        {
+          "abort_all": false,
+          "event_seq": 29,
+          "matched_requests": 1,
+          "monotonic_ns": 320095754016939,
+          "pid": 92,
+          "requested_id": "r14a-c-v325-cancel",
+          "status": "SCHEDULER_ABORT_RECEIVED"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 30,
+          "monotonic_ns": 320095754132525,
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "CANCEL_SEEN"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 31,
+          "monotonic_ns": 320095754196738,
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "SUBMIT_FENCE_PUBLISHED"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 32,
+          "monotonic_ns": 320095755164312,
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "REQUEST_RETIRED"
+        },
+        {
+          "allocation_epoch": null,
+          "event_seq": 33,
+          "monotonic_ns": 320095755253486,
+          "pid": 92,
+          "request_epoch": 7,
+          "request_id": "r14a-c-v325-cancel",
+          "status": "CANCEL_CLEANUP_COMMITTED"
+        }
+      ],
+      "cancel_statuses": [
+        "REQUEST_ADMITTED",
+        "NORMAL_SUBMIT_ADMITTED",
+        "NORMAL_SUBMIT_ADMITTED",
+        "HTTP_ABORT_RECEIVED",
+        "CONTROL_SENT",
+        "SCHEDULER_ABORT_RECEIVED",
+        "CANCEL_SEEN",
+        "SUBMIT_FENCE_PUBLISHED",
+        "REQUEST_RETIRED",
+        "CANCEL_CLEANUP_COMMITTED"
+      ],
+      "late_commit": false,
+      "lease_returned": true,
+      "response_events": [
+        {
+          "text": "",
+          "output_ids": [],
+          "meta_info": {
+            "id": "r14a-c-v325-cancel",
+            "finish_reason": {
+              "type": "abort",
+              "message": "Aborted",
+              "status_code": null,
+              "err_type": null
+            },
+            "prompt_tokens": 128,
+            "weight_version": "default",
+            "total_retractions": 0,
+            "completion_tokens": 0,
+            "cached_tokens": 0,
+            "cached_tokens_details": null,
+            "dp_rank": null,
+            "e2e_latency": 7.890860842016991,
+            "response_sent_to_client_ts": 1790568130.6830869
+          }
+        }
+      ],
+      "reuse": {
+        "request_id": "r14a-c-v325-reuse-canary_math391",
+        "validator_passed": true,
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ]
+      },
+      "trigger_event": {
+        "request_id": "r14a-c-v325-cancel",
+        "generation": 0,
+        "request_tokens": 128,
+        "batch_tokens": 32,
+        "start": 32,
+        "threshold": 129,
+        "path": "HYBRID",
+        "basis": "REQUEST_TOTAL",
+        "engine_batch_size": 1,
+        "stage": "SELECTION"
+      },
+      "abort_http_body": "",
+      "generation_errors": []
+    },
+    "protected": {
+      "request_id": "r14a-c-v325-protected-edge128",
+      "case_id": "edge128",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          3897,
+          248046,
+          198,
+          248044,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045,
+          248045
+        ],
+        "completion_tokens": 32,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "length",
+          "length": 32
+        }
+      },
+      "e2e_seconds": 17.316536238,
+      "engine": {
+        "batch_sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "decode_batch_sizes": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "max_batch_size": 1,
+        "max_decode_batch_size": 1
+      }
+    },
+    "reuse": {
+      "request_id": "r14a-c-v325-reuse-canary_math391",
+      "case_id": "canary_math391",
+      "quality_pass": true,
+      "validated": {
+        "output_ids": [
+          18,
+          24,
+          16,
+          248046
+        ],
+        "completion_tokens": 4,
+        "finite_output_logprobs": true,
+        "finish_reason": {
+          "type": "stop",
+          "matched": 248046
+        }
+      },
+      "e2e_seconds": 2.101956747,
+      "engine": {
+        "batch_sizes": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "decode_batch_sizes": [
+          1,
+          1,
+          1
+        ],
+        "max_batch_size": 1,
+        "max_decode_batch_size": 1
+      }
+    },
+    "pass": true
+  },
+  "plane_evidence": {
+    "r14a-c-v325-quality-canary_marker": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          29
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 120
+      },
+      "ple": {
+        "drained": 10,
+        "async": 10,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-quality-canary_math391": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          27
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 48
+      },
+      "ple": {
+        "drained": 4,
+        "async": 4,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-quality-canary_json": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          28
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 72
+      },
+      "ple": {
+        "drained": 6,
+        "async": 6,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-quality-canary_quote": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          31
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-quality-canary_transform": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          25
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 36
+      },
+      "ple": {
+        "drained": 3,
+        "async": 3,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-multi_step-edge128": {
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 420
+      },
+      "ple": {
+        "drained": 35,
+        "async": 35,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-protected-edge128": {
+      "path": {
+        "selection_count": 4,
+        "dispatch_tokens": [
+          32,
+          32,
+          32,
+          32
+        ],
+        "cpu_submit_count": 8,
+        "cpu_result_count": 8,
+        "npu_resident_count": 8
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 420
+      },
+      "ple": {
+        "drained": 35,
+        "async": 35,
+        "sync_fallback": 0
+      }
+    },
+    "r14a-c-v325-reuse-canary_math391": {
+      "path": {
+        "selection_count": 1,
+        "dispatch_tokens": [
+          27
+        ],
+        "cpu_submit_count": 2,
+        "cpu_result_count": 2,
+        "npu_resident_count": 2
+      },
+      "qsa": {
+        "prefill_strategy": "VECTORIZED",
+        "decode_strategy": "DIRECT_BF16_ROW",
+        "layers": [
+          3,
+          7,
+          11,
+          15,
+          19,
+          23,
+          27,
+          31,
+          35,
+          39,
+          43,
+          47
+        ],
+        "dispatch_count": 48
+      },
+      "ple": {
+        "drained": 4,
+        "async": 4,
+        "sync_fallback": 0
+      }
+    }
+  },
+  "maximum_engine_batch": 2,
+  "startup": {
+    "supervisor_started_at": 1790567990.0482366,
+    "server_ready_at": 1790568080.8176658,
+    "seconds": 90.76942920684814
+  },
+  "cleanup": {
+    "guard_exit_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY"
+  }
+}

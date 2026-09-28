@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "status": "ROUND14A_COMPLETE_GDN_PROMOTED_B_C_NO_PROMOTION",
+  "round_complete": true,
+  "performance_objective": {
+    "single_request_speed": "ACHIEVED_BY_GDN",
+    "default_multi_request_service_throughput": "NO_NEW_PROMOTION",
+    "research_evidence_for_w2_concurrency": "POSITIVE_CONDITIONAL_NOT_DEFAULT"
+  },
+  "lines": {
+    "A_GDN": {
+      "status": "COMPLETE_PROMOTED",
+      "root_cause": "ROUND14_COMPONENT_PROBE_AUTOGRAD_FALSE_POSITIVE",
+      "request_result_sha256": "7302d9369854a0ec8e6b368f8942d1a590e50d96a75f9b4a50b351a7e5858b28"
+    },
+    "B_INCREMENTAL_RESIDENCY": {
+      "status": "COMPLETE_NO_PROMOTION",
+      "result_sha256": "e9bd7bf4a8cd87147022ba32c07789ce19d7ddcf6ab3d909316cb7dd0fd3fd3b"
+    },
+    "C_TRUE_CONCURRENCY": {
+      "status": "COMPLETE_NO_UNIFIED_PROMOTION",
+      "result_sha256": "c6f62bdd72d430734a797a9017a9cb2514fc5b9f6b0286c5eae1fa835759a011",
+      "default_max_concurrency": 1
+    }
+  },
+  "quality": {
+    "numerical_state_cancel_reuse_cleanup": "PASS",
+    "known_round14_english_failures": 8,
+    "round14_pending_manual_review": 9,
+    "broad_product_quality": "NOT_CLAIMED"
+  },
+  "budget": {
+    "model_groups": 23,
+    "generation_attempts": 535,
+    "abort_controls": 4,
+    "component_processes": 10,
+    "npu_device_hours": 3.5959156268172796
+  },
+  "resources": {
+    "status": "PASS",
+    "receipt_sha256": "a3bb8cd735f01e37f7c32b8775477aaf0021dc88cc69854d984beb6cc8f16e24",
+    "retirement_sha256": "b67d96af4215f1cc0f70c3a7b8d47fdac91abb2a261aa4a4bdce17a6dcde48d8",
+    "physical12_final": "EMPTY"
+  },
+  "final_config_sha256": "d0c72de841c5afc581752382cbea9c02409aaba387523ec63f36fc7f9ebb74b5",
+  "no_further_device_work_required": true,
+  "deliverables": {
+    "report_sha256": "e66e63a3a475b22e9bd0970e0e05325d8ae3d674db70a76d61146d128860e437",
+    "benchmark_sha256": "962c4a989a89820c4d625de1b121ff11c4066c71b708ba9aa7b57697b1cd9a68",
+    "budget_sha256": "55afb9f6e895ea3c6503ed44c2614fd9a51eba46147228c0357326475f584ce4",
+    "source_build_patch_hash_sha256": "f6e7556acd28bab839184dfec250c51522322cca7197aaea8a14f2f96cc03808",
+    "final_verification_sha256": "b5754485d4d5696f97f6c11bd1528cebe3ac926bcd581a29ce0a6e042e812edb"
+  }
+}

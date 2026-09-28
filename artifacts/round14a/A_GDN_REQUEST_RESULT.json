@@ -1,0 +1,357 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_A_GDN_REQUEST_PROMOTION_GATE",
+  "candidate": "NPU_GDN_CORE_PLUS_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+  "root_cause_reference": "A_GDN_MEMORY_ROOT_CAUSE.json",
+  "component_reference": "A_GDN_COMPONENT_RESULT.json",
+  "smoke_reference": "A_GDN_MODEL_SMOKE_RESULT.json",
+  "runs": [
+    {
+      "version": 294,
+      "implementation": "baseline",
+      "block": "A",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "actual_branch_rows": 36,
+      "quality_pass": true,
+      "metrics": {
+        "W1": {
+          "ttft_seconds": 5.24589934,
+          "e2e_seconds": 9.521157033,
+          "tpot_seconds": 0.2912554045333334,
+          "serial_output_tokens_per_second": 1.676656588377411,
+          "requests_per_second": 0.10479103677358818
+        },
+        "W2": {
+          "ttft_seconds": 5.298926668,
+          "e2e_seconds": 42.133253955,
+          "tpot_seconds": 0.2916104638267717,
+          "serial_output_tokens_per_second": 3.014988234444646,
+          "requests_per_second": 0.023554595581598798
+        },
+        "W4": {
+          "ttft_seconds": 2.583576573,
+          "e2e_seconds": 11.28001175,
+          "tpot_seconds": 0.28049781287096776,
+          "serial_output_tokens_per_second": 2.8421706962661117,
+          "requests_per_second": 0.08881783425831599
+        }
+      },
+      "resource": {
+        "peak_owned_mib": 25764,
+        "peak_board_mib": 28781,
+        "peak_allocator_mib": 24720.0146484375,
+        "peak_reserved_mib": 25358.0
+      },
+      "archive_sha256": "717c27b9613f12cad3f95dd0ba996191a5ebec88d6613a567d18f2b6b559b1a7",
+      "npu_device_hours": 0.12048615243699816,
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    },
+    {
+      "version": 295,
+      "implementation": "candidate",
+      "block": "A",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "actual_branch_rows": 36,
+      "quality_pass": true,
+      "metrics": {
+        "W1": {
+          "ttft_seconds": 2.413930549,
+          "e2e_seconds": 6.052532901,
+          "tpot_seconds": 0.24190240233333335,
+          "serial_output_tokens_per_second": 2.6427079356890046,
+          "requests_per_second": 0.1651692459805628
+        },
+        "W2": {
+          "ttft_seconds": 2.611865811,
+          "e2e_seconds": 36.912725942,
+          "tpot_seconds": 0.26748708718110237,
+          "serial_output_tokens_per_second": 3.4989348781355627,
+          "requests_per_second": 0.027335428735434084
+        },
+        "W4": {
+          "ttft_seconds": 1.212634408,
+          "e2e_seconds": 8.793273432,
+          "tpot_seconds": 0.24462003116129033,
+          "serial_output_tokens_per_second": 3.642892928588146,
+          "requests_per_second": 0.11384040401837957
+        }
+      },
+      "resource": {
+        "peak_owned_mib": 25756,
+        "peak_board_mib": 28773,
+        "peak_allocator_mib": 24720.0224609375,
+        "peak_reserved_mib": 25358.0
+      },
+      "archive_sha256": "14ad7d864258b41dc347f3b756654791fe356eb45275567381e3bd962ad82d36",
+      "npu_device_hours": 0.11484309196472169,
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    },
+    {
+      "version": 296,
+      "implementation": "candidate",
+      "block": "B",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "actual_branch_rows": 36,
+      "quality_pass": true,
+      "metrics": {
+        "W1": {
+          "ttft_seconds": 2.625318372,
+          "e2e_seconds": 6.576963152,
+          "tpot_seconds": 0.266626344,
+          "serial_output_tokens_per_second": 2.4081370295214257,
+          "requests_per_second": 0.1505085643450891
+        },
+        "W2": {
+          "ttft_seconds": 2.65062631,
+          "e2e_seconds": 36.969262327,
+          "tpot_seconds": 0.2702239814015748,
+          "serial_output_tokens_per_second": 3.4763526860042386,
+          "requests_per_second": 0.027159005359408114
+        },
+        "W4": {
+          "ttft_seconds": 1.499118244,
+          "e2e_seconds": 10.792175724,
+          "tpot_seconds": 0.2997716359354839,
+          "serial_output_tokens_per_second": 3.083387139431917,
+          "requests_per_second": 0.0963558481072474
+        }
+      },
+      "resource": {
+        "peak_owned_mib": 25756,
+        "peak_board_mib": 28773,
+        "peak_allocator_mib": 24720.0224609375,
+        "peak_reserved_mib": 25358.0
+      },
+      "archive_sha256": "645bffcc12af375867245d2fc5dd46f00b842b3dcf0b00019dccc6f2bb644ddf",
+      "npu_device_hours": 0.11910208986865149,
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    },
+    {
+      "version": 297,
+      "implementation": "baseline",
+      "block": "B",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "actual_branch_rows": 36,
+      "quality_pass": true,
+      "metrics": {
+        "W1": {
+          "ttft_seconds": 6.28053965,
+          "e2e_seconds": 10.935226256,
+          "tpot_seconds": 0.3103038186666667,
+          "serial_output_tokens_per_second": 1.5087283821410968,
+          "requests_per_second": 0.09429552388381855
+        },
+        "W2": {
+          "ttft_seconds": 5.206160945,
+          "e2e_seconds": 41.857193688,
+          "tpot_seconds": 0.2824962114409449,
+          "serial_output_tokens_per_second": 3.037414251009816,
+          "requests_per_second": 0.02372979883601419
+        },
+        "W4": {
+          "ttft_seconds": 2.64853085,
+          "e2e_seconds": 11.576061237,
+          "tpot_seconds": 0.2879808781290323,
+          "serial_output_tokens_per_second": 2.704419522197191,
+          "requests_per_second": 0.08451311006866222
+        }
+      },
+      "resource": {
+        "peak_owned_mib": 25764,
+        "peak_board_mib": 28781,
+        "peak_allocator_mib": 24720.0146484375,
+        "peak_reserved_mib": 25358.0
+      },
+      "archive_sha256": "4b8df8baf146589527fee10cefe32274e5f4dfc3ae7bb2c6ee444725f86f7dea",
+      "npu_device_hours": 0.12328211830721961,
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    }
+  ],
+  "blocks": [
+    {
+      "block": "A",
+      "baseline_version": 294,
+      "candidate_version": 295,
+      "metrics": {
+        "W1": {
+          "baseline": {
+            "ttft_seconds": 5.24589934,
+            "e2e_seconds": 9.521157033,
+            "tpot_seconds": 0.2912554045333334,
+            "serial_output_tokens_per_second": 1.676656588377411,
+            "requests_per_second": 0.10479103677358818
+          },
+          "candidate": {
+            "ttft_seconds": 2.413930549,
+            "e2e_seconds": 6.052532901,
+            "tpot_seconds": 0.24190240233333335,
+            "serial_output_tokens_per_second": 2.6427079356890046,
+            "requests_per_second": 0.1651692459805628
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.4601557125951257,
+            "e2e_seconds": 0.635693002438898,
+            "tpot_seconds": 0.830550776288336,
+            "serial_output_tokens_per_second": 1.5761772291405793,
+            "requests_per_second": 1.5761772291405793
+          }
+        },
+        "W2": {
+          "baseline": {
+            "ttft_seconds": 5.298926668,
+            "e2e_seconds": 42.133253955,
+            "tpot_seconds": 0.2916104638267717,
+            "serial_output_tokens_per_second": 3.014988234444646,
+            "requests_per_second": 0.023554595581598798
+          },
+          "candidate": {
+            "ttft_seconds": 2.611865811,
+            "e2e_seconds": 36.912725942,
+            "tpot_seconds": 0.26748708718110237,
+            "serial_output_tokens_per_second": 3.4989348781355627,
+            "requests_per_second": 0.027335428735434084
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.49290469082596483,
+            "e2e_seconds": 0.8760948295478025,
+            "tpot_seconds": 0.9172753394062033,
+            "serial_output_tokens_per_second": 1.1605136093607538,
+            "requests_per_second": 1.1605136093607538
+          }
+        },
+        "W4": {
+          "baseline": {
+            "ttft_seconds": 2.583576573,
+            "e2e_seconds": 11.28001175,
+            "tpot_seconds": 0.28049781287096776,
+            "serial_output_tokens_per_second": 2.8421706962661117,
+            "requests_per_second": 0.08881783425831599
+          },
+          "candidate": {
+            "ttft_seconds": 1.212634408,
+            "e2e_seconds": 8.793273432,
+            "tpot_seconds": 0.24462003116129033,
+            "serial_output_tokens_per_second": 3.642892928588146,
+            "requests_per_second": 0.11384040401837957
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.4693626736953695,
+            "e2e_seconds": 0.7795447049955422,
+            "tpot_seconds": 0.8720924725135678,
+            "serial_output_tokens_per_second": 1.281729114079594,
+            "requests_per_second": 1.281729114079594
+          }
+        }
+      },
+      "gate": {
+        "w1_ttft_ratio": 0.4601557125951257,
+        "w1_e2e_ratio": 0.635693002438898,
+        "w2_e2e_ratio": 0.8760948295478025,
+        "w2_tpot_ratio": 0.9172753394062033,
+        "w2_throughput_ratio": 1.1605136093607538,
+        "w4_e2e_ratio": 0.7795447049955422,
+        "w4_tpot_ratio": 0.8720924725135678,
+        "w4_throughput_ratio": 1.281729114079594,
+        "primary_pass": true,
+        "protection_pass": true
+      }
+    },
+    {
+      "block": "B",
+      "baseline_version": 297,
+      "candidate_version": 296,
+      "metrics": {
+        "W1": {
+          "baseline": {
+            "ttft_seconds": 6.28053965,
+            "e2e_seconds": 10.935226256,
+            "tpot_seconds": 0.3103038186666667,
+            "serial_output_tokens_per_second": 1.5087283821410968,
+            "requests_per_second": 0.09429552388381855
+          },
+          "candidate": {
+            "ttft_seconds": 2.625318372,
+            "e2e_seconds": 6.576963152,
+            "tpot_seconds": 0.266626344,
+            "serial_output_tokens_per_second": 2.4081370295214257,
+            "requests_per_second": 0.1505085643450891
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.4180084066502152,
+            "e2e_seconds": 0.6014473773134156,
+            "tpot_seconds": 0.8592428708923312,
+            "serial_output_tokens_per_second": 1.596136891190409,
+            "requests_per_second": 1.596136891190409
+          }
+        },
+        "W2": {
+          "baseline": {
+            "ttft_seconds": 5.206160945,
+            "e2e_seconds": 41.857193688,
+            "tpot_seconds": 0.2824962114409449,
+            "serial_output_tokens_per_second": 3.037414251009816,
+            "requests_per_second": 0.02372979883601419
+          },
+          "candidate": {
+            "ttft_seconds": 2.65062631,
+            "e2e_seconds": 36.969262327,
+            "tpot_seconds": 0.2702239814015748,
+            "serial_output_tokens_per_second": 3.4763526860042386,
+            "requests_per_second": 0.027159005359408114
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.5091326099984794,
+            "e2e_seconds": 0.8832236246549583,
+            "tpot_seconds": 0.9565578951421244,
+            "serial_output_tokens_per_second": 1.1445105602070884,
+            "requests_per_second": 1.1445105602070884
+          }
+        },
+        "W4": {
+          "baseline": {
+            "ttft_seconds": 2.64853085,
+            "e2e_seconds": 11.576061237,
+            "tpot_seconds": 0.2879808781290323,
+            "serial_output_tokens_per_second": 2.704419522197191,
+            "requests_per_second": 0.08451311006866222
+          },
+          "candidate": {
+            "ttft_seconds": 1.499118244,
+            "e2e_seconds": 10.792175724,
+            "tpot_seconds": 0.2997716359354839,
+            "serial_output_tokens_per_second": 3.083387139431917,
+            "requests_per_second": 0.0963558481072474
+          },
+          "candidate_over_baseline": {
+            "ttft_seconds": 0.5660187964206647,
+            "e2e_seconds": 0.9322839179103075,
+            "tpot_seconds": 1.040942849688682,
+            "serial_output_tokens_per_second": 1.140129005179949,
+            "requests_per_second": 1.140129005179949
+          }
+        }
+      },
+      "gate": {
+        "w1_ttft_ratio": 0.4180084066502152,
+        "w1_e2e_ratio": 0.6014473773134156,
+        "w2_e2e_ratio": 0.8832236246549583,
+        "w2_tpot_ratio": 0.9565578951421244,
+        "w2_throughput_ratio": 1.1445105602070884,
+        "w4_e2e_ratio": 0.9322839179103075,
+        "w4_tpot_ratio": 1.040942849688682,
+        "w4_throughput_ratio": 1.140129005179949,
+        "primary_pass": true,
+        "protection_pass": true
+      }
+    }
+  ],
+  "gates": {
+    "component_full_parent_both_ratio_le_0_85": true,
+    "whole_model_workspace_delta_le_1gib": true,
+    "two_model_smoke_quality_cancel_reuse": true,
+    "both_w1_ttft_improvement_ge_15pct": true,
+    "both_w1_e2e_improvement_ge_10pct": true,
+    "w2_w4_protection": true
+  },
+  "disposition": "PROMOTE_GDN_CANDIDATE_AS_ROUND14A_SINGLE_REQUEST_PARENT"
+}

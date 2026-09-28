@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "status": "FROZEN_NOT_RUN",
+  "stage": "ROUND14A_B_INCREMENTAL_RESIDENCY_COMPONENT",
+  "resident_profiles_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+  "runs": {
+    "300": {
+      "strategy": "fplus1",
+      "layer": 0,
+      "capacity": 512,
+      "result_key": "fplus1_layer0_q512"
+    },
+    "301": {
+      "strategy": "fplus1",
+      "layer": 24,
+      "capacity": 32,
+      "result_key": "fplus1_layer24_q32"
+    },
+    "302": {
+      "strategy": "uplus42",
+      "layer": 0,
+      "capacity": 42,
+      "result_key": "uplus42_layer0_q42"
+    },
+    "303": {
+      "strategy": "uplus42",
+      "layer": 24,
+      "capacity": 42,
+      "result_key": "uplus42_layer24_q42"
+    },
+    "304": {
+      "strategy": "fplus1",
+      "layer": 0,
+      "capacity": 512,
+      "result_key": "fplus1_layer0_q512",
+      "repair_for": 300
+    },
+    "305": {
+      "strategy": "fplus1",
+      "layer": 0,
+      "capacity": 512,
+      "result_key": "fplus1_layer0_q512",
+      "repair_for": 304
+    }
+  },
+  "unchanged": [
+    "model revision",
+    "MXFP4 CPU bank",
+    "BF16/NZ29 NPU experts",
+    "C128 NUMA2/3/4/7",
+    "route precision",
+    "deferred off",
+    "Dynamic off"
+  ],
+  "relative_l2_max": 0.01,
+  "steady_samples": 5,
+  "automatic_retries": 0
+}

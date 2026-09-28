@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_SCREEN",
+  "profiles_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+  "gate_sha256": "1df386874c1f05122ec944640b0771ec86937a31d59dc282e64d8e99a0c6ab1d",
+  "dev_route_prediction": {
+    "s0_q32": {
+      "route_hits": 1456,
+      "route_total": 22560,
+      "route_hit_fraction": 0.06453900709219858,
+      "added_hits_vs_s0": 0
+    },
+    "fplus1": {
+      "route_hits": 1908,
+      "route_total": 22560,
+      "route_hit_fraction": 0.08457446808510638,
+      "added_hits_vs_s0": 452
+    },
+    "uplus42": {
+      "route_hits": 1816,
+      "route_total": 22560,
+      "route_hit_fraction": 0.08049645390070923,
+      "added_hits_vs_s0": 360
+    }
+  },
+  "component_rows": {
+    "fplus1_layer0_q512": {
+      "version": 305,
+      "strategy": "fplus1",
+      "layer": 0,
+      "capacity": 512,
+      "provider": "PURE_NPU",
+      "relative_l2_max": 0.0016432047123089433,
+      "repeat_hash_exact": true,
+      "full_parent_median_ms": 0.37885800702497363,
+      "peak_allocated_bytes": 8388609536,
+      "archive_sha256": "bb193c026ca79fc124d8b0484c8e87282d00c8179b8ecd50cb1c39def5ba885c"
+    },
+    "fplus1_layer24_q32": {
+      "version": 301,
+      "strategy": "fplus1",
+      "layer": 24,
+      "capacity": 32,
+      "provider": "KTEP_MIXED",
+      "relative_l2_max": 0.0016283304430544376,
+      "repeat_hash_exact": true,
+      "full_parent_median_ms": 1.6628180164843798,
+      "peak_allocated_bytes": 524457472,
+      "archive_sha256": "52f523eac77e28890585453c7e972b4f7c01d35ee0e3d0cbed90f26b174b14b3"
+    },
+    "uplus42_layer0_q42": {
+      "version": 302,
+      "strategy": "uplus42",
+      "layer": 0,
+      "capacity": 42,
+      "provider": "KTEP_MIXED",
+      "relative_l2_max": 0.0016662810230627656,
+      "repeat_hash_exact": true,
+      "full_parent_median_ms": 1.6364969778805971,
+      "peak_allocated_bytes": 689083392,
+      "archive_sha256": "4636ab049fa539e179969e9aadbb1aad7dbc38840996c983bd2a0271862f4c79"
+    },
+    "uplus42_layer24_q42": {
+      "version": 303,
+      "strategy": "uplus42",
+      "layer": 24,
+      "capacity": 42,
+      "provider": "KTEP_MIXED",
+      "relative_l2_max": 0.0016560765216127038,
+      "repeat_hash_exact": true,
+      "full_parent_median_ms": 1.8709789728745818,
+      "peak_allocated_bytes": 689083392,
+      "archive_sha256": "f6d32e93f90c77d3be109eaf44b6abcec35b1fb5b03586dfe1112421e0a41484"
+    }
+  },
+  "failed_pre_device_start_attempts": [
+    {
+      "version": 300,
+      "status": "FAIL_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "root_cause": "GUARD_EXACT_NAME_NOT_YET_ALLOWLISTED",
+      "device_process_started": false,
+      "physical12_after": "EMPTY",
+      "preserved_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/b-resident-component-results/v300-failure"
+    },
+    {
+      "version": 304,
+      "status": "FAIL_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "root_cause": "GUARD_NUMA_POLICY_MODULE_NOT_DEPLOYED",
+      "device_process_started": false,
+      "physical12_after": "EMPTY",
+      "preserved_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/b-resident-component-results/v304-failure"
+    }
+  ],
+  "selection": {
+    "candidate": "fplus1",
+    "reason": [
+      "FPLUS1_DEV_ADDED_HITS_452_GT_UPLUS42_360",
+      "FPLUS1_REMOVES_KTEP_CPU_BRANCH_FROM_LAYER0",
+      "UPLUS42_RETAINS_MIXED_PROVIDER_ALL48_AND_SHOWED_NO_COMPONENT_LATENCY_ADVANTAGE"
+    ],
+    "request_gain": "UNKNOWN_UNTIL_FRESH_S0_FPLUS1_FPLUS1_S0_ABBA"
+  },
+  "disposition": {
+    "fplus1": "ADVANCE_TO_REQUEST_ABBA",
+    "uplus42": "NO_MODEL_BUDGET_COMPONENT_SCREEN_LOSER"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "status": "FROZEN_BEFORE_FIRST_FORMAL_BLOCK_COMPLETED",
+  "scope": "ROUND14A_C_TRUE_ENGINE_CONCURRENCY_C1_C2_C4",
+  "required_versions": [327, 328, 329, 330],
+  "required_orders": {
+    "327": [1, 2, 4],
+    "328": [4, 2, 1],
+    "329": [4, 2, 1],
+    "330": [1, 2, 4]
+  },
+  "per_process": {
+    "generation_attempts": 82,
+    "abort_controls": 0,
+    "automatic_retries": 0,
+    "profiler": "OFF",
+    "measurements_per_tier_per_workload": 12,
+    "workloads": ["W1", "W2"],
+    "required_true_decode_batch": {
+      "1": 1,
+      "2": 2,
+      "4": 4
+    }
+  },
+  "throughput_gates_each_of_four_blocks": {
+    "c2_over_c1_minimum": 1.20,
+    "c4_over_c2_minimum": 1.10,
+    "c4_over_c1_minimum": 1.30,
+    "primary_metric": "aggregate_output_tokens_per_second",
+    "apply_to": ["W1", "W2"]
+  },
+  "latency_protection_each_of_four_blocks": {
+    "c2_over_c1_maximum": 1.80,
+    "c4_over_c1_maximum": 3.30,
+    "metrics": [
+      "median_ttft_seconds",
+      "median_tpot_seconds",
+      "median_e2e_seconds"
+    ],
+    "apply_to": ["W1", "W2"],
+    "derivation": "The referenced attachment 42 is unavailable. These execution-local ceilings were frozen before v327 completed: c2 permits ten percent latency headroom beyond the 1.20x throughput-implied 1.667x service time, and c4 permits about seven percent headroom beyond the 1.30x throughput-implied 3.077x service time. They are reported as a local conservative guard, not attributed to attachment 42."
+  },
+  "quality_and_safety": {
+    "required_smoke_versions": [325, 326],
+    "c2_and_c4_known_answer_quality": "PASS",
+    "cancel_peer_isolation_and_same_process_reuse": "PASS",
+    "per_request_h129": true,
+    "qsa_gdn_ple_state_isolation": true,
+    "guard_exit_ack": true,
+    "container_removed": true,
+    "physical12_after": "EMPTY",
+    "board_hbm_mib_maximum": 56832,
+    "board_hbm_reserve_mib_minimum": 8704
+  },
+  "promotion_rule": "A tier is qualified only when every formal block passes its required throughput ratios, local latency protection, true engine batch, quality, resource, and cleanup gates. c2 failure does not automatically reject c4; c4 is also compared directly with c1."
+}

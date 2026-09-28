@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "status": "ROUND14A_P0_IDENTITY_FROZEN",
+  "created_at_utc": "2026-09-27",
+  "repository": {
+    "branch": "codex/round14a-gdn-resident-concurrency",
+    "start_head": "cc84d06799245d8bf3ec9001333cc41075c94725",
+    "dirty_runtime_snapshot_required": true
+  },
+  "parent": {
+    "round": 14,
+    "status": "ROUND14_PARTIAL_WITH_GAPS",
+    "final_config": "S0_RETAINED_NO_ROUND14_PROMOTION",
+    "final_config_sha256": "6c34ffc51f626f9808466719036eeebad8a85aa65ec2bdc78f790fb81bf5f3b7",
+    "final_status_sha256": "56521c4694c99070020dbeae106f96c01d4a278cff2feae463c6871c3e466e64",
+    "baseline_manifest_sha256": "274b4013a47680e1f0e5f1b428b5d6f628d43110476492efe45ac4a07fee4b61"
+  },
+  "model": {
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "tokenizer_and_template": "RESTORE_EXACT_ROUND14_S0_RUNTIME_SNAPSHOT"
+  },
+  "s0": {
+    "runtime_parent": "artifacts/round14/a-snapshots/v235",
+    "remote_parent": "/mnt/data1/kt-round9/round13-f-final-a-v228",
+    "placement": "UNIFORM_Q32",
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "npu_resident": "STATIC_Q32_BF16_NZ29",
+    "scheduler_chunk": 32,
+    "ple": "ASYNC",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "hybrid_threshold": 129,
+    "qualified_input_tokens_max": 128,
+    "qualified_output_tokens_max": 128,
+    "tp": 1,
+    "concurrency": 1,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "transpose_view": false,
+    "shadow320": false
+  },
+  "gdn_parent": {
+    "snapshot": "artifacts/round14/c-gdn-component-snapshots/v286",
+    "identity": "NPU_GDN_CORE_PLUS_FROZEN_QWEN4_SIGMOID_GATE",
+    "qwen_source_sha256": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545",
+    "probe_sha256": "3021e1c69b769d84419a99f38daf2b40487c63524d8f8493af3c43dcf80c0699",
+    "default": "OFF",
+    "known_allocator_growth_bytes": 171424768
+  },
+  "host": {
+    "address": "110.123.0.3",
+    "physical_device": 12,
+    "npu_smi_card": 6,
+    "npu_smi_chip": 0,
+    "image": "601e76d17e9f",
+    "training_container_full_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef"
+  },
+  "missing_references": {
+    "40_A线_GDN分配定因与性能闭环.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "41_B线_五桶归因与增量前层常驻.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "42_C线_并发2到4的隔离与吞吐.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "43_Round14a_执行合同与预算.md": "NOT_FOUND_LOCAL_OR_FETCHED_GITHUB",
+    "ruling": "THE_COMPLETE_USER_ROUND14A_MESSAGE_IS_BINDING"
+  }
+}

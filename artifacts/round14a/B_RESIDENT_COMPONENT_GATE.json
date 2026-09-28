@@ -1,0 +1,375 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_GATE",
+  "resident_profiles_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+  "results": {
+    "fplus1_layer0_q512": {
+      "schema": 1,
+      "status": "PASS_ROUND14A_RESIDENT_COMPONENT",
+      "strategy": "fplus1",
+      "layer": 0,
+      "capacity": 512,
+      "provider": "PURE_NPU",
+      "profile_sha256": "fc4b821bf96c952ba21b6c0a700e09414fef75dda3caa6ee59df25488675f9d4",
+      "profile_document_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+      "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "workers": 128,
+      "npu_formats": {
+        "w13_weight": 29,
+        "w2_weight": 29
+      },
+      "physical_shapes": [
+        [
+          512,
+          2560,
+          1280
+        ],
+        [
+          512,
+          640,
+          2560
+        ]
+      ],
+      "route_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "relative_l2": [
+        0.0016432047123089433,
+        0.0016432047123089433,
+        0.0016432047123089433,
+        0.0016432047123089433,
+        0.0016432047123089433
+      ],
+      "repeat_hashes": [
+        "5ebd9c4f776dc5c49b3b1d27a1b801ae10001892e7d1d42a6d5b4edd323132d6",
+        "5ebd9c4f776dc5c49b3b1d27a1b801ae10001892e7d1d42a6d5b4edd323132d6",
+        "5ebd9c4f776dc5c49b3b1d27a1b801ae10001892e7d1d42a6d5b4edd323132d6",
+        "5ebd9c4f776dc5c49b3b1d27a1b801ae10001892e7d1d42a6d5b4edd323132d6",
+        "5ebd9c4f776dc5c49b3b1d27a1b801ae10001892e7d1d42a6d5b4edd323132d6"
+      ],
+      "full_parent_seconds": [
+        0.0003713269834406674,
+        0.0003832979709841311,
+        0.00038358900928869843,
+        0.00037885800702497363,
+        0.00037350697675719857
+      ],
+      "full_parent_median_seconds": 0.00037885800702497363,
+      "allocated_trace": [
+        5033188352,
+        5033188352,
+        5033188352,
+        5033188352,
+        5033188352
+      ],
+      "peak_allocated_bytes": 8388609536,
+      "allocated_bytes_before_exit": 5033188352,
+      "version": 305,
+      "archive_sha256": "bb193c026ca79fc124d8b0484c8e87282d00c8179b8ecd50cb1c39def5ba885c",
+      "controller_status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "cleanup": {
+        "container_removed": true,
+        "physical12_after": "EMPTY"
+      }
+    },
+    "fplus1_layer24_q32": {
+      "schema": 1,
+      "status": "PASS_ROUND14A_RESIDENT_COMPONENT",
+      "strategy": "fplus1",
+      "layer": 24,
+      "capacity": 32,
+      "provider": "KTEP_MIXED",
+      "profile_sha256": "fc4b821bf96c952ba21b6c0a700e09414fef75dda3caa6ee59df25488675f9d4",
+      "profile_document_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+      "bank_sha256": "e582e0a5c37a07cb04086a01e966e207c6b97fd223f5c86fed6c3f8b6f4e3855",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "workers": 128,
+      "npu_formats": {
+        "w13_weight": 29,
+        "w2_weight": 29
+      },
+      "physical_shapes": [
+        [
+          32,
+          2560,
+          1280
+        ],
+        [
+          32,
+          640,
+          2560
+        ]
+      ],
+      "route_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "relative_l2": [
+        0.0016283304430544376,
+        0.0016283304430544376,
+        0.0016283304430544376,
+        0.0016283304430544376,
+        0.0016283304430544376
+      ],
+      "repeat_hashes": [
+        "fd11709640896e71c16bdabe0aa3a92e42483e0be9e3fbdd6f23d62a1d9a6fc8",
+        "fd11709640896e71c16bdabe0aa3a92e42483e0be9e3fbdd6f23d62a1d9a6fc8",
+        "fd11709640896e71c16bdabe0aa3a92e42483e0be9e3fbdd6f23d62a1d9a6fc8",
+        "fd11709640896e71c16bdabe0aa3a92e42483e0be9e3fbdd6f23d62a1d9a6fc8",
+        "fd11709640896e71c16bdabe0aa3a92e42483e0be9e3fbdd6f23d62a1d9a6fc8"
+      ],
+      "full_parent_seconds": [
+        0.0016697390237823129,
+        0.0017572729848325253,
+        0.0016496179741807282,
+        0.0016628180164843798,
+        0.0016455869772471488
+      ],
+      "full_parent_median_seconds": 0.0016628180164843798,
+      "allocated_trace": [
+        314809856,
+        314809856,
+        314809856,
+        314809856,
+        314809856
+      ],
+      "peak_allocated_bytes": 524457472,
+      "allocated_bytes_before_exit": 314809856,
+      "version": 301,
+      "archive_sha256": "52f523eac77e28890585453c7e972b4f7c01d35ee0e3d0cbed90f26b174b14b3",
+      "controller_status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "cleanup": {
+        "container_removed": true,
+        "physical12_after": "EMPTY"
+      }
+    },
+    "uplus42_layer0_q42": {
+      "schema": 1,
+      "status": "PASS_ROUND14A_RESIDENT_COMPONENT",
+      "strategy": "uplus42",
+      "layer": 0,
+      "capacity": 42,
+      "provider": "KTEP_MIXED",
+      "profile_sha256": "1aa0d232a2900268f3412a783df34cae8a090608fd3109deffd4ae9b08c201b8",
+      "profile_document_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+      "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "workers": 128,
+      "npu_formats": {
+        "w13_weight": 29,
+        "w2_weight": 29
+      },
+      "physical_shapes": [
+        [
+          42,
+          2560,
+          1280
+        ],
+        [
+          42,
+          640,
+          2560
+        ]
+      ],
+      "route_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "relative_l2": [
+        0.0016662810230627656,
+        0.0016662810230627656,
+        0.0016662810230627656,
+        0.0016662810230627656,
+        0.0016662810230627656
+      ],
+      "repeat_hashes": [
+        "c2ef072ac3d412ed6fa35ef0dabe5b124e4bd1384f4392d035e8164f4134489b",
+        "c2ef072ac3d412ed6fa35ef0dabe5b124e4bd1384f4392d035e8164f4134489b",
+        "c2ef072ac3d412ed6fa35ef0dabe5b124e4bd1384f4392d035e8164f4134489b",
+        "c2ef072ac3d412ed6fa35ef0dabe5b124e4bd1384f4392d035e8164f4134489b",
+        "c2ef072ac3d412ed6fa35ef0dabe5b124e4bd1384f4392d035e8164f4134489b"
+      ],
+      "full_parent_seconds": [
+        0.0017223720205947757,
+        0.0016974600148387253,
+        0.0016364969778805971,
+        0.0015710139996372163,
+        0.0015900449943728745
+      ],
+      "full_parent_median_seconds": 0.0016364969778805971,
+      "allocated_trace": [
+        413113856,
+        413113856,
+        413113856,
+        413113856,
+        413113856
+      ],
+      "peak_allocated_bytes": 689083392,
+      "allocated_bytes_before_exit": 413113856,
+      "version": 302,
+      "archive_sha256": "4636ab049fa539e179969e9aadbb1aad7dbc38840996c983bd2a0271862f4c79",
+      "controller_status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "cleanup": {
+        "container_removed": true,
+        "physical12_after": "EMPTY"
+      }
+    },
+    "uplus42_layer24_q42": {
+      "schema": 1,
+      "status": "PASS_ROUND14A_RESIDENT_COMPONENT",
+      "strategy": "uplus42",
+      "layer": 24,
+      "capacity": 42,
+      "provider": "KTEP_MIXED",
+      "profile_sha256": "1aa0d232a2900268f3412a783df34cae8a090608fd3109deffd4ae9b08c201b8",
+      "profile_document_sha256": "e96c1123ce13118e2fd5cd82fe403b7a1a58ac922765b2df93cb283ea5caf169",
+      "bank_sha256": "e582e0a5c37a07cb04086a01e966e207c6b97fd223f5c86fed6c3f8b6f4e3855",
+      "source_identity": {
+        "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "manifest_sha256": "62e6eca0f2900745dbfd9ba6ed76e60547e0d602acf2d62a9ecac3972028b38e",
+        "receipt_sha256": "7d6cb3db19497303bdd8ceb24efae626e1926a610ab7fbd4406b47d05db4a239",
+        "model_path": "/models/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+        "file_sizes_checked": 144,
+        "verification_scope": "TRUSTED_FULL_RECEIPT_PLUS_LIVE_SIZES_AND_METADATA_HASHES"
+      },
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "workers": 128,
+      "npu_formats": {
+        "w13_weight": 29,
+        "w2_weight": 29
+      },
+      "physical_shapes": [
+        [
+          42,
+          2560,
+          1280
+        ],
+        [
+          42,
+          640,
+          2560
+        ]
+      ],
+      "route_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "relative_l2": [
+        0.0016560765216127038,
+        0.0016560765216127038,
+        0.0016560765216127038,
+        0.0016560765216127038,
+        0.0016560765216127038
+      ],
+      "repeat_hashes": [
+        "6f7999add90262cb4db83178c6d3eb31938213c9868776474a3d4a82dd1cc808",
+        "6f7999add90262cb4db83178c6d3eb31938213c9868776474a3d4a82dd1cc808",
+        "6f7999add90262cb4db83178c6d3eb31938213c9868776474a3d4a82dd1cc808",
+        "6f7999add90262cb4db83178c6d3eb31938213c9868776474a3d4a82dd1cc808",
+        "6f7999add90262cb4db83178c6d3eb31938213c9868776474a3d4a82dd1cc808"
+      ],
+      "full_parent_seconds": [
+        0.002053357020486146,
+        0.001876858004834503,
+        0.0018022549920715392,
+        0.0018709789728745818,
+        0.0017755039734765887
+      ],
+      "full_parent_median_seconds": 0.0018709789728745818,
+      "allocated_trace": [
+        413113856,
+        413113856,
+        413113856,
+        413113856,
+        413113856
+      ],
+      "peak_allocated_bytes": 689083392,
+      "allocated_bytes_before_exit": 413113856,
+      "version": 303,
+      "archive_sha256": "f6d32e93f90c77d3be109eaf44b6abcec35b1fb5b03586dfe1112421e0a41484",
+      "controller_status": "PASS_ROUND14A_B_RESIDENT_COMPONENT_CONTROLLER",
+      "cleanup": {
+        "container_removed": true,
+        "physical12_after": "EMPTY"
+      }
+    }
+  }
+}

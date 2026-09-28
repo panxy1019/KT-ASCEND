@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "status": "PASS_ROOT_CAUSE_IDENTIFIED_VALIDATION_PENDING",
+  "round14_reported_growth_bytes": 171424768,
+  "round14a_v289_archive_sha256": "348664f7936be75958d37b79ad6b7377aaaf320b204217669e71149792d05a10",
+  "round14a_v289_result_sha256": "cbcda12742828e1450cbe256f70b3ef087631b9283fe109bfd3ece8d036cf31e",
+  "classification": "ROUND14_COMPONENT_PROBE_AUTOGRAD_FALSE_POSITIVE",
+  "root_cause": {
+    "object": "FP32 recurrent-state autograd graphs retained through eager-reference state-pool copy_",
+    "why_retained": "The Round14 component probe called the local eager reference outside inference_mode. Parameters participate in autograd; copy_ of next recurrent state into the persistent pool retained the graph. The production ModelRunner invokes run_once under torch.inference_mode().",
+    "storage_to_owner_chain": [
+      {
+        "owner": "gdn.py:142:gated_delta_recurrence",
+        "active_bytes_added_warmup_to_replay": 100679680,
+        "principal_tensor_shape": [
+          48,
+          128,
+          128
+        ],
+        "principal_dtype": "torch.float32",
+        "role": "next recurrent state and tokenwise recurrence graph"
+      },
+      {
+        "owner": "gdn.py:121:gated_delta_recurrence",
+        "active_bytes_added_warmup_to_replay": 59778560,
+        "principal_tensor_shape": [
+          48,
+          128,
+          128
+        ],
+        "principal_dtype": "torch.float32",
+        "role": "cloned initial recurrent state retained in graph"
+      },
+      {
+        "owner": "gdn.py:134,136,137,139,141",
+        "active_bytes_added_warmup_to_replay": 1448576,
+        "role": "query/key/decay/intermediate graph allocations"
+      }
+    ],
+    "creation_and_retention_chain": [
+      "qwen4_exp.py:331 eager_gdn",
+      "gdn.py:121 clone initial state",
+      "gdn.py:139/142 recurrent updates",
+      "qwen4_exp.py:344 recurrent_pool[slot].copy_(next_state.recurrent_state)",
+      "persistent request state pool retains CopyBackwards graph outside inference_mode"
+    ],
+    "production_lifetime_boundary": "model_runner.py:2224 wraps run_once in torch.inference_mode()",
+    "copy_scope": "single component layer probe; not 36 independent candidate workspaces"
+  },
+  "candidate_memory": {
+    "component_persistent_after_build_bytes": 122798080,
+    "first_candidate_peak_staged_bytes": 124710400,
+    "first_candidate_transient_above_build_bytes": 1912320,
+    "after_first_candidate_release_bytes": 122801664,
+    "retained_above_build_after_first_candidate_bytes": 3584,
+    "candidate_cycle_growth_v289_bytes": 26624,
+    "reserved_cycle_growth_v289_bytes": 0,
+    "after_component_close_allocated_bytes": 9728,
+    "after_component_close_above_initial_bytes": 8192
+  },
+  "bounded_global_shape_cache": {
+    "implementation": "sgl_kernel_npu.fla.utils.tensor_cache",
+    "cache_size_per_decorated_function": 4,
+    "key_semantics": "tensor identity plus keyword identity",
+    "decorated_functions_observed": [
+      "prepare_lens",
+      "prepare_chunk_indices",
+      "prepare_chunk_offsets"
+    ],
+    "active_bytes_after_component_close_by_owner": {
+      "/candidate/overlay-python/sglang/srt/layers/attention/hybrid_linear_attn_backend.py:191:_forward_metadata": 2048,
+      "/usr/local/python3.11.15/lib/python3.11/site-packages/sgl_kernel_npu/fla/utils.py:139:prepare_lens": 2048,
+      "/usr/local/python3.11.15/lib/python3.11/site-packages/sgl_kernel_npu/fla/utils.py:152:prepare_chunk_indices": 2048,
+      "/usr/local/python3.11.15/lib/python3.11/site-packages/sgl_kernel_npu/fla/utils.py:161:prepare_chunk_offsets": 2048
+    },
+    "scope": "process-global installed backend cache, not per model layer",
+    "source_sha256": "1b01158ac502fe1e878e314a07e9acd748d018875cb4b916916242e73360276c",
+    "next_validation": "run production-equivalent inference_mode for >=20 lifecycle rounds; verify bounded post-warmup allocation and close receipt without empty_cache"
+  },
+  "numerical_evidence": {
+    "relative_l2_gate": 0.03,
+    "rows": [
+      {
+        "path": "whole",
+        "output_relative_l2": 0.006791141735684392,
+        "conv_state_relative_l2": 0.0,
+        "recurrent_state_relative_l2": 0.005275020149792504,
+        "baseline_hash": "fdf51a3fa7b05deb6a7f0f3f8d5910d8abd1767aa5641713c0bf8014f2c8fdc9",
+        "candidate_hash": "925168ea44bf2cfce235b7de7366c8d307c6d55c47f7aaf9b688e4b437d48df8"
+      },
+      {
+        "path": "chunks_3_4_10",
+        "output_relative_l2": 0.006775597166197283,
+        "conv_state_relative_l2": 0.0,
+        "recurrent_state_relative_l2": 0.005142532770052433,
+        "baseline_hash": "fdf51a3fa7b05deb6a7f0f3f8d5910d8abd1767aa5641713c0bf8014f2c8fdc9",
+        "candidate_hash": "30e6479eb2fdec1dd1f2cf3f3b815ac9740cda4b868109cf8712ca8a90c13b24"
+      },
+      {
+        "path": "decode_after_3",
+        "output_relative_l2": 0.006376668722727907,
+        "conv_state_relative_l2": 0.0,
+        "recurrent_state_relative_l2": 0.004764647880919088,
+        "baseline_hash": "fdf51a3fa7b05deb6a7f0f3f8d5910d8abd1767aa5641713c0bf8014f2c8fdc9",
+        "candidate_hash": "569ab8f94559647ae7dd7c7393fae6fca0be39a06214204c62786801d475d4c2"
+      }
+    ],
+    "all_pass": true
+  },
+  "lifecycle_evidence": {
+    "cycles": 20,
+    "cancel_reuse_cycles": 5,
+    "cancel_reuse_all_zero": true,
+    "empty_cache_calls": 0,
+    "cleanup": "PASS_CONTAINER_REMOVED_PHYSICAL12_EMPTY",
+    "cache_retirement": "PASS_34048_TO_0_RESIDENT_PAGES"
+  },
+  "source_evidence": {
+    "gdn_reference": {
+      "path": "artifacts/round14a/a-gdn-memory-snapshots/v289/overlay-python/sglang/srt/layers/round9/gdn.py",
+      "sha256": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1"
+    },
+    "qwen_candidate": {
+      "path": "artifacts/round14a/a-gdn-memory-snapshots/v289/overlay-python/sglang/srt/models/qwen4_exp.py",
+      "sha256": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545"
+    },
+    "production_model_runner": {
+      "path": "artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/model_executor/model_runner.py",
+      "sha256": "8bb3c050554fdd6d0840510c2393bdf806345a3620e4b9d1f960ff874f99a331"
+    },
+    "installed_shape_cache": {
+      "path": "artifacts/round14a/a-gdn-memory-audit/sgl_kernel_npu_fla_utils.py",
+      "sha256": "1b01158ac502fe1e878e314a07e9acd748d018875cb4b916916242e73360276c"
+    }
+  },
+  "disposition": "The 163.48 MiB observation does not reject the NPU candidate. Re-run paired component timing under inference_mode; promotion remains NOT_DECIDED until both blocks and full-model gates finish."
+}

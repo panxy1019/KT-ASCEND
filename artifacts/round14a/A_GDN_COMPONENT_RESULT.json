@@ -1,0 +1,94 @@
+{
+  "schema": 1,
+  "status": "PASS_COMPONENT_PROMOTION_GATE_ENTER_FULL_MODEL_SMOKE",
+  "candidate": "NPU_GDN_CORE_PLUS_FROZEN_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+  "candidate_default": "OFF",
+  "production_execution_mode": "torch.inference_mode",
+  "root_cause_receipt": "A_GDN_MEMORY_ROOT_CAUSE.json",
+  "relative_l2_gate": 0.03,
+  "blocks": [
+    {
+      "version": 290,
+      "block": "A",
+      "controller_status": "PASS_ROUND14A_A_GDN_COMPONENT_CONTROLLER",
+      "archive_sha256": "dae46f585df4365018a2559787ceea7233bd2c671f98c2dfda6a36aa14b741db",
+      "result_sha256": "1bea1848411d3fb987c69c314aa781d623340832bfa4ce9750f02073caded15a",
+      "host_ratio": 0.0785429573264642,
+      "device_ratio": 0.07680780841374048,
+      "medians": {
+        "EAGER_REFERENCE": {
+          "device_ms": 65.86726379394531,
+          "full_parent_host_ms": 66.020496
+        },
+        "NPU_BACKEND": {
+          "device_ms": 5.059120178222656,
+          "full_parent_host_ms": 5.185445
+        }
+      },
+      "lifecycle_verdict": {
+        "baseline": {
+          "allocated": 123463168,
+          "reserved": 171966464
+        },
+        "allocated_min": 123462656,
+        "allocated_max": 123463168,
+        "allocated_span_bytes": 512,
+        "allocated_growth_bytes": 0,
+        "reserved_span_bytes": 0,
+        "last_eight_increasing_steps": 2,
+        "legal_cache_limit_bytes": 65536,
+        "pass": true
+      },
+      "peak_npu_allocated_bytes": 159249920,
+      "rows": 11,
+      "abort_reuse": 5,
+      "cleanup": "EMPTY"
+    },
+    {
+      "version": 291,
+      "block": "B",
+      "controller_status": "PASS_ROUND14A_A_GDN_COMPONENT_CONTROLLER",
+      "archive_sha256": "c3a4fd087c8401f0cc3b171664f0d1815b8240f6f6ceb4efaae687faa1dc7023",
+      "result_sha256": "4765162075a3e49a721c22866e080a3c4833cc6d5fc48a970801fd5f6d7c1ef0",
+      "host_ratio": 0.08059110750578408,
+      "device_ratio": 0.07794407163825134,
+      "medians": {
+        "EAGER_REFERENCE": {
+          "device_ms": 67.91690063476562,
+          "full_parent_host_ms": 68.086904
+        },
+        "NPU_BACKEND": {
+          "device_ms": 5.29371976852417,
+          "full_parent_host_ms": 5.487199
+        }
+      },
+      "lifecycle_verdict": {
+        "baseline": {
+          "allocated": 123463168,
+          "reserved": 171966464
+        },
+        "allocated_min": 123462656,
+        "allocated_max": 123463168,
+        "allocated_span_bytes": 512,
+        "allocated_growth_bytes": 0,
+        "reserved_span_bytes": 0,
+        "last_eight_increasing_steps": 2,
+        "legal_cache_limit_bytes": 65536,
+        "pass": true
+      },
+      "peak_npu_allocated_bytes": 159249920,
+      "rows": 11,
+      "abort_reuse": 5,
+      "cleanup": "EMPTY"
+    }
+  ],
+  "gate": {
+    "required_host_ratio_max": 0.85,
+    "both_blocks_pass": true,
+    "numerical_state_pass": true,
+    "repeat_exact": true,
+    "lifecycle_pass": true,
+    "cleanup_pass": true
+  },
+  "disposition": "BUILD_TWO_MODEL_SMOKE_THEN_FOUR_FRESH_REQUEST_ABBA"
+}

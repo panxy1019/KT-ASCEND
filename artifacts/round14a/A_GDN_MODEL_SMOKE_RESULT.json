@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND14A_A_GDN_TWO_MODEL_SMOKE",
+  "rows": [
+    {
+      "version": 292,
+      "implementation": "baseline",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "generation_attempts": 8,
+      "abort_controls": 1,
+      "quality_pass": true,
+      "cancel_reuse": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE",
+      "gdn_first_hit_rows": 36,
+      "peak_allocator_mib": 24720.62060546875,
+      "peak_reserved_mib": 25358.0,
+      "peak_owned_mib": 25764,
+      "peak_board_mib": 28781,
+      "npu_device_hours": 0.05053221457534366,
+      "archive_sha256": "2adb6c135c56fa5dd0658323b7e76959f9f0d2bbf3428bb389364cbf61e79ec3",
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    },
+    {
+      "version": 293,
+      "implementation": "candidate",
+      "status": "PASS_ROUND14A_A_GDN_MODEL_PROCESS",
+      "generation_attempts": 8,
+      "abort_controls": 1,
+      "quality_pass": true,
+      "cancel_reuse": "PASS_HYBRID_MIDPREFILL_CANCEL_AND_REUSE",
+      "gdn_first_hit_rows": 36,
+      "peak_allocator_mib": 24720.6279296875,
+      "peak_reserved_mib": 25356.0,
+      "peak_owned_mib": 25754,
+      "peak_board_mib": 28770,
+      "npu_device_hours": 0.05887450244691637,
+      "archive_sha256": "810b339960e46f3f18c7aff74f4bed88b7f2753df6497fe557f1c04e91542098",
+      "cache_retirement": "PASS_CACHE_RETIRED"
+    }
+  ],
+  "candidate_minus_baseline": {
+    "peak_allocator_mib": 0.00732421875,
+    "peak_reserved_mib": -2.0,
+    "peak_owned_mib": -10,
+    "peak_board_mib": -11
+  },
+  "workspace_gate_mib": 1024,
+  "workspace_gate_pass": true
+}

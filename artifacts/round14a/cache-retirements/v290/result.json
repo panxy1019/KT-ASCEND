@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "status": "PASS_TARGETED_OWNED_FILE_CACHE_RETIREMENT",
+  "started": 1790552284.4123583,
+  "operation": "POSIX_FADV_DONTNEED",
+  "global_drop_caches": false,
+  "roots": [
+    "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1",
+    "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+  ],
+  "suffixes": [
+    ".gguf",
+    ".safetensors"
+  ],
+  "file_count": 179,
+  "file_stat_identity_sha256": "78e505f906e88f500543c6b8aedfe00aa4d0c27bbbd0f93b299d8e9fbc89ab83",
+  "active_references_before": [],
+  "before_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 255955440,
+      "FilePages": 6079896,
+      "AnonPages": 3948,
+      "FileHugePages": 24576
+    },
+    "3": {
+      "MemFree": 255166832,
+      "FilePages": 4838360,
+      "AnonPages": 2308,
+      "FileHugePages": 0
+    },
+    "4": {
+      "MemFree": 205975336,
+      "FilePages": 55067188,
+      "AnonPages": 2280,
+      "FileHugePages": 993280
+    },
+    "7": {
+      "MemFree": 257490012,
+      "FilePages": 5182676,
+      "AnonPages": 33948,
+      "FileHugePages": 96256
+    }
+  },
+  "before_system_memavailable_kib": 1993626096,
+  "failures": [],
+  "ended": 1790552286.9202378,
+  "file_stats_unchanged": true,
+  "active_references_after": [],
+  "after_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 255955440,
+      "FilePages": 6079896,
+      "AnonPages": 3948,
+      "FileHugePages": 24576
+    },
+    "3": {
+      "MemFree": 255545020,
+      "FilePages": 4460496,
+      "AnonPages": 2308,
+      "FileHugePages": 0
+    },
+    "4": {
+      "MemFree": 205975588,
+      "FilePages": 55067188,
+      "AnonPages": 2280,
+      "FileHugePages": 993280
+    },
+    "7": {
+      "MemFree": 257490172,
+      "FilePages": 5182676,
+      "AnonPages": 33948,
+      "FileHugePages": 96256
+    }
+  },
+  "after_system_memavailable_kib": 1993625936,
+  "other_tasks_modified": false,
+  "automation": "PAUSED_UNCHANGED"
+}

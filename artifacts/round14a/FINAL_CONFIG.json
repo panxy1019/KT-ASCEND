@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "status": "ROUND14A_FINAL_CONFIG_FROZEN",
+  "parent": "ROUND14_S0_UNIFORM_Q32",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "runtime": {
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "npu_resident": "STATIC_UNIFORM_Q32_BF16_NZ29",
+    "scheduler_chunk": 32,
+    "ple": "ASYNC",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "hybrid_threshold": 129,
+    "tp": 1,
+    "max_concurrency": 1,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "transpose_view": false,
+    "shadow320": false
+  },
+  "promoted": {
+    "gdn": {
+      "implementation": "NPU_CONV_RECURRENCE_PLUS_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+      "enable_flag": "ROUND14_GDN_BACKEND_ENABLE=1",
+      "request_gate": "PASS",
+      "result": "A_GDN_REQUEST_RESULT.json",
+      "sha256": "7302d9369854a0ec8e6b368f8942d1a590e50d96a75f9b4a50b351a7e5858b28"
+    }
+  },
+  "not_promoted": {
+    "incremental_residency": {
+      "candidate": "FPLUS1",
+      "reason": "W2_TPOT_AND_THROUGHPUT_BELOW_5_PERCENT_BOTH_BLOCK_GATE",
+      "default": "UNIFORM_Q32",
+      "result_sha256": "e9bd7bf4a8cd87147022ba32c07789ce19d7ddcf6ab3d909316cb7dd0fd3fd3b"
+    },
+    "concurrency": {
+      "c2": "NO_PROMOTION_C2_BELOW_FROZEN_GATE",
+      "c4": "NO_PROMOTION_C4_BELOW_FROZEN_GATE",
+      "default": 1,
+      "conditional_observation": "W2_C4_HAS_STRONG_AGGREGATE_THROUGHPUT_BUT_W1_AND_ORDER_STABILITY_PREVENT_UNIFIED_DEFAULT",
+      "result_sha256": "c6f62bdd72d430734a797a9017a9cb2514fc5b9f6b0286c5eae1fa835759a011"
+    }
+  },
+  "qualified_scope": {
+    "input_tokens_max": 128,
+    "output_tokens_max": 128,
+    "single_request_default": true,
+    "serial_default": true,
+    "broad_quality": false,
+    "round14_public_proxy_review": "DEFERRED_CARRIED_FORWARD"
+  },
+  "combination_decision": "NO_NEW_COMBINATION_MIRROR_REQUIRED_ONLY_GDN_PROMOTED_AND_ITS_FOUR_FRESH_REQUEST_ABBA_IS_THE_FINAL_COMPUTE_IDENTITY"
+}
