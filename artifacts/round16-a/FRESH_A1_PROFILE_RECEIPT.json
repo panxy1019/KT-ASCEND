@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_FRESH_A1_DEVICE_CONTROL_AND_ANALYSIS_INPUT_READY_DEVICE_NOT_RUN",
+  "checked_at_utc": "2026-09-28T23:52:21Z",
+  "source": {
+    "path": "round16/a/fresh_a1_profile.py",
+    "sha256": "0b777a4c61651684b86eb4709fe57cf7b5248d6b45cbfd7f2396b951e72e50cc",
+    "runtime_dependencies_imported": []
+  },
+  "contract": {
+    "path": "artifacts/round16-a/FRESH_A1_PROFILE_CONTRACT.json",
+    "sha256": "209a50d9165e80a5c190fa282d4890c6bc4dd0fa302e3cf7acc729100aa4d744",
+    "matches_runtime_payload": true,
+    "default_enabled": false,
+    "candidate_enabled": false
+  },
+  "schedule": {
+    "items_per_block": 6,
+    "roles": [
+      "W1_WARMUP",
+      "W2_WARMUP",
+      "W1_MEASUREMENT",
+      "W2_MEASUREMENT",
+      "SHORT_DRAIN",
+      "FIXED_CANARY"
+    ],
+    "fixed_canary": "round10-t1-fixture.json#cases.canary_math391",
+    "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95"
+  },
+  "budget": {
+    "blocks": 2,
+    "generation_attempts_per_block": 6,
+    "generation_attempts_total": 12,
+    "initial_used": 0,
+    "automatic_retries": 0,
+    "abort_controls": 0,
+    "ledger": "IMMUTABLE_COPY_ON_SPEND_WITH_UNIQUE_REQUEST_IDS"
+  },
+  "observer": {
+    "default_off_transparent_call": "PASS",
+    "host_clock_domain": "HOST_MONOTONIC_NS",
+    "device_clock_domain": "NPU_EVENT_ELAPSED_MS",
+    "device_query": "DEFERRED_QUERY_NO_SYNCHRONIZE",
+    "wrapped_return_semantics": "PASS_CPU_MOCK",
+    "wrapped_exception_identity": "PASS_CPU_MOCK",
+    "production_synchronization_added": false,
+    "request_identity": "ACTUAL_SINGLE_REQUEST_RID_OR_EXPLICIT_UNRESOLVED_BATCH_REJECTED_BY_COMPARATOR",
+    "real_binding_path": "module.quant_method -> KTEPWrapperMethod",
+    "host_layer_coverage": "0..47_EXACT",
+    "device_sample_layers": [
+      0,
+      24,
+      47
+    ],
+    "pending_event_policy": "RETAIN_ACROSS_BATCHES_AND_QUERY_LATER_NO_SYNCHRONIZE",
+    "installed_wiring": {
+      "round16_a1_host_layers": "0..47_EXACT",
+      "round13_direct_device_components": [
+        "QSA_INDEXER",
+        "GDN",
+        "NPU_RESIDENT"
+      ],
+      "round13_device_sample_layers": [
+        0,
+        24,
+        47
+      ],
+      "a1_npu_shared_installed": false
+    },
+    "boundary_catalog_is_installation_claim": false,
+    "measurement_device_coverage": "W1_W2_MEASUREMENT_ONLY",
+    "measurement_flush_witness": "SERIALIZED_SHORT_DRAIN_BATCH_AFTER_W2",
+    "final_canary_device_completion_required": false
+  },
+  "cpu_expert_direct_timing": {
+    "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+    "start_ns": null,
+    "end_ns": null,
+    "duration_ns": null,
+    "derivation": "NOT_INFERRED_FROM_HOST_BOOKENDS"
+  },
+  "snapshot_controller": {
+    "implementation": "round16/a/fresh_a1_snapshot.py",
+    "receipt": "artifacts/round16-a/FRESH_A1_SNAPSHOT_RECEIPT.json",
+    "full_v295_copy_executed": true,
+    "real_v295_exact_sha_in_memory_patch_compile": "PASS",
+    "controller_cpu_mock_6_plus_6": "PASS",
+    "raw_device_receipt": "DEVICE_REQUIRED_NOT_RUN",
+    "schedule_identity": "PAYLOAD_PLUS_SHA256_BOUND_IN_SNAPSHOT_PLAN_AND_EXECUTION",
+    "real_driver": "round16/a/fresh_a1_device.py",
+    "host_supervisor": "tools/round16_a1_remote_block.py",
+    "analysis_input_normalizer": "round16/a/fresh_a1_evidence.py",
+    "insufficient_attribution_disposition": "A1_INSUFFICIENT_ATTRIBUTION_CANDIDATE_NULL_A2_A3_NOT_SELECTED_EVIDENCE_GAP",
+    "source_manifest_gate": "EXPLICIT_REVIEWED_SHA_PRELAUNCH_AND_CONTAINER_DRIVER",
+    "execution_budget_contract": "INITIAL_UNSPENT_TO_SINGLE_MATCHING_FULL_ID_START",
+    "admission_gate": "RESULT_AND_TWO_RAW_ROUNDS_SHA_DURATION_ORDER_AND_600S_FRESHNESS",
+    "archive_contract": "ADMISSION_RESULT_PLUS_RAW_ROUNDS_AND_LOG_SHA_SIZE",
+    "full_v295_local_build_preflight": "PASS_2628_FILES_INITIAL_UNSPENT",
+    "remote_build_donor_policy": "REMOTE_ACTUAL_V295_REJECTED_SPENT_BUDGET; LOCAL_TRUSTED_DONOR_ONLY",
+    "block_b_predecessor_gate": "A_RAW_PLUS_LEDGER_AFTER_PLUS_PASS_CLEANUP_SUPERVISOR_PLUS_FINAL_ARCHIVE",
+    "admission_round_names": "WRAPPER_DECLARED_TWO_UNIQUE_BASENAMES"
+  },
+  "tests": {
+    "fresh_a1_tests": 70,
+    "all_a_tests": 103,
+    "all_round16_tests": 109,
+    "common_tests": 6,
+    "failures": 0,
+    "errors": 0
+  },
+  "execution": {
+    "npu": "DEVICE_REQUIRED_NOT_RUN",
+    "c128": "NOT_USED",
+    "remote_container": "NOT_USED",
+    "model_processes": 0,
+    "generation_attempts": 0,
+    "performance": "NOT_RUN"
+  },
+  "shared_contract_v2_modified": false
+}

@@ -1,0 +1,42 @@
+{
+  "schema": 2,
+  "checked_at_utc": "2026-09-28T12:54:13Z",
+  "state": "CLOSED_WAIT_ROUND15",
+  "ready": false,
+  "evaluator": "round16.common.round15_barrier.evaluate_round15_receipt",
+  "terminal_status_policy": {
+    "mode": "EXACT_ALLOW_LIST_FAIL_CLOSED",
+    "accepted": [
+      "ROUND15_COMPLETE_GAIN",
+      "ROUND15_COMPLETE_NO_NEW_GAIN",
+      "ROUND15_MAINLINE_COMPLETE_GAIN",
+      "ROUND15_MAINLINE_COMPLETE_NO_NEW_GAIN",
+      "ROUND15_PARTIAL_WITH_GAPS",
+      "ROUND15_BLOCKED_EXTERNAL_RESOURCE",
+      "ROUND15_BLOCKED_TECHNICAL_CONTRACT"
+    ],
+    "explicit_rejections_tested": [
+      "ROUND15_NOT_COMPLETE",
+      "ROUND15_INCOMPLETE",
+      "ROUND15_TERMINALIZING",
+      "ROUND15_COMPLETE_NO_NEW_GAIN_PENDING_CLEANUP"
+    ]
+  },
+  "required_receipt_fields": [
+    "round15_terminal_status_IN_EXACT_ALLOW_LIST",
+    "baseline_manifest_sha256",
+    "code_patch_dependency_identity",
+    "cleanup_status_PASS",
+    "owned_runtime_processes_EMPTY",
+    "resource_lease_released_TRUE",
+    "baseline_correctness_open_FALSE"
+  ],
+  "current_evidence": {
+    "round15_current_status": "P0_COMPLETE_A_COMPONENT_SCREEN_NEXT",
+    "round15_current_execution_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/ROUND15_CURRENT_EXECUTION.md",
+    "terminal_receipt": "NOT_AVAILABLE",
+    "resource_lease_released": "NOT_PROVEN",
+    "round16_remote_or_device_mutation": false
+  },
+  "polling": "NO_BACKGROUND_WATCHER_OR_TIMER"
+}

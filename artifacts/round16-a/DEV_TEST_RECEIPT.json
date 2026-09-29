@@ -1,0 +1,322 @@
+{
+  "schema": 1,
+  "status": "PASS_DEV_CPU_MOCK",
+  "checked_at_utc": "2026-09-28T23:52:21Z",
+  "contract_version": "round16-contract-v1",
+  "constraints": {
+    "OMP_NUM_THREADS": 1,
+    "MKL_NUM_THREADS": 1,
+    "physical_core_budget_max": 4,
+    "memory_budget_gib_max": 16,
+    "compile_jobs_max": 2
+  },
+  "tdd_red": [
+    {
+      "scope": "A provider package",
+      "command": "python3 -m unittest discover -s tests/round16 -p 'test_a_*.py' -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "3 import errors: ModuleNotFoundError: No module named 'round16.a'"
+    },
+    {
+      "scope": "offline installer",
+      "command": "python3 -m unittest tests.round16.test_a_registration.RegistrationTests.test_offline_install_exposes_only_the_round16_packages -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "installer script did not exist; child exited 2"
+    },
+    {
+      "scope": "undeclared identity alias",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_provider_detects_identity_alias_even_if_backend_does_not_declare_it -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "RuntimeError was not raised"
+    },
+    {
+      "scope": "resolved shape/stride envelope",
+      "command": "python3 -m unittest tests.round16.test_a_provider_manifest.ProviderManifestTests.test_supports_accepts_only_the_resolved_hidden_state_shape_envelope -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "7 subcases were incorrectly accepted before shape, rank, stride, layout, and input-name validation"
+    },
+    {
+      "scope": "fallback alias",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_provider_rejects_fallback_output_alias -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "RuntimeError was not raised"
+    },
+    {
+      "scope": "forged qualified spec versus actual runtime inputs",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_forged_qualified_spec_cannot_hide_bad_runtime_inputs -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "7 subcases for count/name/shape/dtype/layout/stride/device_type incorrectly reached the backend"
+    },
+    {
+      "scope": "independent runtime stream identity",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_runtime_stream_mismatch_rejects_before_backend_or_fallback -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "forged runtime_stream_kind incorrectly reached the backend"
+    },
+    {
+      "scope": "mapping list snapshot",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_metadata_adapter_freezes_mapping_shape_and_stride_lists -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "list-backed declared shape did not match observed tuple because metadata was not frozen"
+    },
+    {
+      "scope": "best-effort close",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_close_continues_after_failure_and_retries_only_failed_resource -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "first dependency ValueError aborted close before fallback and was not aggregated"
+    },
+    {
+      "scope": "torch-like tensors without name",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_mapping_key_names_torch_like_tensor_without_name tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_wrong_mapping_key_rejects_before_backend_or_fallback tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_sequence_is_positional_for_torch_like_tensor_without_name -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "mapping and sequence inputs incorrectly required tensor.name; wrong mapping key was ignored"
+    },
+    {
+      "scope": "exact runtime shape and stride dimension types",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_runtime_dimensions_require_exact_ints_before_backend_or_fallback -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "shape float, stride float, and bool dimension were silently coerced with int() and reached the backend"
+    },
+    {
+      "scope": "top-level input member identity aliases",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_backend_rejects_mapping_and_sequence_member_aliases tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_fallback_rejects_mapping_and_sequence_member_aliases -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "backend and fallback mapping-member and sequence-member identity aliases were returned without RuntimeError in all 4 subcases"
+    },
+    {
+      "scope": "pre-execution input identity snapshot",
+      "command": "python3 -m unittest tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_backend_alias_check_uses_pre_execution_input_snapshot tests.round16.test_a_sglang_adapter.SGLangAdapterTests.test_fallback_alias_check_uses_pre_execution_input_snapshot -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "backend and fallback could remove an original mapping/list member and return it without RuntimeError in all 4 subcases because alias validation re-read the mutated container"
+    },
+    {
+      "scope": "post-stage P0/A1 bounded offline map",
+      "command": "python3 -m unittest tests.round16.test_a_post_p0_a1_map -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "POST_P0_A1_MAP.json did not exist; 3 tests raised FileNotFoundError"
+    },
+    {
+      "scope": "fresh A1 observer and control contract",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_profile -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "ModuleNotFoundError: round16.a.fresh_a1_profile"
+    },
+    {
+      "scope": "fresh A1 frozen contract artifact",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_profile.FreshA1ProfileTests.test_frozen_contract_artifact_matches_runtime_payload -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "FRESH_A1_PROFILE_CONTRACT.json did not exist"
+    },
+    {
+      "scope": "fresh A1 v295/S15 source basis",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_profile.FreshA1ProfileTests.test_manifest_has_two_new_immutable_blocks_and_twelve_generation_budget -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "KeyError: source_basis before the v295/S15 lineage was added to the frozen payload"
+    },
+    {
+      "scope": "fresh A1 snapshot builder/preflight",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "ModuleNotFoundError: round16.a.fresh_a1_snapshot"
+    },
+    {
+      "scope": "fresh A1 runtime observer",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_runtime_observer -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "ImportError: fresh_a1_runtime_observer missing"
+    },
+    {
+      "scope": "observer parent identity",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_runtime_observer.FreshA1RuntimeObserverTests.test_enabled_binding_records_parent_host_bookends_and_explicit_cpu_unknown -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "child parent_span_id did not identify the recorded parent row"
+    },
+    {
+      "scope": "frozen-parent write boundary",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot.FreshA1SnapshotTests.test_builder_rejects_output_inside_frozen_parent -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "builder accepted an output inside the frozen parent tree"
+    },
+    {
+      "scope": "plan-66 six-item queue",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_profile.FreshA1ProfileTests.test_manifest_has_two_new_immutable_blocks_and_twelve_generation_budget -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "old schedule lacked W2 warmup and the independent fixed canary"
+    },
+    {
+      "scope": "six-generation controller and TOCTOU recheck",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot.FreshA1SnapshotTests.test_controller_executes_fixed_six_item_queue_and_writes_raw_receipt tests.round16.test_a_fresh_a1_snapshot.FreshA1SnapshotTests.test_controller_rechecks_manifest_and_ledger_before_driver_or_output -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "execute_controller was absent; later driver-context test also failed until frozen snapshot/environment inputs were supplied"
+    },
+    {
+      "scope": "controller schedule identity",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot.FreshA1SnapshotTests.test_controller_rejects_schedule_mutation_before_driver_or_output -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "controller input lacked schedule and schedule_sha256 before snapshot/plan/execution identity binding"
+    },
+    {
+      "scope": "actual scheduler ownership path",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_runtime_observer.FreshA1RuntimeObserverTests.test_actual_scheduler_tp_worker_model_runner_path_is_bound -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "observer initially failed to bind scheduler.tp_worker.model_runner"
+    },
+    {
+      "scope": "sequential B admission",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot.FreshA1SnapshotTests.test_block_b_requires_block_a_exactly_complete -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "B initially accepted A=0/B=0 instead of requiring A=6/B=0"
+    },
+    {
+      "scope": "actual scheduler request identity",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_runtime_observer.FreshA1RuntimeObserverTests.test_actual_batch_request_identity_is_emitted -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "observer row initially omitted request_id"
+    },
+    {
+      "scope": "fresh A1 strict comparator and dependency DAG",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_analysis -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "ModuleNotFoundError before round16.a.fresh_a1_analysis existed; later pending output artifacts were absent"
+    },
+    {
+      "scope": "all-six-request observer completeness",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_analysis.FreshA1AnalysisTests.test_rejects_missing_request_layer_or_event -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "observer ledger missing all rows for one warmup request was initially accepted"
+    },
+    {
+      "scope": "SHA-bound DAG evidence input contract",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_analysis.FreshA1AnalysisTests.test_dependency_dag_freezes_non_additive_parent_and_separate_clock_domains -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "dependency DAG initially omitted evidence_input_contract"
+    },
+    {
+      "scope": "frozen A2/A3 actionable-region gates",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_analysis -v",
+      "result": "EXPECTED_FAIL",
+      "evidence": "old comparator selected candidates from GDN versus NPU Expert kernel duration; it also lacked direct Decode wall identity and primary actionable-region enforcement"
+    },
+    {
+      "scope": "fresh A1 final launch integrity and conservative decision semantics",
+      "command": "python3 -m unittest tests.round16.test_a_fresh_a1_device tests.round16.test_a_fresh_a1_evidence tests.round16.test_a_fresh_a1_snapshot -v",
+      "result": "EXPECTED_FAIL_THEN_PASS",
+      "evidence": "old code rewrote insufficient attribution as NO_NEW_BOUNDED_CANDIDATE, trusted wrapper-only admission freshness, lacked created-state guard cleanup, archived raw admission without reviewed SHA comparison, treated execution-budget as immutable source, and did not lock the reviewed manifest through the container driver"
+    },
+    {
+      "scope": "block B fixed request identity continuity",
+      "result": "EXPECTED_FAIL_THEN_PASS",
+      "evidence": "arbitrary six A predecessor IDs were initially accepted"
+    },
+    {
+      "scope": "block B archived predecessor continuity",
+      "result": "EXPECTED_FAIL_THEN_PASS",
+      "evidence": "A raw/ledger initially was not bound to PASS cleanup supervisor and final archive before B launch"
+    },
+    {
+      "scope": "dynamic launcher admission round archive",
+      "result": "EXPECTED_FAIL_THEN_PASS",
+      "evidence": "archive initially hard-coded historical RESUME01 raw names"
+    }
+  ],
+  "green": [
+    {
+      "scope": "Round16-A unit tests",
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p test_a_*.py -v",
+      "tests": 103,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS"
+    },
+    {
+      "scope": "shared contract tests",
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest tests.round16.test_common_contracts -v",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS"
+    },
+    {
+      "scope": "all Round16 tests",
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -v",
+      "tests": 109,
+      "failures": 0,
+      "errors": 0,
+      "result": "PASS"
+    }
+  ],
+  "covered_contracts": [
+    "side-effect-free import",
+    "P0/P1/P2 dependency classification",
+    "A1/A2/A3 supports(spec)",
+    "fixed hidden_states rank/shape/dtype/layout/stride envelope",
+    "unqualified shape and stride fallback before backend invocation",
+    "metadata mapping and attribute adaptation",
+    "tuple snapshot of list-backed metadata shape and stride",
+    "mapping-key and positional logical input naming for torch-like tensors without name",
+    "duck-typed observation of actual input count/shape/dtype/layout/stride/device",
+    "exact-int runtime shape and stride dimensions; bool, float, and string rejected before backend/fallback",
+    "independent runtime stream identity",
+    "actual input and stream mismatch fail before backend and fallback selection",
+    "full StateLease identity match before execution",
+    "fallback before backend/state write",
+    "completion ID and leased write validation",
+    "pre-execution identity snapshot of the input container and every original top-level mapping/sequence member, enforced for backend and fallback results",
+    "best-effort retryable close with aggregated errors and close-once success",
+    "explicit idempotent registration and conflict rejection",
+    "isolated offline installation and import",
+    "default-off post-stage P0/A1 map with real startup chain, profile blocks, clock domains, recording gaps, budgets, and candidate gates",
+    "fresh A1 self-describing host/device/UNKNOWN records with parent, stream, event, and correlation identities",
+    "two immutable block IDs and an immutable six-per-block/twelve-total generation ledger",
+    "non-executable default-off controller/snapshot plans",
+    "exact-SHA copy-then-patch v295 builder that rejects writes inside the frozen parent",
+    "offline source-manifest and immutable-ledger preflight with zero device probes",
+    "actual KTEP CPU submit/sync, NPU shared/resident, and post-wait_event Host merge observer boundaries",
+    "default-off runtime observer with deferred NPU event query and UNKNOWN_NATIVE_ABI_NO_CALLBACK CPU worker record",
+    "plan-66 fixed six-item queue with distinct ignore_eos drain and normal-EOS fixed canary",
+    "controller source/ledger TOCTOU recheck, copy-on-spend before driver call, sequential six-plus-six accounting, and raw receipt output",
+    "SHA-bound fresh raw receipt and observer JSONL loading",
+    "all-request Host quality evidence plus measurement-only direct device coverage with serialized SHORT_DRAIN flush witness",
+    "duplicate/nested/cross-clock/pre-aggregated arithmetic rejection",
+    "DEVICE_EVIDENCE_PENDING gate without both new blocks",
+    "UNKNOWN_NATIVE_ABI_NO_CALLBACK excluded from numeric candidate score",
+    "same-clock direct Host critical-region fraction of direct Decode wall",
+    "A2 exposed HOST_SYNC >=10% plus primary-region and unused same-layer NPU-window proof",
+    "A3 Host launch/metadata >=10% plus primary-region and outside-resident-only-graph proof",
+    "GDN and NPU Expert kernel durations forbidden as A2/A3 proxies",
+    "complete two-block gate disagreement returns NO_CANDIDATE with NO_CURRENT_A2/A3",
+    "real single-process six-request HTTP driver with zero retry",
+    "distinct A/B container, evidence, model-start, and six-generation budgets",
+    "fresh admission exact SHA, physical12 target, and <=600-second freshness gates in host control and copied launcher",
+    "real module.quant_method KTEP binding with Host layers 0..47 and NPU samples 0/24/47",
+    "cross-batch pending NPU-event queue with deferred query and no synchronize",
+    "Round13 QSA/GDN direct-event normalization plus conservative serial Decode wall",
+    "runtime observer through normalizer preserves A1_INSUFFICIENT_ATTRIBUTION with candidate null and A2/A3 NOT_SELECTED_EVIDENCE_GAP",
+    "fresh launcher admission result and two raw rounds rehashed with exact >=60s duration, ordering, envelope, and <=600s raw/result freshness",
+    "reviewed source-manifest SHA rechecked before launch and passed unchanged to the container driver",
+    "mutable model-start budget excluded from immutable source files and validated as initial-unspent to one matching full-container-ID start with before/after SHA evidence",
+    "created-state cleanup verifies full container ID and PID zero, terminates or observes exit of the bound guard, then removes the container",
+    "archive records launcher admission result/raw rounds and server/guard/driver log SHA-256 plus byte size",
+    "observer boundary catalog explicitly separated from installed A1 Host and Round13 device wiring; A1 NPU_SHARED is not installed",
+    "block B exact ordered A request IDs and ledger-after SHA continuity",
+    "block B PASS A cleanup supervisor and final archive witness before subprocess",
+    "wrapper-declared two-round admission basenames used for validation and archive",
+    "local-only trusted donor snapshot build with fixed reviewed transport identities; spent remote parent rejected"
+  ],
+  "not_run": [
+    "torch or torch_npu import",
+    "Ascend device execution",
+    "numerical qualification",
+    "complete model",
+    "graph capture/replay",
+    "CPU benchmark",
+    "performance qualification",
+    "full bank read",
+    "full v295 snapshot copy/build",
+    "real A1 controller/device driver execution (implementation is present and CPU-mock tested)",
+    "raw device receipt",
+    "fresh A1 real block A",
+    "fresh A1 real block B",
+    "fresh A1 device comparator and candidate decision"
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_ANALYZER_READY_DEVICE_EVIDENCE_PENDING",
+  "checked_at_utc": "2026-09-28T23:52:21Z",
+  "implementation": {
+    "path": "round16/a/fresh_a1_analysis.py",
+    "sha256": "a3d188130076dd55dae0c80c93a16e2663ea8f2be267e4bfc9fba94bd34f5e94",
+    "runtime_dependencies_imported": [],
+    "device_access": false,
+    "historical_trace_eligible": false
+  },
+  "input_contract": {
+    "fresh_blocks_required": [
+      "round16-a1-fresh-profile-a-v001",
+      "round16-a1-fresh-profile-b-v001"
+    ],
+    "requests_per_block": 6,
+    "receipt_observer_binding": [
+      "receipt_sha256",
+      "rows_sha256",
+      "observer_path"
+    ],
+    "observer_row_limit": 100000,
+    "missing_cpu_native_callback": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+    "critical_region_clock_domain": "HOST_MONOTONIC_NS",
+    "minimum_decode_wall_fraction": 0.1,
+    "device_event_coverage": "W1_W2_MEASUREMENT_ONLY",
+    "measurement_flush_witness": "SERIALIZED_SHORT_DRAIN_BATCH_AFTER_W2",
+    "final_canary_device_completion_required": false
+  },
+  "fail_closed_gates": [
+    "missing request",
+    "missing required layer or event",
+    "duplicate span or event identity",
+    "nested parent-child or duplicate addition",
+    "cross-clock addition",
+    "pre-aggregated evidence",
+    "observer-inserted synchronization",
+    "request, token, block, schedule, source, or correlation identity drift",
+    "numeric CPU Expert duration while the native callback is absent"
+  ],
+  "decision_contract": {
+    "operation": "DIRECT_REGION_FRACTION_OF_DECODE_WALL_NO_SUM",
+    "clock_domain": "HOST_MONOTONIC_NS",
+    "measurement_requests_only": true,
+    "two_block_agreement_required": true,
+    "allowed_terminal_candidates": [
+      "A2",
+      "A3",
+      "NO_CANDIDATE"
+    ],
+    "current_status": "DEVICE_EVIDENCE_PENDING",
+    "selected_candidate": null,
+    "candidate_enabled": false,
+    "primary_actionable_region_required_each_block": true,
+    "A2_gate": "HOST_SYNC_EXPOSED_WAIT plus AVAILABLE_UNUSED same-layer independent NPU window",
+    "A3_gate": "HOST_LAUNCH_METADATA_CRITICAL outside resident-only graph",
+    "gdn_or_npu_kernel_proxy_allowed": false,
+    "insufficient_attribution_terminal": "A1_INSUFFICIENT_ATTRIBUTION",
+    "insufficient_attribution_selected_candidate": null,
+    "insufficient_candidate_gates": {
+      "A2": "NOT_SELECTED_EVIDENCE_GAP",
+      "A3": "NOT_SELECTED_EVIDENCE_GAP"
+    }
+  },
+  "outputs": {
+    "artifacts/round16-a/A1_CRITICAL_PATH.json": "6305f46f0bdc92f04e094d5f3b4ed1bb91974f2c1621d108ab8c543416c0ac51",
+    "artifacts/round16-a/A1_CRITICAL_PATH.md": "cdb256883e89b45e2830d84fe6580e4361a56dbac43a562e3516977694d90722",
+    "artifacts/round16-a/A_REGION_DEPENDENCY_DAG.json": "3c2a0623cdde28475371dc4bc309bd9f988570747112d823dfb493cbefdaaff3",
+    "artifacts/round16-a/A_CANDIDATE_DECISION.json": "edbe23e8a45c3724e65e777413b4d993dec0f5ec995933c44956956ddf952caa"
+  },
+  "tests": {
+    "analysis_tests": 14,
+    "all_a_tests": 103,
+    "common_tests": 6,
+    "all_round16_tests": 109,
+    "failures": 0,
+    "errors": 0
+  },
+  "tdd_red": [
+    "ModuleNotFoundError before round16.a.fresh_a1_analysis existed",
+    "pending artifact equality failed before the four templates were generated",
+    "missing observer events in a warmup request were initially accepted",
+    "dependency DAG artifact lacked the SHA-bound evidence_input_contract",
+    "old GDN-versus-NPU-kernel winner tests failed after the frozen A2/A3 gate was asserted",
+    "A2 initially remained selected when it was not the primary actionable region in one block",
+    "candidate region initially lacked a direct Decode phase wall event identity"
+  ],
+  "not_run": [
+    "Ascend or torch_npu import",
+    "model or generation execution",
+    "fresh device block A",
+    "fresh device block B",
+    "device comparator execution",
+    "performance qualification"
+  ],
+  "shared_contract_v2": {
+    "path": "round16/common/contracts.py",
+    "sha256": "7234dc017690eea39313b7a2776c54466cc896ed10294708970cdb2bda23aa01",
+    "modified": false
+  },
+  "test_source": {
+    "path": "tests/round16/test_a_fresh_a1_analysis.py",
+    "sha256": "a423245ab5cbef63551cef89359785524c10fca61eef710b37e1a9f371daee11"
+  },
+  "offline_execution_budget": {
+    "npu_device_accesses": 0,
+    "model_processes": 0,
+    "generation_attempts": 0,
+    "device_hours": 0,
+    "abort_controls": 0,
+    "automatic_retries": 0,
+    "historical_trace_reads_for_selection": 0
+  }
+}

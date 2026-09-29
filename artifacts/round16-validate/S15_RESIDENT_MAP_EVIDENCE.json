@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T17:57:03Z",
+  "status": "S15_Q32_MAP_VERIFIED_FROM_MODEL_RECEIPT",
+  "source_of_truth": {
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-results/v295/20260927-round14a-a-gdn-abba-candidate-a-v295/q32-physical.json",
+    "sha256": "fdc73639b5d3b0f97db2e10c689b4b3a802240d72e50d3bc00aeee402d9f1872",
+    "producer_status": "RECORDED_Q32_PHYSICAL_NOT_F7_QUALIFIED"
+  },
+  "verified": {
+    "layers": 48,
+    "logical_experts_per_layer": 512,
+    "resident_capacity_per_layer": 32,
+    "unique_physical_maps": 1,
+    "gpu_index_to_logical_every_layer": [
+      0, 1, 2, 3, 4, 5, 6, 7,
+      8, 9, 10, 11, 12, 13, 14, 15,
+      16, 17, 18, 19, 20, 21, 22, 23,
+      24, 25, 26, 27, 28, 29, 30, 31
+    ],
+    "selected_logical_experts_every_layer": [
+      0, 1, 2, 3, 4, 5, 6, 7,
+      8, 9, 10, 11, 12, 13, 14, 15,
+      16, 17, 18, 19, 20, 21, 22, 23,
+      24, 25, 26, 27, 28, 29, 30, 31
+    ],
+    "per_layer_bytes": 314572800,
+    "total_bytes": 15099494400
+  },
+  "conflicting_non_authoritative_fixture": {
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295/source/runtime/mainline_attribution.py",
+    "sha256": "8fd7bf3e499a6b4a1604aae88b44c42b3858ae0748e0f05e00233f41a8561dc7",
+    "value": "range(0, 512, 16)",
+    "scope": "bounded layer0 diagnostic capture validator",
+    "disposition": "NOT_A_RUNTIME_PLACEMENT_SOURCE"
+  },
+  "binding_rule": "B16 must consume the verified per-layer placement receipt; unit-test fixture maps and diagnostic capture validators must not define production placement."
+}

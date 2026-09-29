@@ -1,0 +1,184 @@
+{
+  "comparison_kind": "CROSS_FRAMEWORK_SYSTEM_COMPARISON",
+  "decode_gate": {
+    "w2_throughput_ratio_min": 1.1,
+    "w2_tpot_ratio_max": 0.9
+  },
+  "decode_gate_pass": false,
+  "disposition": "B16_MEASURED_NO_PROMOTION",
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "pair_order": [
+    "S0-A/B-A",
+    "S0-B/B-B"
+  ],
+  "pairs": [
+    {
+      "W1": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 6.8408604335,
+          "median_tpot_seconds": 0.2908655531666667,
+          "median_ttft_seconds": 2.477873376,
+          "output_tokens": 32,
+          "requests_per_second": 0.14618044173258604,
+          "serial_output_tokens_per_second": 2.3388870677213767,
+          "window_seconds": 13.681720867
+        },
+        "e2e_ratio": 1.0881907049688082,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 6.286453654,
+          "median_tpot_seconds": 0.25024760273333335,
+          "median_ttft_seconds": 2.5325865005,
+          "output_tokens": 32,
+          "requests_per_second": 0.15907219794163457,
+          "serial_output_tokens_per_second": 2.545155167066153,
+          "window_seconds": 12.572907308
+        },
+        "throughput_ratio": 0.9189565720731496,
+        "tpot_ratio": 1.162311047097687,
+        "ttft_ratio": 0.9783963452031359
+      },
+      "W2": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 41.923708467,
+          "median_tpot_seconds": 0.31016365309055116,
+          "median_ttft_seconds": 2.532922439,
+          "output_tokens": 256,
+          "requests_per_second": 0.023852851681457145,
+          "serial_output_tokens_per_second": 3.0531650152265146,
+          "window_seconds": 83.847416934
+        },
+        "e2e_ratio": 1.2083604584536407,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 34.6947040295,
+          "median_tpot_seconds": 0.25319005546456697,
+          "median_ttft_seconds": 2.5393969075,
+          "output_tokens": 256,
+          "requests_per_second": 0.02882284279323225,
+          "serial_output_tokens_per_second": 3.689323877533728,
+          "window_seconds": 69.389408059
+        },
+        "throughput_ratio": 0.8275676293477171,
+        "tpot_ratio": 1.2250230465072807,
+        "ttft_ratio": 0.997450391279568
+      },
+      "W4": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 10.599505427,
+          "median_tpot_seconds": 0.2978608221129032,
+          "median_ttft_seconds": 1.3658172565,
+          "output_tokens": 64,
+          "requests_per_second": 0.09434402452898522,
+          "serial_output_tokens_per_second": 3.019008784927527,
+          "window_seconds": 21.199010854
+        },
+        "e2e_ratio": 1.148216050613116,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 9.2312813615,
+          "median_tpot_seconds": 0.25719641262903226,
+          "median_ttft_seconds": 1.2580537035,
+          "output_tokens": 64,
+          "requests_per_second": 0.10832732324361836,
+          "serial_output_tokens_per_second": 3.4664743437957877,
+          "window_seconds": 18.462562723
+        },
+        "throughput_ratio": 0.8709162352033201,
+        "tpot_ratio": 1.1581064411754582,
+        "ttft_ratio": 1.085658945003853
+      }
+    },
+    {
+      "W1": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 6.669099909,
+          "median_tpot_seconds": 0.28189854513333334,
+          "median_ttft_seconds": 2.440618797,
+          "output_tokens": 32,
+          "requests_per_second": 0.14994527202246477,
+          "serial_output_tokens_per_second": 2.3991243523594363,
+          "window_seconds": 13.338199818
+        },
+        "e2e_ratio": 1.0372996383215178,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 6.4292897275000005,
+          "median_tpot_seconds": 0.2570641768,
+          "median_ttft_seconds": 2.5731785335,
+          "output_tokens": 32,
+          "requests_per_second": 0.1555381764369243,
+          "serial_output_tokens_per_second": 2.488610822990789,
+          "window_seconds": 12.858579455000001
+        },
+        "throughput_ratio": 0.9640415971012259,
+        "tpot_ratio": 1.0966076589997014,
+        "ttft_ratio": 0.9484840500671773
+      },
+      "W2": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 42.354884638499996,
+          "median_tpot_seconds": 0.3140079719370079,
+          "median_ttft_seconds": 2.4758701275000004,
+          "output_tokens": 256,
+          "requests_per_second": 0.02361002771073573,
+          "serial_output_tokens_per_second": 3.0220835469741734,
+          "window_seconds": 84.70976927699999
+        },
+        "e2e_ratio": 1.1760432239779495,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 36.0147346415,
+          "median_tpot_seconds": 0.26289580030314963,
+          "median_ttft_seconds": 2.626790539,
+          "output_tokens": 256,
+          "requests_per_second": 0.02776641310714237,
+          "serial_output_tokens_per_second": 3.5541008777142236,
+          "window_seconds": 72.029469283
+        },
+        "throughput_ratio": 0.850308882880609,
+        "tpot_ratio": 1.1944198864147695,
+        "ttft_ratio": 0.9425457000627641
+      },
+      "W4": {
+        "b16": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 10.968356025999999,
+          "median_tpot_seconds": 0.3085427471612903,
+          "median_ttft_seconds": 1.4035288635,
+          "output_tokens": 64,
+          "requests_per_second": 0.09117136584822234,
+          "serial_output_tokens_per_second": 2.917483707143115,
+          "window_seconds": 21.936712051999997
+        },
+        "e2e_ratio": 1.188785320957869,
+        "s0": {
+          "measurement_requests": 2,
+          "median_e2e_seconds": 9.226523774,
+          "median_tpot_seconds": 0.2560663132419355,
+          "median_ttft_seconds": 1.2883235064999998,
+          "output_tokens": 64,
+          "requests_per_second": 0.10838318141204628,
+          "serial_output_tokens_per_second": 3.468261805185481,
+          "window_seconds": 18.453047548
+        },
+        "throughput_ratio": 0.8411947745066752,
+        "tpot_ratio": 1.2049329849560269,
+        "ttft_ratio": 1.0894226926845259
+      }
+    }
+  ],
+  "promoted": false,
+  "protection_gate": {
+    "w1_w4_ttft_e2e_ratio_max": 1.05
+  },
+  "protection_gate_pass": false,
+  "schema": 1,
+  "status": "PASS_ROUND16_STRICT_REQUEST_COMPARISON"
+}

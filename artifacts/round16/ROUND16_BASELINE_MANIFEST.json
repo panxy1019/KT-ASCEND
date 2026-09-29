@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "status": "ROUND16_DEV_BASELINE_FROZEN_FROM_ROUND14A",
+  "created_at_utc": "2026-09-28T11:43:24Z",
+  "repository": {
+    "base_commit": "e3a443ee7bb3e075b6ca3bfe19709b2a183c95fb",
+    "base_subject": "round14a: promote GDN and close residency concurrency",
+    "integration_branch": "codex/round16-integration",
+    "a_branch": "codex/round16-a-sglang",
+    "b_branch": "codex/round16-b-vllm",
+    "round15_dirty_worktree": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline",
+    "round15_worktree_access": "READ_ONLY_REFERENCES_ONLY"
+  },
+  "parent": {
+    "round14a_final_status": "ROUND14A_COMPLETE_GDN_PROMOTED_B_C_NO_PROMOTION",
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "final_config_sha256": "d0c72de841c5afc581752382cbea9c02409aaba387523ec63f36fc7f9ebb74b5",
+    "resource_receipt_sha256": "a3bb8cd735f01e37f7c32b8775477aaf0021dc88cc69854d984beb6cc8f16e24",
+    "source_build_patch_hash_sha256": "f6e7556acd28bab839184dfec250c51522322cca7197aaea8a14f2f96cc03808"
+  },
+  "dev_start_config": {
+    "cpu": "KUNPENG_C128_4X32_NUMA_2_3_4_7",
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "npu_resident": "STATIC_UNIFORM_Q32_BF16_NZ29",
+    "scheduler_chunk": 32,
+    "ple": "ASYNC",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "gdn": "NPU_CONV_RECURRENCE_PLUS_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+    "hybrid_threshold": 129,
+    "tp": 1,
+    "concurrency": 1,
+    "input_tokens_max": 128,
+    "output_tokens_max": 128,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "transpose_view": false,
+    "shadow320": false
+  },
+  "round15_relation": "DEV_PARENT_ONLY; S15_COMPATIBILITY_REBASE_REQUIRED_AFTER_TERMINAL_BARRIER",
+  "device_qualification": "NOT_RUN"
+}

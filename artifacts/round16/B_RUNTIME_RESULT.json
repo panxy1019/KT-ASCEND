@@ -1,0 +1,89 @@
+{
+  "default_runtime": "S0_SGLANG_KT_UNCHANGED",
+  "execution": {
+    "cpu": "Kunpeng C128 4x32",
+    "cpu_bank": "MXFP4 48-layer readonly",
+    "enforce_eager": true,
+    "framework": "vLLM 0.26.0 + vLLM-Ascend exact image + KT expert bridge",
+    "graph_mode": "NONE_EAGER",
+    "max_model_len": 256,
+    "max_running": 1,
+    "native_graph_fusion_retention": "NO_GRAPH_REPLAY_RETAINED; MAINLINE_NATIVE_OPERATORS_REMAIN_OUTSIDE_KT_EXPERT_BRIDGE",
+    "npu_resident": "Uniform Q32 BF16/NZ29",
+    "tensor_parallel_size": 1
+  },
+  "generated_at_utc": "2026-09-29T11:31:43.658738Z",
+  "layer_count": 48,
+  "logical_experts": 512,
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "physical_npu_slots_per_layer": 32,
+  "quality": {
+    "all_selected_logprobs_finite": true,
+    "cancel_and_reuse": true,
+    "decode32_exact_count": 32,
+    "five_canaries_exact": true,
+    "full_model_smoke": "PASS_ROUND16_B_V5_FULL_MODEL_SMOKE",
+    "kv_qualification": "PASS_COMPONENT_MULTIPAGE_MULTIHEAD_WITH_SCOPE_LIMIT"
+  },
+  "request_comparison": {
+    "decode_gate_pass": false,
+    "disposition": "B16_MEASURED_NO_PROMOTION",
+    "evidence": "artifacts/round16-b/ROUND16_REQUEST_COMPARISON.json",
+    "kind": "CROSS_FRAMEWORK_SYSTEM_COMPARISON",
+    "protection_gate_pass": false,
+    "status": "PASS_ROUND16_STRICT_REQUEST_COMPARISON"
+  },
+  "resident_payload_nominal_bytes": 15099494400,
+  "resource": {
+    "b_after_warmup_torch_allocated_gib": 47.3,
+    "b_after_warmup_torch_reserved_gib": 47.34,
+    "b_host_cgroup_peak": "UNKNOWN_NOT_CAPTURED_BY_B_WRAPPER",
+    "b_kv_cache_gib_log_value": 23.04,
+    "b_kv_cache_tokens": 3730,
+    "b_peak_activation_gib_log_value": 2.85,
+    "b_weights_loaded_gb_log_value": 24.2668,
+    "s0": {
+      "S0-A": {
+        "host_cgroup_peak_gib": "UNKNOWN_NOT_CAPTURED_IN_TERMINAL_COMPARATOR",
+        "peak_owned_hbm_mib": 25756,
+        "peak_whole_card_hbm_mib": 28932,
+        "sample_count": 139
+      },
+      "S0-B": {
+        "host_cgroup_peak_gib": "UNKNOWN_NOT_CAPTURED_IN_TERMINAL_COMPARATOR",
+        "peak_owned_hbm_mib": 25756,
+        "peak_whole_card_hbm_mib": 28932,
+        "sample_count": 139
+      }
+    }
+  },
+  "schema": 1,
+  "stages": [
+    {
+      "evidence": "artifacts/round16-b/evidence/20260929-round16-b-q32-v1-device-v003/receipt.json",
+      "stage": "V1",
+      "status": "REAL_IMAGE_Q32_CONSTRUCTOR_VERIFIED"
+    },
+    {
+      "evidence": "artifacts/round16-b/evidence/20260929-round16-b-q32-v2-device-v007/receipt.json",
+      "stage": "V2",
+      "status": "REAL_Q32_LOADER_AND_LAYOUT_VERIFIED"
+    },
+    {
+      "evidence": "artifacts/round16-b/evidence/20260929-round16-b-q32-v3-device-v007/receipt.json",
+      "stage": "V3",
+      "status": "REAL_HYBRID_MOE_VERIFIED"
+    },
+    {
+      "evidence": "artifacts/round16-b/evidence/20260929-round16-b-q32-v4-device-v001/receipt.json",
+      "stage": "V4",
+      "status": "ALL_LAYER_RESIDENCY_VERIFIED"
+    },
+    {
+      "evidence": "artifacts/round16-b/evidence/20260929-round16-b-v5-smoke-v023/result.json",
+      "stage": "V5",
+      "status": "PASS_ROUND16_B_V5_FULL_MODEL_SMOKE"
+    }
+  ],
+  "status": "B16_FULL_RUNTIME_AND_REQUEST_MEASURED_NO_PROMOTION"
+}

@@ -1,0 +1,99 @@
+{
+  "a_preflight": {
+    "block_id": "round16-a1-fresh-profile-a-v001",
+    "device_probe_count": 0,
+    "enabled": false,
+    "execution": "DEVICE_REQUIRED_NOT_RUN",
+    "execution_budget_current_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_initial_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_start": null,
+    "execution_budget_state": "INITIAL_UNSPENT",
+    "generation_limit": 6,
+    "ledger_sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+    "schedule_sha256": "0234a038784bececbb6a60ad27d023f33f8737fd1dbe0cf58b9140be3518df58",
+    "schema": 1,
+    "snapshot_id": "round16-a1-fresh-profile-a-v001-snapshot",
+    "source_manifest_sha256": "14d31371d87148ae591c2f76f014024bd4d756243d35490290f9e2768c27b9d4",
+    "source_manifest_status": "EXACT",
+    "stage": "ROUND16_A1_FRESH_PROFILE",
+    "status": "PASS_OFFLINE_PREFLIGHT",
+    "total_generation_limit": 12
+  },
+  "b_transport_preflight": "SOURCE_ONLY_UNTIL_A_LEDGER_AFTER",
+  "created_at_epoch": 1790643939.2402303,
+  "donor": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+  "failed_predecessor_receipts": [
+    "TRANSPORT_V001_PREFLIGHT_FAILURE.json",
+    "A_LAUNCH_V001_SOURCE_GATE_FAILURE.json",
+    "A_LAUNCH_V002_LAYERWISE_SOURCE_GATE_FAILURE.json"
+  ],
+  "integration_contract_version": "round16-contract-v2",
+  "ledger": {
+    "path": "FRESH_A1_LEDGER_INITIAL.json",
+    "sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219"
+  },
+  "local_archive_full_verification": {
+    "files_verified": 5269,
+    "metadata_files_verified": 2,
+    "status": "PASS"
+  },
+  "overlay_tree_gate_verification": {
+    "a": {
+      "candidate_tree_sha256": "5ac5d4f33fd4634844922b336b632e13c4bd133cfe15d397c40e5003ecc44fff",
+      "file_count": 2330
+    },
+    "b": {
+      "candidate_tree_sha256": "5ac5d4f33fd4634844922b336b632e13c4bd133cfe15d397c40e5003ecc44fff",
+      "file_count": 2330
+    }
+  },
+  "recorded_at_epoch": 1790645170.249911,
+  "runtime_version": "v003",
+  "schema": 1,
+  "snapshots": {
+    "A": {
+      "directory": "fresh-a-v004",
+      "execution_budget_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+      "file_count": 2634,
+      "source_manifest_sha256": "14d31371d87148ae591c2f76f014024bd4d756243d35490290f9e2768c27b9d4"
+    },
+    "B": {
+      "directory": "fresh-b-v004",
+      "execution_budget_sha256": "d134a133699a76c0f498d302be268f0bc7c3969842594e032edbe0abb933c9a8",
+      "file_count": 2634,
+      "source_manifest_sha256": "ec9f9d40731292d4f18d8b033b8dafece247ee07f7aa03c21771c9ca2c36823a"
+    }
+  },
+  "source_delta_gate_verification": {
+    "a": {
+      "actual_sha256": "7f9f2ef9bbc00bcd69732318767994c45399524ba6482207c7bcae2dab516007",
+      "decision": "ROUND16_BOUND_DELTA",
+      "expected_parent_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+      "relative": "sglang/srt/layers/moe/kt_ep_wrapper.py"
+    },
+    "b": {
+      "actual_sha256": "7f9f2ef9bbc00bcd69732318767994c45399524ba6482207c7bcae2dab516007",
+      "decision": "ROUND16_BOUND_DELTA",
+      "expected_parent_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+      "relative": "sglang/srt/layers/moe/kt_ep_wrapper.py"
+    }
+  },
+  "status": "PASS_LOCAL_BUILD_ARCHIVE_OVERLAY_AND_SOURCE_DELTA_REVIEWED_FOR_TRANSPORT",
+  "supersedes_for_execution": "v001 rejected at remote package import preflight",
+  "tar": {
+    "path": "/tmp/round16-a1-transport-v004.tar",
+    "sha256": "90086cd775cf8fd5859c43011c88a099b559da27cd7f4e4fe8840fc0c206154f",
+    "size_bytes": 70051840
+  },
+  "transport_manifest": {
+    "file_count": 5269,
+    "path": "ROUND16_A1_TRANSPORT_MANIFEST.json",
+    "sha256": "be174a4953c70f0582ca2c2e0cf0dca5138cf3f15e736249eb05f0d95d91699c"
+  },
+  "transport_version": "v004",
+  "verification": {
+    "integration_tests": 279,
+    "isolated_package_import_regression": "PASS",
+    "status": "PASS"
+  }
+}

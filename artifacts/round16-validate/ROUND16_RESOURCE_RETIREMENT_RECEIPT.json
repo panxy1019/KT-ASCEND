@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T19:23:00Z",
+  "status": "PASS_NO_ROUND16_REMOTE_RESOURCES_CREATED",
+  "round16_owned_processes_before": 0,
+  "round16_owned_processes_after": 0,
+  "round16_containers_created": 0,
+  "model_or_component_started": false,
+  "bank_or_checkpoint_opened_by_round16": false,
+  "cache_retirement_required": false,
+  "dontneed_called": false,
+  "fincore_required": false,
+  "reason": "All six admission cycles stopped at the external device-ownership gate before model, component, bank or checkpoint access.",
+  "external_container_modified": false,
+  "training_modified": false,
+  "global_drop_caches": false,
+  "evidence": {
+    "last_remote_census": "artifacts/round16-validate/P0_REMOTE_RESOURCE_CYCLE_06_RAW.txt",
+    "last_remote_census_sha256": "681b2b879ec28f687ac874f0424c4fa4de8fea3c729d23abc7cf8afe26fd6d51",
+    "last_remote_census_result": "ROUND16_OWNED_PROCESSES_EMPTY"
+  }
+}

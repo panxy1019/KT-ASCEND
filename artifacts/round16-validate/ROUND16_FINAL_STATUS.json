@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "updated_at_utc": "2026-09-28T19:23:00Z",
+  "status": "ROUND16_PARTIAL_WITH_GAPS_EXTERNAL_RESOURCE",
+  "goal_disposition": "BLOCKED_EXTERNAL_RESOURCE",
+  "performance_objective": "NOT_MEASURED",
+  "default_runtime": "S0_SGLANG_KT_UNCHANGED",
+  "default_switch_authorized": false,
+  "round15_parent": {
+    "terminal_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "barrier": "PASS_TERMINAL_CLEANUP_AND_LEASE_RELEASED",
+    "selected_compute": "ROUND14A_PROMOTED_GDN_QSA_VECTORIZED_PREFILL_DIRECT_BF16_ROW_DECODE_PLE_ASYNC_C128_MXFP4_UNIFORM_Q32_H129"
+  },
+  "a": {
+    "status": "DEVICE_PENDING_EXTERNAL_RESOURCE",
+    "a1_fresh_profile_blocks": 0,
+    "a2_disposition": "NOT_SELECTED_WITHOUT_FRESH_CRITICAL_PATH_EVIDENCE",
+    "a3_disposition": "NOT_SELECTED_WITHOUT_FRESH_CRITICAL_PATH_EVIDENCE",
+    "request_gain": "NOT_MEASURED",
+    "reason": "Both required fresh S0 profile blocks require a safely admitted NPU/model process. Historical hotspot ratios were deliberately not reused."
+  },
+  "b": {
+    "status": "PASS_OFFLINE_QWEN_SELF_EXPERTS_SOURCE_BOUND_CONTRACT_DEVICE_PENDING",
+    "live_eligible": false,
+    "highest_completed_level": "OFFLINE_EXACT_SOURCE_PLUS_REAL_SHAPED_FAKE_QWEN_SELF_EXPERTS",
+    "first_device_candidate": "TP1_EP1_EAGER_ALLGATHER_BF16_QUANT_NONE_PHYSICAL_Q32_EXPERT_MAP_NONE_LOG2PHY_NONE",
+    "real_moe_component": "NOT_RUN",
+    "one_decoder_layer": "NOT_RUN",
+    "full_model_smoke": "NOT_RUN",
+    "request_comparison": "NOT_RUN",
+    "graph": "NOT_RUN_AND_NOT_CLAIMED",
+    "request_gain": "NOT_MEASURED"
+  },
+  "offline_verification": {
+    "combined_unittest": "PASS_220_OF_220",
+    "compileall": "PASS",
+    "json_artifacts_parsed": "PASS_52_OF_52",
+    "preflight_overlay_byte_identical": true,
+    "git_diff_check": "PASS",
+    "npu_or_model_claim": false
+  },
+  "resource_block": {
+    "failed_admission_cycles": 6,
+    "failed_admission_cycle_limit": 6,
+    "last_cycle_at_utc": "2026-09-28T19:21:44Z",
+    "physical_devices": 16,
+    "external_qwen_device_claims": "EXACTLY_0_THROUGH_15",
+    "round16_owned_remote_processes": 0,
+    "container_or_process_created": false,
+    "cpu_numa_sampling": "SHORT_CIRCUITED_AFTER_DEVICE_OWNERSHIP_GATE",
+    "next_retry": "ONLY_AFTER_EXTERNALLY_CHANGED_RESOURCE_STATE"
+  },
+  "budget_used": {
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0
+  },
+  "budget_limits": {
+    "model_groups": 14,
+    "generation_attempts": 128,
+    "abort_controls": 6,
+    "device_component_processes": 16,
+    "npu_device_hours": 32
+  },
+  "safety": {
+    "external_container_stopped_or_modified": false,
+    "training_modified": false,
+    "resource_threshold_lowered": false,
+    "global_drop_caches": false,
+    "push_merge_tag_reset_clean": false,
+    "timer_restored": false
+  },
+  "evidence": {
+    "offline_integration": "artifacts/round16-validate/ROUND16_OFFLINE_INTEGRATION_RECEIPT.json",
+    "b_qwen_wiring": "artifacts/round16-b/QWEN_SELF_EXPERTS_WIRING_RECEIPT.json",
+    "b_source_feasibility": "artifacts/round16-validate/B_NATIVE_PRESELECTED_FEASIBILITY.json",
+    "admission_cycle_06": "artifacts/round16-validate/P0_ADMISSION_CYCLE_06.json",
+    "budget": "artifacts/round16-validate/ROUND16_VALIDATE_BUDGET.json",
+    "current_execution": "artifacts/round16-validate/CURRENT_EXECUTION.md"
+  },
+  "resume_condition": "An explicit candidate NPU has no external container claim, then passes the frozen two-round 60-second CPU/SMT, NUMA, HBM, process and training-cgroup admission before any NPU initialization."
+}

@@ -1,0 +1,76 @@
+{
+  "component_evidence": {
+    "attention_max_abs": 0.015625,
+    "attention_relative_l2": 0.0018465227913111448,
+    "block_table": [
+      [
+        2,
+        0,
+        1
+      ]
+    ],
+    "cache_shape": [
+      3,
+      3072,
+      2,
+      256
+    ],
+    "kv_heads": 2,
+    "logical_positions": [
+      0,
+      1,
+      3071,
+      3072,
+      3073,
+      6143,
+      6144,
+      6145,
+      9214,
+      1500,
+      4700,
+      8000
+    ],
+    "pages_touched": [
+      0,
+      1,
+      2
+    ],
+    "physical_slots": [
+      6144,
+      6145,
+      9215,
+      0,
+      1,
+      3071,
+      3072,
+      3073,
+      6142,
+      7644,
+      1628,
+      4928
+    ],
+    "query_heads": 24,
+    "source": "artifacts/round16-b/evidence/20260929-round16-b-qsa-multihead-v001/result.json",
+    "status": "PASS_QSA_MULTIPAGE_MULTIHEAD_DEVICE",
+    "store_exact": true
+  },
+  "full_model_evidence": {
+    "cancel_unfinished_after_abort": false,
+    "decode32_exact_output_count": 32,
+    "qualified_max_model_len": 256,
+    "same_process_reuse_text": "391",
+    "source": "artifacts/round16-b/evidence/20260929-round16-b-v5-smoke-v023/result.json",
+    "status": "PASS_ROUND16_B_V5_FULL_MODEL_SMOKE"
+  },
+  "generated_at_utc": "2026-09-29T11:31:43.658738Z",
+  "qualification_boundary": {
+    "broad_kv_correctness": "NOT_CLAIMED",
+    "component_multipage_layout_store_attention": "PASS",
+    "full_model_input_output_each_at_most_128_and_total_context_at_most_256": "PASS",
+    "full_model_long_context_cross_page_generation": "NOT_RUN_OUTSIDE_ROUND16_SCOPE"
+  },
+  "schema": 1,
+  "single_page_shape_patch_disposition": "LOCAL_LAYOUT_COMPATIBILITY_ONLY_NOT_A_COMPLETE_KV_PROOF",
+  "single_page_unsqueeze_only_is_sufficient": false,
+  "status": "PASS_COMPONENT_MULTIPAGE_MULTIHEAD_WITH_SCOPE_LIMIT"
+}

@@ -1,0 +1,299 @@
+{
+  "contract_version": "round16-contract-v1",
+  "coverage": {
+    "allgather_q32_device_adapter": "tuple-only offline fake covers all-CPU/all-NPU/mixed/padding; separate opaque NPU tensor contract validates int32/BF16/device/layout and preserves finalized [T,H] without iteration/float/D2H/sync; exact comm/stream/callback identities and one-shot failure retirement",
+    "b2_exact_worker_hook": {
+      "failure_gate": "SELECTIVE_Q32_PREALLOCATION_REQUIRED before patch/model/device side effect",
+      "forward": "prepared inputs; upstream selector once; KT submit -> native weighted aggregate -> KT sync -> tensor merge",
+      "lifecycle": "constructor scope before get_model/create_weights; post-AutoWeightsLoader atomic 48-layer registration",
+      "ownership": "upstream forward alone owns routed scale/shared/output transform/reduction; Qwen layer owns residual",
+      "source_gate": "six exact pristine donor files layered on 18-check base receipt"
+    },
+    "cpu_backend": "empty/repeated/chunk/tail identity work plus KT submit->native->sync; native ABI without work ID is limited to one outstanding and failed sync blocks reuse until successful drain",
+    "graph_boundary": "active/cancel precheck, non-empty fingerprint, monotonic replay epoch, distinct propagated CPU task/result identities, exception retirement; device result not claimed",
+    "lifecycle": "full StateLease identity, strict slot count/slot/request/completion/purpose identity types, native generation monotonicity and atomic validation, cancel, drain, abort task, late result, slot reuse",
+    "merge": "route weights once, finite routed scaling once, shared branch once and unscaled, strict empty shared row validation",
+    "model_registration": "target-only, unverified fail-closed, verified fake binding construction/call forwarding, idempotent concurrent callers, no platform/loader mutation",
+    "native_source_preflight": "standard-library bounded read; exact 17 source hashes plus config before AST; includes Qwen/MoERunner/loaders and donor MoEComm prepare/fused/finalize, QuantType.NONE and ALLGATHER dispatcher weight-mask-only semantics",
+    "p0_b1_native_binding": "exact donor plus nine official vLLM source hashes and hashed BF16 model config; official nn.Module registry acceptance; registration consumes exact observed-digest/API preflight token; runtime context requires 128 input + 128 output with max_model_len/state >=256; dynamic native subclass; default-OFF construction-scoped FusedMoE wrapper; 48-layer plan acknowledgement; routed-only registration rejected",
+    "p1_executable_probe": "actual default-OFF round16_integration CLI; source+S0 snapshot validation before runtime import; tensor-only logical->physical mask/gather, weighted tensor merge, exact owner/manager/comm/stream gates, submit-native-sync order, failure drain",
+    "packaging": "standard-library target install of round16 plus round16_integration and isolated child import without vllm/torch/torch_npu",
+    "qwen_self_experts_wiring": "real-shaped self.experts.forward entry; identical owner/runner Q32 plan; 48-layer ack; prepare before one selector using prepared hidden/router; CPU submit -> native weighted aggregate -> CPU sync; padded rows zeroed; upstream sole owner of scale/shared/output transform/reduction and Qwen caller owner of residual",
+    "routing": "Top-10, frozen input reuse, strict integer logical/resident identities before raw-route freezing, Q0/Q32/all-resident, padding, invalid IDs, repeated expert",
+    "selective_loading": "Q32-before-allocation, strict integer resident identities and source-shape dimensions, deep-frozen 512-entry plan, snapshotted source references, exact resident-to-contiguous-physical mapping validation, fused gate/up, supported aliases, source/output/explicit-alias and reused-allocation ownership conflicts, best-effort release of every unique allocation with primary-error preservation and aggregated cleanup cause, no full-bank iteration",
+    "source_bound_q32_adapter": "injected plan; cloned logical512/physical32 config before allocation; exact 512-entry live manager mapper; w13/w2 bindings; nonresident skip; rollback; acknowledgement rechecks manager, leading dimension 32 and BF16; deliberately live-ineligible"
+  },
+  "environment": {
+    "mkl_num_threads": 1,
+    "mode": "CPU_ONLY_MOCK",
+    "omp_num_threads": 1,
+    "openblas_num_threads": 1,
+    "python_command": "python3"
+  },
+  "final_verification": {
+    "b_plus_common": "PASS 133/133",
+    "b_tests": "PASS 127/127",
+    "diff_check": "PASS",
+    "exact_worker_preflight": "PASS 6/6 plus base exact source 18/18",
+    "fresh_child_import": "PASS without torch, torch_npu or vllm",
+    "json_validation": "PASS",
+    "overlay_byte_identity": "PASS",
+    "py_compile": "PASS"
+  },
+  "not_run": [
+    "NPU device calls",
+    "torch_npu import or dispatcher calls",
+    "real vLLM 0.26 model construction",
+    "real Qwen4ExpForConditionalGeneration weights",
+    "NPUGraph capture or replay",
+    "numerical qualification on device",
+    "CPU or device performance benchmarks",
+    "full expert-bank reads",
+    "checkpoint tensor writes under the exact native AutoWeightsLoader consumer",
+    "device-verified Q32 RoutedExperts and real w13/w2 allocation",
+    "live-image source-hash preflight (offline frozen fixture passed)",
+    "device S15 weighted aggregate/scaling/shared parity",
+    "native single-outstanding cancel/drain behavior on the real stream",
+    "TP1 eager max_model_len/state-capacity smoke",
+    "live donor-image Qwen self.experts/EP1 ALLGATHER Q32 execution proof"
+  ],
+  "schema": 1,
+  "status": "PASS_ROUND16_B2_EXACT_WORKER_HOOK_CPU_MOCK_TESTS",
+  "tdd_evidence": [
+    {
+      "command": "python3 -m unittest tests.round16.test_b_package -v",
+      "phase": "RED_PACKAGE",
+      "result": "FAIL: round16.b missing"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_package -v",
+      "phase": "GREEN_PACKAGE",
+      "result": "PASS 1/1"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests/round16 -p 'test_b_*.py' -v",
+      "phase": "RED_COMPONENTS",
+      "result": "FAIL 15/16 because six implementation modules were absent"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests/round16 -p 'test_b_*.py' -v",
+      "phase": "GREEN_COMPONENTS",
+      "result": "PASS 18/18"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_model_plugin tests.round16.test_b_routing_bridge tests.round16.test_b_lifecycle_graph tests.round16.test_b_packaging -v",
+      "phase": "RED_REVIEW_FIXES",
+      "result": "FAIL/ERROR for target architecture, full lease identity, merge policy, and missing installer"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_model_plugin tests.round16.test_b_routing_bridge tests.round16.test_b_lifecycle_graph tests.round16.test_b_packaging -v",
+      "phase": "GREEN_REVIEW_FIXES",
+      "result": "PASS 13/13"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_lifecycle_graph tests.round16.test_b_routing_bridge tests.round16.test_b_selective_loader tests.round16.test_b_model_plugin -v",
+      "phase": "RED_SECOND_REVIEW_FIXES",
+      "result": "FAIL 16 cases for replay transaction/identity, native generation, shared/scaling validation, fused aliases, and verified registration"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_lifecycle_graph tests.round16.test_b_routing_bridge tests.round16.test_b_selective_loader tests.round16.test_b_model_plugin -v",
+      "phase": "GREEN_SECOND_REVIEW_FIXES",
+      "result": "PASS 25/25"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_lifecycle_graph.LifecycleAndGraphTests.test_empty_input_fingerprint_is_rejected_before_any_side_effect -v",
+      "phase": "RED_EMPTY_FINGERPRINT",
+      "result": "FAIL because empty fingerprint reached replay"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_lifecycle_graph.LifecycleAndGraphTests.test_empty_input_fingerprint_is_rejected_before_any_side_effect -v",
+      "phase": "GREEN_EMPTY_FINGERPRINT",
+      "result": "PASS 1/1"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_model_plugin.ModelPluginTests.test_registration_rejects_unverified_binding_objects tests.round16.test_b_model_plugin.ModelPluginTests.test_verified_binding_rejects_blank_api_identity -v",
+      "phase": "RED_VERIFIED_BINDING_INPUT_GATE",
+      "result": "FAIL 2/2 because arbitrary binding objects and blank API identities were accepted"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_model_plugin.ModelPluginTests.test_registration_rejects_unverified_binding_objects tests.round16.test_b_model_plugin.ModelPluginTests.test_verified_binding_rejects_blank_api_identity -v",
+      "phase": "GREEN_VERIFIED_BINDING_INPUT_GATE",
+      "result": "PASS 2/2"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_loader -v",
+      "phase": "RED_SELECTIVE_OWNERSHIP_REVIEW",
+      "result": "FAIL: 8 failing subtests exposed output/alias ownership collisions after allocation, incomplete manual-plan validation, and rollback stopping at the first release failure"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_loader -v",
+      "phase": "GREEN_SELECTIVE_OWNERSHIP_REVIEW",
+      "result": "PASS 7/7"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_loader tests.round16.test_b_routing_bridge tests.round16.test_b_lifecycle_graph -v",
+      "phase": "RED_STRICT_IDENTITY_TOCTOU_REVIEW",
+      "result": "FAIL 28 plus ERROR 4 across 33 tests: coercible expert/shape identities were truncated, caller-owned plan/source containers remained mutable, allocator object reuse overwrote ownership, and lifecycle type failures could commit state or consume task sequence"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_loader tests.round16.test_b_routing_bridge tests.round16.test_b_lifecycle_graph -v",
+      "phase": "GREEN_STRICT_IDENTITY_TOCTOU_REVIEW",
+      "result": "PASS 33/33"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "RED_P0_B1_NATIVE_SOURCE_BINDING",
+      "result": "FAIL 7/7 because round16.b.native_vllm_adapter did not exist"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "GREEN_P0_B1_NATIVE_SOURCE_BINDING",
+      "result": "PASS 7/7"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter.NativeVllmAdapterTests.test_frozen_identity_matches_checked_in_offline_source_fixture -v",
+      "phase": "RED_SOURCE_ARCHIVE_HASH_IDENTITY",
+      "result": "FAIL 1/1 because archive SHA-256 was not yet part of the frozen identity"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter.NativeVllmAdapterTests.test_frozen_identity_matches_checked_in_offline_source_fixture -v",
+      "phase": "GREEN_SOURCE_ARCHIVE_HASH_IDENTITY",
+      "result": "PASS 1/1"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "RED_REGISTRY_VALUE_BINDING_GATE",
+      "result": "FAIL/ERROR because enabled registration accepted a registry without explicit proof that vLLM 0.26 accepts the injected bound class"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "GREEN_REGISTRY_VALUE_BINDING_GATE",
+      "result": "PASS 8/8"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_preallocation_installer tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "RED_OFFICIAL_VLLM_CONSTRUCTION_SEAM",
+      "result": "FAIL 5/5 scoped-installer tests because the module was absent; native source identity, native-subclass registration and closed registry/architecture claims also failed"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_selective_preallocation_installer tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "GREEN_OFFICIAL_VLLM_CONSTRUCTION_SEAM",
+      "result": "PASS 14/14 including real scoped-installer/native-adapter integration"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter.NativeVllmAdapterTests.test_frozen_identity_matches_checked_in_offline_source_fixture -v",
+      "phase": "RED_HASHED_MODEL_CONFIG_IDENTITY",
+      "result": "FAIL 1/1 until remote raw/config hashes, ConditionalGeneration architecture and 48-layer identity were frozen"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter.NativeVllmAdapterTests.test_frozen_identity_matches_checked_in_offline_source_fixture -v",
+      "phase": "GREEN_HASHED_MODEL_CONFIG_IDENTITY",
+      "result": "PASS 1/1"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_source_preflight tests.round16.test_b_source_bound_q32_adapter -v",
+      "phase": "RED_EXACT_SOURCE_PREFLIGHT_AND_Q32_SOURCE_ADAPTER",
+      "result": "FAIL 9/9 because the standalone preflight and source-bound Q32 adapter modules were absent"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_source_preflight tests.round16.test_b_source_bound_q32_adapter -v",
+      "phase": "GREEN_EXACT_SOURCE_PREFLIGHT_AND_Q32_SOURCE_ADAPTER",
+      "result": "PASS 9/9"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter tests.round16.test_b_selective_preallocation_installer -v",
+      "phase": "RED_MATCHED_HYBRID_RUNNER_GATE",
+      "result": "FAIL 2 cases because a routed-only Q32 owner could still register without a matched custom Hybrid runner"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_vllm_adapter tests.round16.test_b_selective_preallocation_installer tests.round16.test_b_source_bound_q32_adapter tests.round16.test_b_native_source_preflight -v",
+      "phase": "GREEN_MATCHED_HYBRID_RUNNER_GATE",
+      "result": "PASS 24/24; routed-only registration returns RUNTIME_RUNNER_BINDING_UNRESOLVED without registry mutation"
+    },
+    {
+      "command": "python3 round16/b/native_source_preflight.py --enable --vllm-package-root <small-staged-frozen-vllm> --vllm-ascend-package-root <small-staged-frozen-vllm-ascend> --model-config <saved-config-body>",
+      "phase": "FROZEN_OFFLINE_SOURCE_PREFLIGHT",
+      "result": "PASS_EXACT_SOURCE_AND_API for 17 exact source hashes plus BF16/context model config; no vLLM/torch/device import"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_source_bound_q32_adapter tests.round16.test_b_selective_preallocation_installer -v",
+      "phase": "RED_Q32_MANAGER_AND_LIVE_ACK_GATE",
+      "result": "FAIL 6 subtests: prepared manager mapping and live manager/shape/BF16 acknowledgement were not validated"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_source_bound_q32_adapter tests.round16.test_b_selective_preallocation_installer -v",
+      "phase": "GREEN_Q32_MANAGER_AND_LIVE_ACK_GATE",
+      "result": "PASS 15/15; all 512 mapper entries validate before native allocation and again at acknowledgement"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_source_preflight tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "RED_EXACT_TOKEN_DTYPE_CONTEXT_CONSUMER_GATE",
+      "result": "FAIL/ERROR: BF16/context/Qwen consumer were absent and registry accepted no preflight token"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_native_source_preflight tests.round16.test_b_native_vllm_adapter -v",
+      "phase": "GREEN_EXACT_TOKEN_DTYPE_CONTEXT_CONSUMER_GATE",
+      "result": "PASS 18/18; exact observed digests/API checks token, BF16, model context >=256, Qwen AutoWeightsLoader consumer, default loader and runtime max_model_len/state >=256 gates pass"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_source_bound_hybrid_runner.SourceBoundHybridRunnerTests.test_kt_native_without_work_id_allows_only_one_outstanding -v",
+      "phase": "RED_KT_SINGLE_OUTSTANDING_GATE",
+      "result": "FAIL: a second native FIFO submission was accepted without a native work ID"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_source_bound_hybrid_runner -v",
+      "phase": "GREEN_KT_SINGLE_OUTSTANDING_GATE",
+      "result": "PASS 10/10; stale handle and second submit fail closed, sync failure retains the sole pending item until a successful real drain"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_qwen_runner_wiring -v",
+      "phase": "RED_QWEN_SELF_EXPERTS_SOURCE_BOUND_WIRING",
+      "result": "FAIL/ERROR: no native runner factory, prepare-before-selector state, weighted aggregate ABI, comm identity gate, or prepared invalid-row isolation"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_qwen_runner_wiring -v",
+      "phase": "GREEN_QWEN_SELF_EXPERTS_SOURCE_BOUND_WIRING",
+      "result": "PASS 8/8: 48-layer ack, selector once, prepared hidden/router, all-CPU/all-NPU finalize envelope, weighted-only native partial, comm identity drift, padded rows, construction rollback"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p 'test_*.py' -v",
+      "phase": "FINAL_FULL_SUITE",
+      "result": "PASS 115/115"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_allgather_q32_device_adapter",
+      "phase": "RED_P1_ALLGATHER_TENSOR_SPLIT",
+      "result": "FAIL/ERROR: stale device class import and no tensor-preserving adapter/payload/result types"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_allgather_q32_device_adapter",
+      "phase": "GREEN_P1_ALLGATHER_TENSOR_SPLIT",
+      "result": "PASS 10/10: tuple fake plus non-iterable NPU tensor contract, metadata gates, padding, failure retirement and distinct API identity"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p 'test_*.py'",
+      "phase": "FINAL_P1_FULL_SUITE",
+      "result": "PASS 115/115 (109 B plus 6 common)"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_p1_integration_probe",
+      "phase": "RED_EXECUTABLE_P1_PROBE",
+      "result": "FAIL 5/5 because documented round16_integration module did not exist"
+    },
+    {
+      "command": "python3 -m unittest tests.round16.test_b_packaging",
+      "phase": "RED_INSTALL_INTEGRATION_PROBE",
+      "result": "FAIL because offline installer omitted round16_integration"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest tests.round16.test_b_p1_integration_probe tests.round16.test_b_packaging",
+      "phase": "GREEN_EXECUTABLE_P1_PROBE",
+      "result": "PASS 7/7; opaque tensor payload/merge, exact S0 receipt, static CLI, runtime ordering and isolated packaging"
+    },
+    {
+      "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p 'test_*.py'",
+      "phase": "FINAL_EXECUTABLE_P1_SUITE",
+      "result": "PASS 121/121 (115 B plus 6 common)"
+    }
+  ]
+}

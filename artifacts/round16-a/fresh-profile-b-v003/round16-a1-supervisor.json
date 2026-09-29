@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_FRESH_PROFILE",
+  "block_id": "round16-a1-fresh-profile-b-v001",
+  "status": "PASS_FRESH_A1_BLOCK_RAW_UNREVIEWED",
+  "model_start_attempts": 1,
+  "driver_process_starts": 1,
+  "generation_limit": 6,
+  "automatic_retries": 0,
+  "started_at": 1790647564.4814515,
+  "admission_sha256": "e07a0a44c82aecbe4f074c1f6d8b39cae671c4b04bd42784297fa02b40ed715d",
+  "ledger_sha256_before": "b98785afae33fea891609ff124e62ccf57d5edd90dbaeb4153d934a6d450d987",
+  "source_manifest_sha256": "8fe6106cfb3e18741332393df786a4c757a4e6355d6a508ef26391ecfaf63e2c",
+  "execution_budget_initial_sha256": "d134a133699a76c0f498d302be268f0bc7c3969842594e032edbe0abb933c9a8",
+  "block_a_predecessor": {
+    "status": "PASS_EXACT_BLOCK_A_PREDECESSOR",
+    "raw_receipt_path": "/mnt/data1/kt-round9/evidence/20260929-round16-a1-fresh-profile-a-v003/round16-a1-controller/round16-a1-raw-receipt.json",
+    "raw_receipt_sha256": "2bdeff959b59b5a12a158186e2b6d0f1c3e6450057baa35531704422f10cff01",
+    "supervisor_sha256": "c1a5bb9c1a013c67f6a0af7b5e39c8cd9b1e450b61a3d32e3bf8af48076d094d",
+    "archive_sha256": "7549fd2cfa226fcdfc70ede80af5693e9d6ce02f06a3b05bb0fe310ed494bc94",
+    "ledger_sha256_after": "b98785afae33fea891609ff124e62ccf57d5edd90dbaeb4153d934a6d450d987",
+    "request_ids": [
+      "round16-a1-fresh-profile-a-v001:1:W1_WARMUP",
+      "round16-a1-fresh-profile-a-v001:2:W2_WARMUP",
+      "round16-a1-fresh-profile-a-v001:3:W1_MEASUREMENT",
+      "round16-a1-fresh-profile-a-v001:4:W2_MEASUREMENT",
+      "round16-a1-fresh-profile-a-v001:5:SHORT_DRAIN",
+      "round16-a1-fresh-profile-a-v001:6:FIXED_CANARY"
+    ]
+  },
+  "execution_budget_after_model_start_sha256": "a7bc41beb96ed881bbb91803d7c86b1f60f741f93713a56085e6837b511a1386",
+  "launcher_admission_evidence": {
+    "schema": 1,
+    "status": "FROZEN_LAUNCHER_ADMISSION",
+    "target": {
+      "card_id": 6,
+      "chip_id": 0,
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "pci_bdf": "0000:85:00.0",
+      "physical_id": 12
+    },
+    "rounds": [
+      "RESUME05_ADMISSION_ROUND1.json",
+      "RESUME05_ADMISSION_ROUND2.json"
+    ],
+    "files": {
+      "result.json": {
+        "sha256": "e07a0a44c82aecbe4f074c1f6d8b39cae671c4b04bd42784297fa02b40ed715d",
+        "size_bytes": 2706,
+        "started_at": 1790647344.2359285,
+        "ended_at": 1790647496.0696716,
+        "validated_at_epoch": 1790647548.7839482
+      },
+      "RESUME05_ADMISSION_ROUND1.json": {
+        "sha256": "1761632cde698e1a3fafe4c82464809ff7239bb90dbb23c2c5c0862945c29b4d",
+        "size_bytes": 226406,
+        "started_at": 1790647344.2359285,
+        "ended_at": 1790647414.6546571
+      },
+      "RESUME05_ADMISSION_ROUND2.json": {
+        "sha256": "41839dbc6449af876d62eee25f5dfd294c1925b5ffe829e2d9d250d362fb2472",
+        "size_bytes": 225847,
+        "started_at": 1790647425.7163076,
+        "ended_at": 1790647496.0696716
+      }
+    }
+  },
+  "container_id": "1ac44cf17adbff72831f703290b437afa79985a5fe9a4f1cf11b4def975c7d65",
+  "driver_command": [
+    "docker",
+    "exec",
+    "-e",
+    "PYTHONPATH=/round9/artifacts/round16-a/a-snapshots/round16-a1-b-transport-v005/fresh-b-v005",
+    "-e",
+    "ROUND16_A1_PROFILE_ENABLE=1",
+    "-e",
+    "ROUND16_A1_BLOCK_ID=round16-a1-fresh-profile-b-v001",
+    "1ac44cf17adbff72831f703290b437afa79985a5fe9a4f1cf11b4def975c7d65",
+    "python",
+    "/round9/artifacts/round16-a/a-snapshots/round16-a1-b-transport-v005/fresh-b-v005/tools/round16_a1_container_driver.py",
+    "--snapshot",
+    "/round9/artifacts/round16-a/a-snapshots/round16-a1-b-transport-v005/fresh-b-v005",
+    "--block-id",
+    "round16-a1-fresh-profile-b-v001",
+    "--ledger",
+    "/round9/evidence/20260929-round16-a1-fresh-profile-a-v003/round16-a1-controller/round16-a1-ledger-after.json",
+    "--ledger-sha256",
+    "b98785afae33fea891609ff124e62ccf57d5edd90dbaeb4153d934a6d450d987",
+    "--source-manifest-sha256",
+    "8fe6106cfb3e18741332393df786a4c757a4e6355d6a508ef26391ecfaf63e2c",
+    "--output",
+    "/out/round16-a1-controller",
+    "--observer-receipt-path",
+    "/mnt/data1/kt-round9/evidence/20260929-round16-a1-fresh-profile-b-v003/round16-a1-observer.jsonl"
+  ],
+  "cleanup_started_at": 1790647857.9380348,
+  "guard_exit_event": {
+    "time": 1790647866.986035,
+    "action": "OWNED_EXITED",
+    "container_id": "1ac44cf17adbff72831f703290b437afa79985a5fe9a4f1cf11b4def975c7d65",
+    "state": {
+      "Status": "exited",
+      "Running": false,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 0,
+      "ExitCode": 137,
+      "Error": "",
+      "StartedAt": "2026-09-29T02:06:18.241793488Z",
+      "FinishedAt": "2026-09-29T02:11:06.749062165Z"
+    },
+    "after_guard_stop": true
+  },
+  "owned_container_removed": true,
+  "was_running_at_cleanup": true,
+  "container_state": "running",
+  "post_cleanup_resource_probe_error": "RuntimeError('NUMA3 below 48GiB free for MXFP4')",
+  "physical12_after": {
+    "target": 12,
+    "status": "DEFERRED_TO_NEXT_FRESH_ADMISSION",
+    "blocking": false
+  },
+  "ended_at": 1790647868.2433136,
+  "single_block_analysis_preflight": "PASS_DEVICE_EVIDENCE_PENDING",
+  "two_block_candidate_decision": "A1_INSUFFICIENT_ATTRIBUTION"
+}

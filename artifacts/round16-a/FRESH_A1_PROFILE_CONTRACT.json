@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "status": "FROZEN_OFFLINE_NOT_RUN",
+  "stage": "ROUND16_A1_FRESH_PROFILE",
+  "default_enabled": false,
+  "source_basis": {
+    "parent": "ROUND14A_V295_PROMOTED_GDN_S0",
+    "round15_terminal_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "round15_final_status_sha256": "f5f1e77a8972601b886dde67067ac845b511fd32a1268b9213d4eb44194db31f",
+    "round15_p0_result_sha256": "56de9c3d6eabff94b0b6f10f127c7d8767679da76d79e0f3659ad2f9683e6482",
+    "observer_sha256": "a4bd6c90bc05ec09e51d14194fb2eaf38e00dcb5578d48b91bfdfc1f4b392cc0",
+    "ktep_wrapper_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+    "scheduler_sha256": "5b96f89ee24f49671b3c35960922d7f93b2133c62e087642d6bdde3ea20b1c6b",
+    "launcher_sha256": "daad3cf0ad99c870c4a884ca0440c4f88d5c887984c4735dff2fe72b5c291f1c",
+    "cpu_worker_api": [
+      "KTEPWrapperMethod._submit_cpu_forward",
+      "KTEPWrapperMethod._sync_cpu_forward"
+    ]
+  },
+  "snapshot_builder": {
+    "implementation": "round16/a/fresh_a1_snapshot.py",
+    "mutation_scope": "COPIED_TREE_ONLY",
+    "parent_write_count": 0,
+    "exact_sha_preconditions": true,
+    "fresh_output_required": true,
+    "default_enabled": false,
+    "actual_boundaries": [
+      "KTEPWrapperMethod.apply Host parent",
+      "KTEPWrapperMethod._submit_cpu_forward",
+      "KTEPWrapperMethod._sync_cpu_forward",
+      "KTEPWrapperMethod.apply post-wait_event merge",
+      "round13_attribution QSA_INDEXER/GDN/NPU_RESIDENT direct samples"
+    ],
+    "production_sync_changes": 0,
+    "native_abi_changes": 0
+  },
+  "blocks": [
+    {
+      "block": "A",
+      "block_id": "round16-a1-fresh-profile-a-v001",
+      "snapshot_id": "round16-a1-fresh-profile-a-v001-snapshot",
+      "enabled": false,
+      "model_process_limit": 1,
+      "generation_limit": 6,
+      "abort_limit": 0,
+      "automatic_retry_limit": 0
+    },
+    {
+      "block": "B",
+      "block_id": "round16-a1-fresh-profile-b-v001",
+      "snapshot_id": "round16-a1-fresh-profile-b-v001-snapshot",
+      "enabled": false,
+      "model_process_limit": 1,
+      "generation_limit": 6,
+      "abort_limit": 0,
+      "automatic_retry_limit": 0
+    }
+  ],
+  "schedule": [
+    {
+      "ordinal": 1,
+      "role": "W1_WARMUP",
+      "workload": "W1",
+      "phase": "warmup",
+      "input_tokens": 128,
+      "output_tokens": 16
+    },
+    {
+      "ordinal": 2,
+      "role": "W2_WARMUP",
+      "workload": "W2",
+      "phase": "warmup",
+      "input_tokens": 128,
+      "output_tokens": 128
+    },
+    {
+      "ordinal": 3,
+      "role": "W1_MEASUREMENT",
+      "workload": "W1",
+      "phase": "measurement",
+      "input_tokens": 128,
+      "output_tokens": 16
+    },
+    {
+      "ordinal": 4,
+      "role": "W2_MEASUREMENT",
+      "workload": "W2",
+      "phase": "measurement",
+      "input_tokens": 128,
+      "output_tokens": 128
+    },
+    {
+      "ordinal": 5,
+      "role": "SHORT_DRAIN",
+      "workload": "DRAIN",
+      "phase": "drain",
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "driver_source": "artifacts/round15/p0-snapshots/v338/round14a_b_profile_driver.py",
+      "driver_source_sha256": "325f9e06901cca49c4f92ca4f3fab9112d3500343af7864b297972f9c1d01e44",
+      "input_tokens": 27,
+      "output_tokens": 4,
+      "ignore_eos": true
+    },
+    {
+      "ordinal": 6,
+      "role": "FIXED_CANARY",
+      "workload": "CANARY",
+      "phase": "canary",
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "input_tokens": 27,
+      "input_ids_sha256": "4d2584778859d8b34fa388d6fb09925c1da1a0197945de1298f09d199dce489d",
+      "messages_sha256": "e5a27eaad7efa96e5ff9020ca99f901cf968238ac7ae7b662c7369923c5e6615",
+      "temperature": 0,
+      "top_p": 1,
+      "seed": 20260920,
+      "max_new_tokens": 32,
+      "ignore_eos": false,
+      "validator": {
+        "kind": "exact_text",
+        "expected": "391"
+      },
+      "logprob_requirement": "FINITE"
+    }
+  ],
+  "budget": {
+    "model_processes_total": 2,
+    "model_processes_per_block": 1,
+    "generation_attempts_total": 12,
+    "generation_attempts_per_block": 6,
+    "abort_controls": 0,
+    "automatic_retries": 0
+  },
+  "observer": {
+    "host_clock_domain": "HOST_MONOTONIC_NS",
+    "device_clock_domain": "NPU_EVENT_ELAPSED_MS",
+    "device_query": "DEFERRED_QUERY_NO_SYNCHRONIZE",
+    "identity_fields": [
+      "span_id",
+      "parent_span_id",
+      "stream_id",
+      "start_event_id",
+      "end_event_id",
+      "correlation_id"
+    ],
+    "boundary_catalog": {
+      "parent": "KTEPWrapperMethod.apply",
+      "host_dispatch": "KTEPWrapperMethod._submit_cpu_forward",
+      "host_sync": "KTEPWrapperMethod._sync_cpu_forward",
+      "npu_shared": "SharedFullContext.gpu_method.apply",
+      "npu_resident": "KTEPWrapperMethod.gpu_method.apply",
+      "host_merge": "KTEPWrapperMethod.apply after main-stream wait_event",
+      "scheduler_before": "round13_attribution.before",
+      "scheduler_after": "round13_attribution.after"
+    },
+    "boundary_catalog_is_installation_claim": false,
+    "installed_wiring": {
+      "round16_a1_host_layers": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "round13_direct_device_components": [
+        "QSA_INDEXER",
+        "GDN",
+        "NPU_RESIDENT"
+      ],
+      "round13_device_sample_layers": [
+        0,
+        24,
+        47
+      ],
+      "a1_npu_shared": false
+    },
+    "cpu_expert": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+    "parent_child_arithmetic": "FORBIDDEN"
+  },
+  "candidate": {
+    "enabled": false,
+    "selected": null,
+    "request_gate": "DECODE_W2_DEVICE_REQUIRED_NOT_RUN"
+  },
+  "execution": "DEVICE_REQUIRED_NOT_RUN"
+}

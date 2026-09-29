@@ -1,0 +1,74 @@
+{
+  "a_preflight": {
+    "block_id": "round16-a1-fresh-profile-a-v001",
+    "device_probe_count": 0,
+    "enabled": false,
+    "execution": "DEVICE_REQUIRED_NOT_RUN",
+    "execution_budget_current_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_initial_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_start": null,
+    "execution_budget_state": "INITIAL_UNSPENT",
+    "generation_limit": 6,
+    "ledger_sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+    "schedule_sha256": "0234a038784bececbb6a60ad27d023f33f8737fd1dbe0cf58b9140be3518df58",
+    "schema": 1,
+    "snapshot_id": "round16-a1-fresh-profile-a-v001-snapshot",
+    "source_manifest_sha256": "072dc56fbf005ffb34f5f487633910809cacf30a483c17b59fe9d70413f2435f",
+    "source_manifest_status": "EXACT",
+    "stage": "ROUND16_A1_FRESH_PROFILE",
+    "status": "PASS_OFFLINE_PREFLIGHT",
+    "total_generation_limit": 12
+  },
+  "b_transport_preflight": "SOURCE_ONLY_UNTIL_A_LEDGER_AFTER",
+  "created_at_epoch": 1790641457.4455893,
+  "donor": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+  "failed_predecessor_receipts": [
+    "TRANSPORT_V001_PREFLIGHT_FAILURE.json",
+    "A_LAUNCH_V001_SOURCE_GATE_FAILURE.json"
+  ],
+  "integration_contract_version": "round16-contract-v2",
+  "ledger": {
+    "path": "FRESH_A1_LEDGER_INITIAL.json",
+    "sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219"
+  },
+  "local_archive_full_verification": {
+    "files_verified": 5267,
+    "status": "PASS"
+  },
+  "overlay_tree_gate_verification": "PASS_BOTH_SNAPSHOTS",
+  "recorded_at_epoch": 1790641572.9734592,
+  "runtime_version": "v002",
+  "schema": 1,
+  "snapshots": {
+    "A": {
+      "directory": "fresh-a-v003",
+      "execution_budget_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+      "file_count": 2633,
+      "source_manifest_sha256": "072dc56fbf005ffb34f5f487633910809cacf30a483c17b59fe9d70413f2435f"
+    },
+    "B": {
+      "directory": "fresh-b-v003",
+      "execution_budget_sha256": "d134a133699a76c0f498d302be268f0bc7c3969842594e032edbe0abb933c9a8",
+      "file_count": 2633,
+      "source_manifest_sha256": "42055ef052b5203cb460f3f60f4536d1eab90521729721613166a71d9a35df45"
+    }
+  },
+  "status": "PASS_LOCAL_BUILD_ARCHIVE_AND_OVERLAY_GATE_REVIEWED_FOR_TRANSPORT",
+  "supersedes_for_execution": "v001 rejected at remote package import preflight",
+  "tar": {
+    "path": "/tmp/round16-a1-transport-v003.tar",
+    "sha256": "340ee7325a57beea280c0acf3f85ffe4d219473a221f9f0857fc65d1c7f22900",
+    "size_bytes": 70031360
+  },
+  "transport_manifest": {
+    "file_count": 5267,
+    "path": "ROUND16_A1_TRANSPORT_MANIFEST.json",
+    "sha256": "6e9b07affc944d890c293fcefda48f9632023331a333b425e572628e6c6937bb"
+  },
+  "transport_version": "v003",
+  "verification": {
+    "integration_tests": 276,
+    "isolated_package_import_regression": "PASS",
+    "status": "PASS"
+  }
+}

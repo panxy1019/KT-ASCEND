@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_FRESH_PROFILE",
+  "status": "FROZEN_OFFLINE_NOT_RUN",
+  "enabled": false,
+  "executable": false,
+  "block": "A",
+  "block_id": "round16-a1-fresh-profile-a-v001",
+  "snapshot_id": "round16-a1-fresh-profile-a-v001-snapshot",
+  "snapshot_root": null,
+  "source_manifest": "round16-a1-source-sha256.json",
+  "source_manifest_sha256": null,
+  "ledger_path": null,
+  "ledger_sha256": null,
+  "ledger_required_state": "INITIAL_EMPTY",
+  "output_dir": null,
+  "generation_limit": 6,
+  "generation_limit_total": 12,
+  "schedule": [
+    {
+      "ordinal": 1,
+      "role": "W1_WARMUP",
+      "workload": "W1",
+      "phase": "warmup",
+      "input_tokens": 128,
+      "output_tokens": 16
+    },
+    {
+      "ordinal": 2,
+      "role": "W2_WARMUP",
+      "workload": "W2",
+      "phase": "warmup",
+      "input_tokens": 128,
+      "output_tokens": 128
+    },
+    {
+      "ordinal": 3,
+      "role": "W1_MEASUREMENT",
+      "workload": "W1",
+      "phase": "measurement",
+      "input_tokens": 128,
+      "output_tokens": 16
+    },
+    {
+      "ordinal": 4,
+      "role": "W2_MEASUREMENT",
+      "workload": "W2",
+      "phase": "measurement",
+      "input_tokens": 128,
+      "output_tokens": 128
+    },
+    {
+      "ordinal": 5,
+      "role": "SHORT_DRAIN",
+      "workload": "DRAIN",
+      "phase": "drain",
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "driver_source": "artifacts/round15/p0-snapshots/v338/round14a_b_profile_driver.py",
+      "driver_source_sha256": "325f9e06901cca49c4f92ca4f3fab9112d3500343af7864b297972f9c1d01e44",
+      "input_tokens": 27,
+      "output_tokens": 4,
+      "ignore_eos": true
+    },
+    {
+      "ordinal": 6,
+      "role": "FIXED_CANARY",
+      "workload": "CANARY",
+      "phase": "canary",
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "input_tokens": 27,
+      "input_ids_sha256": "4d2584778859d8b34fa388d6fb09925c1da1a0197945de1298f09d199dce489d",
+      "messages_sha256": "e5a27eaad7efa96e5ff9020ca99f901cf968238ac7ae7b662c7369923c5e6615",
+      "temperature": 0,
+      "top_p": 1,
+      "seed": 20260920,
+      "max_new_tokens": 32,
+      "ignore_eos": false,
+      "validator": {
+        "kind": "exact_text",
+        "expected": "391"
+      },
+      "logprob_requirement": "FINITE"
+    }
+  ],
+  "schedule_sha256": "0234a038784bececbb6a60ad27d023f33f8737fd1dbe0cf58b9140be3518df58",
+  "automatic_retries": 0,
+  "abort_controls": 0,
+  "environment": {
+    "ROUND16_A1_PROFILE_ENABLE": "0"
+  },
+  "required_transition": "prepare_controller_input(..., enabled=True) after a fresh snapshot, exact source manifest, exact ledger SHA, and fresh output path",
+  "execution": "DEVICE_REQUIRED_NOT_RUN"
+}

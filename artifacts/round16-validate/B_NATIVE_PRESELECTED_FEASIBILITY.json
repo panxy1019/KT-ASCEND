@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_B_NATIVE_PRESELECTED_FEASIBILITY",
+  "status": "P0_SOURCE_PRESELECTED_SEAM_FEASIBLE_P1_DEVICE_REQUIRED_NOT_RUN",
+  "device_or_model_work_performed": false,
+  "source_conclusion": {
+    "entrypoint": "MoECommMethod.fused_experts(MoEFusedExpertsInput)",
+    "envelope": [
+      "MoECommMethod.prepare",
+      "select exactly once with routed_scaling_factor=1.0",
+      "freeze and split Top-K",
+      "build_fused_experts_input",
+      "MoECommMethod.fused_experts",
+      "MoECommMethod.finalize"
+    ],
+    "avoids_second_select_experts": true,
+    "native_output_contract": {
+      "representation": "TOKEN_LEVEL_WEIGHTED_AGGREGATE_PARTIAL",
+      "route_weights_applied": true,
+      "routed_scaling_applied": false,
+      "shared_applied": false,
+      "residual_applied": false
+    },
+    "forbidden_path_after_topk_freeze": "Ascend quant method apply, because every reviewed apply performs its own select_experts"
+  },
+  "p1_scope": {
+    "model_unit": "one Qwen4Exp MoE layer",
+    "ep": 1,
+    "tp": 1,
+    "comm_type": "ALLGATHER",
+    "npu_dtype": "bfloat16",
+    "resident_physical_experts": 32,
+    "top_k": 10,
+    "quant_type": "NONE",
+    "eager": true,
+    "dynamic_eplb": false,
+    "log2phy": null,
+    "expert_map": null,
+    "lora": false,
+    "graph": false,
+    "shared_overlap": false
+  },
+  "physical32_contract": {
+    "w13_layout_after_postload": [
+      32,
+      "H",
+      "2*I_tp"
+    ],
+    "w2_layout_after_postload": [
+      32,
+      "I_tp",
+      "H"
+    ],
+    "topk_ids_dtype": "int32",
+    "topk_weights_dtype": "bfloat16",
+    "need_trans": false,
+    "nonresident_npu_occurrence": "weight=0 and id=safe physical placeholder in [0,31]",
+    "warning": "zero-weight placeholder may still execute and requires a finite-output device probe"
+  },
+  "ownership": {
+    "npu_partial": "MoECommMethod.fused_experts",
+    "cpu_partial": "S15 KT weighted aggregate",
+    "routed_scale_shared_transform_reduce_zero_expert": "inherited upstream MoERunner.forward",
+    "residual": "calling Qwen decoder layer"
+  },
+  "p2_unbound": [
+    "MC2",
+    "FUSED_MC2",
+    "ALLTOALL",
+    "EP>1",
+    "TP>1",
+    "dynamic EPLB",
+    "shared multistream overlap",
+    "LoRA",
+    "graph capture/replay",
+    "request cancellation and late completion",
+    "performance"
+  ],
+  "donor_source_sha256": {
+    "vllm_ascend/ops/fused_moe/fused_moe.py": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+    "vllm_ascend/ops/fused_moe/moe_comm_method.py": "043f3c28518254347589f7af03793810262d0b29a9a82ca17dfd5fe5f9559f2e",
+    "vllm_ascend/ops/fused_moe/moe_runtime_args.py": "c1d52390f5619ce184207038d131abbe2d6745f527badc82363b0394f80371c2",
+    "vllm_ascend/ops/fused_moe/moe_stage_contracts.py": "0b99054d2ccf72fafab94d2edce915cf88a70ad79601d5453832ff19a77f08b3",
+    "vllm_ascend/ops/fused_moe/moe_stage_params.py": "58c30e8bca86bd47a9d0e52c49276de2d83576d1d2889aa049f1b1f29fa7ced6",
+    "vllm_ascend/ops/fused_moe/token_dispatcher.py": "36fa3658532b330f701c441bab279bed320fea067a2ddf75ee4cfa6a703e0d9b",
+    "vllm_ascend/ops/fused_moe/moe_mlp.py": "5b537cc41c7319d4cb97eb3e353aae4aea3b00d0dc438c61fb4ef94e56aecb3d",
+    "vllm_ascend/ops/fused_moe/experts_selector.py": "112cb58926f7eb1b314cdde2c40e134a1aae1aff2637b701c17cb1c5b2d9e967",
+    "vllm_ascend/ops/fused_moe/prepare_finalize.py": "c467d0ed0a0d41525aa90008aafbfd26bdbb718b0e29db7de2bed9abe09cabdd",
+    "vllm_ascend/ascend_forward_context.py": "af4a6e79ffcf6803c2a2a41dd598618398f090ea3a97253642c340ea26295c9f",
+    "vllm_ascend/quantization/quant_type.py": "2faa4432100452f762aac28b17cb6167d8ed62955063abb9c4f56647fb0f8257",
+    "vllm/model_executor/layers/fused_moe/runner/moe_runner.py": "3c000e17f726c9995a9a950db952415a4b2198d0778e3cedda96355421edfdae"
+  },
+  "required_device_probe": [
+    "exact source and current comm-object identity before allocation",
+    "prove no full512 expert storage before and after checkpoint load",
+    "selector call count exactly one and frozen Top-K immutable",
+    "all-NPU, mixed, all-CPU, non-identity resident map, repeated expert and invalid-row patterns",
+    "compare native NPU weighted partial, KT CPU weighted partial and complete hybrid layer with independent references",
+    "two non-default streams with correct submit/event/completion dependency",
+    "fault injection for ID, comm object, layout, CPU submit, NPU dispatch, late completion, cancel and slot reuse"
+  ]
+}

@@ -1,0 +1,610 @@
+{
+  "all_layer_residency": "NOT_RUN_V4",
+  "allocator_after_load_bytes": 314576384,
+  "allocator_after_postload_bytes": 314576384,
+  "allocator_before_bytes": 0,
+  "allocator_peak_bytes": 629150208,
+  "allocator_peak_delta_bytes": 629150208,
+  "checkpoint_dtypes": {
+    "down": "BF16",
+    "gate_up": "BF16"
+  },
+  "checkpoint_files": {
+    "down": {
+      "mtime_ns": 1789836468487059583,
+      "path": "/model/model-00003-of-00131.safetensors",
+      "size_bytes": 1832518264
+    },
+    "gate_up": {
+      "mtime_ns": 1789836055361721416,
+      "path": "/model/model-00002-of-00131.safetensors",
+      "size_bytes": 3355443368
+    },
+    "index": {
+      "mtime_ns": 1789862205400758599,
+      "path": "/model/model.safetensors.index.json",
+      "sha256": "99e815241ef03325536b0aaa4441deea45174c17fae31e10f0bb456410c590de",
+      "size_bytes": 170726
+    }
+  },
+  "checkpoint_keys": {
+    "down": "model.language_model.layers.0.mlp.experts.down_proj",
+    "gate_up": "model.language_model.layers.0.mlp.experts.gate_up_proj"
+  },
+  "checkpoint_shapes": {
+    "down": [
+      512,
+      2560,
+      640
+    ],
+    "gate_up": [
+      512,
+      1280,
+      2560
+    ]
+  },
+  "construction_method": "UnquantizedFusedMoEMethod",
+  "device_executed": true,
+  "exact_value_checks": {
+    "down_full_q32_exact": true,
+    "gate_full_q32_exact": true,
+    "up_full_q32_exact": true
+  },
+  "execution_method": "AscendUnquantizedFusedMoEMethod",
+  "full_model": "NOT_RUN_V5",
+  "hidden_full512_npu_payload": false,
+  "hybrid_execution": "NOT_RUN_V3",
+  "layer_id": 0,
+  "load_mode": "SAFETENSORS_CPU_ROW_SLICE_NATIVE_PARAMETER_LOADER",
+  "logical_experts": 512,
+  "physical_npu_slots": 32,
+  "postload_order": "UPSTREAM_CREATE_LOAD_THEN_ASCEND_POSTLOAD",
+  "projection_coverage": [
+    {
+      "logical_expert_id": 0,
+      "physical_slot": 0,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 0,
+      "physical_slot": 0,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 0,
+      "physical_slot": 0,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 1,
+      "physical_slot": 1,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 1,
+      "physical_slot": 1,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 1,
+      "physical_slot": 1,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 2,
+      "physical_slot": 2,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 2,
+      "physical_slot": 2,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 2,
+      "physical_slot": 2,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 3,
+      "physical_slot": 3,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 3,
+      "physical_slot": 3,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 3,
+      "physical_slot": 3,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 4,
+      "physical_slot": 4,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 4,
+      "physical_slot": 4,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 4,
+      "physical_slot": 4,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 5,
+      "physical_slot": 5,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 5,
+      "physical_slot": 5,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 5,
+      "physical_slot": 5,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 6,
+      "physical_slot": 6,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 6,
+      "physical_slot": 6,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 6,
+      "physical_slot": 6,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 7,
+      "physical_slot": 7,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 7,
+      "physical_slot": 7,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 7,
+      "physical_slot": 7,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 8,
+      "physical_slot": 8,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 8,
+      "physical_slot": 8,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 8,
+      "physical_slot": 8,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 9,
+      "physical_slot": 9,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 9,
+      "physical_slot": 9,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 9,
+      "physical_slot": 9,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 10,
+      "physical_slot": 10,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 10,
+      "physical_slot": 10,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 10,
+      "physical_slot": 10,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 11,
+      "physical_slot": 11,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 11,
+      "physical_slot": 11,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 11,
+      "physical_slot": 11,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 12,
+      "physical_slot": 12,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 12,
+      "physical_slot": 12,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 12,
+      "physical_slot": 12,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 13,
+      "physical_slot": 13,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 13,
+      "physical_slot": 13,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 13,
+      "physical_slot": 13,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 14,
+      "physical_slot": 14,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 14,
+      "physical_slot": 14,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 14,
+      "physical_slot": 14,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 15,
+      "physical_slot": 15,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 15,
+      "physical_slot": 15,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 15,
+      "physical_slot": 15,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 16,
+      "physical_slot": 16,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 16,
+      "physical_slot": 16,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 16,
+      "physical_slot": 16,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 17,
+      "physical_slot": 17,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 17,
+      "physical_slot": 17,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 17,
+      "physical_slot": 17,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 18,
+      "physical_slot": 18,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 18,
+      "physical_slot": 18,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 18,
+      "physical_slot": 18,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 19,
+      "physical_slot": 19,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 19,
+      "physical_slot": 19,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 19,
+      "physical_slot": 19,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 20,
+      "physical_slot": 20,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 20,
+      "physical_slot": 20,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 20,
+      "physical_slot": 20,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 21,
+      "physical_slot": 21,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 21,
+      "physical_slot": 21,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 21,
+      "physical_slot": 21,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 22,
+      "physical_slot": 22,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 22,
+      "physical_slot": 22,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 22,
+      "physical_slot": 22,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 23,
+      "physical_slot": 23,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 23,
+      "physical_slot": 23,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 23,
+      "physical_slot": 23,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 24,
+      "physical_slot": 24,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 24,
+      "physical_slot": 24,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 24,
+      "physical_slot": 24,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 25,
+      "physical_slot": 25,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 25,
+      "physical_slot": 25,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 25,
+      "physical_slot": 25,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 26,
+      "physical_slot": 26,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 26,
+      "physical_slot": 26,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 26,
+      "physical_slot": 26,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 27,
+      "physical_slot": 27,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 27,
+      "physical_slot": 27,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 27,
+      "physical_slot": 27,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 28,
+      "physical_slot": 28,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 28,
+      "physical_slot": 28,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 28,
+      "physical_slot": 28,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 29,
+      "physical_slot": 29,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 29,
+      "physical_slot": 29,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 29,
+      "physical_slot": 29,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 30,
+      "physical_slot": 30,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 30,
+      "physical_slot": 30,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 30,
+      "physical_slot": 30,
+      "projection": "down"
+    },
+    {
+      "logical_expert_id": 31,
+      "physical_slot": 31,
+      "projection": "gate"
+    },
+    {
+      "logical_expert_id": 31,
+      "physical_slot": 31,
+      "projection": "up"
+    },
+    {
+      "logical_expert_id": 31,
+      "physical_slot": 31,
+      "projection": "down"
+    }
+  ],
+  "projection_coverage_count": 96,
+  "resident_logical_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "schema": 1,
+  "selected_cpu_bytes": 314572800,
+  "source_row_read_count": 64,
+  "stage": "V2",
+  "status": "REAL_Q32_LOADER_AND_LAYOUT_VERIFIED",
+  "v1_receipt_sha256": "a33e919f325ea2c88c4c0c9bc7a0ff14b81544486d2329571b7058ead92f51fb",
+  "w13_npu_format": 29,
+  "w13_postload": {
+    "device": "npu:0",
+    "dtype": "torch.bfloat16",
+    "shape": [
+      32,
+      2560,
+      1280
+    ],
+    "storage_bytes": 209715200,
+    "tensor_bytes": 209715200
+  },
+  "w2_npu_format": 29,
+  "w2_postload": {
+    "device": "npu:0",
+    "dtype": "torch.bfloat16",
+    "shape": [
+      32,
+      640,
+      2560
+    ],
+    "storage_bytes": 104857600,
+    "tensor_bytes": 104857600
+  },
+  "worker_internal_format_assignment_issued": true
+}

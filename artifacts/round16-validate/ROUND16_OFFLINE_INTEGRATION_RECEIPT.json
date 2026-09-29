@@ -1,0 +1,75 @@
+{
+  "schema": 2,
+  "stage": "ROUND16_OFFLINE_INTEGRATION_MILESTONE",
+  "status": "PASS_OFFLINE_QWEN_SELF_EXPERTS_READY_FINAL_ADMISSION_CYCLE_06",
+  "updated_at_utc": "2026-09-28T19:19:04Z",
+  "round15_barrier": "PASS_TERMINAL_CLEANUP_AND_LEASE_RELEASED",
+  "a": {
+    "status": "A1_ANALYZER_READY_DEVICE_EVIDENCE_PENDING",
+    "selected_candidate": null,
+    "historical_evidence_used": false,
+    "implementation_sha256": "449038aed99b668a7abb3a2d522be7fa2593fba79b322dd590969e5654555a73",
+    "test_sha256": "a423245ab5cbef63551cef89359785524c10fca61eef710b37e1a9f371daee11",
+    "candidate_gate": "A2 requires direct CPU-result exposed wait plus unused same-layer NPU window; A3 requires direct host launch/metadata gap beyond resident-only graph."
+  },
+  "b": {
+    "status": "PASS_OFFLINE_QWEN_SELF_EXPERTS_SOURCE_BOUND_LIVE_INELIGIBLE",
+    "live_eligible": false,
+    "implementation_sha256": {
+      "native_vllm_adapter.py": "49cd225627b0a0051e56afeb610f2ff85ee2bd9539894c883fa3aaeaa6d4f3ee",
+      "native_source_preflight.py": "640c2ae82be851b74c653a0a0fe5a9be3cc533884a2229dbbde238da5c6893a9",
+      "source_bound_q32_adapter.py": "c43f00554f7b718e115f9d760e7b608c7deef6ffb937f822c76aff719c681343",
+      "selective_preallocation_installer.py": "edf9fd600af0adb8ef108ebb4d003ae0752b3780d4c958a8441b45e30102a74f",
+      "source_bound_hybrid_runner.py": "d62b53da1ccc7a009eaee7d78287cd84fa9bb77baf5bcd123c426c46b86c56f8",
+      "kt_expert_backend.py": "c0c7cdce6c27ab5a98a4baf00963aac256997c400c792348a2ebca94a18c3fb1",
+      "qwen_runner_wiring_test.py": "9a2253c00b62fc94682be71ca7cd5e11ab887b9fb2c4bba5a11fa5a3272b0550",
+      "qwen_wiring_receipt.json": "1116c6adee0b2567c03eec668e7055e6426b12c82280695317d4453e7eee844c"
+    },
+    "closed_offline_gates": [
+      "EXACT_15_SOURCE_AND_CONFIG_PREFLIGHT_TOKEN",
+      "Q32_MANAGER_512_ENTRY_PREALLOCATION_AND_ACK_VALIDATION",
+      "PHYSICAL32_W13_W2_BF16_ACKNOWLEDGEMENT",
+      "INPUT128_OUTPUT128_CUMULATIVE_CONTEXT256_GATE",
+      "REAL_SHAPED_QWEN_SELF_EXPERTS_FORWARD_REACHES_BRIDGE",
+      "FORTY_EIGHT_LAYER_OWNER_RUNNER_IDENTICAL_PLAN_ACK",
+      "PREPARED_HIDDEN_ROUTER_AND_VALID_ROWS_PROPAGATED",
+      "SELECTOR_EXACTLY_ONCE_AND_POSTPROCESS_OWNERSHIP_FROZEN",
+      "NATIVE_WEIGHTED_UNSCALED_AGGREGATE_ABI",
+      "KT_SUBMIT_NATIVE_SYNC_ORDER_CONTRACT",
+      "KT_NO_WORK_ID_SINGLE_OUTSTANDING_FAIL_CLOSED"
+    ],
+    "remaining_device_gates": [
+      "LIVE_QWEN_SELF_EXPERTS_IMAGE_PROOF",
+      "EP1_ALLGATHER_Q32_PRESELECTED_DEVICE_ADAPTER",
+      "Q32_NATIVE_OWNER_AND_RUNNER_DEVICE_PAIR",
+      "S15_WEIGHTED_AGGREGATE_DEVICE_PARITY",
+      "EXACT_SOURCE_TOKEN_ATOMIC_LIVE_REGISTRATION",
+      "RESIDENT_MAP_LIVE_RECEIPT_HASH_REQUIRED",
+      "DEVICE_REAL_MOE_REQUIRED",
+      "KT_NATIVE_STREAM_SINGLE_OUTSTANDING_DEVICE_DRAIN",
+      "TP1_EAGER_CONTEXT_AND_STATE_CAPACITY_DEVICE_PROOF"
+    ],
+    "bounded_first_device_candidate": "TP1_EP1_EAGER_ALLGATHER_BF16_QUANT_NONE_PHYSICAL_Q32_EXPERT_MAP_NONE_LOG2PHY_NONE"
+  },
+  "integration_verification": {
+    "unittest": "PASS_220_OF_220",
+    "compileall": "PASS",
+    "json_artifacts_parsed": 49,
+    "git_diff_check": "PASS",
+    "overlay_byte_identical": true,
+    "shared_contract_version": "round16-contract-v2",
+    "test_compatibility_change": "B strict-integer test accepts the earlier shared RouteBatch rejection point; production validation was not relaxed."
+  },
+  "resource_and_budget": {
+    "npu_used": false,
+    "c128_used": false,
+    "model_groups_used": 0,
+    "generation_attempts_used": 0,
+    "abort_controls_used": 0,
+    "device_component_processes_used": 0,
+    "npu_device_hours_used": 0,
+    "admission_failed_cycles": 5,
+    "admission_failed_cycle_limit": 6
+  },
+  "next_action": "Run the sixth and final independent read-only resource admission cycle. If one exact target is unclaimed, run two fresh 60-second target admission rounds before any NPU initialization; otherwise freeze DEVICE_PENDING external-resource status without consuming device or model budget."
+}

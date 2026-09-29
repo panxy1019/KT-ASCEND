@@ -1,0 +1,41 @@
+{
+  "api_checks": [
+    "worker.py",
+    "model_runner_v1.py",
+    "qwen4_exp/model.py",
+    "qwen4_exp/nvidia/model.py",
+    "fused_moe.py",
+    "ascend_forward_context.py"
+  ],
+  "api_identity": "round16-integration:b2-exact-worker-preflight:v1",
+  "base_source_binding_sha256": "8590fad6dd9c9534df5a0394dd920fe75c932f9619b9d49791ab561df2bcd62a",
+  "device_executed": false,
+  "live_eligible": false,
+  "not_run": [
+    "NPU",
+    "model load",
+    "checkpoint read",
+    "C128 bank",
+    "device numerical parity"
+  ],
+  "observed_sha256": {
+    "ascend_forward_context.py": "af4a6e79ffcf6803c2a2a41dd598618398f090ea3a97253642c340ea26295c9f",
+    "fused_moe.py": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+    "model_runner_v1.py": "de9f108bb1365c7eb5967c0cd098a005510fe627f7a27e0732d120a0f33e2608",
+    "qwen4_exp/model.py": "b06a3123073234efb39958c502b53bee23384d1a7eb61f40d12b3d8b55481133",
+    "qwen4_exp/nvidia/model.py": "a38101a1c4a3cb078b0169d3c4b7b6c4b39ba41db8283a29cf8fcc5eb7ac9689",
+    "worker.py": "eb0bb11de6dffecbed135979655cf032cccef3f3ea4fe3b93254933d47e0f8c0"
+  },
+  "passed": true,
+  "required_failure_gate": "SELECTIVE_Q32_PREALLOCATION_REQUIRED_UNTIL_LIVE_OWNER_ACK",
+  "resolved_entrypoints": [
+    "NPUWorker.load_model -> NPUModelRunner.load_model under set_current_vllm_config",
+    "NPUModelRunner.load_model -> get_model before post-load registration",
+    "Qwen4ExpSparseMoeBlock -> Qwen3NextSparseMoeBlock -> module-global FusedMoE",
+    "qwen3_next.FusedMoE exact binding -> _ascend_FusedMoE",
+    "forward context -> current moe_comm_method; stream remains lazy runtime input"
+  ],
+  "schema": 1,
+  "status": "PASS_B2_EXACT_WORKER_SOURCE",
+  "worker_source_binding_sha256": "437df9a83ea9329522faa7cdd6279ac012f97a25bf59bf499a503f086ea14349"
+}

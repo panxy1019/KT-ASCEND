@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_B_SEMANTIC_REVIEW",
+  "status": "DEFAULT_OFF_SAFE_REAL_MOE_BLOCKED",
+  "review_scope": "read-only offline source and scaffold review",
+  "critical": [],
+  "important_before_real_moe": [
+    {
+      "id": "REAL_RUNNER_ROUTE_ONCE_BINDING",
+      "finding": "The offline bridge is not yet invoked by the real Qwen self.experts forward; the donor Ascend quant apply path selects experts internally and would route twice if reused after the Round16 split.",
+      "required_evidence": "Every constructed MoE layer acknowledges the source-bound Hybrid runner and Q32 owner; one frozen Top-10 result is consumed by both branches; no second select_experts call occurs."
+    },
+    {
+      "id": "KT_WEIGHT_SCALE_SHARED_OWNERSHIP",
+      "finding": "The frozen S15 KT submit/sync ABI returns a token-level CPU partial with original Top-K weights already applied, while the original scaffold merge assumed unweighted per-occurrence rows.",
+      "required_evidence": "CPU and NPU routed partials are combined once; routed scale, shared expert/gate, and residual each have exactly one owner."
+    },
+    {
+      "id": "Q32_LIVE_MANAGER_MAP_BINDING",
+      "finding": "Prepared metadata could match the Q32 plan while the live ExpertMapManager returned a different mapping; this was reproduced with a manager returning -1 for all 512 logical experts.",
+      "required_evidence": "Before allocation and after construction, all 512 exact integer map results equal the frozen logical-to-physical plan; w13/w2 leading dimension is 32 and resident dtype is BF16."
+    },
+    {
+      "id": "SOURCE_PREFLIGHT_ATOMIC_REGISTRATION",
+      "finding": "The runner and loader semantic sources must be part of the exact source preflight, and a passed observed-digest token must be consumed atomically by registration.",
+      "required_evidence": "Exact source and AST gates include MoERunner, AutoWeightsLoader/model utils, weight utils, RoutedExperts, and the real Qwen consumer; one-byte drift prevents every registry/installer side effect."
+    }
+  ],
+  "important_before_request_async": [
+    {
+      "id": "NATIVE_COMPLETION_IDENTITY_OR_SERIAL_DRAIN",
+      "finding": "The S15 native submit/sync ABI carries no Round16 work identity, so mock lease checks do not prove that a late native result belongs to the current request/slot generation.",
+      "required_evidence": "Either native completion returns the immutable work identity, or each wrapper permits one outstanding work and cancellation drains/discards it before slot reuse."
+    }
+  ],
+  "frozen_source_sha256": {
+    "vllm_moe_runner.py": "3c000e17f726c9995a9a950db952415a4b2198d0778e3cedda96355421edfdae",
+    "vllm_weight_utils.py": "0f7dd5854cb850ee1aede33e11b22f37ea9c53f60d3477c5115efd20d69417d9",
+    "vllm_models_utils.py": "f06d1a1a8d92e6ab39ebf7931d3eb3d6688d212606b1c409d7bed8eed5ba1fc2",
+    "s15_kt_ep_wrapper.py": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b"
+  },
+  "current_live_path": {
+    "enabled": false,
+    "safe": true,
+    "reason": "runtime runner binding remains unverified and registration fails closed before registry mutation"
+  },
+  "device_or_model_work_performed": false
+}

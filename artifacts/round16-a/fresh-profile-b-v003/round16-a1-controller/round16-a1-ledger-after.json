@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_FRESH_PROFILE",
+  "immutable": true,
+  "generation_limit_total": 12,
+  "generation_limit_per_block": 6,
+  "used_by_block": {
+    "round16-a1-fresh-profile-a-v001": 6,
+    "round16-a1-fresh-profile-b-v001": 6
+  },
+  "request_ids": [
+    "round16-a1-fresh-profile-a-v001:1:W1_WARMUP",
+    "round16-a1-fresh-profile-a-v001:2:W2_WARMUP",
+    "round16-a1-fresh-profile-a-v001:3:W1_MEASUREMENT",
+    "round16-a1-fresh-profile-a-v001:4:W2_MEASUREMENT",
+    "round16-a1-fresh-profile-a-v001:5:SHORT_DRAIN",
+    "round16-a1-fresh-profile-a-v001:6:FIXED_CANARY",
+    "round16-a1-fresh-profile-b-v001:1:W1_WARMUP",
+    "round16-a1-fresh-profile-b-v001:2:W2_WARMUP",
+    "round16-a1-fresh-profile-b-v001:3:W1_MEASUREMENT",
+    "round16-a1-fresh-profile-b-v001:4:W2_MEASUREMENT",
+    "round16-a1-fresh-profile-b-v001:5:SHORT_DRAIN",
+    "round16-a1-fresh-profile-b-v001:6:FIXED_CANARY"
+  ],
+  "update_policy": "COPY_ON_SPEND_NEW_SHA256",
+  "automatic_retries": 0,
+  "abort_controls": 0
+}

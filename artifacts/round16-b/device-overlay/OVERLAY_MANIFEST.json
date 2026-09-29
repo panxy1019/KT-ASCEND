@@ -1,0 +1,182 @@
+{
+  "copy_target": "read-only or temporary path inside the frozen donor image; install round16 and round16_integration together",
+  "default": "OFF",
+  "device_probe_execution": "ROUND16_B_ENABLE_P1=1 python3 -m round16_integration.p1_allgather_q32_probe --enable-device --binding-factory round16_integration.b2_unresolved_bindings:create_p1_runtime_binding --source-token <receipt> --snapshot-manifest <manifest> --enforce-eager --layer 0 --tokens 1 --output <receipt>; expected current result SELECTIVE_Q32_PREALLOCATION_REQUIRED before device work",
+  "does_not_enable": [
+    "device-verified physical-Q32 RoutedExperts/checkpoint-slice factory",
+    "NPU execution",
+    "real KT stream callback or C128 bank",
+    "checkpoint/model loading",
+    "numerical or performance qualification"
+  ],
+  "files": [
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_b_native_source_preflight.py",
+      "runtime_dependencies": [
+        "Python standard library"
+      ],
+      "sha256": "d2ce82499240624a3d4e4cfa87925c21bedee1b0f4544a9a4ce6e2927d99ab4e"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "allgather_q32_device_adapter.py",
+      "runtime_dependencies": [
+        "Python standard library",
+        "installed round16.b package"
+      ],
+      "sha256": "d223b39b06b0064fc03bef23151b9306987d3e9771ad2a51348913b2b05804e9"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/__init__.py",
+      "runtime_dependencies": [
+        "Python standard library"
+      ],
+      "sha256": "05824f1b6ad79cd6bdd1a1a791fe0a2b71a2e51fa573fcbf6181d54da0eff7f2"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/p1_allgather_q32_probe.py",
+      "runtime_dependencies": [
+        "Python standard library",
+        "installed round16.b package"
+      ],
+      "sha256": "ad48b06cb0a16f435b8efd9963e492daba76e1433fd8ad42a19ab8ac20926c15"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "run_p1_allgather_q32_probe.py",
+      "runtime_dependencies": [
+        "installed round16 and round16_integration packages"
+      ],
+      "sha256": "7dd19881b2131eb6453183387aa3338e6e1e8b38fb0ec426af7482532e09e476"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "exact_donor_worker_hook.py",
+      "runtime_dependencies": ["installed round16.b package"],
+      "sha256": "47b62d52a0d3b28c249c3b2f5ab216279407a7c4bb8f330377f45aa01b775f99"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/b2_exact_worker_preflight.py",
+      "runtime_dependencies": ["Python standard library", "installed round16 package"],
+      "sha256": "25192cc31c1a9aeb1f207486065479dffd250a352dd97063f2f4dca31b528a97"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/b2_exact_worker_plugin.py",
+      "runtime_dependencies": ["installed round16 package"],
+      "sha256": "40b63f7af856fefc53a9077a5aa2a009256b936dfe3f603e5a27156f404815ab"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/b2_worker_overlay_entry.py",
+      "runtime_dependencies": ["Python standard library", "installed round16 package"],
+      "sha256": "cae036826043464f8e13c616ab2b5bee576841532950d5dfc5f29c56acef3b2b"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "round16_integration/b2_unresolved_bindings.py",
+      "runtime_dependencies": ["installed round16 and round16_integration packages"],
+      "sha256": "ec7af24c08dd19fa425f98bffe1739610dda65677312fb3e6eae1b090137a71b"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "run_b2_exact_worker_preflight.py",
+      "runtime_dependencies": ["installed round16 and round16_integration packages"],
+      "sha256": "0f8877a962387989f091432f193cbcfda4820627436ffa0f1d27c51c826c1330"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "B2_EXACT_WORKER_PREFLIGHT.json",
+      "runtime_dependencies": [],
+      "sha256": "de60e12ef4c6ce4f21b536d5694a477f1fc21e4ba161e187ee1c73cfaaf0fe47"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "B2_EXACT_WORKER_PLUGIN.md",
+      "runtime_dependencies": [],
+      "sha256": "a596e7226d6cb17c245eddb3238e6455ddc13cffe30d4d33dafeec3ac6c9d4ee"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "P1_REMOTE_SNAPSHOT_PREFLIGHT_MANIFEST.json",
+      "runtime_dependencies": [],
+      "sha256": "8257b47ed2f1456e1f4c52a6100eb1b4f299e8cd99dab8c8cf94870f5fb4aab3"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "S0_V295_Q32_PHYSICAL.json",
+      "runtime_dependencies": [],
+      "sha256": "fdc73639b5d3b0f97db2e10c689b4b3a802240d72e50d3bc00aeee402d9f1872"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "P1_DEVICE_PROBE.md",
+      "runtime_dependencies": [],
+      "sha256": "abfcb40c23ccb4049548ec6955cef2d3417889b1aedd16c67de3684bf208cb79"
+    },
+    {
+      "imports_torch": false,
+      "imports_torch_npu": false,
+      "imports_vllm": false,
+      "path": "README.md",
+      "runtime_dependencies": [],
+      "sha256": "3e5da2ede42394957c091507b5e2a4c1e1e8d94f32ded6a6c34d0d122be529e2"
+    }
+  ],
+  "gates": [
+    "exact SHA-256 for seventeen frozen vLLM/vLLM-Ascend source files plus model config",
+    "exact S0 v295 archive and q32-physical metadata receipt; 48 maps/shapes/devices",
+    "TP1/EP1 eager ALLGATHER QuantType.NONE physical32 BF16",
+    "live owner exact shapes/device/distinct allocations/512 manager map/current comm/current stream",
+    "selector once; KT submit -> native fused envelope -> KT sync -> tensor add"
+    ,"six exact donor worker/Qwen/forward-context hashes and atomic 48-layer post-load registry"
+  ],
+  "implemented_offline": [
+    "tensor-only logical-to-physical safe gather/mask/where callback",
+    "tensor-preserving native plus KT weighted aggregate merge",
+    "actual default-OFF CLI and donor wrapper script",
+    "standard-library offline package installs round16_integration",
+    "exact default-OFF worker hook and executable fail-closed preallocation factory"
+  ],
+  "preflight_execution": "python3 round16_b_native_source_preflight.py --enable --vllm-package-root <site-packages>/vllm --vllm-ascend-package-root <site-packages>/vllm_ascend --model-config <model>/config.json --output /tmp/round16-b-p1-source-token.json",
+  "schema": 1,
+  "static_probe_execution": "python3 run_p1_allgather_q32_probe.py --validate-only --source-token /tmp/round16-b-p1-source-token.json --snapshot-manifest P1_REMOTE_SNAPSHOT_PREFLIGHT_MANIFEST.json --output /tmp/round16-b-p1-static.json",
+  "worker_preflight_execution": "python3 run_b2_exact_worker_preflight.py --vllm-ascend-root <site-packages>/vllm_ascend --base-source-receipt /tmp/round16-b-p1-source-token.json --output /tmp/round16-b2-worker-preflight.json",
+  "status": "OFFLINE_B2_EXACT_WORKER_HOOK_DEVICE_NOT_RUN"
+}

@@ -1,0 +1,32 @@
+{
+  "bank": "/banks/candidate-mxfp4-all48-v1",
+  "cap_add": [
+    "SYS_NICE"
+  ],
+  "container": "round16-b-v5-smoke-v022",
+  "container_device": 0,
+  "cpus": 136,
+  "created_at": 1790676393.7928283,
+  "memory_bytes": 687194767360,
+  "memory_swap_bytes": 687194767360,
+  "model": "/model",
+  "network": "none",
+  "numa_nodes": [
+    2,
+    3,
+    4,
+    7
+  ],
+  "physical_device": 12,
+  "probe": "round16_integration.b_v5_smoke_probe",
+  "requests": {
+    "abort": 1,
+    "decode32": 1,
+    "known_answer_canaries": 5,
+    "same_process_reuse": 1
+  },
+  "schema": 1,
+  "shm_bytes": 17179869184,
+  "snapshot": "/work",
+  "snapshot_sha256": "0653ea00083d5fd25d0d667ed67044bb1a305f8a67625009d1918ce075058fdd"
+}

@@ -1,0 +1,75 @@
+{
+  "b2_worker_hook": {
+    "current_result": "SELECTIVE_Q32_PREALLOCATION_REQUIRED before model/device work",
+    "exact_factory": "round16_integration.b2_unresolved_bindings:create_p1_runtime_binding",
+    "status": "OFFLINE_EXACT_HOOK_IMPLEMENTED_DEVICE_PENDING",
+    "target_owner_path": "loaded_model.language_model.model.layers.{layer}.mlp.experts.routed_experts"
+  },
+  "default": "OFF",
+  "entrypoints": {
+    "donor_script": "artifacts/round16-b/device-overlay/run_p1_allgather_q32_probe.py",
+    "module": "round16_integration.p1_allgather_q32_probe",
+    "probe_api": "round16-integration:p1-allgather-q32-probe:v1",
+    "runtime_factory_api": "round16-integration:p1-runtime-binding-factory:v1"
+  },
+  "execution_mode": "CPU_ONLY_OPAQUE_TENSOR_AND_READ_ONLY_SNAPSHOT",
+  "implementation": {
+    "donor_script_sha256": "7dd19881b2131eb6453183387aa3338e6e1e8b38fb0ec426af7482532e09e476",
+    "module": "round16_integration/p1_allgather_q32_probe.py",
+    "module_sha256": "ad48b06cb0a16f435b8efd9963e492daba76e1433fd8ad42a19ab8ac20926c15",
+    "test": "tests/round16/test_b_p1_integration_probe.py",
+    "test_sha256": "142cbfab1e0f2229f3ec749d0634aa72755542a88e03f068b75133113ba16ba6"
+  },
+  "one_layer_fixture": {
+    "acquisition": "Use loaded_model.language_model.model.layers.0.mlp.experts.routed_experts after AutoWeightsLoader; do not reread checkpoint or bank data.",
+    "dtype": "torch.bfloat16",
+    "logical_to_physical": "0..31 -> 0..31; 32..511 -> -1",
+    "owner_checks_before_side_effect": "same immutable plan, exact 512-entry manager mapping, distinct NPU w13/w2, exact S0 shapes and BF16 dtype",
+    "w13_shape": [
+      32,
+      2560,
+      1280
+    ],
+    "w2_shape": [
+      32,
+      640,
+      2560
+    ]
+  },
+  "probe_contract": {
+    "failure_cleanup": "selector/submit failures retire prepared state; native/sync failures invoke identity-bound KT abort/drain while preserving the primary exception",
+    "physical_payload": "tensor-only safe lookup through int32[512] map; resident IDs 0..31; CPU/invalid/padding weights zero and safe ID 0",
+    "sequence": "prepare -> selector once -> KT submit -> native physical-Q32 fused envelope -> KT sync -> tensor add",
+    "tensor_merge": "native and KT BF16 NPU [T,H] weighted/unscaled partials added without iteration, scalar extraction, D2H or explicit synchronization"
+  },
+  "remaining_device_gates": [
+    "DONOR_WORKER_RUNTIME_FACTORY_BINDING",
+    "DEVICE_PHYSICAL_TOPK_TENSOR_OPS_PROOF",
+    "DEVICE_TENSOR_KT_NATIVE_MERGE_PROOF",
+    "LIVE_QWEN_SELF_EXPERTS_IMAGE_PROOF",
+    "S15_WEIGHTED_AGGREGATE_DEVICE_PARITY",
+    "RUNTIME_CONTEXT_CAPACITY_DEVICE_MODEL_PENDING",
+    "DEVICE_REAL_MOE_REQUIRED",
+    "KT_NATIVE_STREAM_SINGLE_OUTSTANDING_DEVICE_DRAIN_BEFORE_REQUEST_ASYNC"
+  ],
+  "s0_snapshot": {
+    "evidence_archive_sha256": "14ad7d864258b41dc347f3b756654791fe356eb45275567381e3bd962ad82d36",
+    "manifest": "artifacts/round16-b/device-overlay/P1_REMOTE_SNAPSHOT_PREFLIGHT_MANIFEST.json",
+    "manifest_sha256": "8257b47ed2f1456e1f4c52a6100eb1b4f299e8cd99dab8c8cf94870f5fb4aab3",
+    "q32_physical_receipt": "artifacts/round16-b/device-overlay/S0_V295_Q32_PHYSICAL.json",
+    "q32_physical_sha256": "fdc73639b5d3b0f97db2e10c689b4b3a802240d72e50d3bc00aeee402d9f1872",
+    "scope": "48-layer placement/layout metadata only; no weight bytes or numerical qualification"
+  },
+  "schema": 1,
+  "static_execution": {
+    "device_executed": false,
+    "source_checks": 18,
+    "status": "READY_FOR_DEVICE_RUNTIME_BINDING"
+  },
+  "status": "PASS_OFFLINE_EXECUTABLE_P1_PROBE_B2_HOOK_DEVICE_PREALLOCATION_PENDING",
+  "verification": {
+    "exact_source_preflight": "PASS 18/18",
+    "focused_probe_tests": "PASS 6/6",
+    "full_suite": "PASS 133/133 (127 B plus 6 common)"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T12:54:13Z",
+  "status": "PASS_DEV_INTEGRATION",
+  "contract_version": "round16-contract-v2",
+  "unittest": {
+    "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p 'test_*.py' -v",
+    "result": "PASS",
+    "tests": 95,
+    "failures": 0,
+    "errors": 0
+  },
+  "breakdown": {
+    "a": 30,
+    "b": 45,
+    "common": 14,
+    "round15_barrier": 6
+  },
+  "py_compile": {
+    "result": "PASS",
+    "python_files": 29
+  },
+  "json_parse": "PASS",
+  "isolated_install_import": {
+    "a": "PASS_COMMON_PLUS_A_ONLY_NO_BLOCKED_RUNTIME_IMPORTS_NO_THREADS_NO_ENV_MUTATION",
+    "b": "PASS_COMMON_PLUS_B_ONLY_NO_BLOCKED_RUNTIME_IMPORTS_NO_THREADS_NO_ENV_MUTATION"
+  },
+  "source_lineage_v295": "PASS_6_OF_6_SHA256_MATCH",
+  "not_run": [
+    "NPU",
+    "TORCH_NPU_DEVICE_IMPORT",
+    "FULL_MODEL",
+    "GRAPH_CAPTURE",
+    "CPU_PERFORMANCE_BENCHMARK",
+    "REQUEST_PERFORMANCE",
+    "FULL_BANK_READ",
+    "CACHE_RETIREMENT",
+    "REMOTE_MUTATION"
+  ]
+}

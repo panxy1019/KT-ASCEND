@@ -1,0 +1,73 @@
+{
+  "attention_max_abs": 0.015625,
+  "attention_relative_l2": 0.0018465227913111448,
+  "attention_sha256": "9315d702c8a0343d382834ebb30f8de8024171b37f19ffd9bd60635cd91bf2c0",
+  "block_table": [
+    [
+      2,
+      0,
+      1
+    ]
+  ],
+  "cache_shape": [
+    3,
+    3072,
+    2,
+    256
+  ],
+  "device": "npu:0",
+  "ended_at": 1790675549.7969348,
+  "key_cache_sha256": "01fcd3446b2f6efa08d72fbfe145d0473097e7d6b14d99d3e58913821bd7817e",
+  "kv_heads": 2,
+  "logical_positions": [
+    0,
+    1,
+    3071,
+    3072,
+    3073,
+    6143,
+    6144,
+    6145,
+    9214,
+    1500,
+    4700,
+    8000
+  ],
+  "pages_touched": [
+    0,
+    1,
+    2
+  ],
+  "physical_slots": [
+    6144,
+    6145,
+    9215,
+    0,
+    1,
+    3071,
+    3072,
+    3073,
+    6142,
+    7644,
+    1628,
+    4928
+  ],
+  "query_heads": 24,
+  "query_shape": [
+    2,
+    24,
+    256
+  ],
+  "reference_sha256": "957bd3cec820e92bfa90ba10bd20ed5126896bd9ccc9fdea42d8e2b756ab67bf",
+  "row_shape": [
+    12,
+    2,
+    256
+  ],
+  "schema": 1,
+  "started_at": 1790675518.2555156,
+  "status": "PASS_QSA_MULTIPAGE_MULTIHEAD_DEVICE",
+  "store_api": "round16-integration:ascend-qsa-multihead-store:v1",
+  "store_exact": true,
+  "value_cache_sha256": "2c5b858f0475e723a352977c3a8d032ef4fe7af566996646c05529a837ec7ca3"
+}

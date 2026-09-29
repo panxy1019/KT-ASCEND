@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "FAIL_V5_CHECKPOINT_LOADER_USERSPACE_STALL",
+  "run": "20260929-round16-b-v5-model-v006",
+  "last_progress": "Loading safetensors checkpoint shards: 0/131",
+  "observed_seconds_without_progress": 360,
+  "host_cgroup_memory_gib_stable": 2.561,
+  "npu_process_memory_mib_stable": 25001,
+  "process_cpu_percent_approx": 102,
+  "proc_io_stable": {
+    "rchar": 351999210,
+    "read_bytes": 46137344,
+    "wchar": 6165256,
+    "write_bytes": 6832128
+  },
+  "strace_observation": "attached for 3 seconds; no blocking syscall or I/O progress was observed",
+  "termination": "self-owned container stopped after bounded no-progress diagnosis",
+  "next_change": "register SIGUSR2 faulthandler before vLLM forks EngineCore; obtain Python all-thread stack before any loader fix"
+}

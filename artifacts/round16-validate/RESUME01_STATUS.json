@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "updated_at_utc": "2026-09-28T22:49:53Z",
+  "status": "ROUND16_ACTIVE_RESUMED_A1_ADMISSION_PASS",
+  "trigger": "USER_REPORTED_PHYSICAL12_FREE",
+  "supersedes_for_active_execution": "ROUND16_PARTIAL_WITH_GAPS_EXTERNAL_RESOURCE",
+  "historical_terminal_preserved": true,
+  "target": {
+    "physical_device": 12,
+    "card": 6,
+    "chip": 0,
+    "pci": "0000:85:00.0",
+    "numa_nodes": [2, 3, 4, 7]
+  },
+  "precheck": {
+    "external_claim": false,
+    "device_process": false,
+    "round16_owned_processes": 0,
+    "hbm_used_mib": 3291
+  },
+  "admission": {
+    "status": "PASS",
+    "rounds": 2,
+    "windows_per_round": 6,
+    "window_seconds": 10,
+    "minimum_selected_core_mean_idle": 0.9950386622530794,
+    "minimum_numa_free_gib": {
+      "2": 213.7809600830078,
+      "3": 216.14217376708984,
+      "4": 64.97742462158203,
+      "7": 222.1689796447754
+    },
+    "evidence": "RESUME01_ADMISSION_RESULT.json"
+  },
+  "budget_used": {
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0
+  },
+  "next": "Complete and preflight the fresh A1 six-request driver/controller; recheck instantaneous ownership; then launch block A exactly once."
+}

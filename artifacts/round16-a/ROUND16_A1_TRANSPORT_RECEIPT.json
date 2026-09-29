@@ -1,0 +1,62 @@
+{
+  "a_preflight": {
+    "block_id": "round16-a1-fresh-profile-a-v001",
+    "device_probe_count": 0,
+    "enabled": false,
+    "execution": "DEVICE_REQUIRED_NOT_RUN",
+    "execution_budget_current_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_initial_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+    "execution_budget_start": null,
+    "execution_budget_state": "INITIAL_UNSPENT",
+    "generation_limit": 6,
+    "ledger_sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+    "schedule_sha256": "0234a038784bececbb6a60ad27d023f33f8737fd1dbe0cf58b9140be3518df58",
+    "schema": 1,
+    "snapshot_id": "round16-a1-fresh-profile-a-v001-snapshot",
+    "source_manifest_sha256": "4ae7441a9f3860ef7e0298600bae07ab77cb14f4c5dfd4e5bd52b625d29fbb63",
+    "source_manifest_status": "EXACT",
+    "stage": "ROUND16_A1_FRESH_PROFILE",
+    "status": "PASS_OFFLINE_PREFLIGHT",
+    "total_generation_limit": 12
+  },
+  "b_transport_preflight": "SOURCE_ONLY_UNTIL_A_LEDGER_AFTER",
+  "created_at_epoch": 1790639949.3650935,
+  "donor": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+  "integration_contract_version": "round16-contract-v2",
+  "ledger": {
+    "path": "FRESH_A1_LEDGER_INITIAL.json",
+    "sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219"
+  },
+  "schema": 1,
+  "snapshots": {
+    "A": {
+      "directory": "fresh-a-v001",
+      "execution_budget_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+      "file_count": 2628,
+      "source_manifest_sha256": "4ae7441a9f3860ef7e0298600bae07ab77cb14f4c5dfd4e5bd52b625d29fbb63"
+    },
+    "B": {
+      "directory": "fresh-b-v001",
+      "execution_budget_sha256": "d134a133699a76c0f498d302be268f0bc7c3969842594e032edbe0abb933c9a8",
+      "file_count": 2628,
+      "source_manifest_sha256": "cc7206d6780ee2c8b7474b6d3dda0fe97dfd19f806beeaed3d04250b7d43a16a"
+    }
+  },
+  "status": "PASS_LOCAL_BUILD_REVIEWED_FOR_TRANSPORT",
+  "tar": {
+    "path": "/tmp/round16-a1-transport-v001.tar",
+    "sha256": "e0ea8820cabbde14b97e9150c2712950d8db009984e0fffbcbffcf39073c1ff2",
+    "size_bytes": 66846720
+  },
+  "transport_manifest": {
+    "file_count": 5257,
+    "path": "ROUND16_A1_TRANSPORT_MANIFEST.json",
+    "sha256": "5aed1e203f646b92be5cdaa3b15b40533cca2f748c980dbbdd1111999c035bdb"
+  },
+  "verification": {
+    "a_tests": 103,
+    "b_tests": 127,
+    "status": "PASS",
+    "total_tests": 274
+  }
+}

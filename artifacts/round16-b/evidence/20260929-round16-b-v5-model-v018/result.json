@@ -1,0 +1,9 @@
+{
+  "ended_at": 1790673788.8648977,
+  "error": "EngineCore encountered an issue. See stack trace (above) for the root cause.",
+  "error_type": "EngineDeadError",
+  "schema": 1,
+  "started_at": 1790673339.2765212,
+  "status": "FAIL_ROUND16_B_V5_FULL_MODEL_CANARY",
+  "traceback": "Traceback (most recent call last):\n  File \"/work/round16_integration/b_v5_llm_probe.py\", line 68, in main\n    outputs = llm.generate(\n              ^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/entrypoints/llm.py\", line 465, in generate\n    return self._run_completion(\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/entrypoints/offline_utils.py\", line 349, in _run_completion\n    return self._run_engine(use_tqdm=use_tqdm, output_type=output_type)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/entrypoints/offline_utils.py\", line 595, in _run_engine\n    step_outputs = self.llm_engine.step()\n                   ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py\", line 304, in step\n    outputs = self.engine_core.get_output()\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 856, in get_output\n    raise self._format_exception(outputs) from None\nvllm.v1.engine.exceptions.EngineDeadError: EngineCore encountered an issue. See stack trace (above) for the root cause.\n"
+}

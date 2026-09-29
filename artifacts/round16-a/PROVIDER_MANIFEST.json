@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "status": "PASS_DEV_CPU_MOCK_DEVICE_REQUIRED_NOT_RUN",
+  "generated_at_utc": "2026-09-28T12:40:15Z",
+  "provider": {
+    "name": "kt-ascend-round16",
+    "package": "round16.a",
+    "contract_version": "round16-contract-v1",
+    "shared_contract_sha256": "7234dc017690eea39313b7a2776c54466cc896ed10294708970cdb2bda23aa01",
+    "registration": "EXPLICIT_IDEMPOTENT",
+    "import_side_effects": "NONE",
+    "real_runtime_imported_by_provider": false
+  },
+  "dependency_tiers": {
+    "P0": {
+      "required": true,
+      "dependencies": [
+        "Python standard library",
+        "round16.common"
+      ],
+      "validated": true
+    },
+    "P1": {
+      "required": false,
+      "dependencies": [
+        "sglang",
+        "ktransformers"
+      ],
+      "integration": "explicit registry and injected fallback/backend",
+      "validated": "MOCK_ONLY"
+    },
+    "P2": {
+      "required": false,
+      "dependencies": [
+        "torch",
+        "torch_npu",
+        "CANN",
+        "Ascend device"
+      ],
+      "validated": "DEVICE_REQUIRED_NOT_RUN"
+    }
+  },
+  "operations": [
+    {
+      "stage": "A1",
+      "operation": "qsa.lightning_indexer",
+      "phase": [
+        "decode"
+      ],
+      "dtype": "bfloat16",
+      "layouts": [
+        "ND"
+      ],
+      "input_contract": {
+        "name": "hidden_states",
+        "rank": 2,
+        "token_rows": "1..128",
+        "hidden_width": 2048,
+        "stride": "omitted_or_(2048,1)"
+      },
+      "state_format": "qsa-index-v1",
+      "fallback": "Round14a eager round9.qsa.select_tokens plus promoted sparse GQA",
+      "fallback_selection": "BEFORE_BACKEND_AND_STATE_WRITE",
+      "graph_capability": "NOT_ADVERTISED_DEVICE_REQUIRED_NOT_RUN",
+      "round15_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+      "qualification": "CONTRACT_AND_MOCK_ONLY"
+    },
+    {
+      "stage": "A2",
+      "operation": "gdn.rmsnorm_sigmoid_gate",
+      "phase": [
+        "prefill",
+        "decode"
+      ],
+      "dtype": "bfloat16",
+      "layouts": [
+        "ND"
+      ],
+      "input_contract": {
+        "name": "hidden_states",
+        "rank": 2,
+        "token_rows": "1..128",
+        "hidden_width": 2048,
+        "stride": "omitted_or_(2048,1)"
+      },
+      "state_format": "gdn-state-v1",
+      "fallback": "Round14a GDN core plus eager sigmoid_gated_rms_norm",
+      "fallback_selection": "BEFORE_BACKEND_AND_STATE_WRITE",
+      "graph_capability": "NOT_ADVERTISED_DEVICE_REQUIRED_NOT_RUN",
+      "round15_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+      "qualification": "CONTRACT_AND_MOCK_ONLY"
+    },
+    {
+      "stage": "A3",
+      "operation": "moe.resident_grouped",
+      "phase": [
+        "prefill",
+        "decode"
+      ],
+      "dtype": "bfloat16",
+      "layouts": [
+        "ND"
+      ],
+      "input_contract": {
+        "name": "hidden_states",
+        "rank": 2,
+        "token_rows": "1..128",
+        "hidden_width": 2048,
+        "stride": "omitted_or_(2048,1)"
+      },
+      "state_format": "resident-moe-v1",
+      "fallback": "Existing eager Ascend grouped-MoE provider",
+      "fallback_selection": "BEFORE_BACKEND_AND_STATE_WRITE",
+      "graph_capability": "IDENTITY_STABLE_CAPTURE_QUALIFICATION_NOT_RUN",
+      "round15_status": "NO_NEW_A_CANDIDATE_ALREADY_CURRENT_PROVIDER",
+      "qualification": "BOUNDARY_MAPPING_AND_MOCK_ONLY"
+    }
+  ],
+  "lifecycle_contract": {
+    "metadata": "adapt mapping or attribute object, freeze ProviderSpec including list-backed shape/stride, and match all seven StateLease identity fields",
+    "runtime_inputs": "Mapping keys supply logical names; positional inputs use frozen ProviderSpec order. Duck-type shape/dtype/layout/stride/device_type from every tensor, require every raw shape/stride dimension to have exact type int, and compare count, logical names, and every physical field before support or fallback selection",
+    "runtime_stream": "require independent runtime_stream_kind metadata and match it with ProviderSpec.stream_kind before support or fallback selection",
+    "completion": "completion_id must equal the active lease completion_id",
+    "lease": "returned ProviderResult retains the active lease identity",
+    "state_writes": "every declared write must be present in StateLease.writable_state",
+    "alias": "backend must declare no input alias; backend and fallback output identity must differ from the runtime input container and every top-level mapping or sequence member; framework storage-overlap checks remain DEVICE_REQUIRED_NOT_RUN",
+    "close": "best-effort and retryable; all distinct dependencies are attempted, errors are aggregated, each successful dependency closes once, and new work is rejected after the first close attempt"
+  },
+  "source_lineage": [
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/configs/qwen3_next.py",
+      "symbols": [
+        "Qwen3NextConfig"
+      ],
+      "sha256": "56f2e76cb8d9408792cf1c298f2eb7b71536ad186b87d488d8f66fbaf9bb6d8d"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/models/qwen3_next.py",
+      "symbols": [
+        "Qwen3GatedDeltaNet.forward",
+        "Qwen3HybridLinearDecoderLayer.forward",
+        "Qwen3NextModel.forward"
+      ],
+      "sha256": "d0bbb7b6f5ea4a54b32a47413855deca09113008e32f28f831995938478a6ee5"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/layers/round9/qsa.py",
+      "symbols": [
+        "compress_index_keys",
+        "select_tokens",
+        "sparse_gqa_candidate"
+      ],
+      "sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/layers/round9/gdn.py",
+      "symbols": [
+        "gated_delta_recurrence",
+        "sigmoid_gated_rms_norm",
+        "eager_gdn"
+      ],
+      "sha256": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/layers/round9/ple_binding.py",
+      "symbols": [
+        "ple_model_ready",
+        "ple_before",
+        "ple_after"
+      ],
+      "sha256": "77b1db726731286fda53d8a49572aded19a9fc2110a4853856b5f3bdc2040e5b"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14/a-snapshots/v235/overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "symbols": [
+        "KTEPWrapperMethod._submit_cpu_forward",
+        "KTEPWrapperMethod._sync_cpu_forward",
+        "KTEPWrapperMethod.apply",
+        "SharedFullContext.close"
+      ],
+      "sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b"
+    }
+  ],
+  "round15_evidence": {
+    "provider_map_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/PROVIDER_MAP.md",
+    "provider_map_sha256": "823b269e68d3615a6669278ce59629eb07d4af2e7be52e0f192c4ae718af6ced",
+    "offline_capability_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/OFFLINE_CAPABILITY_RECEIPT.json",
+    "offline_capability_sha256": "dd9969758b8949590596dae136e030b58990ab8d162e5ad6a4ad091ad26ebf56",
+    "responsibility": "source/API capability and fallback boundary only",
+    "status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION"
+  },
+  "validation": {
+    "cpu_mock": "PASS",
+    "device": "DEVICE_REQUIRED_NOT_RUN",
+    "numerical": "NOT_RUN",
+    "performance": "NOT_RUN",
+    "graph_capture": "NOT_RUN"
+  }
+}

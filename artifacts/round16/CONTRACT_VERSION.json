@@ -1,0 +1,22 @@
+{
+  "schema": 2,
+  "contract_version": "round16-contract-v2",
+  "authority": [
+    "user-provided 60 A-line design",
+    "user-provided 61 B-line design",
+    "user-provided 62 isolation/barrier/validation contract"
+  ],
+  "shared_owner": "ROUND16_INTEGRATION_COORDINATOR",
+  "consumers": [
+    "ROUND16_A_SGLANG_PROVIDER",
+    "ROUND16_B_VLLM_KT_BRIDGE"
+  ],
+  "mutation_policy": "A_AND_B_CONSUME_IMMUTABLE_V2;_FUTURE_CHANGES_REQUIRE_NEW_VERSION",
+  "python_contract": "round16/common/contracts.py",
+  "previous_development_snapshot": {
+    "contract_version": "round16-contract-v1",
+    "sha256": "7234dc017690eea39313b7a2776c54466cc896ed10294708970cdb2bda23aa01",
+    "disposition": "SUPERSEDED_BEFORE_DEV_FREEZE_BY_REVIEW_HARDENING"
+  },
+  "sha256": "58ea04c5524bb24ff1158bf050684a7afcbf01db17d4d3035db9da33152bdb3b"
+}

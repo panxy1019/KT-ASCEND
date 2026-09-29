@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T19:21:44Z",
+  "cycle": 6,
+  "status": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+  "model_process_created": false,
+  "budget_effect": {
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0
+  },
+  "observed": {
+    "external_qwen38_vllm_containers": 16,
+    "visible_device_claims": "EXACTLY_0_THROUGH_15",
+    "physical_devices": 16,
+    "devices_with_registered_training_process": 16,
+    "odd_physical_devices_with_external_vllm_engine": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15
+    ],
+    "even_device_external_container_state": "all eight even-device qwen containers had restarted within roughly one minute and retained explicit claims while their engines were starting",
+    "round16_process_census": "none"
+  },
+  "selection": {
+    "selector": "round16.common.resource_target.select_safe_target ownership rule",
+    "explicit_candidate_order": [
+      12,
+      10,
+      8,
+      6,
+      4,
+      2,
+      0,
+      14
+    ],
+    "candidate_numa_profile": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "candidate_numa_basis": "S15 existing C128 profile; not inferred from PCI",
+    "ready": false,
+    "selected_npu": null,
+    "selected_numa": null,
+    "rejection_for_every_candidate": [
+      "EXTERNAL_CONTAINER_CLAIM"
+    ],
+    "cpu_numa_sampling": "SHORT_CIRCUITED_AFTER_DEVICE_OWNERSHIP_GATE"
+  },
+  "decision": {
+    "reason": "Every explicit candidate has a live external qwen38-vllm container claim; some even-device services were actively restarting/loading, so a low instantaneous HBM reading is not free capacity.",
+    "retry_policy": "FAILED_CYCLE_LIMIT_REACHED; no seventh unchanged admission retry and no external container modification. Resume from DEVICE_PENDING only after a new externally released-resource state."
+  },
+  "evidence": {
+    "resource_snapshot": "artifacts/round16-validate/P0_REMOTE_RESOURCE_CYCLE_06_RAW.txt",
+    "resource_snapshot_sha256": "681b2b879ec28f687ac874f0424c4fa4de8fea3c729d23abc7cf8afe26fd6d51",
+    "resource_snapshot_at_utc": "2026-09-28T19:21:48Z",
+    "device_claims": "artifacts/round16-validate/P0_DEVICE_CLAIMS_CYCLE_06_RAW.txt",
+    "device_claims_sha256": "31f849ac85376a3bb3d4ce99659e62deb56ca8366387c503115104ac98b38755",
+    "device_claims_at_utc": "2026-09-28T19:21:44Z",
+    "selector_actual_snapshot_check": "PASS_16_DEVICES_16_CLAIMS_FAIL_CLOSED"
+  },
+  "safety": {
+    "external_container_stopped_or_modified": false,
+    "training_modified": false,
+    "resource_threshold_lowered": false,
+    "device_work_started": false
+  }
+}

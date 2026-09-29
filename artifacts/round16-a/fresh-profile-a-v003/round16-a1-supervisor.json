@@ -1,0 +1,106 @@
+{
+  "admission_sha256": "6f64956a3df08ed6bd46d592649606f6ca7a8f382a597b2601c9edd68fbba9ab",
+  "automatic_retries": 0,
+  "block_id": "round16-a1-fresh-profile-a-v001",
+  "cleanup_error": "RuntimeError('NUMA4 conservative reclaim estimate insufficient')",
+  "cleanup_recovery_sha256": "5ebc0e85454a92ac088a413000971a26925a45048287713aea0626e84869c60a",
+  "cleanup_recovery_status": "PASS_POST_EXIT_CLEANUP_RECOVERY_WITHOUT_MODEL_RERUN",
+  "cleanup_started_at": 1790646015.2256482,
+  "container_id": "966097ff78b07f3723d4bf792bad8ee1ac6da9fe37f742ea9563fcf5d5d56fb6",
+  "container_state": "running",
+  "driver_command": [
+    "docker",
+    "exec",
+    "-e",
+    "PYTHONPATH=/round9/artifacts/round16-a/a-snapshots/fresh-a-v004",
+    "-e",
+    "ROUND16_A1_PROFILE_ENABLE=1",
+    "-e",
+    "ROUND16_A1_BLOCK_ID=round16-a1-fresh-profile-a-v001",
+    "966097ff78b07f3723d4bf792bad8ee1ac6da9fe37f742ea9563fcf5d5d56fb6",
+    "python",
+    "/round9/artifacts/round16-a/a-snapshots/fresh-a-v004/tools/round16_a1_container_driver.py",
+    "--snapshot",
+    "/round9/artifacts/round16-a/a-snapshots/fresh-a-v004",
+    "--block-id",
+    "round16-a1-fresh-profile-a-v001",
+    "--ledger",
+    "/round9/artifacts/round16-a/FRESH_A1_LEDGER_INITIAL.json",
+    "--ledger-sha256",
+    "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+    "--source-manifest-sha256",
+    "14d31371d87148ae591c2f76f014024bd4d756243d35490290f9e2768c27b9d4",
+    "--output",
+    "/out/round16-a1-controller",
+    "--observer-receipt-path",
+    "/mnt/data1/kt-round9/evidence/20260929-round16-a1-fresh-profile-a-v003/round16-a1-observer.jsonl"
+  ],
+  "driver_process_starts": 1,
+  "ended_at": 1790646026.1791494,
+  "execution_budget_after_model_start_sha256": "2ab24d8b7b823ecb74fe98d3cce6b16e2bf4b81d47821163ca462fe2d3c230fc",
+  "execution_budget_initial_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+  "generation_limit": 6,
+  "guard_exit_event": {
+    "action": "OWNED_EXITED_DURING_SAMPLE",
+    "container_id": "966097ff78b07f3723d4bf792bad8ee1ac6da9fe37f742ea9563fcf5d5d56fb6",
+    "time": 1790646024.898673
+  },
+  "launcher_admission_evidence": {
+    "files": {
+      "RESUME04_ADMISSION_ROUND1.json": {
+        "ended_at": 1790645523.0081086,
+        "sha256": "196c1109a50260b06854296816311e63c2ee0af71c00719dad3a2dbbbefd9c79",
+        "size_bytes": 248193,
+        "started_at": 1790645453.0761013
+      },
+      "RESUME04_ADMISSION_ROUND2.json": {
+        "ended_at": 1790645598.1031072,
+        "sha256": "75276e6ddafe4a4596aeda57923c959093b7865b8c0caf597cea293e5633e0d9",
+        "size_bytes": 247594,
+        "started_at": 1790645528.4510083
+      },
+      "result.json": {
+        "ended_at": 1790645598.1031072,
+        "sha256": "6f64956a3df08ed6bd46d592649606f6ca7a8f382a597b2601c9edd68fbba9ab",
+        "size_bytes": 4142,
+        "started_at": 1790645453.0761013,
+        "validated_at_epoch": 1790645654.5003452
+      }
+    },
+    "rounds": [
+      "RESUME04_ADMISSION_ROUND1.json",
+      "RESUME04_ADMISSION_ROUND2.json"
+    ],
+    "schema": 1,
+    "status": "FROZEN_LAUNCHER_ADMISSION",
+    "target": {
+      "card_id": 6,
+      "chip_id": 0,
+      "numa_nodes": [
+        2,
+        3,
+        4,
+        7
+      ],
+      "pci_bdf": "0000:85:00.0",
+      "physical_id": 12
+    }
+  },
+  "ledger_sha256_before": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+  "model_start_attempts": 1,
+  "owned_container_removed": true,
+  "physical12_after": {
+    "baseline_hbm_mib": 3288,
+    "reserve_hbm_mib": 8704,
+    "target": 12,
+    "training_pids": []
+  },
+  "recovered_at_epoch": 1790646752.8792863,
+  "schema": 1,
+  "single_block_analysis_preflight": "PASS_DEVICE_EVIDENCE_PENDING",
+  "source_manifest_sha256": "14d31371d87148ae591c2f76f014024bd4d756243d35490290f9e2768c27b9d4",
+  "stage": "ROUND16_A1_FRESH_PROFILE",
+  "started_at": 1790645708.5249815,
+  "status": "PASS_FRESH_A1_BLOCK_RAW_UNREVIEWED",
+  "was_running_at_cleanup": true
+}

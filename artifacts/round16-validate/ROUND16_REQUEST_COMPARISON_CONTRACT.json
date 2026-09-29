@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "status": "FROZEN_BEFORE_DEVICE_EXECUTION",
+  "implementation": "round16/common/perf_contract.py",
+  "implementation_sha256": "527fb954ab8ee40488b92173034575bfca8ea3a46df3349f07b7cba8a6120833",
+  "process_order": ["CONTROL", "CANDIDATE", "CANDIDATE", "CONTROL"],
+  "independent_processes_required": 4,
+  "generation_attempts_per_process": 10,
+  "workloads": {
+    "W1": {"input_tokens": 128, "output_tokens": 16},
+    "W2": {"input_tokens": 128, "output_tokens": 128},
+    "W4": {"input_tokens": 64, "output_tokens": 32}
+  },
+  "per_workload_per_process": {
+    "warmup_attempts": 1,
+    "measurement_attempts": 2,
+    "actual_output_tokens_must_equal_frozen_output_budget": true
+  },
+  "decode_gate": {
+    "primary_workload": "W2",
+    "each_pair_tpot_candidate_over_control_max": 0.90,
+    "each_pair_continuous_window_output_tps_candidate_over_control_min": 1.10,
+    "throughput_formula": "sum(actual successful output tokens) / continuous measurement window wall seconds",
+    "inverse_tpot_is_not_service_throughput": true
+  },
+  "prefill_gate_if_frozen_before_first_process": {
+    "primary_workload": "W1",
+    "each_pair_ttft_candidate_over_control_max": 0.85,
+    "each_pair_e2e_candidate_over_control_max": 0.90
+  },
+  "protection_gate": {
+    "each_pair_non_primary_ttft_or_e2e_candidate_over_control_max": 1.05
+  },
+  "prerequisites": [
+    "profiler OFF",
+    "same common model/workload/bank/map/resource identity",
+    "all output counts complete",
+    "zero errors or failed measurement requests",
+    "quality/state/cancel-reuse/resource/canary explicit PASS",
+    "control identities equal across the two control processes",
+    "candidate identities equal across the two candidate processes"
+  ],
+  "dispositions": {
+    "QUALIFIED_REQUEST_GAIN": "all correctness, resource, primary and protection gates pass in both pairs",
+    "MEASURED_NO_PROMOTION": "complete valid evidence but one or more performance/protection gates fail",
+    "REJECTED_CORRECTNESS_OR_RESOURCE": "complete evidence contains an explicit correctness/state/cancel/resource failure",
+    "ComparisonValidationError": "incomplete or incomparable evidence; must not be relabeled NO_GAIN"
+  },
+  "device_or_model_work_performed": false
+}

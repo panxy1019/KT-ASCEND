@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_CRITICAL_PATH",
+  "status": "DEVICE_EVIDENCE_PENDING",
+  "fresh_blocks_present": [],
+  "fresh_blocks_required": [
+    "round16-a1-fresh-profile-a-v001",
+    "round16-a1-fresh-profile-b-v001"
+  ],
+  "fresh_blocks_missing": [
+    "round16-a1-fresh-profile-a-v001",
+    "round16-a1-fresh-profile-b-v001"
+  ],
+  "historical_trace_eligible": false,
+  "blocks": [],
+  "missing_candidate_evidence": [
+    "A2_HOST_SYNC_EXPOSURE",
+    "A3_HOST_LAUNCH_METADATA"
+  ],
+  "arithmetic": {
+    "operation": "DIRECT_REGION_FRACTION_OF_DECODE_WALL",
+    "clock_domain": "HOST_MONOTONIC_NS",
+    "added_terms": [],
+    "cross_clock_additions": 0,
+    "nested_span_additions": 0
+  },
+  "candidate_decision_status": "DEVICE_EVIDENCE_PENDING",
+  "execution": "DEVICE_REQUIRED_NOT_RUN"
+}

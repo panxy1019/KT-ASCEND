@@ -1,0 +1,33 @@
+{
+  "all_layer_residency": "NOT_RUN_V4",
+  "allocator_after_bytes": 314576384,
+  "allocator_before_bytes": 0,
+  "allocator_peak_bytes": 314576384,
+  "allocator_peak_delta_bytes": 314576384,
+  "bf16_initialization_order": "UPSTREAM_CREATE_THEN_ASCEND_POSTLOAD_PENDING",
+  "construction_method": "UnquantizedFusedMoEMethod",
+  "device_executed": true,
+  "full_model": "NOT_RUN_V5",
+  "hybrid_execution": "NOT_RUN_V3",
+  "layer_id": 0,
+  "loader_and_postload": "NOT_RUN_V2",
+  "logical_experts": 512,
+  "payload_bytes": 314572800,
+  "physical_npu_slots": 32,
+  "runtime_runner_binding_verified": false,
+  "schema": 1,
+  "stage": "V1",
+  "status": "REAL_IMAGE_Q32_CONSTRUCTOR_VERIFIED",
+  "w13_raw_shape": [
+    32,
+    1280,
+    2560
+  ],
+  "w13_storage_bytes": 209715200,
+  "w2_raw_shape": [
+    32,
+    2560,
+    640
+  ],
+  "w2_storage_bytes": 104857600
+}

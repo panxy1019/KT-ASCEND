@@ -1,0 +1,72 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_B2_EXACT_WORKER_HOOK_DEVICE_PENDING",
+  "execution_mode": "CPU_ONLY_STANDARD_LIBRARY_EXACT_SOURCE_FIXTURE",
+  "live_eligible": false,
+  "device_executed": false,
+  "source_gate": {
+    "receipt": "artifacts/round16-b/B2_EXACT_WORKER_PREFLIGHT.json",
+    "receipt_sha256": "de60e12ef4c6ce4f21b536d5694a477f1fc21e4ba161e187ee1c73cfaaf0fe47",
+    "worker_source_binding_sha256": "437df9a83ea9329522faa7cdd6279ac012f97a25bf59bf499a503f086ea14349",
+    "checks": 6,
+    "base_source_checks": 18,
+    "donor_commit": "550ab66e7feb89f6e2ba49394f6ffb153189ac2b",
+    "vllm_commit": "568afb3a13806beb53bb2e6bd518269357b237c0"
+  },
+  "resolved": {
+    "worker_load": "NPUWorker.load_model -> NPUModelRunner.load_model under set_current_vllm_config",
+    "construction_and_loader": "NPUModelRunner.load_model -> get_model; Q32 owner+runner selected before create_weights; original AutoWeightsLoader remains authoritative",
+    "target_consumer": "Qwen4ExpSparseMoeBlock inherits Qwen3NextSparseMoeBlock and consumes qwen3_next.FusedMoE=_ascend_FusedMoE",
+    "post_load_path": "loaded_model.language_model.model.layers.{layer}.mlp.experts",
+    "forward_context": "set_ascend_forward_context writes current moe_comm_method; stream provider is called lazily inside active forward",
+    "route_once": "prepared hidden/router -> upstream router.select_experts exactly once; Ascend quant apply is bypassed",
+    "branch_order": "KT submit -> native preselected ALLGATHER weighted aggregate -> KT sync -> tensor merge",
+    "postprocessing_owner": "upstream MoERunner.forward owns scale/shared/output transform/reduction; Qwen caller owns residual"
+  },
+  "implementation": {
+    "core": "round16/b/exact_donor_worker_hook.py",
+    "core_sha256": "47b62d52a0d3b28c249c3b2f5ab216279407a7c4bb8f330377f45aa01b775f99",
+    "preflight": "round16_integration/b2_exact_worker_preflight.py",
+    "preflight_sha256": "25192cc31c1a9aeb1f207486065479dffd250a352dd97063f2f4dca31b528a97",
+    "plugin": "round16_integration/b2_exact_worker_plugin.py",
+    "plugin_sha256": "40b63f7af856fefc53a9077a5aa2a009256b936dfe3f603e5a27156f404815ab",
+    "bootstrap": "round16_integration/b2_worker_overlay_entry.py",
+    "bootstrap_sha256": "cae036826043464f8e13c616ab2b5bee576841532950d5dfc5f29c56acef3b2b",
+    "unresolved_factory": "round16_integration/b2_unresolved_bindings.py",
+    "unresolved_factory_sha256": "ec7af24c08dd19fa425f98bffe1739610dda65677312fb3e6eae1b090137a71b"
+  },
+  "tests": {
+    "worker_hook": "tests/round16/test_b_exact_worker_hook.py",
+    "worker_hook_sha256": "8c2210fa33a53a6109c0732920bd5ead7e019f74f5f8d35d3e77ca1c6a36340f",
+    "preflight_plugin": "tests/round16/test_b_exact_worker_preflight.py",
+    "preflight_plugin_sha256": "a209e5f001b69aabbb8a1ed548e59e58eb68e9d91d05564ea22425abe33f4111",
+    "covered": [
+      "unknown hash rejects before patch",
+      "default OFF leaves class unchanged",
+      "constructor scope precedes load and atomically registers 48 layers",
+      "bad physical owner restores Qwen binding and registers zero layers",
+      "real-shaped self.experts runner selects once and preserves scale/shared/residual ownership",
+      "forward before post-load registration fails closed",
+      "current comm and stream are acquired from the active context",
+      "installed unresolved factories fail before model/device work",
+      "fresh offline install imports with no torch/vllm/torch_npu side effect"
+    ]
+  },
+  "current_failure_gate": "SELECTIVE_Q32_PREALLOCATION_REQUIRED",
+  "remaining_device_gates": [
+    "device-verified physical-Q32 RoutedExperts constructor and Q32-only checkpoint slice loader before create_weights",
+    "same-process six-source and 18-check tokens consumed by worker installation",
+    "48 live physical32 BF16 owners and exact 512-entry manager maps after AutoWeightsLoader",
+    "current ALLGATHER comm/stream, device physical payload and KT/native tensor merge",
+    "S15 weighted aggregate and single routed-scaling numerical parity",
+    "context capacity >=256 and KT single-outstanding cancel/drain proof"
+  ],
+  "not_run": [
+    "NPU or torch_npu",
+    "live donor import or container",
+    "model or checkpoint",
+    "C128 bank",
+    "graph capture",
+    "numerical or performance probe"
+  ]
+}

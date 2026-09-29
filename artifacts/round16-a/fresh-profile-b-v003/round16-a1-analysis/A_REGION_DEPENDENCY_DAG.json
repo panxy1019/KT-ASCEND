@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_CRITICAL_PATH",
+  "status": "FROZEN_OFFLINE",
+  "evidence_input_contract": {
+    "loader": "load_evidence_bundle",
+    "identity_binding": [
+      "receipt_sha256",
+      "rows_sha256",
+      "observer_path"
+    ],
+    "receipt": "round16-a1-raw-receipt.json",
+    "observer_rows": "SHA-bound JSONL",
+    "observer_metadata_required": [
+      "receipt_sha256",
+      "rows_path",
+      "rows_sha256",
+      "synchronize_inserted",
+      "query_policy",
+      "source_identity",
+      "aggregations"
+    ],
+    "candidate_terminal_decision_metadata_required": [
+      "candidate_regions"
+    ],
+    "max_observer_rows_default": 100000
+  },
+  "nodes": [
+    {
+      "id": "QSA_INDEXER",
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "metric": "direct_event_elapsed_ms",
+      "candidate": null
+    },
+    {
+      "id": "GDN",
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "metric": "direct_event_elapsed_ms",
+      "candidate": null,
+      "candidate_exclusion": "GDN duration is not CPU-result exposed wait"
+    },
+    {
+      "id": "PARENT_ROUTED_EXPERT",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_parent_duration_ns_non_additive",
+      "candidate": null
+    },
+    {
+      "id": "HOST_DISPATCH",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_duration_ns",
+      "candidate": null
+    },
+    {
+      "id": "NPU_EXPERT",
+      "components": [
+        "NPU_RESIDENT",
+        "NPU_SHARED"
+      ],
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "metric": "direct_event_elapsed_ms",
+      "candidate": null,
+      "candidate_exclusion": "kernel duration is not Host launch or metadata cost"
+    },
+    {
+      "id": "CPU_EXPERT",
+      "clock_domain": "NATIVE_WORKER_CLOCK_UNAVAILABLE",
+      "metric": null,
+      "candidate": null,
+      "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK"
+    },
+    {
+      "id": "HOST_SYNC",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_duration_ns",
+      "candidate": null
+    },
+    {
+      "id": "HOST_MERGE",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_duration_ns",
+      "candidate": null
+    },
+    {
+      "id": "DECODE_PHASE_WALL",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_request_phase_duration_ns",
+      "candidate": null,
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "HOST_SYNC_EXPOSED_WAIT",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_critical_path_interval_ns",
+      "candidate": "A2",
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "A2_INDEPENDENT_NPU_WINDOW_PROOF",
+      "clock_domain": "DEPENDENCY_ONLY_NO_TIME_ARITHMETIC",
+      "metric": null,
+      "candidate": "A2",
+      "status": "EVIDENCE_REQUIRED"
+    },
+    {
+      "id": "HOST_LAUNCH_METADATA_CRITICAL",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "metric": "direct_critical_path_interval_ns",
+      "candidate": "A3",
+      "status": "EVIDENCE_REQUIRED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "PARENT_ROUTED_EXPERT",
+      "to": "HOST_DISPATCH",
+      "relation": "CONTAINS_NON_ADDITIVE"
+    },
+    {
+      "from": "PARENT_ROUTED_EXPERT",
+      "to": "NPU_EXPERT",
+      "relation": "CONTAINS_NON_ADDITIVE"
+    },
+    {
+      "from": "PARENT_ROUTED_EXPERT",
+      "to": "CPU_EXPERT",
+      "relation": "CONTAINS_NON_ADDITIVE"
+    },
+    {
+      "from": "HOST_DISPATCH",
+      "to": "CPU_EXPERT",
+      "relation": "HAPPENS_BEFORE"
+    },
+    {
+      "from": "CPU_EXPERT",
+      "to": "HOST_SYNC",
+      "relation": "COMPLETES_BEFORE_RETURN"
+    },
+    {
+      "from": "NPU_EXPERT",
+      "to": "HOST_MERGE",
+      "relation": "READY_BEFORE_MERGE"
+    },
+    {
+      "from": "HOST_SYNC",
+      "to": "HOST_MERGE",
+      "relation": "WAIT_EVENT_BEFORE_MERGE"
+    },
+    {
+      "from": "DECODE_PHASE_WALL",
+      "to": "HOST_SYNC_EXPOSED_WAIT",
+      "relation": "CONTAINS_NON_ADDITIVE"
+    },
+    {
+      "from": "HOST_SYNC_EXPOSED_WAIT",
+      "to": "A2_INDEPENDENT_NPU_WINDOW_PROOF",
+      "relation": "REQUIRES_UNUSED_SAME_LAYER_WINDOW"
+    },
+    {
+      "from": "DECODE_PHASE_WALL",
+      "to": "HOST_LAUNCH_METADATA_CRITICAL",
+      "relation": "CONTAINS_NON_ADDITIVE"
+    }
+  ],
+  "sample_layers": {
+    "QSA_INDEXER": [
+      3,
+      23,
+      47
+    ],
+    "GDN": [
+      0,
+      24,
+      46
+    ],
+    "NPU_EXPERT": [
+      0,
+      24,
+      47
+    ]
+  },
+  "arithmetic_policy": {
+    "operation": "DIRECT_REGION_FRACTION_OF_DECODE_WALL",
+    "score_clock_domain": "HOST_MONOTONIC_NS",
+    "minimum_decode_wall_fraction": 0.1,
+    "parent_child_sum_allowed": false,
+    "parent_minus_children_allowed": false,
+    "cross_clock_sum_allowed": false,
+    "preaggregated_input_allowed": false,
+    "cpu_unknown_coercion": "FORBIDDEN",
+    "gdn_as_cpu_wait_proxy": "FORBIDDEN",
+    "npu_kernel_as_host_launch_proxy": "FORBIDDEN"
+  },
+  "candidate_gates": {
+    "A2": {
+      "numerator": "HOST_SYNC_EXPOSED_WAIT",
+      "denominator": "DECODE_PHASE_WALL",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "minimum_decode_wall_fraction": 0.1,
+      "requires_both_fresh_blocks": true,
+      "requires_same_layer_independent_npu_window": true,
+      "requires_primary_actionable_region_in_each_block": true,
+      "cpu_native_compute_may_be_inferred": false
+    },
+    "A3": {
+      "numerator": "HOST_LAUNCH_METADATA_CRITICAL",
+      "denominator": "DECODE_PHASE_WALL",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "minimum_decode_wall_fraction": 0.1,
+      "requires_both_fresh_blocks": true,
+      "requires_outside_resident_only_graph": true,
+      "requires_primary_actionable_region_in_each_block": true,
+      "npu_kernel_duration_may_be_used": false
+    }
+  },
+  "candidate_mapping": {
+    "A2": "Host sync exposed wait is at least 10% of Decode wall in both fresh blocks and an unused same-layer independent NPU window is proven",
+    "A3": "Host launch or metadata critical interval is at least 10% of Decode wall in both fresh blocks and lies outside the resident-only graph",
+    "NO_CANDIDATE": "no single gate clears the two-block threshold"
+  }
+}

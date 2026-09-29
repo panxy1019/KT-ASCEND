@@ -1,0 +1,9 @@
+{
+  "ended_at": 1790676250.8761027,
+  "error": "canary strict-marker produced no frozen input IDs",
+  "error_type": "RuntimeError",
+  "schema": 1,
+  "started_at": 1790676243.7799175,
+  "status": "FAIL_ROUND16_B_V5_FULL_MODEL_SMOKE",
+  "traceback": "Traceback (most recent call last):\n  File \"/work/round16_integration/b_v5_smoke_probe.py\", line 235, in main\n    canaries = freeze_canary_inputs(tokenizer, contract)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/round16_integration/b_v5_smoke_probe.py\", line 106, in freeze_canary_inputs\n    raise RuntimeError(f\"canary {case['id']} produced no frozen input IDs\")\nRuntimeError: canary strict-marker produced no frozen input IDs\n"
+}

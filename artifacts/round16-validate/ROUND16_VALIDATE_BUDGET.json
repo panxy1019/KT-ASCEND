@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "status": "ACTIVE_RESUMED_AFTER_EXTERNAL_RESOURCE_CHANGE_A1_ADMISSION_PASS",
+  "limits": {
+    "model_groups": 14,
+    "generation_attempts": 128,
+    "abort_controls": 6,
+    "device_component_processes": 16,
+    "npu_device_hours": 32
+  },
+  "allocations": {
+    "A1_PROFILE": {
+      "model_groups": 2,
+      "generation_attempts": 12
+    },
+    "A_SMOKE": {
+      "model_groups": 1,
+      "generation_attempts": 8
+    },
+    "B_SMOKE": {
+      "model_groups": 2,
+      "generation_attempts": 16
+    },
+    "A_REQUEST_ABBA": {
+      "model_groups": 4,
+      "generation_attempts": 40
+    },
+    "B_REQUEST_ABBA": {
+      "model_groups": 4,
+      "generation_attempts": 40
+    },
+    "DIRECTED_REPAIR": {
+      "model_groups": 1,
+      "generation_attempts": 12
+    }
+  },
+  "used": {
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0
+  },
+  "admission": {
+    "failed_cycles": 6,
+    "failed_cycle_limit": 6,
+    "cycle_01": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "cycle_02": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "cycle_03": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "cycle_04": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "failed_admission_without_container_does_not_consume_model_budget": true,
+    "cycle_05": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "cycle_06": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+    "retry_disposition": "HISTORICAL_LIMIT_REACHED; user reported an externally changed resource state and triggered a fresh resumed audit",
+    "resume_01": {
+      "trigger": "USER_REPORTED_PHYSICAL12_FREE",
+      "precheck": "PASS_NO_EXTERNAL_CLAIM_NO_DEVICE_PROCESS",
+      "two_round_sampling": "PASS_12_OF_12_WINDOWS",
+      "minimum_selected_core_mean_idle": 0.9950386622530794,
+      "minimum_numa_free_gib": {
+        "2": 213.7809600830078,
+        "3": 216.14217376708984,
+        "4": 64.97742462158203,
+        "7": 222.1689796447754
+      },
+      "container_or_process_created": false,
+      "model_budget_consumed": false,
+      "evidence": "RESUME01_ADMISSION_RESULT.json"
+    }
+  },
+  "timeouts_seconds": {
+    "component": 1800,
+    "model": 21600,
+    "request": 1800,
+    "safety_drain": 180
+  },
+  "rules": {
+    "blind_retry": 0,
+    "same_root_cause_modified_verifications_max": 2,
+    "preserve_complete_pairs_before_isolated_performance_groups": true,
+    "round15_budget_inherited": false,
+    "round15_used_recorded_separately": {
+      "model_processes": 13,
+      "generation_attempts": 83,
+      "abort_controls": 5,
+      "component_processes": 4,
+      "npu_device_hours": 0.8372649977093123
+    }
+  },
+  "updated_at_utc": "2026-09-28T22:49:53Z"
+}

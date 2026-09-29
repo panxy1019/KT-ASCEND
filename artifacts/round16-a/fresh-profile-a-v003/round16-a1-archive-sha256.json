@@ -1,0 +1,50 @@
+{
+  "cleanup_recovery": {
+    "cache_retirement_sha256": "f40d4b540862f354a10d0a7072abe5efc591cfa10bed3b2f55170a056bde3941",
+    "cleanup_recovery_sha256": "5ebc0e85454a92ac088a413000971a26925a45048287713aea0626e84869c60a",
+    "failed_cache_utility_receipts": {
+      "round16-a1-cache-retirement-v002.json": "2808f7cd47b42aeca14ccdf91f0250a073a8727d8ffbdb99671ebc16deda9f0a",
+      "round16-a1-cache-retirement.json": "7bdfb5c66e3da2e33f11ec1b2b1f4417b4130ae3d7e89f6cad673e51b6f2a52d"
+    },
+    "original_supervisor_sha256": "da507cbb8975fd6f92ec9fc7482aadce1eec13614036a6f52c73de5d481cc689",
+    "post_retirement_resource_sha256": "42649a38a99314a57f6236878c68ad9b84fc81d1b7bb78cbdd9f774e6f515060",
+    "pre_retirement_manifest_sha256": "54bb3225a39d4e297e6093de1ca0f098acff5e7176248d8bcdbb8de27246bb33"
+  },
+  "files": {
+    "admission.json": "6887cf245bfa0d1384cf5deca1d9bccf5a6426dc71af562e87a13c19b19245bc",
+    "container-created.json": "b093cd2e57cd073ec86f69d63842bf36f3b3389685c6ca9eb151d9e967368a30",
+    "guard-process.json": "9148c7e2e29dde4d4e369b56f07b1032b505983705845c18f974144d4f5187fb",
+    "guard-ready.json": "7bc0266397932386acf5d2f63dcde65b7d4092372dcd36b479ef83417abf0460",
+    "launcher-admission/RESUME04_ADMISSION_ROUND1.json": "196c1109a50260b06854296816311e63c2ee0af71c00719dad3a2dbbbefd9c79",
+    "launcher-admission/RESUME04_ADMISSION_ROUND2.json": "75276e6ddafe4a4596aeda57923c959093b7865b8c0caf597cea293e5633e0d9",
+    "launcher-admission/manifest.json": "7ca281141979599e9078895f898aee97b282bb5c103e02d5ac3178552e791827",
+    "launcher-admission/result.json": "6f64956a3df08ed6bd46d592649606f6ca7a8f382a597b2601c9edd68fbba9ab",
+    "model-start.json": "5c8b1754d7b87d252753f7768f9cca446cac97bc021771824ddc25f103a5e48c",
+    "monitor.jsonl": "9935af64462d9193dee2d098298bfcbf6f05567592af347d840f812d5909dde4",
+    "round13-bindings.json": "dd0256a3dde20bcfac044dd12e94d6c223d83d836f8d321faf1ef80a1b4562e6",
+    "round13-spans.jsonl": "c2f6eae5c1fce833be4fbaec47fd5d91a679db44243f6640f841de85dc8ddfca",
+    "round16-a1-bindings.json": "8674ab9bedda4078445f9a66bbec91a6406d00face47f56c48386473d379dff3",
+    "round16-a1-controller/round16-a1-ledger-after.json": "b98785afae33fea891609ff124e62ccf57d5edd90dbaeb4153d934a6d450d987",
+    "round16-a1-controller/round16-a1-raw-receipt.json": "2bdeff959b59b5a12a158186e2b6d0f1c3e6450057baa35531704422f10cff01",
+    "round16-a1-observer-metadata.json": "094c4574bbf4395c41fb0caac5d9cfd39c2a986880258adcc41ab80fcd4992d0",
+    "round16-a1-observer.jsonl": "e0a6886efe471bb8b0418fd2c9d37e407637faa608e0e73363197da8df0c0c37",
+    "round16-a1-profile.jsonl": "4757d0a950d780ee63d24d235bb858ca943262195c4872a6adc9530b243a5a38",
+    "round16-a1-supervisor.json": "c1a5bb9c1a013c67f6a0af7b5e39c8cd9b1e450b61a3d32e3bf8af48076d094d"
+  },
+  "large_logs": {
+    "guard.log": {
+      "sha256": "1edbb325000e3666bf03fca2c22fd49484d56d17b15f9830f6821ac65d2dd3cd",
+      "size_bytes": 118
+    },
+    "round16-a1-driver.log": {
+      "sha256": "8ba29a712f6fc0d6ff06f6c30ef0549c84db01ce936b86bc3308f612f0891d10",
+      "size_bytes": 90
+    },
+    "server.log": {
+      "sha256": "ab3a2b47651641262d4e923e384b7abd56130f367caf7041c113af313d31788d",
+      "size_bytes": 137672
+    }
+  },
+  "schema": 1,
+  "status": "FROZEN_AFTER_GUARD_ACK_AND_CONTAINER_REMOVAL"
+}

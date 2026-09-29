@@ -1,0 +1,33 @@
+{
+  "dependencies": [
+    "Python standard library"
+  ],
+  "global_environment_modified": false,
+  "install_command": "python3 round16/b/install.py --target <empty-target>",
+  "installed_packages": [
+    "round16",
+    "round16.common",
+    "round16.b",
+    "round16_integration"
+  ],
+  "installer": "round16/b/install.py",
+  "package": "round16-b-vllm-bridge",
+  "schema": 1,
+  "shared_library_modified": false,
+  "status": "PASS_STANDARD_LIBRARY_OFFLINE_INSTALL",
+  "unavailable_optional_tooling": {
+    "network_install": "PROHIBITED_NOT_ATTEMPTED",
+    "pip": "NOT_INSTALLED",
+    "setuptools": "NOT_INSTALLED"
+  },
+  "verification": {
+    "b2_overlay_modules": "PASS byte-identical core/integration copies and executable default-OFF failure factory",
+    "fresh_child_import": "PASS isolated target; round16.b plus P1/B2 integration modules; no torch, torch_npu or vllm module imported",
+    "full_suite": "PASS 133/133 (127 B plus 6 common)",
+    "py_compile": "PASS",
+    "result": "PASS",
+    "source_preflight_overlay_byte_identity": "PASS",
+    "test": "tests.round16.test_b_packaging.OfflinePackagingTests.test_standard_library_install_and_fresh_import_have_no_runtime_side_effects",
+    "unexpected_modules": []
+  }
+}

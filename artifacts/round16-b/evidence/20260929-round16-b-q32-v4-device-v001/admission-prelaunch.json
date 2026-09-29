@@ -1,0 +1,48 @@
+{
+  "checked_at": 1790659406.3852096,
+  "evidence": {
+    "device_claims": {
+      "0": "/qwen38-vllm-0",
+      "1": "/qwen38-vllm-1",
+      "10": "/qwen38-vllm-10",
+      "11": "/qwen38-vllm-11",
+      "13": "/qwen38-vllm-13",
+      "14": "/qwen38-vllm-14",
+      "15": "/qwen38-vllm-15",
+      "2": "/qwen38-vllm-2",
+      "3": "/qwen38-vllm-3",
+      "4": "/qwen38-vllm-4",
+      "5": "/qwen38-vllm-5",
+      "6": "/qwen38-vllm-6",
+      "7": "/qwen38-vllm-7",
+      "8": "/qwen38-vllm-8",
+      "9": "/qwen38-vllm-9"
+    },
+    "npu_smi_sha256": "3d92330e90d52f591ac9154660aa8ccf6eeed839321a9dcb3c57217cbbef54f7",
+    "target_device": {
+      "card_id": 6,
+      "chip_id": 0,
+      "hbm_total_mib": 65536,
+      "hbm_used_mib": 3294,
+      "pci_bdf": "0000:85:00.0",
+      "physical_id": 12,
+      "processes": []
+    }
+  },
+  "note": "precheck never substitutes for two 60-second rounds",
+  "ready_for_two_round_sampling": true,
+  "rejections": {},
+  "schema": 1,
+  "target": {
+    "card_id": 6,
+    "chip_id": 0,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "pci_bdf": "0000:85:00.0",
+    "physical_id": 12
+  }
+}

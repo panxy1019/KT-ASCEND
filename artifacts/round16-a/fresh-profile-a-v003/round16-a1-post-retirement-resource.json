@@ -1,0 +1,1878 @@
+{
+  "cache_retirement_path": "/mnt/data1/kt-round9/evidence/20260929-round16-a1-fresh-profile-a-v003/round16-a1-cache-retirement-v003.json",
+  "cache_retirement_sha256": "f40d4b540862f354a10d0a7072abe5efc591cfa10bed3b2f55170a056bde3941",
+  "physical12_after": {
+    "baseline_hbm_mib": 3288,
+    "reserve_hbm_mib": 8704,
+    "target": 12,
+    "training_pids": []
+  },
+  "pre_retirement_manifest_sha256": "54bb3225a39d4e297e6093de1ca0f098acff5e7176248d8bcdbb8de27246bb33",
+  "resource_sample": {
+    "allocator_limit_mib": 36352,
+    "baseline_hbm_mib": 3288,
+    "cpu_quota": 136,
+    "cpus": [
+      160,
+      162,
+      164,
+      166,
+      168,
+      170,
+      172,
+      174,
+      176,
+      178,
+      180,
+      182,
+      184,
+      186,
+      188,
+      190,
+      192,
+      194,
+      196,
+      198,
+      200,
+      202,
+      204,
+      206,
+      208,
+      210,
+      212,
+      214,
+      216,
+      218,
+      220,
+      222,
+      224,
+      226,
+      228,
+      230,
+      232,
+      234,
+      236,
+      238,
+      240,
+      242,
+      244,
+      246,
+      248,
+      250,
+      252,
+      254,
+      256,
+      258,
+      260,
+      262,
+      264,
+      266,
+      268,
+      270,
+      272,
+      274,
+      276,
+      278,
+      280,
+      282,
+      284,
+      286,
+      288,
+      290,
+      292,
+      294,
+      296,
+      298,
+      300,
+      302,
+      304,
+      306,
+      308,
+      310,
+      312,
+      314,
+      316,
+      318,
+      320,
+      322,
+      324,
+      326,
+      328,
+      330,
+      332,
+      334,
+      336,
+      338,
+      340,
+      342,
+      344,
+      346,
+      348,
+      350,
+      352,
+      354,
+      356,
+      358,
+      360,
+      362,
+      364,
+      366,
+      368,
+      370,
+      372,
+      374,
+      376,
+      378,
+      380,
+      382,
+      384,
+      386,
+      388,
+      390,
+      392,
+      394,
+      396,
+      398,
+      560,
+      562,
+      564,
+      566,
+      568,
+      570,
+      572,
+      574,
+      576,
+      578,
+      580,
+      582,
+      584,
+      586,
+      588,
+      590,
+      592,
+      594,
+      596,
+      598,
+      600,
+      602,
+      604,
+      606,
+      608,
+      610,
+      612,
+      614,
+      616,
+      618,
+      620,
+      622,
+      624,
+      626,
+      628,
+      630,
+      632,
+      634,
+      636,
+      638
+    ],
+    "host": "110.123.0.3",
+    "host_limit_gib": 640,
+    "host_meminfo": {
+      "Active": "         339343816 kB",
+      "Active(anon)": "   25230324 kB",
+      "Active(file)": "   314113492 kB",
+      "AnonHugePages": "     92160 kB",
+      "AnonPages": "      164303460 kB",
+      "Bounce": "                0 kB",
+      "Buffers": "         3682804 kB",
+      "Cached": "         503267540 kB",
+      "CmaFree": "               0 kB",
+      "CmaTotal": "              0 kB",
+      "CommitLimit": "    1059761140 kB",
+      "Committed_AS": "   351223876 kB",
+      "Dirty": "               268 kB",
+      "FileHugePages": "  72765440 kB",
+      "FilePmdMapped": "     51200 kB",
+      "HardwareCorrupted": "     0 kB",
+      "HugePages_Free": "        0",
+      "HugePages_Rsvd": "        0",
+      "HugePages_Surp": "        0",
+      "HugePages_Total": "       0",
+      "Hugepagesize": "       2048 kB",
+      "Hugetlb": "               0 kB",
+      "Inactive": "       331938348 kB",
+      "Inactive(anon)": " 223529164 kB",
+      "Inactive(file)": " 108409184 kB",
+      "KReclaimable": "   14924192 kB",
+      "KernelStack": "      595024 kB",
+      "Mapped": "          2634260 kB",
+      "MemAvailable": "   1814852280 kB",
+      "MemFree": "        1387169836 kB",
+      "MemTotal": "       2111133684 kB",
+      "Mlocked": "           24352 kB",
+      "NFS_Unstable": "          0 kB",
+      "PageTables": "       874544 kB",
+      "Percpu": "         11210240 kB",
+      "SReclaimable": "   14924192 kB",
+      "SUnreclaim": "      8112784 kB",
+      "SecPageTables": "         0 kB",
+      "Shmem": "          84421920 kB",
+      "ShmemHugePages": "        0 kB",
+      "ShmemPmdMapped": "        0 kB",
+      "Slab": "           23036976 kB",
+      "SwapCached": "         3980 kB",
+      "SwapFree": "        2596348 kB",
+      "SwapTotal": "       4194300 kB",
+      "Unevictable": "       24864 kB",
+      "VmallocChunk": "          0 kB",
+      "VmallocTotal": "   133141626880 kB",
+      "VmallocUsed": "     3643472 kB",
+      "Writeback": "             0 kB",
+      "WritebackTmp": "          0 kB",
+      "Zswap": "                 0 kB",
+      "Zswapped": "              0 kB"
+    },
+    "idle_fraction": {
+      "160": 0.99,
+      "162": 1.0,
+      "164": 1.0,
+      "166": 1.0,
+      "168": 0.9900990099009901,
+      "170": 1.0,
+      "172": 1.0,
+      "174": 1.0,
+      "176": 1.0,
+      "178": 0.6020408163265306,
+      "180": 1.0,
+      "182": 0.5104166666666666,
+      "184": 0.9900990099009901,
+      "186": 1.0,
+      "188": 1.0,
+      "190": 1.0,
+      "192": 1.0,
+      "194": 1.0,
+      "196": 1.0,
+      "198": 0.9072164948453608,
+      "200": 1.0,
+      "202": 0.8529411764705882,
+      "204": 0.7326732673267327,
+      "206": 1.0,
+      "208": 1.0,
+      "210": 0.7745098039215687,
+      "212": 1.0,
+      "214": 0.94,
+      "216": 1.0,
+      "218": 1.0,
+      "220": 1.0,
+      "222": 1.0,
+      "224": 0.9900990099009901,
+      "226": 0.9801980198019802,
+      "228": 0.81,
+      "230": 0.9901960784313726,
+      "232": 0.99,
+      "234": 1.0,
+      "236": 1.0,
+      "238": 0.9072164948453608,
+      "240": 1.0,
+      "242": 1.0,
+      "244": 1.0,
+      "246": 1.0,
+      "248": 0.99,
+      "250": 1.0,
+      "252": 1.0,
+      "254": 1.0,
+      "256": 0.9900990099009901,
+      "258": 1.0,
+      "260": 1.0,
+      "262": 1.0,
+      "264": 1.0,
+      "266": 1.0,
+      "268": 1.0,
+      "270": 1.0,
+      "272": 1.0,
+      "274": 1.0,
+      "276": 1.0,
+      "278": 0.9489795918367347,
+      "280": 1.0,
+      "282": 0.020618556701030927,
+      "284": 0.6847826086956522,
+      "286": 1.0,
+      "288": 1.0,
+      "290": 1.0,
+      "292": 1.0,
+      "294": 1.0,
+      "296": 1.0,
+      "298": 1.0,
+      "300": 1.0,
+      "302": 1.0,
+      "304": 1.0,
+      "306": 0.98,
+      "308": 1.0,
+      "310": 1.0,
+      "312": 1.0,
+      "314": 1.0,
+      "316": 1.0,
+      "318": 0.88,
+      "320": 1.0,
+      "322": 0.9801980198019802,
+      "324": 1.0,
+      "326": 1.0,
+      "328": 1.0,
+      "330": 1.0,
+      "332": 1.0,
+      "334": 1.0,
+      "336": 1.0,
+      "338": 0.020202020202020204,
+      "340": 1.0,
+      "342": 1.0,
+      "344": 1.0,
+      "346": 0.9900990099009901,
+      "348": 0.9901960784313726,
+      "350": 0.9801980198019802,
+      "352": 1.0,
+      "354": 1.0,
+      "356": 1.0,
+      "358": 0.88,
+      "360": 1.0,
+      "362": 0.7777777777777778,
+      "364": 1.0,
+      "366": 1.0,
+      "368": 1.0,
+      "370": 1.0,
+      "372": 1.0,
+      "374": 1.0,
+      "376": 0.9900990099009901,
+      "378": 1.0,
+      "380": 1.0,
+      "382": 1.0,
+      "384": 1.0,
+      "386": 1.0,
+      "388": 1.0,
+      "390": 0.33,
+      "392": 1.0,
+      "394": 1.0,
+      "396": 1.0,
+      "398": 0.9484536082474226,
+      "560": 1.0,
+      "562": 0.8235294117647058,
+      "564": 1.0,
+      "566": 0.9702970297029703,
+      "568": 0.9900990099009901,
+      "570": 0.98989898989899,
+      "572": 1.0,
+      "574": 1.0,
+      "576": 0.8775510204081632,
+      "578": 1.0,
+      "580": 1.0,
+      "582": 1.0,
+      "584": 1.0,
+      "586": 0.99,
+      "588": 1.0,
+      "590": 1.0,
+      "592": 1.0,
+      "594": 0.9900990099009901,
+      "596": 1.0,
+      "598": 0.9795918367346939,
+      "600": 0.99,
+      "602": 1.0,
+      "604": 1.0,
+      "606": 1.0,
+      "608": 1.0,
+      "610": 1.0,
+      "612": 1.0,
+      "614": 1.0,
+      "616": 1.0,
+      "618": 1.0,
+      "620": 0.9901960784313726,
+      "622": 1.0,
+      "624": 0.9306930693069307,
+      "626": 1.0,
+      "628": 0.9900990099009901,
+      "630": 1.0,
+      "632": 1.0,
+      "634": 1.0,
+      "636": 0.9900990099009901,
+      "638": 0.865979381443299
+    },
+    "model_hbm_budget_mib": 37888,
+    "npu_smi": "+------------------------------------------------------------------------------------------------------------------+\n| npu-smi 26.0.rc1                            Version: 26.0.rc1                                                    |\n+---------------------------+---------------+----------------------------------------------------------------------+\n| NPU   Name                | Health        | Power(W)             Temp(C)                 Hugepages-Usage(page)   |\n| Chip  Phy-ID              | Bus-Id        | AICore(%)            Memory-Usage(MB)        HBM-Usage(MB)           |\n+===========================+===============+======================================================================+\n| 0     Ascend910           | OK            | 375.4                55                      0    / 0                |\n| 0     0                   | 0000:9D:00.0  | 76                   0    / 0                57717/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 0     Ascend910           | OK            | -                    56                      0    / 0                |\n| 1     1                   | 0000:9F:00.0  | 74                   0    / 0                58328/ 65536            |\n+===========================+===============+======================================================================+\n| 1     Ascend910           | OK            | 367.7                55                      0    / 0                |\n| 0     2                   | 0000:99:00.0  | 81                   0    / 0                57487/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 1     Ascend910           | OK            | -                    57                      0    / 0                |\n| 1     3                   | 0000:9B:00.0  | 75                   0    / 0                58358/ 65536            |\n+===========================+===============+======================================================================+\n| 2     Ascend910           | OK            | 329.8                56                      0    / 0                |\n| 0     4                   | 0000:95:00.0  | 76                   0    / 0                58637/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 2     Ascend910           | OK            | -                    50                      0    / 0                |\n| 1     5                   | 0000:97:00.0  | 100                  0    / 0                58333/ 65536            |\n+===========================+===============+======================================================================+\n| 3     Ascend910           | OK            | 356.9                54                      0    / 0                |\n| 0     6                   | 0000:91:00.0  | 82                   0    / 0                57497/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 3     Ascend910           | OK            | -                    58                      0    / 0                |\n| 1     7                   | 0000:93:00.0  | 81                   0    / 0                58328/ 65536            |\n+===========================+===============+======================================================================+\n| 4     Ascend910           | OK            | 378.1                55                      0    / 0                |\n| 0     8                   | 0000:8D:00.0  | 84                   0    / 0                58628/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 4     Ascend910           | OK            | -                    55                      0    / 0                |\n| 1     9                   | 0000:8F:00.0  | 73                   0    / 0                58343/ 65536            |\n+===========================+===============+======================================================================+\n| 5     Ascend910           | OK            | 293.9                45                      0    / 0                |\n| 0     10                  | 0000:89:00.0  | 0                    0    / 0                57521/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 5     Ascend910           | OK            | -                    56                      0    / 0                |\n| 1     11                  | 0000:8B:00.0  | 75                   0    / 0                58334/ 65536            |\n+===========================+===============+======================================================================+\n| 6     Ascend910           | OK            | 258.9                44                      0    / 0                |\n| 0     12                  | 0000:85:00.0  | 0                    0    / 0                3288 / 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 6     Ascend910           | OK            | -                    55                      0    / 0                |\n| 1     13                  | 0000:87:00.0  | 71                   0    / 0                58332/ 65536            |\n+===========================+===============+======================================================================+\n| 7     Ascend910           | OK            | 266.3                48                      0    / 0                |\n| 0     14                  | 0000:81:00.0  | 0                    0    / 0                61708/ 65536            |\n+------------------------------------------------------------------------------------------------------------------+\n| 7     Ascend910           | OK            | -                    54                      0    / 0                |\n| 1     15                  | 0000:83:00.0  | 76                   0    / 0                58345/ 65536            |\n+===========================+===============+======================================================================+\n+---------------------------+---------------+----------------------------------------------------------------------+\n| NPU     Chip              | Process id    | Process name       | Process memory(MB)    | Process id in container |\n+===========================+===============+======================================================================+\n| 0       0                 | 4160981       | VLLMEngineCor      | 54487                 | NA                      |\n| 0       1                 | 3476382       | VLLMEngineCor      | 55506                 | NA                      |\n+===========================+===============+======================================================================+\n| 1       0                 | 4161898       | VLLMEngineCor      | 54267                 | NA                      |\n| 1       1                 | 3476740       | VLLMEngineCor      | 55526                 | NA                      |\n+===========================+===============+======================================================================+\n| 2       0                 | 4161577       | VLLMEngineCor      | 55407                 | NA                      |\n| 2       1                 | 3476371       | VLLMEngineCor      | 55511                 | NA                      |\n+===========================+===============+======================================================================+\n| 3       0                 | 4161048       | VLLMEngineCor      | 54267                 | NA                      |\n| 3       1                 | 3476484       | VLLMEngineCor      | 55505                 | NA                      |\n+===========================+===============+======================================================================+\n| 4       0                 | 4161704       | VLLMEngineCor      | 55407                 | NA                      |\n| 4       1                 | 3476733       | VLLMEngineCor      | 55507                 | NA                      |\n+===========================+===============+======================================================================+\n| 5       0                 | 4161974       | VLLMEngineCor      | 54287                 | NA                      |\n| 5       1                 | 3476439       | VLLMEngineCor      | 55507                 | NA                      |\n+===========================+===============+======================================================================+\n| 6       1                 | 3476477       | VLLMEngineCor      | 55506                 | NA                      |\n+===========================+===============+======================================================================+\n| 7       0                 | 4160177       | VLLMEngineCor      | 58487                 | NA                      |\n| 7       1                 | 3476389       | VLLMEngineCor      | 55507                 | NA                      |\n+===========================+===============+======================================================================+\n",
+    "numa_meminfo": {
+      "2": "Node 2 MemTotal:       264230048 kB\nNode 2 MemFree:        222041368 kB\nNode 2 MemUsed:        42188680 kB\nNode 2 SwapCached:            0 kB\nNode 2 Active:         14012212 kB\nNode 2 Inactive:       24271008 kB\nNode 2 Active(anon):       4424 kB\nNode 2 Inactive(anon): 19469220 kB\nNode 2 Active(file):   14007788 kB\nNode 2 Inactive(file):  4801788 kB\nNode 2 Unevictable:          52 kB\nNode 2 Mlocked:               0 kB\nNode 2 Dirty:                 4 kB\nNode 2 Writeback:             0 kB\nNode 2 FilePages:      18819112 kB\nNode 2 Mapped:             6840 kB\nNode 2 AnonPages:      19464736 kB\nNode 2 Shmem:              9516 kB\nNode 2 KernelStack:       39936 kB\nNode 2 PageTables:        91328 kB\nNode 2 SecPageTables:         0 kB\nNode 2 NFS_Unstable:          0 kB\nNode 2 Bounce:                0 kB\nNode 2 WritebackTmp:          0 kB\nNode 2 KReclaimable:     371756 kB\nNode 2 Slab:            1089728 kB\nNode 2 SReclaimable:     371756 kB\nNode 2 SUnreclaim:       717972 kB\nNode 2 AnonHugePages:         0 kB\nNode 2 ShmemHugePages:        0 kB\nNode 2 ShmemPmdMapped:        0 kB\nNode 2 FileHugePages:   5834752 kB\nNode 2 FilePmdMapped:         0 kB\nNode 2 HugePages_Total:     0\nNode 2 HugePages_Free:      0\nNode 2 HugePages_Surp:      0\n",
+      "3": "Node 3 MemTotal:       264230048 kB\nNode 3 MemFree:        224511684 kB\nNode 3 MemUsed:        39718364 kB\nNode 3 SwapCached:           92 kB\nNode 3 Active:          7495180 kB\nNode 3 Inactive:       28604860 kB\nNode 3 Active(anon):        548 kB\nNode 3 Inactive(anon): 26457572 kB\nNode 3 Active(file):    7494632 kB\nNode 3 Inactive(file):  2147288 kB\nNode 3 Unevictable:          64 kB\nNode 3 Mlocked:               0 kB\nNode 3 Dirty:                 0 kB\nNode 3 Writeback:             0 kB\nNode 3 FilePages:       9643352 kB\nNode 3 Mapped:            32372 kB\nNode 3 AnonPages:      26457796 kB\nNode 3 Shmem:              1116 kB\nNode 3 KernelStack:       77360 kB\nNode 3 PageTables:       123912 kB\nNode 3 SecPageTables:         0 kB\nNode 3 NFS_Unstable:          0 kB\nNode 3 Bounce:                0 kB\nNode 3 WritebackTmp:          0 kB\nNode 3 KReclaimable:     404504 kB\nNode 3 Slab:             949636 kB\nNode 3 SReclaimable:     404504 kB\nNode 3 SUnreclaim:       545132 kB\nNode 3 AnonHugePages:         0 kB\nNode 3 ShmemHugePages:        0 kB\nNode 3 ShmemPmdMapped:        0 kB\nNode 3 FileHugePages:   4601856 kB\nNode 3 FilePmdMapped:         0 kB\nNode 3 HugePages_Total:     0\nNode 3 HugePages_Free:      0\nNode 3 HugePages_Surp:      0\n",
+      "4": "Node 4 MemTotal:       264230048 kB\nNode 4 MemFree:        65652392 kB\nNode 4 MemUsed:        198577656 kB\nNode 4 SwapCached:            0 kB\nNode 4 Active:         137753292 kB\nNode 4 Inactive:       54647856 kB\nNode 4 Active(anon):    9533256 kB\nNode 4 Inactive(anon): 43017380 kB\nNode 4 Active(file):   128220036 kB\nNode 4 Inactive(file): 11630476 kB\nNode 4 Unevictable:          24 kB\nNode 4 Mlocked:               0 kB\nNode 4 Dirty:                12 kB\nNode 4 Writeback:             0 kB\nNode 4 FilePages:      171263472 kB\nNode 4 Mapped:             5944 kB\nNode 4 AnonPages:      21138660 kB\nNode 4 Shmem:          31412952 kB\nNode 4 KernelStack:       59664 kB\nNode 4 PageTables:       111072 kB\nNode 4 SecPageTables:         0 kB\nNode 4 NFS_Unstable:          0 kB\nNode 4 Bounce:                0 kB\nNode 4 WritebackTmp:          0 kB\nNode 4 KReclaimable:    2017480 kB\nNode 4 Slab:            2626780 kB\nNode 4 SReclaimable:    2017480 kB\nNode 4 SUnreclaim:       609300 kB\nNode 4 AnonHugePages:         0 kB\nNode 4 ShmemHugePages:        0 kB\nNode 4 ShmemPmdMapped:        0 kB\nNode 4 FileHugePages:  13017088 kB\nNode 4 FilePmdMapped:         0 kB\nNode 4 HugePages_Total:     0\nNode 4 HugePages_Free:      0\nNode 4 HugePages_Surp:      0\n",
+      "7": "Node 7 MemTotal:       264230048 kB\nNode 7 MemFree:        230811548 kB\nNode 7 MemUsed:        33418500 kB\nNode 7 SwapCached:            0 kB\nNode 7 Active:          3623328 kB\nNode 7 Inactive:       25472164 kB\nNode 7 Active(anon):       8076 kB\nNode 7 Inactive(anon): 16463836 kB\nNode 7 Active(file):    3615252 kB\nNode 7 Inactive(file):  9008328 kB\nNode 7 Unevictable:          20 kB\nNode 7 Mlocked:               0 kB\nNode 7 Dirty:               112 kB\nNode 7 Writeback:             0 kB\nNode 7 FilePages:      12639104 kB\nNode 7 Mapped:           104540 kB\nNode 7 AnonPages:      16457148 kB\nNode 7 Shmem:             15376 kB\nNode 7 KernelStack:       38340 kB\nNode 7 PageTables:        79784 kB\nNode 7 SecPageTables:         0 kB\nNode 7 NFS_Unstable:          0 kB\nNode 7 Bounce:                0 kB\nNode 7 WritebackTmp:          0 kB\nNode 7 KReclaimable:     519328 kB\nNode 7 Slab:            1202340 kB\nNode 7 SReclaimable:     519328 kB\nNode 7 SUnreclaim:       683012 kB\nNode 7 AnonHugePages:      6144 kB\nNode 7 ShmemHugePages:        0 kB\nNode 7 ShmemPmdMapped:        0 kB\nNode 7 FileHugePages:   3774464 kB\nNode 7 FilePmdMapped:         0 kB\nNode 7 HugePages_Total:     0\nNode 7 HugePages_Free:      0\nNode 7 HugePages_Surp:      0\n"
+    },
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "numa_policy": {
+      "free_floor_gib": 48,
+      "nodes": {
+        "2": {
+          "effective_estimate_kib": 218438188,
+          "meminfo_kib": {
+            "Active": 14012212,
+            "Active(anon)": 4424,
+            "Active(file)": 14007788,
+            "AnonHugePages": 0,
+            "AnonPages": 19464736,
+            "Bounce": 0,
+            "Dirty": 4,
+            "FileHugePages": 5834752,
+            "FilePages": 18819112,
+            "FilePmdMapped": 0,
+            "HugePages_Free": 0,
+            "HugePages_Surp": 0,
+            "HugePages_Total": 0,
+            "Inactive": 24271008,
+            "Inactive(anon)": 19469220,
+            "Inactive(file)": 4801788,
+            "KReclaimable": 371756,
+            "KernelStack": 39936,
+            "Mapped": 6840,
+            "MemFree": 222041368,
+            "MemTotal": 264230048,
+            "MemUsed": 42188680,
+            "Mlocked": 0,
+            "NFS_Unstable": 0,
+            "PageTables": 91328,
+            "SReclaimable": 371756,
+            "SUnreclaim": 717972,
+            "SecPageTables": 0,
+            "Shmem": 9516,
+            "ShmemHugePages": 0,
+            "ShmemPmdMapped": 0,
+            "Slab": 1089728,
+            "SwapCached": 0,
+            "Unevictable": 52,
+            "Writeback": 0,
+            "WritebackTmp": 0
+          }
+        },
+        "3": {
+          "effective_estimate_kib": 218236876,
+          "meminfo_kib": {
+            "Active": 7495180,
+            "Active(anon)": 548,
+            "Active(file)": 7494632,
+            "AnonHugePages": 0,
+            "AnonPages": 26457796,
+            "Bounce": 0,
+            "Dirty": 0,
+            "FileHugePages": 4601856,
+            "FilePages": 9643352,
+            "FilePmdMapped": 0,
+            "HugePages_Free": 0,
+            "HugePages_Surp": 0,
+            "HugePages_Total": 0,
+            "Inactive": 28604860,
+            "Inactive(anon)": 26457572,
+            "Inactive(file)": 2147288,
+            "KReclaimable": 404504,
+            "KernelStack": 77360,
+            "Mapped": 32372,
+            "MemFree": 224511684,
+            "MemTotal": 264230048,
+            "MemUsed": 39718364,
+            "Mlocked": 0,
+            "NFS_Unstable": 0,
+            "PageTables": 123912,
+            "SReclaimable": 404504,
+            "SUnreclaim": 545132,
+            "SecPageTables": 0,
+            "Shmem": 1116,
+            "ShmemHugePages": 0,
+            "ShmemPmdMapped": 0,
+            "Slab": 949636,
+            "SwapCached": 92,
+            "Unevictable": 64,
+            "Writeback": 0,
+            "WritebackTmp": 0
+          }
+        },
+        "4": {
+          "effective_estimate_kib": 57263784,
+          "meminfo_kib": {
+            "Active": 137753292,
+            "Active(anon)": 9533256,
+            "Active(file)": 128220036,
+            "AnonHugePages": 0,
+            "AnonPages": 21138660,
+            "Bounce": 0,
+            "Dirty": 12,
+            "FileHugePages": 13017088,
+            "FilePages": 171263472,
+            "FilePmdMapped": 0,
+            "HugePages_Free": 0,
+            "HugePages_Surp": 0,
+            "HugePages_Total": 0,
+            "Inactive": 54647856,
+            "Inactive(anon)": 43017380,
+            "Inactive(file)": 11630476,
+            "KReclaimable": 2017480,
+            "KernelStack": 59664,
+            "Mapped": 5944,
+            "MemFree": 65652392,
+            "MemTotal": 264230048,
+            "MemUsed": 198577656,
+            "Mlocked": 0,
+            "NFS_Unstable": 0,
+            "PageTables": 111072,
+            "SReclaimable": 2017480,
+            "SUnreclaim": 609300,
+            "SecPageTables": 0,
+            "Shmem": 31412952,
+            "ShmemHugePages": 0,
+            "ShmemPmdMapped": 0,
+            "Slab": 2626780,
+            "SwapCached": 0,
+            "Unevictable": 24,
+            "Writeback": 0,
+            "WritebackTmp": 0
+          }
+        },
+        "7": {
+          "effective_estimate_kib": 231311240,
+          "meminfo_kib": {
+            "Active": 3623328,
+            "Active(anon)": 8076,
+            "Active(file)": 3615252,
+            "AnonHugePages": 6144,
+            "AnonPages": 16457148,
+            "Bounce": 0,
+            "Dirty": 112,
+            "FileHugePages": 3774464,
+            "FilePages": 12639104,
+            "FilePmdMapped": 0,
+            "HugePages_Free": 0,
+            "HugePages_Surp": 0,
+            "HugePages_Total": 0,
+            "Inactive": 25472164,
+            "Inactive(anon)": 16463836,
+            "Inactive(file)": 9008328,
+            "KReclaimable": 519328,
+            "KernelStack": 38340,
+            "Mapped": 104540,
+            "MemFree": 230811548,
+            "MemTotal": 264230048,
+            "MemUsed": 33418500,
+            "Mlocked": 0,
+            "NFS_Unstable": 0,
+            "PageTables": 79784,
+            "SReclaimable": 519328,
+            "SUnreclaim": 683012,
+            "SecPageTables": 0,
+            "Shmem": 15376,
+            "ShmemHugePages": 0,
+            "ShmemPmdMapped": 0,
+            "Slab": 1202340,
+            "SwapCached": 0,
+            "Unevictable": 20,
+            "Writeback": 0,
+            "WritebackTmp": 0
+          }
+        }
+      },
+      "runtime_free_floor_gib": 8,
+      "status": "PROVISIONAL_MONITORED_VALIDATION",
+      "storage": "MXFP4",
+      "version": 1
+    },
+    "owned_limit_mib": 37376,
+    "physical": 12,
+    "reserve_hbm_mib": 8704,
+    "resource_mode": "shared",
+    "sampled_at": 1790646629.7317379,
+    "scope": "CANDIDATE_SHARED_FULL_MODEL_PREFLIGHT",
+    "topology": [
+      {
+        "core": [
+          "1",
+          "720896"
+        ],
+        "cpu": 160,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "720897"
+        ],
+        "cpu": 162,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "720898"
+        ],
+        "cpu": 164,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "720899"
+        ],
+        "cpu": 166,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721152"
+        ],
+        "cpu": 168,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721153"
+        ],
+        "cpu": 170,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721154"
+        ],
+        "cpu": 172,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721155"
+        ],
+        "cpu": 174,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721408"
+        ],
+        "cpu": 176,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721409"
+        ],
+        "cpu": 178,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721410"
+        ],
+        "cpu": 180,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721411"
+        ],
+        "cpu": 182,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721664"
+        ],
+        "cpu": 184,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721665"
+        ],
+        "cpu": 186,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721666"
+        ],
+        "cpu": 188,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721667"
+        ],
+        "cpu": 190,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721920"
+        ],
+        "cpu": 192,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721921"
+        ],
+        "cpu": 194,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721922"
+        ],
+        "cpu": 196,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "721923"
+        ],
+        "cpu": 198,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722176"
+        ],
+        "cpu": 200,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722177"
+        ],
+        "cpu": 202,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722178"
+        ],
+        "cpu": 204,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722179"
+        ],
+        "cpu": 206,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722432"
+        ],
+        "cpu": 208,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722433"
+        ],
+        "cpu": 210,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722434"
+        ],
+        "cpu": 212,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722435"
+        ],
+        "cpu": 214,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722688"
+        ],
+        "cpu": 216,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722689"
+        ],
+        "cpu": 218,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722690"
+        ],
+        "cpu": 220,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722691"
+        ],
+        "cpu": 222,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722944"
+        ],
+        "cpu": 224,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722945"
+        ],
+        "cpu": 226,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722946"
+        ],
+        "cpu": 228,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "722947"
+        ],
+        "cpu": 230,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "723200"
+        ],
+        "cpu": 232,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "723201"
+        ],
+        "cpu": 234,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "723202"
+        ],
+        "cpu": 236,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "723203"
+        ],
+        "cpu": 238,
+        "numa": 2
+      },
+      {
+        "core": [
+          "1",
+          "589824"
+        ],
+        "cpu": 240,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "589825"
+        ],
+        "cpu": 242,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "589826"
+        ],
+        "cpu": 244,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "589827"
+        ],
+        "cpu": 246,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590080"
+        ],
+        "cpu": 248,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590081"
+        ],
+        "cpu": 250,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590082"
+        ],
+        "cpu": 252,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590083"
+        ],
+        "cpu": 254,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590336"
+        ],
+        "cpu": 256,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590337"
+        ],
+        "cpu": 258,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590338"
+        ],
+        "cpu": 260,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590339"
+        ],
+        "cpu": 262,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590592"
+        ],
+        "cpu": 264,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590593"
+        ],
+        "cpu": 266,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590594"
+        ],
+        "cpu": 268,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590595"
+        ],
+        "cpu": 270,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590848"
+        ],
+        "cpu": 272,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590849"
+        ],
+        "cpu": 274,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590850"
+        ],
+        "cpu": 276,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "590851"
+        ],
+        "cpu": 278,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591104"
+        ],
+        "cpu": 280,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591105"
+        ],
+        "cpu": 282,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591106"
+        ],
+        "cpu": 284,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591107"
+        ],
+        "cpu": 286,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591360"
+        ],
+        "cpu": 288,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591361"
+        ],
+        "cpu": 290,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591362"
+        ],
+        "cpu": 292,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591363"
+        ],
+        "cpu": 294,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591616"
+        ],
+        "cpu": 296,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591617"
+        ],
+        "cpu": 298,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591618"
+        ],
+        "cpu": 300,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591619"
+        ],
+        "cpu": 302,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591872"
+        ],
+        "cpu": 304,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591873"
+        ],
+        "cpu": 306,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591874"
+        ],
+        "cpu": 308,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "591875"
+        ],
+        "cpu": 310,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "592128"
+        ],
+        "cpu": 312,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "592129"
+        ],
+        "cpu": 314,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "592130"
+        ],
+        "cpu": 316,
+        "numa": 3
+      },
+      {
+        "core": [
+          "1",
+          "592131"
+        ],
+        "cpu": 318,
+        "numa": 3
+      },
+      {
+        "core": [
+          "2",
+          "1245184"
+        ],
+        "cpu": 320,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245185"
+        ],
+        "cpu": 322,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245186"
+        ],
+        "cpu": 324,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245187"
+        ],
+        "cpu": 326,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245440"
+        ],
+        "cpu": 328,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245441"
+        ],
+        "cpu": 330,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245442"
+        ],
+        "cpu": 332,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245443"
+        ],
+        "cpu": 334,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245696"
+        ],
+        "cpu": 336,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245697"
+        ],
+        "cpu": 338,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245698"
+        ],
+        "cpu": 340,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245699"
+        ],
+        "cpu": 342,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245952"
+        ],
+        "cpu": 344,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245953"
+        ],
+        "cpu": 346,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245954"
+        ],
+        "cpu": 348,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1245955"
+        ],
+        "cpu": 350,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246208"
+        ],
+        "cpu": 352,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246209"
+        ],
+        "cpu": 354,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246210"
+        ],
+        "cpu": 356,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246211"
+        ],
+        "cpu": 358,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246464"
+        ],
+        "cpu": 360,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246465"
+        ],
+        "cpu": 362,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246466"
+        ],
+        "cpu": 364,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246467"
+        ],
+        "cpu": 366,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246720"
+        ],
+        "cpu": 368,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246721"
+        ],
+        "cpu": 370,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246722"
+        ],
+        "cpu": 372,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246723"
+        ],
+        "cpu": 374,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246976"
+        ],
+        "cpu": 376,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246977"
+        ],
+        "cpu": 378,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246978"
+        ],
+        "cpu": 380,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1246979"
+        ],
+        "cpu": 382,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247232"
+        ],
+        "cpu": 384,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247233"
+        ],
+        "cpu": 386,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247234"
+        ],
+        "cpu": 388,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247235"
+        ],
+        "cpu": 390,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247488"
+        ],
+        "cpu": 392,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247489"
+        ],
+        "cpu": 394,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247490"
+        ],
+        "cpu": 396,
+        "numa": 4
+      },
+      {
+        "core": [
+          "2",
+          "1247491"
+        ],
+        "cpu": 398,
+        "numa": 4
+      },
+      {
+        "core": [
+          "3",
+          "1638400"
+        ],
+        "cpu": 560,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638401"
+        ],
+        "cpu": 562,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638402"
+        ],
+        "cpu": 564,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638403"
+        ],
+        "cpu": 566,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638656"
+        ],
+        "cpu": 568,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638657"
+        ],
+        "cpu": 570,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638658"
+        ],
+        "cpu": 572,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638659"
+        ],
+        "cpu": 574,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638912"
+        ],
+        "cpu": 576,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638913"
+        ],
+        "cpu": 578,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638914"
+        ],
+        "cpu": 580,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1638915"
+        ],
+        "cpu": 582,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639168"
+        ],
+        "cpu": 584,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639169"
+        ],
+        "cpu": 586,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639170"
+        ],
+        "cpu": 588,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639171"
+        ],
+        "cpu": 590,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639424"
+        ],
+        "cpu": 592,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639425"
+        ],
+        "cpu": 594,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639426"
+        ],
+        "cpu": 596,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639427"
+        ],
+        "cpu": 598,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639680"
+        ],
+        "cpu": 600,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639681"
+        ],
+        "cpu": 602,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639682"
+        ],
+        "cpu": 604,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639683"
+        ],
+        "cpu": 606,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639936"
+        ],
+        "cpu": 608,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639937"
+        ],
+        "cpu": 610,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639938"
+        ],
+        "cpu": 612,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1639939"
+        ],
+        "cpu": 614,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640192"
+        ],
+        "cpu": 616,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640193"
+        ],
+        "cpu": 618,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640194"
+        ],
+        "cpu": 620,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640195"
+        ],
+        "cpu": 622,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640448"
+        ],
+        "cpu": 624,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640449"
+        ],
+        "cpu": 626,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640450"
+        ],
+        "cpu": 628,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640451"
+        ],
+        "cpu": 630,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640704"
+        ],
+        "cpu": 632,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640705"
+        ],
+        "cpu": 634,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640706"
+        ],
+        "cpu": 636,
+        "numa": 7
+      },
+      {
+        "core": [
+          "3",
+          "1640707"
+        ],
+        "cpu": 638,
+        "numa": 7
+      }
+    ],
+    "training_allowance_mib": 15360,
+    "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "training_pids": []
+  },
+  "sampled_at_epoch": 1790646629.7318375,
+  "schema": 1,
+  "status": "PASS_POST_RETIREMENT_FULL_RESOURCE_RESAMPLE"
+}

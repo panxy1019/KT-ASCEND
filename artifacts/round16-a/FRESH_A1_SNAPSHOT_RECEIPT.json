@@ -1,0 +1,355 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_BUILDER_REAL_DRIVER_SUPERVISOR_NORMALIZER_READY_DEVICE_NOT_RUN",
+  "checked_at_utc": "2026-09-28T23:52:21Z",
+  "source_parent": {
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+    "read_only": true,
+    "copied_in_this_task": true,
+    "reason_not_copied": "Temporary full local trusted-donor copy/build and offline preflight passed; no final transport snapshot or remote copy was produced.",
+    "preconditions": {
+      "overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+      "overlay-python/sglang/srt/layers/round9/round13_attribution.py": "a4bd6c90bc05ec09e51d14194fb2eaf38e00dcb5578d48b91bfdfc1f4b392cc0",
+      "overlay-python/sglang/srt/managers/scheduler.py": "5b96f89ee24f49671b3c35960922d7f93b2133c62e087642d6bdde3ea20b1c6b",
+      "source/tools/launch_hybrid.py": "daad3cf0ad99c870c4a884ca0440c4f88d5c887984c4735dff2fe72b5c291f1c",
+      "round10-t1-fixture.json": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+      "execution-budget.json": "665ded641f8848d65ca44776cf74dfd70909184339a619f3d70befee09c36974",
+      "round11_t4_driver.py": "38faa29ce4583254c59ee32bdf921329cf97aa0b04393a3a4bc5c9ef2d1ca2be",
+      "round10_t1_protocol.py": "3b5d96864922ad4bd51d298ebefd039fe06e2de9a1bef8de4f800c8dcf2e0129",
+      "m3_cleanup.py": "b6df7cca2b2ac27d29acbd75515c58610372f0d20a13f050be11edfd7161a201",
+      "source/tools/candidate_resources.py": "8adbeadc39665fffd495a6ccd275bf7448c99414352cff531d27a5541ec012e9",
+      "source/tools/monitor_owned_server.py": "fcffc16145353341ce6f986f0b80d127101211e9e0cfa917c71481e1c750392a"
+    },
+    "copy_scope": "TEMPORARY_LOCAL_CPU_ONLY_FULL_BUILD_PREFLIGHT_2628_FILES"
+  },
+  "implementation": {
+    "builder": {
+      "path": "round16/a/fresh_a1_snapshot.py",
+      "sha256": "991ff005a021e38b976beb5a9ead7b18378c5c06d01fe20229a270713c49386f",
+      "parent_write_count": 0,
+      "copy_then_patch": true,
+      "rejects_output_inside_parent": true
+    },
+    "runtime_observer": {
+      "path": "round16/a/fresh_a1_runtime_observer.py",
+      "sha256": "038dc9907b5c6924ae17fe60685de1d84ce3ed9a52f3bc390cfc6d07a8adcd8a",
+      "default_enabled": false,
+      "imports_torch_when_disabled": false,
+      "binding_path": "module.quant_method",
+      "host_layers": "0..47_EXACT",
+      "device_sample_layers": [
+        0,
+        24,
+        47
+      ],
+      "pending_event_policy": "CROSS_BATCH_DEFERRED_QUERY_NO_SYNCHRONIZE"
+    },
+    "profile_contract": {
+      "path": "round16/a/fresh_a1_profile.py",
+      "sha256": "0b777a4c61651684b86eb4709fe57cf7b5248d6b45cbfd7f2396b951e72e50cc"
+    },
+    "device_driver": {
+      "path": "round16/a/fresh_a1_device.py",
+      "sha256": "aea83d3c677e867983734afcb54ef529ce478cf952d56ee113c8155045ef2d5d",
+      "http_posts_per_schedule_item": 1,
+      "automatic_retries": 0
+    },
+    "host_supervisor": {
+      "path": "tools/round16_a1_remote_block.py",
+      "sha256": "a7b7f380fcdd497ec485703828ec08d5ff404f2894357290fb81ea6083da84f5",
+      "guard_ack_before_remove": true,
+      "device_execution": "NOT_RUN",
+      "source_manifest_reviewed_sha_required": true,
+      "created_container_guard_cleanup": "FULL_ID_PID0_GUARD_TERMINATED_OR_ALREADY_EXITED_THEN_REMOVE",
+      "admission_archive": "RESULT_AND_TWO_RAW_ROUNDS_SHA_BOUND",
+      "large_log_archive": "SHA256_AND_SIZE_BYTES"
+    },
+    "analysis_input_normalizer": {
+      "path": "round16/a/fresh_a1_evidence.py",
+      "sha256": "1bbdd94d2d3baf50dadee0ba2dae00c05f6ff5a7cc259553ff40277e26e0dff5",
+      "round13_direct_components": [
+        "QSA_INDEXER",
+        "GDN",
+        "NPU_RESIDENT"
+      ],
+      "candidate_region_policy": "A1_INSUFFICIENT_ATTRIBUTION_CANDIDATE_NULL",
+      "measurement_flush_witness": "SERIALIZED_SHORT_DRAIN_AFTER_W2"
+    },
+    "remote_gate": {
+      "path": "round16/a/fresh_a1_remote.py",
+      "sha256": "8868c52bc4e43ad75e27db6463cc23d1a21132bc32c13a4b08fea6e62fb6e877",
+      "admission": "EXACT_RESULT_SHA_TARGET_PLUS_TWO_RAW_ROUND_SHA_DURATION_ORDER_AND_FRESHNESS",
+      "legacy_default_sha_dependency": false,
+      "remote_v295_identity_path": "/mnt/data1/kt-round9/round14a-a-gdn-model-20260927-v2/v295",
+      "remote_v295_build_donor_allowed": false,
+      "remote_budget_observed_sha256_prefix": "046fc30c"
+    },
+    "container_driver": {
+      "path": "tools/round16_a1_container_driver.py",
+      "sha256": "733e0f24f7d3a280869c6beb8f48a6a68c9fdb7f020952aed855f0c59c5a227c",
+      "reviewed_source_manifest_sha_required": true,
+      "execution_budget_required_state": "SINGLE_MATCHING_START"
+    }
+  },
+  "real_v295_in_memory_patch": {
+    "status": "PASS_EXACT_SHA_PATCH_AND_PYTHON_COMPILE",
+    "writes": 0,
+    "block_a": {
+      "overlay-python/sglang/srt/managers/scheduler.py": "3dab72d2cc2c85a371dd9fde5789b15c108a551ff2d7ad82e1780c69da9e2c3a",
+      "overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py": "7f9f2ef9bbc00bcd69732318767994c45399524ba6482207c7bcae2dab516007",
+      "source/tools/launch_hybrid.py": "c73dd085dab67fd5cb770587921c4cf04a556723d4c2041f95ab01e0407fb987",
+      "overlay-python/sglang/srt/layers/round9/round16_a1_observer.py": "038dc9907b5c6924ae17fe60685de1d84ce3ed9a52f3bc390cfc6d07a8adcd8a",
+      "source/tools/monitor_owned_server.py": "0ab72c8295d4aac347390a8613165c3831d6d45ee70d8b0d5b84a0728457c426"
+    },
+    "block_b": {
+      "overlay-python/sglang/srt/managers/scheduler.py": "3dab72d2cc2c85a371dd9fde5789b15c108a551ff2d7ad82e1780c69da9e2c3a",
+      "overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py": "7f9f2ef9bbc00bcd69732318767994c45399524ba6482207c7bcae2dab516007",
+      "source/tools/launch_hybrid.py": "0c91469bb2657e84bad64a8db0cf24498a90449012d8461792a497964471d26e",
+      "overlay-python/sglang/srt/layers/round9/round16_a1_observer.py": "038dc9907b5c6924ae17fe60685de1d84ce3ed9a52f3bc390cfc6d07a8adcd8a",
+      "source/tools/monitor_owned_server.py": "0ab72c8295d4aac347390a8613165c3831d6d45ee70d8b0d5b84a0728457c426"
+    }
+  },
+  "wired_boundaries": [
+    {
+      "component": "PARENT_ROUTED_EXPERT",
+      "symbol": "KTEPWrapperMethod.apply",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "coverage": "A1_HOST_LAYERS_0_47"
+    },
+    {
+      "component": "HOST_DISPATCH",
+      "symbol": "KTEPWrapperMethod._submit_cpu_forward",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "coverage": "A1_HOST_LAYERS_0_47"
+    },
+    {
+      "component": "HOST_SYNC",
+      "symbol": "KTEPWrapperMethod._sync_cpu_forward",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "coverage": "A1_HOST_LAYERS_0_47"
+    },
+    {
+      "component": "HOST_MERGE",
+      "symbol": "KTEPWrapperMethod.apply after existing main-stream wait_event",
+      "clock_domain": "HOST_MONOTONIC_NS",
+      "coverage": "A1_HOST_LAYERS_0_47"
+    },
+    {
+      "component": "QSA_INDEXER",
+      "symbol": "round13_attribution.observe",
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "coverage": "ROUND13_LAYERS_3_23_47"
+    },
+    {
+      "component": "GDN",
+      "symbol": "round13_attribution.observe",
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "coverage": "ROUND13_LAYERS_0_24_46"
+    },
+    {
+      "component": "NPU_RESIDENT",
+      "symbol": "round13_attribution.observe KTEPWrapperMethod.gpu_method.apply",
+      "clock_domain": "NPU_EVENT_ELAPSED_MS",
+      "coverage": "ROUND13_LAYERS_0_24_47"
+    },
+    {
+      "component": "CPU_EXPERT",
+      "symbol": "native submit_forward/sync_forward interval",
+      "clock_domain": "NATIVE_WORKER_CLOCK_UNAVAILABLE",
+      "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK"
+    }
+  ],
+  "semantic_preservation": {
+    "wrapped_return": "PASS_CPU_MOCK",
+    "wrapped_exception_identity": "PASS_CPU_MOCK",
+    "production_synchronization_added": false,
+    "native_abi_changed": false,
+    "device_query": "DEFERRED_QUERY_NO_SYNCHRONIZE"
+  },
+  "schedule": {
+    "items_per_block": 6,
+    "roles": [
+      "W1_WARMUP",
+      "W2_WARMUP",
+      "W1_MEASUREMENT",
+      "W2_MEASUREMENT",
+      "SHORT_DRAIN",
+      "FIXED_CANARY"
+    ],
+    "short_drain": {
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "input_tokens": 27,
+      "max_new_tokens": 4,
+      "ignore_eos": true,
+      "source_driver": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-snapshots/v338/round14a_b_profile_driver.py",
+      "source_driver_sha256": "325f9e06901cca49c4f92ca4f3fab9112d3500343af7864b297972f9c1d01e44"
+    },
+    "fixed_canary": {
+      "fixture": "round10-t1-fixture.json#cases.canary_math391",
+      "input_tokens": 27,
+      "input_ids_sha256": "4d2584778859d8b34fa388d6fb09925c1da1a0197945de1298f09d199dce489d",
+      "messages_sha256": "e5a27eaad7efa96e5ff9020ca99f901cf968238ac7ae7b662c7369923c5e6615",
+      "temperature": 0,
+      "top_p": 1,
+      "seed": 20260920,
+      "max_new_tokens": 32,
+      "ignore_eos": false,
+      "validator": {
+        "kind": "exact_text",
+        "expected": "391"
+      },
+      "logprob_requirement": "FINITE"
+    }
+  },
+  "controller": {
+    "explicit_enable_required": true,
+    "source_manifest_rechecked_immediately_before_output": true,
+    "ledger_sha_rechecked_immediately_before_output": true,
+    "copy_on_spend_before_driver_call": true,
+    "automatic_retries": 0,
+    "abort_controls": 0,
+    "blocks": [
+      {
+        "block_id": "round16-a1-fresh-profile-a-v001",
+        "limit": 6
+      },
+      {
+        "block_id": "round16-a1-fresh-profile-b-v001",
+        "limit": 6
+      }
+    ],
+    "total_limit": 12,
+    "cpu_fake_two_block_test": "PASS_6_PLUS_6",
+    "raw_receipt": "round16-a1-raw-receipt.json",
+    "schedule_sha256_bound_in_snapshot_plan_and_execution": true,
+    "block_b_requires_block_a_exactly_complete": true,
+    "raw_receipt_schedule_sha256_bound": true,
+    "reviewed_source_manifest_sha_prelaunch_required": true,
+    "same_source_manifest_sha_required_in_container_driver": true,
+    "execution_budget_mutable_outside_source_manifest": true,
+    "execution_budget_transition": "INITIAL_UNSPENT_TO_SINGLE_MATCHING_FULL_ID_START",
+    "execution_budget_before_after_sha_in_evidence": true,
+    "fresh_admission_raw_rounds_rehashed": true,
+    "block_b_predecessor_gate": "EXACT_ORDERED_A_REQUEST_IDS_LEDGER_AFTER_SHA_PASS_CLEANUP_SUPERVISOR_AND_FINAL_ARCHIVE_BEFORE_SUBPROCESS",
+    "fresh_admission_round_names": "WRAPPER_DECLARED_TWO_UNIQUE_BASENAMES_NOT_HARDCODED"
+  },
+  "artifacts": {
+    "contract": {
+      "path": "artifacts/round16-a/FRESH_A1_PROFILE_CONTRACT.json",
+      "sha256": "209a50d9165e80a5c190fa282d4890c6bc4dd0fa302e3cf7acc729100aa4d744"
+    },
+    "initial_ledger": {
+      "path": "artifacts/round16-a/FRESH_A1_LEDGER_INITIAL.json",
+      "sha256": "c01b40e2259521d9f111461577e339662b6d98b2e48b450611b85c601a184219",
+      "used_a": 0,
+      "used_b": 0,
+      "total_used": 0
+    },
+    "controller_a": {
+      "path": "artifacts/round16-a/FRESH_A1_CONTROLLER_INPUT_A.json",
+      "sha256": "ff528b05aa5d8aef629d6c68451324ff4ffd435be15b0cbb6390b3675a899d88",
+      "enabled": false,
+      "executable": false
+    },
+    "controller_b": {
+      "path": "artifacts/round16-a/FRESH_A1_CONTROLLER_INPUT_B.json",
+      "sha256": "73620445e9d4e258c3442264d095dac1b7e88bd2087bebf6dc4737717c9c138f",
+      "enabled": false,
+      "executable": false
+    }
+  },
+  "tdd": {
+    "red": [
+      {
+        "command": "python3 -m unittest tests.round16.test_a_fresh_a1_snapshot -v",
+        "evidence": "ModuleNotFoundError: round16.a.fresh_a1_snapshot"
+      },
+      {
+        "command": "python3 -m unittest tests.round16.test_a_fresh_a1_runtime_observer -v",
+        "evidence": "ImportError: fresh_a1_runtime_observer missing"
+      },
+      {
+        "test": "test_enabled_binding_records_parent_host_bookends_and_explicit_cpu_unknown",
+        "evidence": "child parent_span_id differed from recorded parent span before identity reuse fix"
+      },
+      {
+        "test": "test_builder_rejects_output_inside_frozen_parent",
+        "evidence": "builder initially allowed a child path inside the frozen parent"
+      },
+      {
+        "test": "test_manifest_has_two_new_immutable_blocks_and_twelve_generation_budget",
+        "evidence": "old queue lacked W2 warmup and fixed canary"
+      },
+      {
+        "test": "test_controller_executes_fixed_six_item_queue_and_writes_raw_receipt",
+        "evidence": "execute_controller was not implemented"
+      },
+      {
+        "test": "test_controller_rechecks_manifest_and_ledger_before_driver_or_output",
+        "evidence": "controller runtime TOCTOU recheck was not implemented"
+      },
+      {
+        "test": "test_controller_rejects_schedule_mutation_before_driver_or_output",
+        "evidence": "controller plan initially lacked a frozen schedule payload and schedule_sha256"
+      },
+      {
+        "test": "test_actual_scheduler_tp_worker_model_runner_path_is_bound",
+        "evidence": "observer initially looked for scheduler.model_runner instead of actual scheduler.tp_worker.model_runner"
+      },
+      {
+        "test": "test_block_b_requires_block_a_exactly_complete",
+        "evidence": "B initially accepted an unused A ledger instead of requiring A=6/B=0"
+      },
+      {
+        "test": "test_block_b_rejects_forged_six_request_id_predecessor",
+        "evidence": "B initially accepted arbitrary six unique predecessor IDs."
+      },
+      {
+        "test": "test_block_b_predecessor_binds_fixed_a_receipt_to_exact_ledger",
+        "evidence": "B initially did not bind A raw receipt ledger_sha256_after."
+      },
+      {
+        "test": "test_block_b_predecessor_rejects_incomplete_a_cleanup_even_if_archive_rehashed",
+        "evidence": "B initially ignored A cleanup supervisor and final archive terminal state."
+      }
+    ],
+    "green": {
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest discover -s tests/round16 -p 'test_a_*.py' -v",
+      "tests": 103,
+      "failures": 0,
+      "errors": 0,
+      "fresh_a1_tests": 70,
+      "all_a_tests": 103,
+      "common_tests": 6,
+      "all_round16_tests": 109,
+      "fresh_a1_command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest tests.round16.test_a_fresh_a1_profile tests.round16.test_a_fresh_a1_runtime_observer tests.round16.test_a_fresh_a1_snapshot tests.round16.test_a_fresh_a1_device tests.round16.test_a_fresh_a1_evidence tests.round16.test_a_fresh_a1_analysis -v"
+    }
+  },
+  "execution": {
+    "snapshot_builder_on_full_v295": "PASS_LOCAL_CPU_ONLY_2628_FILES_INITIAL_UNSPENT",
+    "model_processes_started": 0,
+    "generation_attempts": 0,
+    "npu": "DEVICE_REQUIRED_NOT_RUN",
+    "c128": "NOT_USED",
+    "remote_container": "NOT_USED",
+    "performance": "NOT_RUN",
+    "candidate_selected": null,
+    "snapshot_transport": "NOT_RUN"
+  },
+  "shared_contract_v2": {
+    "modified": false,
+    "sha256": "7234dc017690eea39313b7a2776c54466cc896ed10294708970cdb2bda23aa01"
+  },
+  "observer_wiring_note": "OBSERVER_HOOKS_IS_A_BOUNDARY_CATALOG_NOT_AN_INSTALLATION_CLAIM; A1_NPU_SHARED_NOT_INSTALLED",
+  "source_transport": {
+    "trusted_local_donor": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+    "build_location": "LOCAL_ONLY",
+    "full_local_build_preflight": "PASS_2628_FILES_INITIAL_UNSPENT",
+    "remote_actual_parent": "/mnt/data1/kt-round9/round14a-a-gdn-model-20260927-v2/v295",
+    "remote_parent_policy": "IDENTITY_EVIDENCE_ONLY_REJECTED_AS_BUILD_DONOR_SPENT_BUDGET",
+    "remote_budget_sha256_prefix": "046fc30c",
+    "required_initial_budget_sha256": "665ded641f8848d65ca44776cf74dfd70909184339a619f3d70befee09c36974",
+    "transport_gate": "FIXED_EXTERNALLY_REVIEWED_A_B_MANIFEST_AND_LEDGER_SHA; NO_REMOTE_SELF_AUTHORIZATION",
+    "remote_transport": "NOT_RUN"
+  }
+}

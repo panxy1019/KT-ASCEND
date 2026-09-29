@@ -1,0 +1,57 @@
+{
+  "exact_source": {
+    "check_count_including_config": 18,
+    "comm_context_sha256": "af4a6e79ffcf6803c2a2a41dd598618398f090ea3a97253642c340ea26295c9f",
+    "moe_comm_method_sha256": "043f3c28518254347589f7af03793810262d0b29a9a82ca17dfd5fe5f9559f2e",
+    "moe_runtime_args_sha256": "c1d52390f5619ce184207038d131abbe2d6745f527badc82363b0394f80371c2",
+    "prepare_finalize_sha256": "c467d0ed0a0d41525aa90008aafbfd26bdbb718b0e29db7de2bed9abe09cabdd",
+    "quant_type_sha256": "2faa4432100452f762aac28b17cb6167d8ed62955063abb9c4f56647fb0f8257",
+    "result": "PASS_EXACT_SOURCE_AND_API",
+    "source_count": 17,
+    "token_dispatcher_sha256": "36fa3658532b330f701c441bab279bed320fea067a2ddf75ee4cfa6a703e0d9b"
+  },
+  "executable_probe": "round16_integration.p1_allgather_q32_probe; default OFF; static S0/source PASS; device factory pending",
+  "execution_mode": "CPU_ONLY_STANDARD_LIBRARY_FAKE_QWEN",
+  "first_device_candidate": "TP1_EP1_EAGER_ALLGATHER_BF16_QUANT_NONE_PHYSICAL_Q32_EXPERT_MAP_NONE_LOG2PHY_NONE",
+  "implementation": {
+    "installer": "round16/b/selective_preallocation_installer.py",
+    "installer_sha256": "edf9fd600af0adb8ef108ebb4d003ae0752b3780d4c958a8441b45e30102a74f",
+    "runner": "round16/b/source_bound_hybrid_runner.py",
+    "runner_sha256": "0e1a2f375d9af131d35dfe4f58adf9c12f627ae0968e777085e1001ef0b7d582",
+    "test": "tests/round16/test_b_qwen_runner_wiring.py",
+    "test_sha256": "9a2253c00b62fc94682be71ca7cd5e11ab887b9fb2c4bba5a11fa5a3272b0550"
+  },
+  "live_eligible": false,
+  "not_run": [
+    "NPU or torch_npu",
+    "real vLLM/model/checkpoint",
+    "C128 bank",
+    "graph capture",
+    "benchmark"
+  ],
+  "proofs": [
+    "48 owner/runner layers acknowledge the identical SelectiveLoadPlan",
+    "self.experts.forward reaches the bridge and the upstream selector runs exactly once",
+    "prepared hidden/router are consumed by selector and routed owner",
+    "CPU submit precedes native weighted aggregate and CPU sync follows it",
+    "native result is weighted unscaled [T,H]; occurrence mapping is rejected",
+    "upstream owns scale/shared/output transform/reduction once; calling Qwen layer owns residual",
+    "all-CPU/all-NPU envelopes finalize; invalid prepared rows are safe-ID/zero-weight for both payloads",
+    "construction failure restores qwen3_next.FusedMoE"
+  ],
+  "remaining_gates": [
+    "LIVE_QWEN_SELF_EXPERTS_IMAGE_PROOF",
+    "EP1_ALLGATHER_Q32_PRESELECTED_DEVICE_ADAPTER",
+    "DONOR_WORKER_RUNTIME_FACTORY_BINDING",
+    "DEVICE_PHYSICAL_TOPK_TENSOR_OPS_PROOF",
+    "DEVICE_TENSOR_KT_NATIVE_MERGE_PROOF",
+    "Q32_NATIVE_OWNER_AND_RUNNER_DEVICE_PAIR",
+    "S15_WEIGHTED_AGGREGATE_DEVICE_PARITY",
+    "EXACT_SOURCE_TOKEN_ATOMIC_LIVE_REGISTRATION",
+    "RESIDENT_MAP_LIVE_RECEIPT_HASH_REQUIRED",
+    "DEVICE_REAL_MOE_REQUIRED",
+    "KT_NATIVE_STREAM_SINGLE_OUTSTANDING_DEVICE_DRAIN_BEFORE_REQUEST_ASYNC"
+  ],
+  "schema": 1,
+  "status": "PASS_OFFLINE_SOURCE_BOUND_LIVE_INELIGIBLE"
+}

@@ -1,0 +1,33 @@
+{
+  "automatic_retry_policy": "NO_BLIND_RETRY; EACH SUCCESSOR_IDENTITY_BOUND_TO_A_CODE_OR_CONTRACT_CHANGE",
+  "decisive_terminal_chain": {
+    "a1_profile_generations": 12,
+    "a1_profile_model_blocks": 2,
+    "b_component_qualification_stages": [
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "QSA_MULTIPAGE_MULTIHEAD"
+    ],
+    "b_full_model_smoke_abort_controls": 1,
+    "b_full_model_smoke_blocks": 1,
+    "b_full_model_smoke_generations": 8,
+    "request_comparison_generation_attempts": 40,
+    "request_comparison_model_blocks": 4,
+    "request_comparison_order": [
+      "S0-A",
+      "B-A",
+      "B-B",
+      "S0-B"
+    ]
+  },
+  "development_failures": "PRESERVED_BY_UNIQUE_REMOTE_AND_LOCAL_RUN_IDENTITIES; NOT OMITTED FROM EVIDENCE; NOT USED_AS_A_QUOTA_STOP",
+  "generated_at_utc": "2026-09-29T11:31:43.658738Z",
+  "schema": 1,
+  "status": "USER_UNBOUNDED_EXECUTION_RECORDED_NOT_QUOTA_GATED",
+  "user_overrides": {
+    "fresh_admission": "2x10_SECONDS",
+    "quota_limits": "REMOVED_FOR_ROUND16"
+  }
+}

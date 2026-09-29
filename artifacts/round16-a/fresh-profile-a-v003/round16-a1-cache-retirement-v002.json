@@ -1,0 +1,53 @@
+{
+  "automation": "PAUSED_UNCHANGED",
+  "before_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 19451328,
+      "FileHugePages": 33040384,
+      "FilePages": 64097880,
+      "MemFree": 176698396
+    },
+    "3": {
+      "AnonPages": 26459916,
+      "FileHugePages": 4601856,
+      "FilePages": 24264472,
+      "MemFree": 209837896
+    },
+    "4": {
+      "AnonPages": 21108360,
+      "FileHugePages": 13017088,
+      "FilePages": 185366192,
+      "MemFree": 51976988
+    },
+    "7": {
+      "AnonPages": 16400148,
+      "FileHugePages": 189216768,
+      "FilePages": 217998832,
+      "MemFree": 25640488
+    }
+  },
+  "before_system_memavailable_kib": 1815982232,
+  "ended_unix": 1790646521.4084136,
+  "expected_file_count": 179,
+  "failures": [
+    {
+      "message": "cannot audit maps for PID 1",
+      "type": "RuntimeError"
+    }
+  ],
+  "file_count": 179,
+  "file_stat_identity_sha256": "af3c1ef33b8d40f710da63efe5cd8a88b975fdba4735a15e147b1c0b9e14946e",
+  "global_drop_caches": false,
+  "manifest_path": "/mnt/data1/kt-round9/evidence/20260928-round15-b-cache-contract/full-manifest.json",
+  "manifest_sha256": "ba9057bdf7801ebd292d3b8a789e5aa18b0390d002e0a9c9f76e93feb1d46da0",
+  "minimum_drop_bytes": 1,
+  "operation": "POSIX_FADV_DONTNEED",
+  "other_tasks_modified": false,
+  "roles": {
+    "bank": 48,
+    "model": 131
+  },
+  "schema": 2,
+  "started_unix": 1790646521.3502634,
+  "status": "FAIL_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+}

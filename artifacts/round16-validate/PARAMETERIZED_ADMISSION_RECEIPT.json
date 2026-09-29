@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_PARAMETERIZED_ADMISSION_READY_DEVICE_NOT_RUN",
+  "scope": "Round16 explicit target selection and two-round CPU/NUMA/HBM/identity admission",
+  "default": "NO_DEVICE_TARGET_SELECTED",
+  "implementation": {
+    "selector": "round16/common/resource_target.py",
+    "validator": "round16/common/parameterized_admission.py",
+    "collector_cli": "tools/round16_admission.py",
+    "selector_sha256": "7dd795f873f03e194bd36a52b8a614b415c6a102af1e6aede4eae0239d3227b1",
+    "validator_sha256": "66cb5b4cfb2ab9b030cc85e917e8c56fb6a58d90532a21ebfc3501cc596e02d3",
+    "collector_cli_sha256": "c5c67444407fb78b13258bc13d89d30408f5b36647b6108799889adea69cee08"
+  },
+  "contracts": {
+    "precheck_is_not_admission": true,
+    "rounds": 2,
+    "windows_per_round": 6,
+    "window_seconds": 10,
+    "candidate_cpu_idle": "mean(min(SMT siblings)) strictly > 0.80 for every window",
+    "candidate_physical_cores": 160,
+    "numa_memfree_each_gib": 48,
+    "system_memavailable_gib": 704,
+    "external_claim": "FAIL_CLOSED",
+    "unknown_device_process": "FAIL_CLOSED",
+    "training_hbm_allowance_mib": 15360,
+    "target_identity_stable_across_rounds": true,
+    "cpu_identity_stable_across_rounds": true
+  },
+  "tests": {
+    "tdd_red": "parameterized validator and CLI modules absent",
+    "targeted_green": "PASS 11/11",
+    "direct_cli_entrypoint": "PASS_WITHOUT_AMBIENT_PYTHONPATH",
+    "integrated_green": "PASS 137/137",
+    "test_files": [
+      "tests/round16/test_resource_target.py",
+      "tests/round16/test_parameterized_admission.py",
+      "tests/round16/test_parameterized_admission_cli.py"
+    ]
+  },
+  "execution": {
+    "two_round_sampling": "NOT_RUN_NO_SAFE_DEVICE",
+    "model_process_created": false,
+    "budget_consumed": {
+      "model_groups": 0,
+      "generation_attempts": 0,
+      "abort_controls": 0,
+      "device_component_processes": 0,
+      "npu_device_hours": 0
+    }
+  }
+}

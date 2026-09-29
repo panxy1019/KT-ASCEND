@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "status": "REJECTED_OFFLINE_REMOTE_PREFLIGHT",
+  "snapshot_identity": "fresh-a-v001",
+  "snapshot_path": "/mnt/data1/kt-round9/artifacts/round16-a/a-snapshots/fresh-a-v001",
+  "failed_boundary": "PYTHON_PACKAGE_IMPORT_BEFORE_OFFLINE_PREFLIGHT",
+  "exception_type": "ModuleNotFoundError",
+  "exception_message": "No module named 'round16.a.provider_manifest'",
+  "root_cause": "The frozen snapshot copied round16/a/__init__.py but omitted provider_manifest.py and its common contract dependencies from CONTROL_RELATIVES.",
+  "device_initialized": false,
+  "model_process_created": false,
+  "container_created": false,
+  "model_groups_consumed": 0,
+  "generation_attempts_consumed": 0,
+  "abort_controls_consumed": 0,
+  "device_component_processes_consumed": 0,
+  "automatic_retry": false,
+  "disposition": "PRESERVE_V001_UNCHANGED_BUILD_V002_WITH_TESTED_PACKAGE_CLOSURE",
+  "evidence_command": "cd /tmp && PYTHONNOUSERSITE=1 PYTHONPATH=/mnt/data1/kt-round9/artifacts/round16-a/a-snapshots/fresh-a-v001 python3 -c 'from round16.a.fresh_a1_snapshot import offline_preflight'"
+}

@@ -1,0 +1,86 @@
+{
+  "adapter": {
+    "device_tensor_class": "round16.b.allgather_q32_device_adapter:AllGatherQ32DeviceTensorAdapter",
+    "device_tensor_output": "opaque NPU BF16 [T,H], Top-K-weighted, routed-scaling-unapplied, returned without iteration/float/D2H/sync",
+    "live_eligible": false,
+    "offline_fake_class": "round16.b.allgather_q32_device_adapter:AllGatherQ32OfflineFakeAdapter",
+    "sequence": "prepare -> prepared selector inputs -> identity-bound physical tensor payload -> build_fused_experts_input -> fused_experts -> finalize",
+    "tuple_and_device_api_separated": true
+  },
+  "device_contract": {
+    "comm_type": "ALLGATHER",
+    "dtype": "bfloat16",
+    "eager": true,
+    "ep_size": 1,
+    "expert_map": null,
+    "log2phy": null,
+    "logical_experts": 512,
+    "physical_experts": 32,
+    "physical_ids_dtype": "int32",
+    "quant_type": "NONE",
+    "route_weights_dtype": "bfloat16",
+    "top_k": 10,
+    "tp_size": 1
+  },
+  "exact_source": {
+    "check_count_including_config": 18,
+    "comm_context_sha256": "af4a6e79ffcf6803c2a2a41dd598618398f090ea3a97253642c340ea26295c9f",
+    "moe_comm_method_sha256": "043f3c28518254347589f7af03793810262d0b29a9a82ca17dfd5fe5f9559f2e",
+    "moe_runtime_args_sha256": "c1d52390f5619ce184207038d131abbe2d6745f527badc82363b0394f80371c2",
+    "prepare_finalize_sha256": "c467d0ed0a0d41525aa90008aafbfd26bdbb718b0e29db7de2bed9abe09cabdd",
+    "quant_type_sha256": "2faa4432100452f762aac28b17cb6167d8ed62955063abb9c4f56647fb0f8257",
+    "result": "PASS_EXACT_SOURCE_AND_API",
+    "source_count": 17,
+    "token_dispatcher_sha256": "36fa3658532b330f701c441bab279bed320fea067a2ddf75ee4cfa6a703e0d9b"
+  },
+  "implementation": {
+    "adapter": "round16/b/allgather_q32_device_adapter.py",
+    "adapter_sha256": "d223b39b06b0064fc03bef23151b9306987d3e9771ad2a51348913b2b05804e9",
+    "overlay_adapter": "artifacts/round16-b/device-overlay/allgather_q32_device_adapter.py",
+    "overlay_preflight": "artifacts/round16-b/device-overlay/round16_b_native_source_preflight.py",
+    "preflight_sha256": "d2ce82499240624a3d4e4cfa87925c21bedee1b0f4544a9a4ce6e2927d99ab4e",
+    "test": "tests/round16/test_b_allgather_q32_device_adapter.py",
+    "test_sha256": "b90bd4824bd06f30df2951a8ecd2b6a04fa6854db3ecd3a20d667829f49863c8"
+  },
+  "integration_probe": {
+    "module": "round16_integration/p1_allgather_q32_probe.py",
+    "module_sha256": "ad48b06cb0a16f435b8efd9963e492daba76e1433fd8ad42a19ab8ac20926c15",
+    "physical_payload": "IMPLEMENTED_TENSOR_OPS_OFFLINE_PROVEN_DEVICE_NOT_RUN",
+    "static_status": "READY_FOR_DEVICE_RUNTIME_BINDING",
+    "tensor_merge": "IMPLEMENTED_TENSOR_PRESERVING_OFFLINE_PROVEN_DEVICE_NOT_RUN"
+  },
+  "not_run": [
+    "NPU or torch_npu",
+    "live vLLM/vLLM-Ascend import",
+    "real physical-ID tensor transformation",
+    "real KT/native tensor merge",
+    "model/checkpoint/C128 bank",
+    "numerical or performance qualification"
+  ],
+  "offline_proofs": [
+    "all-CPU, all-NPU, mixed, and padding routes create the expected physical-ID/zero-weight payload in the tuple fake",
+    "live tensor contract validates NPU device, int32 IDs, BF16 weights, [T,10] Top-K layout and [T,H] output layout",
+    "non-iterable tensor sentinels prove no tensor content iteration or float conversion",
+    "comm object, stream object, Q32 plan, physical allocation shape/dtype, exact source token, and callback API identities are bound",
+    "payload/build/fused/finalize failures retire one-shot prepared state"
+  ],
+  "remaining_device_gates": [
+    "DONOR_WORKER_RUNTIME_FACTORY_BINDING",
+    "DEVICE_PHYSICAL_TOPK_TENSOR_OPS_PROOF",
+    "DEVICE_TENSOR_KT_NATIVE_MERGE_PROOF",
+    "LIVE_QWEN_SELF_EXPERTS_IMAGE_PROOF",
+    "Q32_NATIVE_OWNER_AND_RUNNER_DEVICE_PAIR",
+    "S15_WEIGHTED_AGGREGATE_DEVICE_PARITY",
+    "RESIDENT_MAP_LIVE_OWNER_MATCH_REQUIRED",
+    "RUNTIME_CONTEXT_CAPACITY_DEVICE_MODEL_PENDING",
+    "DEVICE_REAL_MOE_REQUIRED",
+    "KT_NATIVE_STREAM_SINGLE_OUTSTANDING_DEVICE_DRAIN_BEFORE_REQUEST_ASYNC"
+  ],
+  "schema": 1,
+  "status": "PASS_OFFLINE_P1_EXECUTABLE_PROBE_AND_TENSOR_OPS_DEVICE_REQUIRED_NOT_RUN",
+  "verification": {
+    "exact_source_preflight": "PASS 18/18 (17 sources plus model config)",
+    "focused_tests": "PASS 16/16 (10 adapter plus 6 executable probe)",
+    "full_suite": "PASS 121/121 (115 B plus 6 common)"
+  }
+}

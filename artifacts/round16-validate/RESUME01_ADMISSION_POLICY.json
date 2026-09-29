@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "target": {
+    "physical_id": 12,
+    "card_id": 6,
+    "chip_id": 0,
+    "pci_bdf": "0000:85:00.0",
+    "numa_nodes": [2, 3, 4, 7]
+  },
+  "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+  "expected_host_ip": "110.123.0.3",
+  "expected_physical_cores": 160,
+  "rounds": 2,
+  "windows_per_round": 6,
+  "minimum_round_seconds": 60.0,
+  "minimum_idle_exclusive": 0.8,
+  "minimum_node_free_kib": 50331648,
+  "minimum_system_available_kib": 738197504,
+  "expected_hbm_total_mib": 65536,
+  "training_process_limit_mib": 15360,
+  "identity_source": {
+    "resource_snapshot": "RESUME01_REMOTE_RESOURCE_RAW.txt",
+    "resource_snapshot_sha256": "c5e20fc6d1a5b47a1c64cdabfc2271103e7c9987992faafdd40ed627cb087270",
+    "device_claim_snapshot": "RESUME01_DEVICE_CLAIMS_RAW.txt",
+    "device_claim_snapshot_sha256": "922d78d57e0ac3ade6cd7ca7073706f89b314f8e5733c75e7547a50e99c00c79",
+    "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI"
+  }
+}

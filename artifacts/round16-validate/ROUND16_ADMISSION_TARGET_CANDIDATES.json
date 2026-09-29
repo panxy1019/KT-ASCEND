@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "status": "EXPLICIT_CANDIDATES_FROZEN_NONE_CURRENTLY_AVAILABLE",
+  "captured_from": "artifacts/round16-validate/P0_REMOTE_RESOURCE_CYCLE_02_RAW.txt",
+  "captured_from_sha256": "9552c0f27fb48830def5f7099da8f741e7d1806834f9e8fb898bc33fde71c634",
+  "candidate_order": [
+    {
+      "physical_id": 12,
+      "card_id": 6,
+      "chip_id": 0,
+      "pci_bdf": "0000:85:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 10,
+      "card_id": 5,
+      "chip_id": 0,
+      "pci_bdf": "0000:89:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 8,
+      "card_id": 4,
+      "chip_id": 0,
+      "pci_bdf": "0000:8D:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 6,
+      "card_id": 3,
+      "chip_id": 0,
+      "pci_bdf": "0000:91:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 4,
+      "card_id": 2,
+      "chip_id": 0,
+      "pci_bdf": "0000:95:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 2,
+      "card_id": 1,
+      "chip_id": 0,
+      "pci_bdf": "0000:99:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 0,
+      "card_id": 0,
+      "chip_id": 0,
+      "pci_bdf": "0000:9D:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    },
+    {
+      "physical_id": 14,
+      "card_id": 7,
+      "chip_id": 0,
+      "pci_bdf": "0000:81:00.0",
+      "numa_nodes": [2, 3, 4, 7],
+      "numa_basis": "S15_EXISTING_C128_PROFILE_NOT_INFERRED_FROM_PCI",
+      "latest_cycle_02_state": "EXTERNAL_CONTAINER_CLAIM_REJECTED"
+    }
+  ],
+  "selection_rules": {
+    "fresh_npu_smi_and_container_claims_required": true,
+    "external_claim_rejects_even_if_engine_process_absent": true,
+    "unknown_process_rejects": true,
+    "training_process_only_if_full_cgroup_matches": true,
+    "training_process_hbm_limit_mib": 15360,
+    "hbm_total_mib": 65536,
+    "numa_from_pci_inference": false,
+    "alternate_numa_profile": "NOT_PREQUALIFIED_MUST_BE_EXPLICITLY_REVIEWED_BEFORE_USE"
+  }
+}

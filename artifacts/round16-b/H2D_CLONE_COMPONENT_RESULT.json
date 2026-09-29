@@ -1,0 +1,35 @@
+{
+  "allocator_allocated_bytes": 83886592,
+  "allocator_reserved_bytes": 85983232,
+  "clone_seconds": 0.044528395985253155,
+  "copy_and_sync_seconds": 0.004345984023530036,
+  "destination_device": "npu:0",
+  "destination_shape": [
+    16384,
+    2560
+  ],
+  "expected_sha256": "888098eea25ace0873f7af3fb8a923060016296e7ccddd27a532fe650af1e795",
+  "observed_sha256": "888098eea25ace0873f7af3fb8a923060016296e7ccddd27a532fe650af1e795",
+  "passed": true,
+  "schema": 1,
+  "shard_sizes": [
+    2048,
+    2048,
+    6144
+  ],
+  "source_device": "cpu",
+  "source_shape": [
+    10240,
+    2560
+  ],
+  "source_storage_bytes": 52428800,
+  "source_stride": [
+    2560,
+    1
+  ],
+  "staged_aliases_source": false,
+  "staged_storage_bytes": 52428800,
+  "status": "PASS_H2D_ANONYMOUS_CLONE",
+  "total_seconds": 0.08943200000794604,
+  "weight": "model.language_model.layers.0.linear_attn.in_proj_qkv.weight"
+}

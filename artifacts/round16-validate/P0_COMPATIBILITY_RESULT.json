@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "status": "P0_RESOLVED_READY_DEVICE_ADMISSION_WAIT_EXTERNAL_RESOURCES",
+  "round15_barrier": {
+    "status": "PASS",
+    "terminal": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "cleanup": "PASS",
+    "resource_lease_released": true,
+    "hash_entries_verified": 31,
+    "selected_parent": "ROUND14A_V295_PROMOTED_GDN_S0"
+  },
+  "shared_contract": {
+    "version": "round16-contract-v2",
+    "coordinator_owned": true,
+    "a_modified_shared_contract": false,
+    "b_modified_shared_contract": false
+  },
+  "a": {
+    "status": "OFFLINE_SOURCE_BOUND_FRESH_A1_PROFILE_READY_DEVICE_NOT_RUN",
+    "s15_compatibility": "PASS_OFFLINE",
+    "profile_blocks": [
+      "round16-a1-fresh-profile-a-v001",
+      "round16-a1-fresh-profile-b-v001"
+    ],
+    "generation_budget": 12,
+    "native_worker_direct_timing": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+    "candidate": null,
+    "a2": "NOT_SELECTED_BEFORE_FRESH_A1",
+    "a3": "NOT_SELECTED_BEFORE_FRESH_A1"
+  },
+  "b": {
+    "status": "OFFLINE_SOURCE_BOUND_MODEL_CONSTRUCTION_Q32_SEAM_READY_DEVICE_PENDING",
+    "donor": "vLLM 0.26.0 plus vLLM-Ascend 550ab66",
+    "served_architecture": "Qwen4ExpForConditionalGeneration",
+    "registry_class_binding": "RESOLVED_NATIVE_MODEL_SUBCLASS",
+    "selective_preallocation_entry": "RESOLVED_MODEL_CONSTRUCTION_SCOPED_ALWAYS_RESTORED",
+    "resident_map_binding": "VERIFIED_S15_RECEIPT_48_LAYERS_EACH_LOGICAL_0_THROUGH_31",
+    "resident_map_evidence": "S15_RESIDENT_MAP_EVIDENCE.json",
+    "checkpoint_slice_binding": "UNRESOLVED_DEVICE_REQUIRED",
+    "hybrid_runner_binding": "UNRESOLVED_DEVICE_AND_SOURCE_ADAPTER_REQUIRED",
+    "real_moe": "DEVICE_NOT_RUN",
+    "full_model": "NOT_RUN"
+  },
+  "admission": {
+    "failed_cycles": 3,
+    "failed_cycle_limit": 6,
+    "reason": "all physical devices 0 through 15 retain external container claims",
+    "selected_device": null,
+    "two_round_sampling": "NOT_STARTED_DEVICE_OWNERSHIP_GATE_FAILED",
+    "device_budget_used": 0
+  },
+  "verification": {
+    "round16_tests": "PASS 137/137",
+    "device_correctness": "NOT_RUN",
+    "request_performance": "NOT_RUN"
+  },
+  "next": [
+    "finish bounded A snapshot/controller and B checkpoint/runner offline binding",
+    "perform a later independent read-only resource cycle",
+    "only after an unclaimed device appears, run two 60-second admission rounds",
+    "serialize A1 device profile and B real-MoE validation under the shared lease"
+  ]
+}

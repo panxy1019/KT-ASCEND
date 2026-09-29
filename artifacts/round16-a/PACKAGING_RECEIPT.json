@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "status": "PASS_STDLIB_OFFLINE_INSTALL",
+  "checked_at_utc": "2026-09-28T23:52:21Z",
+  "package": "round16.a",
+  "distribution_name": null,
+  "package_identity": "standalone stdlib-installed component; repository distribution metadata unchanged",
+  "installer": "tools/install_round16_a.py",
+  "method": "stdlib shutil.copytree plus compileall",
+  "network_used": false,
+  "dependencies_installed": false,
+  "global_environment_modified": false,
+  "top_level_ktransformers_modified": false,
+  "validation": {
+    "isolated_target": "temporary directory",
+    "byte_compile": "PASS",
+    "fresh_isolated_import": "PASS",
+    "fresh_a1_profile_isolated_import": "PASS_DEFAULT_OFF_TOTAL_BUDGET_12",
+    "provider_name": "kt-ascend-round16",
+    "runtime_dependencies_imported": [],
+    "fresh_a1_analysis_isolated_import": "PASS_DEVICE_EVIDENCE_PENDING_TORCH_NOT_IMPORTED"
+  },
+  "pip_path": {
+    "status": "NOT_RUN_TOOL_UNAVAILABLE",
+    "evidence": "/usr/bin/python3: No module named pip",
+    "setuptools": "NOT_INSTALLED",
+    "action": "No dependency installation or upgrade was attempted"
+  },
+  "device": "DEVICE_REQUIRED_NOT_RUN",
+  "performance": "NOT_RUN"
+}

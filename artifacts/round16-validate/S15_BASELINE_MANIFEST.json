@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "status": "ROUND16_S15_IDENTITY_FROZEN_PENDING_DEVICE_ADMISSION",
+  "parent": {
+    "round15_terminal_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "round15_final_status_sha256": "f5f1e77a8972601b886dde67067ac845b511fd32a1268b9213d4eb44194db31f",
+    "round15_final_config_sha256": "5e8813ffddbdcab022129d342e7005b501d475238588ba2505a5f56f3669a21f",
+    "round15_baseline_manifest_sha256": "a29274bd315d01d5c2aeed624baab564c5d4694590f61b9cf189a4c0c347c0cf",
+    "round15_hash_manifest_sha256": "e887ce438446cb7f20cdfe107ef4783fde503ec5a75fc344327a760c2914e0f6",
+    "round15_hash_entries_verified": 31,
+    "promoted_round15_candidates": []
+  },
+  "runtime": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "layers": 48,
+    "logical_routed_experts_per_layer": 512,
+    "top_k": 10,
+    "cpu": "KUNPENG_C128_4X32",
+    "cpu_numa_parent": [2, 3, 4, 7],
+    "cpu_bank": "READ_ONLY_MXFP4",
+    "npu_resident": "STATIC_UNIFORM_Q32_BF16_NZ29",
+    "npu_resident_map_evidence": "S15_RESIDENT_MAP_EVIDENCE.json",
+    "scheduler_chunk": 32,
+    "ple": "ASYNC",
+    "qsa_prefill": "VECTORIZED",
+    "qsa_decode": "DIRECT_BF16_ROW",
+    "gdn": "ROUND14A_PROMOTED_NPU_CONV_RECURRENCE_PLUS_LOCAL_SIGMOID_GATE_NORM_OUT_PROJECTION",
+    "hybrid_threshold": 129,
+    "tp": 1,
+    "concurrency": 1,
+    "qualified_input_tokens_max": 128,
+    "qualified_output_tokens_max": 128,
+    "graph": false,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "transpose_view": false,
+    "shadow320": false
+  },
+  "runtime_snapshot": {
+    "local": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295",
+    "remote": "/mnt/data1/kt-round9/round14a-a-gdn-model-20260927-v2/v295",
+    "manifest_sha256": "5639b0a21ac4f94c0c2ca6f5ca66248a0dddcd3b5a83a2eb1f25b4899a7c28cd"
+  },
+  "source_identity": {
+    "qwen4_exp_sha256": "1986d8a880fe1503848eadf02a8ed572d543eac967fcb583b6f67d42250f3545",
+    "qsa_sha256": "0fd8d98b37f7e90e90f9866356892236dcc7d0114351d1438025561df6c1bd35",
+    "gdn_sha256": "65d990b19b6cfb35ea8f86e94985120a4a37c8397f234173365ec8655f25ebd1",
+    "unquantized_moe_sha256": "56b46c170c8150afb437cb1bc0ea4453a456ca14f849170e7d0f27358cabcafb",
+    "kt_ep_wrapper_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b"
+  },
+  "images": {
+    "sglang_kt_s0": {
+      "name": "kt-round64-migration:20260916",
+      "image_id": "sha256:601e76d17e9fb4b1c5a72d491cf086c533a309c5c651315e73fe783c90460c8a",
+      "torch": "2.9.0+cpu",
+      "torch_npu": "2.9.0.post2",
+      "cann": "9.0.0"
+    },
+    "vllm_ascend_donor": {
+      "name": "quay.io/ascend/vllm-ascend:qwen3.8-next-a3-openeuler",
+      "image_id": "sha256:7e3ab7e56a54259d3ecec91073346f9ca8b2a4c1f58e15826e3ed6ff67036f00",
+      "repo_digest": "sha256:38e4a59458c82d2972dc08ea3aa209784cc9fb925c417a5559d422f2bbebf830",
+      "torch": "2.10.0+cpu",
+      "torch_npu": "2.10.0.post4",
+      "cann": "9.1.0",
+      "vllm_ascend_commit": "550ab66e7feb89f6e2ba49394f6ffb153189ac2b",
+      "vllm_commit": "568afb3a13806beb53bb2e6bd518269357b237c0"
+    }
+  },
+  "round15_candidates_for_reference_only": {
+    "full_set_qsa": "OFF_NO_W2_REQUEST_GAIN",
+    "resident_only_graph": "OFF_SMALL_DIRECTIONAL_GAIN_BELOW_GATE_AND_PLUS_984_MIB_HBM"
+  },
+  "device_selection": "NOT_SELECTED_ADMISSION_CYCLE_01_FAILED_EXTERNAL_CLAIMS"
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T17:20:12Z",
+  "status": "PASS_ROUND15_TERMINAL_AND_SELF_CLEANUP",
+  "normalized_receipt": {
+    "round15_terminal_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "baseline_manifest_sha256": "a29274bd315d01d5c2aeed624baab564c5d4694590f61b9cf189a4c0c347c0cf",
+    "code_patch_dependency_identity": {
+      "round15_hash_manifest_sha256": "e887ce438446cb7f20cdfe107ef4783fde503ec5a75fc344327a760c2914e0f6",
+      "final_status_sha256": "f5f1e77a8972601b886dde67067ac845b511fd32a1268b9213d4eb44194db31f",
+      "final_config_sha256": "5e8813ffddbdcab022129d342e7005b501d475238588ba2505a5f56f3669a21f",
+      "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+      "runtime_parent": "artifacts/round14a/a-gdn-model-snapshots/v295"
+    },
+    "cleanup_status": "PASS",
+    "owned_runtime_processes": [],
+    "resource_lease_released": true,
+    "baseline_correctness_open": false
+  },
+  "barrier_decision": {
+    "ready": true,
+    "reason_codes": [],
+    "selected_baseline_sha256": "a29274bd315d01d5c2aeed624baab564c5d4694590f61b9cf189a4c0c347c0cf"
+  },
+  "evidence": {
+    "round15_final_status": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/FINAL_STATUS.json",
+    "round15_final_config": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/FINAL_CONFIG.json",
+    "round15_hash_manifest": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/HASHES.json",
+    "hash_manifest_entries_verified": 31,
+    "hash_manifest_missing": 0,
+    "hash_manifest_mismatch": 0,
+    "remote_resource_snapshot": "artifacts/round16-validate/P0_REMOTE_RESOURCE_RAW.txt",
+    "remote_resource_snapshot_sha256": "e15db7008f25183d64ba3d7ac1c0dc2c72cf294d834861cdfa5e693136f6e08a",
+    "current_round_process_census": "artifacts/round16-validate/P0_CURRENT_ROUND_PROCESS_CENSUS_RAW.txt",
+    "current_round_process_census_sha256": "53476285e7512bada9b48be6cdd6aba7676ace964da11e5cdf31b91285125567",
+    "current_round_process_census_at_utc": "2026-09-28T17:20:12Z",
+    "current_round_process_census_host": "a3-server-00",
+    "current_round_process_census_filter": "[r]ound15|[r]ound16|[k]t-round",
+    "current_round_process_matches": 0,
+    "current_round_container_matches": 0,
+    "current_round_process_census_query_exit_status": 0,
+    "round15_owned_process_match": "EMPTY",
+    "cleanup_source": "Round15 FINAL_STATUS resources plus current read-only process census",
+    "lease_source": "terminal final status, all owned containers/processes exited, and current empty Round15-owned process census"
+  },
+  "scope_boundary": {
+    "round15_not_reopened": true,
+    "round15_candidate_promoted": false,
+    "selected_s15": "ROUND14A_S0_RETAINED",
+    "external_processes_do_not_belong_to_round15": true,
+    "fresh_round16_admission_required": true
+  }
+}

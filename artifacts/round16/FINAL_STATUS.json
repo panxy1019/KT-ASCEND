@@ -1,0 +1,77 @@
+{
+  "a": {
+    "a2": "NOT_SELECTED_EVIDENCE_GAP",
+    "a3": "NOT_SELECTED_EVIDENCE_GAP",
+    "cpu_expert": {
+      "candidate_score_contribution": null,
+      "component": "CPU_EXPERT",
+      "duration": null,
+      "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK"
+    },
+    "direct_npu_diagnostics_ms": {
+      "A": {
+        "GDN": 1.057099997997284,
+        "NPU_EXPERT": 0.41640999913215637,
+        "QSA_INDEXER": 2.868250012397766
+      },
+      "B": {
+        "GDN": 1.0878999829292297,
+        "NPU_EXPERT": 0.43414999544620514,
+        "QSA_INDEXER": 2.986330032348633
+      }
+    },
+    "fresh_profile_blocks": 2,
+    "qualification_gap": "NO_DIRECT_ISOLATED_HOST_SYNC_EXPOSED_WAIT_OR_HOST_LAUNCH_METADATA_CRITICAL_INTERVAL; NATIVE_CPU_WORKER_ABI_HAS_NO_CALLBACK",
+    "request_gain": "NOT_MEASURED_NO_SAFE_CANDIDATE_SELECTED",
+    "selected_candidate": null,
+    "status": "A1_INSUFFICIENT_ATTRIBUTION"
+  },
+  "b": {
+    "component_stages": [
+      "REAL_IMAGE_Q32_CONSTRUCTOR_VERIFIED",
+      "REAL_Q32_LOADER_AND_LAYOUT_VERIFIED",
+      "REAL_HYBRID_MOE_VERIFIED",
+      "ALL_LAYER_RESIDENCY_VERIFIED",
+      "PASS_ROUND16_B_V5_FULL_MODEL_SMOKE"
+    ],
+    "decode_gate_pass": false,
+    "disposition": "B16_MEASURED_NO_PROMOTION",
+    "full_model_smoke": "PASS_ROUND16_B_V5_FULL_MODEL_SMOKE",
+    "graph": "EAGER_NONE",
+    "highest_completed_level": "REQUEST_COMPARISON_MEASURED",
+    "kv": "PASS_COMPONENT_MULTIPAGE_MULTIHEAD_WITH_SCOPE_LIMIT",
+    "protection_gate_pass": false,
+    "request_comparison": "PASS_ROUND16_STRICT_REQUEST_COMPARISON",
+    "request_gain": "NO_PROMOTION",
+    "status": "B16_FULL_RUNTIME_AND_REQUEST_MEASURED_NO_PROMOTION"
+  },
+  "default_runtime": "S0_SGLANG_KT_UNCHANGED",
+  "default_switch_authorized": false,
+  "evidence": {
+    "a": "artifacts/round16-a/A1_CRITICAL_PATH.json",
+    "b_runtime": "artifacts/round16/B_RUNTIME_RESULT.json",
+    "benchmark": "artifacts/round16/ROUND16_BENCHMARK.csv",
+    "comparison": "artifacts/round16-b/ROUND16_REQUEST_COMPARISON.json",
+    "kv": "artifacts/round16/ROUND16_B_KV_QUALIFICATION.json",
+    "resources": "artifacts/round16/ROUND16_RESOURCE_RETIREMENT.json"
+  },
+  "final_answers": {
+    "a2_a3": "NOT_SELECTED_EVIDENCE_GAP",
+    "a_request_cost_reduction": "NOT_MEASURED",
+    "a_vs_b": "B16_IS_SLOWER_ON_W2_TPOT_AND_SERIAL_THROUGHPUT_IN_BOTH_PAIRS; KEEP_S0",
+    "b_integration_level": "FULL_TP1_EAGER_MODEL_PLUS_FOUR_PROCESS_REQUEST_COMPARISON",
+    "b_native_graph_retention": "NONE_GRAPH_REPLAY; EAGER_NATIVE_MAINLINE_WITH_KT_EXPERT_BRIDGE",
+    "current_3x_limit": "NOT_SAFELY_ATTRIBUTABLE_FROM_A1; QSA_IS_LARGEST_SAMPLED_NPU_SPAN_BUT_CPU_EXPOSED_WAIT_AND_HOST_LAUNCH_REMAIN_UNKNOWN"
+  },
+  "generated_at_utc": "2026-09-29T11:31:43.658738Z",
+  "performance_objective": "NOT_ACHIEVED",
+  "safety": {
+    "external_workloads_modified": false,
+    "global_drop_caches": false,
+    "push_merge_tag_reset_clean": false,
+    "timer_restored": false
+  },
+  "schema": 2,
+  "status": "ROUND16_PARTIAL_WITH_GAPS",
+  "terminal": true
+}

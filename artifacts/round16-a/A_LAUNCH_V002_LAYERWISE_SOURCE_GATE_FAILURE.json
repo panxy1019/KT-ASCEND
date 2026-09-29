@@ -1,0 +1,29 @@
+{
+  "abort_controls_consumed": 0,
+  "admission_sha256": "98657f1a5130cec8ffff4e99dfe2fb5c38f46d6d7de1baee39252642bfb0e696",
+  "archive_manifest_sha256": "8ba8d735d40805e730eec8b6acbcdbfbc7e28db1355ef331a829a287c445cd40",
+  "controller_launch_invocations": 1,
+  "disposition": "PRESERVE_FAIL_USE_FINAL_EXPLICIT_PARENT_TO_DELTA_GATE_RUNTIME_V003_TRANSPORT_V004",
+  "docker_container_created": false,
+  "driver_process_starts": 0,
+  "error": "layerwise MoE backend differs from device gate",
+  "error_boundary": "LAYERWISE_MOE_SOURCE_IDENTITY_GATE_BEFORE_DOCKER_CREATE",
+  "execution_budget_initial_sha256": "458f3ca916075a2068e68924b88a952f8574a80f089201b970d597112ccb527b",
+  "generation_attempts_consumed": 0,
+  "global_model_groups_consumed": 0,
+  "launcher_model_start_attempts_reported": 1,
+  "mismatch": {
+    "observed_round16_observer_delta_sha256": "7f9f2ef9bbc00bcd69732318767994c45399524ba6482207c7bcae2dab516007",
+    "qualified_parent_sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+    "relative": "sglang/srt/layers/moe/kt_ep_wrapper.py"
+  },
+  "mutable_execution_budget_model_starts_used": 0,
+  "recorded_at_epoch": 1790645200.4898295,
+  "repair_root_cause": "SOURCE_BINDING",
+  "repair_validation_count": 2,
+  "repair_validation_scope": "SECOND_MODIFIED_PRE_CONTAINER_VALIDATION",
+  "schema": 1,
+  "source_manifest_sha256": "072dc56fbf005ffb34f5f487633910809cacf30a483c17b59fe9d70413f2435f",
+  "status": "REJECTED_PRE_CONTAINER_LAYERWISE_SOURCE_GATE_FAILURE",
+  "supervisor_sha256": "3f450a90976c4140c591d802ed5d6249af396f60a3dd242d27288ce09d5bc800"
+}

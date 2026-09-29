@@ -1,0 +1,357 @@
+{
+  "schema": 1,
+  "status": "READY_OFFLINE_MAP_DEVICE_REQUIRED_NOT_RUN",
+  "generated_at_utc": "2026-09-28T17:25:51Z",
+  "default_enabled": false,
+  "scope": {
+    "stage": "ROUND16_POST_P0_A1_OFFLINE_PREPARATION",
+    "round15_read_only": true,
+    "round15_rerun": false,
+    "shared_contract_v2_modified": false,
+    "npu_or_c128_used": false,
+    "remote_container_used": false
+  },
+  "round15_terminal": {
+    "status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "performance_objective": "NOT_ACHIEVED",
+    "p0": "PASS_TWO_FRESH_PROFILE_BLOCKS",
+    "a_component": "PASS_TWO_BLOCK_GATE",
+    "a_request": "NO_REQUEST_GAIN_IN_W2_DIRECTIONAL_SCREEN",
+    "a_disposition": "KEEP_DEFAULT_OFF",
+    "sources": [
+      {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/FINAL_STATUS.json",
+        "sha256": "f5f1e77a8972601b886dde67067ac845b511fd32a1268b9213d4eb44194db31f"
+      },
+      {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/FINAL_CONFIG.json",
+        "sha256": "5e8813ffddbdcab022129d342e7005b501d475238588ba2505a5f56f3669a21f",
+        "status": "ROUND15_FINAL_CONFIG_RETAINS_S0"
+      },
+      {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/A_REQUEST_DIRECTIONAL_RESULT.json",
+        "sha256": "03423a25fd20f1498ce5a9dc9188706a22ca42a39920f144cc82a81470e83cf3",
+        "status": "ROUND15_A_DIRECTIONAL_NO_REQUEST_GAIN_KEEP_DEFAULT_OFF"
+      }
+    ]
+  },
+  "p0": {
+    "s0_startup": {
+      "host_controller": {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-snapshots/v338/round15_p0_controller.py",
+        "sha256": "e1c311186ede83a98ce7619cc75e4c2fe5fc5a15457a7f6fb84e778661b9517a",
+        "symbol": "main",
+        "role": "validate immutable snapshot, claim controller, invoke launcher, then invoke supervisor"
+      },
+      "host_launcher": {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-snapshots/v338/source/tools/launch_hybrid.py",
+        "sha256": "dff349aba92fcbe646d257b8b7d70726f2b2c795b456bb9adb55c6310539a0fb",
+        "symbol": "<module>",
+        "role": "create the frozen S0 container, account one model start, start the monitor, then start the container"
+      },
+      "container_process": "source /usr/local/Ascend/ascend-toolkit/set_env.sh; ulimit -c 0; exec timeout -k 10 21600 python -u /out/source/runtime/candidate_server.py --profile /out/server-profile.json --resolved-profile /out/resolved-profile.json --admission /out/admission.json",
+      "supervisor": {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-snapshots/v338/round15_p0_supervisor.py",
+        "sha256": "9e02ebe9219cf6b125880668950e4c0024100fddffa20bcacf5f73a1b76483d1",
+        "symbol": "main",
+        "role": "wait for the real server readiness marker, run exactly one driver, validate budgets, and retire the owned container"
+      },
+      "request_driver": {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/round15_p0_driver.py",
+        "sha256": "64d236486fe2d6d66a6da77d6c5b2af1c29c83c30c5c76f598e35ff10028e8f4",
+        "symbol": "run",
+        "role": "delegate to the frozen Round14a request driver and normalize one fresh raw ledger"
+      },
+      "chain": [
+        "round15_p0_controller.main",
+        "source/tools/launch_hybrid.py",
+        "/out/source/runtime/candidate_server.py",
+        "round15_p0_supervisor.main",
+        "round15_p0_driver.run"
+      ]
+    },
+    "profile": {
+      "summary_source": {
+        "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/P0_PROFILE_RESULT.json",
+        "sha256": "56de9c3d6eabff94b0b6f10f127c7d8767679da76d79e0f3659ad2f9683e6482",
+        "status": "PASS_ROUND15_P0_TWO_FRESH_BLOCKS"
+      },
+      "driver_reuse": "REUSE_THE_BOUNDED_DRIVER_AND_OBSERVER_PATTERN_ONLY; a Round16 run requires new immutable block identities, fresh output ledgers, and an explicit Round16 budget",
+      "schedule": [
+        "WARMUP",
+        "W1",
+        "W2",
+        "DRAIN"
+      ],
+      "schedule_tokens": [
+        [128, 16],
+        [128, 16],
+        [128, 128],
+        [27, 4]
+      ],
+      "accepted_blocks": [
+        {
+          "block": "A",
+          "version": 335,
+          "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-results/v335-control-failure/20260928-round15-p0-a-v335/round15-p0-raw.json",
+          "sha256": "9831e884372b9a7794c2f399cd409b699fa04c618ac10ceb91a3128a089ec920",
+          "status": "PASS_ROUND15_P0_PROFILE_DRIVER_RAW",
+          "salvaged_raw": true,
+          "original_control_status": "FAIL_CLEANUP_PRESERVED",
+          "generation_attempts": 4,
+          "abort_controls": 0,
+          "automatic_retries": 0,
+          "batches": 150,
+          "spans": 3600
+        },
+        {
+          "block": "B",
+          "version": 338,
+          "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-results/v338/20260928-round15-p0-b-v338/round15-p0-final.json",
+          "sha256": "e3d5eb8b30c7e2046a982b903af8b12cec488ced38150ddcc7cd4dad60fe96f9",
+          "status": "PASS_ROUND15_P0_PROFILE_PROCESS",
+          "salvaged_raw": false,
+          "generation_attempts": 4,
+          "abort_controls": 0,
+          "automatic_retries": 0,
+          "batches": 150,
+          "spans": 3600
+        }
+      ],
+      "observed_components_each_block": {
+        "CPU_RESULT_WAIT": 450,
+        "CPU_SUBMIT": 450,
+        "GDN": 450,
+        "NPU_RESIDENT": 450,
+        "PLE_CONSUMER": 150,
+        "PLE_EXPOSED_WAIT": 150,
+        "PLE_PREPARE": 150,
+        "QSA_ATTENTION": 450,
+        "QSA_INDEXER": 450,
+        "ROUTED_EXPERT": 450
+      }
+    },
+    "observer_source": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-snapshots/v338/overlay-python/sglang/srt/layers/round9/round13_attribution.py",
+      "sha256": "a4bd6c90bc05ec09e51d14194fb2eaf38e00dcb5578d48b91bfdfc1f4b392cc0",
+      "symbols": [
+        "observe",
+        "resolve_device_spans",
+        "_bind",
+        "before",
+        "after"
+      ],
+      "device_query": "DEFERRED_QUERY_ONLY_NO_SYNCHRONIZE",
+      "no_parent_child_sum": true
+    },
+    "clock_domains": [
+      {
+        "domain": "HOST_MONOTONIC_NS",
+        "producer": "time.monotonic_ns",
+        "fields": [
+          "batch.started_ns",
+          "batch.ended_ns",
+          "span.start_ns",
+          "span.end_ns",
+          "span.duration_ns"
+        ],
+        "comparability": "same process and same boot only; fresh blocks are compared by distributions, not absolute timestamps"
+      },
+      {
+        "domain": "NPU_EVENT_ELAPSED_MS",
+        "producer": "torch.npu.Event(enable_timing=True).elapsed_time",
+        "fields": [
+          "span.device_ms",
+          "span.device_status"
+        ],
+        "comparability": "relative duration within one event pair; no absolute alignment to HOST_MONOTONIC_NS",
+        "query_boundary": "later scheduler before/after flush",
+        "synchronize_inserted": false
+      }
+    ],
+    "recording_points": {
+      "CPU_EXPERT": {
+        "status": "MISSING_DIRECT_MEASUREMENT",
+        "reason": "the async CPU worker execution has no worker-clock start/end event; CPU_SUBMIT and CPU_RESULT_WAIT are only host-side bookends",
+        "do_not_infer_from": [
+          "ROUTED_EXPERT minus NPU_RESIDENT",
+          "CPU_SUBMIT to CPU_RESULT_WAIT wall interval"
+        ]
+      },
+      "NPU": {
+        "status": "RECORDED",
+        "component": "NPU_RESIDENT",
+        "symbol": "KTEPWrapperMethod.gpu_method.apply",
+        "host_clock": "HOST_MONOTONIC_NS",
+        "device_clock": "NPU_EVENT_ELAPSED_MS"
+      },
+      "HOST_DISPATCH": {
+        "status": "RECORDED_HOST_CALL_ONLY",
+        "component": "CPU_SUBMIT",
+        "symbol": "KTEPWrapperMethod._submit_cpu_forward",
+        "clock": "HOST_MONOTONIC_NS"
+      },
+      "HOST_SYNC": {
+        "status": "RECORDED_HOST_WAIT_CALL_ONLY",
+        "component": "CPU_RESULT_WAIT",
+        "symbol": "KTEPWrapperMethod._sync_cpu_forward",
+        "clock": "HOST_MONOTONIC_NS"
+      },
+      "MIXED_PARENT": {
+        "status": "RECORDED_BUT_OVERLAPPING",
+        "component": "ROUTED_EXPERT",
+        "symbol": "KTEPWrapperMethod.apply",
+        "rule": "retain as a parent observation; never sum it with or subtract sampled child spans"
+      },
+      "UNKNOWN": {
+        "status": "EXPLICIT_UNMEASURED_BUCKET",
+        "includes": [
+          "async CPU Expert execution",
+          "unwrapped mask/remap/merge and stream-wait work",
+          "cross-clock and overlap residuals"
+        ],
+        "derivation": "NEVER_PARENT_MINUS_CHILDREN"
+      }
+    },
+    "budget": {
+      "two_fresh_blocks": {
+        "model_processes": 2,
+        "generation_attempts": 8,
+        "abort_controls": 0,
+        "automatic_retries": 0
+      },
+      "per_block_generation_attempts": 4,
+      "a1_two_component_blocks": {
+        "component_processes": 2,
+        "generation_attempts": 0,
+        "abort_controls": 0
+      },
+      "a1_directional_request_gate_reference_only": {
+        "model_processes": 2,
+        "generation_attempts": 28,
+        "abort_controls": 2,
+        "evidence_class": "TWO_FRESH_PROCESS_DIRECTIONAL_SCREEN_NOT_ABBA"
+      },
+      "round15_terminal_used_all_stages_reference_only": {
+        "model_processes": 13,
+        "generation_attempts": 83,
+        "abort_controls": 5,
+        "component_processes": 4,
+        "npu_device_hours": 0.8372649977093123,
+        "source_path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/ROUND15_EXECUTION_BUDGET.json",
+        "source_sha256": "cf7606416d13f93869f8ecceca7c4dd059b08068f109e09a7492a582db7203ab"
+      },
+      "round16_consumed": {
+        "model_processes": 0,
+        "generation_attempts": 0,
+        "abort_controls": 0,
+        "component_processes": 0,
+        "npu_device_hours": 0.0
+      },
+      "repair_policy": "NO_IMPLICIT_RETRY_OR_REPAIR_BUDGET"
+    }
+  },
+  "a1": {
+    "component_gate_source": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/A1_COMPONENT_RESULT.json",
+      "sha256": "c36226f473028f8aa26c3249955ea456f198cf3c0325e4e81fbd0de9154fecbc",
+      "status": "PASS_ROUND15_A1_QSA_TWO_BLOCK_COMPONENT_GATE"
+    },
+    "candidate_policy_source": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/round15_a_qsa_candidate.py",
+      "sha256": "8ceb66f409e49c72968e4b7bac905fcc0fc452b269f8fef68329ee01a19028c7",
+      "symbols": [
+        "select_strategy",
+        "full_set_logical_indices"
+      ]
+    },
+    "candidate_gate_source": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/compare_round15_a1_component.py",
+      "sha256": "658ca466aaee7dddb53adc777e7b77887a99a0eb26a47402db6dd687de840a5a",
+      "symbols": [
+        "summarize",
+        "compare"
+      ]
+    },
+    "candidate_gate": {
+      "p0_order": [
+        "QSA_INDEXER",
+        "GDN_RMSNORM_IF_A1_INAPPLICABLE"
+      ],
+      "component_candidate": "FULL_SET_CAUSAL_SHORT_CONTEXT",
+      "component_requirements": [
+        "two independent blocks A and B",
+        "12/12 rows per block at layers 3/23/47 and contexts 32/64/128/256",
+        "selected set exact",
+        "downstream relative L2 <= 0.001",
+        "three repeat hashes identical",
+        "candidate/baseline host median ratio > 0 and <= 0.85 for all 24 rows",
+        "lifecycle and process component gates pass",
+        "peak NPU allocation <= 10 GiB",
+        "source identity and candidate identity match"
+      ],
+      "request_gate": "DECODE_W2",
+      "round15_component_gate": "PASS",
+      "round15_request_gate": "FAIL_NO_W2_GAIN",
+      "round15_request_status": "ROUND15_A_DIRECTIONAL_NO_REQUEST_GAIN_KEEP_DEFAULT_OFF",
+      "round16_selected_candidate": null,
+      "enabled": false,
+      "open_condition": "new Round16 P0 and component evidence must satisfy every frozen field, then new request evidence must pass the separately authorized DECODE_W2 promotion gate",
+      "fail_closed": true
+    }
+  },
+  "missing_evidence": [
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-results/v335-control-failure/20260928-round15-p0-a-v335/round15-p0-raw.json",
+      "field": "startup and cleanup",
+      "impact": "A is a salvaged raw measurement block, not a clean PASS_ROUND15_P0_PROFILE_PROCESS final document; do not reuse it as a new Round16 clean block"
+    },
+    {
+      "path": "both Round15 raw span ledgers",
+      "field": "CPU_EXPERT.start_ns/end_ns",
+      "impact": "actual asynchronous CPU Expert execution duration and overlap are unknown"
+    },
+    {
+      "path": "both Round15 raw span ledgers",
+      "field": "span.clock_domain",
+      "impact": "the clock domain is recoverable from source code but is not self-described in each raw span"
+    },
+    {
+      "path": "both Round15 raw span ledgers",
+      "field": "span.stream_id/event_id/parent_span_id and absolute device timestamps",
+      "impact": "host/device alignment, nested-span arithmetic, and stream overlap cannot be reconstructed"
+    },
+    {
+      "path": "not yet allocated under artifacts/round16-a",
+      "field": "Round16 fresh block A/B final results",
+      "impact": "no Round16 device profile or candidate can be selected; the path remains default OFF"
+    },
+    {
+      "path": "artifacts/round16-a/FRESH_A1_PROFILE_CONTRACT.json",
+      "field": "device-stage snapshot build, preflight, and final result receipts",
+      "impact": "block identities and the 12-generation contract are prepared offline, but no immutable v295/S15-derived device snapshot or execution result exists"
+    }
+  ],
+  "round16_fresh_a1_preparation": {
+    "contract_path": "artifacts/round16-a/FRESH_A1_PROFILE_CONTRACT.json",
+    "status": "FROZEN_OFFLINE_NOT_RUN",
+    "block_ids": [
+      "round16-a1-fresh-profile-a-v001",
+      "round16-a1-fresh-profile-b-v001"
+    ],
+    "generation_attempts_per_block": 6,
+    "generation_attempts_total": 12,
+    "default_enabled": false,
+    "candidate_enabled": false,
+    "cpu_expert": "UNKNOWN_NATIVE_ABI_NO_CALLBACK"
+  },
+  "execution": {
+    "mode": "OFFLINE_READ_ONLY",
+    "model_processes_started": 0,
+    "generation_attempts": 0,
+    "component_processes_started": 0,
+    "device_runs": "NOT_RUN",
+    "performance": "NOT_RUN",
+    "candidate_activation": "OFF"
+  }
+}

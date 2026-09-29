@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "status": "HISTORICAL_HYPOTHESIS_ONLY_FRESH_A1_REQUIRED",
+  "purpose": "Bound the initial A2/A3 hypotheses without inheriting Round15 measurements as Round16 candidate evidence.",
+  "sources": [
+    {
+      "block": "A",
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-results/v335-control-failure/20260928-round15-p0-a-v335/round15-p0-raw.json",
+      "sha256": "9831e884372b9a7794c2f399cd409b699fa04c618ac10ceb91a3128a089ec920",
+      "evidence_class": "SALVAGED_RAW_PROFILE_WITHOUT_CLEAN_PROCESS_RECEIPT"
+    },
+    {
+      "block": "B",
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/p0-results/v338/20260928-round15-p0-b-v338/round15-p0-final.json",
+      "sha256": "e3d5eb8b30c7e2046a982b903af8b12cec488ced38150ddcc7cd4dad60fe96f9",
+      "evidence_class": "CLEAN_ROUND15_PROFILE_PROCESS"
+    },
+    {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round14a/a-gdn-model-snapshots/v295/overlay-python/sglang/srt/layers/moe/kt_ep_wrapper.py",
+      "sha256": "77dfbbab73431111e72b6ac2683e4f4ecfa617280436e9ce55a3d7f89177e46b",
+      "evidence_class": "S15_EXECUTION_ORDER_SOURCE"
+    }
+  ],
+  "decode_observations": {
+    "sampled_decode_batches_per_block": 127,
+    "sampled_layers_per_component": [0, 24, 47],
+    "block_a_median_batch_ms": 281.085524,
+    "block_b_median_batch_ms": 277.583645,
+    "block_a_sampled_layer_medians_ms": {
+      "routed_expert_parent": 1.994305,
+      "cpu_submit_host": 0.379458,
+      "cpu_result_wait_host": 0.371158,
+      "npu_resident_device": 0.44412,
+      "gdn_device": 1.11268,
+      "qsa_attention_device": 6.1291,
+      "qsa_indexer_device_nested_in_attention": 2.98854,
+      "ple_exposed_wait_host": 0.132086
+    },
+    "block_b_sampled_layer_medians_ms": {
+      "routed_expert_parent": 1.949953,
+      "cpu_submit_host": 0.361937,
+      "cpu_result_wait_host": 0.345126,
+      "npu_resident_device": 0.43768,
+      "gdn_device": 1.09082,
+      "qsa_attention_device": 6.08584,
+      "qsa_indexer_device_nested_in_attention": 2.90724,
+      "ple_exposed_wait_host": 0.135306
+    }
+  },
+  "source_dependency_finding": {
+    "existing_order": [
+      "stage hidden states on the main stream",
+      "submit C128 work on the dedicated CPU stream",
+      "mask and remap routed expert IDs",
+      "run resident NPU experts on the main stream",
+      "wait for the CPU result on the CPU stream",
+      "make the main stream wait for the completion event",
+      "merge the two same-layer contributions"
+    ],
+    "a2_implication": "S15 already overlaps CPU work with resident NPU expert work. A2 may proceed only if fresh A1 proves additional independent same-layer work and CPU-result exposed wait reaches the frozen selection gate.",
+    "a3_implication": "Round15 spans do not isolate mask/remap/merge or Host launch gaps, so A3 cannot be selected from these values alone."
+  },
+  "arithmetic_rules": [
+    "ROUTED_EXPERT is a parent and must not be added to its child spans.",
+    "QSA_INDEXER is nested in QSA_ATTENTION and must not be added to it.",
+    "Host monotonic spans and NPU event durations are separate clock domains.",
+    "The three sampled layers are not multiplied into a qualified full-model percentage.",
+    "CPU worker execution time remains unknown without a native worker callback."
+  ],
+  "disposition": "NO_A2_OR_A3_SELECTION_BEFORE_TWO_FRESH_ROUND16_A1_BLOCKS"
+}

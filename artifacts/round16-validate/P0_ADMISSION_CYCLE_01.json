@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "checked_at_utc": "2026-09-28T17:11:56Z",
+  "cycle": 1,
+  "status": "FAIL_EXTERNAL_NPU_RESERVATION_NO_SAFE_DEVICE_SELECTED",
+  "model_process_created": false,
+  "budget_effect": {
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0
+  },
+  "observed": {
+    "external_qwen38_vllm_containers": 16,
+    "registered_training_container": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+    "round15_owned_containers": 0,
+    "round16_owned_containers": 0,
+    "physical_devices": 16,
+    "devices_with_registered_training_process": 16,
+    "odd_physical_devices_with_external_vllm_engine_and_hbm_near_63300_mib": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15
+    ],
+    "even_device_external_container_state": "qwen38-vllm containers present with repeated restart counts; a momentary absence of VLLMEngineCor is not a safe lease"
+  },
+  "decision": {
+    "selected_npu": null,
+    "selected_numa": null,
+    "cpu_numa_sampling": "SHORT_CIRCUITED_AFTER_DEVICE_PROCESS_AND_CONTAINER_GATE",
+    "reason": "Every NPU has an external deployment container or active external engine capable of claiming it. Round16 cannot establish an exclusive stable lease without modifying another task.",
+    "retry_policy": "DO_NOT_BLIND_RETRY; continue offline A/B work and perform a new independent read-only cycle after external state changes"
+  },
+  "evidence": {
+    "raw_snapshot": "artifacts/round16-validate/P0_REMOTE_RESOURCE_RAW.txt",
+    "raw_snapshot_sha256": "e15db7008f25183d64ba3d7ac1c0dc2c72cf294d834861cdfa5e693136f6e08a",
+    "raw_snapshot_at_utc": "2026-09-28T17:08:12Z",
+    "device_claims": "artifacts/round16-validate/P0_DEVICE_CLAIMS_RAW.txt",
+    "device_claims_sha256": "db07cd35238259c17934275a52381f874e73ae13a9a85c8e394bd9d39a2fd345",
+    "device_claims_at_utc": "2026-09-28T17:11:56Z",
+    "visible_device_claims": "EXACTLY_0_THROUGH_15"
+  },
+  "safety": {
+    "external_container_stopped_or_modified": false,
+    "training_modified": false,
+    "resource_threshold_lowered": false,
+    "device_work_started": false
+  }
+}

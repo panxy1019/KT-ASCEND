@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "generated_at_utc": "2026-09-28T12:54:13Z",
+  "status": "ROUND16_DEV_READY_WAIT_ROUND15",
+  "parent_commit": "e3a443ee7bb3e075b6ca3bfe19709b2a183c95fb",
+  "contract": {
+    "version": "round16-contract-v2",
+    "sha256": "58ea04c5524bb24ff1158bf050684a7afcbf01db17d4d3035db9da33152bdb3b",
+    "previous_v1": "SUPERSEDED_BEFORE_DEV_FREEZE"
+  },
+  "a_line": {
+    "status": "OFFLINE_COMPONENTS_READY_DEVICE_PENDING",
+    "package": "round16.a",
+    "scope": "SGLang_KT_THIN_PROVIDER_WITH_INJECTED_BACKEND_AND_FALLBACK",
+    "tests": "PASS_30_OF_30",
+    "runtime_import": "NOT_RUN",
+    "npu": "NOT_RUN",
+    "performance": "NOT_RUN"
+  },
+  "b_line": {
+    "status": "OFFLINE_BRIDGE_SCAFFOLD_READY_VERSION_DEVICE_PENDING",
+    "package": "round16.b",
+    "scope": "VLLM_MODEL_SCOPED_KT_EXPERT_BRIDGE_AND_SELECTIVE_Q32_LOADER",
+    "tests": "PASS_45_OF_45",
+    "real_vllm_constructor": "VERSION_API_UNRESOLVED_FAIL_CLOSED",
+    "npu": "NOT_RUN",
+    "performance": "NOT_RUN"
+  },
+  "shared_tests": "PASS_14_OF_14",
+  "barrier_tests": "PASS_6_OF_6",
+  "combined_tests": "PASS_95_OF_95",
+  "packaging": {
+    "a": [
+      "round16",
+      "round16.common",
+      "round16.a"
+    ],
+    "b": [
+      "round16",
+      "round16.common",
+      "round16.b"
+    ],
+    "other_carrier_absent": "PASS",
+    "network_used": false,
+    "global_environment_modified": false
+  },
+  "round15_barrier": "CLOSED_WAIT_ROUND15",
+  "device_full_model_graph_benchmark": {
+    "npu_calls": 0,
+    "model_groups": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "device_component_processes": 0,
+    "npu_device_hours": 0,
+    "cpu_benchmarks": 0
+  },
+  "post_barrier_resource_rule": "USER_AUTHORIZED_ANOTHER_SAFE_NPU_AND_NUMA; SELECT_ONLY_AFTER_FRESH_ADMISSION_AND_S15_CAP_RECOVERY",
+  "review": "PASS_FINAL_READ_ONLY_REVIEW_NO_CODE_BLOCKERS",
+  "prohibitions_observed": [
+    "NO_PUSH",
+    "NO_MERGE",
+    "NO_TAG",
+    "NO_RESET",
+    "NO_CLEAN",
+    "NO_TIMER",
+    "NO_ROUND15_MUTATION",
+    "NO_CACHE_RETIREMENT"
+  ]
+}

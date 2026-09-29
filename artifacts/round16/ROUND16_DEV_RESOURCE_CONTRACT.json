@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "phase": "DEV_COMPLETE_WAIT_ROUND15",
+  "per_agent": {
+    "exclusive_physical_cores_max": 4,
+    "memory_gib_max": 16,
+    "compile_jobs_max": 2,
+    "new_workspace_gib_max": 20,
+    "omp_threads_default": 1,
+    "mkl_threads_default": 1
+  },
+  "aggregate": {
+    "exclusive_physical_cores_max": 8,
+    "memory_gib_max": 32,
+    "new_workspace_gib_max": 40
+  },
+  "dev_forbidden": [
+    "NPU_DEVICE_ACCESS",
+    "GRAPH_CAPTURE",
+    "FULL_MODEL_LOAD",
+    "C128_PERFORMANCE_BENCHMARK",
+    "REQUEST_PERFORMANCE_TEST",
+    "FULL_BANK_READ_OR_SHA",
+    "CACHE_RETIREMENT",
+    "ROUND15_ENVIRONMENT_OR_SO_MUTATION"
+  ],
+  "round15_priority": "ROUND16_COMPILE_NUMERICAL_TEST_AND_LARGE_IO_YIELD_DURING_ROUND15_MEASUREMENT",
+  "worktrees": {
+    "integration": "/home/admin/Documents/ChatGPT/KT/kt-round16-integration",
+    "a": "/home/admin/Documents/ChatGPT/KT/kt-round16-a-sglang",
+    "b": "/home/admin/Documents/ChatGPT/KT/kt-round16-b-vllm",
+    "checkout_mode": "SPARSE",
+    "observed_size_mib_each_approx": 60
+  },
+  "local_disk": {
+    "filesystem": "/dev/sda1",
+    "observed_available_gib_after_sparse_checkout": 2.7,
+    "full_checkout_prohibited": true,
+    "observed_available_gib_at_freeze": 2.185
+  },
+  "post_barrier_device_selection": {
+    "authorization": "USER_AUTHORIZED_ANOTHER_SAFE_NPU_AND_NUMA_ON_2026-09-28",
+    "selection": "DEFERRED_UNTIL_BARRIER_AND_FRESH_ADMISSION",
+    "requirements": [
+      "FRESH_ADMISSION",
+      "NO_UNKNOWN_NPU_PROCESS",
+      "TRAINING_CONTAINER_AND_CGROUP_IDENTITY_MATCH",
+      "CPU_SMT_SIBLING_EXCLUSION",
+      "NUMA_MEMORY_AND_LATEST_S15_CAPS_PASS"
+    ],
+    "historical_physical12_default": false,
+    "authorized_scope": "ONE_DIFFERENT_SAFE_NPU_AND_COMPATIBLE_NUMA_SET_IF_ALL_LATEST_S15_GATES_PASS"
+  },
+  "updated_at_utc": "2026-09-28T12:34:00Z"
+}

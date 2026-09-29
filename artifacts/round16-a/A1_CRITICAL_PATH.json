@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "stage": "ROUND16_A1_CRITICAL_PATH",
+  "status": "A1_INSUFFICIENT_ATTRIBUTION",
+  "fresh_blocks_present": [
+    "round16-a1-fresh-profile-a-v001",
+    "round16-a1-fresh-profile-b-v001"
+  ],
+  "historical_trace_eligible": false,
+  "source_identity": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+    "observer_contract": "round16-a1-observer-v001",
+    "provider_state": "OFF",
+    "schedule_owner": "round16-contract-66"
+  },
+  "blocks": [
+    {
+      "block": "A",
+      "block_id": "round16-a1-fresh-profile-a-v001",
+      "row_count": 76685,
+      "measurement_request_count": 2,
+      "measurement_event_flush": {
+        "status": "COMPLETE_MEASUREMENT_BATCHES_SERIALIZED",
+        "request_ids": [
+          "round16-a1-fresh-profile-a-v001:3:W1_MEASUREMENT",
+          "round16-a1-fresh-profile-a-v001:4:W2_MEASUREMENT"
+        ],
+        "required_direct_device_components": [
+          "QSA_INDEXER",
+          "GDN",
+          "NPU_RESIDENT"
+        ],
+        "completion_basis": "all required measurement events are COMPLETE in serialized Round13 batches before analysis",
+        "trailing_schedule_roles": [
+          "SHORT_DRAIN",
+          "FIXED_CANARY"
+        ],
+        "serialized_witness_role": "SHORT_DRAIN",
+        "serialized_witness_request_id": "round16-a1-fresh-profile-a-v001:5:SHORT_DRAIN",
+        "final_canary_device_completion_required": false
+      },
+      "diagnostic_direct_npu_event_medians_ms_not_candidate_scores": {
+        "QSA_INDEXER": 2.868250012397766,
+        "GDN": 1.057099997997284,
+        "NPU_EXPERT": 0.41640999913215637
+      },
+      "candidate_regions": {
+        "status": "INSUFFICIENT_ATTRIBUTION",
+        "reason": "Round13 and A1 provide direct provider spans and a serial scheduler Decode bounding interval, but no direct isolated HOST_SYNC_EXPOSED_WAIT or HOST_LAUNCH_METADATA_CRITICAL interval; nested spans are not added or subtracted",
+        "missing": [],
+        "minimum_decode_wall_fraction": 0.1,
+        "median_fraction_of_decode_wall": {
+          "A2": null,
+          "A3": null
+        },
+        "per_request": {
+          "A2": {},
+          "A3": {}
+        },
+        "gate_met": {
+          "A2": false,
+          "A3": false
+        }
+      },
+      "cpu_expert": {
+        "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+        "duration": null,
+        "included_in_candidate_score": false
+      }
+    },
+    {
+      "block": "B",
+      "block_id": "round16-a1-fresh-profile-b-v001",
+      "row_count": 76685,
+      "measurement_request_count": 2,
+      "measurement_event_flush": {
+        "status": "COMPLETE_MEASUREMENT_BATCHES_SERIALIZED",
+        "request_ids": [
+          "round16-a1-fresh-profile-b-v001:3:W1_MEASUREMENT",
+          "round16-a1-fresh-profile-b-v001:4:W2_MEASUREMENT"
+        ],
+        "required_direct_device_components": [
+          "QSA_INDEXER",
+          "GDN",
+          "NPU_RESIDENT"
+        ],
+        "completion_basis": "all required measurement events are COMPLETE in serialized Round13 batches before analysis",
+        "trailing_schedule_roles": [
+          "SHORT_DRAIN",
+          "FIXED_CANARY"
+        ],
+        "serialized_witness_role": "SHORT_DRAIN",
+        "serialized_witness_request_id": "round16-a1-fresh-profile-b-v001:5:SHORT_DRAIN",
+        "final_canary_device_completion_required": false
+      },
+      "diagnostic_direct_npu_event_medians_ms_not_candidate_scores": {
+        "QSA_INDEXER": 2.986330032348633,
+        "GDN": 1.0878999829292297,
+        "NPU_EXPERT": 0.43414999544620514
+      },
+      "candidate_regions": {
+        "status": "INSUFFICIENT_ATTRIBUTION",
+        "reason": "Round13 and A1 provide direct provider spans and a serial scheduler Decode bounding interval, but no direct isolated HOST_SYNC_EXPOSED_WAIT or HOST_LAUNCH_METADATA_CRITICAL interval; nested spans are not added or subtracted",
+        "missing": [],
+        "minimum_decode_wall_fraction": 0.1,
+        "median_fraction_of_decode_wall": {
+          "A2": null,
+          "A3": null
+        },
+        "per_request": {
+          "A2": {},
+          "A3": {}
+        },
+        "gate_met": {
+          "A2": false,
+          "A3": false
+        }
+      },
+      "cpu_expert": {
+        "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+        "duration": null,
+        "included_in_candidate_score": false
+      }
+    }
+  ],
+  "per_block_candidate_gates": {
+    "round16-a1-fresh-profile-a-v001": {
+      "A2": false,
+      "A3": false
+    },
+    "round16-a1-fresh-profile-b-v001": {
+      "A2": false,
+      "A3": false
+    }
+  },
+  "gate_results": {
+    "A2": "NOT_SELECTED_EVIDENCE_GAP",
+    "A3": "NOT_SELECTED_EVIDENCE_GAP"
+  },
+  "arithmetic": {
+    "operation": "DIRECT_REGION_FRACTION_OF_DECODE_WALL",
+    "clock_domain": "HOST_MONOTONIC_NS",
+    "minimum_decode_wall_fraction": 0.1,
+    "added_terms": [],
+    "cross_clock_additions": 0,
+    "nested_span_additions": 0,
+    "parent_minus_children": false
+  },
+  "unknown_regions": [
+    {
+      "component": "CPU_EXPERT",
+      "status": "UNKNOWN_NATIVE_ABI_NO_CALLBACK",
+      "duration": null,
+      "candidate_score_contribution": null
+    }
+  ],
+  "candidate_decision_status": "A1_INSUFFICIENT_ATTRIBUTION"
+}

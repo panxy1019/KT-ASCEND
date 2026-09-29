@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "status": "PASS_OFFLINE_READ_ONLY_PREPARATION",
+  "checked_at_utc": "2026-09-28T17:13:06Z",
+  "default_enabled": false,
+  "pure_control_code_added": false,
+  "round15": {
+    "read_only": true,
+    "rerun": false,
+    "terminal_status": "ROUND15_COMPLETE_SIMPLIFIED_DIRECTIONAL_NO_PROMOTION",
+    "p0_status": "PASS_TWO_FRESH_PROFILE_BLOCKS",
+    "a1_component_status": "PASS_ROUND15_A1_QSA_TWO_BLOCK_COMPONENT_GATE",
+    "a1_request_status": "ROUND15_A_DIRECTIONAL_NO_REQUEST_GAIN_KEEP_DEFAULT_OFF"
+  },
+  "tdd": {
+    "red": {
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest tests.round16.test_a_post_p0_a1_map -v",
+      "result": "EXPECTED_FAIL",
+      "tests": 3,
+      "evidence": "POST_P0_A1_MAP.json did not exist; all three tests raised FileNotFoundError"
+    },
+    "green": {
+      "command": "env OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 python3 -m unittest tests.round16.test_a_post_p0_a1_map -v",
+      "result": "PASS",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0
+    }
+  },
+  "mapped": [
+    "real S0 controller/launcher/container/server/supervisor/driver chain",
+    "accepted v335 salvaged raw and v338 clean final profile blocks",
+    "host monotonic and NPU event clock domains",
+    "CPU Expert/NPU/Host dispatch/Host sync/Mixed parent/UNKNOWN recording boundaries",
+    "bounded P0 and A1 budget counters",
+    "component and DECODE_W2 request selection gates",
+    "exact evidence omissions"
+  ],
+  "execution": {
+    "model_processes_started": 0,
+    "generation_attempts": 0,
+    "abort_controls": 0,
+    "component_processes_started": 0,
+    "npu_device_hours": 0.0,
+    "npu": "DEVICE_REQUIRED_NOT_RUN",
+    "c128": "NOT_USED",
+    "remote_container": "NOT_USED",
+    "performance": "NOT_RUN"
+  },
+  "shared_contract_v2_modified": false,
+  "candidate_activation": "OFF"
+}

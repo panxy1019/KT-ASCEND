@@ -1,0 +1,169 @@
+{
+  "admission_policy": "2x10_SECONDS_USER_OVERRIDE",
+  "admissions": [
+    {
+      "evidence": "artifacts/round16/resource-receipts-20260929/admissions/20260929-round16-b-perf-a-admission-v027/admission.json",
+      "min_mean_idle": 0.9968210657244349,
+      "min_numa_free_gib": {
+        "2": 213.1373062133789,
+        "3": 215.16440200805664,
+        "4": 120.65876770019531,
+        "7": 225.91936874389648
+      },
+      "run": "20260929-round16-b-perf-a-admission-v027",
+      "status": "PASS",
+      "target": {
+        "card_id": 6,
+        "chip_id": 0,
+        "numa_nodes": [
+          2,
+          3,
+          4,
+          7
+        ],
+        "pci_bdf": "0000:85:00.0",
+        "physical_id": 12
+      },
+      "window_seconds": 10,
+      "windows": 2
+    },
+    {
+      "evidence": "artifacts/round16/resource-receipts-20260929/admissions/20260929-round16-b-perf-b-admission-v027/admission.json",
+      "min_mean_idle": 0.9968790710824861,
+      "min_numa_free_gib": {
+        "2": 213.2689208984375,
+        "3": 215.2593002319336,
+        "4": 120.29108428955078,
+        "7": 225.8112564086914
+      },
+      "run": "20260929-round16-b-perf-b-admission-v027",
+      "status": "PASS",
+      "target": {
+        "card_id": 6,
+        "chip_id": 0,
+        "numa_nodes": [
+          2,
+          3,
+          4,
+          7
+        ],
+        "pci_bdf": "0000:85:00.0",
+        "physical_id": 12
+      },
+      "window_seconds": 10,
+      "windows": 2
+    },
+    {
+      "evidence": "artifacts/round16/resource-receipts-20260929/admissions/20260929-round16-s0-perf-a-admission-v403/admission.json",
+      "min_mean_idle": 0.996784539443383,
+      "min_numa_free_gib": {
+        "2": 213.12490844726562,
+        "3": 215.15559768676758,
+        "4": 120.76623153686523,
+        "7": 225.9154281616211
+      },
+      "run": "20260929-round16-s0-perf-a-admission-v403",
+      "status": "PASS",
+      "target": {
+        "card_id": 6,
+        "chip_id": 0,
+        "numa_nodes": [
+          2,
+          3,
+          4,
+          7
+        ],
+        "pci_bdf": "0000:85:00.0",
+        "physical_id": 12
+      },
+      "window_seconds": 10,
+      "windows": 2
+    },
+    {
+      "evidence": "artifacts/round16/resource-receipts-20260929/admissions/20260929-round16-s0-perf-b-admission-v404/admission.json",
+      "min_mean_idle": 0.9962653290489488,
+      "min_numa_free_gib": {
+        "2": 213.60659790039062,
+        "3": 215.1727294921875,
+        "4": 120.60453796386719,
+        "7": 225.61085510253906
+      },
+      "run": "20260929-round16-s0-perf-b-admission-v404",
+      "status": "PASS",
+      "target": {
+        "card_id": 6,
+        "chip_id": 0,
+        "numa_nodes": [
+          2,
+          3,
+          4,
+          7
+        ],
+        "pci_bdf": "0000:85:00.0",
+        "physical_id": 12
+      },
+      "window_seconds": 10,
+      "windows": 2
+    }
+  ],
+  "final_device_census": {
+    "evidence": "artifacts/round16/FINAL_RESOURCE_CENSUS.txt",
+    "physical12_no_process": true,
+    "round16_owned_container_count": 0,
+    "round16_owned_process_count": 0,
+    "status": "PASS_NO_ROUND16_OWNED_PROCESS_OR_CONTAINER_AND_PHYSICAL12_EMPTY"
+  },
+  "generated_at_utc": "2026-09-29T11:31:43.658738Z",
+  "retirements": [
+    {
+      "active_references_after": [],
+      "active_references_before": [],
+      "after_resident_bytes": 0,
+      "evidence": "artifacts/round16/resource-receipts-20260929/cache-retirement/post-b-a-v027/cache-retirement.json",
+      "file_count": 179,
+      "global_drop_caches": false,
+      "other_tasks_modified": false,
+      "resident_bytes_released": 348995039232,
+      "run": "post-b-a-v027",
+      "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+    },
+    {
+      "active_references_after": [],
+      "active_references_before": [],
+      "after_resident_bytes": 0,
+      "evidence": "artifacts/round16/resource-receipts-20260929/cache-retirement/post-b-b-v027/cache-retirement.json",
+      "file_count": 179,
+      "global_drop_caches": false,
+      "other_tasks_modified": false,
+      "resident_bytes_released": 209022619648,
+      "run": "post-b-b-v027",
+      "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+    },
+    {
+      "active_references_after": [],
+      "active_references_before": [],
+      "after_resident_bytes": 0,
+      "evidence": "artifacts/round16/resource-receipts-20260929/cache-retirement/post-s0-a-v403/cache-retirement.json",
+      "file_count": 179,
+      "global_drop_caches": false,
+      "other_tasks_modified": false,
+      "resident_bytes_released": 296554708992,
+      "run": "post-s0-a-v403",
+      "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+    },
+    {
+      "active_references_after": [],
+      "active_references_before": [],
+      "after_resident_bytes": 0,
+      "evidence": "artifacts/round16/resource-receipts-20260929/cache-retirement/post-s0-b-v404/cache-retirement.json",
+      "file_count": 179,
+      "global_drop_caches": false,
+      "other_tasks_modified": false,
+      "resident_bytes_released": 293700280320,
+      "run": "post-s0-b-v404",
+      "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+    }
+  ],
+  "schema": 1,
+  "status": "PASS_FORMAL_BLOCK_ADMISSION_AND_TARGETED_CACHE_RETIREMENT"
+}
