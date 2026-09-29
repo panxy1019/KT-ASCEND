@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND17_VERIFICATION",
+  "commands": [
+    {
+      "command": "python3 -m unittest discover -s tests/round17 -p test_*.py",
+      "result": "17 PASS"
+    },
+    {
+      "command": "python3 -m unittest discover -s tests/kt_perf_closure -p test_*.py",
+      "result": "17 PASS, 1 remote-only SKIP"
+    },
+    {
+      "command": "python3 -m py_compile round17/*.py tools/round17/*.py",
+      "result": "PASS"
+    },
+    {
+      "command": "bash -n tools/round17/run_profile_block.sh",
+      "result": "PASS"
+    },
+    {
+      "command": "verify every file against artifacts/round17/EVIDENCE_SHA256.json",
+      "result": "PASS, 64 files before TESTS.json was added; regenerated after finalization"
+    },
+    {
+      "command": "remote exact-owned container and physical12 process audit",
+      "result": "PASS_REMOTE_FINAL_EMPTY"
+    }
+  ],
+  "device_results": {
+    "diagnostic": ["v512 PASS", "v514 PASS"],
+    "profiler_off_s0": ["v519 PASS request evidence", "v520 PASS"],
+    "fixed_length_performance_outputs_complete": true
+  }
+}

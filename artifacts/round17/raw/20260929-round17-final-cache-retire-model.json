@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "status": "PASS_TARGETED_OWNED_FILE_CACHE_RETIREMENT",
+  "started": 1790705067.1269944,
+  "operation": "POSIX_FADV_DONTNEED",
+  "global_drop_caches": false,
+  "roots": [
+    "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540"
+  ],
+  "suffixes": [
+    ".gguf",
+    ".safetensors"
+  ],
+  "file_count": 131,
+  "file_stat_identity_sha256": "7c3ea29e0f403e1039d388226c16d1bcec94127bb64f9825d886082bee02425a",
+  "active_references_before": [],
+  "before_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 193967544,
+      "FilePages": 46761564,
+      "AnonPages": 19692916,
+      "FileHugePages": 35727360
+    },
+    "3": {
+      "MemFree": 34124968,
+      "FilePages": 199890680,
+      "AnonPages": 26664984,
+      "FileHugePages": 191188992
+    },
+    "4": {
+      "MemFree": 130079260,
+      "FilePages": 108364500,
+      "AnonPages": 21443196,
+      "FileHugePages": 2285568
+    },
+    "7": {
+      "MemFree": 236398904,
+      "FilePages": 7051784,
+      "AnonPages": 16688708,
+      "FileHugePages": 432128
+    }
+  },
+  "before_system_memavailable_kib": 1815190636,
+  "failures": [],
+  "ended": 1790705085.1728172,
+  "file_stats_unchanged": true,
+  "active_references_after": [],
+  "after_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 224583632,
+      "FilePages": 16150348,
+      "AnonPages": 19693364,
+      "FileHugePages": 5122048
+    },
+    "3": {
+      "MemFree": 225933244,
+      "FilePages": 8102160,
+      "AnonPages": 26665280,
+      "FileHugePages": 3565568
+    },
+    "4": {
+      "MemFree": 130080780,
+      "FilePages": 108364532,
+      "AnonPages": 21443440,
+      "FileHugePages": 2285568
+    },
+    "7": {
+      "MemFree": 236399556,
+      "FilePages": 7051784,
+      "AnonPages": 16688780,
+      "FileHugePages": 432128
+    }
+  },
+  "after_system_memavailable_kib": 1815211528,
+  "other_tasks_modified": false,
+  "automation": "PAUSED_UNCHANGED"
+}

@@ -13,7 +13,10 @@ from tools.kt_perf_closure.build_profile_snapshot import (
 
 class ProfileSnapshotPatchTests(unittest.TestCase):
     def test_launcher_patches_expected_contract(self):
-        source = (Path(__file__).resolve().parents[2] / "artifacts/round16-a/failed-launch-a-v002/source/tools/launch_hybrid.py").read_text()
+        source = (
+            Path(__file__).resolve().parents[2]
+            / "artifacts/kt-perf-root-cause/v506-source-samples/launch_hybrid.py"
+        ).read_text()
         # The locally archived failed launch may predate the final v003 identity;
         # use the exact final anchors as a compact synthetic contract.
         source = source.replace("if a.version != 295 or a.cost_mode != 'OFF':", "if a.version != 295 or a.cost_mode != 'OFF':")

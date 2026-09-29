@@ -1,0 +1,527 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND17_PROFILE_ANALYSIS",
+  "request_id": "round16-a1-fresh-profile-a-v001:4:W2_MEASUREMENT",
+  "steady_decode_batches": 125,
+  "excluded_decode_batches": 2,
+  "scheduler_wall_ms_per_token": {
+    "count": 125,
+    "min": 290.259713,
+    "median": 317.560973,
+    "max": 346.223258,
+    "mean": 312.910981424
+  },
+  "host_ms_per_token": {
+    "CPU_RESULT_WAIT": {
+      "count": 125,
+      "min": 12.584674000000001,
+      "median": 13.613839000000002,
+      "max": 14.292724000000002,
+      "mean": 13.40765608
+    },
+    "CPU_SUBMIT": {
+      "count": 125,
+      "min": 14.706117,
+      "median": 16.877448,
+      "max": 18.538903000000005,
+      "mean": 16.865609568
+    },
+    "DECODER_LAYER": {
+      "count": 125,
+      "min": 275.71449700000005,
+      "median": 301.603215,
+      "max": 330.302474,
+      "mean": 297.698230824
+    },
+    "GDN": {
+      "count": 125,
+      "min": 35.811185999999985,
+      "median": 39.071889,
+      "max": 40.435852999999994,
+      "mean": 38.097437544
+    },
+    "HC_ATTN_COMBINE": {
+      "count": 125,
+      "min": 7.631779000000001,
+      "median": 8.471963999999998,
+      "max": 9.133454000000006,
+      "mean": 8.252234696
+    },
+    "HC_ATTN_MIX": {
+      "count": 125,
+      "min": 17.305459000000006,
+      "median": 19.30274,
+      "max": 20.349034000000003,
+      "mean": 18.802353752
+    },
+    "HC_MLP_COMBINE": {
+      "count": 125,
+      "min": 8.362306000000002,
+      "median": 9.054231,
+      "max": 9.471613000000001,
+      "mean": 8.913259
+    },
+    "HC_MLP_MIX": {
+      "count": 125,
+      "min": 16.694968000000003,
+      "median": 18.797158,
+      "max": 19.831545,
+      "mean": 18.158523455999998
+    },
+    "MLP_PARENT": {
+      "count": 125,
+      "min": 113.49646600000001,
+      "median": 123.48268600000002,
+      "max": 127.99205500000004,
+      "mean": 120.60175307200001
+    },
+    "NPU_RESIDENT": {
+      "count": 125,
+      "min": 18.42905,
+      "median": 20.139742000000002,
+      "max": 21.008611,
+      "mean": 19.655289296
+    },
+    "PLE_CONSUMER": {
+      "count": 125,
+      "min": 1.837457,
+      "median": 1.969613,
+      "max": 2.167843,
+      "mean": 1.984745944
+    },
+    "PLE_EXPOSED_WAIT": {
+      "count": 125,
+      "min": 0.121136,
+      "median": 0.129746,
+      "max": 0.146987,
+      "mean": 0.13153752800000001
+    },
+    "PLE_PREPARE": {
+      "count": 125,
+      "min": 0.716754,
+      "median": 0.791218,
+      "max": 0.992347,
+      "mean": 0.798043032
+    },
+    "QSA_ATTENTION": {
+      "count": 125,
+      "min": 66.706812,
+      "median": 73.417001,
+      "max": 93.87709900000002,
+      "mean": 75.401511584
+    },
+    "QSA_INDEXER": {
+      "count": 125,
+      "min": 32.560189,
+      "median": 35.77194,
+      "max": 55.24833,
+      "mean": 38.957209288
+    },
+    "QSA_INDEX_K_NORM": {
+      "count": 31,
+      "min": 0.7866759999999999,
+      "median": 0.8463320000000001,
+      "max": 0.8905819999999999,
+      "mean": 0.8335708064516129
+    },
+    "QSA_INDEX_PROJ": {
+      "count": 125,
+      "min": 0.525894,
+      "median": 0.557975,
+      "max": 0.593176,
+      "mean": 0.554327552
+    },
+    "QSA_INDEX_Q_NORM": {
+      "count": 125,
+      "min": 0.7866460000000001,
+      "median": 0.85677,
+      "max": 0.906163,
+      "mean": 0.83904976
+    },
+    "QSA_INPUT_PROJ": {
+      "count": 125,
+      "min": 0.4038979999999999,
+      "median": 0.456393,
+      "max": 0.48311299999999996,
+      "mean": 0.441044728
+    },
+    "QSA_OUTPUT_PROJ": {
+      "count": 125,
+      "min": 0.533754,
+      "median": 0.5864269999999999,
+      "max": 0.6720299999999999,
+      "mean": 0.57549256
+    },
+    "QSA_QK_NORM": {
+      "count": 125,
+      "min": 1.874589,
+      "median": 2.0883769999999995,
+      "max": 2.1996130000000003,
+      "mean": 2.024145528
+    },
+    "QSA_ROPE": {
+      "count": 125,
+      "min": 4.475761,
+      "median": 5.018397,
+      "max": 5.323012,
+      "mean": 4.898282640000001
+    },
+    "QSA_SPARSE_CORE": {
+      "count": 125,
+      "min": 8.4881,
+      "median": 9.127519,
+      "max": 9.761682,
+      "mean": 9.128200064000001
+    },
+    "ROUTED_EXPERT": {
+      "count": 125,
+      "min": 84.031194,
+      "median": 91.37951299999997,
+      "max": 94.973558,
+      "mean": 89.50771769599999
+    }
+  },
+  "device_ms_per_token": {
+    "DECODER_LAYER": {
+      "count": 125,
+      "min": 19.707939624786377,
+      "median": 21.73852014541626,
+      "max": 24.205199241638184,
+      "mean": 21.527143379211427
+    },
+    "GDN": {
+      "count": 125,
+      "min": 2.078540086746216,
+      "median": 2.2240999937057495,
+      "max": 2.41838002204895,
+      "mean": 2.225557599067688
+    },
+    "HC_ATTN_COMBINE": {
+      "count": 125,
+      "min": 0.5539600104093552,
+      "median": 0.6331599950790405,
+      "max": 0.7086800038814545,
+      "mean": 0.6231182396411896
+    },
+    "HC_ATTN_MIX": {
+      "count": 125,
+      "min": 1.227979987859726,
+      "median": 1.4023399651050568,
+      "max": 1.601720005273819,
+      "mean": 1.4043231976032258
+    },
+    "HC_MLP_COMBINE": {
+      "count": 125,
+      "min": 0.5988200008869171,
+      "median": 0.670199990272522,
+      "max": 0.7231399863958359,
+      "mean": 0.6595713593959809
+    },
+    "HC_MLP_MIX": {
+      "count": 125,
+      "min": 1.1434199810028076,
+      "median": 1.2854999899864197,
+      "max": 1.469459980726242,
+      "mean": 1.2708988795280456
+    },
+    "MLP_PARENT": {
+      "count": 125,
+      "min": 7.433720111846924,
+      "median": 8.139860153198242,
+      "max": 8.881439924240112,
+      "mean": 8.095659997940064
+    },
+    "NPU_RESIDENT": {
+      "count": 125,
+      "min": 1.2064200043678284,
+      "median": 1.3289200067520142,
+      "max": 1.4153800010681152,
+      "mean": 1.309141757965088
+    },
+    "PLE_CONSUMER": {
+      "count": 125,
+      "min": 1.8712400197982788,
+      "median": 2.0022199153900146,
+      "max": 2.2017600536346436,
+      "mean": 2.0206377534866333
+    },
+    "QSA_ATTENTION": {
+      "count": 125,
+      "min": 66.95378017425537,
+      "median": 73.66631937026978,
+      "max": 94.10244035720825,
+      "mean": 75.65107278442383
+    },
+    "QSA_INDEXER": {
+      "count": 125,
+      "min": 33.68962001800537,
+      "median": 36.93024015426636,
+      "max": 56.192880153656006,
+      "mean": 40.0374965763092
+    },
+    "QSA_INDEX_K_NORM": {
+      "count": 31,
+      "min": 1.0775800123810768,
+      "median": 1.1378599926829338,
+      "max": 1.199080005288124,
+      "mean": 1.1333529033487844
+    },
+    "QSA_INDEX_PROJ": {
+      "count": 125,
+      "min": 0.7470600008964539,
+      "median": 0.8648799955844879,
+      "max": 0.9179600030183792,
+      "mean": 0.859328800022602
+    },
+    "QSA_INDEX_Q_NORM": {
+      "count": 125,
+      "min": 1.0619399920105934,
+      "median": 1.1391999870538712,
+      "max": 1.231840007007122,
+      "mean": 1.136274879693985
+    },
+    "QSA_INPUT_PROJ": {
+      "count": 125,
+      "min": 1.1494800001382828,
+      "median": 1.2200200036168098,
+      "max": 1.2683000043034554,
+      "mean": 1.2176195199489595
+    },
+    "QSA_OUTPUT_PROJ": {
+      "count": 125,
+      "min": 0.8456199988722801,
+      "median": 0.906020000576973,
+      "max": 1.0101799964904785,
+      "mean": 0.9071718403995037
+    },
+    "QSA_QK_NORM": {
+      "count": 125,
+      "min": 2.1688199937343597,
+      "median": 2.4618200063705444,
+      "max": 2.633219987154007,
+      "mean": 2.3828142377138137
+    },
+    "QSA_ROPE": {
+      "count": 125,
+      "min": 4.819900006055832,
+      "median": 5.443299949169159,
+      "max": 5.737399995326996,
+      "mean": 5.3109342403411866
+    },
+    "QSA_SPARSE_CORE": {
+      "count": 125,
+      "min": 8.897300004959106,
+      "median": 9.587239980697632,
+      "max": 10.268460094928741,
+      "mean": 9.594101271629334
+    },
+    "ROUTED_EXPERT": {
+      "count": 125,
+      "min": 85.29387974739075,
+      "median": 92.62101995944977,
+      "max": 96.34835958480835,
+      "mean": 90.77346045303345
+    }
+  },
+  "span_count_per_token": {
+    "CPU_RESULT_WAIT": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "CPU_SUBMIT": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "DECODER_LAYER": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "GDN": {
+      "count": 125,
+      "min": 36,
+      "median": 36,
+      "max": 36,
+      "mean": 36.0
+    },
+    "HC_ATTN_COMBINE": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "HC_ATTN_MIX": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "HC_MLP_COMBINE": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "HC_MLP_MIX": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "MLP_PARENT": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "NPU_RESIDENT": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    },
+    "PLE_CONSUMER": {
+      "count": 125,
+      "min": 1,
+      "median": 1,
+      "max": 1,
+      "mean": 1.0
+    },
+    "PLE_EXPOSED_WAIT": {
+      "count": 125,
+      "min": 1,
+      "median": 1,
+      "max": 1,
+      "mean": 1.0
+    },
+    "PLE_PREPARE": {
+      "count": 125,
+      "min": 1,
+      "median": 1,
+      "max": 1,
+      "mean": 1.0
+    },
+    "QSA_ATTENTION": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_INDEXER": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_INDEX_K_NORM": {
+      "count": 31,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_INDEX_PROJ": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_INDEX_Q_NORM": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_INPUT_PROJ": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_OUTPUT_PROJ": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_QK_NORM": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_ROPE": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "QSA_SPARSE_CORE": {
+      "count": 125,
+      "min": 12,
+      "median": 12,
+      "max": 12,
+      "mean": 12.0
+    },
+    "ROUTED_EXPERT": {
+      "count": 125,
+      "min": 48,
+      "median": 48,
+      "max": 48,
+      "mean": 48.0
+    }
+  },
+  "qsa_uninstrumented_host_ms_per_token": {
+    "count": 125,
+    "min": 18.123181,
+    "median": 19.518584,
+    "max": 20.485639,
+    "mean": 19.377136776
+  },
+  "glue_ms_per_token": {
+    "attention_to_expert_ns": {
+      "count": 125,
+      "min": 52.16081,
+      "median": 57.718291,
+      "max": 60.040775,
+      "mean": 55.968852160000004
+    },
+    "expert_to_next_attention_ns": {
+      "count": 125,
+      "min": 36.6034,
+      "median": 40.070713,
+      "max": 41.886068,
+      "mean": 39.092770696
+    },
+    "last_expert_to_layer_end_ns": {
+      "count": 125,
+      "min": 0.374478,
+      "median": 0.407989,
+      "max": 0.463782,
+      "mean": 0.403458328
+    }
+  },
+  "clock_rule": "HOST_AND_DEVICE_REPORTED_SEPARATELY_NOT_ADDED"
+}

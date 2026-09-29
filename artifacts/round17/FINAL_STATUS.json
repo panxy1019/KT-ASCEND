@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "round": "ROUND17_FINAL_PERFORMANCE",
+  "status": "ROUND17_COMPLETE_NO_NEW_PROMOTION",
+  "performance_promotion": "NONE",
+  "performance_objective": "NOT_ACHIEVED",
+  "default_runtime": "KEEP_FROZEN_S0",
+  "fresh_s0": {
+    "blocks": [
+      "v519",
+      "v520"
+    ],
+    "w2_tpot_ms": [
+      259.92621853937004,
+      265.6322352362205
+    ],
+    "w2_serial_output_tokens_per_second": [
+      3.594580583713004,
+      3.520626335131414
+    ],
+    "w2_e2e_seconds": [
+      35.6091613525,
+      36.3571671105
+    ]
+  },
+  "qsa": "A_NO_BOUNDED_PARENT_CANDIDATE",
+  "segment": "B_NO_SAFE_BOUNDED_EXACT_SEGMENT",
+  "candidate_request_abba": "NOT_RUN_BECAUSE_NO_CANDIDATE_PASSED_COMPONENT_SELECTION",
+  "answer": "The remaining 3.5-3.6 tok/s limit is cumulative serial NPU model execution plus per-layer dispatch/state/glue. The mature sparse-attention primitive covers too little of the full QSA parent, and the larger exact segment requires a new state-aware graph/runtime architecture.",
+  "resource_retirement": "PASS",
+  "owned_containers_remaining": 0,
+  "physical12_processes_remaining": 0,
+  "quality": "Fresh fixed-length W1/W2/W4 outputs complete; finite logprobs and frozen QSA/GDN/PLE path checks pass. No runtime candidate changed model math or state.",
+  "limits": [
+    "No Round17 candidate was implemented because both proposed bounded cuts failed their pre-implementation complete-parent/layer gate.",
+    "Kernel-launch count remains UNKNOWN in the diagnostic blocks; the final decision does not treat UNKNOWN as zero and is based on measured parent coverage and a hard theoretical upper bound.",
+    "Cancel/reuse was not rerun because no candidate entered model smoke; frozen S0 retains its prior qualification."
+  ]
+}

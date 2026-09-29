@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND17_FROZEN_S0",
+  "parent_commit": "6df066bbca6f94e627a549f2cc5cfb51b0c5c8cb",
+  "runtime_identity": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "layers": 48,
+    "gdn_layers": 36,
+    "qsa_layers": 12,
+    "logical_experts_per_layer": 512,
+    "top_k": 10,
+    "cpu": "Kunpeng C128, NUMA2/3/4/7, 4x32 workers",
+    "cpu_bank": "read-only MXFP4",
+    "npu": "physical12/card6/chip0",
+    "resident": "Uniform Q32 BF16/NZ29",
+    "chunk": 32,
+    "ple": "ASYNC",
+    "qsa": "VECTORIZED Prefill + DIRECT_BF16_ROW Decode",
+    "gdn": "Round14a promoted local-sigmoid path",
+    "hybrid_threshold": 129,
+    "tp": 1,
+    "concurrency": 1,
+    "dynamic": false,
+    "deferred": false,
+    "r2": false,
+    "r3": false,
+    "graph_candidate": false
+  },
+  "formal_workloads": {
+    "W1": "128 input / 16 output",
+    "W2": "128 input / 128 output",
+    "W4": "64 input / 32 output"
+  },
+  "formal_blocks": [
+    "v519 S0-A",
+    "v520 S0-B"
+  ],
+  "profiler": "OFF",
+  "admission": "2x10 seconds before each start",
+  "source_parent": "artifacts/kt-perf-root-cause/BASELINE_MANIFEST.json",
+  "fresh_s0": "FRESH_S0_RESULTS.json"
+}

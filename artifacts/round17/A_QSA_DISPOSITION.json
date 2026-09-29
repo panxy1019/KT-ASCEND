@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "status": "A_NO_BOUNDED_PARENT_CANDIDATE",
+  "promotion": "NONE",
+  "request_abba": "NOT_RUN_NO_COMPONENT_CANDIDATE",
+  "component_gate_percent": 20,
+  "profile_blocks": [
+    "v512",
+    "v514"
+  ],
+  "steady_decode_tokens_per_block": 125,
+  "measured_qsa_parent_host_ms_per_token": [
+    73.417001,
+    70.077164
+  ],
+  "measured_qsa_parent_device_ms_per_token": [
+    73.66631937026978,
+    70.32651901245117
+  ],
+  "candidate_screening": {
+    "A1_mature_fused_sparse_attention": {
+      "selected": false,
+      "covered_region": "QSA sparse score/softmax/PV core only",
+      "perfect_removal_parent_ceiling_host_percent": [
+        12.432432373531574,
+        12.788992145857955
+      ],
+      "perfect_removal_parent_ceiling_device_percent": [
+        13.014414270528691,
+        13.394435144088838
+      ],
+      "reason": "Even impossible zero-cost replacement stays below the frozen 20% complete-parent gate; metadata/state integration would reduce the attainable gain further."
+    },
+    "A2_model_specific_indexer_state_fusion": {
+      "selected": false,
+      "covered_region": "compressed indexer, selected K/V materialization, state update, sparse attention",
+      "reason": "No mature frozen-stack primitive implements the Qwen3.8 compressed indexer and state contract. A same-math selector-only candidate previously improved 5-6x but worsened W2 TPOT 0.41% and throughput 0.63%. A useful fusion therefore requires a new custom Ascend backend, not a bounded final-round adaptation."
+    }
+  },
+  "quality_state_change": false,
+  "default": "KEEP_S0",
+  "interpretation": "This is a bounded-candidate rejection, not proof that an eventual model-specific fused QSA backend cannot improve the request."
+}

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "PASS_QSA_FULL_PARENT_ACCOUNT_NO_BOUNDED_CANDIDATE",
+  "component_gate_percent": 20,
+  "profiles": [
+    {
+      "block": "profile-a-v512",
+      "steady_decode_batches": 125,
+      "scheduler_wall_ms_per_token": 317.560973,
+      "qsa": {
+        "qsa_parent_host_ms_per_token": 73.417001,
+        "qsa_parent_device_ms_per_token": 73.66631937026978,
+        "indexer_host_ms_per_token": 35.77194,
+        "sparse_core_host_ms_per_token": 9.127519,
+        "sparse_core_device_ms_per_token": 9.587239980697632,
+        "perfect_sparse_core_removal_host_percent": 12.432432373531574,
+        "perfect_sparse_core_removal_device_percent": 13.014414270528691,
+        "qsa_uninstrumented_host_ms_per_token": 19.518584
+      },
+      "glue_ms_per_token": {
+        "attention_to_expert": 57.718291,
+        "expert_to_next_attention": 40.070713,
+        "last_expert_to_layer_end": 0.407989
+      }
+    },
+    {
+      "block": "profile-b-v514",
+      "steady_decode_batches": 125,
+      "scheduler_wall_ms_per_token": 297.754417,
+      "qsa": {
+        "qsa_parent_host_ms_per_token": 70.077164,
+        "qsa_parent_device_ms_per_token": 70.32651901245117,
+        "indexer_host_ms_per_token": 34.124643000000006,
+        "sparse_core_host_ms_per_token": 8.962162999999999,
+        "sparse_core_device_ms_per_token": 9.419839978218079,
+        "perfect_sparse_core_removal_host_percent": 12.788992145857955,
+        "perfect_sparse_core_removal_device_percent": 13.394435144088838,
+        "qsa_uninstrumented_host_ms_per_token": 19.053239
+      },
+      "glue_ms_per_token": {
+        "attention_to_expert": 51.984373,
+        "expert_to_next_attention": 36.704887,
+        "last_expert_to_layer_end": 0.385048
+      }
+    }
+  ],
+  "decision": "A_NO_BOUNDED_PARENT_CANDIDATE"
+}

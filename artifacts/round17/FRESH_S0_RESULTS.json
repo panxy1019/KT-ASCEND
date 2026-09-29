@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND17_FRESH_S0",
+  "blocks": [
+    {
+      "block": "S0-A",
+      "profiler": "OFF",
+      "generation_attempts": 10,
+      "summaries": {
+        "W1": {
+          "measurement_requests": 2,
+          "window_seconds": 13.211009323999999,
+          "output_tokens": 32,
+          "serial_output_tokens_per_second": 2.4222221947770994,
+          "requests_per_second": 0.15138888717356871,
+          "median_ttft_seconds": 2.551832246,
+          "median_tpot_seconds": 0.27023469423333335,
+          "median_e2e_seconds": 6.6055046619999995
+        },
+        "W2": {
+          "measurement_requests": 2,
+          "window_seconds": 71.218322705,
+          "output_tokens": 256,
+          "serial_output_tokens_per_second": 3.594580583713004,
+          "requests_per_second": 0.028082660810257842,
+          "median_ttft_seconds": 2.5983472095,
+          "median_tpot_seconds": 0.25992621853937004,
+          "median_e2e_seconds": 35.6091613525
+        },
+        "W4": {
+          "measurement_requests": 2,
+          "window_seconds": 18.677172726000002,
+          "output_tokens": 64,
+          "serial_output_tokens_per_second": 3.426642829667002,
+          "requests_per_second": 0.10708258842709381,
+          "median_ttft_seconds": 1.300455485,
+          "median_tpot_seconds": 0.25928961632258063,
+          "median_e2e_seconds": 9.338586363000001
+        }
+      },
+      "resources": {
+        "whole_card_hbm_peak_mib": 28933,
+        "observed_board_baseline_mib": 3282,
+        "estimated_owned_hbm_peak_mib": 25651,
+        "host_cgroup_peak_gib": 341.84753036499023,
+        "samples": 136
+      }
+    },
+    {
+      "block": "S0-B",
+      "profiler": "OFF",
+      "generation_attempts": 10,
+      "summaries": {
+        "W1": {
+          "measurement_requests": 2,
+          "window_seconds": 13.569321927,
+          "output_tokens": 32,
+          "serial_output_tokens_per_second": 2.358260801251016,
+          "requests_per_second": 0.1473913000781885,
+          "median_ttft_seconds": 2.685756153,
+          "median_tpot_seconds": 0.27325107123333336,
+          "median_e2e_seconds": 6.7846609635
+        },
+        "W2": {
+          "measurement_requests": 2,
+          "window_seconds": 72.714334221,
+          "output_tokens": 256,
+          "serial_output_tokens_per_second": 3.520626335131414,
+          "requests_per_second": 0.027504893243214174,
+          "median_ttft_seconds": 2.6217050825,
+          "median_tpot_seconds": 0.2656322352362205,
+          "median_e2e_seconds": 36.3571671105
+        },
+        "W4": {
+          "measurement_requests": 2,
+          "window_seconds": 18.919096723000003,
+          "output_tokens": 64,
+          "serial_output_tokens_per_second": 3.3828253503347763,
+          "requests_per_second": 0.10571329219796176,
+          "median_ttft_seconds": 1.305667853,
+          "median_tpot_seconds": 0.26302379537096776,
+          "median_e2e_seconds": 9.459548361500001
+        }
+      },
+      "resources": {
+        "whole_card_hbm_peak_mib": 28933,
+        "observed_board_baseline_mib": 3282,
+        "estimated_owned_hbm_peak_mib": 25651,
+        "host_cgroup_peak_gib": 341.2376403808594,
+        "samples": 138
+      }
+    }
+  ],
+  "workloads": {
+    "W1": {
+      "block_values": [
+        {
+          "measurement_requests": 2,
+          "window_seconds": 13.211009323999999,
+          "output_tokens": 32,
+          "serial_output_tokens_per_second": 2.4222221947770994,
+          "requests_per_second": 0.15138888717356871,
+          "median_ttft_seconds": 2.551832246,
+          "median_tpot_seconds": 0.27023469423333335,
+          "median_e2e_seconds": 6.6055046619999995
+        },
+        {
+          "measurement_requests": 2,
+          "window_seconds": 13.569321927,
+          "output_tokens": 32,
+          "serial_output_tokens_per_second": 2.358260801251016,
+          "requests_per_second": 0.1473913000781885,
+          "median_ttft_seconds": 2.685756153,
+          "median_tpot_seconds": 0.27325107123333336,
+          "median_e2e_seconds": 6.7846609635
+        }
+      ],
+      "median_of_block_medians": {
+        "ttft_seconds": 2.6187941995,
+        "tpot_seconds": 0.27174288273333336,
+        "e2e_seconds": 6.69508281275,
+        "serial_output_tokens_per_second": 2.3902414980140576,
+        "requests_per_second": 0.1493900936258786
+      }
+    },
+    "W2": {
+      "block_values": [
+        {
+          "measurement_requests": 2,
+          "window_seconds": 71.218322705,
+          "output_tokens": 256,
+          "serial_output_tokens_per_second": 3.594580583713004,
+          "requests_per_second": 0.028082660810257842,
+          "median_ttft_seconds": 2.5983472095,
+          "median_tpot_seconds": 0.25992621853937004,
+          "median_e2e_seconds": 35.6091613525
+        },
+        {
+          "measurement_requests": 2,
+          "window_seconds": 72.714334221,
+          "output_tokens": 256,
+          "serial_output_tokens_per_second": 3.520626335131414,
+          "requests_per_second": 0.027504893243214174,
+          "median_ttft_seconds": 2.6217050825,
+          "median_tpot_seconds": 0.2656322352362205,
+          "median_e2e_seconds": 36.3571671105
+        }
+      ],
+      "median_of_block_medians": {
+        "ttft_seconds": 2.610026146,
+        "tpot_seconds": 0.26277922688779526,
+        "e2e_seconds": 35.9831642315,
+        "serial_output_tokens_per_second": 3.557603459422209,
+        "requests_per_second": 0.027793777026736008
+      }
+    },
+    "W4": {
+      "block_values": [
+        {
+          "measurement_requests": 2,
+          "window_seconds": 18.677172726000002,
+          "output_tokens": 64,
+          "serial_output_tokens_per_second": 3.426642829667002,
+          "requests_per_second": 0.10708258842709381,
+          "median_ttft_seconds": 1.300455485,
+          "median_tpot_seconds": 0.25928961632258063,
+          "median_e2e_seconds": 9.338586363000001
+        },
+        {
+          "measurement_requests": 2,
+          "window_seconds": 18.919096723000003,
+          "output_tokens": 64,
+          "serial_output_tokens_per_second": 3.3828253503347763,
+          "requests_per_second": 0.10571329219796176,
+          "median_ttft_seconds": 1.305667853,
+          "median_tpot_seconds": 0.26302379537096776,
+          "median_e2e_seconds": 9.459548361500001
+        }
+      ],
+      "median_of_block_medians": {
+        "ttft_seconds": 1.303061669,
+        "tpot_seconds": 0.2611567058467742,
+        "e2e_seconds": 9.399067362250001,
+        "serial_output_tokens_per_second": 3.404734090000889,
+        "requests_per_second": 0.10639794031252778
+      }
+    }
+  }
+}

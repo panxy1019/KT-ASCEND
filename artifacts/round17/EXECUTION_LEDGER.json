@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND17_EXECUTION_LEDGER",
+  "valid_runs": [
+    {
+      "id": "v512",
+      "kind": "diagnostic",
+      "block": "A",
+      "requests_completed": 6
+    },
+    {
+      "id": "v514",
+      "kind": "diagnostic",
+      "block": "B",
+      "requests_completed": 6
+    },
+    {
+      "id": "v519",
+      "kind": "profiler_off_s0",
+      "block": "A",
+      "generation_attempts": 10
+    },
+    {
+      "id": "v520",
+      "kind": "profiler_off_s0",
+      "block": "B",
+      "generation_attempts": 10
+    }
+  ],
+  "preserved_failures": [
+    {
+      "schema": 1,
+      "status": "FAIL_OBSERVER_SHARED_PROVIDER_DOUBLE_WRAP",
+      "model_loaded": true,
+      "requests_completed": 0,
+      "container_removed": true,
+      "device_processes_after": [],
+      "root_cause": "rotary provider shared by QSA layers was wrapped once per layer",
+      "replacement_snapshots": [
+        "round17-profile-a-v512",
+        "round17-profile-b-v513"
+      ],
+      "recorded_at": 1790701216.6245928,
+      "identity": "fail-v510"
+    },
+    {
+      "schema": 1,
+      "status": "FAIL_RUNTIME_BLOCK_IDENTITY",
+      "model_loaded": true,
+      "requests_completed": 0,
+      "container_removed": true,
+      "device_processes_after": [],
+      "root_cause": "snapshot builder retained donor A block ID in launcher environment",
+      "replacement_snapshot": "round17-profile-b-v514",
+      "recorded_at": 1790702083.3748286,
+      "identity": "fail-v513"
+    },
+    {
+      "schema": 1,
+      "status": "FAIL_PRE_REQUEST_SOURCE_GATE",
+      "version": 515,
+      "root_cause": "derived budget stage changed but frozen launcher requires ROUND15_B_GRAPH_FULL_MODEL",
+      "generation_attempts": 0,
+      "automatic_retries": 0,
+      "container_removed": true,
+      "recorded_at": 1790703295.0314598,
+      "retirement_method": "verified container-created.json full ID matched docker inspect before removing non-running Created container",
+      "retirement_recorded_at": 1790723637.1812484,
+      "identity": "fail-v515"
+    },
+    {
+      "schema": 1,
+      "status": "FAIL_PRE_REQUEST_DRIVER_PATH",
+      "version": 517,
+      "root_cause": "driver path omitted snapshot directory below /round9 data-root mount",
+      "generation_attempts": 0,
+      "automatic_retries": 0,
+      "container_removed": true,
+      "recorded_at": 1790703591.0873208,
+      "identity": "fail-v517"
+    },
+    {
+      "schema": 1,
+      "status": "FAIL_PRE_REQUEST_DRIVER_IMPORT",
+      "version": 518,
+      "root_cause": "driver module root omitted snapshot directory in PYTHONPATH",
+      "generation_attempts": 0,
+      "automatic_retries": 0,
+      "container_removed": true,
+      "recorded_at": 1790703887.1912045,
+      "identity": "fail-v518"
+    }
+  ],
+  "automatic_retries": 0,
+  "note": "Each replacement changed source or runner identity and used a new run version; no unchanged failure was resubmitted."
+}

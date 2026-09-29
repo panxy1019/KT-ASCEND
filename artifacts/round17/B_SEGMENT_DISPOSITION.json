@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "B_NO_SAFE_BOUNDED_EXACT_SEGMENT",
+  "promotion": "NONE",
+  "request_abba": "NOT_RUN_NO_LAYER_CANDIDATE",
+  "layer_gate_percent": 15,
+  "profile_blocks": [
+    "v512",
+    "v514"
+  ],
+  "measured_glue_host_ms_per_token": {
+    "attention_to_expert": [
+      57.718291,
+      51.984373
+    ],
+    "expert_to_next_attention": [
+      40.070713,
+      36.704887
+    ],
+    "last_expert_to_layer_end": [
+      0.407989,
+      0.385048
+    ]
+  },
+  "screening": {
+    "B1_single_layer_larger_segment": {
+      "selected": false,
+      "reason": "The measured intervals contain required HyperConnection, projection, residual, route/resident/merge, QSA/GDN state work and queued NPU execution. No measured removable launch-only slice reaches the 15% complete-layer gate. Treating the full interval as removable would be invalid."
+    },
+    "B2_expanded_cross_submodule_segment": {
+      "selected": false,
+      "reason": "An exact design needs bounded graph instances for per-layer weights, mutable KV/QSA/GDN/PLE state generations, dynamic route tensors and a fresh CPU work ID on every token, with CPU kept outside capture. That graph-cache/state-address architecture does not exist in the frozen runtime and is beyond a bounded final-round implementation."
+    }
+  },
+  "historical_causal_check": {
+    "resident_only_graph_component_host_gain_percent": 28.167488969819445,
+    "resident_only_graph_component_device_gain_percent": 33.67807195462531,
+    "w2_tpot_gain_percent": 1.202864643059176,
+    "w2_throughput_gain_percent": 0.7262883024741873,
+    "extra_hbm_mib": 984,
+    "conclusion": "A graph can speed a small captured child while leaving the request critical path essentially unchanged."
+  },
+  "quality_state_change": false,
+  "default": "KEEP_S0",
+  "interpretation": "This rejects the two bounded Round17 segment designs; it does not claim a new runtime-wide exact decoder graph is impossible."
+}

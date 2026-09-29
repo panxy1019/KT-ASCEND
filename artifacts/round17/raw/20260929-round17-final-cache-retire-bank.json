@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "status": "PASS_TARGETED_OWNED_FILE_CACHE_RETIREMENT",
+  "started": 1790705030.8041024,
+  "operation": "POSIX_FADV_DONTNEED",
+  "global_drop_caches": false,
+  "roots": [
+    "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1"
+  ],
+  "suffixes": [
+    ".gguf",
+    ".safetensors"
+  ],
+  "file_count": 48,
+  "file_stat_identity_sha256": "0aacb92db814d080763b7484027d4e5bbd218413509e25c4878006d354f5b924",
+  "active_references_before": [],
+  "before_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 175561928,
+      "FilePages": 65094420,
+      "AnonPages": 19692448,
+      "FileHugePages": 35727360
+    },
+    "3": {
+      "MemFree": 19602332,
+      "FilePages": 214365972,
+      "AnonPages": 26664104,
+      "FileHugePages": 191188992
+    },
+    "4": {
+      "MemFree": 115991920,
+      "FilePages": 122369928,
+      "AnonPages": 21441912,
+      "FileHugePages": 2285568
+    },
+    "7": {
+      "MemFree": 220483928,
+      "FilePages": 22906680,
+      "AnonPages": 16689976,
+      "FileHugePages": 432128
+    }
+  },
+  "before_system_memavailable_kib": 1815051956,
+  "failures": [],
+  "ended": 1790705051.9370646,
+  "file_stats_unchanged": true,
+  "active_references_after": [],
+  "after_numa_meminfo_kib": {
+    "2": {
+      "MemFree": 193964580,
+      "FilePages": 46761560,
+      "AnonPages": 19693484,
+      "FileHugePages": 35727360
+    },
+    "3": {
+      "MemFree": 34125064,
+      "FilePages": 199890680,
+      "AnonPages": 26663520,
+      "FileHugePages": 191188992
+    },
+    "4": {
+      "MemFree": 130065376,
+      "FilePages": 108364456,
+      "AnonPages": 21441848,
+      "FileHugePages": 2285568
+    },
+    "7": {
+      "MemFree": 236399328,
+      "FilePages": 7051784,
+      "AnonPages": 16689220,
+      "FileHugePages": 432128
+    }
+  },
+  "after_system_memavailable_kib": 1815166324,
+  "other_tasks_modified": false,
+  "automation": "PAUSED_UNCHANGED"
+}
