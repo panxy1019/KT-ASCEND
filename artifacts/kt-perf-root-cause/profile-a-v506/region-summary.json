@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "status": "PASS_BOUNDED_REGION_SUMMARY",
+  "request_marker": "W2_MEASUREMENT",
+  "decode_batches_steady": 125,
+  "components": {
+    "CPU_RESULT_WAIT": {
+      "sampled_layers": [
+        0,
+        24,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 0.347307,
+        "p05_ms": 0.2822237,
+        "p95_ms": 0.418082,
+        "mean_ms": 0.34891332533333336
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 1.07461,
+        "p05_ms": 0.894628,
+        "p95_ms": 1.1972871999999999,
+        "mean_ms": 1.046739976
+      },
+      "device_per_call": null,
+      "nested_in": "ROUTED_EXPERT"
+    },
+    "CPU_SUBMIT": {
+      "sampled_layers": [
+        0,
+        24,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 0.350327,
+        "p05_ms": 0.28989729999999997,
+        "p95_ms": 0.397737,
+        "mean_ms": 0.3520291466666667
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 1.056611,
+        "p05_ms": 0.9491019999999999,
+        "p95_ms": 1.1446222,
+        "mean_ms": 1.05608744
+      },
+      "device_per_call": null,
+      "nested_in": "ROUTED_EXPERT"
+    },
+    "GDN": {
+      "sampled_layers": [
+        0,
+        24,
+        46
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 1.033539,
+        "p05_ms": 1.009154,
+        "p95_ms": 1.0727213000000002,
+        "mean_ms": 1.0386539786666666
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 3.1105169999999998,
+        "p05_ms": 3.0494791999999995,
+        "p95_ms": 3.195376,
+        "mean_ms": 3.115961936
+      },
+      "device_per_call": {
+        "count": 375,
+        "median_ms": 1.0726200342178345,
+        "p05_ms": 1.0428839802742005,
+        "p95_ms": 1.1097679853439333,
+        "mean_ms": 1.0759654932022096
+      },
+      "nested_in": null
+    },
+    "NPU_RESIDENT": {
+      "sampled_layers": [
+        0,
+        24,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 0.395589,
+        "p05_ms": 0.38423199999999996,
+        "p95_ms": 0.4135823,
+        "mean_ms": 0.39801586399999994
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 1.188376,
+        "p05_ms": 1.1607364000000002,
+        "p95_ms": 1.2652838,
+        "mean_ms": 1.1940475920000002
+      },
+      "device_per_call": {
+        "count": 375,
+        "median_ms": 0.4271799921989441,
+        "p05_ms": 0.41146400272846223,
+        "p95_ms": 0.45064199268817906,
+        "mean_ms": 0.4296663461526235
+      },
+      "nested_in": "ROUTED_EXPERT"
+    },
+    "PLE_CONSUMER": {
+      "sampled_layers": [
+        1
+      ],
+      "host_per_call": {
+        "count": 125,
+        "median_ms": 1.904701,
+        "p05_ms": 1.8474692,
+        "p95_ms": 1.9489828,
+        "mean_ms": 1.91011408
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 1.904701,
+        "p05_ms": 1.8474692,
+        "p95_ms": 1.9489828,
+        "mean_ms": 1.91011408
+      },
+      "device_per_call": {
+        "count": 125,
+        "median_ms": 1.937000036239624,
+        "p05_ms": 1.8805719852447509,
+        "p95_ms": 1.9839439630508422,
+        "mean_ms": 1.9442785539627074
+      },
+      "nested_in": null
+    },
+    "PLE_EXPOSED_WAIT": {
+      "sampled_layers": [
+        1
+      ],
+      "host_per_call": {
+        "count": 125,
+        "median_ms": 0.124666,
+        "p05_ms": 0.11921520000000001,
+        "p95_ms": 0.13108,
+        "mean_ms": 0.124902192
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 0.124666,
+        "p05_ms": 0.11921520000000001,
+        "p95_ms": 0.13108,
+        "mean_ms": 0.124902192
+      },
+      "device_per_call": null,
+      "nested_in": null
+    },
+    "PLE_PREPARE": {
+      "sampled_layers": [
+        1
+      ],
+      "host_per_call": {
+        "count": 125,
+        "median_ms": 0.770707,
+        "p05_ms": 0.7390251999999999,
+        "p95_ms": 0.845538,
+        "mean_ms": 0.77728868
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 0.770707,
+        "p05_ms": 0.7390251999999999,
+        "p95_ms": 0.845538,
+        "mean_ms": 0.77728868
+      },
+      "device_per_call": null,
+      "nested_in": null
+    },
+    "QSA_ATTENTION": {
+      "sampled_layers": [
+        3,
+        23,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 5.351554,
+        "p05_ms": 5.057816,
+        "p95_ms": 6.7485623,
+        "mean_ms": 5.645338424
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 16.159097,
+        "p05_ms": 15.2303932,
+        "p95_ms": 20.1624664,
+        "mean_ms": 16.936015272
+      },
+      "device_per_call": {
+        "count": 375,
+        "median_ms": 5.395400047302246,
+        "p05_ms": 5.097234106063842,
+        "p95_ms": 6.801617860794067,
+        "mean_ms": 5.689261016845703
+      },
+      "nested_in": null
+    },
+    "QSA_INDEXER": {
+      "sampled_layers": [
+        3,
+        23,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 2.73475,
+        "p05_ms": 2.567577,
+        "p95_ms": 4.0916217,
+        "mean_ms": 3.0399198213333336
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 8.267874,
+        "p05_ms": 7.7331482,
+        "p95_ms": 12.235909600000001,
+        "mean_ms": 9.119759464000001
+      },
+      "device_per_call": {
+        "count": 375,
+        "median_ms": 2.824039936065674,
+        "p05_ms": 2.655518102645874,
+        "p95_ms": 4.176695966720581,
+        "mean_ms": 3.128410668690999
+      },
+      "nested_in": "QSA_ATTENTION"
+    },
+    "ROUTED_EXPERT": {
+      "sampled_layers": [
+        0,
+        24,
+        47
+      ],
+      "host_per_call": {
+        "count": 375,
+        "median_ms": 1.974424,
+        "p05_ms": 1.860531,
+        "p95_ms": 2.086919,
+        "mean_ms": 1.9829463653333332
+      },
+      "host_sampled_sum_per_token": {
+        "count": 125,
+        "median_ms": 5.9746239999999995,
+        "p05_ms": 5.6234078,
+        "p95_ms": 6.292778,
+        "mean_ms": 5.9488390959999995
+      },
+      "device_per_call": {
+        "count": 375,
+        "median_ms": 2.0014801025390625,
+        "p05_ms": 1.8864299535751343,
+        "p95_ms": 2.1144119262695313,
+        "mean_ms": 2.0090223490397134
+      },
+      "nested_in": null
+    }
+  },
+  "scaled_nonadditive_estimates_ms_per_token": {
+    "GDN": {
+      "count": 125,
+      "median_ms": 37.326204,
+      "p05_ms": 36.5937504,
+      "p95_ms": 38.344512,
+      "mean_ms": 37.391543232,
+      "scale": 12.0,
+      "sampled_layer_count": 3,
+      "total_layer_count": 36,
+      "scope": "NON_ADDITIVE_SAMPLED_EXTRAPOLATION"
+    },
+    "QSA_ATTENTION": {
+      "count": 125,
+      "median_ms": 64.636388,
+      "p05_ms": 60.9215728,
+      "p95_ms": 80.6498656,
+      "mean_ms": 67.744061088,
+      "scale": 4.0,
+      "sampled_layer_count": 3,
+      "total_layer_count": 12,
+      "scope": "NON_ADDITIVE_SAMPLED_EXTRAPOLATION"
+    }
+  },
+  "scaled_estimates_are_nonadditive": true,
+  "warning": "Scaled GDN/QSA samples are ranges for ranking only; QSA_INDEXER is nested in QSA_ATTENTION and exact Expert/non-Expert partitions come from the direct full-model Host trace."
+}

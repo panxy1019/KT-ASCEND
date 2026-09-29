@@ -1,0 +1,69 @@
+{
+  "schema": 1,
+  "status": "PASS_CAUSAL_EXPERIMENTS_NO_PROMOTION",
+  "experiments": [
+    {
+      "id": "C1_CURRENT_TASKQUEUE_BOUNDARY",
+      "hypothesis": "CPU native execution stalls the request",
+      "math_change": false,
+      "scope": "18000 direct layer calls across v506/v507/v509",
+      "result": {
+        "pending_nonzero": 0,
+        "cpu_tail_after_host_sync_start_ns": 0,
+        "exposed_wait_ms_per_token_range": [
+          0.130038,
+          0.143988
+        ],
+        "cpu_service_ms_per_token_range": [
+          5.527067,
+          5.58629
+        ]
+      },
+      "conclusion": "REJECTED_CPU_SERVICE_AS_PRIMARY_CAUSE"
+    },
+    {
+      "id": "C2_ROUND15_QSA_SELECTOR_FULL_MODEL",
+      "hypothesis": "QSA index selection is the W2 bottleneck",
+      "math_change": false,
+      "component": {
+        "two_blocks": true,
+        "candidate_over_baseline_range": [
+          0.17043701409391107,
+          0.19840005279322162
+        ],
+        "selected_set_exact": true
+      },
+      "request": {
+        "profiler": "OFF",
+        "candidate_hit_layers": 12,
+        "output_sequences_exact": 14,
+        "baseline_tpot_ms": 266.511006003937,
+        "candidate_tpot_ms": 267.61521185826774,
+        "tpot_change_percent": -0.4143190447881251,
+        "throughput_change_percent": -0.6250957707364946
+      },
+      "evidence_limit": "one fresh model process per arm, two measurements; directional, not ABBA",
+      "conclusion": "REJECTED_SELECTOR_AS_REQUEST_CAUSE"
+    },
+    {
+      "id": "C3_ROUND15_RESIDENT_MOE_GRAPH",
+      "hypothesis": "resident-NPU MoE subcall dominates W2",
+      "math_change": false,
+      "component": {
+        "host_improvement_percent": 28.167488969819445,
+        "device_improvement_percent": 33.67807195462531,
+        "exact_output": true
+      },
+      "request": {
+        "profiler": "OFF",
+        "w2_tpot_improvement_percent": 1.202864643059176,
+        "w2_throughput_improvement_percent": 0.7262883024741873,
+        "w2_ttft_improvement_percent": -5.294537890398754,
+        "extra_hbm_mib": 984
+      },
+      "evidence_limit": "one fresh model process per arm, two measurements; directional, not ABBA",
+      "conclusion": "LOCAL_GAIN_CONFIRMED_REQUEST_EFFECT_SMALL_NO_PROMOTION"
+    }
+  ],
+  "overall": "The slow request is cumulative across repeated NPU/backbone and Host dispatch regions. Removing isolated selector or resident-MoE subcalls does not move W2 enough; no current candidate meets a request promotion gate."
+}

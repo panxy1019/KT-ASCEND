@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "status": "A_NO_NEW_BOUNDED_CANDIDATE",
+  "A2_exact_overlap": {
+    "selected": false,
+    "reason": "CPU exposed wait is 0.045% of diagnostic wall and CPU is already ready ~34-36 ms/token before sync; no meaningful exact window remains at this boundary"
+  },
+  "A3_larger_segment": {
+    "selected": false,
+    "reason": "resident-only graph was causally too small; exact all-layer ledger and dependency-gap reconstruction locate 51.14 ms/token between attention and same-layer Expert plus 32.06 ms/token between Expert and next-layer attention. A useful candidate must span a broader QSA/GDN/HyperConnection/router/shared-expert region and first separate necessary NPU work from removable launch/glue, which is a new segment design project rather than a bounded fix in this root-cause round"
+  },
+  "default": "KEEP_S0",
+  "performance_promotion": "NONE"
+}

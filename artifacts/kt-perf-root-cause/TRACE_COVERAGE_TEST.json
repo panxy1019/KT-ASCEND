@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "status": "PASS_TRACE_COVERAGE",
+  "native": {
+    "enqueue_complete_sync_joined_calls_per_block": 6000,
+    "blocks": 3,
+    "missing_completion": 0,
+    "pending_nonzero": 0
+  },
+  "full_host_v509": {
+    "steady_decode_tokens": 125,
+    "gdn_parents": 4500,
+    "qsa_attention_parents": 1500,
+    "expert_parents": 6000,
+    "ple_consumers": 125,
+    "all_layer_counts_exact": true
+  },
+  "device_samples": {
+    "gdn_layers": [
+      0,
+      24,
+      46
+    ],
+    "qsa_layers": [
+      3,
+      23,
+      47
+    ],
+    "expert_layers": [
+      0,
+      24,
+      47
+    ],
+    "query_boundary": "existing batch end",
+    "new_synchronize": false
+  },
+  "nested_exclusions": [
+    "QSA_INDEXER nested in QSA_ATTENTION",
+    "CPU task nested in routed expert",
+    "PLE exposed wait nested in PLE consumer"
+  ]
+}

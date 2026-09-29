@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "status": "HYPOTHESES_RESOLVED",
+  "hypotheses": [
+    {
+      "id": "H1_CPU_NATIVE_SERVICE_DOMINATES",
+      "result": "REJECTED",
+      "evidence": "two direct fresh blocks plus v509: CPU service ~5.5 ms/token, all 18000 calls complete before consumer TaskQueue wait"
+    },
+    {
+      "id": "H2_TASKQUEUE_TIMEOUT_OR_QUEUE_WAIT_ADDS_O100MS",
+      "result": "REJECTED",
+      "evidence": "native sync exposed wait 0.130-0.144 ms/token; pending=0 at all 18000 sync points"
+    },
+    {
+      "id": "H3_MISSING_CPU_NPU_OVERLAP",
+      "result": "REJECTED_FOR_CURRENT_S0",
+      "evidence": "CPU completes 33.9-36.4 ms/token before Host enters native sync; current implementation already overlaps CPU with resident NPU work"
+    },
+    {
+      "id": "H4_ROUTED_EXPERT_PARENT_IS_SIGNIFICANT",
+      "result": "SUPPORTED_BUT_NOT_CPU_BOUND",
+      "evidence": "exact 48-layer parent 86.50 ms/token mean, 29.76% of diagnostic wall; only 5.59 ms nested CPU service and 0.13 ms exposed CPU wait"
+    },
+    {
+      "id": "H5_QSA_SELECTOR_IS_REQUEST_BOTTLENECK",
+      "result": "REJECTED",
+      "evidence": "same-math selector component improved 5-6x and hit all 12 layers, W2 profiler-off TPOT worsened 0.41%"
+    },
+    {
+      "id": "H6_RESIDENT_MOE_SUBCALL_IS_REQUEST_BOTTLENECK",
+      "result": "REJECTED",
+      "evidence": "component host/device improved 28/34%, W2 TPOT improved only 1.20% with 984 MiB HBM and TTFT regression"
+    },
+    {
+      "id": "H7_CUMULATIVE_NPU_BACKBONE_AND_PER_LAYER_DISPATCH_DOMINATE",
+      "result": "SUPPORTED",
+      "evidence": "exact top-level parents: QSA 66.08, GDN 37.64, Expert 86.50 ms/token; residual dependency intervals are attention-to-Expert 51.14, Expert-to-next-attention 32.06, and scheduler/PLE boundaries 15.27 ms/token; sampled device events track parent durations"
+    },
+    {
+      "id": "H8_ONE_UNEXPLAINED_100MS_CALLBACK",
+      "result": "REJECTED",
+      "evidence": "no 100 ms per-token native wait; each token is reconstructed from non-overlapping parents and exact named dependency gaps, with the largest gaps repeated between attention and Expert boundaries"
+    }
+  ]
+}

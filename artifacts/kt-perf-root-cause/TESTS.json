@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "status": "PASS_WITH_ONE_DOCUMENTED_REMOTE_ONLY_SKIP",
+  "recorded_at_unix": 1790697911.5051448,
+  "commands": [
+    {
+      "command": "python3 -m unittest discover -s tests/kt_perf_closure -v",
+      "result": "PASS",
+      "tests_run": 18,
+      "passed": 17,
+      "skipped": 1,
+      "skip_reason": "final v003 launcher is remote-only"
+    },
+    {
+      "command": "python3 -m py_compile tools/kt_perf_closure/*.py tests/kt_perf_closure/*.py",
+      "result": "PASS"
+    },
+    {
+      "command": "parse all root-cause JSON except the intentionally preserved malformed raw v506 manifest",
+      "result": "PASS",
+      "parsed_files": 73,
+      "raw_handling_receipt": "RAW_EVIDENCE_PRESERVATION.json"
+    },
+    {
+      "command": "semantic token-accounting and direct-causality assertions",
+      "result": "PASS",
+      "top_level_mean_sum_ms": 290.63331132,
+      "scheduler_mean_ms": 290.63331132,
+      "top_level_fraction_sum": 1.0,
+      "steady_decode_tokens": 125,
+      "direct_layer_calls": 18000
+    },
+    {
+      "command": "dependency-position gap reconstruction",
+      "result": "PASS",
+      "steady_decode_tokens": 125,
+      "dependency_gap_mean_ms": 98.467372272,
+      "token_residual_mean_ms": 98.467372272,
+      "per_token_reconstruction": "known_parent_ns + dependency_gap_ns == scheduler_wall_ns"
+    },
+    {
+      "command": "credential-pattern scan over new artifacts, tools and tests",
+      "result": "PASS_NO_MATCHES"
+    },
+    {
+      "command": "final read-only remote physical12/container check",
+      "result": "PASS_NO_OWNED_DEVICE_PROCESS_OR_CONTAINER"
+    }
+  ],
+  "evidence_integrity": {
+    "raw_v506_manifest_modified": false,
+    "normalized_companion_valid_json": true,
+    "full_host_remote_manifest_sha256": "b42b247621384d95f983242256c997e6781d8aa6d3da24b253aa7bb1bda0948e"
+  }
+}

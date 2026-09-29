@@ -1,0 +1,30 @@
+{
+  "expected_hbm_total_mib": 65536,
+  "expected_host_ip": "110.123.0.3",
+  "expected_physical_cores": 160,
+  "identity_source": {
+    "derived_from": "/mnt/data1/kt-round9/round16-validate-20260928-resume01/evidence/RESUME01_ADMISSION_POLICY.json",
+    "reason": "user-approved two independent 10-second admission rounds"
+  },
+  "minimum_idle_exclusive": 0.8,
+  "minimum_node_free_kib": 50331648,
+  "minimum_round_seconds": 10.0,
+  "minimum_system_available_kib": 738197504,
+  "rounds": 2,
+  "schema": 1,
+  "target": {
+    "card_id": 6,
+    "chip_id": 0,
+    "numa_nodes": [
+      2,
+      3,
+      4,
+      7
+    ],
+    "pci_bdf": "0000:85:00.0",
+    "physical_id": 12
+  },
+  "training_container_id": "0419bcfee46f317d6833e038c28e81cf3d3ecf47323a423062bac2764e0ab2ef",
+  "training_process_limit_mib": 15360,
+  "windows_per_round": 1
+}

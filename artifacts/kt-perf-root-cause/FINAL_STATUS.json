@@ -1,0 +1,137 @@
+{
+  "schema": 1,
+  "round": "KT_FINAL_PERFORMANCE_ROOT_CAUSE_CLOSURE",
+  "status": "KT_ROOT_CAUSE_CONFIRMED",
+  "performance_promotion": "NONE",
+  "PERFORMANCE_GAIN": "NOT_PROMOTED",
+  "default_runtime": "KEEP_FROZEN_S0",
+  "performance_objective": {
+    "root_cause_identification": "ACHIEVED",
+    "request_gain": "NOT_ACHIEVED",
+    "validated_fix": "NOT_FOUND"
+  },
+  "question_answered": "W2 Decode at roughly 253-263 ms/token is not limited by Kunpeng C128 MXFP4 Expert service. CPU work is already hidden by same-layer NPU work. The request is limited by cumulative serial NPU/backbone execution plus per-layer Host dispatch, stream dependencies, and module glue across 48 decoder layers.",
+  "profiler_off_baseline": {
+    "blocks": [
+      {
+        "id": "v403",
+        "w2_tpot_ms": 253.190055,
+        "serial_output_tokens_per_second": 3.6893
+      },
+      {
+        "id": "v404",
+        "w2_tpot_ms": 262.8958,
+        "serial_output_tokens_per_second": 3.5541
+      }
+    ],
+    "use": "deployment-speed reference; diagnostic profile blocks are not substituted for these figures"
+  },
+  "direct_cpu_causality": {
+    "fresh_blocks": [
+      "v506",
+      "v507",
+      "v509"
+    ],
+    "direct_layer_calls": 18000,
+    "cpu_service_ms_per_token_range": [
+      5.527067,
+      5.58629
+    ],
+    "taskqueue_exposed_wait_ms_per_token_range": [
+      0.130038,
+      0.143988
+    ],
+    "cpu_ready_slack_ms_per_token_range": [
+      33.887523,
+      36.377994
+    ],
+    "pending_nonzero_calls": 0,
+    "cpu_tail_after_consumer_wait_calls": 0,
+    "disposition": "CPU_EXPERT_SERVICE_REJECTED_AS_PRIMARY_BOTTLENECK"
+  },
+  "full_host_accounting_v509": {
+    "steady_decode_tokens": 125,
+    "scheduler_wall_mean_ms_per_token": 290.63331132,
+    "top_level_mean_ms_per_token": {
+      "routed_expert": 86.50216716,
+      "qsa_attention": 66.07632012,
+      "gdn": 37.638694056,
+      "ple_consumer": 1.948757712,
+      "other_dense_dispatch_scheduler": 98.467372272
+    },
+    "top_level_fraction_sum": 1.0,
+    "unknown_top_level_wall": 0.0,
+    "unknown_dependency_position_fraction": 0.0,
+    "hardware_subattribution_unresolved_fraction": 0.3388027746192628,
+    "hardware_subattribution_definition": "all residual wall is assigned to exact adjacent dependency positions, but those intervals combine Host active work, queued NPU execution, and stream dependencies and are not mislabeled as pure Host time",
+    "nested_cpu_service_is_not_additive": true
+  },
+  "dependency_gap_accounting_v509": {
+    "attention_to_same_layer_expert_mean_ms_per_token": 51.139921072,
+    "expert_to_next_layer_attention_mean_ms_per_token": 32.0591424,
+    "scheduler_to_first_attention_mean_ms_per_token": 9.257529072,
+    "last_expert_to_scheduler_mean_ms_per_token": 5.170517456,
+    "ple_adjacent_gaps_mean_ms_per_token": 0.840262272,
+    "total_mean_ms_per_token": 98.467372272,
+    "method": "same-clock non-overlapping parent intervals; each residual is named by preceding and following dependency boundaries",
+    "warning": "dependency gaps are not pure Python time because asynchronously queued NPU work may complete at a later boundary"
+  },
+  "device_relation": {
+    "gdn_sampled_device_mean_ms_per_call": 1.0997,
+    "qsa_sampled_device_mean_ms_per_call": 5.7585,
+    "routed_expert_sampled_device_mean_ms_per_call": 2.0798,
+    "resident_npu_expert_sampled_device_mean_ms_per_call": 0.4386,
+    "interpretation": "sampled device intervals are close to their Host parents and establish real NPU work; intervals from different streams are not summed into a fabricated device critical path"
+  },
+  "causal_interventions": {
+    "qsa_selector": "component gain was large and exact, but profiler-off W2 TPOT regressed 0.41% and throughput regressed 0.63%; selector-only hypothesis rejected",
+    "resident_moe_graph": "local Host/device gains of about 28%/34% produced only 1.20% W2 TPOT and 0.73% throughput improvement with 984 MiB extra HBM; no promotion",
+    "current_cpu_boundary": "an infinitely fast CPU kernel can remove only about 0.13 ms/token at the observed consumer boundary because the service is already hidden"
+  },
+  "candidate_disposition": {
+    "a2_exact_same_layer_overlap": "NOT_SELECTED_NO_CPU_TAIL",
+    "a3_larger_npu_segment": "NOT_IMPLEMENTED_NEW_PROJECT_BOUNDARY",
+    "s0": "RETAINED",
+    "next_investment_if_authorized": "measure and optimize an entire QSA parent or a materially larger exact NPU decoder segment including launch/glue costs; do not return to CPU microkernel or sync deletion"
+  },
+  "quality_and_identity": {
+    "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "production_native_sha256": "614ae60f70ff70d1e47d7fd32e857f887f874b6248eb332172c8a637cb471a6d",
+    "diagnostic_native_sha256": "bccee617542c1a23ed1531e1099d1bff6190f8212c91f806b9ea705bec2b8a62",
+    "diagnostic_semantic_delta": "env-gated buffered TaskQueue timestamps only",
+    "route_precision_state_changed": false
+  },
+  "resource_and_cleanup": {
+    "admission": "PASS_2x10s",
+    "whole_card_hbm_peak_mib": 28932,
+    "owned_hbm_peak_mib": 25756,
+    "host_cgroup_peak_bytes": 367736745984,
+    "container_removed": true,
+    "physical_device_12_processes_after_run": 0,
+    "guard_note": "original guard hit a disappearing-/proc race; preserved FAIL log and a manual exact-owned retirement receipt passed without modifying external tasks",
+    "global_drop_caches_used": false
+  },
+  "evidence_limits": [
+    "v509 full-Host observation perturbs wall time, so module fractions are used for causal ranking and profiler-off v403/v404 remain the deployment-speed reference",
+    "the current run did not persist a new detached hidden/route fixture; direct in-situ ordering is stronger for the consumer-exposure question, while future CPU-kernel work would need a current replay fixture",
+    "Round15 full-model interventions used one fresh process per arm and two measurements, so they establish direction and scale rather than four-process ABBA qualification",
+    "hardware PMU counters were unavailable; memory bandwidth, LLC miss, and remote-NUMA rates remain unknown but do not change the direct ready-before-wait result",
+    "33.88% of diagnostic wall is assigned to exact adjacent dependency positions but was not split into Host-active versus queued-device time or individual kernels"
+  ],
+  "primary_artifacts": [
+    "FINAL_EXPLANATION_ZH.md",
+    "ROOT_CAUSE_CARDS.md",
+    "TOKEN_ACCOUNTING.json",
+    "TOKEN_ACCOUNTING.csv",
+    "DEPENDENCY_GAP_ACCOUNTING.json",
+    "DEPENDENCY_GAP_ACCOUNTING.csv",
+    "TASK_WAIT_CAUSAL_LINKS.json",
+    "CAUSAL_EXPERIMENTS.json",
+    "OBSERVER_PERTURBATION.json",
+    "RESOURCE_TIMELINE_SUMMARY.json",
+    "RESOLVED_CODE_MAP.md",
+    "RAW_EVIDENCE_PRESERVATION.json",
+    "TESTS.json",
+    "EVIDENCE_SHA256.json"
+  ]
+}

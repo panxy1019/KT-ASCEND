@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "PASS_DIRECT_TASK_WAIT_CAUSAL_LINKS",
+  "scope": {
+    "blocks": [
+      "v506",
+      "v507",
+      "v509"
+    ],
+    "calls_per_block": 6000,
+    "total_calls": 18000,
+    "current_full_host_block_calls": 6000
+  },
+  "dependency": "staged hidden D2H -> native enqueue -> C128 task; concurrently resident NPU experts -> Host sync wrapper -> TaskQueue sync -> merge -> next layer",
+  "v509_per_token_ms": {
+    "expert_parent": 86.50216716,
+    "dispatch": 14.757200136000002,
+    "host_sync_total": 13.532752944000002,
+    "host_sync_before_native_taskqueue": 9.841051432,
+    "taskqueue_exposed_wait": 0.130627672,
+    "host_sync_after_native": 3.5610738399999997,
+    "merge": 1.2138030960000001,
+    "parent_residual_including_resident_npu_router_and_glue": 56.998410984,
+    "cpu_service_nested": 5.586290432,
+    "cpu_ready_slack_before_host_sync": 36.377994384000004
+  },
+  "all_blocks": [
+    {
+      "block": "v506",
+      "cpu_service_median_ms_per_token": 5.570209,
+      "exposed_wait_median_ms_per_token": 0.143988,
+      "ready_slack_median_ms_per_token": 35.637723,
+      "pending_nonzero": 0
+    },
+    {
+      "block": "v507",
+      "cpu_service_median_ms_per_token": 5.527067,
+      "exposed_wait_median_ms_per_token": 0.130038,
+      "ready_slack_median_ms_per_token": 33.887523,
+      "pending_nonzero": 0
+    },
+    {
+      "block": "v509",
+      "cpu_service_median_ms_per_token": 5.573546,
+      "exposed_wait_median_ms_per_token": 0.132037,
+      "ready_slack_median_ms_per_token": 36.045166,
+      "pending_nonzero": 0
+    }
+  ],
+  "causal_upper_bound": "With the current ordering, an infinitely fast CPU kernel can remove at most the observed TaskQueue exposed wait at this consumer boundary (~0.13 ms/token); its 5.6 ms service is already hidden. This bound does not include redesigning dispatch or precision."
+}

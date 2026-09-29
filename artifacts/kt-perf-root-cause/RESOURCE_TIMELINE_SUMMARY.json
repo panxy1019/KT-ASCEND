@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "PASS_RESOURCE_TIMELINE_AND_RETIREMENT",
+  "samples": 131,
+  "duration_seconds": 356.8336400985718,
+  "hbm": {
+    "whole_card_peak_mib": 28932,
+    "owned_peak_mib": 25756,
+    "nonowned_baseline_mib": 3283
+  },
+  "host": {
+    "memavailable_min_kib": 1738836748,
+    "cgroup_usage_peak_bytes": 367623913472,
+    "cgroup_recorded_peak_bytes": 367736745984,
+    "failcnt_peak": 0
+  },
+  "admission": {
+    "status": "PASS",
+    "duration": "2x10s",
+    "min_mean_idle": 0.9960828783081492,
+    "min_numa_free_gib": {
+      "2": 213.75488662719727,
+      "3": 215.17173767089844,
+      "4": 124.22842025756836,
+      "7": 225.61822509765625
+    }
+  },
+  "cleanup": {
+    "schema": 1,
+    "status": "PASS_MANUAL_OWNED_RETIREMENT_AFTER_GUARD_RACE",
+    "recorded_at": 1790696337.372936,
+    "owned_container_id": "4b2e2f45d1d39ef4fff1f78eac63fad9bd096cfc2259ecb8adcf1c7a9f618060",
+    "docker_container_removed": true,
+    "physical_device_12_process_check": "No process in device.",
+    "guard_original_status": "FAIL_PROC_EXIT_RACE_PRESERVED_IN_GUARD_LOG",
+    "note": "No unrelated process or container was modified."
+  },
+  "evidence_frozen_before_cache_action": true,
+  "cache_retirement": {
+    "status": "NOT_REQUIRED_AND_HOOK_REFUSED_BEFORE_ACTION",
+    "reason": "registered manifest used by the hook did not carry its experiment_block_complete field; no cache mutation or global drop_caches occurred",
+    "prior_successful_blocks": [
+      "after-v506 released 295159627776 bytes",
+      "after-v507 released 287345467392 bytes"
+    ]
+  },
+  "external_tasks_modified": false
+}

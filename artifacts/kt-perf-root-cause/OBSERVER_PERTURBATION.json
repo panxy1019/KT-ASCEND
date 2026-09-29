@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "status": "OBSERVER_PERTURBATION_BOUNDED",
+  "comparisons": [
+    {
+      "pair": "S0-A profiler-off v403 vs diagnostic v506",
+      "profiler_off_client_tpot_ms": 253.19005546456697,
+      "diagnostic_scheduler_wall_ms": 282.644076,
+      "ratio": 1.1163316642961714,
+      "clock_scope": "APPROXIMATE_DIFFERENT_BOUNDARIES"
+    },
+    {
+      "pair": "S0-B profiler-off v404 vs diagnostic v507",
+      "profiler_off_client_tpot_ms": 262.89580030314966,
+      "diagnostic_scheduler_wall_ms": 268.918093,
+      "ratio": 1.022907527202435,
+      "clock_scope": "APPROXIMATE_DIFFERENT_BOUNDARIES"
+    },
+    {
+      "pair": "median profiler-off reference vs full-host v509",
+      "profiler_off_client_tpot_ms": 258.0429278838583,
+      "diagnostic_scheduler_wall_ms": 293.131077,
+      "ratio": 1.135977952985925,
+      "clock_scope": "UNPAIRED_DIAGNOSTIC_UPPER_PERTURBATION"
+    }
+  ],
+  "stable_findings": {
+    "cpu_service_ms_per_token": [
+      5.570209,
+      5.527067,
+      5.573546
+    ],
+    "cpu_exposed_wait_ms_per_token": [
+      0.143988,
+      0.130038,
+      0.132037
+    ],
+    "pending_nonzero_calls": [
+      0,
+      0,
+      0
+    ]
+  },
+  "interpretation": "Use profiler-off v403/v404 for deployed speed. Use diagnostic blocks for ordering, exact dependency identities, and in-block partitions. Do not scale profiler-off speed claims from v509 fractions.",
+  "observer_semantics": {
+    "host": "time.monotonic_ns around existing calls",
+    "device": "events queried at existing batch end; no observer synchronize",
+    "native": "buffered env-gated timestamps; no scheduling change"
+  }
+}

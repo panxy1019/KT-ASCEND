@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "status": "DIRECT_IN_SITU_CURRENT_ORDER_PLUS_HISTORICAL_REAL_FIXTURE",
+  "current_round": {
+    "method": "native enqueue/start/complete and sync events joined to all 48 in-situ S0 routed-expert calls for 125 steady W2 Decode tokens",
+    "calls": 6000,
+    "advantage": "measures current real route order and consumer exposure without detached-replay distortion",
+    "limitation": "current diagnostic did not persist hidden tensors or route IDs, so no new detached deterministic fixture was created"
+  },
+  "historical_real_fixture": {
+    "source": "artifacts/round11/ROUND11_T2_ATTRIBUTION.json",
+    "capture_sha256": "c837641468b9db93c422a3610af7a7ecc1f14d4bbb359841d69ac0dfd655dc6e",
+    "bank_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+    "tokens": 3,
+    "iterations": 3000,
+    "parent_us_per_group": 366.8575,
+    "task_execute_us_per_group": 259.5,
+    "native_compute_merge_us_per_group": 244.7,
+    "queue_us_per_group": 4.4
+  },
+  "comparison": {
+    "historical_cpu_task_us_per_token": 86.5,
+    "current_cpu_task_us_per_decode_token_per_layer": 116.38105066666667,
+    "ratio_current_to_historical": 1.3454456724470134,
+    "conclusion": "current full-model CPU service is modestly slower than the old hot single-layer fixture, but its absolute total remains ~5.6 ms/token and is fully hidden before the consumer wait"
+  },
+  "disposition": "No new detached replay is needed to decide the bottleneck; direct in-situ service and exposed wait are stronger for the current request. A future CPU-kernel project should add a persisted current hidden/route fixture before microkernel work."
+}

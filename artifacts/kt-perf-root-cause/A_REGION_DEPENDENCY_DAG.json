@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "status": "PASS_DEPENDENCY_DAG",
+  "nodes": [
+    "hidden/router ready",
+    "staging copy",
+    "CPU submit",
+    "C128 task",
+    "resident NPU routed expert",
+    "CPU result ready",
+    "NPU resident ready",
+    "TaskQueue sync",
+    "merge",
+    "next layer"
+  ],
+  "edges": [
+    [
+      "hidden/router ready",
+      "staging copy"
+    ],
+    [
+      "staging copy",
+      "CPU submit"
+    ],
+    [
+      "CPU submit",
+      "C128 task"
+    ],
+    [
+      "hidden/router ready",
+      "resident NPU routed expert"
+    ],
+    [
+      "C128 task",
+      "CPU result ready"
+    ],
+    [
+      "resident NPU routed expert",
+      "NPU resident ready"
+    ],
+    [
+      "CPU result ready",
+      "TaskQueue sync"
+    ],
+    [
+      "NPU resident ready",
+      "TaskQueue sync"
+    ],
+    [
+      "TaskQueue sync",
+      "merge"
+    ],
+    [
+      "merge",
+      "next layer"
+    ]
+  ],
+  "measured_order": "CPU result is ready before TaskQueue sync in all 18000 calls; CPU/NPU overlap exists; later layer cannot consume before merge",
+  "repeated_decoder_dependency_intervals_mean_ms_per_token": {
+    "attention_to_same_layer_expert": 51.139921072,
+    "expert_to_next_layer_attention": 32.0591424,
+    "scheduler_and_ple_boundaries": 15.2683088
+  },
+  "gap_semantics": "same-clock dependency positions, not pure Host CPU time; queued NPU execution may complete at a later boundary"
+}
