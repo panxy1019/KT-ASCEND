@@ -1,0 +1,9 @@
+{
+  "ended_at": 1790739385.4446795,
+  "error": "'edge128'",
+  "error_type": "KeyError",
+  "schema": 1,
+  "started_at": 1790739385.4319925,
+  "status": "FAIL_ROUND18_FRESH_NATIVE_ROUTE_TRACE",
+  "traceback": "Traceback (most recent call last):\n  File \"/work/round18_integration/native_route_trace_probe.py\", line 98, in main\n    schedule = build_route_trace_schedule(fixture)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/work/round18_integration/native_route_trace_probe.py\", line 35, in build_route_trace_schedule\n    input_ids = [int(value) for value in fixture[\"cases\"][case_id][\"input_ids\"]]\n                                         ~~~~~~~~~~~~~~~~^^^^^^^^^\nKeyError: 'edge128'\n"
+}

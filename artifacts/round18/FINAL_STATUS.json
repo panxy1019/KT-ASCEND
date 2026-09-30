@@ -1,0 +1,44 @@
+{
+  "schema": 2,
+  "round": 18,
+  "status": "ROUND18_COMPLETE_NO_PROMOTION",
+  "terminal": true,
+  "default_config_changed": false,
+  "default_config": "ROUND17_S0",
+  "phase_i": {
+    "status": "ROUND18_NATIVE_HYBRID_WORKS_NO_GRAPH_RECOVERY",
+    "locked": true,
+    "native_partial_moe": "PASS_NATIVE_RESIDENT_PARTIAL",
+    "hybrid_eager": "PASS_FULL_MODEL_EAGER_SMOKE",
+    "piecewise": "LOCKED_GENERAL_DYNAMIC_SHAPE_ABI_BLOCK",
+    "breakable": "UNSUPPORTED_BY_FROZEN_STACK",
+    "full_compatible": "CURRENT_CPU_EAGER_BREAK_INCOMPATIBLE",
+    "request_performance": "NOT_RUN_WITHOUT_GRAPH_SAFE_CANDIDATE",
+    "performance_claim": null
+  },
+  "phase_ii": {
+    "status": "ROUND18_EXPERT_POOL_GRAPH_COMPAT_BLOCKED",
+    "route_working_set": "PASS_FRESH_NATIVE_ROUTE_ANALYSIS",
+    "capacity_policy": "NO_DEPLOYABLE_NATIVE_POOL_POLICY_UNDER_CURRENT_FULL_GRAPH",
+    "current_q32_fixed_slot": "BLOCKED_BY_NZ29_BEFORE_MUTATION",
+    "independent_list_source_seam": "PRESENT",
+    "independent_list_probe": "OFFLINE_READY_DEVICE_NOT_RUN_AFTER_ECONOMICS_GATE_STOP",
+    "current_token_device_planner": "MISSING",
+    "backing_format": "NO_QUALIFIED_BACKING_FOR_DEPLOYABLE_POOL",
+    "full_pool_implementation": "NOT_ENTERED_AFTER_CHEAP_GATE_FAILURE",
+    "request_performance": "NOT_RUN_NO_DEPLOYABLE_GRAPH_SAFE_POOL_CANDIDATE",
+    "performance_claim": null
+  },
+  "promotion": false,
+  "s0_outperformed_claim": false,
+  "performance_objective": "NOT_ACHIEVED",
+  "not_a_theoretical_impossibility_claim": true,
+  "reopen_requires": [
+    "device-side current-token miss planner without per-token Host route readback",
+    "format-aware fixed-slot writer or parentless independent-slot owner",
+    "all projections ready before stable same-address device map publication"
+  ],
+  "resource_retirement": "PASS_LATEST_DEVICE_BLOCK_RETIRED",
+  "automation": "PAUSED_UNCHANGED",
+  "final_disposition": "KEEP_ROUND17_S0"
+}

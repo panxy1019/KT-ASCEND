@@ -1,0 +1,8 @@
+phase,identity,workload,metric,value,unit,qualification
+REFERENCE,Round17 S0 historical,W2 128/128,TPOT,~262.8,ms/token,HISTORICAL_CONTEXT_ONLY_NOT_FRESH_ROUND18_PAIR
+REFERENCE,Round17 S0 historical,W2 128/128,serial_output_throughput,~3.56,output_tok/s,HISTORICAL_CONTEXT_ONLY_NOT_FRESH_ROUND18_PAIR
+PHASE_I,native-hybrid-full-v003,canaries/decode32/cancel/reuse,correctness,PASS,,EAGER_SMOKE_ONLY_NO_PERFORMANCE
+PHASE_I,PIECEWISE v011/v013,profile startup,graph_correctness,FAIL,,FROZEN_GENERAL_DYNAMIC_SHAPE_ABI_BLOCK
+PHASE_II,native-route-trace-v016,W1/W2/W4,route_events,8784,events,DIAGNOSTIC_D2H_FILE_IO_NOT_PERFORMANCE
+PHASE_II,fixed-slot-v018,single layer0 Q32 owner,fixed_slot_write,BLOCKED,,NZ29_FORMAT_FAIL_CLOSED_BEFORE_MUTATION
+FINAL,BEST18,W1/W2/W4,request_comparison,NOT_RUN,,NO_DEPLOYABLE_GRAPH_SAFE_CANDIDATE

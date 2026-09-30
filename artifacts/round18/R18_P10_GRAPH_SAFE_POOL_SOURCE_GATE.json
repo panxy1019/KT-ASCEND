@@ -1,0 +1,84 @@
+{
+  "schema": "round18:p10-graph-safe-pool-source-gate:v1",
+  "status": "SOURCE_GATE_ONLY_NOT_NPU_PASS",
+  "disposition_at_source_audit": "PROCEED_TO_BOUNDED_NPU_COMPONENT_PROBE",
+  "terminal_resolution": "STOPPED_BY_FRESH_ROUTE_ECONOMICS_AND_MISSING_CURRENT_TOKEN_DEVICE_PLANNER",
+  "bounded_npu_component_probe": "NOT_RUN_AFTER_TERMINAL_GATE",
+  "superseded_by": [
+    "R18_PHASE_II_POOL_ECONOMICS.json",
+    "R18_EXPERT_POOL_GRAPH_COMPAT.json",
+    "FINAL_STATUS.json"
+  ],
+  "source_root": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928",
+  "claims": {
+    "npu_pass": false,
+    "graph_correctness": false,
+    "full_or_full_decode_only_qualified": false,
+    "piecewise_qualified": false,
+    "all_native_pool_designs_impossible": false
+  },
+  "full_replay": {
+    "replay_skips_python_runnable": true,
+    "current_stream_sync_before_replay": true,
+    "graph_external_update_hooks_exist": true,
+    "existing_cpu_python_planner_compatible": false,
+    "current_token_route_available_before_replay": false
+  },
+  "publish_path": {
+    "weight_copy_is_in_place": true,
+    "wait_precedes_publish": true,
+    "device_mapping_is_in_place": true,
+    "expert_map_update_is_cpu_shadow_only": true,
+    "address_stability_proved_on_npu": false,
+    "captured_graph_observes_new_weight_contents_proved_on_npu": false
+  },
+  "native_consumer": {
+    "reads_log2phy": true,
+    "reads_weight_objects": true
+  },
+  "mode_assessment": {
+    "FULL_OR_FULL_DECODE_ONLY": "SOURCE_HAS_GRAPH_EXTERNAL_MUTATION_SEAM_DEVICE_PROBE_REQUIRED",
+    "PIECEWISE": "SAME_OUTER_MUTATION_SEAM_DEVICE_PROBE_REQUIRED",
+    "ACLGRAPH_WEIGHT_COPY_INSIDE_CAPTURE": "NOT_ESTABLISHED_AND_NOT_REQUIRED_BY_MINIMAL_PROBE"
+  },
+  "limits": {
+    "current_token_route_miss_fill": "MISSING",
+    "current_token_host_route_readback": "NOT_PRESENT_IN_ADJACENT_EPLB_PATH",
+    "per_token_python_miss_planner": "NOT_PRESENT_IN_ADJACENT_EPLB_PATH",
+    "ep1_existing_eplb_path": "REJECTED_BY_FROZEN_SOURCE",
+    "existing_transfer_source": "D2D_ONLY",
+    "atomic_weight_then_mapping_publish": "NOT_PROVED",
+    "round18_q32_map_publish_equivalence_to_log2phy": "NOT_PROVED"
+  },
+  "source_identity": {
+    "vllm_ascend/compilation/acl_graph.py": "eadb7156b74720b79bcdc51491feed9ec76739d1449ae4ffac822ffad6526695",
+    "vllm_ascend/worker/model_runner_v1.py": "de9f108bb1365c7eb5967c0cd098a005510fe627f7a27e0732d120a0f33e2608",
+    "vllm_ascend/eplb/adaptor/vllm_adaptor.py": "e372c2e515cee4711f919e65e14bc2a81666b10c3074aca181ba519e2d186b99",
+    "vllm_ascend/eplb/core/eplb_device_transfer_loader.py": "db1023bd25fbae05eddd3e6650e3d7680c4b522048997cda1d6f5549b3539130",
+    "vllm_ascend/eplb/core/eplb_utils.py": "1fcf2a5d8ee56366d460ccd87661176822745f2d86e295a6438c0f8651d2392e",
+    "vllm_ascend/ops/fused_moe/fused_moe.py": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c"
+  },
+  "evidence": [
+    {"file": "vllm_ascend/compilation/acl_graph.py", "line": 287, "fact": "FULL replay synchronizes the current stream before replay"},
+    {"file": "vllm_ascend/compilation/acl_graph.py", "line": 288, "fact": "replay calls entry.aclgraph.replay without re-entering the Python runnable"},
+    {"file": "vllm_ascend/worker/model_runner_v1.py", "line": 2224, "fact": "dynamic EPLB forward_before runs outside and before model forward"},
+    {"file": "vllm_ascend/worker/model_runner_v1.py", "line": 2287, "fact": "dynamic EPLB forward_end runs outside and after model forward"},
+    {"file": "vllm_ascend/eplb/adaptor/vllm_adaptor.py", "line": 208, "fact": "expert weights are overwritten in place with expert_tensor.copy_"},
+    {"file": "vllm_ascend/eplb/adaptor/vllm_adaptor.py", "line": 213, "fact": "device log2phy mapping is published in place with copy_"},
+    {"file": "vllm_ascend/eplb/core/eplb_device_transfer_loader.py", "line": 106, "fact": "D2D requests are waited before map and weight updates"},
+    {"file": "vllm_ascend/eplb/core/eplb_utils.py", "line": 82, "fact": "the existing dynamic EPLB configuration rejects EP1"},
+    {"file": "vllm_ascend/ops/fused_moe/fused_moe.py", "line": 774, "fact": "native MoE forwards self.log2phy to the quant method"}
+  ],
+  "minimum_device_probe": [
+    "Use one native unquantized MoE layer with two preallocated physical slots and stable tensor addresses.",
+    "Capture one legal FULL or PIECEWISE ACLGraph invocation with logical expert A mapped to the target slot.",
+    "Outside capture and between replays, wait for copy completion, overwrite only that fixed slot with expert B weights, then publish a same-address device mapping update.",
+    "Replay without Python model forward or route readback and compare output against eager A and B references plus an unchanged-slot control.",
+    "Record data_ptr values, stream and event ordering, resolved graph mode, output hashes and errors, allocator deltas, and cleanup."
+  ],
+  "reproduction": {
+    "module": "round18.expert_pool_graph_contract",
+    "test": "python3 -m unittest tests.round18.test_expert_pool_graph_contract",
+    "audit": "python3 -m round18.expert_pool_graph_contract --source-root /home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928"
+  }
+}

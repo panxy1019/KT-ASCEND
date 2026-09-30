@@ -1,0 +1,92 @@
+{
+  "active_references_after": [],
+  "active_references_before": [],
+  "after_fincore": {
+    "file_count": 179,
+    "resident_bytes": 0,
+    "resident_file_count": 0,
+    "resident_pages": 0,
+    "total_size_bytes": 424173059448
+  },
+  "after_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 85544,
+      "FileHugePages": 4999168,
+      "FilePages": 15530544,
+      "MemFree": 245589008
+    },
+    "3": {
+      "AnonPages": 122472,
+      "FileHugePages": 3467264,
+      "FilePages": 7938988,
+      "MemFree": 253576412
+    },
+    "4": {
+      "AnonPages": 77320,
+      "FileHugePages": 311296,
+      "FilePages": 93362736,
+      "MemFree": 167504244
+    },
+    "7": {
+      "AnonPages": 157072,
+      "FileHugePages": 133120,
+      "FilePages": 5751412,
+      "MemFree": 255359108
+    }
+  },
+  "after_system_memavailable_kib": 1985568232,
+  "automation": "PAUSED_UNCHANGED",
+  "before_fincore": {
+    "file_count": 179,
+    "resident_bytes": 185653796864,
+    "resident_file_count": 111,
+    "resident_pages": 45325634,
+    "total_size_bytes": 424173059448
+  },
+  "before_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 84840,
+      "FileHugePages": 6125568,
+      "FilePages": 34998804,
+      "MemFree": 226059588
+    },
+    "3": {
+      "AnonPages": 124712,
+      "FileHugePages": 3467264,
+      "FilePages": 22352496,
+      "MemFree": 239116172
+    },
+    "4": {
+      "AnonPages": 77248,
+      "FileHugePages": 311296,
+      "FilePages": 107118016,
+      "MemFree": 153705280
+    },
+    "7": {
+      "AnonPages": 156140,
+      "FileHugePages": 116854784,
+      "FilePages": 139416680,
+      "MemFree": 121636612
+    }
+  },
+  "before_system_memavailable_kib": 1985486760,
+  "ended_unix": 1790737882.883066,
+  "expected_file_count": 179,
+  "failures": [],
+  "file_count": 179,
+  "file_stat_identity_sha256": "af3c1ef33b8d40f710da63efe5cd8a88b975fdba4735a15e147b1c0b9e14946e",
+  "global_drop_caches": false,
+  "manifest_path": "/mnt/data1/kt-round9/artifacts/round16-b/cache-retirement-pre-v011/registered-targets.json",
+  "manifest_sha256": "4c7fea32b4492808c7a858f3b929be7c46df029d4a7b0b9b4eb6264c8984c061",
+  "minimum_drop_bytes": 1073741824,
+  "operation": "POSIX_FADV_DONTNEED",
+  "other_tasks_modified": false,
+  "resident_bytes_released": 185653796864,
+  "roles": {
+    "bank": 48,
+    "model": 131
+  },
+  "schema": 2,
+  "started_unix": 1790737870.8341343,
+  "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+}

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "round": 18,
+  "phase": "PHASE_I_NATIVE_HYBRID",
+  "status": "LOCKED_NO_FURTHER_PIECEWISE_WORK",
+  "disposition": "ROUND18_NATIVE_HYBRID_WORKS_NO_GRAPH_RECOVERY",
+  "eager": {
+    "status": "PASS_NATIVE_HYBRID_EAGER_CORRECTNESS",
+    "component_run": "native-hybrid-v001",
+    "full_model_run": "native-hybrid-full-smoke-v003",
+    "remote_snapshot_alias": "native-hybrid-full-v003",
+    "performance_claim": null
+  },
+  "graph_modes": {
+    "PIECEWISE": {
+      "status": "LOCKED_GENERAL_DYNAMIC_SHAPE_ABI_BLOCK",
+      "last_runs": [
+        "native-hybrid-piecewise-diagnostic-v011",
+        "native-hybrid-piecewise-diagnostic-v013"
+      ],
+      "further_fixing_allowed": false,
+      "reason": "Independent GDN and HyperConnection regions reproduced invalid runtime scalar/range-to-shape binding in the frozen PIECEWISE stack."
+    },
+    "BREAKABLE": {
+      "status": "UNSUPPORTED_BY_FROZEN_STACK",
+      "further_fixing_allowed": false
+    },
+    "FULL_COMPATIBLE": {
+      "status": "CURRENT_CPU_EAGER_BREAK_INCOMPATIBLE",
+      "further_fixing_allowed": false,
+      "reason": "FULL replay does not re-enter the Python quant-method apply seam that must produce a fresh CPU work ID for every token and layer."
+    }
+  },
+  "request_performance": "NOT_RUN_WITHOUT_GRAPH_SAFE_CANDIDATE",
+  "kv_overclaim_prohibited": true,
+  "phase_ii": {
+    "status_at_phase_i_transition": "ACTIVE_NATIVE_EXPERT_POOL",
+    "terminal_status": "ROUND18_EXPERT_POOL_GRAPH_COMPAT_BLOCKED",
+    "see": "FINAL_STATUS.json",
+    "gates": [
+      "FRESH_ROUTE_WORKING_SET_ECONOMICS",
+      "NO_PARENT_REBUILD_FIXED_SLOT_WRITE",
+      "GRAPH_SAFE_SAME_ADDRESS_WEIGHT_AND_MAP_MUTATION"
+    ]
+  }
+}

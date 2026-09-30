@@ -1,0 +1,20 @@
+.......E..........................
+======================================================================
+ERROR: test_live_worker_installs_full_boundary_before_model_load (test_native_gdn_graph_boundary.NativeGdnGraphBoundaryTests.test_live_worker_installs_full_boundary_before_model_load)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/work/tests/round18/test_native_gdn_graph_boundary.py", line 66, in test_live_worker_installs_full_boundary_before_model_load
+    source = Path("round18_integration/native_hybrid_live_worker.py").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'round18_integration/native_hybrid_live_worker.py'
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.008s
+
+FAILED (errors=1)

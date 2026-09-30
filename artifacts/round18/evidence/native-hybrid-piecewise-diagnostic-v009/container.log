@@ -1,0 +1,1974 @@
+...........................
+----------------------------------------------------------------------
+Ran 27 tests in 0.006s
+
+OK
+can not use command: npu-smi info
+[transformers] You are using a model of type `qwen4_exp` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+INFO 09-30 01:47:00 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 09-30 01:47:00 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 09-30 01:47:00 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-30 01:47:00 [__init__.py:237] Platform plugin ascend is activated
+INFO 09-30 01:47:00 [platform.py:61] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+ROUND18_NATIVE_HYBRID_ENGINE_CONSTRUCT_BEGIN
+INFO 09-30 01:47:16 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 09-30 01:47:16 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+INFO 09-30 01:47:16 [api_utils.py:273] non-default args: {'trust_remote_code': True, 'safetensors_load_strategy': 'eager', 'dtype': 'bfloat16', 'seed': 20260929, 'max_model_len': 256, 'gpu_memory_utilization': 0.82, 'max_num_batched_tokens': 32, 'max_num_seqs': 1, 'disable_log_stats': True, 'enable_chunked_prefill': True, 'compilation_config': {'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [1, 32], 'compile_ranges_endpoints': [32], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [1], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': 1, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}, 'worker_cls': 'round18_integration.native_hybrid_live_worker.Round18NativeHybridWorker', 'model': '/model'}
+WARNING 09-30 01:47:16 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_USE_V1
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+INFO 09-30 01:47:29 [model.py:623] Resolved architecture: Qwen4ExpForConditionalGeneration
+INFO 09-30 01:47:29 [model.py:1788] Using max model len 256
+INFO 09-30 01:47:30 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=32.
+INFO 09-30 01:47:30 [patch_mamba_config.py:104] Setting attention block size to 3072 tokens to ensure that attention page size is >= mamba page size.
+INFO 09-30 01:47:30 [patch_mamba_config.py:119] Padding mamba page size by 0.97% to ensure that mamba page size and attention page size are exactly equal.
+INFO 09-30 01:47:30 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 09-30 01:47:30 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+INFO 09-30 01:47:30 [utils.py:174] No quantization signature detected from model files for "/model". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+WARNING 09-30 01:47:30 [platform.py:1067] GPU-specific parameter is not supported on Ascend. parameter=disable_cascade_attn, value=True, action: resetting to False.
+INFO 09-30 01:47:30 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 01:47:30 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 01:47:30 [platform.py:791] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+INFO 09-30 01:47:30 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_interleaved', 'mrope_section'}
+WARNING 09-30 01:47:43 [warnings.py:112] /usr/local/python3.12.13/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=1) is multi-threaded, use of fork() may lead to deadlocks in the child.
+(EngineCore pid=279) INFO 09-30 01:47:43 [core.py:116] Initializing a V1 LLM engine (v0.26.0) with config: model='/model', speculative_config=None, tokenizer='/model', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=256, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=npu, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=20260929, served_model_name=/model, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update', 'vllm::mla_forward', 'vllm::dsa_forward'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [32, 1], 'compile_ranges_endpoints': [32], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 1, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=279) WARNING 09-30 01:47:43 [warnings.py:112] /vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py:73: UserWarning: Failed to get the IP address, using 0.0.0.0 by default. The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+(EngineCore pid=279) INFO 09-30 01:47:46 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://0.0.0.0:52125 backend=hccl
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+(EngineCore pid=279) INFO 09-30 01:47:47 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[rank0]:[W930 01:47:47.143628467 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+(EngineCore pid=279) INFO 09-30 01:47:47 [model_runner_v1.py:3960] Starting to load model /model...
+(EngineCore pid=279) INFO 09-30 01:47:47 [interface.py:414] Using default backend AttentionBackendEnum.TORCH_SDPA for vit attention
+(EngineCore pid=279) INFO 09-30 01:47:47 [mm_encoder_attention.py:373] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(EngineCore pid=279) INFO 09-30 01:47:48 [qwen_gdn_linear_attn.py:150] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(EngineCore pid=279) INFO 09-30 01:47:49 [compilation.py:1091] Using OOT custom backend for compilation.
+(EngineCore pid=279) INFO 09-30 01:47:49 [weight_utils.py:869] Filesystem type for checkpoints: EXT4. Checkpoint size: 335.28 GiB. Available RAM: 1890.28 GiB.
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   0% Completed | 0/131 [00:00<?, ?it/s]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   1% Completed | 1/131 [00:00<01:42,  1.27it/s]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   2% Completed | 2/131 [00:02<03:27,  1.61s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   2% Completed | 3/131 [00:04<03:10,  1.49s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   3% Completed | 4/131 [00:06<03:46,  1.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   4% Completed | 5/131 [00:09<04:20,  2.07s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   5% Completed | 6/131 [00:11<04:45,  2.28s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   5% Completed | 7/131 [00:14<04:59,  2.41s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   6% Completed | 8/131 [00:17<05:06,  2.49s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   7% Completed | 9/131 [00:19<05:09,  2.54s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   8% Completed | 10/131 [00:22<05:11,  2.57s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   8% Completed | 11/131 [00:25<05:11,  2.59s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   9% Completed | 12/131 [00:27<05:10,  2.61s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  10% Completed | 13/131 [00:30<05:10,  2.64s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  11% Completed | 14/131 [00:33<05:10,  2.65s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  11% Completed | 15/131 [00:35<05:08,  2.66s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  12% Completed | 16/131 [00:38<05:06,  2.67s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  13% Completed | 17/131 [00:41<05:05,  2.68s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  14% Completed | 18/131 [00:43<05:03,  2.68s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  15% Completed | 19/131 [00:46<05:00,  2.68s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  15% Completed | 20/131 [00:49<04:57,  2.68s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  16% Completed | 21/131 [00:51<04:55,  2.69s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  17% Completed | 22/131 [00:54<04:52,  2.69s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  18% Completed | 23/131 [00:57<04:50,  2.69s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  18% Completed | 24/131 [01:00<04:47,  2.69s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  19% Completed | 25/131 [01:02<04:45,  2.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  20% Completed | 26/131 [01:05<04:43,  2.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  21% Completed | 27/131 [01:09<05:11,  3.00s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  21% Completed | 28/131 [01:13<05:43,  3.34s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  22% Completed | 29/131 [01:17<06:05,  3.59s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  23% Completed | 30/131 [01:21<06:18,  3.75s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  24% Completed | 31/131 [01:25<06:22,  3.83s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  24% Completed | 32/131 [01:29<06:07,  3.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  25% Completed | 33/131 [01:33<06:14,  3.82s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  26% Completed | 34/131 [01:37<06:18,  3.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  27% Completed | 35/131 [01:41<06:20,  3.96s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  27% Completed | 36/131 [01:45<06:17,  3.98s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  28% Completed | 37/131 [01:47<05:24,  3.45s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  29% Completed | 38/131 [01:50<05:18,  3.43s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  30% Completed | 39/131 [01:52<04:32,  2.96s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  31% Completed | 40/131 [01:56<04:40,  3.08s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  31% Completed | 41/131 [01:58<04:09,  2.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  32% Completed | 42/131 [02:01<04:22,  2.95s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  33% Completed | 43/131 [02:03<03:53,  2.66s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  34% Completed | 44/131 [02:06<04:09,  2.87s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  34% Completed | 45/131 [02:08<03:43,  2.60s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  35% Completed | 46/131 [02:12<04:01,  2.84s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  36% Completed | 47/131 [02:14<03:34,  2.55s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  37% Completed | 48/131 [02:17<03:52,  2.80s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  37% Completed | 49/131 [02:19<03:31,  2.58s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  38% Completed | 50/131 [02:22<03:48,  2.82s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  39% Completed | 51/131 [02:24<03:24,  2.56s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  40% Completed | 52/131 [02:28<03:41,  2.81s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  40% Completed | 53/131 [02:30<03:19,  2.55s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  41% Completed | 54/131 [02:33<03:35,  2.80s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  42% Completed | 55/131 [02:35<03:11,  2.52s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  43% Completed | 56/131 [02:38<03:28,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  44% Completed | 57/131 [02:40<03:09,  2.56s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  44% Completed | 58/131 [02:44<03:25,  2.81s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  45% Completed | 59/131 [02:46<03:02,  2.53s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  46% Completed | 60/131 [02:49<03:18,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  47% Completed | 61/131 [02:53<03:30,  3.00s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  47% Completed | 62/131 [02:56<03:38,  3.16s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  48% Completed | 63/131 [03:00<03:42,  3.27s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  49% Completed | 64/131 [03:01<03:04,  2.75s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  50% Completed | 65/131 [03:04<03:11,  2.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  50% Completed | 66/131 [03:06<02:39,  2.46s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  51% Completed | 67/131 [03:09<02:51,  2.67s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  52% Completed | 68/131 [03:11<02:25,  2.32s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  53% Completed | 69/131 [03:14<02:37,  2.54s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  53% Completed | 70/131 [03:15<02:18,  2.27s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  54% Completed | 71/131 [03:18<02:31,  2.53s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  55% Completed | 72/131 [03:20<02:17,  2.32s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  56% Completed | 73/131 [03:23<02:30,  2.60s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  56% Completed | 74/131 [03:25<02:14,  2.36s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  57% Completed | 75/131 [03:28<02:18,  2.48s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  58% Completed | 76/131 [03:30<02:04,  2.27s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  59% Completed | 77/131 [03:33<02:16,  2.53s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  60% Completed | 78/131 [03:35<02:02,  2.30s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  60% Completed | 79/131 [03:38<02:13,  2.57s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  61% Completed | 80/131 [03:40<01:57,  2.31s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  62% Completed | 81/131 [03:43<02:08,  2.57s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  63% Completed | 82/131 [03:45<01:55,  2.36s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  63% Completed | 83/131 [03:48<02:05,  2.61s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  64% Completed | 84/131 [03:49<01:49,  2.33s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  65% Completed | 85/131 [03:53<01:58,  2.59s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  66% Completed | 86/131 [03:54<01:41,  2.26s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  66% Completed | 87/131 [03:57<01:44,  2.38s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  67% Completed | 88/131 [03:58<01:29,  2.07s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  68% Completed | 89/131 [04:01<01:38,  2.35s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  69% Completed | 90/131 [04:03<01:24,  2.06s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  69% Completed | 91/131 [04:06<01:34,  2.36s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  70% Completed | 92/131 [04:07<01:19,  2.05s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  71% Completed | 93/131 [04:10<01:24,  2.23s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  72% Completed | 94/131 [04:11<01:13,  1.98s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  73% Completed | 95/131 [04:13<01:15,  2.10s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  73% Completed | 96/131 [04:15<01:05,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  74% Completed | 97/131 [04:17<01:12,  2.13s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  75% Completed | 98/131 [04:19<01:03,  1.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  76% Completed | 99/131 [04:22<01:08,  2.15s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  76% Completed | 100/131 [04:23<00:58,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  77% Completed | 101/131 [04:26<01:06,  2.20s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  78% Completed | 102/131 [04:27<00:57,  1.99s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  79% Completed | 103/131 [04:30<01:03,  2.27s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  79% Completed | 104/131 [04:32<00:54,  2.04s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  80% Completed | 105/131 [04:34<00:56,  2.17s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  81% Completed | 106/131 [04:36<00:48,  1.93s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  82% Completed | 107/131 [04:38<00:52,  2.19s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  82% Completed | 108/131 [04:40<00:45,  1.99s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  83% Completed | 109/131 [04:43<00:48,  2.22s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  84% Completed | 110/131 [04:44<00:41,  1.97s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  85% Completed | 111/131 [04:47<00:45,  2.27s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  85% Completed | 112/131 [04:49<00:39,  2.07s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  86% Completed | 113/131 [04:52<00:42,  2.35s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  87% Completed | 114/131 [04:53<00:35,  2.08s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  88% Completed | 115/131 [04:56<00:37,  2.37s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  89% Completed | 116/131 [04:58<00:31,  2.11s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  89% Completed | 117/131 [05:01<00:33,  2.39s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  90% Completed | 118/131 [05:02<00:27,  2.11s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  91% Completed | 119/131 [05:05<00:28,  2.39s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  92% Completed | 120/131 [05:07<00:23,  2.16s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  92% Completed | 121/131 [05:10<00:24,  2.45s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  93% Completed | 122/131 [05:11<00:19,  2.19s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  94% Completed | 123/131 [05:15<00:19,  2.46s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  95% Completed | 124/131 [05:16<00:15,  2.19s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  95% Completed | 125/131 [05:19<00:15,  2.52s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  96% Completed | 126/131 [05:21<00:11,  2.34s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  97% Completed | 127/131 [05:24<00:10,  2.59s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  98% Completed | 128/131 [05:26<00:07,  2.37s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  98% Completed | 129/131 [05:30<00:05,  2.65s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  99% Completed | 130/131 [05:33<00:02,  2.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager): 100% Completed | 131/131 [05:34<00:00,  2.28s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager): 100% Completed | 131/131 [05:34<00:00,  2.55s/it]
+(EngineCore pid=279) 
+(EngineCore pid=279) INFO 09-30 01:53:24 [default_loader.py:430] Loading weights took 334.39 seconds
+(EngineCore pid=279) INFO 09-30 01:53:24 [model_runner_v1.py:4056] Loading model weights took 24.2670 GB
+(EngineCore pid=279) INFO 09-30 01:53:24 [model_runner_v1.py:4088] Model runner load_model total time: 337.21 seconds
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-00-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279)  ffn_up_exps, Dtype: MXFP4
+(EngineCore pid=279)  ffn_gate_exps, Dtype: MXFP4
+(EngineCore pid=279)  ffn_down_exps, Dtype: MXFP4
+(EngineCore pid=279) WARNING 09-30 01:53:24 [warnings.py:112] /round16-kt/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+CPUInfer[0x1c0acce0]: Hello
+WorkerPool[0x1c0acd50] 4 subpools, [numa:threads][2:32] [3:32] [4:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 4, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for 832ef0a0
+alloc 2 from other numa for fffec019cf30
+alloc 2 from other numa for fffec019cf30
+alloc 1 from other numa for 832ef0a0
+alloc 0 from other numa for ffff40039270
+alloc 0 from other numa for ffff40039270
+alloc 3 from other numa for fffec8037490
+alloc 3 from other numa for fffec8037490
+TP MOE layer 1, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff401883b0
+alloc 2 from other numa for fffec02a4d10
+alloc 3 from other numa for fffec816ad30
+alloc 1 from other numa for 834fb570
+alloc 0 from other numa for ffff401883b0
+alloc 1 from other numa for 834fb570
+alloc 3 from other numa for fffec816ad30
+alloc 2 from other numa for fffec02a4d10
+TP MOE layer 2, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff401d9f20
+alloc 0 from other numa for ffff401d9f20
+alloc 2 from other numa for fffec00e1860
+alloc 3 from other numa for fffec81bded0
+alloc 1 from other numa for 83500790
+alloc 2 from other numa for fffec00e1860
+alloc 3 from other numa for fffec81bded0
+alloc 1 from other numa for 83500790
+TP MOE layer 3, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec012b0c0
+alloc 0 from other numa for ffff401027e0
+alloc 3 from other numa for fffec81beaa0
+alloc 1 from other numa for 833df850
+alloc 2 from other numa for fffec012b0c0
+alloc 0 from other numa for ffff401027e0
+alloc 3 from other numa for fffec81beaa0
+alloc 1 from other numa for 833df850
+TP MOE layer 4, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec013e460
+alloc 0 from other numa for ffff4004be00
+alloc 3 from other numa for fffec826f4b0
+alloc 1 from other numa for 833dd890
+alloc 2 from other numa for fffec013e460
+alloc 0 from other numa for ffff4004be00
+alloc 3 from other numa for fffec826f4b0
+alloc 1 from other numa for 833dd890
+TP MOE layer 5, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec018ace0
+alloc 0 from other numa for ffff4005a310
+alloc 3 from other numa for fffec815e880
+alloc 1 from other numa for 83343860
+alloc 2 from other numa for fffec018ace0
+alloc 0 from other numa for(EngineCore pid=279) [LlamafileMoEWrapper] Layer 0 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-01-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 1 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-02-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 2 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-03-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 3 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-04-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 4 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-05-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 5 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-06-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 6 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-07-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 7 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-08-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 8 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-09-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 9 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-10-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 10 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-11-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4 ffff4005a310
+alloc 3 from other numa for fffec815e880
+alloc 1 from other numa for 83343860
+TP MOE layer 6, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff400c3d10
+alloc 2 from other numa for fffec00832f0
+alloc 3 from other numa for fffec813ceb0
+alloc 1 from other numa for 83326cc0
+alloc 0 from other numa for ffff400c3d10
+alloc 2 from other numa for fffec00832f0
+alloc 3 from other numa for fffec813ceb0
+alloc 1 from other numa for 83326cc0
+TP MOE layer 7, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff40096110
+alloc 2 from other numa for fffec00d29a0
+alloc 3 from other numa for fffec80a3dc0
+alloc 1 from other numa for 8345ef40
+alloc 0 from other numa for ffff40096110
+alloc 2 from other numa for fffec00d29a0
+alloc 3 from other numa for fffec80a3dc0
+alloc 1 from other numa for 8345ef40
+TP MOE layer 8, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0194f30
+alloc 0 from other numa for ffff401902f0
+alloc 3 from other numa for fffec8296120
+alloc 1 from other numa for 834fab50
+alloc 2 from other numa for fffec0194f30
+alloc 0 from other numa for ffff401902f0
+alloc 3 from other numa for fffec8296120
+alloc 1 from other numa for 834fab50
+TP MOE layer 9, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0113890
+alloc 0 from other numa for ffff400d5b20
+alloc 3 from other numa for fffec809a690
+alloc 1 from other numa for 8344b1d0
+alloc 2 from other numa for fffec0113890
+alloc 0 from other numa for ffff400d5b20
+alloc 3 from other numa for fffec809a690
+alloc 1 from other numa for 8344b1d0
+TP MOE layer 10, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec022be10
+alloc 0 from other numa for ffff400a7ec0
+alloc 3 from other numa for fffec82cef00
+alloc 1 from other numa for 834fd1a0
+alloc 2 from other numa for fffec022be10
+alloc 0 from other numa for ffff400a7ec0
+alloc 3 from other numa for fffec82cef00
+alloc 1 from other numa for 834fd1a0
+TP MOE layer 11, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff401af2d0
+alloc 2 from other numa for fffec0031760
+alloc 3 from other numa for fffec810a100
+alloc 1 from other numa for 4fc88840
+alloc 0 from other numa for ffff401af2d0
+alloc 2 from other numa for fffec0031760
+alloc 3 from other numa for fffec810a100
+alloc 1 from other numa for 4fc88840
+TP MOE layer 12, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0071930
+alloc 0 from other numa for ffff40049ec0
+alloc 3 from other numa for fffec813fd30
+alloc 1 from other numa for 83374f80
+alloc 2 from other numa for fffec0071930
+alloc 0 from other numa for ffff40049ec0
+alloc 3 from other numa for fffec813fd30
+alloc 1 from other numa for 83374f80
+TP MOE layer 13, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0034430
+alloc 2 from other numa for fffec0034430
+alloc 0 from other numa for ffff4015de00
+alloc 0 from other numa for ffff4015de00
+alloc 1 from other numa for 833e3ad0
+alloc 3 from other numa for fffec8259300
+alloc 3 from other numa for fffec8259300
+alloc 1 from other numa for 833e3ad0
+TP MOE layer 14, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff4001d710
+alloc 2 from other numa for fffec0155240
+alloc 3 from other numa for fffec82ebf50
+alloc 1 from other numa for 8335f5c0
+alloc 0 from other numa for ffff4001d710
+alloc 2 from other numa for fffec0155240
+alloc 3 from other numa for fffec82ebf50
+alloc 1 from other numa for 8335f5c0
+TP MOE layer 15, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0195710
+alloc 0 from other numa for ffff401b3390
+alloc 3 from other numa for fffec80fb660
+alloc 1 from other numa for 83372e60
+alloc 2 from other numa for fffec0195710
+alloc 0 from other numa for ffff401b3390
+alloc 3 from other numa for fffec80fb660
+alloc 1 from other numa for 83372e60
+TP MOE layer 16, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec02a8370
+alloc 0 from other numa for ffff401252f0
+alloc 3 from other numa for fffec80a4a20
+alloc 1 from other numa for 8336b670
+alloc 2 from other numa for fffec02a8370
+alloc 0 from other numa for ffff401252f0
+alloc 3 from other numa for fffec80a4a20
+alloc 1 from other numa for 8336b670
+TP MOE layer 17, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0145cf0
+alloc 0 from other numa for ffff401a0c00
+alloc 3 from other numa for fffec8061ba0
+alloc 1 from other numa for 83499ca0
+alloc 2 from other numa for fffec0145cf0
+alloc 0 from other numa for ffff401a0c00
+alloc 3 from other numa for fffec8061ba0
+alloc 1 from other numa for 83499ca0
+TP MOE layer 18, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec00385e0
+alloc 0 from other numa for ffff402b9ad0
+alloc 3 from other numa for fffec81ad4a0
+alloc 1 from other numa for 83320d90
+alloc 2 from other numa for fffec00385e0
+alloc 0 from other numa for ffff4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 11 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-12-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 12 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-13-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 13 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-14-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 14 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-15-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 15 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-16-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 16 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-17-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 17 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-18-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 18 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-19-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 19 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-20-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 20 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-21-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 21 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-22-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 402b9ad0
+alloc 3 from other numa for fffec81ad4a0
+alloc 1 from other numa for 83320d90
+TP MOE layer 19, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec01907d0
+alloc 0 from other numa for ffff40192690
+alloc 3 from other numa for fffec80af6e0
+alloc 1 from other numa for 834ffa80
+alloc 2 from other numa for fffec01907d0
+alloc 0 from other numa for ffff40192690
+alloc 3 from other numa for fffec80af6e0
+alloc 1 from other numa for 834ffa80
+TP MOE layer 20, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff4010e300
+alloc 2 from other numa for fffec012fae0
+alloc 3 from other numa for fffec82cda20
+alloc 1 from other numa for 835081b0
+alloc 0 from other numa for ffff4010e300
+alloc 1 from other numa for 835081b0
+alloc 3 from other numa for fffec82cda20
+alloc 2 from other numa for fffec012fae0
+TP MOE layer 21, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec01a3460
+alloc 0 from other numa for ffff4022a560
+alloc 3 from other numa for fffec81bd4f0
+alloc 1 from other numa for 832ee8d0
+alloc 2 from other numa for fffec01a3460
+alloc 0 from other numa for ffff4022a560
+alloc 3 from other numa for fffec81bd4f0
+alloc 1 from other numa for 832ee8d0
+TP MOE layer 22, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0295af0
+alloc 0 from other numa for ffff40120450
+alloc 0 from other numa for ffff40120450
+alloc 3 from other numa for fffec827ed30
+alloc 1 from other numa for 845d1ca0
+alloc 2 from other numa for fffec0295af0
+alloc 3 from other numa for fffec827ed30
+alloc 1 from other numa for 845d1ca0
+TP MOE layer 23, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec025c490
+alloc 0 from other numa for ffff400645e0
+alloc 3 from other numa for fffec8272e70
+alloc 1 from other numa for 8341d170
+alloc 2 from other numa for fffec025c490
+alloc 0 from other numa for ffff400645e0
+alloc 3 from other numa for fffec8272e70
+alloc 1 from other numa for 8341d170
+TP MOE layer 24, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0126b60
+alloc 0 from other numa for ffff40020900
+alloc 3 from other numa for fffec80a98d0
+alloc 1 from other numa for 833bbd50
+alloc 2 from other numa for fffec0126b60
+alloc 0 from other numa for ffff40020900
+alloc 3 from other numa for fffec80a98d0
+alloc 1 from other numa for 833bbd50
+TP MOE layer 25, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0056ba0
+alloc 0 from other numa for ffff4021ff60
+alloc 3 from other numa for fffec80df960
+alloc 1 from other numa for 833d0ac0
+alloc 2 from other numa for fffec0056ba0
+alloc 0 from other numa for ffff4021ff60
+alloc 3 from other numa for fffec80df960
+alloc 1 from other numa for 833d0ac0
+TP MOE layer 26, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0266350
+alloc 0 from other numa for ffff40028a50
+alloc 3 from other numa for fffec8063fd0
+alloc 1 from other numa for 833ec690
+alloc 2 from other numa for fffec0266350
+alloc 0 from other numa for ffff40028a50
+alloc 3 from other numa for fffec8063fd0
+alloc 1 from other numa for 833ec690
+TP MOE layer 27, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0075b30
+alloc 1 from other numa for 83531360
+alloc 3 from other numa for fffec81952d0
+alloc 0 from other numa for ffff40237fa0
+alloc 2 from other numa for fffec0075b30
+alloc 1 from other numa for 83531360
+alloc 3 from other numa for fffec81952d0
+alloc 0 from other numa for ffff40237fa0
+TP MOE layer 28, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec01e6400
+alloc 0 from other numa for ffff40067910
+alloc 0 from other numa for ffff40067910
+alloc 1 from other numa for 8348df20
+alloc 2 from other numa for fffec01e6400
+alloc 3 from other numa for fffec81e1f00
+alloc 1 from other numa for 8348df20
+alloc 3 from other numa for fffec81e1f00
+TP MOE layer 29, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff40143ef0
+alloc 2 from other numa for fffec01836f0
+alloc 3 from other numa for fffec81b92d0
+alloc 1 from other numa for 834c8720
+alloc 0 from other numa for ffff40143ef0
+alloc 2 from other numa for fffec01836f0
+alloc 3 from other numa for fffec81b92d0
+alloc 1 from other numa for 834c8720
+TP MOE layer 30, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0158c00
+alloc 0 from other numa for ffff4003c290
+alloc 3 from other numa for fffec82da880
+alloc 1 from other numa for 833beb70
+alloc 2 from other numa for fffec0158c00
+alloc 0 from other numa for ffff4003c290
+alloc 3 from other numa for fffec82da880
+alloc 1 from other numa for 833beb70
+TP MOE layer 31, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec024cb00
+alloc 2 from other numa for fffec024cb00
+alloc 3 from other numa for fffec81da0b0
+alloc 3 from other numa for fffec81da0b0
+alloc 0 from other numa for ffff4011a970
+alloc 0 from other numa for fff
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 22 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-23-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 23 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-24-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 24 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-25-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 25 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-26-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 26 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-27-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 27 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-28-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 28 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-29-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 29 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-30-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 30 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-31-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 31 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-32-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 32 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-33-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4f4011a970
+alloc 1 from other numa for 83445c70
+alloc 1 from other numa for 83445c70
+TP MOE layer 32, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec008d100
+alloc 2 from other numa for fffec008d100
+alloc 3 from other numa for fffec81754d0
+alloc 1 from other numa for 8353f500
+alloc 0 from other numa for ffff4025d8c0
+alloc 3 from other numa for fffec81754d0
+alloc 1 from other numa for 8353f500
+alloc 0 from other numa for ffff4025d8c0
+TP MOE layer 33, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0117430
+alloc 0 from other numa for ffff402377a0
+alloc 3 from other numa for fffec8036830
+alloc 1 from other numa for 8331acf0
+alloc 2 from other numa for fffec0117430
+alloc 0 from other numa for ffff402377a0
+alloc 3 from other numa for fffec8036830
+alloc 1 from other numa for 8331acf0
+TP MOE layer 34, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0144680
+alloc 2 from other numa for fffec0144680
+alloc 3 from other numa for fffec81dcff0
+alloc 1 from other numa for 833e6f40
+alloc 0 from other numa for ffff40178f50
+alloc 3 from other numa for fffec81dcff0
+alloc 1 from other numa for 833e6f40
+alloc 0 from other numa for ffff40178f50
+TP MOE layer 35, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec00922a0
+alloc 0 from other numa for ffff400abba0
+alloc 1 from other numa for 83432320
+alloc 3 from other numa for fffec8126930
+alloc 2 from other numa for fffec00922a0
+alloc 0 from other numa for ffff400abba0
+alloc 1 from other numa for 83432320
+alloc 3 from other numa for fffec8126930
+TP MOE layer 36, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff40078a10
+alloc 2 from other numa for fffec00ccf20
+alloc 3 from other numa for fffec81219c0
+alloc 1 from other numa for 833a8a70
+alloc 0 from other numa for ffff40078a10
+alloc 2 from other numa for fffec00ccf20
+alloc 3 from other numa for fffec81219c0
+alloc 1 from other numa for 833a8a70
+TP MOE layer 37, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0218e10
+alloc 0 from other numa for ffff40154d70
+alloc 3 from other numa for fffec80bd020
+alloc 0 from other numa for ffff40154d70
+alloc 2 from other numa for fffec0218e10
+alloc 1 from other numa for 4fc14b40
+alloc 3 from other numa for fffec80bd020
+alloc 1 from other numa for 4fc14b40
+TP MOE layer 38, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 lengt
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 33 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-34-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 34 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-35-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 35 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-36-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 36 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-37-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 37 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-38-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 38 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-39-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 39 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-40-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 40 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-41-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 41 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-42-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 42 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-43-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 43 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-44-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4h=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for ffff401911f0
+alloc 2 from other numa for fffec02871a0
+alloc 0 from other numa for ffff401911f0
+alloc 1 from other numa for 834b5e10
+alloc 2 from other numa for fffec02871a0
+alloc 3 from other numa for fffec80b78a0
+alloc 1 from other numa for 834b5e10
+alloc 3 from other numa for fffec80b78a0
+TP MOE layer 39, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec022f0b0
+alloc 0 from other numa for ffff40228b60
+alloc 3 from other numa for fffec8217a20
+alloc 0 from other numa for ffff40228b60
+alloc 2 from other numa for fffec022f0b0
+alloc 1 from other numa for 8351f990
+alloc 3 from other numa for fffec8217a20
+alloc 1 from other numa for 8351f990
+TP MOE layer 40, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0239070
+alloc 0 from other numa for ffff40159500
+alloc 3 from other numa for fffec8284040
+alloc 0 from other numa for ffff40159500
+alloc 2 from other numa for fffec0239070
+alloc 1 from other numa for 8351bc20
+alloc 3 from other numa for fffec8284040
+alloc 1 from other numa for 8351bc20
+TP MOE layer 41, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0243030
+alloc 0 from other numa for ffff40092290
+alloc 3 from other numa for fffec824feb0
+alloc 0 from other numa for ffff40092290
+alloc 2 from other numa for fffec0243030
+alloc 1 from other numa for 83544fe0
+alloc 3 from other numa for fffec824feb0
+alloc 1 from other numa for 83544fe0
+TP MOE layer 42, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec01eea70
+alloc 0 from other numa for ffff40220ff0
+alloc 3 from other numa for fffec804dab0
+alloc 0 from other numa for ffff40220ff0
+alloc 2 from other numa for fffec01eea70
+alloc 1 from other numa for 83495770
+alloc 3 from other numa for fffec804dab0
+alloc 1 from other numa for 83495770
+TP MOE layer 43, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec01f8a40
+alloc 2 from other numa for fffec01f8a40
+alloc 3 from other numa for fffec804baa0
+alloc 1 from other numa for 8354c980
+alloc 0 from other numa for ffff40268f20
+alloc 3 from other numa for fffec804baa0
+alloc 1 from other numa for 8354c980
+alloc 0 from other numa for ffff40268f20
+TP MOE layer 44, pool: 0x1c0acd50, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 2 from other numa for fffec0203a10
+alloc 0 from other numa for ffff4010c4b0
+alloc 2 from other numa for fffec0203a10
+alloc 0 from other numa for ffff4010c4b0
+alloc 3 from other numa for fffec82b2a00
+alloc 1 from other numa for 8352b
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 44 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-45-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 45 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-46-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 46 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-47-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 47 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) INFO 09-30 01:54:12 [gpu_model_runner.py:6396] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(EngineCore pid=279) [rank0]:I0930 01:54:22.531000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] [0/0] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:22.596000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] [0/0] create_symbol s59 = 32 for L['inputs_embeds'].size()[0] [2, int_oo] if inputs_embeds is not None:  # llm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py:477 in forward (_dynamo/variables/builder.py:3702 in <lambda>), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s59" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:22.645000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval [guard suppressed] 5120*s59 <= 163840 [guard added] if inputs_embeds is not None:  # llm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py:477 in forward (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="5120*s59 <= 163840"
+(EngineCore pid=279) [rank0]:I0930 01:54:23.413000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] [0/0] create_symbol s72 = 32 for L['input_ids'].size()[0] [2, int_oo] if input_ids is None or query_start_loc is None or ngram_context is None:  # llm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py:295 in forward (_dynamo/variables/builder.py:3702 in <lambda>), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s72" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:23.425000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval [guard suppressed] 4*s72 <= 128 [guard added] if input_ids is None or query_start_loc is None or ngram_context is None:  # llm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py:295 in forward (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="4*s72 <= 128"
+(EngineCore pid=279) [rank0]:I0930 01:54:23.463000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval Eq(s72, s59) [guard added] if input_ids.shape[0] != hidden_states.shape[0]:  # llm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/ple_layer.py:1286 in forward (_dynamo/variables/tensor.py:1514 in evaluate_expr), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s72, s59)"
+(EngineCore pid=279) [rank0]:I0930 01:54:23.465000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] [0/0] set_replacement s72 = s59 (solve) VR[2, int_oo]
+(EngineCore pid=279) [rank0]:I0930 01:54:24.511000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] [0/0] create_symbol s18 = 32 for L['positions'].size()[1] [2, int_oo] if HAS_TRITON and positions.ndim == 2 and self.mrope_interleaved:  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:538 in forward_oot (_dynamo/variables/builder.py:3702 in <lambda>), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s18" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:24.520000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] [0/0] create_symbol s7 = 33 for L['positions'].stride()[0] [2, int_oo] if HAS_TRITON and positions.ndim == 2 and self.mrope_interleaved:  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:538 in forward_oot (_dynamo/variables/builder.py:3702 in <lambda>), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s7" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:24.529000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval [guard suppressed] Ne(s7, s18) [guard added] if HAS_TRITON and positions.ndim == 2 and self.mrope_interleaved:  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:538 in forward_oot (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s7, s18)"
+(EngineCore pid=279) [rank0]:I0930 01:54:24.533000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval [guard suppressed] Ne(s7, s18) [guard added] if HAS_TRITON and positions.ndim == 2 and self.mrope_interleaved:  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:538 in forward_oot (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s7, s18)"
+(EngineCore pid=279) [rank0]:I0930 01:54:24.541000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval [guard suppressed] 8*s18 + 16*s7 <= 792 [guard added] if HAS_TRITON and positions.ndim == 2 and self.mrope_interleaved:  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:538 in forward_oot (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="8*s18 + 16*s7 <= 792"
+(EngineCore pid=279) [rank0]:I0930 01:54:24.612000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] [0/0] eval s59 <= 65535 [guard added] if query_shape[0] > self._ASCEND_TRITON_GRID_LIMIT and os.environ.get("TRITON_ALL_BLOCKS_PARALLEL") != "1":  # llm-workspace/vllm-ascend/vllm_ascend/ops/rotary_embedding.py:516 in forward_triton (_dynamo/variables/tensor.py:1514 in evaluate_expr), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s59 <= 65535"
+(EngineCore pid=279) INFO 09-30 01:54:43 [compiler_interface.py:254] AscendCompiler hash factors: {'torch_npu_version': '2.10.0.post4', 'enable_npugraph_ex': False, 'enable_static_kernel': False, 'enable_super_kernel': False}
+(EngineCore pid=279) INFO 09-30 01:54:43 [backends.py:1094] Using cache directory: /root/.cache/vllm/torch_compile_cache/a39449603a/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=279) INFO 09-30 01:54:43 [backends.py:1155] Dynamo bytecode transform time: 20.59 s
+(EngineCore pid=279) [rank0]:I0930 01:54:44.849000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:44.863000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s26 = 32 for __meta_utils_unknown_tensor0.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s26" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.869000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s49 = 2560 for __meta_utils_unknown_tensor0.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s49" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.876000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s93 = 10240 for __meta_utils_unknown_tensor1.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s93" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.882000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s53 = 336 for __meta_utils_unknown_tensor2.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s53" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.888000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s9 = 320 for __meta_utils_unknown_tensor3.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s9" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.894000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s45 = 16384 for __meta_utils_unknown_tensor4.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s45" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:44.901000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s82 = 96 for __meta_utils_unknown_tensor5.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s82" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:45.810000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(4*s49, 10240) [guard added] (_ops.py:864 in decompose), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(4*s49, 10240)"
+(EngineCore pid=279) [rank0]:I0930 01:54:45.815000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s49 = 2560 (range_refined_to_singleton) VR[2560, 2560]
+(EngineCore pid=279) [rank0]:I0930 01:54:45.865000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s93, 10240) [guard added] (_prims_common/__init__.py:1064 in infer_size), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s93, 10240)"
+(EngineCore pid=279) [rank0]:I0930 01:54:45.868000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s93 = 10240 (range_refined_to_singleton) VR[10240, 10240]
+(EngineCore pid=279) [rank0]:I0930 01:54:45.897000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s53, 336) [guard added] (_refs/__init__.py:4359 in split_with_sizes), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s53, 336)"
+(EngineCore pid=279) [rank0]:I0930 01:54:45.900000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s53 = 336 (range_refined_to_singleton) VR[336, 336]
+(EngineCore pid=279) [rank0]:I0930 01:54:45.964000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s45, 16384) [guard added] (_refs/__init__.py:4359 in split_with_sizes), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s45, 16384)"
+(EngineCore pid=279) [rank0]:I0930 01:54:45.968000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s45 = 16384 (range_refined_to_singleton) VR[16384, 16384]
+(EngineCore pid=279) [rank0]:I0930 01:54:45.994000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval s82 >= 48 [guard added] (_subclasses/fake_impls.py:778 in _compute_slice_index), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s82 >= 48"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.001000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s82, 48) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s82, 48)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.005000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s82, 48) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s82, 48)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.018000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval s82 >= 96 [guard added] (_subclasses/fake_impls.py:778 in _compute_slice_index), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s82 >= 96"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.285000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:46.817000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:46.837000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s22 = 48 for __meta_utils_unknown_tensor6.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s22" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.842000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s51 = 128 for __meta_utils_unknown_tensor6.size()[2] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s51" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.871000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(16384, s22*s51) [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(16384, s22*s51)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.882000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(16384, s22*s51) [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(16384, s22*s51)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.913000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 32768*s26 + 2*s51*(s22 - 1) + 2*s51 - 12288 <= 1048576 [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="32768*s26 + 2*s51*(s22 - 1) + 2*s51 - 12288 <= 1048576"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.917000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s73 = 6144 for __meta_utils_unknown_tensor9.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s73" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.925000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s27 = 4 for __meta_utils_unknown_tensor11.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s27" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.941000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(336, s27) [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(336, s27)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.947000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(336, s27) [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(336, s27)"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.961000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 672*s26 + 2*s27 + 2*s9 - 672 <= 21480 [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="672*s26 + 2*s27 + 2*s9 - 672 <= 21480"
+(EngineCore pid=279) [rank0]:I0930 01:54:46.966000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s75 = 512 for __meta_utils_unknown_tensor15.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s75" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.014000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(Mod(s22*s26*s51, 128), 0) [guard added] (_prims_common/__init__.py:1078 in infer_size), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(Mod(s22*s26*s51, 128), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.035000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s22*s26*s51, 128*(((s22*s26*s51)//128))) [guard added] (_refs/__init__.py:3989 in _reshape_view_helper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s22*s26*s51, 128*(((s22*s26*s51)//128)))"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.045000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(((s22*s26*s51)//128), s26) [guard added] (_refs/__init__.py:3897 in _reshape_view_helper_core_alg), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(((s22*s26*s51)//128), s26)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.061000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(Mod(s26, ((s22*s26*s51)//128)), 0) [guard added] (_refs/__init__.py:3903 in _reshape_view_helper_core_alg), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(Mod(s26, ((s22*s26*s51)//128)), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.072000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(Mod(s22*s26, ((s22*s26*s51)//128)), 0) [guard added] (_refs/__init__.py:3903 in _reshape_view_helper_core_alg), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(Mod(s22*s26, ((s22*s26*s51)//128)), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.098000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s22*s26, ((s22*s26*s51)//128)) [guard added] (_refs/__init__.py:3926 in _reshape_view_helper_core_alg), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s22*s26, ((s22*s26*s51)//128))"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.108000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s51, 128) [guard added] (_refs/__init__.py:3897 in _reshape_view_helper_core_alg), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s51, 128)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.111000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s51 = 128 (range_refined_to_singleton) VR[128, 128]
+(EngineCore pid=279) [rank0]:I0930 01:54:47.121000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(16384, 128*s22) [guard added] (_ops.py:864 in decompose), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(16384, 128*s22)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.125000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(16384, 128*s22) [guard added] (_ops.py:864 in decompose), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(16384, 128*s22)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.227000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(128*s22*s26, 6144*s26) [guard added] (_prims_common/__init__.py:1064 in infer_size), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(128*s22*s26, 6144*s26)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.233000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s22 = 48 (range_refined_to_singleton) VR[48, 48]
+(EngineCore pid=279) [rank0]:I0930 01:54:47.267000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s27, 336) [guard added] (_prims_common/__init__.py:280 in check_contiguous_sizes_strides), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s27, 336)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.325000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s27, 4) [guard added] (_subclasses/fake_impls.py:1280 in infer_size), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s27, 4)"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.329000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s27 = 4 (range_refined_to_singleton) VR[4, 4]
+(EngineCore pid=279) [rank0]:I0930 01:54:47.450000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 32768*s26 <= 1048576 [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="32768*s26 <= 1048576"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.463000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 672*s26 + 2*s9 - 664 <= 21480 [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="672*s26 + 2*s9 - 664 <= 21480"
+(EngineCore pid=279) [rank0]:I0930 01:54:47.857000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:47.884000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 2*s9 + 8 <= 648 [guard added] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="2*s9 + 8 <= 648"
+(EngineCore pid=279) [rank0]:I0930 01:54:48.200000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] 4*s59 <= 128 [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="4*s59 <= 128"
+(EngineCore pid=279) [rank0]:I0930 01:54:48.805000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:49.445000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:50.380000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:50.414000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s20 = 1536 for sym_4 [2, int_oo] (_functorch/_aot_autograd/frontend_utils.py:46 in convert), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s20" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:51.137000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:51.167000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s14 = 2 for sym_5 [2, int_oo] (_functorch/_aot_autograd/frontend_utils.py:46 in convert), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s14" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.231000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:52.275000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s80 = 13312 for __meta_utils_unknown_tensor19.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s80" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.281000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s11 = 256 for __meta_utils_unknown_tensor20.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s11" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.288000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s28 = 1048576 for __meta_utils_unknown_tensor22.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s28" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.292000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s19 = 64 for __meta_utils_unknown_tensor22.size()[1] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s19" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.299000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5225] create_symbol s87 = 3 for __meta_utils_unknown_tensor23.size()[0] [2, int_oo] (llm-workspace/vllm-ascend/vllm_ascend/compilation/compiler_interface.py:278 in compile), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_CREATE_SYMBOL="s87" or to suppress this message run with TORCHDYNAMO_EXTENDED_ADVICE="0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.517000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s80, 13312) [guard added] (_refs/__init__.py:4359 in split_with_sizes), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s80, 13312)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.522000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:6904] set_replacement s80 = 13312 (range_refined_to_singleton) VR[13312, 13312]
+(EngineCore pid=279) [rank0]:I0930 01:54:52.625000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(((s19 + (((s19 + 1)//2)) - 1)//(((s19 + 1)//2))), 2) [guard added] (_decomp/decompositions.py:1418 in split), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(((s19 + (((s19 + 1)//2)) - 1)//(((s19 + 1)//2))), 2)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.634000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval s19 - (((s19 + 1)//2)) >= 0 [guard added] (_refs/__init__.py:4355 in split_with_sizes), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s19 - (((s19 + 1)//2)) >= 0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.652000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(((s19 + 1)//2), 1) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(((s19 + 1)//2), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.657000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19, ((s19 + 1)//2)) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, ((s19 + 1)//2))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.662000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19, Max(1, ((s19 + 1)//2))) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, Max(1, ((s19 + 1)//2)))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.667000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(((s19 + 1)//2), 1) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(((s19 + 1)//2), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.671000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19, ((s19 + 1)//2)) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, ((s19 + 1)//2))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.680000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] s19 - (((s19 + 1)//2)) >= 0 [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s19 - (((s19 + 1)//2)) >= 0"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.684000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19 - (((s19 + 1)//2)), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.700000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.705000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.713000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19 - (((s19 + 1)//2)), 1) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.724000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19, Max(1, s19 - (((s19 + 1)//2)))) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, Max(1, s19 - (((s19 + 1)//2))))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.730000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.733000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s19 - (((s19 + 1)//2)), 1) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.744000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19 - (((s19 + 1)//2)), 0) [guard added] (_subclasses/functional_tensor.py:124 in __new__), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.748000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(((s19 + 1)//2), 1) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(((s19 + 1)//2), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.752000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19, ((s19 + 1)//2)) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, ((s19 + 1)//2))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.755000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19, Max(1, ((s19 + 1)//2))) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, Max(1, ((s19 + 1)//2)))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.759000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(((s19 + 1)//2), 1) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(((s19 + 1)//2), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.762000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19, ((s19 + 1)//2)) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, ((s19 + 1)//2))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.771000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.774000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19 - (((s19 + 1)//2)), 1) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.778000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19, Max(1, s19 - (((s19 + 1)//2)))) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19, Max(1, s19 - (((s19 + 1)//2))))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.783000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s26*s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.786000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s19 - (((s19 + 1)//2)), 1) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s19 - (((s19 + 1)//2)), 1)"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.804000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(Max(1, s19 - (((s19 + 1)//2))), s19 - (((s19 + 1)//2))) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(Max(1, s19 - (((s19 + 1)//2))), s19 - (((s19 + 1)//2)))"
+(EngineCore pid=279) [rank0]:I0930 01:54:52.822000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Eq(s26*Max(1, s19 - (((s19 + 1)//2))), s26*(s19 - (((s19 + 1)//2)))) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Eq(s26*Max(1, s19 - (((s19 + 1)//2))), s26*(s19 - (((s19 + 1)//2))))"
+(EngineCore pid=279) [rank0]:I0930 01:54:53.529000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval s26*s87*(s19 - (((s19 + 1)//2))) >= 2 [guard added] (_prims_common/__init__.py:314 in is_contiguous), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s26*s87*(s19 - (((s19 + 1)//2))) >= 2"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.120000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:54.334000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.339000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.344000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval [guard suppressed] Ne(s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (utils/_stats.py:29 in wrapper), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.361000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.365000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s87*(s19 - (((s19 + 1)//2))), 0) [guard added] (_functorch/_aot_autograd/graph_capture_wrappers.py:1375 in functional_call), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s87*(s19 - (((s19 + 1)//2))), 0)"
+(EngineCore pid=279) [rank0]:I0930 01:54:54.703000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval s87*(s19 - (((s19 + 1)//2))) >= 2 [guard added] (_prims_common/__init__.py:314 in is_contiguous), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="s87*(s19 - (((s19 + 1)//2))) >= 2"
+(EngineCore pid=279) [rank0]:I0930 01:54:55.569000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:7292] eval Ne(s7, s18) [guard added] (_prims_common/__init__.py:280 in check_contiguous_sizes_strides), for more info run with TORCHDYNAMO_EXTENDED_DEBUG_GUARD_ADDED="Ne(s7, s18)"
+(EngineCore pid=279) [rank0]:I0930 01:54:56.529000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:57.262000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:54:59.341000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:00.074000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:01.169000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:02.683000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:04.891000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:05.617000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:06.697000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:07.422000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:08.506000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:10.004000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:13.341000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:14.076000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:15.172000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:15.900000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:16.993000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:18.492000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:20.689000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:21.412000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:22.489000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:23.214000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:24.305000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:25.802000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:29.256000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:29.996000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:31.094000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:31.828000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:32.934000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:34.455000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:36.668000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:37.394000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:38.475000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:39.199000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:40.327000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:41.854000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:44.065000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:44.790000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:47.286000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:48.024000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:49.132000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:50.652000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:52.878000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:53.609000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:54.693000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:55.418000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:56.510000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:55:58.009000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:00.219000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:00.952000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:02.038000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:02.766000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:03.863000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:05.370000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:09.168000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:09.907000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:11.019000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:11.754000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:12.893000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:14.406000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:16.626000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:17.354000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:18.438000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:19.167000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) [rank0]:I0930 01:56:20.253000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) INFO 09-30 01:56:21 [backends.py:393] Compiling a graph for compile range (32, 32) takes 95.21 s
+(EngineCore pid=279) [rank0]:I0930 01:56:21.681000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:3876] create_env
+(EngineCore pid=279) INFO 09-30 01:56:22 [backends.py:393] Compiling a graph for compile range (1, 1) takes 95.95 s
+(EngineCore pid=279) INFO 09-30 01:56:23 [backends.py:393] Compiling a graph for compile range (1, 32) takes 97.31 s
+(EngineCore pid=279) [rank0]:I0930 01:56:24.216000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5353] produce_guards
+(EngineCore pid=279) [rank0]:W0930 01:56:24.257000 279 site-packages/torch/fx/experimental/symbolic_shapes.py:5932] Failing guard allocated at (_decomp/decompositions.py:1418 in split)
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372] Error while creating guard:
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372] Name: ''
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Source: shape_env
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Create Function: SHAPE_ENV
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Guard Types: None
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Code List: None
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Object Weakref: None
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     Guarded Class Weakref: None
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372] Traceback (most recent call last):
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_guards.py", line 370, in create
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     return self.create_fn(builder, self)
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2676, in SHAPE_ENV
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     python_code_parts, verbose_code_parts = _get_code_parts(
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]                                             ^^^^^^^^^^^^^^^^
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2649, in _get_code_parts
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     return output_graph.shape_env.produce_guards_verbose(
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5947, in produce_guards_verbose
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     issue_guard(guard)
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5909, in issue_guard
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]     source = symbol_to_source[symbol][0]
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372]              ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+(EngineCore pid=279) [rank0]:E0930 01:56:24.259000 279 site-packages/torch/_guards.py:372] IndexError: list index out of range
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374] Created at:
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 795, in trace_frame
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]     tracer = InstructionTranslator(
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/symbolic_convert.py", line 4452, in __init__
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]     output=OutputGraph(
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 621, in __init__
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]     self.init_ambient_guards()
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/output_graph.py", line 786, in init_ambient_guards
+(EngineCore pid=279) [rank0]:E0930 01:56:24.262000 279 site-packages/torch/_guards.py:374]     self.guards.add(ShapeEnvSource().make_guard(GuardBuilder.SHAPE_ENV))
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330] EngineCore failed to start.
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330] Traceback (most recent call last):
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1299, in run_engine_core
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1065, in __init__
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     super().__init__(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 136, in __init__
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 286, in _initialize_kv_caches
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/executor/abstract.py", line 147, in determine_available_memory
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py", line 92, in collective_rpc
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/serial_utils.py", line 510, in run_method
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/worker.py", line 546, in determine_available_memory
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     self.model_runner.profile_run()
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3937, in profile_run
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     super().profile_run()
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/worker/gpu_model_runner.py", line 6424, in profile_run
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3864, in _dummy_run
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     outputs = self._model_forward(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]               ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2844, in _model_forward
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     hidden_states = run_model()
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                     ^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return self._call_impl(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return forward_call(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 991, in forward
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     hidden_states = self.language_model.model(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/compilation/decorators.py", line 663, in __call__
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     self.aot_compiled_fn = self.aot_compile(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 169, in aot_compile
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return self._compiled_callable.aot_compile((args, kwargs))
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 832, in aot_compile
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return aot_compile_fullgraph(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/aot_compile.py", line 257, in aot_compile_fullgraph
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     check_fn = graph_capture_output.build_guards(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1001, in build_guards
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return CheckFunctionManager(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 3641, in __init__
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     builder, guard_manager = self.build_guards(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                              ^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 3991, in build_guards
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     guard.create(builder)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_guards.py", line 370, in create
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return self.create_fn(builder, self)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2676, in SHAPE_ENV
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     python_code_parts, verbose_code_parts = _get_code_parts(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]                                             ^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2649, in _get_code_parts
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     return output_graph.shape_env.produce_guards_verbose(
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5947, in produce_guards_verbose
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     issue_guard(guard)
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5909, in issue_guard
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]     source = symbol_to_source[symbol][0]
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330]              ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+(EngineCore pid=279) ERROR 09-30 01:56:24 [core.py:1330] IndexError: list index out of range
+(EngineCore pid=279) Process EngineCore:
+(EngineCore pid=279) Traceback (most recent call last):
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=279)     self.run()
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=279)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/patch/platform/patch_balance_schedule.py", line 956, in _balance_run_engine_core
+(EngineCore pid=279)     return _OriginalRunEngineCore(*args, dp_rank=dp_rank, local_dp_rank=local_dp_rank, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1334, in run_engine_core
+(EngineCore pid=279)     raise e
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1299, in run_engine_core
+(EngineCore pid=279)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=279)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1065, in __init__
+(EngineCore pid=279)     super().__init__(
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 136, in __init__
+(EngineCore pid=279)     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=279)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 286, in _initialize_kv_caches
+(EngineCore pid=279)     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=279)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/executor/abstract.py", line 147, in determine_available_memory
+(EngineCore pid=279)     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py", line 92, in collective_rpc
+(EngineCore pid=279)     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=279)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/serial_utils.py", line 510, in run_method
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/worker.py", line 546, in determine_available_memory
+(EngineCore pid=279)     self.model_runner.profile_run()
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3937, in profile_run
+(EngineCore pid=279)     super().profile_run()
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/worker/gpu_model_runner.py", line 6424, in profile_run
+(EngineCore pid=279)     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=279)                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3864, in _dummy_run
+(EngineCore pid=279)     outputs = self._model_forward(
+(EngineCore pid=279)               ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2844, in _model_forward
+(EngineCore pid=279)     hidden_states = run_model()
+(EngineCore pid=279)                     ^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+(EngineCore pid=279)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+(EngineCore pid=279)     return forward_call(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 991, in forward
+(EngineCore pid=279)     hidden_states = self.language_model.model(
+(EngineCore pid=279)                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/compilation/decorators.py", line 663, in __call__
+(EngineCore pid=279)     self.aot_compiled_fn = self.aot_compile(*args, **kwargs)
+(EngineCore pid=279)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 169, in aot_compile
+(EngineCore pid=279)     return self._compiled_callable.aot_compile((args, kwargs))
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 832, in aot_compile
+(EngineCore pid=279)     return aot_compile_fullgraph(
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/aot_compile.py", line 257, in aot_compile_fullgraph
+(EngineCore pid=279)     check_fn = graph_capture_output.build_guards(
+(EngineCore pid=279)                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1001, in build_guards
+(EngineCore pid=279)     return CheckFunctionManager(
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 3641, in __init__
+(EngineCore pid=279)     builder, guard_manager = self.build_guards(
+(EngineCore pid=279)                              ^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 3991, in build_guards
+(EngineCore pid=279)     guard.create(builder)
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_guards.py", line 370, in create
+(EngineCore pid=279)     return self.create_fn(builder, self)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2676, in SHAPE_ENV
+(EngineCore pid=279)     python_code_parts, verbose_code_parts = _get_code_parts(
+(EngineCore pid=279)                                             ^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/guards.py", line 2649, in _get_code_parts
+(EngineCore pid=279)     return output_graph.shape_env.produce_guards_verbose(
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5947, in produce_guards_verbose
+(EngineCore pid=279)     issue_guard(guard)
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/fx/experimental/symbolic_shapes.py", line 5909, in issue_guard
+(EngineCore pid=279)     source = symbol_to_source[symbol][0]
+(EngineCore pid=279)              ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+(EngineCore pid=279) IndexError: list index out of range
+FAIL_ROUND18_NATIVE_HYBRID_GRAPH_SMOKE {"ended_at": 1790733396.6605709, "error": "Engine core initialization failed. See root cause above. Failed core proc(s): {}", "error_type": "RuntimeError", "schema": 1, "started_at": 1790732813.67911, "status": "FAIL_ROUND18_NATIVE_HYBRID_GRAPH_SMOKE", "traceback": "Traceback (most recent call last):\n  File \"/work/round18_integration/native_hybrid_full_smoke.py\", line 285, in main\n    llm = LLM(\n          ^^^^\n  File \"/vllm-workspace/vllm/vllm/entrypoints/llm.py\", line 338, in __init__\n    self.llm_engine = LLMEngine.from_engine_args(\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py\", line 179, in from_engine_args\n    return cls(\n           ^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py\", line 105, in __init__\n    self.engine_core = EngineCoreClient.make_client(\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 103, in make_client\n    return SyncMPClient(vllm_config, executor_class, log_stats)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/tracing/otel.py\", line 178, in sync_wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 786, in __init__\n    super().__init__(\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 573, in __init__\n    with launch_core_engines(\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/python3.12.13/lib/python3.12/contextlib.py\", line 144, in __exit__\n    next(self.gen)\n  File \"/vllm-workspace/vllm/vllm/v1/engine/utils.py\", line 1213, in launch_core_engines\n    wait_for_engine_startup(\n  File \"/vllm-workspace/vllm/vllm/v1/engine/utils.py\", line 1272, in wait_for_engine_startup\n    raise RuntimeError(\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/round18_integration/native_hybrid_full_smoke.py", line 402, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/work/round18_integration/native_hybrid_full_smoke.py", line 285, in main
+    llm = LLM(
+          ^^^^
+  File "/vllm-workspace/vllm/vllm/entrypoints/llm.py", line 338, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py", line 179, in from_engine_args
+    return cls(
+           ^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py", line 105, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 103, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 786, in __init__
+    super().__init__(
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 573, in __init__
+    with launch_core_engines(
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 1213, in launch_core_engines
+    wait_for_engine_startup(
+  File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 1272, in wait_for_engine_startup
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[ERROR] 2026-09-30-01:56:36 (PID:1, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

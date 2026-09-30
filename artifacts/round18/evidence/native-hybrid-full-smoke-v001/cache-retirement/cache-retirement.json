@@ -1,0 +1,92 @@
+{
+  "active_references_after": [],
+  "active_references_before": [],
+  "after_fincore": {
+    "file_count": 179,
+    "resident_bytes": 0,
+    "resident_file_count": 0,
+    "resident_pages": 0,
+    "total_size_bytes": 424173059448
+  },
+  "after_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 19705276,
+      "FileHugePages": 5019648,
+      "FilePages": 15960340,
+      "MemFree": 224808824
+    },
+    "3": {
+      "AnonPages": 26669944,
+      "FileHugePages": 3555328,
+      "FilePages": 8087596,
+      "MemFree": 225875292
+    },
+    "4": {
+      "AnonPages": 21458412,
+      "FileHugePages": 2285568,
+      "FilePages": 108402988,
+      "MemFree": 130130148
+    },
+    "7": {
+      "AnonPages": 16706528,
+      "FileHugePages": 432128,
+      "FilePages": 7059960,
+      "MemFree": 236431392
+    }
+  },
+  "after_system_memavailable_kib": 1815370048,
+  "automation": "PAUSED_UNCHANGED",
+  "before_fincore": {
+    "file_count": 179,
+    "resident_bytes": 351698305024,
+    "resident_file_count": 161,
+    "resident_pages": 85863844,
+    "total_size_bytes": 424173059448
+  },
+  "before_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 19700816,
+      "FileHugePages": 90009600,
+      "FilePages": 120453576,
+      "MemFree": 120242416
+    },
+    "3": {
+      "AnonPages": 26671440,
+      "FileHugePages": 197423104,
+      "FilePages": 217222220,
+      "MemFree": 16672500
+    },
+    "4": {
+      "AnonPages": 21454748,
+      "FileHugePages": 2285568,
+      "FilePages": 122434900,
+      "MemFree": 116049188
+    },
+    "7": {
+      "AnonPages": 16705376,
+      "FileHugePages": 432128,
+      "FilePages": 22855052,
+      "MemFree": 220580040
+    }
+  },
+  "before_system_memavailable_kib": 1815245444,
+  "ended_unix": 1790727838.0628211,
+  "expected_file_count": 179,
+  "failures": [],
+  "file_count": 179,
+  "file_stat_identity_sha256": "af3c1ef33b8d40f710da63efe5cd8a88b975fdba4735a15e147b1c0b9e14946e",
+  "global_drop_caches": false,
+  "manifest_path": "/mnt/data1/kt-round9/round18/cache-retirement/post-native-hybrid-full-smoke-v001/registered-targets.json",
+  "manifest_sha256": "4c7fea32b4492808c7a858f3b929be7c46df029d4a7b0b9b4eb6264c8984c061",
+  "minimum_drop_bytes": 1073741824,
+  "operation": "POSIX_FADV_DONTNEED",
+  "other_tasks_modified": false,
+  "resident_bytes_released": 351698305024,
+  "roles": {
+    "bank": 48,
+    "model": 131
+  },
+  "schema": 2,
+  "started_unix": 1790727804.7945955,
+  "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+}

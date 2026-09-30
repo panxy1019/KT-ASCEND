@@ -1,0 +1,35 @@
+{
+  "bank": "/banks/candidate-mxfp4-all48-v1",
+  "cap_add": [
+    "SYS_NICE"
+  ],
+  "container": "round18-native-route-trace-v016",
+  "container_device": 0,
+  "cpus": 136,
+  "created_at": 1790740289.3789022,
+  "diagnostic": "D2H route capture; not performance",
+  "fixture_sha256": "21e4f82531a58881f2fa251fda50ef3f9909c589336164b77fe732a77abdca95",
+  "graph_mode": "NONE",
+  "memory_bytes": 687194767360,
+  "memory_swap_bytes": 687194767360,
+  "model": "/model",
+  "network": "none",
+  "numa_nodes": [
+    2,
+    3,
+    4,
+    7
+  ],
+  "physical_device": 12,
+  "probe": "round18_integration.native_route_trace_probe",
+  "requests": {
+    "W1": 1,
+    "W2": 1,
+    "W4": 1
+  },
+  "schema": 1,
+  "shm_bytes": 17179869184,
+  "snapshot": "/work",
+  "snapshot_sha256": "dbfe8c8b12264e52e339c1c8bcebea1fbe9b03f40d63c070c55521fb12d64768",
+  "worker": "round18_integration.native_hybrid_live_worker.Round18NativeHybridWorker"
+}

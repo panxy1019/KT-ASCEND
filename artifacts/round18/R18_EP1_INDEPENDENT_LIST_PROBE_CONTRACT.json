@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "status": "OFFLINE_READY_DEVICE_NOT_RUN",
+  "scope": "SINGLE_LAYER_TP1_EP1",
+  "native_runner": "AscendMoERunner",
+  "native_runner_preserved": true,
+  "logical_experts": 512,
+  "physical_slots": 32,
+  "storage": {
+    "kind": "INDEPENDENT_PER_EXPERT_LIST",
+    "w13_shape": [2560, 1280],
+    "w2_shape": [640, 2560],
+    "dtype": "BF16",
+    "stacked_parent_constructed": false,
+    "stacked_parent_rebuilt": false,
+    "raw_pointer_copy": false
+  },
+  "publication_order": [
+    "COPY_W13",
+    "COPY_W2",
+    "READY_BARRIER",
+    "PUBLISH_512_ENTRY_EXPERT_MAP"
+  ],
+  "mutation_cycle": ["A", "B", "A"],
+  "graph": {
+    "scope": "COMPONENT_NPUGRAPH_ONLY",
+    "capture_output_consumable": false,
+    "mutation_inside_replay": false,
+    "full_model_graph_claim": false
+  },
+  "device_executed": false,
+  "eager_native_consumer": "NOT_RUN",
+  "component_npugraph": "NOT_RUN",
+  "files": {
+    "contract": "round18/independent_expert_list.py",
+    "device_probe": "round18_integration/native_independent_expert_list_probe.py",
+    "contract_test": "tests/round18/test_independent_expert_list.py",
+    "probe_test": "tests/round18/test_native_independent_expert_list_probe.py"
+  },
+  "forbidden": [
+    "STACKED_Q32_PARENT",
+    "FULL512_PARENT",
+    "PARENT_UNBIND_CLONE",
+    "PARENT_REBUILD",
+    "RAW_POINTER",
+    "RUNNER_REPLACEMENT"
+  ]
+}

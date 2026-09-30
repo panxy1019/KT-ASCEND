@@ -1,0 +1,70 @@
+{
+  "claims_excluded": [
+    "graph correctness",
+    "graph performance",
+    "formal W1/W2/W4 performance",
+    "S0 migration benefit"
+  ],
+  "delegate_classes": [
+    "AscendUnquantizedFusedMoEMethod"
+  ],
+  "enforce_eager": true,
+  "evidence_directory": "artifacts/round18/evidence/native-hybrid-full-smoke-v003",
+  "graph_mode": "NONE",
+  "layer_count": 48,
+  "logical_experts": 512,
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "physical_slots_per_layer": 32,
+  "prior_failures_preserved": [
+    {
+      "disposition": "fixed with native child retained and instance shadow binding",
+      "root_cause": "post-load adapter assignment conflicted with torch.nn.Module child registration",
+      "run": "v001"
+    },
+    {
+      "disposition": "fixed by rebinding the native physical quant method and native communication object before checkpoint loading",
+      "root_cause": "native AllGather communication retained logical512 capacity against physical32 weights",
+      "run": "v002"
+    }
+  ],
+  "qsa_cache_contract": [
+    "split_page_axis",
+    "all_tp1_kv_heads_stored"
+  ],
+  "quality": {
+    "all_selected_logprobs_finite": true,
+    "canary_ids": [
+      "strict-marker",
+      "arithmetic",
+      "json",
+      "short-context-quote",
+      "deterministic-short-generation"
+    ],
+    "cancel_unfinished_after_abort": false,
+    "decode32_finish_reason": "length",
+    "decode32_token_count": 32,
+    "five_canaries_pass": true,
+    "reuse_text": "391"
+  },
+  "round": 18,
+  "runner_classes": [
+    "AscendMoERunner"
+  ],
+  "runner_preserved": true,
+  "runtime": {
+    "construct_seconds": 403.8289538359968,
+    "container_exit_code": 0,
+    "container_removed": "round18-native-hybrid-full-smoke-v003",
+    "worker_cls": "round18_integration.native_hybrid_live_worker.Round18NativeHybridWorker"
+  },
+  "schema": 1,
+  "source_sha256": {
+    "round18/native_hybrid_live_binding.py": "1050ec186f40062d930dafa72bde21a68622592281f0a61115a3e9c9da2d4dee",
+    "round18/native_hybrid_quant_method.py": "65c22b2be7b0a349f647456bcc16fd03641968bad5dbc53890c857b227fb8932",
+    "round18/native_runner_seam.py": "2d2955bb10ec762c65bcfdc11e97d41c16dfa4887bc5a56c7d157c1087dfc612",
+    "round18_integration/native_hybrid_full_smoke.py": "7a321051e329dfcaf498efc07f6079487ef693720d40ceea610094b7997c4c45",
+    "round18_integration/native_hybrid_live_worker.py": "37770c784e84db740f7089565fb94c329137f42cc5743688400ff17be6b571f0"
+  },
+  "stage": "P2_NATIVE_HYBRID_EAGER",
+  "status": "PASS_NATIVE_HYBRID_EAGER_FULL_MODEL"
+}

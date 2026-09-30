@@ -1,0 +1,254 @@
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py:103: SyntaxWarning: invalid escape sequence '\['
+  self.npu_exception = "\[ERROR\] [0-9\-\:]* \(PID:\d*, Device:\-?\d*, RankID:\-?\d*\) ERR\d{5}"
+can not use command: npu-smi info
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/backends/ascend/driver.py:332: SyntaxWarning: invalid escape sequence '\['
+  for m in re.finditer('\[aicore\]', code):
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/profiler/analysis/prof_view/prof_db_parse/_basic_db_parser.py:46: SyntaxWarning: invalid escape sequence '\d'
+  db_patten = '^msprof_\d+\.db$'
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/optim/npu_fused_rmsprop.py:16: SyntaxWarning: invalid escape sequence '\s'
+  learning rate is thus :math:`\alpha/(\sqrt{v} + \epsilon)` where :math:`\alpha`
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:132: SyntaxWarning: invalid escape sequence '\e'
+  公式1: fast_gelu(x)=$$\frac{x}{1+e^{-1.702\begin{vmatrix}x\end{vmatrix}}}e^{0.851x(x-\begin{vmatrix}x\end{vmatrix})
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:1587: SyntaxWarning: invalid escape sequence '\_'
+  softmax_layout: string类型，可选参数，用于控制TND场景下softmax的输出（softmax_max和softmax_sum）的数据排布方式。当前仅在input\_layout=“TND”时进行配置，仅支持传入“TND”。默认情况下，softmax的输出排布为NTD排布；传入TND时，softmax的输出排布为TND排布。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:1892: SyntaxWarning: invalid escape sequence '\_'
+  softmax_layout: string类型，可选参数，用于控制TND场景下softmax的输出（softmax_max和softmax_sum）的数据排布方式。当前仅在input\_layout=“TND”时进行配置，仅支持传入“TND”。默认情况下，softmax的输出排布为NTD排布；传入TND时，softmax的输出排布为TND排布。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:3538: SyntaxWarning: invalid escape sequence '\e'
+  $$rotate = diag(rotate1, rotate2, rotate3) = \begin{pmatrix}rotate1&0&0\\0&rotate2&0\\0&0&rotate3\\\end{pmatrix}$$
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4156: SyntaxWarning: invalid escape sequence '\m'
+  算子功能：MhcSinkhornBackward是MhcSinkhorn的反向算子。mHC（Manifold-Constrained Hyper-Connections）架构中的MhcSinkhorn算子对输入矩阵做sinkhorn变换得到双随机矩阵$\mathbf{H}_{\text{res}}$，输出的双随机矩阵的所有元素≥0、每一行之和为1且每一列之和为1 (具有范数保持、组合封闭性和凸组合几何解释三大特性)。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4360: SyntaxWarning: invalid escape sequence '\('
+  outputs = swiglu\(x, dim = -1) = swish(A) * B = A * sigmoid(A) * B
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4474: SyntaxWarning: invalid escape sequence '\o'
+  x_{l+1} = (H_{l}^{res})^{T} \times x_l + h_{l}^{out} \otimes H_{t}^{post}
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:6691: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:6771: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:7660: SyntaxWarning: invalid escape sequence '\s'
+  scale_value: float类型, 代表缩放系数, 用来约束梯度, 其默认值为1.0, 典型值为$\frac{1}{\sqrt{D}}$; 数据类型为float32.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:8156: SyntaxWarning: invalid escape sequence '\_'
+  sparse模式支持sparse\_mode=4且传入mask；当sparse\_mode=4时，要求preTokens >= -actual\_seq\_qlen、nextTokens >= -actual\_seq\_kvlen、preTokens + nextTokens >= 0；
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:8691: SyntaxWarning: invalid escape sequence '\_'
+  sparse模式支持sparse\_mode=4且传入mask；当sparse\_mode=4时，要求preTokens >= -actual\_seq\_qlen、nextTokens >= -actual\_seq\_kvlen、preTokens + nextTokens >= 0；
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:10563: SyntaxWarning: invalid escape sequence '\s'
+  out(i,j)=skip1_{i,j}+skip2Optional_{i,j}+\sum_{k=0}^{K}(scales_{i,k}*(expandPermutedRows_{expandedSrcToDstRow_{i+k*num_rows},j}+bias_{expertid,j}))
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:11598: SyntaxWarning: invalid escape sequence '\>'
+  >-   H：表示嵌入向量的长度，取值\>0。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12042: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12111: SyntaxWarning: invalid escape sequence '\['
+  gamma: Device侧的Tensor类型，表示数据缩放因子；shape支持1-8维度，数据格式支持ND。shape需要满足gamma_shape = input_shape\[n:\], n < input_shape.dims()。数据类型支持FLOAT32、FLOAT16、BFLOAT16，与input数据类型保持一致。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12211: SyntaxWarning: invalid escape sequence '\['
+  gamma：Device侧的Tensor类型，数据缩放因子。shape支持1-8维，数据格式支持ND，数据类型支持FLOAT16、BFLOAT16。shape需要满足gamma_shape = x_shape\[n:\], n < x_shape.dims()。数据类型、数据格式需要与入参x1保持一致。不支持空tensor。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:13392: SyntaxWarning: invalid escape sequence '\~'
+  - B（batchsize）：取值范围为1\~65536。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:14077: SyntaxWarning: invalid escape sequence '\_'
+  v=8*ks\_max
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:14987: SyntaxWarning: invalid escape sequence '\q'
+  (1)\qquad f_t &=\sigma(W_f[h_{t-1}, x_t] + b_f) \\
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:15121: SyntaxWarning: invalid escape sequence '\m'
+  | 输入拼接 | $\mathbf{z}_t = \begin{bmatrix} \mathbf{h}_{t-1} \\ \mathbf{x}_t \end{bmatrix}$ |
+INFO 09-30 00:07:00 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 09-30 00:07:00 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 09-30 00:07:00 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-30 00:07:00 [__init__.py:237] Platform plugin ascend is activated
+INFO 09-30 00:07:00 [platform.py:61] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+INFO 09-30 00:07:13 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 09-30 00:07:13 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 09-30 00:07:13 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:13 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:13 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+[W930 00:07:13.036507365 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+INFO 09-30 00:07:14 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:14 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:14 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 00:07:14 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 00:07:14 [ascend_config.py:373] AscendConfig.weight_nz_mode is set from additional_config with value 2.
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:223: SyntaxWarning: invalid escape sequence '\B'
+  Return BN\BH SCH Result
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:146: SyntaxWarning: invalid escape sequence '\c'
+  2. In forward, tiling would not split c1 and c0, find c1\c0 based on t2.
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:172: SyntaxWarning: invalid escape sequence '\c'
+  1. Forward: tiling would not split c1\c0\h0, find c1\c0\h1\h0 based on t2
+/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:97: SyntaxWarning: invalid escape sequence '\h'
+  gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:157: SyntaxWarning: invalid escape sequence '\h'
+  gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+INFO 09-30 00:07:27 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:27 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:27 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 00:07:27 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 00:07:27 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://127.0.0.1:29919 backend=hccl
+INFO 09-30 00:07:27 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+
+[GGUFLoader] Loading single GGUF file : layer-00-mxfp4.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 4
+ ffn_up_exps, Dtype: MXFP4
+ ffn_gate_exps, Dtype: MXFP4
+ ffn_down_exps, Dtype: MXFP4
+/round16-kt/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 4
+  QK_K: 256
+  32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=160, offset=0
+  TP 1: size=160, offset=160
+  TP 2: size=160, offset=320
+  TP 3: size=160, offset=480
+CPUInfer[0x4a7fd940]: Hello
+WorkerPool[0x4a7f8a90] 4 subpools, [numa:threads][2:32] [3:32] [4:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 4, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0x4a7f8a90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffedc1be410
+alloc 1 from other numa for fffedc1be410
+alloc 3 from other numa for fffee826d6c0
+alloc 3 from other numa for fffee826d6c0
+alloc 2 from other numa for fffee00e4370
+alloc 2 from other numa for fffee00e4370
+alloc 0 from other numa for fffed7972ab0
+alloc 0 from other numa for fffed7972ab0
+CPUInfer[0x4a7fd940]: Goodbye
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/utils/_error_code.py:103: SyntaxWarning: invalid escape sequence '\['
+  self.npu_exception = "\[ERROR\] [0-9\-\:]* \(PID:\d*, Device:\-?\d*, RankID:\-?\d*\) ERR\d{5}"
+can not use command: npu-smi info
+/usr/local/python3.12.13/lib/python3.12/site-packages/triton/backends/ascend/driver.py:332: SyntaxWarning: invalid escape sequence '\['
+  for m in re.finditer('\[aicore\]', code):
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/profiler/analysis/prof_view/prof_db_parse/_basic_db_parser.py:46: SyntaxWarning: invalid escape sequence '\d'
+  db_patten = '^msprof_\d+\.db$'
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/optim/npu_fused_rmsprop.py:16: SyntaxWarning: invalid escape sequence '\s'
+  learning rate is thus :math:`\alpha/(\sqrt{v} + \epsilon)` where :math:`\alpha`
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:132: SyntaxWarning: invalid escape sequence '\e'
+  公式1: fast_gelu(x)=$$\frac{x}{1+e^{-1.702\begin{vmatrix}x\end{vmatrix}}}e^{0.851x(x-\begin{vmatrix}x\end{vmatrix})
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:1587: SyntaxWarning: invalid escape sequence '\_'
+  softmax_layout: string类型，可选参数，用于控制TND场景下softmax的输出（softmax_max和softmax_sum）的数据排布方式。当前仅在input\_layout=“TND”时进行配置，仅支持传入“TND”。默认情况下，softmax的输出排布为NTD排布；传入TND时，softmax的输出排布为TND排布。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:1892: SyntaxWarning: invalid escape sequence '\_'
+  softmax_layout: string类型，可选参数，用于控制TND场景下softmax的输出（softmax_max和softmax_sum）的数据排布方式。当前仅在input\_layout=“TND”时进行配置，仅支持传入“TND”。默认情况下，softmax的输出排布为NTD排布；传入TND时，softmax的输出排布为TND排布。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:3538: SyntaxWarning: invalid escape sequence '\e'
+  $$rotate = diag(rotate1, rotate2, rotate3) = \begin{pmatrix}rotate1&0&0\\0&rotate2&0\\0&0&rotate3\\\end{pmatrix}$$
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4156: SyntaxWarning: invalid escape sequence '\m'
+  算子功能：MhcSinkhornBackward是MhcSinkhorn的反向算子。mHC（Manifold-Constrained Hyper-Connections）架构中的MhcSinkhorn算子对输入矩阵做sinkhorn变换得到双随机矩阵$\mathbf{H}_{\text{res}}$，输出的双随机矩阵的所有元素≥0、每一行之和为1且每一列之和为1 (具有范数保持、组合封闭性和凸组合几何解释三大特性)。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4360: SyntaxWarning: invalid escape sequence '\('
+  outputs = swiglu\(x, dim = -1) = swish(A) * B = A * sigmoid(A) * B
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:4474: SyntaxWarning: invalid escape sequence '\o'
+  x_{l+1} = (H_{l}^{res})^{T} \times x_l + h_{l}^{out} \otimes H_{t}^{post}
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:6691: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:6771: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:7660: SyntaxWarning: invalid escape sequence '\s'
+  scale_value: float类型, 代表缩放系数, 用来约束梯度, 其默认值为1.0, 典型值为$\frac{1}{\sqrt{D}}$; 数据类型为float32.
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:8156: SyntaxWarning: invalid escape sequence '\_'
+  sparse模式支持sparse\_mode=4且传入mask；当sparse\_mode=4时，要求preTokens >= -actual\_seq\_qlen、nextTokens >= -actual\_seq\_kvlen、preTokens + nextTokens >= 0；
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:8691: SyntaxWarning: invalid escape sequence '\_'
+  sparse模式支持sparse\_mode=4且传入mask；当sparse\_mode=4时，要求preTokens >= -actual\_seq\_qlen、nextTokens >= -actual\_seq\_kvlen、preTokens + nextTokens >= 0；
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:10563: SyntaxWarning: invalid escape sequence '\s'
+  out(i,j)=skip1_{i,j}+skip2Optional_{i,j}+\sum_{k=0}^{K}(scales_{i,k}*(expandPermutedRows_{expandedSrcToDstRow_{i+k*num_rows},j}+bias_{expertid,j}))
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:11598: SyntaxWarning: invalid escape sequence '\>'
+  >-   H：表示嵌入向量的长度，取值\>0。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12042: SyntaxWarning: invalid escape sequence '\s'
+  令 $B$ 表示batch size，$L_i$ 表示第i个序列的长度，$T=\sum_i^B L_i$ 表示累积序列长度。$N_k$ 表示key的头数，$N_v$ 表示value的头数，$D_k$ 表示key向量的维度，$D_v$ 表示value向量的维度。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12111: SyntaxWarning: invalid escape sequence '\['
+  gamma: Device侧的Tensor类型，表示数据缩放因子；shape支持1-8维度，数据格式支持ND。shape需要满足gamma_shape = input_shape\[n:\], n < input_shape.dims()。数据类型支持FLOAT32、FLOAT16、BFLOAT16，与input数据类型保持一致。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:12211: SyntaxWarning: invalid escape sequence '\['
+  gamma：Device侧的Tensor类型，数据缩放因子。shape支持1-8维，数据格式支持ND，数据类型支持FLOAT16、BFLOAT16。shape需要满足gamma_shape = x_shape\[n:\], n < x_shape.dims()。数据类型、数据格式需要与入参x1保持一致。不支持空tensor。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:13392: SyntaxWarning: invalid escape sequence '\~'
+  - B（batchsize）：取值范围为1\~65536。
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:14077: SyntaxWarning: invalid escape sequence '\_'
+  v=8*ks\_max
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:14987: SyntaxWarning: invalid escape sequence '\q'
+  (1)\qquad f_t &=\sigma(W_f[h_{t-1}, x_t] + b_f) \\
+/usr/local/python3.12.13/lib/python3.12/site-packages/torch_npu/_op_plugin_docs.py:15121: SyntaxWarning: invalid escape sequence '\m'
+  | 输入拼接 | $\mathbf{z}_t = \begin{bmatrix} \mathbf{h}_{t-1} \\ \mathbf{x}_t \end{bmatrix}$ |
+INFO 09-30 00:07:00 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 09-30 00:07:00 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 09-30 00:07:00 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-30 00:07:00 [__init__.py:237] Platform plugin ascend is activated
+INFO 09-30 00:07:00 [platform.py:61] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+INFO 09-30 00:07:13 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 09-30 00:07:13 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 09-30 00:07:13 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:13 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:13 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+[W930 00:07:13.036507365 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+INFO 09-30 00:07:14 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:14 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:14 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 00:07:14 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 00:07:14 [ascend_config.py:373] AscendConfig.weight_nz_mode is set from additional_config with value 2.
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/classifier/transdata/transdata_classifier.py:223: SyntaxWarning: invalid escape sequence '\B'
+  Return BN\BH SCH Result
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:146: SyntaxWarning: invalid escape sequence '\c'
+  2. In forward, tiling would not split c1 and c0, find c1\c0 based on t2.
+/usr/local/Ascend/cann-9.1.0/python/site-packages/tbe/dsl/unify_schedule/vector/transdata/common/graph/transdata_graph_info.py:172: SyntaxWarning: invalid escape sequence '\c'
+  1. Forward: tiling would not split c1\c0\h0, find c1\c0\h1\h0 based on t2
+/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:97: SyntaxWarning: invalid escape sequence '\h'
+  gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+/usr/local/Ascend/cann-9.1.0/opp/built-in/op_impl/ai_core/tbe/impl/ops_legacy/dynamic/gelu_grad_v2.py:157: SyntaxWarning: invalid escape sequence '\h'
+  gelu_grad_erf = erfc(-\hat{x}) / 2 + (1 /sqrt(Pi)) * (\hat{x}) * exp(-\hat{x}^2)
+INFO 09-30 00:07:27 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+WARNING 09-30 00:07:27 [platform.py:420] Model config is missing. Skipping Ascend-specific config updates.
+INFO 09-30 00:07:27 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 00:07:27 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 00:07:27 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://127.0.0.1:29919 backend=hccl
+INFO 09-30 00:07:27 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+
+[GGUFLoader] Loading single GGUF file : layer-00-mxfp4.gguf
+[GGUFLoader] Summary:
+  Files loaded: 1
+  Total tensors: 3
+  Metadata keys: 4
+ ffn_up_exps, Dtype: MXFP4
+ ffn_gate_exps, Dtype: MXFP4
+ ffn_down_exps, Dtype: MXFP4
+/round16-kt/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  data = torch.from_numpy(np.frombuffer(data_bytes, dtype=np.uint8))
+[LlamafileMoEWrapper] Layer 0 TP configuration:
+  intermediate_size: 640
+  threadpool_count: 4
+  QK_K: 256
+  32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+  TP 0: size=160, offset=0
+  TP 1: size=160, offset=160
+  TP 2: size=160, offset=320
+  TP 3: size=160, offset=480
+CPUInfer[0x4a7fd940]: Hello
+WorkerPool[0x4a7f8a90] 4 subpools, [numa:threads][2:32] [3:32] [4:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 4, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0x4a7f8a90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffedc1be410
+alloc 1 from other numa for fffedc1be410
+alloc 3 from other numa for fffee826d6c0
+alloc 3 from other numa for fffee826d6c0
+alloc 2 from other numa for fffee00e4370
+alloc 2 from other numa for fffee00e4370
+alloc 0 from other numa for fffed7972ab0
+alloc 0 from other numa for fffed7972ab0
+CPUInfer[0x4a7fd940]: Goodbye

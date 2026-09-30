@@ -1,0 +1,58 @@
+{
+  "allocator": {
+    "after_bytes": 314576384,
+    "before_bytes": 314576384,
+    "peak_bytes": 314576384
+  },
+  "api": "round18:native-fixed-slot-write-device-probe:v1",
+  "copy_wall_seconds": null,
+  "data_ptr_stable": null,
+  "device_executed": true,
+  "format_inspection_wall_seconds": 0.00011182599700987339,
+  "full_parent_rebuild": false,
+  "initial_owner_construction": "REUSED_ROUND16_Q32_LOADER_FACTORY",
+  "layer": 0,
+  "mutation_started": false,
+  "owner_scope": "SINGLE_LAYER_PHYSICAL_Q32",
+  "parent_tensor_assignments": 0,
+  "performance_claim": null,
+  "physical_slot": 0,
+  "postload_backing": {
+    "data_ptrs": {
+      "w13": 20618542055424,
+      "w2": 20618116334080
+    },
+    "eligible": false,
+    "eligible_format": 2,
+    "failure_reason": "w13_weight format 29 is preprocessed; only mutable ND format 2 is qualified; w2_weight format 29 is preprocessed; only mutable ND format 2 is qualified",
+    "known_preprocessed_format": 29,
+    "w13": {
+      "data_ptr": 20618542055424,
+      "device_type": "npu",
+      "dtype": "torch.bfloat16",
+      "npu_format": 29,
+      "shape": [
+        32,
+        2560,
+        1280
+      ]
+    },
+    "w2": {
+      "data_ptr": 20618116334080,
+      "device_type": "npu",
+      "dtype": "torch.bfloat16",
+      "npu_format": 29,
+      "shape": [
+        32,
+        640,
+        2560
+      ]
+    }
+  },
+  "publish_wall_seconds": null,
+  "published_generations": [],
+  "replacement_logical_expert_id": 32,
+  "schema": 1,
+  "status": "FAIL_FIXED_SLOT_POSTLOAD_FORMAT_INELIGIBLE",
+  "v2_receipt_sha256": "79a47596790f2127e928c6604605d86fb7c3b98237ee60fd48ba17f7475e2e36"
+}

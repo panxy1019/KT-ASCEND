@@ -1,0 +1,35 @@
+{
+  "disposition": "ROUND18_NATIVE_HYBRID_WORKS_NO_GRAPH_RECOVERY",
+  "evidence": "R18_PHASE_I_DISPOSITION.json",
+  "further_piecewise_work": false,
+  "modes": {
+    "BREAKABLE": {
+      "reason": "Frozen Ascend platform forces breakable cudagraph disabled.",
+      "status": "UNSUPPORTED_BY_FROZEN_STACK"
+    },
+    "FULL_COMPATIBLE": {
+      "reason": "Replay does not re-enter Python quant-method apply, so a fresh CPU work ID/result cannot be produced per token/layer.",
+      "status": "CURRENT_CPU_EAGER_BREAK_INCOMPATIBLE"
+    },
+    "NONE": {
+      "component": "PASS",
+      "full_model_smoke": "PASS",
+      "request_performance": "NOT_RUN_DIAGNOSTIC_SMOKE_ONLY",
+      "resolved": "NONE",
+      "run": "native-hybrid-full-smoke-v003",
+      "remote_snapshot_alias": "native-hybrid-full-v003"
+    },
+    "PIECEWISE": {
+      "last_runs": [
+        "native-hybrid-piecewise-diagnostic-v011",
+        "native-hybrid-piecewise-diagnostic-v013"
+      ],
+      "reason": "Independent GDN and HyperConnection regions reproduced invalid runtime scalar/range-to-shape binding. Per-op patching is stopped.",
+      "resolved": "PIECEWISE_DURING_PROFILE_COMPILE",
+      "status": "LOCKED_GENERAL_DYNAMIC_SHAPE_ABI_BLOCK"
+    }
+  },
+  "round": 18,
+  "schema": 1,
+  "status": "PHASE_I_LOCKED"
+}

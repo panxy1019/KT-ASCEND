@@ -1,0 +1,519 @@
+{
+  "allocator_peak_bytes": 331745280,
+  "allocator_steady_bytes": 314576384,
+  "api": "round18:native-resident-partial-device-probe:v1",
+  "cases": [
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      "case": "all_resident",
+      "hash": "ac03d1c5fa443414ca71fdeabade8f334939cd739f94cb3762bb21b8b6b1559b",
+      "nonresident_occurrences": 0,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      "resident_occurrences": 10,
+      "rows": [
+        {
+          "hash": "ac03d1c5fa443414ca71fdeabade8f334939cd739f94cb3762bb21b8b6b1559b",
+          "relative_l2": 0.002195946639403701,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "ac03d1c5fa443414ca71fdeabade8f334939cd739f94cb3762bb21b8b6b1559b",
+          "relative_l2": 0.002195946639403701,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "ac03d1c5fa443414ca71fdeabade8f334939cd739f94cb3762bb21b8b6b1559b",
+          "relative_l2": 0.002195946639403701,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "case": "all_nonresident",
+      "hash": "a11937f356a9b0ba592c82f5290bac8016cb33a3f9bc68d3490147c158ebb10d",
+      "nonresident_occurrences": 10,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "resident_occurrences": 0,
+      "rows": [
+        {
+          "hash": "a11937f356a9b0ba592c82f5290bac8016cb33a3f9bc68d3490147c158ebb10d",
+          "relative_l2": 0.0,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "a11937f356a9b0ba592c82f5290bac8016cb33a3f9bc68d3490147c158ebb10d",
+          "relative_l2": 0.0,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "a11937f356a9b0ba592c82f5290bac8016cb33a3f9bc68d3490147c158ebb10d",
+          "relative_l2": 0.0,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ]
+      ],
+      "case": "mixed_1_9",
+      "hash": "d4fb66a4865f09000092a9efdd5889b6e5629eab1306af24d362e0753b9cc0ca",
+      "nonresident_occurrences": 9,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          0,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ]
+      ],
+      "resident_occurrences": 1,
+      "rows": [
+        {
+          "hash": "d4fb66a4865f09000092a9efdd5889b6e5629eab1306af24d362e0753b9cc0ca",
+          "relative_l2": 0.0024278336204588413,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "d4fb66a4865f09000092a9efdd5889b6e5629eab1306af24d362e0753b9cc0ca",
+          "relative_l2": 0.0024278336204588413,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "d4fb66a4865f09000092a9efdd5889b6e5629eab1306af24d362e0753b9cc0ca",
+          "relative_l2": 0.0024278336204588413,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          32,
+          33,
+          34,
+          35,
+          36
+        ]
+      ],
+      "case": "mixed_5_5",
+      "hash": "5db6fe4075bf3d0772202e46e549359f23a01de46fdc111410c7acd279ce2830",
+      "nonresident_occurrences": 5,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          0,
+          32,
+          1,
+          33,
+          2,
+          34,
+          3,
+          35,
+          4,
+          36
+        ]
+      ],
+      "resident_occurrences": 5,
+      "rows": [
+        {
+          "hash": "5db6fe4075bf3d0772202e46e549359f23a01de46fdc111410c7acd279ce2830",
+          "relative_l2": 0.0026470785960555077,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "5db6fe4075bf3d0772202e46e549359f23a01de46fdc111410c7acd279ce2830",
+          "relative_l2": 0.0026470785960555077,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "5db6fe4075bf3d0772202e46e549359f23a01de46fdc111410c7acd279ce2830",
+          "relative_l2": 0.0026470785960555077,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          32
+        ]
+      ],
+      "case": "mixed_9_1",
+      "hash": "0baf7e689dfbac4a7d3cb488a22c002741f185f690a42124c6b606768278695d",
+      "nonresident_occurrences": 1,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          32
+        ]
+      ],
+      "resident_occurrences": 9,
+      "rows": [
+        {
+          "hash": "0baf7e689dfbac4a7d3cb488a22c002741f185f690a42124c6b606768278695d",
+          "relative_l2": 0.0023267590440809727,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "0baf7e689dfbac4a7d3cb488a22c002741f185f690a42124c6b606768278695d",
+          "relative_l2": 0.0023267590440809727,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "0baf7e689dfbac4a7d3cb488a22c002741f185f690a42124c6b606768278695d",
+          "relative_l2": 0.0023267590440809727,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "case": "multi_token",
+      "hash": "04a74b85cb859411fd97b773303d23e148d5f4ba61946f16b3f05e8c989a0b40",
+      "nonresident_occurrences": 15,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        [
+          0,
+          32,
+          1,
+          33,
+          2,
+          34,
+          3,
+          35,
+          4,
+          36
+        ],
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "resident_occurrences": 15,
+      "rows": [
+        {
+          "hash": "04a74b85cb859411fd97b773303d23e148d5f4ba61946f16b3f05e8c989a0b40",
+          "relative_l2": 0.0022483544889837503,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "04a74b85cb859411fd97b773303d23e148d5f4ba61946f16b3f05e8c989a0b40",
+          "relative_l2": 0.0022483544889837503,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "04a74b85cb859411fd97b773303d23e148d5f4ba61946f16b3f05e8c989a0b40",
+          "relative_l2": 0.0022483544889837503,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 3,
+      "topk_ties": false
+    },
+    {
+      "actual_id_sets": [
+        [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      ],
+      "case": "topk_ties",
+      "hash": "46e1b88ac203aa6e4ac6643488b44057dd8eba43fc29c07b55c187feb96b2533",
+      "nonresident_occurrences": 0,
+      "passed": true,
+      "repeat_exact": true,
+      "requested_ids": [
+        [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      ],
+      "resident_occurrences": 10,
+      "rows": [
+        {
+          "hash": "46e1b88ac203aa6e4ac6643488b44057dd8eba43fc29c07b55c187feb96b2533",
+          "relative_l2": 0.002382809529080987,
+          "repeat": 0,
+          "selector_calls": 1
+        },
+        {
+          "hash": "46e1b88ac203aa6e4ac6643488b44057dd8eba43fc29c07b55c187feb96b2533",
+          "relative_l2": 0.002382809529080987,
+          "repeat": 1,
+          "selector_calls": 1
+        },
+        {
+          "hash": "46e1b88ac203aa6e4ac6643488b44057dd8eba43fc29c07b55c187feb96b2533",
+          "relative_l2": 0.002382809529080987,
+          "repeat": 2,
+          "selector_calls": 1
+        }
+      ],
+      "token_rows": 1,
+      "topk_ties": true
+    }
+  ],
+  "cpu_complement": "NOT_RUN_P2",
+  "device_executed": true,
+  "elapsed_seconds": 1.0813833370339125,
+  "expert_map_nonresident_sentinel": -1,
+  "expert_map_semantics": "NATIVE_KERNEL_SKIPS_NONRESIDENT_OCCURRENCES",
+  "full_decoder_layer": "NOT_RUN_P2",
+  "full_model": "NOT_RUN_P2",
+  "lifecycle_hash_count": 20,
+  "lifecycle_rounds": 20,
+  "logical_experts": 512,
+  "method_source": "/vllm-workspace/vllm-ascend/vllm_ascend/ops/fused_moe/fused_moe.py",
+  "method_source_sha256": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+  "native_quant_method": "AscendUnquantizedFusedMoEMethod",
+  "native_runner_preserved": true,
+  "physical_npu_slots": 32,
+  "relative_l2_limit": 0.01,
+  "resident_logical_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "route_weight_application": "EXACTLY_ONCE",
+  "runner_device_execution": "NOT_RUN_P2_FULL_LAYER",
+  "schema": 1,
+  "selector_calls_per_execution": 1,
+  "selector_semantics": "ORIGINAL_ASCEND_TOP10_ONCE_512_LOGICAL",
+  "shared_finalize_residual_in_partial": false,
+  "status": "PASS_NATIVE_RESIDENT_PARTIAL",
+  "v2_receipt_sha256": "79a47596790f2127e928c6604605d86fb7c3b98237ee60fd48ba17f7475e2e36"
+}

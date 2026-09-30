@@ -1,0 +1,229 @@
+{
+  "schema": 1,
+  "status": "PASS_ROUND18_PHASE_II_POOL_ECONOMICS_DISPOSITION",
+  "scope": "OFFLINE_FRESH_ROUTE_AND_FROZEN_CAP_REVIEW_ONLY",
+  "device_or_remote_actions": false,
+  "decision": "NO_DEPLOYABLE_NATIVE_POOL_POLICY_UNDER_CURRENT_FULL_GRAPH",
+  "enter_full_pool_implementation": false,
+  "bounded_component_probes_remain_valid": true,
+  "sources": {
+    "fresh_working_set": {
+      "path": "artifacts/round18/R18_ROUTE_WORKING_SET.json",
+      "sha256": "a5df796d2cd6d070ffebf29e4628fbeb5b57fea556e6264b8b072ba149d22723"
+    },
+    "fresh_route_result": {
+      "path": "artifacts/round18/evidence/native-route-trace-v016/route-result.json",
+      "sha256": "d0219165e8592eafb45f85539f9e9230cc6cafbe0c27dc429ccff90da6ed5f40"
+    },
+    "fresh_route_trace": {
+      "path": "artifacts/round18/evidence/native-route-trace-v016/route/native-route-trace.jsonl",
+      "sha256": "6e1e035990c4aa946c4ff35bab6962a0376f01b59299fd94af14cb0b5df0112c"
+    },
+    "same_class_vllm_q32_resource": {
+      "path": "artifacts/round16/B_RUNTIME_RESULT.json",
+      "sha256": "285543946c1d11f948b91be9d87ba8fe5401f7918f918fe262caf2255bff5b61"
+    },
+    "frozen_resource_contract": {
+      "path": "/home/admin/Documents/ChatGPT/KT/kt-round16-a-sglang/artifacts/round14a/ROUND14A_RESOURCE_CONTRACT.json",
+      "sha256": "ce9dd674814751154a1d050092e4064d8382bbeeb2e195a3f20a536fbb107dc0"
+    },
+    "fixed_slot_format_gate": {
+      "path": "artifacts/round18/evidence/native-expert-pool-fixed-slot-v018/fixed-slot-receipt.json",
+      "sha256": "b78544738fb5f846014b9dae7405a457c04de4a5644d08c9741e05616ff2c9ca"
+    }
+  },
+  "data_quality": {
+    "route_status": "PASS_ROUND18_FRESH_NATIVE_ROUTE_TRACE",
+    "route_events": 8784,
+    "layers": 48,
+    "logical_experts": 512,
+    "top_k": 10,
+    "w1_prefill_invocations": 192,
+    "w1_decode_invocations": 720,
+    "w2_prefill_invocations": 192,
+    "w2_decode_invocations": 6096,
+    "w4_prefill_invocations": 96,
+    "w4_decode_invocations": 1488,
+    "w1_w2_prefill_exactly_equal": true,
+    "w1_decode_is_exact_prefix_of_w2_decode": true,
+    "w1_decode_rows_per_layer": 15,
+    "w2_decode_rows_per_layer": 127,
+    "qualification_limit": "W2 is a longer continuation of the W1 prompt, not a fully independent route holdout; W4 is the independent prompt-shape control."
+  },
+  "accounting": {
+    "bf16_bytes_per_expert": 9830400,
+    "bf16_mib_per_expert": 9.375,
+    "all_layer_increment_mib_per_added_slot": 450,
+    "exact_total_bytes_rule": "miss_experts * 9830400",
+    "traffic_array_order": [
+      "static_w1_frequency",
+      "sequential_lru_oracle",
+      "sequential_belady_oracle"
+    ],
+    "exclusions": [
+      "NZ padding",
+      "format conversion",
+      "metadata",
+      "publication events",
+      "synchronization",
+      "overlap"
+    ]
+  },
+  "resource_contract": {
+    "physical_hbm_gib": 64.0,
+    "whole_card_cap_gib": 55.5,
+    "minimum_reserve_gib": 8.5,
+    "historical_sglang_owned_cap_gib": 36.5,
+    "owned_cap_applicability": "The old SGLang owned cap is recorded but cannot be silently applied to the same-class vLLM receipt, whose torch allocation already exceeded it.",
+    "same_class_vllm_q32_allocated_gib": 47.3,
+    "same_class_vllm_q32_reserved_gib": 47.34,
+    "q32_reserved_headroom_to_whole_card_cap_gib": 8.16,
+    "arithmetic_ceiling_from_q32_receipt": {
+      "largest_q_before_whole_card_cap": 50,
+      "estimated_q50_reserved_gib": 55.25015625,
+      "estimated_q50_headroom_gib": 0.24984375,
+      "qualification": "NOT_SAFE_OR_QUALIFIED; excludes graph pool, slot staging, format workspace and runtime variance"
+    }
+  },
+  "capacity": {
+    "Q32": {
+      "payload_gib": 14.0625,
+      "same_class_estimated_reserved_gib": 47.34,
+      "headroom_gib": 8.16,
+      "capacity_disposition": "ONLY_TESTED_CAPACITY; NO_GRAPH_SAFE_FILL_POLICY"
+    },
+    "Q64": {
+      "payload_gib": 28.125,
+      "same_class_estimated_reserved_gib": 61.4025,
+      "headroom_gib": -5.9025,
+      "capacity_disposition": "REJECTED_BY_WHOLE_CARD_CAP"
+    },
+    "Q96": {
+      "payload_gib": 42.1875,
+      "same_class_estimated_reserved_gib": 75.465,
+      "headroom_gib": -19.965,
+      "capacity_disposition": "REJECTED_BY_WHOLE_CARD_CAP"
+    },
+    "Q128": {
+      "payload_gib": 56.25,
+      "same_class_estimated_reserved_gib": 89.5275,
+      "headroom_gib": -34.0275,
+      "capacity_disposition": "REJECTED; EXPERT PAYLOAD ALONE EXCEEDS WHOLE_CARD_CAP"
+    }
+  },
+  "invocation_working_set": {
+    "W1": {
+      "Prefill": {
+        "min_median_max": [10, 83.0, 160],
+        "fit_ratio_by_q": {"Q32": 0.13541666666666666, "Q64": 0.3385416666666667, "Q96": 0.6354166666666666, "Q128": 0.9739583333333334}
+      },
+      "Decode": {
+        "min_median_max": [10, 10.0, 10],
+        "fit_ratio_by_q": {"Q32": 1.0, "Q64": 1.0, "Q96": 1.0, "Q128": 1.0}
+      }
+    },
+    "W2": {
+      "Prefill": {
+        "min_median_max": [10, 83.0, 160],
+        "fit_ratio_by_q": {"Q32": 0.13541666666666666, "Q64": 0.3385416666666667, "Q96": 0.6354166666666666, "Q128": 0.9739583333333334}
+      },
+      "Decode": {
+        "min_median_max": [10, 10.0, 10],
+        "fit_ratio_by_q": {"Q32": 1.0, "Q64": 1.0, "Q96": 1.0, "Q128": 1.0}
+      }
+    },
+    "W4": {
+      "Prefill": {
+        "min_median_max": [72, 111.0, 182],
+        "fit_ratio_by_q": {"Q32": 0.0, "Q64": 0.0, "Q96": 0.16666666666666666, "Q128": 0.8229166666666666}
+      },
+      "Decode": {
+        "min_median_max": [10, 10.0, 10],
+        "fit_ratio_by_q": {"Q32": 1.0, "Q64": 1.0, "Q96": 1.0, "Q128": 1.0}
+      }
+    }
+  },
+  "miss_experts": {
+    "W1": {
+      "Prefill": {"Q32": [9787, 18310, 12174], "Q64": [6253, 10790, 6309], "Q96": [3759, 7232, 3670], "Q128": [2010, 4407, 2024]},
+      "Decode": {"Q32": [2363, 1814, 1346], "Q64": [1057, 1076, 832], "Q96": [576, 639, 528], "Q128": [279, 321, 277]}
+    },
+    "W2": {
+      "Prefill": {"Q32": [9787, 18310, 12174], "Q64": [6253, 10790, 6309], "Q96": [3759, 7232, 3670], "Q128": [2010, 4407, 2024]},
+      "Decode": {"Q32": [23199, 8882, 5416], "Q64": [13492, 3664, 2290], "Q96": [9444, 2107, 1555], "Q128": [7524, 1400, 1154]}
+    },
+    "W4": {
+      "Prefill": {"Q32": [8907, 14745, 9872], "Q64": [7128, 9457, 6324], "Q96": [5615, 7208, 4497], "Q128": [4403, 5713, 3491]},
+      "Decode": {"Q32": [4615, 2432, 1713], "Q64": [2227, 1463, 1092], "Q96": [1370, 945, 781], "Q128": [906, 624, 540]}
+    }
+  },
+  "transfer_total_gib": {
+    "W1": {
+      "Prefill": {"Q32": [89.602661, 167.633057, 111.456299], "Q64": [57.247925, 98.7854, 57.76062], "Q96": [34.414673, 66.210938, 33.599854], "Q128": [18.4021, 40.34729, 18.530273]},
+      "Decode": {"Q32": [21.633911, 16.607666, 12.322998], "Q64": [9.677124, 9.851074, 7.617188], "Q96": [5.273438, 5.85022, 4.833984], "Q128": [2.554321, 2.938843, 2.536011]}
+    },
+    "W2": {
+      "Prefill": {"Q32": [89.602661, 167.633057, 111.456299], "Q64": [57.247925, 98.7854, 57.76062], "Q96": [34.414673, 66.210938, 33.599854], "Q128": [18.4021, 40.34729, 18.530273]},
+      "Decode": {"Q32": [212.393188, 81.317139, 49.584961], "Q64": [123.522949, 33.544922, 20.965576], "Q96": [86.462402, 19.290161, 14.23645], "Q128": [68.884277, 12.817383, 10.565186]}
+    },
+    "W4": {
+      "Prefill": {"Q32": [81.546021, 134.994507, 90.380859], "Q64": [65.258789, 86.581421, 57.897949], "Q96": [51.40686, 65.991211, 41.171265], "Q128": [40.310669, 52.304077, 31.96106]},
+      "Decode": {"Q32": [42.251587, 22.265625, 15.682983], "Q64": [20.388794, 13.394165, 9.997559], "Q96": [12.542725, 8.651733, 7.150269], "Q128": [8.294678, 5.712891, 4.943848]}
+    }
+  },
+  "transfer_gib_per_generated_output_token": {
+    "W1": {
+      "Prefill": {"Q32": [5.600166, 10.477066, 6.966019], "Q64": [3.577995, 6.174088, 3.610039], "Q96": [2.150917, 4.138184, 2.099991], "Q128": [1.150131, 2.521706, 1.158142]},
+      "Decode": {"Q32": [1.352119, 1.037979, 0.770187], "Q64": [0.60482, 0.615692, 0.476074], "Q96": [0.32959, 0.365639, 0.302124], "Q128": [0.159645, 0.183678, 0.158501]}
+    },
+    "W2": {
+      "Prefill": {"Q32": [0.700021, 1.309633, 0.870752], "Q64": [0.447249, 0.771761, 0.451255], "Q96": [0.268865, 0.517273, 0.262499], "Q128": [0.143766, 0.315213, 0.144768]},
+      "Decode": {"Q32": [1.659322, 0.63529, 0.387383], "Q64": [0.965023, 0.26207, 0.163794], "Q96": [0.675488, 0.150704, 0.111222], "Q128": [0.538158, 0.100136, 0.082541]}
+    },
+    "W4": {
+      "Prefill": {"Q32": [2.548313, 4.218578, 2.824402], "Q64": [2.039337, 2.705669, 1.809311], "Q96": [1.606464, 2.062225, 1.286602], "Q128": [1.259708, 1.634502, 0.998783]},
+      "Decode": {"Q32": [1.320362, 0.695801, 0.490093], "Q64": [0.63715, 0.418568, 0.312424], "Q96": [0.39196, 0.270367, 0.223446], "Q128": [0.259209, 0.178528, 0.154495]}
+    }
+  },
+  "policy_runnability_under_current_full_graph": {
+    "invocation_working_set_fit": {
+      "kind": "CAPACITY_NECESSARY_CONDITION_ONLY",
+      "runnable": false,
+      "reason": "Fit does not identify or load the current invocation experts before native MoE consumes them."
+    },
+    "static_w1_frequency": {
+      "kind": "ONLY_POLICY_WITHOUT_CURRENT_TOKEN_ROUTE_READBACK",
+      "runnable": false,
+      "reason": "The fixed map has nonzero misses on every workload and phase; without a fill path the result is incomplete."
+    },
+    "sequential_lru": {
+      "kind": "ONLINE_SEQUENCE_ORACLE",
+      "runnable": false,
+      "reason": "It assumes the current token-row route is known before eviction/load; frozen FULL replay does not expose it to a Host planner."
+    },
+    "sequential_belady": {
+      "kind": "OFFLINE_FUTURE_ORACLE",
+      "runnable": false,
+      "reason": "It requires future routes and is only an optimistic lower bound."
+    },
+    "exact_trace_replay": {
+      "kind": "DIAGNOSTIC_ONLY",
+      "runnable": false,
+      "reason": "Preprogramming captured routes cannot qualify arbitrary requests."
+    },
+    "device_side_planner": {
+      "kind": "REQUIRED_MISSING_MECHANISM",
+      "runnable": false,
+      "reason": "No qualified current-token device-side miss planner, backing transfer and atomic publish path exists in the frozen stack."
+    }
+  },
+  "phase_decision": {
+    "decode_only_economic_signal": "Q32 sequential Belady suggests 0.387 GiB/W2 output token and every Decode invocation fits, so route locality alone does not prove the idea uneconomic.",
+    "prefill": "Q32/Q64 do not contain most complete Native Prefill invocations; Prefill requires a separately qualified fallback, waves, or larger capacity.",
+    "capacity": "Q64/Q96/Q128 are excluded by the frozen whole-card cap under the same-class vLLM Q32 receipt; Q32 is the only tested capacity.",
+    "graph": "No evaluated policy can both produce a complete result and preserve current FULL replay without current-token Host route readback.",
+    "backing_format_corroboration": "The independent v018 probe found actual Q32 owner storage in preprocessed NZ29 and failed closed before mutation because no qualified subslot writer exists.",
+    "full_implementation": "DO_NOT_ENTER",
+    "next_valid_scope": "Only a bounded device-side planner plus format-aware fixed-slot writer experiment could reopen the decision; it would be a new mechanism, not validation of the current policy."
+  }
+}

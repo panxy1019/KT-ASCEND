@@ -1,0 +1,46 @@
+{
+  "counts": {
+    "bank": 1,
+    "model": 2
+  },
+  "generated_unix": 1790593464.3143842,
+  "schema": 1,
+  "sources": {
+    "bank_catalog": "/mnt/data1/kt-round9/banks/candidate-mxfp4-all48-v1/catalog.json",
+    "bank_catalog_sha256": "5781fe490bfcd844ab86df62610e48f4fc39ebe76d1d4d2cd7a21d1b737885ec",
+    "bank_container_root": "/banks",
+    "bank_host_root": "/mnt/data1/kt-round9/banks",
+    "model_index": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540/model.safetensors.index.json",
+    "model_index_sha256": "99e815241ef03325536b0aaa4441deea45174c17fae31e10f0bb456410c590de",
+    "model_root": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "round18_scope": "layer0 MXFP4 bank plus routed gate_up/down shards read by native-hybrid-v001"
+  },
+  "status": "REGISTERED_READ_ONLY_CACHE_TARGETS",
+  "targets": [
+    {
+      "device": 66312,
+      "inode": 111183527,
+      "mtime_ns": 1789836055361721416,
+      "path": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540/model-00002-of-00131.safetensors",
+      "role": "model",
+      "size": 3355443368
+    },
+    {
+      "device": 66312,
+      "inode": 111183528,
+      "mtime_ns": 1789836468487059583,
+      "path": "/home/admin/models/Qwen3.8-Flash-Next/de4b8e4d43b917e7706784d8bb445c9af86a3540/model-00003-of-00131.safetensors",
+      "role": "model",
+      "size": 1832518264
+    },
+    {
+      "device": 64771,
+      "inode": 10793440933,
+      "mtime_ns": 1789943272520671966,
+      "path": "/mnt/data1/kt-round9/banks/candidate-layer0-mxfp4-v1/layer-00-mxfp4.gguf",
+      "role": "bank",
+      "size": 1336934720,
+      "trusted_sha256": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b"
+    }
+  ]
+}

@@ -1,0 +1,297 @@
+{
+  "schema": 1,
+  "status": "HISTORICAL_PRECHECK_ONLY_NOT_ROUND18_QUALIFICATION",
+  "generated_at_utc": "2026-09-30T03:25:09Z",
+  "scope": {
+    "phase": "Round18 Phase II P7 offline route working-set precheck",
+    "device_or_model_runs": 0,
+    "fresh_round18_trace_found": false,
+    "promotion_use_allowed": false
+  },
+  "source": {
+    "path": "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round9-fixed-shadow32-update-20260925/v80/real-prefill.routes.jsonl",
+    "sha256": "201a9b65b24c2fd9774c8c2dbfc4f795078d12dc8f20ce4b2a82efee12d857c0",
+    "bytes": 355112,
+    "identity": "Round9 v80 SGLang Layerwise host-only diagnostic route tape",
+    "request_id": "r9-plan15-p4a-on-medium",
+    "request_input_tokens": 64,
+    "workload": "two 32-token Prefill chunks; not W1/W2/W4 Decode",
+    "performance_evidence": false,
+    "diagnostic_host_observer": true,
+    "tensor_copy": false
+  },
+  "data_quality": {
+    "header_count": 1,
+    "group_count": 724,
+    "sequence": {
+      "min": 0,
+      "max": 723,
+      "unique": 724,
+      "continuous": true
+    },
+    "allocation_epoch": {
+      "min": 1,
+      "max": 724,
+      "continuous": true
+    },
+    "layers": {
+      "count": 48,
+      "min": 0,
+      "max": 47,
+      "each_layer_has_64_token_rows": true
+    },
+    "chunks": [
+      {
+        "start": 0,
+        "length": 32,
+        "groups": 363,
+        "token_layer_events": 1536
+      },
+      {
+        "start": 32,
+        "length": 32,
+        "groups": 361,
+        "token_layer_events": 1536
+      }
+    ],
+    "token_layer_events": 3072,
+    "topk_occurrences": 30720,
+    "topk_per_token_layer": 10,
+    "duplicate_expert_within_topk": 0,
+    "logical_expert_id_min": 0,
+    "logical_expert_id_max": 511,
+    "explicit_terminal_footer_present": false,
+    "assessment": "Internally complete for the recorded 64-token historical request, but semantically ineligible as a fresh Round18 Native W1/W2/W4 trace."
+  },
+  "model": {
+    "layer_count": 48,
+    "logical_experts_per_layer": 512,
+    "top_k": 10,
+    "bf16_payload_bytes_per_expert": 9830400,
+    "bf16_payload_mib_per_expert": 9.375,
+    "denominator_request_tokens": 64,
+    "important_correction": "The earlier R18_ROUTE_WORKING_SET_HISTORICAL_PRECHECK.json divided transfer bytes by 32. This file uses the full 64-token request denominator."
+  },
+  "observed_working_set": {
+    "unique_experts_per_layer_over_64_tokens": {
+      "min": 119,
+      "p25": 153,
+      "median": 161.0,
+      "p75": 179,
+      "max": 223
+    },
+    "per_32_token_layer_invocation_union": {
+      "invocations": 96,
+      "unique_experts_min": 77,
+      "unique_experts_median": 111.0,
+      "unique_experts_max": 183,
+      "capacity_fit_counts": {
+        "Q32": 0,
+        "Q64": 0,
+        "Q96": 15,
+        "Q128": 76
+      },
+      "interpretation": "A Native Prefill invocation over the full 32-token chunk cannot generally execute from Q32/Q64 without staging or splitting; the token-serial simulations below are sensitivity analyses, not proof of graph-compatible Native Prefill."
+    }
+  },
+  "capacities": {
+    "Q32": {
+      "nominal_pool_gib_all_48_layers": 14.0625,
+      "increment_over_q32_gib": 0.0,
+      "static_frequency_same_trace_oracle": {
+        "hit_rate": 0.553157552,
+        "miss_loads": 13727,
+        "miss_experts_per_request_token": 214.484375,
+        "bf16_transfer_gib_per_request_token": 1.963663,
+        "layer_hit_rate_min_median_max": [0.332813, 0.553906, 0.725],
+        "worst_layers": [22, 0, 38, 21, 6]
+      },
+      "lru_cold": {
+        "hit_rate": 0.503971354,
+        "miss_loads": 15238,
+        "miss_experts_per_request_token": 238.09375,
+        "bf16_transfer_gib_per_request_token": 2.179813
+      },
+      "lru_same_trace_frequency_warm_oracle": {
+        "hit_rate": 0.513020833,
+        "miss_loads": 14960,
+        "miss_experts_per_request_token": 233.75,
+        "bf16_transfer_gib_per_request_token": 2.140045
+      },
+      "belady_cold_upper_bound": {
+        "hit_rate": 0.650846354,
+        "miss_loads": 10726,
+        "miss_experts_per_request_token": 167.59375,
+        "bf16_transfer_gib_per_request_token": 1.534367
+      },
+      "belady_same_trace_frequency_warm_upper_bound": {
+        "hit_rate": 0.684016927,
+        "miss_loads": 9707,
+        "miss_experts_per_request_token": 151.671875,
+        "bf16_transfer_gib_per_request_token": 1.388597,
+        "layer_hit_rate_min_median_max": [0.396875, 0.70625, 0.8]
+      }
+    },
+    "Q64": {
+      "nominal_pool_gib_all_48_layers": 28.125,
+      "increment_over_q32_gib": 14.0625,
+      "static_frequency_same_trace_oracle": {
+        "hit_rate": 0.75686849,
+        "miss_loads": 7469,
+        "miss_experts_per_request_token": 116.703125,
+        "bf16_transfer_gib_per_request_token": 1.068449,
+        "layer_hit_rate_min_median_max": [0.55, 0.767188, 0.907813],
+        "worst_layers": [22, 0, 38, 21, 42]
+      },
+      "lru_cold": {
+        "hit_rate": 0.660188802,
+        "miss_loads": 10439,
+        "miss_experts_per_request_token": 163.109375,
+        "bf16_transfer_gib_per_request_token": 1.493311
+      },
+      "lru_same_trace_frequency_warm_oracle": {
+        "hit_rate": 0.69202474,
+        "miss_loads": 9461,
+        "miss_experts_per_request_token": 147.828125,
+        "bf16_transfer_gib_per_request_token": 1.353407
+      },
+      "belady_cold_upper_bound": {
+        "hit_rate": 0.731608073,
+        "miss_loads": 8245,
+        "miss_experts_per_request_token": 128.828125,
+        "bf16_transfer_gib_per_request_token": 1.179457
+      },
+      "belady_same_trace_frequency_warm_upper_bound": {
+        "hit_rate": 0.81484375,
+        "miss_loads": 5688,
+        "miss_experts_per_request_token": 88.875,
+        "bf16_transfer_gib_per_request_token": 0.813675,
+        "layer_hit_rate_min_median_max": [0.664062, 0.822656, 0.904687]
+      }
+    },
+    "Q96": {
+      "nominal_pool_gib_all_48_layers": 42.1875,
+      "increment_over_q32_gib": 28.125,
+      "static_frequency_same_trace_oracle": {
+        "hit_rate": 0.874283854,
+        "miss_loads": 3862,
+        "miss_experts_per_request_token": 60.34375,
+        "bf16_transfer_gib_per_request_token": 0.552464,
+        "layer_hit_rate_min_median_max": [0.714063, 0.885156, 0.964063],
+        "worst_layers": [22, 0, 38, 21, 42]
+      },
+      "lru_cold": {
+        "hit_rate": 0.709960938,
+        "miss_loads": 8910,
+        "miss_experts_per_request_token": 139.21875,
+        "bf16_transfer_gib_per_request_token": 1.274586
+      },
+      "lru_same_trace_frequency_warm_oracle": {
+        "hit_rate": 0.77828776,
+        "miss_loads": 6811,
+        "miss_experts_per_request_token": 106.421875,
+        "bf16_transfer_gib_per_request_token": 0.974321
+      },
+      "belady_cold_upper_bound": {
+        "hit_rate": 0.741894531,
+        "miss_loads": 7929,
+        "miss_experts_per_request_token": 123.890625,
+        "bf16_transfer_gib_per_request_token": 1.134253
+      },
+      "belady_same_trace_frequency_warm_upper_bound": {
+        "hit_rate": 0.879980469,
+        "miss_loads": 3687,
+        "miss_experts_per_request_token": 57.609375,
+        "bf16_transfer_gib_per_request_token": 0.52743,
+        "layer_hit_rate_min_median_max": [0.76875, 0.886719, 0.959375]
+      }
+    },
+    "Q128": {
+      "nominal_pool_gib_all_48_layers": 56.25,
+      "increment_over_q32_gib": 42.1875,
+      "static_frequency_same_trace_oracle": {
+        "hit_rate": 0.940657552,
+        "miss_loads": 1823,
+        "miss_experts_per_request_token": 28.484375,
+        "bf16_transfer_gib_per_request_token": 0.260782,
+        "layer_hit_rate_min_median_max": [0.825, 0.948438, 1.0],
+        "worst_layers": [22, 0, 38, 21, 42]
+      },
+      "lru_cold": {
+        "hit_rate": 0.727799479,
+        "miss_loads": 8362,
+        "miss_experts_per_request_token": 130.65625,
+        "bf16_transfer_gib_per_request_token": 1.196194
+      },
+      "lru_same_trace_frequency_warm_oracle": {
+        "hit_rate": 0.85921224,
+        "miss_loads": 4325,
+        "miss_experts_per_request_token": 67.578125,
+        "bf16_transfer_gib_per_request_token": 0.618696
+      },
+      "belady_cold_upper_bound": {
+        "hit_rate": 0.741894531,
+        "miss_loads": 7929,
+        "miss_experts_per_request_token": 123.890625,
+        "bf16_transfer_gib_per_request_token": 1.134253
+      },
+      "belady_same_trace_frequency_warm_upper_bound": {
+        "hit_rate": 0.936067708,
+        "miss_loads": 1964,
+        "miss_experts_per_request_token": 30.6875,
+        "bf16_transfer_gib_per_request_token": 0.280952,
+        "layer_hit_rate_min_median_max": [0.839063, 0.939844, 1.0]
+      }
+    }
+  },
+  "bandwidth_sensitivity": {
+    "basis": "Belady with same-trace frequency warm start; transfer-only lower-bound sensitivity, excluding format, publish, synchronization and graph-break costs",
+    "latency_ms_per_request_token_at_gib_per_second": {
+      "Q32": {"16": 86.787, "32": 43.394, "64": 21.697},
+      "Q64": {"16": 50.855, "32": 25.427, "64": 12.714},
+      "Q96": {"16": 32.964, "32": 16.482, "64": 8.241},
+      "Q128": {"16": 17.56, "32": 8.78, "64": 4.39}
+    }
+  },
+  "resource_precheck": {
+    "whole_card_cap_mib": 56832,
+    "reserve_mib": 8704,
+    "cap_source": "existing Round16/Round17 frozen resource contract",
+    "q32_vllm_runtime_reference": {
+      "source": "artifacts/round16/B_RUNTIME_RESULT.json",
+      "torch_allocated_gib_after_warmup": 47.3,
+      "torch_reserved_gib_after_warmup": 47.34,
+      "note": "This includes the historical vLLM-KT runtime and a large KV allocation; it is not a fresh Round18 expert-pool capacity measurement."
+    },
+    "assessment": {
+      "Q32": "Existing nominal payload identity only; pool runtime still requires a fixed-slot component proof.",
+      "Q64": "Potentially capacity-testable only after fresh headroom and KV/graph-pool sizing; adds 14.0625 GiB payload over Q32.",
+      "Q96": "Not capacity-qualified; 42.1875 GiB expert payload leaves only 13.3125 GiB under the whole-card cap for all dense/shared weights, state, KV and workspace.",
+      "Q128": "Nominal expert payload alone is 56.25 GiB and exceeds the 55.5 GiB whole-card cap; ineligible under the frozen contract."
+    }
+  },
+  "methodology": {
+    "cache_scope": "Independent pool per logical layer",
+    "access_grain": "One token-layer Top-10 event; experts within an event are protected from eviction while that event is processed",
+    "static_frequency": "Per-layer Top-Q derived from the same trace. Misses are counted as required loads but the fixed resident set is not mutated; this implicitly needs scratch or reload behavior and is a predictor, not an exact Q-slot runtime.",
+    "lru": "Event-grain deterministic LRU, reported cold and same-trace-frequency warm-start.",
+    "belady": "Offline farthest-next-use eviction, reported cold and same-trace-frequency warm-start. Warm-start uses future information twice and is an optimistic ceiling, not a deployable policy result.",
+    "transfer": "miss_loads multiplied by 9,830,400 BF16 payload bytes per expert; excludes padding, metadata, online format conversion and publish overhead."
+  },
+  "disposition": {
+    "phase_ii_full_implementation": "NOT_AUTHORIZED_BY_THIS_PRECHECK",
+    "economic_signal": "Q32 and Q64 remain transfer-heavy even under optimistic same-trace oracles. Q96/Q128 reduce misses but are not capacity-qualified, and Q128 is impossible under the frozen whole-card cap.",
+    "native_prefill_signal": "Q32 and Q64 cannot hold any observed 32-token layer working set in one invocation. Preserving an unsplit Native Prefill kernel would require a much larger pool or a different device-side streaming primitive.",
+    "required_next_evidence": [
+      "Fresh Round18 Native W1/W2/W4 route traces, separated into Prefill and Decode",
+      "A DEV/HOLDOUT split for frequency plans; no same-trace warm-start promotion claims",
+      "Fresh HBM headroom and fixed-slot write/publish component cost",
+      "Graph-safe residency probe showing no per-token Host route readback"
+    ]
+  },
+  "reproduction": {
+    "module": "round18.expert_pool_analysis",
+    "test": "python3 -m unittest tests.round18.test_expert_pool_analysis",
+    "command_template": "PYTHONPATH=. python3 -c 'from round18.expert_pool_analysis import load_round9_route_tape,frequency_resident_plan,simulate_pool; p=\"/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round9-fixed-shadow32-update-20260925/v80/real-prefill.routes.jsonl\"; e=load_round9_route_tape(p); print([(q, simulate_pool(e, capacity=q, policy=\"lru\").miss_loads, simulate_pool(e, capacity=q, policy=\"belady\", initial_resident=frequency_resident_plan(e,q)).miss_loads) for q in (32,64,96,128)])'"
+  }
+}

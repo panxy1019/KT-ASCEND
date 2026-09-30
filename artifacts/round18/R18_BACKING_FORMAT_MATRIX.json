@@ -1,0 +1,34 @@
+{
+  "formats": {
+    "BF16_CURRENT_Q32_NZ29_PARENT": {
+      "actual_formats": {
+        "w13": 29,
+        "w2": 29
+      },
+      "device_evidence": "native-expert-pool-fixed-slot-v018",
+      "fixed_slot_write": "BLOCKED_BEFORE_MUTATION",
+      "reason": "No supported parent-preserving single-expert writer was found; view/slice mutation after FRACTAL_NZ conversion is outside the supported contract; index_copy path reforms and writes the full Q32 parent.",
+      "same_math": true
+    },
+    "BF16_INDEPENDENT_EXPERT_LIST": {
+      "device_qualification": "NOT_RUN_AFTER_ECONOMICS_GATE_STOP",
+      "reason": "Native grouped matmul has a list consumer, but current lists are derived from a parent and EP1 Host-backed owner/planner/publication are not implemented.",
+      "same_math": true,
+      "source_seam": "PRESENT"
+    },
+    "PREPROCESSED_NATIVE_BLOB": {
+      "reason": "No supported Host blob to same-address NZ29 parent slot writer exists without full-parent format reconstruction.",
+      "status": "NOT_AVAILABLE_IN_FROZEN_STACK"
+    },
+    "W8A8_BACKING": {
+      "reason": "The graph-safe current-token planner/economics gate failed before a new precision path was justified; no frozen W8A8 quality identity was qualified.",
+      "same_math": false,
+      "status": "NOT_ENTERED"
+    }
+  },
+  "performance_claim": null,
+  "round": 18,
+  "schema": 1,
+  "selected_format": null,
+  "status": "NO_QUALIFIED_BACKING_FOR_DEPLOYABLE_POOL"
+}

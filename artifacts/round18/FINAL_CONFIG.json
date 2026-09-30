@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "round": 18,
+  "status": "UNCHANGED_ROUND17_S0",
+  "framework": "SGLang+KT",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "cpu_expert": {
+    "backend": "Kunpeng C128",
+    "numa_nodes": [2, 3, 4, 7],
+    "bank": "MXFP4_READ_ONLY"
+  },
+  "npu_resident": {
+    "placement": "Uniform Q32",
+    "precision": "BF16",
+    "format": "NZ29"
+  },
+  "qsa": "VECTORIZED_PREFILL_AND_DIRECT_BF16_ROW_DECODE",
+  "gdn": "ROUND14A_PROMOTED",
+  "ple": "ASYNC",
+  "hybrid_threshold": 129,
+  "scheduler_chunk": 32,
+  "tensor_parallel": 1,
+  "concurrency": 1,
+  "dynamic": false,
+  "deferred": false,
+  "round18_native_hybrid": false,
+  "round18_native_expert_pool": false,
+  "reason": "Round18 proved native partial/eager correctness but produced no graph-safe, capacity-safe request candidate."
+}

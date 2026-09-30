@@ -1,0 +1,512 @@
+{
+  "allocator_peak_bytes": 331829248,
+  "allocator_steady_bytes": 314576384,
+  "api": "round18:native-ascend-runner-kt-complement-component:v1",
+  "bank_identity": {
+    "bank_identity_method": "TRUSTED_FULL_SHA_RECEIPT_PLUS_LIVE_SIZE",
+    "bank_path": "/banks/layer-00-mxfp4.gguf",
+    "bank_sha256_from_trusted_catalog": "e9d6b27f352d501a9ed3737ec5d3ab140b9d1f5bda22d2e36ef9ef0bcc45b08b",
+    "bank_size_bytes": 1336934720,
+    "catalog_path": "/banks/catalog.json",
+    "catalog_sha256": "5781fe490bfcd844ab86df62610e48f4fc39ebe76d1d4d2cd7a21d1b737885ec",
+    "layer_id": 0
+  },
+  "cases": [
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      ],
+      "case": "all_resident",
+      "cpu_occurrences": 0,
+      "hash": "b105d2e3f60cc77a615978c57797a970e97d5bdfe54a25b417298da8e7a78c27",
+      "repeat_exact": true,
+      "resident_occurrences": 10,
+      "rows": [
+        {
+          "hash": "b105d2e3f60cc77a615978c57797a970e97d5bdfe54a25b417298da8e7a78c27",
+          "relative_l2": 0.002215676475316286,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            1,
+            "all_resident",
+            0
+          ]
+        },
+        {
+          "hash": "b105d2e3f60cc77a615978c57797a970e97d5bdfe54a25b417298da8e7a78c27",
+          "relative_l2": 0.002215676475316286,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            2,
+            "all_resident",
+            1
+          ]
+        },
+        {
+          "hash": "b105d2e3f60cc77a615978c57797a970e97d5bdfe54a25b417298da8e7a78c27",
+          "relative_l2": 0.002215676475316286,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            3,
+            "all_resident",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    },
+    {
+      "actual_id_sets": [
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "case": "all_nonresident",
+      "cpu_occurrences": 10,
+      "hash": "e1b56ec8eb4355ef21812639731ee9c6f8558ad2c05c171adff356b6a59c8345",
+      "repeat_exact": true,
+      "resident_occurrences": 0,
+      "rows": [
+        {
+          "hash": "e1b56ec8eb4355ef21812639731ee9c6f8558ad2c05c171adff356b6a59c8345",
+          "relative_l2": 0.002053444739431143,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            4,
+            "all_nonresident",
+            0
+          ]
+        },
+        {
+          "hash": "e1b56ec8eb4355ef21812639731ee9c6f8558ad2c05c171adff356b6a59c8345",
+          "relative_l2": 0.002053444739431143,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            5,
+            "all_nonresident",
+            1
+          ]
+        },
+        {
+          "hash": "e1b56ec8eb4355ef21812639731ee9c6f8558ad2c05c171adff356b6a59c8345",
+          "relative_l2": 0.002053444739431143,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            6,
+            "all_nonresident",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40
+        ]
+      ],
+      "case": "mixed_1_9",
+      "cpu_occurrences": 9,
+      "hash": "23e9595b1a524dad2277d9af61393519374a4c8b66c5fe92dffd8c1d21fa497e",
+      "repeat_exact": true,
+      "resident_occurrences": 1,
+      "rows": [
+        {
+          "hash": "23e9595b1a524dad2277d9af61393519374a4c8b66c5fe92dffd8c1d21fa497e",
+          "relative_l2": 0.002559564309194684,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            7,
+            "mixed_1_9",
+            0
+          ]
+        },
+        {
+          "hash": "23e9595b1a524dad2277d9af61393519374a4c8b66c5fe92dffd8c1d21fa497e",
+          "relative_l2": 0.002559564309194684,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            8,
+            "mixed_1_9",
+            1
+          ]
+        },
+        {
+          "hash": "23e9595b1a524dad2277d9af61393519374a4c8b66c5fe92dffd8c1d21fa497e",
+          "relative_l2": 0.002559564309194684,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            9,
+            "mixed_1_9",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          32,
+          33,
+          34,
+          35,
+          36
+        ]
+      ],
+      "case": "mixed_5_5",
+      "cpu_occurrences": 5,
+      "hash": "f248a22814c37be62d25ffe3388d51e7b5401046c45b288135e6394a973f90b1",
+      "repeat_exact": true,
+      "resident_occurrences": 5,
+      "rows": [
+        {
+          "hash": "f248a22814c37be62d25ffe3388d51e7b5401046c45b288135e6394a973f90b1",
+          "relative_l2": 0.0025636248756200075,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            10,
+            "mixed_5_5",
+            0
+          ]
+        },
+        {
+          "hash": "f248a22814c37be62d25ffe3388d51e7b5401046c45b288135e6394a973f90b1",
+          "relative_l2": 0.0025636248756200075,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            11,
+            "mixed_5_5",
+            1
+          ]
+        },
+        {
+          "hash": "f248a22814c37be62d25ffe3388d51e7b5401046c45b288135e6394a973f90b1",
+          "relative_l2": 0.0025636248756200075,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            12,
+            "mixed_5_5",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          32
+        ]
+      ],
+      "case": "mixed_9_1",
+      "cpu_occurrences": 1,
+      "hash": "28ae76f18fee271686969c47e63bfc840f7b17b324b444066b69d8cb9cef9d64",
+      "repeat_exact": true,
+      "resident_occurrences": 9,
+      "rows": [
+        {
+          "hash": "28ae76f18fee271686969c47e63bfc840f7b17b324b444066b69d8cb9cef9d64",
+          "relative_l2": 0.002256825566291809,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            13,
+            "mixed_9_1",
+            0
+          ]
+        },
+        {
+          "hash": "28ae76f18fee271686969c47e63bfc840f7b17b324b444066b69d8cb9cef9d64",
+          "relative_l2": 0.002256825566291809,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            14,
+            "mixed_9_1",
+            1
+          ]
+        },
+        {
+          "hash": "28ae76f18fee271686969c47e63bfc840f7b17b324b444066b69d8cb9cef9d64",
+          "relative_l2": 0.002256825566291809,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            15,
+            "mixed_9_1",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    },
+    {
+      "actual_id_sets": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          32,
+          33,
+          34,
+          35,
+          36
+        ],
+        [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41
+        ]
+      ],
+      "case": "multi_token",
+      "cpu_occurrences": 15,
+      "hash": "a71a2ad2a24c0247358a2c31ac16d7fad1d03987463b6acc0a46de841f5ca9c7",
+      "repeat_exact": true,
+      "resident_occurrences": 15,
+      "rows": [
+        {
+          "hash": "a71a2ad2a24c0247358a2c31ac16d7fad1d03987463b6acc0a46de841f5ca9c7",
+          "relative_l2": 0.002297238679602742,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            16,
+            "multi_token",
+            0
+          ]
+        },
+        {
+          "hash": "a71a2ad2a24c0247358a2c31ac16d7fad1d03987463b6acc0a46de841f5ca9c7",
+          "relative_l2": 0.002297238679602742,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            17,
+            "multi_token",
+            1
+          ]
+        },
+        {
+          "hash": "a71a2ad2a24c0247358a2c31ac16d7fad1d03987463b6acc0a46de841f5ca9c7",
+          "relative_l2": 0.002297238679602742,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            18,
+            "multi_token",
+            2
+          ]
+        }
+      ],
+      "token_rows": 3
+    },
+    {
+      "actual_id_sets": [
+        [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      ],
+      "case": "topk_ties",
+      "cpu_occurrences": 0,
+      "hash": "1c3ac8cd033a77f86da8a1a8dd8719df12eb2d5b926f51291f730a27fdfc4e14",
+      "repeat_exact": true,
+      "resident_occurrences": 10,
+      "rows": [
+        {
+          "hash": "1c3ac8cd033a77f86da8a1a8dd8719df12eb2d5b926f51291f730a27fdfc4e14",
+          "relative_l2": 0.0021291400771588087,
+          "repeat": 0,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            19,
+            "topk_ties",
+            0
+          ]
+        },
+        {
+          "hash": "1c3ac8cd033a77f86da8a1a8dd8719df12eb2d5b926f51291f730a27fdfc4e14",
+          "relative_l2": 0.0021291400771588087,
+          "repeat": 1,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            20,
+            "topk_ties",
+            1
+          ]
+        },
+        {
+          "hash": "1c3ac8cd033a77f86da8a1a8dd8719df12eb2d5b926f51291f730a27fdfc4e14",
+          "relative_l2": 0.0021291400771588087,
+          "repeat": 2,
+          "work_identity": [
+            "round18-p2",
+            0,
+            "model.layers.0.mlp.experts",
+            21,
+            "topk_ties",
+            2
+          ]
+        }
+      ],
+      "token_rows": 1
+    }
+  ],
+  "cpu_provider": "LlamafileMoEWrapper/MXFP4",
+  "cpu_workers": 128,
+  "device_executed": true,
+  "elapsed_seconds": 8.97082196502015,
+  "full_decoder_layer": "NOT_RUN_P2_NEXT",
+  "full_model": "NOT_RUN_P2_NEXT",
+  "graph_mode": "NONE_COMPONENT",
+  "lifecycle_hash_count": 20,
+  "lifecycle_rounds": 20,
+  "logical_experts": 512,
+  "native_method_sha256": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+  "native_method_source": "/vllm-workspace/vllm-ascend/vllm_ascend/ops/fused_moe/fused_moe.py",
+  "native_quant_method": "AscendUnquantizedFusedMoEMethod",
+  "native_runner_replaced": false,
+  "numa_nodes": [
+    2,
+    3,
+    4,
+    7
+  ],
+  "physical_npu_slots": 32,
+  "relative_l2_limit": 0.01,
+  "route_weight_application": "EXACTLY_ONCE_PER_BRANCH",
+  "routed_scaling_in_adapter": false,
+  "schema": 1,
+  "selector_calls_per_execution": 1,
+  "shared_finalize_residual_in_adapter": false,
+  "status": "PASS_NATIVE_HYBRID_EAGER_COMPONENT",
+  "threadpool_count": 4,
+  "top_k": 10,
+  "v2_receipt_sha256": "79a47596790f2127e928c6604605d86fb7c3b98237ee60fd48ba17f7475e2e36"
+}

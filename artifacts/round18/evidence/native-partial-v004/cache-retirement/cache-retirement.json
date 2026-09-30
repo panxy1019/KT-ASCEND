@@ -1,0 +1,91 @@
+{
+  "active_references_after": [],
+  "active_references_before": [],
+  "after_fincore": {
+    "file_count": 2,
+    "resident_bytes": 0,
+    "resident_file_count": 0,
+    "resident_pages": 0,
+    "total_size_bytes": 5187961632
+  },
+  "after_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 19694068,
+      "FileHugePages": 5122048,
+      "FilePages": 16168588,
+      "MemFree": 224531708
+    },
+    "3": {
+      "AnonPages": 26672836,
+      "FileHugePages": 3565568,
+      "FilePages": 8113752,
+      "MemFree": 225857864
+    },
+    "4": {
+      "AnonPages": 21458412,
+      "FileHugePages": 2285568,
+      "FilePages": 108397672,
+      "MemFree": 130104612
+    },
+    "7": {
+      "AnonPages": 16709304,
+      "FileHugePages": 432128,
+      "FilePages": 7058144,
+      "MemFree": 236413820
+    }
+  },
+  "after_system_memavailable_kib": 1815293108,
+  "automation": "PAUSED_UNCHANGED",
+  "before_fincore": {
+    "file_count": 2,
+    "resident_bytes": 343166976,
+    "resident_file_count": 2,
+    "resident_pages": 83781,
+    "total_size_bytes": 5187961632
+  },
+  "before_numa_meminfo_kib": {
+    "2": {
+      "AnonPages": 19693856,
+      "FileHugePages": 5212160,
+      "FilePages": 16503448,
+      "MemFree": 224177032
+    },
+    "3": {
+      "AnonPages": 26675184,
+      "FileHugePages": 3565568,
+      "FilePages": 8113000,
+      "MemFree": 225855008
+    },
+    "4": {
+      "AnonPages": 21457388,
+      "FileHugePages": 2285568,
+      "FilePages": 108397508,
+      "MemFree": 130104876
+    },
+    "7": {
+      "AnonPages": 16710056,
+      "FileHugePages": 432128,
+      "FilePages": 7058140,
+      "MemFree": 236413920
+    }
+  },
+  "before_system_memavailable_kib": 1815284880,
+  "ended_unix": 1790726593.1445622,
+  "expected_file_count": 2,
+  "failures": [],
+  "file_count": 2,
+  "file_stat_identity_sha256": "88a513215f5f7ddfcd49a348263d971c4fd93b0035d937c676acd3b55da34412",
+  "global_drop_caches": false,
+  "manifest_path": "/mnt/data1/kt-round9/round18/cache-retirement/post-native-partial-v004/registered-targets.json",
+  "manifest_sha256": "ac5e39fe091b49c66502b7a315eaad3564a0dc151ac0d079ca82a7ca6b44ac0a",
+  "minimum_drop_bytes": 1,
+  "operation": "POSIX_FADV_DONTNEED",
+  "other_tasks_modified": false,
+  "resident_bytes_released": 343166976,
+  "roles": {
+    "model": 2
+  },
+  "schema": 2,
+  "started_unix": 1790726569.8568795,
+  "status": "PASS_TARGETED_REGISTERED_FILE_CACHE_RETIREMENT"
+}

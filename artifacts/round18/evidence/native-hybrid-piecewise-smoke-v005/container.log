@@ -1,0 +1,1757 @@
+................
+----------------------------------------------------------------------
+Ran 16 tests in 0.003s
+
+OK
+can not use command: npu-smi info
+[transformers] You are using a model of type `qwen4_exp` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+INFO 09-30 01:00:14 [__init__.py:52] Available plugins for group vllm.platform_plugins:
+INFO 09-30 01:00:14 [__init__.py:54] - ascend -> vllm_ascend:register
+INFO 09-30 01:00:14 [__init__.py:57] All plugins in this group will be loaded. Set `VLLM_PLUGINS` to control which plugins to load.
+INFO 09-30 01:00:14 [__init__.py:237] Platform plugin ascend is activated
+INFO 09-30 01:00:14 [platform.py:61] Breakable cudagraph is force disabled on Ascend because DeepSeek V4 PIECEWISE cudagraph is not supported yet.
+ROUND18_NATIVE_HYBRID_ENGINE_CONSTRUCT_BEGIN
+INFO 09-30 01:00:30 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.netloader.netloader.ModelNetLoaderElastic'>` with load format `netloader`
+INFO 09-30 01:00:30 [__init__.py:112] Registered model loader `<class 'vllm_ascend.model_loader.rfork.rfork_loader.RForkModelLoader'>` with load format `rfork`
+INFO 09-30 01:00:30 [api_utils.py:273] non-default args: {'trust_remote_code': True, 'safetensors_load_strategy': 'eager', 'dtype': 'bfloat16', 'seed': 20260929, 'max_model_len': 256, 'gpu_memory_utilization': 0.82, 'max_num_batched_tokens': 32, 'max_num_seqs': 1, 'disable_log_stats': True, 'enable_chunked_prefill': True, 'compilation_config': {'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': [], 'ir_enable_torch_wrap': None, 'splitting_ops': None, 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [1, 32], 'compile_ranges_endpoints': [32], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [1], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': None, 'pass_config': {}, 'max_cudagraph_capture_size': 1, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': None, 'static_all_moe_layers': []}, 'worker_cls': 'round18_integration.native_hybrid_live_worker.Round18NativeHybridWorker', 'model': '/model'}
+WARNING 09-30 01:00:30 [envs.py:2096] Unknown vLLM environment variable detected: VLLM_USE_V1
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+INFO 09-30 01:00:44 [model.py:623] Resolved architecture: Qwen4ExpForConditionalGeneration
+INFO 09-30 01:00:44 [model.py:1788] Using max model len 256
+INFO 09-30 01:00:44 [scheduler.py:252] Chunked prefill is enabled with max_num_batched_tokens=32.
+INFO 09-30 01:00:44 [patch_mamba_config.py:104] Setting attention block size to 3072 tokens to ensure that attention page size is >= mamba page size.
+INFO 09-30 01:00:44 [patch_mamba_config.py:119] Padding mamba page size by 0.97% to ensure that mamba page size and attention page size are exactly equal.
+INFO 09-30 01:00:44 [vllm.py:1109] Asynchronous scheduling is enabled.
+INFO 09-30 01:00:44 [kernel.py:295] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native'])
+INFO 09-30 01:00:44 [utils.py:174] No quantization signature detected from model files for "/model". The model will be loaded as float. To force a quantization method, pass "--quantization <method>" explicitly.
+WARNING 09-30 01:00:44 [platform.py:1067] GPU-specific parameter is not supported on Ascend. parameter=disable_cascade_attn, value=True, action: resetting to False.
+INFO 09-30 01:00:44 [ascend_config.py:935] Dynamic EPLB is False
+INFO 09-30 01:00:44 [ascend_config.py:936] The number of redundant experts is 0
+INFO 09-30 01:00:44 [platform.py:791] Set PYTORCH_NPU_ALLOC_CONF=expandable_segments:True
+INFO 09-30 01:00:44 [compilation.py:329] Enabled custom fusions: norm_quant, act_quant
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+[transformers] Unrecognized keys in `rope_parameters` for 'rope_type'='default': {'mrope_section', 'mrope_interleaved'}
+WARNING 09-30 01:00:58 [warnings.py:112] /usr/local/python3.12.13/lib/python3.12/multiprocessing/popen_fork.py:66: DeprecationWarning: This process (pid=1) is multi-threaded, use of fork() may lead to deadlocks in the child.
+(EngineCore pid=279) INFO 09-30 01:00:58 [core.py:116] Initializing a V1 LLM engine (v0.26.0) with config: model='/model', speculative_config=None, tokenizer='/model', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=256, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=True, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=npu, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=20260929, served_model_name=/model, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'vllm_ascend.compilation.compiler_interface.AscendCompiler', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::qwen_gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::hpc_rope_norm_forward', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update', 'vllm::mla_forward', 'vllm::dsa_forward'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [32, 1], 'compile_ranges_endpoints': [32], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.PIECEWISE: 1>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 1, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': True, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native'], fused_add_rms_norm=['native']), enable_flashinfer_autotune=True, enable_cutedsl_warmup=True, enable_bf16x3_router_gemm=False, moe_backend='auto', linear_backend='auto')
+(EngineCore pid=279) WARNING 09-30 01:00:58 [warnings.py:112] /vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py:73: UserWarning: Failed to get the IP address, using 0.0.0.0 by default. The value can be set by the environment variable VLLM_HOST_IP or HOST_IP.
+(EngineCore pid=279) INFO 09-30 01:01:02 [parallel_state.py:1615] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://0.0.0.0:57829 backend=hccl
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+(EngineCore pid=279) INFO 09-30 01:01:02 [parallel_state.py:1946] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank 0, EPLB rank N/A
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[rank0]:[W930 01:01:02.506664901 NPUCachingAllocator.cpp:202] Warning: The current CANN and HDK(driver) versions require processing for 32 padding size, with memory allocation. (function operator())
+(EngineCore pid=279) INFO 09-30 01:01:02 [model_runner_v1.py:3960] Starting to load model /model...
+(EngineCore pid=279) INFO 09-30 01:01:03 [interface.py:414] Using default backend AttentionBackendEnum.TORCH_SDPA for vit attention
+(EngineCore pid=279) INFO 09-30 01:01:03 [mm_encoder_attention.py:373] Using AttentionBackendEnum.TORCH_SDPA for MMEncoderAttention.
+(EngineCore pid=279) INFO 09-30 01:01:03 [qwen_gdn_linear_attn.py:150] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(EngineCore pid=279) INFO 09-30 01:01:04 [compilation.py:1091] Using OOT custom backend for compilation.
+(EngineCore pid=279) INFO 09-30 01:01:05 [weight_utils.py:869] Filesystem type for checkpoints: EXT4. Checkpoint size: 335.28 GiB. Available RAM: 1728.02 GiB.
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   0% Completed | 0/131 [00:00<?, ?it/s]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   1% Completed | 1/131 [00:00<01:41,  1.28it/s]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   2% Completed | 2/131 [00:02<03:27,  1.61s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   2% Completed | 3/131 [00:04<03:10,  1.49s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   3% Completed | 4/131 [00:06<03:48,  1.80s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   4% Completed | 5/131 [00:09<04:24,  2.10s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   5% Completed | 6/131 [00:11<04:51,  2.33s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   5% Completed | 7/131 [00:14<05:05,  2.47s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   6% Completed | 8/131 [00:17<05:14,  2.56s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   7% Completed | 9/131 [00:20<05:19,  2.62s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   8% Completed | 10/131 [00:23<05:22,  2.66s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   8% Completed | 11/131 [00:25<05:23,  2.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):   9% Completed | 12/131 [00:28<05:23,  2.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  10% Completed | 13/131 [00:31<05:23,  2.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  11% Completed | 14/131 [00:34<05:21,  2.75s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  11% Completed | 15/131 [00:36<05:20,  2.76s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  12% Completed | 16/131 [00:39<05:18,  2.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  13% Completed | 17/131 [00:42<05:16,  2.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  14% Completed | 18/131 [00:45<05:13,  2.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  15% Completed | 19/131 [00:48<05:10,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  15% Completed | 20/131 [00:50<05:07,  2.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  16% Completed | 21/131 [00:53<05:05,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  17% Completed | 22/131 [00:56<05:02,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  18% Completed | 23/131 [00:59<05:00,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  18% Completed | 24/131 [01:01<04:57,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  19% Completed | 25/131 [01:04<04:54,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  20% Completed | 26/131 [01:07<04:52,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  21% Completed | 27/131 [01:10<04:49,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  21% Completed | 28/131 [01:13<04:46,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  22% Completed | 29/131 [01:15<04:43,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  23% Completed | 30/131 [01:18<04:41,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  24% Completed | 31/131 [01:21<04:38,  2.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  24% Completed | 32/131 [01:24<04:35,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  25% Completed | 33/131 [01:27<04:33,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  26% Completed | 34/131 [01:29<04:30,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  27% Completed | 35/131 [01:32<04:27,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  27% Completed | 36/131 [01:35<04:24,  2.79s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  28% Completed | 37/131 [01:36<03:46,  2.41s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  29% Completed | 38/131 [01:39<03:39,  2.36s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  30% Completed | 39/131 [01:40<03:06,  2.03s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  31% Completed | 40/131 [01:42<03:09,  2.09s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  31% Completed | 41/131 [01:43<02:48,  1.87s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  32% Completed | 42/131 [01:46<02:56,  1.98s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  33% Completed | 43/131 [01:47<02:36,  1.78s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  34% Completed | 44/131 [01:49<02:46,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  34% Completed | 45/131 [01:51<02:29,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  35% Completed | 46/131 [01:53<02:40,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  36% Completed | 47/131 [01:54<02:22,  1.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  37% Completed | 48/131 [01:56<02:34,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  37% Completed | 49/131 [01:58<02:20,  1.71s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  38% Completed | 50/131 [02:00<02:31,  1.87s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  39% Completed | 51/131 [02:01<02:16,  1.71s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  40% Completed | 52/131 [02:03<02:27,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  40% Completed | 53/131 [02:05<02:12,  1.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  41% Completed | 54/131 [02:07<02:22,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  42% Completed | 55/131 [02:08<02:07,  1.67s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  43% Completed | 56/131 [02:10<02:17,  1.83s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  44% Completed | 57/131 [02:12<02:05,  1.69s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  44% Completed | 58/131 [02:14<02:15,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  45% Completed | 59/131 [02:15<02:00,  1.67s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  46% Completed | 60/131 [02:18<02:11,  1.86s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  47% Completed | 61/131 [02:20<02:19,  2.00s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  47% Completed | 62/131 [02:22<02:26,  2.12s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  48% Completed | 63/131 [02:25<02:29,  2.20s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  49% Completed | 64/131 [02:26<02:10,  1.94s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  50% Completed | 65/131 [02:28<02:15,  2.05s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  50% Completed | 66/131 [02:30<01:58,  1.82s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  51% Completed | 67/131 [02:32<02:05,  1.97s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  52% Completed | 68/131 [02:33<01:53,  1.80s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  53% Completed | 69/131 [02:36<02:00,  1.95s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  53% Completed | 70/131 [02:37<01:47,  1.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  54% Completed | 71/131 [02:39<01:55,  1.93s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  55% Completed | 72/131 [02:41<01:43,  1.76s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  56% Completed | 73/131 [02:43<01:51,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  56% Completed | 74/131 [02:44<01:38,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  57% Completed | 75/131 [02:47<01:46,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  58% Completed | 76/131 [02:48<01:36,  1.76s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  59% Completed | 77/131 [02:50<01:43,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  60% Completed | 78/131 [02:52<01:32,  1.75s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  60% Completed | 79/131 [02:54<01:39,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  61% Completed | 80/131 [02:55<01:28,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  62% Completed | 81/131 [02:57<01:34,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  63% Completed | 82/131 [02:59<01:24,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  63% Completed | 83/131 [03:01<01:31,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  64% Completed | 84/131 [03:02<01:20,  1.71s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  65% Completed | 85/131 [03:05<01:26,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  66% Completed | 86/131 [03:06<01:18,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  66% Completed | 87/131 [03:08<01:24,  1.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  67% Completed | 88/131 [03:10<01:14,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  68% Completed | 89/131 [03:12<01:20,  1.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  69% Completed | 90/131 [03:13<01:11,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  69% Completed | 91/131 [03:16<01:16,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  70% Completed | 92/131 [03:17<01:06,  1.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  71% Completed | 93/131 [03:19<01:11,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  72% Completed | 94/131 [03:21<01:04,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  73% Completed | 95/131 [03:23<01:08,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  73% Completed | 96/131 [03:24<01:00,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  74% Completed | 97/131 [03:27<01:04,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  75% Completed | 98/131 [03:28<00:57,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  76% Completed | 99/131 [03:30<01:00,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  76% Completed | 100/131 [03:32<00:53,  1.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  77% Completed | 101/131 [03:34<00:56,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  78% Completed | 102/131 [03:35<00:50,  1.75s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  79% Completed | 103/131 [03:38<00:53,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  79% Completed | 104/131 [03:39<00:46,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  80% Completed | 105/131 [03:41<00:49,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  81% Completed | 106/131 [03:42<00:43,  1.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  82% Completed | 107/131 [03:45<00:45,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  82% Completed | 108/131 [03:46<00:39,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  83% Completed | 109/131 [03:48<00:41,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  84% Completed | 110/131 [03:50<00:35,  1.71s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  85% Completed | 111/131 [03:52<00:37,  1.89s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  85% Completed | 112/131 [03:53<00:33,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  86% Completed | 113/131 [03:56<00:34,  1.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  87% Completed | 114/131 [03:57<00:29,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  88% Completed | 115/131 [03:59<00:30,  1.90s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  89% Completed | 116/131 [04:01<00:25,  1.72s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  89% Completed | 117/131 [04:03<00:26,  1.88s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  90% Completed | 118/131 [04:04<00:22,  1.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  91% Completed | 119/131 [04:06<00:22,  1.88s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  92% Completed | 120/131 [04:08<00:19,  1.73s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  92% Completed | 121/131 [04:10<00:19,  1.91s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  93% Completed | 122/131 [04:11<00:15,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  94% Completed | 123/131 [04:14<00:15,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  95% Completed | 124/131 [04:15<00:12,  1.74s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  95% Completed | 125/131 [04:17<00:11,  1.92s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  96% Completed | 126/131 [04:19<00:08,  1.77s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  97% Completed | 127/131 [04:21<00:07,  1.93s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  98% Completed | 128/131 [04:23<00:05,  1.76s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  98% Completed | 129/131 [04:25<00:03,  1.93s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager):  99% Completed | 130/131 [04:27<00:01,  2.00s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager): 100% Completed | 131/131 [04:28<00:00,  1.70s/it]
+(EngineCore pid=279) Loading safetensors checkpoint shards (eager): 100% Completed | 131/131 [04:28<00:00,  2.05s/it]
+(EngineCore pid=279) 
+(EngineCore pid=279) INFO 09-30 01:05:33 [default_loader.py:430] Loading weights took 268.64 seconds
+(EngineCore pid=279) INFO 09-30 01:05:34 [model_runner_v1.py:4056] Loading model weights took 24.2670 GB
+(EngineCore pid=279) INFO 09-30 01:05:34 [model_runner_v1.py:4088] Model runner load_model total time: 271.70 seconds
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-00-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279)  ffn_up_exps, Dtype: MXFP4
+(EngineCore pid=279)  ffn_gate_exps, Dtype: MXFP4
+(EngineCore pid=279)  ffn_down_exps, Dtype: MXFP4
+(EngineCore pid=279) WARNING 09-30 01:05:34 [warnings.py:112] /round16-kt/kt_kernel/utils/loader.py:1076: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+CPUInfer[0x4f1261b0]: Hello
+WorkerPool[0x4f123c90] 4 subpools, [numa:threads][2:32] [3:32] [4:32] [7:32] 
+===========In NumaPool============
+In Numa Worker Pool at NUMA 2, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 3, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 4, 32 threads
+===========In NumaPool============
+In Numa Worker Pool at NUMA 7, 32 threads
+TP MOE layer 0, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for fffef0154dc0
+alloc 0 from other numa for fffef0154dc0
+alloc 2 from other numa for fffef80c5170
+alloc 3 from other numa for ffff04ebe580
+alloc 3 from other numa for ffff04ebe580
+alloc 1 from other numa for fffefc18a2a0
+alloc 1 from other numa for fffefc18a2a0
+alloc 2 from other numa for fffef80c5170
+TP MOE layer 1, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1b3900
+alloc 3 from other numa for ffff04f28020
+alloc 2 from other numa for fffef81bdb30
+alloc 1 from other numa for fffefc1b3900
+alloc 0 from other numa for fffef01b5eb0
+alloc 3 from other numa for ffff04f28020
+alloc 2 from other numa for fffef81bdb30
+alloc 0 from other numa for fffef01b5eb0
+TP MOE layer 2, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0748b0
+alloc 3 from other numa for ffff04ff9a00
+alloc 2 from other numa for fffef8210030
+alloc 1 from other numa for fffefc0748b0
+alloc 0 from other numa for fffef00acc90
+alloc 3 from other numa for ffff04ff9a00
+alloc 2 from other numa for fffef8210030
+alloc 0 from other numa for fffef00acc90
+TP MOE layer 3, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for fffef00abf70
+alloc 1 from other numa for fffefc0dafd0
+alloc 2 from other numa for fffef8053e30
+alloc 3 from other numa for ffff04f2ca90
+alloc 0 from other numa for fffef00abf70
+alloc 1 from other numa for fffefc0dafd0
+alloc 2 from other numa for fffef8053e30
+alloc 3 from other numa for ffff04f2ca90
+TP MOE layer 4, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1109a0
+alloc 3 from other numa for ffff04c8b440
+alloc 2 from other numa for fffef8132070
+alloc 1 from other numa for fffefc1109a0
+alloc 0 from other numa for fffef028dfc0
+alloc 3 from other numa for ffff04c8b440
+alloc 2 from other numa for fffef8132070
+alloc 0 from other numa for fffef028dfc0
+TP MOE layer 5, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0775e0
+alloc 3 from other numa for ffff04eed200
+alloc 2 from other numa for fffef8208760
+alloc 1 from other numa for fffefc0775e0
+alloc 0 from other numa (EngineCore pid=279) [LlamafileMoEWrapper] Layer 0 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-01-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 1 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-02-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 2 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-03-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 3 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-04-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 4 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-05-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 5 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-06-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 6 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-07-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 7 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-08-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 8 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-09-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 9 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-10-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 10 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-11-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4for fffef0115bc0
+alloc 3 from other numa for ffff04eed200
+alloc 2 from other numa for fffef8208760
+alloc 0 from other numa for fffef0115bc0
+TP MOE layer 6, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc17b2a0
+alloc 3 from other numa for ffff04f5c250
+alloc 2 from other numa for fffef81e3ea0
+alloc 1 from other numa for fffefc17b2a0
+alloc 0 from other numa for fffef00625a0
+alloc 3 from other numa for ffff04f5c250
+alloc 2 from other numa for fffef81e3ea0
+alloc 0 from other numa for fffef00625a0
+TP MOE layer 7, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1cc790
+alloc 3 from other numa for ffff04fa7760
+alloc 2 from other numa for fffef802ea90
+alloc 1 from other numa for fffefc1cc790
+alloc 0 from other numa for fffef0088be0
+alloc 3 from other numa for ffff04fa7760
+alloc 2 from other numa for fffef802ea90
+alloc 0 from other numa for fffef0088be0
+TP MOE layer 8, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1294f0
+alloc 3 from other numa for ffff04f2a340
+alloc 0 from other numa for fffef001e9a0
+alloc 0 from other numa for fffef001e9a0
+alloc 2 from other numa for fffef81600f0
+alloc 3 from other numa for ffff04f2a340
+alloc 1 from other numa for fffefc1294f0
+alloc 2 from other numa for fffef81600f0
+TP MOE layer 9, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for fffef009d870
+alloc 3 from other numa for ffff04f30a90
+alloc 2 from other numa for fffef82cd140
+alloc 1 from other numa for fffefc0d1860
+alloc 0 from other numa for fffef009d870
+alloc 3 from other numa for ffff04f30a90
+alloc 2 from other numa for fffef82cd140
+alloc 1 from other numa for fffefc0d1860
+TP MOE layer 10, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc18fc80
+alloc 3 from other numa for ffff04fa0610
+alloc 0 from other numa for fffef0180550
+alloc 3 from other numa for ffff04fa0610
+alloc 2 from other numa for fffef8173860
+alloc 1 from other numa for fffefc18fc80
+alloc 2 from other numa for fffef8173860
+alloc 0 from other numa for fffef0180550
+TP MOE layer 11, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc089640
+alloc 3 from other numa for ffff04fc28f0
+alloc 2 from other numa for fffef8143890
+alloc 2 from other numa for fffef8143890
+alloc 0 from other numa for fffef0178ba0
+alloc 0 from other numa for fffef0178ba0
+alloc 1 from other numa for fffefc089640
+alloc 3 from other numa for ffff04fc28f0
+TP MOE layer 12, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc14a770
+alloc 3 from other numa for ffff04fa97b0
+alloc 2 from other numa for fffef82d2a80
+alloc 1 from other numa for fffefc14a770
+alloc 0 from other numa for fffef0101bb0
+alloc 3 from other numa for ffff04fa97b0
+alloc 2 from other numa for fffef82d2a80
+alloc 0 from other numa for fffef0101bb0
+TP MOE layer 13, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0c1940
+alloc 3 from other numa for ffff04d89380
+alloc 2 from other numa for fffef80afd20
+alloc 1 from other numa for fffefc0c1940
+alloc 0 from other numa for fffef0138cc0
+alloc 3 from other numa for ffff04d89380
+alloc 2 from other numa for fffef80afd20
+alloc 0 from other numa for fffef0138cc0
+TP MOE layer 14, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0e8200
+alloc 3 from other numa for ffff04d91a60
+alloc 2 from other numa for fffef82132f0
+alloc 1 from other numa for fffefc0e8200
+alloc 0 from other numa for fffef0164940
+alloc 3 from other numa for ffff04d91a60
+alloc 2 from other numa for fffef82132f0
+alloc 0 from other numa for fffef0164940
+TP MOE layer 15, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0dcfc0
+alloc 3 from other numa for ffff04c8dca0
+alloc 2 from other numa for fffef80a66c0
+alloc 0 from other numa for fffef01ba490
+alloc 1 from other numa for fffefc0dcfc0
+alloc 3 from other numa for ffff04c8dca0
+alloc 2 from other numa for fffef80a66c0
+alloc 0 from other numa for fffef01ba490
+TP MOE layer 16, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0760f0
+alloc 3 from other numa for ffff04f3b2d0
+alloc 2 from other numa for fffef811a5d0
+alloc 1 from other numa for fffefc0760f0
+alloc 0 from other numa for fffef00a7300
+alloc 3 from other numa for ffff04f3b2d0
+alloc 2 from other numa for fffef811a5d0
+alloc 0 from other numa for fffef00a7300
+TP MOE layer 17, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc16a190
+alloc 3 from other numa for ffff04d85530
+alloc 2 from other numa for fffef81441f0
+alloc 0 from other numa for fffef00f3b60
+alloc 1 from other numa for fffefc16a190
+alloc 3 from other numa for ffff04d85530
+alloc 2 from other numa for fffef81441f0
+alloc 0 from other numa for fffef00f3b60
+TP MOE layer 18, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc04ffd0
+alloc 3 from other numa for ffff04f03460
+alloc 2 
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 11 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-12-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 12 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-13-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 13 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-14-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 14 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-15-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 15 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-16-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 16 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-17-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 17 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-18-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 18 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-19-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 19 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-20-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 20 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-21-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 21 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-22-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4from other numa for fffef815da10
+alloc 1 from other numa for fffefc04ffd0
+alloc 0 from other numa for fffef016e3c0
+alloc 3 from other numa for ffff04f03460
+alloc 2 from other numa for fffef815da10
+alloc 0 from other numa for fffef016e3c0
+TP MOE layer 19, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc138960
+alloc 3 from other numa for ffff04d8b700
+alloc 2 from other numa for fffef8147b50
+alloc 0 from other numa for fffef004fc60
+alloc 1 from other numa for fffefc138960
+alloc 3 from other numa for ffff04d8b700
+alloc 2 from other numa for fffef8147b50
+alloc 0 from other numa for fffef004fc60
+TP MOE layer 20, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc097690
+alloc 3 from other numa for ffff04fcb620
+alloc 2 from other numa for fffef817f2c0
+alloc 1 from other numa for fffefc097690
+alloc 0 from other numa for fffef005ccf0
+alloc 3 from other numa for ffff04fcb620
+alloc 2 from other numa for fffef817f2c0
+alloc 0 from other numa for fffef005ccf0
+TP MOE layer 21, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1622e0
+alloc 3 from other numa for ffff04f3fac0
+alloc 2 from other numa for fffef827bcc0
+alloc 1 from other numa for fffefc1622e0
+alloc 0 from other numa for fffef0133070
+alloc 3 from other numa for ffff04f3fac0
+alloc 2 from other numa for fffef827bcc0
+alloc 0 from other numa for fffef0133070
+TP MOE layer 22, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1a58c0
+alloc 3 from other numa for ffff04fce900
+alloc 2 from other numa for fffef807dd40
+alloc 1 from other numa for fffefc1a58c0
+alloc 0 from other numa for fffef00833c0
+alloc 3 from other numa for ffff04fce900
+alloc 2 from other numa for fffef807dd40
+alloc 0 from other numa for fffef00833c0
+TP MOE layer 23, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc14f8c0
+alloc 3 from other numa for ffff04eccd40
+alloc 2 from other numa for fffef806c120
+alloc 1 from other numa for fffefc14f8c0
+alloc 0 from other numa for fffef0158080
+alloc 3 from other numa for ffff04eccd40
+alloc 2 from other numa for fffef806c120
+alloc 0 from other numa for fffef0158080
+TP MOE layer 24, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc279a00
+alloc 3 from other numa for ffff04f39ac0
+alloc 2 from other numa for fffef80f42e0
+alloc 1 from other numa for fffefc279a00
+alloc 0 from other numa for fffef01b05e0
+alloc 3 from other numa for ffff04f39ac0
+alloc 2 from other numa for fffef80f42e0
+alloc 0 from other numa for fffef01b05e0
+TP MOE layer 25, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc207be0
+alloc 3 from other numa for ffff04f0dfd0
+alloc 2 from other numa for fffef81772e0
+alloc 1 from other numa for fffefc207be0
+alloc 0 from other numa for fffef00cbe00
+alloc 3 from other numa for ffff04f0dfd0
+alloc 2 from other numa for fffef81772e0
+alloc 0 from other numa for fffef00cbe00
+TP MOE layer 26, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc0ac770
+alloc 3 from other numa for ffff04fb5e10
+alloc 2 from other numa for fffef8276250
+alloc 1 from other numa for fffefc0ac770
+alloc 0 from other numa for fffef0153be0
+alloc 3 from other numa for ffff04fb5e10
+alloc 2 from other numa for fffef8276250
+alloc 0 from other numa for fffef0153be0
+TP MOE layer 27, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1895b0
+alloc 3 from other numa for ffff04dbe1d0
+alloc 2 from other numa for fffef818e150
+alloc 1 from other numa for fffefc1895b0
+alloc 0 from other numa for fffef01416b0
+alloc 3 from other numa for ffff04dbe1d0
+alloc 2 from other numa for fffef818e150
+alloc 0 from other numa for fffef01416b0
+TP MOE layer 28, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc063240
+alloc 3 from other numa for ffff04c8fb70
+alloc 2 from other numa for fffef8097370
+alloc 1 from other numa for fffefc063240
+alloc 0 from other numa for fffef0152040
+alloc 3 from other numa for ffff04c8fb70
+alloc 2 from other numa for fffef8097370
+alloc 0 from other numa for fffef0152040
+TP MOE layer 29, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc083ba0
+alloc 3 from other numa for ffff04eddc70
+alloc 2 from other numa for fffef81aab20
+alloc 1 from other numa for fffefc083ba0
+alloc 0 from other numa for fffef029d460
+alloc 3 from other numa for ffff04eddc70
+alloc 2 from other numa for fffef81aab20
+alloc 0 from other numa for fffef029d460
+TP MOE layer 30, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 0 from other numa for fffef0098b10
+alloc 3 from other numa for ffff04c86110
+alloc 2 from other numa for fffef8288160
+alloc 1 from other numa for fffefc29bf20
+alloc 0 from other numa for fffef0098b10
+alloc 3 from other numa for ffff04c86110
+alloc 2 from other numa for fffef8288160
+alloc 1 from other numa for fffefc29bf20
+TP MOE layer 31, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 F
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 22 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-23-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 23 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-24-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 24 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-25-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 25 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-26-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 26 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-27-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 27 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-28-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 28 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-29-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 29 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-30-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 30 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-31-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 31 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-32-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 32 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-33-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4P32 partial
+alloc 1 from other numa for fffefc255e70
+alloc 3 from other numa for ffff05013140
+alloc 2 from other numa for fffef819af30
+alloc 1 from other numa for fffefc255e70
+alloc 0 from other numa for fffef027c8d0
+alloc 3 from other numa for ffff05013140
+alloc 2 from other numa for fffef819af30
+alloc 0 from other numa for fffef027c8d0
+TP MOE layer 32, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc2505a0
+alloc 3 from other numa for ffff0501d100
+alloc 2 from other numa for fffef8178280
+alloc 1 from other numa for fffefc2505a0
+alloc 0 from other numa for fffef0286830
+alloc 3 from other numa for ffff0501d100
+alloc 2 from other numa for fffef8178280
+alloc 0 from other numa for fffef0286830
+TP MOE layer 33, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc028610
+alloc 3 from other numa for ffff050270c0
+alloc 2 from other numa for fffef81038e0
+alloc 1 from other numa for fffefc028610
+alloc 0 from other numa for fffef020aa00
+alloc 3 from other numa for ffff050270c0
+alloc 2 from other numa for fffef81038e0
+alloc 0 from other numa for fffef020aa00
+TP MOE layer 34, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc190f40
+alloc 3 from other numa for ffff05036810
+alloc 2 from other numa for fffef81a1030
+alloc 1 from other numa for fffefc190f40
+alloc 0 from other numa for fffef02b7c70
+alloc 3 from other numa for ffff05036810
+alloc 2 from other numa for fffef81a1030
+alloc 0 from other numa for fffef02b7c70
+TP MOE layer 35, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc22ced0
+alloc 3 from other numa for ffff05009180
+alloc 2 from other numa for fffef82e9e60
+alloc 1 from other numa for fffefc22ced0
+alloc 0 from other numa for fffef01faac0
+alloc 3 from other numa for ffff05009180
+alloc 2 from other numa for fffef82e9e60
+alloc 0 from other numa for fffef01faac0
+TP MOE layer 36, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1fa750
+alloc 3 from other numa for ffff05072340
+alloc 2 from other numa for fffef81153a0
+alloc 1 from other numa for fffefc1fa750
+alloc 0 from other numa for fffef023a0f0
+alloc 3 from other numa for ffff05072340
+alloc 2 from other numa for fffef81153a0
+alloc 0 from other numa for fffef023a0f0
+TP MOE layer 37, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc22f7e0
+alloc 3 from other numa for ffff0507d310
+alloc 2 from other numa for fffef80ef520
+alloc 0 from other numa for fffef02450c0
+alloc 1 from other numa for fffefc22f7e0
+alloc 3 from other numa for ffff0507d310
+alloc 2 fr
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 33 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-34-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 34 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-35-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 35 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-36-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 36 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-37-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 37 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-38-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 38 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-39-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 39 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-40-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 40 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-41-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 41 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-42-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 42 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-43-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 43 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-44-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4om other numa for fffef80ef520
+alloc 0 from other numa for fffef02450c0
+TP MOE layer 38, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc05c730
+alloc 3 from other numa for ffff050882e0
+alloc 2 from other numa for fffef82da850
+alloc 1 from other numa for fffefc05c730
+alloc 0 from other numa for fffef0250090
+alloc 0 from other numa for fffef0250090
+alloc 2 from other numa for fffef82da850
+alloc 3 from other numa for ffff050882e0
+TP MOE layer 39, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc3637c0
+alloc 3 from other numa for ffff050932b0
+alloc 2 from other numa for fffef816d240
+alloc 1 from other numa for fffefc3637c0
+alloc 0 from other numa for fffef01d3a10
+alloc 3 from other numa for ffff050932b0
+alloc 2 from other numa for fffef816d240
+alloc 0 from other numa for fffef01d3a10
+TP MOE layer 40, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc291720
+alloc 3 from other numa for ffff05031090
+alloc 2 from other numa for fffef80f6990
+alloc 1 from other numa for fffefc291720
+alloc 0 from other numa for fffef01e99b0
+alloc 3 from other numa for ffff05031090
+alloc 2 from other numa for fffef80f6990
+alloc 0 from other numa for fffef01e99b0
+TP MOE layer 41, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc27ffc0
+alloc 0 from other numa for fffef01d2200
+alloc 0 from other numa for fffef01d2200
+alloc 2 from other numa for fffef8185170
+alloc 1 from other numa for fffefc27ffc0
+alloc 3 from other numa for ffff057465e0
+alloc 2 from other numa for fffef8185170
+alloc 3 from other numa for ffff057465e0
+TP MOE layer 42, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1eda20
+alloc 1 from other numa for fffefc1eda20
+alloc 2 from other numa for fffef826bee0
+alloc 3 from other numa for ffff0575b510
+alloc 0 from other numa for fffef0927ca0
+alloc 2 from other numa for fffef826bee0
+alloc 0 from other numa for fffef0927ca0
+alloc 3 from other numa for ffff0575b510
+TP MOE layer 43, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unblocked tail-safe TP: offset=320 length=160 FP32 partial
+unblocked tail-safe TP: offset=480 length=160 FP32 partial
+alloc 1 from other numa for fffefc1e92b0
+alloc 3 from other numa for ffff057664e0
+alloc 3 from other numa for ffff057664e0
+alloc 2 from other numa for fffef8122630
+alloc 0 from other numa for fffef01f3210
+alloc 1 from other numa for fffefc1e92b0
+alloc 2 from other numa for fffef8122630
+alloc 0 from other numa for fffef01f3210
+TP MOE layer 44, pool: 0x4f123c90, expert num: 512, num_experts_per_tok: 10
+unblocked tail-safe TP: offset=0 length=160 FP32 partial
+unblocked tail-safe TP: offset=160 length=160 FP32 partial
+unbl
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 44 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-45-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 45 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-46-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 46 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) 
+(EngineCore pid=279) [GGUFLoader] Loading single GGUF file : layer-47-mxfp4.gguf
+(EngineCore pid=279) [GGUFLoader] Summary:
+(EngineCore pid=279)   Files loaded: 1
+(EngineCore pid=279)   Total tensors: 3
+(EngineCore pid=279)   Metadata keys: 4
+(EngineCore pid=279) [LlamafileMoEWrapper] Layer 47 TP configuration:
+(EngineCore pid=279)   intermediate_size: 640
+(EngineCore pid=279)   threadpool_count: 4
+(EngineCore pid=279)   QK_K: 256
+(EngineCore pid=279)   32-aligned tail-safe multi-TP path: FP32 partials, final merge cast
+(EngineCore pid=279)   TP 0: size=160, offset=0
+(EngineCore pid=279)   TP 1: size=160, offset=160
+(EngineCore pid=279)   TP 2: size=160, offset=320
+(EngineCore pid=279)   TP 3: size=160, offset=480
+(EngineCore pid=279) INFO 09-30 01:06:23 [gpu_model_runner.py:6396] Encoder cache will be initialized with a budget of 16384 tokens, and profiled with 1 image items of the maximum feature size.
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] EngineCore failed to start.
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] Traceback (most recent call last):
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1299, in run_engine_core
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1065, in __init__
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     super().__init__(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 136, in __init__
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 286, in _initialize_kv_caches
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/executor/abstract.py", line 147, in determine_available_memory
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py", line 92, in collective_rpc
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/serial_utils.py", line 510, in run_method
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/worker.py", line 546, in determine_available_memory
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     self.model_runner.profile_run()
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3937, in profile_run
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     super().profile_run()
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/v1/worker/gpu_model_runner.py", line 6424, in profile_run
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return func(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3864, in _dummy_run
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     outputs = self._model_forward(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]               ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2844, in _model_forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     hidden_states = run_model()
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                     ^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return self._call_impl(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return forward_call(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 991, in forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     hidden_states = self.language_model.model(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/compilation/decorators.py", line 663, in __call__
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     self.aot_compiled_fn = self.aot_compile(*args, **kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 169, in aot_compile
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return self._compiled_callable.aot_compile((args, kwargs))
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 832, in aot_compile
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return aot_compile_fullgraph(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/aot_compile.py", line 195, in aot_compile_fullgraph
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     capture_output = convert_frame.fullgraph_capture(model, args, kwargs)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1208, in fullgraph_capture
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     return _fullgraph_capture_frame(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1273, in _fullgraph_capture_frame
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     raise e.with_traceback(None) from e.__cause__  # User compiler error
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] torch._dynamo.exc.Unsupported: Failed to trace builtin operator
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   Explanation: Dynamo does not know how to trace builtin operator `callable` with argument types ['<unknown type>'] (has_kwargs False)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   Hint: Avoid calling builtin `callable` with argument types ['<unknown type>']. Consider using an equivalent alternative function/method to `callable`.
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   Hint: If you are attempting to call a logging function (e.g. `print`), you can try adding it to `torch._dynamo.config.reorderable_logging_functions`.
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   Hint: Please report an issue to PyTorch.
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] 
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   Developer debug context: builtin callable [<class 'torch._dynamo.variables.misc.GetAttrVariable'>] False
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] 
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]  For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0059.html
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] 
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] from user code:
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]    File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 496, in forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     hidden_states, block_output, injection = layer(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 297, in forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     hidden_states = hidden_states + self.ple(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/ple_layer.py", line 1292, in forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     embeddings = self.ple_embedding(
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/work/round16_integration/b2_live_bindings.py", line 362, in forward
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     host_hidden = to_host(hidden_states)
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]   File "/work/round16_integration/b2_live_bindings.py", line 340, in to_host
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330]     if not callable(getattr(value, "to", None)):
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] 
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+(EngineCore pid=279) ERROR 09-30 01:06:34 [core.py:1330] 
+(EngineCore pid=279) Process EngineCore:
+(EngineCore pid=279) Traceback (most recent call last):
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+(EngineCore pid=279)     self.run()
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/multiprocessing/process.py", line 108, in run
+(EngineCore pid=279)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/patch/platform/patch_balance_schedule.py", line 956, in _balance_run_engine_core
+(EngineCore pid=279)     return _OriginalRunEngineCore(*args, dp_rank=dp_rank, local_dp_rank=local_dp_rank, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1334, in run_engine_core
+(EngineCore pid=279)     raise e
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1299, in run_engine_core
+(EngineCore pid=279)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=279)                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 1065, in __init__
+(EngineCore pid=279)     super().__init__(
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 136, in __init__
+(EngineCore pid=279)     kv_cache_config = self._initialize_kv_caches(vllm_config)
+(EngineCore pid=279)                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/engine/core.py", line 286, in _initialize_kv_caches
+(EngineCore pid=279)     available_gpu_memory = self.model_executor.determine_available_memory()
+(EngineCore pid=279)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/executor/abstract.py", line 147, in determine_available_memory
+(EngineCore pid=279)     return self.collective_rpc("determine_available_memory")
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/executor/uniproc_executor.py", line 92, in collective_rpc
+(EngineCore pid=279)     result = run_method(self.driver_worker, method, args, kwargs)
+(EngineCore pid=279)              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/serial_utils.py", line 510, in run_method
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/worker.py", line 546, in determine_available_memory
+(EngineCore pid=279)     self.model_runner.profile_run()
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3937, in profile_run
+(EngineCore pid=279)     super().profile_run()
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/v1/worker/gpu_model_runner.py", line 6424, in profile_run
+(EngineCore pid=279)     hidden_states, last_hidden_states = self._dummy_run(
+(EngineCore pid=279)                                         ^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+(EngineCore pid=279)     return func(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 3864, in _dummy_run
+(EngineCore pid=279)     outputs = self._model_forward(
+(EngineCore pid=279)               ^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/worker/model_runner_v1.py", line 2844, in _model_forward
+(EngineCore pid=279)     hidden_states = run_model()
+(EngineCore pid=279)                     ^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+(EngineCore pid=279)     return self._call_impl(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+(EngineCore pid=279)     return forward_call(*args, **kwargs)
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 991, in forward
+(EngineCore pid=279)     hidden_states = self.language_model.model(
+(EngineCore pid=279)                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/compilation/decorators.py", line 663, in __call__
+(EngineCore pid=279)     self.aot_compiled_fn = self.aot_compile(*args, **kwargs)
+(EngineCore pid=279)                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/vllm-workspace/vllm/vllm/compilation/wrapper.py", line 169, in aot_compile
+(EngineCore pid=279)     return self._compiled_callable.aot_compile((args, kwargs))
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 832, in aot_compile
+(EngineCore pid=279)     return aot_compile_fullgraph(
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/aot_compile.py", line 195, in aot_compile_fullgraph
+(EngineCore pid=279)     capture_output = convert_frame.fullgraph_capture(model, args, kwargs)
+(EngineCore pid=279)                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1208, in fullgraph_capture
+(EngineCore pid=279)     return _fullgraph_capture_frame(
+(EngineCore pid=279)            ^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279)   File "/usr/local/python3.12.13/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py", line 1273, in _fullgraph_capture_frame
+(EngineCore pid=279)     raise e.with_traceback(None) from e.__cause__  # User compiler error
+(EngineCore pid=279)     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=279) torch._dynamo.exc.Unsupported: Failed to trace builtin operator
+(EngineCore pid=279)   Explanation: Dynamo does not know how to trace builtin operator `callable` with argument types ['<unknown type>'] (has_kwargs False)
+(EngineCore pid=279)   Hint: Avoid calling builtin `callable` with argument types ['<unknown type>']. Consider using an equivalent alternative function/method to `callable`.
+(EngineCore pid=279)   Hint: If you are attempting to call a logging function (e.g. `print`), you can try adding it to `torch._dynamo.config.reorderable_logging_functions`.
+(EngineCore pid=279)   Hint: Please report an issue to PyTorch.
+(EngineCore pid=279) 
+(EngineCore pid=279)   Developer debug context: builtin callable [<class 'torch._dynamo.variables.misc.GetAttrVariable'>] False
+(EngineCore pid=279) 
+(EngineCore pid=279)  For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0059.html
+(EngineCore pid=279) 
+(EngineCore pid=279) from user code:
+(EngineCore pid=279)    File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 496, in forward
+(EngineCore pid=279)     hidden_states, block_output, injection = layer(
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/model.py", line 297, in forward
+(EngineCore pid=279)     hidden_states = hidden_states + self.ple(
+(EngineCore pid=279)   File "/vllm-workspace/vllm-ascend/vllm_ascend/models/qwen4_exp/nvidia/ple_layer.py", line 1292, in forward
+(EngineCore pid=279)     embeddings = self.ple_embedding(
+(EngineCore pid=279)   File "/work/round16_integration/b2_live_bindings.py", line 362, in forward
+(EngineCore pid=279)     host_hidden = to_host(hidden_states)
+(EngineCore pid=279)   File "/work/round16_integration/b2_live_bindings.py", line 340, in to_host
+(EngineCore pid=279)     if not callable(getattr(value, "to", None)):
+(EngineCore pid=279) 
+(EngineCore pid=279) Set TORCHDYNAMO_VERBOSE=1 for the internal stack trace (please do this especially if you're reporting a bug to PyTorch). For even more developer context, set TORCH_LOGS="+dynamo"
+(EngineCore pid=279) 
+FAIL_ROUND18_NATIVE_HYBRID_GRAPH_SMOKE {"ended_at": 1790730407.0622008, "error": "Engine core initialization failed. See root cause above. Failed core proc(s): {}", "error_type": "RuntimeError", "schema": 1, "started_at": 1790730007.3221228, "status": "FAIL_ROUND18_NATIVE_HYBRID_GRAPH_SMOKE", "traceback": "Traceback (most recent call last):\n  File \"/work/round18_integration/native_hybrid_full_smoke.py\", line 285, in main\n    llm = LLM(\n          ^^^^\n  File \"/vllm-workspace/vllm/vllm/entrypoints/llm.py\", line 338, in __init__\n    self.llm_engine = LLMEngine.from_engine_args(\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py\", line 179, in from_engine_args\n    return cls(\n           ^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py\", line 105, in __init__\n    self.engine_core = EngineCoreClient.make_client(\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 103, in make_client\n    return SyncMPClient(vllm_config, executor_class, log_stats)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/tracing/otel.py\", line 178, in sync_wrapper\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 786, in __init__\n    super().__init__(\n  File \"/vllm-workspace/vllm/vllm/v1/engine/core_client.py\", line 573, in __init__\n    with launch_core_engines(\n         ^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/python3.12.13/lib/python3.12/contextlib.py\", line 144, in __exit__\n    next(self.gen)\n  File \"/vllm-workspace/vllm/vllm/v1/engine/utils.py\", line 1213, in launch_core_engines\n    wait_for_engine_startup(\n  File \"/vllm-workspace/vllm/vllm/v1/engine/utils.py\", line 1272, in wait_for_engine_startup\n    raise RuntimeError(\nRuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/work/round18_integration/native_hybrid_full_smoke.py", line 402, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/work/round18_integration/native_hybrid_full_smoke.py", line 285, in main
+    llm = LLM(
+          ^^^^
+  File "/vllm-workspace/vllm/vllm/entrypoints/llm.py", line 338, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py", line 179, in from_engine_args
+    return cls(
+           ^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/llm_engine.py", line 105, in __init__
+    self.engine_core = EngineCoreClient.make_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 103, in make_client
+    return SyncMPClient(vllm_config, executor_class, log_stats)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/tracing/otel.py", line 178, in sync_wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 786, in __init__
+    super().__init__(
+  File "/vllm-workspace/vllm/vllm/v1/engine/core_client.py", line 573, in __init__
+    with launch_core_engines(
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python3.12.13/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 1213, in launch_core_engines
+    wait_for_engine_startup(
+  File "/vllm-workspace/vllm/vllm/v1/engine/utils.py", line 1272, in wait_for_engine_startup
+    raise RuntimeError(
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+[ERROR] 2026-09-30-01:06:47 (PID:1, Device:-1, RankID:-1) ERR99999 UNKNOWN applicaiton exception

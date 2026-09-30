@@ -1,0 +1,118 @@
+{
+  "schema": "round18:ep1-independent-expert-storage-source-audit:v1",
+  "date": "2026-09-30",
+  "status": "SOURCE_AUDIT_COMPLETE_DEVICE_NOT_RUN",
+  "disposition_at_source_audit": "PROCEED_TO_ONE_BOUNDED_EP1_LIST_CONSUMER_PROBE",
+  "terminal_resolution": "OFFLINE_PROBE_PRESERVED_DEVICE_RUN_STOPPED_BY_ECONOMICS_AND_GRAPH_GATE",
+  "superseded_by": [
+    "R18_EP1_INDEPENDENT_LIST_PROBE_CONTRACT.json",
+    "R18_PHASE_II_POOL_ECONOMICS.json",
+    "R18_EXPERT_POOL_GRAPH_COMPAT.json",
+    "FINAL_STATUS.json"
+  ],
+  "scope": {
+    "device_run": false,
+    "remote_write": false,
+    "piecewise": false,
+    "runner_replacement": false
+  },
+  "conclusion": {
+    "native_runner_accepts_weight_list_by_source": true,
+    "existing_dynamic_eplb_supports_ep1": false,
+    "existing_loader_supports_host_backing": false,
+    "existing_log2phy_equivalent_to_q32_expert_map": false,
+    "frozen_stack_parentless_independent_list_owner_builtin": false,
+    "round18_offline_parentless_probe_implemented": true,
+    "independent_list_device_format_qualified": false,
+    "full_replay_mutation_visibility_qualified": false
+  },
+  "ep1_block": {
+    "file": "vllm_ascend/eplb/core/eplb_utils.py",
+    "line": 82,
+    "condition": "ep_size == 1",
+    "effect": "assert not dynamic_eplb and return empty placement/map/log2phy",
+    "interpretation": "existing EPLB control plane is EP-only; this is not a native MoE kernel rejection"
+  },
+  "native_list_consumer": {
+    "weight_list_creation": {
+      "file": "vllm_ascend/ops/fused_moe/fused_moe.py",
+      "lines": [132, 161],
+      "current_limitation": "lists are cloned from an already-created and post-loaded parent"
+    },
+    "apply_selects_lists": {
+      "file": "vllm_ascend/ops/fused_moe/fused_moe.py",
+      "lines": [256, 315]
+    },
+    "generic_bf16_grouped_matmul_accepts_list": {
+      "file": "vllm_ascend/ops/fused_moe/moe_mlp.py",
+      "lines": [671, 793]
+    },
+    "runner_change_required_by_source": false,
+    "owner_or_quant_method_change_required": true
+  },
+  "mapping": {
+    "q32_runtime_contract": "512-entry expert_map: resident->0..Q-1, miss->-1",
+    "existing_eplb_device_publication": "log2phy only",
+    "existing_expert_map_publication": "CPU shadow only",
+    "log2phy_sparse_pool_problem": "generator assumes every logical expert exists in the union of EP placements and has no pool-miss sentinel",
+    "required_publication": "write all slot projections, wait ready, then update same-address device expert_map"
+  },
+  "transfer": {
+    "existing_source": "NPU rank D2D only",
+    "operations": ["dist.isend", "dist.irecv", "dist.batch_isend_irecv"],
+    "host_backing": "MISSING",
+    "target_mutation": "per-expert tensor copy_ is present"
+  },
+  "graph_hook_order": {
+    "execute": ["forward_before", "model_forward_or_full_replay", "postprocess", "forward_end"],
+    "capture_calls_python_runnable": true,
+    "replay_calls_python_runnable": false,
+    "full_current_stream_sync_before_replay": true,
+    "current_token_miss_planner": "MISSING",
+    "safe_interpretation": "graph-external mutation may affect a later replay; cross-stream Host copy still needs explicit event ordering"
+  },
+  "format": {
+    "current_q32_parent": "BF16 NZ29",
+    "current_parent_row_mutation": "FAILED_BY_NATIVE_FIXED_SLOT_V018_GUARD",
+    "list_interface_exists": true,
+    "independent_nd_list_device_support": "NOT_PROVED",
+    "independent_nz_list_device_support": "NOT_PROVED",
+    "host_blob_preserves_nz_metadata": "NOT_PROVED"
+  },
+  "minimum_probe": {
+    "name": "EP1_INDEPENDENT_LIST_CONSUMER_AND_GRAPH_MUTATION_PROBE",
+    "requirements": [
+      "single native BF16 MoE layer at TP1/EP1 with unchanged AscendMoERunner",
+      "independent w13/w2 slot lists and no Q-parent or 512-parent routed storage",
+      "eager all-resident/all-miss/mixed reference checks",
+      "separate ND-list and native-consumable-list format evidence",
+      "A-to-B-to-A fixed-slot overwrite with stable list and map data_ptr values",
+      "weight-ready before same-address 512-entry expert_map publication",
+      "legal FULL capture then replay; never consume capture output as first real result",
+      "mid-write fault keeps old map generation visible"
+    ],
+    "production_claim_after_pass": false,
+    "remaining_gate": "current-token route planning without Host readback or graph break"
+  },
+  "deep_refactor_boundaries": [
+    "TP1 native grouped-matmul rejects independent expert tensor lists",
+    "native-consumable per-expert storage requires full-parent format reconstruction",
+    "FULL replay does not observe same-address list/map mutation",
+    "runner replacement is required to pass the list",
+    "current-token planning requires D2H route and fine-grained Python resume"
+  ],
+  "source_identity": {
+    "vllm_ascend/eplb/core/eplb_utils.py": "1fcf2a5d8ee56366d460ccd87661176822745f2d86e295a6438c0f8651d2392e",
+    "vllm_ascend/eplb/core/eplb_device_transfer_loader.py": "db1023bd25fbae05eddd3e6650e3d7680c4b522048997cda1d6f5549b3539130",
+    "vllm_ascend/eplb/adaptor/vllm_adaptor.py": "e372c2e515cee4711f919e65e14bc2a81666b10c3074aca181ba519e2d186b99",
+    "vllm_ascend/eplb/eplb_updator.py": "a734e8e12a69526c185cca305bc6bed7124bc30447da4a9f1e9e4aec48c53915",
+    "vllm_ascend/ops/fused_moe/fused_moe.py": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+    "vllm_ascend/ops/fused_moe/moe_mlp.py": "5b537cc41c7319d4cb97eb3e353aae4aea3b00d0dc438c61fb4ef94e56aecb3d",
+    "vllm_ascend/worker/model_runner_v1.py": "de9f108bb1365c7eb5967c0cd098a005510fe627f7a27e0732d120a0f33e2608",
+    "vllm_ascend/compilation/acl_graph.py": "eadb7156b74720b79bcdc51491feed9ec76739d1449ae4ffac822ffad6526695"
+  },
+  "related_device_evidence": {
+    "native_partial_v004": "Q32 expert_map -1 semantics passed",
+    "native_expert_pool_fixed_slot_v018": "Q32 NZ29 parent row mutation was not eligible; independent list was not tested"
+  }
+}

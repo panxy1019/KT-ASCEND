@@ -1,0 +1,64 @@
+{
+  "alternate_tensor_list_seam": {
+    "avoids_q32_parent_rebuild_by_construction": true,
+    "device_qualification": "NOT_RUN_FOR_ROUND18_Q32_TP1",
+    "drop_in_for_current_s0": false,
+    "ep1_dynamic_eplb": "REJECTED",
+    "exists": true,
+    "frozen_activation": "FUSED_MC2_AND_USE_MEGAMOE_OR_DYNAMIC_EPLB",
+    "native_consumer_change_required": true,
+    "representation": "PER_EXPERT_TENSOR_LIST_WITH_SAME_FORMAT_EMPTY_LIKE_BUFFERS",
+    "write": "expert_tensor.copy_(buffer_tensor)"
+  },
+  "api": "round18:nz29-fixed-slot-source-audit:v1",
+  "current_q32_parent": {
+    "direct_slot_copy_contract": "NOT_ESTABLISHED_FOR_FORMAT29_SLICE",
+    "disposition": "BLOCK_CURRENT_PARENT_FIXED_SLOT_PATH",
+    "index_copy_logical_correctness": "HISTORICALLY_DEVICE_QUALIFIED",
+    "index_copy_physical_scope": "FULL_PARENT_CONTIGUOUS_AND_WRITEBACK",
+    "preprocessed_blob_to_parent_slot": "NOT_FOUND",
+    "representation": "TWO_CONTIGUOUS_FORMAT29_PARENTS_W13_W2",
+    "single_expert_parent_preserving_writer": "NOT_FOUND"
+  },
+  "device_evidence": {
+    "mutation_started": false,
+    "v018_status": "FAIL_FIXED_SLOT_POSTLOAD_FORMAT_INELIGIBLE",
+    "w13_format": 29,
+    "w2_format": 29
+  },
+  "minimum_next_probe": {
+    "must_prove": [
+      "stable per-expert data_ptr across A_to_B_to_A copies",
+      "source and destination formats are identical",
+      "native consumer changes from eager A reference to eager B reference",
+      "no parent tensor or full-parent format cast exists",
+      "allocator and generation publication are bounded"
+    ],
+    "not_authorized_claims": [
+      "current S0 parent has a fixed-slot writer",
+      "EP1 Dynamic EPLB is supported",
+      "graph-safe residency is qualified",
+      "request performance benefit"
+    ],
+    "recommended": "PER_EXPERT_TENSOR_LIST_SAME_FORMAT_COPY_AND_NATIVE_CONSUMER",
+    "scope": "ONE_LAYER_ONE_EXPERT_NO_FULL_MODEL_NO_GRAPH"
+  },
+  "offloader_seam": {
+    "fixed_expert_slot_pool": false,
+    "granularity": "FULL_PARAMETER_SHAPE",
+    "nz_static_buffers_exist": true
+  },
+  "schema": 1,
+  "source_identities": {
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928/vllm_ascend/eplb/adaptor/vllm_adaptor.py": "e372c2e515cee4711f919e65e14bc2a81666b10c3074aca181ba519e2d186b99",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928/vllm_ascend/eplb/core/eplb_device_transfer_loader.py": "db1023bd25fbae05eddd3e6650e3d7680c4b522048997cda1d6f5549b3539130",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928/vllm_ascend/eplb/core/eplb_utils.py": "1fcf2a5d8ee56366d460ccd87661176822745f2d86e295a6438c0f8651d2392e",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928/vllm_ascend/model_executor/offloader/prefetch.py": "5341d1db035fa903f027034d8753e3f6d6bc8b8e28520140baf41578ede63645",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round15/upstream-image-source/round15-offline-vllm-source-20260928/vllm_ascend/ops/fused_moe/fused_moe.py": "2d03cf6963f4e7edd529751383c779c407560011760c86478cf0598661d47f7c",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round9-autorun/upstream/installed-IndexCopyKernelNpu.cpp": "9eb3c429c4844dfd5532cdfce36908bd0c826feb9b855c66d58fbead8d600ea8",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round9-autorun/upstream/installed-NpuUtils.cpp": "34f698f9eaec422be89368e0744c1345e90540920688096096118e14fde0784c",
+    "/home/admin/Documents/ChatGPT/KT/kt-round9-mainline/artifacts/round9-fixed-shadow32-update-20260925/NZ_UPDATE_CAUSAL_FINDINGS.md": "850716c6e79f196f9b1ed4965fe35fba45ab9c458d84ea56ceee06234117c396",
+    "artifacts/round18/evidence/native-expert-pool-fixed-slot-v018/fixed-slot-receipt.json": "b78544738fb5f846014b9dae7405a457c04de4a5644d08c9741e05616ff2c9ca"
+  },
+  "status": "SOURCE_AUDIT_COMPLETE"
+}
